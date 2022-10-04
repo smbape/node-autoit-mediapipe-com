@@ -1,0 +1,55 @@
+diff --git a/WORKSPACE b/WORKSPACE
+index d3cc40f..f243b06 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -271,7 +271,7 @@ new_local_repository(
+ new_local_repository(
+     name = "windows_opencv",
+     build_file = "@//third_party:opencv_windows.BUILD",
+-    path = "C:\\opencv\\build",
++    path = "@OPENCV_DOWNLOAD_DIR_ESC@\\opencv-@OPENCV_VERSION@-vc14_vc15\\opencv\\build",
+ )
+ 
+ http_archive(
+diff --git a/mediapipe/tasks/BUILD b/mediapipe/tasks/BUILD
+index 242a88c..304eb75 100644
+--- a/mediapipe/tasks/BUILD
++++ b/mediapipe/tasks/BUILD
+@@ -17,6 +17,7 @@ package(default_visibility = ["//visibility:public"])
+ package_group(
+     name = "internal",
+     packages = [
++        "//mediapipe/autoit/...",
+         "//mediapipe/python/...",
+         "//mediapipe/tasks/...",
+     ],
+diff --git a/third_party/opencv_windows.BUILD b/third_party/opencv_windows.BUILD
+index ecf788e..71c52b0 100644
+--- a/third_party/opencv_windows.BUILD
++++ b/third_party/opencv_windows.BUILD
+@@ -5,7 +5,7 @@ licenses(["notice"])  # BSD license
+ 
+ exports_files(["LICENSE"])
+ 
+-OPENCV_VERSION = "3410"  # 3.4.10
++OPENCV_VERSION = "@OPENCV_VERSION_@"  # @OPENCV_VERSION@
+ 
+ config_setting(
+     name = "opt_build",
+@@ -17,7 +17,7 @@ config_setting(
+     values = {"compilation_mode": "dbg"},
+ )
+ 
+-# The following build rule assumes that the executable "opencv-3.4.10-vc14_vc15.exe"
++# The following build rule assumes that the executable "opencv-@OPENCV_VERSION@-vc14_vc15.exe"
+ # is downloaded and the files are extracted to local.
+ # If you install OpenCV separately, please modify the build rule accordingly.
+ cc_library(
+@@ -34,6 +34,6 @@ cc_library(
+     }),
+     hdrs = glob(["include/opencv2/**/*.h*"]),
+     includes = ["include/"],
+-    linkstatic = 1,
++    # linkstatic = 1,
+     visibility = ["//visibility:public"],
+ )

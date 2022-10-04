@@ -1,0 +1,10 @@
+/autoit-mediapipe-com/patches/001-mediapipe-src.patch
+/autoit-mediapipe-*-com-v*.7z
+/autoit-mediapipe-v*-src.zip
+/autoit-opencv-*
+/node_modules
+/opencv-*
+/*.sublime-workspace
+BackUp
+generated
+*build_x64
