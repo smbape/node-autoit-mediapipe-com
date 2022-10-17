@@ -5,9 +5,9 @@ PTR_BRIDGE_IMPL(mediapipe::autoit::StreamPacketCallback)
 using namespace mediapipe;
 using namespace mediapipe::autoit;
 
-// A mutex to guard the output stream observer python callback function.
-// Only one python callback can run at once.
-absl::Mutex callback_mutex;
+// A mutex to guard the output stream observer autoit callback function.
+// Only one autoit callback can run at once.
+static absl::Mutex callback_mutex;
 
 const std::shared_ptr<CalculatorGraph> CMediapipe_CalculatorGraph_Object::create(CalculatorGraphConfig& graph_config, HRESULT& hr) {
 	auto calculator_graph = std::make_shared<CalculatorGraph>();
@@ -65,7 +65,7 @@ const std::string CMediapipe_CalculatorGraph_Object::get_combined_error_message(
 	return std::string();
 }
 
-void CMediapipe_CalculatorGraph_Object::observe_output_stream(std::string& stream_name, StreamPacketCallback callback_fn, bool observe_timestamp_bounds, HRESULT& hr) {
+void CMediapipe_CalculatorGraph_Object::observe_output_stream(std::string stream_name, StreamPacketCallback callback_fn, bool observe_timestamp_bounds, HRESULT& hr) {
 	const auto& self = this->__self->get();
 
 	RaiseAutoItErrorIfNotOk(self->ObserveOutputStream(

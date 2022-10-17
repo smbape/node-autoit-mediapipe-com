@@ -308,9 +308,6 @@ def add_com_library(name, intdir, compilation_mode):
         deps = [
             "@windows_opencv//:opencv",
 
-            ":builtin_calculators",
-            ":builtin_task_graphs",
-
             # util
             "//mediapipe/framework:calculator_cc_proto",
             "//mediapipe/framework:timestamp",
@@ -377,6 +374,10 @@ def add_com_library(name, intdir, compilation_mode):
             # detection
             "//mediapipe/framework/formats:detection_cc_proto",
 
+            # _framework_bindings
+            ":builtin_calculators",
+            ":builtin_task_graphs",
+
             # Type registration.
             "//mediapipe/framework:basic_types_registration",
             "//mediapipe/framework/formats:classification_registration",
@@ -384,5 +385,8 @@ def add_com_library(name, intdir, compilation_mode):
             "//mediapipe/framework/formats:landmark_registration",
             "//mediapipe/framework/formats:rect_registration",
             "//mediapipe/modules/objectron/calculators:annotation_registration",
+
+            # solution_base
+            "//mediapipe/calculators/util:logic_calculator_cc_proto",
         ],
     )

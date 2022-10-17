@@ -14,12 +14,12 @@ Func _Mediapipe_ObjCreate($sClassname, $sFilename = Default)
 	If $sFilename == Default Then $sFilename = $s_autoit_mediapipe_com_dll
 
 	Local Const $namespaces[] = [ _
-		"", _
-		"Mediapipe.", _
-		"Mediapipe.mediapipe.", _
-		"Mediapipe.mediapipe.autoit.", _
-		"Mediapipe.mediapipe.autoit._framework_bindings." _
-	]
+			"", _
+			"Mediapipe.", _
+			"Mediapipe.mediapipe.", _
+			"Mediapipe.mediapipe.autoit.", _
+			"Mediapipe.mediapipe.autoit._framework_bindings." _
+			]
 	Local $siClassname, $oObj
 
 	For $i = 0 To UBound($namespaces) - 1

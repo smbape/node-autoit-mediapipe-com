@@ -1,11 +1,5 @@
 const PropertyDeclaration = require("./PropertyDeclaration");
 
-const _generate = (generator, iglobal, iidl, impl, ipublic, iprivate, idnames, is_test, options) => {
-    iidl.push(`
-        [propget, restricted, id(DISPID_NEWENUM)] HRESULT _NewEnum([out, retval] IUnknown** ppUnk);
-    `.replace(/^ {8}/mg, "").trim());
-};
-
 exports.declare = (generator, type, parent, options = {}) => {
     const cpptype = generator.getCppType(type, parent, options);
 
@@ -24,7 +18,7 @@ exports.declare = (generator, type, parent, options = {}) => {
     }
 
     const [key_type, value_type] = PropertyDeclaration.getTupleTypes(type.slice("map<".length, -">".length));
-    const coclass = generator.getCoClass(fqn);
+    const coclass = generator.getCoClass(fqn, options);
     generator.typedefs.set(fqn, cpptype);
 
     coclass.is_simple = true;
@@ -101,11 +95,19 @@ exports.declare = (generator, type, parent, options = {}) => {
     // make map to be recognized as a collection
     const cotype = coclass.getClassName();
     const _Copy = `::autoit::GenericCopy<std::pair<const ${ coclass.key_type }, ${ coclass.value_type }>>`;
-    const CIntEnum = `CComEnumOnSTL<IEnumVARIANT, &IID_IEnumVARIANT, VARIANT, ${ _Copy }, ${ fqn }>`;
-    const IIntCollection = `AutoItCollectionEnumOnSTLImpl<I${ cotype }, ${ fqn }, ${ CIntEnum }, AutoItObject<${ fqn }>>`;
+    const _CComEnum = `CComEnumOnSTL<IEnumVARIANT, &IID_IEnumVARIANT, VARIANT, ${ _Copy }, ${ fqn }>`;
+    const ICollection = `ATL::IAutoItCollectionEnumOnSTLImpl<I${ cotype }, ${ fqn }, ${ _CComEnum }, AutoItObject<${ fqn }>>`;
 
-    coclass.dispimpl = IIntCollection;
-    coclass.generate = _generate.bind(coclass, generator);
+    coclass.dispimpl = ICollection;
+
+    coclass.addMethod([`${ fqn }.get__NewEnum`, "IUnknown*", [
+        "/attr=propget",
+        "/attr=restricted",
+        "/id=DISPID_NEWENUM",
+        "/idlname=_NewEnum",
+        "=get__NewEnum",
+        "/IDL"
+    ], [], "", ""]);
 
     return fqn;
 };

@@ -19,7 +19,7 @@ module.exports = (header = [], impl = [], options = {}) => {
         ],
     ]) {
         const argdecl = args.map(([argtype, argname]) => `${ argtype }${ argtype === Point ? "&" : "" } ${ argname }`).join(", ");
-        const argexpr = args.map(([argtype, argname]) => argtype === Point ? `cv::Point(std::get<0>(${ argname }), std::get<1>(${ argname }))` : argname).join(", ");
+        const argexpr = args.map(([argtype, argname]) => (argtype === Point ? `cv::Point(std::get<0>(${ argname }), std::get<1>(${ argname }))` : argname)).join(", ");
 
         impl.push(`
             #include "Cv_Mat_Object.h"

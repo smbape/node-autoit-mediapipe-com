@@ -129,6 +129,48 @@ Object.assign(exports, {
     },
 
     convert: (coclass, header, impl, options = {}) => {
+        for (const ename of coclass.enums) {
+            if (ename.endsWith("<unnamed>")) {
+                continue;
+            }
+
+            header.push(`
+                extern const bool is_assignable_from(${ ename }& out_val, VARIANT const* const& in_val, bool is_optional);
+                extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ ename }& out_val);
+                extern const HRESULT autoit_from(const ${ ename }& in_val, VARIANT*& out_val);
+
+                namespace autoit {
+                    template<typename destination_type>
+                    struct _GenericCopy<destination_type, ${ ename }> {
+                        inline static HRESULT copy(destination_type* pTo, const ${ ename }* pFrom) {
+                            return autoit_from(*pFrom, pTo);
+                        }
+                    };
+                }
+            `.replace(/^ {16}/mg, ""));
+
+            impl.push(`
+                const bool is_assignable_from(${ ename }& out_val, VARIANT const* const& in_val, bool is_optional) {
+                    int value = 0;
+                    return is_assignable_from(value, in_val, is_optional);
+                }
+
+                const HRESULT autoit_to(VARIANT const* const& in_val, ${ ename }& out_val) {
+                    int value = 0;
+                    HRESULT hr = autoit_to(in_val, value);
+                    if (SUCCEEDED(hr)) {
+                        out_val = static_cast<${ ename }>(value);
+                    }
+                    return hr;
+                }
+
+                const HRESULT autoit_from(const ${ ename }& in_val, VARIANT*& out_val) {
+                    return autoit_from(static_cast<int>(in_val), out_val);
+                }
+                `.replace(/^ {16}/mg, "")
+            );
+        }
+
         if (!coclass.is_class && !coclass.is_struct) {
             return;
         }
@@ -243,6 +285,8 @@ Object.assign(exports, {
         header.push(`
             extern const bool is_assignable_from(${ shared_ptr }<${ coclass.fqn }>& out_val, VARIANT const* const& in_val, bool is_optional);
             extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ shared_ptr }<${ coclass.fqn }>& out_val);
+            extern const bool is_assignable_from(${ coclass.fqn }*& out_val, VARIANT const* const& in_val, bool is_optional);
+            extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val);
             extern const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, I${ cotype }**& out_val);
             extern const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, ${ iface }**& out_val);
         `.replace(/^ {12}/mg, ""));
@@ -283,6 +327,20 @@ Object.assign(exports, {
                 return E_INVALIDARG;
             }
 
+            const bool is_assignable_from(${ coclass.fqn }*& out_val, VARIANT const* const& in_val, bool is_optional) {
+                ${ shared_ptr }<${ coclass.fqn }> out_val_shared;
+                return is_assignable_from(out_val_shared, in_val, is_optional);
+            }
+
+            const HRESULT autoit_to(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val) {
+                ${ shared_ptr }<${ coclass.fqn }> out_val_shared;
+                HRESULT hr = autoit_to(in_val, out_val_shared);
+                if (SUCCEEDED(hr)) {
+                    out_val = out_val_shared.get();
+                }
+                return hr;
+            }
+
             const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, I${ cotype }**& out_val) {
                 HRESULT hr = CoCreateInstance(CLSID_${ cotype }, NULL, CLSCTX_INPROC_SERVER, IID_I${ cotype }, reinterpret_cast<void**>(out_val));
                 if (SUCCEEDED(hr)) {
@@ -314,30 +372,6 @@ Object.assign(exports, {
                         V_${ wtype }(out_val) = static_cast<${ iface }*>(*ppdispVal);
                     }
                     return hr;
-                }
-            `.replace(/^ {16}/mg, ""));
-        }
-
-        if (coclass.is_ptr) {
-            header.push(`extern const bool is_assignable_from(${ coclass.fqn }*& out_val, VARIANT const* const& in_val, bool is_optional);`);
-            header.push(`extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val);`);
-            impl.push(`
-                const bool is_assignable_from(${ coclass.fqn }*& out_val, VARIANT const* const& in_val, bool is_optional) {
-                    ${ optional.check.join(`\n${ " ".repeat(20) }`) }
-
-                    // TODO : find a better way to check instanceof with V_DISPATH
-                    return V_VT(in_val) == VT_${ wtype } && ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val)) != NULL;
-                }
-
-                const HRESULT autoit_to(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val) {
-                    ${ optional.assign.join(`\n${ " ".repeat(20) }`) }
-
-                    if (V_VT(in_val) != VT_${ wtype }) {
-                        return E_INVALIDARG;
-                    }
-
-                    out_val = ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val));
-                    return out_val ? S_OK : E_INVALIDARG;
                 }
             `.replace(/^ {16}/mg, ""));
         }

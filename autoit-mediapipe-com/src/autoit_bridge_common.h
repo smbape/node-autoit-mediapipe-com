@@ -602,13 +602,19 @@ extern const HRESULT autoit_from(T const& in_val, T*& out_val) {
 	return S_OK;
 }
 
-namespace autoit
-{
+namespace autoit {
 	template <typename _Tp>
 	typename _Tp* cast(IDispatch* element);
 
 	template <typename _Tp>
 	const typename _Tp* cast(const IDispatch* element);
+
+	template<typename _Tp>
+	_Tp cast(VARIANT const* const& in_val) {
+		_Tp value;
+		AUTOIT_ASSERT_THROW(SUCCEEDED(autoit_to(in_val, value)), "Invalid argument");
+		return value;
+	}
 
 	template <typename T>
 	const AUTOIT_PTR<typename T> reference_internal(T* element) {
@@ -622,7 +628,7 @@ namespace autoit
 
 	template <typename T>
 	const AUTOIT_PTR<typename T> reference_internal(T& element) {
-		return AUTOIT_PTR<T>(AUTOIT_PTR<T>{}, &element);
+		return AUTOIT_PTR<T>(AUTOIT_PTR<T>{}, & element);
 	}
 
 	template <typename T>
@@ -695,35 +701,36 @@ namespace autoit
 			return _GenericCopy<destination_type, source_type>::copy(pTo, pFrom);
 		}
 	};
-
 }
 
-template<typename T, typename CollType, typename EnumType, typename AutoItType = AutoItObject<CollType>>
-class IAutoItCollectionEnumOnSTLImpl :
-	public T,
-	public AutoItType
-{
-public:
-	STDMETHOD(get__NewEnum)(_Outptr_ IUnknown** ppUnk)
+namespace ATL {
+	template<typename T, typename CollType, typename EnumType, typename AutoItType = AutoItObject<CollType>>
+	class IAutoItCollectionEnumOnSTLImpl :
+		public T,
+		public AutoItType
 	{
-		auto& m_coll = *this->__self->get();
-		if (ppUnk == NULL)
-			return E_POINTER;
-		*ppUnk = NULL;
-		HRESULT hRes = S_OK;
-		CComObject<EnumType>* p;
-		hRes = CComObject<EnumType>::CreateInstance(&p);
-		if (SUCCEEDED(hRes))
+	public:
+		STDMETHOD(get__NewEnum)(_Outptr_ IUnknown** ppUnk)
 		{
-			hRes = p->Init(this, m_coll);
-			if (hRes == S_OK)
-				hRes = p->QueryInterface(__uuidof(IUnknown), (void**)ppUnk);
+			auto& m_coll = *this->__self->get();
+			if (ppUnk == NULL)
+				return E_POINTER;
+			*ppUnk = NULL;
+			HRESULT hRes = S_OK;
+			CComObject<EnumType>* p;
+			hRes = CComObject<EnumType>::CreateInstance(&p);
+			if (SUCCEEDED(hRes))
+			{
+				hRes = p->Init(this, m_coll);
+				if (hRes == S_OK)
+					hRes = p->QueryInterface(__uuidof(IUnknown), (void**)ppUnk);
+			}
+			if (hRes != S_OK)
+				delete p;
+			return hRes;
 		}
-		if (hRes != S_OK)
-			delete p;
-		return hRes;
-	}
-};
+	};
+}
 
 template <class Base, const IID* piid, class T>
 class ATL_NO_VTABLE IEnumOnSTLImpl<Base, piid, T, ::autoit::GenericCopy<bool>, std::vector<bool>> :

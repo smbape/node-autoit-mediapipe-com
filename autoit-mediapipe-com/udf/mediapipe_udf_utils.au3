@@ -397,4 +397,4 @@ Func _Mediapipe_MapOfStringAndPacket($sKey1 = Default, $vVal1 = Default, $sKey2 
 			ConsoleWriteError('!>Error: Invalid number of arguments')
 			Return SetError(1, 0, -1)
 	EndSwitch
-EndFunc   ;==>_Mediapipe_Params
+EndFunc   ;==>_Mediapipe_MapOfStringAndPacket

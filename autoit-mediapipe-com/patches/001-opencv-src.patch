@@ -10,8 +10,8 @@ index a31713f353..337e364bed 100755
 +                accessor = arg[:3]
 +                arg = arg[4:]
 +                func_modlist.append("/attr=prop" + accessor)
-+                func_modlist.append("/id=DISPID_VALUE")
 +                func_modlist.append("/idlname=" + arg)
++                func_modlist.append("/id=DISPID_VALUE")
 +                arg = accessor + "_" + arg
              func_modlist.append("="+arg)
              decl_str = decl_str[:npos] + decl_str[npos3+1:]
@@ -22,8 +22,8 @@ index a31713f353..337e364bed 100755
 +                accessor = arg[:3]
 +                arg = arg[4:]
 +                func_modlist.append("/attr=prop" + accessor)
-+                func_modlist.append("/id=DISPID_VALUE")
 +                func_modlist.append("/idlname=" + arg)
++                func_modlist.append("/id=DISPID_VALUE")
 +                arg = accessor + "_" + arg
              func_modlist.append("="+arg)
              decl_str = decl_str[:npos] + decl_str[npos3+1:]

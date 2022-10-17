@@ -1,6 +1,8 @@
 module.exports = [
     ["class google.protobuf.Message", "", [], [], "", ""],
 
+    ["google.protobuf.Message.ToStr", "std::string", ["=str", "/Call=google::protobuf::autoit::cmessage::ToStr", "/Expr=*__self->get()"], [], "", ""],
+
     // ["google.protobuf.Message.GetDescriptor", "std::shared_ptr<google::protobuf::FieldDescriptor>", [
     //     "/attr=propget", "=get_DESCRIPTOR", "/idlname=DESCRIPTOR", "/Output=::autoit::reference_internal($0)"
     // ], [], "", ""],

@@ -51,7 +51,7 @@ module.exports = [
     ["mediapipe.CalculatorGraph.get_combined_error_message", "std::string", ["/External"], [], "", ""],
 
     ["mediapipe.CalculatorGraph.observe_output_stream", "void", ["/External"], [
-        ["std::string", "stream_name", "", ["/Ref"]],
+        ["std::string", "stream_name", "", []],
         ["mediapipe::autoit::StreamPacketCallback", "callback_fn", "", []],
         ["bool", "observe_timestamp_bounds", "false", []],
     ], "", ""],

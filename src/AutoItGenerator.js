@@ -59,7 +59,7 @@ class AutoItGenerator {
 
         this.namespace = options.namespace;
 
-        this.options = options;
+        // this.options = options;
 
         for (const namespace of namespaces) {
             this.namespaces.add(namespace.split(".").join("::"));
@@ -69,11 +69,11 @@ class AutoItGenerator {
             const [name] = decl;
 
             if (name.startsWith("class ") || name.startsWith("struct ")) {
-                this.add_class(decl);
+                this.add_class(decl, options);
             } else if (name.startsWith("enum ")) {
-                this.add_enum(decl);
+                this.add_enum(decl, options);
             } else {
-                this.add_func(decl);
+                this.add_func(decl, options);
             }
         }
 
@@ -390,10 +390,12 @@ class AutoItGenerator {
 
                 iglobal.unshift(`OBJECT_ENTRY_AUTO(__uuidof(${ cotype }), C${ cotype })`);
 
+                const dispimpl = coclass.dispimpl ? coclass.dispimpl : `I${ cotype }`;
+
                 const bases = [
                     "public CComObjectRootEx<CComSingleThreadModel>",
                     `public CComCoClass<C${ cotype }, &CLSID_${ cotype }>`,
-                    `public IDispatchImpl<I${ coclass.dispimpl ? coclass.dispimpl : cotype }, &IID_I${ cotype }, &LIBID_${ LIBRARY }, /*wMajor =*/ ${ VERSION_MAJOR }, /*wMinor =*/ ${ VERSION_MINOR }>`,
+                    `public IDispatchImpl<${ dispimpl }, &IID_I${ cotype }, &LIBID_${ LIBRARY }, /*wMajor =*/ ${ VERSION_MAJOR }, /*wMinor =*/ ${ VERSION_MINOR }>`,
                 ];
 
                 if (is_idl_class) {
@@ -957,12 +959,12 @@ class AutoItGenerator {
         ], cb);
     }
 
-    add_class(decl) {
+    add_class(decl, options = {}) {
         const [name, base, list_of_modifiers, properties] = decl;
         const path = name.slice(name.indexOf(" ") + 1).split(".");
         const fqn = path.join("::");
 
-        const coclass = this.getCoClass(fqn);
+        const coclass = this.getCoClass(fqn, options);
 
         coclass.is_class = name.startsWith("class ");
         coclass.is_struct = name.startsWith("struct ");
@@ -1016,7 +1018,7 @@ class AutoItGenerator {
         }
     }
 
-    add_enum(decl) {
+    add_enum(decl, options = {}) {
         const [name, , , enums] = decl;
 
         let start = 0;
@@ -1049,7 +1051,7 @@ class AutoItGenerator {
             this.enums.set(fqn, decl);
         }
 
-        this.getCoClass(path.slice(0, -1).join("::")).addEnum(fqn);
+        this.getCoClass(path.slice(0, -1).join("::"), options).addEnum(fqn);
 
         for (const edecl of enums) {
             const [ename] = edecl;
@@ -1064,7 +1066,7 @@ class AutoItGenerator {
                 continue;
             }
 
-            if (this.options.noEnumExport) {
+            if (options.noEnumExport) {
                 continue;
             }
 
@@ -1081,7 +1083,7 @@ class AutoItGenerator {
             // https://docs.microsoft.com/en-us/windows/win32/com/com-technical-overview
             // https://docs.microsoft.com/it-ch/office/vba/language/reference/user-interface-help/bad-interface-for-implements-method-has-underscore-in-name
             const basename = epath[epath.length - 1];
-            const coclass = this.getCoClass(epath.slice(0, -1).join("::"));
+            const coclass = this.getCoClass(epath.slice(0, -1).join("::"), options);
             coclass.addProperty(["int", `${ basename }_`, `static_cast<int>(${ epath.join("::") })`, ["/R", "/S", "/Enum", `=${ basename }`]]);
         }
     }
@@ -1093,7 +1095,7 @@ class AutoItGenerator {
             return this.classes.get(objectName);
         }
 
-        const coclass = this.getCoClass(objectName);
+        const coclass = this.getCoClass(objectName, options);
         coclass.is_simple = true;
         coclass.is_class = true;
 
@@ -1111,10 +1113,10 @@ class AutoItGenerator {
         return vector_conversion.declare(this, type, parent, options);
     }
 
-    add_func(decl) {
+    add_func(decl, options = {}) {
         const [name, , list_of_modifiers, properties] = decl;
         const path = name.split(".");
-        const coclass = this.getCoClass(path.slice(0, -1).join("::"));
+        const coclass = this.getCoClass(path.slice(0, -1).join("::"), options);
         if (list_of_modifiers.includes("/Properties")) {
             for (const property of properties) {
                 coclass.addProperty(property);
@@ -1124,7 +1126,7 @@ class AutoItGenerator {
         }
     }
 
-    getCoClass(fqn) {
+    getCoClass(fqn, options = {}) {
         if (this.classes.has(fqn)) {
             return this.classes.get(fqn);
         }
@@ -1135,30 +1137,36 @@ class AutoItGenerator {
         for (let i = 0; i < path.length; i++) {
             const prefix = path.slice(0, i + 1).join("::");
 
-            if (!this.classes.has(prefix)) {
-                this.classes.set(prefix, new CoClass(prefix));
+            if (this.classes.has(prefix)) {
+                coclass = this.classes.get(prefix);
+                continue;
+            }
 
-                if (typeof this.options.progid === "function") {
-                    const progid = this.options.progid(this.classes.get(prefix).progid);
-                    if (progid) {
-                        this.classes.get(prefix).progid = progid;
-                    }
-                }
+            coclass = new CoClass(prefix);
+            this.classes.set(prefix, coclass);
 
-                for (let j = i; j >= 0; j--) {
-                    const namespace = path.slice(0, j + 1).join("::");
-                    if (this.namespaces.has(namespace)) {
-                        this.classes.get(prefix).namespace = namespace;
-                        break;
-                    }
-                }
-
-                if (coclass !== null) {
-                    // coclass.addProperty([prefix, path[i], "", ["/R"]]);
+            if (typeof options.progid === "function") {
+                const progid = options.progid(coclass.progid);
+                if (progid) {
+                    coclass.progid = progid;
                 }
             }
 
-            coclass = this.classes.get(prefix);
+            for (let j = i; j >= 0; j--) {
+                const namespace = path.slice(0, j + 1).join("::");
+                if (this.namespaces.has(namespace)) {
+                    coclass.namespace = namespace;
+                    break;
+                }
+            }
+
+            if (coclass !== null) {
+                // coclass.addProperty([prefix, path[i], "", ["/R"]]);
+            }
+
+            if (typeof options.onCoClass === "function") {
+                options.onCoClass(coclass);
+            }
         }
 
         return coclass;
@@ -1314,7 +1322,7 @@ class AutoItGenerator {
 
         for (const fqn of this.getTypes(type, include)) {
             if (this.enums.has(fqn)) {
-                return "int";
+                return fqn;
             }
 
             if (options.variantTypeReg && options.variantTypeReg.test(fqn)) {

@@ -18,7 +18,7 @@ for (const mode of ["dbg", "opt"]) {
     for (const extname of ["dll", "lib", "exp", "pdb"]) {
         files.push([sysPath.join(
             project, `build_x64/mediapipe-prefix/src/mediapipe/bazel-out/x64_windows-${ mode }/bin/mediapipe/autoit`
-        ), `autoit*.${ extname }`])
+        ), `autoit*.${ extname }`]);
     }
 }
 

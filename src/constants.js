@@ -1,6 +1,7 @@
 exports.SIMPLE_ARGTYPE_DEFAULTS = new Map([
     ["bool", "0"],
     ["size_t", "0"],
+    ["SSIZE_T", "0"],
     ["int", "0"],
     ["float", "0.f"],
     ["double", "0"],
@@ -16,6 +17,7 @@ exports.IDL_TYPES = new Map([
     ["uint32", "ULONG"],
     ["long", "LONG"],
     ["ulong", "ULONG"],
+    ["SSIZE_T", "LONGLONG"],
     ["size_t", "ULONGLONG"],
     ["uint64", "ULONGLONG"],
     ["String", "BSTR"],
@@ -39,6 +41,8 @@ exports.CPP_TYPES = new Map([
     ["OutputArrayOfArrays", "cv::_OutputArray"],
 
     ["string", "std::string"],
+
+    ["google_protobuf_Message", "google::protobuf::Message"],
 ]);
 
 exports.ALIASES = new Map([

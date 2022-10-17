@@ -82,7 +82,7 @@ module.exports = [
         ["double", "seconds", "", []],
     ], "", ""],
 
-    ["mediapipe.Timestamp.str", "std::string", ['/Output="<mediapipe.Timestamp with value: " + mediapipe::autoit::TimestampValueString(*this->__self->get()) + ">"'], [], "", ""],
+    ["mediapipe.Timestamp.str", "std::string", ["/Output=\"<mediapipe.Timestamp with value: \" + mediapipe::autoit::TimestampValueString(*this->__self->get()) + \">\""], [], "", ""],
 
     // expose a Timestamp property like in mediapipe python
     ["mediapipe.autoit._framework_bindings.timestamp.", "", ["/Properties"], [

@@ -6,8 +6,40 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
+- [google::protobuf::autoit::MapContainer](#googleprotobufautoitmapcontainer)
+  - [google::protobuf::autoit::MapContainer::create](#googleprotobufautoitmapcontainercreate)
+  - [google::protobuf::autoit::MapContainer::MergeFrom](#googleprotobufautoitmapcontainermergefrom)
+  - [google::protobuf::autoit::MapContainer::clear](#googleprotobufautoitmapcontainerclear)
+  - [google::protobuf::autoit::MapContainer::contains](#googleprotobufautoitmapcontainercontains)
+  - [google::protobuf::autoit::MapContainer::get](#googleprotobufautoitmapcontainerget)
+  - [google::protobuf::autoit::MapContainer::get_Item](#googleprotobufautoitmapcontainerget_item)
+  - [google::protobuf::autoit::MapContainer::length](#googleprotobufautoitmapcontainerlength)
+  - [google::protobuf::autoit::MapContainer::put_Item](#googleprotobufautoitmapcontainerput_item)
+  - [google::protobuf::autoit::MapContainer::size](#googleprotobufautoitmapcontainersize)
+  - [google::protobuf::autoit::MapContainer::str](#googleprotobufautoitmapcontainerstr)
+- [google::protobuf::autoit::RepeatedContainer](#googleprotobufautoitrepeatedcontainer)
+  - [google::protobuf::autoit::RepeatedContainer::create](#googleprotobufautoitrepeatedcontainercreate)
+  - [google::protobuf::autoit::RepeatedContainer::MergeFrom](#googleprotobufautoitrepeatedcontainermergefrom)
+  - [google::protobuf::autoit::RepeatedContainer::append](#googleprotobufautoitrepeatedcontainerappend)
+  - [google::protobuf::autoit::RepeatedContainer::clear](#googleprotobufautoitrepeatedcontainerclear)
+  - [google::protobuf::autoit::RepeatedContainer::deepcopy](#googleprotobufautoitrepeatedcontainerdeepcopy)
+  - [google::protobuf::autoit::RepeatedContainer::get_Item](#googleprotobufautoitrepeatedcontainerget_item)
+  - [google::protobuf::autoit::RepeatedContainer::insert](#googleprotobufautoitrepeatedcontainerinsert)
+  - [google::protobuf::autoit::RepeatedContainer::length](#googleprotobufautoitrepeatedcontainerlength)
+  - [google::protobuf::autoit::RepeatedContainer::pop](#googleprotobufautoitrepeatedcontainerpop)
+  - [google::protobuf::autoit::RepeatedContainer::put_Item](#googleprotobufautoitrepeatedcontainerput_item)
+  - [google::protobuf::autoit::RepeatedContainer::reverse](#googleprotobufautoitrepeatedcontainerreverse)
+  - [google::protobuf::autoit::RepeatedContainer::size](#googleprotobufautoitrepeatedcontainersize)
+  - [google::protobuf::autoit::RepeatedContainer::slice](#googleprotobufautoitrepeatedcontainerslice)
+  - [google::protobuf::autoit::RepeatedContainer::sort](#googleprotobufautoitrepeatedcontainersort)
+  - [google::protobuf::autoit::RepeatedContainer::splice](#googleprotobufautoitrepeatedcontainersplice)
+  - [google::protobuf::autoit::RepeatedContainer::str](#googleprotobufautoitrepeatedcontainerstr)
+- [mediapipe](#mediapipe)
+  - [mediapipe::variant](#mediapipevariant)
 - [mediapipe::resource_util](#mediapiperesource_util)
   - [mediapipe::resource_util::set_resource_dir](#mediapiperesource_utilset_resource_dir)
+- [mediapipe::autoit::solution_base::SolutionBase](#mediapipeautoitsolution_basesolutionbase)
+  - [mediapipe::autoit::solution_base::SolutionBase::get_create](#mediapipeautoitsolution_basesolutionbaseget_create)
 - [cv](#cv)
   - [cv::createMatFromBitmap](#cvcreatematfrombitmap)
   - [cv::haveImageReader](#cvhaveimagereader)
@@ -34,6 +66,7 @@
   - [mediapipe::CalculatorGraph::wait_until_idle](#mediapipecalculatorgraphwait_until_idle)
 - [mediapipe::CalculatorGraphConfig](#mediapipecalculatorgraphconfig)
   - [mediapipe::CalculatorGraphConfig::get_create](#mediapipecalculatorgraphconfigget_create)
+  - [mediapipe::CalculatorGraphConfig::str](#mediapipecalculatorgraphconfigstr)
 - [mediapipe::Image](#mediapipeimage)
   - [mediapipe::Image::get_create](#mediapipeimageget_create)
   - [mediapipe::Image::is_aligned](#mediapipeimageis_aligned)
@@ -131,8 +164,11 @@
   - [mediapipe::autoit::packet_getter::get_str_list](#mediapipeautoitpacket_getterget_str_list)
   - [mediapipe::autoit::packet_getter::get_str_to_packet_dict](#mediapipeautoitpacket_getterget_str_to_packet_dict)
   - [mediapipe::autoit::packet_getter::get_uint](#mediapipeautoitpacket_getterget_uint)
+- [google::protobuf::Message](#googleprotobufmessage)
+  - [google::protobuf::Message::str](#googleprotobufmessagestr)
 - [mediapipe::Detection](#mediapipedetection)
   - [mediapipe::Detection::get_create](#mediapipedetectionget_create)
+  - [mediapipe::Detection::str](#mediapipedetectionstr)
 - [google::protobuf::TextFormat](#googleprotobuftextformat)
   - [google::protobuf::TextFormat::Parse](#googleprotobuftextformatparse)
 - [cv::Range](#cvrange)
@@ -172,6 +208,7 @@
   - [VectorOfVariant::empty](#vectorofvariantempty)
   - [VectorOfVariant::end](#vectorofvariantend)
   - [VectorOfVariant::get_Item](#vectorofvariantget_item)
+  - [VectorOfVariant::get__NewEnum](#vectorofvariantget__newenum)
   - [VectorOfVariant::push_back](#vectorofvariantpush_back)
   - [VectorOfVariant::push_vector](#vectorofvariantpush_vector)
   - [VectorOfVariant::put_Item](#vectorofvariantput_item)
@@ -180,6 +217,45 @@
   - [VectorOfVariant::sort](#vectorofvariantsort)
   - [VectorOfVariant::sort_variant](#vectorofvariantsort_variant)
   - [VectorOfVariant::start](#vectorofvariantstart)
+- [VectorOfString](#vectorofstring)
+  - [VectorOfString::create](#vectorofstringcreate)
+  - [VectorOfString::Add](#vectorofstringadd)
+  - [VectorOfString::Items](#vectorofstringitems)
+  - [VectorOfString::Keys](#vectorofstringkeys)
+  - [VectorOfString::Remove](#vectorofstringremove)
+  - [VectorOfString::at](#vectorofstringat)
+  - [VectorOfString::clear](#vectorofstringclear)
+  - [VectorOfString::empty](#vectorofstringempty)
+  - [VectorOfString::end](#vectorofstringend)
+  - [VectorOfString::get_Item](#vectorofstringget_item)
+  - [VectorOfString::get__NewEnum](#vectorofstringget__newenum)
+  - [VectorOfString::push_back](#vectorofstringpush_back)
+  - [VectorOfString::push_vector](#vectorofstringpush_vector)
+  - [VectorOfString::put_Item](#vectorofstringput_item)
+  - [VectorOfString::size](#vectorofstringsize)
+  - [VectorOfString::slice](#vectorofstringslice)
+  - [VectorOfString::sort](#vectorofstringsort)
+  - [VectorOfString::sort_variant](#vectorofstringsort_variant)
+  - [VectorOfString::start](#vectorofstringstart)
+- [MapOfStringAndPacketDataType](#mapofstringandpacketdatatype)
+  - [MapOfStringAndPacketDataType::create](#mapofstringandpacketdatatypecreate)
+  - [MapOfStringAndPacketDataType::Add](#mapofstringandpacketdatatypeadd)
+  - [MapOfStringAndPacketDataType::Get](#mapofstringandpacketdatatypeget)
+  - [MapOfStringAndPacketDataType::Items](#mapofstringandpacketdatatypeitems)
+  - [MapOfStringAndPacketDataType::Keys](#mapofstringandpacketdatatypekeys)
+  - [MapOfStringAndPacketDataType::Remove](#mapofstringandpacketdatatyperemove)
+  - [MapOfStringAndPacketDataType::clear](#mapofstringandpacketdatatypeclear)
+  - [MapOfStringAndPacketDataType::contains](#mapofstringandpacketdatatypecontains)
+  - [MapOfStringAndPacketDataType::count](#mapofstringandpacketdatatypecount)
+  - [MapOfStringAndPacketDataType::empty](#mapofstringandpacketdatatypeempty)
+  - [MapOfStringAndPacketDataType::erase](#mapofstringandpacketdatatypeerase)
+  - [MapOfStringAndPacketDataType::get_Item](#mapofstringandpacketdatatypeget_item)
+  - [MapOfStringAndPacketDataType::get__NewEnum](#mapofstringandpacketdatatypeget__newenum)
+  - [MapOfStringAndPacketDataType::has](#mapofstringandpacketdatatypehas)
+  - [MapOfStringAndPacketDataType::max_size](#mapofstringandpacketdatatypemax_size)
+  - [MapOfStringAndPacketDataType::merge](#mapofstringandpacketdatatypemerge)
+  - [MapOfStringAndPacketDataType::put_Item](#mapofstringandpacketdatatypeput_item)
+  - [MapOfStringAndPacketDataType::size](#mapofstringandpacketdatatypesize)
 - [VectorOfInt](#vectorofint)
   - [VectorOfInt::create](#vectorofintcreate)
   - [VectorOfInt::Add](#vectorofintadd)
@@ -191,6 +267,7 @@
   - [VectorOfInt::empty](#vectorofintempty)
   - [VectorOfInt::end](#vectorofintend)
   - [VectorOfInt::get_Item](#vectorofintget_item)
+  - [VectorOfInt::get__NewEnum](#vectorofintget__newenum)
   - [VectorOfInt::push_back](#vectorofintpush_back)
   - [VectorOfInt::push_vector](#vectorofintpush_vector)
   - [VectorOfInt::put_Item](#vectorofintput_item)
@@ -210,6 +287,7 @@
   - [VectorOfUchar::empty](#vectorofucharempty)
   - [VectorOfUchar::end](#vectorofucharend)
   - [VectorOfUchar::get_Item](#vectorofucharget_item)
+  - [VectorOfUchar::get__NewEnum](#vectorofucharget__newenum)
   - [VectorOfUchar::push_back](#vectorofucharpush_back)
   - [VectorOfUchar::push_vector](#vectorofucharpush_vector)
   - [VectorOfUchar::put_Item](#vectorofucharput_item)
@@ -229,6 +307,7 @@
   - [VectorOfMat::empty](#vectorofmatempty)
   - [VectorOfMat::end](#vectorofmatend)
   - [VectorOfMat::get_Item](#vectorofmatget_item)
+  - [VectorOfMat::get__NewEnum](#vectorofmatget__newenum)
   - [VectorOfMat::push_back](#vectorofmatpush_back)
   - [VectorOfMat::push_vector](#vectorofmatpush_vector)
   - [VectorOfMat::put_Item](#vectorofmatput_item)
@@ -250,6 +329,7 @@
   - [MapOfStringAndPacket::empty](#mapofstringandpacketempty)
   - [MapOfStringAndPacket::erase](#mapofstringandpacketerase)
   - [MapOfStringAndPacket::get_Item](#mapofstringandpacketget_item)
+  - [MapOfStringAndPacket::get__NewEnum](#mapofstringandpacketget__newenum)
   - [MapOfStringAndPacket::has](#mapofstringandpackethas)
   - [MapOfStringAndPacket::max_size](#mapofstringandpacketmax_size)
   - [MapOfStringAndPacket::merge](#mapofstringandpacketmerge)
@@ -266,6 +346,7 @@
   - [VectorOfBool::empty](#vectorofboolempty)
   - [VectorOfBool::end](#vectorofboolend)
   - [VectorOfBool::get_Item](#vectorofboolget_item)
+  - [VectorOfBool::get__NewEnum](#vectorofboolget__newenum)
   - [VectorOfBool::push_back](#vectorofboolpush_back)
   - [VectorOfBool::push_vector](#vectorofboolpush_vector)
   - [VectorOfBool::put_Item](#vectorofboolput_item)
@@ -285,6 +366,7 @@
   - [VectorOfFloat::empty](#vectoroffloatempty)
   - [VectorOfFloat::end](#vectoroffloatend)
   - [VectorOfFloat::get_Item](#vectoroffloatget_item)
+  - [VectorOfFloat::get__NewEnum](#vectoroffloatget__newenum)
   - [VectorOfFloat::push_back](#vectoroffloatpush_back)
   - [VectorOfFloat::push_vector](#vectoroffloatpush_vector)
   - [VectorOfFloat::put_Item](#vectoroffloatput_item)
@@ -304,6 +386,7 @@
   - [VectorOfImage::empty](#vectorofimageempty)
   - [VectorOfImage::end](#vectorofimageend)
   - [VectorOfImage::get_Item](#vectorofimageget_item)
+  - [VectorOfImage::get__NewEnum](#vectorofimageget__newenum)
   - [VectorOfImage::push_back](#vectorofimagepush_back)
   - [VectorOfImage::push_vector](#vectorofimagepush_vector)
   - [VectorOfImage::put_Item](#vectorofimageput_item)
@@ -323,6 +406,7 @@
   - [VectorOfPacket::empty](#vectorofpacketempty)
   - [VectorOfPacket::end](#vectorofpacketend)
   - [VectorOfPacket::get_Item](#vectorofpacketget_item)
+  - [VectorOfPacket::get__NewEnum](#vectorofpacketget__newenum)
   - [VectorOfPacket::push_back](#vectorofpacketpush_back)
   - [VectorOfPacket::push_vector](#vectorofpacketpush_vector)
   - [VectorOfPacket::put_Item](#vectorofpacketput_item)
@@ -331,25 +415,6 @@
   - [VectorOfPacket::sort](#vectorofpacketsort)
   - [VectorOfPacket::sort_variant](#vectorofpacketsort_variant)
   - [VectorOfPacket::start](#vectorofpacketstart)
-- [VectorOfString](#vectorofstring)
-  - [VectorOfString::create](#vectorofstringcreate)
-  - [VectorOfString::Add](#vectorofstringadd)
-  - [VectorOfString::Items](#vectorofstringitems)
-  - [VectorOfString::Keys](#vectorofstringkeys)
-  - [VectorOfString::Remove](#vectorofstringremove)
-  - [VectorOfString::at](#vectorofstringat)
-  - [VectorOfString::clear](#vectorofstringclear)
-  - [VectorOfString::empty](#vectorofstringempty)
-  - [VectorOfString::end](#vectorofstringend)
-  - [VectorOfString::get_Item](#vectorofstringget_item)
-  - [VectorOfString::push_back](#vectorofstringpush_back)
-  - [VectorOfString::push_vector](#vectorofstringpush_vector)
-  - [VectorOfString::put_Item](#vectorofstringput_item)
-  - [VectorOfString::size](#vectorofstringsize)
-  - [VectorOfString::slice](#vectorofstringslice)
-  - [VectorOfString::sort](#vectorofstringsort)
-  - [VectorOfString::sort_variant](#vectorofstringsort_variant)
-  - [VectorOfString::start](#vectorofstringstart)
 - [VectorOfInt64](#vectorofint64)
   - [VectorOfInt64::create](#vectorofint64create)
   - [VectorOfInt64::Add](#vectorofint64add)
@@ -361,6 +426,7 @@
   - [VectorOfInt64::empty](#vectorofint64empty)
   - [VectorOfInt64::end](#vectorofint64end)
   - [VectorOfInt64::get_Item](#vectorofint64get_item)
+  - [VectorOfInt64::get__NewEnum](#vectorofint64get__newenum)
   - [VectorOfInt64::push_back](#vectorofint64push_back)
   - [VectorOfInt64::push_vector](#vectorofint64push_vector)
   - [VectorOfInt64::put_Item](#vectorofint64put_item)
@@ -369,6 +435,46 @@
   - [VectorOfInt64::sort](#vectorofint64sort)
   - [VectorOfInt64::sort_variant](#vectorofint64sort_variant)
   - [VectorOfInt64::start](#vectorofint64start)
+- [VectorOfPairOfStringAndPacketDataType](#vectorofpairofstringandpacketdatatype)
+  - [VectorOfPairOfStringAndPacketDataType::create](#vectorofpairofstringandpacketdatatypecreate)
+  - [VectorOfPairOfStringAndPacketDataType::Add](#vectorofpairofstringandpacketdatatypeadd)
+  - [VectorOfPairOfStringAndPacketDataType::Items](#vectorofpairofstringandpacketdatatypeitems)
+  - [VectorOfPairOfStringAndPacketDataType::Keys](#vectorofpairofstringandpacketdatatypekeys)
+  - [VectorOfPairOfStringAndPacketDataType::Remove](#vectorofpairofstringandpacketdatatyperemove)
+  - [VectorOfPairOfStringAndPacketDataType::at](#vectorofpairofstringandpacketdatatypeat)
+  - [VectorOfPairOfStringAndPacketDataType::clear](#vectorofpairofstringandpacketdatatypeclear)
+  - [VectorOfPairOfStringAndPacketDataType::empty](#vectorofpairofstringandpacketdatatypeempty)
+  - [VectorOfPairOfStringAndPacketDataType::end](#vectorofpairofstringandpacketdatatypeend)
+  - [VectorOfPairOfStringAndPacketDataType::get_Item](#vectorofpairofstringandpacketdatatypeget_item)
+  - [VectorOfPairOfStringAndPacketDataType::get__NewEnum](#vectorofpairofstringandpacketdatatypeget__newenum)
+  - [VectorOfPairOfStringAndPacketDataType::push_back](#vectorofpairofstringandpacketdatatypepush_back)
+  - [VectorOfPairOfStringAndPacketDataType::push_vector](#vectorofpairofstringandpacketdatatypepush_vector)
+  - [VectorOfPairOfStringAndPacketDataType::put_Item](#vectorofpairofstringandpacketdatatypeput_item)
+  - [VectorOfPairOfStringAndPacketDataType::size](#vectorofpairofstringandpacketdatatypesize)
+  - [VectorOfPairOfStringAndPacketDataType::slice](#vectorofpairofstringandpacketdatatypeslice)
+  - [VectorOfPairOfStringAndPacketDataType::sort](#vectorofpairofstringandpacketdatatypesort)
+  - [VectorOfPairOfStringAndPacketDataType::sort_variant](#vectorofpairofstringandpacketdatatypesort_variant)
+  - [VectorOfPairOfStringAndPacketDataType::start](#vectorofpairofstringandpacketdatatypestart)
+- [VectorOfPacketDataType](#vectorofpacketdatatype)
+  - [VectorOfPacketDataType::create](#vectorofpacketdatatypecreate)
+  - [VectorOfPacketDataType::Add](#vectorofpacketdatatypeadd)
+  - [VectorOfPacketDataType::Items](#vectorofpacketdatatypeitems)
+  - [VectorOfPacketDataType::Keys](#vectorofpacketdatatypekeys)
+  - [VectorOfPacketDataType::Remove](#vectorofpacketdatatyperemove)
+  - [VectorOfPacketDataType::at](#vectorofpacketdatatypeat)
+  - [VectorOfPacketDataType::clear](#vectorofpacketdatatypeclear)
+  - [VectorOfPacketDataType::empty](#vectorofpacketdatatypeempty)
+  - [VectorOfPacketDataType::end](#vectorofpacketdatatypeend)
+  - [VectorOfPacketDataType::get_Item](#vectorofpacketdatatypeget_item)
+  - [VectorOfPacketDataType::get__NewEnum](#vectorofpacketdatatypeget__newenum)
+  - [VectorOfPacketDataType::push_back](#vectorofpacketdatatypepush_back)
+  - [VectorOfPacketDataType::push_vector](#vectorofpacketdatatypepush_vector)
+  - [VectorOfPacketDataType::put_Item](#vectorofpacketdatatypeput_item)
+  - [VectorOfPacketDataType::size](#vectorofpacketdatatypesize)
+  - [VectorOfPacketDataType::slice](#vectorofpacketdatatypeslice)
+  - [VectorOfPacketDataType::sort](#vectorofpacketdatatypesort)
+  - [VectorOfPacketDataType::sort_variant](#vectorofpacketdatatypesort_variant)
+  - [VectorOfPacketDataType::start](#vectorofpacketdatatypestart)
 - [VectorOfPairOfStringAndPacket](#vectorofpairofstringandpacket)
   - [VectorOfPairOfStringAndPacket::create](#vectorofpairofstringandpacketcreate)
   - [VectorOfPairOfStringAndPacket::Add](#vectorofpairofstringandpacketadd)
@@ -380,6 +486,7 @@
   - [VectorOfPairOfStringAndPacket::empty](#vectorofpairofstringandpacketempty)
   - [VectorOfPairOfStringAndPacket::end](#vectorofpairofstringandpacketend)
   - [VectorOfPairOfStringAndPacket::get_Item](#vectorofpairofstringandpacketget_item)
+  - [VectorOfPairOfStringAndPacket::get__NewEnum](#vectorofpairofstringandpacketget__newenum)
   - [VectorOfPairOfStringAndPacket::push_back](#vectorofpairofstringandpacketpush_back)
   - [VectorOfPairOfStringAndPacket::push_vector](#vectorofpairofstringandpacketpush_vector)
   - [VectorOfPairOfStringAndPacket::put_Item](#vectorofpairofstringandpacketput_item)
@@ -391,6 +498,276 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## google::protobuf::autoit::MapContainer
+
+### google::protobuf::autoit::MapContainer::create
+
+```cpp
+static google::protobuf::autoit::MapContainer google::protobuf::autoit::MapContainer::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.autoit.MapContainer").create() -> <google.protobuf.autoit.MapContainer object>
+```
+
+```cpp
+static google::protobuf::autoit::MapContainer google::protobuf::autoit::MapContainer::create( const google::protobuf::autoit::MapContainer& other );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.autoit.MapContainer").create( $other ) -> <google.protobuf.autoit.MapContainer object>
+```
+
+### google::protobuf::autoit::MapContainer::MergeFrom
+
+```cpp
+void google::protobuf::autoit::MapContainer::MergeFrom( const google::protobuf::autoit::MapContainer& other );
+AutoIt:
+    $oMapContainer.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::autoit::MapContainer::clear
+
+```cpp
+void google::protobuf::autoit::MapContainer::clear();
+AutoIt:
+    $oMapContainer.clear() -> None
+```
+
+### google::protobuf::autoit::MapContainer::contains
+
+```cpp
+bool google::protobuf::autoit::MapContainer::contains( _variant_t key ) const;
+AutoIt:
+    $oMapContainer.contains( $key ) -> retval
+```
+
+### google::protobuf::autoit::MapContainer::get
+
+```cpp
+_variant_t google::protobuf::autoit::MapContainer::get( _variant_t key,
+                                                        _variant_t default_value = noValue() ) const;
+AutoIt:
+    $oMapContainer.get( $key[, $default_value] ) -> retval
+```
+
+### google::protobuf::autoit::MapContainer::get_Item
+
+```cpp
+_variant_t google::protobuf::autoit::MapContainer::get_Item( _variant_t key ) const;
+AutoIt:
+    $oMapContainer.Item( $key ) -> retval
+    $oMapContainer( $key ) -> retval
+```
+
+### google::protobuf::autoit::MapContainer::length
+
+```cpp
+size_t google::protobuf::autoit::MapContainer::length() const;
+AutoIt:
+    $oMapContainer.length() -> retval
+```
+
+### google::protobuf::autoit::MapContainer::put_Item
+
+```cpp
+void google::protobuf::autoit::MapContainer::put_Item( _variant_t key,
+                                                       _variant_t arg );
+AutoIt:
+    $oMapContainer.Item( $key ) = $arg
+```
+
+### google::protobuf::autoit::MapContainer::size
+
+```cpp
+size_t google::protobuf::autoit::MapContainer::size() const;
+AutoIt:
+    $oMapContainer.size() -> retval
+```
+
+### google::protobuf::autoit::MapContainer::str
+
+```cpp
+std::string google::protobuf::autoit::MapContainer::str() const;
+AutoIt:
+    $oMapContainer.str() -> retval
+```
+
+## google::protobuf::autoit::RepeatedContainer
+
+### google::protobuf::autoit::RepeatedContainer::create
+
+```cpp
+static google::protobuf::autoit::RepeatedContainer google::protobuf::autoit::RepeatedContainer::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.autoit.RepeatedContainer").create() -> <google.protobuf.autoit.RepeatedContainer object>
+```
+
+```cpp
+static google::protobuf::autoit::RepeatedContainer google::protobuf::autoit::RepeatedContainer::create( const google::protobuf::autoit::RepeatedContainer& other );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.autoit.RepeatedContainer").create( $other ) -> <google.protobuf.autoit.RepeatedContainer object>
+```
+
+### google::protobuf::autoit::RepeatedContainer::MergeFrom
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::MergeFrom( const google::protobuf::autoit::RepeatedContainer& other );
+AutoIt:
+    $oRepeatedContainer.MergeFrom( $other ) -> None
+```
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::MergeFrom( const std::vector<_variant_t>& other );
+AutoIt:
+    $oRepeatedContainer.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::autoit::RepeatedContainer::append
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::append( _variant_t item );
+AutoIt:
+    $oRepeatedContainer.append( $item ) -> None
+```
+
+### google::protobuf::autoit::RepeatedContainer::clear
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::clear();
+AutoIt:
+    $oRepeatedContainer.clear() -> None
+```
+
+### google::protobuf::autoit::RepeatedContainer::deepcopy
+
+```cpp
+_variant_t google::protobuf::autoit::RepeatedContainer::deepcopy();
+AutoIt:
+    $oRepeatedContainer.deepcopy() -> retval
+```
+
+### google::protobuf::autoit::RepeatedContainer::get_Item
+
+```cpp
+_variant_t google::protobuf::autoit::RepeatedContainer::get_Item( SSIZE_T index ) const;
+AutoIt:
+    $oRepeatedContainer.Item( $index ) -> retval
+    $oRepeatedContainer( $index ) -> retval
+```
+
+### google::protobuf::autoit::RepeatedContainer::insert
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::insert( SSIZE_T    index,
+                                                          _variant_t item );
+AutoIt:
+    $oRepeatedContainer.insert( $index, $item ) -> None
+```
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::insert( std::tuple<SSIZE_T, _variant_t>& args );
+AutoIt:
+    $oRepeatedContainer.insert( $args ) -> None
+```
+
+### google::protobuf::autoit::RepeatedContainer::length
+
+```cpp
+size_t google::protobuf::autoit::RepeatedContainer::length() const;
+AutoIt:
+    $oRepeatedContainer.length() -> retval
+```
+
+### google::protobuf::autoit::RepeatedContainer::pop
+
+```cpp
+_variant_t google::protobuf::autoit::RepeatedContainer::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeatedContainer.pop( [$index] ) -> retval
+```
+
+### google::protobuf::autoit::RepeatedContainer::put_Item
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::put_Item( SSIZE_T    index,
+                                                            _variant_t arg );
+AutoIt:
+    $oRepeatedContainer.Item( $index ) = $arg
+```
+
+### google::protobuf::autoit::RepeatedContainer::reverse
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::reverse();
+AutoIt:
+    $oRepeatedContainer.reverse() -> None
+```
+
+### google::protobuf::autoit::RepeatedContainer::size
+
+```cpp
+size_t google::protobuf::autoit::RepeatedContainer::size() const;
+AutoIt:
+    $oRepeatedContainer.size() -> retval
+```
+
+### google::protobuf::autoit::RepeatedContainer::slice
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::slice( std::vector<_variant_t>& list,
+                                                         SSIZE_T                  start = 0 ) const;
+AutoIt:
+    $oRepeatedContainer.slice( [$start[, $list]] ) -> $list
+```
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::slice( std::vector<_variant_t>& list,
+                                                         SSIZE_T                  start,
+                                                         size_t                   count ) const;
+AutoIt:
+    $oRepeatedContainer.slice( $start, $count[, $list] ) -> $list
+```
+
+### google::protobuf::autoit::RepeatedContainer::sort
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::sort( void* comparator );
+AutoIt:
+    $oRepeatedContainer.sort( $comparator ) -> None
+```
+
+### google::protobuf::autoit::RepeatedContainer::splice
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::splice( std::vector<_variant_t>& list,
+                                                          SSIZE_T                  start = 0 );
+AutoIt:
+    $oRepeatedContainer.splice( [$start[, $list]] ) -> $list
+```
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::splice( std::vector<_variant_t>& list,
+                                                          SSIZE_T                  start,
+                                                          SSIZE_T                  deleteCount );
+AutoIt:
+    $oRepeatedContainer.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+### google::protobuf::autoit::RepeatedContainer::str
+
+```cpp
+std::string google::protobuf::autoit::RepeatedContainer::str() const;
+AutoIt:
+    $oRepeatedContainer.str() -> retval
+```
+
+## mediapipe
+
+### mediapipe::variant
+
+```cpp
+_variant_t mediapipe::variant( void* ptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe").variant( $ptr ) -> retval
+```
+
 ## mediapipe::resource_util
 
 ### mediapipe::resource_util::set_resource_dir
@@ -399,6 +776,34 @@
 void mediapipe::resource_util::set_resource_dir( const std::string& str );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.resource_util").set_resource_dir( $str ) -> None
+```
+
+## mediapipe::autoit::solution_base::SolutionBase
+
+### mediapipe::autoit::solution_base::SolutionBase::get_create
+
+```cpp
+static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solution_base::SolutionBase::get_create( const mediapipe::CalculatorGraphConfig&                                        graph_config,
+                                                                                                                  const std::map<std::string, _variant_t>&                                       calculator_params = calculator_params_none,
+                                                                                                                  const google::protobuf::Message*                                               graph_options = nullptr,
+                                                                                                                  const std::map<std::string, _variant_t>&                                       side_inputs = side_inputs_none,
+                                                                                                                  const std::vector<std::string>&                                                outputs = outputs_none,
+                                                                                                                  const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = stream_type_hints_none );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase").create( $graph_config[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase")( $graph_config[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
+```
+
+```cpp
+static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solution_base::SolutionBase::get_create( const std::string&                                                             binary_graph_path,
+                                                                                                                  const std::map<std::string, _variant_t>&                                       calculator_params = calculator_params_none,
+                                                                                                                  const google::protobuf::Message*                                               graph_options = nullptr,
+                                                                                                                  const std::map<std::string, _variant_t>&                                       side_inputs = side_inputs_none,
+                                                                                                                  const std::vector<std::string>&                                                outputs = outputs_none,
+                                                                                                                  const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = stream_type_hints_none );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase").create( $binary_graph_path[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase")( $binary_graph_path[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
 ```
 
 ## cv
@@ -585,7 +990,7 @@ AutoIt:
 ### mediapipe::CalculatorGraph::observe_output_stream
 
 ```cpp
-void mediapipe::CalculatorGraph::observe_output_stream( std::string&                            stream_name,
+void mediapipe::CalculatorGraph::observe_output_stream( std::string                             stream_name,
                                                         mediapipe::autoit::StreamPacketCallback callback_fn,
                                                         bool                                    observe_timestamp_bounds = false );
 AutoIt:
@@ -635,6 +1040,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig")() -> <mediapipe.CalculatorGraphConfig object>
 ```
 
+### mediapipe::CalculatorGraphConfig::str
+
+```cpp
+std::string mediapipe::CalculatorGraphConfig::str();
+AutoIt:
+    $oCalculatorGraphConfig.str() -> retval
+```
+
 ## mediapipe::Image
 
 ### mediapipe::Image::get_create
@@ -647,9 +1060,9 @@ AutoIt:
 ```
 
 ```cpp
-static std::shared_ptr<mediapipe::Image> mediapipe::Image::get_create( int            image_format,
-                                                                       const cv::Mat& image,
-                                                                       bool           copy = true );
+static std::shared_ptr<mediapipe::Image> mediapipe::Image::get_create( mediapipe::ImageFormat::Format image_format,
+                                                                       const cv::Mat&                 image,
+                                                                       bool                           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Image").create( $image_format, $image[, $copy] ) -> retval
     _Mediapipe_ObjCreate("mediapipe.Image")( $image_format, $image[, $copy] ) -> retval
@@ -708,9 +1121,9 @@ AutoIt:
 ### mediapipe::ImageFrame::get_create
 
 ```cpp
-static std::shared_ptr<mediapipe::ImageFrame> mediapipe::ImageFrame::get_create( int            image_format,
-                                                                                 const cv::Mat& image,
-                                                                                 bool           copy = true );
+static std::shared_ptr<mediapipe::ImageFrame> mediapipe::ImageFrame::get_create( mediapipe::ImageFormat::Format image_format,
+                                                                                 const cv::Mat&                 image,
+                                                                                 bool                           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageFrame").create( $image_format, $image[, $copy] ) -> retval
     _Mediapipe_ObjCreate("mediapipe.ImageFrame")( $image_format, $image[, $copy] ) -> retval
@@ -1375,9 +1788,9 @@ AutoIt:
 ```
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image( mediapipe::Image& data,
-                                                                                    int               image_format,
-                                                                                    bool              copy = true );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image( mediapipe::Image&              data,
+                                                                                    mediapipe::ImageFormat::Format image_format,
+                                                                                    bool                           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $data, $image_format[, $copy] ) -> retval
 ```
@@ -1390,9 +1803,9 @@ AutoIt:
 ```
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image( cv::Mat& data,
-                                                                                    int      image_format,
-                                                                                    bool     copy = true );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image( cv::Mat&                       data,
+                                                                                    mediapipe::ImageFormat::Format image_format,
+                                                                                    bool                           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $data, $image_format[, $copy] ) -> retval
 ```
@@ -1407,9 +1820,9 @@ AutoIt:
 ```
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image_frame( mediapipe::ImageFrame& data,
-                                                                                          int                    image_format,
-                                                                                          bool                   copy = true );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image_frame( mediapipe::ImageFrame&         data,
+                                                                                          mediapipe::ImageFormat::Format image_format,
+                                                                                          bool                           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data, $image_format[, $copy] ) -> retval
 ```
@@ -1422,9 +1835,9 @@ AutoIt:
 ```
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image_frame( cv::Mat& data,
-                                                                                          int      image_format,
-                                                                                          bool     copy = true );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image_frame( cv::Mat&                       data,
+                                                                                          mediapipe::ImageFormat::Format image_format,
+                                                                                          bool                           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data, $image_format[, $copy] ) -> retval
 ```
@@ -1679,6 +2092,16 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_uint( $packet ) -> retval
 ```
 
+## google::protobuf::Message
+
+### google::protobuf::Message::str
+
+```cpp
+std::string google::protobuf::Message::str();
+AutoIt:
+    $oMessage.str() -> retval
+```
+
 ## mediapipe::Detection
 
 ### mediapipe::Detection::get_create
@@ -1688,6 +2111,14 @@ static mediapipe::Detection mediapipe::Detection::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection").create() -> <mediapipe.Detection object>
     _Mediapipe_ObjCreate("mediapipe.Detection")() -> <mediapipe.Detection object>
+```
+
+### mediapipe::Detection::str
+
+```cpp
+std::string mediapipe::Detection::str();
+AutoIt:
+    $oDetection.str() -> retval
 ```
 
 ## google::protobuf::TextFormat
@@ -2059,6 +2490,14 @@ AutoIt:
     $oVectorOfVariant( $vIndex ) -> retval
 ```
 
+### VectorOfVariant::get__NewEnum
+
+```cpp
+IUnknown* VectorOfVariant::get__NewEnum();
+AutoIt:
+    $oVectorOfVariant._NewEnum() -> retval
+```
+
 ### VectorOfVariant::push_back
 
 ```cpp
@@ -2135,6 +2574,349 @@ AutoIt:
 void* VectorOfVariant::start();
 AutoIt:
     $oVectorOfVariant.start() -> retval
+```
+
+## VectorOfString
+
+### VectorOfString::create
+
+```cpp
+static VectorOfString VectorOfString::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfString").create() -> <VectorOfString object>
+```
+
+```cpp
+static VectorOfString VectorOfString::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfString").create( $size ) -> <VectorOfString object>
+```
+
+```cpp
+static VectorOfString VectorOfString::create( VectorOfString other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfString").create( $other ) -> <VectorOfString object>
+```
+
+### VectorOfString::Add
+
+```cpp
+void VectorOfString::Add( std::string value );
+AutoIt:
+    $oVectorOfString.Add( $value ) -> None
+```
+
+### VectorOfString::Items
+
+```cpp
+VectorOfString VectorOfString::Items();
+AutoIt:
+    $oVectorOfString.Items() -> retval
+```
+
+### VectorOfString::Keys
+
+```cpp
+std::vector<int> VectorOfString::Keys();
+AutoIt:
+    $oVectorOfString.Keys() -> retval
+```
+
+### VectorOfString::Remove
+
+```cpp
+void VectorOfString::Remove( size_t index );
+AutoIt:
+    $oVectorOfString.Remove( $index ) -> None
+```
+
+### VectorOfString::at
+
+```cpp
+std::string VectorOfString::at( size_t index );
+AutoIt:
+    $oVectorOfString.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfString::at( size_t      index,
+                         std::string value );
+AutoIt:
+    $oVectorOfString.at( $index, $value ) -> None
+```
+
+### VectorOfString::clear
+
+```cpp
+void VectorOfString::clear();
+AutoIt:
+    $oVectorOfString.clear() -> None
+```
+
+### VectorOfString::empty
+
+```cpp
+bool VectorOfString::empty();
+AutoIt:
+    $oVectorOfString.empty() -> retval
+```
+
+### VectorOfString::end
+
+```cpp
+void* VectorOfString::end();
+AutoIt:
+    $oVectorOfString.end() -> retval
+```
+
+### VectorOfString::get_Item
+
+```cpp
+std::string VectorOfString::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfString.Item( $vIndex ) -> retval
+    $oVectorOfString( $vIndex ) -> retval
+```
+
+### VectorOfString::get__NewEnum
+
+```cpp
+IUnknown* VectorOfString::get__NewEnum();
+AutoIt:
+    $oVectorOfString._NewEnum() -> retval
+```
+
+### VectorOfString::push_back
+
+```cpp
+void VectorOfString::push_back( std::string value );
+AutoIt:
+    $oVectorOfString.push_back( $value ) -> None
+```
+
+### VectorOfString::push_vector
+
+```cpp
+void VectorOfString::push_vector( VectorOfString other );
+AutoIt:
+    $oVectorOfString.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfString::push_vector( VectorOfString other,
+                                  size_t         count,
+                                  size_t         start = 0 );
+AutoIt:
+    $oVectorOfString.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfString::put_Item
+
+```cpp
+void VectorOfString::put_Item( size_t      vIndex,
+                               std::string vItem );
+AutoIt:
+    $oVectorOfString.Item( $vIndex ) = $vItem
+```
+
+### VectorOfString::size
+
+```cpp
+size_t VectorOfString::size();
+AutoIt:
+    $oVectorOfString.size() -> retval
+```
+
+### VectorOfString::slice
+
+```cpp
+VectorOfString VectorOfString::slice( size_t start = 0,
+                                      size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfString.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfString::sort
+
+```cpp
+void VectorOfString::sort( void*  comparator,
+                           size_t start = 0,
+                           size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfString.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfString::sort_variant
+
+```cpp
+void VectorOfString::sort_variant( void*  comparator,
+                                   size_t start = 0,
+                                   size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfString.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfString::start
+
+```cpp
+void* VectorOfString::start();
+AutoIt:
+    $oVectorOfString.start() -> retval
+```
+
+## MapOfStringAndPacketDataType
+
+### MapOfStringAndPacketDataType::create
+
+```cpp
+static MapOfStringAndPacketDataType MapOfStringAndPacketDataType::create();
+AutoIt:
+    _Mediapipe_ObjCreate("MapOfStringAndPacketDataType").create() -> <MapOfStringAndPacketDataType object>
+```
+
+```cpp
+static std::shared_ptr<MapOfStringAndPacketDataType> MapOfStringAndPacketDataType::create( std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> pairs );
+AutoIt:
+    _Mediapipe_ObjCreate("MapOfStringAndPacketDataType").create( $pairs ) -> retval
+```
+
+### MapOfStringAndPacketDataType::Add
+
+```cpp
+void MapOfStringAndPacketDataType::Add( std::string                                      key,
+                                        mediapipe::autoit::solution_base::PacketDataType value );
+AutoIt:
+    $oMapOfStringAndPacketDataType.Add( $key, $value ) -> None
+```
+
+### MapOfStringAndPacketDataType::Get
+
+```cpp
+mediapipe::autoit::solution_base::PacketDataType MapOfStringAndPacketDataType::Get( std::string key );
+AutoIt:
+    $oMapOfStringAndPacketDataType.Get( $key ) -> retval
+```
+
+### MapOfStringAndPacketDataType::Items
+
+```cpp
+std::vector<mediapipe::autoit::solution_base::PacketDataType> MapOfStringAndPacketDataType::Items();
+AutoIt:
+    $oMapOfStringAndPacketDataType.Items() -> retval
+```
+
+### MapOfStringAndPacketDataType::Keys
+
+```cpp
+std::vector<std::string> MapOfStringAndPacketDataType::Keys();
+AutoIt:
+    $oMapOfStringAndPacketDataType.Keys() -> retval
+```
+
+### MapOfStringAndPacketDataType::Remove
+
+```cpp
+size_t MapOfStringAndPacketDataType::Remove( std::string key );
+AutoIt:
+    $oMapOfStringAndPacketDataType.Remove( $key ) -> retval
+```
+
+### MapOfStringAndPacketDataType::clear
+
+```cpp
+void MapOfStringAndPacketDataType::clear();
+AutoIt:
+    $oMapOfStringAndPacketDataType.clear() -> None
+```
+
+### MapOfStringAndPacketDataType::contains
+
+```cpp
+bool MapOfStringAndPacketDataType::contains( std::string key );
+AutoIt:
+    $oMapOfStringAndPacketDataType.contains( $key ) -> retval
+```
+
+### MapOfStringAndPacketDataType::count
+
+```cpp
+size_t MapOfStringAndPacketDataType::count( std::string key );
+AutoIt:
+    $oMapOfStringAndPacketDataType.count( $key ) -> retval
+```
+
+### MapOfStringAndPacketDataType::empty
+
+```cpp
+bool MapOfStringAndPacketDataType::empty();
+AutoIt:
+    $oMapOfStringAndPacketDataType.empty() -> retval
+```
+
+### MapOfStringAndPacketDataType::erase
+
+```cpp
+size_t MapOfStringAndPacketDataType::erase( std::string key );
+AutoIt:
+    $oMapOfStringAndPacketDataType.erase( $key ) -> retval
+```
+
+### MapOfStringAndPacketDataType::get_Item
+
+```cpp
+mediapipe::autoit::solution_base::PacketDataType MapOfStringAndPacketDataType::get_Item( std::string vKey );
+AutoIt:
+    $oMapOfStringAndPacketDataType.Item( $vKey ) -> retval
+    $oMapOfStringAndPacketDataType( $vKey ) -> retval
+```
+
+### MapOfStringAndPacketDataType::get__NewEnum
+
+```cpp
+IUnknown* MapOfStringAndPacketDataType::get__NewEnum();
+AutoIt:
+    $oMapOfStringAndPacketDataType._NewEnum() -> retval
+```
+
+### MapOfStringAndPacketDataType::has
+
+```cpp
+bool MapOfStringAndPacketDataType::has( std::string key );
+AutoIt:
+    $oMapOfStringAndPacketDataType.has( $key ) -> retval
+```
+
+### MapOfStringAndPacketDataType::max_size
+
+```cpp
+size_t MapOfStringAndPacketDataType::max_size();
+AutoIt:
+    $oMapOfStringAndPacketDataType.max_size() -> retval
+```
+
+### MapOfStringAndPacketDataType::merge
+
+```cpp
+void MapOfStringAndPacketDataType::merge( MapOfStringAndPacketDataType other );
+AutoIt:
+    $oMapOfStringAndPacketDataType.merge( $other ) -> None
+```
+
+### MapOfStringAndPacketDataType::put_Item
+
+```cpp
+void MapOfStringAndPacketDataType::put_Item( std::string                                      vKey,
+                                             mediapipe::autoit::solution_base::PacketDataType vItem );
+AutoIt:
+    $oMapOfStringAndPacketDataType.Item( $vKey ) = $vItem
+```
+
+### MapOfStringAndPacketDataType::size
+
+```cpp
+size_t MapOfStringAndPacketDataType::size();
+AutoIt:
+    $oMapOfStringAndPacketDataType.size() -> retval
 ```
 
 ## VectorOfInt
@@ -2237,6 +3019,14 @@ int VectorOfInt::get_Item( size_t vIndex );
 AutoIt:
     $oVectorOfInt.Item( $vIndex ) -> retval
     $oVectorOfInt( $vIndex ) -> retval
+```
+
+### VectorOfInt::get__NewEnum
+
+```cpp
+IUnknown* VectorOfInt::get__NewEnum();
+AutoIt:
+    $oVectorOfInt._NewEnum() -> retval
 ```
 
 ### VectorOfInt::push_back
@@ -2419,6 +3209,14 @@ AutoIt:
     $oVectorOfUchar( $vIndex ) -> retval
 ```
 
+### VectorOfUchar::get__NewEnum
+
+```cpp
+IUnknown* VectorOfUchar::get__NewEnum();
+AutoIt:
+    $oVectorOfUchar._NewEnum() -> retval
+```
+
 ### VectorOfUchar::push_back
 
 ```cpp
@@ -2597,6 +3395,14 @@ cv::Mat VectorOfMat::get_Item( size_t vIndex );
 AutoIt:
     $oVectorOfMat.Item( $vIndex ) -> retval
     $oVectorOfMat( $vIndex ) -> retval
+```
+
+### VectorOfMat::get__NewEnum
+
+```cpp
+IUnknown* VectorOfMat::get__NewEnum();
+AutoIt:
+    $oVectorOfMat._NewEnum() -> retval
 ```
 
 ### VectorOfMat::push_back
@@ -2783,6 +3589,14 @@ AutoIt:
     $oMapOfStringAndPacket( $vKey ) -> retval
 ```
 
+### MapOfStringAndPacket::get__NewEnum
+
+```cpp
+IUnknown* MapOfStringAndPacket::get__NewEnum();
+AutoIt:
+    $oMapOfStringAndPacket._NewEnum() -> retval
+```
+
 ### MapOfStringAndPacket::has
 
 ```cpp
@@ -2924,6 +3738,14 @@ bool VectorOfBool::get_Item( size_t vIndex );
 AutoIt:
     $oVectorOfBool.Item( $vIndex ) -> retval
     $oVectorOfBool( $vIndex ) -> retval
+```
+
+### VectorOfBool::get__NewEnum
+
+```cpp
+IUnknown* VectorOfBool::get__NewEnum();
+AutoIt:
+    $oVectorOfBool._NewEnum() -> retval
 ```
 
 ### VectorOfBool::push_back
@@ -3106,6 +3928,14 @@ AutoIt:
     $oVectorOfFloat( $vIndex ) -> retval
 ```
 
+### VectorOfFloat::get__NewEnum
+
+```cpp
+IUnknown* VectorOfFloat::get__NewEnum();
+AutoIt:
+    $oVectorOfFloat._NewEnum() -> retval
+```
+
 ### VectorOfFloat::push_back
 
 ```cpp
@@ -3284,6 +4114,14 @@ mediapipe::Image VectorOfImage::get_Item( size_t vIndex );
 AutoIt:
     $oVectorOfImage.Item( $vIndex ) -> retval
     $oVectorOfImage( $vIndex ) -> retval
+```
+
+### VectorOfImage::get__NewEnum
+
+```cpp
+IUnknown* VectorOfImage::get__NewEnum();
+AutoIt:
+    $oVectorOfImage._NewEnum() -> retval
 ```
 
 ### VectorOfImage::push_back
@@ -3466,6 +4304,14 @@ AutoIt:
     $oVectorOfPacket( $vIndex ) -> retval
 ```
 
+### VectorOfPacket::get__NewEnum
+
+```cpp
+IUnknown* VectorOfPacket::get__NewEnum();
+AutoIt:
+    $oVectorOfPacket._NewEnum() -> retval
+```
+
 ### VectorOfPacket::push_back
 
 ```cpp
@@ -3542,186 +4388,6 @@ AutoIt:
 void* VectorOfPacket::start();
 AutoIt:
     $oVectorOfPacket.start() -> retval
-```
-
-## VectorOfString
-
-### VectorOfString::create
-
-```cpp
-static VectorOfString VectorOfString::create();
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfString").create() -> <VectorOfString object>
-```
-
-```cpp
-static VectorOfString VectorOfString::create( size_t size );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfString").create( $size ) -> <VectorOfString object>
-```
-
-```cpp
-static VectorOfString VectorOfString::create( VectorOfString other );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfString").create( $other ) -> <VectorOfString object>
-```
-
-### VectorOfString::Add
-
-```cpp
-void VectorOfString::Add( std::string value );
-AutoIt:
-    $oVectorOfString.Add( $value ) -> None
-```
-
-### VectorOfString::Items
-
-```cpp
-VectorOfString VectorOfString::Items();
-AutoIt:
-    $oVectorOfString.Items() -> retval
-```
-
-### VectorOfString::Keys
-
-```cpp
-std::vector<int> VectorOfString::Keys();
-AutoIt:
-    $oVectorOfString.Keys() -> retval
-```
-
-### VectorOfString::Remove
-
-```cpp
-void VectorOfString::Remove( size_t index );
-AutoIt:
-    $oVectorOfString.Remove( $index ) -> None
-```
-
-### VectorOfString::at
-
-```cpp
-std::string VectorOfString::at( size_t index );
-AutoIt:
-    $oVectorOfString.at( $index ) -> retval
-```
-
-```cpp
-void VectorOfString::at( size_t      index,
-                         std::string value );
-AutoIt:
-    $oVectorOfString.at( $index, $value ) -> None
-```
-
-### VectorOfString::clear
-
-```cpp
-void VectorOfString::clear();
-AutoIt:
-    $oVectorOfString.clear() -> None
-```
-
-### VectorOfString::empty
-
-```cpp
-bool VectorOfString::empty();
-AutoIt:
-    $oVectorOfString.empty() -> retval
-```
-
-### VectorOfString::end
-
-```cpp
-void* VectorOfString::end();
-AutoIt:
-    $oVectorOfString.end() -> retval
-```
-
-### VectorOfString::get_Item
-
-```cpp
-std::string VectorOfString::get_Item( size_t vIndex );
-AutoIt:
-    $oVectorOfString.Item( $vIndex ) -> retval
-    $oVectorOfString( $vIndex ) -> retval
-```
-
-### VectorOfString::push_back
-
-```cpp
-void VectorOfString::push_back( std::string value );
-AutoIt:
-    $oVectorOfString.push_back( $value ) -> None
-```
-
-### VectorOfString::push_vector
-
-```cpp
-void VectorOfString::push_vector( VectorOfString other );
-AutoIt:
-    $oVectorOfString.push_vector( $other ) -> None
-```
-
-```cpp
-void VectorOfString::push_vector( VectorOfString other,
-                                  size_t         count,
-                                  size_t         start = 0 );
-AutoIt:
-    $oVectorOfString.push_vector( $other, $count[, $start] ) -> None
-```
-
-### VectorOfString::put_Item
-
-```cpp
-void VectorOfString::put_Item( size_t      vIndex,
-                               std::string vItem );
-AutoIt:
-    $oVectorOfString.Item( $vIndex ) = $vItem
-```
-
-### VectorOfString::size
-
-```cpp
-size_t VectorOfString::size();
-AutoIt:
-    $oVectorOfString.size() -> retval
-```
-
-### VectorOfString::slice
-
-```cpp
-VectorOfString VectorOfString::slice( size_t start = 0,
-                                      size_t count = this->__self->get()->size() );
-AutoIt:
-    $oVectorOfString.slice( [$start[, $count]] ) -> retval
-```
-
-### VectorOfString::sort
-
-```cpp
-void VectorOfString::sort( void*  comparator,
-                           size_t start = 0,
-                           size_t count = this->__self->get()->size() );
-AutoIt:
-    $oVectorOfString.sort( $comparator[, $start[, $count]] ) -> None
-```
-
-### VectorOfString::sort_variant
-
-```cpp
-void VectorOfString::sort_variant( void*  comparator,
-                                   size_t start = 0,
-                                   size_t count = this->__self->get()->size() );
-AutoIt:
-    $oVectorOfString.sort_variant( $comparator[, $start[, $count]] ) -> None
-```
-
-### VectorOfString::start
-
-```cpp
-void* VectorOfString::start();
-AutoIt:
-    $oVectorOfString.start() -> retval
 ```
 
 ## VectorOfInt64
@@ -3826,6 +4492,14 @@ AutoIt:
     $oVectorOfInt64( $vIndex ) -> retval
 ```
 
+### VectorOfInt64::get__NewEnum
+
+```cpp
+IUnknown* VectorOfInt64::get__NewEnum();
+AutoIt:
+    $oVectorOfInt64._NewEnum() -> retval
+```
+
 ### VectorOfInt64::push_back
 
 ```cpp
@@ -3902,6 +4576,382 @@ AutoIt:
 void* VectorOfInt64::start();
 AutoIt:
     $oVectorOfInt64.start() -> retval
+```
+
+## VectorOfPairOfStringAndPacketDataType
+
+### VectorOfPairOfStringAndPacketDataType::create
+
+```cpp
+static VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacketDataType").create() -> <VectorOfPairOfStringAndPacketDataType object>
+```
+
+```cpp
+static VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacketDataType").create( $size ) -> <VectorOfPairOfStringAndPacketDataType object>
+```
+
+```cpp
+static VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::create( VectorOfPairOfStringAndPacketDataType other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacketDataType").create( $other ) -> <VectorOfPairOfStringAndPacketDataType object>
+```
+
+### VectorOfPairOfStringAndPacketDataType::Add
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::Add( std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> value );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.Add( $value ) -> None
+```
+
+### VectorOfPairOfStringAndPacketDataType::Items
+
+```cpp
+VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::Items();
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.Items() -> retval
+```
+
+### VectorOfPairOfStringAndPacketDataType::Keys
+
+```cpp
+std::vector<int> VectorOfPairOfStringAndPacketDataType::Keys();
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.Keys() -> retval
+```
+
+### VectorOfPairOfStringAndPacketDataType::Remove
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::Remove( size_t index );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.Remove( $index ) -> None
+```
+
+### VectorOfPairOfStringAndPacketDataType::at
+
+```cpp
+std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> VectorOfPairOfStringAndPacketDataType::at( size_t index );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::at( size_t                                                                   index,
+                                                std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> value );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.at( $index, $value ) -> None
+```
+
+### VectorOfPairOfStringAndPacketDataType::clear
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::clear();
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.clear() -> None
+```
+
+### VectorOfPairOfStringAndPacketDataType::empty
+
+```cpp
+bool VectorOfPairOfStringAndPacketDataType::empty();
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.empty() -> retval
+```
+
+### VectorOfPairOfStringAndPacketDataType::end
+
+```cpp
+void* VectorOfPairOfStringAndPacketDataType::end();
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.end() -> retval
+```
+
+### VectorOfPairOfStringAndPacketDataType::get_Item
+
+```cpp
+std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> VectorOfPairOfStringAndPacketDataType::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.Item( $vIndex ) -> retval
+    $oVectorOfPairOfStringAndPacketDataType( $vIndex ) -> retval
+```
+
+### VectorOfPairOfStringAndPacketDataType::get__NewEnum
+
+```cpp
+IUnknown* VectorOfPairOfStringAndPacketDataType::get__NewEnum();
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType._NewEnum() -> retval
+```
+
+### VectorOfPairOfStringAndPacketDataType::push_back
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::push_back( std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> value );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.push_back( $value ) -> None
+```
+
+### VectorOfPairOfStringAndPacketDataType::push_vector
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::push_vector( VectorOfPairOfStringAndPacketDataType other );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::push_vector( VectorOfPairOfStringAndPacketDataType other,
+                                                         size_t                                count,
+                                                         size_t                                start = 0 );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfPairOfStringAndPacketDataType::put_Item
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::put_Item( size_t                                                                   vIndex,
+                                                      std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> vItem );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.Item( $vIndex ) = $vItem
+```
+
+### VectorOfPairOfStringAndPacketDataType::size
+
+```cpp
+size_t VectorOfPairOfStringAndPacketDataType::size();
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.size() -> retval
+```
+
+### VectorOfPairOfStringAndPacketDataType::slice
+
+```cpp
+VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::slice( size_t start = 0,
+                                                                                    size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfPairOfStringAndPacketDataType::sort
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::sort( void*  comparator,
+                                                  size_t start = 0,
+                                                  size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfPairOfStringAndPacketDataType::sort_variant
+
+```cpp
+void VectorOfPairOfStringAndPacketDataType::sort_variant( void*  comparator,
+                                                          size_t start = 0,
+                                                          size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfPairOfStringAndPacketDataType::start
+
+```cpp
+void* VectorOfPairOfStringAndPacketDataType::start();
+AutoIt:
+    $oVectorOfPairOfStringAndPacketDataType.start() -> retval
+```
+
+## VectorOfPacketDataType
+
+### VectorOfPacketDataType::create
+
+```cpp
+static VectorOfPacketDataType VectorOfPacketDataType::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPacketDataType").create() -> <VectorOfPacketDataType object>
+```
+
+```cpp
+static VectorOfPacketDataType VectorOfPacketDataType::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPacketDataType").create( $size ) -> <VectorOfPacketDataType object>
+```
+
+```cpp
+static VectorOfPacketDataType VectorOfPacketDataType::create( VectorOfPacketDataType other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPacketDataType").create( $other ) -> <VectorOfPacketDataType object>
+```
+
+### VectorOfPacketDataType::Add
+
+```cpp
+void VectorOfPacketDataType::Add( mediapipe::autoit::solution_base::PacketDataType value );
+AutoIt:
+    $oVectorOfPacketDataType.Add( $value ) -> None
+```
+
+### VectorOfPacketDataType::Items
+
+```cpp
+VectorOfPacketDataType VectorOfPacketDataType::Items();
+AutoIt:
+    $oVectorOfPacketDataType.Items() -> retval
+```
+
+### VectorOfPacketDataType::Keys
+
+```cpp
+std::vector<int> VectorOfPacketDataType::Keys();
+AutoIt:
+    $oVectorOfPacketDataType.Keys() -> retval
+```
+
+### VectorOfPacketDataType::Remove
+
+```cpp
+void VectorOfPacketDataType::Remove( size_t index );
+AutoIt:
+    $oVectorOfPacketDataType.Remove( $index ) -> None
+```
+
+### VectorOfPacketDataType::at
+
+```cpp
+mediapipe::autoit::solution_base::PacketDataType VectorOfPacketDataType::at( size_t index );
+AutoIt:
+    $oVectorOfPacketDataType.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfPacketDataType::at( size_t                                           index,
+                                 mediapipe::autoit::solution_base::PacketDataType value );
+AutoIt:
+    $oVectorOfPacketDataType.at( $index, $value ) -> None
+```
+
+### VectorOfPacketDataType::clear
+
+```cpp
+void VectorOfPacketDataType::clear();
+AutoIt:
+    $oVectorOfPacketDataType.clear() -> None
+```
+
+### VectorOfPacketDataType::empty
+
+```cpp
+bool VectorOfPacketDataType::empty();
+AutoIt:
+    $oVectorOfPacketDataType.empty() -> retval
+```
+
+### VectorOfPacketDataType::end
+
+```cpp
+void* VectorOfPacketDataType::end();
+AutoIt:
+    $oVectorOfPacketDataType.end() -> retval
+```
+
+### VectorOfPacketDataType::get_Item
+
+```cpp
+mediapipe::autoit::solution_base::PacketDataType VectorOfPacketDataType::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfPacketDataType.Item( $vIndex ) -> retval
+    $oVectorOfPacketDataType( $vIndex ) -> retval
+```
+
+### VectorOfPacketDataType::get__NewEnum
+
+```cpp
+IUnknown* VectorOfPacketDataType::get__NewEnum();
+AutoIt:
+    $oVectorOfPacketDataType._NewEnum() -> retval
+```
+
+### VectorOfPacketDataType::push_back
+
+```cpp
+void VectorOfPacketDataType::push_back( mediapipe::autoit::solution_base::PacketDataType value );
+AutoIt:
+    $oVectorOfPacketDataType.push_back( $value ) -> None
+```
+
+### VectorOfPacketDataType::push_vector
+
+```cpp
+void VectorOfPacketDataType::push_vector( VectorOfPacketDataType other );
+AutoIt:
+    $oVectorOfPacketDataType.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfPacketDataType::push_vector( VectorOfPacketDataType other,
+                                          size_t                 count,
+                                          size_t                 start = 0 );
+AutoIt:
+    $oVectorOfPacketDataType.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfPacketDataType::put_Item
+
+```cpp
+void VectorOfPacketDataType::put_Item( size_t                                           vIndex,
+                                       mediapipe::autoit::solution_base::PacketDataType vItem );
+AutoIt:
+    $oVectorOfPacketDataType.Item( $vIndex ) = $vItem
+```
+
+### VectorOfPacketDataType::size
+
+```cpp
+size_t VectorOfPacketDataType::size();
+AutoIt:
+    $oVectorOfPacketDataType.size() -> retval
+```
+
+### VectorOfPacketDataType::slice
+
+```cpp
+VectorOfPacketDataType VectorOfPacketDataType::slice( size_t start = 0,
+                                                      size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfPacketDataType.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfPacketDataType::sort
+
+```cpp
+void VectorOfPacketDataType::sort( void*  comparator,
+                                   size_t start = 0,
+                                   size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfPacketDataType.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfPacketDataType::sort_variant
+
+```cpp
+void VectorOfPacketDataType::sort_variant( void*  comparator,
+                                           size_t start = 0,
+                                           size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfPacketDataType.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfPacketDataType::start
+
+```cpp
+void* VectorOfPacketDataType::start();
+AutoIt:
+    $oVectorOfPacketDataType.start() -> retval
 ```
 
 ## VectorOfPairOfStringAndPacket
@@ -4004,6 +5054,14 @@ std::pair<std::string, mediapipe::Packet> VectorOfPairOfStringAndPacket::get_Ite
 AutoIt:
     $oVectorOfPairOfStringAndPacket.Item( $vIndex ) -> retval
     $oVectorOfPairOfStringAndPacket( $vIndex ) -> retval
+```
+
+### VectorOfPairOfStringAndPacket::get__NewEnum
+
+```cpp
+IUnknown* VectorOfPairOfStringAndPacket::get__NewEnum();
+AutoIt:
+    $oVectorOfPairOfStringAndPacket._NewEnum() -> retval
 ```
 
 ### VectorOfPairOfStringAndPacket::push_back

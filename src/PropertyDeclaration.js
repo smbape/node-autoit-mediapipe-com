@@ -120,6 +120,7 @@ Object.assign(exports, {
             case "DOUBLE":
             case "int64":
             case "LONGLONG":
+            case "SSIZE_T":
             case "size_t":
             case "ULONGLONG":
                 return true;

@@ -45,6 +45,7 @@ Object.assign(exports, {
         let maxargc = 0;
         let minout = Number.POSITIVE_INFINITY;
         let minopt = Number.POSITIVE_INFINITY;
+        let idl_only = false;
         const bodies = [];
         const indent = " ".repeat(has_override ? 4 : 0);
 
@@ -226,7 +227,7 @@ Object.assign(exports, {
                     callarg = `std::move(${ callarg })`;
                 }
 
-                callargs[j] = generator.castAsEnumIfNeeded(argtype, callarg, coclass, options);
+                callargs[j] = callarg;
 
                 const is_vector = argtype.startsWith("vector_") || argtype.startsWith("vector<") || argtype.startsWith("VectorOf");
                 const has_ptr = is_ptr || cpptype.startsWith(`${ shared_ptr }<`);
@@ -447,7 +448,7 @@ Object.assign(exports, {
                 } else {
                     declarations[j] = `${ indent }${ cpptype } ${ placeholder_name }`;
                     if (defval !== "") {
-                        declarations[j] += ` = ${ generator.castFromEnumIfNeeded(argtype, defval, coclass) }`;
+                        declarations[j] += ` = ${ defval }`;
                     }
                     declarations[j] += ";";
                 }
@@ -679,6 +680,11 @@ Object.assign(exports, {
             const is_constructor = func_modifiers.includes("/CO");
             const no_external_decl = func_modifiers.includes("/ExternalNoDecl");
             const is_external = no_external_decl || func_modifiers.includes("/External");
+            if (!idl_only) {
+                idl_only = func_modifiers.includes("/IDL");
+            } else if (!func_modifiers.includes("/IDL")) {
+                throw new Error(`${ fqn }::${ fname } is declared as idl only but has a body`);
+            }
 
             const path = name.split(is_constructor ? "::" : ".");
             const is_static = !coclass.is_class && !coclass.is_struct || func_modifiers.includes("/S");
@@ -812,8 +818,9 @@ Object.assign(exports, {
                     }
                 }
 
-                if (!is_external && callargs.length === 1 && /^operator(?:[/*+<>-]=?|\+\+|[!=]=)$/.test(path[path.length - 1])) {
-                    const operator = path[path.length - 1].slice("operator".length);
+                // [+\-*/%\^&|!=<>]=?|[~,]|(?:<<|>>)=?|&&|\|\||\+\+|--|->\*?
+                if (!is_external && callargs.length === 1 && /^operator\s*(?:[/*+<>-]=?|\+\+|[!=]=)$/.test(path[path.length - 1])) {
+                    const operator = path[path.length - 1].slice("operator".length).trim();
                     callee = `(*${ callee }) ${ operator } `;
                 } else {
                     callee = `${ callee }->${ path[path.length - 1] }`;
@@ -1062,16 +1069,19 @@ Object.assign(exports, {
         attrs.unshift(`id(${ id })`);
 
         iidl.push(`[${ Array.from(new Set(attrs)).join(", ") }] HRESULT ${ idlname }(${ idlargs.join(", ") });`);
-        ipublic.push(`STDMETHOD(${ fname })(${ implargs.join(", ") });`);
 
-        if (bodies.length !== 0) {
-            impl.push(`
-                STDMETHODIMP C${ cotype }::${ fname }(${ implargs.join(", ") }) {
-                    ${ body.join("\n").replace(/argument (\d+)/g, (match, j) => `argument ${ j }`).trim().split("\n").join(`\n${ " ".repeat(20) }`) }
-                    ${ maxargc !== 0 ? "fprintf(stderr, \"Overload resolution failed: in %s, file %s, line %d\\n\", AutoIt_Func, __FILE__, __LINE__); fflush(stdout); fflush(stderr);" : "" }
-                    return hr;
-                }`.replace(/^ {16}/mg, "")
-            );
+        if (!idl_only) {
+            ipublic.push(`STDMETHOD(${ fname })(${ implargs.join(", ") });`);
+
+            if (bodies.length !== 0) {
+                impl.push(`
+                    STDMETHODIMP C${ cotype }::${ fname }(${ implargs.join(", ") }) {
+                        ${ body.join("\n").replace(/argument (\d+)/g, (match, j) => `argument ${ j }`).trim().split("\n").join(`\n${ " ".repeat(24) }`) }
+                        ${ maxargc !== 0 ? "fprintf(stderr, \"Overload resolution failed: in %s, file %s, line %d\\n\", AutoIt_Func, __FILE__, __LINE__); fflush(stdout); fflush(stderr);" : "" }
+                        return hr;
+                    }`.replace(/^ {20}/mg, "")
+                );
+            }
         }
     }
 });

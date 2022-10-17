@@ -48,7 +48,7 @@ Func _AssertMatAlmostEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, $
 
 	Local Const $cv = _OpenCV_get()
 	Local $absdiff = $cv.absdiff(Ptr($oMatA.self), Ptr($oMatB.self))
-	$absdiff = $cv.compare($absdiff, 10 ^ -7, $CV_CMP_GE)
+	$absdiff = $cv.compare($absdiff, 10 ^ - 7, $CV_CMP_GE)
 	Local $splitted = $cv.split($absdiff)
 
 	Local $channels = $oMatA.channels()
@@ -56,4 +56,4 @@ Func _AssertMatAlmostEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, $
 	For $ch = 0 To $channels - 1
 		_AssertEqual($cv.countNonZero($splitted[$ch]), 0, "expecting both matrix to be equals on channel " & $ch, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 	Next
-EndFunc   ;==>_AssertMatEqual
+EndFunc   ;==>_AssertMatAlmostEqual

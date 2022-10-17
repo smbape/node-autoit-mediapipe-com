@@ -1,0 +1,641 @@
+#include "autoit_bridge.h"
+#include "binding/repeated_container.h"
+#include "binding/message.h"
+#include "mediapipe/calculators/core/constant_side_packet_calculator.pb.h"
+#include "mediapipe/calculators/image/image_transformation_calculator.pb.h"
+#include "mediapipe/calculators/tensor/tensors_to_detections_calculator.pb.h"
+#include "mediapipe/calculators/util/landmarks_smoothing_calculator.pb.h"
+#include "mediapipe/calculators/util/logic_calculator.pb.h"
+#include "mediapipe/calculators/util/thresholding_calculator.pb.h"
+#include "mediapipe/modules/objectron/calculators/lift_2d_frame_annotation_to_3d_calculator.pb.h"
+#include "Mediapipe_Autoit_Packet_creator_Object.h"
+
+#ifdef BOOL
+#undef BOOL
+#endif
+#ifdef INT
+#undef INT
+#endif
+#ifdef FLOAT
+#undef FLOAT
+#endif
+
+using namespace google::protobuf;
+using namespace google::protobuf::autoit::cmessage;
+
+// A mutex to guard the output stream observer autoit callback function.
+// Only one autoit callback can run at once.
+static absl::Mutex callback_mutex;
+
+inline static const bool startsWith(const std::string& s, const std::string& prefix) {
+	return s.size() >= prefix.size() && s.compare(0, prefix.size(), prefix) == 0;
+}
+
+inline static const bool startsWith(const std::string_view& s, const std::string_view& prefix) {
+	return s.size() >= prefix.size() && s.compare(0, prefix.size(), prefix) == 0;
+}
+
+inline static const bool endsWith(const std::string& s, const std::string& suffix) {
+	return s.size() >= suffix.size() && s.compare(s.size() - suffix.size(), suffix.size(), suffix) == 0;
+}
+
+inline static const bool endsWith(const std::string_view& s, const std::string_view& suffix) {
+	return s.size() >= suffix.size() && s.compare(s.size() - suffix.size(), suffix.size(), suffix) == 0;
+}
+
+inline static const size_t len(const std::string& str) {
+	return str.length();
+}
+
+static const std::string WHITESPACE = " \n\r\t\f\v";
+
+inline static std::string trim(const std::string& s) {
+	size_t start = s.find_first_not_of(WHITESPACE);
+	size_t end = s.find_last_not_of(WHITESPACE);
+	if (start == std::string::npos || end == std::string::npos) {
+		return "";
+	}
+	return s.substr(start, end + 1);
+}
+
+inline static std::vector<std::string> split(const std::string& s, const std::string& delimiter, bool trim_ = true) {
+	size_t pos_start = 0;
+	size_t delim_len = delimiter.length();
+	size_t pos_end;
+	std::string token;
+	std::vector<std::string> res;
+
+	while ((pos_end = s.find(delimiter, pos_start)) != std::string::npos) {
+		token = s.substr(pos_start, pos_end - pos_start);
+		pos_start = pos_end + delim_len;
+		res.push_back(trim_ ? trim(token) : token);
+	}
+
+	res.push_back(s.substr(pos_start));
+	return res;
+}
+
+int ClearFieldByDescriptor(Message& message,
+	const FieldDescriptor* field_descriptor) {
+	if (!CheckFieldBelongsToMessage(message, field_descriptor)) {
+		return -1;
+	}
+
+	message.GetReflection()->ClearField(&message, field_descriptor);
+	return 0;
+}
+
+void ClearField(Message& message, const std::string& field_name) {
+	bool is_in_oneof;
+
+	const FieldDescriptor* field_descriptor = FindFieldWithOneofs(message, field_name, &is_in_oneof);
+	if (field_descriptor == NULL) {
+		if (!is_in_oneof) {
+			fprintf(stderr, "Protocol message has no \"%s\" field.", field_name);
+			fflush(stdout);
+			fflush(stderr);
+		}
+		return;
+	}
+
+	ClearFieldByDescriptor(message, field_descriptor);
+	return;
+}
+
+using RepeatedContainer = google::protobuf::autoit::RepeatedContainer;
+
+namespace mediapipe {
+	namespace autoit {
+		namespace solution_base {
+			typedef std::vector<std::tuple<std::string, _variant_t>> OptionsFieldList;
+			typedef std::map<std::string, OptionsFieldList> MapOfStringAndOptionsFieldList;
+
+			const std::map<std::string, PacketDataType> NAME_TO_TYPE = {
+				{"string", PacketDataType::STRING},
+				{"bool", PacketDataType::BOOL},
+				{"::std::vector<bool>", PacketDataType::BOOL_LIST},
+				{"int", PacketDataType::INT},
+				{"::std::vector<int>", PacketDataType::INT_LIST},
+				{"int64", PacketDataType::INT},
+				{"::std::vector<int64>", PacketDataType::INT_LIST},
+				{"float", PacketDataType::FLOAT},
+				{"::std::vector<float>", PacketDataType::FLOAT_LIST},
+				{"::mediapipe::Matrix", PacketDataType::AUDIO},
+				{"::mediapipe::ImageFrame", PacketDataType::IMAGE_FRAME},
+				{"::mediapipe::Classification", PacketDataType::PROTO},
+				{"::mediapipe::ClassificationList", PacketDataType::PROTO},
+				{"::mediapipe::ClassificationListCollection", PacketDataType::PROTO},
+				{"::mediapipe::Detection", PacketDataType::PROTO},
+				{"::mediapipe::DetectionList", PacketDataType::PROTO},
+				{"::mediapipe::Landmark", PacketDataType::PROTO},
+				{"::mediapipe::LandmarkList", PacketDataType::PROTO},
+				{"::mediapipe::LandmarkListCollection", PacketDataType::PROTO},
+				{"::mediapipe::NormalizedLandmark", PacketDataType::PROTO},
+				{"::mediapipe::FrameAnnotation", PacketDataType::PROTO},
+				{"::mediapipe::Trigger", PacketDataType::PROTO},
+				{"::mediapipe::Rect", PacketDataType::PROTO},
+				{"::mediapipe::NormalizedRect", PacketDataType::PROTO},
+				{"::mediapipe::NormalizedLandmarkList", PacketDataType::PROTO},
+				{"::mediapipe::NormalizedLandmarkListCollection", PacketDataType::PROTO},
+				{"::mediapipe::Image", PacketDataType::IMAGE},
+				{"::std::vector<::mediapipe::Image>", PacketDataType::IMAGE_LIST},
+				{"::std::vector<::mediapipe::Classification>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::ClassificationList>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::Detection>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::DetectionList>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::Landmark>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::LandmarkList>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::NormalizedLandmark>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::NormalizedLandmarkList>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::Rect>", PacketDataType::PROTO_LIST},
+				{"::std::vector<::mediapipe::NormalizedRect>", PacketDataType::PROTO_LIST}
+			};
+
+			inline static std::vector<std::string> TypeNamesFromOneOf(const std::string& oneof_type_name) {
+				if (startsWith(oneof_type_name, "OneOf<") && endsWith(oneof_type_name, ">")) {
+					return split(oneof_type_name.substr(len("OneOf<"), oneof_type_name.length() - len(">")), ",");
+				}
+				return std::vector<std::string>();
+			}
+
+			inline static const PacketDataType FromRegisteredName(const std::string& registered_name) {
+				if (NAME_TO_TYPE.count(registered_name)) {
+					return NAME_TO_TYPE.at(registered_name);
+				}
+
+				const auto names = TypeNamesFromOneOf(registered_name);
+				for (const auto& name : names) {
+					if (NAME_TO_TYPE.count(name)) {
+						return NAME_TO_TYPE.at(name);
+					}
+				}
+
+				AUTOIT_THROW("Unregistered stream packet type");
+			}
+
+			/**
+			 * Gets name from a 'TAG:index:name' str.
+			 * @param  tag_index_name
+			 * @return
+			 */
+			inline static std::string GetName(const std::string& tag_index_name) {
+				auto const pos = tag_index_name.find_last_of(':');
+				return std::string::npos == pos ? tag_index_name : tag_index_name.substr(pos + 1);
+			}
+
+			/**
+			 * Gets the packet type information of the input streams and output streams
+			 * from the user provided stream_type_hints field or validated calculator
+			 * graph. The mappings from the stream names to the packet data types is
+			 * for deciding which packet creator and getter methods to call in the
+			 * process() method.
+			 * @param  validated_graph
+			 * @param  packet_tag_index_name
+			 * @param  stream_type_hints
+			 * @return
+			 */
+			inline static const PacketDataType GetStreamPacketType(
+				ValidatedGraphConfig& validated_graph,
+				const std::string& packet_tag_index_name,
+				const std::map<std::string, PacketDataType>& stream_type_hints
+			) {
+				auto stream_name = GetName(packet_tag_index_name);
+				if (stream_type_hints.count(stream_name)) {
+					return stream_type_hints.at(stream_name);
+				}
+
+				auto status_or_type_name = validated_graph.RegisteredStreamTypeName(stream_name);
+				RaiseAutoItErrorIfNotOk(status_or_type_name.status());
+				const auto& stream_type_name = status_or_type_name.value();
+
+				return FromRegisteredName(stream_type_name);
+			}
+
+			/**
+			 * Gets the packet type information of the input side packets from the
+			 * validated calculator graph. The mappings from the side packet names to the
+			 * packet data types is for making the input_side_packets dict for graph
+			 * start_run().
+			 * @param  validated_graph
+			 * @param  packet_tag_index_name
+			 * @return
+			 */
+			inline static PacketDataType GetSidePacketType(
+				ValidatedGraphConfig& validated_graph,
+				const std::string& packet_tag_index_name
+			) {
+				auto stream_name = GetName(packet_tag_index_name);
+
+				auto status_or_type_name = validated_graph.RegisteredSidePacketTypeName(stream_name);
+				RaiseAutoItErrorIfNotOk(status_or_type_name.status());
+				const auto& stream_type_name = status_or_type_name.value();
+
+				return FromRegisteredName(stream_type_name);
+			}
+
+			/**
+			 * Reorganizes the calculator options field data by calculator name and puts
+			 * all the field data of the same calculator in a list.
+			 */
+			inline static MapOfStringAndOptionsFieldList GenerateNestedCalculatorParams(const std::map<std::string, _variant_t>& flat_map) {
+				MapOfStringAndOptionsFieldList nested_map;
+
+				for (auto const& [compound_name, field_value] : flat_map) {
+					auto calculator_and_field_name = split(compound_name, ".", false);
+					AUTOIT_ASSERT_THROW(calculator_and_field_name.size() == 2, "The key '" << compound_name << "' in the calculator_params is invalid.");
+
+					auto calculator_name = calculator_and_field_name[0];
+					auto field_name = calculator_and_field_name[1];
+
+					if (!nested_map.count(calculator_name)) {
+						nested_map.at(calculator_name) = {};
+					}
+
+					nested_map.at(calculator_name).push_back({ field_name, field_value });
+				}
+
+				return nested_map;
+			}
+
+			inline static void ModifyOptionsFields(Message& calculator_options, const OptionsFieldList& options_field_list) {
+				const auto descriptor = calculator_options.GetDescriptor();
+
+				for (auto const& [field_name, field_value] : options_field_list) {
+					if (PARAMETER_MISSING(&field_value)) {
+						ClearField(calculator_options, field_name);
+						continue;
+					}
+
+					const auto field_descriptor = descriptor->FindFieldByName(field_name);
+					AUTOIT_ASSERT_THROW(field_descriptor, "Field '" << field_name << "' does not belong to message '" << descriptor->full_name() << "'");
+
+					if (!field_descriptor->is_repeated()) {
+						SetFieldValue(calculator_options, field_descriptor, field_value);
+						return;
+					}
+
+					if ((V_VT(&field_value) & VT_ARRAY) != VT_ARRAY || (V_VT(&field_value) ^ VT_ARRAY) != VT_VARIANT) {
+						AUTOIT_THROW(field_name << " is a repeated proto field but the value "
+							"to be set is " << V_VT(&field_value) << ", which is not iterable.");
+					}
+
+					// TODO: Support resetting the entire repeated field
+					// (array-option) and changing the individual values in the repeated
+					// field (array-element-option).
+					ClearField(calculator_options, field_name);
+
+					RepeatedContainer repeated_container = {
+						::autoit::reference_internal(&calculator_options),
+						::autoit::reference_internal(field_descriptor),
+					};
+
+					HRESULT hr = S_OK;
+					typename ATL::template CComSafeArray<VARIANT> vArray;
+					vArray.Attach(V_ARRAY(&field_value));
+
+					LONG lLower = vArray.GetLowerBound();
+					LONG lUpper = vArray.GetUpperBound();
+
+					_variant_t value;
+
+					for (LONG i = lLower; i <= lUpper; i++) {
+						auto& v = vArray.GetAt(i);
+						VARIANT* pv = &v;
+						if (!is_assignable_from(value, pv, false)) {
+							hr = E_INVALIDARG;
+							break;
+						}
+
+						repeated_container.Append(value);
+					}
+
+					vArray.Detach();
+				}
+			}
+
+			template<typename OptionsType>
+			void ModifyCalculatorOption(
+				const MapOfStringAndOptionsFieldList& nested_calculator_params,
+				CalculatorGraphConfig_Node& node
+			) {
+				const auto& options_field_list = nested_calculator_params.at(node.name());
+
+				if (HasField(node, "node_options")) {
+					if (HasField(node, "options")) {
+						AUTOIT_THROW("Cannot modify the calculator options of " << node.name() << " because it "
+							"has both options and node_options fields.");
+					}
+
+					// The "node_options" case for the proto3 syntax.
+					bool node_options_modified = false;
+					size_t pos_end;
+					std::string_view type_name;
+					for (auto& elem : *node.mutable_node_options()) {
+						const std::string& type_url = elem.type_url();
+						pos_end = type_url.find_last_of('/');
+						type_name = std::string_view(type_url).substr(pos_end == std::string::npos ? 0 : pos_end);
+						if (type_name != OptionsType::GetDescriptor()->full_name()) {
+							continue;
+						}
+
+						OptionsType calculator_options;
+						MergeFromString(&calculator_options, elem.value());
+						ModifyOptionsFields(calculator_options, options_field_list);
+						std::string serialized_proto;
+						calculator_options.SerializeToString(&serialized_proto);
+						elem.set_value(std::move(serialized_proto));
+						node_options_modified = true;
+						break;
+					}
+
+					// There is no existing node_options being modified. Add a new
+					// node_options instead.
+					if (!node_options_modified) {
+						OptionsType calculator_options;
+						ModifyOptionsFields(calculator_options, options_field_list);
+						auto* new_node_options = node.add_node_options();
+						new_node_options->PackFrom(calculator_options);
+					}
+				}
+				else if (HasField(node, "options")) {
+					// The "options" case for the proto2 syntax
+					OptionsType* calculator_options = node.mutable_options()->MutableExtension(OptionsType::ext);
+					ModifyOptionsFields(*calculator_options, options_field_list);
+				}
+			}
+
+			/**
+			 * Modifies the CalculatorOptions of the calculators listed in calculator_params.
+			 * @param calculator_graph_config [description]
+			 * @param calculator_params       [description]
+			 */
+			inline static void ModifyCalculatorOptions(
+				CalculatorGraphConfig& calculator_graph_config,
+				const std::map<std::string, _variant_t>& calculator_params
+			) {
+				auto nested_calculator_params = GenerateNestedCalculatorParams(calculator_params);
+				int num_calculator_params = nested_calculator_params.size();
+				for (CalculatorGraphConfig_Node& node : *calculator_graph_config.mutable_node()) {
+					if (!nested_calculator_params.count(node.name())) {
+						continue;
+					}
+
+					const std::string_view calculator(node.calculator());
+
+					// TODO: Enable calculator options modification for more calculators.
+					if (calculator == "ConstantSidePacketCalculator") {
+						ModifyCalculatorOption<ConstantSidePacketCalculatorOptions>(nested_calculator_params, node);
+					}
+					else if (calculator == "ImageTransformationCalculator") {
+						ModifyCalculatorOption<ImageTransformationCalculatorOptions>(nested_calculator_params, node);
+					}
+					else if (calculator == "LandmarksSmoothingCalculator") {
+						ModifyCalculatorOption<LandmarksSmoothingCalculatorOptions>(nested_calculator_params, node);
+					}
+					else if (calculator == "LogicCalculator") {
+						ModifyCalculatorOption<LogicCalculatorOptions>(nested_calculator_params, node);
+					}
+					else if (calculator == "ThresholdingCalculator") {
+						ModifyCalculatorOption<ThresholdingCalculatorOptions>(nested_calculator_params, node);
+					}
+					else if (calculator == "TensorsToDetectionsCalculator") {
+						ModifyCalculatorOption<TensorsToDetectionsCalculatorOptions>(nested_calculator_params, node);
+					}
+					else if (calculator == "Lift2DFrameAnnotationTo3DCalculator") {
+						ModifyCalculatorOption<Lift2DFrameAnnotationTo3DCalculatorOptions>(nested_calculator_params, node);
+					}
+					else {
+						AUTOIT_THROW("Modifying the calculator options of " << node.name() << " is not supported.");
+					}
+
+					if (--num_calculator_params == 0) {
+						break;
+					}
+				}
+
+				AUTOIT_ASSERT_THROW(num_calculator_params == 0, "Not all calculator params are valid.");
+			}
+
+			inline static bool InternalIs(const Any& self, const std::string_view type_name) {
+				const std::string_view type_url(self.type_url());
+				return type_url.size() >= type_name.size() + 1 &&
+					type_url[type_url.size() - type_name.size() - 1] == '/' &&
+					endsWith(type_url, type_name);
+			}
+
+			/**
+			 * Sets one value in a repeated protobuf.Any extension field.
+			 */
+			inline static void SetExtension(RepeatedPtrField<Any>* extension_list,
+				const Message* extension_value) {
+				const std::string_view type_name(extension_value->GetDescriptor()->full_name());
+				for (auto& extension_any : *extension_list) {
+					if (!InternalIs(extension_any, type_name)) {
+						continue;
+					}
+
+					std::unique_ptr<Message> sub_message(extension_value->New(nullptr));
+					extension_any.UnpackTo(sub_message.get());
+					sub_message->MergeFrom(*extension_value);
+					extension_any.PackFrom(*sub_message);
+					return;
+				}
+
+				extension_list->Add()->PackFrom(*extension_value);
+			}
+
+			inline static _variant_t default_variant() {
+				_variant_t vtDefault;
+				V_VT(&vtDefault) = VT_ERROR;
+				V_ERROR(&vtDefault) = DISP_E_PARAMNOTFOUND;
+				return vtDefault;
+			}
+
+			SolutionBase::SolutionBase(
+				const CalculatorGraphConfig& graph_config,
+				const std::map<std::string, _variant_t>& calculator_params,
+				const Message* graph_options,
+				const std::map<std::string, _variant_t>& side_inputs,
+				const std::vector<std::string>& outputs,
+				const std::map<std::string, PacketDataType>& stream_type_hints
+			) {
+				auto canonical_graph_config_proto = InitializeGraphInterface(graph_config, side_inputs, outputs, stream_type_hints);
+
+				if ((&calculator_params) != (&calculator_params_none)) {
+					ModifyCalculatorOptions(canonical_graph_config_proto, calculator_params);
+				}
+
+				if (graph_options != nullptr) {
+					SetExtension(canonical_graph_config_proto.mutable_graph_options(), graph_options);
+				}
+
+				RaiseAutoItErrorIfNotOk(m_graph.Initialize(canonical_graph_config_proto));
+
+				for (const auto& stream : m_output_stream_type_info) {
+					std::string stream_name = stream.first;
+
+					RaiseAutoItErrorIfNotOk(m_graph.ObserveOutputStream(
+						stream_name,
+						[this, stream_name](const Packet& output_packet) {
+							absl::MutexLock lock(&callback_mutex);
+							m_graph_outputs[stream_name] = output_packet;
+							return absl::OkStatus();
+						},
+						true
+					));
+				}
+
+				static CMediapipe_Autoit_Packet_creator_Object* pPacket_creator = nullptr;
+
+				if (pPacket_creator == nullptr) {
+					HRESULT hr = CoCreateInstance(
+						CLSID_Mediapipe_Autoit_Packet_creator_Object,
+						NULL,
+						CLSCTX_INPROC_SERVER,
+						IID_IMediapipe_Autoit_Packet_creator_Object,
+						reinterpret_cast<void**>(&pPacket_creator)
+					);
+
+					AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "Failed to create a packet_creator instance");
+				}
+
+				static _variant_t image_format = default_variant();
+				static _variant_t copy_image = default_variant();
+				static VARIANT* v_image_format = &image_format;
+				static VARIANT* v_copy_image = &copy_image;
+
+				VARIANT* _retval = nullptr;
+				CMediapipe_Packet_Object* pPacket = nullptr;
+				HRESULT hr;
+				for (const auto& side_input_pair : side_inputs) {
+					const std::string& name = side_input_pair.first;
+					const _variant_t& data = side_input_pair.second;
+					VARIANT* in_val = const_cast<VARIANT*>(static_cast<const VARIANT*>(&data));
+					_retval = nullptr;
+					switch (m_side_input_type_info[name]) {
+					case PacketDataType::STRING: {
+						hr = pPacket_creator->create_string(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a string pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::BOOL: {
+						hr = pPacket_creator->create_bool(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a bool pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::BOOL_LIST: {
+						hr = pPacket_creator->create_bool_vector(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a bool_vector pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::INT: {
+						hr = pPacket_creator->create_int(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a int pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::INT_LIST: {
+						hr = pPacket_creator->create_int_vector(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a int_vector pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::FLOAT: {
+						hr = pPacket_creator->create_float(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a float pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::FLOAT_LIST: {
+						hr = pPacket_creator->create_float_vector(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a float_vector pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::IMAGE: {
+						hr = pPacket_creator->create_image(in_val, v_image_format, v_copy_image, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a image pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::IMAGE_FRAME: {
+						hr = pPacket_creator->create_image_frame(in_val, v_image_format, v_copy_image, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a image_frame pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::IMAGE_LIST: {
+						hr = pPacket_creator->create_image_vector(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a image_vector pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					case PacketDataType::PROTO: {
+						hr = pPacket_creator->create_proto(in_val, _retval);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a proto pack from " << name);
+						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+						m_input_side_packets[name] = **pPacket->__self;
+						break;
+					}
+					default:
+						AUTOIT_THROW("create packet data type " << static_cast<int>(m_side_input_type_info[name]) << " is not implemented");
+					}
+				}
+
+				RaiseAutoItErrorIfNotOk(m_graph.StartRun(m_input_side_packets));
+			}
+
+			CalculatorGraphConfig SolutionBase::InitializeGraphInterface(
+				const CalculatorGraphConfig& graph_config,
+				const std::map<std::string, _variant_t>& side_inputs,
+				const std::vector<std::string>& outputs,
+				const std::map<std::string, PacketDataType>& stream_type_hints
+			) {
+
+				ValidatedGraphConfig validated_graph;
+				RaiseAutoItErrorIfNotOk(validated_graph.Initialize(graph_config));
+
+				CalculatorGraphConfig canonical_graph_config_proto;
+				canonical_graph_config_proto.ParseFromString(validated_graph.Config().SerializeAsString());
+
+				for (const auto& tag_index_name : canonical_graph_config_proto.input_stream()) {
+					m_input_stream_type_info[GetName(tag_index_name)] = GetStreamPacketType(validated_graph, tag_index_name, stream_type_hints);
+				}
+
+				std::vector<std::string> output_streams;
+
+				if ((&outputs) == (&outputs_none)) {
+					const auto& output_stream = canonical_graph_config_proto.output_stream();
+					output_streams = std::vector<std::string>(output_stream.begin(), output_stream.end());
+				}
+				else {
+					output_streams = outputs;
+				}
+
+				for (const auto& tag_index_name : output_streams) {
+					m_output_stream_type_info[GetName(tag_index_name)] = GetStreamPacketType(validated_graph, tag_index_name, stream_type_hints);
+				}
+
+				for (auto it = side_inputs.begin(); it != side_inputs.end(); ++it) {
+					const auto& tag_index_name = it->first;
+					m_side_input_type_info[GetName(tag_index_name)] = GetSidePacketType(validated_graph, tag_index_name);
+				}
+
+				return canonical_graph_config_proto;
+			}
+		}
+	}
+}
