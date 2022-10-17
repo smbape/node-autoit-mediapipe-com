@@ -33,6 +33,24 @@ namespace mediapipe {
 				PROTO,
 				PROTO_LIST
 			};
+
+			static const char* PacketDataTypeToChar[] =
+			{
+				"STRING",
+				"BOOL",
+				"BOOL_LIST",
+				"INT",
+				"INT_LIST",
+				"FLOAT",
+				"FLOAT_LIST",
+				"AUDIO",
+				"IMAGE",
+				"IMAGE_LIST",
+				"IMAGE_FRAME",
+				"PROTO",
+				"PROTO_LIST"
+			};
+
 			#pragma pop_macro("FLOAT")
 			#pragma pop_macro("INT")
 			#pragma pop_macro("BOOL")
@@ -68,6 +86,9 @@ namespace mediapipe {
 					outputs,
 					stream_type_hints
 				) {}
+
+				CV_WRAP void process(const cv::Mat& input_data, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
+				CV_WRAP void process(const std::map<std::string, _variant_t>& input_dict, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 
 				~SolutionBase() = default;
 

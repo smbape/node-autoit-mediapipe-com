@@ -1,10 +1,11 @@
 #include "Mediapipe_Autoit_Packet_getter_Object.h"
 
 using namespace mediapipe;
+// using namespace google::protobuf::Message;
 
 // RegisteredTypeName()
 
-const int64 CMediapipe_Autoit_Packet_getter_Object::get_int(Packet& packet, HRESULT& hr) {
+const int64 mediapipe::autoit::packet_getter::get_int(const Packet& packet) {
 	if (packet.ValidateAsType<int>().ok()) {
 		return static_cast<int64>(packet.Get<int>());
 	}
@@ -28,7 +29,7 @@ const int64 CMediapipe_Autoit_Packet_getter_Object::get_int(Packet& packet, HRES
 	AUTOIT_THROW("Packet doesn't contain int, int8, int16, int32, or int64 data.");
 }
 
-const uint64 CMediapipe_Autoit_Packet_getter_Object::get_uint(Packet& packet, HRESULT& hr) {
+const uint64 mediapipe::autoit::packet_getter::get_uint(const Packet& packet) {
 	if (packet.ValidateAsType<uint8>().ok()) {
 		return static_cast<std::uint64_t>(packet.Get<uint8>());
 	}
@@ -48,7 +49,7 @@ const uint64 CMediapipe_Autoit_Packet_getter_Object::get_uint(Packet& packet, HR
 	AUTOIT_THROW("Packet doesn't contain uint8, uint16, uint32, or uint64 data.");
 }
 
-const float CMediapipe_Autoit_Packet_getter_Object::get_float(Packet& packet, HRESULT& hr) {
+const float mediapipe::autoit::packet_getter::get_float(const Packet& packet) {
 	if (packet.ValidateAsType<float>().ok()) {
 		return packet.Get<float>();
 	}
@@ -60,7 +61,7 @@ const float CMediapipe_Autoit_Packet_getter_Object::get_float(Packet& packet, HR
 	AUTOIT_THROW("Packet doesn't contain float or double data.");
 }
 
-const std::vector<int64> CMediapipe_Autoit_Packet_getter_Object::get_int_list(Packet& packet, HRESULT& hr) {
+const std::vector<int64> mediapipe::autoit::packet_getter::get_int_list(const Packet& packet) {
 	if (packet.ValidateAsType<std::vector<int>>().ok()) {
 		auto int_list = packet.Get<std::vector<int>>();
 		return std::vector<int64>(int_list.begin(), int_list.end());
@@ -89,7 +90,7 @@ const std::vector<int64> CMediapipe_Autoit_Packet_getter_Object::get_int_list(Pa
 	AUTOIT_THROW("Packet doesn't contain int, int8, int16, int32, or int64 containers.");
 }
 
-const std::vector<float> CMediapipe_Autoit_Packet_getter_Object::get_float_list(Packet& packet, HRESULT& hr) {
+const std::vector<float> mediapipe::autoit::packet_getter::get_float_list(const Packet& packet) {
 	if (packet.ValidateAsType<std::vector<float>>().ok()) {
 		return packet.Get<std::vector<float>>();
 	}
@@ -106,3 +107,11 @@ const std::vector<float> CMediapipe_Autoit_Packet_getter_Object::get_float_list(
 
 	AUTOIT_THROW("Packet doesn't contain std::vector<float> or std::array<float, 4 / 16> containers.");
 }
+
+// const std::shared_ptr<Message> get_proto(const Packet& packet) {
+
+// }
+
+// const std::vector<std::shared_ptr<google::protobuf::Message>> get_proto_list(const Packet& packet) {
+
+// }

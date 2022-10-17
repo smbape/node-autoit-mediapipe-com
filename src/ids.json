@@ -15,21 +15,29 @@
         "iid": "9f99b49c-d433-474d-9768-a5deb2b8e278",
         "clsid": "7bbd25e9-b240-4b12-96bb-3adbe1e4c796"
     },
-    "google::protobuf::autoit::RepeatedContainer": {
-        "iid": "3a763fe6-b57f-4838-86c8-1e23db8d8459",
-        "clsid": "4f721198-e946-4b71-844b-6069e2f1a82e"
-    },
     "mediapipe": {
         "iid": "5f6f6001-7800-47f5-b394-6fba3078caf7",
         "clsid": "a8c1b513-df68-4984-952f-161d50d6a8b8"
     },
-    "mediapipe::resource_util": {
-        "iid": "dfafdce2-7f7a-4ea4-a0a2-bdf904648cc0",
-        "clsid": "bb43d259-8a75-418f-a06f-957b33459101"
-    },
     "mediapipe::autoit": {
         "iid": "cbaced82-d766-40bb-bf51-ec26af307b5d",
         "clsid": "86ba3aeb-1f60-4f1e-83c9-43e9ca2c8cbd"
+    },
+    "mediapipe::autoit::packet_creator": {
+        "iid": "b2a5ef29-3f71-44bc-b98e-5064b62ea8ae",
+        "clsid": "79c6194a-39f0-4d85-a50a-4611c31df7e8"
+    },
+    "mediapipe::autoit::packet_getter": {
+        "iid": "54f03d8f-d34e-4b7a-8ab3-fdc2669abb86",
+        "clsid": "47f09088-e48d-40c7-bf25-009c7ddfbdc4"
+    },
+    "google::protobuf::autoit::RepeatedContainer": {
+        "iid": "3a763fe6-b57f-4838-86c8-1e23db8d8459",
+        "clsid": "4f721198-e946-4b71-844b-6069e2f1a82e"
+    },
+    "mediapipe::resource_util": {
+        "iid": "dfafdce2-7f7a-4ea4-a0a2-bdf904648cc0",
+        "clsid": "bb43d259-8a75-418f-a06f-957b33459101"
     },
     "mediapipe::autoit::solution_base": {
         "iid": "86b271a7-844d-415d-936a-3c9a9cce08d1",
@@ -99,14 +107,6 @@
         "iid": "252a9837-27d5-4a18-9789-d15c46d0d73e",
         "clsid": "761e8185-39fd-464e-9a91-d0ede7a9e298"
     },
-    "mediapipe::autoit::packet_creator": {
-        "iid": "b2a5ef29-3f71-44bc-b98e-5064b62ea8ae",
-        "clsid": "79c6194a-39f0-4d85-a50a-4611c31df7e8"
-    },
-    "mediapipe::autoit::packet_getter": {
-        "iid": "54f03d8f-d34e-4b7a-8ab3-fdc2669abb86",
-        "clsid": "47f09088-e48d-40c7-bf25-009c7ddfbdc4"
-    },
     "google::protobuf::Message": {
         "iid": "d5e10a6a-bb2b-48c6-b038-eddf6e51178b",
         "clsid": "b7b2f71a-d14f-4a76-9ebc-fad678a08fd4"
@@ -159,30 +159,6 @@
         "iid": "515c4b61-b396-4701-a2bd-3bd772c6c344",
         "clsid": "4e1e09c1-2188-4d31-8c2b-738be68f5d67"
     },
-    "VectorOfString": {
-        "iid": "3351f398-e483-436e-920c-4d3b320356e3",
-        "clsid": "7835f787-333a-428c-b5b1-d5a6b47d6f63"
-    },
-    "MapOfStringAndPacketDataType": {
-        "iid": "fea546aa-22c7-4daf-a856-f6d5de929820",
-        "clsid": "cc6e24f0-24a4-44ac-b0f7-af8a0e767140"
-    },
-    "VectorOfInt": {
-        "iid": "558d6542-a68e-4199-9972-d1754f33db41",
-        "clsid": "7b9d8766-9403-4200-a081-c39ac4823549"
-    },
-    "VectorOfUchar": {
-        "iid": "e4e3896c-ff7d-47bf-a44a-ffc2a76261b4",
-        "clsid": "a4e1b6f2-3f03-4208-b6a0-9658e8a3640d"
-    },
-    "VectorOfMat": {
-        "iid": "ea03173f-483e-4e81-b070-42de4f481444",
-        "clsid": "10f9fc54-d8f3-4b02-b85e-9b85b73f2da8"
-    },
-    "MapOfStringAndPacket": {
-        "iid": "d26b4ccb-2a12-4478-956c-ba1bd6392c55",
-        "clsid": "d5cd95f6-c307-4639-95a0-4156adb34cf8"
-    },
     "VectorOfBool": {
         "iid": "6b7b11b6-5433-46d3-9dd4-02272c444058",
         "clsid": "70b23e8f-2121-4ca8-8720-b02fd747bb48"
@@ -195,17 +171,45 @@
         "iid": "3532dd31-0059-42fe-90a5-6f5235ca7321",
         "clsid": "11b36c43-da9a-4aac-b5b2-7de052eef85d"
     },
+    "VectorOfInt": {
+        "iid": "558d6542-a68e-4199-9972-d1754f33db41",
+        "clsid": "7b9d8766-9403-4200-a081-c39ac4823549"
+    },
     "VectorOfPacket": {
         "iid": "fbdc193d-4dca-4c3b-b8de-6bf100fa06c8",
         "clsid": "74e29a64-69f9-4806-a24a-964f9e9f3f19"
+    },
+    "MapOfStringAndPacket": {
+        "iid": "d26b4ccb-2a12-4478-956c-ba1bd6392c55",
+        "clsid": "d5cd95f6-c307-4639-95a0-4156adb34cf8"
+    },
+    "VectorOfString": {
+        "iid": "3351f398-e483-436e-920c-4d3b320356e3",
+        "clsid": "7835f787-333a-428c-b5b1-d5a6b47d6f63"
     },
     "VectorOfInt64": {
         "iid": "44e8ca19-e7aa-4b04-a10e-47b6c845bacc",
         "clsid": "16d6c469-856c-43b2-a564-37dec31ab30c"
     },
+    "MapOfStringAndPacketDataType": {
+        "iid": "fea546aa-22c7-4daf-a856-f6d5de929820",
+        "clsid": "cc6e24f0-24a4-44ac-b0f7-af8a0e767140"
+    },
+    "VectorOfUchar": {
+        "iid": "e4e3896c-ff7d-47bf-a44a-ffc2a76261b4",
+        "clsid": "a4e1b6f2-3f03-4208-b6a0-9658e8a3640d"
+    },
+    "VectorOfMat": {
+        "iid": "ea03173f-483e-4e81-b070-42de4f481444",
+        "clsid": "10f9fc54-d8f3-4b02-b85e-9b85b73f2da8"
+    },
     "VectorOfPairOfStringAndVariant": {
         "iid": "911844da-be45-453c-9c39-4c95e70f956f",
         "clsid": "4be064ca-81fd-45c4-9983-39ce4e4f61b3"
+    },
+    "VectorOfPairOfStringAndPacket": {
+        "iid": "f0f3bfdb-0a8e-44c2-9eed-b1d26e1e162b",
+        "clsid": "51e93f6f-735d-45b4-81be-e2b92f0d6ed9"
     },
     "VectorOfPairOfStringAndPacketDataType": {
         "iid": "394b873a-fcd3-4656-8918-28af524628d4",
@@ -214,9 +218,5 @@
     "VectorOfPacketDataType": {
         "iid": "83997a40-af0f-41d4-96e0-b6a8266cc6b9",
         "clsid": "868a5ccb-d463-406e-903e-1340591f2c47"
-    },
-    "VectorOfPairOfStringAndPacket": {
-        "iid": "f0f3bfdb-0a8e-44c2-9eed-b1d26e1e162b",
-        "clsid": "51e93f6f-735d-45b4-81be-e2b92f0d6ed9"
     }
 }

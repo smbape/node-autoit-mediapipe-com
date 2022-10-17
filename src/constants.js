@@ -43,6 +43,7 @@ exports.CPP_TYPES = new Map([
     ["string", "std::string"],
 
     ["google_protobuf_Message", "google::protobuf::Message"],
+    ["ImageFormat_Format", "ImageFormat::Format"],
 ]);
 
 exports.ALIASES = new Map([

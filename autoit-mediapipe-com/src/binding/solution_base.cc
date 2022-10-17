@@ -22,6 +22,7 @@
 
 using namespace google::protobuf;
 using namespace google::protobuf::autoit::cmessage;
+using namespace mediapipe::autoit::packet_getter;
 
 // A mutex to guard the output stream observer autoit callback function.
 // Only one autoit callback can run at once.
@@ -104,9 +105,20 @@ void ClearField(Message& message, const std::string& field_name) {
 
 using RepeatedContainer = google::protobuf::autoit::RepeatedContainer;
 
+#define StringifyPacketDataType(enum_value) PacketDataTypeToChar[static_cast<int>(enum_value)]
+
 namespace mediapipe {
 	namespace autoit {
 		namespace solution_base {
+			inline static _variant_t default_variant() {
+				_variant_t vtDefault;
+				V_VT(&vtDefault) = VT_ERROR;
+				V_ERROR(&vtDefault) = DISP_E_PARAMNOTFOUND;
+				return vtDefault;
+			}
+
+			static _variant_t None = default_variant();
+
 			typedef std::vector<std::tuple<std::string, _variant_t>> OptionsFieldList;
 			typedef std::map<std::string, OptionsFieldList> MapOfStringAndOptionsFieldList;
 
@@ -444,11 +456,143 @@ namespace mediapipe {
 				extension_list->Add()->PackFrom(*extension_value);
 			}
 
-			inline static _variant_t default_variant() {
-				_variant_t vtDefault;
-				V_VT(&vtDefault) = VT_ERROR;
-				V_ERROR(&vtDefault) = DISP_E_PARAMNOTFOUND;
-				return vtDefault;
+			static std::shared_ptr<Packet> MakePacket(
+				PacketDataType packet_data_type,
+				const _variant_t& data
+			) {
+				static CMediapipe_Autoit_Packet_creator_Object* pPacket_creator = nullptr;
+
+				if (pPacket_creator == nullptr) {
+					HRESULT hr = CoCreateInstance(
+						CLSID_Mediapipe_Autoit_Packet_creator_Object,
+						NULL,
+						CLSCTX_INPROC_SERVER,
+						IID_IMediapipe_Autoit_Packet_creator_Object,
+						reinterpret_cast<void**>(&pPacket_creator)
+					);
+
+					AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "Failed to create a packet_creator instance");
+				}
+
+				static _variant_t image_format = None;
+				static _variant_t copy_image = None;
+				static VARIANT* v_image_format = &image_format;
+				static VARIANT* v_copy_image = &copy_image;
+
+				VARIANT* in_val = const_cast<VARIANT*>(static_cast<const VARIANT*>(&data));
+				_variant_t _retval_var;
+				VARIANT* _retval = &_retval_var;
+				HRESULT hr;
+
+				switch (packet_data_type) {
+				case PacketDataType::STRING:
+					hr = pPacket_creator->create_string(in_val, _retval);
+					break;
+				case PacketDataType::BOOL:
+					hr = pPacket_creator->create_bool(in_val, _retval);
+					break;
+				case PacketDataType::BOOL_LIST:
+					hr = pPacket_creator->create_bool_vector(in_val, _retval);
+					break;
+				case PacketDataType::INT:
+					hr = pPacket_creator->create_int(in_val, _retval);
+					break;
+				case PacketDataType::INT_LIST:
+					hr = pPacket_creator->create_int_vector(in_val, _retval);
+					break;
+				case PacketDataType::FLOAT:
+					hr = pPacket_creator->create_float(in_val, _retval);
+					break;
+				case PacketDataType::FLOAT_LIST:
+					hr = pPacket_creator->create_float_vector(in_val, _retval);
+					break;
+				case PacketDataType::IMAGE:
+					hr = pPacket_creator->create_image(in_val, v_image_format, v_copy_image, _retval);
+					break;
+				case PacketDataType::IMAGE_FRAME:
+					hr = pPacket_creator->create_image_frame(in_val, v_image_format, v_copy_image, _retval);
+					break;
+				case PacketDataType::IMAGE_LIST:
+					hr = pPacket_creator->create_image_vector(in_val, _retval);
+					break;
+				case PacketDataType::PROTO:
+					hr = pPacket_creator->create_proto(in_val, _retval);
+					break;
+				default:
+					AUTOIT_THROW("create packet data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
+				}
+
+				AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a " << StringifyPacketDataType(packet_data_type) << " packet");
+				const auto& pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
+				auto result = *pPacket->__self; // copy the pointer
+				return result;
+			}
+
+			static _variant_t GetPacketContent(PacketDataType packet_data_type, const Packet& output_packet) {
+				if (output_packet.IsEmpty()) {
+					return None;
+				}
+
+				_variant_t result;
+				VARIANT* _retval = &result;
+				HRESULT hr;
+
+				switch (packet_data_type) {
+				case PacketDataType::STRING:
+					hr = autoit_from(GetContent<std::string>(output_packet), _retval);
+					break;
+				case PacketDataType::BOOL:
+					hr = autoit_from(GetContent<bool>(output_packet), _retval);
+					break;
+				case PacketDataType::BOOL_LIST:
+					hr = autoit_from(GetContent<std::vector<bool>>(output_packet), _retval);
+					break;
+				case PacketDataType::INT:
+					hr = autoit_from(get_int(output_packet), _retval);
+					break;
+				case PacketDataType::INT_LIST:
+					hr = autoit_from(get_int_list(output_packet), _retval);
+					break;
+				case PacketDataType::FLOAT:
+					hr = autoit_from(get_float(output_packet), _retval);
+					break;
+				case PacketDataType::FLOAT_LIST:
+					hr = autoit_from(get_float_list(output_packet), _retval);
+					break;
+				// case PacketDataType::IMAGE:
+				// 	hr = pPacket_getter->get_image(in_val, v_image_format, v_copy_image, _retval);
+				// 	break;
+				// case PacketDataType::IMAGE_FRAME:
+				// 	hr = pPacket_getter->get_image_frame(in_val, v_image_format, v_copy_image, _retval);
+				// 	break;
+				// case PacketDataType::IMAGE_LIST:
+				// 	hr = pPacket_getter->get_image_vector(in_val, _retval);
+				// 	break;
+				// case PacketDataType::PROTO:
+				// 	hr = pPacket_getter->get_proto(in_val, _retval);
+				// 	break;
+				default:
+					AUTOIT_THROW("get packet content of data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
+				}
+
+				// STDMETHOD(get_bool)(VARIANT* pVarArg0, VARIANT_BOOL* _retval);
+				// STDMETHOD(get_bool_list)(VARIANT* pVarArg0, VARIANT* _retval);
+				// STDMETHOD(get_float)(VARIANT* pVarArg0, FLOAT* _retval);
+				// STDMETHOD(get_float_list)(VARIANT* pVarArg0, VARIANT* _retval);
+				// STDMETHOD(get_image)(VARIANT* pVarArg0, IMediapipe_Image_Object** _retval);
+				// STDMETHOD(get_image_frame)(VARIANT* pVarArg0, IMediapipe_ImageFrame_Object** _retval);
+				// STDMETHOD(get_image_list)(VARIANT* pVarArg0, VARIANT* _retval);
+				// STDMETHOD(get_int)(VARIANT* pVarArg0, LONGLONG* _retval);
+				// STDMETHOD(get_int_list)(VARIANT* pVarArg0, VARIANT* _retval);
+				// STDMETHOD(get_packet_list)(VARIANT* pVarArg0, VARIANT* _retval);
+				// STDMETHOD(get_str)(VARIANT* pVarArg0, BSTR* _retval);
+				// STDMETHOD(get_str_list)(VARIANT* pVarArg0, VARIANT* _retval);
+				// STDMETHOD(get_str_to_packet_dict)(VARIANT* pVarArg0, VARIANT* _retval);
+				// STDMETHOD(get_uint)(VARIANT* pVarArg0, ULONGLONG* _retval);
+
+				AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to get a " << StringifyPacketDataType(packet_data_type) << " packet content");
+
+				return result;
 			}
 
 			SolutionBase::SolutionBase(
@@ -485,118 +629,72 @@ namespace mediapipe {
 					));
 				}
 
-				static CMediapipe_Autoit_Packet_creator_Object* pPacket_creator = nullptr;
-
-				if (pPacket_creator == nullptr) {
-					HRESULT hr = CoCreateInstance(
-						CLSID_Mediapipe_Autoit_Packet_creator_Object,
-						NULL,
-						CLSCTX_INPROC_SERVER,
-						IID_IMediapipe_Autoit_Packet_creator_Object,
-						reinterpret_cast<void**>(&pPacket_creator)
-					);
-
-					AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "Failed to create a packet_creator instance");
-				}
-
-				static _variant_t image_format = default_variant();
-				static _variant_t copy_image = default_variant();
-				static VARIANT* v_image_format = &image_format;
-				static VARIANT* v_copy_image = &copy_image;
-
-				VARIANT* _retval = nullptr;
-				CMediapipe_Packet_Object* pPacket = nullptr;
-				HRESULT hr;
-				for (const auto& side_input_pair : side_inputs) {
-					const std::string& name = side_input_pair.first;
-					const _variant_t& data = side_input_pair.second;
-					VARIANT* in_val = const_cast<VARIANT*>(static_cast<const VARIANT*>(&data));
-					_retval = nullptr;
-					switch (m_side_input_type_info[name]) {
-					case PacketDataType::STRING: {
-						hr = pPacket_creator->create_string(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a string pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::BOOL: {
-						hr = pPacket_creator->create_bool(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a bool pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::BOOL_LIST: {
-						hr = pPacket_creator->create_bool_vector(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a bool_vector pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::INT: {
-						hr = pPacket_creator->create_int(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a int pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::INT_LIST: {
-						hr = pPacket_creator->create_int_vector(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a int_vector pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::FLOAT: {
-						hr = pPacket_creator->create_float(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a float pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::FLOAT_LIST: {
-						hr = pPacket_creator->create_float_vector(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a float_vector pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::IMAGE: {
-						hr = pPacket_creator->create_image(in_val, v_image_format, v_copy_image, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a image pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::IMAGE_FRAME: {
-						hr = pPacket_creator->create_image_frame(in_val, v_image_format, v_copy_image, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a image_frame pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::IMAGE_LIST: {
-						hr = pPacket_creator->create_image_vector(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a image_vector pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					case PacketDataType::PROTO: {
-						hr = pPacket_creator->create_proto(in_val, _retval);
-						AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a proto pack from " << name);
-						pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-						m_input_side_packets[name] = **pPacket->__self;
-						break;
-					}
-					default:
-						AUTOIT_THROW("create packet data type " << static_cast<int>(m_side_input_type_info[name]) << " is not implemented");
-					}
+				for (auto const& [name, data] : side_inputs) {
+					m_input_side_packets[name] = *MakePacket(m_side_input_type_info[name], data);
 				}
 
 				RaiseAutoItErrorIfNotOk(m_graph.StartRun(m_input_side_packets));
 			}
+
+			void SolutionBase::process(const cv::Mat& input_data, std::map<std::string, _variant_t>& solution_outputs) {
+				AUTOIT_ASSERT_THROW(m_input_stream_type_info.size() == 1,
+					"Can't process single image input since the graph has more than one input streams.");
+
+				_variant_t input_data_variant;
+				VARIANT* out_val = &input_data_variant;
+				autoit_from(::autoit::reference_internal(&input_data), out_val);
+				std::map<std::string, _variant_t> input_dict;
+				for (const auto& pair : m_input_stream_type_info) {
+					input_dict[pair.first] = input_data_variant;
+				}
+
+				process(input_dict, solution_outputs);
+			}
+
+			void SolutionBase::process(const std::map<std::string, _variant_t>& input_dict, std::map<std::string, _variant_t>& solution_outputs) {
+				m_graph_outputs.clear();
+
+				// Set the timestamp increment to 33333 us to simulate the 30 fps video
+				// input.
+				m_simulated_timestamp += 33333;
+				const auto simulated_timestamp = Timestamp(m_simulated_timestamp);
+
+				for (auto const& [stream_name, data] : input_dict) {
+					const auto& input_stream_type = m_input_stream_type_info[stream_name];
+
+					switch (input_stream_type) {
+					case PacketDataType::PROTO_LIST:
+					case PacketDataType::AUDIO:
+						// TODO: Support audio data.
+						AUTOIT_THROW(
+							"SolutionBase can only process non-audio and non-proto-list data. "
+							<< StringifyPacketDataType(m_input_stream_type_info[stream_name]) <<
+							"type is not supported yet."
+						);
+					}
+
+					RaiseAutoItErrorIfNotOk(
+						m_graph.AddPacketToInputStream(
+							stream_name,
+							MakePacket(input_stream_type, data)->At(simulated_timestamp)
+						)
+					);
+				}
+
+				RaiseAutoItErrorIfNotOk(m_graph.WaitUntilIdle());
+
+				for (auto const& [stream_name, packet_data_type] : m_output_stream_type_info) {
+					if (m_graph_outputs.count(stream_name)) {
+						solution_outputs[stream_name] = GetPacketContent(packet_data_type, m_graph_outputs[stream_name]);
+					} else {
+						solution_outputs[stream_name] = None;
+					}
+				}
+
+				solution_outputs.clear();
+				// TODO
+			}
+
 
 			CalculatorGraphConfig SolutionBase::InitializeGraphInterface(
 				const CalculatorGraphConfig& graph_config,
