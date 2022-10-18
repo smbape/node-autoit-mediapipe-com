@@ -644,6 +644,13 @@ namespace autoit {
 		}
 	};
 
+	template<typename destination_type, typename source_type>
+	struct _GenericCopy<destination_type, AUTOIT_PTR<source_type>> {
+		inline static HRESULT copy(destination_type* pTo, const AUTOIT_PTR<source_type>* pFrom) {
+			return autoit_from(&pFrom, pTo);
+		}
+	};
+
 	template<typename destination_type, typename ... _Rest>
 	struct _GenericCopy<destination_type, std::tuple <_Rest...>> {
 		inline static HRESULT copy(destination_type* pTo, const std::tuple <_Rest...>* pFrom) {

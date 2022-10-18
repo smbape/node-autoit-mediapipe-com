@@ -216,8 +216,10 @@ EndFunc   ;==>test_double_packet
 Func test_detection_proto_packet()
 	Local $detection = $detection_pb2.Detection()
 	_AssertTrue($text_format.Parse("score: 0.5", $detection))
-	Local $p = $packet_creator.create_proto($detection).at(100)
-	#forceref $p
+    Local $proto_packet = $packet_creator.create_proto($detection)
+    Local $output_proto = $packet_getter.get_proto($proto_packet)
+    Local $p = $packet_creator.create_proto($detection).at(100)
+	#forceref $p, $output_proto
 EndFunc   ;==>test_detection_proto_packet
 
 Func test_string_packet()

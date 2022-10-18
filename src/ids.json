@@ -191,6 +191,10 @@
         "iid": "44e8ca19-e7aa-4b04-a10e-47b6c845bacc",
         "clsid": "16d6c469-856c-43b2-a564-37dec31ab30c"
     },
+    "VectorOfShared_ptrMessage": {
+        "iid": "f6e7f9c3-bb17-4a53-8e84-31ac819bd56a",
+        "clsid": "0be4c50c-271e-4d5f-a807-3249e4fe47e1"
+    },
     "MapOfStringAndPacketDataType": {
         "iid": "fea546aa-22c7-4daf-a856-f6d5de929820",
         "clsid": "cc6e24f0-24a4-44ac-b0f7-af8a0e767140"

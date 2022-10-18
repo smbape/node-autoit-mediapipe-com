@@ -15,7 +15,7 @@ exports.declare = (generator, type, parent, options = {}) => {
         return fqn;
     }
 
-    const vtype = type.slice("vector<".length, -">".length);
+    const vtype = cpptype.slice("std::vector<".length, -">".length);
     const coclass = generator.getCoClass(fqn, options);
     generator.typedefs.set(fqn, cpptype);
 
@@ -23,7 +23,7 @@ exports.declare = (generator, type, parent, options = {}) => {
     coclass.is_simple = true;
     coclass.is_class = true;
     coclass.is_vector = true;
-    coclass.cpptype = cpptype.slice("std::vector<".length, -">".length);
+    coclass.cpptype = vtype;
     coclass.idltype = generator.getIDLType(vtype, coclass, options);
 
     coclass.addProperty(["size_t", "Count", "", ["/R", "=size()"]]);
@@ -62,13 +62,13 @@ exports.declare = (generator, type, parent, options = {}) => {
         [vtype, "value", "", []],
     ], "", ""]);
 
-    coclass.addMethod([`${ fqn }.at`, coclass.cpptype, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE"], [
+    coclass.addMethod([`${ fqn }.at`, vtype, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE"], [
         ["size_t", "vIndex", "", []],
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.at`, "void", ["/attr=propput", "/idlname=Item", "=put_Item", "/id=DISPID_VALUE", "/ExternalNoDecl"], [
         ["size_t", "vIndex", "", []],
-        [coclass.cpptype, "vItem", "", []],
+        [vtype, "vItem", "", []],
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.size`, "size_t", [], [], "", ""]);
@@ -107,7 +107,7 @@ exports.declare = (generator, type, parent, options = {}) => {
 
     // make vector to be recognized as a collection
     const cotype = coclass.getClassName();
-    const _Copy = `::autoit::GenericCopy<${ coclass.cpptype }>`;
+    const _Copy = `::autoit::GenericCopy<${ vtype }>`;
     const _CComEnum = `CComEnumOnSTL<IEnumVARIANT, &IID_IEnumVARIANT, VARIANT, ${ _Copy }, ${ fqn }>`;
     const ICollection = `ATL::IAutoItCollectionEnumOnSTLImpl<I${ cotype }, ${ fqn }, ${ _CComEnum }, AutoItObject<${ fqn }>>`;
 

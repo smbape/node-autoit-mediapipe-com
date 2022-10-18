@@ -40,13 +40,13 @@ module.exports = [
 
     ["mediapipe.CalculatorGraph.CloseAllPacketSources", "void", ["=close_all_packet_sources"], [], "", ""],
 
-    ["mediapipe.CalculatorGraph.StartRun", "void", ["=start_run", "/WrapAs=mediapipe::autoit::RaiseAutoItErrorIfNotOk"], [
+    ["mediapipe.CalculatorGraph.StartRun", "void", ["=start_run", "/WrapAs=RaiseAutoItErrorIfNotOk"], [
         ["std::map<std::string, Packet>", "input_side_packets", "", ["/Ref"]],
     ], "", ""],
 
-    ["mediapipe.CalculatorGraph.WaitUntilDone", "void", ["=wait_until_done", "/WrapAs=mediapipe::autoit::RaiseAutoItErrorIfNotOk"], [], "", ""],
-    ["mediapipe.CalculatorGraph.WaitUntilIdle", "void", ["=wait_until_idle", "/WrapAs=mediapipe::autoit::RaiseAutoItErrorIfNotOk"], [], "", ""],
-    ["mediapipe.CalculatorGraph.WaitForObservedOutput", "void", ["=wait_for_observed_output", "/WrapAs=mediapipe::autoit::RaiseAutoItErrorIfNotOk"], [], "", ""],
+    ["mediapipe.CalculatorGraph.WaitUntilDone", "void", ["=wait_until_done", "/WrapAs=RaiseAutoItErrorIfNotOk"], [], "", ""],
+    ["mediapipe.CalculatorGraph.WaitUntilIdle", "void", ["=wait_until_idle", "/WrapAs=RaiseAutoItErrorIfNotOk"], [], "", ""],
+    ["mediapipe.CalculatorGraph.WaitForObservedOutput", "void", ["=wait_for_observed_output", "/WrapAs=RaiseAutoItErrorIfNotOk"], [], "", ""],
     ["mediapipe.CalculatorGraph.HasError", "bool", ["=has_error"], [], "", ""],
     ["mediapipe.CalculatorGraph.get_combined_error_message", "std::string", ["/External"], [], "", ""],
 

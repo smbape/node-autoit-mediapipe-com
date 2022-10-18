@@ -139,5 +139,5 @@ const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_proto(co
 	absl::StatusOr<Packet> packet = packet_internal::PacketFromDynamicProto(type_name, serialized);
 	AUTOIT_ASSERT_THROW(packet.ok(), "Unregistered proto message type: " << type_name);
 
-	return std::make_shared<Packet>(std::move(packet.value()));
+	return std::make_shared<Packet>(std::move(std::move(packet).value()));
 }

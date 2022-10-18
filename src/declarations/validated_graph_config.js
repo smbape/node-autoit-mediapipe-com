@@ -6,11 +6,11 @@ module.exports = [
 
     ["mediapipe.ValidatedGraphConfig.ValidatedGraphConfig", "mediapipe.ValidatedGraphConfig.ValidatedGraphConfig", [], [], "", ""],
 
-    ["mediapipe.ValidatedGraphConfig.Initialize", "void", ["=initialize", "/WrapAs=mediapipe::autoit::RaiseAutoItErrorIfNotOk"], [
+    ["mediapipe.ValidatedGraphConfig.Initialize", "void", ["=initialize", "/WrapAs=RaiseAutoItErrorIfNotOk"], [
         ["std::string", "binary_graph_path", "", ["/Cast=mediapipe::autoit::ReadCalculatorGraphConfigFromFile"]],
     ], "", ""],
 
-    ["mediapipe.ValidatedGraphConfig.Initialize", "void", ["=initialize", "/WrapAs=mediapipe::autoit::RaiseAutoItErrorIfNotOk"], [
+    ["mediapipe.ValidatedGraphConfig.Initialize", "void", ["=initialize", "/WrapAs=RaiseAutoItErrorIfNotOk"], [
         ["mediapipe::CalculatorGraphConfig", "graph_config", "", ["/Ref"]],
     ], "", ""],
 

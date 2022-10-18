@@ -1,7 +1,7 @@
 #include "Mediapipe_Autoit_Packet_getter_Object.h"
 
 using namespace mediapipe;
-// using namespace google::protobuf::Message;
+using namespace proto_ns;
 
 // RegisteredTypeName()
 
@@ -108,10 +108,52 @@ const std::vector<float> mediapipe::autoit::packet_getter::get_float_list(const 
 	AUTOIT_THROW("Packet doesn't contain std::vector<float> or std::array<float, 4 / 16> containers.");
 }
 
-// const std::shared_ptr<Message> get_proto(const Packet& packet) {
+static std::shared_ptr<Message> MessageFromDynamicProto(const std::string& type_name, const std::string& serialized) {
+	using namespace packet_internal;
 
-// }
+	absl::StatusOr<std::unique_ptr<HolderBase>> maybe_holder =
+		MessageHolderRegistry::CreateByName(type_name);
 
-// const std::vector<std::shared_ptr<google::protobuf::Message>> get_proto_list(const Packet& packet) {
+	RaiseAutoItErrorIfNotOk(maybe_holder.status());
 
-// }
+	std::unique_ptr<HolderBase> holder_ = std::move(maybe_holder).value();
+	absl::StatusOr<std::unique_ptr<Message>> release_result = static_cast<Holder<Message>*>(holder_.get())->Release();
+	RaiseAutoItErrorIfNotOk(release_result.status());
+
+	std::unique_ptr<Message> new_message = std::move(release_result).value();
+	AUTOIT_ASSERT_THROW(new_message->ParseFromString(serialized), "Failed to get proto message from packet " << type_name);
+
+	return std::shared_ptr<Message>(new_message.release());
+}
+
+const std::shared_ptr<Message> mediapipe::autoit::packet_getter::get_proto(const Packet& packet) {
+	const auto& message = packet.GetProtoMessageLite();
+	const std::string& type_name = message.GetTypeName();
+	const std::string& serialized = message.SerializeAsString();
+	return MessageFromDynamicProto(type_name, serialized);
+}
+
+const std::vector<std::shared_ptr<Message>> mediapipe::autoit::packet_getter::get_proto_list(const Packet& packet) {
+	absl::StatusOr<std::vector<const MessageLite*>> proto_vector_ = packet.GetVectorOfProtoMessageLitePtrs();
+	RaiseAutoItErrorIfNotOk(proto_vector_.status());
+
+	std::vector<const MessageLite*> proto_vector = std::move(proto_vector_).value();
+	auto size = proto_vector.size();
+
+	std::vector<std::shared_ptr<Message>> proto_list;
+
+	if (size == 0) {
+		return proto_list;
+	}
+
+	proto_list.reserve(size);
+	auto type_name = proto_vector[0]->GetTypeName();
+
+	int i = 0;
+	for (const MessageLite* proto : proto_vector) {
+		const std::string& serialized = proto->SerializeAsString();
+		proto_list[i++] = MessageFromDynamicProto(type_name, serialized);
+	}
+
+	return proto_list;
+}

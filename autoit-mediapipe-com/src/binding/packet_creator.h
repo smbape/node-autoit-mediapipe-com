@@ -21,14 +21,14 @@ namespace mediapipe {
 			CV_WRAP const std::shared_ptr<Packet> create_uint32(int64 data);
 			CV_WRAP const std::shared_ptr<Packet> create_int_array(const std::vector<int>& data);
 			CV_WRAP const std::shared_ptr<Packet> create_float_array(const std::vector<float>& data);
-			CV_WRAP const std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, bool copy);
-			CV_WRAP const std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, ImageFormat::Format format, bool copy);
-			CV_WRAP const std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, bool copy);
-			CV_WRAP const std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, ImageFormat::Format format, bool copy);
-			CV_WRAP const std::shared_ptr<Packet> create_image(const Image& data, bool copy);
-			CV_WRAP const std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format format, bool copy);
-			CV_WRAP const std::shared_ptr<Packet> create_image(const cv::Mat& data, bool copy);
-			CV_WRAP const std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format format, bool copy);
+			CV_WRAP const std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, bool copy = true);
+			CV_WRAP const std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, ImageFormat::Format format, bool copy = true);
+			CV_WRAP const std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, bool copy = true);
+			CV_WRAP const std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, ImageFormat::Format format, bool copy = true);
+			CV_WRAP const std::shared_ptr<Packet> create_image(const Image& data, bool copy = true);
+			CV_WRAP const std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format format, bool copy = true);
+			CV_WRAP const std::shared_ptr<Packet> create_image(const cv::Mat& data, bool copy = true);
+			CV_WRAP const std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format format, bool copy = true);
 			CV_WRAP const std::shared_ptr<Packet> create_proto(const google::protobuf::Message& message);
 		}
 	}

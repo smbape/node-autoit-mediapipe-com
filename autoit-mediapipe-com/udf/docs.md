@@ -56,6 +56,8 @@
   - [mediapipe::autoit::packet_getter::get_int](#mediapipeautoitpacket_getterget_int)
   - [mediapipe::autoit::packet_getter::get_int_list](#mediapipeautoitpacket_getterget_int_list)
   - [mediapipe::autoit::packet_getter::get_packet_list](#mediapipeautoitpacket_getterget_packet_list)
+  - [mediapipe::autoit::packet_getter::get_proto](#mediapipeautoitpacket_getterget_proto)
+  - [mediapipe::autoit::packet_getter::get_proto_list](#mediapipeautoitpacket_getterget_proto_list)
   - [mediapipe::autoit::packet_getter::get_str](#mediapipeautoitpacket_getterget_str)
   - [mediapipe::autoit::packet_getter::get_str_list](#mediapipeautoitpacket_getterget_str_list)
   - [mediapipe::autoit::packet_getter::get_str_to_packet_dict](#mediapipeautoitpacket_getterget_str_to_packet_dict)
@@ -377,6 +379,26 @@
   - [VectorOfInt64::sort](#vectorofint64sort)
   - [VectorOfInt64::sort_variant](#vectorofint64sort_variant)
   - [VectorOfInt64::start](#vectorofint64start)
+- [VectorOfShared_ptrMessage](#vectorofshared_ptrmessage)
+  - [VectorOfShared_ptrMessage::create](#vectorofshared_ptrmessagecreate)
+  - [VectorOfShared_ptrMessage::Add](#vectorofshared_ptrmessageadd)
+  - [VectorOfShared_ptrMessage::Items](#vectorofshared_ptrmessageitems)
+  - [VectorOfShared_ptrMessage::Keys](#vectorofshared_ptrmessagekeys)
+  - [VectorOfShared_ptrMessage::Remove](#vectorofshared_ptrmessageremove)
+  - [VectorOfShared_ptrMessage::at](#vectorofshared_ptrmessageat)
+  - [VectorOfShared_ptrMessage::clear](#vectorofshared_ptrmessageclear)
+  - [VectorOfShared_ptrMessage::empty](#vectorofshared_ptrmessageempty)
+  - [VectorOfShared_ptrMessage::end](#vectorofshared_ptrmessageend)
+  - [VectorOfShared_ptrMessage::get_Item](#vectorofshared_ptrmessageget_item)
+  - [VectorOfShared_ptrMessage::get__NewEnum](#vectorofshared_ptrmessageget__newenum)
+  - [VectorOfShared_ptrMessage::push_back](#vectorofshared_ptrmessagepush_back)
+  - [VectorOfShared_ptrMessage::push_vector](#vectorofshared_ptrmessagepush_vector)
+  - [VectorOfShared_ptrMessage::put_Item](#vectorofshared_ptrmessageput_item)
+  - [VectorOfShared_ptrMessage::size](#vectorofshared_ptrmessagesize)
+  - [VectorOfShared_ptrMessage::slice](#vectorofshared_ptrmessageslice)
+  - [VectorOfShared_ptrMessage::sort](#vectorofshared_ptrmessagesort)
+  - [VectorOfShared_ptrMessage::sort_variant](#vectorofshared_ptrmessagesort_variant)
+  - [VectorOfShared_ptrMessage::start](#vectorofshared_ptrmessagestart)
 - [MapOfStringAndPacketDataType](#mapofstringandpacketdatatype)
   - [MapOfStringAndPacketDataType::create](#mapofstringandpacketdatatypecreate)
   - [MapOfStringAndPacketDataType::Add](#mapofstringandpacketdatatypeadd)
@@ -654,64 +676,64 @@ AutoIt:
 
 ```cpp
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image( const mediapipe::Image& data,
-                                                                                    bool                    copy );
+                                                                                    bool                    copy = true );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $data, $copy ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $data[, $copy] ) -> retval
 ```
 
 ```cpp
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image( const mediapipe::Image&        image,
                                                                                     mediapipe::ImageFormat::Format format,
-                                                                                    bool                           copy );
+                                                                                    bool                           copy = true );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $image, $format, $copy ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $image, $format[, $copy] ) -> retval
 ```
 
 ```cpp
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image( const cv::Mat& data,
-                                                                                    bool           copy );
+                                                                                    bool           copy = true );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $data, $copy ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $data[, $copy] ) -> retval
 ```
 
 ```cpp
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image( const cv::Mat&                 data,
                                                                                     mediapipe::ImageFormat::Format format,
-                                                                                    bool                           copy );
+                                                                                    bool                           copy = true );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $data, $format, $copy ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image( $data, $format[, $copy] ) -> retval
 ```
 
 ### mediapipe::autoit::packet_creator::create_image_frame
 
 ```cpp
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image_frame( const mediapipe::ImageFrame& data,
-                                                                                          bool                         copy );
+                                                                                          bool                         copy = true );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data, $copy ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data[, $copy] ) -> retval
 ```
 
 ```cpp
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image_frame( const mediapipe::ImageFrame&   data,
                                                                                           mediapipe::ImageFormat::Format format,
-                                                                                          bool                           copy );
+                                                                                          bool                           copy = true );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data, $format, $copy ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data, $format[, $copy] ) -> retval
 ```
 
 ```cpp
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image_frame( const cv::Mat& data,
-                                                                                          bool           copy );
+                                                                                          bool           copy = true );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data, $copy ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data[, $copy] ) -> retval
 ```
 
 ```cpp
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_image_frame( const cv::Mat&                 data,
                                                                                           mediapipe::ImageFormat::Format format,
-                                                                                          bool                           copy );
+                                                                                          bool                           copy = true );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data, $format, $copy ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_image_frame( $data, $format[, $copy] ) -> retval
 ```
 
 ### mediapipe::autoit::packet_creator::create_image_vector
@@ -930,6 +952,22 @@ AutoIt:
 std::vector<mediapipe::Packet> mediapipe::autoit::packet_getter::get_packet_list( mediapipe::Packet& packet );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_packet_list( $packet ) -> retval
+```
+
+### mediapipe::autoit::packet_getter::get_proto
+
+```cpp
+std::shared_ptr<google::protobuf::Message> mediapipe::autoit::packet_getter::get_proto( const mediapipe::Packet& packet );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_proto( $packet ) -> retval
+```
+
+### mediapipe::autoit::packet_getter::get_proto_list
+
+```cpp
+std::vector<std::shared_ptr<google::protobuf::Message>> mediapipe::autoit::packet_getter::get_proto_list( const mediapipe::Packet& packet );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_proto_list( $packet ) -> retval
 ```
 
 ### mediapipe::autoit::packet_getter::get_str
@@ -4062,6 +4100,194 @@ AutoIt:
 void* VectorOfInt64::start();
 AutoIt:
     $oVectorOfInt64.start() -> retval
+```
+
+## VectorOfShared_ptrMessage
+
+### VectorOfShared_ptrMessage::create
+
+```cpp
+static VectorOfShared_ptrMessage VectorOfShared_ptrMessage::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrMessage").create() -> <VectorOfShared_ptrMessage object>
+```
+
+```cpp
+static VectorOfShared_ptrMessage VectorOfShared_ptrMessage::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrMessage").create( $size ) -> <VectorOfShared_ptrMessage object>
+```
+
+```cpp
+static VectorOfShared_ptrMessage VectorOfShared_ptrMessage::create( VectorOfShared_ptrMessage other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrMessage").create( $other ) -> <VectorOfShared_ptrMessage object>
+```
+
+### VectorOfShared_ptrMessage::Add
+
+```cpp
+void VectorOfShared_ptrMessage::Add( std::shared_ptr<google::protobuf::Message> value );
+AutoIt:
+    $oVectorOfShared_ptrMessage.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrMessage::Items
+
+```cpp
+VectorOfShared_ptrMessage VectorOfShared_ptrMessage::Items();
+AutoIt:
+    $oVectorOfShared_ptrMessage.Items() -> retval
+```
+
+### VectorOfShared_ptrMessage::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrMessage::Keys();
+AutoIt:
+    $oVectorOfShared_ptrMessage.Keys() -> retval
+```
+
+### VectorOfShared_ptrMessage::Remove
+
+```cpp
+void VectorOfShared_ptrMessage::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrMessage.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrMessage::at
+
+```cpp
+std::shared_ptr<google::protobuf::Message> VectorOfShared_ptrMessage::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrMessage.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrMessage::at( size_t                                     index,
+                                    std::shared_ptr<google::protobuf::Message> value );
+AutoIt:
+    $oVectorOfShared_ptrMessage.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrMessage::clear
+
+```cpp
+void VectorOfShared_ptrMessage::clear();
+AutoIt:
+    $oVectorOfShared_ptrMessage.clear() -> None
+```
+
+### VectorOfShared_ptrMessage::empty
+
+```cpp
+bool VectorOfShared_ptrMessage::empty();
+AutoIt:
+    $oVectorOfShared_ptrMessage.empty() -> retval
+```
+
+### VectorOfShared_ptrMessage::end
+
+```cpp
+void* VectorOfShared_ptrMessage::end();
+AutoIt:
+    $oVectorOfShared_ptrMessage.end() -> retval
+```
+
+### VectorOfShared_ptrMessage::get_Item
+
+```cpp
+std::shared_ptr<google::protobuf::Message> VectorOfShared_ptrMessage::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrMessage.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrMessage( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrMessage::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrMessage::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrMessage._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrMessage::push_back
+
+```cpp
+void VectorOfShared_ptrMessage::push_back( std::shared_ptr<google::protobuf::Message> value );
+AutoIt:
+    $oVectorOfShared_ptrMessage.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrMessage::push_vector
+
+```cpp
+void VectorOfShared_ptrMessage::push_vector( VectorOfShared_ptrMessage other );
+AutoIt:
+    $oVectorOfShared_ptrMessage.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrMessage::push_vector( VectorOfShared_ptrMessage other,
+                                             size_t                    count,
+                                             size_t                    start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrMessage.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrMessage::put_Item
+
+```cpp
+void VectorOfShared_ptrMessage::put_Item( size_t                                     vIndex,
+                                          std::shared_ptr<google::protobuf::Message> vItem );
+AutoIt:
+    $oVectorOfShared_ptrMessage.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrMessage::size
+
+```cpp
+size_t VectorOfShared_ptrMessage::size();
+AutoIt:
+    $oVectorOfShared_ptrMessage.size() -> retval
+```
+
+### VectorOfShared_ptrMessage::slice
+
+```cpp
+VectorOfShared_ptrMessage VectorOfShared_ptrMessage::slice( size_t start = 0,
+                                                            size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrMessage.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrMessage::sort
+
+```cpp
+void VectorOfShared_ptrMessage::sort( void*  comparator,
+                                      size_t start = 0,
+                                      size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrMessage.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrMessage::sort_variant
+
+```cpp
+void VectorOfShared_ptrMessage::sort_variant( void*  comparator,
+                                              size_t start = 0,
+                                              size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrMessage.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrMessage::start
+
+```cpp
+void* VectorOfShared_ptrMessage::start();
+AutoIt:
+    $oVectorOfShared_ptrMessage.start() -> retval
 ```
 
 ## MapOfStringAndPacketDataType

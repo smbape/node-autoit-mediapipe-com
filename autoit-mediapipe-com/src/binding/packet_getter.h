@@ -23,8 +23,8 @@ namespace mediapipe {
 			CV_WRAP const float get_float(const Packet& packet);
 			CV_WRAP const std::vector<int64> get_int_list(const Packet& packet);
 			CV_WRAP const std::vector<float> get_float_list(const Packet& packet);
-			// CV_WRAP const std::shared_ptr<google::protobuf::Message> get_proto(const Packet& packet);
-			// CV_WRAP const std::vector<std::shared_ptr<google::protobuf::Message>> get_proto_list(const Packet& packet);
+			CV_WRAP const std::shared_ptr<google::protobuf::Message> get_proto(const Packet& packet);
+			CV_WRAP const std::vector<std::shared_ptr<google::protobuf::Message>> get_proto_list(const Packet& packet);
 		}
 	}
 }

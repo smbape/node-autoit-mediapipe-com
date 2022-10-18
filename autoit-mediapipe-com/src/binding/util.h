@@ -7,6 +7,8 @@
 
 #include "autoit_bridge_common.h"
 
+#define RaiseAutoItErrorIfNotOk(status) AUTOIT_ASSERT_THROW(status.ok(), ::mediapipe::autoit::StatusCodeToAutoItError(status.code()) << ": " << status.message().data())
+
 namespace mediapipe {
 	namespace autoit {
 		inline std::string StatusCodeToAutoItError(const ::absl::StatusCode& code) {
@@ -20,10 +22,6 @@ namespace mediapipe {
 			default:
 				return "Runtime error";
 			}
-		}
-
-		inline void RaiseAutoItErrorIfNotOk(const absl::Status& status) {
-			AUTOIT_ASSERT_THROW(status.ok(), StatusCodeToAutoItError(status.code()) << ": " << status.message().data());
 		}
 
 		inline void RaiseAutoItErrorIfOverflow(int64 value, int64 min, int64 max) {
@@ -87,9 +85,9 @@ namespace mediapipe {
 		}
 
 		template <typename T>
-		inline auto AssertAutoItValue(const T& wrapper) {
+		inline auto& AssertAutoItValue(const T& wrapper) {
 			RaiseAutoItErrorIfNotOk(wrapper.status());
-			return wrapper.value();
+			return std::move(wrapper).value();
 		}
 	}
 }
