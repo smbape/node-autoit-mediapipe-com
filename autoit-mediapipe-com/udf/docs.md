@@ -789,9 +789,9 @@ AutoIt:
 ### mediapipe::autoit::packet_creator::create_proto
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_proto( const google::protobuf::Message& proto_message );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_proto( const google::protobuf::Message& message );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_proto( $proto_message ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_proto( $message ) -> retval
 ```
 
 ### mediapipe::autoit::packet_creator::create_string

@@ -29,7 +29,7 @@ namespace mediapipe {
 			CV_WRAP const std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format format, bool copy);
 			CV_WRAP const std::shared_ptr<Packet> create_image(const cv::Mat& data, bool copy);
 			CV_WRAP const std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format format, bool copy);
-			CV_WRAP const std::shared_ptr<Packet> create_proto(const google::protobuf::Message& proto_message);
+			CV_WRAP const std::shared_ptr<Packet> create_proto(const google::protobuf::Message& message);
 		}
 	}
 }

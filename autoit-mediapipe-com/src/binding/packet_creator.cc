@@ -130,23 +130,14 @@ const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_image(co
 	return CreateImagePacket(image_frame);
 }
 
-const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_proto(const google::protobuf::Message& proto_message) {
-	using namespace google::protobuf;
-	using packet_internal::HolderBase;
+const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_proto(const google::protobuf::Message& message) {
+	auto type_name = message.GetDescriptor()->full_name();
+	std::string serialized;
 
-	auto type_name = proto_message.GetDescriptor()->full_name();
-	std::string serialized_proto;
-	proto_message.SerializeToString(&serialized_proto);
+	AUTOIT_ASSERT_THROW(message.SerializeToString(&serialized), "Failed to serialize message " << type_name);
 
-	absl::StatusOr<std::unique_ptr<HolderBase>> maybe_holder =
-		packet_internal::MessageHolderRegistry::CreateByName(type_name);
+	absl::StatusOr<Packet> packet = packet_internal::PacketFromDynamicProto(type_name, serialized);
+	AUTOIT_ASSERT_THROW(packet.ok(), "Unregistered proto message type: " << type_name);
 
-	AUTOIT_ASSERT_THROW(maybe_holder.ok(), "Unregistered proto message type: " << type_name);
-
-	// Creates a Packet with the concrete C++ payload type.
-	std::unique_ptr<HolderBase> message_holder = std::move(maybe_holder).value();
-	auto* copy = const_cast<proto_ns::MessageLite*>(message_holder->GetProtoMessageLite());
-	copy->ParseFromString(serialized_proto);
-
-	return std::make_shared<Packet>(std::move(packet_internal::Create(message_holder.release())));
+	return std::make_shared<Packet>(std::move(packet.value()));
 }

@@ -9,6 +9,7 @@
 #include "mediapipe/calculators/util/thresholding_calculator.pb.h"
 #include "mediapipe/modules/objectron/calculators/lift_2d_frame_annotation_to_3d_calculator.pb.h"
 #include "Mediapipe_Autoit_Packet_creator_Object.h"
+#include "Cv_Mat_Object.h"
 
 #ifdef BOOL
 #undef BOOL
@@ -353,9 +354,9 @@ namespace mediapipe {
 						OptionsType calculator_options;
 						MergeFromString(&calculator_options, elem.value());
 						ModifyOptionsFields(calculator_options, options_field_list);
-						std::string serialized_proto;
-						calculator_options.SerializeToString(&serialized_proto);
-						elem.set_value(std::move(serialized_proto));
+						std::string serialized;
+						calculator_options.SerializeToString(&serialized);
+						elem.set_value(std::move(serialized));
 						node_options_modified = true;
 						break;
 					}
@@ -559,36 +560,33 @@ namespace mediapipe {
 				case PacketDataType::FLOAT_LIST:
 					hr = autoit_from(get_float_list(output_packet), _retval);
 					break;
-				// case PacketDataType::IMAGE:
-				// 	hr = pPacket_getter->get_image(in_val, v_image_format, v_copy_image, _retval);
-				// 	break;
-				// case PacketDataType::IMAGE_FRAME:
-				// 	hr = pPacket_getter->get_image_frame(in_val, v_image_format, v_copy_image, _retval);
-				// 	break;
-				// case PacketDataType::IMAGE_LIST:
-				// 	hr = pPacket_getter->get_image_vector(in_val, _retval);
-				// 	break;
+				case PacketDataType::IMAGE: {
+					const Image& image = GetContent<Image>(output_packet);
+					hr = autoit_from(mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get()), _retval);
+					break;
+				}
+				case PacketDataType::IMAGE_FRAME: {
+					const ImageFrame& image_frame = GetContent<ImageFrame>(output_packet);
+					hr = autoit_from(mediapipe::formats::MatView(&image_frame), _retval);
+					break;
+				}
+				case PacketDataType::IMAGE_LIST: {
+					const auto& image_list = GetContent<std::vector<Image>>(output_packet);
+					std::vector<cv::Mat> mat_list;
+					mat_list.reserve(image_list.size());
+					int i = 0;
+					for (const auto& image : image_list) {
+						mat_list[i++] = mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get());
+					}
+					hr = autoit_from(image_list, _retval);
+					break;
+				}
 				// case PacketDataType::PROTO:
 				// 	hr = pPacket_getter->get_proto(in_val, _retval);
 				// 	break;
 				default:
 					AUTOIT_THROW("get packet content of data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
 				}
-
-				// STDMETHOD(get_bool)(VARIANT* pVarArg0, VARIANT_BOOL* _retval);
-				// STDMETHOD(get_bool_list)(VARIANT* pVarArg0, VARIANT* _retval);
-				// STDMETHOD(get_float)(VARIANT* pVarArg0, FLOAT* _retval);
-				// STDMETHOD(get_float_list)(VARIANT* pVarArg0, VARIANT* _retval);
-				// STDMETHOD(get_image)(VARIANT* pVarArg0, IMediapipe_Image_Object** _retval);
-				// STDMETHOD(get_image_frame)(VARIANT* pVarArg0, IMediapipe_ImageFrame_Object** _retval);
-				// STDMETHOD(get_image_list)(VARIANT* pVarArg0, VARIANT* _retval);
-				// STDMETHOD(get_int)(VARIANT* pVarArg0, LONGLONG* _retval);
-				// STDMETHOD(get_int_list)(VARIANT* pVarArg0, VARIANT* _retval);
-				// STDMETHOD(get_packet_list)(VARIANT* pVarArg0, VARIANT* _retval);
-				// STDMETHOD(get_str)(VARIANT* pVarArg0, BSTR* _retval);
-				// STDMETHOD(get_str_list)(VARIANT* pVarArg0, VARIANT* _retval);
-				// STDMETHOD(get_str_to_packet_dict)(VARIANT* pVarArg0, VARIANT* _retval);
-				// STDMETHOD(get_uint)(VARIANT* pVarArg0, ULONGLONG* _retval);
 
 				AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to get a " << StringifyPacketDataType(packet_data_type) << " packet content");
 
