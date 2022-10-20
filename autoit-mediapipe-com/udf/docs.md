@@ -13,10 +13,14 @@
   - [google::protobuf::autoit::MapContainer::contains](#googleprotobufautoitmapcontainercontains)
   - [google::protobuf::autoit::MapContainer::get](#googleprotobufautoitmapcontainerget)
   - [google::protobuf::autoit::MapContainer::get_Item](#googleprotobufautoitmapcontainerget_item)
+  - [google::protobuf::autoit::MapContainer::get__NewEnum](#googleprotobufautoitmapcontainerget__newenum)
   - [google::protobuf::autoit::MapContainer::length](#googleprotobufautoitmapcontainerlength)
   - [google::protobuf::autoit::MapContainer::put_Item](#googleprotobufautoitmapcontainerput_item)
   - [google::protobuf::autoit::MapContainer::size](#googleprotobufautoitmapcontainersize)
   - [google::protobuf::autoit::MapContainer::str](#googleprotobufautoitmapcontainerstr)
+- [google::protobuf::autoit::cmessage](#googleprotobufautoitcmessage)
+  - [google::protobuf::autoit::cmessage::GetFieldValue](#googleprotobufautoitcmessagegetfieldvalue)
+  - [google::protobuf::autoit::cmessage::SetFieldValue](#googleprotobufautoitcmessagesetfieldvalue)
 - [mediapipe](#mediapipe)
   - [mediapipe::variant](#mediapipevariant)
 - [mediapipe::autoit::packet_creator](#mediapipeautoitpacket_creator)
@@ -69,6 +73,7 @@
   - [google::protobuf::autoit::RepeatedContainer::clear](#googleprotobufautoitrepeatedcontainerclear)
   - [google::protobuf::autoit::RepeatedContainer::deepcopy](#googleprotobufautoitrepeatedcontainerdeepcopy)
   - [google::protobuf::autoit::RepeatedContainer::get_Item](#googleprotobufautoitrepeatedcontainerget_item)
+  - [google::protobuf::autoit::RepeatedContainer::get__NewEnum](#googleprotobufautoitrepeatedcontainerget__newenum)
   - [google::protobuf::autoit::RepeatedContainer::insert](#googleprotobufautoitrepeatedcontainerinsert)
   - [google::protobuf::autoit::RepeatedContainer::length](#googleprotobufautoitrepeatedcontainerlength)
   - [google::protobuf::autoit::RepeatedContainer::pop](#googleprotobufautoitrepeatedcontainerpop)
@@ -579,6 +584,14 @@ AutoIt:
     $oMapContainer( $key ) -> retval
 ```
 
+### google::protobuf::autoit::MapContainer::get__NewEnum
+
+```cpp
+IUnknown* google::protobuf::autoit::MapContainer::get__NewEnum();
+AutoIt:
+    $oMapContainer._NewEnum() -> retval
+```
+
 ### google::protobuf::autoit::MapContainer::length
 
 ```cpp
@@ -610,6 +623,27 @@ AutoIt:
 std::string google::protobuf::autoit::MapContainer::str() const;
 AutoIt:
     $oMapContainer.str() -> retval
+```
+
+## google::protobuf::autoit::cmessage
+
+### google::protobuf::autoit::cmessage::GetFieldValue
+
+```cpp
+_variant_t google::protobuf::autoit::cmessage::GetFieldValue( google::protobuf::Message& message,
+                                                              const std::string&         field_name );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.autoit.cmessage").GetFieldValue( $message, $field_name ) -> retval
+```
+
+### google::protobuf::autoit::cmessage::SetFieldValue
+
+```cpp
+int google::protobuf::autoit::cmessage::SetFieldValue( google::protobuf::Message& message,
+                                                       const std::string&         field_name,
+                                                       const _variant_t&          arg );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.autoit.cmessage").SetFieldValue( $message, $field_name, $arg ) -> retval
 ```
 
 ## mediapipe
@@ -1063,6 +1097,14 @@ _variant_t google::protobuf::autoit::RepeatedContainer::get_Item( SSIZE_T index 
 AutoIt:
     $oRepeatedContainer.Item( $index ) -> retval
     $oRepeatedContainer( $index ) -> retval
+```
+
+### google::protobuf::autoit::RepeatedContainer::get__NewEnum
+
+```cpp
+IUnknown* google::protobuf::autoit::RepeatedContainer::get__NewEnum();
+AutoIt:
+    $oRepeatedContainer._NewEnum() -> retval
 ```
 
 ### google::protobuf::autoit::RepeatedContainer::insert

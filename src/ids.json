@@ -15,6 +15,10 @@
         "iid": "9f99b49c-d433-474d-9768-a5deb2b8e278",
         "clsid": "7bbd25e9-b240-4b12-96bb-3adbe1e4c796"
     },
+    "google::protobuf::autoit::cmessage": {
+        "iid": "d6b3d092-12dd-451c-adf4-d7f59bd18885",
+        "clsid": "492bce4d-0312-47c9-80b1-c9b8ac61066c"
+    },
     "mediapipe": {
         "iid": "5f6f6001-7800-47f5-b394-6fba3078caf7",
         "clsid": "a8c1b513-df68-4984-952f-161d50d6a8b8"

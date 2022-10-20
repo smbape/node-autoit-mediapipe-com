@@ -13,13 +13,35 @@ namespace google {
 				}
 			}
 
-			RepeatedIterator& RepeatedIterator::operator++() {
-				curr++;
+			RepeatedIterator& RepeatedIterator::operator++() noexcept {
+				++m_iter;
+				m_dirty = true;
 				return *this;
 			}
 
-			_variant_t RepeatedIterator::GetItem() const {
-				return container->GetItem(curr);
+			RepeatedIterator RepeatedIterator::operator++(int) noexcept {
+				RepeatedIterator _Tmp = *this;
+				++*this;
+				return _Tmp;
+			}
+
+			bool RepeatedIterator::operator==(const autoit::RepeatedIterator& b) const noexcept {
+				return m_iter == b.m_iter;
+			}
+
+			bool RepeatedIterator::operator!=(const autoit::RepeatedIterator& b) const noexcept {
+				return m_iter != b.m_iter;
+			}
+
+			const _variant_t& RepeatedIterator::operator*() noexcept {
+				if (m_dirty) {
+					VARIANT* pv = &m_value;
+					_Copy<VARIANT>::destroy(pv);
+					_variant_t result = container->GetItem(m_iter);
+					_Copy<VARIANT>::copy(pv, &result);
+					m_dirty = false;
+				}
+				return m_value;
 			}
 
 			size_t RepeatedContainer::Length() const {
@@ -414,7 +436,7 @@ namespace google {
 				Slice(list);
 
 				RepeatedContainerComparatorProxy cmp = { reinterpret_cast<RepeatedContainerComparator>(comparator) };
-            	auto begin = std::begin(list);
+				auto begin = std::begin(list);
 				std::sort(begin, begin + list.size(), cmp);
 
 				InternalAssignRepeatedField(this, list);

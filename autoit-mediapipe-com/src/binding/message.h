@@ -19,9 +19,18 @@ namespace google {
 				bool CheckFieldBelongsToMessage(const Message& message,
 					const FieldDescriptor* field_descriptor);
 
+				CV_WRAP int SetFieldValue(Message& message,
+					const std::string& field_name,
+					const _variant_t& arg);
+
 				int SetFieldValue(Message& message,
 					const FieldDescriptor* field_descriptor,
 					const _variant_t& arg);
+
+				CV_WRAP _variant_t GetFieldValue(
+					Message& message,
+					const std::string& field_name
+				);
 
 				_variant_t GetFieldValue(
 					Message& message,

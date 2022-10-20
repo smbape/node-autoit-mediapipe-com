@@ -47,6 +47,18 @@ const parseArguments = PROJECT_DIR => {
             ["std::numeric_limits<int32_t>::min()", "-0x80000000"],
             ["std::numeric_limits<int32_t>::max()", "0x7FFFFFFF"],
         ]),
+        onCoClass: (generator, coclass) => {
+            const {fqn} = coclass;
+
+            if (fqn.endsWith("MapContainer")) {
+                // make MapContainer to be recognized as a collection
+                generator.as_stl_enum(coclass, "std::pair<_variant_t, _variant_t>");
+            } else if (fqn.endsWith("RepeatedContainer")) {
+                // make RepeatedContainer to be recognized as a collection
+                generator.as_stl_enum(coclass, "_variant_t");
+                coclass.addProperty(["size_t", "Count", "", ["/R", "=size()"]]);
+            }
+        }
     };
 
     for (const opt of ["iface", "hdr", "impl", "idl", "rgs", "res", "save"]) {

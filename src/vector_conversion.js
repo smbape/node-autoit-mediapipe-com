@@ -106,21 +106,7 @@ exports.declare = (generator, type, parent, options = {}) => {
     coclass.addMethod([`${ fqn }.end`, "void*", ["/External"], [], "", ""]);
 
     // make vector to be recognized as a collection
-    const cotype = coclass.getClassName();
-    const _Copy = `::autoit::GenericCopy<${ vtype }>`;
-    const _CComEnum = `CComEnumOnSTL<IEnumVARIANT, &IID_IEnumVARIANT, VARIANT, ${ _Copy }, ${ fqn }>`;
-    const ICollection = `ATL::IAutoItCollectionEnumOnSTLImpl<I${ cotype }, ${ fqn }, ${ _CComEnum }, AutoItObject<${ fqn }>>`;
-
-    coclass.dispimpl = ICollection;
-
-    coclass.addMethod([`${ fqn }.get__NewEnum`, "IUnknown*", [
-        "/attr=propget",
-        "/attr=restricted",
-        "/id=DISPID_NEWENUM",
-        "/idlname=_NewEnum",
-        "=get__NewEnum",
-        "/IDL"
-    ], [], "", ""]);
+    generator.as_stl_enum(coclass, vtype);
 
     return fqn;
 };

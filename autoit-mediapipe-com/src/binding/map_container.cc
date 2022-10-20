@@ -8,10 +8,7 @@ namespace google {
 			const FieldDescriptor* field_descriptor = self->field_descriptor.get();
 			const Reflection* reflection = message->GetReflection();
 			MapIterator begin = reflection->MapBegin(message, field_descriptor);
-			return {
-				std::make_unique<MapIterator>(begin),
-				self
-			};
+			return autoit::MapIterator(self, std::move(begin));
 		}
 
 		autoit::MapIterator MapRefectionFriend::end(autoit::MapContainer* self) {
@@ -19,10 +16,7 @@ namespace google {
 			const FieldDescriptor* field_descriptor = self->field_descriptor.get();
 			const Reflection* reflection = message->GetReflection();
 			MapIterator end = reflection->MapEnd(message, field_descriptor);
-			return {
-				std::make_unique<MapIterator>(end),
-				self
-			};
+			return autoit::MapIterator(self, std::move(end));
 		}
 
 		std::string MapRefectionFriend::ToStr(const autoit::MapContainer* self) {
@@ -98,17 +92,58 @@ namespace google {
 				return _none;
 			}
 
-			MapIterator& MapIterator::operator++() {
-				(*iter)++;
+			MapIterator::MapIterator(
+				MapContainer* container,
+				const ::google::protobuf::MapIterator&& iter
+			) {
+				m_container = container;
+				m_iter = std::move(std::make_unique<::google::protobuf::MapIterator>(std::move(iter)));
+			}
+
+			MapIterator::MapIterator(const MapIterator& other) {
+				m_container = other.m_container;
+				m_iter = std::move(std::make_unique<::google::protobuf::MapIterator>(*other.m_iter));
+			}
+
+			MapIterator& MapIterator::operator=(const MapIterator& other) {
+				m_container = other.m_container;
+				m_iter = std::move(std::make_unique<::google::protobuf::MapIterator>(*other.m_iter));
+    			return *this;
+			}
+
+			MapIterator& MapIterator::operator++() noexcept {
+				++(*m_iter);
+				m_dirty = true;
 				return *this;
 			}
 
-			const MapKey& MapIterator::GetKey() {
-				return iter->GetKey();
+			MapIterator MapIterator::operator++(int) noexcept {
+				MapIterator _Tmp = *this;
+				++*this;
+				return _Tmp;
 			}
 
-			const MapValueRef& MapIterator::GetValueRef() {
-				return iter->GetValueRef();
+			bool MapIterator::operator==(const MapIterator& other) const noexcept {
+				return *m_iter == *other.m_iter;
+			}
+
+			bool MapIterator::operator!=(const MapIterator& other) const noexcept {
+				return *m_iter != *other.m_iter;
+			}
+
+			inline static void assign(_variant_t& dst, const _variant_t& src) {
+				VARIANT* pdst = &dst;
+				_Copy<VARIANT>::destroy(pdst);
+				_Copy<VARIANT>::copy(pdst, &src);
+			}
+
+			const std::pair<_variant_t, _variant_t>& MapIterator::operator*() noexcept {
+				if (m_dirty) {
+					assign(m_value.first, MapKeyToAutoIt(m_container->field_descriptor.get(), m_iter->GetKey()));
+					assign(m_value.second, MapValueRefToAutoIt(m_container->field_descriptor.get(), m_iter->GetValueRef()));
+					m_dirty = false;
+				}
+				return m_value;
 			}
 
 			MapIterator MapContainer::begin() {

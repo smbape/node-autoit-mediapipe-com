@@ -34,6 +34,15 @@ namespace google {
 
 		namespace autoit {
 			namespace cmessage {
+				inline static _variant_t default_variant() {
+					_variant_t vtDefault;
+					V_VT(&vtDefault) = VT_ERROR;
+					V_ERROR(&vtDefault) = DISP_E_PARAMNOTFOUND;
+					return vtDefault;
+				}
+
+				static _variant_t None = default_variant();
+
 				const std::string ToStr(const Message& message) {
 					TextFormat::Printer printer;
 					printer.SetHideUnknownFields(true);
@@ -76,16 +85,27 @@ namespace google {
 					return true;
 				}
 
-				bool HasField(const Message& message, const std::string& field_name) {
-					bool is_in_oneof;
+				static const FieldDescriptor* GetFieldDescriptor(
+					const Message& message,
+					const std::string& field_name,
+					bool& is_in_oneof
+				) {
 					const FieldDescriptor* field_descriptor =
 						FindFieldWithOneofs(message, field_name, &is_in_oneof);
 
 					if (field_descriptor == NULL) {
 						AUTOIT_ASSERT_THROW(is_in_oneof, "Protocol message " << message.GetDescriptor()->name() << " has no field " << field_name << ".");
-						return false;
 					}
 
+					return field_descriptor;
+				}
+
+				bool HasField(const Message& message, const std::string& field_name) {
+					bool is_in_oneof;
+					const FieldDescriptor* field_descriptor = GetFieldDescriptor(message, field_name, is_in_oneof);
+					if (field_descriptor == NULL) {
+						return false;
+					}
 					CheckHasPresence(field_descriptor, is_in_oneof);
 					return message.GetReflection()->HasField(message, field_descriptor);
 				}
@@ -285,6 +305,16 @@ namespace google {
 					return InternalSetNonOneofScalar(&message, field_descriptor, arg);
 				}
 
+				int SetFieldValue(
+					Message& message,
+					const std::string& field_name,
+					const _variant_t& arg
+				) {
+					bool is_in_oneof;
+					const FieldDescriptor* field_descriptor = GetFieldDescriptor(message, field_name, is_in_oneof);
+					return ::google::protobuf::autoit::cmessage::SetFieldValue(message, field_descriptor, arg);
+				}
+
 				int SetFieldValue(Message& message,
 					const FieldDescriptor* field_descriptor,
 					const _variant_t& arg) {
@@ -303,12 +333,18 @@ namespace google {
 					return InternalSetScalar(message, field_descriptor, arg);
 				}
 
+				_variant_t GetFieldValue(Message& message, const std::string& field_name) {
+					bool is_in_oneof;
+					const FieldDescriptor* field_descriptor = GetFieldDescriptor(message, field_name, is_in_oneof);
+					return GetFieldValue(message, field_descriptor);
+				}
+
 				_variant_t GetFieldValue(
 					Message& message,
 					const FieldDescriptor* field_descriptor
 				) {
 					if (!CheckFieldBelongsToMessage(message, field_descriptor)) {
-						return -1;
+						return None;
 					}
 
 					if (!field_descriptor->is_repeated() &&

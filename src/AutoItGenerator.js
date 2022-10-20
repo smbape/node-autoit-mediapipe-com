@@ -1165,7 +1165,7 @@ class AutoItGenerator {
             }
 
             if (typeof options.onCoClass === "function") {
-                options.onCoClass(coclass);
+                options.onCoClass(this, coclass);
             }
         }
 
@@ -1372,6 +1372,25 @@ class AutoItGenerator {
         }
 
         return value;
+    }
+
+    as_stl_enum(coclass, iterator) {
+        const {fqn} = coclass;
+        const cotype = coclass.getClassName();
+        const _Copy = `::autoit::GenericCopy<${ iterator }>`;
+        const _CComEnum = `CComEnumOnSTL<IEnumVARIANT, &IID_IEnumVARIANT, VARIANT, ${ _Copy }, ${ fqn }>`;
+        const ICollection = `ATL::IAutoItCollectionEnumOnSTLImpl<I${ cotype }, ${ fqn }, ${ _CComEnum }, AutoItObject<${ fqn }>>`;
+
+        coclass.dispimpl = ICollection;
+
+        coclass.addMethod([`${ fqn }.get__NewEnum`, "IUnknown*", [
+            "/attr=propget",
+            "/attr=restricted",
+            "/id=DISPID_NEWENUM",
+            "/idlname=_NewEnum",
+            "=get__NewEnum",
+            "/IDL"
+        ], [], "", ""]);
     }
 
     setReturn(returns, idltype, argname) {

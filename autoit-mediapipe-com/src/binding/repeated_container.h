@@ -9,10 +9,16 @@ namespace google {
 			struct RepeatedIterator;
 
 			struct RepeatedIterator {
-				RepeatedIterator& operator++();
+				RepeatedIterator& operator++() noexcept;
+				RepeatedIterator operator++(int) noexcept;
+				bool operator==(const RepeatedIterator& other) const noexcept;
+				bool operator!=(const RepeatedIterator& other) const noexcept;
+				const _variant_t& operator*() noexcept;
+
 				RepeatedContainer* container;
-				size_t curr = 0;
-				_variant_t GetItem() const;
+				size_t m_iter = 0;
+				_variant_t m_value;
+				bool m_dirty = true;
 			};
 
 			struct CV_EXPORTS_W_SIMPLE RepeatedContainer {
@@ -53,22 +59,5 @@ namespace google {
 				std::shared_ptr<FieldDescriptor> field_descriptor;
 			};
 		}
-
-		bool operator==(const autoit::RepeatedIterator& a, const autoit::RepeatedIterator& b) {
-			return a.curr == b.curr;
-		}
-
-		bool operator!=(const autoit::RepeatedIterator& a, const autoit::RepeatedIterator& b) {
-			return a.curr != b.curr;
-		}
 	}
-}
-
-namespace autoit {
-	template<typename destination_type>
-	struct _GenericCopy<destination_type, ::google::protobuf::autoit::RepeatedIterator> {
-		inline static HRESULT copy(destination_type* pTo, const ::google::protobuf::autoit::RepeatedIterator* pFrom) {
-			return autoit_from(pFrom->GetItem(), pTo);
-		}
-	};
 }

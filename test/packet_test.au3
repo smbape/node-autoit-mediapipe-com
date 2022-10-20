@@ -215,10 +215,33 @@ EndFunc   ;==>test_double_packet
 
 Func test_detection_proto_packet()
 	Local $detection = $detection_pb2.Detection()
+
 	_AssertTrue($text_format.Parse("score: 0.5", $detection))
-    Local $proto_packet = $packet_creator.create_proto($detection)
-    Local $output_proto = $packet_getter.get_proto($proto_packet)
-    Local $p = $packet_creator.create_proto($detection).at(100)
+
+	Local $proto_packet = $packet_creator.create_proto($detection)
+
+	Local $output_proto = $packet_getter.get_proto($proto_packet)
+
+	Local $p = $packet_creator.create_proto($detection).at(100)
+
+	Local $cmessage = _Mediapipe_ObjCreate("google.protobuf.autoit.cmessage")
+	_AssertTrue(IsObj($cmessage), "Failed to load google.protobuf.autoit.cmessage")
+
+	Local $scores = $cmessage.GetFieldValue($detection, "score")
+	_AssertEqual($scores.size(), 1)
+
+	; index access
+	_AssertAlmostEqual($scores(0), 0.5)
+
+	; loop access
+	Local $size = 0
+	For $score In $scores
+		_AssertAlmostEqual($score, 0.5)
+		$size += 1
+	Next
+
+	_AssertEqual($size, 1)
+
 	#forceref $p, $output_proto
 EndFunc   ;==>test_detection_proto_packet
 
