@@ -289,6 +289,9 @@ Object.assign(exports, {
             extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val);
             extern const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, I${ cotype }**& out_val);
             extern const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, ${ iface }**& out_val);
+            extern const HRESULT autoit_from(const ${ coclass.fqn }* in_val, I${ cotype }**& out_val);
+            extern const HRESULT autoit_from(const ${ coclass.fqn }* in_val, ${ iface }**& out_val);
+            extern const HRESULT autoit_from(const ${ coclass.fqn }* in_val, VARIANT*& out_val);
         `.replace(/^ {12}/mg, ""));
 
         impl.push(`
@@ -353,6 +356,18 @@ Object.assign(exports, {
 
             const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, ${ iface }**& out_val) {
                 return autoit_from(in_val, reinterpret_cast<I${ cotype }**&>(out_val));
+            }
+
+            const HRESULT autoit_from(const ${ coclass.fqn }* in_val, I${ cotype }**& out_val) {
+                return autoit_from(::autoit::reference_internal(in_val), out_val);
+            }
+
+            const HRESULT autoit_from(const ${ coclass.fqn }* in_val, ${ iface }**& out_val) {
+                return autoit_from(::autoit::reference_internal(in_val), out_val);
+            }
+
+            const HRESULT autoit_from(const ${ coclass.fqn }* in_val, VARIANT*& out_val) {
+                return autoit_from(::autoit::reference_internal(in_val), out_val);
             }
             `.replace(/^ {12}/mg, "")
         );

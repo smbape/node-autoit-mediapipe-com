@@ -372,6 +372,12 @@ namespace google {
 				::google::protobuf::MapRefectionFriend::SetItem(this, key, arg);
 			}
 
+			void MapContainer::SetFields(std::vector<std::pair<_variant_t, _variant_t>>& fields) {
+				for (auto& [key, arg] : fields) {
+					::google::protobuf::MapRefectionFriend::SetItem(this, key, arg);
+				}
+			}
+
 			std::string MapContainer::ToStr() const {
 				return ::google::protobuf::MapRefectionFriend::ToStr(this);
 			}

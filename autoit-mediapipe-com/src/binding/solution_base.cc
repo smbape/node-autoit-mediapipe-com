@@ -120,7 +120,7 @@ namespace mediapipe {
 
 			static _variant_t None = default_variant();
 
-			typedef std::vector<std::tuple<std::string, _variant_t>> OptionsFieldList;
+			typedef std::vector<std::pair<std::string, _variant_t>> OptionsFieldList;
 			typedef std::map<std::string, OptionsFieldList> MapOfStringAndOptionsFieldList;
 
 			const std::map<std::string, PacketDataType> NAME_TO_TYPE = {
@@ -279,7 +279,7 @@ namespace mediapipe {
 						continue;
 					}
 
-					const auto field_descriptor = descriptor->FindFieldByName(field_name);
+					const auto field_descriptor = FindFieldWithOneofs(calculator_options, field_name, descriptor);
 					AUTOIT_ASSERT_THROW(field_descriptor, "Field '" << field_name << "' does not belong to message '" << descriptor->full_name() << "'");
 
 					if (!field_descriptor->is_repeated()) {
@@ -287,7 +287,10 @@ namespace mediapipe {
 						return;
 					}
 
-					if ((V_VT(&field_value) & VT_ARRAY) != VT_ARRAY || (V_VT(&field_value) ^ VT_ARRAY) != VT_VARIANT) {
+					std::vector<_variant_t> field_value_vector;
+					HRESULT hr = autoit_to(&field_value, field_value_vector);
+
+					if (FAILED(hr)) {
 						AUTOIT_THROW(field_name << " is a repeated proto field but the value "
 							"to be set is " << V_VT(&field_value) << ", which is not iterable.");
 					}
@@ -302,27 +305,9 @@ namespace mediapipe {
 						::autoit::reference_internal(field_descriptor),
 					};
 
-					HRESULT hr = S_OK;
-					typename ATL::template CComSafeArray<VARIANT> vArray;
-					vArray.Attach(V_ARRAY(&field_value));
-
-					LONG lLower = vArray.GetLowerBound();
-					LONG lUpper = vArray.GetUpperBound();
-
-					_variant_t value;
-
-					for (LONG i = lLower; i <= lUpper; i++) {
-						auto& v = vArray.GetAt(i);
-						VARIANT* pv = &v;
-						if (!is_assignable_from(value, pv, false)) {
-							hr = E_INVALIDARG;
-							break;
-						}
-
+					for ( auto& value : field_value_vector) {
 						repeated_container.Append(value);
 					}
-
-					vArray.Detach();
 				}
 			}
 
@@ -333,7 +318,7 @@ namespace mediapipe {
 			) {
 				const auto& options_field_list = nested_calculator_params.at(node.name());
 
-				if (HasField(node, "node_options")) {
+				if (node.node_options_size() > 0) {
 					if (HasField(node, "options")) {
 						AUTOIT_THROW("Cannot modify the calculator options of " << node.name() << " because it "
 							"has both options and node_options fields.");

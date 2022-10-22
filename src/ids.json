@@ -67,10 +67,6 @@
         "iid": "805f1442-7b49-4aea-988a-b2c2faf54fc3",
         "clsid": "d7831daa-af6e-4d88-be12-83615c5ffb03"
     },
-    "mediapipe::CalculatorGraphConfig": {
-        "iid": "c6702b6c-9bee-472c-a296-407d9641d488",
-        "clsid": "dccd26fc-d287-48a3-8f7a-1185881c2855"
-    },
     "mediapipe::autoit::_framework_bindings": {
         "iid": "b50dde3f-b556-4b1d-b514-01763559479e",
         "clsid": "6f6efefc-9d13-4cd3-8c77-e328e2469019"
@@ -115,17 +111,25 @@
         "iid": "d5e10a6a-bb2b-48c6-b038-eddf6e51178b",
         "clsid": "b7b2f71a-d14f-4a76-9ebc-fad678a08fd4"
     },
-    "mediapipe::Detection": {
-        "iid": "5e7f829e-96d3-4809-bddb-780043874eab",
-        "clsid": "b2f71c86-1a67-4853-b55f-8d2a09ac37f9"
-    },
     "google::protobuf::TextFormat": {
         "iid": "adc2fdec-c2a0-4c0c-9c1b-e27474fcadbf",
         "clsid": "d0216315-1b73-45a2-8a4f-ec9c72f7b821"
     },
+    "mediapipe::CalculatorGraphConfig": {
+        "iid": "c6702b6c-9bee-472c-a296-407d9641d488",
+        "clsid": "dccd26fc-d287-48a3-8f7a-1185881c2855"
+    },
     "mediapipe::framework": {
         "iid": "a42443f3-5250-4055-aaf7-6d57d15b3667",
         "clsid": "91e5fac8-e6a5-49d2-bf17-0db04cb8933d"
+    },
+    "mediapipe::framework::calculator_pb2": {
+        "iid": "ee1fe6e7-10dc-4ac9-8e02-a76304ff1be5",
+        "clsid": "32bbec20-45d8-4239-af06-03b111a96f2a"
+    },
+    "mediapipe::Detection": {
+        "iid": "5e7f829e-96d3-4809-bddb-780043874eab",
+        "clsid": "b2f71c86-1a67-4853-b55f-8d2a09ac37f9"
     },
     "mediapipe::framework::formats": {
         "iid": "08624295-cc5b-454e-bbbe-d379f1a42abd",
@@ -162,6 +166,10 @@
     "MapOfStringAndVariant": {
         "iid": "515c4b61-b396-4701-a2bd-3bd772c6c344",
         "clsid": "4e1e09c1-2188-4d31-8c2b-738be68f5d67"
+    },
+    "VectorOfPairOfVariantAndVariant": {
+        "iid": "e2e4c1e6-ad09-4447-9850-0903375ed02a",
+        "clsid": "b444e827-91f6-4a46-bfd2-1fb7b1ad0677"
     },
     "VectorOfBool": {
         "iid": "6b7b11b6-5433-46d3-9dd4-02272c444058",

@@ -11,7 +11,14 @@ namespace google {
 				const FieldDescriptor* FindFieldWithOneofs(
 					const Message& message,
 					const std::string& field_name,
-					bool* in_oneof
+					bool* in_oneof = nullptr
+				);
+
+				const FieldDescriptor* FindFieldWithOneofs(
+					const Message& message,
+					const std::string& field_name,
+					const Descriptor* descriptor,
+					bool* in_oneof = nullptr
 				);
 
 				bool HasField(const Message& message, const std::string& field_name);
@@ -26,6 +33,9 @@ namespace google {
 				int SetFieldValue(Message& message,
 					const FieldDescriptor* field_descriptor,
 					const _variant_t& arg);
+
+				void InitAttributes(Message& message,
+					std::map<std::string, _variant_t>& attrs);
 
 				CV_WRAP _variant_t GetFieldValue(
 					Message& message,

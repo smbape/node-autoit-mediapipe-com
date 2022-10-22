@@ -4,10 +4,6 @@ module.exports = [
         ["const mediapipe.CalculatorGraph.GraphInputStreamAddMode.ADD_IF_NOT_FULL", "0", []],
     ], "", ""],
 
-    ["class mediapipe.CalculatorGraphConfig", ": google::protobuf::Message", ["/Simple"], [], "", ""],
-
-    ["mediapipe.CalculatorGraphConfig.CalculatorGraphConfig", "mediapipe.CalculatorGraphConfig.CalculatorGraphConfig", [], [], "", ""],
-
     ["class mediapipe.CalculatorGraph", "", [], [
         ["std::string", "text_config", "", ["/R", "=Config().DebugString()"]],
         ["std::string", "binary_config", "", ["/R", "=Config().SerializeAsString()"]],

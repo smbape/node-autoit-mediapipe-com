@@ -307,6 +307,20 @@ namespace google {
 				return cmessage::DeepCopy(message.get(), field_descriptor.get());
 			}
 
+			Message* RepeatedContainer::Add(std::map<std::string, _variant_t>& attrs) {
+				Message* message = this->message.get();
+				const FieldDescriptor* field_descriptor = this->field_descriptor.get();
+				const Reflection* reflection = message->GetReflection();
+
+				if (field_descriptor->cpp_type() != FieldDescriptor::CPPTYPE_MESSAGE) {
+					AUTOIT_THROW("field is not a message field");
+				}
+
+				Message* sub_message = reflection->AddMessage(message, field_descriptor);
+				cmessage::InitAttributes(*sub_message, attrs);
+				return sub_message;
+			}
+
 			void RepeatedContainer::Append(_variant_t item) {
 				Message* message = this->message.get();
 				const FieldDescriptor* field_descriptor = this->field_descriptor.get();
@@ -367,12 +381,24 @@ namespace google {
 					return;
 				}
 				case FieldDescriptor::CPPTYPE_MESSAGE: {
-					auto value = ::autoit::cast<std::shared_ptr<Message>>(&item);
-					Message* sub_message = reflection->AddMessage(message, field_descriptor);
-					sub_message->MergeFrom(*value);
+					Message* sub_message = Add();
+					std::map<std::string, _variant_t> sub_attrs;
+					HRESULT hr = autoit_to(&item, sub_attrs);
+					if (SUCCEEDED(hr)) {
+						cmessage::InitAttributes(*sub_message, sub_attrs);
+					} else {
+						auto value = ::autoit::cast<std::shared_ptr<Message>>(&item);
+						sub_message->MergeFrom(*value);
+					}
 				}
 				default:
 					AUTOIT_THROW("Adding value to a field of unknown type " << field_descriptor->cpp_type());
+				}
+			}
+
+			void RepeatedContainer::Extend(std::vector<_variant_t>& items) {
+				for (auto& item : items) {
+					Append(item);
 				}
 			}
 

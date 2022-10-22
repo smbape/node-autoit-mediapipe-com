@@ -16,6 +16,7 @@
   - [google::protobuf::autoit::MapContainer::get__NewEnum](#googleprotobufautoitmapcontainerget__newenum)
   - [google::protobuf::autoit::MapContainer::length](#googleprotobufautoitmapcontainerlength)
   - [google::protobuf::autoit::MapContainer::put_Item](#googleprotobufautoitmapcontainerput_item)
+  - [google::protobuf::autoit::MapContainer::setFields](#googleprotobufautoitmapcontainersetfields)
   - [google::protobuf::autoit::MapContainer::size](#googleprotobufautoitmapcontainersize)
   - [google::protobuf::autoit::MapContainer::str](#googleprotobufautoitmapcontainerstr)
 - [google::protobuf::autoit::cmessage](#googleprotobufautoitcmessage)
@@ -69,9 +70,11 @@
 - [google::protobuf::autoit::RepeatedContainer](#googleprotobufautoitrepeatedcontainer)
   - [google::protobuf::autoit::RepeatedContainer::create](#googleprotobufautoitrepeatedcontainercreate)
   - [google::protobuf::autoit::RepeatedContainer::MergeFrom](#googleprotobufautoitrepeatedcontainermergefrom)
+  - [google::protobuf::autoit::RepeatedContainer::add](#googleprotobufautoitrepeatedcontaineradd)
   - [google::protobuf::autoit::RepeatedContainer::append](#googleprotobufautoitrepeatedcontainerappend)
   - [google::protobuf::autoit::RepeatedContainer::clear](#googleprotobufautoitrepeatedcontainerclear)
   - [google::protobuf::autoit::RepeatedContainer::deepcopy](#googleprotobufautoitrepeatedcontainerdeepcopy)
+  - [google::protobuf::autoit::RepeatedContainer::extend](#googleprotobufautoitrepeatedcontainerextend)
   - [google::protobuf::autoit::RepeatedContainer::get_Item](#googleprotobufautoitrepeatedcontainerget_item)
   - [google::protobuf::autoit::RepeatedContainer::get__NewEnum](#googleprotobufautoitrepeatedcontainerget__newenum)
   - [google::protobuf::autoit::RepeatedContainer::insert](#googleprotobufautoitrepeatedcontainerinsert)
@@ -113,9 +116,6 @@
   - [mediapipe::CalculatorGraph::wait_for_observed_output](#mediapipecalculatorgraphwait_for_observed_output)
   - [mediapipe::CalculatorGraph::wait_until_done](#mediapipecalculatorgraphwait_until_done)
   - [mediapipe::CalculatorGraph::wait_until_idle](#mediapipecalculatorgraphwait_until_idle)
-- [mediapipe::CalculatorGraphConfig](#mediapipecalculatorgraphconfig)
-  - [mediapipe::CalculatorGraphConfig::get_create](#mediapipecalculatorgraphconfigget_create)
-  - [mediapipe::CalculatorGraphConfig::str](#mediapipecalculatorgraphconfigstr)
 - [mediapipe::Image](#mediapipeimage)
   - [mediapipe::Image::get_create](#mediapipeimageget_create)
   - [mediapipe::Image::is_aligned](#mediapipeimageis_aligned)
@@ -174,11 +174,14 @@
   - [mediapipe::Packet::str](#mediapipepacketstr)
 - [google::protobuf::Message](#googleprotobufmessage)
   - [google::protobuf::Message::str](#googleprotobufmessagestr)
+- [google::protobuf::TextFormat](#googleprotobuftextformat)
+  - [google::protobuf::TextFormat::Parse](#googleprotobuftextformatparse)
+- [mediapipe::CalculatorGraphConfig](#mediapipecalculatorgraphconfig)
+  - [mediapipe::CalculatorGraphConfig::get_create](#mediapipecalculatorgraphconfigget_create)
+  - [mediapipe::CalculatorGraphConfig::str](#mediapipecalculatorgraphconfigstr)
 - [mediapipe::Detection](#mediapipedetection)
   - [mediapipe::Detection::get_create](#mediapipedetectionget_create)
   - [mediapipe::Detection::str](#mediapipedetectionstr)
-- [google::protobuf::TextFormat](#googleprotobuftextformat)
-  - [google::protobuf::TextFormat::Parse](#googleprotobuftextformatparse)
 - [cv::Range](#cvrange)
   - [cv::Range::get_create](#cvrangeget_create)
   - [cv::Range::all](#cvrangeall)
@@ -607,6 +610,14 @@ void google::protobuf::autoit::MapContainer::put_Item( _variant_t key,
                                                        _variant_t arg );
 AutoIt:
     $oMapContainer.Item( $key ) = $arg
+```
+
+### google::protobuf::autoit::MapContainer::setFields
+
+```cpp
+void google::protobuf::autoit::MapContainer::setFields( std::vector<std::pair<_variant_t, _variant_t>>& fields );
+AutoIt:
+    $oMapContainer.setFields( $fields ) -> None
 ```
 
 ### google::protobuf::autoit::MapContainer::size
@@ -1066,6 +1077,14 @@ AutoIt:
     $oRepeatedContainer.MergeFrom( $other ) -> None
 ```
 
+### google::protobuf::autoit::RepeatedContainer::add
+
+```cpp
+google::protobuf::Message* google::protobuf::autoit::RepeatedContainer::add( std::map<std::string, _variant_t>& attrs = std::map<std::string, _variant_t>() );
+AutoIt:
+    $oRepeatedContainer.add( [$attrs] ) -> retval
+```
+
 ### google::protobuf::autoit::RepeatedContainer::append
 
 ```cpp
@@ -1088,6 +1107,14 @@ AutoIt:
 _variant_t google::protobuf::autoit::RepeatedContainer::deepcopy();
 AutoIt:
     $oRepeatedContainer.deepcopy() -> retval
+```
+
+### google::protobuf::autoit::RepeatedContainer::extend
+
+```cpp
+void google::protobuf::autoit::RepeatedContainer::extend( std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeatedContainer.extend( $items ) -> None
 ```
 
 ### google::protobuf::autoit::RepeatedContainer::get_Item
@@ -1488,25 +1515,6 @@ AutoIt:
 void mediapipe::CalculatorGraph::wait_until_idle();
 AutoIt:
     $oCalculatorGraph.wait_until_idle() -> None
-```
-
-## mediapipe::CalculatorGraphConfig
-
-### mediapipe::CalculatorGraphConfig::get_create
-
-```cpp
-static mediapipe::CalculatorGraphConfig mediapipe::CalculatorGraphConfig::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig").create() -> <mediapipe.CalculatorGraphConfig object>
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig")() -> <mediapipe.CalculatorGraphConfig object>
-```
-
-### mediapipe::CalculatorGraphConfig::str
-
-```cpp
-std::string mediapipe::CalculatorGraphConfig::str();
-AutoIt:
-    $oCalculatorGraphConfig.str() -> retval
 ```
 
 ## mediapipe::Image
@@ -2199,6 +2207,36 @@ AutoIt:
     $oMessage.str() -> retval
 ```
 
+## google::protobuf::TextFormat
+
+### google::protobuf::TextFormat::Parse
+
+```cpp
+bool google::protobuf::TextFormat::Parse( const std::string&                         input,
+                                          std::shared_ptr<google::protobuf::Message> output );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.text_format").Parse( $input, $output ) -> retval
+```
+
+## mediapipe::CalculatorGraphConfig
+
+### mediapipe::CalculatorGraphConfig::get_create
+
+```cpp
+static mediapipe::CalculatorGraphConfig mediapipe::CalculatorGraphConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig").create() -> <mediapipe.CalculatorGraphConfig object>
+    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig")() -> <mediapipe.CalculatorGraphConfig object>
+```
+
+### mediapipe::CalculatorGraphConfig::str
+
+```cpp
+std::string mediapipe::CalculatorGraphConfig::str();
+AutoIt:
+    $oCalculatorGraphConfig.str() -> retval
+```
+
 ## mediapipe::Detection
 
 ### mediapipe::Detection::get_create
@@ -2216,17 +2254,6 @@ AutoIt:
 std::string mediapipe::Detection::str();
 AutoIt:
     $oDetection.str() -> retval
-```
-
-## google::protobuf::TextFormat
-
-### google::protobuf::TextFormat::Parse
-
-```cpp
-bool google::protobuf::TextFormat::Parse( const std::string&                         input,
-                                          std::shared_ptr<google::protobuf::Message> output );
-AutoIt:
-    _Mediapipe_ObjCreate("google.protobuf.text_format").Parse( $input, $output ) -> retval
 ```
 
 ## cv::Range

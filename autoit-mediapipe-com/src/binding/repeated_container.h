@@ -36,7 +36,9 @@ namespace google {
 				CV_WRAP_AS(slice) void Slice(CV_OUT std::vector<_variant_t>& list, SSIZE_T start = 0) const;
 				CV_WRAP_AS(slice) void Slice(CV_OUT std::vector<_variant_t>& list, SSIZE_T start, size_t count) const;
 				CV_WRAP_AS(deepcopy) _variant_t DeepCopy();
+				CV_WRAP_AS(add) Message* Add(std::map<std::string, _variant_t>& attrs = std::map<std::string, _variant_t>());
 				CV_WRAP_AS(append) void Append(_variant_t item);
+				CV_WRAP_AS(extend) void Extend(std::vector<_variant_t>& items);
 				CV_WRAP_AS(insert) void Insert(SSIZE_T index, _variant_t item);
 				CV_WRAP_AS(insert) void Insert(std::tuple<SSIZE_T, _variant_t>& args);
 				CV_WRAP_AS(pop) _variant_t Pop(SSIZE_T index = -1);

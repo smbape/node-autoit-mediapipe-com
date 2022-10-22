@@ -4,6 +4,8 @@
 #include "Google_Protobuf_Autoit_MapContainer_Object.h"
 #include "Google_Protobuf_Autoit_RepeatedContainer_Object.h"
 #include "Google_Protobuf_Message_Object.h"
+#include "MapOfStringAndVariant_Object.h"
+#include "VectorOfPairOfVariantAndVariant_Object.h"
 
 // https://github.com/protocolbuffers/protobuf/issues/5051
 #ifdef GetMessage
@@ -56,8 +58,19 @@ namespace google {
 					const std::string& field_name,
 					bool* in_oneof
 				) {
-					*in_oneof = false;
 					const Descriptor* descriptor = message.GetDescriptor();
+					return FindFieldWithOneofs(message, field_name, descriptor, in_oneof);
+				}
+
+				const FieldDescriptor* FindFieldWithOneofs(
+					const Message& message,
+					const std::string& field_name,
+					const Descriptor* descriptor,
+					bool* in_oneof
+				) {
+					if (in_oneof != nullptr) {
+						*in_oneof = false;
+					}
 					const FieldDescriptor* field_descriptor =
 						descriptor->FindFieldByName(field_name);
 					if (field_descriptor != NULL) {
@@ -66,13 +79,15 @@ namespace google {
 					const OneofDescriptor* oneof_desc =
 						descriptor->FindOneofByName(field_name);
 					if (oneof_desc != NULL) {
-						*in_oneof = true;
+						if (in_oneof != nullptr) {
+							*in_oneof = true;
+						}
 						return message.GetReflection()->GetOneofFieldDescriptor(message, oneof_desc);
 					}
 					return NULL;
 				}
 
-				bool CheckHasPresence(const FieldDescriptor* field_descriptor, bool in_oneof) {
+				static bool CheckHasPresence(const FieldDescriptor* field_descriptor, bool in_oneof) {
 					auto message_name = field_descriptor->containing_type()->name();
 
 					AUTOIT_ASSERT_THROW(!field_descriptor->is_repeated(),
@@ -90,8 +105,7 @@ namespace google {
 					const std::string& field_name,
 					bool& is_in_oneof
 				) {
-					const FieldDescriptor* field_descriptor =
-						FindFieldWithOneofs(message, field_name, &is_in_oneof);
+					const FieldDescriptor* field_descriptor = FindFieldWithOneofs(message, field_name, &is_in_oneof);
 
 					if (field_descriptor == NULL) {
 						AUTOIT_ASSERT_THROW(is_in_oneof, "Protocol message " << message.GetDescriptor()->name() << " has no field " << field_name << ".");
@@ -204,16 +218,14 @@ namespace google {
 					const Message& message,
 					const FieldDescriptor* field_descriptor
 				) {
+					const Reflection* reflection = message.GetReflection();
+					if (!CheckFieldBelongsToMessage(message, field_descriptor)) {
+						return None;
+					}
+
 					_variant_t obj;
 					VARIANT* out_val = &obj;
 					VariantInit(out_val);
-
-					const Reflection* reflection = message.GetReflection();
-					if (!CheckFieldBelongsToMessage(message, field_descriptor)) {
-						V_VT(&obj) = VT_NULL;
-						return obj;
-					}
-
 					HRESULT hr = S_OK;
 
 					switch (field_descriptor->cpp_type()) {
@@ -266,34 +278,6 @@ namespace google {
 					return obj;
 				}
 
-				_variant_t InternalGetSubMessage(
-					const Message& message,
-					const FieldDescriptor* field_descriptor
-				) {
-					_variant_t obj;
-					VARIANT* out_val = &obj;
-					VariantInit(out_val);
-
-					const Reflection* reflection = message.GetReflection();
-					HRESULT hr = S_OK;
-
-					if (reflection->HasField(message, field_descriptor) &&
-						MessageReflectionFriend::IsLazyField(reflection, message, field_descriptor)) {
-						Message* sub_message = reflection->MutableMessage(const_cast<Message*>(&message), field_descriptor);
-						hr = autoit_from(::autoit::reference_internal(sub_message), out_val);
-					}
-					else {
-						const Message& sub_message = reflection->GetMessage(message, field_descriptor);
-						hr = autoit_from(::autoit::reference_internal(&sub_message), out_val);
-					}
-
-					if (FAILED(hr)) {
-						AUTOIT_THROW("Getting sub message failed");
-					}
-
-					return obj;
-				}
-
 				int InternalSetScalar(
 					Message& message,
 					const FieldDescriptor* field_descriptor,
@@ -333,6 +317,49 @@ namespace google {
 					return InternalSetScalar(message, field_descriptor, arg);
 				}
 
+				void InitAttributes(Message& message,
+					std::map<std::string, _variant_t>& attrs) {
+					const Descriptor* descriptor = message.GetDescriptor();
+
+					for (auto& [field_name, value] : attrs) {
+						const auto field_descriptor = FindFieldWithOneofs(message, field_name, descriptor);
+						AUTOIT_ASSERT_THROW(field_descriptor, "Field '" << field_name << "' does not belong to message '" << descriptor->full_name() << "'");
+						VARIANT* in_val = &value;
+
+						if (field_descriptor->is_map()) {
+							MapContainer autoit_container;
+							autoit_container.message = ::autoit::reference_internal(&message);
+							autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+							std::vector<std::pair<_variant_t, _variant_t>> value_fields;
+							HRESULT hr = autoit_to(in_val, value_fields);
+							AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "value of field " << field_name << " is not a map");
+							autoit_container.SetFields(value_fields);
+						}
+						else if (field_descriptor->is_repeated()) {
+							RepeatedContainer autoit_container;
+							autoit_container.message = ::autoit::reference_internal(&message);
+							autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+							std::vector<_variant_t> value_items;
+							HRESULT hr = autoit_to(in_val, value_items);
+							AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "value of field " << field_name << " is not a list");
+							autoit_container.Extend(value_items);
+						}
+						else if (field_descriptor->cpp_type() == FieldDescriptor::CPPTYPE_MESSAGE) {
+							std::map<std::string, _variant_t> sub_attrs;
+							HRESULT hr = autoit_to(in_val, sub_attrs);
+							if (SUCCEEDED(hr)) {
+								Message* sub_message = message.GetReflection()->MutableMessage(&message, field_descriptor);
+								InitAttributes(*sub_message, sub_attrs);
+							} else {
+								SetFieldValue(message, field_descriptor, value);
+							}
+						}
+						else {
+							SetFieldValue(message, field_descriptor, value);
+						}
+					}
+				}
+
 				_variant_t GetFieldValue(Message& message, const std::string& field_name) {
 					bool is_in_oneof;
 					const FieldDescriptor* field_descriptor = GetFieldDescriptor(message, field_name, is_in_oneof);
@@ -355,26 +382,29 @@ namespace google {
 					_variant_t obj;
 					VARIANT* out_val = &obj;
 					VariantInit(out_val);
+					HRESULT hr = S_OK;
 
 					if (field_descriptor->is_map()) {
 						MapContainer autoit_container;
 						autoit_container.message = ::autoit::reference_internal(&message);
 						autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
-						autoit_from(autoit_container, out_val);
+						hr = autoit_from(autoit_container, out_val);
 					}
 					else if (field_descriptor->is_repeated()) {
 						RepeatedContainer autoit_container;
 						autoit_container.message = ::autoit::reference_internal(&message);
 						autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
-						autoit_from(autoit_container, out_val);
+						hr = autoit_from(autoit_container, out_val);
 					}
 					else if (field_descriptor->cpp_type() ==
 						FieldDescriptor::CPPTYPE_MESSAGE) {
-						return InternalGetSubMessage(message, field_descriptor);
+						hr = autoit_from(message.GetReflection()->MutableMessage(&message, field_descriptor), out_val);
 					}
 					else {
 						AUTOIT_THROW("Should never happen");
 					}
+
+					AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "Failed to get field ");
 
 					return obj;
 				}

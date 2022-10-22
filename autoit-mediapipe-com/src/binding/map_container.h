@@ -66,6 +66,8 @@ namespace google {
 				CV_WRAP_AS(get Item) _variant_t GetItem(_variant_t key) const;
 				CV_WRAP_AS(put Item) void SetItem(_variant_t key, _variant_t arg);
 
+				CV_WRAP_AS(setFields) void SetFields(std::vector<std::pair<_variant_t, _variant_t>>& fields);
+
 				CV_WRAP_AS(str) std::string ToStr() const;
 
 				CV_WRAP void MergeFrom(const MapContainer& other);
