@@ -314,7 +314,7 @@ namespace mediapipe {
 			template<typename OptionsType>
 			void ModifyCalculatorOption(
 				const MapOfStringAndOptionsFieldList& nested_calculator_params,
-				CalculatorGraphConfig_Node& node
+				CalculatorGraphConfig::Node& node
 			) {
 				const auto& options_field_list = nested_calculator_params.at(node.name());
 
@@ -373,7 +373,7 @@ namespace mediapipe {
 			) {
 				auto nested_calculator_params = GenerateNestedCalculatorParams(calculator_params);
 				int num_calculator_params = nested_calculator_params.size();
-				for (CalculatorGraphConfig_Node& node : *calculator_graph_config.mutable_node()) {
+				for (CalculatorGraphConfig::Node& node : *calculator_graph_config.mutable_node()) {
 					if (!nested_calculator_params.count(node.name())) {
 						continue;
 					}

@@ -3,10 +3,16 @@ const declarations = [
 
     ["google.protobuf.Message.ToStr", "std::string", ["=str", "/Call=google::protobuf::autoit::cmessage::ToStr", "/Expr=*__self->get()"], [], "", ""],
 
+    ["class google.protobuf.FieldDescriptor", "", [], [
+        ["std::string", "full_name", "", ["/R=full_name"]],
+    ], "", ""],
+
     ["google.protobuf.TextFormat.ParseFromString", "bool", ["=Parse"], [
         ["string", "input", "", ["/C", "/Ref"]],
         ["std::shared_ptr<google::protobuf::Message>", "output", "", ["/Expr=$0.get()"]],
     ], "", ""],
+
+    // TODO : add Any.Unpack and Any.Pack
 ];
 
 const protobufs = {
