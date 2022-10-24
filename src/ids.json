@@ -111,6 +111,10 @@
         "iid": "d5e10a6a-bb2b-48c6-b038-eddf6e51178b",
         "clsid": "b7b2f71a-d14f-4a76-9ebc-fad678a08fd4"
     },
+    "google::protobuf::FieldDescriptor": {
+        "iid": "6d45c2f5-2954-44bc-ac5c-590d0c8ab69f",
+        "clsid": "06cb8926-04ff-425e-9403-f711318ee845"
+    },
     "google::protobuf::TextFormat": {
         "iid": "adc2fdec-c2a0-4c0c-9c1b-e27474fcadbf",
         "clsid": "d0216315-1b73-45a2-8a4f-ec9c72f7b821"

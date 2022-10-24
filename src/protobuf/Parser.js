@@ -48,6 +48,7 @@ class Parser {
         this.import_enums = new Set();
         this.exports = new Map();
         this.export_enums = new Set();
+        this.extensions = new Map();
         this.package = "";
         this.messages = [];
     }
@@ -60,12 +61,12 @@ class Parser {
         return parts;
     }
 
-    isEnum(type) {
-        const fqn = this.getCppType(type).split("::").join(".");
+    isEnum(type, scopes) {
+        const fqn = this.getCppType(type, scopes).split("::").join(".");
         return this.export_enums.has(fqn) || this.import_enums.has(fqn);
     }
 
-    getCppType(type) {
+    getCppType(type, scopes) {
         if (isScalar(type)) {
             return [type, SCALAR_TYPES.get(type)];
         }
@@ -73,8 +74,8 @@ class Parser {
         const message = type;
 
         // lookup in exports
-        for (let i = this.messages.length - 1; i >= -1; i--) {
-            const fqn = i === -1 ? message : `${ this.messages.slice(0, i + 1) }.${ message }`;
+        for (let i = scopes.length - 1; i >= -1; i--) {
+            const fqn = i === -1 ? message : `${ scopes.slice(0, i + 1) }.${ message }`;
             if (this.exports.has(fqn)) {
                 return fqn;
             }
@@ -131,7 +132,7 @@ class Parser {
 
         while (this.pos < this.len) {
             this.consumeCommentOrSpace();
-            if (!this.maybePackage() && !this.maybeImport() && !this.maybeMessage() && !this.maybeEnum()) {
+            if (!this.maybePackage() && !this.maybeImport() && !this.maybeMessage() && !this.maybeEnum() && !this.maybeExtend()) {
                 break;
             }
         }
@@ -143,14 +144,14 @@ class Parser {
                 lines.push(++pos);
             }
             const start = lines.pop();
-            const end = pos === -1 ? this.pos + 10 : Math.min(this.pos + 10, pos - 1);
+            const end = pos === -1 ? this.pos + 50 : Math.min(this.pos + 50, pos - 1);
             const space = " ".repeat(this.pos - start) + "^";
             throw new Error(`Failed to parse proto. Unexpected token at line ${ lines.length }\n${ proto.slice(start, end) }\n${ space }`);
         }
 
         const filename = options.filename || "globals.proto";
         const top = filename.replaceAll("/", ".").replace(".proto", "") + "_pb2.";
-        outputs.generated_include.push(`#incldue "${ filename.replace(".proto", ".pb.h") }"`);
+        outputs.generated_include.push(`#include "${ filename.replace(".proto", ".pb.h") }"`);
 
         const classes = new Map([
             [top, []]
@@ -183,17 +184,20 @@ class Parser {
                 [`${ proto }.${ type_name }`, "", [], [], "", ""],
             ]);
 
-            for (const [field_type, field_name, is_repeated] of raw_fields) {
-                const cpptype = this.getCppType(field_type);
+            const {scopes} = raw_fields;
 
-                if (is_repeated) {
-                    // TODO handle repeated : return RepeatedField
-                } else if (isScalar(field_type) || this.isEnum(field_type)) {
+            for (const [field_type, field_name, field_rule] of raw_fields.fields) {
+                const is_map = field_type.startsWith("map<");
+                const cpptype = this.getCppType(field_type, scopes);
+
+                if (field_rule === "repeated") {
+                    // TODO handle repeated : return RepeatedContainer
+                } else if (is_map) {
+                    // TODO handle map : return MapContainer
+                } else if (isScalar(field_type) || this.isEnum(field_type, scopes)) {
                     fields.push([field_type, field_name, "", [`/R=${ field_name }`, `/W=set_${ field_name }`]]);
                 } else {
-                    this.outputs.decls.push(...[
-                        [`${ proto }.mutable_${ field_name }`, `${ cpptype }*`, ["/attr=propget", `=get_${ field_name }`, `/idlname=${ field_name }`], [], "", ""],
-                    ]);
+                    fields.push([`${ cpptype }*`, field_name, "", [`/R=mutable_${ field_name }`]]);
                 }
             }
 
@@ -210,6 +214,8 @@ class Parser {
                 }
             }
         }
+
+        // TODO this.extensions map<extented : string, map<scopes : string, field : [field_type : string, field_name : string]>>
 
         for (const [pkg, properties] of classes.entries()) {
             decls.push([pkg, "", ["/Properties"], properties, "", ""]);
@@ -329,13 +335,16 @@ class Parser {
         const proto = this.getFQN(message).join(".");
         const fields = [];
 
-        this.exports.set(proto, fields);
+        this.exports.set(proto, {
+            scopes: this.messages.slice(),
+            fields
+        });
 
         this.messages.push(message);
 
         this.consumeCommentOrSpace();
 
-        while (this.maybeMessage() || this.maybeEnum() || this.maybeField(fields)) {
+        while (this.maybeMessage() || this.maybeEnum() || this.maybeExtend() || this.maybeOneof(fields) || this.maybeField(fields)) {
             this.consumeCommentOrSpace();
         }
 
@@ -384,6 +393,59 @@ class Parser {
         if (!this.maybeCharSeq("}")) {
             this.pos = pos;
             return false;
+        }
+
+        return true;
+    }
+
+    maybeExtend() {
+        const {pos} = this;
+        const identifier = this.maybeWord();
+
+        if (identifier !== "extend") {
+            this.pos = pos;
+            return false;
+        }
+
+        this.consumeCommentOrSpace();
+
+        const extented = this.maybeWord();
+        if (!extented) {
+            this.pos = pos;
+            return false;
+        }
+
+        if (!this.maybeCharSeq("{")) {
+            this.pos = pos;
+            return false;
+        }
+
+        if (!this.extensions.has(extented)) {
+            this.extensions.set(extented, new Map());
+        }
+
+        const scopes = this.messages.join(".");
+        if (!this.extensions.get(extented).has(scopes)) {
+            this.extensions.get(extented).set(scopes, []);
+        }
+
+        const fields = this.extensions.get(extented).get(scopes);
+        const start = fields.length;
+
+        this.consumeCommentOrSpace();
+
+        while (this.maybeField(fields)) {
+            this.consumeCommentOrSpace();
+        }
+
+        if (!this.maybeCharSeq("}")) {
+            this.pos = pos;
+            return false;
+        }
+
+        for (let i = start; i < fields.length; i++) {
+            const [, field_name] = fields[i];
+            fields[i].push(this.getFQN(field_name).join("."));
         }
 
         return true;
@@ -450,11 +512,47 @@ class Parser {
         }
     }
 
+    maybeOneof(fields) {
+        const {pos} = this;
+        const identifier = this.maybeWord();
+
+        if (identifier !== "oneof") {
+            this.pos = pos;
+            return false;
+        }
+
+        this.consumeCommentOrSpace();
+
+        const oneof = this.maybeWord();
+        if (!oneof) {
+            this.pos = pos;
+            return false;
+        }
+
+        if (!this.maybeCharSeq("{")) {
+            this.pos = pos;
+            return false;
+        }
+
+        this.consumeCommentOrSpace();
+
+        while (this.maybeField(fields)) {
+            this.consumeCommentOrSpace();
+        }
+
+        if (!this.maybeCharSeq("}")) {
+            this.pos = pos;
+            return false;
+        }
+
+        return true;
+    }
+
     maybeField(fields) {
         const {pos} = this;
 
         const identifier = this.maybeWord();
-        if (identifier === "reserved") {
+        if (identifier === "reserved" || identifier === "extensions") {
             if (!this.maybeFieldEnd()) {
                 this.pos = pos;
                 return false;
@@ -464,17 +562,60 @@ class Parser {
 
         let is_repeated = identifier === "repeated";
         let field_type;
-        let start = pos;;
+        let start = pos;
 
-        if (identifier === "required" || identifier === "optional" || is_repeated) {
+        if (identifier === "required" || identifier === "optional" || identifier === "singular" || is_repeated) {
             this.consumeCommentOrSpace();
             start = this.pos;
-            this.maybeWord();
+            if (!this.maybeWord()) {
+                this.pos = pos;
+                return false;
+            }
+        }
+
+        const is_map = this.proto.slice(start, this.pos) === "map";
+
+        if (is_map) {
+            if (this.proto[this.pos] !== "<") {
+                this.pos = pos;
+                return false;
+            }
+            this.pos++;
+
+            this.consumeCommentOrSpace();
+
+            if (!this.maybeWord()) {
+                this.pos = pos;
+                return false;
+            }
+
+            this.consumeCommentOrSpace();
+
+            if (this.proto[this.pos] !== ",") {
+                this.pos = pos;
+                return false;
+            }
+            this.pos++;
+
+            this.consumeCommentOrSpace();
+
+            if (!this.maybeWord()) {
+                this.pos = pos;
+                return false;
+            }
         }
 
         while (this.pos < this.len && this.proto[this.pos] === ".") {
             this.pos++;
             this.maybeWord();
+        }
+
+        if (is_map) {
+            if (this.proto[this.pos] !== ">") {
+                this.pos = pos;
+                return false;
+            }
+            this.pos++;
         }
 
         field_type = this.proto.slice(start, this.pos);
@@ -499,7 +640,7 @@ class Parser {
             return false;
         }
 
-        fields.push([field_type, field_name, is_repeated]);
+        fields.push([field_type, field_name, is_repeated ? identifier : ""]);
 
         return true;
     }

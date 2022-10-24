@@ -45,6 +45,7 @@ message SearchResponse {
 
 message SomeOtherMessage {
   optional SearchResponse.Result result = 1;
+  map<string, SearchResponse.Result> projects = 3;
 }
 
 message Foo {
@@ -131,6 +132,13 @@ message Outer {       // Level 0
       optional string name = 1;
       optional bool   flag = 2;
     }
+  }
+}
+
+message SampleMessage {
+  oneof test_oneof {
+     string name = 4;
+     SubMessage sub_message = 9;
   }
 }
 
