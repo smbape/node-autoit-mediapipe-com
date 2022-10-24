@@ -22,7 +22,7 @@ const SCALAR_TYPES = new Map([
 
 const isScalar = type => {
     return SCALAR_TYPES.has(type);
-}
+};
 
 const getTypeName = proto => {
     const pos = proto.lastIndexOf(".");
@@ -53,10 +53,10 @@ class Parser {
         this.messages = [];
     }
 
-    getFQN(message) {
+    getFQN(message, scopes = this.messages) {
         const parts = this.package.split(".");
         parts.pop();
-        parts.push(...this.messages);
+        parts.push(...scopes);
         parts.push(...message.split("."));
         return parts;
     }
@@ -92,7 +92,7 @@ class Parser {
             return message;
         }
 
-        return this.getFQN(type).join("::");
+        return this.getFQN(type, scopes).join("::");
     }
 
     getImport(filename, relpath) {
@@ -121,47 +121,54 @@ class Parser {
         this.parseText(proto, options, outputs, cache);
     }
 
-    parseText(proto, options = {}, outputs = createOutputs(), cache = new Map()) {
-        this.proto = proto;
-        this.len = proto.length;
+    parseText(input, options = {}, outputs = createOutputs(), cache = new Map()) {
+        this.input = input;
+        this.len = input.length;
         this.options = options;
         this.outputs = outputs;
         this.cache = cache;
 
-        const {decls} = outputs
+        const globalOptions = [];
+        const {decls} = outputs;
+
+        this.consumeCommentOrSpace();
+        this.maybeSyntax();
 
         while (this.pos < this.len) {
             this.consumeCommentOrSpace();
-            if (!this.maybePackage() && !this.maybeImport() && !this.maybeMessage() && !this.maybeEnum() && !this.maybeExtend()) {
+            if (
+                !this.maybePackage()
+                && !this.maybeImport()
+                && !this.maybeOption(globalOptions)
+                && !this.maybeMessage()
+                && !this.maybeEnum()
+                && !this.maybeExtend()
+            ) {
                 break;
             }
         }
 
+        const filename = options.filename || "globals.proto";
+
         if (this.pos !== this.len) {
             const lines = [0];
-            let pos = 0
-            while ((pos = this.proto.indexOf("\n", pos)) !== -1 && pos < this.pos) {
+            let pos = 0;
+            while ((pos = input.indexOf("\n", pos)) !== -1 && pos < this.pos) {
                 lines.push(++pos);
             }
             const start = lines.pop();
-            const end = pos === -1 ? this.pos + 50 : Math.min(this.pos + 50, pos - 1);
-            const space = " ".repeat(this.pos - start) + "^";
-            throw new Error(`Failed to parse proto. Unexpected token at line ${ lines.length }\n${ proto.slice(start, end) }\n${ space }`);
+            const end = pos === -1 ? this.pos + 50 : Math.min(this.pos + 50, pos);
+            const space = `${ " ".repeat(this.pos - start) }^`;
+            throw new Error(`Failed to parse proto ${ filename }.\nUnexpected token at line ${ lines.length }\n${ input.slice(start, end) }\n${ space }`);
         }
 
-        const filename = options.filename || "globals.proto";
-        const top = filename.replaceAll("/", ".").replace(".proto", "") + "_pb2.";
+        const top = `${ filename.replaceAll("/", ".").replace(/\.proto$/, "") }_pb2.`;
         outputs.generated_include.push(`#include "${ filename.replace(".proto", ".pb.h") }"`);
 
         const classes = new Map([
             [top, []]
         ]);
 
-        // expose a package property like in mediapipe python
-        // package.A.B.C
-        // => package. A /R /S
-        // => package.A. B /R /S
-        // => package.A.B. C /R /S
         for (const [proto, raw_fields] of this.exports.entries()) {
             if (this.imports.has(proto)) {
                 continue;
@@ -184,7 +191,8 @@ class Parser {
                 [`${ proto }.${ type_name }`, "", [], [], "", ""],
             ]);
 
-            const {scopes} = raw_fields;
+            const {scopes, options: opts} = raw_fields;
+            console.log(proto, opts);
 
             for (const [field_type, field_name, field_rule] of raw_fields.fields) {
                 const is_map = field_type.startsWith("map<");
@@ -203,7 +211,7 @@ class Parser {
 
             const parts = proto.slice(this.package.length).split(".");
             for (let i = 0; i < parts.length; i++) {
-                const pkg = top + (i === 0 ? "" : parts.slice(0, i).join(".") + ".");
+                const pkg = top + (i === 0 ? "" : `${ parts.slice(0, i).join(".") }.`);
                 const name = parts[i];
                 if (!classes.has(pkg)) {
                     classes.set(pkg, []);
@@ -217,11 +225,41 @@ class Parser {
 
         // TODO this.extensions map<extented : string, map<scopes : string, field : [field_type : string, field_name : string]>>
 
+        // expose a package property like in mediapipe python
+        // package.A.B.C
+        // => filename. A /R /S
+        // => package.A. B /R /S
+        // => package.A.B. C /R /S
         for (const [pkg, properties] of classes.entries()) {
-            decls.push([pkg, "", ["/Properties"], properties, "", ""]);
+            decls.push([pkg === top ? pkg : pkg.replace(top, this.package), "", ["/Properties"], properties, "", ""]);
         }
 
+        // TODO handle extensions
+        // obj.Extensions[OptionType.ext] =>   autoit_from(obj->MutableExtension(OptionsType::ext), variant)
+        //                                     autoit_from(obj->GetExtension(OptionsType::ext), variant)
+
+        // if has an option that extends google.protobuf.MessageOptions => google.protobuf.MessageOptions options /R=options
+
+        outputs.extensions = this.extensions;
+
         return outputs;
+    }
+
+    maybeSyntax() {
+        const {pos} = this;
+        const identifier = this.maybeWord();
+
+        if (identifier !== "syntax") {
+            this.pos = pos;
+            return false;
+        }
+
+        if (!this.maybeFieldEnd()) {
+            this.pos = pos;
+            return false;
+        }
+
+        return true;
     }
 
     maybePackage() {
@@ -237,18 +275,18 @@ class Parser {
 
         const start = this.pos;
 
-        while (/[\w.]/.test(this.proto[this.pos])) {
+        while (/[\w.]/.test(this.input[this.pos])) {
             this.pos++;
         }
 
-        const pkg = this.proto.slice(start, this.pos);
+        const pkg = this.input.slice(start, this.pos);
 
         if (!this.maybeFieldEnd()) {
             this.pos = pos;
             return false;
         }
 
-        this.package = pkg + ".";
+        this.package = `${ pkg }.`;
         return true;
     }
 
@@ -267,25 +305,25 @@ class Parser {
 
         this.consumeCommentOrSpace();
 
-        if (this.proto[this.pos] !== '"') {
+        if (this.input[this.pos] !== "\"") {
             this.pos = pos;
             return false;
         }
 
         const start = ++this.pos;
-        const end = this.proto.indexOf('"', start);
-        if (end === -1) {
+        const end = this.input.indexOf("\"", start);
+        if (end === -1 || !this.maybeFieldEnd()) {
             this.pos = pos;
             return false;
         }
 
-        const relpath = this.proto.slice(start, end);
-        const filename = relpath;
+        const relpath = this.input.slice(start, end);
+        let filename = relpath;
 
         if (this.options.proto_path && this.options.proto_path.length !== 0) {
             for (const proto_path of this.options.proto_path) {
-                if (fs.existsSync(proto_path + "/" + filename)) {
-                    filename = proto_path + "/" + filename;
+                if (fs.existsSync(`${ proto_path }/${ filename }`)) {
+                    filename = `${ proto_path }/${ filename }`;
                     break;
                 }
             }
@@ -300,10 +338,10 @@ class Parser {
             }
         }
 
-        for (const [fqn_imported, fields_imported] of imported.exports_enums.entries()) {
-            this.imports_enums.set(fqn_imported, fields_imported);
+        for (const fqn_imported of imported.export_enums.entries()) {
+            this.import_enums.add(fqn_imported);
             if (isPublic) {
-                this.exports_enums.set(fqn_imported, fields_imported);
+                this.export_enums.add(fqn_imported);
             }
         }
 
@@ -334,17 +372,19 @@ class Parser {
 
         const proto = this.getFQN(message).join(".");
         const fields = [];
+        const options = [];
 
         this.exports.set(proto, {
             scopes: this.messages.slice(),
-            fields
+            fields,
+            options,
         });
 
         this.messages.push(message);
 
         this.consumeCommentOrSpace();
 
-        while (this.maybeMessage() || this.maybeEnum() || this.maybeExtend() || this.maybeOneof(fields) || this.maybeField(fields)) {
+        while (this.maybeMessage() || this.maybeEnum() || this.maybeExtend() || this.maybeOption(options) || this.maybeOneof(fields) || this.maybeField(fields)) {
             this.consumeCommentOrSpace();
         }
 
@@ -383,7 +423,7 @@ class Parser {
         const proto = this.getFQN(enum_name).join(".");
         const fields = [];
 
-        this.export_enums.add(proto)
+        this.export_enums.add(proto);
         this.exports.set(proto, fields);
 
         while (this.maybeEnumField(fields)) {
@@ -409,7 +449,7 @@ class Parser {
 
         this.consumeCommentOrSpace();
 
-        const extented = this.maybeWord();
+        const extented = this.maybeFQN();
         if (!extented) {
             this.pos = pos;
             return false;
@@ -430,7 +470,6 @@ class Parser {
         }
 
         const fields = this.extensions.get(extented).get(scopes);
-        const start = fields.length;
 
         this.consumeCommentOrSpace();
 
@@ -443,17 +482,12 @@ class Parser {
             return false;
         }
 
-        for (let i = start; i < fields.length; i++) {
-            const [, field_name] = fields[i];
-            fields[i].push(this.getFQN(field_name).join("."));
-        }
-
         return true;
     }
 
     maybeComment() {
-        if (this.proto.startsWith("//", this.pos)) {
-            this.pos = this.proto.indexOf("\n", this.pos + "//".length);
+        if (this.input.startsWith("//", this.pos)) {
+            this.pos = this.input.indexOf("\n", this.pos + "//".length);
             if (this.pos === -1) {
                 this.pos = this.len;
             }
@@ -462,8 +496,8 @@ class Parser {
         }
 
         const {pos} = this;
-        if (this.proto.startsWith("/*", this.pos)) {
-            this.pos = this.proto.indexOf("*/", this.pos + "/*".length);
+        if (this.input.startsWith("/*", this.pos)) {
+            this.pos = this.input.indexOf("*/", this.pos + "/*".length);
             if (this.pos === -1) {
                 this.pos = pos;
                 return false;
@@ -477,7 +511,7 @@ class Parser {
 
     maybeSpace() {
         regNoSpace.lastIndex = this.pos;
-        const match = regNoSpace.exec(this.proto);
+        const match = regNoSpace.exec(this.input);
 
         if (match === null) {
             this.pos = this.len;
@@ -494,12 +528,12 @@ class Parser {
 
     maybeWord() {
         regNoWord.lastIndex = this.pos;
-        const match = regNoWord.exec(this.proto);
+        const match = regNoWord.exec(this.input);
         if (match === null || this.pos === match.index) {
             return false;
         }
 
-        const word = this.proto.slice(this.pos, match.index);
+        const word = this.input.slice(this.pos, match.index);
         this.pos = match.index;
         return word;
     }
@@ -510,6 +544,44 @@ class Parser {
                 break;
             }
         }
+    }
+
+    maybeOption(options) {
+        const {pos} = this;
+        const identifier = this.maybeWord();
+
+        if (identifier !== "option") {
+            this.pos = pos;
+            return false;
+        }
+
+        this.consumeCommentOrSpace();
+
+        let is_custom_option = false;
+        if (this.pos < this.len && this.input[this.pos] === "(") {
+            is_custom_option = true;
+            this.pos++;
+        }
+
+        const option = this.maybeFQN();
+        if (!option) {
+            this.pos = pos;
+            return false;
+        }
+
+        if (is_custom_option && (this.pos === this.len || this.input[this.pos] !== ")")) {
+            this.pos = pos;
+            return false;
+        }
+
+        if (!this.maybeFieldEnd()) {
+            this.pos = pos;
+            return false;
+        }
+
+        options.push(option);
+
+        return true;
     }
 
     maybeOneof(fields) {
@@ -550,8 +622,9 @@ class Parser {
 
     maybeField(fields) {
         const {pos} = this;
+        let start = pos;
 
-        const identifier = this.maybeWord();
+        const identifier = this.maybeFQN();
         if (identifier === "reserved" || identifier === "extensions") {
             if (!this.maybeFieldEnd()) {
                 this.pos = pos;
@@ -560,23 +633,21 @@ class Parser {
             return true;
         }
 
-        let is_repeated = identifier === "repeated";
-        let field_type;
-        let start = pos;
+        const is_repeated = identifier === "repeated";
 
         if (identifier === "required" || identifier === "optional" || identifier === "singular" || is_repeated) {
             this.consumeCommentOrSpace();
             start = this.pos;
-            if (!this.maybeWord()) {
+            if (!this.maybeFQN()) {
                 this.pos = pos;
                 return false;
             }
         }
 
-        const is_map = this.proto.slice(start, this.pos) === "map";
+        const is_map = this.input.slice(start, this.pos) === "map";
 
         if (is_map) {
-            if (this.proto[this.pos] !== "<") {
+            if (this.input[this.pos] !== "<") {
                 this.pos = pos;
                 return false;
             }
@@ -591,7 +662,7 @@ class Parser {
 
             this.consumeCommentOrSpace();
 
-            if (this.proto[this.pos] !== ",") {
+            if (this.input[this.pos] !== ",") {
                 this.pos = pos;
                 return false;
             }
@@ -599,26 +670,21 @@ class Parser {
 
             this.consumeCommentOrSpace();
 
-            if (!this.maybeWord()) {
+            if (!this.maybeFQN()) {
                 this.pos = pos;
                 return false;
             }
-        }
-
-        while (this.pos < this.len && this.proto[this.pos] === ".") {
-            this.pos++;
-            this.maybeWord();
         }
 
         if (is_map) {
-            if (this.proto[this.pos] !== ">") {
+            if (this.input[this.pos] !== ">") {
                 this.pos = pos;
                 return false;
             }
             this.pos++;
         }
 
-        field_type = this.proto.slice(start, this.pos);
+        const field_type = this.input.slice(start, this.pos);
 
         if (!field_type) {
             this.pos = pos;
@@ -643,6 +709,14 @@ class Parser {
         fields.push([field_type, field_name, is_repeated ? identifier : ""]);
 
         return true;
+    }
+
+    maybeFQN() {
+        const {pos} = this;
+        while (this.maybeWord() && this.pos < this.len && this.input[this.pos] === ".") {
+            this.pos++;
+        }
+        return pos === this.pos ? false : this.input.slice(pos, this.pos);
     }
 
     maybeEnumField(fields) {
@@ -685,7 +759,7 @@ class Parser {
     maybeFieldEnd() {
         const {pos} = this.pos;
         this.consumeCommentOrSpace();
-        this.pos = this.proto.indexOf(";", this.pos);
+        this.pos = this.input.indexOf(";", this.pos);
         if (this.pos === -1) {
             this.pos = pos;
             return false;
@@ -698,7 +772,7 @@ class Parser {
         const {pos} = this;
         this.consumeCommentOrSpace();
 
-        if (!this.proto.startsWith(seq, this.pos)) {
+        if (!this.input.startsWith(seq, this.pos)) {
             this.pos = pos;
             return false;
         }

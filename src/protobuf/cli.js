@@ -50,7 +50,8 @@ message SomeOtherMessage {
 
 message Foo {
   reserved 2, 15, 9 to 11;
-  reserved "foo", "bar";
+  reserved "rfoo", "rbar";
+  extensions 100 to 199;
 }
 
 enum EnumAllowingAlias {
@@ -142,10 +143,39 @@ message SampleMessage {
   }
 }
 
+extend Foo {
+  optional int32 bar = 125;
+}
+
+message Baz {
+  extend Foo {
+    optional int32 bar = 126;
+    optional Baz foo_ext = 127;
+  }
+}
+
+// This can even be in a different file.
+extend Foo {
+  optional Baz foo_baz_ext = 127;
+}
+
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MessageOptions {
+  optional string my_option = 51234;
+}
+
+message MyMessage {
+  option (my_option) = "Hello world!";
+}
+
+
 `, {
   filename: "test/test_proto.proto",
   proto_path: [
-    fs.realpathSync(__dirname + "/../../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/bazel-mediapipe/external/com_google_protobuf/src"),
+    fs.realpathSync(`${ __dirname }/../../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe`),
+    fs.realpathSync(`${ __dirname }/../../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/bazel-mediapipe/external/com_google_protobuf/src`),
   ]
 });
 
