@@ -176,9 +176,6 @@
   - [google::protobuf::Message::str](#googleprotobufmessagestr)
 - [google::protobuf::TextFormat](#googleprotobuftextformat)
   - [google::protobuf::TextFormat::Parse](#googleprotobuftextformatparse)
-- [mediapipe::CalculatorGraphConfig](#mediapipecalculatorgraphconfig)
-  - [mediapipe::CalculatorGraphConfig::get_create](#mediapipecalculatorgraphconfigget_create)
-  - [mediapipe::CalculatorGraphConfig::str](#mediapipecalculatorgraphconfigstr)
 - [mediapipe::Detection](#mediapipedetection)
   - [mediapipe::Detection::get_create](#mediapipedetectionget_create)
   - [mediapipe::Detection::str](#mediapipedetectionstr)
@@ -208,6 +205,140 @@
   - [mediapipe::ValidatedGraphConfig::initialized](#mediapipevalidatedgraphconfiginitialized)
   - [mediapipe::ValidatedGraphConfig::registered_side_packet_type_name](#mediapipevalidatedgraphconfigregistered_side_packet_type_name)
   - [mediapipe::ValidatedGraphConfig::registered_stream_type_name](#mediapipevalidatedgraphconfigregistered_stream_type_name)
+- [mediapipe::CalculatorOptions](#mediapipecalculatoroptions)
+  - [mediapipe::CalculatorOptions::get_create](#mediapipecalculatoroptionsget_create)
+  - [mediapipe::CalculatorOptions::str](#mediapipecalculatoroptionsstr)
+- [google::protobuf::Any](#googleprotobufany)
+  - [google::protobuf::Any::get_create](#googleprotobufanyget_create)
+  - [google::protobuf::Any::str](#googleprotobufanystr)
+- [mediapipe::MediaPipeOptions](#mediapipemediapipeoptions)
+  - [mediapipe::MediaPipeOptions::get_create](#mediapipemediapipeoptionsget_create)
+  - [mediapipe::MediaPipeOptions::str](#mediapipemediapipeoptionsstr)
+- [mediapipe::PacketFactoryOptions](#mediapipepacketfactoryoptions)
+  - [mediapipe::PacketFactoryOptions::get_create](#mediapipepacketfactoryoptionsget_create)
+  - [mediapipe::PacketFactoryOptions::str](#mediapipepacketfactoryoptionsstr)
+- [mediapipe::PacketFactoryConfig](#mediapipepacketfactoryconfig)
+  - [mediapipe::PacketFactoryConfig::get_create](#mediapipepacketfactoryconfigget_create)
+  - [mediapipe::PacketFactoryConfig::str](#mediapipepacketfactoryconfigstr)
+- [mediapipe::PacketManagerConfig](#mediapipepacketmanagerconfig)
+  - [mediapipe::PacketManagerConfig::get_create](#mediapipepacketmanagerconfigget_create)
+  - [mediapipe::PacketManagerConfig::str](#mediapipepacketmanagerconfigstr)
+- [google::protobuf::Repeated_mediapipe_PacketFactoryConfig](#googleprotobufrepeated_mediapipe_packetfactoryconfig)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::create](#googleprotobufrepeated_mediapipe_packetfactoryconfigcreate)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add](#googleprotobufrepeated_mediapipe_packetfactoryconfigadd)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::empty](#googleprotobufrepeated_mediapipe_packetfactoryconfigempty)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::get_Item](#googleprotobufrepeated_mediapipe_packetfactoryconfigget_item)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::size](#googleprotobufrepeated_mediapipe_packetfactoryconfigsize)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::slice](#googleprotobufrepeated_mediapipe_packetfactoryconfigslice)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::splice](#googleprotobufrepeated_mediapipe_packetfactoryconfigsplice)
+- [mediapipe::PacketGeneratorOptions](#mediapipepacketgeneratoroptions)
+  - [mediapipe::PacketGeneratorOptions::get_create](#mediapipepacketgeneratoroptionsget_create)
+  - [mediapipe::PacketGeneratorOptions::str](#mediapipepacketgeneratoroptionsstr)
+- [mediapipe::PacketGeneratorConfig](#mediapipepacketgeneratorconfig)
+  - [mediapipe::PacketGeneratorConfig::get_create](#mediapipepacketgeneratorconfigget_create)
+  - [mediapipe::PacketGeneratorConfig::str](#mediapipepacketgeneratorconfigstr)
+- [google::protobuf::Repeated_std_string](#googleprotobufrepeated_std_string)
+  - [google::protobuf::Repeated_std_string::create](#googleprotobufrepeated_std_stringcreate)
+  - [google::protobuf::Repeated_std_string::append](#googleprotobufrepeated_std_stringappend)
+  - [google::protobuf::Repeated_std_string::empty](#googleprotobufrepeated_std_stringempty)
+  - [google::protobuf::Repeated_std_string::get_Item](#googleprotobufrepeated_std_stringget_item)
+  - [google::protobuf::Repeated_std_string::size](#googleprotobufrepeated_std_stringsize)
+  - [google::protobuf::Repeated_std_string::slice](#googleprotobufrepeated_std_stringslice)
+  - [google::protobuf::Repeated_std_string::splice](#googleprotobufrepeated_std_stringsplice)
+- [mediapipe::StatusHandlerConfig](#mediapipestatushandlerconfig)
+  - [mediapipe::StatusHandlerConfig::get_create](#mediapipestatushandlerconfigget_create)
+  - [mediapipe::StatusHandlerConfig::str](#mediapipestatushandlerconfigstr)
+- [mediapipe::InputStreamHandlerConfig](#mediapipeinputstreamhandlerconfig)
+  - [mediapipe::InputStreamHandlerConfig::get_create](#mediapipeinputstreamhandlerconfigget_create)
+  - [mediapipe::InputStreamHandlerConfig::str](#mediapipeinputstreamhandlerconfigstr)
+- [mediapipe::OutputStreamHandlerConfig](#mediapipeoutputstreamhandlerconfig)
+  - [mediapipe::OutputStreamHandlerConfig::get_create](#mediapipeoutputstreamhandlerconfigget_create)
+  - [mediapipe::OutputStreamHandlerConfig::str](#mediapipeoutputstreamhandlerconfigstr)
+- [mediapipe::ExecutorConfig](#mediapipeexecutorconfig)
+  - [mediapipe::ExecutorConfig::get_create](#mediapipeexecutorconfigget_create)
+  - [mediapipe::ExecutorConfig::str](#mediapipeexecutorconfigstr)
+- [mediapipe::InputCollection](#mediapipeinputcollection)
+  - [mediapipe::InputCollection::get_create](#mediapipeinputcollectionget_create)
+  - [mediapipe::InputCollection::str](#mediapipeinputcollectionstr)
+- [mediapipe::InputCollectionSet](#mediapipeinputcollectionset)
+  - [mediapipe::InputCollectionSet::get_create](#mediapipeinputcollectionsetget_create)
+  - [mediapipe::InputCollectionSet::str](#mediapipeinputcollectionsetstr)
+- [google::protobuf::Repeated_mediapipe_InputCollection](#googleprotobufrepeated_mediapipe_inputcollection)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::create](#googleprotobufrepeated_mediapipe_inputcollectioncreate)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::add](#googleprotobufrepeated_mediapipe_inputcollectionadd)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::empty](#googleprotobufrepeated_mediapipe_inputcollectionempty)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::get_Item](#googleprotobufrepeated_mediapipe_inputcollectionget_item)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::size](#googleprotobufrepeated_mediapipe_inputcollectionsize)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::slice](#googleprotobufrepeated_mediapipe_inputcollectionslice)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::splice](#googleprotobufrepeated_mediapipe_inputcollectionsplice)
+- [mediapipe::InputStreamInfo](#mediapipeinputstreaminfo)
+  - [mediapipe::InputStreamInfo::get_create](#mediapipeinputstreaminfoget_create)
+  - [mediapipe::InputStreamInfo::str](#mediapipeinputstreaminfostr)
+- [mediapipe::ProfilerConfig](#mediapipeprofilerconfig)
+  - [mediapipe::ProfilerConfig::get_create](#mediapipeprofilerconfigget_create)
+  - [mediapipe::ProfilerConfig::str](#mediapipeprofilerconfigstr)
+- [google::protobuf::Repeated_int](#googleprotobufrepeated_int)
+  - [google::protobuf::Repeated_int::create](#googleprotobufrepeated_intcreate)
+  - [google::protobuf::Repeated_int::append](#googleprotobufrepeated_intappend)
+  - [google::protobuf::Repeated_int::empty](#googleprotobufrepeated_intempty)
+  - [google::protobuf::Repeated_int::get_Item](#googleprotobufrepeated_intget_item)
+  - [google::protobuf::Repeated_int::size](#googleprotobufrepeated_intsize)
+  - [google::protobuf::Repeated_int::slice](#googleprotobufrepeated_intslice)
+  - [google::protobuf::Repeated_int::splice](#googleprotobufrepeated_intsplice)
+- [mediapipe::CalculatorGraphConfig](#mediapipecalculatorgraphconfig)
+  - [mediapipe::CalculatorGraphConfig::get_create](#mediapipecalculatorgraphconfigget_create)
+  - [mediapipe::CalculatorGraphConfig::str](#mediapipecalculatorgraphconfigstr)
+- [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_node)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::create](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodecreate)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeadd)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::empty](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeempty)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::get_Item](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeget_item)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::size](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodesize)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::slice](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeslice)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::splice](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodesplice)
+- [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig](#googleprotobufrepeated_mediapipe_packetgeneratorconfig)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::create](#googleprotobufrepeated_mediapipe_packetgeneratorconfigcreate)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add](#googleprotobufrepeated_mediapipe_packetgeneratorconfigadd)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::empty](#googleprotobufrepeated_mediapipe_packetgeneratorconfigempty)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::get_Item](#googleprotobufrepeated_mediapipe_packetgeneratorconfigget_item)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::size](#googleprotobufrepeated_mediapipe_packetgeneratorconfigsize)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::slice](#googleprotobufrepeated_mediapipe_packetgeneratorconfigslice)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::splice](#googleprotobufrepeated_mediapipe_packetgeneratorconfigsplice)
+- [google::protobuf::Repeated_mediapipe_StatusHandlerConfig](#googleprotobufrepeated_mediapipe_statushandlerconfig)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::create](#googleprotobufrepeated_mediapipe_statushandlerconfigcreate)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add](#googleprotobufrepeated_mediapipe_statushandlerconfigadd)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::empty](#googleprotobufrepeated_mediapipe_statushandlerconfigempty)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::get_Item](#googleprotobufrepeated_mediapipe_statushandlerconfigget_item)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::size](#googleprotobufrepeated_mediapipe_statushandlerconfigsize)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::slice](#googleprotobufrepeated_mediapipe_statushandlerconfigslice)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::splice](#googleprotobufrepeated_mediapipe_statushandlerconfigsplice)
+- [google::protobuf::Repeated_mediapipe_ExecutorConfig](#googleprotobufrepeated_mediapipe_executorconfig)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::create](#googleprotobufrepeated_mediapipe_executorconfigcreate)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::add](#googleprotobufrepeated_mediapipe_executorconfigadd)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::empty](#googleprotobufrepeated_mediapipe_executorconfigempty)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::get_Item](#googleprotobufrepeated_mediapipe_executorconfigget_item)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::size](#googleprotobufrepeated_mediapipe_executorconfigsize)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::slice](#googleprotobufrepeated_mediapipe_executorconfigslice)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::splice](#googleprotobufrepeated_mediapipe_executorconfigsplice)
+- [google::protobuf::Repeated_google_protobuf_Any](#googleprotobufrepeated_google_protobuf_any)
+  - [google::protobuf::Repeated_google_protobuf_Any::create](#googleprotobufrepeated_google_protobuf_anycreate)
+  - [google::protobuf::Repeated_google_protobuf_Any::add](#googleprotobufrepeated_google_protobuf_anyadd)
+  - [google::protobuf::Repeated_google_protobuf_Any::empty](#googleprotobufrepeated_google_protobuf_anyempty)
+  - [google::protobuf::Repeated_google_protobuf_Any::get_Item](#googleprotobufrepeated_google_protobuf_anyget_item)
+  - [google::protobuf::Repeated_google_protobuf_Any::size](#googleprotobufrepeated_google_protobuf_anysize)
+  - [google::protobuf::Repeated_google_protobuf_Any::slice](#googleprotobufrepeated_google_protobuf_anyslice)
+  - [google::protobuf::Repeated_google_protobuf_Any::splice](#googleprotobufrepeated_google_protobuf_anysplice)
+- [mediapipe::CalculatorGraphConfig::Node](#mediapipecalculatorgraphconfignode)
+  - [mediapipe::CalculatorGraphConfig::Node::get_create](#mediapipecalculatorgraphconfignodeget_create)
+  - [mediapipe::CalculatorGraphConfig::Node::str](#mediapipecalculatorgraphconfignodestr)
+- [google::protobuf::Repeated_mediapipe_InputStreamInfo](#googleprotobufrepeated_mediapipe_inputstreaminfo)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::create](#googleprotobufrepeated_mediapipe_inputstreaminfocreate)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::add](#googleprotobufrepeated_mediapipe_inputstreaminfoadd)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::empty](#googleprotobufrepeated_mediapipe_inputstreaminfoempty)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::get_Item](#googleprotobufrepeated_mediapipe_inputstreaminfoget_item)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::size](#googleprotobufrepeated_mediapipe_inputstreaminfosize)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::slice](#googleprotobufrepeated_mediapipe_inputstreaminfoslice)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::splice](#googleprotobufrepeated_mediapipe_inputstreaminfosplice)
 - [VectorOfVariant](#vectorofvariant)
   - [VectorOfVariant::create](#vectorofvariantcreate)
   - [VectorOfVariant::Add](#vectorofvariantadd)
@@ -466,6 +597,166 @@
   - [VectorOfMat::sort](#vectorofmatsort)
   - [VectorOfMat::sort_variant](#vectorofmatsort_variant)
   - [VectorOfMat::start](#vectorofmatstart)
+- [VectorOfShared_ptrPacketFactoryConfig](#vectorofshared_ptrpacketfactoryconfig)
+  - [VectorOfShared_ptrPacketFactoryConfig::create](#vectorofshared_ptrpacketfactoryconfigcreate)
+  - [VectorOfShared_ptrPacketFactoryConfig::Add](#vectorofshared_ptrpacketfactoryconfigadd)
+  - [VectorOfShared_ptrPacketFactoryConfig::Items](#vectorofshared_ptrpacketfactoryconfigitems)
+  - [VectorOfShared_ptrPacketFactoryConfig::Keys](#vectorofshared_ptrpacketfactoryconfigkeys)
+  - [VectorOfShared_ptrPacketFactoryConfig::Remove](#vectorofshared_ptrpacketfactoryconfigremove)
+  - [VectorOfShared_ptrPacketFactoryConfig::at](#vectorofshared_ptrpacketfactoryconfigat)
+  - [VectorOfShared_ptrPacketFactoryConfig::clear](#vectorofshared_ptrpacketfactoryconfigclear)
+  - [VectorOfShared_ptrPacketFactoryConfig::empty](#vectorofshared_ptrpacketfactoryconfigempty)
+  - [VectorOfShared_ptrPacketFactoryConfig::end](#vectorofshared_ptrpacketfactoryconfigend)
+  - [VectorOfShared_ptrPacketFactoryConfig::get_Item](#vectorofshared_ptrpacketfactoryconfigget_item)
+  - [VectorOfShared_ptrPacketFactoryConfig::get__NewEnum](#vectorofshared_ptrpacketfactoryconfigget__newenum)
+  - [VectorOfShared_ptrPacketFactoryConfig::push_back](#vectorofshared_ptrpacketfactoryconfigpush_back)
+  - [VectorOfShared_ptrPacketFactoryConfig::push_vector](#vectorofshared_ptrpacketfactoryconfigpush_vector)
+  - [VectorOfShared_ptrPacketFactoryConfig::put_Item](#vectorofshared_ptrpacketfactoryconfigput_item)
+  - [VectorOfShared_ptrPacketFactoryConfig::size](#vectorofshared_ptrpacketfactoryconfigsize)
+  - [VectorOfShared_ptrPacketFactoryConfig::slice](#vectorofshared_ptrpacketfactoryconfigslice)
+  - [VectorOfShared_ptrPacketFactoryConfig::sort](#vectorofshared_ptrpacketfactoryconfigsort)
+  - [VectorOfShared_ptrPacketFactoryConfig::sort_variant](#vectorofshared_ptrpacketfactoryconfigsort_variant)
+  - [VectorOfShared_ptrPacketFactoryConfig::start](#vectorofshared_ptrpacketfactoryconfigstart)
+- [VectorOfShared_ptrInputCollection](#vectorofshared_ptrinputcollection)
+  - [VectorOfShared_ptrInputCollection::create](#vectorofshared_ptrinputcollectioncreate)
+  - [VectorOfShared_ptrInputCollection::Add](#vectorofshared_ptrinputcollectionadd)
+  - [VectorOfShared_ptrInputCollection::Items](#vectorofshared_ptrinputcollectionitems)
+  - [VectorOfShared_ptrInputCollection::Keys](#vectorofshared_ptrinputcollectionkeys)
+  - [VectorOfShared_ptrInputCollection::Remove](#vectorofshared_ptrinputcollectionremove)
+  - [VectorOfShared_ptrInputCollection::at](#vectorofshared_ptrinputcollectionat)
+  - [VectorOfShared_ptrInputCollection::clear](#vectorofshared_ptrinputcollectionclear)
+  - [VectorOfShared_ptrInputCollection::empty](#vectorofshared_ptrinputcollectionempty)
+  - [VectorOfShared_ptrInputCollection::end](#vectorofshared_ptrinputcollectionend)
+  - [VectorOfShared_ptrInputCollection::get_Item](#vectorofshared_ptrinputcollectionget_item)
+  - [VectorOfShared_ptrInputCollection::get__NewEnum](#vectorofshared_ptrinputcollectionget__newenum)
+  - [VectorOfShared_ptrInputCollection::push_back](#vectorofshared_ptrinputcollectionpush_back)
+  - [VectorOfShared_ptrInputCollection::push_vector](#vectorofshared_ptrinputcollectionpush_vector)
+  - [VectorOfShared_ptrInputCollection::put_Item](#vectorofshared_ptrinputcollectionput_item)
+  - [VectorOfShared_ptrInputCollection::size](#vectorofshared_ptrinputcollectionsize)
+  - [VectorOfShared_ptrInputCollection::slice](#vectorofshared_ptrinputcollectionslice)
+  - [VectorOfShared_ptrInputCollection::sort](#vectorofshared_ptrinputcollectionsort)
+  - [VectorOfShared_ptrInputCollection::sort_variant](#vectorofshared_ptrinputcollectionsort_variant)
+  - [VectorOfShared_ptrInputCollection::start](#vectorofshared_ptrinputcollectionstart)
+- [VectorOfShared_ptrNode](#vectorofshared_ptrnode)
+  - [VectorOfShared_ptrNode::create](#vectorofshared_ptrnodecreate)
+  - [VectorOfShared_ptrNode::Add](#vectorofshared_ptrnodeadd)
+  - [VectorOfShared_ptrNode::Items](#vectorofshared_ptrnodeitems)
+  - [VectorOfShared_ptrNode::Keys](#vectorofshared_ptrnodekeys)
+  - [VectorOfShared_ptrNode::Remove](#vectorofshared_ptrnoderemove)
+  - [VectorOfShared_ptrNode::at](#vectorofshared_ptrnodeat)
+  - [VectorOfShared_ptrNode::clear](#vectorofshared_ptrnodeclear)
+  - [VectorOfShared_ptrNode::empty](#vectorofshared_ptrnodeempty)
+  - [VectorOfShared_ptrNode::end](#vectorofshared_ptrnodeend)
+  - [VectorOfShared_ptrNode::get_Item](#vectorofshared_ptrnodeget_item)
+  - [VectorOfShared_ptrNode::get__NewEnum](#vectorofshared_ptrnodeget__newenum)
+  - [VectorOfShared_ptrNode::push_back](#vectorofshared_ptrnodepush_back)
+  - [VectorOfShared_ptrNode::push_vector](#vectorofshared_ptrnodepush_vector)
+  - [VectorOfShared_ptrNode::put_Item](#vectorofshared_ptrnodeput_item)
+  - [VectorOfShared_ptrNode::size](#vectorofshared_ptrnodesize)
+  - [VectorOfShared_ptrNode::slice](#vectorofshared_ptrnodeslice)
+  - [VectorOfShared_ptrNode::sort](#vectorofshared_ptrnodesort)
+  - [VectorOfShared_ptrNode::sort_variant](#vectorofshared_ptrnodesort_variant)
+  - [VectorOfShared_ptrNode::start](#vectorofshared_ptrnodestart)
+- [VectorOfShared_ptrPacketGeneratorConfig](#vectorofshared_ptrpacketgeneratorconfig)
+  - [VectorOfShared_ptrPacketGeneratorConfig::create](#vectorofshared_ptrpacketgeneratorconfigcreate)
+  - [VectorOfShared_ptrPacketGeneratorConfig::Add](#vectorofshared_ptrpacketgeneratorconfigadd)
+  - [VectorOfShared_ptrPacketGeneratorConfig::Items](#vectorofshared_ptrpacketgeneratorconfigitems)
+  - [VectorOfShared_ptrPacketGeneratorConfig::Keys](#vectorofshared_ptrpacketgeneratorconfigkeys)
+  - [VectorOfShared_ptrPacketGeneratorConfig::Remove](#vectorofshared_ptrpacketgeneratorconfigremove)
+  - [VectorOfShared_ptrPacketGeneratorConfig::at](#vectorofshared_ptrpacketgeneratorconfigat)
+  - [VectorOfShared_ptrPacketGeneratorConfig::clear](#vectorofshared_ptrpacketgeneratorconfigclear)
+  - [VectorOfShared_ptrPacketGeneratorConfig::empty](#vectorofshared_ptrpacketgeneratorconfigempty)
+  - [VectorOfShared_ptrPacketGeneratorConfig::end](#vectorofshared_ptrpacketgeneratorconfigend)
+  - [VectorOfShared_ptrPacketGeneratorConfig::get_Item](#vectorofshared_ptrpacketgeneratorconfigget_item)
+  - [VectorOfShared_ptrPacketGeneratorConfig::get__NewEnum](#vectorofshared_ptrpacketgeneratorconfigget__newenum)
+  - [VectorOfShared_ptrPacketGeneratorConfig::push_back](#vectorofshared_ptrpacketgeneratorconfigpush_back)
+  - [VectorOfShared_ptrPacketGeneratorConfig::push_vector](#vectorofshared_ptrpacketgeneratorconfigpush_vector)
+  - [VectorOfShared_ptrPacketGeneratorConfig::put_Item](#vectorofshared_ptrpacketgeneratorconfigput_item)
+  - [VectorOfShared_ptrPacketGeneratorConfig::size](#vectorofshared_ptrpacketgeneratorconfigsize)
+  - [VectorOfShared_ptrPacketGeneratorConfig::slice](#vectorofshared_ptrpacketgeneratorconfigslice)
+  - [VectorOfShared_ptrPacketGeneratorConfig::sort](#vectorofshared_ptrpacketgeneratorconfigsort)
+  - [VectorOfShared_ptrPacketGeneratorConfig::sort_variant](#vectorofshared_ptrpacketgeneratorconfigsort_variant)
+  - [VectorOfShared_ptrPacketGeneratorConfig::start](#vectorofshared_ptrpacketgeneratorconfigstart)
+- [VectorOfShared_ptrStatusHandlerConfig](#vectorofshared_ptrstatushandlerconfig)
+  - [VectorOfShared_ptrStatusHandlerConfig::create](#vectorofshared_ptrstatushandlerconfigcreate)
+  - [VectorOfShared_ptrStatusHandlerConfig::Add](#vectorofshared_ptrstatushandlerconfigadd)
+  - [VectorOfShared_ptrStatusHandlerConfig::Items](#vectorofshared_ptrstatushandlerconfigitems)
+  - [VectorOfShared_ptrStatusHandlerConfig::Keys](#vectorofshared_ptrstatushandlerconfigkeys)
+  - [VectorOfShared_ptrStatusHandlerConfig::Remove](#vectorofshared_ptrstatushandlerconfigremove)
+  - [VectorOfShared_ptrStatusHandlerConfig::at](#vectorofshared_ptrstatushandlerconfigat)
+  - [VectorOfShared_ptrStatusHandlerConfig::clear](#vectorofshared_ptrstatushandlerconfigclear)
+  - [VectorOfShared_ptrStatusHandlerConfig::empty](#vectorofshared_ptrstatushandlerconfigempty)
+  - [VectorOfShared_ptrStatusHandlerConfig::end](#vectorofshared_ptrstatushandlerconfigend)
+  - [VectorOfShared_ptrStatusHandlerConfig::get_Item](#vectorofshared_ptrstatushandlerconfigget_item)
+  - [VectorOfShared_ptrStatusHandlerConfig::get__NewEnum](#vectorofshared_ptrstatushandlerconfigget__newenum)
+  - [VectorOfShared_ptrStatusHandlerConfig::push_back](#vectorofshared_ptrstatushandlerconfigpush_back)
+  - [VectorOfShared_ptrStatusHandlerConfig::push_vector](#vectorofshared_ptrstatushandlerconfigpush_vector)
+  - [VectorOfShared_ptrStatusHandlerConfig::put_Item](#vectorofshared_ptrstatushandlerconfigput_item)
+  - [VectorOfShared_ptrStatusHandlerConfig::size](#vectorofshared_ptrstatushandlerconfigsize)
+  - [VectorOfShared_ptrStatusHandlerConfig::slice](#vectorofshared_ptrstatushandlerconfigslice)
+  - [VectorOfShared_ptrStatusHandlerConfig::sort](#vectorofshared_ptrstatushandlerconfigsort)
+  - [VectorOfShared_ptrStatusHandlerConfig::sort_variant](#vectorofshared_ptrstatushandlerconfigsort_variant)
+  - [VectorOfShared_ptrStatusHandlerConfig::start](#vectorofshared_ptrstatushandlerconfigstart)
+- [VectorOfShared_ptrExecutorConfig](#vectorofshared_ptrexecutorconfig)
+  - [VectorOfShared_ptrExecutorConfig::create](#vectorofshared_ptrexecutorconfigcreate)
+  - [VectorOfShared_ptrExecutorConfig::Add](#vectorofshared_ptrexecutorconfigadd)
+  - [VectorOfShared_ptrExecutorConfig::Items](#vectorofshared_ptrexecutorconfigitems)
+  - [VectorOfShared_ptrExecutorConfig::Keys](#vectorofshared_ptrexecutorconfigkeys)
+  - [VectorOfShared_ptrExecutorConfig::Remove](#vectorofshared_ptrexecutorconfigremove)
+  - [VectorOfShared_ptrExecutorConfig::at](#vectorofshared_ptrexecutorconfigat)
+  - [VectorOfShared_ptrExecutorConfig::clear](#vectorofshared_ptrexecutorconfigclear)
+  - [VectorOfShared_ptrExecutorConfig::empty](#vectorofshared_ptrexecutorconfigempty)
+  - [VectorOfShared_ptrExecutorConfig::end](#vectorofshared_ptrexecutorconfigend)
+  - [VectorOfShared_ptrExecutorConfig::get_Item](#vectorofshared_ptrexecutorconfigget_item)
+  - [VectorOfShared_ptrExecutorConfig::get__NewEnum](#vectorofshared_ptrexecutorconfigget__newenum)
+  - [VectorOfShared_ptrExecutorConfig::push_back](#vectorofshared_ptrexecutorconfigpush_back)
+  - [VectorOfShared_ptrExecutorConfig::push_vector](#vectorofshared_ptrexecutorconfigpush_vector)
+  - [VectorOfShared_ptrExecutorConfig::put_Item](#vectorofshared_ptrexecutorconfigput_item)
+  - [VectorOfShared_ptrExecutorConfig::size](#vectorofshared_ptrexecutorconfigsize)
+  - [VectorOfShared_ptrExecutorConfig::slice](#vectorofshared_ptrexecutorconfigslice)
+  - [VectorOfShared_ptrExecutorConfig::sort](#vectorofshared_ptrexecutorconfigsort)
+  - [VectorOfShared_ptrExecutorConfig::sort_variant](#vectorofshared_ptrexecutorconfigsort_variant)
+  - [VectorOfShared_ptrExecutorConfig::start](#vectorofshared_ptrexecutorconfigstart)
+- [VectorOfShared_ptrAny](#vectorofshared_ptrany)
+  - [VectorOfShared_ptrAny::create](#vectorofshared_ptranycreate)
+  - [VectorOfShared_ptrAny::Add](#vectorofshared_ptranyadd)
+  - [VectorOfShared_ptrAny::Items](#vectorofshared_ptranyitems)
+  - [VectorOfShared_ptrAny::Keys](#vectorofshared_ptranykeys)
+  - [VectorOfShared_ptrAny::Remove](#vectorofshared_ptranyremove)
+  - [VectorOfShared_ptrAny::at](#vectorofshared_ptranyat)
+  - [VectorOfShared_ptrAny::clear](#vectorofshared_ptranyclear)
+  - [VectorOfShared_ptrAny::empty](#vectorofshared_ptranyempty)
+  - [VectorOfShared_ptrAny::end](#vectorofshared_ptranyend)
+  - [VectorOfShared_ptrAny::get_Item](#vectorofshared_ptranyget_item)
+  - [VectorOfShared_ptrAny::get__NewEnum](#vectorofshared_ptranyget__newenum)
+  - [VectorOfShared_ptrAny::push_back](#vectorofshared_ptranypush_back)
+  - [VectorOfShared_ptrAny::push_vector](#vectorofshared_ptranypush_vector)
+  - [VectorOfShared_ptrAny::put_Item](#vectorofshared_ptranyput_item)
+  - [VectorOfShared_ptrAny::size](#vectorofshared_ptranysize)
+  - [VectorOfShared_ptrAny::slice](#vectorofshared_ptranyslice)
+  - [VectorOfShared_ptrAny::sort](#vectorofshared_ptranysort)
+  - [VectorOfShared_ptrAny::sort_variant](#vectorofshared_ptranysort_variant)
+  - [VectorOfShared_ptrAny::start](#vectorofshared_ptranystart)
+- [VectorOfShared_ptrInputStreamInfo](#vectorofshared_ptrinputstreaminfo)
+  - [VectorOfShared_ptrInputStreamInfo::create](#vectorofshared_ptrinputstreaminfocreate)
+  - [VectorOfShared_ptrInputStreamInfo::Add](#vectorofshared_ptrinputstreaminfoadd)
+  - [VectorOfShared_ptrInputStreamInfo::Items](#vectorofshared_ptrinputstreaminfoitems)
+  - [VectorOfShared_ptrInputStreamInfo::Keys](#vectorofshared_ptrinputstreaminfokeys)
+  - [VectorOfShared_ptrInputStreamInfo::Remove](#vectorofshared_ptrinputstreaminforemove)
+  - [VectorOfShared_ptrInputStreamInfo::at](#vectorofshared_ptrinputstreaminfoat)
+  - [VectorOfShared_ptrInputStreamInfo::clear](#vectorofshared_ptrinputstreaminfoclear)
+  - [VectorOfShared_ptrInputStreamInfo::empty](#vectorofshared_ptrinputstreaminfoempty)
+  - [VectorOfShared_ptrInputStreamInfo::end](#vectorofshared_ptrinputstreaminfoend)
+  - [VectorOfShared_ptrInputStreamInfo::get_Item](#vectorofshared_ptrinputstreaminfoget_item)
+  - [VectorOfShared_ptrInputStreamInfo::get__NewEnum](#vectorofshared_ptrinputstreaminfoget__newenum)
+  - [VectorOfShared_ptrInputStreamInfo::push_back](#vectorofshared_ptrinputstreaminfopush_back)
+  - [VectorOfShared_ptrInputStreamInfo::push_vector](#vectorofshared_ptrinputstreaminfopush_vector)
+  - [VectorOfShared_ptrInputStreamInfo::put_Item](#vectorofshared_ptrinputstreaminfoput_item)
+  - [VectorOfShared_ptrInputStreamInfo::size](#vectorofshared_ptrinputstreaminfosize)
+  - [VectorOfShared_ptrInputStreamInfo::slice](#vectorofshared_ptrinputstreaminfoslice)
+  - [VectorOfShared_ptrInputStreamInfo::sort](#vectorofshared_ptrinputstreaminfosort)
+  - [VectorOfShared_ptrInputStreamInfo::sort_variant](#vectorofshared_ptrinputstreaminfosort_variant)
+  - [VectorOfShared_ptrInputStreamInfo::start](#vectorofshared_ptrinputstreaminfostart)
 - [VectorOfPairOfStringAndPacket](#vectorofpairofstringandpacket)
   - [VectorOfPairOfStringAndPacket::create](#vectorofpairofstringandpacketcreate)
   - [VectorOfPairOfStringAndPacket::Add](#vectorofpairofstringandpacketadd)
@@ -1202,7 +1493,7 @@ AutoIt:
 ```cpp
 void google::protobuf::autoit::RepeatedContainer::slice( std::vector<_variant_t>& list,
                                                          SSIZE_T                  start,
-                                                         size_t                   count ) const;
+                                                         SSIZE_T                  count ) const;
 AutoIt:
     $oRepeatedContainer.slice( $start, $count[, $list] ) -> $list
 ```
@@ -2218,25 +2509,6 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.text_format").Parse( $input, $output ) -> retval
 ```
 
-## mediapipe::CalculatorGraphConfig
-
-### mediapipe::CalculatorGraphConfig::get_create
-
-```cpp
-static mediapipe::CalculatorGraphConfig mediapipe::CalculatorGraphConfig::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig").create() -> <mediapipe.CalculatorGraphConfig object>
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig")() -> <mediapipe.CalculatorGraphConfig object>
-```
-
-### mediapipe::CalculatorGraphConfig::str
-
-```cpp
-std::string mediapipe::CalculatorGraphConfig::str();
-AutoIt:
-    $oCalculatorGraphConfig.str() -> retval
-```
-
 ## mediapipe::Detection
 
 ### mediapipe::Detection::get_create
@@ -2510,6 +2782,1214 @@ AutoIt:
 std::string mediapipe::ValidatedGraphConfig::registered_stream_type_name( std::string stream_name );
 AutoIt:
     $oValidatedGraphConfig.registered_stream_type_name( $stream_name ) -> retval
+```
+
+## mediapipe::CalculatorOptions
+
+### mediapipe::CalculatorOptions::get_create
+
+```cpp
+static mediapipe::CalculatorOptions mediapipe::CalculatorOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.CalculatorOptions").create() -> <mediapipe.CalculatorOptions object>
+    _Mediapipe_ObjCreate("mediapipe.CalculatorOptions")() -> <mediapipe.CalculatorOptions object>
+```
+
+### mediapipe::CalculatorOptions::str
+
+```cpp
+std::string mediapipe::CalculatorOptions::str();
+AutoIt:
+    $oCalculatorOptions.str() -> retval
+```
+
+## google::protobuf::Any
+
+### google::protobuf::Any::get_create
+
+```cpp
+static google::protobuf::Any google::protobuf::Any::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Any").create() -> <google.protobuf.Any object>
+    _Mediapipe_ObjCreate("google.protobuf.Any")() -> <google.protobuf.Any object>
+```
+
+### google::protobuf::Any::str
+
+```cpp
+std::string google::protobuf::Any::str();
+AutoIt:
+    $oAny.str() -> retval
+```
+
+## mediapipe::MediaPipeOptions
+
+### mediapipe::MediaPipeOptions::get_create
+
+```cpp
+static mediapipe::MediaPipeOptions mediapipe::MediaPipeOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.MediaPipeOptions").create() -> <mediapipe.MediaPipeOptions object>
+    _Mediapipe_ObjCreate("mediapipe.MediaPipeOptions")() -> <mediapipe.MediaPipeOptions object>
+```
+
+### mediapipe::MediaPipeOptions::str
+
+```cpp
+std::string mediapipe::MediaPipeOptions::str();
+AutoIt:
+    $oMediaPipeOptions.str() -> retval
+```
+
+## mediapipe::PacketFactoryOptions
+
+### mediapipe::PacketFactoryOptions::get_create
+
+```cpp
+static mediapipe::PacketFactoryOptions mediapipe::PacketFactoryOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.PacketFactoryOptions").create() -> <mediapipe.PacketFactoryOptions object>
+    _Mediapipe_ObjCreate("mediapipe.PacketFactoryOptions")() -> <mediapipe.PacketFactoryOptions object>
+```
+
+### mediapipe::PacketFactoryOptions::str
+
+```cpp
+std::string mediapipe::PacketFactoryOptions::str();
+AutoIt:
+    $oPacketFactoryOptions.str() -> retval
+```
+
+## mediapipe::PacketFactoryConfig
+
+### mediapipe::PacketFactoryConfig::get_create
+
+```cpp
+static mediapipe::PacketFactoryConfig mediapipe::PacketFactoryConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.PacketFactoryConfig").create() -> <mediapipe.PacketFactoryConfig object>
+    _Mediapipe_ObjCreate("mediapipe.PacketFactoryConfig")() -> <mediapipe.PacketFactoryConfig object>
+```
+
+### mediapipe::PacketFactoryConfig::str
+
+```cpp
+std::string mediapipe::PacketFactoryConfig::str();
+AutoIt:
+    $oPacketFactoryConfig.str() -> retval
+```
+
+## mediapipe::PacketManagerConfig
+
+### mediapipe::PacketManagerConfig::get_create
+
+```cpp
+static mediapipe::PacketManagerConfig mediapipe::PacketManagerConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.PacketManagerConfig").create() -> <mediapipe.PacketManagerConfig object>
+    _Mediapipe_ObjCreate("mediapipe.PacketManagerConfig")() -> <mediapipe.PacketManagerConfig object>
+```
+
+### mediapipe::PacketManagerConfig::str
+
+```cpp
+std::string mediapipe::PacketManagerConfig::str();
+AutoIt:
+    $oPacketManagerConfig.str() -> retval
+```
+
+## google::protobuf::Repeated_mediapipe_PacketFactoryConfig
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::create
+
+```cpp
+static google::protobuf::Repeated_mediapipe_PacketFactoryConfig google::protobuf::Repeated_mediapipe_PacketFactoryConfig::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_PacketFactoryConfig").create() -> <google.protobuf.Repeated_mediapipe_PacketFactoryConfig object>
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add
+
+```cpp
+mediapipe::PacketFactoryConfig* google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add();
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.add() -> retval
+```
+
+```cpp
+mediapipe::PacketFactoryConfig* google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add( const mediapipe::PacketFactoryConfig* value );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.add( $value ) -> retval
+```
+
+```cpp
+mediapipe::PacketFactoryConfig* google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.add( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::empty
+
+```cpp
+bool google::protobuf::Repeated_mediapipe_PacketFactoryConfig::empty();
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::get_Item
+
+```cpp
+mediapipe::PacketFactoryConfig* google::protobuf::Repeated_mediapipe_PacketFactoryConfig::get_Item( int index );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.Item( $index ) -> retval
+    $oRepeated_mediapipe_PacketFactoryConfig( $index ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::size
+
+```cpp
+int google::protobuf::Repeated_mediapipe_PacketFactoryConfig::size();
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.size() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::slice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::slice( std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> list,
+                                                                      SSIZE_T                                                      start,
+                                                                      SSIZE_T                                                      deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::slice( std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> list,
+                                                                      SSIZE_T                                                      start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::splice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::splice( std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> list,
+                                                                       SSIZE_T                                                      start,
+                                                                       SSIZE_T                                                      deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::splice( std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> list,
+                                                                       SSIZE_T                                                      start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.splice( [$start[, $list]] ) -> $list
+```
+
+## mediapipe::PacketGeneratorOptions
+
+### mediapipe::PacketGeneratorOptions::get_create
+
+```cpp
+static mediapipe::PacketGeneratorOptions mediapipe::PacketGeneratorOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.PacketGeneratorOptions").create() -> <mediapipe.PacketGeneratorOptions object>
+    _Mediapipe_ObjCreate("mediapipe.PacketGeneratorOptions")() -> <mediapipe.PacketGeneratorOptions object>
+```
+
+### mediapipe::PacketGeneratorOptions::str
+
+```cpp
+std::string mediapipe::PacketGeneratorOptions::str();
+AutoIt:
+    $oPacketGeneratorOptions.str() -> retval
+```
+
+## mediapipe::PacketGeneratorConfig
+
+### mediapipe::PacketGeneratorConfig::get_create
+
+```cpp
+static mediapipe::PacketGeneratorConfig mediapipe::PacketGeneratorConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.PacketGeneratorConfig").create() -> <mediapipe.PacketGeneratorConfig object>
+    _Mediapipe_ObjCreate("mediapipe.PacketGeneratorConfig")() -> <mediapipe.PacketGeneratorConfig object>
+```
+
+### mediapipe::PacketGeneratorConfig::str
+
+```cpp
+std::string mediapipe::PacketGeneratorConfig::str();
+AutoIt:
+    $oPacketGeneratorConfig.str() -> retval
+```
+
+## google::protobuf::Repeated_std_string
+
+### google::protobuf::Repeated_std_string::create
+
+```cpp
+static google::protobuf::Repeated_std_string google::protobuf::Repeated_std_string::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_std_string").create() -> <google.protobuf.Repeated_std_string object>
+```
+
+### google::protobuf::Repeated_std_string::append
+
+```cpp
+void google::protobuf::Repeated_std_string::append( std::string&& value );
+AutoIt:
+    $oRepeated_std_string.append( $value ) -> None
+```
+
+### google::protobuf::Repeated_std_string::empty
+
+```cpp
+bool google::protobuf::Repeated_std_string::empty();
+AutoIt:
+    $oRepeated_std_string.empty() -> retval
+```
+
+### google::protobuf::Repeated_std_string::get_Item
+
+```cpp
+std::string google::protobuf::Repeated_std_string::get_Item( int index );
+AutoIt:
+    $oRepeated_std_string.Item( $index ) -> retval
+    $oRepeated_std_string( $index ) -> retval
+```
+
+### google::protobuf::Repeated_std_string::size
+
+```cpp
+int google::protobuf::Repeated_std_string::size();
+AutoIt:
+    $oRepeated_std_string.size() -> retval
+```
+
+### google::protobuf::Repeated_std_string::slice
+
+```cpp
+void google::protobuf::Repeated_std_string::slice( std::vector<std::string> list,
+                                                   SSIZE_T                  start,
+                                                   SSIZE_T                  deleteCount );
+AutoIt:
+    $oRepeated_std_string.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_std_string::slice( std::vector<std::string> list,
+                                                   SSIZE_T                  start = 0 );
+AutoIt:
+    $oRepeated_std_string.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_std_string::splice
+
+```cpp
+void google::protobuf::Repeated_std_string::splice( std::vector<std::string> list,
+                                                    SSIZE_T                  start,
+                                                    SSIZE_T                  deleteCount );
+AutoIt:
+    $oRepeated_std_string.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_std_string::splice( std::vector<std::string> list,
+                                                    SSIZE_T                  start = 0 );
+AutoIt:
+    $oRepeated_std_string.splice( [$start[, $list]] ) -> $list
+```
+
+## mediapipe::StatusHandlerConfig
+
+### mediapipe::StatusHandlerConfig::get_create
+
+```cpp
+static mediapipe::StatusHandlerConfig mediapipe::StatusHandlerConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.StatusHandlerConfig").create() -> <mediapipe.StatusHandlerConfig object>
+    _Mediapipe_ObjCreate("mediapipe.StatusHandlerConfig")() -> <mediapipe.StatusHandlerConfig object>
+```
+
+### mediapipe::StatusHandlerConfig::str
+
+```cpp
+std::string mediapipe::StatusHandlerConfig::str();
+AutoIt:
+    $oStatusHandlerConfig.str() -> retval
+```
+
+## mediapipe::InputStreamHandlerConfig
+
+### mediapipe::InputStreamHandlerConfig::get_create
+
+```cpp
+static mediapipe::InputStreamHandlerConfig mediapipe::InputStreamHandlerConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.InputStreamHandlerConfig").create() -> <mediapipe.InputStreamHandlerConfig object>
+    _Mediapipe_ObjCreate("mediapipe.InputStreamHandlerConfig")() -> <mediapipe.InputStreamHandlerConfig object>
+```
+
+### mediapipe::InputStreamHandlerConfig::str
+
+```cpp
+std::string mediapipe::InputStreamHandlerConfig::str();
+AutoIt:
+    $oInputStreamHandlerConfig.str() -> retval
+```
+
+## mediapipe::OutputStreamHandlerConfig
+
+### mediapipe::OutputStreamHandlerConfig::get_create
+
+```cpp
+static mediapipe::OutputStreamHandlerConfig mediapipe::OutputStreamHandlerConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.OutputStreamHandlerConfig").create() -> <mediapipe.OutputStreamHandlerConfig object>
+    _Mediapipe_ObjCreate("mediapipe.OutputStreamHandlerConfig")() -> <mediapipe.OutputStreamHandlerConfig object>
+```
+
+### mediapipe::OutputStreamHandlerConfig::str
+
+```cpp
+std::string mediapipe::OutputStreamHandlerConfig::str();
+AutoIt:
+    $oOutputStreamHandlerConfig.str() -> retval
+```
+
+## mediapipe::ExecutorConfig
+
+### mediapipe::ExecutorConfig::get_create
+
+```cpp
+static mediapipe::ExecutorConfig mediapipe::ExecutorConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ExecutorConfig").create() -> <mediapipe.ExecutorConfig object>
+    _Mediapipe_ObjCreate("mediapipe.ExecutorConfig")() -> <mediapipe.ExecutorConfig object>
+```
+
+### mediapipe::ExecutorConfig::str
+
+```cpp
+std::string mediapipe::ExecutorConfig::str();
+AutoIt:
+    $oExecutorConfig.str() -> retval
+```
+
+## mediapipe::InputCollection
+
+### mediapipe::InputCollection::get_create
+
+```cpp
+static mediapipe::InputCollection mediapipe::InputCollection::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.InputCollection").create() -> <mediapipe.InputCollection object>
+    _Mediapipe_ObjCreate("mediapipe.InputCollection")() -> <mediapipe.InputCollection object>
+```
+
+### mediapipe::InputCollection::str
+
+```cpp
+std::string mediapipe::InputCollection::str();
+AutoIt:
+    $oInputCollection.str() -> retval
+```
+
+## mediapipe::InputCollectionSet
+
+### mediapipe::InputCollectionSet::get_create
+
+```cpp
+static mediapipe::InputCollectionSet mediapipe::InputCollectionSet::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.InputCollectionSet").create() -> <mediapipe.InputCollectionSet object>
+    _Mediapipe_ObjCreate("mediapipe.InputCollectionSet")() -> <mediapipe.InputCollectionSet object>
+```
+
+### mediapipe::InputCollectionSet::str
+
+```cpp
+std::string mediapipe::InputCollectionSet::str();
+AutoIt:
+    $oInputCollectionSet.str() -> retval
+```
+
+## google::protobuf::Repeated_mediapipe_InputCollection
+
+### google::protobuf::Repeated_mediapipe_InputCollection::create
+
+```cpp
+static google::protobuf::Repeated_mediapipe_InputCollection google::protobuf::Repeated_mediapipe_InputCollection::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InputCollection").create() -> <google.protobuf.Repeated_mediapipe_InputCollection object>
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::add
+
+```cpp
+mediapipe::InputCollection* google::protobuf::Repeated_mediapipe_InputCollection::add();
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.add() -> retval
+```
+
+```cpp
+mediapipe::InputCollection* google::protobuf::Repeated_mediapipe_InputCollection::add( const mediapipe::InputCollection* value );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.add( $value ) -> retval
+```
+
+```cpp
+mediapipe::InputCollection* google::protobuf::Repeated_mediapipe_InputCollection::add( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.add( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::empty
+
+```cpp
+bool google::protobuf::Repeated_mediapipe_InputCollection::empty();
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::get_Item
+
+```cpp
+mediapipe::InputCollection* google::protobuf::Repeated_mediapipe_InputCollection::get_Item( int index );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.Item( $index ) -> retval
+    $oRepeated_mediapipe_InputCollection( $index ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::size
+
+```cpp
+int google::protobuf::Repeated_mediapipe_InputCollection::size();
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.size() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::slice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::slice( std::vector<std::shared_ptr<mediapipe::InputCollection>> list,
+                                                                  SSIZE_T                                                  start,
+                                                                  SSIZE_T                                                  deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::slice( std::vector<std::shared_ptr<mediapipe::InputCollection>> list,
+                                                                  SSIZE_T                                                  start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::splice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::splice( std::vector<std::shared_ptr<mediapipe::InputCollection>> list,
+                                                                   SSIZE_T                                                  start,
+                                                                   SSIZE_T                                                  deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::splice( std::vector<std::shared_ptr<mediapipe::InputCollection>> list,
+                                                                   SSIZE_T                                                  start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.splice( [$start[, $list]] ) -> $list
+```
+
+## mediapipe::InputStreamInfo
+
+### mediapipe::InputStreamInfo::get_create
+
+```cpp
+static mediapipe::InputStreamInfo mediapipe::InputStreamInfo::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.InputStreamInfo").create() -> <mediapipe.InputStreamInfo object>
+    _Mediapipe_ObjCreate("mediapipe.InputStreamInfo")() -> <mediapipe.InputStreamInfo object>
+```
+
+### mediapipe::InputStreamInfo::str
+
+```cpp
+std::string mediapipe::InputStreamInfo::str();
+AutoIt:
+    $oInputStreamInfo.str() -> retval
+```
+
+## mediapipe::ProfilerConfig
+
+### mediapipe::ProfilerConfig::get_create
+
+```cpp
+static mediapipe::ProfilerConfig mediapipe::ProfilerConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ProfilerConfig").create() -> <mediapipe.ProfilerConfig object>
+    _Mediapipe_ObjCreate("mediapipe.ProfilerConfig")() -> <mediapipe.ProfilerConfig object>
+```
+
+### mediapipe::ProfilerConfig::str
+
+```cpp
+std::string mediapipe::ProfilerConfig::str();
+AutoIt:
+    $oProfilerConfig.str() -> retval
+```
+
+## google::protobuf::Repeated_int
+
+### google::protobuf::Repeated_int::create
+
+```cpp
+static google::protobuf::Repeated_int google::protobuf::Repeated_int::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_int").create() -> <google.protobuf.Repeated_int object>
+```
+
+### google::protobuf::Repeated_int::append
+
+```cpp
+void google::protobuf::Repeated_int::append( int&& value );
+AutoIt:
+    $oRepeated_int.append( $value ) -> None
+```
+
+### google::protobuf::Repeated_int::empty
+
+```cpp
+bool google::protobuf::Repeated_int::empty();
+AutoIt:
+    $oRepeated_int.empty() -> retval
+```
+
+### google::protobuf::Repeated_int::get_Item
+
+```cpp
+int google::protobuf::Repeated_int::get_Item( int index );
+AutoIt:
+    $oRepeated_int.Item( $index ) -> retval
+    $oRepeated_int( $index ) -> retval
+```
+
+### google::protobuf::Repeated_int::size
+
+```cpp
+int google::protobuf::Repeated_int::size();
+AutoIt:
+    $oRepeated_int.size() -> retval
+```
+
+### google::protobuf::Repeated_int::slice
+
+```cpp
+void google::protobuf::Repeated_int::slice( std::vector<int> list,
+                                            SSIZE_T          start,
+                                            SSIZE_T          deleteCount );
+AutoIt:
+    $oRepeated_int.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_int::slice( std::vector<int> list,
+                                            SSIZE_T          start = 0 );
+AutoIt:
+    $oRepeated_int.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_int::splice
+
+```cpp
+void google::protobuf::Repeated_int::splice( std::vector<int> list,
+                                             SSIZE_T          start,
+                                             SSIZE_T          deleteCount );
+AutoIt:
+    $oRepeated_int.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_int::splice( std::vector<int> list,
+                                             SSIZE_T          start = 0 );
+AutoIt:
+    $oRepeated_int.splice( [$start[, $list]] ) -> $list
+```
+
+## mediapipe::CalculatorGraphConfig
+
+### mediapipe::CalculatorGraphConfig::get_create
+
+```cpp
+static mediapipe::CalculatorGraphConfig mediapipe::CalculatorGraphConfig::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig").create() -> <mediapipe.CalculatorGraphConfig object>
+    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig")() -> <mediapipe.CalculatorGraphConfig object>
+```
+
+### mediapipe::CalculatorGraphConfig::str
+
+```cpp
+std::string mediapipe::CalculatorGraphConfig::str();
+AutoIt:
+    $oCalculatorGraphConfig.str() -> retval
+```
+
+## google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::create
+
+```cpp
+static google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_CalculatorGraphConfig_Node").create() -> <google.protobuf.Repeated_mediapipe_CalculatorGraphConfig_Node object>
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add
+
+```cpp
+mediapipe::CalculatorGraphConfig::Node* google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add();
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.add() -> retval
+```
+
+```cpp
+mediapipe::CalculatorGraphConfig::Node* google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add( const mediapipe::CalculatorGraphConfig::Node* value );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.add( $value ) -> retval
+```
+
+```cpp
+mediapipe::CalculatorGraphConfig::Node* google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.add( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::empty
+
+```cpp
+bool google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::empty();
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::get_Item
+
+```cpp
+mediapipe::CalculatorGraphConfig::Node* google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::get_Item( int index );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.Item( $index ) -> retval
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node( $index ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::size
+
+```cpp
+int google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::size();
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.size() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::slice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::slice( std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> list,
+                                                                             SSIZE_T                                                              start,
+                                                                             SSIZE_T                                                              deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::slice( std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> list,
+                                                                             SSIZE_T                                                              start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::splice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::splice( std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> list,
+                                                                              SSIZE_T                                                              start,
+                                                                              SSIZE_T                                                              deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::splice( std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> list,
+                                                                              SSIZE_T                                                              start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated_mediapipe_PacketGeneratorConfig
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::create
+
+```cpp
+static google::protobuf::Repeated_mediapipe_PacketGeneratorConfig google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_PacketGeneratorConfig").create() -> <google.protobuf.Repeated_mediapipe_PacketGeneratorConfig object>
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add
+
+```cpp
+mediapipe::PacketGeneratorConfig* google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add();
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.add() -> retval
+```
+
+```cpp
+mediapipe::PacketGeneratorConfig* google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add( const mediapipe::PacketGeneratorConfig* value );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.add( $value ) -> retval
+```
+
+```cpp
+mediapipe::PacketGeneratorConfig* google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.add( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::empty
+
+```cpp
+bool google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::empty();
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::get_Item
+
+```cpp
+mediapipe::PacketGeneratorConfig* google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::get_Item( int index );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.Item( $index ) -> retval
+    $oRepeated_mediapipe_PacketGeneratorConfig( $index ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::size
+
+```cpp
+int google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::size();
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.size() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::slice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::slice( std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> list,
+                                                                        SSIZE_T                                                        start,
+                                                                        SSIZE_T                                                        deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::slice( std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> list,
+                                                                        SSIZE_T                                                        start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::splice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::splice( std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> list,
+                                                                         SSIZE_T                                                        start,
+                                                                         SSIZE_T                                                        deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::splice( std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> list,
+                                                                         SSIZE_T                                                        start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated_mediapipe_StatusHandlerConfig
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::create
+
+```cpp
+static google::protobuf::Repeated_mediapipe_StatusHandlerConfig google::protobuf::Repeated_mediapipe_StatusHandlerConfig::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_StatusHandlerConfig").create() -> <google.protobuf.Repeated_mediapipe_StatusHandlerConfig object>
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add
+
+```cpp
+mediapipe::StatusHandlerConfig* google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add();
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.add() -> retval
+```
+
+```cpp
+mediapipe::StatusHandlerConfig* google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add( const mediapipe::StatusHandlerConfig* value );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.add( $value ) -> retval
+```
+
+```cpp
+mediapipe::StatusHandlerConfig* google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.add( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::empty
+
+```cpp
+bool google::protobuf::Repeated_mediapipe_StatusHandlerConfig::empty();
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::get_Item
+
+```cpp
+mediapipe::StatusHandlerConfig* google::protobuf::Repeated_mediapipe_StatusHandlerConfig::get_Item( int index );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.Item( $index ) -> retval
+    $oRepeated_mediapipe_StatusHandlerConfig( $index ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::size
+
+```cpp
+int google::protobuf::Repeated_mediapipe_StatusHandlerConfig::size();
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.size() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::slice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::slice( std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> list,
+                                                                      SSIZE_T                                                      start,
+                                                                      SSIZE_T                                                      deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::slice( std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> list,
+                                                                      SSIZE_T                                                      start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::splice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::splice( std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> list,
+                                                                       SSIZE_T                                                      start,
+                                                                       SSIZE_T                                                      deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::splice( std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> list,
+                                                                       SSIZE_T                                                      start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated_mediapipe_ExecutorConfig
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::create
+
+```cpp
+static google::protobuf::Repeated_mediapipe_ExecutorConfig google::protobuf::Repeated_mediapipe_ExecutorConfig::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ExecutorConfig").create() -> <google.protobuf.Repeated_mediapipe_ExecutorConfig object>
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::add
+
+```cpp
+mediapipe::ExecutorConfig* google::protobuf::Repeated_mediapipe_ExecutorConfig::add();
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.add() -> retval
+```
+
+```cpp
+mediapipe::ExecutorConfig* google::protobuf::Repeated_mediapipe_ExecutorConfig::add( const mediapipe::ExecutorConfig* value );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.add( $value ) -> retval
+```
+
+```cpp
+mediapipe::ExecutorConfig* google::protobuf::Repeated_mediapipe_ExecutorConfig::add( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.add( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::empty
+
+```cpp
+bool google::protobuf::Repeated_mediapipe_ExecutorConfig::empty();
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::get_Item
+
+```cpp
+mediapipe::ExecutorConfig* google::protobuf::Repeated_mediapipe_ExecutorConfig::get_Item( int index );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.Item( $index ) -> retval
+    $oRepeated_mediapipe_ExecutorConfig( $index ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::size
+
+```cpp
+int google::protobuf::Repeated_mediapipe_ExecutorConfig::size();
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.size() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::slice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::slice( std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> list,
+                                                                 SSIZE_T                                                 start,
+                                                                 SSIZE_T                                                 deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::slice( std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> list,
+                                                                 SSIZE_T                                                 start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::splice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::splice( std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> list,
+                                                                  SSIZE_T                                                 start,
+                                                                  SSIZE_T                                                 deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::splice( std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> list,
+                                                                  SSIZE_T                                                 start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated_google_protobuf_Any
+
+### google::protobuf::Repeated_google_protobuf_Any::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_Any google::protobuf::Repeated_google_protobuf_Any::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_Any").create() -> <google.protobuf.Repeated_google_protobuf_Any object>
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::add
+
+```cpp
+google::protobuf::Any* google::protobuf::Repeated_google_protobuf_Any::add();
+AutoIt:
+    $oRepeated_google_protobuf_Any.add() -> retval
+```
+
+```cpp
+google::protobuf::Any* google::protobuf::Repeated_google_protobuf_Any::add( const google::protobuf::Any* value );
+AutoIt:
+    $oRepeated_google_protobuf_Any.add( $value ) -> retval
+```
+
+```cpp
+google::protobuf::Any* google::protobuf::Repeated_google_protobuf_Any::add( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_Any.add( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_Any::empty();
+AutoIt:
+    $oRepeated_google_protobuf_Any.empty() -> retval
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::get_Item
+
+```cpp
+google::protobuf::Any* google::protobuf::Repeated_google_protobuf_Any::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_Any.Item( $index ) -> retval
+    $oRepeated_google_protobuf_Any( $index ) -> retval
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_Any::size();
+AutoIt:
+    $oRepeated_google_protobuf_Any.size() -> retval
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::slice( std::vector<std::shared_ptr<google::protobuf::Any>> list,
+                                                            SSIZE_T                                             start,
+                                                            SSIZE_T                                             deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_Any.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::slice( std::vector<std::shared_ptr<google::protobuf::Any>> list,
+                                                            SSIZE_T                                             start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_Any.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::splice( std::vector<std::shared_ptr<google::protobuf::Any>> list,
+                                                             SSIZE_T                                             start,
+                                                             SSIZE_T                                             deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_Any.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::splice( std::vector<std::shared_ptr<google::protobuf::Any>> list,
+                                                             SSIZE_T                                             start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_Any.splice( [$start[, $list]] ) -> $list
+```
+
+## mediapipe::CalculatorGraphConfig::Node
+
+### mediapipe::CalculatorGraphConfig::Node::get_create
+
+```cpp
+static mediapipe::CalculatorGraphConfig::Node mediapipe::CalculatorGraphConfig::Node::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig.Node").create() -> <mediapipe.CalculatorGraphConfig.Node object>
+    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig.Node")() -> <mediapipe.CalculatorGraphConfig.Node object>
+```
+
+### mediapipe::CalculatorGraphConfig::Node::str
+
+```cpp
+std::string mediapipe::CalculatorGraphConfig::Node::str();
+AutoIt:
+    $oNode.str() -> retval
+```
+
+## google::protobuf::Repeated_mediapipe_InputStreamInfo
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::create
+
+```cpp
+static google::protobuf::Repeated_mediapipe_InputStreamInfo google::protobuf::Repeated_mediapipe_InputStreamInfo::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InputStreamInfo").create() -> <google.protobuf.Repeated_mediapipe_InputStreamInfo object>
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::add
+
+```cpp
+mediapipe::InputStreamInfo* google::protobuf::Repeated_mediapipe_InputStreamInfo::add();
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.add() -> retval
+```
+
+```cpp
+mediapipe::InputStreamInfo* google::protobuf::Repeated_mediapipe_InputStreamInfo::add( const mediapipe::InputStreamInfo* value );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.add( $value ) -> retval
+```
+
+```cpp
+mediapipe::InputStreamInfo* google::protobuf::Repeated_mediapipe_InputStreamInfo::add( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.add( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::empty
+
+```cpp
+bool google::protobuf::Repeated_mediapipe_InputStreamInfo::empty();
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::get_Item
+
+```cpp
+mediapipe::InputStreamInfo* google::protobuf::Repeated_mediapipe_InputStreamInfo::get_Item( int index );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.Item( $index ) -> retval
+    $oRepeated_mediapipe_InputStreamInfo( $index ) -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::size
+
+```cpp
+int google::protobuf::Repeated_mediapipe_InputStreamInfo::size();
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.size() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::slice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::slice( std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> list,
+                                                                  SSIZE_T                                                  start,
+                                                                  SSIZE_T                                                  deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.slice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::slice( std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> list,
+                                                                  SSIZE_T                                                  start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::splice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::splice( std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> list,
+                                                                   SSIZE_T                                                  start,
+                                                                   SSIZE_T                                                  deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::splice( std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> list,
+                                                                   SSIZE_T                                                  start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.splice( [$start[, $list]] ) -> $list
 ```
 
 ## VectorOfVariant
@@ -4888,6 +6368,1510 @@ AutoIt:
 void* VectorOfMat::start();
 AutoIt:
     $oVectorOfMat.start() -> retval
+```
+
+## VectorOfShared_ptrPacketFactoryConfig
+
+### VectorOfShared_ptrPacketFactoryConfig::create
+
+```cpp
+static VectorOfShared_ptrPacketFactoryConfig VectorOfShared_ptrPacketFactoryConfig::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrPacketFactoryConfig").create() -> <VectorOfShared_ptrPacketFactoryConfig object>
+```
+
+```cpp
+static VectorOfShared_ptrPacketFactoryConfig VectorOfShared_ptrPacketFactoryConfig::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrPacketFactoryConfig").create( $size ) -> <VectorOfShared_ptrPacketFactoryConfig object>
+```
+
+```cpp
+static VectorOfShared_ptrPacketFactoryConfig VectorOfShared_ptrPacketFactoryConfig::create( VectorOfShared_ptrPacketFactoryConfig other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrPacketFactoryConfig").create( $other ) -> <VectorOfShared_ptrPacketFactoryConfig object>
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::Add
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::Add( std::shared_ptr<mediapipe::PacketFactoryConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::Items
+
+```cpp
+VectorOfShared_ptrPacketFactoryConfig VectorOfShared_ptrPacketFactoryConfig::Items();
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.Items() -> retval
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrPacketFactoryConfig::Keys();
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.Keys() -> retval
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::Remove
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::at
+
+```cpp
+std::shared_ptr<mediapipe::PacketFactoryConfig> VectorOfShared_ptrPacketFactoryConfig::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::at( size_t                                          index,
+                                                std::shared_ptr<mediapipe::PacketFactoryConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::clear
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::clear();
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.clear() -> None
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::empty
+
+```cpp
+bool VectorOfShared_ptrPacketFactoryConfig::empty();
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.empty() -> retval
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::end
+
+```cpp
+void* VectorOfShared_ptrPacketFactoryConfig::end();
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.end() -> retval
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::get_Item
+
+```cpp
+std::shared_ptr<mediapipe::PacketFactoryConfig> VectorOfShared_ptrPacketFactoryConfig::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrPacketFactoryConfig( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrPacketFactoryConfig::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::push_back
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::push_back( std::shared_ptr<mediapipe::PacketFactoryConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::push_vector
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::push_vector( VectorOfShared_ptrPacketFactoryConfig other );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::push_vector( VectorOfShared_ptrPacketFactoryConfig other,
+                                                         size_t                                count,
+                                                         size_t                                start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::put_Item
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::put_Item( size_t                                          vIndex,
+                                                      std::shared_ptr<mediapipe::PacketFactoryConfig> vItem );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::size
+
+```cpp
+size_t VectorOfShared_ptrPacketFactoryConfig::size();
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.size() -> retval
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::slice
+
+```cpp
+VectorOfShared_ptrPacketFactoryConfig VectorOfShared_ptrPacketFactoryConfig::slice( size_t start = 0,
+                                                                                    size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::sort
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::sort( void*  comparator,
+                                                  size_t start = 0,
+                                                  size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::sort_variant
+
+```cpp
+void VectorOfShared_ptrPacketFactoryConfig::sort_variant( void*  comparator,
+                                                          size_t start = 0,
+                                                          size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrPacketFactoryConfig::start
+
+```cpp
+void* VectorOfShared_ptrPacketFactoryConfig::start();
+AutoIt:
+    $oVectorOfShared_ptrPacketFactoryConfig.start() -> retval
+```
+
+## VectorOfShared_ptrInputCollection
+
+### VectorOfShared_ptrInputCollection::create
+
+```cpp
+static VectorOfShared_ptrInputCollection VectorOfShared_ptrInputCollection::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrInputCollection").create() -> <VectorOfShared_ptrInputCollection object>
+```
+
+```cpp
+static VectorOfShared_ptrInputCollection VectorOfShared_ptrInputCollection::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrInputCollection").create( $size ) -> <VectorOfShared_ptrInputCollection object>
+```
+
+```cpp
+static VectorOfShared_ptrInputCollection VectorOfShared_ptrInputCollection::create( VectorOfShared_ptrInputCollection other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrInputCollection").create( $other ) -> <VectorOfShared_ptrInputCollection object>
+```
+
+### VectorOfShared_ptrInputCollection::Add
+
+```cpp
+void VectorOfShared_ptrInputCollection::Add( std::shared_ptr<mediapipe::InputCollection> value );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrInputCollection::Items
+
+```cpp
+VectorOfShared_ptrInputCollection VectorOfShared_ptrInputCollection::Items();
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.Items() -> retval
+```
+
+### VectorOfShared_ptrInputCollection::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrInputCollection::Keys();
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.Keys() -> retval
+```
+
+### VectorOfShared_ptrInputCollection::Remove
+
+```cpp
+void VectorOfShared_ptrInputCollection::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrInputCollection::at
+
+```cpp
+std::shared_ptr<mediapipe::InputCollection> VectorOfShared_ptrInputCollection::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrInputCollection::at( size_t                                      index,
+                                            std::shared_ptr<mediapipe::InputCollection> value );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrInputCollection::clear
+
+```cpp
+void VectorOfShared_ptrInputCollection::clear();
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.clear() -> None
+```
+
+### VectorOfShared_ptrInputCollection::empty
+
+```cpp
+bool VectorOfShared_ptrInputCollection::empty();
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.empty() -> retval
+```
+
+### VectorOfShared_ptrInputCollection::end
+
+```cpp
+void* VectorOfShared_ptrInputCollection::end();
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.end() -> retval
+```
+
+### VectorOfShared_ptrInputCollection::get_Item
+
+```cpp
+std::shared_ptr<mediapipe::InputCollection> VectorOfShared_ptrInputCollection::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrInputCollection( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrInputCollection::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrInputCollection::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrInputCollection._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrInputCollection::push_back
+
+```cpp
+void VectorOfShared_ptrInputCollection::push_back( std::shared_ptr<mediapipe::InputCollection> value );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrInputCollection::push_vector
+
+```cpp
+void VectorOfShared_ptrInputCollection::push_vector( VectorOfShared_ptrInputCollection other );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrInputCollection::push_vector( VectorOfShared_ptrInputCollection other,
+                                                     size_t                            count,
+                                                     size_t                            start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrInputCollection::put_Item
+
+```cpp
+void VectorOfShared_ptrInputCollection::put_Item( size_t                                      vIndex,
+                                                  std::shared_ptr<mediapipe::InputCollection> vItem );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrInputCollection::size
+
+```cpp
+size_t VectorOfShared_ptrInputCollection::size();
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.size() -> retval
+```
+
+### VectorOfShared_ptrInputCollection::slice
+
+```cpp
+VectorOfShared_ptrInputCollection VectorOfShared_ptrInputCollection::slice( size_t start = 0,
+                                                                            size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrInputCollection::sort
+
+```cpp
+void VectorOfShared_ptrInputCollection::sort( void*  comparator,
+                                              size_t start = 0,
+                                              size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrInputCollection::sort_variant
+
+```cpp
+void VectorOfShared_ptrInputCollection::sort_variant( void*  comparator,
+                                                      size_t start = 0,
+                                                      size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrInputCollection::start
+
+```cpp
+void* VectorOfShared_ptrInputCollection::start();
+AutoIt:
+    $oVectorOfShared_ptrInputCollection.start() -> retval
+```
+
+## VectorOfShared_ptrNode
+
+### VectorOfShared_ptrNode::create
+
+```cpp
+static VectorOfShared_ptrNode VectorOfShared_ptrNode::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrNode").create() -> <VectorOfShared_ptrNode object>
+```
+
+```cpp
+static VectorOfShared_ptrNode VectorOfShared_ptrNode::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrNode").create( $size ) -> <VectorOfShared_ptrNode object>
+```
+
+```cpp
+static VectorOfShared_ptrNode VectorOfShared_ptrNode::create( VectorOfShared_ptrNode other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrNode").create( $other ) -> <VectorOfShared_ptrNode object>
+```
+
+### VectorOfShared_ptrNode::Add
+
+```cpp
+void VectorOfShared_ptrNode::Add( std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> value );
+AutoIt:
+    $oVectorOfShared_ptrNode.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrNode::Items
+
+```cpp
+VectorOfShared_ptrNode VectorOfShared_ptrNode::Items();
+AutoIt:
+    $oVectorOfShared_ptrNode.Items() -> retval
+```
+
+### VectorOfShared_ptrNode::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrNode::Keys();
+AutoIt:
+    $oVectorOfShared_ptrNode.Keys() -> retval
+```
+
+### VectorOfShared_ptrNode::Remove
+
+```cpp
+void VectorOfShared_ptrNode::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrNode.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrNode::at
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> VectorOfShared_ptrNode::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrNode.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrNode::at( size_t                                                  index,
+                                 std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> value );
+AutoIt:
+    $oVectorOfShared_ptrNode.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrNode::clear
+
+```cpp
+void VectorOfShared_ptrNode::clear();
+AutoIt:
+    $oVectorOfShared_ptrNode.clear() -> None
+```
+
+### VectorOfShared_ptrNode::empty
+
+```cpp
+bool VectorOfShared_ptrNode::empty();
+AutoIt:
+    $oVectorOfShared_ptrNode.empty() -> retval
+```
+
+### VectorOfShared_ptrNode::end
+
+```cpp
+void* VectorOfShared_ptrNode::end();
+AutoIt:
+    $oVectorOfShared_ptrNode.end() -> retval
+```
+
+### VectorOfShared_ptrNode::get_Item
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> VectorOfShared_ptrNode::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrNode.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrNode( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrNode::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrNode::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrNode._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrNode::push_back
+
+```cpp
+void VectorOfShared_ptrNode::push_back( std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> value );
+AutoIt:
+    $oVectorOfShared_ptrNode.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrNode::push_vector
+
+```cpp
+void VectorOfShared_ptrNode::push_vector( VectorOfShared_ptrNode other );
+AutoIt:
+    $oVectorOfShared_ptrNode.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrNode::push_vector( VectorOfShared_ptrNode other,
+                                          size_t                 count,
+                                          size_t                 start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrNode.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrNode::put_Item
+
+```cpp
+void VectorOfShared_ptrNode::put_Item( size_t                                                  vIndex,
+                                       std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> vItem );
+AutoIt:
+    $oVectorOfShared_ptrNode.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrNode::size
+
+```cpp
+size_t VectorOfShared_ptrNode::size();
+AutoIt:
+    $oVectorOfShared_ptrNode.size() -> retval
+```
+
+### VectorOfShared_ptrNode::slice
+
+```cpp
+VectorOfShared_ptrNode VectorOfShared_ptrNode::slice( size_t start = 0,
+                                                      size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrNode.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrNode::sort
+
+```cpp
+void VectorOfShared_ptrNode::sort( void*  comparator,
+                                   size_t start = 0,
+                                   size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrNode.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrNode::sort_variant
+
+```cpp
+void VectorOfShared_ptrNode::sort_variant( void*  comparator,
+                                           size_t start = 0,
+                                           size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrNode.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrNode::start
+
+```cpp
+void* VectorOfShared_ptrNode::start();
+AutoIt:
+    $oVectorOfShared_ptrNode.start() -> retval
+```
+
+## VectorOfShared_ptrPacketGeneratorConfig
+
+### VectorOfShared_ptrPacketGeneratorConfig::create
+
+```cpp
+static VectorOfShared_ptrPacketGeneratorConfig VectorOfShared_ptrPacketGeneratorConfig::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrPacketGeneratorConfig").create() -> <VectorOfShared_ptrPacketGeneratorConfig object>
+```
+
+```cpp
+static VectorOfShared_ptrPacketGeneratorConfig VectorOfShared_ptrPacketGeneratorConfig::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrPacketGeneratorConfig").create( $size ) -> <VectorOfShared_ptrPacketGeneratorConfig object>
+```
+
+```cpp
+static VectorOfShared_ptrPacketGeneratorConfig VectorOfShared_ptrPacketGeneratorConfig::create( VectorOfShared_ptrPacketGeneratorConfig other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrPacketGeneratorConfig").create( $other ) -> <VectorOfShared_ptrPacketGeneratorConfig object>
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::Add
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::Add( std::shared_ptr<mediapipe::PacketGeneratorConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::Items
+
+```cpp
+VectorOfShared_ptrPacketGeneratorConfig VectorOfShared_ptrPacketGeneratorConfig::Items();
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.Items() -> retval
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrPacketGeneratorConfig::Keys();
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.Keys() -> retval
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::Remove
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::at
+
+```cpp
+std::shared_ptr<mediapipe::PacketGeneratorConfig> VectorOfShared_ptrPacketGeneratorConfig::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::at( size_t                                            index,
+                                                  std::shared_ptr<mediapipe::PacketGeneratorConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::clear
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::clear();
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.clear() -> None
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::empty
+
+```cpp
+bool VectorOfShared_ptrPacketGeneratorConfig::empty();
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.empty() -> retval
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::end
+
+```cpp
+void* VectorOfShared_ptrPacketGeneratorConfig::end();
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.end() -> retval
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::get_Item
+
+```cpp
+std::shared_ptr<mediapipe::PacketGeneratorConfig> VectorOfShared_ptrPacketGeneratorConfig::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrPacketGeneratorConfig( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrPacketGeneratorConfig::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::push_back
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::push_back( std::shared_ptr<mediapipe::PacketGeneratorConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::push_vector
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::push_vector( VectorOfShared_ptrPacketGeneratorConfig other );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::push_vector( VectorOfShared_ptrPacketGeneratorConfig other,
+                                                           size_t                                  count,
+                                                           size_t                                  start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::put_Item
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::put_Item( size_t                                            vIndex,
+                                                        std::shared_ptr<mediapipe::PacketGeneratorConfig> vItem );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::size
+
+```cpp
+size_t VectorOfShared_ptrPacketGeneratorConfig::size();
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.size() -> retval
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::slice
+
+```cpp
+VectorOfShared_ptrPacketGeneratorConfig VectorOfShared_ptrPacketGeneratorConfig::slice( size_t start = 0,
+                                                                                        size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::sort
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::sort( void*  comparator,
+                                                    size_t start = 0,
+                                                    size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::sort_variant
+
+```cpp
+void VectorOfShared_ptrPacketGeneratorConfig::sort_variant( void*  comparator,
+                                                            size_t start = 0,
+                                                            size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrPacketGeneratorConfig::start
+
+```cpp
+void* VectorOfShared_ptrPacketGeneratorConfig::start();
+AutoIt:
+    $oVectorOfShared_ptrPacketGeneratorConfig.start() -> retval
+```
+
+## VectorOfShared_ptrStatusHandlerConfig
+
+### VectorOfShared_ptrStatusHandlerConfig::create
+
+```cpp
+static VectorOfShared_ptrStatusHandlerConfig VectorOfShared_ptrStatusHandlerConfig::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrStatusHandlerConfig").create() -> <VectorOfShared_ptrStatusHandlerConfig object>
+```
+
+```cpp
+static VectorOfShared_ptrStatusHandlerConfig VectorOfShared_ptrStatusHandlerConfig::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrStatusHandlerConfig").create( $size ) -> <VectorOfShared_ptrStatusHandlerConfig object>
+```
+
+```cpp
+static VectorOfShared_ptrStatusHandlerConfig VectorOfShared_ptrStatusHandlerConfig::create( VectorOfShared_ptrStatusHandlerConfig other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrStatusHandlerConfig").create( $other ) -> <VectorOfShared_ptrStatusHandlerConfig object>
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::Add
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::Add( std::shared_ptr<mediapipe::StatusHandlerConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::Items
+
+```cpp
+VectorOfShared_ptrStatusHandlerConfig VectorOfShared_ptrStatusHandlerConfig::Items();
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.Items() -> retval
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrStatusHandlerConfig::Keys();
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.Keys() -> retval
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::Remove
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::at
+
+```cpp
+std::shared_ptr<mediapipe::StatusHandlerConfig> VectorOfShared_ptrStatusHandlerConfig::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::at( size_t                                          index,
+                                                std::shared_ptr<mediapipe::StatusHandlerConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::clear
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::clear();
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.clear() -> None
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::empty
+
+```cpp
+bool VectorOfShared_ptrStatusHandlerConfig::empty();
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.empty() -> retval
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::end
+
+```cpp
+void* VectorOfShared_ptrStatusHandlerConfig::end();
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.end() -> retval
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::get_Item
+
+```cpp
+std::shared_ptr<mediapipe::StatusHandlerConfig> VectorOfShared_ptrStatusHandlerConfig::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrStatusHandlerConfig( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrStatusHandlerConfig::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::push_back
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::push_back( std::shared_ptr<mediapipe::StatusHandlerConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::push_vector
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::push_vector( VectorOfShared_ptrStatusHandlerConfig other );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::push_vector( VectorOfShared_ptrStatusHandlerConfig other,
+                                                         size_t                                count,
+                                                         size_t                                start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::put_Item
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::put_Item( size_t                                          vIndex,
+                                                      std::shared_ptr<mediapipe::StatusHandlerConfig> vItem );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::size
+
+```cpp
+size_t VectorOfShared_ptrStatusHandlerConfig::size();
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.size() -> retval
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::slice
+
+```cpp
+VectorOfShared_ptrStatusHandlerConfig VectorOfShared_ptrStatusHandlerConfig::slice( size_t start = 0,
+                                                                                    size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::sort
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::sort( void*  comparator,
+                                                  size_t start = 0,
+                                                  size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::sort_variant
+
+```cpp
+void VectorOfShared_ptrStatusHandlerConfig::sort_variant( void*  comparator,
+                                                          size_t start = 0,
+                                                          size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrStatusHandlerConfig::start
+
+```cpp
+void* VectorOfShared_ptrStatusHandlerConfig::start();
+AutoIt:
+    $oVectorOfShared_ptrStatusHandlerConfig.start() -> retval
+```
+
+## VectorOfShared_ptrExecutorConfig
+
+### VectorOfShared_ptrExecutorConfig::create
+
+```cpp
+static VectorOfShared_ptrExecutorConfig VectorOfShared_ptrExecutorConfig::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrExecutorConfig").create() -> <VectorOfShared_ptrExecutorConfig object>
+```
+
+```cpp
+static VectorOfShared_ptrExecutorConfig VectorOfShared_ptrExecutorConfig::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrExecutorConfig").create( $size ) -> <VectorOfShared_ptrExecutorConfig object>
+```
+
+```cpp
+static VectorOfShared_ptrExecutorConfig VectorOfShared_ptrExecutorConfig::create( VectorOfShared_ptrExecutorConfig other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrExecutorConfig").create( $other ) -> <VectorOfShared_ptrExecutorConfig object>
+```
+
+### VectorOfShared_ptrExecutorConfig::Add
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::Add( std::shared_ptr<mediapipe::ExecutorConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrExecutorConfig::Items
+
+```cpp
+VectorOfShared_ptrExecutorConfig VectorOfShared_ptrExecutorConfig::Items();
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.Items() -> retval
+```
+
+### VectorOfShared_ptrExecutorConfig::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrExecutorConfig::Keys();
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.Keys() -> retval
+```
+
+### VectorOfShared_ptrExecutorConfig::Remove
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrExecutorConfig::at
+
+```cpp
+std::shared_ptr<mediapipe::ExecutorConfig> VectorOfShared_ptrExecutorConfig::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::at( size_t                                     index,
+                                           std::shared_ptr<mediapipe::ExecutorConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrExecutorConfig::clear
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::clear();
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.clear() -> None
+```
+
+### VectorOfShared_ptrExecutorConfig::empty
+
+```cpp
+bool VectorOfShared_ptrExecutorConfig::empty();
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.empty() -> retval
+```
+
+### VectorOfShared_ptrExecutorConfig::end
+
+```cpp
+void* VectorOfShared_ptrExecutorConfig::end();
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.end() -> retval
+```
+
+### VectorOfShared_ptrExecutorConfig::get_Item
+
+```cpp
+std::shared_ptr<mediapipe::ExecutorConfig> VectorOfShared_ptrExecutorConfig::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrExecutorConfig( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrExecutorConfig::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrExecutorConfig::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrExecutorConfig::push_back
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::push_back( std::shared_ptr<mediapipe::ExecutorConfig> value );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrExecutorConfig::push_vector
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::push_vector( VectorOfShared_ptrExecutorConfig other );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::push_vector( VectorOfShared_ptrExecutorConfig other,
+                                                    size_t                           count,
+                                                    size_t                           start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrExecutorConfig::put_Item
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::put_Item( size_t                                     vIndex,
+                                                 std::shared_ptr<mediapipe::ExecutorConfig> vItem );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrExecutorConfig::size
+
+```cpp
+size_t VectorOfShared_ptrExecutorConfig::size();
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.size() -> retval
+```
+
+### VectorOfShared_ptrExecutorConfig::slice
+
+```cpp
+VectorOfShared_ptrExecutorConfig VectorOfShared_ptrExecutorConfig::slice( size_t start = 0,
+                                                                          size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrExecutorConfig::sort
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::sort( void*  comparator,
+                                             size_t start = 0,
+                                             size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrExecutorConfig::sort_variant
+
+```cpp
+void VectorOfShared_ptrExecutorConfig::sort_variant( void*  comparator,
+                                                     size_t start = 0,
+                                                     size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrExecutorConfig::start
+
+```cpp
+void* VectorOfShared_ptrExecutorConfig::start();
+AutoIt:
+    $oVectorOfShared_ptrExecutorConfig.start() -> retval
+```
+
+## VectorOfShared_ptrAny
+
+### VectorOfShared_ptrAny::create
+
+```cpp
+static VectorOfShared_ptrAny VectorOfShared_ptrAny::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrAny").create() -> <VectorOfShared_ptrAny object>
+```
+
+```cpp
+static VectorOfShared_ptrAny VectorOfShared_ptrAny::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrAny").create( $size ) -> <VectorOfShared_ptrAny object>
+```
+
+```cpp
+static VectorOfShared_ptrAny VectorOfShared_ptrAny::create( VectorOfShared_ptrAny other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrAny").create( $other ) -> <VectorOfShared_ptrAny object>
+```
+
+### VectorOfShared_ptrAny::Add
+
+```cpp
+void VectorOfShared_ptrAny::Add( std::shared_ptr<google::protobuf::Any> value );
+AutoIt:
+    $oVectorOfShared_ptrAny.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrAny::Items
+
+```cpp
+VectorOfShared_ptrAny VectorOfShared_ptrAny::Items();
+AutoIt:
+    $oVectorOfShared_ptrAny.Items() -> retval
+```
+
+### VectorOfShared_ptrAny::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrAny::Keys();
+AutoIt:
+    $oVectorOfShared_ptrAny.Keys() -> retval
+```
+
+### VectorOfShared_ptrAny::Remove
+
+```cpp
+void VectorOfShared_ptrAny::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrAny.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrAny::at
+
+```cpp
+std::shared_ptr<google::protobuf::Any> VectorOfShared_ptrAny::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrAny.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrAny::at( size_t                                 index,
+                                std::shared_ptr<google::protobuf::Any> value );
+AutoIt:
+    $oVectorOfShared_ptrAny.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrAny::clear
+
+```cpp
+void VectorOfShared_ptrAny::clear();
+AutoIt:
+    $oVectorOfShared_ptrAny.clear() -> None
+```
+
+### VectorOfShared_ptrAny::empty
+
+```cpp
+bool VectorOfShared_ptrAny::empty();
+AutoIt:
+    $oVectorOfShared_ptrAny.empty() -> retval
+```
+
+### VectorOfShared_ptrAny::end
+
+```cpp
+void* VectorOfShared_ptrAny::end();
+AutoIt:
+    $oVectorOfShared_ptrAny.end() -> retval
+```
+
+### VectorOfShared_ptrAny::get_Item
+
+```cpp
+std::shared_ptr<google::protobuf::Any> VectorOfShared_ptrAny::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrAny.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrAny( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrAny::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrAny::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrAny._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrAny::push_back
+
+```cpp
+void VectorOfShared_ptrAny::push_back( std::shared_ptr<google::protobuf::Any> value );
+AutoIt:
+    $oVectorOfShared_ptrAny.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrAny::push_vector
+
+```cpp
+void VectorOfShared_ptrAny::push_vector( VectorOfShared_ptrAny other );
+AutoIt:
+    $oVectorOfShared_ptrAny.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrAny::push_vector( VectorOfShared_ptrAny other,
+                                         size_t                count,
+                                         size_t                start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrAny.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrAny::put_Item
+
+```cpp
+void VectorOfShared_ptrAny::put_Item( size_t                                 vIndex,
+                                      std::shared_ptr<google::protobuf::Any> vItem );
+AutoIt:
+    $oVectorOfShared_ptrAny.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrAny::size
+
+```cpp
+size_t VectorOfShared_ptrAny::size();
+AutoIt:
+    $oVectorOfShared_ptrAny.size() -> retval
+```
+
+### VectorOfShared_ptrAny::slice
+
+```cpp
+VectorOfShared_ptrAny VectorOfShared_ptrAny::slice( size_t start = 0,
+                                                    size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrAny.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrAny::sort
+
+```cpp
+void VectorOfShared_ptrAny::sort( void*  comparator,
+                                  size_t start = 0,
+                                  size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrAny.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrAny::sort_variant
+
+```cpp
+void VectorOfShared_ptrAny::sort_variant( void*  comparator,
+                                          size_t start = 0,
+                                          size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrAny.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrAny::start
+
+```cpp
+void* VectorOfShared_ptrAny::start();
+AutoIt:
+    $oVectorOfShared_ptrAny.start() -> retval
+```
+
+## VectorOfShared_ptrInputStreamInfo
+
+### VectorOfShared_ptrInputStreamInfo::create
+
+```cpp
+static VectorOfShared_ptrInputStreamInfo VectorOfShared_ptrInputStreamInfo::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrInputStreamInfo").create() -> <VectorOfShared_ptrInputStreamInfo object>
+```
+
+```cpp
+static VectorOfShared_ptrInputStreamInfo VectorOfShared_ptrInputStreamInfo::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrInputStreamInfo").create( $size ) -> <VectorOfShared_ptrInputStreamInfo object>
+```
+
+```cpp
+static VectorOfShared_ptrInputStreamInfo VectorOfShared_ptrInputStreamInfo::create( VectorOfShared_ptrInputStreamInfo other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrInputStreamInfo").create( $other ) -> <VectorOfShared_ptrInputStreamInfo object>
+```
+
+### VectorOfShared_ptrInputStreamInfo::Add
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::Add( std::shared_ptr<mediapipe::InputStreamInfo> value );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.Add( $value ) -> None
+```
+
+### VectorOfShared_ptrInputStreamInfo::Items
+
+```cpp
+VectorOfShared_ptrInputStreamInfo VectorOfShared_ptrInputStreamInfo::Items();
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.Items() -> retval
+```
+
+### VectorOfShared_ptrInputStreamInfo::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrInputStreamInfo::Keys();
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.Keys() -> retval
+```
+
+### VectorOfShared_ptrInputStreamInfo::Remove
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.Remove( $index ) -> None
+```
+
+### VectorOfShared_ptrInputStreamInfo::at
+
+```cpp
+std::shared_ptr<mediapipe::InputStreamInfo> VectorOfShared_ptrInputStreamInfo::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::at( size_t                                      index,
+                                            std::shared_ptr<mediapipe::InputStreamInfo> value );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.at( $index, $value ) -> None
+```
+
+### VectorOfShared_ptrInputStreamInfo::clear
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::clear();
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.clear() -> None
+```
+
+### VectorOfShared_ptrInputStreamInfo::empty
+
+```cpp
+bool VectorOfShared_ptrInputStreamInfo::empty();
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.empty() -> retval
+```
+
+### VectorOfShared_ptrInputStreamInfo::end
+
+```cpp
+void* VectorOfShared_ptrInputStreamInfo::end();
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.end() -> retval
+```
+
+### VectorOfShared_ptrInputStreamInfo::get_Item
+
+```cpp
+std::shared_ptr<mediapipe::InputStreamInfo> VectorOfShared_ptrInputStreamInfo::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.Item( $vIndex ) -> retval
+    $oVectorOfShared_ptrInputStreamInfo( $vIndex ) -> retval
+```
+
+### VectorOfShared_ptrInputStreamInfo::get__NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrInputStreamInfo::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo._NewEnum() -> retval
+```
+
+### VectorOfShared_ptrInputStreamInfo::push_back
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::push_back( std::shared_ptr<mediapipe::InputStreamInfo> value );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.push_back( $value ) -> None
+```
+
+### VectorOfShared_ptrInputStreamInfo::push_vector
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::push_vector( VectorOfShared_ptrInputStreamInfo other );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::push_vector( VectorOfShared_ptrInputStreamInfo other,
+                                                     size_t                            count,
+                                                     size_t                            start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared_ptrInputStreamInfo::put_Item
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::put_Item( size_t                                      vIndex,
+                                                  std::shared_ptr<mediapipe::InputStreamInfo> vItem );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.Item( $vIndex ) = $vItem
+```
+
+### VectorOfShared_ptrInputStreamInfo::size
+
+```cpp
+size_t VectorOfShared_ptrInputStreamInfo::size();
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.size() -> retval
+```
+
+### VectorOfShared_ptrInputStreamInfo::slice
+
+```cpp
+VectorOfShared_ptrInputStreamInfo VectorOfShared_ptrInputStreamInfo::slice( size_t start = 0,
+                                                                            size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared_ptrInputStreamInfo::sort
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::sort( void*  comparator,
+                                              size_t start = 0,
+                                              size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrInputStreamInfo::sort_variant
+
+```cpp
+void VectorOfShared_ptrInputStreamInfo::sort_variant( void*  comparator,
+                                                      size_t start = 0,
+                                                      size_t count = this->__self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared_ptrInputStreamInfo::start
+
+```cpp
+void* VectorOfShared_ptrInputStreamInfo::start();
+AutoIt:
+    $oVectorOfShared_ptrInputStreamInfo.start() -> retval
 ```
 
 ## VectorOfPairOfStringAndPacket

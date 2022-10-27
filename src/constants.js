@@ -3,6 +3,7 @@ exports.SIMPLE_ARGTYPE_DEFAULTS = new Map([
     ["size_t", "0"],
     ["SSIZE_T", "0"],
     ["int", "0"],
+    ["int64", "0"],
     ["float", "0.f"],
     ["double", "0"],
     ["c_string", "(char*)\"\""],

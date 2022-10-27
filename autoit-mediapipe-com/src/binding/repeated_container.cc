@@ -236,7 +236,7 @@ namespace google {
 					start += field_size;
 				}
 
-				AUTOIT_ASSERT_THROW(start >= 0 && start < field_size, "list assignment index out of range");
+				AUTOIT_ASSERT_THROW(start >= 0 && start < field_size, "splice index out of range");
 
 				if (deleteCount > (field_size - start)) {
 					deleteCount = field_size - start;
@@ -283,7 +283,7 @@ namespace google {
 					// transfert ownership of sub message to list
 					hr = autoit_from(std::shared_ptr<Message>(sub_message), out_val);
 					AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "Failed to delete message at index " << field_size - 1 - i);
-					list[i] = obj;
+					list[deleteCount - 1 - i] = obj;
 				}
 			}
 
@@ -295,8 +295,11 @@ namespace google {
 				Slice(list, start, field_size - start);
 			}
 
-			void RepeatedContainer::Slice(std::vector<_variant_t>& list, SSIZE_T start, size_t count) const {
+			void RepeatedContainer::Slice(std::vector<_variant_t>& list, SSIZE_T start, SSIZE_T count) const {
 				list.clear();
+				if (count <= 0) {
+					return;
+				}
 				list.reserve(count);
 				for (size_t i = 0; i < count; i++) {
 					list[i] = GetItem(start + i);

@@ -8,6 +8,7 @@ const {spawn} = require("child_process");
 const mkdirp = require("mkdirp");
 const waterfall = require("async/waterfall");
 const {explore} = require("fs-explorer");
+const Parser = require("./protobuf/Parser");
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
@@ -154,6 +155,31 @@ waterfall([
             const generated_include = srcfiles.map(path => `#include "${ path.slice(SRC_DIR.length + 1).replace("\\", "/") }"`);
             next(err, srcfiles, generated_include);
         });
+    },
+
+    (srcfiles, generated_include, next) => {
+        const parser = new Parser();
+        const outputs = Parser.createOutputs();
+        const cache = new Map();
+        const opts = {
+            proto_path: [
+                fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe`),
+                fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/bazel-mediapipe/external/com_google_protobuf/src`),
+            ]
+        };
+
+        for (const filename of [
+            "mediapipe/framework/calculator.proto",
+        ]) {
+            opts.filename = filename;
+            parser.parseFile(fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/${ filename }`), opts, outputs, cache);
+        }
+
+        custom_declarations.push(... outputs.decls);
+        generated_include.push(... outputs.generated_include);
+        options.typedefs = outputs.typedefs;
+
+        next(null, srcfiles, generated_include);
     },
 
     (srcfiles, generated_include, next) => {

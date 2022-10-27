@@ -16,9 +16,9 @@ const declarations = [
 ];
 
 const protobufs = {
-    "mediapipe.framework.calculator_pb2": [
-        "mediapipe.CalculatorGraphConfig",
-    ],
+    // "mediapipe.framework.calculator_pb2": [
+    //     "mediapipe.CalculatorGraphConfig",
+    // ],
     "mediapipe.framework.formats.detection_pb2": [
         "mediapipe.Detection",
     ],

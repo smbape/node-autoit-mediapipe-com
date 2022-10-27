@@ -5,23 +5,48 @@ const regNoWord = /\W/g;
 const SCALAR_TYPES = new Map([
     ["double", "double"],
     ["float", "float"],
-    ["int32", "int32"],
+    ["int32", "int"],
     ["int64", "int64"],
     ["uint32", "uint32"],
     ["uint64", "uint64"],
-    ["sint32", "int32"],
+    ["sint32", "int"],
     ["sint64", "int64"],
     ["fixed32", "uint32"],
     ["fixed64", "uint64"],
-    ["sfixed32", "int32"],
+    ["sfixed32", "int"],
     ["sfixed64", "int64"],
     ["bool", "bool"],
-    ["string", "string"],
-    ["bytes", "string"],
+    ["string", "std::string"],
+    ["bytes", "std::string"],
 ]);
+
+const FieldDescriptor_Type = {
+    double: 1,
+    float: 2,
+    int64: 3,
+    uint64: 4,
+    int32: 5,
+    fixed64: 6,
+    fixed32: 7,
+    bool: 8,
+    string: 9,
+    group: 10,
+    message: 11,
+    bytes: 12,
+    uint32: 13,
+    enum: 14,
+    sfixed32: 15,
+    sfixed64: 16,
+    sint32: 17,
+    sint64: 18,
+};
 
 const isScalar = type => {
     return SCALAR_TYPES.has(type);
+};
+
+const isPrimitive = type => {
+    return type !== "string" && type !== "bytes" && isScalar(type);
 };
 
 const getTypeName = proto => {
@@ -34,14 +59,15 @@ const getEnumFQN = (proto, enum_field) => {
     return proto.slice(0, pos + 1) + enum_field;
 };
 
-const createOutputs = () => {
-    return {
-        decls: [],
-        generated_include: [],
-    };
-};
-
 class Parser {
+    static createOutputs() {
+        return {
+            decls: [],
+            generated_include: [],
+            typedefs: new Map(),
+        };
+    };
+
     constructor() {
         this.pos = 0;
         this.imports = new Map();
@@ -68,31 +94,61 @@ class Parser {
 
     getCppType(type, scopes) {
         if (isScalar(type)) {
-            return [type, SCALAR_TYPES.get(type)];
+            return SCALAR_TYPES.get(type);
         }
 
         const message = type;
 
         // lookup in exports
         for (let i = scopes.length - 1; i >= -1; i--) {
-            const fqn = i === -1 ? message : `${ scopes.slice(0, i + 1) }.${ message }`;
+            const fqn = i === -1 ? this.package + message : `${ this.package }${ scopes.slice(0, i + 1) }.${ message }`;
             if (this.exports.has(fqn)) {
-                return fqn;
+                return fqn.split(".").join("::");
             }
         }
 
         // lookup in imports with package
-        const imported = `${ this.package }.${ message }`;
+        const imported = this.package + message;
         if (this.imports.has(imported)) {
-            return imported;
+            return imported.split(".").join("::");
         }
 
         // lookup in imports without package
         if (this.imports.has(message)) {
-            return message;
+            return message.split(".").join("::");
         }
 
         return this.getFQN(type, scopes).join("::");
+    }
+
+    getFieldType(type, scopes) {
+        if (isScalar(type)) {
+            return FieldDescriptor_Type[type];
+        }
+
+        if (this.isEnum(type, scopes)) {
+            return FieldDescriptor_Type.enum;
+        }
+
+        return FieldDescriptor_Type.message;
+    }
+
+    getTypeTraits(type, scopes) {
+        if (isPrimitive(type)) {
+            return `PrimitiveTypeTraits<${ type }>`;
+        }
+
+        if (type === "string" || type === "bytes") {
+            return "StringTypeTraits";
+        }
+
+        const ExtendingType = this.getCppType(type, scopes);
+
+        if (this.isEnum(type, scopes)) {
+            return `EnumTypeTraits<${ ExtendingType }>`;
+        }
+
+        return `MessageTypeTraits<::${ ExtendingType }>`;
     }
 
     getImport(filename, relpath) {
@@ -109,7 +165,7 @@ class Parser {
         return this.cache.get(filename);
     }
 
-    parseFile(filename, options = {}, outputs = createOutputs(), cache = new Map()) {
+    parseFile(filename, options = {}, outputs = Parser.createOutputs(), cache = new Map()) {
         filename = fs.realpathSync(filename);
 
         cache.set(filename, {
@@ -121,7 +177,7 @@ class Parser {
         this.parseText(proto, options, outputs, cache);
     }
 
-    parseText(input, options = {}, outputs = createOutputs(), cache = new Map()) {
+    parseText(input, options = {}, outputs = Parser.createOutputs(), cache = new Map()) {
         this.input = input;
         this.len = input.length;
         this.options = options;
@@ -129,7 +185,7 @@ class Parser {
         this.cache = cache;
 
         const globalOptions = [];
-        const {decls} = outputs;
+        const {decls, typedefs} = outputs;
 
         this.consumeCommentOrSpace();
         this.maybeSyntax();
@@ -192,22 +248,24 @@ class Parser {
             ]);
 
             const {scopes, options: opts} = raw_fields;
-            console.log(proto, opts);
 
             for (const [field_type, field_name, field_rule] of raw_fields.fields) {
                 const is_map = field_type.startsWith("map<");
-                const cpptype = this.getCppType(field_type, scopes);
 
                 if (field_rule === "repeated") {
-                    // TODO handle repeated : return RepeatedContainer
+                    this.addRepeatedField(proto, fields, field_type, field_name, scopes);
                 } else if (is_map) {
                     // TODO handle map : return MapContainer
                 } else if (isScalar(field_type) || this.isEnum(field_type, scopes)) {
-                    fields.push([field_type, field_name, "", [`/R=${ field_name }`, `/W=set_${ field_name }`]]);
+                    const cpptype = this.getCppType(field_type, scopes);
+                    fields.push([cpptype, field_name, "", [`/R=${ field_name }`, `/W=set_${ field_name }`]]);
                 } else {
+                    const cpptype = this.getCppType(field_type, scopes);
                     fields.push([`${ cpptype }*`, field_name, "", [`/R=mutable_${ field_name }`]]);
                 }
             }
+
+            // TODO if has no options fields => google.protobuf.MessageOptions options /R=options
 
             const parts = proto.slice(this.package.length).split(".");
             for (let i = 0; i < parts.length; i++) {
@@ -223,8 +281,6 @@ class Parser {
             }
         }
 
-        // TODO this.extensions map<extented : string, map<scopes : string, field : [field_type : string, field_name : string]>>
-
         // expose a package property like in mediapipe python
         // package.A.B.C
         // => filename. A /R /S
@@ -234,13 +290,55 @@ class Parser {
             decls.push([pkg === top ? pkg : pkg.replace(top, this.package), "", ["/Properties"], properties, "", ""]);
         }
 
-        // TODO handle extensions
-        // obj.Extensions[OptionType.ext] =>   autoit_from(obj->MutableExtension(OptionsType::ext), variant)
-        //                                     autoit_from(obj->GetExtension(OptionsType::ext), variant)
+        for (const [extended, scoped] of this.extensions.entries()) {
+            for (const [_scopes, raw_fields] of scoped.entries()) {
+                const scopes = _scopes.length !== 0 ? _scopes.split(".") : [];
 
-        // if has an option that extends google.protobuf.MessageOptions => google.protobuf.MessageOptions options /R=options
+                const ExtendeeType = this.getCppType(extended, scopes);
+                const ExtendingType = scopes.length !== 0 ? this.getCppType(scopes[scopes.length - 1], scopes.slice(0, -1)) : "";
 
-        outputs.extensions = this.extensions;
+                const fqn = ExtendeeType.replaceAll("::", ".");
+
+                for (const [field_type, field_name, field_rule, is_packed] of raw_fields) {
+                    const FieldType = this.getFieldType(field_type, scopes);
+                    const extension = scopes.length === 0
+                        ? (this.package + field_name).split(".").join("::")
+                        : `${ ExtendingType }::${ field_name }`;
+                    let TypeTraitsType = this.getTypeTraits(field_type, scopes);
+                    if (field_rule === "repeated") {
+                        TypeTraitsType = `Repeated${ TypeTraitsType }`;
+                    }
+
+                    let value_type = this.getCppType(field_type, scopes);
+                    const key_type = `Extend_${ ExtendeeType.replaceAll("::", "_") }With${ value_type.replaceAll("::", "_") }`;
+                    const cpptype = `::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier<::${ ExtendeeType }, ::PROTOBUF_NAMESPACE_ID::internal::${ TypeTraitsType }, ${ FieldType }, ${ is_packed }>`;
+                    const byref = !isScalar(field_type) && !this.isEnum(field_type, scopes);
+
+                    if (byref) {
+                        value_type += "*";
+                    }
+
+                    typedefs.set(key_type, cpptype);
+
+                    decls.push(...[
+                        [`${ fqn }.${ byref ? "Mutable" : "Get" }Extension`, value_type, ["/attr=propget", "/idlname=Extensions", "=get_Extensions"], [
+                            [key_type, "vKey", "", []],
+                        ], "", ""],
+                    ]);
+
+                    if (!byref) {
+                        decls.push(...[
+                            [`${ fqn }.SetExtension`, "void", ["/attr=propput", "/idlname=Extensions", "=put_Extensions"], [
+                                [key_type, "vKey", "", []],
+                                [value_type, "vItem", "", []],
+                            ], "", ""],
+                        ]);
+                    }
+                }
+            }
+        }
+
+        // outputs.extensions = this.extensions;
 
         return outputs;
     }
@@ -374,13 +472,13 @@ class Parser {
         const fields = [];
         const options = [];
 
+        this.messages.push(message);
+
         this.exports.set(proto, {
             scopes: this.messages.slice(),
             fields,
             options,
         });
-
-        this.messages.push(message);
 
         this.consumeCommentOrSpace();
 
@@ -701,12 +799,16 @@ class Parser {
 
         this.consumeCommentOrSpace();
 
+        const optstart = this.pos;
+
         if (!this.maybeFieldEnd()) {
             this.pos = pos;
             return false;
         }
 
-        fields.push([field_type, field_name, is_repeated ? identifier : ""]);
+        const is_packed = this.input.slice(optstart, this.pos).includes("packed");
+
+        fields.push([field_type, field_name, is_repeated ? identifier : "", is_packed]);
 
         return true;
     }
@@ -780,6 +882,107 @@ class Parser {
         this.pos += seq.length;
 
         return true;
+    }
+
+    addRepeatedField(proto, fields, field_type, field_name, scopes) {
+        const {decls, typedefs} = this.outputs;
+
+        const value_type = this.getCppType(field_type, scopes);
+        const byref = isScalar(field_type) || this.isEnum(field_type, scopes) ? "" : "*";
+        const name = `Repeated_${ value_type.replaceAll("::", "_") }`;
+        const fqn = `google.protobuf.${ name }`;
+        const cpptype = fqn.replaceAll(".", "::");
+
+        [`${ fqn }*`, field_name, "", [`/R=mutable_${ field_name }`]]
+
+        if (typedefs.has(cpptype)) {
+            return;
+        }
+
+        const ptr = value_type === "std::string" || byref ? "Ptr" : "";
+        typedefs.set(cpptype, `::google::protobuf::Repeated${ ptr }Field<${ value_type }>`);
+
+        decls.push(...[
+            [`class ${ fqn }`, "", ["/Simple"], [
+                ["int", "Count", "", ["/R=size", ]]
+            ], "", ""],
+            [`${ fqn }.${ name }`, "", [], [], "", ""],
+
+            [`${ fqn }.empty`, "bool", [], [], "", ""],
+            [`${ fqn }.size`, "int", [], [], "", ""],
+
+            [`${ fqn }.${ byref ? "Mutable" : "Get" }`, `${ value_type }${ byref }`, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE"], [
+                ["int", "index", "", []],
+            ], "", ""],
+        ]);
+
+        if (byref) {
+            decls.push(...[
+                [`${ fqn }.Add`, `${ value_type }${ byref }`, ["=add"], [], "", ""],
+                [`${ fqn }.Add`, `${ value_type }${ byref }`, ["=add", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
+                    [`${ value_type }${ byref }`, "value", "", ["/C"]]
+                ], "", ""],
+                [`${ fqn }.Add`, `${ value_type }${ byref }`, ["=add", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
+                    ["std::map<std::string, _variant_t>", "attrs", "", []]
+                ], "", ""],
+                [`${ fqn }.splice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SpliceMessage", "/Expr=__self->get(), $0"], [
+                    [`std::vector<std::shared_ptr<${ value_type }>>`, "list", "", ["/O"]],
+                    ["SSIZE_T", "start", "", []],
+                    ["SSIZE_T", "deleteCount", "", []],
+                ], "", ""],
+                [`${ fqn }.splice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SpliceMessage", "/Expr=__self->get(), $0"], [
+                    [`std::vector<std::shared_ptr<${ value_type }>>`, "list", "", ["/O"]],
+                    ["SSIZE_T", "start", "0", []],
+                ], "", ""],
+                [`${ fqn }.slice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SliceMessage", "/Expr=__self->get(), $0"], [
+                    [`std::vector<std::shared_ptr<${ value_type }>>`, "list", "", ["/O"]],
+                    ["SSIZE_T", "start", "", []],
+                    ["SSIZE_T", "deleteCount", "", []],
+                ], "", ""],
+                [`${ fqn }.slice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SliceMessage", "/Expr=__self->get(), $0"], [
+                    [`std::vector<std::shared_ptr<${ value_type }>>`, "list", "", ["/O"]],
+                    ["SSIZE_T", "start", "0", []],
+                ], "", ""],
+            ]);
+        } else {
+            decls.push(...[
+                [`${ fqn }.Add`, "void", ["=append"], [
+                    [value_type, "value", "", ["/RRef"]]
+                ], "", ""],
+                [`${ fqn }.splice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SpliceScalar", "/Expr=__self->get(), $0"], [
+                    [`std::vector<${ value_type }>`, "list", "", ["/O"]],
+                    ["SSIZE_T", "start", "", []],
+                    ["SSIZE_T", "deleteCount", "", []],
+                ], "", ""],
+                [`${ fqn }.splice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SpliceScalar", "/Expr=__self->get(), $0"], [
+                    [`std::vector<${ value_type }>`, "list", "", ["/O"]],
+                    ["SSIZE_T", "start", "0", []],
+                ], "", ""],
+                [`${ fqn }.slice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SliceScalar", "/Expr=__self->get(), $0"], [
+                    [`std::vector<${ value_type }>`, "list", "", ["/O"]],
+                    ["SSIZE_T", "start", "", []],
+                    ["SSIZE_T", "deleteCount", "", []],
+                ], "", ""],
+                [`${ fqn }.slice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SliceScalar", "/Expr=__self->get(), $0"], [
+                    [`std::vector<${ value_type }>`, "list", "", ["/O"]],
+                    ["SSIZE_T", "start", "0", []],
+                ], "", ""],
+            ]);
+        }
+
+        // CV_WRAP_AS(deepcopy) _variant_t DeepCopy();
+        // CV_WRAP_AS(extend) void Extend(std::vector<_variant_t>& items);
+        // CV_WRAP_AS(insert) void Insert(SSIZE_T index, _variant_t item);
+        // CV_WRAP_AS(insert) void Insert(std::tuple<SSIZE_T, _variant_t>& args);
+        // CV_WRAP_AS(pop) _variant_t Pop(SSIZE_T index = -1);
+        // // CV_WRAP_AS(remove) void Remove(_variant_t item);
+        // CV_WRAP_AS(sort) void Sort(void* comparator);
+        // CV_WRAP_AS(reverse) void Reverse();
+        // CV_WRAP_AS(clear) void Clear();
+        // CV_WRAP void MergeFrom(const RepeatedContainer& other);
+        // CV_WRAP void MergeFrom(const std::vector<_variant_t>& other);
+
+        // CV_WRAP_AS(str) std::string ToStr() const;
     }
 }
 

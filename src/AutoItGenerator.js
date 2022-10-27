@@ -59,6 +59,12 @@ class AutoItGenerator {
 
         this.namespace = options.namespace;
 
+        if (options.typedefs) {
+            for (const [fqn, cpptype] of options.typedefs) {
+                this.typedefs.set(fqn, cpptype);
+            }
+        }
+
         // this.options = options;
 
         for (const namespace of namespaces) {
@@ -628,7 +634,21 @@ class AutoItGenerator {
                 #include "${ LIBRARY }.h"
                 #include "generated_include.h"
 
-                ${ Array.from(this.typedefs).map(([fqn, cpptype]) => `typedef ${ cpptype } ${ fqn };`).join(`\n${ " ".repeat(16) }`) }
+                ${ Array.from(this.typedefs).map(([fqn, cpptype]) => {
+                    const parts = fqn.split("::");
+                    const last = parts.length - 1;
+                    const begin = new Array(last);
+                    const end = new Array(last);
+                    for (let i = 0; i < last; i++) {
+                        const indent = " ".repeat(4 * i);
+                        begin[i] = indent + `namespace ${ parts[i] } {`;
+                        end[last - 1 - i] = indent + "}";
+                    }
+
+                    const name = parts[last];
+                    const indent = " ".repeat(4 * (last));
+                    return begin.concat(`${ indent }typedef ${ cpptype } ${ name };`, end).join("\n");
+                }).join("\n").split("\n").join(`\n${ " ".repeat(16) }`) }
 
                 `.replace(/^ {16}/mg, ""),
                 conversion.number.declare("char", "CHAR", options), "",
