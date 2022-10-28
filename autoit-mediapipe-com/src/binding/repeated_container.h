@@ -42,7 +42,6 @@ namespace google {
 				CV_WRAP_AS(insert) void Insert(SSIZE_T index, _variant_t item);
 				CV_WRAP_AS(insert) void Insert(std::tuple<SSIZE_T, _variant_t>& args);
 				CV_WRAP_AS(pop) _variant_t Pop(SSIZE_T index = -1);
-				// CV_WRAP_AS(remove) void Remove(_variant_t item);
 				CV_WRAP_AS(sort) void Sort(void* comparator);
 				CV_WRAP_AS(reverse) void Reverse();
 				CV_WRAP_AS(clear) void Clear();
@@ -223,6 +222,110 @@ namespace google {
 				}
 				RepeatedField_SliceMessage(repeatedField, list, start, field_size - start);
 			}
+
+			template<typename _Tp>
+			void RepeatedField_ExtendScalar(
+				_Tp* repeatedField,
+				const _Tp& items
+			) {
+				for (const auto& item : items) {
+					*repeatedField->Add() = item;
+				}
+			}
+
+			template<typename Element, typename _Tp>
+			void RepeatedField_ExtendScalar(
+				_Tp* repeatedField,
+				const std::vector<Element>& items
+			) {
+				for (const auto& item : items) {
+					*repeatedField->Add() = item;
+				}
+			}
+
+			template<typename Element>
+			void RepeatedField_ExtendMessage(
+				RepeatedPtrField<Element>* repeatedField,
+				const std::vector<std::shared_ptr<Element>>& items
+			) {
+				for (const auto& item : items) {
+					RepeatedField_AddMessage(repeatedField, item.get());
+				}
+			}
+
+			template<typename Element>
+			void RepeatedField_ExtendMessage(
+				RepeatedPtrField<Element>* repeatedField,
+				const RepeatedPtrField<Element>& items
+			) {
+				for (const auto& item : items) {
+					RepeatedField_AddMessage(repeatedField, &item);
+				}
+			}
+
+			template<typename Element>
+			void RepeatedField_ExtendMessage(
+				RepeatedPtrField<Element>* repeatedField,
+				std::vector<_variant_t>& items
+			) {
+				for (const auto& item : items) {
+					std::map<std::string, _variant_t> attrs;
+					HRESULT hr = autoit_to(&item, attrs);
+					if (SUCCEEDED(hr)) {
+						RepeatedField_AddMessage(repeatedField, attrs);
+					} else {
+						auto value = ::autoit::cast<std::shared_ptr<Element>>(&item);
+						RepeatedField_AddMessage(repeatedField, value.get());
+					}
+				}
+			}
+
+			template<typename Element, typename _Tp>
+			void RepeatedField_InsertScalar(_Tp* repeatedField, SSIZE_T index, const Element& item) {
+				int field_size = repeatedField->size();
+				if (index < 0) {
+					index += field_size;
+				}
+
+				AUTOIT_ASSERT_THROW(index >= 0 && index <= field_size, "list index (" << index << ") out of range");
+
+				*repeatedField->Add() = item;
+
+				for (int i = index; i < field_size; i++) {
+					repeatedField->SwapElements(i, field_size);
+				}
+			}
+
+			template<typename Element>
+			void RepeatedField_InsertMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index, const Element* item) {
+				int field_size = repeatedField->size();
+				if (index < 0) {
+					index += field_size;
+				}
+
+				AUTOIT_ASSERT_THROW(index >= 0 && index <= field_size, "list index (" << index << ") out of range");
+
+				RepeatedField_AddMessage(repeatedField, item);
+
+				for (int i = index; i < field_size; i++) {
+					repeatedField->SwapElements(i, field_size);
+				}
+			}
+
+			template<typename Element, typename _Tp>
+			Element RepeatedField_PopScalar(_Tp* repeatedField, SSIZE_T index = -1) {
+				std::vector<Element> list;
+				RepeatedField_SpliceScalar(repeatedField, list, index, 1);
+				return list[0];
+			}
+
+			template<typename Element>
+			std::shared_ptr<Element> RepeatedField_PopMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index = -1) {
+				std::vector<std::shared_ptr<Element>> list;
+				RepeatedField_SpliceMessage(repeatedField, list, index, 1);
+				return list[0];
+			}
+
 		}
 	}
 }

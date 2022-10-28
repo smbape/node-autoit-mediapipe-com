@@ -429,25 +429,10 @@ namespace google {
 			}
 
 			_variant_t RepeatedContainer::Pop(SSIZE_T index) {
-				Message* message = this->message.get();
-				const FieldDescriptor* field_descriptor = this->field_descriptor.get();
-				const Reflection* reflection = message->GetReflection();
-
-				int field_size = reflection->FieldSize(*message, field_descriptor);
-				if (index < 0) {
-					index += field_size;
-				}
-
-				AUTOIT_ASSERT_THROW(index >= 0 && index < field_size, "list index (" << index << ") out of range");
-
 				std::vector<_variant_t> list;
 				Splice(list, index, 1);
 				return list[0];
 			}
-
-			// void RepeatedContainer::Remove(_variant_t item) {
-
-			// }
 
 			typedef bool (*RepeatedContainerComparator)(VARIANT* a, VARIANT* b);
 

@@ -66,7 +66,7 @@ class Parser {
             generated_include: [],
             typedefs: new Map(),
         };
-    };
+    }
 
     constructor() {
         this.pos = 0;
@@ -103,19 +103,19 @@ class Parser {
         for (let i = scopes.length - 1; i >= -1; i--) {
             const fqn = i === -1 ? this.package + message : `${ this.package }${ scopes.slice(0, i + 1) }.${ message }`;
             if (this.exports.has(fqn)) {
-                return fqn.split(".").join("::");
+                return fqn.replaceAll(".", "::");
             }
         }
 
         // lookup in imports with package
         const imported = this.package + message;
         if (this.imports.has(imported)) {
-            return imported.split(".").join("::");
+            return imported.replaceAll(".", "::");
         }
 
         // lookup in imports without package
         if (this.imports.has(message)) {
-            return message.split(".").join("::");
+            return message.replaceAll(".", "::");
         }
 
         return this.getFQN(type, scopes).join("::");
@@ -256,6 +256,7 @@ class Parser {
                     this.addRepeatedField(proto, fields, field_type, field_name, scopes);
                 } else if (is_map) {
                     // TODO handle map : return MapContainer
+                    console.log("map is currently not supported", field_type, field_name);
                 } else if (isScalar(field_type) || this.isEnum(field_type, scopes)) {
                     const cpptype = this.getCppType(field_type, scopes);
                     fields.push([cpptype, field_name, "", [`/R=${ field_name }`, `/W=set_${ field_name }`]]);
@@ -301,9 +302,7 @@ class Parser {
 
                 for (const [field_type, field_name, field_rule, is_packed] of raw_fields) {
                     const FieldType = this.getFieldType(field_type, scopes);
-                    const extension = scopes.length === 0
-                        ? (this.package + field_name).split(".").join("::")
-                        : `${ ExtendingType }::${ field_name }`;
+
                     let TypeTraitsType = this.getTypeTraits(field_type, scopes);
                     if (field_rule === "repeated") {
                         TypeTraitsType = `Repeated${ TypeTraitsType }`;
@@ -334,6 +333,11 @@ class Parser {
                             ], "", ""],
                         ]);
                     }
+
+                    const pkg = scopes.length === 0 ? this.package : ExtendingType.replaceAll("::", ".");
+                    decls.push([`${ pkg }.`, "", ["/Properties"], [
+                        [key_type, field_name, "", ["/R"]],
+                    ], "", ""]);
                 }
             }
         }
@@ -897,7 +901,8 @@ class Parser {
             return;
         }
 
-        const ptr = value_type === "std::string" || byref ? "Ptr" : "";
+        const is_string = value_type === "std::string";
+        const ptr = is_string || byref ? "Ptr" : "";
         typedefs.set(cpptype, `::google::protobuf::Repeated${ ptr }Field<${ value_type }>`);
 
         decls.push(...[
@@ -908,6 +913,20 @@ class Parser {
 
             [`${ fqn }.empty`, "bool", [], [], "", ""],
             [`${ fqn }.size`, "int", [], [], "", ""],
+            [`${ fqn }.Clear`, "void", ["=clear"], [], "", ""],
+            [`${ fqn }.MergeFrom`, "void", [], [
+                [cpptype, "other", "", ["/C", "/ref"]]
+            ], "", ""],
+            [`${ fqn }.CopyFrom`, "void", [], [
+                [cpptype, "other", "", ["/C", "/ref"]]
+            ], "", ""],
+            [`${ fqn }.Swap`, "void", [], [
+                [`${ cpptype }*`, "other", "", []]
+            ], "", ""],
+            [`${ fqn }.SwapElements`, "void", [], [
+                ["int", "index1", "", []],
+                ["int", "index2", "", []],
+            ], "", ""],
 
             [`${ fqn }.${ byref ? "Mutable" : "Get" }`, `${ value_type }${ byref }`, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE"], [
                 ["int", "index", "", []],
@@ -916,11 +935,11 @@ class Parser {
 
         if (byref) {
             decls.push(...[
-                [`${ fqn }.Add`, `${ value_type }${ byref }`, ["=add"], [], "", ""],
-                [`${ fqn }.Add`, `${ value_type }${ byref }`, ["=add", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
-                    [`${ value_type }${ byref }`, "value", "", ["/C"]]
+                [`${ fqn }.Add`, `${ value_type }*`, ["=add"], [], "", ""],
+                [`${ fqn }.Add`, `${ value_type }*`, ["=add", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
+                    [`${ value_type }*`, "value", "", ["/C"]]
                 ], "", ""],
-                [`${ fqn }.Add`, `${ value_type }${ byref }`, ["=add", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
+                [`${ fqn }.Add`, `${ value_type }*`, ["=add", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
                     ["std::map<std::string, _variant_t>", "attrs", "", []]
                 ], "", ""],
                 [`${ fqn }.splice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SpliceMessage", "/Expr=__self->get(), $0"], [
@@ -935,17 +954,37 @@ class Parser {
                 [`${ fqn }.slice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SliceMessage", "/Expr=__self->get(), $0"], [
                     [`std::vector<std::shared_ptr<${ value_type }>>`, "list", "", ["/O"]],
                     ["SSIZE_T", "start", "", []],
-                    ["SSIZE_T", "deleteCount", "", []],
+                    ["SSIZE_T", "count", "", []],
                 ], "", ""],
                 [`${ fqn }.slice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SliceMessage", "/Expr=__self->get(), $0"], [
                     [`std::vector<std::shared_ptr<${ value_type }>>`, "list", "", ["/O"]],
                     ["SSIZE_T", "start", "0", []],
                 ], "", ""],
+                [`${ fqn }.extend`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_ExtendMessage", "/Expr=__self->get(), $0"], [
+                    [cpptype, "items", "", ["/Ref", "/C"]],
+                ], "", ""],
+                [`${ fqn }.extend`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_ExtendMessage", "/Expr=__self->get(), $0"], [
+                    [`std::vector<std::shared_ptr<${ value_type }>>`, "items", "", ["/Ref", "/C"]],
+                ], "", ""],
+                [`${ fqn }.extend`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_ExtendMessage", "/Expr=__self->get(), $0"], [
+                    ["std::vector<_variant_t>", "items", "", ["/Ref", "/C"]],
+                ], "", ""],
+                [`${ fqn }.insert`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_InsertMessage", "/Expr=__self->get(), $0"], [
+                    ["SSIZE_T", "index", "", []],
+                    [`${ value_type }*`, "item", "", ["/Ref", "/C"]],
+                ], "", ""],
+                [`${ fqn }.pop`, `std::shared_ptr<${ value_type }>`, ["/Call=::google::protobuf::autoit::RepeatedField_PopMessage", "/Expr=__self->get(), $0"], [
+                    ["SSIZE_T", "index", "-1", []],
+                ], "", ""],
             ]);
         } else {
             decls.push(...[
+                [`${ fqn }.Set`, "void", ["=set", "/Output=*__self->get()->Mutable(index) = value"], [
+                    ["int", "index", "", []],
+                    [value_type, "value", "", ["/Ref", "/C"]],
+                ], "", ""],
                 [`${ fqn }.Add`, "void", ["=append"], [
-                    [value_type, "value", "", ["/RRef"]]
+                    [value_type, "value", "", [is_string ? "/RRef" : "/Ref", "/C"]],
                 ], "", ""],
                 [`${ fqn }.splice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SpliceScalar", "/Expr=__self->get(), $0"], [
                     [`std::vector<${ value_type }>`, "list", "", ["/O"]],
@@ -964,23 +1003,27 @@ class Parser {
                 [`${ fqn }.slice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SliceScalar", "/Expr=__self->get(), $0"], [
                     [`std::vector<${ value_type }>`, "list", "", ["/O"]],
                     ["SSIZE_T", "start", "0", []],
+                ], "", ""],
+                [`${ fqn }.extend`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_ExtendScalar", "/Expr=__self->get(), $0"], [
+                    [cpptype, "items", "", ["/Ref", "/C"]],
+                ], "", ""],
+                [`${ fqn }.extend`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_ExtendScalar", "/Expr=__self->get(), $0"], [
+                    [`std::vector<${ value_type }>`, "items", "", ["/Ref", "/C"]],
+                ], "", ""],
+                [`${ fqn }.insert`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_InsertScalar", "/Expr=__self->get(), $0"], [
+                    ["SSIZE_T", "index", "", []],
+                    [value_type, "item", "", ["/Ref", "/C"]],
+                ], "", ""],
+                [`${ fqn }.pop`, value_type, [`/Call=::google::protobuf::autoit::RepeatedField_PopScalar<${ value_type }>`, "/Expr=__self->get(), $0"], [
+                    ["SSIZE_T", "index", "-1", []],
                 ], "", ""],
             ]);
         }
 
-        // CV_WRAP_AS(deepcopy) _variant_t DeepCopy();
-        // CV_WRAP_AS(extend) void Extend(std::vector<_variant_t>& items);
-        // CV_WRAP_AS(insert) void Insert(SSIZE_T index, _variant_t item);
-        // CV_WRAP_AS(insert) void Insert(std::tuple<SSIZE_T, _variant_t>& args);
-        // CV_WRAP_AS(pop) _variant_t Pop(SSIZE_T index = -1);
-        // // CV_WRAP_AS(remove) void Remove(_variant_t item);
-        // CV_WRAP_AS(sort) void Sort(void* comparator);
-        // CV_WRAP_AS(reverse) void Reverse();
-        // CV_WRAP_AS(clear) void Clear();
-        // CV_WRAP void MergeFrom(const RepeatedContainer& other);
-        // CV_WRAP void MergeFrom(const std::vector<_variant_t>& other);
-
-        // CV_WRAP_AS(str) std::string ToStr() const;
+        // TODO : CV_WRAP_AS(deepcopy) _variant_t DeepCopy();
+        // TODO : CV_WRAP_AS(sort) void Sort(void* comparator);
+        // TODO : CV_WRAP_AS(reverse) void Reverse();
+        // TODO : CV_WRAP void MergeFrom(const std::vector<_variant_t>& other);
     }
 }
 

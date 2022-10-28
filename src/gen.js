@@ -180,8 +180,8 @@ waterfall([
             parser.parseFile(fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/${ filename }`), opts, outputs, cache);
         }
 
-        custom_declarations.push(... outputs.decls);
-        generated_include.push(... outputs.generated_include);
+        custom_declarations.push(...outputs.decls);
+        generated_include.push(...outputs.generated_include);
         options.typedefs = outputs.typedefs;
 
         next(null, srcfiles, generated_include);

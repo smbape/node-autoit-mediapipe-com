@@ -175,7 +175,9 @@
 - [google::protobuf::Message](#googleprotobufmessage)
   - [google::protobuf::Message::str](#googleprotobufmessagestr)
 - [google::protobuf::TextFormat](#googleprotobuftextformat)
-  - [google::protobuf::TextFormat::Parse](#googleprotobuftextformatparse)
+  - [google::protobuf::TextFormat::MergeFromString](#googleprotobuftextformatmergefromstring)
+  - [google::protobuf::TextFormat::ParseFromString](#googleprotobuftextformatparsefromstring)
+  - [google::protobuf::TextFormat::PrintToString](#googleprotobuftextformatprinttostring)
 - [google::protobuf::Any](#googleprotobufany)
   - [google::protobuf::Any::get_create](#googleprotobufanyget_create)
   - [google::protobuf::Any::Pack](#googleprotobufanypack)
@@ -212,10 +214,18 @@
   - [mediapipe::Rasterization::str](#mediapiperasterizationstr)
 - [google::protobuf::Repeated_mediapipe_Rasterization_Interval](#googleprotobufrepeated_mediapipe_rasterization_interval)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::create](#googleprotobufrepeated_mediapipe_rasterization_intervalcreate)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::CopyFrom](#googleprotobufrepeated_mediapipe_rasterization_intervalcopyfrom)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::MergeFrom](#googleprotobufrepeated_mediapipe_rasterization_intervalmergefrom)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::Swap](#googleprotobufrepeated_mediapipe_rasterization_intervalswap)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::SwapElements](#googleprotobufrepeated_mediapipe_rasterization_intervalswapelements)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::add](#googleprotobufrepeated_mediapipe_rasterization_intervaladd)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::clear](#googleprotobufrepeated_mediapipe_rasterization_intervalclear)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::empty](#googleprotobufrepeated_mediapipe_rasterization_intervalempty)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::extend](#googleprotobufrepeated_mediapipe_rasterization_intervalextend)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::get_Item](#googleprotobufrepeated_mediapipe_rasterization_intervalget_item)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::get__NewEnum](#googleprotobufrepeated_mediapipe_rasterization_intervalget__newenum)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::insert](#googleprotobufrepeated_mediapipe_rasterization_intervalinsert)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::pop](#googleprotobufrepeated_mediapipe_rasterization_intervalpop)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::size](#googleprotobufrepeated_mediapipe_rasterization_intervalsize)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::slice](#googleprotobufrepeated_mediapipe_rasterization_intervalslice)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::splice](#googleprotobufrepeated_mediapipe_rasterization_intervalsplice)
@@ -227,10 +237,18 @@
   - [mediapipe::LocationData::str](#mediapipelocationdatastr)
 - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint](#googleprotobufrepeated_mediapipe_locationdata_relativekeypoint)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::create](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointcreate)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::CopyFrom](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointcopyfrom)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::MergeFrom](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointmergefrom)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::Swap](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointswap)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::SwapElements](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointswapelements)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::add](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointadd)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::clear](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointclear)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::empty](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointempty)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::extend](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointextend)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::get_Item](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointget_item)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::get__NewEnum](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointget__newenum)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::insert](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointinsert)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::pop](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointpop)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::size](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointsize)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::slice](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointslice)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::splice](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointsplice)
@@ -251,37 +269,72 @@
   - [mediapipe::Detection::str](#mediapipedetectionstr)
 - [google::protobuf::Repeated_std_string](#googleprotobufrepeated_std_string)
   - [google::protobuf::Repeated_std_string::create](#googleprotobufrepeated_std_stringcreate)
+  - [google::protobuf::Repeated_std_string::CopyFrom](#googleprotobufrepeated_std_stringcopyfrom)
+  - [google::protobuf::Repeated_std_string::MergeFrom](#googleprotobufrepeated_std_stringmergefrom)
+  - [google::protobuf::Repeated_std_string::Swap](#googleprotobufrepeated_std_stringswap)
+  - [google::protobuf::Repeated_std_string::SwapElements](#googleprotobufrepeated_std_stringswapelements)
   - [google::protobuf::Repeated_std_string::append](#googleprotobufrepeated_std_stringappend)
+  - [google::protobuf::Repeated_std_string::clear](#googleprotobufrepeated_std_stringclear)
   - [google::protobuf::Repeated_std_string::empty](#googleprotobufrepeated_std_stringempty)
+  - [google::protobuf::Repeated_std_string::extend](#googleprotobufrepeated_std_stringextend)
   - [google::protobuf::Repeated_std_string::get_Item](#googleprotobufrepeated_std_stringget_item)
   - [google::protobuf::Repeated_std_string::get__NewEnum](#googleprotobufrepeated_std_stringget__newenum)
+  - [google::protobuf::Repeated_std_string::insert](#googleprotobufrepeated_std_stringinsert)
+  - [google::protobuf::Repeated_std_string::pop](#googleprotobufrepeated_std_stringpop)
+  - [google::protobuf::Repeated_std_string::set](#googleprotobufrepeated_std_stringset)
   - [google::protobuf::Repeated_std_string::size](#googleprotobufrepeated_std_stringsize)
   - [google::protobuf::Repeated_std_string::slice](#googleprotobufrepeated_std_stringslice)
   - [google::protobuf::Repeated_std_string::splice](#googleprotobufrepeated_std_stringsplice)
 - [google::protobuf::Repeated_int](#googleprotobufrepeated_int)
   - [google::protobuf::Repeated_int::create](#googleprotobufrepeated_intcreate)
+  - [google::protobuf::Repeated_int::CopyFrom](#googleprotobufrepeated_intcopyfrom)
+  - [google::protobuf::Repeated_int::MergeFrom](#googleprotobufrepeated_intmergefrom)
+  - [google::protobuf::Repeated_int::Swap](#googleprotobufrepeated_intswap)
+  - [google::protobuf::Repeated_int::SwapElements](#googleprotobufrepeated_intswapelements)
   - [google::protobuf::Repeated_int::append](#googleprotobufrepeated_intappend)
+  - [google::protobuf::Repeated_int::clear](#googleprotobufrepeated_intclear)
   - [google::protobuf::Repeated_int::empty](#googleprotobufrepeated_intempty)
+  - [google::protobuf::Repeated_int::extend](#googleprotobufrepeated_intextend)
   - [google::protobuf::Repeated_int::get_Item](#googleprotobufrepeated_intget_item)
   - [google::protobuf::Repeated_int::get__NewEnum](#googleprotobufrepeated_intget__newenum)
+  - [google::protobuf::Repeated_int::insert](#googleprotobufrepeated_intinsert)
+  - [google::protobuf::Repeated_int::pop](#googleprotobufrepeated_intpop)
+  - [google::protobuf::Repeated_int::set](#googleprotobufrepeated_intset)
   - [google::protobuf::Repeated_int::size](#googleprotobufrepeated_intsize)
   - [google::protobuf::Repeated_int::slice](#googleprotobufrepeated_intslice)
   - [google::protobuf::Repeated_int::splice](#googleprotobufrepeated_intsplice)
 - [google::protobuf::Repeated_float](#googleprotobufrepeated_float)
   - [google::protobuf::Repeated_float::create](#googleprotobufrepeated_floatcreate)
+  - [google::protobuf::Repeated_float::CopyFrom](#googleprotobufrepeated_floatcopyfrom)
+  - [google::protobuf::Repeated_float::MergeFrom](#googleprotobufrepeated_floatmergefrom)
+  - [google::protobuf::Repeated_float::Swap](#googleprotobufrepeated_floatswap)
+  - [google::protobuf::Repeated_float::SwapElements](#googleprotobufrepeated_floatswapelements)
   - [google::protobuf::Repeated_float::append](#googleprotobufrepeated_floatappend)
+  - [google::protobuf::Repeated_float::clear](#googleprotobufrepeated_floatclear)
   - [google::protobuf::Repeated_float::empty](#googleprotobufrepeated_floatempty)
+  - [google::protobuf::Repeated_float::extend](#googleprotobufrepeated_floatextend)
   - [google::protobuf::Repeated_float::get_Item](#googleprotobufrepeated_floatget_item)
   - [google::protobuf::Repeated_float::get__NewEnum](#googleprotobufrepeated_floatget__newenum)
+  - [google::protobuf::Repeated_float::insert](#googleprotobufrepeated_floatinsert)
+  - [google::protobuf::Repeated_float::pop](#googleprotobufrepeated_floatpop)
+  - [google::protobuf::Repeated_float::set](#googleprotobufrepeated_floatset)
   - [google::protobuf::Repeated_float::size](#googleprotobufrepeated_floatsize)
   - [google::protobuf::Repeated_float::slice](#googleprotobufrepeated_floatslice)
   - [google::protobuf::Repeated_float::splice](#googleprotobufrepeated_floatsplice)
 - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection](#googleprotobufrepeated_mediapipe_detection_associateddetection)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::create](#googleprotobufrepeated_mediapipe_detection_associateddetectioncreate)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::CopyFrom](#googleprotobufrepeated_mediapipe_detection_associateddetectioncopyfrom)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::MergeFrom](#googleprotobufrepeated_mediapipe_detection_associateddetectionmergefrom)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::Swap](#googleprotobufrepeated_mediapipe_detection_associateddetectionswap)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::SwapElements](#googleprotobufrepeated_mediapipe_detection_associateddetectionswapelements)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::add](#googleprotobufrepeated_mediapipe_detection_associateddetectionadd)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::clear](#googleprotobufrepeated_mediapipe_detection_associateddetectionclear)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::empty](#googleprotobufrepeated_mediapipe_detection_associateddetectionempty)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::extend](#googleprotobufrepeated_mediapipe_detection_associateddetectionextend)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::get_Item](#googleprotobufrepeated_mediapipe_detection_associateddetectionget_item)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::get__NewEnum](#googleprotobufrepeated_mediapipe_detection_associateddetectionget__newenum)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::insert](#googleprotobufrepeated_mediapipe_detection_associateddetectioninsert)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::pop](#googleprotobufrepeated_mediapipe_detection_associateddetectionpop)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::size](#googleprotobufrepeated_mediapipe_detection_associateddetectionsize)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::slice](#googleprotobufrepeated_mediapipe_detection_associateddetectionslice)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::splice](#googleprotobufrepeated_mediapipe_detection_associateddetectionsplice)
@@ -293,10 +346,18 @@
   - [mediapipe::DetectionList::str](#mediapipedetectionliststr)
 - [google::protobuf::Repeated_mediapipe_Detection](#googleprotobufrepeated_mediapipe_detection)
   - [google::protobuf::Repeated_mediapipe_Detection::create](#googleprotobufrepeated_mediapipe_detectioncreate)
+  - [google::protobuf::Repeated_mediapipe_Detection::CopyFrom](#googleprotobufrepeated_mediapipe_detectioncopyfrom)
+  - [google::protobuf::Repeated_mediapipe_Detection::MergeFrom](#googleprotobufrepeated_mediapipe_detectionmergefrom)
+  - [google::protobuf::Repeated_mediapipe_Detection::Swap](#googleprotobufrepeated_mediapipe_detectionswap)
+  - [google::protobuf::Repeated_mediapipe_Detection::SwapElements](#googleprotobufrepeated_mediapipe_detectionswapelements)
   - [google::protobuf::Repeated_mediapipe_Detection::add](#googleprotobufrepeated_mediapipe_detectionadd)
+  - [google::protobuf::Repeated_mediapipe_Detection::clear](#googleprotobufrepeated_mediapipe_detectionclear)
   - [google::protobuf::Repeated_mediapipe_Detection::empty](#googleprotobufrepeated_mediapipe_detectionempty)
+  - [google::protobuf::Repeated_mediapipe_Detection::extend](#googleprotobufrepeated_mediapipe_detectionextend)
   - [google::protobuf::Repeated_mediapipe_Detection::get_Item](#googleprotobufrepeated_mediapipe_detectionget_item)
   - [google::protobuf::Repeated_mediapipe_Detection::get__NewEnum](#googleprotobufrepeated_mediapipe_detectionget__newenum)
+  - [google::protobuf::Repeated_mediapipe_Detection::insert](#googleprotobufrepeated_mediapipe_detectioninsert)
+  - [google::protobuf::Repeated_mediapipe_Detection::pop](#googleprotobufrepeated_mediapipe_detectionpop)
   - [google::protobuf::Repeated_mediapipe_Detection::size](#googleprotobufrepeated_mediapipe_detectionsize)
   - [google::protobuf::Repeated_mediapipe_Detection::slice](#googleprotobufrepeated_mediapipe_detectionslice)
   - [google::protobuf::Repeated_mediapipe_Detection::splice](#googleprotobufrepeated_mediapipe_detectionsplice)
@@ -317,10 +378,18 @@
   - [mediapipe::PacketManagerConfig::str](#mediapipepacketmanagerconfigstr)
 - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig](#googleprotobufrepeated_mediapipe_packetfactoryconfig)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::create](#googleprotobufrepeated_mediapipe_packetfactoryconfigcreate)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::CopyFrom](#googleprotobufrepeated_mediapipe_packetfactoryconfigcopyfrom)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::MergeFrom](#googleprotobufrepeated_mediapipe_packetfactoryconfigmergefrom)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::Swap](#googleprotobufrepeated_mediapipe_packetfactoryconfigswap)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::SwapElements](#googleprotobufrepeated_mediapipe_packetfactoryconfigswapelements)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add](#googleprotobufrepeated_mediapipe_packetfactoryconfigadd)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::clear](#googleprotobufrepeated_mediapipe_packetfactoryconfigclear)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::empty](#googleprotobufrepeated_mediapipe_packetfactoryconfigempty)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::extend](#googleprotobufrepeated_mediapipe_packetfactoryconfigextend)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::get_Item](#googleprotobufrepeated_mediapipe_packetfactoryconfigget_item)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::get__NewEnum](#googleprotobufrepeated_mediapipe_packetfactoryconfigget__newenum)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::insert](#googleprotobufrepeated_mediapipe_packetfactoryconfiginsert)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::pop](#googleprotobufrepeated_mediapipe_packetfactoryconfigpop)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::size](#googleprotobufrepeated_mediapipe_packetfactoryconfigsize)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::slice](#googleprotobufrepeated_mediapipe_packetfactoryconfigslice)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::splice](#googleprotobufrepeated_mediapipe_packetfactoryconfigsplice)
@@ -350,10 +419,18 @@
   - [mediapipe::InputCollectionSet::str](#mediapipeinputcollectionsetstr)
 - [google::protobuf::Repeated_mediapipe_InputCollection](#googleprotobufrepeated_mediapipe_inputcollection)
   - [google::protobuf::Repeated_mediapipe_InputCollection::create](#googleprotobufrepeated_mediapipe_inputcollectioncreate)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::CopyFrom](#googleprotobufrepeated_mediapipe_inputcollectioncopyfrom)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::MergeFrom](#googleprotobufrepeated_mediapipe_inputcollectionmergefrom)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::Swap](#googleprotobufrepeated_mediapipe_inputcollectionswap)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::SwapElements](#googleprotobufrepeated_mediapipe_inputcollectionswapelements)
   - [google::protobuf::Repeated_mediapipe_InputCollection::add](#googleprotobufrepeated_mediapipe_inputcollectionadd)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::clear](#googleprotobufrepeated_mediapipe_inputcollectionclear)
   - [google::protobuf::Repeated_mediapipe_InputCollection::empty](#googleprotobufrepeated_mediapipe_inputcollectionempty)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::extend](#googleprotobufrepeated_mediapipe_inputcollectionextend)
   - [google::protobuf::Repeated_mediapipe_InputCollection::get_Item](#googleprotobufrepeated_mediapipe_inputcollectionget_item)
   - [google::protobuf::Repeated_mediapipe_InputCollection::get__NewEnum](#googleprotobufrepeated_mediapipe_inputcollectionget__newenum)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::insert](#googleprotobufrepeated_mediapipe_inputcollectioninsert)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::pop](#googleprotobufrepeated_mediapipe_inputcollectionpop)
   - [google::protobuf::Repeated_mediapipe_InputCollection::size](#googleprotobufrepeated_mediapipe_inputcollectionsize)
   - [google::protobuf::Repeated_mediapipe_InputCollection::slice](#googleprotobufrepeated_mediapipe_inputcollectionslice)
   - [google::protobuf::Repeated_mediapipe_InputCollection::splice](#googleprotobufrepeated_mediapipe_inputcollectionsplice)
@@ -368,46 +445,86 @@
   - [mediapipe::CalculatorGraphConfig::str](#mediapipecalculatorgraphconfigstr)
 - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_node)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::create](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodecreate)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::CopyFrom](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodecopyfrom)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::MergeFrom](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodemergefrom)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::Swap](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeswap)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::SwapElements](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeswapelements)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeadd)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::clear](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeclear)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::empty](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeempty)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::extend](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeextend)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::get_Item](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeget_item)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::get__NewEnum](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeget__newenum)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::insert](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeinsert)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::pop](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodepop)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::size](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodesize)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::slice](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeslice)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::splice](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodesplice)
 - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig](#googleprotobufrepeated_mediapipe_packetgeneratorconfig)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::create](#googleprotobufrepeated_mediapipe_packetgeneratorconfigcreate)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::CopyFrom](#googleprotobufrepeated_mediapipe_packetgeneratorconfigcopyfrom)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::MergeFrom](#googleprotobufrepeated_mediapipe_packetgeneratorconfigmergefrom)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::Swap](#googleprotobufrepeated_mediapipe_packetgeneratorconfigswap)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::SwapElements](#googleprotobufrepeated_mediapipe_packetgeneratorconfigswapelements)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add](#googleprotobufrepeated_mediapipe_packetgeneratorconfigadd)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::clear](#googleprotobufrepeated_mediapipe_packetgeneratorconfigclear)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::empty](#googleprotobufrepeated_mediapipe_packetgeneratorconfigempty)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::extend](#googleprotobufrepeated_mediapipe_packetgeneratorconfigextend)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::get_Item](#googleprotobufrepeated_mediapipe_packetgeneratorconfigget_item)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::get__NewEnum](#googleprotobufrepeated_mediapipe_packetgeneratorconfigget__newenum)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::insert](#googleprotobufrepeated_mediapipe_packetgeneratorconfiginsert)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::pop](#googleprotobufrepeated_mediapipe_packetgeneratorconfigpop)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::size](#googleprotobufrepeated_mediapipe_packetgeneratorconfigsize)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::slice](#googleprotobufrepeated_mediapipe_packetgeneratorconfigslice)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::splice](#googleprotobufrepeated_mediapipe_packetgeneratorconfigsplice)
 - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig](#googleprotobufrepeated_mediapipe_statushandlerconfig)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::create](#googleprotobufrepeated_mediapipe_statushandlerconfigcreate)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::CopyFrom](#googleprotobufrepeated_mediapipe_statushandlerconfigcopyfrom)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::MergeFrom](#googleprotobufrepeated_mediapipe_statushandlerconfigmergefrom)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::Swap](#googleprotobufrepeated_mediapipe_statushandlerconfigswap)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::SwapElements](#googleprotobufrepeated_mediapipe_statushandlerconfigswapelements)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add](#googleprotobufrepeated_mediapipe_statushandlerconfigadd)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::clear](#googleprotobufrepeated_mediapipe_statushandlerconfigclear)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::empty](#googleprotobufrepeated_mediapipe_statushandlerconfigempty)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::extend](#googleprotobufrepeated_mediapipe_statushandlerconfigextend)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::get_Item](#googleprotobufrepeated_mediapipe_statushandlerconfigget_item)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::get__NewEnum](#googleprotobufrepeated_mediapipe_statushandlerconfigget__newenum)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::insert](#googleprotobufrepeated_mediapipe_statushandlerconfiginsert)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::pop](#googleprotobufrepeated_mediapipe_statushandlerconfigpop)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::size](#googleprotobufrepeated_mediapipe_statushandlerconfigsize)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::slice](#googleprotobufrepeated_mediapipe_statushandlerconfigslice)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::splice](#googleprotobufrepeated_mediapipe_statushandlerconfigsplice)
 - [google::protobuf::Repeated_mediapipe_ExecutorConfig](#googleprotobufrepeated_mediapipe_executorconfig)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::create](#googleprotobufrepeated_mediapipe_executorconfigcreate)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::CopyFrom](#googleprotobufrepeated_mediapipe_executorconfigcopyfrom)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::MergeFrom](#googleprotobufrepeated_mediapipe_executorconfigmergefrom)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::Swap](#googleprotobufrepeated_mediapipe_executorconfigswap)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::SwapElements](#googleprotobufrepeated_mediapipe_executorconfigswapelements)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::add](#googleprotobufrepeated_mediapipe_executorconfigadd)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::clear](#googleprotobufrepeated_mediapipe_executorconfigclear)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::empty](#googleprotobufrepeated_mediapipe_executorconfigempty)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::extend](#googleprotobufrepeated_mediapipe_executorconfigextend)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::get_Item](#googleprotobufrepeated_mediapipe_executorconfigget_item)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::get__NewEnum](#googleprotobufrepeated_mediapipe_executorconfigget__newenum)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::insert](#googleprotobufrepeated_mediapipe_executorconfiginsert)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::pop](#googleprotobufrepeated_mediapipe_executorconfigpop)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::size](#googleprotobufrepeated_mediapipe_executorconfigsize)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::slice](#googleprotobufrepeated_mediapipe_executorconfigslice)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::splice](#googleprotobufrepeated_mediapipe_executorconfigsplice)
 - [google::protobuf::Repeated_google_protobuf_Any](#googleprotobufrepeated_google_protobuf_any)
   - [google::protobuf::Repeated_google_protobuf_Any::create](#googleprotobufrepeated_google_protobuf_anycreate)
+  - [google::protobuf::Repeated_google_protobuf_Any::CopyFrom](#googleprotobufrepeated_google_protobuf_anycopyfrom)
+  - [google::protobuf::Repeated_google_protobuf_Any::MergeFrom](#googleprotobufrepeated_google_protobuf_anymergefrom)
+  - [google::protobuf::Repeated_google_protobuf_Any::Swap](#googleprotobufrepeated_google_protobuf_anyswap)
+  - [google::protobuf::Repeated_google_protobuf_Any::SwapElements](#googleprotobufrepeated_google_protobuf_anyswapelements)
   - [google::protobuf::Repeated_google_protobuf_Any::add](#googleprotobufrepeated_google_protobuf_anyadd)
+  - [google::protobuf::Repeated_google_protobuf_Any::clear](#googleprotobufrepeated_google_protobuf_anyclear)
   - [google::protobuf::Repeated_google_protobuf_Any::empty](#googleprotobufrepeated_google_protobuf_anyempty)
+  - [google::protobuf::Repeated_google_protobuf_Any::extend](#googleprotobufrepeated_google_protobuf_anyextend)
   - [google::protobuf::Repeated_google_protobuf_Any::get_Item](#googleprotobufrepeated_google_protobuf_anyget_item)
   - [google::protobuf::Repeated_google_protobuf_Any::get__NewEnum](#googleprotobufrepeated_google_protobuf_anyget__newenum)
+  - [google::protobuf::Repeated_google_protobuf_Any::insert](#googleprotobufrepeated_google_protobuf_anyinsert)
+  - [google::protobuf::Repeated_google_protobuf_Any::pop](#googleprotobufrepeated_google_protobuf_anypop)
   - [google::protobuf::Repeated_google_protobuf_Any::size](#googleprotobufrepeated_google_protobuf_anysize)
   - [google::protobuf::Repeated_google_protobuf_Any::slice](#googleprotobufrepeated_google_protobuf_anyslice)
   - [google::protobuf::Repeated_google_protobuf_Any::splice](#googleprotobufrepeated_google_protobuf_anysplice)
@@ -416,10 +533,18 @@
   - [mediapipe::CalculatorGraphConfig::Node::str](#mediapipecalculatorgraphconfignodestr)
 - [google::protobuf::Repeated_mediapipe_InputStreamInfo](#googleprotobufrepeated_mediapipe_inputstreaminfo)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::create](#googleprotobufrepeated_mediapipe_inputstreaminfocreate)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::CopyFrom](#googleprotobufrepeated_mediapipe_inputstreaminfocopyfrom)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::MergeFrom](#googleprotobufrepeated_mediapipe_inputstreaminfomergefrom)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::Swap](#googleprotobufrepeated_mediapipe_inputstreaminfoswap)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::SwapElements](#googleprotobufrepeated_mediapipe_inputstreaminfoswapelements)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::add](#googleprotobufrepeated_mediapipe_inputstreaminfoadd)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::clear](#googleprotobufrepeated_mediapipe_inputstreaminfoclear)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::empty](#googleprotobufrepeated_mediapipe_inputstreaminfoempty)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::extend](#googleprotobufrepeated_mediapipe_inputstreaminfoextend)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::get_Item](#googleprotobufrepeated_mediapipe_inputstreaminfoget_item)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::get__NewEnum](#googleprotobufrepeated_mediapipe_inputstreaminfoget__newenum)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::insert](#googleprotobufrepeated_mediapipe_inputstreaminfoinsert)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::pop](#googleprotobufrepeated_mediapipe_inputstreaminfopop)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::size](#googleprotobufrepeated_mediapipe_inputstreaminfosize)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::slice](#googleprotobufrepeated_mediapipe_inputstreaminfoslice)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::splice](#googleprotobufrepeated_mediapipe_inputstreaminfosplice)
@@ -2664,13 +2789,31 @@ AutoIt:
 
 ## google::protobuf::TextFormat
 
-### google::protobuf::TextFormat::Parse
+### google::protobuf::TextFormat::MergeFromString
 
 ```cpp
-bool google::protobuf::TextFormat::Parse( const std::string&                         input,
-                                          std::shared_ptr<google::protobuf::Message> output );
+bool google::protobuf::TextFormat::MergeFromString( const std::string&                         input,
+                                                    std::shared_ptr<google::protobuf::Message> output );
 AutoIt:
-    _Mediapipe_ObjCreate("google.protobuf.text_format").Parse( $input, $output ) -> retval
+    _Mediapipe_ObjCreate("google.protobuf.text_format").MergeFromString( $input, $output ) -> retval
+```
+
+### google::protobuf::TextFormat::ParseFromString
+
+```cpp
+bool google::protobuf::TextFormat::ParseFromString( const std::string&                         input,
+                                                    std::shared_ptr<google::protobuf::Message> output );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.text_format").ParseFromString( $input, $output ) -> retval
+```
+
+### google::protobuf::TextFormat::PrintToString
+
+```cpp
+bool google::protobuf::TextFormat::PrintToString( std::shared_ptr<google::protobuf::Message> message,
+                                                  std::string*                               output );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.text_format").PrintToString( $message[, $output] ) -> retval, $output
 ```
 
 ## google::protobuf::Any
@@ -2993,6 +3136,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Rasterization_Interval").create() -> <google.protobuf.Repeated_mediapipe_Rasterization_Interval object>
 ```
 
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::CopyFrom( const google::protobuf::Repeated_mediapipe_Rasterization_Interval other );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::MergeFrom( const google::protobuf::Repeated_mediapipe_Rasterization_Interval other );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::Swap( google::protobuf::Repeated_mediapipe_Rasterization_Interval* other );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::SwapElements( int index1,
+                                                                                int index2 );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_Rasterization_Interval::add
 
 ```cpp
@@ -3013,12 +3189,40 @@ AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::clear();
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_Rasterization_Interval::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_Rasterization_Interval::empty();
 AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::extend( const google::protobuf::Repeated_mediapipe_Rasterization_Interval& items );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::extend( const std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>>& items );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_Rasterization_Interval::get_Item
@@ -3038,6 +3242,23 @@ AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::insert( SSIZE_T                                    index,
+                                                                          const mediapipe::Rasterization::Interval*& item );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::pop
+
+```cpp
+std::shared_ptr<mediapipe::Rasterization::Interval> google::protobuf::Repeated_mediapipe_Rasterization_Interval::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_Rasterization_Interval::size
 
 ```cpp
@@ -3051,9 +3272,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_Rasterization_Interval::slice( std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> list,
                                                                          SSIZE_T                                                          start,
-                                                                         SSIZE_T                                                          deleteCount );
+                                                                         SSIZE_T                                                          count );
 AutoIt:
-    $oRepeated_mediapipe_Rasterization_Interval.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_Rasterization_Interval.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -3128,6 +3349,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_LocationData_RelativeKeypoint").create() -> <google.protobuf.Repeated_mediapipe_LocationData_RelativeKeypoint object>
 ```
 
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::CopyFrom( const google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint other );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::MergeFrom( const google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint other );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::Swap( google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint* other );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::SwapElements( int index1,
+                                                                                       int index2 );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::add
 
 ```cpp
@@ -3148,12 +3402,40 @@ AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::clear();
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::empty();
 AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::extend( const google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint& items );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::extend( const std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>>& items );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::get_Item
@@ -3173,6 +3455,23 @@ AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::insert( SSIZE_T                                           index,
+                                                                                 const mediapipe::LocationData::RelativeKeypoint*& item );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::pop
+
+```cpp
+std::shared_ptr<mediapipe::LocationData::RelativeKeypoint> google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::size
 
 ```cpp
@@ -3186,9 +3485,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::slice( std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> list,
                                                                                 SSIZE_T                                                                 start,
-                                                                                SSIZE_T                                                                 deleteCount );
+                                                                                SSIZE_T                                                                 count );
 AutoIt:
-    $oRepeated_mediapipe_LocationData_RelativeKeypoint.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -3320,12 +3619,53 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_std_string").create() -> <google.protobuf.Repeated_std_string object>
 ```
 
+### google::protobuf::Repeated_std_string::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_std_string::CopyFrom( const google::protobuf::Repeated_std_string other );
+AutoIt:
+    $oRepeated_std_string.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_std_string::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_std_string::MergeFrom( const google::protobuf::Repeated_std_string other );
+AutoIt:
+    $oRepeated_std_string.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_std_string::Swap
+
+```cpp
+void google::protobuf::Repeated_std_string::Swap( google::protobuf::Repeated_std_string* other );
+AutoIt:
+    $oRepeated_std_string.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_std_string::SwapElements
+
+```cpp
+void google::protobuf::Repeated_std_string::SwapElements( int index1,
+                                                          int index2 );
+AutoIt:
+    $oRepeated_std_string.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_std_string::append
 
 ```cpp
-void google::protobuf::Repeated_std_string::append( std::string&& value );
+void google::protobuf::Repeated_std_string::append( const std::string&& value );
 AutoIt:
     $oRepeated_std_string.append( $value ) -> None
+```
+
+### google::protobuf::Repeated_std_string::clear
+
+```cpp
+void google::protobuf::Repeated_std_string::clear();
+AutoIt:
+    $oRepeated_std_string.clear() -> None
 ```
 
 ### google::protobuf::Repeated_std_string::empty
@@ -3334,6 +3674,20 @@ AutoIt:
 bool google::protobuf::Repeated_std_string::empty();
 AutoIt:
     $oRepeated_std_string.empty() -> retval
+```
+
+### google::protobuf::Repeated_std_string::extend
+
+```cpp
+void google::protobuf::Repeated_std_string::extend( const google::protobuf::Repeated_std_string& items );
+AutoIt:
+    $oRepeated_std_string.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_std_string::extend( const std::vector<std::string>& items );
+AutoIt:
+    $oRepeated_std_string.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_std_string::get_Item
@@ -3351,6 +3705,32 @@ AutoIt:
 IUnknown* google::protobuf::Repeated_std_string::get__NewEnum();
 AutoIt:
     $oRepeated_std_string._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated_std_string::insert
+
+```cpp
+void google::protobuf::Repeated_std_string::insert( SSIZE_T            index,
+                                                    const std::string& item );
+AutoIt:
+    $oRepeated_std_string.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_std_string::pop
+
+```cpp
+std::string google::protobuf::Repeated_std_string::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_std_string.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated_std_string::set
+
+```cpp
+void google::protobuf::Repeated_std_string::set( int                index,
+                                                 const std::string& value );
+AutoIt:
+    $oRepeated_std_string.set( $index, $value ) -> None
 ```
 
 ### google::protobuf::Repeated_std_string::size
@@ -3405,12 +3785,53 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_int").create() -> <google.protobuf.Repeated_int object>
 ```
 
+### google::protobuf::Repeated_int::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_int::CopyFrom( const google::protobuf::Repeated_int other );
+AutoIt:
+    $oRepeated_int.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_int::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_int::MergeFrom( const google::protobuf::Repeated_int other );
+AutoIt:
+    $oRepeated_int.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_int::Swap
+
+```cpp
+void google::protobuf::Repeated_int::Swap( google::protobuf::Repeated_int* other );
+AutoIt:
+    $oRepeated_int.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_int::SwapElements
+
+```cpp
+void google::protobuf::Repeated_int::SwapElements( int index1,
+                                                   int index2 );
+AutoIt:
+    $oRepeated_int.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_int::append
 
 ```cpp
-void google::protobuf::Repeated_int::append( int&& value );
+void google::protobuf::Repeated_int::append( const int& value );
 AutoIt:
     $oRepeated_int.append( $value ) -> None
+```
+
+### google::protobuf::Repeated_int::clear
+
+```cpp
+void google::protobuf::Repeated_int::clear();
+AutoIt:
+    $oRepeated_int.clear() -> None
 ```
 
 ### google::protobuf::Repeated_int::empty
@@ -3419,6 +3840,20 @@ AutoIt:
 bool google::protobuf::Repeated_int::empty();
 AutoIt:
     $oRepeated_int.empty() -> retval
+```
+
+### google::protobuf::Repeated_int::extend
+
+```cpp
+void google::protobuf::Repeated_int::extend( const google::protobuf::Repeated_int& items );
+AutoIt:
+    $oRepeated_int.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_int::extend( const std::vector<int>& items );
+AutoIt:
+    $oRepeated_int.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_int::get_Item
@@ -3436,6 +3871,32 @@ AutoIt:
 IUnknown* google::protobuf::Repeated_int::get__NewEnum();
 AutoIt:
     $oRepeated_int._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated_int::insert
+
+```cpp
+void google::protobuf::Repeated_int::insert( SSIZE_T    index,
+                                             const int& item );
+AutoIt:
+    $oRepeated_int.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_int::pop
+
+```cpp
+int google::protobuf::Repeated_int::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_int.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated_int::set
+
+```cpp
+void google::protobuf::Repeated_int::set( int        index,
+                                          const int& value );
+AutoIt:
+    $oRepeated_int.set( $index, $value ) -> None
 ```
 
 ### google::protobuf::Repeated_int::size
@@ -3490,12 +3951,53 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_float").create() -> <google.protobuf.Repeated_float object>
 ```
 
+### google::protobuf::Repeated_float::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_float::CopyFrom( const google::protobuf::Repeated_float other );
+AutoIt:
+    $oRepeated_float.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_float::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_float::MergeFrom( const google::protobuf::Repeated_float other );
+AutoIt:
+    $oRepeated_float.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_float::Swap
+
+```cpp
+void google::protobuf::Repeated_float::Swap( google::protobuf::Repeated_float* other );
+AutoIt:
+    $oRepeated_float.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_float::SwapElements
+
+```cpp
+void google::protobuf::Repeated_float::SwapElements( int index1,
+                                                     int index2 );
+AutoIt:
+    $oRepeated_float.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_float::append
 
 ```cpp
-void google::protobuf::Repeated_float::append( float&& value );
+void google::protobuf::Repeated_float::append( const float& value );
 AutoIt:
     $oRepeated_float.append( $value ) -> None
+```
+
+### google::protobuf::Repeated_float::clear
+
+```cpp
+void google::protobuf::Repeated_float::clear();
+AutoIt:
+    $oRepeated_float.clear() -> None
 ```
 
 ### google::protobuf::Repeated_float::empty
@@ -3504,6 +4006,20 @@ AutoIt:
 bool google::protobuf::Repeated_float::empty();
 AutoIt:
     $oRepeated_float.empty() -> retval
+```
+
+### google::protobuf::Repeated_float::extend
+
+```cpp
+void google::protobuf::Repeated_float::extend( const google::protobuf::Repeated_float& items );
+AutoIt:
+    $oRepeated_float.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_float::extend( const std::vector<float>& items );
+AutoIt:
+    $oRepeated_float.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_float::get_Item
@@ -3521,6 +4037,32 @@ AutoIt:
 IUnknown* google::protobuf::Repeated_float::get__NewEnum();
 AutoIt:
     $oRepeated_float._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated_float::insert
+
+```cpp
+void google::protobuf::Repeated_float::insert( SSIZE_T      index,
+                                               const float& item );
+AutoIt:
+    $oRepeated_float.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_float::pop
+
+```cpp
+float google::protobuf::Repeated_float::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_float.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated_float::set
+
+```cpp
+void google::protobuf::Repeated_float::set( int          index,
+                                            const float& value );
+AutoIt:
+    $oRepeated_float.set( $index, $value ) -> None
 ```
 
 ### google::protobuf::Repeated_float::size
@@ -3575,6 +4117,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Detection_AssociatedDetection").create() -> <google.protobuf.Repeated_mediapipe_Detection_AssociatedDetection object>
 ```
 
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::CopyFrom( const google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection other );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::MergeFrom( const google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection other );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::Swap( google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection* other );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::SwapElements( int index1,
+                                                                                       int index2 );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::add
 
 ```cpp
@@ -3595,12 +4170,40 @@ AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::clear();
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::empty();
 AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::extend( const google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection& items );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::extend( const std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>>& items );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::get_Item
@@ -3620,6 +4223,23 @@ AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::insert( SSIZE_T                                           index,
+                                                                                 const mediapipe::Detection::AssociatedDetection*& item );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::pop
+
+```cpp
+std::shared_ptr<mediapipe::Detection::AssociatedDetection> google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::size
 
 ```cpp
@@ -3633,9 +4253,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::slice( std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> list,
                                                                                 SSIZE_T                                                                 start,
-                                                                                SSIZE_T                                                                 deleteCount );
+                                                                                SSIZE_T                                                                 count );
 AutoIt:
-    $oRepeated_mediapipe_Detection_AssociatedDetection.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_Detection_AssociatedDetection.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -3710,6 +4330,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Detection").create() -> <google.protobuf.Repeated_mediapipe_Detection object>
 ```
 
+### google::protobuf::Repeated_mediapipe_Detection::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::CopyFrom( const google::protobuf::Repeated_mediapipe_Detection other );
+AutoIt:
+    $oRepeated_mediapipe_Detection.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Detection::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::MergeFrom( const google::protobuf::Repeated_mediapipe_Detection other );
+AutoIt:
+    $oRepeated_mediapipe_Detection.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Detection::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::Swap( google::protobuf::Repeated_mediapipe_Detection* other );
+AutoIt:
+    $oRepeated_mediapipe_Detection.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Detection::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::SwapElements( int index1,
+                                                                   int index2 );
+AutoIt:
+    $oRepeated_mediapipe_Detection.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_Detection::add
 
 ```cpp
@@ -3730,12 +4383,40 @@ AutoIt:
     $oRepeated_mediapipe_Detection.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Detection::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::clear();
+AutoIt:
+    $oRepeated_mediapipe_Detection.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_Detection::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_Detection::empty();
 AutoIt:
     $oRepeated_mediapipe_Detection.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_Detection::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::extend( const google::protobuf::Repeated_mediapipe_Detection& items );
+AutoIt:
+    $oRepeated_mediapipe_Detection.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::extend( const std::vector<std::shared_ptr<mediapipe::Detection>>& items );
+AutoIt:
+    $oRepeated_mediapipe_Detection.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_Detection.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_Detection::get_Item
@@ -3755,6 +4436,23 @@ AutoIt:
     $oRepeated_mediapipe_Detection._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Detection::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_Detection::insert( SSIZE_T                      index,
+                                                             const mediapipe::Detection*& item );
+AutoIt:
+    $oRepeated_mediapipe_Detection.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_Detection::pop
+
+```cpp
+std::shared_ptr<mediapipe::Detection> google::protobuf::Repeated_mediapipe_Detection::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_Detection.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_Detection::size
 
 ```cpp
@@ -3768,9 +4466,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_Detection::slice( std::vector<std::shared_ptr<mediapipe::Detection>> list,
                                                             SSIZE_T                                            start,
-                                                            SSIZE_T                                            deleteCount );
+                                                            SSIZE_T                                            count );
 AutoIt:
-    $oRepeated_mediapipe_Detection.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_Detection.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -3902,6 +4600,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_PacketFactoryConfig").create() -> <google.protobuf.Repeated_mediapipe_PacketFactoryConfig object>
 ```
 
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::CopyFrom( const google::protobuf::Repeated_mediapipe_PacketFactoryConfig other );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::MergeFrom( const google::protobuf::Repeated_mediapipe_PacketFactoryConfig other );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::Swap( google::protobuf::Repeated_mediapipe_PacketFactoryConfig* other );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::SwapElements( int index1,
+                                                                             int index2 );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add
 
 ```cpp
@@ -3922,12 +4653,40 @@ AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::clear();
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_PacketFactoryConfig::empty();
 AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::extend( const google::protobuf::Repeated_mediapipe_PacketFactoryConfig& items );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::extend( const std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>>& items );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::get_Item
@@ -3947,6 +4706,23 @@ AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::insert( SSIZE_T                                index,
+                                                                       const mediapipe::PacketFactoryConfig*& item );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::pop
+
+```cpp
+std::shared_ptr<mediapipe::PacketFactoryConfig> google::protobuf::Repeated_mediapipe_PacketFactoryConfig::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::size
 
 ```cpp
@@ -3960,9 +4736,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::slice( std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> list,
                                                                       SSIZE_T                                                      start,
-                                                                      SSIZE_T                                                      deleteCount );
+                                                                      SSIZE_T                                                      count );
 AutoIt:
-    $oRepeated_mediapipe_PacketFactoryConfig.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_PacketFactoryConfig.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -4151,6 +4927,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InputCollection").create() -> <google.protobuf.Repeated_mediapipe_InputCollection object>
 ```
 
+### google::protobuf::Repeated_mediapipe_InputCollection::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::CopyFrom( const google::protobuf::Repeated_mediapipe_InputCollection other );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::MergeFrom( const google::protobuf::Repeated_mediapipe_InputCollection other );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::Swap( google::protobuf::Repeated_mediapipe_InputCollection* other );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::SwapElements( int index1,
+                                                                         int index2 );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_InputCollection::add
 
 ```cpp
@@ -4171,12 +4980,40 @@ AutoIt:
     $oRepeated_mediapipe_InputCollection.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_InputCollection::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::clear();
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_InputCollection::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_InputCollection::empty();
 AutoIt:
     $oRepeated_mediapipe_InputCollection.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::extend( const google::protobuf::Repeated_mediapipe_InputCollection& items );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::extend( const std::vector<std::shared_ptr<mediapipe::InputCollection>>& items );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_InputCollection::get_Item
@@ -4196,6 +5033,23 @@ AutoIt:
     $oRepeated_mediapipe_InputCollection._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_InputCollection::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputCollection::insert( SSIZE_T                            index,
+                                                                   const mediapipe::InputCollection*& item );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_InputCollection::pop
+
+```cpp
+std::shared_ptr<mediapipe::InputCollection> google::protobuf::Repeated_mediapipe_InputCollection::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_InputCollection::size
 
 ```cpp
@@ -4209,9 +5063,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_InputCollection::slice( std::vector<std::shared_ptr<mediapipe::InputCollection>> list,
                                                                   SSIZE_T                                                  start,
-                                                                  SSIZE_T                                                  deleteCount );
+                                                                  SSIZE_T                                                  count );
 AutoIt:
-    $oRepeated_mediapipe_InputCollection.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_InputCollection.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -4305,6 +5159,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_CalculatorGraphConfig_Node").create() -> <google.protobuf.Repeated_mediapipe_CalculatorGraphConfig_Node object>
 ```
 
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::CopyFrom( const google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node other );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::MergeFrom( const google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node other );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::Swap( google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node* other );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::SwapElements( int index1,
+                                                                                    int index2 );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add
 
 ```cpp
@@ -4325,12 +5212,40 @@ AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::clear();
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::empty();
 AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::extend( const google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node& items );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::extend( const std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>>& items );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::get_Item
@@ -4350,6 +5265,23 @@ AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::insert( SSIZE_T                                        index,
+                                                                              const mediapipe::CalculatorGraphConfig::Node*& item );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::pop
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::size
 
 ```cpp
@@ -4363,9 +5295,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::slice( std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> list,
                                                                              SSIZE_T                                                              start,
-                                                                             SSIZE_T                                                              deleteCount );
+                                                                             SSIZE_T                                                              count );
 AutoIt:
-    $oRepeated_mediapipe_CalculatorGraphConfig_Node.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -4402,6 +5334,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_PacketGeneratorConfig").create() -> <google.protobuf.Repeated_mediapipe_PacketGeneratorConfig object>
 ```
 
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::CopyFrom( const google::protobuf::Repeated_mediapipe_PacketGeneratorConfig other );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::MergeFrom( const google::protobuf::Repeated_mediapipe_PacketGeneratorConfig other );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::Swap( google::protobuf::Repeated_mediapipe_PacketGeneratorConfig* other );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::SwapElements( int index1,
+                                                                               int index2 );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add
 
 ```cpp
@@ -4422,12 +5387,40 @@ AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::clear();
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::empty();
 AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::extend( const google::protobuf::Repeated_mediapipe_PacketGeneratorConfig& items );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::extend( const std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>>& items );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::get_Item
@@ -4447,6 +5440,23 @@ AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::insert( SSIZE_T                                  index,
+                                                                         const mediapipe::PacketGeneratorConfig*& item );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::pop
+
+```cpp
+std::shared_ptr<mediapipe::PacketGeneratorConfig> google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::size
 
 ```cpp
@@ -4460,9 +5470,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::slice( std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> list,
                                                                         SSIZE_T                                                        start,
-                                                                        SSIZE_T                                                        deleteCount );
+                                                                        SSIZE_T                                                        count );
 AutoIt:
-    $oRepeated_mediapipe_PacketGeneratorConfig.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_PacketGeneratorConfig.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -4499,6 +5509,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_StatusHandlerConfig").create() -> <google.protobuf.Repeated_mediapipe_StatusHandlerConfig object>
 ```
 
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::CopyFrom( const google::protobuf::Repeated_mediapipe_StatusHandlerConfig other );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::MergeFrom( const google::protobuf::Repeated_mediapipe_StatusHandlerConfig other );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::Swap( google::protobuf::Repeated_mediapipe_StatusHandlerConfig* other );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::SwapElements( int index1,
+                                                                             int index2 );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add
 
 ```cpp
@@ -4519,12 +5562,40 @@ AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::clear();
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_StatusHandlerConfig::empty();
 AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::extend( const google::protobuf::Repeated_mediapipe_StatusHandlerConfig& items );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::extend( const std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>>& items );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::get_Item
@@ -4544,6 +5615,23 @@ AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::insert( SSIZE_T                                index,
+                                                                       const mediapipe::StatusHandlerConfig*& item );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::pop
+
+```cpp
+std::shared_ptr<mediapipe::StatusHandlerConfig> google::protobuf::Repeated_mediapipe_StatusHandlerConfig::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::size
 
 ```cpp
@@ -4557,9 +5645,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::slice( std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> list,
                                                                       SSIZE_T                                                      start,
-                                                                      SSIZE_T                                                      deleteCount );
+                                                                      SSIZE_T                                                      count );
 AutoIt:
-    $oRepeated_mediapipe_StatusHandlerConfig.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_StatusHandlerConfig.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -4596,6 +5684,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ExecutorConfig").create() -> <google.protobuf.Repeated_mediapipe_ExecutorConfig object>
 ```
 
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::CopyFrom( const google::protobuf::Repeated_mediapipe_ExecutorConfig other );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::MergeFrom( const google::protobuf::Repeated_mediapipe_ExecutorConfig other );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::Swap( google::protobuf::Repeated_mediapipe_ExecutorConfig* other );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::SwapElements( int index1,
+                                                                        int index2 );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_ExecutorConfig::add
 
 ```cpp
@@ -4616,12 +5737,40 @@ AutoIt:
     $oRepeated_mediapipe_ExecutorConfig.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::clear();
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_ExecutorConfig::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_ExecutorConfig::empty();
 AutoIt:
     $oRepeated_mediapipe_ExecutorConfig.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::extend( const google::protobuf::Repeated_mediapipe_ExecutorConfig& items );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::extend( const std::vector<std::shared_ptr<mediapipe::ExecutorConfig>>& items );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_ExecutorConfig::get_Item
@@ -4641,6 +5790,23 @@ AutoIt:
     $oRepeated_mediapipe_ExecutorConfig._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::insert( SSIZE_T                           index,
+                                                                  const mediapipe::ExecutorConfig*& item );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::pop
+
+```cpp
+std::shared_ptr<mediapipe::ExecutorConfig> google::protobuf::Repeated_mediapipe_ExecutorConfig::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_ExecutorConfig::size
 
 ```cpp
@@ -4654,9 +5820,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_ExecutorConfig::slice( std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> list,
                                                                  SSIZE_T                                                 start,
-                                                                 SSIZE_T                                                 deleteCount );
+                                                                 SSIZE_T                                                 count );
 AutoIt:
-    $oRepeated_mediapipe_ExecutorConfig.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_ExecutorConfig.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -4693,6 +5859,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_Any").create() -> <google.protobuf.Repeated_google_protobuf_Any object>
 ```
 
+### google::protobuf::Repeated_google_protobuf_Any::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::CopyFrom( const google::protobuf::Repeated_google_protobuf_Any other );
+AutoIt:
+    $oRepeated_google_protobuf_Any.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::MergeFrom( const google::protobuf::Repeated_google_protobuf_Any other );
+AutoIt:
+    $oRepeated_google_protobuf_Any.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::Swap( google::protobuf::Repeated_google_protobuf_Any* other );
+AutoIt:
+    $oRepeated_google_protobuf_Any.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::SwapElements( int index1,
+                                                                   int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_Any.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_google_protobuf_Any::add
 
 ```cpp
@@ -4713,12 +5912,40 @@ AutoIt:
     $oRepeated_google_protobuf_Any.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_google_protobuf_Any::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::clear();
+AutoIt:
+    $oRepeated_google_protobuf_Any.clear() -> None
+```
+
 ### google::protobuf::Repeated_google_protobuf_Any::empty
 
 ```cpp
 bool google::protobuf::Repeated_google_protobuf_Any::empty();
 AutoIt:
     $oRepeated_google_protobuf_Any.empty() -> retval
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::extend( const google::protobuf::Repeated_google_protobuf_Any& items );
+AutoIt:
+    $oRepeated_google_protobuf_Any.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::extend( const std::vector<std::shared_ptr<google::protobuf::Any>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_Any.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_Any.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_google_protobuf_Any::get_Item
@@ -4738,6 +5965,23 @@ AutoIt:
     $oRepeated_google_protobuf_Any._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_google_protobuf_Any::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_Any::insert( SSIZE_T                       index,
+                                                             const google::protobuf::Any*& item );
+AutoIt:
+    $oRepeated_google_protobuf_Any.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_google_protobuf_Any::pop
+
+```cpp
+std::shared_ptr<google::protobuf::Any> google::protobuf::Repeated_google_protobuf_Any::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_Any.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_google_protobuf_Any::size
 
 ```cpp
@@ -4751,9 +5995,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_google_protobuf_Any::slice( std::vector<std::shared_ptr<google::protobuf::Any>> list,
                                                             SSIZE_T                                             start,
-                                                            SSIZE_T                                             deleteCount );
+                                                            SSIZE_T                                             count );
 AutoIt:
-    $oRepeated_google_protobuf_Any.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_google_protobuf_Any.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp
@@ -4809,6 +6053,39 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InputStreamInfo").create() -> <google.protobuf.Repeated_mediapipe_InputStreamInfo object>
 ```
 
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::CopyFrom( const google::protobuf::Repeated_mediapipe_InputStreamInfo other );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::MergeFrom( const google::protobuf::Repeated_mediapipe_InputStreamInfo other );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::Swap( google::protobuf::Repeated_mediapipe_InputStreamInfo* other );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::SwapElements( int index1,
+                                                                         int index2 );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.SwapElements( $index1, $index2 ) -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_InputStreamInfo::add
 
 ```cpp
@@ -4829,12 +6106,40 @@ AutoIt:
     $oRepeated_mediapipe_InputStreamInfo.add( $attrs ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::clear();
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.clear() -> None
+```
+
 ### google::protobuf::Repeated_mediapipe_InputStreamInfo::empty
 
 ```cpp
 bool google::protobuf::Repeated_mediapipe_InputStreamInfo::empty();
 AutoIt:
     $oRepeated_mediapipe_InputStreamInfo.empty() -> retval
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::extend( const google::protobuf::Repeated_mediapipe_InputStreamInfo& items );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::extend( const std::vector<std::shared_ptr<mediapipe::InputStreamInfo>>& items );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.extend( $items ) -> None
 ```
 
 ### google::protobuf::Repeated_mediapipe_InputStreamInfo::get_Item
@@ -4854,6 +6159,23 @@ AutoIt:
     $oRepeated_mediapipe_InputStreamInfo._NewEnum() -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::insert( SSIZE_T                            index,
+                                                                   const mediapipe::InputStreamInfo*& item );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::pop
+
+```cpp
+std::shared_ptr<mediapipe::InputStreamInfo> google::protobuf::Repeated_mediapipe_InputStreamInfo::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.pop( [$index] ) -> retval
+```
+
 ### google::protobuf::Repeated_mediapipe_InputStreamInfo::size
 
 ```cpp
@@ -4867,9 +6189,9 @@ AutoIt:
 ```cpp
 void google::protobuf::Repeated_mediapipe_InputStreamInfo::slice( std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> list,
                                                                   SSIZE_T                                                  start,
-                                                                  SSIZE_T                                                  deleteCount );
+                                                                  SSIZE_T                                                  count );
 AutoIt:
-    $oRepeated_mediapipe_InputStreamInfo.slice( $start, $deleteCount[, $list] ) -> $list
+    $oRepeated_mediapipe_InputStreamInfo.slice( $start, $count[, $list] ) -> $list
 ```
 
 ```cpp

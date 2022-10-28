@@ -641,8 +641,8 @@ class AutoItGenerator {
                     const end = new Array(last);
                     for (let i = 0; i < last; i++) {
                         const indent = " ".repeat(4 * i);
-                        begin[i] = indent + `namespace ${ parts[i] } {`;
-                        end[last - 1 - i] = indent + "}";
+                        begin[i] = `${ indent }namespace ${ parts[i] } {`;
+                        end[last - 1 - i] = `${ indent }}`;
                     }
 
                     const name = parts[last];

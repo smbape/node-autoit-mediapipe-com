@@ -84,6 +84,14 @@ GOTO END
 
 :GEN_SOURCES
 IF [%skip_node%] == [1] GOTO MAKE_CONFIG
+
+IF NOT EXIST "%CD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe\bazel-mediapipe\external\com_google_protobuf\src" (
+    cd /D ""%CD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe"
+    IF [%CMAKE_BUILD_TYPE%] == [Release] SET mode=opt
+    IF NOT [%CMAKE_BUILD_TYPE%] == [Release] SET mode=dbg
+    bazel --output_user_root=C:/_bazel_ build -c %mode% --define MEDIAPIPE_DISABLE_GPU=1 --verbose_failures mediapipe/python:builtin_calculators
+)
+
 node --unhandled-rejections=strict --trace-uncaught --trace-warnings ..\src\gen.js --skip=vs
 SET ERROR=%ERRORLEVEL%
 IF "%ERROR%" == "0" GOTO MAKE_CONFIG

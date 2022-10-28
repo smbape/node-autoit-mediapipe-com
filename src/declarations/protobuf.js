@@ -7,8 +7,18 @@ module.exports = [
         ["std::string", "full_name", "", ["/R=full_name"]],
     ], "", ""],
 
-    ["google.protobuf.TextFormat.ParseFromString", "bool", ["=Parse"], [
-        ["string", "input", "", ["/C", "/Ref"]],
+    ["google.protobuf.TextFormat.PrintToString", "bool", [], [
+        ["std::shared_ptr<google::protobuf::Message>", "message", "", ["/Expr=*$0.get()"]],
+        ["std::string*", "output", "", ["/O"]],
+    ], "", ""],
+
+    ["google.protobuf.TextFormat.ParseFromString", "bool", [], [
+        ["std::string", "input", "", ["/C", "/Ref"]],
+        ["std::shared_ptr<google::protobuf::Message>", "output", "", ["/Expr=$0.get()"]],
+    ], "", ""],
+
+    ["google.protobuf.TextFormat.MergeFromString", "bool", [], [
+        ["std::string", "input", "", ["/C", "/Ref"]],
         ["std::shared_ptr<google::protobuf::Message>", "output", "", ["/Expr=$0.get()"]],
     ], "", ""],
 

@@ -216,7 +216,8 @@ EndFunc   ;==>test_double_packet
 Func test_detection_proto_packet()
 	Local $detection = $detection_pb2.Detection()
 
-	_AssertTrue($text_format.Parse("score: 0.5", $detection))
+	_AssertTrue($text_format.ParseFromString("score: 0.5", $detection))
+	_AssertTrue($text_format.MergeFromString("score: 0.6", $detection))
 
 	Local $proto_packet = $packet_creator.create_proto($detection)
 
@@ -228,34 +229,44 @@ Func test_detection_proto_packet()
 	_AssertTrue(IsObj($cmessage), "Failed to load google.protobuf.autoit.cmessage")
 
 	Local $scores = $cmessage.GetFieldValue($detection, "score")
-	_AssertEqual($scores.size(), 1)
+	_AssertEqual($scores.size(), 2)
 
 	; index access
 	_AssertAlmostEqual($scores(0), 0.5)
+	_AssertAlmostEqual($scores(1), 0.6)
 
 	; loop access
 	Local $size = 0
 	For $score In $scores
-		_AssertAlmostEqual($score, 0.5)
+		If $size == 0 Then
+			_AssertAlmostEqual($score, 0.5)
+		Else
+			_AssertAlmostEqual($score, 0.6)
+		EndIf
 		$size += 1
 	Next
 
-	_AssertEqual($size, 1)
+	_AssertEqual($size, 2)
 
 	$scores = $detection.score
-	_AssertEqual($scores.size(), 1)
+	_AssertEqual($scores.size(), 2)
 
 	; index access
 	_AssertAlmostEqual($scores(0), 0.5)
+	_AssertAlmostEqual($scores(1), 0.6)
 
 	; loop access
 	$size = 0
 	For $score In $scores
-		_AssertAlmostEqual($score, 0.5)
+		If $size == 0 Then
+			_AssertAlmostEqual($score, 0.5)
+		Else
+			_AssertAlmostEqual($score, 0.6)
+		EndIf
 		$size += 1
 	Next
 
-	_AssertEqual($size, 1)
+	_AssertEqual($size, 2)
 	#forceref $p, $output_proto
 EndFunc   ;==>test_detection_proto_packet
 
