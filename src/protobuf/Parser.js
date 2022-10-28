@@ -284,10 +284,10 @@ class Parser {
         // expose a package property like in mediapipe python
         // package.A.B.C
         // => filename. A /R /S
-        // => package.A. B /R /S
-        // => package.A.B. C /R /S
+        // => filename.A. B /R /S
+        // => filename.A.B. C /R /S
         for (const [pkg, properties] of classes.entries()) {
-            decls.push([pkg === top ? pkg : pkg.replace(top, this.package), "", ["/Properties"], properties, "", ""]);
+            decls.push([pkg, "", ["/Properties"], properties, "", ""]);
         }
 
         for (const [extended, scoped] of this.extensions.entries()) {
@@ -772,9 +772,7 @@ class Parser {
                 this.pos = pos;
                 return false;
             }
-        }
 
-        if (is_map) {
             if (this.input[this.pos] !== ">") {
                 this.pos = pos;
                 return false;
@@ -893,7 +891,7 @@ class Parser {
         const fqn = `google.protobuf.${ name }`;
         const cpptype = fqn.replaceAll(".", "::");
 
-        [`${ fqn }*`, field_name, "", [`/R=mutable_${ field_name }`]]
+        fields.push([`${ cpptype }*`, field_name, "", [`/R=mutable_${ field_name }`]]);
 
         if (typedefs.has(cpptype)) {
             return;

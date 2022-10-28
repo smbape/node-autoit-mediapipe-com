@@ -119,21 +119,9 @@
         "iid": "adc2fdec-c2a0-4c0c-9c1b-e27474fcadbf",
         "clsid": "d0216315-1b73-45a2-8a4f-ec9c72f7b821"
     },
-    "mediapipe::Detection": {
-        "iid": "5e7f829e-96d3-4809-bddb-780043874eab",
-        "clsid": "b2f71c86-1a67-4853-b55f-8d2a09ac37f9"
-    },
-    "mediapipe::framework": {
-        "iid": "a42443f3-5250-4055-aaf7-6d57d15b3667",
-        "clsid": "91e5fac8-e6a5-49d2-bf17-0db04cb8933d"
-    },
-    "mediapipe::framework::formats": {
-        "iid": "08624295-cc5b-454e-bbbe-d379f1a42abd",
-        "clsid": "1a609d6b-d15d-4512-bbf3-aa8322223a46"
-    },
-    "mediapipe::framework::formats::detection_pb2": {
-        "iid": "9578eded-347a-4c2a-a39f-8fd6d05cbdb4",
-        "clsid": "f77318a5-a4c5-4d69-84d8-5c99f777ea86"
+    "google::protobuf::Any": {
+        "iid": "67385666-a1b6-48cd-9a8e-56d2e7f7c93e",
+        "clsid": "a9b27693-fdc8-4b36-ae73-7c4a018017bd"
     },
     "cv::Range": {
         "iid": "9cc26786-3899-4021-b898-d74d84858456",
@@ -155,6 +143,110 @@
         "iid": "593bffb3-c482-4b91-b3db-ad62d5283bdb",
         "clsid": "4f129eda-d8f0-496a-8fad-329b99a827f8"
     },
+    "mediapipe::Rasterization": {
+        "iid": "e84af9fe-15bb-4268-b583-c0cfc5e8c6f2",
+        "clsid": "3c5b7220-9e13-45e3-a933-cc6d6904b69e"
+    },
+    "google::protobuf::Repeated_mediapipe_Rasterization_Interval": {
+        "iid": "41a0c083-9a0b-46b9-af53-dc063b8352a3",
+        "clsid": "3564202f-5312-4344-a302-dc302eb88301"
+    },
+    "mediapipe::Rasterization::Interval": {
+        "iid": "3d3933dc-64e7-466c-bed9-220bcdc8870a",
+        "clsid": "ff7b858a-2b02-40f7-a9c0-62b8fd96be0f"
+    },
+    "mediapipe::framework": {
+        "iid": "a42443f3-5250-4055-aaf7-6d57d15b3667",
+        "clsid": "91e5fac8-e6a5-49d2-bf17-0db04cb8933d"
+    },
+    "mediapipe::framework::formats": {
+        "iid": "08624295-cc5b-454e-bbbe-d379f1a42abd",
+        "clsid": "1a609d6b-d15d-4512-bbf3-aa8322223a46"
+    },
+    "mediapipe::framework::formats::annotation": {
+        "iid": "bb395da6-f3d7-47e1-bbf5-39777aa9c294",
+        "clsid": "c15755c2-976b-412e-b3a0-2d41b270717d"
+    },
+    "mediapipe::framework::formats::annotation::rasterization_pb2": {
+        "iid": "c5c8704e-34fb-4efe-80df-6a83d2f71be5",
+        "clsid": "a91da809-a881-414b-9315-9ac1632f300b"
+    },
+    "mediapipe::framework::formats::annotation::rasterization_pb2::Rasterization": {
+        "iid": "7d9e2afa-38af-4bc0-a991-816c82353781",
+        "clsid": "065d2d24-cb77-4a31-8680-f14b8bc168e7"
+    },
+    "mediapipe::LocationData": {
+        "iid": "d2bea2df-e20b-4dba-b30f-a645a4c36fed",
+        "clsid": "f5d4d311-4ae5-46b5-8b51-3d484957f557"
+    },
+    "google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint": {
+        "iid": "8fb7a3f7-b327-4cdd-9066-3ddb7edf0447",
+        "clsid": "dbd24c69-dbdb-447c-8fc5-63fd5a6528e2"
+    },
+    "mediapipe::LocationData::BoundingBox": {
+        "iid": "3c8c053e-28f8-48ad-9f40-ad066844fa47",
+        "clsid": "49090f00-9750-4a24-adea-626b49b64ac0"
+    },
+    "mediapipe::LocationData::RelativeBoundingBox": {
+        "iid": "87b00dd3-1b69-409d-be7e-03788d1f1588",
+        "clsid": "34a3bfd0-d0e9-478f-8391-29ee89825c54"
+    },
+    "mediapipe::LocationData::BinaryMask": {
+        "iid": "ca9290ee-bc7d-41e6-939b-3dd30ec446f6",
+        "clsid": "58de6942-1c34-4824-8726-a23df5ea161a"
+    },
+    "mediapipe::LocationData::RelativeKeypoint": {
+        "iid": "0e10f3bf-c9b2-4d48-8719-5b830ce09849",
+        "clsid": "2389f2be-5293-4962-9c1a-1043813cffa4"
+    },
+    "mediapipe::framework::formats::location_data_pb2": {
+        "iid": "78c2fc97-749c-44db-85ed-58a900094129",
+        "clsid": "624f40fa-1453-4f15-9423-ca6481b236ac"
+    },
+    "mediapipe::framework::formats::location_data_pb2::LocationData": {
+        "iid": "90b4a61c-86d6-453b-9e62-e2411d3d077d",
+        "clsid": "1a036321-d20d-4d20-8b62-9639329718b6"
+    },
+    "mediapipe::Detection": {
+        "iid": "5e7f829e-96d3-4809-bddb-780043874eab",
+        "clsid": "b2f71c86-1a67-4853-b55f-8d2a09ac37f9"
+    },
+    "google::protobuf::Repeated_std_string": {
+        "iid": "270e130f-b66d-4bad-b49c-c41eecca989a",
+        "clsid": "724b50ab-0d14-4309-ab32-6fdc68873602"
+    },
+    "google::protobuf::Repeated_int": {
+        "iid": "9511b013-057e-4f36-b775-6a63a6cf8425",
+        "clsid": "97079448-310b-4148-8ad4-c9ac6cb212ae"
+    },
+    "google::protobuf::Repeated_float": {
+        "iid": "c4458662-5ed0-4858-a1d1-5255f4d293a3",
+        "clsid": "3f5cf0c5-0775-47d9-934f-56ce460f9058"
+    },
+    "google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection": {
+        "iid": "d13216fa-caf9-405d-9308-d328a1f1907b",
+        "clsid": "985b4b41-2503-499b-9792-1581a8b78350"
+    },
+    "mediapipe::Detection::AssociatedDetection": {
+        "iid": "3474f3fe-af58-4552-a8fa-bedbb7dbd5ec",
+        "clsid": "7b5ff8b4-68c8-4d64-9e95-fb5286f1d394"
+    },
+    "mediapipe::DetectionList": {
+        "iid": "2f1dd35b-f4d0-44ef-af66-f18d16451233",
+        "clsid": "9fec0041-8d09-416e-8a77-d81643dee04f"
+    },
+    "google::protobuf::Repeated_mediapipe_Detection": {
+        "iid": "f18af386-6881-47a1-9a3f-2f0547e36636",
+        "clsid": "ae3fdf39-fc8e-449d-a1a7-9a7618a91915"
+    },
+    "mediapipe::framework::formats::detection_pb2": {
+        "iid": "9578eded-347a-4c2a-a39f-8fd6d05cbdb4",
+        "clsid": "f77318a5-a4c5-4d69-84d8-5c99f777ea86"
+    },
+    "mediapipe::framework::formats::detection_pb2::Detection": {
+        "iid": "ad07d78b-ce71-4fd1-b7b8-1c07584455e8",
+        "clsid": "9ca0de31-f9f0-4557-81d2-ab36ab249de6"
+    },
     "mediapipe::CalculatorOptions": {
         "iid": "023dc2b0-3601-42e7-9cc2-356f8a33570a",
         "clsid": "3a1563cb-ba33-47c5-8368-1c35beb348da"
@@ -162,10 +254,6 @@
     "mediapipe::framework::calculator_options_pb2": {
         "iid": "9b9dffeb-c8e3-43aa-9753-7ce6269132fe",
         "clsid": "a3adb450-fa97-4113-90d4-9ab3ec79980f"
-    },
-    "google::protobuf::Any": {
-        "iid": "67385666-a1b6-48cd-9a8e-56d2e7f7c93e",
-        "clsid": "a9b27693-fdc8-4b36-ae73-7c4a018017bd"
     },
     "google::protobuf::any_pb2": {
         "iid": "765167b2-bfba-4fb3-8d9c-8f5d0b615b91",
@@ -206,10 +294,6 @@
     "mediapipe::PacketGeneratorConfig": {
         "iid": "44765a03-f1bd-4990-b630-820e139787b3",
         "clsid": "2fa7cc90-8366-4945-b3af-0abba60c1ddc"
-    },
-    "google::protobuf::Repeated_std_string": {
-        "iid": "270e130f-b66d-4bad-b49c-c41eecca989a",
-        "clsid": "724b50ab-0d14-4309-ab32-6fdc68873602"
     },
     "mediapipe::framework::packet_generator_pb2": {
         "iid": "ad664a41-ae89-4049-b3a1-bef47c5c7379",
@@ -259,10 +343,6 @@
         "iid": "31adda3b-9a70-4382-b054-5cd85d920c3b",
         "clsid": "784d982e-3f86-4a04-9fdf-3046a3ee0d55"
     },
-    "google::protobuf::Repeated_int": {
-        "iid": "9511b013-057e-4f36-b775-6a63a6cf8425",
-        "clsid": "97079448-310b-4148-8ad4-c9ac6cb212ae"
-    },
     "mediapipe::CalculatorGraphConfig": {
         "iid": "8467c07c-543b-4b01-a09d-c9c6f87e9bd6",
         "clsid": "fb9a78c4-9014-4d5f-86d3-20d634986557"
@@ -298,6 +378,10 @@
     "mediapipe::framework::calculator_pb2": {
         "iid": "d88f4c9b-4209-4c9c-9366-c234f9162057",
         "clsid": "51a4d6f1-7526-4dd4-8724-21f47ba55578"
+    },
+    "mediapipe::framework::calculator_pb2::CalculatorGraphConfig": {
+        "iid": "6b624ee0-3f4d-4c79-8ee8-8c951c039e76",
+        "clsid": "629cbdb7-eadf-4979-a35f-fc3eb0fcda20"
     },
     "VectorOfVariant": {
         "iid": "a4dd8496-bd68-43fb-9e5c-d62b74aa6523",
@@ -358,6 +442,22 @@
     "VectorOfMat": {
         "iid": "ea03173f-483e-4e81-b070-42de4f481444",
         "clsid": "10f9fc54-d8f3-4b02-b85e-9b85b73f2da8"
+    },
+    "VectorOfShared_ptrInterval": {
+        "iid": "7dbb385e-4189-4132-b7dc-b71a62aa7493",
+        "clsid": "5865ad4a-fe3b-4c5b-ae37-99a784d73384"
+    },
+    "VectorOfShared_ptrRelativeKeypoint": {
+        "iid": "413d0367-4aa1-451a-a681-2e373dd27ff5",
+        "clsid": "fcebfa0f-8a86-4e37-ad99-111a3b383e21"
+    },
+    "VectorOfShared_ptrAssociatedDetection": {
+        "iid": "a287f56e-4515-4f4f-b163-29bb5a216f66",
+        "clsid": "03b68b05-7704-43f5-85f0-49b4fc14dc50"
+    },
+    "VectorOfShared_ptrDetection": {
+        "iid": "599fb280-f255-4bc0-aa98-6a74989f23b7",
+        "clsid": "a4ad2f45-8336-4aec-b709-76744424cc69"
     },
     "VectorOfShared_ptrPacketFactoryConfig": {
         "iid": "f20f7e5a-880a-47fd-b01a-ac0117d749cd",

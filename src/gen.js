@@ -58,6 +58,10 @@ const parseArguments = PROJECT_DIR => {
                 // make RepeatedContainer to be recognized as a collection
                 generator.as_stl_enum(coclass, "_variant_t");
                 coclass.addProperty(["size_t", "Count", "", ["/R", "=size()"]]);
+            } else if (fqn.startsWith("google::protobuf::Repeated_")) {
+                // make RepeatedField to be recognized as a collection
+                const value_type = fqn.slice("google::protobuf::Repeated_".length).replaceAll("_", "::");
+                generator.as_stl_enum(coclass, value_type);
             }
         }
     };
@@ -158,7 +162,6 @@ waterfall([
     },
 
     (srcfiles, generated_include, next) => {
-        const parser = new Parser();
         const outputs = Parser.createOutputs();
         const cache = new Map();
         const opts = {
@@ -169,9 +172,11 @@ waterfall([
         };
 
         for (const filename of [
+            "mediapipe/framework/formats/detection.proto",
             "mediapipe/framework/calculator.proto",
         ]) {
             opts.filename = filename;
+            const parser = new Parser();
             parser.parseFile(fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/${ filename }`), opts, outputs, cache);
         }
 

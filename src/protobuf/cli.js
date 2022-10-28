@@ -3,7 +3,6 @@ const sysPath = require("node:path");
 const util = require("node:util");
 const Parser = require("./Parser");
 
-const parser = new Parser();
 const outputs = Parser.createOutputs();
 const cache = new Map();
 const options = {
@@ -14,13 +13,16 @@ const options = {
 };
 
 for (const filename of [
+    "mediapipe/framework/formats/detection.proto",
     "mediapipe/framework/calculator.proto",
 ]) {
     options.filename = filename;
+    const parser = new Parser();
     parser.parseFile(fs.realpathSync(`${ __dirname }/../../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/${ filename }`), options, outputs, cache);
 }
 
 options.filename = "test/test_proto.proto";
+const parser = new Parser();
 parser.parseText(`
 package foo.bar;
 

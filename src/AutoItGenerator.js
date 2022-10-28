@@ -661,7 +661,7 @@ class AutoItGenerator {
                 conversion.number.declare("unsigned long", "ULONG", options), "",
                 conversion.number.declare("float", "float", options), "",
                 conversion.number.declare("double", "double", options), "",
-                conversion.number.declare("__int64", "LONGLONG", options), "",
+                conversion.number.declare("int64_t", "LONGLONG", options), "",
                 conversion.number.declare("size_t", "ULONGLONG", options), "",
             ];
 
@@ -687,7 +687,7 @@ class AutoItGenerator {
             conversion.number.define("unsigned long", "ULONG", options), "",
             conversion.number.define("float", "float", options), "",
             conversion.number.define("double", "double", options), "",
-            conversion.number.define("__int64", "LONGLONG", options), "",
+            conversion.number.define("int64_t", "LONGLONG", options), "",
             conversion.number.define("size_t", "ULONGLONG", options), "",
             ""
         ];

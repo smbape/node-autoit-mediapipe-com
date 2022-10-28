@@ -242,6 +242,20 @@ Func test_detection_proto_packet()
 
 	_AssertEqual($size, 1)
 
+	$scores = $detection.score
+	_AssertEqual($scores.size(), 1)
+
+	; index access
+	_AssertAlmostEqual($scores(0), 0.5)
+
+	; loop access
+	$size = 0
+	For $score In $scores
+		_AssertAlmostEqual($score, 0.5)
+		$size += 1
+	Next
+
+	_AssertEqual($size, 1)
 	#forceref $p, $output_proto
 EndFunc   ;==>test_detection_proto_packet
 

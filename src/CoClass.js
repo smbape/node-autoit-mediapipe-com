@@ -141,25 +141,37 @@ class CoClass {
     }
 
     addIDLName(idlname, fname, id) {
-        idlname = idlname.toLowerCase();
-        if (this.idlnames.has(idlname)) {
-            const fnames = this.idlnames.get(idlname);
-            if (!fnames.includes(fname) && fnames.length === 3) {
-                throw new Error(`duplicated idl name ${ idlname } = ${ this.fqn }::${ fname }, ${ fnames.join(", ") }`);
-            } else if (!fnames.includes(fname)) {
-                fnames.push(fname);
+        const lidlname = idlname.toLowerCase();
+
+        if (!this.idlnames.has(lidlname)) {
+            if (id == null) {
+                id = this.idlnames.size + 1;
             }
+
+            this.idlnames.set(lidlname, [idlname, id, fname]);
             return id;
         }
 
-        // check fname, only one put_ + get_
+        const [prev_idlname, prev_id, ...fnames] = this.idlnames.get(lidlname);
 
-        if (id == null) {
-            id = this.idlnames.size + 1;
+        if (prev_idlname !== idlname) {
+            throw new Error(`case mismatch idl name for ${ this.fqn } : ${ idlname }( ${ fname } ) != ${ prev_idlname }( ${ fnames.join(", ") } )`);
         }
 
-        this.idlnames.set(idlname, [id, fname]);
-        return id;
+        if (!fnames.includes(fname)) {
+            const getter = `get_${ idlname }`;
+            const setter = `put_${ idlname }`;
+            if (fname !== getter && fname !== setter) {
+                throw new Error(`duplicated idl name ${ idlname } = ${ this.fqn }::${ fname }, ${ fnames.join(", ") }`);
+            }
+            this.idlnames.get(lidlname).push(fname);
+        }
+
+        if (id != null && id !== prev_id) {
+            throw new Error(`multiple id for the same idlname [${ id }] ${ idlname } = ${ this.fqn }::${ fname }, ${ fnames.join(", ") }`);
+        }
+
+        return prev_id;
     }
 
     getIDLNameId(idlname) {
@@ -167,7 +179,8 @@ class CoClass {
         if (!this.idlnames.has(idlname)) {
             throw new Error(`unknown idl idlname ${ this.fqn }::${ idlname }`);
         }
-        return this.idlnames.get(idlname)[0];
+        const [, id] = this.idlnames.get(idlname);
+        return id;
     }
 
     getIDLType() {
