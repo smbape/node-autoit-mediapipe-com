@@ -524,11 +524,15 @@ Object.assign(exports, {
         }
 
         if (coclass.is_vector) {
-            vector_conversion.generate(coclass, header, impl, options);
+            vector_conversion.convert(coclass, header, impl, options);
         }
 
         if (coclass.is_stdmap) {
-            map_conversion.generate(coclass, header, impl, options);
+            map_conversion.convert(coclass, header, impl, options);
+        }
+
+        if (typeof options.convert === "function") {
+            options.convert(coclass, header, impl, options);
         }
     },
 

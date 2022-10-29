@@ -1,23 +1,5 @@
-const {removeNamespaces} = require("./alias");
+const {makeExpansion, useNamespaces, removeNamespaces} = require("./alias");
 const { PTR } = require("./constants");
-
-const useNamespaces = (cvt, coclass, generator) => {
-    const namespaces = new Set();
-
-    if (generator.namespace) {
-        namespaces.add(`using namespace ${ generator.namespace };`);
-    }
-
-    if (coclass.namespace) {
-        namespaces.add(`using namespace ${ coclass.namespace };`);
-    }
-
-    if (coclass.include && coclass.include.namespace && coclass.include.namespace !== coclass.namespace) {
-        namespaces.add(`using namespace ${ coclass.include.namespace };`);
-    }
-
-    cvt.unshift(...namespaces);
-};
 
 Object.assign(exports, {
     getTupleTypes: type => {
@@ -269,9 +251,17 @@ Object.assign(exports, {
                     is_by_ref = !is_ptr && !has_ptr && (is_vector || propidltype[0] === "I" && propidltype !== "IDispatch*");
                 }
 
-                const cvt = this.convertToIdl(generator, coclass, type, `${ obj }${ rname ? rname : propname }`, propidltype, "pVal", modifiers, is_by_ref, options).split("\n");
+                rname = `${ obj }${ rname ? rname : propname }`;
 
-                useNamespaces(cvt, generator, coclass);
+                for (const modifier of modifiers) {
+                    if (modifier.startsWith("/RExpr=")) {
+                        rname = makeExpansion(modifier.slice("/RExpr=".length), rname);
+                    }
+                }
+
+                const cvt = this.convertToIdl(generator, coclass, type, rname, propidltype, "pVal", modifiers, is_by_ref, options).split("\n");
+
+                useNamespaces(cvt, "unshift", generator, coclass);
 
                 const hr = is_static ? "" : `
                     if (this->__self->get() == NULL) {
@@ -308,7 +298,7 @@ Object.assign(exports, {
             const enum_fqn = generator.getEnumType(type, coclass, options);
             const cvt = this.convertFromIdl(idltype, "newVal", enum_fqn === null ? type : enum_fqn, obj, propname, wname, enum_fqn !== null).split("\n");
 
-            useNamespaces(cvt, generator, coclass);
+            useNamespaces(cvt, "unshift", generator, coclass);
 
             impl.push(`
                 STDMETHODIMP C${ cotype }::put_${ idlname }(${ idltype } newVal) {

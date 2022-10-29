@@ -111,10 +111,10 @@ exports.declare = (generator, type, parent, options = {}) => {
     return fqn;
 };
 
-exports.generate = (coclass, header, impl, options = {}) => {
+exports.convert_sort = (coclass, header, impl, options = {}) => {
     const cotype = coclass.getClassName();
-    const comparator = `${ coclass.fqn }Comparator`;
-    const ptr_comparator = `${ coclass.fqn }PtrComparator`;
+    const comparator = `${ coclass.fqn.replaceAll("::", "_") }Comparator`;
+    const ptr_comparator = `${ coclass.fqn.replaceAll("::", "_") }PtrComparator`;
     const { cpptype } = coclass;
     const idltype = coclass.idltype === "VARIANT" || coclass.idltype[0] === "I" ? "VARIANT" : coclass.idltype;
     const to_variant = idltype === "VARIANT";
@@ -122,7 +122,7 @@ exports.generate = (coclass, header, impl, options = {}) => {
     const ptrtype = to_variant ? idltype : cpptype;
     const byref = cpptype !== "void*" && cpptype !== "uchar*" && (idltype === "VARIANT" || idltype[0] === "I");
 
-    const cvt = (to_variant || idltype[0] === "I" ? `
+    const cmp = (to_variant || idltype[0] === "I" ? `
         ${ to_variant ? "_variant_t" : idltype } va = ${ default_value };
         ${ to_variant ? "_variant_t" : idltype } vb = ${ default_value };
 
@@ -147,10 +147,37 @@ exports.generate = (coclass, header, impl, options = {}) => {
         typedef struct _${ comparator }Proxy {
             ${ ptr_comparator } cmp;
             bool operator() (${ cpptype }${ byref ? "&" : "" } a, ${ cpptype }${ byref ? "&" : "" } b) {
-                ${ cvt.join(`\n${ " ".repeat(16) }`) }
+                ${ cmp.join(`\n${ " ".repeat(16) }`) }
             }
         } ${ comparator }Proxy;
 
+        void C${ cotype }::sort(void* comparator, size_t start, size_t count, HRESULT& hr) {
+            hr = S_OK;
+            auto& v = *this->__self->get();
+            auto begin = std::begin(v) + start;
+            std::sort(begin, begin + count, reinterpret_cast<${ comparator }>(comparator));
+        }
+
+        void C${ cotype }::sort_variant(void* comparator, size_t start, size_t count, HRESULT& hr) {
+            hr = S_OK;
+            auto& v = *this->__self->get();
+            auto begin = std::begin(v) + start;
+            ${ comparator }Proxy cmp = { reinterpret_cast<${ ptr_comparator }>(comparator) };
+            std::sort(begin, begin + count, cmp);
+        }
+        `.replace(/^ {8}/mg, "")
+    );
+};
+
+exports.convert = (coclass, header, impl, options = {}) => {
+    exports.convert_sort(coclass, header, impl, options);
+
+    const cotype = coclass.getClassName();
+    const { cpptype } = coclass;
+    const idltype = coclass.idltype === "VARIANT" || coclass.idltype[0] === "I" ? "VARIANT" : coclass.idltype;
+    const byref = cpptype !== "void*" && cpptype !== "uchar*" && (idltype === "VARIANT" || idltype[0] === "I");
+
+    impl.push(`
         const std::vector<int> C${ cotype }::Keys(HRESULT& hr) {
             const auto& v = *this->__self->get();
             std::vector<int> keys(v.size());
@@ -181,21 +208,6 @@ exports.generate = (coclass, header, impl, options = {}) => {
             auto& v = *this->__self->get();
             auto begin = std::begin(v) + start;
             return ${ coclass.fqn }(begin, begin + count);
-        }
-
-        void C${ cotype }::sort(void* comparator, size_t start, size_t count, HRESULT& hr) {
-            hr = S_OK;
-            auto& v = *this->__self->get();
-            auto begin = std::begin(v) + start;
-            std::sort(begin, begin + count, reinterpret_cast<${ comparator }>(comparator));
-        }
-
-        void C${ cotype }::sort_variant(void* comparator, size_t start, size_t count, HRESULT& hr) {
-            hr = S_OK;
-            auto& v = *this->__self->get();
-            auto begin = std::begin(v) + start;
-            ${ comparator }Proxy cmp = { reinterpret_cast<${ ptr_comparator }>(comparator) };
-            std::sort(begin, begin + count, cmp);
         }
 
         const void* C${ cotype }::start(HRESULT& hr) {

@@ -97,25 +97,39 @@ class Parser {
             return SCALAR_TYPES.get(type);
         }
 
-        const message = type;
+        if (type[0] === ".") {
+            const message = type.slice(1);
 
-        // lookup in exports
-        for (let i = scopes.length - 1; i >= -1; i--) {
-            const fqn = i === -1 ? this.package + message : `${ this.package }${ scopes.slice(0, i + 1) }.${ message }`;
-            if (this.exports.has(fqn)) {
+            // lookup in exports
+            if (this.exports.has(message)) {
                 return fqn.replaceAll(".", "::");
             }
-        }
 
-        // lookup in imports with package
-        const imported = this.package + message;
-        if (this.imports.has(imported)) {
-            return imported.replaceAll(".", "::");
-        }
+            // lookup in imports
+            if (this.imports.has(message)) {
+                return message.replaceAll(".", "::");
+            }
+        } else {
+            const message = type;
 
-        // lookup in imports without package
-        if (this.imports.has(message)) {
-            return message.replaceAll(".", "::");
+            // lookup in exports
+            for (let i = scopes.length - 1; i >= -1; i--) {
+                const fqn = i === -1 ? this.package + message : `${ this.package }${ scopes.slice(0, i + 1) }.${ message }`;
+                if (this.exports.has(fqn)) {
+                    return fqn.replaceAll(".", "::");
+                }
+            }
+
+            // lookup in imports with package
+            const imported = this.package + message;
+            if (this.imports.has(imported)) {
+                return imported.replaceAll(".", "::");
+            }
+
+            // lookup in imports without package
+            if (this.imports.has(message)) {
+                return message.replaceAll(".", "::");
+            }
         }
 
         return this.getFQN(type, scopes).join("::");
@@ -215,7 +229,7 @@ class Parser {
             const start = lines.pop();
             const end = pos === -1 ? this.pos + 50 : Math.min(this.pos + 50, pos);
             const space = `${ " ".repeat(this.pos - start) }^`;
-            throw new Error(`Failed to parse proto ${ filename }.\nUnexpected token at line ${ lines.length }\n${ input.slice(start, end) }\n${ space }`);
+            throw new Error(`Failed to parse proto ${ filename }.\nUnexpected token at line ${ lines.length + 1 }\n${ input.slice(start, end) }\n${ space }`);
         }
 
         const top = `${ filename.replaceAll("/", ".").replace(/\.proto$/, "") }_pb2.`;
@@ -256,7 +270,7 @@ class Parser {
                     this.addRepeatedField(proto, fields, field_type, field_name, scopes);
                 } else if (is_map) {
                     // TODO handle map : return MapContainer
-                    console.log("map is currently not supported", field_type, field_name);
+                    console.log("map is not currently supported", field_type, field_name);
                 } else if (isScalar(field_type) || this.isEnum(field_type, scopes)) {
                     const cpptype = this.getCppType(field_type, scopes);
                     fields.push([cpptype, field_name, "", [`/R=${ field_name }`, `/W=set_${ field_name }`]]);
@@ -309,26 +323,29 @@ class Parser {
                     }
 
                     let value_type = this.getCppType(field_type, scopes);
-                    const key_type = `Extend_${ ExtendeeType.replaceAll("::", "_") }With${ value_type.replaceAll("::", "_") }`;
-                    const cpptype = `::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier<::${ ExtendeeType }, ::PROTOBUF_NAMESPACE_ID::internal::${ TypeTraitsType }, ${ FieldType }, ${ is_packed }>`;
+                    const key_type = `google::protobuf::autoit::Extend_${ ExtendeeType.replaceAll("::", "_") }With${ value_type.replaceAll("::", "_") }`;
+                    const cpptype = `::google::protobuf::internal::ExtensionIdentifier<::${ ExtendeeType }, ::google::protobuf::internal::${ TypeTraitsType }, ${ FieldType }, ${ is_packed }>`;
                     const byref = !isScalar(field_type) && !this.isEnum(field_type, scopes);
 
                     if (byref) {
                         value_type += "*";
                     }
 
-                    typedefs.set(key_type, cpptype);
+                    if (!typedefs.has(key_type)) {
+                        typedefs.set(key_type, cpptype);
+                        decls.push([`class ${ key_type }`, "", [], [], "", ""]);
+                    }
 
                     decls.push(...[
                         [`${ fqn }.${ byref ? "Mutable" : "Get" }Extension`, value_type, ["/attr=propget", "/idlname=Extensions", "=get_Extensions"], [
-                            [key_type, "vKey", "", []],
+                            [key_type, "vKey", "", ["/C", "/Ref"]],
                         ], "", ""],
                     ]);
 
                     if (!byref) {
                         decls.push(...[
                             [`${ fqn }.SetExtension`, "void", ["/attr=propput", "/idlname=Extensions", "=put_Extensions"], [
-                                [key_type, "vKey", "", []],
+                                [key_type, "vKey", "", ["/C", "/Ref"]],
                                 [value_type, "vItem", "", []],
                             ], "", ""],
                         ]);
@@ -336,7 +353,7 @@ class Parser {
 
                     const pkg = scopes.length === 0 ? this.package : ExtendingType.replaceAll("::", ".");
                     decls.push([`${ pkg }.`, "", ["/Properties"], [
-                        [key_type, field_name, "", ["/R"]],
+                        [`${ key_type }*`, field_name, "", ["/R", "/S", "/RExpr=&$0"]],
                     ], "", ""]);
                 }
             }
@@ -440,7 +457,7 @@ class Parser {
             }
         }
 
-        for (const fqn_imported of imported.export_enums.entries()) {
+        for (const fqn_imported of imported.export_enums) {
             this.import_enums.add(fqn_imported);
             if (isPublic) {
                 this.export_enums.add(fqn_imported);
@@ -551,7 +568,7 @@ class Parser {
 
         this.consumeCommentOrSpace();
 
-        const extented = this.maybeFQN();
+        const extented = this.maybeFQN(true);
         if (!extented) {
             this.pos = pos;
             return false;
@@ -815,8 +832,13 @@ class Parser {
         return true;
     }
 
-    maybeFQN() {
+    maybeFQN(abs = false) {
         const {pos} = this;
+
+        if (abs && this.input[this.pos] === ".") {
+            this.pos++;
+        }
+
         while (this.maybeWord() && this.pos < this.len && this.input[this.pos] === ".") {
             this.pos++;
         }
@@ -927,9 +949,22 @@ class Parser {
                 ["int", "index1", "", []],
                 ["int", "index2", "", []],
             ], "", ""],
+            [`${ fqn }.reverse`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_Reverse", "/Expr=__self->get()"], [], "", ""],
 
             [`${ fqn }.${ byref ? "Mutable" : "Get" }`, `${ value_type }${ byref }`, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE"], [
                 ["int", "index", "", []],
+            ], "", ""],
+
+            [`${ fqn }.sort`, "void", ["/External"], [
+                ["void*", "comparator", "", []],
+                ["size_t", "start", "0", []],
+                ["size_t", "count", "__self->get()->size()", []],
+            ], "", ""],
+
+            [`${ fqn }.sort_variant`, "void", ["/External"], [
+                ["void*", "comparator", "", []],
+                ["size_t", "start", "0", []],
+                ["size_t", "count", "__self->get()->size()", []],
             ], "", ""],
         ]);
 
@@ -1021,9 +1056,6 @@ class Parser {
         }
 
         // TODO : CV_WRAP_AS(deepcopy) _variant_t DeepCopy();
-        // TODO : CV_WRAP_AS(sort) void Sort(void* comparator);
-        // TODO : CV_WRAP_AS(reverse) void Reverse();
-        // TODO : CV_WRAP void MergeFrom(const std::vector<_variant_t>& other);
     }
 }
 

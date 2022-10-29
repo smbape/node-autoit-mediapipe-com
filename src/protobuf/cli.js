@@ -1,5 +1,4 @@
 const fs = require("node:fs");
-const sysPath = require("node:path");
 const util = require("node:util");
 const Parser = require("./Parser");
 
@@ -13,8 +12,18 @@ const options = {
 };
 
 for (const filename of [
-    "mediapipe/framework/formats/detection.proto",
     "mediapipe/framework/calculator.proto",
+    "mediapipe/framework/formats/detection.proto",
+    "mediapipe/framework/formats/image_format.proto",
+
+    // solution base calculators
+    "mediapipe/calculators/core/constant_side_packet_calculator.proto",
+    "mediapipe/calculators/image/image_transformation_calculator.proto",
+    "mediapipe/calculators/tensor/tensors_to_detections_calculator.proto",
+    "mediapipe/calculators/util/landmarks_smoothing_calculator.proto",
+    "mediapipe/calculators/util/logic_calculator.proto",
+    "mediapipe/calculators/util/thresholding_calculator.proto",
+    "mediapipe/modules/objectron/calculators/lift_2d_frame_annotation_to_3d_calculator.proto",
 ]) {
     options.filename = filename;
     const parser = new Parser();

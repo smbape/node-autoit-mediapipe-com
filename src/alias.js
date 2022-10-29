@@ -67,3 +67,31 @@ exports.removeNamespaces = (str, options = {}) => {
 
     return str.replace(reg, "");
 };
+
+const EXPANSION_REG = [...Array(11).keys()].map(i => new RegExp(`\\$(?:${ i }\\b|\\{${ i }\\})`, "g"));
+
+exports.makeExpansion = (str, ...args) => {
+    str = str.replace(EXPANSION_REG[0], args.join(", "));
+    for (let i = 0; i < args.length && i + 1 < EXPANSION_REG.length; i++) {
+        str = str.replace(EXPANSION_REG[i + 1], args[i]);
+    }
+    return str;
+};
+
+exports.useNamespaces = (body, method, coclass, generator) => {
+    const namespaces = new Set();
+
+    if (generator.namespace) {
+        namespaces.add(`using namespace ${ generator.namespace };`);
+    }
+
+    if (coclass.namespace) {
+        namespaces.add(`using namespace ${ coclass.namespace };`);
+    }
+
+    if (coclass.include && coclass.include.namespace && coclass.include.namespace !== coclass.namespace) {
+        namespaces.add(`using namespace ${ coclass.include.namespace };`);
+    }
+
+    body[method](...namespaces);
+};

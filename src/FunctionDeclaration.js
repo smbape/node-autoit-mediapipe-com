@@ -3,33 +3,7 @@ const {
     PTR,
 } = require("./constants");
 
-const EXPANSION_REG = [...Array(11).keys()].map(i => new RegExp(`\\$(?:${ i }\\b|\\{${ i }\\})`, "g"));
-
-const make_expansion = (str, ...args) => {
-    str = str.replace(EXPANSION_REG[0], args.join(", "));
-    for (let i = 0; i < args.length && i + 1 < EXPANSION_REG.length; i++) {
-        str = str.replace(EXPANSION_REG[i + 1], args[i]);
-    }
-    return str;
-};
-
-const useNamespaces = (body, coclass, generator) => {
-    const namespaces = new Set();
-
-    if (generator.namespace) {
-        namespaces.add(`using namespace ${ generator.namespace };`);
-    }
-
-    if (coclass.namespace) {
-        namespaces.add(`using namespace ${ coclass.namespace };`);
-    }
-
-    if (coclass.include && coclass.include.namespace && coclass.include.namespace !== coclass.namespace) {
-        namespaces.add(`using namespace ${ coclass.include.namespace };`);
-    }
-
-    body.push(...namespaces);
-};
+const {makeExpansion, useNamespaces} = require("./alias");
 
 Object.assign(exports, {
     declare: (generator, coclass, overrides, fname, idlname, iidl, ipublic, impl, is_test, options = {}) => {
@@ -217,7 +191,7 @@ Object.assign(exports, {
                     if (modifier.startsWith("/Cast=")) {
                         callarg = `${ modifier.slice("/Cast=".length) }(${ callarg })`;
                     } else if (modifier.startsWith("/Expr=")) {
-                        callarg = make_expansion(modifier.slice("/Expr=".length), callarg);
+                        callarg = makeExpansion(modifier.slice("/Expr=".length), callarg);
                     } else if (modifier.startsWith("/default=")) {
                         other_default = modifier.slice("/default=".length);
                     }
@@ -623,7 +597,7 @@ Object.assign(exports, {
             body.push("");
         }
 
-        useNamespaces(body, generator, coclass);
+        useNamespaces(body, "push", generator, coclass);
 
         const hr = maxargc !== 0 ? "E_INVALIDARG" : "S_OK";
         const enableNamedParameters = maxargc !== 0 && coclass !== generator.namedParameters && !coclass.is_vector && !coclass.is_stdmap;
@@ -831,9 +805,9 @@ Object.assign(exports, {
 
             for (const modifier of func_modifiers) {
                 if (modifier.startsWith("/Expr=")) {
-                    expr = make_expansion(modifier.slice("/Expr=".length), expr);
+                    expr = makeExpansion(modifier.slice("/Expr=".length), expr);
                 } else if (modifier.startsWith("/Call=")) {
-                    callee = make_expansion(modifier.slice("/Call=".length), callee);
+                    callee = makeExpansion(modifier.slice("/Call=".length), callee);
                 }
             }
 
@@ -851,7 +825,7 @@ Object.assign(exports, {
 
             for (const modifier of func_modifiers) {
                 if (modifier.startsWith("/Output=")) {
-                    callee = make_expansion(modifier.slice("/Output=".length), callee);
+                    callee = makeExpansion(modifier.slice("/Output=".length), callee);
                 }
             }
 
@@ -917,12 +891,12 @@ Object.assign(exports, {
                             if (FAILED(hr)) {
                                 return hr;
                             }
-                            hr = ${ make_expansion(autoit_from, "tmp", "_retval") };
+                            hr = ${ makeExpansion(autoit_from, "tmp", "_retval") };
                         }
                     `.replace(/^ {24}/mg, "").trim().split("\n").map(line => `${ is_entry_test ? "// " : "" }${ line }`).join(`\n${ cindent }`);
                     body.push(ebody);
                 } else {
-                    body.push(`${ cindent }${ is_entry_test ? "// " : "" }hr = ${ make_expansion(autoit_from, callee, "_retval") };`);
+                    body.push(`${ cindent }${ is_entry_test ? "// " : "" }hr = ${ makeExpansion(autoit_from, callee, "_retval") };`);
                 }
             } else {
                 body.push(`${ cindent }${ is_entry_test ? "// " : "" }${ callee };`);

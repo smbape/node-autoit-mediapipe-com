@@ -1185,7 +1185,7 @@ class AutoItGenerator {
             }
 
             if (typeof options.onCoClass === "function") {
-                options.onCoClass(this, coclass);
+                options.onCoClass(this, coclass, options);
             }
         }
 

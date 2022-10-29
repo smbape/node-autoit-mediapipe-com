@@ -9,6 +9,7 @@ const mkdirp = require("mkdirp");
 const waterfall = require("async/waterfall");
 const {explore} = require("fs-explorer");
 const Parser = require("./protobuf/Parser");
+const vector_conversion = require("./vector_conversion");
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
@@ -48,7 +49,7 @@ const parseArguments = PROJECT_DIR => {
             ["std::numeric_limits<int32_t>::min()", "-0x80000000"],
             ["std::numeric_limits<int32_t>::max()", "0x7FFFFFFF"],
         ]),
-        onCoClass: (generator, coclass) => {
+        onCoClass: (generator, coclass, opts) => {
             const {fqn} = coclass;
 
             if (fqn.endsWith("MapContainer")) {
@@ -60,8 +61,17 @@ const parseArguments = PROJECT_DIR => {
                 coclass.addProperty(["size_t", "Count", "", ["/R", "=size()"]]);
             } else if (fqn.startsWith("google::protobuf::Repeated_")) {
                 // make RepeatedField to be recognized as a collection
-                const value_type = fqn.slice("google::protobuf::Repeated_".length).replaceAll("_", "::");
-                generator.as_stl_enum(coclass, value_type);
+                const vtype = fqn.slice("google::protobuf::Repeated_".length).replaceAll("_", "::");
+                generator.as_stl_enum(coclass, vtype);
+                coclass.cpptype = vtype;
+                coclass.idltype = generator.getIDLType(vtype, coclass, opts);
+            }
+        },
+        convert: (coclass, header, impl, opts) => {
+            const {fqn} = coclass;
+
+            if (fqn.startsWith("google::protobuf::Repeated_")) {
+                vector_conversion.convert_sort(coclass, header, impl, opts);
             }
         }
     };
@@ -172,8 +182,18 @@ waterfall([
         };
 
         for (const filename of [
-            "mediapipe/framework/formats/detection.proto",
             "mediapipe/framework/calculator.proto",
+            "mediapipe/framework/formats/detection.proto",
+            "mediapipe/framework/formats/image_format.proto",
+
+            // solution base calculators
+            "mediapipe/calculators/core/constant_side_packet_calculator.proto",
+            "mediapipe/calculators/image/image_transformation_calculator.proto",
+            "mediapipe/calculators/tensor/tensors_to_detections_calculator.proto",
+            "mediapipe/calculators/util/landmarks_smoothing_calculator.proto",
+            "mediapipe/calculators/util/logic_calculator.proto",
+            "mediapipe/calculators/util/thresholding_calculator.proto",
+            "mediapipe/modules/objectron/calculators/lift_2d_frame_annotation_to_3d_calculator.proto",
         ]) {
             opts.filename = filename;
             const parser = new Parser();

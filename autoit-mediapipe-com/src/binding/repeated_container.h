@@ -326,6 +326,14 @@ namespace google {
 				return list[0];
 			}
 
+			template<typename _Tp>
+			void RepeatedField_Reverse(_Tp* repeatedField) {
+				int field_size = repeatedField->size();
+				for (int i = 0; i < field_size / 2; i++) {
+					repeatedField->SwapElements(i, field_size - 1 - i);
+				}
+			}
+
 		}
 	}
 }
