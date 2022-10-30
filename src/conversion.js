@@ -35,6 +35,28 @@ const numbers = new Map([
     ["UINT", "UINT"],
 ]);
 
+const autoitCast = (generator, coclass, const_cast, options) => {
+    return [...coclass.children].map(child => {
+        return `{
+            auto derived = dynamic_cast<${ const_cast }C${ child.getClassName() }*>(in_val);
+            if (derived) {
+                return derived->__self->get();
+            }
+        }`.replace(/^ {8}/mg, "");
+    }).join("\n");
+};
+
+const autoitPtrCast = (generator, coclass, options) => {
+    return [...coclass.children].map(child => {
+        return `{
+            auto derived = std::dynamic_pointer_cast<${ child.fqn }>(in_val);
+            if (derived.get()) {
+                return autoit_from(derived, out_val);
+            }
+        }`.replace(/^ {8}/mg, "");
+    }).join("\n");
+};
+
 Object.assign(exports, {
     number: {
         declare: (in_type, out_type, {shared_ptr} = {}) => {
@@ -128,7 +150,7 @@ Object.assign(exports, {
         }
     },
 
-    convert: (coclass, header, impl, options = {}) => {
+    convert: (generator, coclass, header, impl, options = {}) => {
         for (const ename of coclass.enums) {
             if (ename.endsWith("<unnamed>")) {
                 continue;
@@ -249,15 +271,8 @@ Object.assign(exports, {
                         return obj->__self->get();
                     }
                 }
-                ${ [...children].map(child => {
-                    return `{
-                        auto obj = dynamic_cast<C${ child.getClassName() }*>(in_val);
-                        if (obj) {
-                            return obj->__self->get();
-                        }
-                    }`.replace(/^ {4}/mg, "");
-                }).join(`\n${ " ".repeat(16) }`) }
-                return NULL;
+                ${ autoitCast(generator, coclass, "", options).split("\n").join(`\n${ " ".repeat(16) }`) }
+                return nullptr;
             }
 
             template<>
@@ -268,15 +283,8 @@ Object.assign(exports, {
                         return obj->__self->get();
                     }
                 }
-                ${ [...children].map(child => {
-                    return `{
-                        auto obj = dynamic_cast<const C${ child.getClassName() }*>(in_val);
-                        if (obj) {
-                            return obj->__self->get();
-                        }
-                    }`.replace(/^ {4}/mg, "");
-                }).join(`\n${ " ".repeat(16) }`) }
-                return NULL;
+                ${ autoitCast(generator, coclass, "const ", options).split("\n").join(`\n${ " ".repeat(16) }`) }
+                return nullptr;
             }
 
             `.replace(/^ {12}/mg, "")
@@ -378,6 +386,7 @@ Object.assign(exports, {
             `.replace(/^ {16}/mg, ""));
             impl.push(`
                 const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, VARIANT*& out_val) {
+                    ${ autoitPtrCast(generator, coclass, options).split("\n").join(`\n${ " ".repeat(20) }`) }
                     I${ cotype }* pdispVal = nullptr;
                     I${ cotype }** ppdispVal = &pdispVal;
                     HRESULT hr = autoit_from(in_val, ppdispVal);
@@ -388,7 +397,7 @@ Object.assign(exports, {
                     }
                     return hr;
                 }
-            `.replace(/^ {16}/mg, ""));
+            `.replace(/^ {16}|^\n/mg, ""));
         }
 
         if (coclass.is_struct || coclass.is_simple || coclass.is_map || coclass.has_copy_constructor || coclass.has_assign_operator) {
@@ -532,7 +541,7 @@ Object.assign(exports, {
         }
 
         if (typeof options.convert === "function") {
-            options.convert(coclass, header, impl, options);
+            options.convert(generator, coclass, header, impl, options);
         }
     },
 

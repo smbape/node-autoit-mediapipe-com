@@ -216,8 +216,8 @@ EndFunc   ;==>test_double_packet
 Func test_detection_proto_packet()
 	Local $detection = $detection_pb2.Detection()
 
-	_AssertTrue($text_format.ParseFromString("score: 0.5", $detection))
-	_AssertTrue($text_format.MergeFromString("score: 0.6", $detection))
+	$text_format.Parse("score: 0.5", $detection)
+	$text_format.Parse("score: 0.6", $detection)
 
 	Local $proto_packet = $packet_creator.create_proto($detection)
 

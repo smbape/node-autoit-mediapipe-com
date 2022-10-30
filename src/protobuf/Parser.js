@@ -102,7 +102,7 @@ class Parser {
 
             // lookup in exports
             if (this.exports.has(message)) {
-                return fqn.replaceAll(".", "::");
+                return message.replaceAll(".", "::");
             }
 
             // lookup in imports
@@ -1019,7 +1019,7 @@ class Parser {
                     [value_type, "value", "", ["/Ref", "/C"]],
                 ], "", ""],
                 [`${ fqn }.Add`, "void", ["=append"], [
-                    [value_type, "value", "", [is_string ? "/RRef" : "/Ref", "/C"]],
+                    [value_type, "value", "", [is_string ? "/RRef" : "", "/C"]],
                 ], "", ""],
                 [`${ fqn }.splice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SpliceScalar", "/Expr=__self->get(), $0"], [
                     [`std::vector<${ value_type }>`, "list", "", ["/O"]],

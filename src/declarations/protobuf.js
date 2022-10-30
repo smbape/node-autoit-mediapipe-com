@@ -1,25 +1,37 @@
 module.exports = [
     ["class google.protobuf.Message", "", [], [], "", ""],
 
-    ["google.protobuf.Message.ToStr", "std::string", ["=str", "/Call=google::protobuf::autoit::cmessage::ToStr", "/Expr=*__self->get()"], [], "", ""],
+    ["google.protobuf.Message.ToStr", "void", ["=str", "/Call=google::protobuf::autoit::Print", "/Expr=*__self->get(), $0"], [
+        ["std::string*", "output", "", ["/O"]],
+    ], "", ""],
 
     ["class google.protobuf.FieldDescriptor", "", [], [
         ["std::string", "full_name", "", ["/R=full_name"]],
     ], "", ""],
 
     ["google.protobuf.TextFormat.PrintToString", "bool", [], [
-        ["std::shared_ptr<google::protobuf::Message>", "message", "", ["/Expr=*$0.get()"]],
+        ["std::shared_ptr<google::protobuf::Message>", "message", "", ["/Ref", "/C", "/Expr=*$0.get()"]],
         ["std::string*", "output", "", ["/O"]],
+    ], "", ""],
+
+    ["google.protobuf.TextFormat.Print", "void", ["/Call=google::protobuf::autoit::Print"], [
+        ["std::shared_ptr<google::protobuf::Message>", "message", "", ["/Ref", "/C", "/Expr=*$0.get()"]],
+        ["std::string*", "output", "", ["/O"]],
+    ], "", ""],
+
+    ["google.protobuf.TextFormat.Parse", "google::protobuf::Message*", ["/Call=google::protobuf::autoit::Parse"], [
+        ["std::string", "input", "", ["/C", "/Ref"]],
+        ["google::protobuf::Message*", "message", "", []],
     ], "", ""],
 
     ["google.protobuf.TextFormat.ParseFromString", "bool", [], [
         ["std::string", "input", "", ["/C", "/Ref"]],
-        ["std::shared_ptr<google::protobuf::Message>", "output", "", ["/Expr=$0.get()"]],
+        ["google::protobuf::Message*", "message", "", []],
     ], "", ""],
 
     ["google.protobuf.TextFormat.MergeFromString", "bool", [], [
         ["std::string", "input", "", ["/C", "/Ref"]],
-        ["std::shared_ptr<google::protobuf::Message>", "output", "", ["/Expr=$0.get()"]],
+        ["google::protobuf::Message*", "message", "", []],
     ], "", ""],
 
     ["google.protobuf.Any.UnpackTo", "void", ["=Unpack"], [
@@ -27,6 +39,6 @@ module.exports = [
     ], "", ""],
 
     ["google.protobuf.Any.PackFrom", "void", ["=Pack"], [
-        ["google::protobuf::Message", "input", "", ["/C", "/Ref"]],
+        ["google::protobuf::Message", "message", "", ["/C", "/Ref"]],
     ], "", ""],
 ];

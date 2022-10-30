@@ -36,8 +36,7 @@ const parseArguments = PROJECT_DIR => {
             "mediapipe",
             "std",
         ]),
-        other_namespaces: new Set([
-        ]),
+        other_namespaces: new Set([]),
         build: new Set(),
         notest: new Set(),
         skip: new Set(),
@@ -49,6 +48,7 @@ const parseArguments = PROJECT_DIR => {
             ["std::numeric_limits<int32_t>::min()", "-0x80000000"],
             ["std::numeric_limits<int32_t>::max()", "0x7FFFFFFF"],
         ]),
+        registered: new Set(),
         onCoClass: (generator, coclass, opts) => {
             const {fqn} = coclass;
 
@@ -67,8 +67,13 @@ const parseArguments = PROJECT_DIR => {
                 coclass.idltype = generator.getIDLType(vtype, coclass, opts);
             }
         },
-        convert: (coclass, header, impl, opts) => {
+        convert: (generator, coclass, header, impl, opts) => {
             const {fqn} = coclass;
+
+            if (fqn === "google::protobuf::Message") {
+                const derives = generator.derives.get(fqn);
+                console.log(fqn, derives.size, "derives");
+            }
 
             if (fqn.startsWith("google::protobuf::Repeated_")) {
                 vector_conversion.convert_sort(coclass, header, impl, opts);

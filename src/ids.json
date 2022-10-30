@@ -123,6 +123,14 @@
         "iid": "9cc26786-3899-4021-b898-d74d84858456",
         "clsid": "45a9a3cb-1ea1-4957-8a09-b8386331bece"
     },
+    "mediapipe::framework": {
+        "iid": "a42443f3-5250-4055-aaf7-6d57d15b3667",
+        "clsid": "91e5fac8-e6a5-49d2-bf17-0db04cb8933d"
+    },
+    "mediapipe::framework::solution_base": {
+        "iid": "0edfa4a5-7727-4e37-b339-03d704dec482",
+        "clsid": "919cd62d-b16e-496a-8e26-e8e46adccf0b"
+    },
     "mediapipe::Timestamp": {
         "iid": "d4ab78ee-eaf6-4471-82f6-748638884d83",
         "clsid": "07c03615-cf02-49ec-b7fe-57e51957a483"
@@ -142,10 +150,6 @@
     "mediapipe::CalculatorOptions": {
         "iid": "023dc2b0-3601-42e7-9cc2-356f8a33570a",
         "clsid": "3a1563cb-ba33-47c5-8368-1c35beb348da"
-    },
-    "mediapipe::framework": {
-        "iid": "a42443f3-5250-4055-aaf7-6d57d15b3667",
-        "clsid": "91e5fac8-e6a5-49d2-bf17-0db04cb8933d"
     },
     "mediapipe::framework::calculator_options_pb2": {
         "iid": "9b9dffeb-c8e3-43aa-9753-7ce6269132fe",

@@ -127,6 +127,8 @@ Object.assign(exports, {
                 const is_out = out_args[j];
                 const is_optional = defval !== "" || is_out && !in_args[j];
                 const is_input_array = argtype === "InputArray";
+                const has_ref = arg_modifiers.includes("/Ref");
+                const ref_def_val = defval !== "" && has_ref ? `PARAMETER_MISSING(${ in_val }) ? ${ defval } : ` : "";
 
                 optionals[j] = is_optional;
 
@@ -340,7 +342,7 @@ Object.assign(exports, {
                             ${ is_scalar_variant } = true;
                         }
 
-                        auto& ${ argname } = *${ pointer };
+                        auto& ${ argname } = ${ ref_def_val }*${ pointer };
                     `.replace(/^ {24}/mg, "").trim().split("\n"));
                 } else if (is_by_ref) {
                     if (is_optional) {
@@ -381,7 +383,7 @@ Object.assign(exports, {
                                 }
                             }
 
-                            auto& ${ argname } = ${ pointer } ? *${ pointer } : *${ placeholder_name }.get();
+                            auto& ${ argname } = ${ ref_def_val }${ pointer } ? *${ pointer } : *${ placeholder_name }.get();
                             hr = S_OK;
                         `.replace(/^ {28}/mg, "").trim().split("\n"));
                     }

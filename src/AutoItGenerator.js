@@ -340,7 +340,7 @@ class AutoItGenerator {
             }
 
             // converter
-            conversion.convert(coclass, iglobal, impl, options);
+            conversion.convert(this, coclass, iglobal, impl, options);
 
             if (coclass.generate) {
                 coclass.generate(iglobal, iidl, impl, ipublic, iprivate, coclass.idlnames, is_test, options);
@@ -790,7 +790,7 @@ class AutoItGenerator {
 
             ename = path[path.length - 1];
 
-            return `; ${ ename === "<unnamed>" ? "anonymous" : ename }\n${ Array.from(values).map(([name, value]) => {
+            return `; ${ path.slice(0, -1).join("::") }::${ ename === "<unnamed>" ? "anonymous" : ename }\n${ Array.from(values).map(([name, value]) => {
                 const pos = name.lastIndexOf(".");
                 const prefix = name.slice(0, pos);
                 const vkey = name.slice(pos + 1);
@@ -981,6 +981,7 @@ class AutoItGenerator {
 
     add_class(decl, options = {}) {
         const [name, base, list_of_modifiers, properties] = decl;
+        const parents = base ? base.slice(": ".length).split(", ") : [];
         const path = name.slice(name.indexOf(" ") + 1).split(".");
         const fqn = path.join("::");
 
@@ -1016,8 +1017,6 @@ class AutoItGenerator {
         for (const property of properties) {
             coclass.addProperty(property);
         }
-
-        const parents = base ? base.slice(": ".length).split(", ") : [];
 
         this.bases.set(fqn, new Set());
 

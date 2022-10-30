@@ -176,7 +176,9 @@
   - [google::protobuf::Message::str](#googleprotobufmessagestr)
 - [google::protobuf::TextFormat](#googleprotobuftextformat)
   - [google::protobuf::TextFormat::MergeFromString](#googleprotobuftextformatmergefromstring)
+  - [google::protobuf::TextFormat::Parse](#googleprotobuftextformatparse)
   - [google::protobuf::TextFormat::ParseFromString](#googleprotobuftextformatparsefromstring)
+  - [google::protobuf::TextFormat::Print](#googleprotobuftextformatprint)
   - [google::protobuf::TextFormat::PrintToString](#googleprotobuftextformatprinttostring)
 - [google::protobuf::Any](#googleprotobufany)
   - [google::protobuf::Any::get_create](#googleprotobufanyget_create)
@@ -2261,11 +2263,11 @@ AutoIt:
 
 ```cpp
 static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solution_base::SolutionBase::get_create( const mediapipe::CalculatorGraphConfig&                                        graph_config,
-                                                                                                                  const std::map<std::string, _variant_t>&                                       calculator_params = calculator_params_none,
+                                                                                                                  const std::map<std::string, _variant_t>&                                       calculator_params = noMap(),
                                                                                                                   const google::protobuf::Message*                                               graph_options = nullptr,
-                                                                                                                  const std::map<std::string, _variant_t>&                                       side_inputs = side_inputs_none,
-                                                                                                                  const std::vector<std::string>&                                                outputs = outputs_none,
-                                                                                                                  const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = stream_type_hints_none );
+                                                                                                                  const std::map<std::string, _variant_t>&                                       side_inputs = noMap(),
+                                                                                                                  const std::vector<std::string>&                                                outputs = noVector(),
+                                                                                                                  const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = noTypeMap() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase").create( $graph_config[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
     _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase")( $graph_config[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
@@ -2273,11 +2275,11 @@ AutoIt:
 
 ```cpp
 static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solution_base::SolutionBase::get_create( const std::string&                                                             binary_graph_path,
-                                                                                                                  const std::map<std::string, _variant_t>&                                       calculator_params = calculator_params_none,
+                                                                                                                  const std::map<std::string, _variant_t>&                                       calculator_params = noMap(),
                                                                                                                   const google::protobuf::Message*                                               graph_options = nullptr,
-                                                                                                                  const std::map<std::string, _variant_t>&                                       side_inputs = side_inputs_none,
-                                                                                                                  const std::vector<std::string>&                                                outputs = outputs_none,
-                                                                                                                  const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = stream_type_hints_none );
+                                                                                                                  const std::map<std::string, _variant_t>&                                       side_inputs = noMap(),
+                                                                                                                  const std::vector<std::string>&                                                outputs = noVector(),
+                                                                                                                  const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = noTypeMap() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase").create( $binary_graph_path[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
     _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase")( $binary_graph_path[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
@@ -3207,9 +3209,9 @@ AutoIt:
 ### google::protobuf::Message::str
 
 ```cpp
-std::string google::protobuf::Message::str();
+void google::protobuf::Message::str( std::string* output );
 AutoIt:
-    $oMessage.str() -> retval
+    $oMessage.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::TextFormat
@@ -3217,26 +3219,44 @@ AutoIt:
 ### google::protobuf::TextFormat::MergeFromString
 
 ```cpp
-bool google::protobuf::TextFormat::MergeFromString( const std::string&                         input,
-                                                    std::shared_ptr<google::protobuf::Message> output );
+bool google::protobuf::TextFormat::MergeFromString( const std::string&         input,
+                                                    google::protobuf::Message* message );
 AutoIt:
-    _Mediapipe_ObjCreate("google.protobuf.text_format").MergeFromString( $input, $output ) -> retval
+    _Mediapipe_ObjCreate("google.protobuf.text_format").MergeFromString( $input, $message ) -> retval
+```
+
+### google::protobuf::TextFormat::Parse
+
+```cpp
+google::protobuf::Message* google::protobuf::TextFormat::Parse( const std::string&         input,
+                                                                google::protobuf::Message* message );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.text_format").Parse( $input, $message ) -> retval
 ```
 
 ### google::protobuf::TextFormat::ParseFromString
 
 ```cpp
-bool google::protobuf::TextFormat::ParseFromString( const std::string&                         input,
-                                                    std::shared_ptr<google::protobuf::Message> output );
+bool google::protobuf::TextFormat::ParseFromString( const std::string&         input,
+                                                    google::protobuf::Message* message );
 AutoIt:
-    _Mediapipe_ObjCreate("google.protobuf.text_format").ParseFromString( $input, $output ) -> retval
+    _Mediapipe_ObjCreate("google.protobuf.text_format").ParseFromString( $input, $message ) -> retval
+```
+
+### google::protobuf::TextFormat::Print
+
+```cpp
+void google::protobuf::TextFormat::Print( const std::shared_ptr<google::protobuf::Message>& message,
+                                          std::string*                                      output );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.text_format").Print( $message[, $output] ) -> $output
 ```
 
 ### google::protobuf::TextFormat::PrintToString
 
 ```cpp
-bool google::protobuf::TextFormat::PrintToString( std::shared_ptr<google::protobuf::Message> message,
-                                                  std::string*                               output );
+bool google::protobuf::TextFormat::PrintToString( const std::shared_ptr<google::protobuf::Message>& message,
+                                                  std::string*                                      output );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.text_format").PrintToString( $message[, $output] ) -> retval, $output
 ```
@@ -3255,9 +3275,9 @@ AutoIt:
 ### google::protobuf::Any::Pack
 
 ```cpp
-void google::protobuf::Any::Pack( const google::protobuf::Message& input );
+void google::protobuf::Any::Pack( const google::protobuf::Message& message );
 AutoIt:
-    $oAny.Pack( $input ) -> None
+    $oAny.Pack( $message ) -> None
 ```
 
 ### google::protobuf::Any::Unpack
@@ -3271,9 +3291,9 @@ AutoIt:
 ### google::protobuf::Any::str
 
 ```cpp
-std::string google::protobuf::Any::str();
+void google::protobuf::Any::str( std::string* output );
 AutoIt:
-    $oAny.str() -> retval
+    $oAny.str( [$output] ) -> $output
 ```
 
 ## cv::Range
@@ -3590,9 +3610,9 @@ AutoIt:
 ### mediapipe::CalculatorOptions::str
 
 ```cpp
-std::string mediapipe::CalculatorOptions::str();
+void mediapipe::CalculatorOptions::str( std::string* output );
 AutoIt:
-    $oCalculatorOptions.str() -> retval
+    $oCalculatorOptions.str( [$output] ) -> $output
 ```
 
 ## mediapipe::MediaPipeOptions
@@ -3609,9 +3629,9 @@ AutoIt:
 ### mediapipe::MediaPipeOptions::str
 
 ```cpp
-std::string mediapipe::MediaPipeOptions::str();
+void mediapipe::MediaPipeOptions::str( std::string* output );
 AutoIt:
-    $oMediaPipeOptions.str() -> retval
+    $oMediaPipeOptions.str( [$output] ) -> $output
 ```
 
 ## mediapipe::PacketFactoryOptions
@@ -3628,9 +3648,9 @@ AutoIt:
 ### mediapipe::PacketFactoryOptions::str
 
 ```cpp
-std::string mediapipe::PacketFactoryOptions::str();
+void mediapipe::PacketFactoryOptions::str( std::string* output );
 AutoIt:
-    $oPacketFactoryOptions.str() -> retval
+    $oPacketFactoryOptions.str( [$output] ) -> $output
 ```
 
 ## mediapipe::PacketFactoryConfig
@@ -3647,9 +3667,9 @@ AutoIt:
 ### mediapipe::PacketFactoryConfig::str
 
 ```cpp
-std::string mediapipe::PacketFactoryConfig::str();
+void mediapipe::PacketFactoryConfig::str( std::string* output );
 AutoIt:
-    $oPacketFactoryConfig.str() -> retval
+    $oPacketFactoryConfig.str( [$output] ) -> $output
 ```
 
 ## mediapipe::PacketManagerConfig
@@ -3666,9 +3686,9 @@ AutoIt:
 ### mediapipe::PacketManagerConfig::str
 
 ```cpp
-std::string mediapipe::PacketManagerConfig::str();
+void mediapipe::PacketManagerConfig::str( std::string* output );
 AutoIt:
-    $oPacketManagerConfig.str() -> retval
+    $oPacketManagerConfig.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_PacketFactoryConfig
@@ -3888,9 +3908,9 @@ AutoIt:
 ### mediapipe::PacketGeneratorOptions::str
 
 ```cpp
-std::string mediapipe::PacketGeneratorOptions::str();
+void mediapipe::PacketGeneratorOptions::str( std::string* output );
 AutoIt:
-    $oPacketGeneratorOptions.str() -> retval
+    $oPacketGeneratorOptions.str( [$output] ) -> $output
 ```
 
 ## mediapipe::PacketGeneratorConfig
@@ -3907,9 +3927,9 @@ AutoIt:
 ### mediapipe::PacketGeneratorConfig::str
 
 ```cpp
-std::string mediapipe::PacketGeneratorConfig::str();
+void mediapipe::PacketGeneratorConfig::str( std::string* output );
 AutoIt:
-    $oPacketGeneratorConfig.str() -> retval
+    $oPacketGeneratorConfig.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_std_string
@@ -4120,9 +4140,9 @@ AutoIt:
 ### mediapipe::StatusHandlerConfig::str
 
 ```cpp
-std::string mediapipe::StatusHandlerConfig::str();
+void mediapipe::StatusHandlerConfig::str( std::string* output );
 AutoIt:
-    $oStatusHandlerConfig.str() -> retval
+    $oStatusHandlerConfig.str( [$output] ) -> $output
 ```
 
 ## mediapipe::InputStreamHandlerConfig
@@ -4139,9 +4159,9 @@ AutoIt:
 ### mediapipe::InputStreamHandlerConfig::str
 
 ```cpp
-std::string mediapipe::InputStreamHandlerConfig::str();
+void mediapipe::InputStreamHandlerConfig::str( std::string* output );
 AutoIt:
-    $oInputStreamHandlerConfig.str() -> retval
+    $oInputStreamHandlerConfig.str( [$output] ) -> $output
 ```
 
 ## mediapipe::OutputStreamHandlerConfig
@@ -4158,9 +4178,9 @@ AutoIt:
 ### mediapipe::OutputStreamHandlerConfig::str
 
 ```cpp
-std::string mediapipe::OutputStreamHandlerConfig::str();
+void mediapipe::OutputStreamHandlerConfig::str( std::string* output );
 AutoIt:
-    $oOutputStreamHandlerConfig.str() -> retval
+    $oOutputStreamHandlerConfig.str( [$output] ) -> $output
 ```
 
 ## mediapipe::ExecutorConfig
@@ -4177,9 +4197,9 @@ AutoIt:
 ### mediapipe::ExecutorConfig::str
 
 ```cpp
-std::string mediapipe::ExecutorConfig::str();
+void mediapipe::ExecutorConfig::str( std::string* output );
 AutoIt:
-    $oExecutorConfig.str() -> retval
+    $oExecutorConfig.str( [$output] ) -> $output
 ```
 
 ## mediapipe::InputCollection
@@ -4196,9 +4216,9 @@ AutoIt:
 ### mediapipe::InputCollection::str
 
 ```cpp
-std::string mediapipe::InputCollection::str();
+void mediapipe::InputCollection::str( std::string* output );
 AutoIt:
-    $oInputCollection.str() -> retval
+    $oInputCollection.str( [$output] ) -> $output
 ```
 
 ## mediapipe::InputCollectionSet
@@ -4215,9 +4235,9 @@ AutoIt:
 ### mediapipe::InputCollectionSet::str
 
 ```cpp
-std::string mediapipe::InputCollectionSet::str();
+void mediapipe::InputCollectionSet::str( std::string* output );
 AutoIt:
-    $oInputCollectionSet.str() -> retval
+    $oInputCollectionSet.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_InputCollection
@@ -4437,9 +4457,9 @@ AutoIt:
 ### mediapipe::InputStreamInfo::str
 
 ```cpp
-std::string mediapipe::InputStreamInfo::str();
+void mediapipe::InputStreamInfo::str( std::string* output );
 AutoIt:
-    $oInputStreamInfo.str() -> retval
+    $oInputStreamInfo.str( [$output] ) -> $output
 ```
 
 ## mediapipe::ProfilerConfig
@@ -4456,9 +4476,9 @@ AutoIt:
 ### mediapipe::ProfilerConfig::str
 
 ```cpp
-std::string mediapipe::ProfilerConfig::str();
+void mediapipe::ProfilerConfig::str( std::string* output );
 AutoIt:
-    $oProfilerConfig.str() -> retval
+    $oProfilerConfig.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_int
@@ -4507,7 +4527,7 @@ AutoIt:
 ### google::protobuf::Repeated_int::append
 
 ```cpp
-void google::protobuf::Repeated_int::append( const int& value );
+void google::protobuf::Repeated_int::append( const int value );
 AutoIt:
     $oRepeated_int.append( $value ) -> None
 ```
@@ -4669,9 +4689,9 @@ AutoIt:
 ### mediapipe::CalculatorGraphConfig::str
 
 ```cpp
-std::string mediapipe::CalculatorGraphConfig::str();
+void mediapipe::CalculatorGraphConfig::str( std::string* output );
 AutoIt:
-    $oCalculatorGraphConfig.str() -> retval
+    $oCalculatorGraphConfig.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node
@@ -5703,9 +5723,9 @@ AutoIt:
 ### mediapipe::CalculatorGraphConfig::Node::str
 
 ```cpp
-std::string mediapipe::CalculatorGraphConfig::Node::str();
+void mediapipe::CalculatorGraphConfig::Node::str( std::string* output );
 AutoIt:
-    $oNode.str() -> retval
+    $oNode.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_InputStreamInfo
@@ -5925,9 +5945,9 @@ AutoIt:
 ### mediapipe::Rasterization::str
 
 ```cpp
-std::string mediapipe::Rasterization::str();
+void mediapipe::Rasterization::str( std::string* output );
 AutoIt:
-    $oRasterization.str() -> retval
+    $oRasterization.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_Rasterization_Interval
@@ -6147,9 +6167,9 @@ AutoIt:
 ### mediapipe::Rasterization::Interval::str
 
 ```cpp
-std::string mediapipe::Rasterization::Interval::str();
+void mediapipe::Rasterization::Interval::str( std::string* output );
 AutoIt:
-    $oInterval.str() -> retval
+    $oInterval.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LocationData
@@ -6166,9 +6186,9 @@ AutoIt:
 ### mediapipe::LocationData::str
 
 ```cpp
-std::string mediapipe::LocationData::str();
+void mediapipe::LocationData::str( std::string* output );
 AutoIt:
-    $oLocationData.str() -> retval
+    $oLocationData.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint
@@ -6388,9 +6408,9 @@ AutoIt:
 ### mediapipe::LocationData::BoundingBox::str
 
 ```cpp
-std::string mediapipe::LocationData::BoundingBox::str();
+void mediapipe::LocationData::BoundingBox::str( std::string* output );
 AutoIt:
-    $oBoundingBox.str() -> retval
+    $oBoundingBox.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LocationData::RelativeBoundingBox
@@ -6407,9 +6427,9 @@ AutoIt:
 ### mediapipe::LocationData::RelativeBoundingBox::str
 
 ```cpp
-std::string mediapipe::LocationData::RelativeBoundingBox::str();
+void mediapipe::LocationData::RelativeBoundingBox::str( std::string* output );
 AutoIt:
-    $oRelativeBoundingBox.str() -> retval
+    $oRelativeBoundingBox.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LocationData::BinaryMask
@@ -6426,9 +6446,9 @@ AutoIt:
 ### mediapipe::LocationData::BinaryMask::str
 
 ```cpp
-std::string mediapipe::LocationData::BinaryMask::str();
+void mediapipe::LocationData::BinaryMask::str( std::string* output );
 AutoIt:
-    $oBinaryMask.str() -> retval
+    $oBinaryMask.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LocationData::RelativeKeypoint
@@ -6445,9 +6465,9 @@ AutoIt:
 ### mediapipe::LocationData::RelativeKeypoint::str
 
 ```cpp
-std::string mediapipe::LocationData::RelativeKeypoint::str();
+void mediapipe::LocationData::RelativeKeypoint::str( std::string* output );
 AutoIt:
-    $oRelativeKeypoint.str() -> retval
+    $oRelativeKeypoint.str( [$output] ) -> $output
 ```
 
 ## mediapipe::Detection
@@ -6464,9 +6484,9 @@ AutoIt:
 ### mediapipe::Detection::str
 
 ```cpp
-std::string mediapipe::Detection::str();
+void mediapipe::Detection::str( std::string* output );
 AutoIt:
-    $oDetection.str() -> retval
+    $oDetection.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_float
@@ -6515,7 +6535,7 @@ AutoIt:
 ### google::protobuf::Repeated_float::append
 
 ```cpp
-void google::protobuf::Repeated_float::append( const float& value );
+void google::protobuf::Repeated_float::append( const float value );
 AutoIt:
     $oRepeated_float.append( $value ) -> None
 ```
@@ -6880,9 +6900,9 @@ AutoIt:
 ### mediapipe::Detection::AssociatedDetection::str
 
 ```cpp
-std::string mediapipe::Detection::AssociatedDetection::str();
+void mediapipe::Detection::AssociatedDetection::str( std::string* output );
 AutoIt:
-    $oAssociatedDetection.str() -> retval
+    $oAssociatedDetection.str( [$output] ) -> $output
 ```
 
 ## mediapipe::DetectionList
@@ -6899,9 +6919,9 @@ AutoIt:
 ### mediapipe::DetectionList::str
 
 ```cpp
-std::string mediapipe::DetectionList::str();
+void mediapipe::DetectionList::str( std::string* output );
 AutoIt:
-    $oDetectionList.str() -> retval
+    $oDetectionList.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_Detection
@@ -7121,9 +7141,9 @@ AutoIt:
 ### mediapipe::ImageFormat::str
 
 ```cpp
-std::string mediapipe::ImageFormat::str();
+void mediapipe::ImageFormat::str( std::string* output );
 AutoIt:
-    $oImageFormat.str() -> retval
+    $oImageFormat.str( [$output] ) -> $output
 ```
 
 ## mediapipe::Classification
@@ -7140,9 +7160,9 @@ AutoIt:
 ### mediapipe::Classification::str
 
 ```cpp
-std::string mediapipe::Classification::str();
+void mediapipe::Classification::str( std::string* output );
 AutoIt:
-    $oClassification.str() -> retval
+    $oClassification.str( [$output] ) -> $output
 ```
 
 ## mediapipe::ClassificationList
@@ -7159,9 +7179,9 @@ AutoIt:
 ### mediapipe::ClassificationList::str
 
 ```cpp
-std::string mediapipe::ClassificationList::str();
+void mediapipe::ClassificationList::str( std::string* output );
 AutoIt:
-    $oClassificationList.str() -> retval
+    $oClassificationList.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_Classification
@@ -7381,9 +7401,9 @@ AutoIt:
 ### mediapipe::ClassificationListCollection::str
 
 ```cpp
-std::string mediapipe::ClassificationListCollection::str();
+void mediapipe::ClassificationListCollection::str( std::string* output );
 AutoIt:
-    $oClassificationListCollection.str() -> retval
+    $oClassificationListCollection.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_ClassificationList
@@ -7603,9 +7623,9 @@ AutoIt:
 ### mediapipe::Landmark::str
 
 ```cpp
-std::string mediapipe::Landmark::str();
+void mediapipe::Landmark::str( std::string* output );
 AutoIt:
-    $oLandmark.str() -> retval
+    $oLandmark.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LandmarkList
@@ -7622,9 +7642,9 @@ AutoIt:
 ### mediapipe::LandmarkList::str
 
 ```cpp
-std::string mediapipe::LandmarkList::str();
+void mediapipe::LandmarkList::str( std::string* output );
 AutoIt:
-    $oLandmarkList.str() -> retval
+    $oLandmarkList.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_Landmark
@@ -7844,9 +7864,9 @@ AutoIt:
 ### mediapipe::LandmarkListCollection::str
 
 ```cpp
-std::string mediapipe::LandmarkListCollection::str();
+void mediapipe::LandmarkListCollection::str( std::string* output );
 AutoIt:
-    $oLandmarkListCollection.str() -> retval
+    $oLandmarkListCollection.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_LandmarkList
@@ -8066,9 +8086,9 @@ AutoIt:
 ### mediapipe::NormalizedLandmark::str
 
 ```cpp
-std::string mediapipe::NormalizedLandmark::str();
+void mediapipe::NormalizedLandmark::str( std::string* output );
 AutoIt:
-    $oNormalizedLandmark.str() -> retval
+    $oNormalizedLandmark.str( [$output] ) -> $output
 ```
 
 ## mediapipe::NormalizedLandmarkList
@@ -8085,9 +8105,9 @@ AutoIt:
 ### mediapipe::NormalizedLandmarkList::str
 
 ```cpp
-std::string mediapipe::NormalizedLandmarkList::str();
+void mediapipe::NormalizedLandmarkList::str( std::string* output );
 AutoIt:
-    $oNormalizedLandmarkList.str() -> retval
+    $oNormalizedLandmarkList.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_NormalizedLandmark
@@ -8307,9 +8327,9 @@ AutoIt:
 ### mediapipe::NormalizedLandmarkListCollection::str
 
 ```cpp
-std::string mediapipe::NormalizedLandmarkListCollection::str();
+void mediapipe::NormalizedLandmarkListCollection::str( std::string* output );
 AutoIt:
-    $oNormalizedLandmarkListCollection.str() -> retval
+    $oNormalizedLandmarkListCollection.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_NormalizedLandmarkList
@@ -8529,9 +8549,9 @@ AutoIt:
 ### mediapipe::ConstantSidePacketCalculatorOptions::str
 
 ```cpp
-std::string mediapipe::ConstantSidePacketCalculatorOptions::str();
+void mediapipe::ConstantSidePacketCalculatorOptions::str( std::string* output );
 AutoIt:
-    $oConstantSidePacketCalculatorOptions.str() -> retval
+    $oConstantSidePacketCalculatorOptions.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket
@@ -8751,9 +8771,9 @@ AutoIt:
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::str
 
 ```cpp
-std::string mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::str();
+void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::str( std::string* output );
 AutoIt:
-    $oConstantSidePacket.str() -> retval
+    $oConstantSidePacket.str( [$output] ) -> $output
 ```
 
 ## mediapipe::ScaleMode
@@ -8770,9 +8790,9 @@ AutoIt:
 ### mediapipe::ScaleMode::str
 
 ```cpp
-std::string mediapipe::ScaleMode::str();
+void mediapipe::ScaleMode::str( std::string* output );
 AutoIt:
-    $oScaleMode.str() -> retval
+    $oScaleMode.str( [$output] ) -> $output
 ```
 
 ## mediapipe::RotationMode
@@ -8789,9 +8809,9 @@ AutoIt:
 ### mediapipe::RotationMode::str
 
 ```cpp
-std::string mediapipe::RotationMode::str();
+void mediapipe::RotationMode::str( std::string* output );
 AutoIt:
-    $oRotationMode.str() -> retval
+    $oRotationMode.str( [$output] ) -> $output
 ```
 
 ## mediapipe::ImageTransformationCalculatorOptions
@@ -8808,9 +8828,9 @@ AutoIt:
 ### mediapipe::ImageTransformationCalculatorOptions::str
 
 ```cpp
-std::string mediapipe::ImageTransformationCalculatorOptions::str();
+void mediapipe::ImageTransformationCalculatorOptions::str( std::string* output );
 AutoIt:
-    $oImageTransformationCalculatorOptions.str() -> retval
+    $oImageTransformationCalculatorOptions.str( [$output] ) -> $output
 ```
 
 ## mediapipe::TensorsToDetectionsCalculatorOptions
@@ -8827,9 +8847,9 @@ AutoIt:
 ### mediapipe::TensorsToDetectionsCalculatorOptions::str
 
 ```cpp
-std::string mediapipe::TensorsToDetectionsCalculatorOptions::str();
+void mediapipe::TensorsToDetectionsCalculatorOptions::str( std::string* output );
 AutoIt:
-    $oTensorsToDetectionsCalculatorOptions.str() -> retval
+    $oTensorsToDetectionsCalculatorOptions.str( [$output] ) -> $output
 ```
 
 ## mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping
@@ -8846,9 +8866,9 @@ AutoIt:
 ### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::str
 
 ```cpp
-std::string mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::str();
+void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::str( std::string* output );
 AutoIt:
-    $oTensorMapping.str() -> retval
+    $oTensorMapping.str( [$output] ) -> $output
 ```
 
 ## mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices
@@ -8865,9 +8885,9 @@ AutoIt:
 ### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::str
 
 ```cpp
-std::string mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::str();
+void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::str( std::string* output );
 AutoIt:
-    $oBoxBoundariesIndices.str() -> retval
+    $oBoxBoundariesIndices.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LandmarksSmoothingCalculatorOptions
@@ -8884,9 +8904,9 @@ AutoIt:
 ### mediapipe::LandmarksSmoothingCalculatorOptions::str
 
 ```cpp
-std::string mediapipe::LandmarksSmoothingCalculatorOptions::str();
+void mediapipe::LandmarksSmoothingCalculatorOptions::str( std::string* output );
 AutoIt:
-    $oLandmarksSmoothingCalculatorOptions.str() -> retval
+    $oLandmarksSmoothingCalculatorOptions.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter
@@ -8903,9 +8923,9 @@ AutoIt:
 ### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::str
 
 ```cpp
-std::string mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::str();
+void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::str( std::string* output );
 AutoIt:
-    $oNoFilter.str() -> retval
+    $oNoFilter.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter
@@ -8922,9 +8942,9 @@ AutoIt:
 ### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::str
 
 ```cpp
-std::string mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::str();
+void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::str( std::string* output );
 AutoIt:
-    $oVelocityFilter.str() -> retval
+    $oVelocityFilter.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter
@@ -8941,9 +8961,9 @@ AutoIt:
 ### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::str
 
 ```cpp
-std::string mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::str();
+void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::str( std::string* output );
 AutoIt:
-    $oOneEuroFilter.str() -> retval
+    $oOneEuroFilter.str( [$output] ) -> $output
 ```
 
 ## mediapipe::LogicCalculatorOptions
@@ -8960,9 +8980,9 @@ AutoIt:
 ### mediapipe::LogicCalculatorOptions::str
 
 ```cpp
-std::string mediapipe::LogicCalculatorOptions::str();
+void mediapipe::LogicCalculatorOptions::str( std::string* output );
 AutoIt:
-    $oLogicCalculatorOptions.str() -> retval
+    $oLogicCalculatorOptions.str( [$output] ) -> $output
 ```
 
 ## google::protobuf::Repeated_bool
@@ -9011,7 +9031,7 @@ AutoIt:
 ### google::protobuf::Repeated_bool::append
 
 ```cpp
-void google::protobuf::Repeated_bool::append( const bool& value );
+void google::protobuf::Repeated_bool::append( const bool value );
 AutoIt:
     $oRepeated_bool.append( $value ) -> None
 ```
@@ -9173,9 +9193,9 @@ AutoIt:
 ### mediapipe::ThresholdingCalculatorOptions::str
 
 ```cpp
-std::string mediapipe::ThresholdingCalculatorOptions::str();
+void mediapipe::ThresholdingCalculatorOptions::str( std::string* output );
 AutoIt:
-    $oThresholdingCalculatorOptions.str() -> retval
+    $oThresholdingCalculatorOptions.str( [$output] ) -> $output
 ```
 
 ## mediapipe::BeliefDecoderConfig
@@ -9192,9 +9212,9 @@ AutoIt:
 ### mediapipe::BeliefDecoderConfig::str
 
 ```cpp
-std::string mediapipe::BeliefDecoderConfig::str();
+void mediapipe::BeliefDecoderConfig::str( std::string* output );
 AutoIt:
-    $oBeliefDecoderConfig.str() -> retval
+    $oBeliefDecoderConfig.str( [$output] ) -> $output
 ```
 
 ## mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions
@@ -9211,9 +9231,9 @@ AutoIt:
 ### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::str
 
 ```cpp
-std::string mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::str();
+void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::str( std::string* output );
 AutoIt:
-    $oLift2DFrameAnnotationTo3DCalculatorOptions.str() -> retval
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.str( [$output] ) -> $output
 ```
 
 ## VectorOfVariant

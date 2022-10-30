@@ -111,6 +111,22 @@ using RepeatedContainer = google::protobuf::autoit::RepeatedContainer;
 namespace mediapipe {
 	namespace autoit {
 		namespace solution_base {
+			static const std::map<std::string, _variant_t> _noneMap;
+			static const std::map<std::string, PacketDataType> _noneTypeMap;
+			static const std::vector<std::string> _noneVector;
+
+			const std::map<std::string, _variant_t>& noMap() {
+				return _noneMap;
+			}
+
+			const std::map<std::string, PacketDataType>& noTypeMap() {
+				return _noneTypeMap;
+			}
+
+			const std::vector<std::string>& noVector() {
+				return _noneVector;
+			}
+
 			inline static _variant_t default_variant() {
 				_variant_t vtDefault;
 				V_VT(&vtDefault) = VT_ERROR;
@@ -305,7 +321,7 @@ namespace mediapipe {
 						::autoit::reference_internal(field_descriptor),
 					};
 
-					for ( auto& value : field_value_vector) {
+					for (auto& value : field_value_vector) {
 						repeated_container.Append(value);
 					}
 				}
@@ -508,10 +524,11 @@ namespace mediapipe {
 					AUTOIT_THROW("create packet data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
 				}
 
+				ExtendedHolder::SetLength(0); // clear reference to packet in extended holder
+
 				AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a " << StringifyPacketDataType(packet_data_type) << " packet");
 				const auto& pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
-				auto result = *pPacket->__self; // copy the pointer
-				return result;
+				return *pPacket->__self; // copy the pointer
 			}
 
 			static _variant_t GetPacketContent(PacketDataType packet_data_type, const Packet& output_packet) {
@@ -566,9 +583,12 @@ namespace mediapipe {
 					hr = autoit_from(image_list, _retval);
 					break;
 				}
-				// case PacketDataType::PROTO:
-				// 	hr = pPacket_getter->get_proto(in_val, _retval);
-				// 	break;
+				case PacketDataType::PROTO:
+					hr = autoit_from(get_proto(output_packet), _retval);
+					break;
+				case PacketDataType::PROTO_LIST:
+					hr = autoit_from(get_proto_list(output_packet), _retval);
+					break;
 				default:
 					AUTOIT_THROW("get packet content of data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
 				}
@@ -588,7 +608,7 @@ namespace mediapipe {
 			) {
 				auto canonical_graph_config_proto = InitializeGraphInterface(graph_config, side_inputs, outputs, stream_type_hints);
 
-				if ((&calculator_params) != (&calculator_params_none)) {
+				if ((&calculator_params) != (&_noneMap)) {
 					ModifyCalculatorOptions(canonical_graph_config_proto, calculator_params);
 				}
 
@@ -609,7 +629,7 @@ namespace mediapipe {
 							return absl::OkStatus();
 						},
 						true
-					));
+							));
 				}
 
 				for (auto const& [name, data] : side_inputs) {
@@ -656,26 +676,24 @@ namespace mediapipe {
 						);
 					}
 
-					RaiseAutoItErrorIfNotOk(
-						m_graph.AddPacketToInputStream(
-							stream_name,
-							MakePacket(input_stream_type, data)->At(simulated_timestamp)
-						)
-					);
+					auto packet_shared = MakePacket(input_stream_type, data);
+					AUTOIT_ASSERT_THROW(packet_shared.use_count() == 1, "Packet must have a unique holder");
+					auto packet = std::move(*packet_shared.get()).At(simulated_timestamp);
+					RaiseAutoItErrorIfNotOk(m_graph.AddPacketToInputStream(stream_name, std::move(packet)));
 				}
 
 				RaiseAutoItErrorIfNotOk(m_graph.WaitUntilIdle());
 
+				solution_outputs.clear();
+
 				for (auto const& [stream_name, packet_data_type] : m_output_stream_type_info) {
 					if (m_graph_outputs.count(stream_name)) {
 						solution_outputs[stream_name] = GetPacketContent(packet_data_type, m_graph_outputs[stream_name]);
-					} else {
+					}
+					else {
 						solution_outputs[stream_name] = None;
 					}
 				}
-
-				solution_outputs.clear();
-				// TODO
 			}
 
 
@@ -698,7 +716,7 @@ namespace mediapipe {
 
 				std::vector<std::string> output_streams;
 
-				if ((&outputs) == (&outputs_none)) {
+				if ((&outputs) == (&_noneVector)) {
 					const auto& output_stream = canonical_graph_config_proto.output_stream();
 					output_streams = std::vector<std::string>(output_stream.begin(), output_stream.end());
 				}

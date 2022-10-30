@@ -55,29 +55,28 @@ namespace mediapipe {
 			#pragma pop_macro("INT")
 			#pragma pop_macro("BOOL")
 
-			static std::map<std::string, _variant_t> calculator_params_none;
-			static std::map<std::string, _variant_t> side_inputs_none;
-			static std::map<std::string, PacketDataType> stream_type_hints_none;
-			static std::vector<std::string> outputs_none;
+			const std::map<std::string, _variant_t>& noMap();
+			const std::map<std::string, PacketDataType>& noTypeMap();
+			const std::vector<std::string>& noVector();
 
 			class CV_EXPORTS_W SolutionBase {
 			public:
 				CV_WRAP SolutionBase(
 					const CalculatorGraphConfig& graph_config,
-					const std::map<std::string, _variant_t>& calculator_params = calculator_params_none,
+					const std::map<std::string, _variant_t>& calculator_params = noMap(),
 					const google::protobuf::Message* graph_options = nullptr,
-					const std::map<std::string, _variant_t>& side_inputs = side_inputs_none,
-					const std::vector<std::string>& outputs = outputs_none,
-					const std::map<std::string, PacketDataType>& stream_type_hints = stream_type_hints_none
+					const std::map<std::string, _variant_t>& side_inputs = noMap(),
+					const std::vector<std::string>& outputs = noVector(),
+					const std::map<std::string, PacketDataType>& stream_type_hints = noTypeMap()
 				);
 
 				CV_WRAP SolutionBase(
 					const std::string& binary_graph_path,
-					const std::map<std::string, _variant_t>& calculator_params = calculator_params_none,
+					const std::map<std::string, _variant_t>& calculator_params = noMap(),
 					const google::protobuf::Message* graph_options = nullptr,
-					const std::map<std::string, _variant_t>& side_inputs = side_inputs_none,
-					const std::vector<std::string>& outputs = outputs_none,
-					const std::map<std::string, PacketDataType>& stream_type_hints = stream_type_hints_none
+					const std::map<std::string, _variant_t>& side_inputs = noMap(),
+					const std::vector<std::string>& outputs = noVector(),
+					const std::map<std::string, PacketDataType>& stream_type_hints = noTypeMap()
 				) : SolutionBase(
 					ReadCalculatorGraphConfigFromFile(binary_graph_path),
 					calculator_params,
