@@ -127,8 +127,6 @@ Object.assign(exports, {
                 const is_out = out_args[j];
                 const is_optional = defval !== "" || is_out && !in_args[j];
                 const is_input_array = argtype === "InputArray";
-                const has_ref = arg_modifiers.includes("/Ref");
-                const ref_def_val = defval !== "" && has_ref ? `PARAMETER_MISSING(${ in_val }) ? ${ defval } : ` : "";
 
                 optionals[j] = is_optional;
 
@@ -342,7 +340,7 @@ Object.assign(exports, {
                             ${ is_scalar_variant } = true;
                         }
 
-                        auto& ${ argname } = ${ ref_def_val }*${ pointer };
+                        auto& ${ argname } = *${ pointer };
                     `.replace(/^ {24}/mg, "").trim().split("\n"));
                 } else if (is_by_ref) {
                     if (is_optional) {
@@ -383,7 +381,7 @@ Object.assign(exports, {
                                 }
                             }
 
-                            auto& ${ argname } = ${ ref_def_val }${ pointer } ? *${ pointer } : *${ placeholder_name }.get();
+                            auto& ${ argname } = ${ pointer } ? *${ pointer } : *${ placeholder_name }.get();
                             hr = S_OK;
                         `.replace(/^ {28}/mg, "").trim().split("\n"));
                     }
@@ -674,9 +672,9 @@ Object.assign(exports, {
             body.push("");
 
             if (has_override) {
-                body.push(`${ is_static ? "" : "if (this->__self->get() != NULL) " }{`);
+                body.push(`${ is_static ? "" : "if (__self->get() != NULL) " }{`);
             } else if (!is_static) {
-                body.push(`${ indent }${ is_entry_test ? "// " : "" }${ options.assert }(this->__self->get() != NULL);`);
+                body.push(`${ indent }${ is_entry_test ? "// " : "" }${ options.assert }(__self->get() != NULL);`);
             }
 
             body.push(...declarations);
@@ -784,7 +782,7 @@ Object.assign(exports, {
             } else if (is_static) {
                 callee = path.join("::");
             } else {
-                callee = "this->__self->get()";
+                callee = "__self->get()";
 
                 for (const modifier of func_modifiers) {
                     if (modifier.startsWith("/Cast=")) {

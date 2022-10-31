@@ -35,26 +35,26 @@ const numbers = new Map([
     ["UINT", "UINT"],
 ]);
 
-const autoitCast = (generator, coclass, const_cast, options) => {
-    return [...coclass.children].map(child => {
-        return `{
-            auto derived = dynamic_cast<${ const_cast }C${ child.getClassName() }*>(in_val);
-            if (derived) {
+const _dynamicCast = (generator, coclass, const_cast, options) => {
+    const {children} = coclass;
+
+    if (children.size === 0) {
+        return "";
+    }
+
+    return `switch(cotype_indexes[std::type_index(typeid(*in_val))]) {
+        ${ [...children].map((child, index) => {
+            return `case ${ index + 1 }: {
+                auto derived = dynamic_cast<${ const_cast }C${ child.getClassName() }*>(in_val);
+                AUTOIT_ASSERT_THROW(derived, "object cannot be cast to a ${ child.fqn }");
                 return derived->__self->get();
-            }
-        }`.replace(/^ {8}/mg, "");
-    }).join("\n");
+            }`.replace(/^ {4}/mg, "");
+        }).join(`\n${ " ".repeat(8) }`) }
+    }`.replace(/^ {4}/mg, "");
 };
 
-const autoitPtrCast = (generator, coclass, options) => {
-    return [...coclass.children].map(child => {
-        return `{
-            auto derived = std::dynamic_pointer_cast<${ child.fqn }>(in_val);
-            if (derived.get()) {
-                return autoit_from(derived, out_val);
-            }
-        }`.replace(/^ {8}/mg, "");
-    }).join("\n");
+const _dynamicPointerCast = (generator, coclass, options) => {
+    return "";
 };
 
 Object.assign(exports, {
@@ -198,6 +198,8 @@ Object.assign(exports, {
         }
 
         const {shared_ptr} = options;
+        const dynamicCast = options.dynamicCast || _dynamicCast;
+        const dynamicPointerCast = options.dynamicPointerCast || _dynamicPointerCast;
 
         const cotype = coclass.getClassName();
         const {interface: iface, children} = coclass;
@@ -218,6 +220,22 @@ Object.assign(exports, {
             extern const ${ coclass.fqn }* ::autoit::cast<${ coclass.fqn }>(const IDispatch* in_val);
 
         `.replace(/^ {12}/mg, ""));
+
+        if (children.size !== 0) {
+            impl.push(`
+                namespace {
+                    auto init_cotype_indexes() {
+                        std::unordered_map<std::type_index, int> cotype_indexes;
+                        ${ [...children].map((child, index) => {
+                            return `cotype_indexes[std::type_index(typeid(CComObject<C${ child.getClassName() }>))] = ${ index + 1 };`;
+                        }).join(`\n${ " ".repeat(24) }`) }
+                        return cotype_indexes;
+                    }
+
+                    auto cotype_indexes = init_cotype_indexes();
+                }
+            `.replace(/^ {16}/mg, ""));
+        }
 
         impl.push(`
             const HRESULT autoit_out(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val) {
@@ -271,7 +289,7 @@ Object.assign(exports, {
                         return obj->__self->get();
                     }
                 }
-                ${ autoitCast(generator, coclass, "", options).split("\n").join(`\n${ " ".repeat(16) }`) }
+                ${ dynamicCast(generator, coclass, "", options).split("\n").join(`\n${ " ".repeat(16) }`) }
                 return nullptr;
             }
 
@@ -283,7 +301,7 @@ Object.assign(exports, {
                         return obj->__self->get();
                     }
                 }
-                ${ autoitCast(generator, coclass, "const ", options).split("\n").join(`\n${ " ".repeat(16) }`) }
+                ${ dynamicCast(generator, coclass, "const ", options).split("\n").join(`\n${ " ".repeat(16) }`) }
                 return nullptr;
             }
 
@@ -386,7 +404,7 @@ Object.assign(exports, {
             `.replace(/^ {16}/mg, ""));
             impl.push(`
                 const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, VARIANT*& out_val) {
-                    ${ autoitPtrCast(generator, coclass, options).split("\n").join(`\n${ " ".repeat(20) }`) }
+                    ${ dynamicPointerCast(generator, coclass, options).split("\n").join(`\n${ " ".repeat(20) }`) }
                     I${ cotype }* pdispVal = nullptr;
                     I${ cotype }** ppdispVal = &pdispVal;
                     HRESULT hr = autoit_from(in_val, ppdispVal);
@@ -397,7 +415,7 @@ Object.assign(exports, {
                     }
                     return hr;
                 }
-            `.replace(/^ {16}|^\n/mg, ""));
+            `.replace(/^ {16}(?:[^\S\n]*\n)?/mg, "").trim());
         }
 
         if (coclass.is_struct || coclass.is_simple || coclass.is_map || coclass.has_copy_constructor || coclass.has_assign_operator) {

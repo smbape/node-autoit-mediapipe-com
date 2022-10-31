@@ -48,13 +48,13 @@ void CMediapipe_CalculatorGraph_Object::add_packet_to_input_stream(std::string& 
 	auto packet_timestamp = timestamp == Timestamp::Unset() ? packet.Timestamp() : timestamp;
 	AUTOIT_ASSERT_THROW(packet_timestamp.IsAllowedInStream(), packet_timestamp.DebugString() << " can't be the timestamp of a Packet in a stream.");
 
-	const auto& self = this->__self->get();
+	const auto& self = __self->get();
 	RaiseAutoItErrorIfNotOk(self->AddPacketToInputStream(stream, packet.At(packet_timestamp)));
 	hr = S_OK;
 }
 
 const std::string CMediapipe_CalculatorGraph_Object::get_combined_error_message(HRESULT& hr) {
-	const auto& self = this->__self->get();
+	const auto& self = __self->get();
 
 	absl::Status error_status;
 	if (self->GetCombinedErrors(&error_status) && !error_status.ok()) {
@@ -66,7 +66,7 @@ const std::string CMediapipe_CalculatorGraph_Object::get_combined_error_message(
 }
 
 void CMediapipe_CalculatorGraph_Object::observe_output_stream(std::string stream_name, StreamPacketCallback callback_fn, bool observe_timestamp_bounds, HRESULT& hr) {
-	const auto& self = this->__self->get();
+	const auto& self = __self->get();
 
 	RaiseAutoItErrorIfNotOk(self->ObserveOutputStream(
 		stream_name,

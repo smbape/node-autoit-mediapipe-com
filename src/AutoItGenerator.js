@@ -180,14 +180,14 @@ class AutoItGenerator {
             const destructor = [];
 
             if (is_idl_class) {
-                constructor.push(`this->__self = new ${ shared_ptr }<${ coclass.fqn }>();`);
+                constructor.push(`__self = new ${ shared_ptr }<${ coclass.fqn }>();`);
 
                 if (coclass.has_default_constructor) {
-                    constructor.push(`this->__self->reset(new ${ coclass.fqn }());`);
+                    constructor.push(`__self->reset(new ${ coclass.fqn }());`);
                 }
 
-                destructor.push("delete this->__self;");
-                destructor.push("this->__self = nullptr;");
+                destructor.push("delete __self;");
+                destructor.push("__self = nullptr;");
 
                 coclass.addIDLName("self", "get_self");
                 coclass.addIDLName("self", "put_self");
@@ -199,17 +199,17 @@ class AutoItGenerator {
                 ipublic.push("STDMETHOD(put_self)(ULONGLONG ptr);");
                 impl.push(`
                     STDMETHODIMP C${ cotype }::get_self(VARIANT* pVal) {
-                        if (this->__self) {
+                        if (__self) {
                             V_VT(pVal) = VT_UI8;
-                            V_UI8(pVal) = reinterpret_cast<ULONGLONG>(this->__self->get());
+                            V_UI8(pVal) = reinterpret_cast<ULONGLONG>(__self->get());
                             return S_OK;
                         }
                         return E_FAIL;
                     }
 
                     STDMETHODIMP C${ cotype }::put_self(ULONGLONG ptr) {
-                        if (this->__self) {
-                            *this->__self = ::autoit::reference_internal(reinterpret_cast<${ coclass.fqn }*>(ptr));
+                        if (__self) {
+                            *__self = ::autoit::reference_internal(reinterpret_cast<${ coclass.fqn }*>(ptr));
                             return S_OK;
                         }
                         return E_FAIL;

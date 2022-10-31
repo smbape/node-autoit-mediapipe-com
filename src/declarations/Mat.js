@@ -115,7 +115,7 @@ const declarations = [
         ["int", "i2", "", []],
     ], "", ""],
 
-    ["cv.Mat.size", "tuple_int_and_int", ["/Output=std::tuple<int, int>(this->__self->get()->cols, this->__self->get()->rows)"], [], "", ""],
+    ["cv.Mat.size", "tuple_int_and_int", ["/Output=std::tuple<int, int>(__self->get()->cols, __self->get()->rows)"], [], "", ""],
     ["cv.Mat.pop_back", "void", [], [
         ["size_t", "value", "", []]
     ], "", ""],
@@ -137,7 +137,7 @@ const declarations = [
         ["bool", "copy", "true", []],
     ], "", ""],
     ["cv.Mat.convertToShow", "cv::Mat", ["/External"], [
-        ["Mat", "dst", "Mat::zeros(this->__self->get()->rows, this->__self->get()->cols, CV_8UC3)", ["/IO"]],
+        ["Mat", "dst", "Mat::zeros(__self->get()->rows, __self->get()->cols, CV_8UC3)", ["/IO"]],
         ["bool", "toRGB", "false", []],
     ], "", ""],
     ["cv.Mat.GdiplusResize", "cv::Mat", ["/External"], [

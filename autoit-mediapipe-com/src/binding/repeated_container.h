@@ -61,7 +61,7 @@ namespace google {
 			};
 
 			template<typename Element, typename _Tp>
-			static bool RepeatedField_PrepareSplice(
+			bool RepeatedField_PrepareSplice(
 				_Tp* repeatedField,
 				std::vector<Element>& list,
 				SSIZE_T start,

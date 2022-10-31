@@ -2809,7 +2809,7 @@ AutoIt:
 ### cv::Mat::convertToShow
 
 ```cpp
-cv::Mat cv::Mat::convertToShow( cv::Mat dst = Mat::zeros(this->__self->get()->rows, this->__self->get()->cols, CV_8UC3),
+cv::Mat cv::Mat::convertToShow( cv::Mat dst = Mat::zeros(__self->get()->rows, __self->get()->cols, CV_8UC3),
                                 bool    toRGB = false );
 AutoIt:
     $oMat.convertToShow( [$dst[, $toRGB]] ) -> retval, $dst
@@ -9391,7 +9391,7 @@ AutoIt:
 
 ```cpp
 VectorOfVariant VectorOfVariant::slice( size_t start = 0,
-                                        size_t count = this->__self->get()->size() );
+                                        size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVariant.slice( [$start[, $count]] ) -> retval
 ```
@@ -9401,7 +9401,7 @@ AutoIt:
 ```cpp
 void VectorOfVariant::sort( void*  comparator,
                             size_t start = 0,
-                            size_t count = this->__self->get()->size() );
+                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVariant.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -9411,7 +9411,7 @@ AutoIt:
 ```cpp
 void VectorOfVariant::sort_variant( void*  comparator,
                                     size_t start = 0,
-                                    size_t count = this->__self->get()->size() );
+                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVariant.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -9579,7 +9579,7 @@ AutoIt:
 
 ```cpp
 VectorOfBool VectorOfBool::slice( size_t start = 0,
-                                  size_t count = this->__self->get()->size() );
+                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfBool.slice( [$start[, $count]] ) -> retval
 ```
@@ -9589,7 +9589,7 @@ AutoIt:
 ```cpp
 void VectorOfBool::sort( void*  comparator,
                          size_t start = 0,
-                         size_t count = this->__self->get()->size() );
+                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfBool.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -9599,7 +9599,7 @@ AutoIt:
 ```cpp
 void VectorOfBool::sort_variant( void*  comparator,
                                  size_t start = 0,
-                                 size_t count = this->__self->get()->size() );
+                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfBool.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -9767,7 +9767,7 @@ AutoIt:
 
 ```cpp
 VectorOfFloat VectorOfFloat::slice( size_t start = 0,
-                                    size_t count = this->__self->get()->size() );
+                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfFloat.slice( [$start[, $count]] ) -> retval
 ```
@@ -9777,7 +9777,7 @@ AutoIt:
 ```cpp
 void VectorOfFloat::sort( void*  comparator,
                           size_t start = 0,
-                          size_t count = this->__self->get()->size() );
+                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfFloat.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -9787,7 +9787,7 @@ AutoIt:
 ```cpp
 void VectorOfFloat::sort_variant( void*  comparator,
                                   size_t start = 0,
-                                  size_t count = this->__self->get()->size() );
+                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfFloat.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -9955,7 +9955,7 @@ AutoIt:
 
 ```cpp
 VectorOfImage VectorOfImage::slice( size_t start = 0,
-                                    size_t count = this->__self->get()->size() );
+                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfImage.slice( [$start[, $count]] ) -> retval
 ```
@@ -9965,7 +9965,7 @@ AutoIt:
 ```cpp
 void VectorOfImage::sort( void*  comparator,
                           size_t start = 0,
-                          size_t count = this->__self->get()->size() );
+                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfImage.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -9975,7 +9975,7 @@ AutoIt:
 ```cpp
 void VectorOfImage::sort_variant( void*  comparator,
                                   size_t start = 0,
-                                  size_t count = this->__self->get()->size() );
+                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfImage.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -10143,7 +10143,7 @@ AutoIt:
 
 ```cpp
 VectorOfInt VectorOfInt::slice( size_t start = 0,
-                                size_t count = this->__self->get()->size() );
+                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfInt.slice( [$start[, $count]] ) -> retval
 ```
@@ -10153,7 +10153,7 @@ AutoIt:
 ```cpp
 void VectorOfInt::sort( void*  comparator,
                         size_t start = 0,
-                        size_t count = this->__self->get()->size() );
+                        size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfInt.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -10163,7 +10163,7 @@ AutoIt:
 ```cpp
 void VectorOfInt::sort_variant( void*  comparator,
                                 size_t start = 0,
-                                size_t count = this->__self->get()->size() );
+                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfInt.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -10331,7 +10331,7 @@ AutoIt:
 
 ```cpp
 VectorOfPacket VectorOfPacket::slice( size_t start = 0,
-                                      size_t count = this->__self->get()->size() );
+                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPacket.slice( [$start[, $count]] ) -> retval
 ```
@@ -10341,7 +10341,7 @@ AutoIt:
 ```cpp
 void VectorOfPacket::sort( void*  comparator,
                            size_t start = 0,
-                           size_t count = this->__self->get()->size() );
+                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPacket.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -10351,7 +10351,7 @@ AutoIt:
 ```cpp
 void VectorOfPacket::sort_variant( void*  comparator,
                                    size_t start = 0,
-                                   size_t count = this->__self->get()->size() );
+                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPacket.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -10674,7 +10674,7 @@ AutoIt:
 
 ```cpp
 VectorOfString VectorOfString::slice( size_t start = 0,
-                                      size_t count = this->__self->get()->size() );
+                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfString.slice( [$start[, $count]] ) -> retval
 ```
@@ -10684,7 +10684,7 @@ AutoIt:
 ```cpp
 void VectorOfString::sort( void*  comparator,
                            size_t start = 0,
-                           size_t count = this->__self->get()->size() );
+                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfString.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -10694,7 +10694,7 @@ AutoIt:
 ```cpp
 void VectorOfString::sort_variant( void*  comparator,
                                    size_t start = 0,
-                                   size_t count = this->__self->get()->size() );
+                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfString.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -10862,7 +10862,7 @@ AutoIt:
 
 ```cpp
 VectorOfInt64 VectorOfInt64::slice( size_t start = 0,
-                                    size_t count = this->__self->get()->size() );
+                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfInt64.slice( [$start[, $count]] ) -> retval
 ```
@@ -10872,7 +10872,7 @@ AutoIt:
 ```cpp
 void VectorOfInt64::sort( void*  comparator,
                           size_t start = 0,
-                          size_t count = this->__self->get()->size() );
+                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfInt64.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -10882,7 +10882,7 @@ AutoIt:
 ```cpp
 void VectorOfInt64::sort_variant( void*  comparator,
                                   size_t start = 0,
-                                  size_t count = this->__self->get()->size() );
+                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfInt64.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11050,7 +11050,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrMessage VectorOfShared_ptrMessage::slice( size_t start = 0,
-                                                            size_t count = this->__self->get()->size() );
+                                                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrMessage.slice( [$start[, $count]] ) -> retval
 ```
@@ -11060,7 +11060,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrMessage::sort( void*  comparator,
                                       size_t start = 0,
-                                      size_t count = this->__self->get()->size() );
+                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrMessage.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11070,7 +11070,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrMessage::sort_variant( void*  comparator,
                                               size_t start = 0,
-                                              size_t count = this->__self->get()->size() );
+                                              size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrMessage.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11393,7 +11393,7 @@ AutoIt:
 
 ```cpp
 VectorOfUchar VectorOfUchar::slice( size_t start = 0,
-                                    size_t count = this->__self->get()->size() );
+                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfUchar.slice( [$start[, $count]] ) -> retval
 ```
@@ -11403,7 +11403,7 @@ AutoIt:
 ```cpp
 void VectorOfUchar::sort( void*  comparator,
                           size_t start = 0,
-                          size_t count = this->__self->get()->size() );
+                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfUchar.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11413,7 +11413,7 @@ AutoIt:
 ```cpp
 void VectorOfUchar::sort_variant( void*  comparator,
                                   size_t start = 0,
-                                  size_t count = this->__self->get()->size() );
+                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfUchar.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11581,7 +11581,7 @@ AutoIt:
 
 ```cpp
 VectorOfMat VectorOfMat::slice( size_t start = 0,
-                                size_t count = this->__self->get()->size() );
+                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfMat.slice( [$start[, $count]] ) -> retval
 ```
@@ -11591,7 +11591,7 @@ AutoIt:
 ```cpp
 void VectorOfMat::sort( void*  comparator,
                         size_t start = 0,
-                        size_t count = this->__self->get()->size() );
+                        size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfMat.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11601,7 +11601,7 @@ AutoIt:
 ```cpp
 void VectorOfMat::sort_variant( void*  comparator,
                                 size_t start = 0,
-                                size_t count = this->__self->get()->size() );
+                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfMat.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11769,7 +11769,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrPacketFactoryConfig VectorOfShared_ptrPacketFactoryConfig::slice( size_t start = 0,
-                                                                                    size_t count = this->__self->get()->size() );
+                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrPacketFactoryConfig.slice( [$start[, $count]] ) -> retval
 ```
@@ -11779,7 +11779,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrPacketFactoryConfig::sort( void*  comparator,
                                                   size_t start = 0,
-                                                  size_t count = this->__self->get()->size() );
+                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrPacketFactoryConfig.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11789,7 +11789,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrPacketFactoryConfig::sort_variant( void*  comparator,
                                                           size_t start = 0,
-                                                          size_t count = this->__self->get()->size() );
+                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrPacketFactoryConfig.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11957,7 +11957,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrInputCollection VectorOfShared_ptrInputCollection::slice( size_t start = 0,
-                                                                            size_t count = this->__self->get()->size() );
+                                                                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInputCollection.slice( [$start[, $count]] ) -> retval
 ```
@@ -11967,7 +11967,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrInputCollection::sort( void*  comparator,
                                               size_t start = 0,
-                                              size_t count = this->__self->get()->size() );
+                                              size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInputCollection.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -11977,7 +11977,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrInputCollection::sort_variant( void*  comparator,
                                                       size_t start = 0,
-                                                      size_t count = this->__self->get()->size() );
+                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInputCollection.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12145,7 +12145,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrNode VectorOfShared_ptrNode::slice( size_t start = 0,
-                                                      size_t count = this->__self->get()->size() );
+                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNode.slice( [$start[, $count]] ) -> retval
 ```
@@ -12155,7 +12155,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrNode::sort( void*  comparator,
                                    size_t start = 0,
-                                   size_t count = this->__self->get()->size() );
+                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNode.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12165,7 +12165,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrNode::sort_variant( void*  comparator,
                                            size_t start = 0,
-                                           size_t count = this->__self->get()->size() );
+                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNode.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12333,7 +12333,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrPacketGeneratorConfig VectorOfShared_ptrPacketGeneratorConfig::slice( size_t start = 0,
-                                                                                        size_t count = this->__self->get()->size() );
+                                                                                        size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrPacketGeneratorConfig.slice( [$start[, $count]] ) -> retval
 ```
@@ -12343,7 +12343,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrPacketGeneratorConfig::sort( void*  comparator,
                                                     size_t start = 0,
-                                                    size_t count = this->__self->get()->size() );
+                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrPacketGeneratorConfig.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12353,7 +12353,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrPacketGeneratorConfig::sort_variant( void*  comparator,
                                                             size_t start = 0,
-                                                            size_t count = this->__self->get()->size() );
+                                                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrPacketGeneratorConfig.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12521,7 +12521,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrStatusHandlerConfig VectorOfShared_ptrStatusHandlerConfig::slice( size_t start = 0,
-                                                                                    size_t count = this->__self->get()->size() );
+                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrStatusHandlerConfig.slice( [$start[, $count]] ) -> retval
 ```
@@ -12531,7 +12531,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrStatusHandlerConfig::sort( void*  comparator,
                                                   size_t start = 0,
-                                                  size_t count = this->__self->get()->size() );
+                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrStatusHandlerConfig.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12541,7 +12541,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrStatusHandlerConfig::sort_variant( void*  comparator,
                                                           size_t start = 0,
-                                                          size_t count = this->__self->get()->size() );
+                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrStatusHandlerConfig.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12709,7 +12709,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrExecutorConfig VectorOfShared_ptrExecutorConfig::slice( size_t start = 0,
-                                                                          size_t count = this->__self->get()->size() );
+                                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrExecutorConfig.slice( [$start[, $count]] ) -> retval
 ```
@@ -12719,7 +12719,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrExecutorConfig::sort( void*  comparator,
                                              size_t start = 0,
-                                             size_t count = this->__self->get()->size() );
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrExecutorConfig.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12729,7 +12729,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrExecutorConfig::sort_variant( void*  comparator,
                                                      size_t start = 0,
-                                                     size_t count = this->__self->get()->size() );
+                                                     size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrExecutorConfig.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12897,7 +12897,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrAny VectorOfShared_ptrAny::slice( size_t start = 0,
-                                                    size_t count = this->__self->get()->size() );
+                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrAny.slice( [$start[, $count]] ) -> retval
 ```
@@ -12907,7 +12907,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrAny::sort( void*  comparator,
                                   size_t start = 0,
-                                  size_t count = this->__self->get()->size() );
+                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrAny.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -12917,7 +12917,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrAny::sort_variant( void*  comparator,
                                           size_t start = 0,
-                                          size_t count = this->__self->get()->size() );
+                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrAny.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13085,7 +13085,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrInputStreamInfo VectorOfShared_ptrInputStreamInfo::slice( size_t start = 0,
-                                                                            size_t count = this->__self->get()->size() );
+                                                                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInputStreamInfo.slice( [$start[, $count]] ) -> retval
 ```
@@ -13095,7 +13095,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrInputStreamInfo::sort( void*  comparator,
                                               size_t start = 0,
-                                              size_t count = this->__self->get()->size() );
+                                              size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInputStreamInfo.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13105,7 +13105,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrInputStreamInfo::sort_variant( void*  comparator,
                                                       size_t start = 0,
-                                                      size_t count = this->__self->get()->size() );
+                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInputStreamInfo.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13273,7 +13273,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrInterval VectorOfShared_ptrInterval::slice( size_t start = 0,
-                                                              size_t count = this->__self->get()->size() );
+                                                              size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInterval.slice( [$start[, $count]] ) -> retval
 ```
@@ -13283,7 +13283,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrInterval::sort( void*  comparator,
                                        size_t start = 0,
-                                       size_t count = this->__self->get()->size() );
+                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInterval.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13293,7 +13293,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrInterval::sort_variant( void*  comparator,
                                                size_t start = 0,
-                                               size_t count = this->__self->get()->size() );
+                                               size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrInterval.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13461,7 +13461,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrRelativeKeypoint VectorOfShared_ptrRelativeKeypoint::slice( size_t start = 0,
-                                                                              size_t count = this->__self->get()->size() );
+                                                                              size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrRelativeKeypoint.slice( [$start[, $count]] ) -> retval
 ```
@@ -13471,7 +13471,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrRelativeKeypoint::sort( void*  comparator,
                                                size_t start = 0,
-                                               size_t count = this->__self->get()->size() );
+                                               size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrRelativeKeypoint.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13481,7 +13481,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrRelativeKeypoint::sort_variant( void*  comparator,
                                                        size_t start = 0,
-                                                       size_t count = this->__self->get()->size() );
+                                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrRelativeKeypoint.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13649,7 +13649,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrAssociatedDetection VectorOfShared_ptrAssociatedDetection::slice( size_t start = 0,
-                                                                                    size_t count = this->__self->get()->size() );
+                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrAssociatedDetection.slice( [$start[, $count]] ) -> retval
 ```
@@ -13659,7 +13659,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrAssociatedDetection::sort( void*  comparator,
                                                   size_t start = 0,
-                                                  size_t count = this->__self->get()->size() );
+                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrAssociatedDetection.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13669,7 +13669,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrAssociatedDetection::sort_variant( void*  comparator,
                                                           size_t start = 0,
-                                                          size_t count = this->__self->get()->size() );
+                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrAssociatedDetection.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13837,7 +13837,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrDetection VectorOfShared_ptrDetection::slice( size_t start = 0,
-                                                                size_t count = this->__self->get()->size() );
+                                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrDetection.slice( [$start[, $count]] ) -> retval
 ```
@@ -13847,7 +13847,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrDetection::sort( void*  comparator,
                                         size_t start = 0,
-                                        size_t count = this->__self->get()->size() );
+                                        size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrDetection.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -13857,7 +13857,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrDetection::sort_variant( void*  comparator,
                                                 size_t start = 0,
-                                                size_t count = this->__self->get()->size() );
+                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrDetection.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14025,7 +14025,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrClassification VectorOfShared_ptrClassification::slice( size_t start = 0,
-                                                                          size_t count = this->__self->get()->size() );
+                                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrClassification.slice( [$start[, $count]] ) -> retval
 ```
@@ -14035,7 +14035,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrClassification::sort( void*  comparator,
                                              size_t start = 0,
-                                             size_t count = this->__self->get()->size() );
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrClassification.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14045,7 +14045,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrClassification::sort_variant( void*  comparator,
                                                      size_t start = 0,
-                                                     size_t count = this->__self->get()->size() );
+                                                     size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrClassification.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14213,7 +14213,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrClassificationList VectorOfShared_ptrClassificationList::slice( size_t start = 0,
-                                                                                  size_t count = this->__self->get()->size() );
+                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrClassificationList.slice( [$start[, $count]] ) -> retval
 ```
@@ -14223,7 +14223,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrClassificationList::sort( void*  comparator,
                                                  size_t start = 0,
-                                                 size_t count = this->__self->get()->size() );
+                                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrClassificationList.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14233,7 +14233,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrClassificationList::sort_variant( void*  comparator,
                                                          size_t start = 0,
-                                                         size_t count = this->__self->get()->size() );
+                                                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrClassificationList.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14401,7 +14401,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrLandmark VectorOfShared_ptrLandmark::slice( size_t start = 0,
-                                                              size_t count = this->__self->get()->size() );
+                                                              size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrLandmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -14411,7 +14411,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrLandmark::sort( void*  comparator,
                                        size_t start = 0,
-                                       size_t count = this->__self->get()->size() );
+                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrLandmark.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14421,7 +14421,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrLandmark::sort_variant( void*  comparator,
                                                size_t start = 0,
-                                               size_t count = this->__self->get()->size() );
+                                               size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrLandmark.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14589,7 +14589,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrLandmarkList VectorOfShared_ptrLandmarkList::slice( size_t start = 0,
-                                                                      size_t count = this->__self->get()->size() );
+                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrLandmarkList.slice( [$start[, $count]] ) -> retval
 ```
@@ -14599,7 +14599,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrLandmarkList::sort( void*  comparator,
                                            size_t start = 0,
-                                           size_t count = this->__self->get()->size() );
+                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrLandmarkList.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14609,7 +14609,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrLandmarkList::sort_variant( void*  comparator,
                                                    size_t start = 0,
-                                                   size_t count = this->__self->get()->size() );
+                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrLandmarkList.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14777,7 +14777,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrNormalizedLandmark VectorOfShared_ptrNormalizedLandmark::slice( size_t start = 0,
-                                                                                  size_t count = this->__self->get()->size() );
+                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNormalizedLandmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -14787,7 +14787,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrNormalizedLandmark::sort( void*  comparator,
                                                  size_t start = 0,
-                                                 size_t count = this->__self->get()->size() );
+                                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNormalizedLandmark.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14797,7 +14797,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrNormalizedLandmark::sort_variant( void*  comparator,
                                                          size_t start = 0,
-                                                         size_t count = this->__self->get()->size() );
+                                                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNormalizedLandmark.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14965,7 +14965,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrNormalizedLandmarkList VectorOfShared_ptrNormalizedLandmarkList::slice( size_t start = 0,
-                                                                                          size_t count = this->__self->get()->size() );
+                                                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNormalizedLandmarkList.slice( [$start[, $count]] ) -> retval
 ```
@@ -14975,7 +14975,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrNormalizedLandmarkList::sort( void*  comparator,
                                                      size_t start = 0,
-                                                     size_t count = this->__self->get()->size() );
+                                                     size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNormalizedLandmarkList.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -14985,7 +14985,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrNormalizedLandmarkList::sort_variant( void*  comparator,
                                                              size_t start = 0,
-                                                             size_t count = this->__self->get()->size() );
+                                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrNormalizedLandmarkList.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -15153,7 +15153,7 @@ AutoIt:
 
 ```cpp
 VectorOfShared_ptrConstantSidePacket VectorOfShared_ptrConstantSidePacket::slice( size_t start = 0,
-                                                                                  size_t count = this->__self->get()->size() );
+                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrConstantSidePacket.slice( [$start[, $count]] ) -> retval
 ```
@@ -15163,7 +15163,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrConstantSidePacket::sort( void*  comparator,
                                                  size_t start = 0,
-                                                 size_t count = this->__self->get()->size() );
+                                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrConstantSidePacket.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -15173,7 +15173,7 @@ AutoIt:
 ```cpp
 void VectorOfShared_ptrConstantSidePacket::sort_variant( void*  comparator,
                                                          size_t start = 0,
-                                                         size_t count = this->__self->get()->size() );
+                                                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfShared_ptrConstantSidePacket.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -15341,7 +15341,7 @@ AutoIt:
 
 ```cpp
 VectorOfPairOfStringAndPacket VectorOfPairOfStringAndPacket::slice( size_t start = 0,
-                                                                    size_t count = this->__self->get()->size() );
+                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfStringAndPacket.slice( [$start[, $count]] ) -> retval
 ```
@@ -15351,7 +15351,7 @@ AutoIt:
 ```cpp
 void VectorOfPairOfStringAndPacket::sort( void*  comparator,
                                           size_t start = 0,
-                                          size_t count = this->__self->get()->size() );
+                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfStringAndPacket.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -15361,7 +15361,7 @@ AutoIt:
 ```cpp
 void VectorOfPairOfStringAndPacket::sort_variant( void*  comparator,
                                                   size_t start = 0,
-                                                  size_t count = this->__self->get()->size() );
+                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfStringAndPacket.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -15529,7 +15529,7 @@ AutoIt:
 
 ```cpp
 VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::slice( size_t start = 0,
-                                                                                    size_t count = this->__self->get()->size() );
+                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfStringAndPacketDataType.slice( [$start[, $count]] ) -> retval
 ```
@@ -15539,7 +15539,7 @@ AutoIt:
 ```cpp
 void VectorOfPairOfStringAndPacketDataType::sort( void*  comparator,
                                                   size_t start = 0,
-                                                  size_t count = this->__self->get()->size() );
+                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfStringAndPacketDataType.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -15549,7 +15549,7 @@ AutoIt:
 ```cpp
 void VectorOfPairOfStringAndPacketDataType::sort_variant( void*  comparator,
                                                           size_t start = 0,
-                                                          size_t count = this->__self->get()->size() );
+                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfStringAndPacketDataType.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
@@ -15717,7 +15717,7 @@ AutoIt:
 
 ```cpp
 VectorOfPacketDataType VectorOfPacketDataType::slice( size_t start = 0,
-                                                      size_t count = this->__self->get()->size() );
+                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPacketDataType.slice( [$start[, $count]] ) -> retval
 ```
@@ -15727,7 +15727,7 @@ AutoIt:
 ```cpp
 void VectorOfPacketDataType::sort( void*  comparator,
                                    size_t start = 0,
-                                   size_t count = this->__self->get()->size() );
+                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPacketDataType.sort( $comparator[, $start[, $count]] ) -> None
 ```
@@ -15737,7 +15737,7 @@ AutoIt:
 ```cpp
 void VectorOfPacketDataType::sort_variant( void*  comparator,
                                            size_t start = 0,
-                                           size_t count = this->__self->get()->size() );
+                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPacketDataType.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```

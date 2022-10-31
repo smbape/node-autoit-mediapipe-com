@@ -71,14 +71,53 @@ const parseArguments = PROJECT_DIR => {
             const {fqn} = coclass;
 
             if (fqn === "google::protobuf::Message") {
+                const {children} = coclass;
+
                 const derives = generator.derives.get(fqn);
                 console.log(fqn, derives.size, "derives");
+
+                let i = impl.length - 1;
+
+                for (; i >= 0; i--) {
+                    if (impl[i].includes("const HRESULT autoit_from(const std::shared_ptr<google::protobuf::Message>& in_val, VARIANT*& out_val) {")) {
+                        break;
+                    }
+                }
+
+                impl.splice(i, 0, `
+                    auto init_type_indexes() {
+                        std::unordered_map<std::type_index, int> type_indexes;
+                        ${ [...children].map((child, index) => {
+                            return `type_indexes[std::type_index(typeid(${ child.fqn }))] = ${ index + 1 };`;
+                        }).join(`\n${ " ".repeat(24) }`) }
+                        return type_indexes;
+                    }
+
+                    static auto type_indexes = init_type_indexes();
+                `.replace(/^ {20}/mg, "").trim(), "");
             }
 
             if (fqn.startsWith("google::protobuf::Repeated_")) {
                 vector_conversion.convert_sort(coclass, header, impl, opts);
             }
-        }
+        },
+        dynamicPointerCast: (generator, coclass, opts) => {
+            const {fqn, children} = coclass;
+
+            if (fqn !== "google::protobuf::Message") {
+                return "";
+            }
+
+            return `switch(type_indexes[std::type_index(typeid(*in_val))]) {
+                ${ [...children].map((child, index) => {
+                    return `case ${ index + 1 }: {
+                        auto derived = std::dynamic_pointer_cast<${ child.fqn }>(in_val);
+                        AUTOIT_ASSERT_THROW(derived.get(), "object cannot be cast to a ${ child.fqn }");
+                        return autoit_from(derived, out_val);
+                    }`.replace(/^ {4}/mg, "");
+                }).join(`\n${ " ".repeat(16) }`) }
+            }`.replace(/^ {12}/mg, "");
+        },
     };
 
     for (const opt of ["iface", "hdr", "impl", "idl", "rgs", "res", "save"]) {

@@ -39,7 +39,7 @@ exports.declare = (generator, type, parent, options = {}) => {
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.Keys`, "vector_int", ["/External"], [], "", ""]);
-    coclass.addMethod([`${ fqn }.Items`, fqn, ["/Call=", "/Expr=*this->__self->get()"], [], "", ""]);
+    coclass.addMethod([`${ fqn }.Items`, fqn, ["/Call=", "/Expr=*__self->get()"], [], "", ""]);
 
     coclass.addMethod([`${ fqn }.push_back`, "void", [], [
         [vtype, "value", "", []],
@@ -50,7 +50,7 @@ exports.declare = (generator, type, parent, options = {}) => {
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.erase`, "void", ["=Remove"], [
-        ["size_t", "index", "", ["/Expr=std::next(this->__self->get()->begin() + index)"]],
+        ["size_t", "index", "", ["/Expr=std::next(__self->get()->begin() + index)"]],
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.at`, vtype, [], [
@@ -87,19 +87,19 @@ exports.declare = (generator, type, parent, options = {}) => {
 
     coclass.addMethod([`${ fqn }.slice`, fqn, ["/External"], [
         ["size_t", "start", "0", []],
-        ["size_t", "count", "this->__self->get()->size()", []],
+        ["size_t", "count", "__self->get()->size()", []],
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.sort`, "void", ["/External"], [
         ["void*", "comparator", "", []],
         ["size_t", "start", "0", []],
-        ["size_t", "count", "this->__self->get()->size()", []],
+        ["size_t", "count", "__self->get()->size()", []],
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.sort_variant`, "void", ["/External"], [
         ["void*", "comparator", "", []],
         ["size_t", "start", "0", []],
-        ["size_t", "count", "this->__self->get()->size()", []],
+        ["size_t", "count", "__self->get()->size()", []],
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.start`, "void*", ["/External"], [], "", ""]);
@@ -153,14 +153,14 @@ exports.convert_sort = (coclass, header, impl, options = {}) => {
 
         void C${ cotype }::sort(void* comparator, size_t start, size_t count, HRESULT& hr) {
             hr = S_OK;
-            auto& v = *this->__self->get();
+            auto& v = *__self->get();
             auto begin = std::begin(v) + start;
             std::sort(begin, begin + count, reinterpret_cast<${ comparator }>(comparator));
         }
 
         void C${ cotype }::sort_variant(void* comparator, size_t start, size_t count, HRESULT& hr) {
             hr = S_OK;
-            auto& v = *this->__self->get();
+            auto& v = *__self->get();
             auto begin = std::begin(v) + start;
             ${ comparator }Proxy cmp = { reinterpret_cast<${ ptr_comparator }>(comparator) };
             std::sort(begin, begin + count, cmp);
@@ -179,7 +179,7 @@ exports.convert = (coclass, header, impl, options = {}) => {
 
     impl.push(`
         const std::vector<int> C${ cotype }::Keys(HRESULT& hr) {
-            const auto& v = *this->__self->get();
+            const auto& v = *__self->get();
             std::vector<int> keys(v.size());
             std::iota(keys.begin(), keys.end(), 0);
             return keys;
@@ -187,39 +187,39 @@ exports.convert = (coclass, header, impl, options = {}) => {
 
         void C${ cotype }::at(size_t i, ${ cpptype }${ byref ? "&" : "" } value, HRESULT& hr) {
             hr = S_OK;
-            (*this->__self->get())[i] = value;
+            (*__self->get())[i] = value;
         }
 
         void C${ cotype }::push_vector(${ coclass.fqn }& other, HRESULT& hr) {
             hr = S_OK;
-            auto& v = *this->__self->get();
+            auto& v = *__self->get();
             v.insert(std::end(v), std::begin(other), std::end(other));
         }
 
         void C${ cotype }::push_vector(${ coclass.fqn }& other, size_t count, size_t start, HRESULT& hr) {
             hr = S_OK;
-            auto& v = *this->__self->get();
+            auto& v = *__self->get();
             auto begin = std::begin(other) + start;
             v.insert(std::end(v), begin, begin + count);
         }
 
         const ${ coclass.fqn } C${ cotype }::slice(size_t start, size_t count, HRESULT& hr) {
             hr = S_OK;
-            auto& v = *this->__self->get();
+            auto& v = *__self->get();
             auto begin = std::begin(v) + start;
             return ${ coclass.fqn }(begin, begin + count);
         }
 
         const void* C${ cotype }::start(HRESULT& hr) {
             hr = S_OK;
-            auto& v = *this->__self->get();
+            auto& v = *__self->get();
             ${ cpptype === "bool" ? "void*" : "auto" } _result = ${ cpptype === "bool" ? "NULL" : "v.empty() ? NULL : static_cast<const void*>(&v[0])" };
             return _result;
         }
 
         const void* C${ cotype }::end(HRESULT& hr) {
             hr = S_OK;
-            auto& v = *this->__self->get();
+            auto& v = *__self->get();
             ${ cpptype === "bool" ? "void*" : "auto" } _result = ${ cpptype === "bool" ? "NULL" : "v.empty() ? NULL : static_cast<const void*>(&v[v.size()])" };
             return _result;
         }

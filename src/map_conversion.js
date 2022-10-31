@@ -116,7 +116,7 @@ exports.convert = (coclass, header, impl, { shared_ptr, make_shared } = {}) => {
 
         const std::vector<${ key_type }> C${ cotype }::Keys(HRESULT& hr) {
             hr = S_OK;
-            auto& map = *this->__self->get();
+            auto& map = *__self->get();
 
             std::vector<${ key_type }> keys;
 
@@ -129,7 +129,7 @@ exports.convert = (coclass, header, impl, { shared_ptr, make_shared } = {}) => {
 
         const std::vector<${ value_type }> C${ cotype }::Items(HRESULT& hr) {
             hr = S_OK;
-            auto& map = *this->__self->get();
+            auto& map = *__self->get();
 
             std::vector<${ value_type }> keys;
 

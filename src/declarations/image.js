@@ -21,7 +21,7 @@ module.exports = [
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.Image.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", "/Expr=this->__self->get()->GetImageFrameSharedPtr().get()"], [], "", ""],
+    ["mediapipe.Image.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", "/Expr=__self->get()->GetImageFrameSharedPtr().get()"], [], "", ""],
     ["mediapipe.Image.UsesGpu", "bool", ["=uses_gpu"], [], "", ""],
     ["mediapipe.Image.IsContiguous", "bool", ["=is_contiguous", "/Prop=GetImageFrameSharedPtr()"], [], "", ""],
     ["mediapipe.Image.IsEmpty", "bool", ["=is_empty", "/Prop=GetImageFrameSharedPtr()"], [], "", ""],

@@ -19,7 +19,7 @@ module.exports = [
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", "/Expr=this->__self->get()"], [], "", ""],
+    ["mediapipe.ImageFrame.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", "/Expr=__self->get()"], [], "", ""],
     ["mediapipe.ImageFrame.IsContiguous", "bool", ["=is_contiguous"], [], "", ""],
     ["mediapipe.ImageFrame.IsEmpty", "bool", ["=is_empty"], [], "", ""],
     ["mediapipe.ImageFrame.IsAligned", "bool", ["=is_aligned"], [

@@ -223,7 +223,7 @@ Object.assign(exports, {
             }
         }
 
-        const obj = `${ is_static ? `${ fqn }::` : "this->__self->get()->" }`;
+        const obj = `${ is_static ? `${ fqn }::` : "__self->get()->" }`;
 
         if (is_static || is_enum || modifiers.includes("/R") || modifiers.includes("/RW") || rname) {
             id = coclass.addIDLName(idlname, `get_${ idlname }`, id);
@@ -264,7 +264,7 @@ Object.assign(exports, {
                 useNamespaces(cvt, "unshift", generator, coclass);
 
                 const hr = is_static ? "" : `
-                    if (this->__self->get() == NULL) {
+                    if (__self->get() == NULL) {
                         return E_INVALIDARG;
                     }
                 `.replace(/^ {16}/mg, "");
@@ -302,7 +302,7 @@ Object.assign(exports, {
 
             impl.push(`
                 STDMETHODIMP C${ cotype }::put_${ idlname }(${ idltype } newVal) {
-                    ${ is_prop_test ? "// " : "" }${ is_static ? "" : `${ options.assert }(this->__self->get() != NULL)` };
+                    ${ is_prop_test ? "// " : "" }${ is_static ? "" : `${ options.assert }(__self->get() != NULL)` };
                     ${ is_prop_test ? "return S_OK; /* " : "" }${ cvt.join(`\n${ " ".repeat(20) }`) }${ is_prop_test ? " */" : "" }
                 }`.replace(/^ {16}/mg, "")
             );

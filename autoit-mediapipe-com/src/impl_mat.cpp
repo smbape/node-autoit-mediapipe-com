@@ -219,7 +219,7 @@ cv::Mat cv::createMatFromBitmap(void* ptr, bool copy) {
 const cv::Mat CCv_Mat_Object::convertToShow(cv::Mat& dst, bool toRGB, HRESULT& hr) {
 	using namespace cv;
 
-	auto& src = *this->__self->get();
+	auto& src = *__self->get();
 
 	double scale = 1.0, shift = 0.0;
 	double minVal = 0, maxVal = 0;
@@ -266,128 +266,128 @@ const cv::Mat CCv_Mat_Object::convertToShow(cv::Mat& dst, bool toRGB, HRESULT& h
 	return dst;
 }
 
-static Gdiplus::ColorPalette* GenerateGrayscalePalette() {
-	using namespace Gdiplus;
+namespace {
+	Gdiplus::ColorPalette* GenerateGrayscalePalette() {
+		using namespace Gdiplus;
 
-	static Gdiplus::ColorPalette* palette = NULL;
-	if (palette) {
+		static Gdiplus::ColorPalette* palette = NULL;
+		if (palette) {
+			return palette;
+		}
+
+		Bitmap image(1, 1, PixelFormat8bppIndexed);
+		int palsize = image.GetPaletteSize();
+		palette = reinterpret_cast<Gdiplus::ColorPalette*>(new BYTE[palsize]);
+		image.GetPalette(palette, palsize);
+
+		for (int i = 0; i < 256; i++) {
+			palette->Entries[i] = Gdiplus::Color(i, i, i).GetValue();
+		}
+
 		return palette;
 	}
 
-	Bitmap image(1, 1, PixelFormat8bppIndexed);
-	int palsize = image.GetPaletteSize();
-	palette = reinterpret_cast<Gdiplus::ColorPalette*>(new BYTE[palsize]);
-	image.GetPalette(palette, palsize);
+	void RawDataToBitmap(uchar* scan0, size_t step, cv::Size size, int dstColorType, int channels, int srcDepth, Gdiplus::CvBitmap& dst) {
+		using namespace Gdiplus;
 
-	for (int i = 0; i < 256; i++) {
-		palette->Entries[i] = Gdiplus::Color(i, i, i).GetValue();
-	}
+		if (dstColorType == CV_8UC1 && srcDepth == CV_8U) {
+			CvBitmap bmpGray(
+				size.width,
+				size.height,
+				step,
+				PixelFormat8bppIndexed,
+				scan0
+			);
 
-	return palette;
-}
+			CV_Assert(bmpGray.GetLastStatus() == Ok);
 
-// static Gdiplus::ColorPalette* GrayscalePalette = GenerateGrayscalePalette();
+			bmpGray.SetPalette(GenerateGrayscalePalette());
 
-static void RawDataToBitmap(uchar* scan0, size_t step, cv::Size size, int dstColorType, int channels, int srcDepth, Gdiplus::CvBitmap& dst) {
-	using namespace Gdiplus;
-
-	if (dstColorType == CV_8UC1 && srcDepth == CV_8U) {
-		CvBitmap bmpGray(
-			size.width,
-			size.height,
-			step,
-			PixelFormat8bppIndexed,
-			scan0
-		);
-
-		CV_Assert(bmpGray.GetLastStatus() == Ok);
-
-		bmpGray.SetPalette(GenerateGrayscalePalette());
-
-		dst.Attach(bmpGray.Detach());
-		return;
-	}
-	else if (dstColorType == CV_8UC3 && srcDepth == CV_8U) {
-		CvBitmap bmp(
-			size.width,
-			size.height,
-			step,
-			PixelFormat24bppRGB,
-			scan0
-		);
-		CV_Assert(bmp.GetLastStatus() == Ok);
-		dst.Attach(bmp.Detach());
-		return;
-	}
-	else if (dstColorType == CV_8UC4 && srcDepth == CV_8U) {
-		CvBitmap bmp(
-			size.width,
-			size.height,
-			step,
-			PixelFormat32bppARGB,
-			scan0
-		);
-		CV_Assert(bmp.GetLastStatus() == Ok);
-		dst.Attach(bmp.Detach());
-		return;
-	}
-
-	PixelFormat format;
-
-	if (dstColorType == CV_8UC1) { // if this is a gray scale image
-		format = PixelFormat8bppIndexed;
-	}
-	else if (dstColorType == CV_8UC4) { // if this is Bgra image
-		format = PixelFormat32bppARGB;
-	}
-	else if (dstColorType == CV_8UC3) { // if this is a Bgr image
-		format = PixelFormat24bppRGB;
-	}
-	else { // convert to a 3 channels matrix
-		cv::Mat m(size.height, size.width, CV_MAKETYPE(srcDepth, channels), scan0, step);
-		cv::Mat m2;
-		cv::cvtColor(m, m2, dstColorType, CV_8UC3);
-		RawDataToBitmap(m2.ptr(), m2.step1(), m2.size(), CV_8UC3, 3, srcDepth, dst);
-		return;
-	}
-
-	CvBitmap bmp(size.width, size.height, format);
-	CV_Assert(bmp.GetLastStatus() == Ok);
-
-	{
-		// Block to ensure unlocks before detach
-		auto rect = Gdiplus::Rect(0, 0, size.width, size.height);
-		BitmapLock lock(bmp, &rect, ImageLockModeWrite, format);
-		BitmapData& data = lock.data;
-		cv::Mat bmpMat(size.height, size.width, CV_MAKETYPE(CV_8U, channels), data.Scan0, data.Stride);
-		cv::Mat srcMat(size.height, size.width, CV_MAKETYPE(srcDepth, channels), scan0, step);
-
-		if (srcDepth == CV_8U) {
-			srcMat.copyTo(bmpMat);
+			dst.Attach(bmpGray.Detach());
+			return;
 		}
-		else {
-			double scale = 1.0, shift = 0.0;
-			double minVal = 0, maxVal = 0;
-			cv::Point minLoc, maxLoc;
-			if (channels == 1) {
-				minMaxLoc(srcMat, &minVal, &maxVal, &minLoc, &maxLoc);
+		else if (dstColorType == CV_8UC3 && srcDepth == CV_8U) {
+			CvBitmap bmp(
+				size.width,
+				size.height,
+				step,
+				PixelFormat24bppRGB,
+				scan0
+			);
+			CV_Assert(bmp.GetLastStatus() == Ok);
+			dst.Attach(bmp.Detach());
+			return;
+		}
+		else if (dstColorType == CV_8UC4 && srcDepth == CV_8U) {
+			CvBitmap bmp(
+				size.width,
+				size.height,
+				step,
+				PixelFormat32bppARGB,
+				scan0
+			);
+			CV_Assert(bmp.GetLastStatus() == Ok);
+			dst.Attach(bmp.Detach());
+			return;
+		}
+
+		PixelFormat format;
+
+		if (dstColorType == CV_8UC1) { // if this is a gray scale image
+			format = PixelFormat8bppIndexed;
+		}
+		else if (dstColorType == CV_8UC4) { // if this is Bgra image
+			format = PixelFormat32bppARGB;
+		}
+		else if (dstColorType == CV_8UC3) { // if this is a Bgr image
+			format = PixelFormat24bppRGB;
+		}
+		else { // convert to a 3 channels matrix
+			cv::Mat m(size.height, size.width, CV_MAKETYPE(srcDepth, channels), scan0, step);
+			cv::Mat m2;
+			cv::cvtColor(m, m2, dstColorType, CV_8UC3);
+			RawDataToBitmap(m2.ptr(), m2.step1(), m2.size(), CV_8UC3, 3, srcDepth, dst);
+			return;
+		}
+
+		CvBitmap bmp(size.width, size.height, format);
+		CV_Assert(bmp.GetLastStatus() == Ok);
+
+		{
+			// Block to ensure unlocks before detach
+			auto rect = Gdiplus::Rect(0, 0, size.width, size.height);
+			BitmapLock lock(bmp, &rect, ImageLockModeWrite, format);
+			BitmapData& data = lock.data;
+			cv::Mat bmpMat(size.height, size.width, CV_MAKETYPE(CV_8U, channels), data.Scan0, data.Stride);
+			cv::Mat srcMat(size.height, size.width, CV_MAKETYPE(srcDepth, channels), scan0, step);
+
+			if (srcDepth == CV_8U) {
+				srcMat.copyTo(bmpMat);
 			}
 			else {
-				minMaxLoc(srcMat.reshape(1), &minVal, &maxVal, &minLoc, &maxLoc);
+				double scale = 1.0, shift = 0.0;
+				double minVal = 0, maxVal = 0;
+				cv::Point minLoc, maxLoc;
+				if (channels == 1) {
+					minMaxLoc(srcMat, &minVal, &maxVal, &minLoc, &maxLoc);
+				}
+				else {
+					minMaxLoc(srcMat.reshape(1), &minVal, &maxVal, &minLoc, &maxLoc);
+				}
+
+				scale = (float)maxVal == (float)minVal ? 0.0 : 255.0 / (maxVal - minVal);
+				shift = scale == 0 ? minVal : -minVal * scale;
+
+				srcMat.convertTo(bmpMat, CV_8U, scale, shift);
 			}
-
-			scale = (float)maxVal == (float)minVal ? 0.0 : 255.0 / (maxVal - minVal);
-			shift = scale == 0 ? minVal : -minVal * scale;
-
-			srcMat.convertTo(bmpMat, CV_8U, scale, shift);
 		}
-	}
 
-	if (format == PixelFormat8bppIndexed) {
-		bmp.SetPalette(GenerateGrayscalePalette());
-	}
+		if (format == PixelFormat8bppIndexed) {
+			bmp.SetPalette(GenerateGrayscalePalette());
+		}
 
-	dst.Attach(bmp.Detach());
+		dst.Attach(bmp.Detach());
+	}
 }
 
 /**
@@ -399,7 +399,7 @@ static void RawDataToBitmap(uchar* scan0, size_t step, cv::Size size, int dstCol
  */
 const void* CCv_Mat_Object::convertToBitmap(bool copy, HRESULT& hr) {
 	using namespace Gdiplus;
-	auto& src = *this->__self->get();
+	auto& src = *__self->get();
 
 	if (src.dims > 3 || src.empty()) {
 		return NULL;

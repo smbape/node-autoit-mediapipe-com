@@ -29,52 +29,54 @@ using namespace mediapipe::autoit::packet_getter;
 // Only one autoit callback can run at once.
 static absl::Mutex callback_mutex;
 
-inline static const bool startsWith(const std::string& s, const std::string& prefix) {
-	return s.size() >= prefix.size() && s.compare(0, prefix.size(), prefix) == 0;
-}
-
-inline static const bool startsWith(const std::string_view& s, const std::string_view& prefix) {
-	return s.size() >= prefix.size() && s.compare(0, prefix.size(), prefix) == 0;
-}
-
-inline static const bool endsWith(const std::string& s, const std::string& suffix) {
-	return s.size() >= suffix.size() && s.compare(s.size() - suffix.size(), suffix.size(), suffix) == 0;
-}
-
-inline static const bool endsWith(const std::string_view& s, const std::string_view& suffix) {
-	return s.size() >= suffix.size() && s.compare(s.size() - suffix.size(), suffix.size(), suffix) == 0;
-}
-
-inline static const size_t len(const std::string& str) {
-	return str.length();
-}
-
-static const std::string WHITESPACE = " \n\r\t\f\v";
-
-inline static std::string trim(const std::string& s) {
-	size_t start = s.find_first_not_of(WHITESPACE);
-	size_t end = s.find_last_not_of(WHITESPACE);
-	if (start == std::string::npos || end == std::string::npos) {
-		return "";
-	}
-	return s.substr(start, end + 1);
-}
-
-inline static std::vector<std::string> split(const std::string& s, const std::string& delimiter, bool trim_ = true) {
-	size_t pos_start = 0;
-	size_t delim_len = delimiter.length();
-	size_t pos_end;
-	std::string token;
-	std::vector<std::string> res;
-
-	while ((pos_end = s.find(delimiter, pos_start)) != std::string::npos) {
-		token = s.substr(pos_start, pos_end - pos_start);
-		pos_start = pos_end + delim_len;
-		res.push_back(trim_ ? trim(token) : token);
+namespace {
+	inline const bool startsWith(const std::string& s, const std::string& prefix) {
+		return s.size() >= prefix.size() && s.compare(0, prefix.size(), prefix) == 0;
 	}
 
-	res.push_back(s.substr(pos_start));
-	return res;
+	inline const bool startsWith(const std::string_view& s, const std::string_view& prefix) {
+		return s.size() >= prefix.size() && s.compare(0, prefix.size(), prefix) == 0;
+	}
+
+	inline const bool endsWith(const std::string& s, const std::string& suffix) {
+		return s.size() >= suffix.size() && s.compare(s.size() - suffix.size(), suffix.size(), suffix) == 0;
+	}
+
+	inline const bool endsWith(const std::string_view& s, const std::string_view& suffix) {
+		return s.size() >= suffix.size() && s.compare(s.size() - suffix.size(), suffix.size(), suffix) == 0;
+	}
+
+	inline const size_t len(const std::string& str) {
+		return str.length();
+	}
+
+	const std::string WHITESPACE = " \n\r\t\f\v";
+
+	inline std::string trim(const std::string& s) {
+		size_t start = s.find_first_not_of(WHITESPACE);
+		size_t end = s.find_last_not_of(WHITESPACE);
+		if (start == std::string::npos || end == std::string::npos) {
+			return "";
+		}
+		return s.substr(start, end + 1);
+	}
+
+	inline std::vector<std::string> split(const std::string& s, const std::string& delimiter, bool trim_ = true) {
+		size_t pos_start = 0;
+		size_t delim_len = delimiter.length();
+		size_t pos_end;
+		std::string token;
+		std::vector<std::string> res;
+
+		while ((pos_end = s.find(delimiter, pos_start)) != std::string::npos) {
+			token = s.substr(pos_start, pos_end - pos_start);
+			pos_start = pos_end + delim_len;
+			res.push_back(trim_ ? trim(token) : token);
+		}
+
+		res.push_back(s.substr(pos_start));
+		return res;
+	}
 }
 
 int ClearFieldByDescriptor(Message& message,
@@ -716,7 +718,7 @@ namespace mediapipe {
 
 				std::vector<std::string> output_streams;
 
-				if ((&outputs) == (&_noneVector)) {
+				if (outputs.empty()) {
 					const auto& output_stream = canonical_graph_config_proto.output_stream();
 					output_streams = std::vector<std::string>(output_stream.begin(), output_stream.end());
 				}
