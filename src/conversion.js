@@ -47,7 +47,7 @@ const _dynamicCast = (generator, coclass, const_cast, options) => {
             return `case ${ index + 1 }: {
                 auto derived = dynamic_cast<${ const_cast }C${ child.getClassName() }*>(in_val);
                 AUTOIT_ASSERT_THROW(derived, "object cannot be cast to a ${ child.fqn }");
-                return derived->__self->get();
+                return *derived->__self;
             }`.replace(/^ {4}/mg, "");
         }).join(`\n${ " ".repeat(8) }`) }
     }`.replace(/^ {4}/mg, "");
@@ -213,12 +213,13 @@ Object.assign(exports, {
             extern const HRESULT autoit_from(I${ cotype }*& in_val, ${ iface }**& out_val);
             extern const HRESULT autoit_from(I${ cotype }*& in_val, VARIANT*& out_val);
 
-            template<>
-            extern ${ coclass.fqn }* ::autoit::cast<${ coclass.fqn }>(IDispatch* in_val);
+            namespace autoit {
+                template<>
+                extern ${ shared_ptr }<${ coclass.fqn }> cast<${ coclass.fqn }>(IDispatch* in_val);
 
-            template<>
-            extern const ${ coclass.fqn }* ::autoit::cast<${ coclass.fqn }>(const IDispatch* in_val);
-
+                template<>
+                extern const ${ shared_ptr }<${ coclass.fqn }> cast<${ coclass.fqn }>(const IDispatch* in_val);
+            }
         `.replace(/^ {12}/mg, ""));
 
         if (children.size !== 0) {
@@ -243,7 +244,7 @@ Object.assign(exports, {
                     return E_INVALIDARG;
                 }
 
-                out_val = ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val));
+                out_val = ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val)).get();
                 return out_val ? S_OK : E_INVALIDARG;
             }
 
@@ -281,28 +282,30 @@ Object.assign(exports, {
                 return S_OK;
             }
 
-            template<>
-            inline ${ coclass.fqn }* ::autoit::cast<${ coclass.fqn }>(IDispatch* in_val) {
-                {
-                    auto obj = dynamic_cast<C${ cotype }*>(in_val);
-                    if (obj) {
-                        return obj->__self->get();
+            namespace autoit {
+                template<>
+                ${ shared_ptr }<${ coclass.fqn }> cast<${ coclass.fqn }>(IDispatch* in_val) {
+                    {
+                        auto obj = dynamic_cast<C${ cotype }*>(in_val);
+                        if (obj) {
+                            return *obj->__self;
+                        }
                     }
+                    ${ dynamicCast(generator, coclass, "", options).split("\n").join(`\n${ " ".repeat(20) }`) }
+                    return ${ shared_ptr }<${ coclass.fqn }>();
                 }
-                ${ dynamicCast(generator, coclass, "", options).split("\n").join(`\n${ " ".repeat(16) }`) }
-                return nullptr;
-            }
 
-            template<>
-            inline const ${ coclass.fqn }* ::autoit::cast<${ coclass.fqn }>(const IDispatch* in_val) {
-                {
-                    auto obj = dynamic_cast<const C${ cotype }*>(in_val);
-                    if (obj) {
-                        return obj->__self->get();
+                template<>
+                const ${ shared_ptr }<${ coclass.fqn }> cast<${ coclass.fqn }>(const IDispatch* in_val) {
+                    {
+                        auto obj = dynamic_cast<const C${ cotype }*>(in_val);
+                        if (obj) {
+                            return *obj->__self;
+                        }
                     }
+                    ${ dynamicCast(generator, coclass, "const ", options).split("\n").join(`\n${ " ".repeat(20) }`) }
+                    return ${ shared_ptr }<${ coclass.fqn }>();
                 }
-                ${ dynamicCast(generator, coclass, "const ", options).split("\n").join(`\n${ " ".repeat(16) }`) }
-                return nullptr;
             }
 
             `.replace(/^ {12}/mg, "")
@@ -345,12 +348,8 @@ Object.assign(exports, {
                 }
 
                 if (V_VT(in_val) == VT_${ wtype }) {
-                    const auto& obj = ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val));
-                    if (!obj) {
-                        return E_INVALIDARG;
-                    }
-                    out_val = ::autoit::reference_internal(obj);
-                    return S_OK;
+                    out_val = ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val));
+                    return out_val.get() ? S_OK : E_INVALIDARG;
                 }
 
                 return E_INVALIDARG;

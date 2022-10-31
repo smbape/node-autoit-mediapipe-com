@@ -3228,8 +3228,8 @@ AutoIt:
 ### google::protobuf::TextFormat::Parse
 
 ```cpp
-google::protobuf::Message* google::protobuf::TextFormat::Parse( const std::string&         input,
-                                                                google::protobuf::Message* message );
+std::shared_ptr<google::protobuf::Message> google::protobuf::TextFormat::Parse( const std::string&                         input,
+                                                                                std::shared_ptr<google::protobuf::Message> message );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.text_format").Parse( $input, $message ) -> retval
 ```

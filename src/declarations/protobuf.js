@@ -19,9 +19,9 @@ module.exports = [
         ["std::string*", "output", "", ["/O"]],
     ], "", ""],
 
-    ["google.protobuf.TextFormat.Parse", "google::protobuf::Message*", ["/Call=google::protobuf::autoit::Parse"], [
+    ["google.protobuf.TextFormat.Parse", "std::shared_ptr<google::protobuf::Message>", ["/Call=google::protobuf::autoit::Parse"], [
         ["std::string", "input", "", ["/C", "/Ref"]],
-        ["google::protobuf::Message*", "message", "", []],
+        ["std::shared_ptr<google::protobuf::Message>", "message", "", []],
     ], "", ""],
 
     ["google.protobuf.TextFormat.ParseFromString", "bool", [], [

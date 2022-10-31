@@ -132,8 +132,8 @@ const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_image(co
 
 const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_proto(const google::protobuf::Message& message) {
 	auto type_name = message.GetDescriptor()->full_name();
-	std::string serialized;
 
+	std::string serialized;
 	AUTOIT_ASSERT_THROW(message.SerializeToString(&serialized), "Failed to serialize message " << type_name);
 
 	absl::StatusOr<Packet> packet = packet_internal::PacketFromDynamicProto(type_name, serialized);

@@ -47,8 +47,7 @@ Func test_valid_input_data_type_proto()
 		"  }" & @CRLF & _
 		""
 
-	Local $config_proto = $calculator_pb2.CalculatorGraphConfig()
-	$text_format.Parse($text_config, $config_proto)
+	Local $config_proto = $text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig())
 	Local $solution = $solution_base.SolutionBase($config_proto)
 
 	Local $input_detections = $detection_pb2.DetectionList()

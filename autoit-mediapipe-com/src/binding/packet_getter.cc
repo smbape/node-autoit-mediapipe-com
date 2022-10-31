@@ -108,7 +108,7 @@ const std::vector<float> mediapipe::autoit::packet_getter::get_float_list(const 
 	AUTOIT_THROW("Packet doesn't contain std::vector<float> or std::array<float, 4 / 16> containers.");
 }
 
-static std::shared_ptr<Message> MessageFromDynamicProto(const std::string& type_name, const std::string& serialized) {
+std::shared_ptr<Message> mediapipe::autoit::packet_getter::MessageFromDynamicProto(const std::string& type_name, const std::string& serialized) {
 	using namespace packet_internal;
 
 	absl::StatusOr<std::unique_ptr<HolderBase>> maybe_holder =

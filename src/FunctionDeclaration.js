@@ -359,7 +359,7 @@ Object.assign(exports, {
                         is_shared_ptr = true;
 
                         cvt.push(...`
-                            ${ cpptype }* ${ pointer } = NULL;
+                            ${ shared_ptr }<${ cpptype }> ${ pointer };
 
                             if (V_VT(${ in_val }) == VT_DISPATCH) {
                                 ${ pointer } = ::autoit::cast<${ cpptype }>(getRealIDispatch(${ in_val }));
@@ -371,7 +371,7 @@ Object.assign(exports, {
                                 ${ set_from_pointer } = true;
                             } else if (V_VT(${ in_val }) == VT_UI8) {
                                 const auto& ptr = V_UI8(${ in_val });
-                                ${ pointer } = reinterpret_cast<${ cpptype }*>(ptr);
+                                ${ pointer } = ::autoit::reference_internal(reinterpret_cast<${ cpptype }*>(ptr));
                                 ${ set_from_pointer } = true;
                             } else {
                                 hr = autoit_to(${ in_val }, ${ placeholder_name });
@@ -381,7 +381,7 @@ Object.assign(exports, {
                                 }
                             }
 
-                            auto& ${ argname } = ${ pointer } ? *${ pointer } : *${ placeholder_name }.get();
+                            auto& ${ argname } = ${ pointer } ? *${ pointer }.get() : *${ placeholder_name }.get();
                             hr = S_OK;
                         `.replace(/^ {28}/mg, "").trim().split("\n"));
                     }

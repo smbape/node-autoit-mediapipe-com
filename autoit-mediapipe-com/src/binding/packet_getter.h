@@ -18,6 +18,8 @@ namespace mediapipe {
 				return packet.Get<T>();
 			}
 
+			std::shared_ptr<google::protobuf::Message> MessageFromDynamicProto(const std::string& type_name, const std::string& serialized);
+
 			CV_WRAP const int64 get_int(const Packet& packet);
 			CV_WRAP const uint64 get_uint(const Packet& packet);
 			CV_WRAP const float get_float(const Packet& packet);
