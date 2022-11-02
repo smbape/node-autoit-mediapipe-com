@@ -6,8 +6,6 @@ namespace google {
 	namespace protobuf {
 		namespace autoit {
 			namespace cmessage {
-				const std::string ToStr(const Message& message);
-
 				const FieldDescriptor* FindFieldWithOneofs(
 					const Message& message,
 					const std::string& field_name,
@@ -53,6 +51,9 @@ namespace google {
 				);
 
 				void MergeFromString(Message* message, const std::string& data);
+
+				int ClearFieldByDescriptor(Message& message, const FieldDescriptor* field_descriptor);
+				void ClearField(Message& message, const std::string& field_name);
 			}
 		}
 	}

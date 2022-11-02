@@ -192,6 +192,7 @@
   - [mediapipe::Packet::put_timestamp](#mediapipepacketput_timestamp)
   - [mediapipe::Packet::str](#mediapipepacketstr)
 - [google::protobuf::Message](#googleprotobufmessage)
+  - [google::protobuf::Message::ClearField](#googleprotobufmessageclearfield)
   - [google::protobuf::Message::str](#googleprotobufmessagestr)
 - [google::protobuf::TextFormat](#googleprotobuftextformat)
   - [google::protobuf::TextFormat::MergeFromString](#googleprotobuftextformatmergefromstring)
@@ -201,6 +202,7 @@
   - [google::protobuf::TextFormat::PrintToString](#googleprotobuftextformatprinttostring)
 - [google::protobuf::Any](#googleprotobufany)
   - [google::protobuf::Any::get_create](#googleprotobufanyget_create)
+  - [google::protobuf::Any::ClearField](#googleprotobufanyclearfield)
   - [google::protobuf::Any::Pack](#googleprotobufanypack)
   - [google::protobuf::Any::Unpack](#googleprotobufanyunpack)
   - [google::protobuf::Any::str](#googleprotobufanystr)
@@ -232,19 +234,24 @@
   - [mediapipe::ValidatedGraphConfig::registered_stream_type_name](#mediapipevalidatedgraphconfigregistered_stream_type_name)
 - [mediapipe::CalculatorOptions](#mediapipecalculatoroptions)
   - [mediapipe::CalculatorOptions::get_create](#mediapipecalculatoroptionsget_create)
+  - [mediapipe::CalculatorOptions::ClearField](#mediapipecalculatoroptionsclearfield)
   - [mediapipe::CalculatorOptions::get_Extensions](#mediapipecalculatoroptionsget_extensions)
   - [mediapipe::CalculatorOptions::str](#mediapipecalculatoroptionsstr)
 - [mediapipe::MediaPipeOptions](#mediapipemediapipeoptions)
   - [mediapipe::MediaPipeOptions::get_create](#mediapipemediapipeoptionsget_create)
+  - [mediapipe::MediaPipeOptions::ClearField](#mediapipemediapipeoptionsclearfield)
   - [mediapipe::MediaPipeOptions::str](#mediapipemediapipeoptionsstr)
 - [mediapipe::PacketFactoryOptions](#mediapipepacketfactoryoptions)
   - [mediapipe::PacketFactoryOptions::get_create](#mediapipepacketfactoryoptionsget_create)
+  - [mediapipe::PacketFactoryOptions::ClearField](#mediapipepacketfactoryoptionsclearfield)
   - [mediapipe::PacketFactoryOptions::str](#mediapipepacketfactoryoptionsstr)
 - [mediapipe::PacketFactoryConfig](#mediapipepacketfactoryconfig)
   - [mediapipe::PacketFactoryConfig::get_create](#mediapipepacketfactoryconfigget_create)
+  - [mediapipe::PacketFactoryConfig::ClearField](#mediapipepacketfactoryconfigclearfield)
   - [mediapipe::PacketFactoryConfig::str](#mediapipepacketfactoryconfigstr)
 - [mediapipe::PacketManagerConfig](#mediapipepacketmanagerconfig)
   - [mediapipe::PacketManagerConfig::get_create](#mediapipepacketmanagerconfigget_create)
+  - [mediapipe::PacketManagerConfig::ClearField](#mediapipepacketmanagerconfigclearfield)
   - [mediapipe::PacketManagerConfig::str](#mediapipepacketmanagerconfigstr)
 - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig](#googleprotobufrepeated_mediapipe_packetfactoryconfig)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::create](#googleprotobufrepeated_mediapipe_packetfactoryconfigcreate)
@@ -268,9 +275,11 @@
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::splice](#googleprotobufrepeated_mediapipe_packetfactoryconfigsplice)
 - [mediapipe::PacketGeneratorOptions](#mediapipepacketgeneratoroptions)
   - [mediapipe::PacketGeneratorOptions::get_create](#mediapipepacketgeneratoroptionsget_create)
+  - [mediapipe::PacketGeneratorOptions::ClearField](#mediapipepacketgeneratoroptionsclearfield)
   - [mediapipe::PacketGeneratorOptions::str](#mediapipepacketgeneratoroptionsstr)
 - [mediapipe::PacketGeneratorConfig](#mediapipepacketgeneratorconfig)
   - [mediapipe::PacketGeneratorConfig::get_create](#mediapipepacketgeneratorconfigget_create)
+  - [mediapipe::PacketGeneratorConfig::ClearField](#mediapipepacketgeneratorconfigclearfield)
   - [mediapipe::PacketGeneratorConfig::str](#mediapipepacketgeneratorconfigstr)
 - [google::protobuf::Repeated_std_string](#googleprotobufrepeated_std_string)
   - [google::protobuf::Repeated_std_string::create](#googleprotobufrepeated_std_stringcreate)
@@ -295,21 +304,27 @@
   - [google::protobuf::Repeated_std_string::splice](#googleprotobufrepeated_std_stringsplice)
 - [mediapipe::StatusHandlerConfig](#mediapipestatushandlerconfig)
   - [mediapipe::StatusHandlerConfig::get_create](#mediapipestatushandlerconfigget_create)
+  - [mediapipe::StatusHandlerConfig::ClearField](#mediapipestatushandlerconfigclearfield)
   - [mediapipe::StatusHandlerConfig::str](#mediapipestatushandlerconfigstr)
 - [mediapipe::InputStreamHandlerConfig](#mediapipeinputstreamhandlerconfig)
   - [mediapipe::InputStreamHandlerConfig::get_create](#mediapipeinputstreamhandlerconfigget_create)
+  - [mediapipe::InputStreamHandlerConfig::ClearField](#mediapipeinputstreamhandlerconfigclearfield)
   - [mediapipe::InputStreamHandlerConfig::str](#mediapipeinputstreamhandlerconfigstr)
 - [mediapipe::OutputStreamHandlerConfig](#mediapipeoutputstreamhandlerconfig)
   - [mediapipe::OutputStreamHandlerConfig::get_create](#mediapipeoutputstreamhandlerconfigget_create)
+  - [mediapipe::OutputStreamHandlerConfig::ClearField](#mediapipeoutputstreamhandlerconfigclearfield)
   - [mediapipe::OutputStreamHandlerConfig::str](#mediapipeoutputstreamhandlerconfigstr)
 - [mediapipe::ExecutorConfig](#mediapipeexecutorconfig)
   - [mediapipe::ExecutorConfig::get_create](#mediapipeexecutorconfigget_create)
+  - [mediapipe::ExecutorConfig::ClearField](#mediapipeexecutorconfigclearfield)
   - [mediapipe::ExecutorConfig::str](#mediapipeexecutorconfigstr)
 - [mediapipe::InputCollection](#mediapipeinputcollection)
   - [mediapipe::InputCollection::get_create](#mediapipeinputcollectionget_create)
+  - [mediapipe::InputCollection::ClearField](#mediapipeinputcollectionclearfield)
   - [mediapipe::InputCollection::str](#mediapipeinputcollectionstr)
 - [mediapipe::InputCollectionSet](#mediapipeinputcollectionset)
   - [mediapipe::InputCollectionSet::get_create](#mediapipeinputcollectionsetget_create)
+  - [mediapipe::InputCollectionSet::ClearField](#mediapipeinputcollectionsetclearfield)
   - [mediapipe::InputCollectionSet::str](#mediapipeinputcollectionsetstr)
 - [google::protobuf::Repeated_mediapipe_InputCollection](#googleprotobufrepeated_mediapipe_inputcollection)
   - [google::protobuf::Repeated_mediapipe_InputCollection::create](#googleprotobufrepeated_mediapipe_inputcollectioncreate)
@@ -333,9 +348,11 @@
   - [google::protobuf::Repeated_mediapipe_InputCollection::splice](#googleprotobufrepeated_mediapipe_inputcollectionsplice)
 - [mediapipe::InputStreamInfo](#mediapipeinputstreaminfo)
   - [mediapipe::InputStreamInfo::get_create](#mediapipeinputstreaminfoget_create)
+  - [mediapipe::InputStreamInfo::ClearField](#mediapipeinputstreaminfoclearfield)
   - [mediapipe::InputStreamInfo::str](#mediapipeinputstreaminfostr)
 - [mediapipe::ProfilerConfig](#mediapipeprofilerconfig)
   - [mediapipe::ProfilerConfig::get_create](#mediapipeprofilerconfigget_create)
+  - [mediapipe::ProfilerConfig::ClearField](#mediapipeprofilerconfigclearfield)
   - [mediapipe::ProfilerConfig::str](#mediapipeprofilerconfigstr)
 - [google::protobuf::Repeated_int](#googleprotobufrepeated_int)
   - [google::protobuf::Repeated_int::create](#googleprotobufrepeated_intcreate)
@@ -360,6 +377,7 @@
   - [google::protobuf::Repeated_int::splice](#googleprotobufrepeated_intsplice)
 - [mediapipe::CalculatorGraphConfig](#mediapipecalculatorgraphconfig)
   - [mediapipe::CalculatorGraphConfig::get_create](#mediapipecalculatorgraphconfigget_create)
+  - [mediapipe::CalculatorGraphConfig::ClearField](#mediapipecalculatorgraphconfigclearfield)
   - [mediapipe::CalculatorGraphConfig::str](#mediapipecalculatorgraphconfigstr)
 - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_node)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::create](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodecreate)
@@ -463,6 +481,7 @@
   - [google::protobuf::Repeated_google_protobuf_Any::splice](#googleprotobufrepeated_google_protobuf_anysplice)
 - [mediapipe::CalculatorGraphConfig::Node](#mediapipecalculatorgraphconfignode)
   - [mediapipe::CalculatorGraphConfig::Node::get_create](#mediapipecalculatorgraphconfignodeget_create)
+  - [mediapipe::CalculatorGraphConfig::Node::ClearField](#mediapipecalculatorgraphconfignodeclearfield)
   - [mediapipe::CalculatorGraphConfig::Node::str](#mediapipecalculatorgraphconfignodestr)
 - [google::protobuf::Repeated_mediapipe_InputStreamInfo](#googleprotobufrepeated_mediapipe_inputstreaminfo)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::create](#googleprotobufrepeated_mediapipe_inputstreaminfocreate)
@@ -486,6 +505,7 @@
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::splice](#googleprotobufrepeated_mediapipe_inputstreaminfosplice)
 - [mediapipe::Rasterization](#mediapiperasterization)
   - [mediapipe::Rasterization::get_create](#mediapiperasterizationget_create)
+  - [mediapipe::Rasterization::ClearField](#mediapiperasterizationclearfield)
   - [mediapipe::Rasterization::str](#mediapiperasterizationstr)
 - [google::protobuf::Repeated_mediapipe_Rasterization_Interval](#googleprotobufrepeated_mediapipe_rasterization_interval)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::create](#googleprotobufrepeated_mediapipe_rasterization_intervalcreate)
@@ -509,9 +529,11 @@
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::splice](#googleprotobufrepeated_mediapipe_rasterization_intervalsplice)
 - [mediapipe::Rasterization::Interval](#mediapiperasterizationinterval)
   - [mediapipe::Rasterization::Interval::get_create](#mediapiperasterizationintervalget_create)
+  - [mediapipe::Rasterization::Interval::ClearField](#mediapiperasterizationintervalclearfield)
   - [mediapipe::Rasterization::Interval::str](#mediapiperasterizationintervalstr)
 - [mediapipe::LocationData](#mediapipelocationdata)
   - [mediapipe::LocationData::get_create](#mediapipelocationdataget_create)
+  - [mediapipe::LocationData::ClearField](#mediapipelocationdataclearfield)
   - [mediapipe::LocationData::str](#mediapipelocationdatastr)
 - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint](#googleprotobufrepeated_mediapipe_locationdata_relativekeypoint)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::create](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointcreate)
@@ -535,18 +557,23 @@
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::splice](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointsplice)
 - [mediapipe::LocationData::BoundingBox](#mediapipelocationdataboundingbox)
   - [mediapipe::LocationData::BoundingBox::get_create](#mediapipelocationdataboundingboxget_create)
+  - [mediapipe::LocationData::BoundingBox::ClearField](#mediapipelocationdataboundingboxclearfield)
   - [mediapipe::LocationData::BoundingBox::str](#mediapipelocationdataboundingboxstr)
 - [mediapipe::LocationData::RelativeBoundingBox](#mediapipelocationdatarelativeboundingbox)
   - [mediapipe::LocationData::RelativeBoundingBox::get_create](#mediapipelocationdatarelativeboundingboxget_create)
+  - [mediapipe::LocationData::RelativeBoundingBox::ClearField](#mediapipelocationdatarelativeboundingboxclearfield)
   - [mediapipe::LocationData::RelativeBoundingBox::str](#mediapipelocationdatarelativeboundingboxstr)
 - [mediapipe::LocationData::BinaryMask](#mediapipelocationdatabinarymask)
   - [mediapipe::LocationData::BinaryMask::get_create](#mediapipelocationdatabinarymaskget_create)
+  - [mediapipe::LocationData::BinaryMask::ClearField](#mediapipelocationdatabinarymaskclearfield)
   - [mediapipe::LocationData::BinaryMask::str](#mediapipelocationdatabinarymaskstr)
 - [mediapipe::LocationData::RelativeKeypoint](#mediapipelocationdatarelativekeypoint)
   - [mediapipe::LocationData::RelativeKeypoint::get_create](#mediapipelocationdatarelativekeypointget_create)
+  - [mediapipe::LocationData::RelativeKeypoint::ClearField](#mediapipelocationdatarelativekeypointclearfield)
   - [mediapipe::LocationData::RelativeKeypoint::str](#mediapipelocationdatarelativekeypointstr)
 - [mediapipe::Detection](#mediapipedetection)
   - [mediapipe::Detection::get_create](#mediapipedetectionget_create)
+  - [mediapipe::Detection::ClearField](#mediapipedetectionclearfield)
   - [mediapipe::Detection::str](#mediapipedetectionstr)
 - [google::protobuf::Repeated_float](#googleprotobufrepeated_float)
   - [google::protobuf::Repeated_float::create](#googleprotobufrepeated_floatcreate)
@@ -591,9 +618,11 @@
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::splice](#googleprotobufrepeated_mediapipe_detection_associateddetectionsplice)
 - [mediapipe::Detection::AssociatedDetection](#mediapipedetectionassociateddetection)
   - [mediapipe::Detection::AssociatedDetection::get_create](#mediapipedetectionassociateddetectionget_create)
+  - [mediapipe::Detection::AssociatedDetection::ClearField](#mediapipedetectionassociateddetectionclearfield)
   - [mediapipe::Detection::AssociatedDetection::str](#mediapipedetectionassociateddetectionstr)
 - [mediapipe::DetectionList](#mediapipedetectionlist)
   - [mediapipe::DetectionList::get_create](#mediapipedetectionlistget_create)
+  - [mediapipe::DetectionList::ClearField](#mediapipedetectionlistclearfield)
   - [mediapipe::DetectionList::str](#mediapipedetectionliststr)
 - [google::protobuf::Repeated_mediapipe_Detection](#googleprotobufrepeated_mediapipe_detection)
   - [google::protobuf::Repeated_mediapipe_Detection::create](#googleprotobufrepeated_mediapipe_detectioncreate)
@@ -617,12 +646,15 @@
   - [google::protobuf::Repeated_mediapipe_Detection::splice](#googleprotobufrepeated_mediapipe_detectionsplice)
 - [mediapipe::ImageFormat](#mediapipeimageformat)
   - [mediapipe::ImageFormat::get_create](#mediapipeimageformatget_create)
+  - [mediapipe::ImageFormat::ClearField](#mediapipeimageformatclearfield)
   - [mediapipe::ImageFormat::str](#mediapipeimageformatstr)
 - [mediapipe::Classification](#mediapipeclassification)
   - [mediapipe::Classification::get_create](#mediapipeclassificationget_create)
+  - [mediapipe::Classification::ClearField](#mediapipeclassificationclearfield)
   - [mediapipe::Classification::str](#mediapipeclassificationstr)
 - [mediapipe::ClassificationList](#mediapipeclassificationlist)
   - [mediapipe::ClassificationList::get_create](#mediapipeclassificationlistget_create)
+  - [mediapipe::ClassificationList::ClearField](#mediapipeclassificationlistclearfield)
   - [mediapipe::ClassificationList::str](#mediapipeclassificationliststr)
 - [google::protobuf::Repeated_mediapipe_Classification](#googleprotobufrepeated_mediapipe_classification)
   - [google::protobuf::Repeated_mediapipe_Classification::create](#googleprotobufrepeated_mediapipe_classificationcreate)
@@ -646,6 +678,7 @@
   - [google::protobuf::Repeated_mediapipe_Classification::splice](#googleprotobufrepeated_mediapipe_classificationsplice)
 - [mediapipe::ClassificationListCollection](#mediapipeclassificationlistcollection)
   - [mediapipe::ClassificationListCollection::get_create](#mediapipeclassificationlistcollectionget_create)
+  - [mediapipe::ClassificationListCollection::ClearField](#mediapipeclassificationlistcollectionclearfield)
   - [mediapipe::ClassificationListCollection::str](#mediapipeclassificationlistcollectionstr)
 - [google::protobuf::Repeated_mediapipe_ClassificationList](#googleprotobufrepeated_mediapipe_classificationlist)
   - [google::protobuf::Repeated_mediapipe_ClassificationList::create](#googleprotobufrepeated_mediapipe_classificationlistcreate)
@@ -669,9 +702,11 @@
   - [google::protobuf::Repeated_mediapipe_ClassificationList::splice](#googleprotobufrepeated_mediapipe_classificationlistsplice)
 - [mediapipe::Landmark](#mediapipelandmark)
   - [mediapipe::Landmark::get_create](#mediapipelandmarkget_create)
+  - [mediapipe::Landmark::ClearField](#mediapipelandmarkclearfield)
   - [mediapipe::Landmark::str](#mediapipelandmarkstr)
 - [mediapipe::LandmarkList](#mediapipelandmarklist)
   - [mediapipe::LandmarkList::get_create](#mediapipelandmarklistget_create)
+  - [mediapipe::LandmarkList::ClearField](#mediapipelandmarklistclearfield)
   - [mediapipe::LandmarkList::str](#mediapipelandmarkliststr)
 - [google::protobuf::Repeated_mediapipe_Landmark](#googleprotobufrepeated_mediapipe_landmark)
   - [google::protobuf::Repeated_mediapipe_Landmark::create](#googleprotobufrepeated_mediapipe_landmarkcreate)
@@ -695,6 +730,7 @@
   - [google::protobuf::Repeated_mediapipe_Landmark::splice](#googleprotobufrepeated_mediapipe_landmarksplice)
 - [mediapipe::LandmarkListCollection](#mediapipelandmarklistcollection)
   - [mediapipe::LandmarkListCollection::get_create](#mediapipelandmarklistcollectionget_create)
+  - [mediapipe::LandmarkListCollection::ClearField](#mediapipelandmarklistcollectionclearfield)
   - [mediapipe::LandmarkListCollection::str](#mediapipelandmarklistcollectionstr)
 - [google::protobuf::Repeated_mediapipe_LandmarkList](#googleprotobufrepeated_mediapipe_landmarklist)
   - [google::protobuf::Repeated_mediapipe_LandmarkList::create](#googleprotobufrepeated_mediapipe_landmarklistcreate)
@@ -718,9 +754,11 @@
   - [google::protobuf::Repeated_mediapipe_LandmarkList::splice](#googleprotobufrepeated_mediapipe_landmarklistsplice)
 - [mediapipe::NormalizedLandmark](#mediapipenormalizedlandmark)
   - [mediapipe::NormalizedLandmark::get_create](#mediapipenormalizedlandmarkget_create)
+  - [mediapipe::NormalizedLandmark::ClearField](#mediapipenormalizedlandmarkclearfield)
   - [mediapipe::NormalizedLandmark::str](#mediapipenormalizedlandmarkstr)
 - [mediapipe::NormalizedLandmarkList](#mediapipenormalizedlandmarklist)
   - [mediapipe::NormalizedLandmarkList::get_create](#mediapipenormalizedlandmarklistget_create)
+  - [mediapipe::NormalizedLandmarkList::ClearField](#mediapipenormalizedlandmarklistclearfield)
   - [mediapipe::NormalizedLandmarkList::str](#mediapipenormalizedlandmarkliststr)
 - [google::protobuf::Repeated_mediapipe_NormalizedLandmark](#googleprotobufrepeated_mediapipe_normalizedlandmark)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::create](#googleprotobufrepeated_mediapipe_normalizedlandmarkcreate)
@@ -744,6 +782,7 @@
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::splice](#googleprotobufrepeated_mediapipe_normalizedlandmarksplice)
 - [mediapipe::NormalizedLandmarkListCollection](#mediapipenormalizedlandmarklistcollection)
   - [mediapipe::NormalizedLandmarkListCollection::get_create](#mediapipenormalizedlandmarklistcollectionget_create)
+  - [mediapipe::NormalizedLandmarkListCollection::ClearField](#mediapipenormalizedlandmarklistcollectionclearfield)
   - [mediapipe::NormalizedLandmarkListCollection::str](#mediapipenormalizedlandmarklistcollectionstr)
 - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList](#googleprotobufrepeated_mediapipe_normalizedlandmarklist)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::create](#googleprotobufrepeated_mediapipe_normalizedlandmarklistcreate)
@@ -767,6 +806,7 @@
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::splice](#googleprotobufrepeated_mediapipe_normalizedlandmarklistsplice)
 - [mediapipe::ConstantSidePacketCalculatorOptions](#mediapipeconstantsidepacketcalculatoroptions)
   - [mediapipe::ConstantSidePacketCalculatorOptions::get_create](#mediapipeconstantsidepacketcalculatoroptionsget_create)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ClearField](#mediapipeconstantsidepacketcalculatoroptionsclearfield)
   - [mediapipe::ConstantSidePacketCalculatorOptions::str](#mediapipeconstantsidepacketcalculatoroptionsstr)
 - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacket)
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::create](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketcreate)
@@ -790,39 +830,51 @@
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::splice](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketsplice)
 - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacket)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get_create](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketget_create)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ClearField](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketclearfield)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::str](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketstr)
 - [mediapipe::ScaleMode](#mediapipescalemode)
   - [mediapipe::ScaleMode::get_create](#mediapipescalemodeget_create)
+  - [mediapipe::ScaleMode::ClearField](#mediapipescalemodeclearfield)
   - [mediapipe::ScaleMode::str](#mediapipescalemodestr)
 - [mediapipe::RotationMode](#mediapiperotationmode)
   - [mediapipe::RotationMode::get_create](#mediapiperotationmodeget_create)
+  - [mediapipe::RotationMode::ClearField](#mediapiperotationmodeclearfield)
   - [mediapipe::RotationMode::str](#mediapiperotationmodestr)
 - [mediapipe::ImageTransformationCalculatorOptions](#mediapipeimagetransformationcalculatoroptions)
   - [mediapipe::ImageTransformationCalculatorOptions::get_create](#mediapipeimagetransformationcalculatoroptionsget_create)
+  - [mediapipe::ImageTransformationCalculatorOptions::ClearField](#mediapipeimagetransformationcalculatoroptionsclearfield)
   - [mediapipe::ImageTransformationCalculatorOptions::str](#mediapipeimagetransformationcalculatoroptionsstr)
 - [mediapipe::TensorsToDetectionsCalculatorOptions](#mediapipetensorstodetectionscalculatoroptions)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::get_create](#mediapipetensorstodetectionscalculatoroptionsget_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::ClearField](#mediapipetensorstodetectionscalculatoroptionsclearfield)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::str](#mediapipetensorstodetectionscalculatoroptionsstr)
 - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping](#mediapipetensorstodetectionscalculatoroptionstensormapping)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::get_create](#mediapipetensorstodetectionscalculatoroptionstensormappingget_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ClearField](#mediapipetensorstodetectionscalculatoroptionstensormappingclearfield)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::str](#mediapipetensorstodetectionscalculatoroptionstensormappingstr)
 - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindices)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::get_create](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesget_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ClearField](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesclearfield)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::str](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesstr)
 - [mediapipe::LandmarksSmoothingCalculatorOptions](#mediapipelandmarkssmoothingcalculatoroptions)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::get_create](#mediapipelandmarkssmoothingcalculatoroptionsget_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsclearfield)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::str](#mediapipelandmarkssmoothingcalculatoroptionsstr)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter](#mediapipelandmarkssmoothingcalculatoroptionsnofilter)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::get_create](#mediapipelandmarkssmoothingcalculatoroptionsnofilterget_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsnofilterclearfield)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::str](#mediapipelandmarkssmoothingcalculatoroptionsnofilterstr)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilter)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::get_create](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterget_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterclearfield)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::str](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterstr)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilter)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::get_create](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterget_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterclearfield)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::str](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterstr)
 - [mediapipe::LogicCalculatorOptions](#mediapipelogiccalculatoroptions)
   - [mediapipe::LogicCalculatorOptions::get_create](#mediapipelogiccalculatoroptionsget_create)
+  - [mediapipe::LogicCalculatorOptions::ClearField](#mediapipelogiccalculatoroptionsclearfield)
   - [mediapipe::LogicCalculatorOptions::str](#mediapipelogiccalculatoroptionsstr)
 - [google::protobuf::Repeated_bool](#googleprotobufrepeated_bool)
   - [google::protobuf::Repeated_bool::create](#googleprotobufrepeated_boolcreate)
@@ -847,12 +899,15 @@
   - [google::protobuf::Repeated_bool::splice](#googleprotobufrepeated_boolsplice)
 - [mediapipe::ThresholdingCalculatorOptions](#mediapipethresholdingcalculatoroptions)
   - [mediapipe::ThresholdingCalculatorOptions::get_create](#mediapipethresholdingcalculatoroptionsget_create)
+  - [mediapipe::ThresholdingCalculatorOptions::ClearField](#mediapipethresholdingcalculatoroptionsclearfield)
   - [mediapipe::ThresholdingCalculatorOptions::str](#mediapipethresholdingcalculatoroptionsstr)
 - [mediapipe::BeliefDecoderConfig](#mediapipebeliefdecoderconfig)
   - [mediapipe::BeliefDecoderConfig::get_create](#mediapipebeliefdecoderconfigget_create)
+  - [mediapipe::BeliefDecoderConfig::ClearField](#mediapipebeliefdecoderconfigclearfield)
   - [mediapipe::BeliefDecoderConfig::str](#mediapipebeliefdecoderconfigstr)
 - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions](#mediapipelift2dframeannotationto3dcalculatoroptions)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::get_create](#mediapipelift2dframeannotationto3dcalculatoroptionsget_create)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ClearField](#mediapipelift2dframeannotationto3dcalculatoroptionsclearfield)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::str](#mediapipelift2dframeannotationto3dcalculatoroptionsstr)
 - [VectorOfString](#vectorofstring)
   - [VectorOfString::create](#vectorofstringcreate)
@@ -3374,6 +3429,14 @@ AutoIt:
 
 ## google::protobuf::Message
 
+### google::protobuf::Message::ClearField
+
+```cpp
+void google::protobuf::Message::ClearField( const std::string& field_name );
+AutoIt:
+    $oMessage.ClearField( $field_name ) -> None
+```
+
 ### google::protobuf::Message::str
 
 ```cpp
@@ -3438,6 +3501,14 @@ static google::protobuf::Any google::protobuf::Any::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Any").create() -> <google.protobuf.Any object>
     _Mediapipe_ObjCreate("google.protobuf.Any")() -> <google.protobuf.Any object>
+```
+
+### google::protobuf::Any::ClearField
+
+```cpp
+void google::protobuf::Any::ClearField( const std::string& field_name );
+AutoIt:
+    $oAny.ClearField( $field_name ) -> None
 ```
 
 ### google::protobuf::Any::Pack
@@ -3731,6 +3802,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorOptions")() -> <mediapipe.CalculatorOptions object>
 ```
 
+### mediapipe::CalculatorOptions::ClearField
+
+```cpp
+void mediapipe::CalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oCalculatorOptions.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::CalculatorOptions::get_Extensions
 
 ```cpp
@@ -3794,6 +3873,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.MediaPipeOptions")() -> <mediapipe.MediaPipeOptions object>
 ```
 
+### mediapipe::MediaPipeOptions::ClearField
+
+```cpp
+void mediapipe::MediaPipeOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oMediaPipeOptions.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::MediaPipeOptions::str
 
 ```cpp
@@ -3811,6 +3898,14 @@ static mediapipe::PacketFactoryOptions mediapipe::PacketFactoryOptions::get_crea
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryOptions").create() -> <mediapipe.PacketFactoryOptions object>
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryOptions")() -> <mediapipe.PacketFactoryOptions object>
+```
+
+### mediapipe::PacketFactoryOptions::ClearField
+
+```cpp
+void mediapipe::PacketFactoryOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oPacketFactoryOptions.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::PacketFactoryOptions::str
@@ -3832,6 +3927,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryConfig")() -> <mediapipe.PacketFactoryConfig object>
 ```
 
+### mediapipe::PacketFactoryConfig::ClearField
+
+```cpp
+void mediapipe::PacketFactoryConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oPacketFactoryConfig.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::PacketFactoryConfig::str
 
 ```cpp
@@ -3849,6 +3952,14 @@ static mediapipe::PacketManagerConfig mediapipe::PacketManagerConfig::get_create
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketManagerConfig").create() -> <mediapipe.PacketManagerConfig object>
     _Mediapipe_ObjCreate("mediapipe.PacketManagerConfig")() -> <mediapipe.PacketManagerConfig object>
+```
+
+### mediapipe::PacketManagerConfig::ClearField
+
+```cpp
+void mediapipe::PacketManagerConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oPacketManagerConfig.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::PacketManagerConfig::str
@@ -4073,6 +4184,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorOptions")() -> <mediapipe.PacketGeneratorOptions object>
 ```
 
+### mediapipe::PacketGeneratorOptions::ClearField
+
+```cpp
+void mediapipe::PacketGeneratorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oPacketGeneratorOptions.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::PacketGeneratorOptions::str
 
 ```cpp
@@ -4090,6 +4209,14 @@ static mediapipe::PacketGeneratorConfig mediapipe::PacketGeneratorConfig::get_cr
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorConfig").create() -> <mediapipe.PacketGeneratorConfig object>
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorConfig")() -> <mediapipe.PacketGeneratorConfig object>
+```
+
+### mediapipe::PacketGeneratorConfig::ClearField
+
+```cpp
+void mediapipe::PacketGeneratorConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oPacketGeneratorConfig.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::PacketGeneratorConfig::str
@@ -4305,6 +4432,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.StatusHandlerConfig")() -> <mediapipe.StatusHandlerConfig object>
 ```
 
+### mediapipe::StatusHandlerConfig::ClearField
+
+```cpp
+void mediapipe::StatusHandlerConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oStatusHandlerConfig.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::StatusHandlerConfig::str
 
 ```cpp
@@ -4322,6 +4457,14 @@ static mediapipe::InputStreamHandlerConfig mediapipe::InputStreamHandlerConfig::
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputStreamHandlerConfig").create() -> <mediapipe.InputStreamHandlerConfig object>
     _Mediapipe_ObjCreate("mediapipe.InputStreamHandlerConfig")() -> <mediapipe.InputStreamHandlerConfig object>
+```
+
+### mediapipe::InputStreamHandlerConfig::ClearField
+
+```cpp
+void mediapipe::InputStreamHandlerConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oInputStreamHandlerConfig.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::InputStreamHandlerConfig::str
@@ -4343,6 +4486,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.OutputStreamHandlerConfig")() -> <mediapipe.OutputStreamHandlerConfig object>
 ```
 
+### mediapipe::OutputStreamHandlerConfig::ClearField
+
+```cpp
+void mediapipe::OutputStreamHandlerConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oOutputStreamHandlerConfig.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::OutputStreamHandlerConfig::str
 
 ```cpp
@@ -4360,6 +4511,14 @@ static mediapipe::ExecutorConfig mediapipe::ExecutorConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ExecutorConfig").create() -> <mediapipe.ExecutorConfig object>
     _Mediapipe_ObjCreate("mediapipe.ExecutorConfig")() -> <mediapipe.ExecutorConfig object>
+```
+
+### mediapipe::ExecutorConfig::ClearField
+
+```cpp
+void mediapipe::ExecutorConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oExecutorConfig.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::ExecutorConfig::str
@@ -4381,6 +4540,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputCollection")() -> <mediapipe.InputCollection object>
 ```
 
+### mediapipe::InputCollection::ClearField
+
+```cpp
+void mediapipe::InputCollection::ClearField( const std::string& field_name );
+AutoIt:
+    $oInputCollection.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::InputCollection::str
 
 ```cpp
@@ -4398,6 +4565,14 @@ static mediapipe::InputCollectionSet mediapipe::InputCollectionSet::get_create()
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputCollectionSet").create() -> <mediapipe.InputCollectionSet object>
     _Mediapipe_ObjCreate("mediapipe.InputCollectionSet")() -> <mediapipe.InputCollectionSet object>
+```
+
+### mediapipe::InputCollectionSet::ClearField
+
+```cpp
+void mediapipe::InputCollectionSet::ClearField( const std::string& field_name );
+AutoIt:
+    $oInputCollectionSet.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::InputCollectionSet::str
@@ -4622,6 +4797,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputStreamInfo")() -> <mediapipe.InputStreamInfo object>
 ```
 
+### mediapipe::InputStreamInfo::ClearField
+
+```cpp
+void mediapipe::InputStreamInfo::ClearField( const std::string& field_name );
+AutoIt:
+    $oInputStreamInfo.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::InputStreamInfo::str
 
 ```cpp
@@ -4639,6 +4822,14 @@ static mediapipe::ProfilerConfig mediapipe::ProfilerConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ProfilerConfig").create() -> <mediapipe.ProfilerConfig object>
     _Mediapipe_ObjCreate("mediapipe.ProfilerConfig")() -> <mediapipe.ProfilerConfig object>
+```
+
+### mediapipe::ProfilerConfig::ClearField
+
+```cpp
+void mediapipe::ProfilerConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oProfilerConfig.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::ProfilerConfig::str
@@ -4852,6 +5043,14 @@ static mediapipe::CalculatorGraphConfig mediapipe::CalculatorGraphConfig::get_cr
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig").create() -> <mediapipe.CalculatorGraphConfig object>
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig")() -> <mediapipe.CalculatorGraphConfig object>
+```
+
+### mediapipe::CalculatorGraphConfig::ClearField
+
+```cpp
+void mediapipe::CalculatorGraphConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oCalculatorGraphConfig.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::CalculatorGraphConfig::str
@@ -5888,6 +6087,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig.Node")() -> <mediapipe.CalculatorGraphConfig.Node object>
 ```
 
+### mediapipe::CalculatorGraphConfig::Node::ClearField
+
+```cpp
+void mediapipe::CalculatorGraphConfig::Node::ClearField( const std::string& field_name );
+AutoIt:
+    $oNode.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::CalculatorGraphConfig::Node::str
 
 ```cpp
@@ -6108,6 +6315,14 @@ static mediapipe::Rasterization mediapipe::Rasterization::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rasterization").create() -> <mediapipe.Rasterization object>
     _Mediapipe_ObjCreate("mediapipe.Rasterization")() -> <mediapipe.Rasterization object>
+```
+
+### mediapipe::Rasterization::ClearField
+
+```cpp
+void mediapipe::Rasterization::ClearField( const std::string& field_name );
+AutoIt:
+    $oRasterization.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::Rasterization::str
@@ -6332,6 +6547,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rasterization.Interval")() -> <mediapipe.Rasterization.Interval object>
 ```
 
+### mediapipe::Rasterization::Interval::ClearField
+
+```cpp
+void mediapipe::Rasterization::Interval::ClearField( const std::string& field_name );
+AutoIt:
+    $oInterval.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::Rasterization::Interval::str
 
 ```cpp
@@ -6349,6 +6572,14 @@ static mediapipe::LocationData mediapipe::LocationData::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData").create() -> <mediapipe.LocationData object>
     _Mediapipe_ObjCreate("mediapipe.LocationData")() -> <mediapipe.LocationData object>
+```
+
+### mediapipe::LocationData::ClearField
+
+```cpp
+void mediapipe::LocationData::ClearField( const std::string& field_name );
+AutoIt:
+    $oLocationData.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::LocationData::str
@@ -6573,6 +6804,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.BoundingBox")() -> <mediapipe.LocationData.BoundingBox object>
 ```
 
+### mediapipe::LocationData::BoundingBox::ClearField
+
+```cpp
+void mediapipe::LocationData::BoundingBox::ClearField( const std::string& field_name );
+AutoIt:
+    $oBoundingBox.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::LocationData::BoundingBox::str
 
 ```cpp
@@ -6590,6 +6829,14 @@ static mediapipe::LocationData::RelativeBoundingBox mediapipe::LocationData::Rel
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeBoundingBox").create() -> <mediapipe.LocationData.RelativeBoundingBox object>
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeBoundingBox")() -> <mediapipe.LocationData.RelativeBoundingBox object>
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::ClearField
+
+```cpp
+void mediapipe::LocationData::RelativeBoundingBox::ClearField( const std::string& field_name );
+AutoIt:
+    $oRelativeBoundingBox.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::LocationData::RelativeBoundingBox::str
@@ -6611,6 +6858,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.BinaryMask")() -> <mediapipe.LocationData.BinaryMask object>
 ```
 
+### mediapipe::LocationData::BinaryMask::ClearField
+
+```cpp
+void mediapipe::LocationData::BinaryMask::ClearField( const std::string& field_name );
+AutoIt:
+    $oBinaryMask.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::LocationData::BinaryMask::str
 
 ```cpp
@@ -6630,6 +6885,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeKeypoint")() -> <mediapipe.LocationData.RelativeKeypoint object>
 ```
 
+### mediapipe::LocationData::RelativeKeypoint::ClearField
+
+```cpp
+void mediapipe::LocationData::RelativeKeypoint::ClearField( const std::string& field_name );
+AutoIt:
+    $oRelativeKeypoint.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::LocationData::RelativeKeypoint::str
 
 ```cpp
@@ -6647,6 +6910,14 @@ static mediapipe::Detection mediapipe::Detection::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection").create() -> <mediapipe.Detection object>
     _Mediapipe_ObjCreate("mediapipe.Detection")() -> <mediapipe.Detection object>
+```
+
+### mediapipe::Detection::ClearField
+
+```cpp
+void mediapipe::Detection::ClearField( const std::string& field_name );
+AutoIt:
+    $oDetection.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::Detection::str
@@ -7065,6 +7336,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection.AssociatedDetection")() -> <mediapipe.Detection.AssociatedDetection object>
 ```
 
+### mediapipe::Detection::AssociatedDetection::ClearField
+
+```cpp
+void mediapipe::Detection::AssociatedDetection::ClearField( const std::string& field_name );
+AutoIt:
+    $oAssociatedDetection.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::Detection::AssociatedDetection::str
 
 ```cpp
@@ -7082,6 +7361,14 @@ static mediapipe::DetectionList mediapipe::DetectionList::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.DetectionList").create() -> <mediapipe.DetectionList object>
     _Mediapipe_ObjCreate("mediapipe.DetectionList")() -> <mediapipe.DetectionList object>
+```
+
+### mediapipe::DetectionList::ClearField
+
+```cpp
+void mediapipe::DetectionList::ClearField( const std::string& field_name );
+AutoIt:
+    $oDetectionList.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::DetectionList::str
@@ -7306,6 +7593,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageFormat")() -> <mediapipe.ImageFormat object>
 ```
 
+### mediapipe::ImageFormat::ClearField
+
+```cpp
+void mediapipe::ImageFormat::ClearField( const std::string& field_name );
+AutoIt:
+    $oImageFormat.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::ImageFormat::str
 
 ```cpp
@@ -7325,6 +7620,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Classification")() -> <mediapipe.Classification object>
 ```
 
+### mediapipe::Classification::ClearField
+
+```cpp
+void mediapipe::Classification::ClearField( const std::string& field_name );
+AutoIt:
+    $oClassification.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::Classification::str
 
 ```cpp
@@ -7342,6 +7645,14 @@ static mediapipe::ClassificationList mediapipe::ClassificationList::get_create()
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ClassificationList").create() -> <mediapipe.ClassificationList object>
     _Mediapipe_ObjCreate("mediapipe.ClassificationList")() -> <mediapipe.ClassificationList object>
+```
+
+### mediapipe::ClassificationList::ClearField
+
+```cpp
+void mediapipe::ClassificationList::ClearField( const std::string& field_name );
+AutoIt:
+    $oClassificationList.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::ClassificationList::str
@@ -7566,6 +7877,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ClassificationListCollection")() -> <mediapipe.ClassificationListCollection object>
 ```
 
+### mediapipe::ClassificationListCollection::ClearField
+
+```cpp
+void mediapipe::ClassificationListCollection::ClearField( const std::string& field_name );
+AutoIt:
+    $oClassificationListCollection.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::ClassificationListCollection::str
 
 ```cpp
@@ -7788,6 +8107,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Landmark")() -> <mediapipe.Landmark object>
 ```
 
+### mediapipe::Landmark::ClearField
+
+```cpp
+void mediapipe::Landmark::ClearField( const std::string& field_name );
+AutoIt:
+    $oLandmark.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::Landmark::str
 
 ```cpp
@@ -7805,6 +8132,14 @@ static mediapipe::LandmarkList mediapipe::LandmarkList::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarkList").create() -> <mediapipe.LandmarkList object>
     _Mediapipe_ObjCreate("mediapipe.LandmarkList")() -> <mediapipe.LandmarkList object>
+```
+
+### mediapipe::LandmarkList::ClearField
+
+```cpp
+void mediapipe::LandmarkList::ClearField( const std::string& field_name );
+AutoIt:
+    $oLandmarkList.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::LandmarkList::str
@@ -8029,6 +8364,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarkListCollection")() -> <mediapipe.LandmarkListCollection object>
 ```
 
+### mediapipe::LandmarkListCollection::ClearField
+
+```cpp
+void mediapipe::LandmarkListCollection::ClearField( const std::string& field_name );
+AutoIt:
+    $oLandmarkListCollection.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::LandmarkListCollection::str
 
 ```cpp
@@ -8251,6 +8594,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmark")() -> <mediapipe.NormalizedLandmark object>
 ```
 
+### mediapipe::NormalizedLandmark::ClearField
+
+```cpp
+void mediapipe::NormalizedLandmark::ClearField( const std::string& field_name );
+AutoIt:
+    $oNormalizedLandmark.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::NormalizedLandmark::str
 
 ```cpp
@@ -8268,6 +8619,14 @@ static mediapipe::NormalizedLandmarkList mediapipe::NormalizedLandmarkList::get_
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkList").create() -> <mediapipe.NormalizedLandmarkList object>
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkList")() -> <mediapipe.NormalizedLandmarkList object>
+```
+
+### mediapipe::NormalizedLandmarkList::ClearField
+
+```cpp
+void mediapipe::NormalizedLandmarkList::ClearField( const std::string& field_name );
+AutoIt:
+    $oNormalizedLandmarkList.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::NormalizedLandmarkList::str
@@ -8492,6 +8851,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkListCollection")() -> <mediapipe.NormalizedLandmarkListCollection object>
 ```
 
+### mediapipe::NormalizedLandmarkListCollection::ClearField
+
+```cpp
+void mediapipe::NormalizedLandmarkListCollection::ClearField( const std::string& field_name );
+AutoIt:
+    $oNormalizedLandmarkListCollection.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::NormalizedLandmarkListCollection::str
 
 ```cpp
@@ -8712,6 +9079,14 @@ static mediapipe::ConstantSidePacketCalculatorOptions mediapipe::ConstantSidePac
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions").create() -> <mediapipe.ConstantSidePacketCalculatorOptions object>
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions")() -> <mediapipe.ConstantSidePacketCalculatorOptions object>
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ClearField
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::str
@@ -8936,6 +9311,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket")() -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
 ```
 
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ClearField
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ClearField( const std::string& field_name );
+AutoIt:
+    $oConstantSidePacket.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::str
 
 ```cpp
@@ -8953,6 +9336,14 @@ static mediapipe::ScaleMode mediapipe::ScaleMode::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ScaleMode").create() -> <mediapipe.ScaleMode object>
     _Mediapipe_ObjCreate("mediapipe.ScaleMode")() -> <mediapipe.ScaleMode object>
+```
+
+### mediapipe::ScaleMode::ClearField
+
+```cpp
+void mediapipe::ScaleMode::ClearField( const std::string& field_name );
+AutoIt:
+    $oScaleMode.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::ScaleMode::str
@@ -8974,6 +9365,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.RotationMode")() -> <mediapipe.RotationMode object>
 ```
 
+### mediapipe::RotationMode::ClearField
+
+```cpp
+void mediapipe::RotationMode::ClearField( const std::string& field_name );
+AutoIt:
+    $oRotationMode.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::RotationMode::str
 
 ```cpp
@@ -8991,6 +9390,14 @@ static mediapipe::ImageTransformationCalculatorOptions mediapipe::ImageTransform
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageTransformationCalculatorOptions").create() -> <mediapipe.ImageTransformationCalculatorOptions object>
     _Mediapipe_ObjCreate("mediapipe.ImageTransformationCalculatorOptions")() -> <mediapipe.ImageTransformationCalculatorOptions object>
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::ClearField
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oImageTransformationCalculatorOptions.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::ImageTransformationCalculatorOptions::str
@@ -9012,6 +9419,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions")() -> <mediapipe.TensorsToDetectionsCalculatorOptions object>
 ```
 
+### mediapipe::TensorsToDetectionsCalculatorOptions::ClearField
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::TensorsToDetectionsCalculatorOptions::str
 
 ```cpp
@@ -9029,6 +9444,14 @@ static mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping mediapipe:
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping").create() -> <mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping object>
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping")() -> <mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping object>
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ClearField
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ClearField( const std::string& field_name );
+AutoIt:
+    $oTensorMapping.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::str
@@ -9050,6 +9473,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices")() -> <mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices object>
 ```
 
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ClearField
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ClearField( const std::string& field_name );
+AutoIt:
+    $oBoxBoundariesIndices.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::str
 
 ```cpp
@@ -9067,6 +9498,14 @@ static mediapipe::LandmarksSmoothingCalculatorOptions mediapipe::LandmarksSmooth
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions object>
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions")() -> <mediapipe.LandmarksSmoothingCalculatorOptions object>
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::ClearField
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::str
@@ -9088,6 +9527,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ClearField
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ClearField( const std::string& field_name );
+AutoIt:
+    $oNoFilter.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::str
 
 ```cpp
@@ -9105,6 +9552,14 @@ static mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter mediapipe:
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter object>
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter object>
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ClearField
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ClearField( const std::string& field_name );
+AutoIt:
+    $oVelocityFilter.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::str
@@ -9126,6 +9581,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ClearField
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ClearField( const std::string& field_name );
+AutoIt:
+    $oOneEuroFilter.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::str
 
 ```cpp
@@ -9143,6 +9606,14 @@ static mediapipe::LogicCalculatorOptions mediapipe::LogicCalculatorOptions::get_
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LogicCalculatorOptions").create() -> <mediapipe.LogicCalculatorOptions object>
     _Mediapipe_ObjCreate("mediapipe.LogicCalculatorOptions")() -> <mediapipe.LogicCalculatorOptions object>
+```
+
+### mediapipe::LogicCalculatorOptions::ClearField
+
+```cpp
+void mediapipe::LogicCalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oLogicCalculatorOptions.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::LogicCalculatorOptions::str
@@ -9358,6 +9829,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ThresholdingCalculatorOptions")() -> <mediapipe.ThresholdingCalculatorOptions object>
 ```
 
+### mediapipe::ThresholdingCalculatorOptions::ClearField
+
+```cpp
+void mediapipe::ThresholdingCalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oThresholdingCalculatorOptions.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::ThresholdingCalculatorOptions::str
 
 ```cpp
@@ -9377,6 +9856,14 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.BeliefDecoderConfig")() -> <mediapipe.BeliefDecoderConfig object>
 ```
 
+### mediapipe::BeliefDecoderConfig::ClearField
+
+```cpp
+void mediapipe::BeliefDecoderConfig::ClearField( const std::string& field_name );
+AutoIt:
+    $oBeliefDecoderConfig.ClearField( $field_name ) -> None
+```
+
 ### mediapipe::BeliefDecoderConfig::str
 
 ```cpp
@@ -9394,6 +9881,14 @@ static mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions mediapipe::Lift2DFr
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions").create() -> <mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions object>
     _Mediapipe_ObjCreate("mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions")() -> <mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions object>
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ClearField
+
+```cpp
+void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.ClearField( $field_name ) -> None
 ```
 
 ### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::str

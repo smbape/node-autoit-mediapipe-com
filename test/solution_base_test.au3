@@ -30,6 +30,29 @@ _AssertTrue(IsObj($detection_pb2), "Failed to load mediapipe.framework.formats.d
 Global $solution_base = _Mediapipe_ObjCreate("mediapipe.framework.solution_base")
 _AssertTrue(IsObj($solution_base), "Failed to load mediapipe.framework.solution_base")
 
+Global Const $CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG = "" & @CRLF & _
+		"  input_stream: 'image_in'" & @CRLF & _
+		"  output_stream: 'image_out'" & @CRLF & _
+		"  node {" & @CRLF & _
+		"    name: 'ImageTransformation'" & @CRLF & _
+		"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+		"    input_stream: 'IMAGE:image_in'" & @CRLF & _
+		"    output_stream: 'IMAGE:image_out'" & @CRLF & _
+		"    options: {" & @CRLF & _
+		"      [mediapipe.ImageTransformationCalculatorOptions.ext] {" & @CRLF & _
+		"         output_width: 10" & @CRLF & _
+		"         output_height: 10" & @CRLF & _
+		"      }" & @CRLF & _
+		"    }" & @CRLF & _
+		"    node_options: {" & @CRLF & _
+		"      [type.googleapis.com/mediapipe.ImageTransformationCalculatorOptions] {" & @CRLF & _
+		"         output_width: 10" & @CRLF & _
+		"         output_height: 10" & @CRLF & _
+		"      }" & @CRLF & _
+		"    }" & @CRLF & _
+		"  }" & @CRLF & _
+		""
+
 Test()
 
 Func Test()
@@ -49,6 +72,37 @@ Func Test()
 			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
 			"  }" & @CRLF & _
 			"")
+
+	test_solution_process("" & @CRLF & _
+			"  input_stream: 'image_in'" & @CRLF & _
+			"  input_side_packet: 'allow_signal'" & @CRLF & _
+			"  input_side_packet: 'rotation_degrees'" & @CRLF & _
+			"  output_stream: 'image_out'" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:image_in'" & @CRLF & _
+			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @CRLF & _
+			"    output_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
+			"  }" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'GateCalculator'" & @CRLF & _
+			"    input_stream: 'transformed_image_in'" & @CRLF & _
+			"    input_side_packet: 'ALLOW:allow_signal'" & @CRLF & _
+			"    output_stream: 'image_out_to_transform'" & @CRLF & _
+			"  }" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:image_out_to_transform'" & @CRLF & _
+			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @CRLF & _
+			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
+			"  }" & @CRLF & _
+			"", _Mediapipe_MapOfStringAndVariant( _
+			"allow_signal", True, _
+			"rotation_degrees", 0 _
+			))
+
+	test_modifying_calculator_proto2_options()
+	test_modifying_calculator_proto3_node_options()
 EndFunc   ;==>Test
 
 Func test_valid_input_data_type_proto()
@@ -87,6 +141,32 @@ Func test_solution_process($text_config, $side_inputs = Default)
 			$text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig()), _
 			$side_inputs)
 EndFunc   ;==>test_solution_process
+
+Func test_modifying_calculator_proto2_options()
+	Local $config_proto = $text_format.Parse($CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG, $calculator_pb2.CalculatorGraphConfig())
+
+	; To test proto2 options only, remove the proto3 node_options field from the
+	; graph config.
+	_AssertEqual("ImageTransformation", $config_proto.node(0).name)
+	$config_proto.node(0).ClearField("node_options")
+	_process_and_verify($config_proto, Default, _Mediapipe_MapOfStringAndVariant( _
+			"ImageTransformation.output_width", 0, _
+			"ImageTransformation.output_height", 0 _
+			))
+EndFunc   ;==>test_modifying_calculator_proto2_options
+
+Func test_modifying_calculator_proto3_node_options()
+	Local $config_proto = $text_format.Parse($CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG, $calculator_pb2.CalculatorGraphConfig())
+
+    ; To test proto3 node options only, remove the proto2 options field from the
+    ; graph config.
+	_AssertEqual("ImageTransformation", $config_proto.node(0).name)
+	$config_proto.node(0).ClearField("options")
+	_process_and_verify($config_proto, Default, _Mediapipe_MapOfStringAndVariant( _
+			"ImageTransformation.output_width", 0, _
+			"ImageTransformation.output_height", 0 _
+			))
+EndFunc   ;==>test_modifying_calculator_proto3_node_options
 
 Func _process_and_verify($config_proto, $side_inputs = Default, $calculator_params = Default)
 	Local $input_image = _RandomImage(3, 3, $CV_8UC3, 0, 27)

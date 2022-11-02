@@ -5,6 +5,10 @@ module.exports = [
         ["std::string*", "output", "", ["/O"]],
     ], "", ""],
 
+    ["google.protobuf.Message.ClearField", "void", ["/Call=google::protobuf::autoit::cmessage::ClearField", "/Expr=*__self->get(), $0"], [
+        ["std::string", "field_name", "", ["/C", "/Ref"]],
+    ], "", ""],
+
     ["class google.protobuf.FieldDescriptor", "", [], [
         ["std::string", "full_name", "", ["/R=full_name"]],
     ], "", ""],

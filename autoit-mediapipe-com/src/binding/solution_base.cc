@@ -79,33 +79,6 @@ namespace {
 	}
 }
 
-int ClearFieldByDescriptor(Message& message,
-	const FieldDescriptor* field_descriptor) {
-	if (!CheckFieldBelongsToMessage(message, field_descriptor)) {
-		return -1;
-	}
-
-	message.GetReflection()->ClearField(&message, field_descriptor);
-	return 0;
-}
-
-void ClearField(Message& message, const std::string& field_name) {
-	bool is_in_oneof;
-
-	const FieldDescriptor* field_descriptor = FindFieldWithOneofs(message, field_name, &is_in_oneof);
-	if (field_descriptor == NULL) {
-		if (!is_in_oneof) {
-			fprintf(stderr, "Protocol message has no \"%s\" field.", field_name);
-			fflush(stdout);
-			fflush(stderr);
-		}
-		return;
-	}
-
-	ClearFieldByDescriptor(message, field_descriptor);
-	return;
-}
-
 using RepeatedContainer = google::protobuf::autoit::RepeatedContainer;
 
 #define StringifyPacketDataType(enum_value) PacketDataTypeToChar[static_cast<int>(enum_value)]
@@ -279,7 +252,7 @@ namespace mediapipe {
 					auto field_name = calculator_and_field_name[1];
 
 					if (!nested_map.count(calculator_name)) {
-						nested_map.at(calculator_name) = {};
+						nested_map.insert_or_assign(calculator_name, OptionsFieldList());
 					}
 
 					nested_map.at(calculator_name).push_back({ field_name, field_value });
@@ -349,7 +322,7 @@ namespace mediapipe {
 					for (auto& elem : *node.mutable_node_options()) {
 						const std::string& type_url = elem.type_url();
 						pos_end = type_url.find_last_of('/');
-						type_name = std::string_view(type_url).substr(pos_end == std::string::npos ? 0 : pos_end);
+						type_name = std::string_view(type_url).substr(pos_end == std::string::npos ? 0 : pos_end + 1);
 						if (type_name != OptionsType::GetDescriptor()->full_name()) {
 							continue;
 						}
@@ -610,7 +583,7 @@ namespace mediapipe {
 			) {
 				auto canonical_graph_config_proto = InitializeGraphInterface(graph_config, side_inputs, outputs, stream_type_hints);
 
-				if ((&calculator_params) != (&_noneMap)) {
+				if (!calculator_params.empty()) {
 					ModifyCalculatorOptions(canonical_graph_config_proto, calculator_params);
 				}
 

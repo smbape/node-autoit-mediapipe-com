@@ -45,14 +45,6 @@ namespace google {
 
 				static _variant_t None = default_variant();
 
-				const std::string ToStr(const Message& message) {
-					TextFormat::Printer printer;
-					printer.SetHideUnknownFields(true);
-					std::string output;
-					AUTOIT_ASSERT_THROW(printer.PrintToString(message, &output), "Unable to convert message to str");
-					return output;
-				}
-
 				const FieldDescriptor* FindFieldWithOneofs(
 					const Message& message,
 					const std::string& field_name,
@@ -440,11 +432,37 @@ namespace google {
 					internal::ParseContext ctx(depth, false, &ptr, StringPiece(data));
 
 					ptr = message->_InternalParse(ptr, &ctx);
-					AUTOIT_ASSERT_THROW(ptr != nullptr && ctx.BytesUntilLimit(ptr) > 0,
+					AUTOIT_ASSERT_THROW(ptr != nullptr && ctx.BytesUntilLimit(ptr) >= 0,
 						"Error parsing message with type '" << message->GetDescriptor()->full_name() << "'");
 
 					AUTOIT_ASSERT_THROW(ctx.EndedAtLimit(), "Unexpected end-group tag: Not all data was converted");
 				}
+
+				int ClearFieldByDescriptor(Message& message, const FieldDescriptor* field_descriptor) {
+					if (!CheckFieldBelongsToMessage(message, field_descriptor)) {
+						return -1;
+					}
+
+					message.GetReflection()->ClearField(&message, field_descriptor);
+					return 0;
+				}
+
+				void ClearField(Message& message, const std::string& field_name) {
+					bool is_in_oneof;
+
+					const FieldDescriptor* field_descriptor = FindFieldWithOneofs(message, field_name, &is_in_oneof);
+					if (field_descriptor == NULL) {
+						if (!is_in_oneof) {
+							fprintf(stderr, "Protocol message has no \"%s\" field.", field_name);
+							fflush(stdout);
+							fflush(stderr);
+						}
+						return;
+					}
+
+					ClearFieldByDescriptor(message, field_descriptor);
+				}
+
 			}
 		}
 	}
