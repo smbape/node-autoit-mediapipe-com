@@ -34,18 +34,33 @@ Test()
 
 Func Test()
 	test_valid_input_data_type_proto()
+
+	test_solution_process("" & @CRLF & _
+			"  input_stream: 'image_in'" & @CRLF & _
+			"  output_stream: 'image_out'" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:image_in'" & @CRLF & _
+			"    output_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
+			"  }" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
+			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
+			"  }" & @CRLF & _
+			"")
 EndFunc   ;==>Test
 
 Func test_valid_input_data_type_proto()
 	Local $text_config = "" & @CRLF & _
-		"  input_stream: 'input_detections'" & @CRLF & _
-		"  output_stream: 'output_detections'" & @CRLF & _
-		"  node {" & @CRLF & _
-		"    calculator: 'DetectionUniqueIdCalculator'" & @CRLF & _
-		"    input_stream: 'DETECTION_LIST:input_detections'" & @CRLF & _
-		"    output_stream: 'DETECTION_LIST:output_detections'" & @CRLF & _
-		"  }" & @CRLF & _
-		""
+			"  input_stream: 'input_detections'" & @CRLF & _
+			"  output_stream: 'output_detections'" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'DetectionUniqueIdCalculator'" & @CRLF & _
+			"    input_stream: 'DETECTION_LIST:input_detections'" & @CRLF & _
+			"    output_stream: 'DETECTION_LIST:output_detections'" & @CRLF & _
+			"  }" & @CRLF & _
+			""
 
 	Local $config_proto = $text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig())
 	Local $solution = $solution_base.SolutionBase($config_proto)
@@ -55,7 +70,8 @@ Func test_valid_input_data_type_proto()
 	$text_format.Parse('score: 0.5', $detection_1)
 	Local $detection_2 = $input_detections.detection.add()
 	$text_format.Parse('score: 0.8', $detection_2)
-	Local $results = $solution.process(_Mediapipe_MapOfStringAndVariant('input_dict', _Mediapipe_MapOfStringAndVariant('input_detections', $input_detections)))
+	Local $results = $solution.process(_Mediapipe_MapOfStringAndVariant('input_detections', $input_detections))
+	$solution = 0 ; check that outputs does not reference internal data
 	_AssertTrue($results.has("output_detections"))
 	_AssertEqual($results("output_detections").detection.size(), 2)
 	Local $expected_detection_1 = $detection_pb2.Detection()
@@ -65,6 +81,27 @@ Func test_valid_input_data_type_proto()
 	_AssertEqual($results("output_detections").detection(0).str(), $expected_detection_1.str())
 	_AssertEqual($results("output_detections").detection(1).str(), $expected_detection_2.str())
 EndFunc   ;==>test_valid_input_data_type_proto
+
+Func test_solution_process($text_config, $side_inputs = Default)
+	_process_and_verify( _
+			$text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig()), _
+			$side_inputs)
+EndFunc   ;==>test_solution_process
+
+Func _process_and_verify($config_proto, $side_inputs = Default, $calculator_params = Default)
+	Local $input_image = _RandomImage(3, 3, $CV_8UC3, 0, 27)
+	Local $solution = $solution_base.SolutionBase(_Mediapipe_Params( _
+			"graph_config", $config_proto, _
+			"side_inputs", $side_inputs, _
+			"calculator_params", $calculator_params _
+			))
+
+	Local $outputs = $solution.process($input_image)
+	Local $outputs2 = $solution.process(_Mediapipe_MapOfStringAndVariant('image_in', $input_image))
+	$solution = 0 ; check that outputs does not reference internal data
+	_AssertMatEqual($input_image, $outputs("image_out"))
+	_AssertMatEqual($input_image, $outputs2("image_out"))
+EndFunc   ;==>_process_and_verify
 
 Func _OnAutoItExit()
 	_OpenCV_Unregister_And_Close()

@@ -1,9 +1,9 @@
 /* eslint-disable no-magic-numbers */
 const version = process.env.npm_package_version || require("../package.json").version;
-const fs = require("fs");
-const sysPath = require("path");
-const {spawn} = require("child_process");
-const cpus = require("os").cpus().length;
+const fs = require("node:fs");
+const sysPath = require("node:path");
+const {spawn} = require("node:child_process");
+const cpus = require("node:os").cpus().length;
 const eachOfLimit = require("async/eachOfLimit");
 const series = require("async/series");
 const waterfall = require("async/waterfall");
@@ -83,8 +83,23 @@ class AutoItGenerator {
             }
         }
 
-        this.add_vector("vector<_variant_t>", {}, options);
-        this.namedParameters = this.classes.get(this.add_map("map<string, _variant_t>", {}, options));
+        // define NamedParameters
+        {
+            const {key_type, value_type} = this.classes.get(this.add_map("map<string, _variant_t>", {}, options));
+            const coclass = this.classes.get("NamedParameters");
+            coclass.key_type = key_type;
+            coclass.value_type = value_type;
+            const {fqn} = coclass;
+
+            coclass.addMethod([`${ fqn }.create`, `${ options.shared_ptr }<${ coclass.name }>`, ["/External", "/S"], [
+                [`std::vector<std::pair<${ key_type }, ${ value_type }>>`, "pairs", "", []],
+            ], "", ""]);
+
+            // make NamedParameters to be recognized as a collection
+            this.as_stl_enum(coclass, `std::pair<const ${ key_type }, ${ value_type }>`);
+
+            this.namedParameters = coclass;
+        }
 
         for (const fqn of IGNORED_CLASSES) {
             if (this.classes.has(fqn)) {
@@ -142,6 +157,8 @@ class AutoItGenerator {
 
                 for (const fname of parent.methods.keys()) {
                     if (fname === "create") {
+                        // ignore create method because it creates a base type instance
+                        // and not a derived type instance
                         continue;
                     }
 
@@ -247,14 +264,6 @@ class AutoItGenerator {
 
             // methods
             for (let fname of Array.from(coclass.methods.keys()).sort((a, b) => {
-                // if (a.startsWith("get_") || a.startsWith("put_")) {
-                //     a = a.slice("get_".length);
-                // }
-
-                // if (b.startsWith("get_") || b.startsWith("put_")) {
-                //     b = b.slice("get_".length);
-                // }
-
                 if (a === "create") {
                     return -1;
                 }
@@ -525,6 +534,10 @@ class AutoItGenerator {
                 `.replace(/^ {20}/mg, "").trim().replace(/[^\S\n]+$/mg, "") + LF);
             }
 
+            if (!coclass.is_vector && !coclass.is_stdmap && coclass !== this.namedParameters) {
+                this.addDependency(fqn, this.namedParameters.fqn);
+            }
+
             const dependencies = this.dependencies.has(fqn) ?
                 this.getOrderedDependencies(new Set(this.dependencies.get(fqn).values()))
                 : [];
@@ -560,12 +573,6 @@ class AutoItGenerator {
             }
 
             const includes = dependencies.map(dependency => `#include "${ dependency.getClassName() }.h"`);
-
-            if (coclass === this.namedParameters) {
-                includes.push(`\ntypedef ${ this.namedParameters.fqn } NamedParameters;\n`);
-            } else if (!coclass.is_vector && !coclass.is_stdmap) {
-                includes.push(`#include "${ this.namedParameters.getClassName() }.h"`);
-            }
 
             if (options.hdr !== false) {
                 coclass.cpp_quotes.unshift(`// C${ cotype }`);
@@ -880,7 +887,7 @@ class AutoItGenerator {
                                 doctoc_to_generate.add(filename);
                             }
 
-                            if (!filename.endsWith(".idl")) {
+                            if (!filename.endsWith(".idl") || options.skip.has("idl")) {
                                 next();
                                 return;
                             }
@@ -940,9 +947,38 @@ class AutoItGenerator {
                         "/target", "NT60",
                         `/out${ dirname }`,
                         filename
-                    ]), {
-                        stdio: "inherit",
+                    ]));
+
+                    const stdout = [];
+                    let nout = 0;
+                    const stderr = [];
+                    let nerr = 0;
+
+                    child.stdout.on("data", chunk => {
+                        nout += chunk.length;
+                        stdout.push(chunk);
                     });
+
+                    child.stderr.on("data", chunk => {
+                        nerr += chunk.length;
+                        stderr.push(chunk);
+                    });
+
+                    const _next = next;
+
+                    next = (err, ...args) => {
+                        if (err) {
+                            if (nout !== 0) {
+                                process.stdout.write(Buffer.concat(stdout, nout));
+                            }
+
+                            if (nerr !== 0) {
+                                process.stderr.write(Buffer.concat(stderr, nerr));
+                            }
+                        }
+
+                        _next(err, ...args);
+                    };
 
                     child.on("error", next);
                     child.on("close", next);

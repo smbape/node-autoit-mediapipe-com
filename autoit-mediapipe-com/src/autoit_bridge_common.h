@@ -15,6 +15,8 @@
 #include <string>
 #include <tuple>
 #include <type_traits>
+#include <typeindex>
+#include <typeinfo>
 #include <utility>
 #include <vector>
 
@@ -424,18 +426,23 @@ const bool is_assignable_from(std::pair<_Ty1, _Ty2>& out_val, VARIANT const* con
 		return false;
 	}
 
-	HRESULT hr;
-
 	typename ATL::template CComSafeArray<VARIANT> vArray;
 	vArray.Attach(V_ARRAY(in_val));
 
+	if (vArray.GetCount() != 2) {
+		vArray.Detach();
+		return false;
+	}
+
 	auto& vfirst = vArray.GetAt(0);
 	auto* pvfirst = &vfirst;
-	hr = is_assignable_from(out_val.first, pvfirst, false);
+
+	auto& vsecond = vArray.GetAt(1);
+	auto* pvsecond = &vsecond;
+
+	HRESULT hr = is_assignable_from(out_val.first, pvfirst, false);
 
 	if (SUCCEEDED(hr)) {
-		auto& vsecond = vArray.GetAt(1);
-		auto* pvsecond = &vsecond;
 		hr = is_assignable_from(out_val.second, pvsecond, false);
 	}
 
@@ -446,23 +453,40 @@ const bool is_assignable_from(std::pair<_Ty1, _Ty2>& out_val, VARIANT const* con
 
 template<typename _Ty1, typename _Ty2>
 HRESULT autoit_to(VARIANT const* const& in_val, std::pair<_Ty1, _Ty2>& out_val) {
+	if (PARAMETER_MISSING(in_val)) {
+		return S_OK;
+	}
+
+	if ((V_VT(in_val) & VT_ARRAY) != VT_ARRAY || (V_VT(in_val) ^ VT_ARRAY) != VT_VARIANT) {
+		return E_INVALIDARG;
+	}
+
 	typename ATL::template CComSafeArray<VARIANT> vArray;
 	vArray.Attach(V_ARRAY(in_val));
 
-	HRESULT hr;
+	if (vArray.GetCount() != 2) {
+		vArray.Detach();
+		return E_INVALIDARG;
+	}
 
 	auto& vfirst = vArray.GetAt(0);
 	auto* pvfirst = &vfirst;
-	hr = is_assignable_from(out_val.first, pvfirst, false);
-	if (SUCCEEDED(hr)) {
-		auto& vsecond = vArray.GetAt(1);
-		auto* pvsecond = &vsecond;
-		hr = is_assignable_from(out_val.second, pvsecond, false);
 
-		if (SUCCEEDED(hr)) {
-			autoit_to(pvfirst, out_val.first);
-			autoit_to(pvsecond, out_val.second);
-		}
+	auto& vsecond = vArray.GetAt(1);
+	auto* pvsecond = &vsecond;
+
+	HRESULT hr = is_assignable_from(out_val.first, pvfirst, false);
+
+	if (SUCCEEDED(hr)) {
+		hr = is_assignable_from(out_val.second, pvsecond, false);
+	}
+
+	if (SUCCEEDED(hr)) {
+		hr = autoit_to(pvfirst, out_val.first);
+	}
+
+	if (SUCCEEDED(hr)) {
+		hr = autoit_to(pvsecond, out_val.second);
 	}
 
 	vArray.Detach();
@@ -601,6 +625,19 @@ extern const HRESULT autoit_from(_Tp const& in_val, _Tp*& out_val) {
 	*out_val = in_val;
 	return S_OK;
 }
+
+#define MapOfStringAndVariant std::map<std::string, _variant_t>
+#pragma push_macro("CV_EXPORTS_W_SIMPLE")
+
+#ifdef CV_EXPORTS_W_SIMPLE
+#undef CV_EXPORTS_W_SIMPLE
+#endif
+#define CV_EXPORTS_W_SIMPLE
+
+class CV_EXPORTS_W_SIMPLE NamedParameters : public MapOfStringAndVariant {};
+
+#pragma pop_macro("CV_EXPORTS_W_SIMPLE")
+#undef MapOfStringAndVariant
 
 namespace autoit {
 	template <typename _Tp>

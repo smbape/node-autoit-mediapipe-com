@@ -293,7 +293,7 @@ const HRESULT GetInterfaceName(IUnknown* punk, VARIANT* vres) {
 }
 
 const bool is_assignable_from(_variant_t& out_val, VARIANT const* const& in_val, bool is_optional) {
-	return is_optional || !PARAMETER_MISSING(in_val);
+	return true;
 }
 
 const HRESULT autoit_to(VARIANT const* const& in_val, _variant_t& out_val) {

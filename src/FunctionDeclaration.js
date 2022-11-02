@@ -461,7 +461,7 @@ Object.assign(exports, {
                         idlname = new_idlname;
                         has_idlname_changed = true;
                     } else if (idlname !== new_idlname) {
-                        throw new Error(`diffÃ©rent idlnames for ${ fname } : ${ idlname } != ${ new_idlname }`);
+                        throw new Error(`différent idlnames for ${ fname } : ${ idlname } != ${ new_idlname }`);
                     }
                 } else if (modifier.startsWith("/id=")) {
                     const new_id = modifier.slice("/id=".length);

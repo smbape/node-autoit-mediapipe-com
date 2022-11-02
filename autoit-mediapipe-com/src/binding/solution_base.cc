@@ -566,12 +566,12 @@ namespace mediapipe {
 					break;
 				case PacketDataType::IMAGE: {
 					const Image& image = GetContent<Image>(output_packet);
-					hr = autoit_from(mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get()), _retval);
+					hr = autoit_from(mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get()).clone(), _retval);
 					break;
 				}
 				case PacketDataType::IMAGE_FRAME: {
 					const ImageFrame& image_frame = GetContent<ImageFrame>(output_packet);
-					hr = autoit_from(mediapipe::formats::MatView(&image_frame), _retval);
+					hr = autoit_from(mediapipe::formats::MatView(&image_frame).clone(), _retval);
 					break;
 				}
 				case PacketDataType::IMAGE_LIST: {

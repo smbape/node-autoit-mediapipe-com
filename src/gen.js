@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 
-const fs = require("fs");
-const fsPromises = require("fs/promises");
+const fs = require("node:fs");
+const fsPromises = require("node:fs/promises");
 const sysPath = require("path");
 const {spawn} = require("child_process");
 

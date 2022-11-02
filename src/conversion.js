@@ -178,6 +178,9 @@ Object.assign(exports, {
                 }
 
                 const HRESULT autoit_to(VARIANT const* const& in_val, ${ ename }& out_val) {
+                    if (PARAMETER_MISSING(in_val)) {
+                        return S_OK;
+                    }
                     int value = 0;
                     HRESULT hr = autoit_to(in_val, value);
                     if (SUCCEEDED(hr)) {
@@ -553,7 +556,7 @@ Object.assign(exports, {
             vector_conversion.convert(coclass, header, impl, options);
         }
 
-        if (coclass.is_stdmap) {
+        if (coclass.is_stdmap || generator.namedParameters === coclass) {
             map_conversion.convert(coclass, header, impl, options);
         }
 

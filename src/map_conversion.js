@@ -19,6 +19,10 @@ exports.declare = (generator, type, parent, options = {}) => {
 
     const [key_type, value_type] = PropertyDeclaration.getTupleTypes(type.slice("map<".length, -">".length));
     const coclass = generator.getCoClass(fqn, options);
+
+    generator.add_vector(`std::vector<std::pair<${ key_type }, ${ value_type }>>`, parent, options);
+    generator.add_vector(`std::vector<${ key_type }>`, parent, options);
+    generator.add_vector(`std::vector<${ value_type }>`, parent, options);
     generator.typedefs.set(fqn, cpptype);
 
     coclass.is_simple = true;
@@ -100,14 +104,13 @@ exports.declare = (generator, type, parent, options = {}) => {
 
 exports.convert = (coclass, header, impl, { shared_ptr, make_shared } = {}) => {
     const cotype = coclass.getClassName();
-    const { key_type, value_type } = coclass;
+    const { fqn, key_type, value_type } = coclass;
     const pair_type = `${ key_type }, ${ value_type }`;
-    const map_type = `std::map<${ pair_type }>`;
 
     impl.push(`
-        const ${ shared_ptr }<${ map_type }> C${ cotype }::create(std::vector<std::pair<${ pair_type }>>& pairs, HRESULT& hr) {
+        const ${ shared_ptr }<${ fqn }> C${ cotype }::create(std::vector<std::pair<${ pair_type }>>& pairs, HRESULT& hr) {
             hr = S_OK;
-            auto sp = ${ make_shared }<${ map_type }>();
+            auto sp = ${ make_shared }<${ fqn }>();
             for (const auto& pair_ : pairs) {
                 sp->insert_or_assign(pair_.first, pair_.second);
             }

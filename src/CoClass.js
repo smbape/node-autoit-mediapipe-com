@@ -137,7 +137,10 @@ class CoClass {
             this.methods.set(fname, []);
         }
 
-        this.methods.get(fname).push(decl);
+        const signature = JSON.stringify(decl);
+        if (!this.methods.get(fname).some(idecl => JSON.stringify(idecl) === decl)) {
+            this.methods.get(fname).push(decl);
+        }
     }
 
     addIDLName(idlname, fname, id) {
