@@ -103,6 +103,50 @@ Func Test()
 
 	test_modifying_calculator_proto2_options()
 	test_modifying_calculator_proto3_node_options()
+	test_adding_calculator_options()
+
+	test_solution_reset("" & @CRLF & _
+			"  input_stream: 'image_in'" & @CRLF & _
+			"  output_stream: 'image_out'" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:image_in'" & @CRLF & _
+			"    output_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
+			"  }" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
+			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
+			"  }" & @CRLF & _
+			"", Default)
+
+	test_solution_reset("" & @CRLF & _
+			"  input_stream: 'image_in'" & @CRLF & _
+			"  input_side_packet: 'allow_signal'" & @CRLF & _
+			"  input_side_packet: 'rotation_degrees'" & @CRLF & _
+			"  output_stream: 'image_out'" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:image_in'" & @CRLF & _
+			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @CRLF & _
+			"    output_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
+			"  }" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'GateCalculator'" & @CRLF & _
+			"    input_stream: 'transformed_image_in'" & @CRLF & _
+			"    input_side_packet: 'ALLOW:allow_signal'" & @CRLF & _
+			"    output_stream: 'image_out_to_transform'" & @CRLF & _
+			"  }" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:image_out_to_transform'" & @CRLF & _
+			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @CRLF & _
+			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
+			"  }" & @CRLF & _
+			"", _Mediapipe_MapOfStringAndVariant( _
+			"allow_signal", True, _
+			"rotation_degrees", 0 _
+			))
 EndFunc   ;==>Test
 
 Func test_valid_input_data_type_proto()
@@ -158,8 +202,8 @@ EndFunc   ;==>test_modifying_calculator_proto2_options
 Func test_modifying_calculator_proto3_node_options()
 	Local $config_proto = $text_format.Parse($CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG, $calculator_pb2.CalculatorGraphConfig())
 
-    ; To test proto3 node options only, remove the proto2 options field from the
-    ; graph config.
+	; To test proto3 node options only, remove the proto2 options field from the
+	; graph config.
 	_AssertEqual("ImageTransformation", $config_proto.node(0).name)
 	$config_proto.node(0).ClearField("options")
 	_process_and_verify($config_proto, Default, _Mediapipe_MapOfStringAndVariant( _
@@ -167,6 +211,37 @@ Func test_modifying_calculator_proto3_node_options()
 			"ImageTransformation.output_height", 0 _
 			))
 EndFunc   ;==>test_modifying_calculator_proto3_node_options
+
+Func test_adding_calculator_options()
+	Local $config_proto = $text_format.Parse($CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG, $calculator_pb2.CalculatorGraphConfig())
+
+	; To test a calculator with no options field, remove both proto2 options and
+	; proto3 node_options fields from the graph config.
+	_AssertEqual("ImageTransformation", $config_proto.node(0).name)
+	$config_proto.node(0).ClearField("options")
+	$config_proto.node(0).ClearField("node_options")
+	_process_and_verify($config_proto, Default, _Mediapipe_MapOfStringAndVariant( _
+			"ImageTransformation.output_width", 0, _
+			"ImageTransformation.output_height", 0 _
+			))
+EndFunc   ;==>test_adding_calculator_options
+
+Func test_solution_reset($text_config, $side_inputs)
+	Local $config_proto = $text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig())
+	Local $input_image = _RandomImage(3, 3, $CV_8UC3, 0, 27)
+	Local $solution = $solution_base.SolutionBase(_Mediapipe_Params( _
+			"graph_config", $config_proto, _
+			"side_inputs", $side_inputs _
+			))
+
+	Local $outputs
+
+	For $i = 0 To 9
+		$outputs = $solution.process($input_image)
+		_AssertMatEqual($input_image, $outputs("image_out"))
+		$solution.reset()
+	Next
+EndFunc   ;==>test_solution_reset
 
 Func _process_and_verify($config_proto, $side_inputs = Default, $calculator_params = Default)
 	Local $input_image = _RandomImage(3, 3, $CV_8UC3, 0, 27)
@@ -177,7 +252,7 @@ Func _process_and_verify($config_proto, $side_inputs = Default, $calculator_para
 			))
 
 	Local $outputs = $solution.process($input_image)
-	Local $outputs2 = $solution.process(_Mediapipe_MapOfStringAndVariant('image_in', $input_image))
+	Local $outputs2 = $solution.process(_Mediapipe_MapOfStringAndVariant("image_in", $input_image))
 	$solution = 0 ; check that outputs does not reference internal data
 	_AssertMatEqual($input_image, $outputs("image_out"))
 	_AssertMatEqual($input_image, $outputs2("image_out"))

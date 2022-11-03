@@ -110,7 +110,10 @@
   - [mediapipe::resource_util::set_resource_dir](#mediapiperesource_utilset_resource_dir)
 - [mediapipe::autoit::solution_base::SolutionBase](#mediapipeautoitsolution_basesolutionbase)
   - [mediapipe::autoit::solution_base::SolutionBase::get_create](#mediapipeautoitsolution_basesolutionbaseget_create)
+  - [mediapipe::autoit::solution_base::SolutionBase::close](#mediapipeautoitsolution_basesolutionbaseclose)
+  - [mediapipe::autoit::solution_base::SolutionBase::create_graph_options](#mediapipeautoitsolution_basesolutionbasecreate_graph_options)
   - [mediapipe::autoit::solution_base::SolutionBase::process](#mediapipeautoitsolution_basesolutionbaseprocess)
+  - [mediapipe::autoit::solution_base::SolutionBase::reset](#mediapipeautoitsolution_basesolutionbasereset)
 - [cv](#cv)
   - [cv::createMatFromBitmap](#cvcreatematfrombitmap)
   - [cv::haveImageReader](#cvhaveimagereader)
@@ -125,6 +128,7 @@
 - [mediapipe::CalculatorGraph](#mediapipecalculatorgraph)
   - [mediapipe::CalculatorGraph::get_create](#mediapipecalculatorgraphget_create)
   - [mediapipe::CalculatorGraph::add_packet_to_input_stream](#mediapipecalculatorgraphadd_packet_to_input_stream)
+  - [mediapipe::CalculatorGraph::close](#mediapipecalculatorgraphclose)
   - [mediapipe::CalculatorGraph::close_all_packet_sources](#mediapipecalculatorgraphclose_all_packet_sources)
   - [mediapipe::CalculatorGraph::close_input_stream](#mediapipecalculatorgraphclose_input_stream)
   - [mediapipe::CalculatorGraph::get_combined_error_message](#mediapipecalculatorgraphget_combined_error_message)
@@ -2508,6 +2512,23 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase")( $binary_graph_path[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
 ```
 
+### mediapipe::autoit::solution_base::SolutionBase::close
+
+```cpp
+void mediapipe::autoit::solution_base::SolutionBase::close();
+AutoIt:
+    $oSolutionBase.close() -> None
+```
+
+### mediapipe::autoit::solution_base::SolutionBase::create_graph_options
+
+```cpp
+std::shared_ptr<google::protobuf::Message> mediapipe::autoit::solution_base::SolutionBase::create_graph_options( std::shared_ptr<google::protobuf::Message> options_message,
+                                                                                                                 const std::map<std::string, _variant_t>&   values );
+AutoIt:
+    $oSolutionBase.create_graph_options( $options_message, $values ) -> retval
+```
+
 ### mediapipe::autoit::solution_base::SolutionBase::process
 
 ```cpp
@@ -2522,6 +2543,14 @@ void mediapipe::autoit::solution_base::SolutionBase::process( const std::map<std
                                                               std::map<std::string, _variant_t>&       solution_outputs );
 AutoIt:
     $oSolutionBase.process( $input_dict[, $solution_outputs] ) -> $solution_outputs
+```
+
+### mediapipe::autoit::solution_base::SolutionBase::reset
+
+```cpp
+void mediapipe::autoit::solution_base::SolutionBase::reset();
+AutoIt:
+    $oSolutionBase.reset() -> None
 ```
 
 ## cv
@@ -2663,6 +2692,14 @@ void mediapipe::CalculatorGraph::add_packet_to_input_stream( std::string&       
                                                              mediapipe::Timestamp& timestamp = Timestamp::Unset() );
 AutoIt:
     $oCalculatorGraph.add_packet_to_input_stream( $stream, $packet[, $timestamp] ) -> None
+```
+
+### mediapipe::CalculatorGraph::close
+
+```cpp
+void mediapipe::CalculatorGraph::close();
+AutoIt:
+    $oCalculatorGraph.close() -> None
 ```
 
 ### mediapipe::CalculatorGraph::close_all_packet_sources

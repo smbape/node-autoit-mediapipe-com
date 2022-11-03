@@ -1,6 +1,7 @@
 #include "autoit_bridge.h"
 #include "binding/repeated_container.h"
 #include "binding/message.h"
+#include "binding/calculator_graph.h"
 #include "mediapipe/calculators/core/constant_side_packet_calculator.pb.h"
 #include "mediapipe/calculators/image/image_transformation_calculator.pb.h"
 #include "mediapipe/calculators/tensor/tensors_to_detections_calculator.pb.h"
@@ -591,12 +592,13 @@ namespace mediapipe {
 					SetExtension(canonical_graph_config_proto.mutable_graph_options(), graph_options);
 				}
 
-				RaiseAutoItErrorIfNotOk(m_graph.Initialize(canonical_graph_config_proto));
+				m_graph.reset(new CalculatorGraph());
+				RaiseAutoItErrorIfNotOk(m_graph->Initialize(canonical_graph_config_proto));
 
 				for (const auto& stream : m_output_stream_type_info) {
 					std::string stream_name = stream.first;
 
-					RaiseAutoItErrorIfNotOk(m_graph.ObserveOutputStream(
+					RaiseAutoItErrorIfNotOk(m_graph->ObserveOutputStream(
 						stream_name,
 						[this, stream_name](const Packet& output_packet) {
 							absl::MutexLock lock(&callback_mutex);
@@ -611,7 +613,7 @@ namespace mediapipe {
 					m_input_side_packets[name] = *MakePacket(m_side_input_type_info[name], data);
 				}
 
-				RaiseAutoItErrorIfNotOk(m_graph.StartRun(m_input_side_packets));
+				RaiseAutoItErrorIfNotOk(m_graph->StartRun(m_input_side_packets));
 			}
 
 			void SolutionBase::process(const cv::Mat& input_data, std::map<std::string, _variant_t>& solution_outputs) {
@@ -654,10 +656,10 @@ namespace mediapipe {
 					auto packet_shared = MakePacket(input_stream_type, data);
 					AUTOIT_ASSERT_THROW(packet_shared.use_count() == 1, "Packet must have a unique holder");
 					auto packet = std::move(*packet_shared.get()).At(simulated_timestamp);
-					RaiseAutoItErrorIfNotOk(m_graph.AddPacketToInputStream(stream_name, std::move(packet)));
+					RaiseAutoItErrorIfNotOk(m_graph->AddPacketToInputStream(stream_name, std::move(packet)));
 				}
 
-				RaiseAutoItErrorIfNotOk(m_graph.WaitUntilIdle());
+				RaiseAutoItErrorIfNotOk(m_graph->WaitUntilIdle());
 
 				solution_outputs.clear();
 
@@ -671,6 +673,42 @@ namespace mediapipe {
 				}
 			}
 
+			void SolutionBase::close() {
+				calculator_graph::close(m_graph.get());
+				m_graph.reset();
+				m_input_stream_type_info.clear();
+				m_output_stream_type_info.clear();
+			}
+
+			void SolutionBase::reset() {
+				if (m_graph) {
+					calculator_graph::close(m_graph.get());
+					RaiseAutoItErrorIfNotOk(m_graph->StartRun(m_input_side_packets));
+				}
+			}
+
+			static void _create_graph_options(Message& options_message, const std::map<std::string, _variant_t>& values) {
+				for (const auto& [field, value] : values) {
+					// TODO
+				}
+			}
+
+			std::shared_ptr<Message> SolutionBase::create_graph_options(
+				std::shared_ptr<Message> options_message,
+				const std::map<std::string, _variant_t>& values
+			) {
+				if (values.count("items")) {
+					std::map<std::string, _variant_t> items;
+					const auto& value = values.at("items");
+					HRESULT hr = autoit_to(&value, items);
+					AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "items property must be a map<string, _variant_t>");
+					_create_graph_options(*options_message, items);
+				} else {
+					_create_graph_options(*options_message, values);
+				}
+
+				return options_message;
+			}
 
 			CalculatorGraphConfig SolutionBase::InitializeGraphInterface(
 				const CalculatorGraphConfig& graph_config,

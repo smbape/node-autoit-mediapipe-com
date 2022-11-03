@@ -89,6 +89,31 @@ namespace mediapipe {
 				CV_WRAP void process(const cv::Mat& input_data, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 				CV_WRAP void process(const std::map<std::string, _variant_t>& input_dict, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 
+				/**
+				 * Closes all the input sources and the graph.
+				 */
+				CV_WRAP void close();
+
+				/**
+				 * Resets the graph for another run.
+				 */
+				CV_WRAP void reset();
+
+				/**
+				 * Sets protobuf field values.
+				 *
+				 *  Args:
+				 *    options_message: the options protobuf message.
+				 *    values: field value pairs, where each field may be a "." separated path.
+				 *
+				 *  Returns:
+				 *    the options protobuf message.
+				 */
+				CV_WRAP std::shared_ptr<google::protobuf::Message> create_graph_options(
+					std::shared_ptr<google::protobuf::Message> options_message,
+					const std::map<std::string, _variant_t>& values
+				);
+
 				~SolutionBase() = default;
 
 			private:
@@ -116,7 +141,7 @@ namespace mediapipe {
 				std::map<std::string, PacketDataType> m_output_stream_type_info;
 				std::map<std::string, PacketDataType> m_side_input_type_info;
 
-				CalculatorGraph m_graph;
+				std::unique_ptr<CalculatorGraph> m_graph;
 				int64 m_simulated_timestamp = 0;
 				std::map<std::string, Packet> m_graph_outputs;
 				std::map<std::string, Packet> m_input_side_packets;
