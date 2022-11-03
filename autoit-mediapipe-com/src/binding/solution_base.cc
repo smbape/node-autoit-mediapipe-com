@@ -689,7 +689,37 @@ namespace mediapipe {
 
 			static void _create_graph_options(Message& options_message, const std::map<std::string, _variant_t>& values) {
 				for (const auto& [field, value] : values) {
-					// TODO
+					auto fields = split(field, ".");
+					auto m = ::autoit::reference_internal(&options_message);
+					auto last = fields.size() - 1;
+
+					for (int i = 0; i < last; i++) {
+						auto val = GetFieldValue(*m, fields[i]);
+						AUTOIT_ASSERT_THROW(SUCCEEDED(autoit_to(&val, m)), "property " << fields[i] << " is not a message");
+					}
+
+					const FieldDescriptor* field_descriptor = FindFieldWithOneofs(*m, fields[last]);
+					AUTOIT_ASSERT_THROW(field_descriptor != nullptr, "Protocol message has no \"" << field << "\" field.");
+
+					if (field_descriptor->is_repeated()) {
+						RepeatedContainer autoit_container;
+						autoit_container.message = ::autoit::reference_internal(&options_message);
+						autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+
+						std::vector<_variant_t> items;
+						AUTOIT_ASSERT_THROW(SUCCEEDED(autoit_to(&value, items)), "property " << field << " is not a vector");
+
+						std::vector<_variant_t> list;
+						autoit_container.Splice(list, 0, autoit_container.size());
+
+						autoit_container.Extend(items);
+					} else if (field_descriptor->cpp_type() == FieldDescriptor::CPPTYPE_MESSAGE) {
+						std::shared_ptr<Message> other_message;
+						AUTOIT_ASSERT_THROW(SUCCEEDED(autoit_to(&value, other_message)), "property " << field << " is not a message");
+						CopyFrom(&options_message, other_message.get());
+					} else {
+						SetFieldValue(*m, fields[last], value);
+					}
 				}
 			}
 

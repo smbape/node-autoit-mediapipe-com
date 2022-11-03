@@ -342,7 +342,8 @@ namespace google {
 							if (SUCCEEDED(hr)) {
 								Message* sub_message = message.GetReflection()->MutableMessage(&message, field_descriptor);
 								InitAttributes(*sub_message, sub_attrs);
-							} else {
+							}
+							else {
 								SetFieldValue(message, field_descriptor, value);
 							}
 						}
@@ -424,6 +425,22 @@ namespace google {
 					);
 
 					return GetFieldValue(*copy, field_descriptor);
+				}
+
+				void CopyFrom(Message* message, const Message* other_message) {
+					if (message == other_message) {
+						return;
+					}
+
+					AUTOIT_ASSERT_THROW(other_message->GetDescriptor() == message->GetDescriptor(),
+						"Parameter to CopyFrom() must be instance of same class: "
+						"expected " << message->GetDescriptor()->full_name() << " got "
+						<< other_message->GetDescriptor()->full_name() << ".");
+
+					// CopyFrom on the message will not clean up self->composite_fields,
+					// which can leave us in an inconsistent state, so clear it out here.
+					message->Clear();
+					message->CopyFrom(*other_message);
 				}
 
 				void MergeFromString(Message* message, const std::string& data) {

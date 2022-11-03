@@ -974,7 +974,10 @@ class Parser {
                 [`${ fqn }.Add`, `${ value_type }*`, ["=add", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
                     [`${ value_type }*`, "value", "", ["/C"]]
                 ], "", ""],
-                [`${ fqn }.Add`, `${ value_type }*`, ["=add", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
+                [`${ fqn }.Add`, `${ value_type }*`, ["=append", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
+                    [`${ value_type }*`, "value", "", ["/C"]]
+                ], "", ""],
+                [`${ fqn }.Add`, `${ value_type }*`, ["=append", "/Call=::google::protobuf::autoit::RepeatedField_AddMessage", "/Expr=__self->get(), $0"], [
                     ["std::map<std::string, _variant_t>", "attrs", "", []]
                 ], "", ""],
                 [`${ fqn }.splice`, "void", ["/Call=::google::protobuf::autoit::RepeatedField_SpliceMessage", "/Expr=__self->get(), $0"], [

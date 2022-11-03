@@ -50,6 +50,7 @@ namespace google {
 					const FieldDescriptor* field_descriptor
 				);
 
+				void CopyFrom(Message* message, const Message* other_message);
 				void MergeFromString(Message* message, const std::string& data);
 
 				int ClearFieldByDescriptor(Message& message, const FieldDescriptor* field_descriptor);

@@ -196,7 +196,9 @@
   - [mediapipe::Packet::put_timestamp](#mediapipepacketput_timestamp)
   - [mediapipe::Packet::str](#mediapipepacketstr)
 - [google::protobuf::Message](#googleprotobufmessage)
+  - [google::protobuf::Message::Clear](#googleprotobufmessageclear)
   - [google::protobuf::Message::ClearField](#googleprotobufmessageclearfield)
+  - [google::protobuf::Message::CopyFrom](#googleprotobufmessagecopyfrom)
   - [google::protobuf::Message::str](#googleprotobufmessagestr)
 - [google::protobuf::TextFormat](#googleprotobuftextformat)
   - [google::protobuf::TextFormat::MergeFromString](#googleprotobuftextformatmergefromstring)
@@ -206,7 +208,9 @@
   - [google::protobuf::TextFormat::PrintToString](#googleprotobuftextformatprinttostring)
 - [google::protobuf::Any](#googleprotobufany)
   - [google::protobuf::Any::get_create](#googleprotobufanyget_create)
+  - [google::protobuf::Any::Clear](#googleprotobufanyclear)
   - [google::protobuf::Any::ClearField](#googleprotobufanyclearfield)
+  - [google::protobuf::Any::CopyFrom](#googleprotobufanycopyfrom)
   - [google::protobuf::Any::Pack](#googleprotobufanypack)
   - [google::protobuf::Any::Unpack](#googleprotobufanyunpack)
   - [google::protobuf::Any::str](#googleprotobufanystr)
@@ -238,24 +242,34 @@
   - [mediapipe::ValidatedGraphConfig::registered_stream_type_name](#mediapipevalidatedgraphconfigregistered_stream_type_name)
 - [mediapipe::CalculatorOptions](#mediapipecalculatoroptions)
   - [mediapipe::CalculatorOptions::get_create](#mediapipecalculatoroptionsget_create)
+  - [mediapipe::CalculatorOptions::Clear](#mediapipecalculatoroptionsclear)
   - [mediapipe::CalculatorOptions::ClearField](#mediapipecalculatoroptionsclearfield)
+  - [mediapipe::CalculatorOptions::CopyFrom](#mediapipecalculatoroptionscopyfrom)
   - [mediapipe::CalculatorOptions::get_Extensions](#mediapipecalculatoroptionsget_extensions)
   - [mediapipe::CalculatorOptions::str](#mediapipecalculatoroptionsstr)
 - [mediapipe::MediaPipeOptions](#mediapipemediapipeoptions)
   - [mediapipe::MediaPipeOptions::get_create](#mediapipemediapipeoptionsget_create)
+  - [mediapipe::MediaPipeOptions::Clear](#mediapipemediapipeoptionsclear)
   - [mediapipe::MediaPipeOptions::ClearField](#mediapipemediapipeoptionsclearfield)
+  - [mediapipe::MediaPipeOptions::CopyFrom](#mediapipemediapipeoptionscopyfrom)
   - [mediapipe::MediaPipeOptions::str](#mediapipemediapipeoptionsstr)
 - [mediapipe::PacketFactoryOptions](#mediapipepacketfactoryoptions)
   - [mediapipe::PacketFactoryOptions::get_create](#mediapipepacketfactoryoptionsget_create)
+  - [mediapipe::PacketFactoryOptions::Clear](#mediapipepacketfactoryoptionsclear)
   - [mediapipe::PacketFactoryOptions::ClearField](#mediapipepacketfactoryoptionsclearfield)
+  - [mediapipe::PacketFactoryOptions::CopyFrom](#mediapipepacketfactoryoptionscopyfrom)
   - [mediapipe::PacketFactoryOptions::str](#mediapipepacketfactoryoptionsstr)
 - [mediapipe::PacketFactoryConfig](#mediapipepacketfactoryconfig)
   - [mediapipe::PacketFactoryConfig::get_create](#mediapipepacketfactoryconfigget_create)
+  - [mediapipe::PacketFactoryConfig::Clear](#mediapipepacketfactoryconfigclear)
   - [mediapipe::PacketFactoryConfig::ClearField](#mediapipepacketfactoryconfigclearfield)
+  - [mediapipe::PacketFactoryConfig::CopyFrom](#mediapipepacketfactoryconfigcopyfrom)
   - [mediapipe::PacketFactoryConfig::str](#mediapipepacketfactoryconfigstr)
 - [mediapipe::PacketManagerConfig](#mediapipepacketmanagerconfig)
   - [mediapipe::PacketManagerConfig::get_create](#mediapipepacketmanagerconfigget_create)
+  - [mediapipe::PacketManagerConfig::Clear](#mediapipepacketmanagerconfigclear)
   - [mediapipe::PacketManagerConfig::ClearField](#mediapipepacketmanagerconfigclearfield)
+  - [mediapipe::PacketManagerConfig::CopyFrom](#mediapipepacketmanagerconfigcopyfrom)
   - [mediapipe::PacketManagerConfig::str](#mediapipepacketmanagerconfigstr)
 - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig](#googleprotobufrepeated_mediapipe_packetfactoryconfig)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::create](#googleprotobufrepeated_mediapipe_packetfactoryconfigcreate)
@@ -264,6 +278,7 @@
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::Swap](#googleprotobufrepeated_mediapipe_packetfactoryconfigswap)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::SwapElements](#googleprotobufrepeated_mediapipe_packetfactoryconfigswapelements)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add](#googleprotobufrepeated_mediapipe_packetfactoryconfigadd)
+  - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::append](#googleprotobufrepeated_mediapipe_packetfactoryconfigappend)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::clear](#googleprotobufrepeated_mediapipe_packetfactoryconfigclear)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::empty](#googleprotobufrepeated_mediapipe_packetfactoryconfigempty)
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::extend](#googleprotobufrepeated_mediapipe_packetfactoryconfigextend)
@@ -279,11 +294,15 @@
   - [google::protobuf::Repeated_mediapipe_PacketFactoryConfig::splice](#googleprotobufrepeated_mediapipe_packetfactoryconfigsplice)
 - [mediapipe::PacketGeneratorOptions](#mediapipepacketgeneratoroptions)
   - [mediapipe::PacketGeneratorOptions::get_create](#mediapipepacketgeneratoroptionsget_create)
+  - [mediapipe::PacketGeneratorOptions::Clear](#mediapipepacketgeneratoroptionsclear)
   - [mediapipe::PacketGeneratorOptions::ClearField](#mediapipepacketgeneratoroptionsclearfield)
+  - [mediapipe::PacketGeneratorOptions::CopyFrom](#mediapipepacketgeneratoroptionscopyfrom)
   - [mediapipe::PacketGeneratorOptions::str](#mediapipepacketgeneratoroptionsstr)
 - [mediapipe::PacketGeneratorConfig](#mediapipepacketgeneratorconfig)
   - [mediapipe::PacketGeneratorConfig::get_create](#mediapipepacketgeneratorconfigget_create)
+  - [mediapipe::PacketGeneratorConfig::Clear](#mediapipepacketgeneratorconfigclear)
   - [mediapipe::PacketGeneratorConfig::ClearField](#mediapipepacketgeneratorconfigclearfield)
+  - [mediapipe::PacketGeneratorConfig::CopyFrom](#mediapipepacketgeneratorconfigcopyfrom)
   - [mediapipe::PacketGeneratorConfig::str](#mediapipepacketgeneratorconfigstr)
 - [google::protobuf::Repeated_std_string](#googleprotobufrepeated_std_string)
   - [google::protobuf::Repeated_std_string::create](#googleprotobufrepeated_std_stringcreate)
@@ -308,27 +327,39 @@
   - [google::protobuf::Repeated_std_string::splice](#googleprotobufrepeated_std_stringsplice)
 - [mediapipe::StatusHandlerConfig](#mediapipestatushandlerconfig)
   - [mediapipe::StatusHandlerConfig::get_create](#mediapipestatushandlerconfigget_create)
+  - [mediapipe::StatusHandlerConfig::Clear](#mediapipestatushandlerconfigclear)
   - [mediapipe::StatusHandlerConfig::ClearField](#mediapipestatushandlerconfigclearfield)
+  - [mediapipe::StatusHandlerConfig::CopyFrom](#mediapipestatushandlerconfigcopyfrom)
   - [mediapipe::StatusHandlerConfig::str](#mediapipestatushandlerconfigstr)
 - [mediapipe::InputStreamHandlerConfig](#mediapipeinputstreamhandlerconfig)
   - [mediapipe::InputStreamHandlerConfig::get_create](#mediapipeinputstreamhandlerconfigget_create)
+  - [mediapipe::InputStreamHandlerConfig::Clear](#mediapipeinputstreamhandlerconfigclear)
   - [mediapipe::InputStreamHandlerConfig::ClearField](#mediapipeinputstreamhandlerconfigclearfield)
+  - [mediapipe::InputStreamHandlerConfig::CopyFrom](#mediapipeinputstreamhandlerconfigcopyfrom)
   - [mediapipe::InputStreamHandlerConfig::str](#mediapipeinputstreamhandlerconfigstr)
 - [mediapipe::OutputStreamHandlerConfig](#mediapipeoutputstreamhandlerconfig)
   - [mediapipe::OutputStreamHandlerConfig::get_create](#mediapipeoutputstreamhandlerconfigget_create)
+  - [mediapipe::OutputStreamHandlerConfig::Clear](#mediapipeoutputstreamhandlerconfigclear)
   - [mediapipe::OutputStreamHandlerConfig::ClearField](#mediapipeoutputstreamhandlerconfigclearfield)
+  - [mediapipe::OutputStreamHandlerConfig::CopyFrom](#mediapipeoutputstreamhandlerconfigcopyfrom)
   - [mediapipe::OutputStreamHandlerConfig::str](#mediapipeoutputstreamhandlerconfigstr)
 - [mediapipe::ExecutorConfig](#mediapipeexecutorconfig)
   - [mediapipe::ExecutorConfig::get_create](#mediapipeexecutorconfigget_create)
+  - [mediapipe::ExecutorConfig::Clear](#mediapipeexecutorconfigclear)
   - [mediapipe::ExecutorConfig::ClearField](#mediapipeexecutorconfigclearfield)
+  - [mediapipe::ExecutorConfig::CopyFrom](#mediapipeexecutorconfigcopyfrom)
   - [mediapipe::ExecutorConfig::str](#mediapipeexecutorconfigstr)
 - [mediapipe::InputCollection](#mediapipeinputcollection)
   - [mediapipe::InputCollection::get_create](#mediapipeinputcollectionget_create)
+  - [mediapipe::InputCollection::Clear](#mediapipeinputcollectionclear)
   - [mediapipe::InputCollection::ClearField](#mediapipeinputcollectionclearfield)
+  - [mediapipe::InputCollection::CopyFrom](#mediapipeinputcollectioncopyfrom)
   - [mediapipe::InputCollection::str](#mediapipeinputcollectionstr)
 - [mediapipe::InputCollectionSet](#mediapipeinputcollectionset)
   - [mediapipe::InputCollectionSet::get_create](#mediapipeinputcollectionsetget_create)
+  - [mediapipe::InputCollectionSet::Clear](#mediapipeinputcollectionsetclear)
   - [mediapipe::InputCollectionSet::ClearField](#mediapipeinputcollectionsetclearfield)
+  - [mediapipe::InputCollectionSet::CopyFrom](#mediapipeinputcollectionsetcopyfrom)
   - [mediapipe::InputCollectionSet::str](#mediapipeinputcollectionsetstr)
 - [google::protobuf::Repeated_mediapipe_InputCollection](#googleprotobufrepeated_mediapipe_inputcollection)
   - [google::protobuf::Repeated_mediapipe_InputCollection::create](#googleprotobufrepeated_mediapipe_inputcollectioncreate)
@@ -337,6 +368,7 @@
   - [google::protobuf::Repeated_mediapipe_InputCollection::Swap](#googleprotobufrepeated_mediapipe_inputcollectionswap)
   - [google::protobuf::Repeated_mediapipe_InputCollection::SwapElements](#googleprotobufrepeated_mediapipe_inputcollectionswapelements)
   - [google::protobuf::Repeated_mediapipe_InputCollection::add](#googleprotobufrepeated_mediapipe_inputcollectionadd)
+  - [google::protobuf::Repeated_mediapipe_InputCollection::append](#googleprotobufrepeated_mediapipe_inputcollectionappend)
   - [google::protobuf::Repeated_mediapipe_InputCollection::clear](#googleprotobufrepeated_mediapipe_inputcollectionclear)
   - [google::protobuf::Repeated_mediapipe_InputCollection::empty](#googleprotobufrepeated_mediapipe_inputcollectionempty)
   - [google::protobuf::Repeated_mediapipe_InputCollection::extend](#googleprotobufrepeated_mediapipe_inputcollectionextend)
@@ -352,11 +384,15 @@
   - [google::protobuf::Repeated_mediapipe_InputCollection::splice](#googleprotobufrepeated_mediapipe_inputcollectionsplice)
 - [mediapipe::InputStreamInfo](#mediapipeinputstreaminfo)
   - [mediapipe::InputStreamInfo::get_create](#mediapipeinputstreaminfoget_create)
+  - [mediapipe::InputStreamInfo::Clear](#mediapipeinputstreaminfoclear)
   - [mediapipe::InputStreamInfo::ClearField](#mediapipeinputstreaminfoclearfield)
+  - [mediapipe::InputStreamInfo::CopyFrom](#mediapipeinputstreaminfocopyfrom)
   - [mediapipe::InputStreamInfo::str](#mediapipeinputstreaminfostr)
 - [mediapipe::ProfilerConfig](#mediapipeprofilerconfig)
   - [mediapipe::ProfilerConfig::get_create](#mediapipeprofilerconfigget_create)
+  - [mediapipe::ProfilerConfig::Clear](#mediapipeprofilerconfigclear)
   - [mediapipe::ProfilerConfig::ClearField](#mediapipeprofilerconfigclearfield)
+  - [mediapipe::ProfilerConfig::CopyFrom](#mediapipeprofilerconfigcopyfrom)
   - [mediapipe::ProfilerConfig::str](#mediapipeprofilerconfigstr)
 - [google::protobuf::Repeated_int](#googleprotobufrepeated_int)
   - [google::protobuf::Repeated_int::create](#googleprotobufrepeated_intcreate)
@@ -381,7 +417,9 @@
   - [google::protobuf::Repeated_int::splice](#googleprotobufrepeated_intsplice)
 - [mediapipe::CalculatorGraphConfig](#mediapipecalculatorgraphconfig)
   - [mediapipe::CalculatorGraphConfig::get_create](#mediapipecalculatorgraphconfigget_create)
+  - [mediapipe::CalculatorGraphConfig::Clear](#mediapipecalculatorgraphconfigclear)
   - [mediapipe::CalculatorGraphConfig::ClearField](#mediapipecalculatorgraphconfigclearfield)
+  - [mediapipe::CalculatorGraphConfig::CopyFrom](#mediapipecalculatorgraphconfigcopyfrom)
   - [mediapipe::CalculatorGraphConfig::str](#mediapipecalculatorgraphconfigstr)
 - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_node)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::create](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodecreate)
@@ -390,6 +428,7 @@
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::Swap](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeswap)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::SwapElements](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeswapelements)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeadd)
+  - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::append](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeappend)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::clear](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeclear)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::empty](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeempty)
   - [google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::extend](#googleprotobufrepeated_mediapipe_calculatorgraphconfig_nodeextend)
@@ -410,6 +449,7 @@
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::Swap](#googleprotobufrepeated_mediapipe_packetgeneratorconfigswap)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::SwapElements](#googleprotobufrepeated_mediapipe_packetgeneratorconfigswapelements)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add](#googleprotobufrepeated_mediapipe_packetgeneratorconfigadd)
+  - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::append](#googleprotobufrepeated_mediapipe_packetgeneratorconfigappend)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::clear](#googleprotobufrepeated_mediapipe_packetgeneratorconfigclear)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::empty](#googleprotobufrepeated_mediapipe_packetgeneratorconfigempty)
   - [google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::extend](#googleprotobufrepeated_mediapipe_packetgeneratorconfigextend)
@@ -430,6 +470,7 @@
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::Swap](#googleprotobufrepeated_mediapipe_statushandlerconfigswap)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::SwapElements](#googleprotobufrepeated_mediapipe_statushandlerconfigswapelements)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add](#googleprotobufrepeated_mediapipe_statushandlerconfigadd)
+  - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::append](#googleprotobufrepeated_mediapipe_statushandlerconfigappend)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::clear](#googleprotobufrepeated_mediapipe_statushandlerconfigclear)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::empty](#googleprotobufrepeated_mediapipe_statushandlerconfigempty)
   - [google::protobuf::Repeated_mediapipe_StatusHandlerConfig::extend](#googleprotobufrepeated_mediapipe_statushandlerconfigextend)
@@ -450,6 +491,7 @@
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::Swap](#googleprotobufrepeated_mediapipe_executorconfigswap)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::SwapElements](#googleprotobufrepeated_mediapipe_executorconfigswapelements)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::add](#googleprotobufrepeated_mediapipe_executorconfigadd)
+  - [google::protobuf::Repeated_mediapipe_ExecutorConfig::append](#googleprotobufrepeated_mediapipe_executorconfigappend)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::clear](#googleprotobufrepeated_mediapipe_executorconfigclear)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::empty](#googleprotobufrepeated_mediapipe_executorconfigempty)
   - [google::protobuf::Repeated_mediapipe_ExecutorConfig::extend](#googleprotobufrepeated_mediapipe_executorconfigextend)
@@ -470,6 +512,7 @@
   - [google::protobuf::Repeated_google_protobuf_Any::Swap](#googleprotobufrepeated_google_protobuf_anyswap)
   - [google::protobuf::Repeated_google_protobuf_Any::SwapElements](#googleprotobufrepeated_google_protobuf_anyswapelements)
   - [google::protobuf::Repeated_google_protobuf_Any::add](#googleprotobufrepeated_google_protobuf_anyadd)
+  - [google::protobuf::Repeated_google_protobuf_Any::append](#googleprotobufrepeated_google_protobuf_anyappend)
   - [google::protobuf::Repeated_google_protobuf_Any::clear](#googleprotobufrepeated_google_protobuf_anyclear)
   - [google::protobuf::Repeated_google_protobuf_Any::empty](#googleprotobufrepeated_google_protobuf_anyempty)
   - [google::protobuf::Repeated_google_protobuf_Any::extend](#googleprotobufrepeated_google_protobuf_anyextend)
@@ -485,7 +528,9 @@
   - [google::protobuf::Repeated_google_protobuf_Any::splice](#googleprotobufrepeated_google_protobuf_anysplice)
 - [mediapipe::CalculatorGraphConfig::Node](#mediapipecalculatorgraphconfignode)
   - [mediapipe::CalculatorGraphConfig::Node::get_create](#mediapipecalculatorgraphconfignodeget_create)
+  - [mediapipe::CalculatorGraphConfig::Node::Clear](#mediapipecalculatorgraphconfignodeclear)
   - [mediapipe::CalculatorGraphConfig::Node::ClearField](#mediapipecalculatorgraphconfignodeclearfield)
+  - [mediapipe::CalculatorGraphConfig::Node::CopyFrom](#mediapipecalculatorgraphconfignodecopyfrom)
   - [mediapipe::CalculatorGraphConfig::Node::str](#mediapipecalculatorgraphconfignodestr)
 - [google::protobuf::Repeated_mediapipe_InputStreamInfo](#googleprotobufrepeated_mediapipe_inputstreaminfo)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::create](#googleprotobufrepeated_mediapipe_inputstreaminfocreate)
@@ -494,6 +539,7 @@
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::Swap](#googleprotobufrepeated_mediapipe_inputstreaminfoswap)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::SwapElements](#googleprotobufrepeated_mediapipe_inputstreaminfoswapelements)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::add](#googleprotobufrepeated_mediapipe_inputstreaminfoadd)
+  - [google::protobuf::Repeated_mediapipe_InputStreamInfo::append](#googleprotobufrepeated_mediapipe_inputstreaminfoappend)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::clear](#googleprotobufrepeated_mediapipe_inputstreaminfoclear)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::empty](#googleprotobufrepeated_mediapipe_inputstreaminfoempty)
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::extend](#googleprotobufrepeated_mediapipe_inputstreaminfoextend)
@@ -509,7 +555,9 @@
   - [google::protobuf::Repeated_mediapipe_InputStreamInfo::splice](#googleprotobufrepeated_mediapipe_inputstreaminfosplice)
 - [mediapipe::Rasterization](#mediapiperasterization)
   - [mediapipe::Rasterization::get_create](#mediapiperasterizationget_create)
+  - [mediapipe::Rasterization::Clear](#mediapiperasterizationclear)
   - [mediapipe::Rasterization::ClearField](#mediapiperasterizationclearfield)
+  - [mediapipe::Rasterization::CopyFrom](#mediapiperasterizationcopyfrom)
   - [mediapipe::Rasterization::str](#mediapiperasterizationstr)
 - [google::protobuf::Repeated_mediapipe_Rasterization_Interval](#googleprotobufrepeated_mediapipe_rasterization_interval)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::create](#googleprotobufrepeated_mediapipe_rasterization_intervalcreate)
@@ -518,6 +566,7 @@
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::Swap](#googleprotobufrepeated_mediapipe_rasterization_intervalswap)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::SwapElements](#googleprotobufrepeated_mediapipe_rasterization_intervalswapelements)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::add](#googleprotobufrepeated_mediapipe_rasterization_intervaladd)
+  - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::append](#googleprotobufrepeated_mediapipe_rasterization_intervalappend)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::clear](#googleprotobufrepeated_mediapipe_rasterization_intervalclear)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::empty](#googleprotobufrepeated_mediapipe_rasterization_intervalempty)
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::extend](#googleprotobufrepeated_mediapipe_rasterization_intervalextend)
@@ -533,11 +582,15 @@
   - [google::protobuf::Repeated_mediapipe_Rasterization_Interval::splice](#googleprotobufrepeated_mediapipe_rasterization_intervalsplice)
 - [mediapipe::Rasterization::Interval](#mediapiperasterizationinterval)
   - [mediapipe::Rasterization::Interval::get_create](#mediapiperasterizationintervalget_create)
+  - [mediapipe::Rasterization::Interval::Clear](#mediapiperasterizationintervalclear)
   - [mediapipe::Rasterization::Interval::ClearField](#mediapiperasterizationintervalclearfield)
+  - [mediapipe::Rasterization::Interval::CopyFrom](#mediapiperasterizationintervalcopyfrom)
   - [mediapipe::Rasterization::Interval::str](#mediapiperasterizationintervalstr)
 - [mediapipe::LocationData](#mediapipelocationdata)
   - [mediapipe::LocationData::get_create](#mediapipelocationdataget_create)
+  - [mediapipe::LocationData::Clear](#mediapipelocationdataclear)
   - [mediapipe::LocationData::ClearField](#mediapipelocationdataclearfield)
+  - [mediapipe::LocationData::CopyFrom](#mediapipelocationdatacopyfrom)
   - [mediapipe::LocationData::str](#mediapipelocationdatastr)
 - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint](#googleprotobufrepeated_mediapipe_locationdata_relativekeypoint)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::create](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointcreate)
@@ -546,6 +599,7 @@
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::Swap](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointswap)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::SwapElements](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointswapelements)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::add](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointadd)
+  - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::append](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointappend)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::clear](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointclear)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::empty](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointempty)
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::extend](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointextend)
@@ -561,23 +615,33 @@
   - [google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::splice](#googleprotobufrepeated_mediapipe_locationdata_relativekeypointsplice)
 - [mediapipe::LocationData::BoundingBox](#mediapipelocationdataboundingbox)
   - [mediapipe::LocationData::BoundingBox::get_create](#mediapipelocationdataboundingboxget_create)
+  - [mediapipe::LocationData::BoundingBox::Clear](#mediapipelocationdataboundingboxclear)
   - [mediapipe::LocationData::BoundingBox::ClearField](#mediapipelocationdataboundingboxclearfield)
+  - [mediapipe::LocationData::BoundingBox::CopyFrom](#mediapipelocationdataboundingboxcopyfrom)
   - [mediapipe::LocationData::BoundingBox::str](#mediapipelocationdataboundingboxstr)
 - [mediapipe::LocationData::RelativeBoundingBox](#mediapipelocationdatarelativeboundingbox)
   - [mediapipe::LocationData::RelativeBoundingBox::get_create](#mediapipelocationdatarelativeboundingboxget_create)
+  - [mediapipe::LocationData::RelativeBoundingBox::Clear](#mediapipelocationdatarelativeboundingboxclear)
   - [mediapipe::LocationData::RelativeBoundingBox::ClearField](#mediapipelocationdatarelativeboundingboxclearfield)
+  - [mediapipe::LocationData::RelativeBoundingBox::CopyFrom](#mediapipelocationdatarelativeboundingboxcopyfrom)
   - [mediapipe::LocationData::RelativeBoundingBox::str](#mediapipelocationdatarelativeboundingboxstr)
 - [mediapipe::LocationData::BinaryMask](#mediapipelocationdatabinarymask)
   - [mediapipe::LocationData::BinaryMask::get_create](#mediapipelocationdatabinarymaskget_create)
+  - [mediapipe::LocationData::BinaryMask::Clear](#mediapipelocationdatabinarymaskclear)
   - [mediapipe::LocationData::BinaryMask::ClearField](#mediapipelocationdatabinarymaskclearfield)
+  - [mediapipe::LocationData::BinaryMask::CopyFrom](#mediapipelocationdatabinarymaskcopyfrom)
   - [mediapipe::LocationData::BinaryMask::str](#mediapipelocationdatabinarymaskstr)
 - [mediapipe::LocationData::RelativeKeypoint](#mediapipelocationdatarelativekeypoint)
   - [mediapipe::LocationData::RelativeKeypoint::get_create](#mediapipelocationdatarelativekeypointget_create)
+  - [mediapipe::LocationData::RelativeKeypoint::Clear](#mediapipelocationdatarelativekeypointclear)
   - [mediapipe::LocationData::RelativeKeypoint::ClearField](#mediapipelocationdatarelativekeypointclearfield)
+  - [mediapipe::LocationData::RelativeKeypoint::CopyFrom](#mediapipelocationdatarelativekeypointcopyfrom)
   - [mediapipe::LocationData::RelativeKeypoint::str](#mediapipelocationdatarelativekeypointstr)
 - [mediapipe::Detection](#mediapipedetection)
   - [mediapipe::Detection::get_create](#mediapipedetectionget_create)
+  - [mediapipe::Detection::Clear](#mediapipedetectionclear)
   - [mediapipe::Detection::ClearField](#mediapipedetectionclearfield)
+  - [mediapipe::Detection::CopyFrom](#mediapipedetectioncopyfrom)
   - [mediapipe::Detection::str](#mediapipedetectionstr)
 - [google::protobuf::Repeated_float](#googleprotobufrepeated_float)
   - [google::protobuf::Repeated_float::create](#googleprotobufrepeated_floatcreate)
@@ -607,6 +671,7 @@
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::Swap](#googleprotobufrepeated_mediapipe_detection_associateddetectionswap)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::SwapElements](#googleprotobufrepeated_mediapipe_detection_associateddetectionswapelements)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::add](#googleprotobufrepeated_mediapipe_detection_associateddetectionadd)
+  - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::append](#googleprotobufrepeated_mediapipe_detection_associateddetectionappend)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::clear](#googleprotobufrepeated_mediapipe_detection_associateddetectionclear)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::empty](#googleprotobufrepeated_mediapipe_detection_associateddetectionempty)
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::extend](#googleprotobufrepeated_mediapipe_detection_associateddetectionextend)
@@ -622,11 +687,15 @@
   - [google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::splice](#googleprotobufrepeated_mediapipe_detection_associateddetectionsplice)
 - [mediapipe::Detection::AssociatedDetection](#mediapipedetectionassociateddetection)
   - [mediapipe::Detection::AssociatedDetection::get_create](#mediapipedetectionassociateddetectionget_create)
+  - [mediapipe::Detection::AssociatedDetection::Clear](#mediapipedetectionassociateddetectionclear)
   - [mediapipe::Detection::AssociatedDetection::ClearField](#mediapipedetectionassociateddetectionclearfield)
+  - [mediapipe::Detection::AssociatedDetection::CopyFrom](#mediapipedetectionassociateddetectioncopyfrom)
   - [mediapipe::Detection::AssociatedDetection::str](#mediapipedetectionassociateddetectionstr)
 - [mediapipe::DetectionList](#mediapipedetectionlist)
   - [mediapipe::DetectionList::get_create](#mediapipedetectionlistget_create)
+  - [mediapipe::DetectionList::Clear](#mediapipedetectionlistclear)
   - [mediapipe::DetectionList::ClearField](#mediapipedetectionlistclearfield)
+  - [mediapipe::DetectionList::CopyFrom](#mediapipedetectionlistcopyfrom)
   - [mediapipe::DetectionList::str](#mediapipedetectionliststr)
 - [google::protobuf::Repeated_mediapipe_Detection](#googleprotobufrepeated_mediapipe_detection)
   - [google::protobuf::Repeated_mediapipe_Detection::create](#googleprotobufrepeated_mediapipe_detectioncreate)
@@ -635,6 +704,7 @@
   - [google::protobuf::Repeated_mediapipe_Detection::Swap](#googleprotobufrepeated_mediapipe_detectionswap)
   - [google::protobuf::Repeated_mediapipe_Detection::SwapElements](#googleprotobufrepeated_mediapipe_detectionswapelements)
   - [google::protobuf::Repeated_mediapipe_Detection::add](#googleprotobufrepeated_mediapipe_detectionadd)
+  - [google::protobuf::Repeated_mediapipe_Detection::append](#googleprotobufrepeated_mediapipe_detectionappend)
   - [google::protobuf::Repeated_mediapipe_Detection::clear](#googleprotobufrepeated_mediapipe_detectionclear)
   - [google::protobuf::Repeated_mediapipe_Detection::empty](#googleprotobufrepeated_mediapipe_detectionempty)
   - [google::protobuf::Repeated_mediapipe_Detection::extend](#googleprotobufrepeated_mediapipe_detectionextend)
@@ -650,15 +720,21 @@
   - [google::protobuf::Repeated_mediapipe_Detection::splice](#googleprotobufrepeated_mediapipe_detectionsplice)
 - [mediapipe::ImageFormat](#mediapipeimageformat)
   - [mediapipe::ImageFormat::get_create](#mediapipeimageformatget_create)
+  - [mediapipe::ImageFormat::Clear](#mediapipeimageformatclear)
   - [mediapipe::ImageFormat::ClearField](#mediapipeimageformatclearfield)
+  - [mediapipe::ImageFormat::CopyFrom](#mediapipeimageformatcopyfrom)
   - [mediapipe::ImageFormat::str](#mediapipeimageformatstr)
 - [mediapipe::Classification](#mediapipeclassification)
   - [mediapipe::Classification::get_create](#mediapipeclassificationget_create)
+  - [mediapipe::Classification::Clear](#mediapipeclassificationclear)
   - [mediapipe::Classification::ClearField](#mediapipeclassificationclearfield)
+  - [mediapipe::Classification::CopyFrom](#mediapipeclassificationcopyfrom)
   - [mediapipe::Classification::str](#mediapipeclassificationstr)
 - [mediapipe::ClassificationList](#mediapipeclassificationlist)
   - [mediapipe::ClassificationList::get_create](#mediapipeclassificationlistget_create)
+  - [mediapipe::ClassificationList::Clear](#mediapipeclassificationlistclear)
   - [mediapipe::ClassificationList::ClearField](#mediapipeclassificationlistclearfield)
+  - [mediapipe::ClassificationList::CopyFrom](#mediapipeclassificationlistcopyfrom)
   - [mediapipe::ClassificationList::str](#mediapipeclassificationliststr)
 - [google::protobuf::Repeated_mediapipe_Classification](#googleprotobufrepeated_mediapipe_classification)
   - [google::protobuf::Repeated_mediapipe_Classification::create](#googleprotobufrepeated_mediapipe_classificationcreate)
@@ -667,6 +743,7 @@
   - [google::protobuf::Repeated_mediapipe_Classification::Swap](#googleprotobufrepeated_mediapipe_classificationswap)
   - [google::protobuf::Repeated_mediapipe_Classification::SwapElements](#googleprotobufrepeated_mediapipe_classificationswapelements)
   - [google::protobuf::Repeated_mediapipe_Classification::add](#googleprotobufrepeated_mediapipe_classificationadd)
+  - [google::protobuf::Repeated_mediapipe_Classification::append](#googleprotobufrepeated_mediapipe_classificationappend)
   - [google::protobuf::Repeated_mediapipe_Classification::clear](#googleprotobufrepeated_mediapipe_classificationclear)
   - [google::protobuf::Repeated_mediapipe_Classification::empty](#googleprotobufrepeated_mediapipe_classificationempty)
   - [google::protobuf::Repeated_mediapipe_Classification::extend](#googleprotobufrepeated_mediapipe_classificationextend)
@@ -682,7 +759,9 @@
   - [google::protobuf::Repeated_mediapipe_Classification::splice](#googleprotobufrepeated_mediapipe_classificationsplice)
 - [mediapipe::ClassificationListCollection](#mediapipeclassificationlistcollection)
   - [mediapipe::ClassificationListCollection::get_create](#mediapipeclassificationlistcollectionget_create)
+  - [mediapipe::ClassificationListCollection::Clear](#mediapipeclassificationlistcollectionclear)
   - [mediapipe::ClassificationListCollection::ClearField](#mediapipeclassificationlistcollectionclearfield)
+  - [mediapipe::ClassificationListCollection::CopyFrom](#mediapipeclassificationlistcollectioncopyfrom)
   - [mediapipe::ClassificationListCollection::str](#mediapipeclassificationlistcollectionstr)
 - [google::protobuf::Repeated_mediapipe_ClassificationList](#googleprotobufrepeated_mediapipe_classificationlist)
   - [google::protobuf::Repeated_mediapipe_ClassificationList::create](#googleprotobufrepeated_mediapipe_classificationlistcreate)
@@ -691,6 +770,7 @@
   - [google::protobuf::Repeated_mediapipe_ClassificationList::Swap](#googleprotobufrepeated_mediapipe_classificationlistswap)
   - [google::protobuf::Repeated_mediapipe_ClassificationList::SwapElements](#googleprotobufrepeated_mediapipe_classificationlistswapelements)
   - [google::protobuf::Repeated_mediapipe_ClassificationList::add](#googleprotobufrepeated_mediapipe_classificationlistadd)
+  - [google::protobuf::Repeated_mediapipe_ClassificationList::append](#googleprotobufrepeated_mediapipe_classificationlistappend)
   - [google::protobuf::Repeated_mediapipe_ClassificationList::clear](#googleprotobufrepeated_mediapipe_classificationlistclear)
   - [google::protobuf::Repeated_mediapipe_ClassificationList::empty](#googleprotobufrepeated_mediapipe_classificationlistempty)
   - [google::protobuf::Repeated_mediapipe_ClassificationList::extend](#googleprotobufrepeated_mediapipe_classificationlistextend)
@@ -706,11 +786,15 @@
   - [google::protobuf::Repeated_mediapipe_ClassificationList::splice](#googleprotobufrepeated_mediapipe_classificationlistsplice)
 - [mediapipe::Landmark](#mediapipelandmark)
   - [mediapipe::Landmark::get_create](#mediapipelandmarkget_create)
+  - [mediapipe::Landmark::Clear](#mediapipelandmarkclear)
   - [mediapipe::Landmark::ClearField](#mediapipelandmarkclearfield)
+  - [mediapipe::Landmark::CopyFrom](#mediapipelandmarkcopyfrom)
   - [mediapipe::Landmark::str](#mediapipelandmarkstr)
 - [mediapipe::LandmarkList](#mediapipelandmarklist)
   - [mediapipe::LandmarkList::get_create](#mediapipelandmarklistget_create)
+  - [mediapipe::LandmarkList::Clear](#mediapipelandmarklistclear)
   - [mediapipe::LandmarkList::ClearField](#mediapipelandmarklistclearfield)
+  - [mediapipe::LandmarkList::CopyFrom](#mediapipelandmarklistcopyfrom)
   - [mediapipe::LandmarkList::str](#mediapipelandmarkliststr)
 - [google::protobuf::Repeated_mediapipe_Landmark](#googleprotobufrepeated_mediapipe_landmark)
   - [google::protobuf::Repeated_mediapipe_Landmark::create](#googleprotobufrepeated_mediapipe_landmarkcreate)
@@ -719,6 +803,7 @@
   - [google::protobuf::Repeated_mediapipe_Landmark::Swap](#googleprotobufrepeated_mediapipe_landmarkswap)
   - [google::protobuf::Repeated_mediapipe_Landmark::SwapElements](#googleprotobufrepeated_mediapipe_landmarkswapelements)
   - [google::protobuf::Repeated_mediapipe_Landmark::add](#googleprotobufrepeated_mediapipe_landmarkadd)
+  - [google::protobuf::Repeated_mediapipe_Landmark::append](#googleprotobufrepeated_mediapipe_landmarkappend)
   - [google::protobuf::Repeated_mediapipe_Landmark::clear](#googleprotobufrepeated_mediapipe_landmarkclear)
   - [google::protobuf::Repeated_mediapipe_Landmark::empty](#googleprotobufrepeated_mediapipe_landmarkempty)
   - [google::protobuf::Repeated_mediapipe_Landmark::extend](#googleprotobufrepeated_mediapipe_landmarkextend)
@@ -734,7 +819,9 @@
   - [google::protobuf::Repeated_mediapipe_Landmark::splice](#googleprotobufrepeated_mediapipe_landmarksplice)
 - [mediapipe::LandmarkListCollection](#mediapipelandmarklistcollection)
   - [mediapipe::LandmarkListCollection::get_create](#mediapipelandmarklistcollectionget_create)
+  - [mediapipe::LandmarkListCollection::Clear](#mediapipelandmarklistcollectionclear)
   - [mediapipe::LandmarkListCollection::ClearField](#mediapipelandmarklistcollectionclearfield)
+  - [mediapipe::LandmarkListCollection::CopyFrom](#mediapipelandmarklistcollectioncopyfrom)
   - [mediapipe::LandmarkListCollection::str](#mediapipelandmarklistcollectionstr)
 - [google::protobuf::Repeated_mediapipe_LandmarkList](#googleprotobufrepeated_mediapipe_landmarklist)
   - [google::protobuf::Repeated_mediapipe_LandmarkList::create](#googleprotobufrepeated_mediapipe_landmarklistcreate)
@@ -743,6 +830,7 @@
   - [google::protobuf::Repeated_mediapipe_LandmarkList::Swap](#googleprotobufrepeated_mediapipe_landmarklistswap)
   - [google::protobuf::Repeated_mediapipe_LandmarkList::SwapElements](#googleprotobufrepeated_mediapipe_landmarklistswapelements)
   - [google::protobuf::Repeated_mediapipe_LandmarkList::add](#googleprotobufrepeated_mediapipe_landmarklistadd)
+  - [google::protobuf::Repeated_mediapipe_LandmarkList::append](#googleprotobufrepeated_mediapipe_landmarklistappend)
   - [google::protobuf::Repeated_mediapipe_LandmarkList::clear](#googleprotobufrepeated_mediapipe_landmarklistclear)
   - [google::protobuf::Repeated_mediapipe_LandmarkList::empty](#googleprotobufrepeated_mediapipe_landmarklistempty)
   - [google::protobuf::Repeated_mediapipe_LandmarkList::extend](#googleprotobufrepeated_mediapipe_landmarklistextend)
@@ -758,11 +846,15 @@
   - [google::protobuf::Repeated_mediapipe_LandmarkList::splice](#googleprotobufrepeated_mediapipe_landmarklistsplice)
 - [mediapipe::NormalizedLandmark](#mediapipenormalizedlandmark)
   - [mediapipe::NormalizedLandmark::get_create](#mediapipenormalizedlandmarkget_create)
+  - [mediapipe::NormalizedLandmark::Clear](#mediapipenormalizedlandmarkclear)
   - [mediapipe::NormalizedLandmark::ClearField](#mediapipenormalizedlandmarkclearfield)
+  - [mediapipe::NormalizedLandmark::CopyFrom](#mediapipenormalizedlandmarkcopyfrom)
   - [mediapipe::NormalizedLandmark::str](#mediapipenormalizedlandmarkstr)
 - [mediapipe::NormalizedLandmarkList](#mediapipenormalizedlandmarklist)
   - [mediapipe::NormalizedLandmarkList::get_create](#mediapipenormalizedlandmarklistget_create)
+  - [mediapipe::NormalizedLandmarkList::Clear](#mediapipenormalizedlandmarklistclear)
   - [mediapipe::NormalizedLandmarkList::ClearField](#mediapipenormalizedlandmarklistclearfield)
+  - [mediapipe::NormalizedLandmarkList::CopyFrom](#mediapipenormalizedlandmarklistcopyfrom)
   - [mediapipe::NormalizedLandmarkList::str](#mediapipenormalizedlandmarkliststr)
 - [google::protobuf::Repeated_mediapipe_NormalizedLandmark](#googleprotobufrepeated_mediapipe_normalizedlandmark)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::create](#googleprotobufrepeated_mediapipe_normalizedlandmarkcreate)
@@ -771,6 +863,7 @@
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::Swap](#googleprotobufrepeated_mediapipe_normalizedlandmarkswap)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::SwapElements](#googleprotobufrepeated_mediapipe_normalizedlandmarkswapelements)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::add](#googleprotobufrepeated_mediapipe_normalizedlandmarkadd)
+  - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::append](#googleprotobufrepeated_mediapipe_normalizedlandmarkappend)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::clear](#googleprotobufrepeated_mediapipe_normalizedlandmarkclear)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::empty](#googleprotobufrepeated_mediapipe_normalizedlandmarkempty)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::extend](#googleprotobufrepeated_mediapipe_normalizedlandmarkextend)
@@ -786,7 +879,9 @@
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmark::splice](#googleprotobufrepeated_mediapipe_normalizedlandmarksplice)
 - [mediapipe::NormalizedLandmarkListCollection](#mediapipenormalizedlandmarklistcollection)
   - [mediapipe::NormalizedLandmarkListCollection::get_create](#mediapipenormalizedlandmarklistcollectionget_create)
+  - [mediapipe::NormalizedLandmarkListCollection::Clear](#mediapipenormalizedlandmarklistcollectionclear)
   - [mediapipe::NormalizedLandmarkListCollection::ClearField](#mediapipenormalizedlandmarklistcollectionclearfield)
+  - [mediapipe::NormalizedLandmarkListCollection::CopyFrom](#mediapipenormalizedlandmarklistcollectioncopyfrom)
   - [mediapipe::NormalizedLandmarkListCollection::str](#mediapipenormalizedlandmarklistcollectionstr)
 - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList](#googleprotobufrepeated_mediapipe_normalizedlandmarklist)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::create](#googleprotobufrepeated_mediapipe_normalizedlandmarklistcreate)
@@ -795,6 +890,7 @@
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::Swap](#googleprotobufrepeated_mediapipe_normalizedlandmarklistswap)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::SwapElements](#googleprotobufrepeated_mediapipe_normalizedlandmarklistswapelements)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::add](#googleprotobufrepeated_mediapipe_normalizedlandmarklistadd)
+  - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::append](#googleprotobufrepeated_mediapipe_normalizedlandmarklistappend)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::clear](#googleprotobufrepeated_mediapipe_normalizedlandmarklistclear)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::empty](#googleprotobufrepeated_mediapipe_normalizedlandmarklistempty)
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::extend](#googleprotobufrepeated_mediapipe_normalizedlandmarklistextend)
@@ -810,7 +906,9 @@
   - [google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::splice](#googleprotobufrepeated_mediapipe_normalizedlandmarklistsplice)
 - [mediapipe::ConstantSidePacketCalculatorOptions](#mediapipeconstantsidepacketcalculatoroptions)
   - [mediapipe::ConstantSidePacketCalculatorOptions::get_create](#mediapipeconstantsidepacketcalculatoroptionsget_create)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::Clear](#mediapipeconstantsidepacketcalculatoroptionsclear)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ClearField](#mediapipeconstantsidepacketcalculatoroptionsclearfield)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::CopyFrom](#mediapipeconstantsidepacketcalculatoroptionscopyfrom)
   - [mediapipe::ConstantSidePacketCalculatorOptions::str](#mediapipeconstantsidepacketcalculatoroptionsstr)
 - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacket)
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::create](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketcreate)
@@ -819,6 +917,7 @@
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::Swap](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketswap)
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::SwapElements](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketswapelements)
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::add](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketadd)
+  - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::append](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketappend)
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::clear](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketclear)
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::empty](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketempty)
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::extend](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketextend)
@@ -834,51 +933,75 @@
   - [google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::splice](#googleprotobufrepeated_mediapipe_constantsidepacketcalculatoroptions_constantsidepacketsplice)
 - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacket)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get_create](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketget_create)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::Clear](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketclear)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ClearField](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketclearfield)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CopyFrom](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketcopyfrom)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::str](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketstr)
 - [mediapipe::ScaleMode](#mediapipescalemode)
   - [mediapipe::ScaleMode::get_create](#mediapipescalemodeget_create)
+  - [mediapipe::ScaleMode::Clear](#mediapipescalemodeclear)
   - [mediapipe::ScaleMode::ClearField](#mediapipescalemodeclearfield)
+  - [mediapipe::ScaleMode::CopyFrom](#mediapipescalemodecopyfrom)
   - [mediapipe::ScaleMode::str](#mediapipescalemodestr)
 - [mediapipe::RotationMode](#mediapiperotationmode)
   - [mediapipe::RotationMode::get_create](#mediapiperotationmodeget_create)
+  - [mediapipe::RotationMode::Clear](#mediapiperotationmodeclear)
   - [mediapipe::RotationMode::ClearField](#mediapiperotationmodeclearfield)
+  - [mediapipe::RotationMode::CopyFrom](#mediapiperotationmodecopyfrom)
   - [mediapipe::RotationMode::str](#mediapiperotationmodestr)
 - [mediapipe::ImageTransformationCalculatorOptions](#mediapipeimagetransformationcalculatoroptions)
   - [mediapipe::ImageTransformationCalculatorOptions::get_create](#mediapipeimagetransformationcalculatoroptionsget_create)
+  - [mediapipe::ImageTransformationCalculatorOptions::Clear](#mediapipeimagetransformationcalculatoroptionsclear)
   - [mediapipe::ImageTransformationCalculatorOptions::ClearField](#mediapipeimagetransformationcalculatoroptionsclearfield)
+  - [mediapipe::ImageTransformationCalculatorOptions::CopyFrom](#mediapipeimagetransformationcalculatoroptionscopyfrom)
   - [mediapipe::ImageTransformationCalculatorOptions::str](#mediapipeimagetransformationcalculatoroptionsstr)
 - [mediapipe::TensorsToDetectionsCalculatorOptions](#mediapipetensorstodetectionscalculatoroptions)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::get_create](#mediapipetensorstodetectionscalculatoroptionsget_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::Clear](#mediapipetensorstodetectionscalculatoroptionsclear)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::ClearField](#mediapipetensorstodetectionscalculatoroptionsclearfield)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::CopyFrom](#mediapipetensorstodetectionscalculatoroptionscopyfrom)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::str](#mediapipetensorstodetectionscalculatoroptionsstr)
 - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping](#mediapipetensorstodetectionscalculatoroptionstensormapping)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::get_create](#mediapipetensorstodetectionscalculatoroptionstensormappingget_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::Clear](#mediapipetensorstodetectionscalculatoroptionstensormappingclear)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ClearField](#mediapipetensorstodetectionscalculatoroptionstensormappingclearfield)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::CopyFrom](#mediapipetensorstodetectionscalculatoroptionstensormappingcopyfrom)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::str](#mediapipetensorstodetectionscalculatoroptionstensormappingstr)
 - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindices)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::get_create](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesget_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::Clear](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesclear)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ClearField](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesclearfield)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::CopyFrom](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicescopyfrom)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::str](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesstr)
 - [mediapipe::LandmarksSmoothingCalculatorOptions](#mediapipelandmarkssmoothingcalculatoroptions)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::get_create](#mediapipelandmarkssmoothingcalculatoroptionsget_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::Clear](#mediapipelandmarkssmoothingcalculatoroptionsclear)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsclearfield)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::CopyFrom](#mediapipelandmarkssmoothingcalculatoroptionscopyfrom)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::str](#mediapipelandmarkssmoothingcalculatoroptionsstr)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter](#mediapipelandmarkssmoothingcalculatoroptionsnofilter)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::get_create](#mediapipelandmarkssmoothingcalculatoroptionsnofilterget_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::Clear](#mediapipelandmarkssmoothingcalculatoroptionsnofilterclear)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsnofilterclearfield)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::CopyFrom](#mediapipelandmarkssmoothingcalculatoroptionsnofiltercopyfrom)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::str](#mediapipelandmarkssmoothingcalculatoroptionsnofilterstr)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilter)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::get_create](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterget_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::Clear](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterclear)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterclearfield)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::CopyFrom](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfiltercopyfrom)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::str](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterstr)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilter)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::get_create](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterget_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::Clear](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterclear)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterclearfield)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::CopyFrom](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofiltercopyfrom)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::str](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterstr)
 - [mediapipe::LogicCalculatorOptions](#mediapipelogiccalculatoroptions)
   - [mediapipe::LogicCalculatorOptions::get_create](#mediapipelogiccalculatoroptionsget_create)
+  - [mediapipe::LogicCalculatorOptions::Clear](#mediapipelogiccalculatoroptionsclear)
   - [mediapipe::LogicCalculatorOptions::ClearField](#mediapipelogiccalculatoroptionsclearfield)
+  - [mediapipe::LogicCalculatorOptions::CopyFrom](#mediapipelogiccalculatoroptionscopyfrom)
   - [mediapipe::LogicCalculatorOptions::str](#mediapipelogiccalculatoroptionsstr)
 - [google::protobuf::Repeated_bool](#googleprotobufrepeated_bool)
   - [google::protobuf::Repeated_bool::create](#googleprotobufrepeated_boolcreate)
@@ -903,15 +1026,21 @@
   - [google::protobuf::Repeated_bool::splice](#googleprotobufrepeated_boolsplice)
 - [mediapipe::ThresholdingCalculatorOptions](#mediapipethresholdingcalculatoroptions)
   - [mediapipe::ThresholdingCalculatorOptions::get_create](#mediapipethresholdingcalculatoroptionsget_create)
+  - [mediapipe::ThresholdingCalculatorOptions::Clear](#mediapipethresholdingcalculatoroptionsclear)
   - [mediapipe::ThresholdingCalculatorOptions::ClearField](#mediapipethresholdingcalculatoroptionsclearfield)
+  - [mediapipe::ThresholdingCalculatorOptions::CopyFrom](#mediapipethresholdingcalculatoroptionscopyfrom)
   - [mediapipe::ThresholdingCalculatorOptions::str](#mediapipethresholdingcalculatoroptionsstr)
 - [mediapipe::BeliefDecoderConfig](#mediapipebeliefdecoderconfig)
   - [mediapipe::BeliefDecoderConfig::get_create](#mediapipebeliefdecoderconfigget_create)
+  - [mediapipe::BeliefDecoderConfig::Clear](#mediapipebeliefdecoderconfigclear)
   - [mediapipe::BeliefDecoderConfig::ClearField](#mediapipebeliefdecoderconfigclearfield)
+  - [mediapipe::BeliefDecoderConfig::CopyFrom](#mediapipebeliefdecoderconfigcopyfrom)
   - [mediapipe::BeliefDecoderConfig::str](#mediapipebeliefdecoderconfigstr)
 - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions](#mediapipelift2dframeannotationto3dcalculatoroptions)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::get_create](#mediapipelift2dframeannotationto3dcalculatoroptionsget_create)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::Clear](#mediapipelift2dframeannotationto3dcalculatoroptionsclear)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ClearField](#mediapipelift2dframeannotationto3dcalculatoroptionsclearfield)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::CopyFrom](#mediapipelift2dframeannotationto3dcalculatoroptionscopyfrom)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::str](#mediapipelift2dframeannotationto3dcalculatoroptionsstr)
 - [VectorOfString](#vectorofstring)
   - [VectorOfString::create](#vectorofstringcreate)
@@ -3466,12 +3595,28 @@ AutoIt:
 
 ## google::protobuf::Message
 
+### google::protobuf::Message::Clear
+
+```cpp
+void google::protobuf::Message::Clear();
+AutoIt:
+    $oMessage.Clear() -> None
+```
+
 ### google::protobuf::Message::ClearField
 
 ```cpp
 void google::protobuf::Message::ClearField( const std::string& field_name );
 AutoIt:
     $oMessage.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::Message::CopyFrom
+
+```cpp
+void google::protobuf::Message::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oMessage.CopyFrom( $other_message ) -> None
 ```
 
 ### google::protobuf::Message::str
@@ -3540,12 +3685,28 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Any")() -> <google.protobuf.Any object>
 ```
 
+### google::protobuf::Any::Clear
+
+```cpp
+void google::protobuf::Any::Clear();
+AutoIt:
+    $oAny.Clear() -> None
+```
+
 ### google::protobuf::Any::ClearField
 
 ```cpp
 void google::protobuf::Any::ClearField( const std::string& field_name );
 AutoIt:
     $oAny.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::Any::CopyFrom
+
+```cpp
+void google::protobuf::Any::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oAny.CopyFrom( $other_message ) -> None
 ```
 
 ### google::protobuf::Any::Pack
@@ -3839,12 +4000,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorOptions")() -> <mediapipe.CalculatorOptions object>
 ```
 
+### mediapipe::CalculatorOptions::Clear
+
+```cpp
+void mediapipe::CalculatorOptions::Clear();
+AutoIt:
+    $oCalculatorOptions.Clear() -> None
+```
+
 ### mediapipe::CalculatorOptions::ClearField
 
 ```cpp
 void mediapipe::CalculatorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::CalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::CalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::CalculatorOptions::get_Extensions
@@ -3910,12 +4087,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.MediaPipeOptions")() -> <mediapipe.MediaPipeOptions object>
 ```
 
+### mediapipe::MediaPipeOptions::Clear
+
+```cpp
+void mediapipe::MediaPipeOptions::Clear();
+AutoIt:
+    $oMediaPipeOptions.Clear() -> None
+```
+
 ### mediapipe::MediaPipeOptions::ClearField
 
 ```cpp
 void mediapipe::MediaPipeOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oMediaPipeOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::MediaPipeOptions::CopyFrom
+
+```cpp
+void mediapipe::MediaPipeOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oMediaPipeOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::MediaPipeOptions::str
@@ -3937,12 +4130,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryOptions")() -> <mediapipe.PacketFactoryOptions object>
 ```
 
+### mediapipe::PacketFactoryOptions::Clear
+
+```cpp
+void mediapipe::PacketFactoryOptions::Clear();
+AutoIt:
+    $oPacketFactoryOptions.Clear() -> None
+```
+
 ### mediapipe::PacketFactoryOptions::ClearField
 
 ```cpp
 void mediapipe::PacketFactoryOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oPacketFactoryOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::PacketFactoryOptions::CopyFrom
+
+```cpp
+void mediapipe::PacketFactoryOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oPacketFactoryOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::PacketFactoryOptions::str
@@ -3964,12 +4173,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryConfig")() -> <mediapipe.PacketFactoryConfig object>
 ```
 
+### mediapipe::PacketFactoryConfig::Clear
+
+```cpp
+void mediapipe::PacketFactoryConfig::Clear();
+AutoIt:
+    $oPacketFactoryConfig.Clear() -> None
+```
+
 ### mediapipe::PacketFactoryConfig::ClearField
 
 ```cpp
 void mediapipe::PacketFactoryConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oPacketFactoryConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::PacketFactoryConfig::CopyFrom
+
+```cpp
+void mediapipe::PacketFactoryConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oPacketFactoryConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::PacketFactoryConfig::str
@@ -3991,12 +4216,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketManagerConfig")() -> <mediapipe.PacketManagerConfig object>
 ```
 
+### mediapipe::PacketManagerConfig::Clear
+
+```cpp
+void mediapipe::PacketManagerConfig::Clear();
+AutoIt:
+    $oPacketManagerConfig.Clear() -> None
+```
+
 ### mediapipe::PacketManagerConfig::ClearField
 
 ```cpp
 void mediapipe::PacketManagerConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oPacketManagerConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::PacketManagerConfig::CopyFrom
+
+```cpp
+void mediapipe::PacketManagerConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oPacketManagerConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::PacketManagerConfig::str
@@ -4064,10 +4305,18 @@ AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::append
+
 ```cpp
-mediapipe::PacketFactoryConfig* google::protobuf::Repeated_mediapipe_PacketFactoryConfig::add( std::map<std::string, _variant_t> attrs );
+mediapipe::PacketFactoryConfig* google::protobuf::Repeated_mediapipe_PacketFactoryConfig::append( const mediapipe::PacketFactoryConfig* value );
 AutoIt:
-    $oRepeated_mediapipe_PacketFactoryConfig.add( $attrs ) -> retval
+    $oRepeated_mediapipe_PacketFactoryConfig.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::PacketFactoryConfig* google::protobuf::Repeated_mediapipe_PacketFactoryConfig::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_PacketFactoryConfig.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_PacketFactoryConfig::clear
@@ -4221,12 +4470,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorOptions")() -> <mediapipe.PacketGeneratorOptions object>
 ```
 
+### mediapipe::PacketGeneratorOptions::Clear
+
+```cpp
+void mediapipe::PacketGeneratorOptions::Clear();
+AutoIt:
+    $oPacketGeneratorOptions.Clear() -> None
+```
+
 ### mediapipe::PacketGeneratorOptions::ClearField
 
 ```cpp
 void mediapipe::PacketGeneratorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oPacketGeneratorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::PacketGeneratorOptions::CopyFrom
+
+```cpp
+void mediapipe::PacketGeneratorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oPacketGeneratorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::PacketGeneratorOptions::str
@@ -4248,12 +4513,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorConfig")() -> <mediapipe.PacketGeneratorConfig object>
 ```
 
+### mediapipe::PacketGeneratorConfig::Clear
+
+```cpp
+void mediapipe::PacketGeneratorConfig::Clear();
+AutoIt:
+    $oPacketGeneratorConfig.Clear() -> None
+```
+
 ### mediapipe::PacketGeneratorConfig::ClearField
 
 ```cpp
 void mediapipe::PacketGeneratorConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oPacketGeneratorConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::PacketGeneratorConfig::CopyFrom
+
+```cpp
+void mediapipe::PacketGeneratorConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oPacketGeneratorConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::PacketGeneratorConfig::str
@@ -4469,12 +4750,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.StatusHandlerConfig")() -> <mediapipe.StatusHandlerConfig object>
 ```
 
+### mediapipe::StatusHandlerConfig::Clear
+
+```cpp
+void mediapipe::StatusHandlerConfig::Clear();
+AutoIt:
+    $oStatusHandlerConfig.Clear() -> None
+```
+
 ### mediapipe::StatusHandlerConfig::ClearField
 
 ```cpp
 void mediapipe::StatusHandlerConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oStatusHandlerConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::StatusHandlerConfig::CopyFrom
+
+```cpp
+void mediapipe::StatusHandlerConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oStatusHandlerConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::StatusHandlerConfig::str
@@ -4496,12 +4793,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputStreamHandlerConfig")() -> <mediapipe.InputStreamHandlerConfig object>
 ```
 
+### mediapipe::InputStreamHandlerConfig::Clear
+
+```cpp
+void mediapipe::InputStreamHandlerConfig::Clear();
+AutoIt:
+    $oInputStreamHandlerConfig.Clear() -> None
+```
+
 ### mediapipe::InputStreamHandlerConfig::ClearField
 
 ```cpp
 void mediapipe::InputStreamHandlerConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oInputStreamHandlerConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::InputStreamHandlerConfig::CopyFrom
+
+```cpp
+void mediapipe::InputStreamHandlerConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oInputStreamHandlerConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::InputStreamHandlerConfig::str
@@ -4523,12 +4836,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.OutputStreamHandlerConfig")() -> <mediapipe.OutputStreamHandlerConfig object>
 ```
 
+### mediapipe::OutputStreamHandlerConfig::Clear
+
+```cpp
+void mediapipe::OutputStreamHandlerConfig::Clear();
+AutoIt:
+    $oOutputStreamHandlerConfig.Clear() -> None
+```
+
 ### mediapipe::OutputStreamHandlerConfig::ClearField
 
 ```cpp
 void mediapipe::OutputStreamHandlerConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oOutputStreamHandlerConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::OutputStreamHandlerConfig::CopyFrom
+
+```cpp
+void mediapipe::OutputStreamHandlerConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oOutputStreamHandlerConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::OutputStreamHandlerConfig::str
@@ -4550,12 +4879,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ExecutorConfig")() -> <mediapipe.ExecutorConfig object>
 ```
 
+### mediapipe::ExecutorConfig::Clear
+
+```cpp
+void mediapipe::ExecutorConfig::Clear();
+AutoIt:
+    $oExecutorConfig.Clear() -> None
+```
+
 ### mediapipe::ExecutorConfig::ClearField
 
 ```cpp
 void mediapipe::ExecutorConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oExecutorConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ExecutorConfig::CopyFrom
+
+```cpp
+void mediapipe::ExecutorConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oExecutorConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ExecutorConfig::str
@@ -4577,12 +4922,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputCollection")() -> <mediapipe.InputCollection object>
 ```
 
+### mediapipe::InputCollection::Clear
+
+```cpp
+void mediapipe::InputCollection::Clear();
+AutoIt:
+    $oInputCollection.Clear() -> None
+```
+
 ### mediapipe::InputCollection::ClearField
 
 ```cpp
 void mediapipe::InputCollection::ClearField( const std::string& field_name );
 AutoIt:
     $oInputCollection.ClearField( $field_name ) -> None
+```
+
+### mediapipe::InputCollection::CopyFrom
+
+```cpp
+void mediapipe::InputCollection::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oInputCollection.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::InputCollection::str
@@ -4604,12 +4965,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputCollectionSet")() -> <mediapipe.InputCollectionSet object>
 ```
 
+### mediapipe::InputCollectionSet::Clear
+
+```cpp
+void mediapipe::InputCollectionSet::Clear();
+AutoIt:
+    $oInputCollectionSet.Clear() -> None
+```
+
 ### mediapipe::InputCollectionSet::ClearField
 
 ```cpp
 void mediapipe::InputCollectionSet::ClearField( const std::string& field_name );
 AutoIt:
     $oInputCollectionSet.ClearField( $field_name ) -> None
+```
+
+### mediapipe::InputCollectionSet::CopyFrom
+
+```cpp
+void mediapipe::InputCollectionSet::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oInputCollectionSet.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::InputCollectionSet::str
@@ -4677,10 +5054,18 @@ AutoIt:
     $oRepeated_mediapipe_InputCollection.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_InputCollection::append
+
 ```cpp
-mediapipe::InputCollection* google::protobuf::Repeated_mediapipe_InputCollection::add( std::map<std::string, _variant_t> attrs );
+mediapipe::InputCollection* google::protobuf::Repeated_mediapipe_InputCollection::append( const mediapipe::InputCollection* value );
 AutoIt:
-    $oRepeated_mediapipe_InputCollection.add( $attrs ) -> retval
+    $oRepeated_mediapipe_InputCollection.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::InputCollection* google::protobuf::Repeated_mediapipe_InputCollection::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_InputCollection.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_InputCollection::clear
@@ -4834,12 +5219,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputStreamInfo")() -> <mediapipe.InputStreamInfo object>
 ```
 
+### mediapipe::InputStreamInfo::Clear
+
+```cpp
+void mediapipe::InputStreamInfo::Clear();
+AutoIt:
+    $oInputStreamInfo.Clear() -> None
+```
+
 ### mediapipe::InputStreamInfo::ClearField
 
 ```cpp
 void mediapipe::InputStreamInfo::ClearField( const std::string& field_name );
 AutoIt:
     $oInputStreamInfo.ClearField( $field_name ) -> None
+```
+
+### mediapipe::InputStreamInfo::CopyFrom
+
+```cpp
+void mediapipe::InputStreamInfo::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oInputStreamInfo.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::InputStreamInfo::str
@@ -4861,12 +5262,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ProfilerConfig")() -> <mediapipe.ProfilerConfig object>
 ```
 
+### mediapipe::ProfilerConfig::Clear
+
+```cpp
+void mediapipe::ProfilerConfig::Clear();
+AutoIt:
+    $oProfilerConfig.Clear() -> None
+```
+
 ### mediapipe::ProfilerConfig::ClearField
 
 ```cpp
 void mediapipe::ProfilerConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oProfilerConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ProfilerConfig::CopyFrom
+
+```cpp
+void mediapipe::ProfilerConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oProfilerConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ProfilerConfig::str
@@ -5082,12 +5499,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig")() -> <mediapipe.CalculatorGraphConfig object>
 ```
 
+### mediapipe::CalculatorGraphConfig::Clear
+
+```cpp
+void mediapipe::CalculatorGraphConfig::Clear();
+AutoIt:
+    $oCalculatorGraphConfig.Clear() -> None
+```
+
 ### mediapipe::CalculatorGraphConfig::ClearField
 
 ```cpp
 void mediapipe::CalculatorGraphConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oCalculatorGraphConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::CalculatorGraphConfig::CopyFrom
+
+```cpp
+void mediapipe::CalculatorGraphConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oCalculatorGraphConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::CalculatorGraphConfig::str
@@ -5155,10 +5588,18 @@ AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::append
+
 ```cpp
-mediapipe::CalculatorGraphConfig::Node* google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::add( std::map<std::string, _variant_t> attrs );
+mediapipe::CalculatorGraphConfig::Node* google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::append( const mediapipe::CalculatorGraphConfig::Node* value );
 AutoIt:
-    $oRepeated_mediapipe_CalculatorGraphConfig_Node.add( $attrs ) -> retval
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::CalculatorGraphConfig::Node* google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_CalculatorGraphConfig_Node.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::clear
@@ -5358,10 +5799,18 @@ AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::append
+
 ```cpp
-mediapipe::PacketGeneratorConfig* google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::add( std::map<std::string, _variant_t> attrs );
+mediapipe::PacketGeneratorConfig* google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::append( const mediapipe::PacketGeneratorConfig* value );
 AutoIt:
-    $oRepeated_mediapipe_PacketGeneratorConfig.add( $attrs ) -> retval
+    $oRepeated_mediapipe_PacketGeneratorConfig.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::PacketGeneratorConfig* google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_PacketGeneratorConfig.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::clear
@@ -5561,10 +6010,18 @@ AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::append
+
 ```cpp
-mediapipe::StatusHandlerConfig* google::protobuf::Repeated_mediapipe_StatusHandlerConfig::add( std::map<std::string, _variant_t> attrs );
+mediapipe::StatusHandlerConfig* google::protobuf::Repeated_mediapipe_StatusHandlerConfig::append( const mediapipe::StatusHandlerConfig* value );
 AutoIt:
-    $oRepeated_mediapipe_StatusHandlerConfig.add( $attrs ) -> retval
+    $oRepeated_mediapipe_StatusHandlerConfig.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::StatusHandlerConfig* google::protobuf::Repeated_mediapipe_StatusHandlerConfig::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_StatusHandlerConfig.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_StatusHandlerConfig::clear
@@ -5764,10 +6221,18 @@ AutoIt:
     $oRepeated_mediapipe_ExecutorConfig.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_ExecutorConfig::append
+
 ```cpp
-mediapipe::ExecutorConfig* google::protobuf::Repeated_mediapipe_ExecutorConfig::add( std::map<std::string, _variant_t> attrs );
+mediapipe::ExecutorConfig* google::protobuf::Repeated_mediapipe_ExecutorConfig::append( const mediapipe::ExecutorConfig* value );
 AutoIt:
-    $oRepeated_mediapipe_ExecutorConfig.add( $attrs ) -> retval
+    $oRepeated_mediapipe_ExecutorConfig.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::ExecutorConfig* google::protobuf::Repeated_mediapipe_ExecutorConfig::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_ExecutorConfig.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_ExecutorConfig::clear
@@ -5967,10 +6432,18 @@ AutoIt:
     $oRepeated_google_protobuf_Any.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_google_protobuf_Any::append
+
 ```cpp
-google::protobuf::Any* google::protobuf::Repeated_google_protobuf_Any::add( std::map<std::string, _variant_t> attrs );
+google::protobuf::Any* google::protobuf::Repeated_google_protobuf_Any::append( const google::protobuf::Any* value );
 AutoIt:
-    $oRepeated_google_protobuf_Any.add( $attrs ) -> retval
+    $oRepeated_google_protobuf_Any.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::Any* google::protobuf::Repeated_google_protobuf_Any::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_Any.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_google_protobuf_Any::clear
@@ -6124,12 +6597,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig.Node")() -> <mediapipe.CalculatorGraphConfig.Node object>
 ```
 
+### mediapipe::CalculatorGraphConfig::Node::Clear
+
+```cpp
+void mediapipe::CalculatorGraphConfig::Node::Clear();
+AutoIt:
+    $oNode.Clear() -> None
+```
+
 ### mediapipe::CalculatorGraphConfig::Node::ClearField
 
 ```cpp
 void mediapipe::CalculatorGraphConfig::Node::ClearField( const std::string& field_name );
 AutoIt:
     $oNode.ClearField( $field_name ) -> None
+```
+
+### mediapipe::CalculatorGraphConfig::Node::CopyFrom
+
+```cpp
+void mediapipe::CalculatorGraphConfig::Node::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oNode.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::CalculatorGraphConfig::Node::str
@@ -6197,10 +6686,18 @@ AutoIt:
     $oRepeated_mediapipe_InputStreamInfo.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_InputStreamInfo::append
+
 ```cpp
-mediapipe::InputStreamInfo* google::protobuf::Repeated_mediapipe_InputStreamInfo::add( std::map<std::string, _variant_t> attrs );
+mediapipe::InputStreamInfo* google::protobuf::Repeated_mediapipe_InputStreamInfo::append( const mediapipe::InputStreamInfo* value );
 AutoIt:
-    $oRepeated_mediapipe_InputStreamInfo.add( $attrs ) -> retval
+    $oRepeated_mediapipe_InputStreamInfo.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::InputStreamInfo* google::protobuf::Repeated_mediapipe_InputStreamInfo::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_InputStreamInfo.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_InputStreamInfo::clear
@@ -6354,12 +6851,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rasterization")() -> <mediapipe.Rasterization object>
 ```
 
+### mediapipe::Rasterization::Clear
+
+```cpp
+void mediapipe::Rasterization::Clear();
+AutoIt:
+    $oRasterization.Clear() -> None
+```
+
 ### mediapipe::Rasterization::ClearField
 
 ```cpp
 void mediapipe::Rasterization::ClearField( const std::string& field_name );
 AutoIt:
     $oRasterization.ClearField( $field_name ) -> None
+```
+
+### mediapipe::Rasterization::CopyFrom
+
+```cpp
+void mediapipe::Rasterization::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRasterization.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::Rasterization::str
@@ -6427,10 +6940,18 @@ AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Rasterization_Interval::append
+
 ```cpp
-mediapipe::Rasterization::Interval* google::protobuf::Repeated_mediapipe_Rasterization_Interval::add( std::map<std::string, _variant_t> attrs );
+mediapipe::Rasterization::Interval* google::protobuf::Repeated_mediapipe_Rasterization_Interval::append( const mediapipe::Rasterization::Interval* value );
 AutoIt:
-    $oRepeated_mediapipe_Rasterization_Interval.add( $attrs ) -> retval
+    $oRepeated_mediapipe_Rasterization_Interval.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::Rasterization::Interval* google::protobuf::Repeated_mediapipe_Rasterization_Interval::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_Rasterization_Interval.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_Rasterization_Interval::clear
@@ -6584,12 +7105,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rasterization.Interval")() -> <mediapipe.Rasterization.Interval object>
 ```
 
+### mediapipe::Rasterization::Interval::Clear
+
+```cpp
+void mediapipe::Rasterization::Interval::Clear();
+AutoIt:
+    $oInterval.Clear() -> None
+```
+
 ### mediapipe::Rasterization::Interval::ClearField
 
 ```cpp
 void mediapipe::Rasterization::Interval::ClearField( const std::string& field_name );
 AutoIt:
     $oInterval.ClearField( $field_name ) -> None
+```
+
+### mediapipe::Rasterization::Interval::CopyFrom
+
+```cpp
+void mediapipe::Rasterization::Interval::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oInterval.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::Rasterization::Interval::str
@@ -6611,12 +7148,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData")() -> <mediapipe.LocationData object>
 ```
 
+### mediapipe::LocationData::Clear
+
+```cpp
+void mediapipe::LocationData::Clear();
+AutoIt:
+    $oLocationData.Clear() -> None
+```
+
 ### mediapipe::LocationData::ClearField
 
 ```cpp
 void mediapipe::LocationData::ClearField( const std::string& field_name );
 AutoIt:
     $oLocationData.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LocationData::CopyFrom
+
+```cpp
+void mediapipe::LocationData::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLocationData.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LocationData::str
@@ -6684,10 +7237,18 @@ AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::append
+
 ```cpp
-mediapipe::LocationData::RelativeKeypoint* google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::add( std::map<std::string, _variant_t> attrs );
+mediapipe::LocationData::RelativeKeypoint* google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::append( const mediapipe::LocationData::RelativeKeypoint* value );
 AutoIt:
-    $oRepeated_mediapipe_LocationData_RelativeKeypoint.add( $attrs ) -> retval
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::LocationData::RelativeKeypoint* google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_LocationData_RelativeKeypoint.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::clear
@@ -6841,12 +7402,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.BoundingBox")() -> <mediapipe.LocationData.BoundingBox object>
 ```
 
+### mediapipe::LocationData::BoundingBox::Clear
+
+```cpp
+void mediapipe::LocationData::BoundingBox::Clear();
+AutoIt:
+    $oBoundingBox.Clear() -> None
+```
+
 ### mediapipe::LocationData::BoundingBox::ClearField
 
 ```cpp
 void mediapipe::LocationData::BoundingBox::ClearField( const std::string& field_name );
 AutoIt:
     $oBoundingBox.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LocationData::BoundingBox::CopyFrom
+
+```cpp
+void mediapipe::LocationData::BoundingBox::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oBoundingBox.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LocationData::BoundingBox::str
@@ -6868,12 +7445,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeBoundingBox")() -> <mediapipe.LocationData.RelativeBoundingBox object>
 ```
 
+### mediapipe::LocationData::RelativeBoundingBox::Clear
+
+```cpp
+void mediapipe::LocationData::RelativeBoundingBox::Clear();
+AutoIt:
+    $oRelativeBoundingBox.Clear() -> None
+```
+
 ### mediapipe::LocationData::RelativeBoundingBox::ClearField
 
 ```cpp
 void mediapipe::LocationData::RelativeBoundingBox::ClearField( const std::string& field_name );
 AutoIt:
     $oRelativeBoundingBox.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::CopyFrom
+
+```cpp
+void mediapipe::LocationData::RelativeBoundingBox::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRelativeBoundingBox.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LocationData::RelativeBoundingBox::str
@@ -6895,12 +7488,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.BinaryMask")() -> <mediapipe.LocationData.BinaryMask object>
 ```
 
+### mediapipe::LocationData::BinaryMask::Clear
+
+```cpp
+void mediapipe::LocationData::BinaryMask::Clear();
+AutoIt:
+    $oBinaryMask.Clear() -> None
+```
+
 ### mediapipe::LocationData::BinaryMask::ClearField
 
 ```cpp
 void mediapipe::LocationData::BinaryMask::ClearField( const std::string& field_name );
 AutoIt:
     $oBinaryMask.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LocationData::BinaryMask::CopyFrom
+
+```cpp
+void mediapipe::LocationData::BinaryMask::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oBinaryMask.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LocationData::BinaryMask::str
@@ -6922,12 +7531,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeKeypoint")() -> <mediapipe.LocationData.RelativeKeypoint object>
 ```
 
+### mediapipe::LocationData::RelativeKeypoint::Clear
+
+```cpp
+void mediapipe::LocationData::RelativeKeypoint::Clear();
+AutoIt:
+    $oRelativeKeypoint.Clear() -> None
+```
+
 ### mediapipe::LocationData::RelativeKeypoint::ClearField
 
 ```cpp
 void mediapipe::LocationData::RelativeKeypoint::ClearField( const std::string& field_name );
 AutoIt:
     $oRelativeKeypoint.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LocationData::RelativeKeypoint::CopyFrom
+
+```cpp
+void mediapipe::LocationData::RelativeKeypoint::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRelativeKeypoint.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LocationData::RelativeKeypoint::str
@@ -6949,12 +7574,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection")() -> <mediapipe.Detection object>
 ```
 
+### mediapipe::Detection::Clear
+
+```cpp
+void mediapipe::Detection::Clear();
+AutoIt:
+    $oDetection.Clear() -> None
+```
+
 ### mediapipe::Detection::ClearField
 
 ```cpp
 void mediapipe::Detection::ClearField( const std::string& field_name );
 AutoIt:
     $oDetection.ClearField( $field_name ) -> None
+```
+
+### mediapipe::Detection::CopyFrom
+
+```cpp
+void mediapipe::Detection::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oDetection.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::Detection::str
@@ -7216,10 +7857,18 @@ AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::append
+
 ```cpp
-mediapipe::Detection::AssociatedDetection* google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::add( std::map<std::string, _variant_t> attrs );
+mediapipe::Detection::AssociatedDetection* google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::append( const mediapipe::Detection::AssociatedDetection* value );
 AutoIt:
-    $oRepeated_mediapipe_Detection_AssociatedDetection.add( $attrs ) -> retval
+    $oRepeated_mediapipe_Detection_AssociatedDetection.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::Detection::AssociatedDetection* google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_Detection_AssociatedDetection.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::clear
@@ -7373,12 +8022,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection.AssociatedDetection")() -> <mediapipe.Detection.AssociatedDetection object>
 ```
 
+### mediapipe::Detection::AssociatedDetection::Clear
+
+```cpp
+void mediapipe::Detection::AssociatedDetection::Clear();
+AutoIt:
+    $oAssociatedDetection.Clear() -> None
+```
+
 ### mediapipe::Detection::AssociatedDetection::ClearField
 
 ```cpp
 void mediapipe::Detection::AssociatedDetection::ClearField( const std::string& field_name );
 AutoIt:
     $oAssociatedDetection.ClearField( $field_name ) -> None
+```
+
+### mediapipe::Detection::AssociatedDetection::CopyFrom
+
+```cpp
+void mediapipe::Detection::AssociatedDetection::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oAssociatedDetection.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::Detection::AssociatedDetection::str
@@ -7400,12 +8065,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.DetectionList")() -> <mediapipe.DetectionList object>
 ```
 
+### mediapipe::DetectionList::Clear
+
+```cpp
+void mediapipe::DetectionList::Clear();
+AutoIt:
+    $oDetectionList.Clear() -> None
+```
+
 ### mediapipe::DetectionList::ClearField
 
 ```cpp
 void mediapipe::DetectionList::ClearField( const std::string& field_name );
 AutoIt:
     $oDetectionList.ClearField( $field_name ) -> None
+```
+
+### mediapipe::DetectionList::CopyFrom
+
+```cpp
+void mediapipe::DetectionList::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oDetectionList.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::DetectionList::str
@@ -7473,10 +8154,18 @@ AutoIt:
     $oRepeated_mediapipe_Detection.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Detection::append
+
 ```cpp
-mediapipe::Detection* google::protobuf::Repeated_mediapipe_Detection::add( std::map<std::string, _variant_t> attrs );
+mediapipe::Detection* google::protobuf::Repeated_mediapipe_Detection::append( const mediapipe::Detection* value );
 AutoIt:
-    $oRepeated_mediapipe_Detection.add( $attrs ) -> retval
+    $oRepeated_mediapipe_Detection.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::Detection* google::protobuf::Repeated_mediapipe_Detection::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_Detection.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_Detection::clear
@@ -7630,12 +8319,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageFormat")() -> <mediapipe.ImageFormat object>
 ```
 
+### mediapipe::ImageFormat::Clear
+
+```cpp
+void mediapipe::ImageFormat::Clear();
+AutoIt:
+    $oImageFormat.Clear() -> None
+```
+
 ### mediapipe::ImageFormat::ClearField
 
 ```cpp
 void mediapipe::ImageFormat::ClearField( const std::string& field_name );
 AutoIt:
     $oImageFormat.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ImageFormat::CopyFrom
+
+```cpp
+void mediapipe::ImageFormat::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oImageFormat.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ImageFormat::str
@@ -7657,12 +8362,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Classification")() -> <mediapipe.Classification object>
 ```
 
+### mediapipe::Classification::Clear
+
+```cpp
+void mediapipe::Classification::Clear();
+AutoIt:
+    $oClassification.Clear() -> None
+```
+
 ### mediapipe::Classification::ClearField
 
 ```cpp
 void mediapipe::Classification::ClearField( const std::string& field_name );
 AutoIt:
     $oClassification.ClearField( $field_name ) -> None
+```
+
+### mediapipe::Classification::CopyFrom
+
+```cpp
+void mediapipe::Classification::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oClassification.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::Classification::str
@@ -7684,12 +8405,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ClassificationList")() -> <mediapipe.ClassificationList object>
 ```
 
+### mediapipe::ClassificationList::Clear
+
+```cpp
+void mediapipe::ClassificationList::Clear();
+AutoIt:
+    $oClassificationList.Clear() -> None
+```
+
 ### mediapipe::ClassificationList::ClearField
 
 ```cpp
 void mediapipe::ClassificationList::ClearField( const std::string& field_name );
 AutoIt:
     $oClassificationList.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ClassificationList::CopyFrom
+
+```cpp
+void mediapipe::ClassificationList::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oClassificationList.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ClassificationList::str
@@ -7757,10 +8494,18 @@ AutoIt:
     $oRepeated_mediapipe_Classification.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Classification::append
+
 ```cpp
-mediapipe::Classification* google::protobuf::Repeated_mediapipe_Classification::add( std::map<std::string, _variant_t> attrs );
+mediapipe::Classification* google::protobuf::Repeated_mediapipe_Classification::append( const mediapipe::Classification* value );
 AutoIt:
-    $oRepeated_mediapipe_Classification.add( $attrs ) -> retval
+    $oRepeated_mediapipe_Classification.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::Classification* google::protobuf::Repeated_mediapipe_Classification::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_Classification.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_Classification::clear
@@ -7914,12 +8659,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ClassificationListCollection")() -> <mediapipe.ClassificationListCollection object>
 ```
 
+### mediapipe::ClassificationListCollection::Clear
+
+```cpp
+void mediapipe::ClassificationListCollection::Clear();
+AutoIt:
+    $oClassificationListCollection.Clear() -> None
+```
+
 ### mediapipe::ClassificationListCollection::ClearField
 
 ```cpp
 void mediapipe::ClassificationListCollection::ClearField( const std::string& field_name );
 AutoIt:
     $oClassificationListCollection.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ClassificationListCollection::CopyFrom
+
+```cpp
+void mediapipe::ClassificationListCollection::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oClassificationListCollection.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ClassificationListCollection::str
@@ -7987,10 +8748,18 @@ AutoIt:
     $oRepeated_mediapipe_ClassificationList.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_ClassificationList::append
+
 ```cpp
-mediapipe::ClassificationList* google::protobuf::Repeated_mediapipe_ClassificationList::add( std::map<std::string, _variant_t> attrs );
+mediapipe::ClassificationList* google::protobuf::Repeated_mediapipe_ClassificationList::append( const mediapipe::ClassificationList* value );
 AutoIt:
-    $oRepeated_mediapipe_ClassificationList.add( $attrs ) -> retval
+    $oRepeated_mediapipe_ClassificationList.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::ClassificationList* google::protobuf::Repeated_mediapipe_ClassificationList::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_ClassificationList.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_ClassificationList::clear
@@ -8144,12 +8913,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Landmark")() -> <mediapipe.Landmark object>
 ```
 
+### mediapipe::Landmark::Clear
+
+```cpp
+void mediapipe::Landmark::Clear();
+AutoIt:
+    $oLandmark.Clear() -> None
+```
+
 ### mediapipe::Landmark::ClearField
 
 ```cpp
 void mediapipe::Landmark::ClearField( const std::string& field_name );
 AutoIt:
     $oLandmark.ClearField( $field_name ) -> None
+```
+
+### mediapipe::Landmark::CopyFrom
+
+```cpp
+void mediapipe::Landmark::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLandmark.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::Landmark::str
@@ -8171,12 +8956,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarkList")() -> <mediapipe.LandmarkList object>
 ```
 
+### mediapipe::LandmarkList::Clear
+
+```cpp
+void mediapipe::LandmarkList::Clear();
+AutoIt:
+    $oLandmarkList.Clear() -> None
+```
+
 ### mediapipe::LandmarkList::ClearField
 
 ```cpp
 void mediapipe::LandmarkList::ClearField( const std::string& field_name );
 AutoIt:
     $oLandmarkList.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LandmarkList::CopyFrom
+
+```cpp
+void mediapipe::LandmarkList::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLandmarkList.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LandmarkList::str
@@ -8244,10 +9045,18 @@ AutoIt:
     $oRepeated_mediapipe_Landmark.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_Landmark::append
+
 ```cpp
-mediapipe::Landmark* google::protobuf::Repeated_mediapipe_Landmark::add( std::map<std::string, _variant_t> attrs );
+mediapipe::Landmark* google::protobuf::Repeated_mediapipe_Landmark::append( const mediapipe::Landmark* value );
 AutoIt:
-    $oRepeated_mediapipe_Landmark.add( $attrs ) -> retval
+    $oRepeated_mediapipe_Landmark.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::Landmark* google::protobuf::Repeated_mediapipe_Landmark::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_Landmark.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_Landmark::clear
@@ -8401,12 +9210,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarkListCollection")() -> <mediapipe.LandmarkListCollection object>
 ```
 
+### mediapipe::LandmarkListCollection::Clear
+
+```cpp
+void mediapipe::LandmarkListCollection::Clear();
+AutoIt:
+    $oLandmarkListCollection.Clear() -> None
+```
+
 ### mediapipe::LandmarkListCollection::ClearField
 
 ```cpp
 void mediapipe::LandmarkListCollection::ClearField( const std::string& field_name );
 AutoIt:
     $oLandmarkListCollection.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LandmarkListCollection::CopyFrom
+
+```cpp
+void mediapipe::LandmarkListCollection::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLandmarkListCollection.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LandmarkListCollection::str
@@ -8474,10 +9299,18 @@ AutoIt:
     $oRepeated_mediapipe_LandmarkList.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_LandmarkList::append
+
 ```cpp
-mediapipe::LandmarkList* google::protobuf::Repeated_mediapipe_LandmarkList::add( std::map<std::string, _variant_t> attrs );
+mediapipe::LandmarkList* google::protobuf::Repeated_mediapipe_LandmarkList::append( const mediapipe::LandmarkList* value );
 AutoIt:
-    $oRepeated_mediapipe_LandmarkList.add( $attrs ) -> retval
+    $oRepeated_mediapipe_LandmarkList.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::LandmarkList* google::protobuf::Repeated_mediapipe_LandmarkList::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_LandmarkList.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_LandmarkList::clear
@@ -8631,12 +9464,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmark")() -> <mediapipe.NormalizedLandmark object>
 ```
 
+### mediapipe::NormalizedLandmark::Clear
+
+```cpp
+void mediapipe::NormalizedLandmark::Clear();
+AutoIt:
+    $oNormalizedLandmark.Clear() -> None
+```
+
 ### mediapipe::NormalizedLandmark::ClearField
 
 ```cpp
 void mediapipe::NormalizedLandmark::ClearField( const std::string& field_name );
 AutoIt:
     $oNormalizedLandmark.ClearField( $field_name ) -> None
+```
+
+### mediapipe::NormalizedLandmark::CopyFrom
+
+```cpp
+void mediapipe::NormalizedLandmark::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oNormalizedLandmark.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::NormalizedLandmark::str
@@ -8658,12 +9507,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkList")() -> <mediapipe.NormalizedLandmarkList object>
 ```
 
+### mediapipe::NormalizedLandmarkList::Clear
+
+```cpp
+void mediapipe::NormalizedLandmarkList::Clear();
+AutoIt:
+    $oNormalizedLandmarkList.Clear() -> None
+```
+
 ### mediapipe::NormalizedLandmarkList::ClearField
 
 ```cpp
 void mediapipe::NormalizedLandmarkList::ClearField( const std::string& field_name );
 AutoIt:
     $oNormalizedLandmarkList.ClearField( $field_name ) -> None
+```
+
+### mediapipe::NormalizedLandmarkList::CopyFrom
+
+```cpp
+void mediapipe::NormalizedLandmarkList::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oNormalizedLandmarkList.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::NormalizedLandmarkList::str
@@ -8731,10 +9596,18 @@ AutoIt:
     $oRepeated_mediapipe_NormalizedLandmark.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_NormalizedLandmark::append
+
 ```cpp
-mediapipe::NormalizedLandmark* google::protobuf::Repeated_mediapipe_NormalizedLandmark::add( std::map<std::string, _variant_t> attrs );
+mediapipe::NormalizedLandmark* google::protobuf::Repeated_mediapipe_NormalizedLandmark::append( const mediapipe::NormalizedLandmark* value );
 AutoIt:
-    $oRepeated_mediapipe_NormalizedLandmark.add( $attrs ) -> retval
+    $oRepeated_mediapipe_NormalizedLandmark.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::NormalizedLandmark* google::protobuf::Repeated_mediapipe_NormalizedLandmark::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_NormalizedLandmark.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_NormalizedLandmark::clear
@@ -8888,12 +9761,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkListCollection")() -> <mediapipe.NormalizedLandmarkListCollection object>
 ```
 
+### mediapipe::NormalizedLandmarkListCollection::Clear
+
+```cpp
+void mediapipe::NormalizedLandmarkListCollection::Clear();
+AutoIt:
+    $oNormalizedLandmarkListCollection.Clear() -> None
+```
+
 ### mediapipe::NormalizedLandmarkListCollection::ClearField
 
 ```cpp
 void mediapipe::NormalizedLandmarkListCollection::ClearField( const std::string& field_name );
 AutoIt:
     $oNormalizedLandmarkListCollection.ClearField( $field_name ) -> None
+```
+
+### mediapipe::NormalizedLandmarkListCollection::CopyFrom
+
+```cpp
+void mediapipe::NormalizedLandmarkListCollection::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oNormalizedLandmarkListCollection.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::NormalizedLandmarkListCollection::str
@@ -8961,10 +9850,18 @@ AutoIt:
     $oRepeated_mediapipe_NormalizedLandmarkList.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::append
+
 ```cpp
-mediapipe::NormalizedLandmarkList* google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::add( std::map<std::string, _variant_t> attrs );
+mediapipe::NormalizedLandmarkList* google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::append( const mediapipe::NormalizedLandmarkList* value );
 AutoIt:
-    $oRepeated_mediapipe_NormalizedLandmarkList.add( $attrs ) -> retval
+    $oRepeated_mediapipe_NormalizedLandmarkList.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::NormalizedLandmarkList* google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_NormalizedLandmarkList.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::clear
@@ -9118,12 +10015,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions")() -> <mediapipe.ConstantSidePacketCalculatorOptions object>
 ```
 
+### mediapipe::ConstantSidePacketCalculatorOptions::Clear
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::Clear();
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.Clear() -> None
+```
+
 ### mediapipe::ConstantSidePacketCalculatorOptions::ClearField
 
 ```cpp
 void mediapipe::ConstantSidePacketCalculatorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oConstantSidePacketCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::str
@@ -9191,10 +10104,18 @@ AutoIt:
     $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.add( $value ) -> retval
 ```
 
+### google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::append
+
 ```cpp
-mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket* google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::add( std::map<std::string, _variant_t> attrs );
+mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket* google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::append( const mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket* value );
 AutoIt:
-    $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.add( $attrs ) -> retval
+    $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket* google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.append( $attrs ) -> retval
 ```
 
 ### google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::clear
@@ -9348,12 +10269,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket")() -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
 ```
 
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::Clear
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::Clear();
+AutoIt:
+    $oConstantSidePacket.Clear() -> None
+```
+
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ClearField
 
 ```cpp
 void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ClearField( const std::string& field_name );
 AutoIt:
     $oConstantSidePacket.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CopyFrom
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oConstantSidePacket.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::str
@@ -9375,12 +10312,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ScaleMode")() -> <mediapipe.ScaleMode object>
 ```
 
+### mediapipe::ScaleMode::Clear
+
+```cpp
+void mediapipe::ScaleMode::Clear();
+AutoIt:
+    $oScaleMode.Clear() -> None
+```
+
 ### mediapipe::ScaleMode::ClearField
 
 ```cpp
 void mediapipe::ScaleMode::ClearField( const std::string& field_name );
 AutoIt:
     $oScaleMode.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ScaleMode::CopyFrom
+
+```cpp
+void mediapipe::ScaleMode::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oScaleMode.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ScaleMode::str
@@ -9402,12 +10355,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.RotationMode")() -> <mediapipe.RotationMode object>
 ```
 
+### mediapipe::RotationMode::Clear
+
+```cpp
+void mediapipe::RotationMode::Clear();
+AutoIt:
+    $oRotationMode.Clear() -> None
+```
+
 ### mediapipe::RotationMode::ClearField
 
 ```cpp
 void mediapipe::RotationMode::ClearField( const std::string& field_name );
 AutoIt:
     $oRotationMode.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RotationMode::CopyFrom
+
+```cpp
+void mediapipe::RotationMode::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRotationMode.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::RotationMode::str
@@ -9429,12 +10398,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageTransformationCalculatorOptions")() -> <mediapipe.ImageTransformationCalculatorOptions object>
 ```
 
+### mediapipe::ImageTransformationCalculatorOptions::Clear
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Clear();
+AutoIt:
+    $oImageTransformationCalculatorOptions.Clear() -> None
+```
+
 ### mediapipe::ImageTransformationCalculatorOptions::ClearField
 
 ```cpp
 void mediapipe::ImageTransformationCalculatorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oImageTransformationCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oImageTransformationCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ImageTransformationCalculatorOptions::str
@@ -9456,12 +10441,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions")() -> <mediapipe.TensorsToDetectionsCalculatorOptions object>
 ```
 
+### mediapipe::TensorsToDetectionsCalculatorOptions::Clear
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::Clear();
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.Clear() -> None
+```
+
 ### mediapipe::TensorsToDetectionsCalculatorOptions::ClearField
 
 ```cpp
 void mediapipe::TensorsToDetectionsCalculatorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oTensorsToDetectionsCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::str
@@ -9483,12 +10484,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping")() -> <mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping object>
 ```
 
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::Clear
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::Clear();
+AutoIt:
+    $oTensorMapping.Clear() -> None
+```
+
 ### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ClearField
 
 ```cpp
 void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ClearField( const std::string& field_name );
 AutoIt:
     $oTensorMapping.ClearField( $field_name ) -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::CopyFrom
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oTensorMapping.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::str
@@ -9510,12 +10527,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices")() -> <mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices object>
 ```
 
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::Clear
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::Clear();
+AutoIt:
+    $oBoxBoundariesIndices.Clear() -> None
+```
+
 ### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ClearField
 
 ```cpp
 void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ClearField( const std::string& field_name );
 AutoIt:
     $oBoxBoundariesIndices.ClearField( $field_name ) -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::CopyFrom
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oBoxBoundariesIndices.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::str
@@ -9537,12 +10570,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions")() -> <mediapipe.LandmarksSmoothingCalculatorOptions object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::Clear
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::Clear();
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.Clear() -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::ClearField
 
 ```cpp
 void mediapipe::LandmarksSmoothingCalculatorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oLandmarksSmoothingCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::str
@@ -9564,12 +10613,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::Clear
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::Clear();
+AutoIt:
+    $oNoFilter.Clear() -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ClearField
 
 ```cpp
 void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ClearField( const std::string& field_name );
 AutoIt:
     $oNoFilter.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::CopyFrom
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oNoFilter.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::str
@@ -9591,12 +10656,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::Clear
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::Clear();
+AutoIt:
+    $oVelocityFilter.Clear() -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ClearField
 
 ```cpp
 void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ClearField( const std::string& field_name );
 AutoIt:
     $oVelocityFilter.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::CopyFrom
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oVelocityFilter.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::str
@@ -9618,12 +10699,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::Clear
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::Clear();
+AutoIt:
+    $oOneEuroFilter.Clear() -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ClearField
 
 ```cpp
 void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ClearField( const std::string& field_name );
 AutoIt:
     $oOneEuroFilter.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::CopyFrom
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oOneEuroFilter.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::str
@@ -9645,12 +10742,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LogicCalculatorOptions")() -> <mediapipe.LogicCalculatorOptions object>
 ```
 
+### mediapipe::LogicCalculatorOptions::Clear
+
+```cpp
+void mediapipe::LogicCalculatorOptions::Clear();
+AutoIt:
+    $oLogicCalculatorOptions.Clear() -> None
+```
+
 ### mediapipe::LogicCalculatorOptions::ClearField
 
 ```cpp
 void mediapipe::LogicCalculatorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oLogicCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::LogicCalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::LogicCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLogicCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::LogicCalculatorOptions::str
@@ -9866,12 +10979,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ThresholdingCalculatorOptions")() -> <mediapipe.ThresholdingCalculatorOptions object>
 ```
 
+### mediapipe::ThresholdingCalculatorOptions::Clear
+
+```cpp
+void mediapipe::ThresholdingCalculatorOptions::Clear();
+AutoIt:
+    $oThresholdingCalculatorOptions.Clear() -> None
+```
+
 ### mediapipe::ThresholdingCalculatorOptions::ClearField
 
 ```cpp
 void mediapipe::ThresholdingCalculatorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oThresholdingCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ThresholdingCalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::ThresholdingCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oThresholdingCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::ThresholdingCalculatorOptions::str
@@ -9893,12 +11022,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.BeliefDecoderConfig")() -> <mediapipe.BeliefDecoderConfig object>
 ```
 
+### mediapipe::BeliefDecoderConfig::Clear
+
+```cpp
+void mediapipe::BeliefDecoderConfig::Clear();
+AutoIt:
+    $oBeliefDecoderConfig.Clear() -> None
+```
+
 ### mediapipe::BeliefDecoderConfig::ClearField
 
 ```cpp
 void mediapipe::BeliefDecoderConfig::ClearField( const std::string& field_name );
 AutoIt:
     $oBeliefDecoderConfig.ClearField( $field_name ) -> None
+```
+
+### mediapipe::BeliefDecoderConfig::CopyFrom
+
+```cpp
+void mediapipe::BeliefDecoderConfig::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oBeliefDecoderConfig.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::BeliefDecoderConfig::str
@@ -9920,12 +11065,28 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions")() -> <mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions object>
 ```
 
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::Clear
+
+```cpp
+void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::Clear();
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.Clear() -> None
+```
+
 ### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ClearField
 
 ```cpp
 void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ClearField( const std::string& field_name );
 AutoIt:
     $oLift2DFrameAnnotationTo3DCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
 ### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::str

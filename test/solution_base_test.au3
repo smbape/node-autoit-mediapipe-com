@@ -147,6 +147,8 @@ Func Test()
 			"allow_signal", True, _
 			"rotation_degrees", 0 _
 			))
+
+	test_solution_stream_type_hints()
 EndFunc   ;==>Test
 
 Func test_valid_input_data_type_proto()
@@ -242,6 +244,48 @@ Func test_solution_reset($text_config, $side_inputs)
 		$solution.reset()
 	Next
 EndFunc   ;==>test_solution_reset
+
+Func test_solution_stream_type_hints()
+	Local $text_config = "" & @CRLF & _
+			"  input_stream: 'union_type_image_in'" & @CRLF & _
+			"  output_stream: 'image_type_out'" & @CRLF & _
+			"  node {" & @CRLF & _
+			"    calculator: 'ToImageCalculator'" & @CRLF & _
+			"    input_stream: 'IMAGE:union_type_image_in'" & @CRLF & _
+			"    output_stream: 'IMAGE:image_type_out'" & @CRLF & _
+			"  }" & @CRLF & _
+			"" & @CRLF
+
+	Local $config_proto = $text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig())
+	MsgBox(262144, 'Debug line ~' & @ScriptLineNumber, 'Selection:' & @CRLF & '$text_config' & @CRLF & @CRLF & 'Return:' & @CRLF & $text_config) ;### Debug MSGBOX
+	Local $input_image = _RandomImage(3, 3, $CV_8UC3, 0, 27)
+
+	Local $outputs
+
+	Local $solution = $solution_base.SolutionBase(_Mediapipe_Params( _
+			"graph_config", $config_proto, _
+			"stream_type_hints", _Mediapipe_Map("String", "PacketDataType", _
+			"union_type_image_in", $MEDIAPIPE_AUTOIT_SOLUTION_BASE_PACKET_DATA_TYPE_IMAGE _
+			) _
+			))
+
+	For $i = 0 To 19
+		$outputs = $solution.process($input_image)
+		_AssertMatEqual($input_image, $outputs("image_type_out"))
+	Next
+
+	Local $solution2 = $solution_base.SolutionBase(_Mediapipe_Params( _
+			"graph_config", $config_proto, _
+			"stream_type_hints", _Mediapipe_Map("String", "PacketDataType", _
+			"union_type_image_in", $MEDIAPIPE_AUTOIT_SOLUTION_BASE_PACKET_DATA_TYPE_IMAGE_FRAME _
+			) _
+			))
+
+	For $i = 0 To 19
+		$outputs = $solution2.process($input_image)
+		_AssertMatEqual($input_image, $outputs("image_type_out"))
+	Next
+EndFunc   ;==>test_solution_stream_type_hints
 
 Func _process_and_verify($config_proto, $side_inputs = Default, $calculator_params = Default)
 	Local $input_image = _RandomImage(3, 3, $CV_8UC3, 0, 27)
