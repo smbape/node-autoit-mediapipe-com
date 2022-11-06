@@ -50,6 +50,7 @@ Func Test()
 			'landmark {x: 0.1 y: 0.5 presence: 0.5}' & @CRLF & _
 			'landmark {x: 0.5 y: 0.1 visibility: 0.5}' _
 			)
+	test_draw_axis()
 EndFunc   ;==>Test
 
 Func test_draw_keypoints_only()
@@ -140,6 +141,33 @@ Func test_draw_landmarks_and_connections($landmark_list_text)
 	$drawing_utils.draw_landmarks($image, $landmark_list, _Mediapipe_Tuple(_Mediapipe_Tuple(0, 1)))
 	_AssertMatEqual($image, $expected_result)
 EndFunc   ;==>test_draw_landmarks_and_connections
+
+Func test_draw_axis()
+	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
+	Local $expected_result = $image.copy()
+
+	Local $origin = _OpenCV_Point(50, 50)
+	Local $x_axis = _OpenCV_Point(75, 50)
+	Local $y_axis = _OpenCV_Point(50, 23)
+	Local $z_axis = _OpenCV_Point(50, 77)
+
+	$cv.arrowedLine($expected_result, $origin, $x_axis, $drawing_utils.RED_COLOR, _
+			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
+	$cv.arrowedLine($expected_result, $origin, $y_axis, $drawing_utils.GREEN_COLOR, _
+			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
+	$cv.arrowedLine($expected_result, $origin, $z_axis, $drawing_utils.BLUE_COLOR, _
+			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
+
+	Local $r = Sqrt(2) / 2
+	Local $rotation = _OpenCV_ObjCreate("Mat").createFromVectorOfVec3d(_OpenCV_Tuple( _
+			_OpenCV_Tuple(1, 0, 0), _
+			_OpenCV_Tuple(0, $r, -$r), _
+			_OpenCV_Tuple(0, $r, $r) _
+			))
+	Local $translation = _OpenCV_ObjCreate("Mat").createFromVec3d(_OpenCV_Tuple(0, 0, -0.2))
+	$drawing_utils.draw_axis($image, $rotation, $translation)
+	_AssertMatEqual($image, $expected_result)
+EndFunc   ;==>test_draw_axis
 
 Func _OnAutoItExit()
 	_OpenCV_Unregister_And_Close()

@@ -316,6 +316,13 @@ namespace mediapipe {
 					_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec);
 				}
 
+				static cv::Mat clip(cv::Mat a, float a_min, float a_max) {
+					cv::Mat dst;
+					cv::max(a, a_min, dst);
+					cv::min(dst, a_max, dst);
+					return dst;
+				}
+
 				void draw_axis(
 					cv::Mat& image,
 					cv::Mat& rotation,
@@ -325,7 +332,56 @@ namespace mediapipe {
 					float axis_length,
 					const DrawingSpec& axis_drawing_spec
 				) {
-					// TODO
+					auto image_rows = image.rows;
+					auto image_cols = image.cols;
+
+					// Create axis points in camera coordinate frame.
+					cv::Mat axis_world = (cv::Mat_<double>({
+						0, 0, 0,
+						1, 0, 0,
+						0, 1, 0,
+						0, 0, 1
+						})).reshape(1, 4);
+
+					cv::Mat transposed;
+					cv::transpose(axis_world, transposed);
+					transposed *= axis_length;
+					transposed = rotation.reshape(1) * transposed;
+
+					cv::Mat axis_cam;
+					cv::transpose(transposed, axis_cam);
+					axis_cam = axis_cam.reshape(3) + translation.reshape(1, 1);
+
+					cv::Mat channels[3];
+					cv::split(axis_cam, channels);
+
+					auto x = channels[0];
+					auto y = channels[1];
+					auto z = channels[2];
+
+					// Project 3D points to NDC space.
+					auto [fx, fy] = focal_length;
+					auto [px, py] = principal_point;
+					cv::Mat x_ndc = clip(-fx * x / (z + 1e-5) + px, -1., 1.);
+					cv::Mat y_ndc = clip(-fy * y / (z + 1e-5) + py, -1., 1.);
+
+					// Convert from NDC space to image space.
+					x_ndc = (1 + x_ndc) * 0.5 * image_cols;
+					y_ndc = (1 - y_ndc) * 0.5 * image_rows;
+					cv::Mat x_im; x_ndc.convertTo(x_im, CV_32S);
+					cv::Mat y_im; y_ndc.convertTo(y_im, CV_32S);
+
+					// Draw xyz axis on the image.
+					cv::Point origin(x_im.at<int>(0), y_im.at<int>(0));
+					cv::Point x_axis(x_im.at<int>(1), y_im.at<int>(1));
+					cv::Point y_axis(x_im.at<int>(2), y_im.at<int>(2));
+					cv::Point z_axis(x_im.at<int>(3), y_im.at<int>(3));
+
+					cv::arrowedLine(image, origin, x_axis, color_to_scalar(RED_COLOR), axis_drawing_spec.thickness);
+					cv::arrowedLine(image, origin, y_axis, color_to_scalar(GREEN_COLOR),
+						axis_drawing_spec.thickness);
+					cv::arrowedLine(image, origin, z_axis, color_to_scalar(BLUE_COLOR),
+						axis_drawing_spec.thickness);
 				}
 			}
 		}
