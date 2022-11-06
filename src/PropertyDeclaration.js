@@ -267,7 +267,7 @@ Object.assign(exports, {
                     if (__self->get() == NULL) {
                         return E_INVALIDARG;
                     }
-                `.replace(/^ {16}/mg, "");
+                `.replace(/^ {20}/mg, "");
 
                 impl.push(`
                     STDMETHODIMP C${ cotype }::get_${ idlname }(${ propidltype }* pVal) {

@@ -121,9 +121,6 @@ class CoClass {
 
             if (list_of_arguments.length === 0 || !list_of_arguments.some(([argtype, argname, defval]) => defval === "")) {
                 this.has_default_constructor = true;
-                if (return_value_type === "") {
-                    this.has_assign_operator = true;
-                }
             }
         }
 

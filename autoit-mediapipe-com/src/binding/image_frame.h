@@ -43,7 +43,7 @@ namespace mediapipe {
 			int cols = data.cols;
 			int channels = ImageFrame::NumberOfChannelsForFormat(format);
 			int depth = ImageFrame::ByteDepthForFormat(format);
-			size_t width_step = data.step;
+			int width_step = data.step;
 
 			auto image_frame = std::make_unique<ImageFrame>(
 				format, /*width=*/cols, /*height=*/rows, width_step,

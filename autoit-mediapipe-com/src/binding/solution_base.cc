@@ -1,7 +1,8 @@
 #include "autoit_bridge.h"
-#include "binding/repeated_container.h"
-#include "binding/message.h"
 #include "binding/calculator_graph.h"
+#include "binding/message.h"
+#include "binding/repeated_container.h"
+#include "binding/resource_util.h"
 #include "mediapipe/calculators/core/constant_side_packet_calculator.pb.h"
 #include "mediapipe/calculators/image/image_transformation_calculator.pb.h"
 #include "mediapipe/calculators/tensor/tensors_to_detections_calculator.pb.h"
@@ -417,7 +418,7 @@ namespace mediapipe {
 			 * Sets one value in a repeated protobuf.Any extension field.
 			 */
 			inline static void SetExtension(RepeatedPtrField<Any>* extension_list,
-				const Message* extension_value) {
+				const std::shared_ptr<google::protobuf::Message>& extension_value) {
 				const std::string_view type_name(extension_value->GetDescriptor()->full_name());
 				for (auto& extension_any : *extension_list) {
 					if (!InternalIs(extension_any, type_name)) {
@@ -577,7 +578,7 @@ namespace mediapipe {
 			SolutionBase::SolutionBase(
 				const CalculatorGraphConfig& graph_config,
 				const std::map<std::string, _variant_t>& calculator_params,
-				const Message* graph_options,
+				const std::shared_ptr<google::protobuf::Message>& graph_options,
 				const std::map<std::string, _variant_t>& side_inputs,
 				const std::vector<std::string>& outputs,
 				const std::map<std::string, PacketDataType>& stream_type_hints
@@ -588,7 +589,7 @@ namespace mediapipe {
 					ModifyCalculatorOptions(canonical_graph_config_proto, calculator_params);
 				}
 
-				if (graph_options != nullptr) {
+				if (graph_options.get()) {
 					SetExtension(canonical_graph_config_proto.mutable_graph_options(), graph_options);
 				}
 
@@ -616,6 +617,29 @@ namespace mediapipe {
 				RaiseAutoItErrorIfNotOk(m_graph->StartRun(m_input_side_packets));
 			}
 
+			static const std::string GetResourcePath(const std::string& binary_graph_path) {
+				const std::string& root_path = mediapipe::resource_util::get_resource_dir();
+				return root_path + binary_graph_path;
+			}
+
+			SolutionBase::SolutionBase(
+				const std::string& binary_graph_path,
+				const std::map<std::string, _variant_t>& calculator_params,
+				const std::shared_ptr<google::protobuf::Message>& graph_options,
+				const std::map<std::string, _variant_t>& side_inputs,
+				const std::vector<std::string>& outputs,
+				const std::map<std::string, PacketDataType>& stream_type_hints
+			) : SolutionBase(
+				ReadCalculatorGraphConfigFromFile(GetResourcePath(binary_graph_path)),
+				calculator_params,
+				graph_options,
+				side_inputs,
+				outputs,
+				stream_type_hints
+			) {
+				// Nothing to do
+			}
+
 			void SolutionBase::process(const cv::Mat& input_data, std::map<std::string, _variant_t>& solution_outputs) {
 				AUTOIT_ASSERT_THROW(m_input_stream_type_info.size() == 1,
 					"Can't process single image input since the graph has more than one input streams.");
@@ -631,7 +655,7 @@ namespace mediapipe {
 				process(input_dict, solution_outputs);
 			}
 
-			void SolutionBase::process(const std::map<std::string, _variant_t>& input_dict, std::map<std::string, _variant_t>& solution_outputs) {
+			void SolutionBase::process(const std::map<std::string, _variant_t>& input_data, std::map<std::string, _variant_t>& solution_outputs) {
 				m_graph_outputs.clear();
 
 				// Set the timestamp increment to 33333 us to simulate the 30 fps video
@@ -639,7 +663,7 @@ namespace mediapipe {
 				m_simulated_timestamp += 33333;
 				const auto simulated_timestamp = Timestamp(m_simulated_timestamp);
 
-				for (auto const& [stream_name, data] : input_dict) {
+				for (auto const& [stream_name, data] : input_data) {
 					const auto& input_stream_type = m_input_stream_type_info[stream_name];
 
 					switch (input_stream_type) {
@@ -736,7 +760,6 @@ namespace mediapipe {
 				} else {
 					_create_graph_options(*options_message, values);
 				}
-
 				return options_message;
 			}
 

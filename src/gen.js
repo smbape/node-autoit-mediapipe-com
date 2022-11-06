@@ -73,9 +73,6 @@ const parseArguments = PROJECT_DIR => {
             if (fqn === "google::protobuf::Message") {
                 const {children} = coclass;
 
-                const derives = generator.derives.get(fqn);
-                console.log(fqn, derives.size, "derives");
-
                 let i = impl.length - 1;
 
                 for (; i >= 0; i--) {
@@ -321,7 +318,7 @@ waterfall([
             print(json.dumps({"decls": all_decls, "namespaces": sorted(parser.namespaces)}, indent=4))
         `.trim().replace(/^ {12}/mg, "");
 
-        // fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
+        fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
 
         child.stdin.write(code);
         child.stdin.end();

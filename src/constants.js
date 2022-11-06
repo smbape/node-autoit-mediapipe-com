@@ -48,6 +48,8 @@ exports.CPP_TYPES = new Map([
 ]);
 
 exports.ALIASES = new Map([
+    ["mediapipe::solutions::face_detection::SolutionBase", "mediapipe::autoit::solution_base::SolutionBase"],
+    ["DrawingColor", "tuple_int_and_int_and_int"],
 ]);
 
 exports.CLASS_PTR = new Set([

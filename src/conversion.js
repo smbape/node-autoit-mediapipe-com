@@ -243,6 +243,11 @@ Object.assign(exports, {
 
         impl.push(`
             const HRESULT autoit_out(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val) {
+                if (V_VT(in_val) == VT_NULL) {
+                    out_val = nullptr;
+                    return S_OK;
+                }
+
                 if (V_VT(in_val) != VT_${ wtype }) {
                     return E_INVALIDARG;
                 }
@@ -279,6 +284,7 @@ Object.assign(exports, {
 
             const HRESULT autoit_from(I${ cotype }*& in_val, VARIANT*& out_val) {
                 VariantClear(out_val);
+
                 V_VT(out_val) = VT_${ wtype };
                 V_${ wtype }(out_val) = static_cast<${ iface }*>(in_val);
                 in_val->AddRef();
@@ -330,7 +336,7 @@ Object.assign(exports, {
             const bool is_assignable_from(${ shared_ptr }<${ coclass.fqn }>& out_val, VARIANT const* const& in_val, bool is_optional) {
                 ${ optional.check.join(`\n${ " ".repeat(16) }`) }
 
-                if (V_VT(in_val) == VT_UI8) {
+                if (V_VT(in_val) == VT_NULL || V_VT(in_val) == VT_UI8) {
                     return true;
                 }
 
@@ -343,6 +349,11 @@ Object.assign(exports, {
 
             const HRESULT autoit_to(VARIANT const* const& in_val, ${ shared_ptr }<${ coclass.fqn }>& out_val) {
                 ${ optional.assign.join(`\n${ " ".repeat(16) }`) }
+
+                if (V_VT(in_val) == VT_NULL) {
+                    out_val.reset();
+                    return S_OK;
+                }
 
                 if (V_VT(in_val) == VT_UI8) {
                     const auto& ptr = V_UI8(in_val);
@@ -364,6 +375,11 @@ Object.assign(exports, {
             }
 
             const HRESULT autoit_to(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val) {
+                if (V_VT(in_val) == VT_NULL) {
+                    out_val = nullptr;
+                    return S_OK;
+                }
+
                 ${ shared_ptr }<${ coclass.fqn }> out_val_shared;
                 HRESULT hr = autoit_to(in_val, out_val_shared);
                 if (SUCCEEDED(hr)) {
@@ -395,6 +411,11 @@ Object.assign(exports, {
             }
 
             const HRESULT autoit_from(const ${ coclass.fqn }* in_val, VARIANT*& out_val) {
+                if (!in_val) {
+                    V_VT(out_val) = VT_NULL;
+                    return S_OK;
+                }
+
                 return autoit_from(::autoit::reference_internal(in_val), out_val);
             }
             `.replace(/^ {12}/mg, "")
@@ -406,6 +427,11 @@ Object.assign(exports, {
             `.replace(/^ {16}/mg, ""));
             impl.push(`
                 const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, VARIANT*& out_val) {
+                    if (!in_val) {
+                        V_VT(out_val) = VT_NULL;
+                        return S_OK;
+                    }
+
                     ${ dynamicPointerCast(generator, coclass, options).split("\n").join(`\n${ " ".repeat(20) }`) }
                     I${ cotype }* pdispVal = nullptr;
                     I${ cotype }** ppdispVal = &pdispVal;
@@ -421,8 +447,6 @@ Object.assign(exports, {
         }
 
         if (coclass.is_struct || coclass.is_simple || coclass.is_map || coclass.has_copy_constructor || coclass.has_assign_operator) {
-            const assign = coclass.has_assign_operator ? "*(*obj->__self) = in_val" : `obj->__self->reset(new ${ coclass.fqn }(in_val))`;
-
             if (!coclass.is_vector) {
                 header.push(`extern const bool is_assignable_from(${ coclass.fqn }& out_val, VARIANT const* const& in_val, bool is_optional);`);
                 header.push(`extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ coclass.fqn }& out_val);`);
@@ -521,7 +545,7 @@ Object.assign(exports, {
                     HRESULT hr = CoCreateInstance(CLSID_${ cotype }, NULL, CLSCTX_INPROC_SERVER, IID_I${ cotype }, reinterpret_cast<void**>(out_val));
                     if (SUCCEEDED(hr)) {
                         auto obj = static_cast<C${ cotype }*>(*out_val);
-                        ${ assign };
+                        obj->__self->reset(new ${ coclass.fqn }(in_val));
                     }
                     return hr;
                 }

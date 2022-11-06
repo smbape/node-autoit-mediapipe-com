@@ -18,6 +18,7 @@ namespace mediapipe {
 			#ifdef FLOAT
 			#undef FLOAT
 			#endif
+
 			enum class PacketDataType {
 				STRING,
 				BOOL,
@@ -64,7 +65,7 @@ namespace mediapipe {
 				CV_WRAP SolutionBase(
 					const CalculatorGraphConfig& graph_config,
 					const std::map<std::string, _variant_t>& calculator_params = noMap(),
-					const google::protobuf::Message* graph_options = nullptr,
+					const std::shared_ptr<google::protobuf::Message>& graph_options = std::shared_ptr<google::protobuf::Message>(),
 					const std::map<std::string, _variant_t>& side_inputs = noMap(),
 					const std::vector<std::string>& outputs = noVector(),
 					const std::map<std::string, PacketDataType>& stream_type_hints = noTypeMap()
@@ -73,21 +74,14 @@ namespace mediapipe {
 				CV_WRAP SolutionBase(
 					const std::string& binary_graph_path,
 					const std::map<std::string, _variant_t>& calculator_params = noMap(),
-					const google::protobuf::Message* graph_options = nullptr,
+					const std::shared_ptr<google::protobuf::Message>& graph_options = std::shared_ptr<google::protobuf::Message>(),
 					const std::map<std::string, _variant_t>& side_inputs = noMap(),
 					const std::vector<std::string>& outputs = noVector(),
 					const std::map<std::string, PacketDataType>& stream_type_hints = noTypeMap()
-				) : SolutionBase(
-					ReadCalculatorGraphConfigFromFile(binary_graph_path),
-					calculator_params,
-					graph_options,
-					side_inputs,
-					outputs,
-					stream_type_hints
-				) {}
+				);
 
 				CV_WRAP void process(const cv::Mat& input_data, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
-				CV_WRAP void process(const std::map<std::string, _variant_t>& input_dict, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
+				CV_WRAP void process(const std::map<std::string, _variant_t>& input_data, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 
 				/**
 				 * Closes all the input sources and the graph.
@@ -109,7 +103,7 @@ namespace mediapipe {
 				 *  Returns:
 				 *    the options protobuf message.
 				 */
-				CV_WRAP std::shared_ptr<google::protobuf::Message> create_graph_options(
+				CV_WRAP static std::shared_ptr<google::protobuf::Message> create_graph_options(
 					std::shared_ptr<google::protobuf::Message> options_message,
 					const std::map<std::string, _variant_t>& values
 				);

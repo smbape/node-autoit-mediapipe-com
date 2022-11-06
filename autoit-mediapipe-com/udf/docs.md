@@ -107,7 +107,19 @@
   - [google::protobuf::autoit::RepeatedContainer::splice](#googleprotobufautoitrepeatedcontainersplice)
   - [google::protobuf::autoit::RepeatedContainer::str](#googleprotobufautoitrepeatedcontainerstr)
 - [mediapipe::resource_util](#mediapiperesource_util)
+  - [mediapipe::resource_util::get_resource_dir](#mediapiperesource_utilget_resource_dir)
   - [mediapipe::resource_util::set_resource_dir](#mediapiperesource_utilset_resource_dir)
+- [mediapipe::autoit::solutions::drawing_utils](#mediapipeautoitsolutionsdrawing_utils)
+  - [mediapipe::autoit::solutions::drawing_utils::draw_axis](#mediapipeautoitsolutionsdrawing_utilsdraw_axis)
+  - [mediapipe::autoit::solutions::drawing_utils::draw_detection](#mediapipeautoitsolutionsdrawing_utilsdraw_detection)
+  - [mediapipe::autoit::solutions::drawing_utils::draw_landmarks](#mediapipeautoitsolutionsdrawing_utilsdraw_landmarks)
+- [mediapipe::autoit::solutions::drawing_utils::DrawingSpec](#mediapipeautoitsolutionsdrawing_utilsdrawingspec)
+  - [mediapipe::autoit::solutions::drawing_utils::DrawingSpec::get_create](#mediapipeautoitsolutionsdrawing_utilsdrawingspecget_create)
+- [mediapipe::autoit::solutions::face_detection](#mediapipeautoitsolutionsface_detection)
+  - [mediapipe::autoit::solutions::face_detection::get_key_point](#mediapipeautoitsolutionsface_detectionget_key_point)
+- [mediapipe::autoit::solutions::face_detection::FaceDetection](#mediapipeautoitsolutionsface_detectionfacedetection)
+  - [mediapipe::autoit::solutions::face_detection::FaceDetection::get_create](#mediapipeautoitsolutionsface_detectionfacedetectionget_create)
+  - [mediapipe::autoit::solutions::face_detection::FaceDetection::process](#mediapipeautoitsolutionsface_detectionfacedetectionprocess)
 - [mediapipe::autoit::solution_base::SolutionBase](#mediapipeautoitsolution_basesolutionbase)
   - [mediapipe::autoit::solution_base::SolutionBase::get_create](#mediapipeautoitsolution_basesolutionbaseget_create)
   - [mediapipe::autoit::solution_base::SolutionBase::close](#mediapipeautoitsolution_basesolutionbaseclose)
@@ -1261,6 +1273,144 @@
   - [VectorOfShared_ptrMessage::sort](#vectorofshared_ptrmessagesort)
   - [VectorOfShared_ptrMessage::sort_variant](#vectorofshared_ptrmessagesort_variant)
   - [VectorOfShared_ptrMessage::start](#vectorofshared_ptrmessagestart)
+- [VectorOfTupleIntAndInt](#vectoroftupleintandint)
+  - [VectorOfTupleIntAndInt::create](#vectoroftupleintandintcreate)
+  - [VectorOfTupleIntAndInt::Add](#vectoroftupleintandintadd)
+  - [VectorOfTupleIntAndInt::Items](#vectoroftupleintandintitems)
+  - [VectorOfTupleIntAndInt::Keys](#vectoroftupleintandintkeys)
+  - [VectorOfTupleIntAndInt::Remove](#vectoroftupleintandintremove)
+  - [VectorOfTupleIntAndInt::at](#vectoroftupleintandintat)
+  - [VectorOfTupleIntAndInt::clear](#vectoroftupleintandintclear)
+  - [VectorOfTupleIntAndInt::empty](#vectoroftupleintandintempty)
+  - [VectorOfTupleIntAndInt::end](#vectoroftupleintandintend)
+  - [VectorOfTupleIntAndInt::get_Item](#vectoroftupleintandintget_item)
+  - [VectorOfTupleIntAndInt::get__NewEnum](#vectoroftupleintandintget__newenum)
+  - [VectorOfTupleIntAndInt::push_back](#vectoroftupleintandintpush_back)
+  - [VectorOfTupleIntAndInt::push_vector](#vectoroftupleintandintpush_vector)
+  - [VectorOfTupleIntAndInt::put_Item](#vectoroftupleintandintput_item)
+  - [VectorOfTupleIntAndInt::size](#vectoroftupleintandintsize)
+  - [VectorOfTupleIntAndInt::slice](#vectoroftupleintandintslice)
+  - [VectorOfTupleIntAndInt::sort](#vectoroftupleintandintsort)
+  - [VectorOfTupleIntAndInt::sort_variant](#vectoroftupleintandintsort_variant)
+  - [VectorOfTupleIntAndInt::start](#vectoroftupleintandintstart)
+- [MapOfIntAndDrawingSpec](#mapofintanddrawingspec)
+  - [MapOfIntAndDrawingSpec::create](#mapofintanddrawingspeccreate)
+  - [MapOfIntAndDrawingSpec::Add](#mapofintanddrawingspecadd)
+  - [MapOfIntAndDrawingSpec::Get](#mapofintanddrawingspecget)
+  - [MapOfIntAndDrawingSpec::Items](#mapofintanddrawingspecitems)
+  - [MapOfIntAndDrawingSpec::Keys](#mapofintanddrawingspeckeys)
+  - [MapOfIntAndDrawingSpec::Remove](#mapofintanddrawingspecremove)
+  - [MapOfIntAndDrawingSpec::clear](#mapofintanddrawingspecclear)
+  - [MapOfIntAndDrawingSpec::contains](#mapofintanddrawingspeccontains)
+  - [MapOfIntAndDrawingSpec::count](#mapofintanddrawingspeccount)
+  - [MapOfIntAndDrawingSpec::empty](#mapofintanddrawingspecempty)
+  - [MapOfIntAndDrawingSpec::erase](#mapofintanddrawingspecerase)
+  - [MapOfIntAndDrawingSpec::get_Item](#mapofintanddrawingspecget_item)
+  - [MapOfIntAndDrawingSpec::get__NewEnum](#mapofintanddrawingspecget__newenum)
+  - [MapOfIntAndDrawingSpec::has](#mapofintanddrawingspechas)
+  - [MapOfIntAndDrawingSpec::max_size](#mapofintanddrawingspecmax_size)
+  - [MapOfIntAndDrawingSpec::merge](#mapofintanddrawingspecmerge)
+  - [MapOfIntAndDrawingSpec::put_Item](#mapofintanddrawingspecput_item)
+  - [MapOfIntAndDrawingSpec::size](#mapofintanddrawingspecsize)
+- [VectorOfPairOfIntAndDrawingSpec](#vectorofpairofintanddrawingspec)
+  - [VectorOfPairOfIntAndDrawingSpec::create](#vectorofpairofintanddrawingspeccreate)
+  - [VectorOfPairOfIntAndDrawingSpec::Add](#vectorofpairofintanddrawingspecadd)
+  - [VectorOfPairOfIntAndDrawingSpec::Items](#vectorofpairofintanddrawingspecitems)
+  - [VectorOfPairOfIntAndDrawingSpec::Keys](#vectorofpairofintanddrawingspeckeys)
+  - [VectorOfPairOfIntAndDrawingSpec::Remove](#vectorofpairofintanddrawingspecremove)
+  - [VectorOfPairOfIntAndDrawingSpec::at](#vectorofpairofintanddrawingspecat)
+  - [VectorOfPairOfIntAndDrawingSpec::clear](#vectorofpairofintanddrawingspecclear)
+  - [VectorOfPairOfIntAndDrawingSpec::empty](#vectorofpairofintanddrawingspecempty)
+  - [VectorOfPairOfIntAndDrawingSpec::end](#vectorofpairofintanddrawingspecend)
+  - [VectorOfPairOfIntAndDrawingSpec::get_Item](#vectorofpairofintanddrawingspecget_item)
+  - [VectorOfPairOfIntAndDrawingSpec::get__NewEnum](#vectorofpairofintanddrawingspecget__newenum)
+  - [VectorOfPairOfIntAndDrawingSpec::push_back](#vectorofpairofintanddrawingspecpush_back)
+  - [VectorOfPairOfIntAndDrawingSpec::push_vector](#vectorofpairofintanddrawingspecpush_vector)
+  - [VectorOfPairOfIntAndDrawingSpec::put_Item](#vectorofpairofintanddrawingspecput_item)
+  - [VectorOfPairOfIntAndDrawingSpec::size](#vectorofpairofintanddrawingspecsize)
+  - [VectorOfPairOfIntAndDrawingSpec::slice](#vectorofpairofintanddrawingspecslice)
+  - [VectorOfPairOfIntAndDrawingSpec::sort](#vectorofpairofintanddrawingspecsort)
+  - [VectorOfPairOfIntAndDrawingSpec::sort_variant](#vectorofpairofintanddrawingspecsort_variant)
+  - [VectorOfPairOfIntAndDrawingSpec::start](#vectorofpairofintanddrawingspecstart)
+- [VectorOfDrawingSpec](#vectorofdrawingspec)
+  - [VectorOfDrawingSpec::create](#vectorofdrawingspeccreate)
+  - [VectorOfDrawingSpec::Add](#vectorofdrawingspecadd)
+  - [VectorOfDrawingSpec::Items](#vectorofdrawingspecitems)
+  - [VectorOfDrawingSpec::Keys](#vectorofdrawingspeckeys)
+  - [VectorOfDrawingSpec::Remove](#vectorofdrawingspecremove)
+  - [VectorOfDrawingSpec::at](#vectorofdrawingspecat)
+  - [VectorOfDrawingSpec::clear](#vectorofdrawingspecclear)
+  - [VectorOfDrawingSpec::empty](#vectorofdrawingspecempty)
+  - [VectorOfDrawingSpec::end](#vectorofdrawingspecend)
+  - [VectorOfDrawingSpec::get_Item](#vectorofdrawingspecget_item)
+  - [VectorOfDrawingSpec::get__NewEnum](#vectorofdrawingspecget__newenum)
+  - [VectorOfDrawingSpec::push_back](#vectorofdrawingspecpush_back)
+  - [VectorOfDrawingSpec::push_vector](#vectorofdrawingspecpush_vector)
+  - [VectorOfDrawingSpec::put_Item](#vectorofdrawingspecput_item)
+  - [VectorOfDrawingSpec::size](#vectorofdrawingspecsize)
+  - [VectorOfDrawingSpec::slice](#vectorofdrawingspecslice)
+  - [VectorOfDrawingSpec::sort](#vectorofdrawingspecsort)
+  - [VectorOfDrawingSpec::sort_variant](#vectorofdrawingspecsort_variant)
+  - [VectorOfDrawingSpec::start](#vectorofdrawingspecstart)
+- [MapOfIntAndMapOfIntAndDrawingSpec](#mapofintandmapofintanddrawingspec)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::create](#mapofintandmapofintanddrawingspeccreate)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::Add](#mapofintandmapofintanddrawingspecadd)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::Get](#mapofintandmapofintanddrawingspecget)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::Items](#mapofintandmapofintanddrawingspecitems)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::Keys](#mapofintandmapofintanddrawingspeckeys)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::Remove](#mapofintandmapofintanddrawingspecremove)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::clear](#mapofintandmapofintanddrawingspecclear)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::contains](#mapofintandmapofintanddrawingspeccontains)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::count](#mapofintandmapofintanddrawingspeccount)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::empty](#mapofintandmapofintanddrawingspecempty)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::erase](#mapofintandmapofintanddrawingspecerase)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::get_Item](#mapofintandmapofintanddrawingspecget_item)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::get__NewEnum](#mapofintandmapofintanddrawingspecget__newenum)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::has](#mapofintandmapofintanddrawingspechas)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::max_size](#mapofintandmapofintanddrawingspecmax_size)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::merge](#mapofintandmapofintanddrawingspecmerge)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::put_Item](#mapofintandmapofintanddrawingspecput_item)
+  - [MapOfIntAndMapOfIntAndDrawingSpec::size](#mapofintandmapofintanddrawingspecsize)
+- [VectorOfPairOfIntAndMapOfIntAndDrawingSpec](#vectorofpairofintandmapofintanddrawingspec)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::create](#vectorofpairofintandmapofintanddrawingspeccreate)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Add](#vectorofpairofintandmapofintanddrawingspecadd)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Items](#vectorofpairofintandmapofintanddrawingspecitems)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Keys](#vectorofpairofintandmapofintanddrawingspeckeys)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Remove](#vectorofpairofintandmapofintanddrawingspecremove)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::at](#vectorofpairofintandmapofintanddrawingspecat)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::clear](#vectorofpairofintandmapofintanddrawingspecclear)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::empty](#vectorofpairofintandmapofintanddrawingspecempty)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::end](#vectorofpairofintandmapofintanddrawingspecend)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::get_Item](#vectorofpairofintandmapofintanddrawingspecget_item)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::get__NewEnum](#vectorofpairofintandmapofintanddrawingspecget__newenum)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::push_back](#vectorofpairofintandmapofintanddrawingspecpush_back)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::push_vector](#vectorofpairofintandmapofintanddrawingspecpush_vector)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::put_Item](#vectorofpairofintandmapofintanddrawingspecput_item)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::size](#vectorofpairofintandmapofintanddrawingspecsize)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::slice](#vectorofpairofintandmapofintanddrawingspecslice)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::sort](#vectorofpairofintandmapofintanddrawingspecsort)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::sort_variant](#vectorofpairofintandmapofintanddrawingspecsort_variant)
+  - [VectorOfPairOfIntAndMapOfIntAndDrawingSpec::start](#vectorofpairofintandmapofintanddrawingspecstart)
+- [VectorOfMapOfIntAndDrawingSpec](#vectorofmapofintanddrawingspec)
+  - [VectorOfMapOfIntAndDrawingSpec::create](#vectorofmapofintanddrawingspeccreate)
+  - [VectorOfMapOfIntAndDrawingSpec::Add](#vectorofmapofintanddrawingspecadd)
+  - [VectorOfMapOfIntAndDrawingSpec::Items](#vectorofmapofintanddrawingspecitems)
+  - [VectorOfMapOfIntAndDrawingSpec::Keys](#vectorofmapofintanddrawingspeckeys)
+  - [VectorOfMapOfIntAndDrawingSpec::Remove](#vectorofmapofintanddrawingspecremove)
+  - [VectorOfMapOfIntAndDrawingSpec::at](#vectorofmapofintanddrawingspecat)
+  - [VectorOfMapOfIntAndDrawingSpec::clear](#vectorofmapofintanddrawingspecclear)
+  - [VectorOfMapOfIntAndDrawingSpec::empty](#vectorofmapofintanddrawingspecempty)
+  - [VectorOfMapOfIntAndDrawingSpec::end](#vectorofmapofintanddrawingspecend)
+  - [VectorOfMapOfIntAndDrawingSpec::get_Item](#vectorofmapofintanddrawingspecget_item)
+  - [VectorOfMapOfIntAndDrawingSpec::get__NewEnum](#vectorofmapofintanddrawingspecget__newenum)
+  - [VectorOfMapOfIntAndDrawingSpec::push_back](#vectorofmapofintanddrawingspecpush_back)
+  - [VectorOfMapOfIntAndDrawingSpec::push_vector](#vectorofmapofintanddrawingspecpush_vector)
+  - [VectorOfMapOfIntAndDrawingSpec::put_Item](#vectorofmapofintanddrawingspecput_item)
+  - [VectorOfMapOfIntAndDrawingSpec::size](#vectorofmapofintanddrawingspecsize)
+  - [VectorOfMapOfIntAndDrawingSpec::slice](#vectorofmapofintanddrawingspecslice)
+  - [VectorOfMapOfIntAndDrawingSpec::sort](#vectorofmapofintanddrawingspecsort)
+  - [VectorOfMapOfIntAndDrawingSpec::sort_variant](#vectorofmapofintanddrawingspecsort_variant)
+  - [VectorOfMapOfIntAndDrawingSpec::start](#vectorofmapofintanddrawingspecstart)
 - [MapOfStringAndPacketDataType](#mapofstringandpacketdatatype)
   - [MapOfStringAndPacketDataType::create](#mapofstringandpacketdatatypecreate)
   - [MapOfStringAndPacketDataType::Add](#mapofstringandpacketdatatypeadd)
@@ -2325,7 +2475,7 @@ AutoIt:
 ### mediapipe::autoit::packet_getter::get_image_frame
 
 ```cpp
-mediapipe::ImageFrame mediapipe::autoit::packet_getter::get_image_frame( mediapipe::Packet& packet );
+std::shared_ptr<mediapipe::ImageFrame> mediapipe::autoit::packet_getter::get_image_frame( mediapipe::Packet& packet );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_image_frame( $packet ) -> retval
 ```
@@ -2605,12 +2755,134 @@ AutoIt:
 
 ## mediapipe::resource_util
 
+### mediapipe::resource_util::get_resource_dir
+
+```cpp
+std::string mediapipe::resource_util::get_resource_dir();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.resource_util").get_resource_dir() -> retval
+```
+
 ### mediapipe::resource_util::set_resource_dir
 
 ```cpp
 void mediapipe::resource_util::set_resource_dir( const std::string& str );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.resource_util").set_resource_dir( $str ) -> None
+```
+
+## mediapipe::autoit::solutions::drawing_utils
+
+### mediapipe::autoit::solutions::drawing_utils::draw_axis
+
+```cpp
+void mediapipe::autoit::solutions::drawing_utils::draw_axis( cv::Mat&                                                        image,
+                                                             cv::Mat&                                                        rotation,
+                                                             cv::Mat&                                                        translation,
+                                                             const std::tuple<float, float>&                                 focal_length = std::tuple<float, float>(1.0f, 1.0f),
+                                                             const std::tuple<float, float>&                                 principal_point = std::tuple<float, float>(0.0f, 0.0f),
+                                                             float                                                           axis_length = 0.1,
+                                                             const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& axis_drawing_spec = DrawingSpec() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils").draw_axis( $image, $rotation, $translation[, $focal_length[, $principal_point[, $axis_length[, $axis_drawing_spec]]]] ) -> None
+```
+
+### mediapipe::autoit::solutions::drawing_utils::draw_detection
+
+```cpp
+void mediapipe::autoit::solutions::drawing_utils::draw_detection( cv::Mat&                                                        image,
+                                                                  const mediapipe::Detection&                                     detection,
+                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& keypoint_drawing_spec = DrawingSpec(RED_COLOR),
+                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& bbox_drawing_spec = DrawingSpec() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils").draw_detection( $image, $detection[, $keypoint_drawing_spec[, $bbox_drawing_spec]] ) -> None
+```
+
+### mediapipe::autoit::solutions::drawing_utils::draw_landmarks
+
+```cpp
+void mediapipe::autoit::solutions::drawing_utils::draw_landmarks( cv::Mat&                                                        image,
+                                                                  const mediapipe::NormalizedLandmarkList&                        landmark_list,
+                                                                  const std::vector<std::tuple<int, int>>&                        connections = std::vector<std::tuple<int, int>>(),
+                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& landmark_drawing_spec = DrawingSpec(RED_COLOR),
+                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& connection_drawing_spec = DrawingSpec() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils").draw_landmarks( $image, $landmark_list[, $connections[, $landmark_drawing_spec[, $connection_drawing_spec]]] ) -> None
+```
+
+```cpp
+void mediapipe::autoit::solutions::drawing_utils::draw_landmarks( cv::Mat&                                                                       image,
+                                                                  const mediapipe::NormalizedLandmarkList&                                       landmark_list,
+                                                                  const std::vector<std::tuple<int, int>>&                                       connections = std::vector<std::tuple<int, int>>(),
+                                                                  const std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>& landmark_drawing_spec = std::map<int, DrawingSpec>(),
+                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec&                connection_drawing_spec = DrawingSpec() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils").draw_landmarks( $image, $landmark_list[, $connections[, $landmark_drawing_spec[, $connection_drawing_spec]]] ) -> None
+```
+
+```cpp
+void mediapipe::autoit::solutions::drawing_utils::draw_landmarks( cv::Mat&                                                                                      image,
+                                                                  const mediapipe::NormalizedLandmarkList&                                                      landmark_list,
+                                                                  const std::vector<std::tuple<int, int>>&                                                      connections = std::vector<std::tuple<int, int>>(),
+                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec&                               landmark_drawing_spec = DrawingSpec(RED_COLOR),
+                                                                  const std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& connection_drawing_spec = std::map<int, std::map<int, DrawingSpec>>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils").draw_landmarks( $image, $landmark_list[, $connections[, $landmark_drawing_spec[, $connection_drawing_spec]]] ) -> None
+```
+
+```cpp
+void mediapipe::autoit::solutions::drawing_utils::draw_landmarks( cv::Mat&                                                                                      image,
+                                                                  const mediapipe::NormalizedLandmarkList&                                                      landmark_list,
+                                                                  const std::vector<std::tuple<int, int>>&                                                      connections = std::vector<std::tuple<int, int>>(),
+                                                                  const std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>&                landmark_drawing_spec = std::map<int, DrawingSpec>(),
+                                                                  const std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& connection_drawing_spec = std::map<int, std::map<int, DrawingSpec>>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils").draw_landmarks( $image, $landmark_list[, $connections[, $landmark_drawing_spec[, $connection_drawing_spec]]] ) -> None
+```
+
+## mediapipe::autoit::solutions::drawing_utils::DrawingSpec
+
+### mediapipe::autoit::solutions::drawing_utils::DrawingSpec::get_create
+
+```cpp
+static mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::autoit::solutions::drawing_utils::DrawingSpec::get_create( std::tuple<int, int, int> color = WHITE_COLOR,
+                                                                                                                                      int                       thickness = 2,
+                                                                                                                                      int                       circle_radius = 2 );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec").create( [$color[, $thickness[, $circle_radius]]] ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec")( [$color[, $thickness[, $circle_radius]]] ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
+```
+
+## mediapipe::autoit::solutions::face_detection
+
+### mediapipe::autoit::solutions::face_detection::get_key_point
+
+```cpp
+std::shared_ptr<LocationData_RelativeKeypoint> mediapipe::autoit::solutions::face_detection::get_key_point( const mediapipe::Detection&                                detection,
+                                                                                                            mediapipe::autoit::solutions::face_detection::FaceKeyPoint key_point_enum );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection").get_key_point( $detection, $key_point_enum ) -> retval
+```
+
+## mediapipe::autoit::solutions::face_detection::FaceDetection
+
+### mediapipe::autoit::solutions::face_detection::FaceDetection::get_create
+
+```cpp
+static mediapipe::autoit::solutions::face_detection::FaceDetection mediapipe::autoit::solutions::face_detection::FaceDetection::get_create( float min_detection_confidence = 0,
+                                                                                                                                            short model_selection = 0 );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection.FaceDetection").create( [$min_detection_confidence[, $model_selection]] ) -> <mediapipe.autoit.solutions.face_detection.FaceDetection object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection.FaceDetection")( [$min_detection_confidence[, $model_selection]] ) -> <mediapipe.autoit.solutions.face_detection.FaceDetection object>
+```
+
+### mediapipe::autoit::solutions::face_detection::FaceDetection::process
+
+```cpp
+void mediapipe::autoit::solutions::face_detection::FaceDetection::process( const cv::Mat&                     image,
+                                                                           std::map<std::string, _variant_t>& solution_outputs );
+AutoIt:
+    $oFaceDetection.process( $image[, $solution_outputs] ) -> $solution_outputs
 ```
 
 ## mediapipe::autoit::solution_base::SolutionBase
@@ -2620,7 +2892,7 @@ AutoIt:
 ```cpp
 static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solution_base::SolutionBase::get_create( const mediapipe::CalculatorGraphConfig&                                        graph_config,
                                                                                                                   const std::map<std::string, _variant_t>&                                       calculator_params = noMap(),
-                                                                                                                  const google::protobuf::Message*                                               graph_options = nullptr,
+                                                                                                                  const std::shared_ptr<google::protobuf::Message>&                              graph_options = std::shared_ptr<google::protobuf::Message>(),
                                                                                                                   const std::map<std::string, _variant_t>&                                       side_inputs = noMap(),
                                                                                                                   const std::vector<std::string>&                                                outputs = noVector(),
                                                                                                                   const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = noTypeMap() );
@@ -2632,7 +2904,7 @@ AutoIt:
 ```cpp
 static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solution_base::SolutionBase::get_create( const std::string&                                                             binary_graph_path,
                                                                                                                   const std::map<std::string, _variant_t>&                                       calculator_params = noMap(),
-                                                                                                                  const google::protobuf::Message*                                               graph_options = nullptr,
+                                                                                                                  const std::shared_ptr<google::protobuf::Message>&                              graph_options = std::shared_ptr<google::protobuf::Message>(),
                                                                                                                   const std::map<std::string, _variant_t>&                                       side_inputs = noMap(),
                                                                                                                   const std::vector<std::string>&                                                outputs = noVector(),
                                                                                                                   const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = noTypeMap() );
@@ -2652,10 +2924,10 @@ AutoIt:
 ### mediapipe::autoit::solution_base::SolutionBase::create_graph_options
 
 ```cpp
-std::shared_ptr<google::protobuf::Message> mediapipe::autoit::solution_base::SolutionBase::create_graph_options( std::shared_ptr<google::protobuf::Message> options_message,
-                                                                                                                 const std::map<std::string, _variant_t>&   values );
+static std::shared_ptr<google::protobuf::Message> mediapipe::autoit::solution_base::SolutionBase::create_graph_options( std::shared_ptr<google::protobuf::Message> options_message,
+                                                                                                                        const std::map<std::string, _variant_t>&   values );
 AutoIt:
-    $oSolutionBase.create_graph_options( $options_message, $values ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase").create_graph_options( $options_message, $values ) -> retval
 ```
 
 ### mediapipe::autoit::solution_base::SolutionBase::process
@@ -2668,10 +2940,10 @@ AutoIt:
 ```
 
 ```cpp
-void mediapipe::autoit::solution_base::SolutionBase::process( const std::map<std::string, _variant_t>& input_dict,
+void mediapipe::autoit::solution_base::SolutionBase::process( const std::map<std::string, _variant_t>& input_data,
                                                               std::map<std::string, _variant_t>&       solution_outputs );
 AutoIt:
-    $oSolutionBase.process( $input_dict[, $solution_outputs] ) -> $solution_outputs
+    $oSolutionBase.process( $input_data[, $solution_outputs] ) -> $solution_outputs
 ```
 
 ### mediapipe::autoit::solution_base::SolutionBase::reset
@@ -13130,6 +13402,1256 @@ AutoIt:
 void* VectorOfShared_ptrMessage::start();
 AutoIt:
     $oVectorOfShared_ptrMessage.start() -> retval
+```
+
+## VectorOfTupleIntAndInt
+
+### VectorOfTupleIntAndInt::create
+
+```cpp
+static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create() -> <VectorOfTupleIntAndInt object>
+```
+
+```cpp
+static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create( $size ) -> <VectorOfTupleIntAndInt object>
+```
+
+```cpp
+static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create( VectorOfTupleIntAndInt other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create( $other ) -> <VectorOfTupleIntAndInt object>
+```
+
+### VectorOfTupleIntAndInt::Add
+
+```cpp
+void VectorOfTupleIntAndInt::Add( std::tuple<int, int> value );
+AutoIt:
+    $oVectorOfTupleIntAndInt.Add( $value ) -> None
+```
+
+### VectorOfTupleIntAndInt::Items
+
+```cpp
+VectorOfTupleIntAndInt VectorOfTupleIntAndInt::Items();
+AutoIt:
+    $oVectorOfTupleIntAndInt.Items() -> retval
+```
+
+### VectorOfTupleIntAndInt::Keys
+
+```cpp
+std::vector<int> VectorOfTupleIntAndInt::Keys();
+AutoIt:
+    $oVectorOfTupleIntAndInt.Keys() -> retval
+```
+
+### VectorOfTupleIntAndInt::Remove
+
+```cpp
+void VectorOfTupleIntAndInt::Remove( size_t index );
+AutoIt:
+    $oVectorOfTupleIntAndInt.Remove( $index ) -> None
+```
+
+### VectorOfTupleIntAndInt::at
+
+```cpp
+std::tuple<int, int> VectorOfTupleIntAndInt::at( size_t index );
+AutoIt:
+    $oVectorOfTupleIntAndInt.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfTupleIntAndInt::at( size_t               index,
+                                 std::tuple<int, int> value );
+AutoIt:
+    $oVectorOfTupleIntAndInt.at( $index, $value ) -> None
+```
+
+### VectorOfTupleIntAndInt::clear
+
+```cpp
+void VectorOfTupleIntAndInt::clear();
+AutoIt:
+    $oVectorOfTupleIntAndInt.clear() -> None
+```
+
+### VectorOfTupleIntAndInt::empty
+
+```cpp
+bool VectorOfTupleIntAndInt::empty();
+AutoIt:
+    $oVectorOfTupleIntAndInt.empty() -> retval
+```
+
+### VectorOfTupleIntAndInt::end
+
+```cpp
+void* VectorOfTupleIntAndInt::end();
+AutoIt:
+    $oVectorOfTupleIntAndInt.end() -> retval
+```
+
+### VectorOfTupleIntAndInt::get_Item
+
+```cpp
+std::tuple<int, int> VectorOfTupleIntAndInt::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfTupleIntAndInt.Item( $vIndex ) -> retval
+    $oVectorOfTupleIntAndInt( $vIndex ) -> retval
+```
+
+### VectorOfTupleIntAndInt::get__NewEnum
+
+```cpp
+IUnknown* VectorOfTupleIntAndInt::get__NewEnum();
+AutoIt:
+    $oVectorOfTupleIntAndInt._NewEnum() -> retval
+```
+
+### VectorOfTupleIntAndInt::push_back
+
+```cpp
+void VectorOfTupleIntAndInt::push_back( std::tuple<int, int> value );
+AutoIt:
+    $oVectorOfTupleIntAndInt.push_back( $value ) -> None
+```
+
+### VectorOfTupleIntAndInt::push_vector
+
+```cpp
+void VectorOfTupleIntAndInt::push_vector( VectorOfTupleIntAndInt other );
+AutoIt:
+    $oVectorOfTupleIntAndInt.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfTupleIntAndInt::push_vector( VectorOfTupleIntAndInt other,
+                                          size_t                 count,
+                                          size_t                 start = 0 );
+AutoIt:
+    $oVectorOfTupleIntAndInt.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfTupleIntAndInt::put_Item
+
+```cpp
+void VectorOfTupleIntAndInt::put_Item( size_t               vIndex,
+                                       std::tuple<int, int> vItem );
+AutoIt:
+    $oVectorOfTupleIntAndInt.Item( $vIndex ) = $vItem
+```
+
+### VectorOfTupleIntAndInt::size
+
+```cpp
+size_t VectorOfTupleIntAndInt::size();
+AutoIt:
+    $oVectorOfTupleIntAndInt.size() -> retval
+```
+
+### VectorOfTupleIntAndInt::slice
+
+```cpp
+VectorOfTupleIntAndInt VectorOfTupleIntAndInt::slice( size_t start = 0,
+                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTupleIntAndInt.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfTupleIntAndInt::sort
+
+```cpp
+void VectorOfTupleIntAndInt::sort( void*  comparator,
+                                   size_t start = 0,
+                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTupleIntAndInt.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfTupleIntAndInt::sort_variant
+
+```cpp
+void VectorOfTupleIntAndInt::sort_variant( void*  comparator,
+                                           size_t start = 0,
+                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTupleIntAndInt.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfTupleIntAndInt::start
+
+```cpp
+void* VectorOfTupleIntAndInt::start();
+AutoIt:
+    $oVectorOfTupleIntAndInt.start() -> retval
+```
+
+## MapOfIntAndDrawingSpec
+
+### MapOfIntAndDrawingSpec::create
+
+```cpp
+static MapOfIntAndDrawingSpec MapOfIntAndDrawingSpec::create();
+AutoIt:
+    _Mediapipe_ObjCreate("MapOfIntAndDrawingSpec").create() -> <MapOfIntAndDrawingSpec object>
+```
+
+```cpp
+static std::shared_ptr<MapOfIntAndDrawingSpec> MapOfIntAndDrawingSpec::create( std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> pairs );
+AutoIt:
+    _Mediapipe_ObjCreate("MapOfIntAndDrawingSpec").create( $pairs ) -> retval
+```
+
+### MapOfIntAndDrawingSpec::Add
+
+```cpp
+void MapOfIntAndDrawingSpec::Add( int                                                      key,
+                                  mediapipe::autoit::solutions::drawing_utils::DrawingSpec value );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.Add( $key, $value ) -> None
+```
+
+### MapOfIntAndDrawingSpec::Get
+
+```cpp
+mediapipe::autoit::solutions::drawing_utils::DrawingSpec MapOfIntAndDrawingSpec::Get( int key );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.Get( $key ) -> retval
+```
+
+### MapOfIntAndDrawingSpec::Items
+
+```cpp
+std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> MapOfIntAndDrawingSpec::Items();
+AutoIt:
+    $oMapOfIntAndDrawingSpec.Items() -> retval
+```
+
+### MapOfIntAndDrawingSpec::Keys
+
+```cpp
+std::vector<int> MapOfIntAndDrawingSpec::Keys();
+AutoIt:
+    $oMapOfIntAndDrawingSpec.Keys() -> retval
+```
+
+### MapOfIntAndDrawingSpec::Remove
+
+```cpp
+size_t MapOfIntAndDrawingSpec::Remove( int key );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.Remove( $key ) -> retval
+```
+
+### MapOfIntAndDrawingSpec::clear
+
+```cpp
+void MapOfIntAndDrawingSpec::clear();
+AutoIt:
+    $oMapOfIntAndDrawingSpec.clear() -> None
+```
+
+### MapOfIntAndDrawingSpec::contains
+
+```cpp
+bool MapOfIntAndDrawingSpec::contains( int key );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.contains( $key ) -> retval
+```
+
+### MapOfIntAndDrawingSpec::count
+
+```cpp
+size_t MapOfIntAndDrawingSpec::count( int key );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.count( $key ) -> retval
+```
+
+### MapOfIntAndDrawingSpec::empty
+
+```cpp
+bool MapOfIntAndDrawingSpec::empty();
+AutoIt:
+    $oMapOfIntAndDrawingSpec.empty() -> retval
+```
+
+### MapOfIntAndDrawingSpec::erase
+
+```cpp
+size_t MapOfIntAndDrawingSpec::erase( int key );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.erase( $key ) -> retval
+```
+
+### MapOfIntAndDrawingSpec::get_Item
+
+```cpp
+mediapipe::autoit::solutions::drawing_utils::DrawingSpec MapOfIntAndDrawingSpec::get_Item( int vKey );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.Item( $vKey ) -> retval
+    $oMapOfIntAndDrawingSpec( $vKey ) -> retval
+```
+
+### MapOfIntAndDrawingSpec::get__NewEnum
+
+```cpp
+IUnknown* MapOfIntAndDrawingSpec::get__NewEnum();
+AutoIt:
+    $oMapOfIntAndDrawingSpec._NewEnum() -> retval
+```
+
+### MapOfIntAndDrawingSpec::has
+
+```cpp
+bool MapOfIntAndDrawingSpec::has( int key );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.has( $key ) -> retval
+```
+
+### MapOfIntAndDrawingSpec::max_size
+
+```cpp
+size_t MapOfIntAndDrawingSpec::max_size();
+AutoIt:
+    $oMapOfIntAndDrawingSpec.max_size() -> retval
+```
+
+### MapOfIntAndDrawingSpec::merge
+
+```cpp
+void MapOfIntAndDrawingSpec::merge( MapOfIntAndDrawingSpec other );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.merge( $other ) -> None
+```
+
+### MapOfIntAndDrawingSpec::put_Item
+
+```cpp
+void MapOfIntAndDrawingSpec::put_Item( int                                                      vKey,
+                                       mediapipe::autoit::solutions::drawing_utils::DrawingSpec vItem );
+AutoIt:
+    $oMapOfIntAndDrawingSpec.Item( $vKey ) = $vItem
+```
+
+### MapOfIntAndDrawingSpec::size
+
+```cpp
+size_t MapOfIntAndDrawingSpec::size();
+AutoIt:
+    $oMapOfIntAndDrawingSpec.size() -> retval
+```
+
+## VectorOfPairOfIntAndDrawingSpec
+
+### VectorOfPairOfIntAndDrawingSpec::create
+
+```cpp
+static VectorOfPairOfIntAndDrawingSpec VectorOfPairOfIntAndDrawingSpec::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfIntAndDrawingSpec").create() -> <VectorOfPairOfIntAndDrawingSpec object>
+```
+
+```cpp
+static VectorOfPairOfIntAndDrawingSpec VectorOfPairOfIntAndDrawingSpec::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfIntAndDrawingSpec").create( $size ) -> <VectorOfPairOfIntAndDrawingSpec object>
+```
+
+```cpp
+static VectorOfPairOfIntAndDrawingSpec VectorOfPairOfIntAndDrawingSpec::create( VectorOfPairOfIntAndDrawingSpec other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfIntAndDrawingSpec").create( $other ) -> <VectorOfPairOfIntAndDrawingSpec object>
+```
+
+### VectorOfPairOfIntAndDrawingSpec::Add
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::Add( std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> value );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.Add( $value ) -> None
+```
+
+### VectorOfPairOfIntAndDrawingSpec::Items
+
+```cpp
+VectorOfPairOfIntAndDrawingSpec VectorOfPairOfIntAndDrawingSpec::Items();
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.Items() -> retval
+```
+
+### VectorOfPairOfIntAndDrawingSpec::Keys
+
+```cpp
+std::vector<int> VectorOfPairOfIntAndDrawingSpec::Keys();
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.Keys() -> retval
+```
+
+### VectorOfPairOfIntAndDrawingSpec::Remove
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::Remove( size_t index );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.Remove( $index ) -> None
+```
+
+### VectorOfPairOfIntAndDrawingSpec::at
+
+```cpp
+std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfPairOfIntAndDrawingSpec::at( size_t index );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::at( size_t                                                                   index,
+                                          std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> value );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.at( $index, $value ) -> None
+```
+
+### VectorOfPairOfIntAndDrawingSpec::clear
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::clear();
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.clear() -> None
+```
+
+### VectorOfPairOfIntAndDrawingSpec::empty
+
+```cpp
+bool VectorOfPairOfIntAndDrawingSpec::empty();
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.empty() -> retval
+```
+
+### VectorOfPairOfIntAndDrawingSpec::end
+
+```cpp
+void* VectorOfPairOfIntAndDrawingSpec::end();
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.end() -> retval
+```
+
+### VectorOfPairOfIntAndDrawingSpec::get_Item
+
+```cpp
+std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfPairOfIntAndDrawingSpec::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.Item( $vIndex ) -> retval
+    $oVectorOfPairOfIntAndDrawingSpec( $vIndex ) -> retval
+```
+
+### VectorOfPairOfIntAndDrawingSpec::get__NewEnum
+
+```cpp
+IUnknown* VectorOfPairOfIntAndDrawingSpec::get__NewEnum();
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec._NewEnum() -> retval
+```
+
+### VectorOfPairOfIntAndDrawingSpec::push_back
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::push_back( std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> value );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.push_back( $value ) -> None
+```
+
+### VectorOfPairOfIntAndDrawingSpec::push_vector
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::push_vector( VectorOfPairOfIntAndDrawingSpec other );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::push_vector( VectorOfPairOfIntAndDrawingSpec other,
+                                                   size_t                          count,
+                                                   size_t                          start = 0 );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfPairOfIntAndDrawingSpec::put_Item
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::put_Item( size_t                                                                   vIndex,
+                                                std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> vItem );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.Item( $vIndex ) = $vItem
+```
+
+### VectorOfPairOfIntAndDrawingSpec::size
+
+```cpp
+size_t VectorOfPairOfIntAndDrawingSpec::size();
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.size() -> retval
+```
+
+### VectorOfPairOfIntAndDrawingSpec::slice
+
+```cpp
+VectorOfPairOfIntAndDrawingSpec VectorOfPairOfIntAndDrawingSpec::slice( size_t start = 0,
+                                                                        size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfPairOfIntAndDrawingSpec::sort
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::sort( void*  comparator,
+                                            size_t start = 0,
+                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfPairOfIntAndDrawingSpec::sort_variant
+
+```cpp
+void VectorOfPairOfIntAndDrawingSpec::sort_variant( void*  comparator,
+                                                    size_t start = 0,
+                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfPairOfIntAndDrawingSpec::start
+
+```cpp
+void* VectorOfPairOfIntAndDrawingSpec::start();
+AutoIt:
+    $oVectorOfPairOfIntAndDrawingSpec.start() -> retval
+```
+
+## VectorOfDrawingSpec
+
+### VectorOfDrawingSpec::create
+
+```cpp
+static VectorOfDrawingSpec VectorOfDrawingSpec::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfDrawingSpec").create() -> <VectorOfDrawingSpec object>
+```
+
+```cpp
+static VectorOfDrawingSpec VectorOfDrawingSpec::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfDrawingSpec").create( $size ) -> <VectorOfDrawingSpec object>
+```
+
+```cpp
+static VectorOfDrawingSpec VectorOfDrawingSpec::create( VectorOfDrawingSpec other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfDrawingSpec").create( $other ) -> <VectorOfDrawingSpec object>
+```
+
+### VectorOfDrawingSpec::Add
+
+```cpp
+void VectorOfDrawingSpec::Add( mediapipe::autoit::solutions::drawing_utils::DrawingSpec value );
+AutoIt:
+    $oVectorOfDrawingSpec.Add( $value ) -> None
+```
+
+### VectorOfDrawingSpec::Items
+
+```cpp
+VectorOfDrawingSpec VectorOfDrawingSpec::Items();
+AutoIt:
+    $oVectorOfDrawingSpec.Items() -> retval
+```
+
+### VectorOfDrawingSpec::Keys
+
+```cpp
+std::vector<int> VectorOfDrawingSpec::Keys();
+AutoIt:
+    $oVectorOfDrawingSpec.Keys() -> retval
+```
+
+### VectorOfDrawingSpec::Remove
+
+```cpp
+void VectorOfDrawingSpec::Remove( size_t index );
+AutoIt:
+    $oVectorOfDrawingSpec.Remove( $index ) -> None
+```
+
+### VectorOfDrawingSpec::at
+
+```cpp
+mediapipe::autoit::solutions::drawing_utils::DrawingSpec VectorOfDrawingSpec::at( size_t index );
+AutoIt:
+    $oVectorOfDrawingSpec.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfDrawingSpec::at( size_t                                                   index,
+                              mediapipe::autoit::solutions::drawing_utils::DrawingSpec value );
+AutoIt:
+    $oVectorOfDrawingSpec.at( $index, $value ) -> None
+```
+
+### VectorOfDrawingSpec::clear
+
+```cpp
+void VectorOfDrawingSpec::clear();
+AutoIt:
+    $oVectorOfDrawingSpec.clear() -> None
+```
+
+### VectorOfDrawingSpec::empty
+
+```cpp
+bool VectorOfDrawingSpec::empty();
+AutoIt:
+    $oVectorOfDrawingSpec.empty() -> retval
+```
+
+### VectorOfDrawingSpec::end
+
+```cpp
+void* VectorOfDrawingSpec::end();
+AutoIt:
+    $oVectorOfDrawingSpec.end() -> retval
+```
+
+### VectorOfDrawingSpec::get_Item
+
+```cpp
+mediapipe::autoit::solutions::drawing_utils::DrawingSpec VectorOfDrawingSpec::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfDrawingSpec.Item( $vIndex ) -> retval
+    $oVectorOfDrawingSpec( $vIndex ) -> retval
+```
+
+### VectorOfDrawingSpec::get__NewEnum
+
+```cpp
+IUnknown* VectorOfDrawingSpec::get__NewEnum();
+AutoIt:
+    $oVectorOfDrawingSpec._NewEnum() -> retval
+```
+
+### VectorOfDrawingSpec::push_back
+
+```cpp
+void VectorOfDrawingSpec::push_back( mediapipe::autoit::solutions::drawing_utils::DrawingSpec value );
+AutoIt:
+    $oVectorOfDrawingSpec.push_back( $value ) -> None
+```
+
+### VectorOfDrawingSpec::push_vector
+
+```cpp
+void VectorOfDrawingSpec::push_vector( VectorOfDrawingSpec other );
+AutoIt:
+    $oVectorOfDrawingSpec.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfDrawingSpec::push_vector( VectorOfDrawingSpec other,
+                                       size_t              count,
+                                       size_t              start = 0 );
+AutoIt:
+    $oVectorOfDrawingSpec.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfDrawingSpec::put_Item
+
+```cpp
+void VectorOfDrawingSpec::put_Item( size_t                                                   vIndex,
+                                    mediapipe::autoit::solutions::drawing_utils::DrawingSpec vItem );
+AutoIt:
+    $oVectorOfDrawingSpec.Item( $vIndex ) = $vItem
+```
+
+### VectorOfDrawingSpec::size
+
+```cpp
+size_t VectorOfDrawingSpec::size();
+AutoIt:
+    $oVectorOfDrawingSpec.size() -> retval
+```
+
+### VectorOfDrawingSpec::slice
+
+```cpp
+VectorOfDrawingSpec VectorOfDrawingSpec::slice( size_t start = 0,
+                                                size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfDrawingSpec.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfDrawingSpec::sort
+
+```cpp
+void VectorOfDrawingSpec::sort( void*  comparator,
+                                size_t start = 0,
+                                size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfDrawingSpec.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfDrawingSpec::sort_variant
+
+```cpp
+void VectorOfDrawingSpec::sort_variant( void*  comparator,
+                                        size_t start = 0,
+                                        size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfDrawingSpec.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfDrawingSpec::start
+
+```cpp
+void* VectorOfDrawingSpec::start();
+AutoIt:
+    $oVectorOfDrawingSpec.start() -> retval
+```
+
+## MapOfIntAndMapOfIntAndDrawingSpec
+
+### MapOfIntAndMapOfIntAndDrawingSpec::create
+
+```cpp
+static MapOfIntAndMapOfIntAndDrawingSpec MapOfIntAndMapOfIntAndDrawingSpec::create();
+AutoIt:
+    _Mediapipe_ObjCreate("MapOfIntAndMapOfIntAndDrawingSpec").create() -> <MapOfIntAndMapOfIntAndDrawingSpec object>
+```
+
+```cpp
+static std::shared_ptr<MapOfIntAndMapOfIntAndDrawingSpec> MapOfIntAndMapOfIntAndDrawingSpec::create( std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> pairs );
+AutoIt:
+    _Mediapipe_ObjCreate("MapOfIntAndMapOfIntAndDrawingSpec").create( $pairs ) -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::Add
+
+```cpp
+void MapOfIntAndMapOfIntAndDrawingSpec::Add( int                                                                     key,
+                                             std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> value );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.Add( $key, $value ) -> None
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::Get
+
+```cpp
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> MapOfIntAndMapOfIntAndDrawingSpec::Get( int key );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.Get( $key ) -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::Items
+
+```cpp
+std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> MapOfIntAndMapOfIntAndDrawingSpec::Items();
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.Items() -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::Keys
+
+```cpp
+std::vector<int> MapOfIntAndMapOfIntAndDrawingSpec::Keys();
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.Keys() -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::Remove
+
+```cpp
+size_t MapOfIntAndMapOfIntAndDrawingSpec::Remove( int key );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.Remove( $key ) -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::clear
+
+```cpp
+void MapOfIntAndMapOfIntAndDrawingSpec::clear();
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.clear() -> None
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::contains
+
+```cpp
+bool MapOfIntAndMapOfIntAndDrawingSpec::contains( int key );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.contains( $key ) -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::count
+
+```cpp
+size_t MapOfIntAndMapOfIntAndDrawingSpec::count( int key );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.count( $key ) -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::empty
+
+```cpp
+bool MapOfIntAndMapOfIntAndDrawingSpec::empty();
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.empty() -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::erase
+
+```cpp
+size_t MapOfIntAndMapOfIntAndDrawingSpec::erase( int key );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.erase( $key ) -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::get_Item
+
+```cpp
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> MapOfIntAndMapOfIntAndDrawingSpec::get_Item( int vKey );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.Item( $vKey ) -> retval
+    $oMapOfIntAndMapOfIntAndDrawingSpec( $vKey ) -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::get__NewEnum
+
+```cpp
+IUnknown* MapOfIntAndMapOfIntAndDrawingSpec::get__NewEnum();
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec._NewEnum() -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::has
+
+```cpp
+bool MapOfIntAndMapOfIntAndDrawingSpec::has( int key );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.has( $key ) -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::max_size
+
+```cpp
+size_t MapOfIntAndMapOfIntAndDrawingSpec::max_size();
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.max_size() -> retval
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::merge
+
+```cpp
+void MapOfIntAndMapOfIntAndDrawingSpec::merge( MapOfIntAndMapOfIntAndDrawingSpec other );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.merge( $other ) -> None
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::put_Item
+
+```cpp
+void MapOfIntAndMapOfIntAndDrawingSpec::put_Item( int                                                                     vKey,
+                                                  std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> vItem );
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.Item( $vKey ) = $vItem
+```
+
+### MapOfIntAndMapOfIntAndDrawingSpec::size
+
+```cpp
+size_t MapOfIntAndMapOfIntAndDrawingSpec::size();
+AutoIt:
+    $oMapOfIntAndMapOfIntAndDrawingSpec.size() -> retval
+```
+
+## VectorOfPairOfIntAndMapOfIntAndDrawingSpec
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::create
+
+```cpp
+static VectorOfPairOfIntAndMapOfIntAndDrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawingSpec::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfIntAndMapOfIntAndDrawingSpec").create() -> <VectorOfPairOfIntAndMapOfIntAndDrawingSpec object>
+```
+
+```cpp
+static VectorOfPairOfIntAndMapOfIntAndDrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawingSpec::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfIntAndMapOfIntAndDrawingSpec").create( $size ) -> <VectorOfPairOfIntAndMapOfIntAndDrawingSpec object>
+```
+
+```cpp
+static VectorOfPairOfIntAndMapOfIntAndDrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawingSpec::create( VectorOfPairOfIntAndMapOfIntAndDrawingSpec other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfPairOfIntAndMapOfIntAndDrawingSpec").create( $other ) -> <VectorOfPairOfIntAndMapOfIntAndDrawingSpec object>
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Add
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Add( std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> value );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.Add( $value ) -> None
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Items
+
+```cpp
+VectorOfPairOfIntAndMapOfIntAndDrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Items();
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.Items() -> retval
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Keys
+
+```cpp
+std::vector<int> VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Keys();
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.Keys() -> retval
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Remove
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::Remove( size_t index );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.Remove( $index ) -> None
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::at
+
+```cpp
+std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndMapOfIntAndDrawingSpec::at( size_t index );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::at( size_t                                                                                  index,
+                                                     std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> value );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.at( $index, $value ) -> None
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::clear
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::clear();
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.clear() -> None
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::empty
+
+```cpp
+bool VectorOfPairOfIntAndMapOfIntAndDrawingSpec::empty();
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.empty() -> retval
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::end
+
+```cpp
+void* VectorOfPairOfIntAndMapOfIntAndDrawingSpec::end();
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.end() -> retval
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::get_Item
+
+```cpp
+std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndMapOfIntAndDrawingSpec::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.Item( $vIndex ) -> retval
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec( $vIndex ) -> retval
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::get__NewEnum
+
+```cpp
+IUnknown* VectorOfPairOfIntAndMapOfIntAndDrawingSpec::get__NewEnum();
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec._NewEnum() -> retval
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::push_back
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::push_back( std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> value );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.push_back( $value ) -> None
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::push_vector
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::push_vector( VectorOfPairOfIntAndMapOfIntAndDrawingSpec other );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::push_vector( VectorOfPairOfIntAndMapOfIntAndDrawingSpec other,
+                                                              size_t                                     count,
+                                                              size_t                                     start = 0 );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::put_Item
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::put_Item( size_t                                                                                  vIndex,
+                                                           std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> vItem );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.Item( $vIndex ) = $vItem
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::size
+
+```cpp
+size_t VectorOfPairOfIntAndMapOfIntAndDrawingSpec::size();
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.size() -> retval
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::slice
+
+```cpp
+VectorOfPairOfIntAndMapOfIntAndDrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawingSpec::slice( size_t start = 0,
+                                                                                              size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::sort
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::sort( void*  comparator,
+                                                       size_t start = 0,
+                                                       size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::sort_variant
+
+```cpp
+void VectorOfPairOfIntAndMapOfIntAndDrawingSpec::sort_variant( void*  comparator,
+                                                               size_t start = 0,
+                                                               size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfPairOfIntAndMapOfIntAndDrawingSpec::start
+
+```cpp
+void* VectorOfPairOfIntAndMapOfIntAndDrawingSpec::start();
+AutoIt:
+    $oVectorOfPairOfIntAndMapOfIntAndDrawingSpec.start() -> retval
+```
+
+## VectorOfMapOfIntAndDrawingSpec
+
+### VectorOfMapOfIntAndDrawingSpec::create
+
+```cpp
+static VectorOfMapOfIntAndDrawingSpec VectorOfMapOfIntAndDrawingSpec::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfMapOfIntAndDrawingSpec").create() -> <VectorOfMapOfIntAndDrawingSpec object>
+```
+
+```cpp
+static VectorOfMapOfIntAndDrawingSpec VectorOfMapOfIntAndDrawingSpec::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfMapOfIntAndDrawingSpec").create( $size ) -> <VectorOfMapOfIntAndDrawingSpec object>
+```
+
+```cpp
+static VectorOfMapOfIntAndDrawingSpec VectorOfMapOfIntAndDrawingSpec::create( VectorOfMapOfIntAndDrawingSpec other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfMapOfIntAndDrawingSpec").create( $other ) -> <VectorOfMapOfIntAndDrawingSpec object>
+```
+
+### VectorOfMapOfIntAndDrawingSpec::Add
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::Add( std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> value );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.Add( $value ) -> None
+```
+
+### VectorOfMapOfIntAndDrawingSpec::Items
+
+```cpp
+VectorOfMapOfIntAndDrawingSpec VectorOfMapOfIntAndDrawingSpec::Items();
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.Items() -> retval
+```
+
+### VectorOfMapOfIntAndDrawingSpec::Keys
+
+```cpp
+std::vector<int> VectorOfMapOfIntAndDrawingSpec::Keys();
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.Keys() -> retval
+```
+
+### VectorOfMapOfIntAndDrawingSpec::Remove
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::Remove( size_t index );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.Remove( $index ) -> None
+```
+
+### VectorOfMapOfIntAndDrawingSpec::at
+
+```cpp
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfMapOfIntAndDrawingSpec::at( size_t index );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::at( size_t                                                                  index,
+                                         std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> value );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.at( $index, $value ) -> None
+```
+
+### VectorOfMapOfIntAndDrawingSpec::clear
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::clear();
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.clear() -> None
+```
+
+### VectorOfMapOfIntAndDrawingSpec::empty
+
+```cpp
+bool VectorOfMapOfIntAndDrawingSpec::empty();
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.empty() -> retval
+```
+
+### VectorOfMapOfIntAndDrawingSpec::end
+
+```cpp
+void* VectorOfMapOfIntAndDrawingSpec::end();
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.end() -> retval
+```
+
+### VectorOfMapOfIntAndDrawingSpec::get_Item
+
+```cpp
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfMapOfIntAndDrawingSpec::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.Item( $vIndex ) -> retval
+    $oVectorOfMapOfIntAndDrawingSpec( $vIndex ) -> retval
+```
+
+### VectorOfMapOfIntAndDrawingSpec::get__NewEnum
+
+```cpp
+IUnknown* VectorOfMapOfIntAndDrawingSpec::get__NewEnum();
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec._NewEnum() -> retval
+```
+
+### VectorOfMapOfIntAndDrawingSpec::push_back
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::push_back( std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> value );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.push_back( $value ) -> None
+```
+
+### VectorOfMapOfIntAndDrawingSpec::push_vector
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::push_vector( VectorOfMapOfIntAndDrawingSpec other );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::push_vector( VectorOfMapOfIntAndDrawingSpec other,
+                                                  size_t                         count,
+                                                  size_t                         start = 0 );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfMapOfIntAndDrawingSpec::put_Item
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::put_Item( size_t                                                                  vIndex,
+                                               std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> vItem );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.Item( $vIndex ) = $vItem
+```
+
+### VectorOfMapOfIntAndDrawingSpec::size
+
+```cpp
+size_t VectorOfMapOfIntAndDrawingSpec::size();
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.size() -> retval
+```
+
+### VectorOfMapOfIntAndDrawingSpec::slice
+
+```cpp
+VectorOfMapOfIntAndDrawingSpec VectorOfMapOfIntAndDrawingSpec::slice( size_t start = 0,
+                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfMapOfIntAndDrawingSpec::sort
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::sort( void*  comparator,
+                                           size_t start = 0,
+                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfMapOfIntAndDrawingSpec::sort_variant
+
+```cpp
+void VectorOfMapOfIntAndDrawingSpec::sort_variant( void*  comparator,
+                                                   size_t start = 0,
+                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfMapOfIntAndDrawingSpec::start
+
+```cpp
+void* VectorOfMapOfIntAndDrawingSpec::start();
+AutoIt:
+    $oVectorOfMapOfIntAndDrawingSpec.start() -> retval
 ```
 
 ## MapOfStringAndPacketDataType

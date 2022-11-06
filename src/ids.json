@@ -47,6 +47,30 @@
         "iid": "dfafdce2-7f7a-4ea4-a0a2-bdf904648cc0",
         "clsid": "bb43d259-8a75-418f-a06f-957b33459101"
     },
+    "mediapipe::autoit::solutions": {
+        "iid": "5b720861-2603-4f1e-bbc4-6788cfc2fa0d",
+        "clsid": "e1af48c2-c0dc-472f-8159-34dd803c7b4d"
+    },
+    "mediapipe::autoit::solutions::drawing_utils": {
+        "iid": "c41d4678-ee76-4158-99fd-d325d23f928f",
+        "clsid": "2acd182d-3f55-4c0d-93da-6da43be9e4a8"
+    },
+    "mediapipe::autoit::solutions::drawing_utils::DrawingSpec": {
+        "iid": "8f1a3558-537f-451c-ae7c-e588c42fa2e4",
+        "clsid": "6e8dac36-3680-418b-ab76-c07d3cd8ce7a"
+    },
+    "mediapipe::autoit::solutions::face_detection": {
+        "iid": "2e7df523-e5df-4785-86ad-a2f5e2070cf2",
+        "clsid": "697ce5df-f18b-45a4-9afa-6970485721cd"
+    },
+    "mediapipe::autoit::solutions::face_detection::FaceKeyPoint": {
+        "iid": "1843e545-bdfd-4ad5-ae60-90efc4d605a8",
+        "clsid": "d203dca4-2695-43fb-ad37-a563a89022a3"
+    },
+    "mediapipe::autoit::solutions::face_detection::FaceDetection": {
+        "iid": "d87abe07-c0d5-4ce4-8bb2-df618b48ef8d",
+        "clsid": "8635932b-2554-4f91-bca0-8f4c8da1e868"
+    },
     "mediapipe::autoit::solution_base": {
         "iid": "86b271a7-844d-415d-936a-3c9a9cce08d1",
         "clsid": "249f4463-6f0e-4cc1-a229-0a7ae6fd743a"
@@ -702,6 +726,34 @@
     "VectorOfShared_ptrMessage": {
         "iid": "f6e7f9c3-bb17-4a53-8e84-31ac819bd56a",
         "clsid": "0be4c50c-271e-4d5f-a807-3249e4fe47e1"
+    },
+    "VectorOfTupleIntAndInt": {
+        "iid": "b12afc5b-3642-449a-93dc-ea6db1b20e21",
+        "clsid": "ce652372-b94c-4334-aefb-48f922035fe0"
+    },
+    "MapOfIntAndDrawingSpec": {
+        "iid": "930d3a55-0e73-4c61-87fe-b389953146f1",
+        "clsid": "491e328a-f13a-424c-a3d4-097b6085a8ce"
+    },
+    "VectorOfPairOfIntAndDrawingSpec": {
+        "iid": "01cc3a44-e4b3-4b80-b6e6-b33b042f064d",
+        "clsid": "4aab08e3-66d4-4079-8c27-fe7432822c0b"
+    },
+    "VectorOfDrawingSpec": {
+        "iid": "0330da95-f48e-46db-8d57-7c469b5ae365",
+        "clsid": "5db27f70-a0eb-41a2-b2ca-fcd9f0b4dedb"
+    },
+    "MapOfIntAndMapOfIntAndDrawingSpec": {
+        "iid": "d86ff934-96ca-47f0-a4ff-fc9403a72cf0",
+        "clsid": "5914f75b-8248-415d-9acd-9d83db857c32"
+    },
+    "VectorOfPairOfIntAndMapOfIntAndDrawingSpec": {
+        "iid": "9619eabf-a421-45fa-9628-071abf7fd4a2",
+        "clsid": "9ef2bb86-285e-4479-849b-856d053d37c7"
+    },
+    "VectorOfMapOfIntAndDrawingSpec": {
+        "iid": "401a1c54-f2a9-4045-8c71-4a65c0b3c45c",
+        "clsid": "9553f101-a238-4a06-868c-847426079677"
     },
     "MapOfStringAndPacketDataType": {
         "iid": "fea546aa-22c7-4daf-a856-f6d5de929820",

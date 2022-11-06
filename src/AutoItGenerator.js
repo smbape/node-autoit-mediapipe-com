@@ -83,27 +83,29 @@ class AutoItGenerator {
             }
         }
 
-        // define NamedParameters
-        {
-            const {key_type, value_type} = this.classes.get(this.add_map("map<string, _variant_t>", {}, options));
-            const coclass = this.classes.get("NamedParameters");
-            coclass.key_type = key_type;
-            coclass.value_type = value_type;
-            const {fqn} = coclass;
-
-            coclass.addMethod([`${ fqn }.create`, `${ options.shared_ptr }<${ coclass.name }>`, ["/External", "/S"], [
-                [`std::vector<std::pair<${ key_type }, ${ value_type }>>`, "pairs", "", []],
-            ], "", ""]);
-
-            // make NamedParameters to be recognized as a collection
-            this.as_stl_enum(coclass, `std::pair<const ${ key_type }, ${ value_type }>`);
-
-            this.namedParameters = coclass;
-        }
+        this.defineNamedParameters(options);
 
         for (const fqn of IGNORED_CLASSES) {
             if (this.classes.has(fqn)) {
                 this.classes.delete(fqn);
+            }
+        }
+
+        for (const fqn of this.classes.keys()) {
+            const coclass = this.classes.get(fqn);
+            for (const [fname, overrides] of coclass.methods.entries()) {
+                for (const decl of overrides) {
+                    const [, return_value_type, func_modifiers, list_of_arguments] = decl;
+                    if (return_value_type !== "" && !func_modifiers.includes("/CO")) {
+                        this.setAssignOperator(return_value_type, coclass, options);
+                    }
+
+                    for (const [argtype, , defval] of list_of_arguments) {
+                        if (defval !== "") {
+                            this.setAssignOperator(argtype, coclass, options);
+                        }
+                    }
+                }
             }
         }
 
@@ -1396,6 +1398,31 @@ class AutoItGenerator {
         return options.implicitNamespaceType && options.implicitNamespaceType.test(type) ? `${ this.namespace }::${ type }` : type_;
     }
 
+    setAssignOperator(type, coclass, options) {
+        const cpptype = this.getCppType(type, coclass, options);
+
+        if (cpptype.startsWith("std::vector<")) {
+            this.setAssignOperator(type.slice("std::vector<".length, -">".length), coclass, options);
+        } else if (type.startsWith("std::tuple<")) {
+            const types = PropertyDeclaration.getTupleTypes(type.slice("std::tuple<".length, -">".length));
+            for (const ttype of types) {
+                this.setAssignOperator(ttype, coclass, options);
+            }
+        } else if (type.startsWith("std::map<")) {
+            const types = PropertyDeclaration.getTupleTypes(type.slice("std::map<".length, -">".length));
+            for (const ttype of types) {
+                this.setAssignOperator(ttype, coclass, options);
+            }
+        } else if (type.startsWith("std::pair<")) {
+            const types = PropertyDeclaration.getTupleTypes(type.slice("std::pair<".length, -">".length));
+            for (const ttype of types) {
+                this.setAssignOperator(ttype, coclass, options);
+            }
+        } else if (this.classes.has(cpptype)) {
+            this.classes.get(cpptype).has_assign_operator = true;
+        }
+    }
+
     getEnumType(type, coclass, options = {}) {
         let include = coclass;
         while (include.include) {
@@ -1481,6 +1508,23 @@ class AutoItGenerator {
 
         this.dependents.get(dependency).add(dependent);
         this.dependencies.get(dependent).add(dependency);
+    }
+
+    defineNamedParameters(options) {
+        const {key_type, value_type} = this.classes.get(this.add_map("map<string, _variant_t>", {}, options));
+        const coclass = this.classes.get("NamedParameters");
+        coclass.key_type = key_type;
+        coclass.value_type = value_type;
+        const {fqn} = coclass;
+
+        coclass.addMethod([`${ fqn }.create`, `${ options.shared_ptr }<${ coclass.name }>`, ["/External", "/S"], [
+            [`std::vector<std::pair<${ key_type }, ${ value_type }>>`, "pairs", "", []],
+        ], "", ""]);
+
+        // make NamedParameters to be recognized as a collection
+        this.as_stl_enum(coclass, `std::pair<const ${ key_type }, ${ value_type }>`);
+
+        this.namedParameters = coclass;
     }
 
     getSignatures(coclass, options) {
