@@ -28,6 +28,13 @@ SET BUILD_ARCH=-A x64
 IF NOT DEFINED CMAKE_BUILD_TYPE SET CMAKE_BUILD_TYPE=Release
 SET GENERAL_CMAKE_CONFIG_FLAGS=%GENERAL_CMAKE_CONFIG_FLAGS% -DCMAKE_BUILD_TYPE:STRING="%CMAKE_BUILD_TYPE%" -DCMAKE_INSTALL_PREFIX:STRING=install
 
+SET cmode=opt
+IF [%CMAKE_BUILD_TYPE%] == [Debug] SET cmode=dbg
+
+::Find python
+FOR %%i IN (python.exe) DO SET PYTHON_BIN_PATH=%%~$PATH:i
+SET PYTHON_BIN_PATH=%PYTHON_BIN_PATH:\=//%
+
 ::Find CMake
 SET CMAKE="cmake.exe"
 IF EXIST "%PROGRAMFILES_DIR_X86%\CMake\bin\cmake.exe" SET CMAKE="%PROGRAMFILES_DIR_X86%\CMake\bin\cmake.exe"
@@ -64,6 +71,7 @@ GOTO END
 
 :MAKE
 SET ERROR=0
+SET "MEDIAPIPE_SRC=%CWD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe"
 
 :DOWNLOAD_OPENCV
 SET _skip_build=%skip_build%
@@ -71,49 +79,61 @@ SET skip_build=0
 SET TARGET=mediapipe
 CALL :MAKE_CONFIG
 SET ERROR=%ERRORLEVEL%
+IF NOT "%ERROR%" == "0" GOTO END
+
 SET TARGET=ALL_BUILD
 SET skip_build=%_skip_build%
 CD /d %CWD%
 
-IF NOT EXIST "%CD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe\mediapipe\autoit" (
-    mklink /j "%CD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe\mediapipe\autoit" "%CD%"
-)
-
-IF "%ERROR%" == "0" GOTO GEN_SOURCES
-GOTO END
-
 :GEN_SOURCES
 IF [%skip_node%] == [1] GOTO MAKE_CONFIG
 
-IF NOT EXIST "%CD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe\bazel-mediapipe\external\com_google_protobuf\src" (
-    cd /D ""%CD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe"
-    IF [%CMAKE_BUILD_TYPE%] == [Release] SET mode=opt
-    IF NOT [%CMAKE_BUILD_TYPE%] == [Release] SET mode=dbg
-    bazel --output_user_root=C:/_bazel_ build -c %mode% --define MEDIAPIPE_DISABLE_GPU=1 --verbose_failures mediapipe/python:builtin_calculators
+IF NOT EXIST "%MEDIAPIPE_SRC%\bazel-mediapipe\external\com_google_protobuf\src" (
+    CD /d "%MEDIAPIPE_SRC%"
+    bazel --output_user_root=C:/_bazel_ build -c !cmode! --strip=never --define MEDIAPIPE_DISABLE_GPU=1 --action_env "PYTHON_BIN_PATH=!PYTHON_BIN_PATH!" --verbose_failures mediapipe/python:builtin_calculators
+)
+SET ERROR=%ERRORLEVEL%
+IF NOT "%ERROR%" == "0" GOTO END
+
+CD /d %CWD%
+
+IF NOT EXIST "%MEDIAPIPE_SRC%\mediapipe\autoit" (
+    MKLINK /j "%MEDIAPIPE_SRC%\mediapipe\autoit" "%CWD%"
 )
 
 node --unhandled-rejections=strict --trace-uncaught --trace-warnings ..\src\gen.js --skip=vs
 SET ERROR=%ERRORLEVEL%
-IF "%ERROR%" == "0" GOTO MAKE_CONFIG
-GOTO END
+IF NOT "%ERROR%" == "0" GOTO END
 
 :MAKE_CONFIG
 IF [%skip_config%] == [1] GOTO BUILD
 
 IF NOT EXIST %BUILD_FOLDER% mkdir %BUILD_FOLDER%
-cd %BUILD_FOLDER%
+CD %BUILD_FOLDER%
 rem IF EXIST "CMakeCache.txt" del CMakeCache.txt
 
 :RUN_CMAKE
 %CMAKE% -G %CMAKE_CONF% %GENERAL_CMAKE_CONFIG_FLAGS% ..\
 SET ERROR=%ERRORLEVEL%
-IF "%ERROR%" == "0" GOTO BUILD
-GOTO END
+IF NOT "%ERROR%" == "0" GOTO END
 
 :BUILD
 IF [%skip_build%] == [1] GOTO END
 %CMAKE% --build . --config %CMAKE_BUILD_TYPE% --target %TARGET%
 SET ERROR=%ERRORLEVEL%
+IF NOT "%ERROR%" == "0" GOTO END
+
+IF NOT [%TARGET%] == [ALL_BUILD] GOTO END
+
+CD /d "%MEDIAPIPE_SRC%"
+
+bazel --output_user_root=C:/_bazel_ build -c %cmode% --strip=never --define MEDIAPIPE_DISABLE_GPU=1 --action_env "PYTHON_BIN_PATH=!PYTHON_BIN_PATH!" --verbose_failures mediapipe/autoit:lib_pch
+SET ERROR=%ERRORLEVEL%
+IF NOT "%ERROR%" == "0" GOTO END
+
+bazel --output_user_root=C:/_bazel_ build -c %cmode% --strip=never --define MEDIAPIPE_DISABLE_GPU=1 --action_env "PYTHON_BIN_PATH=!PYTHON_BIN_PATH!" --verbose_failures mediapipe/autoit:lib --keep_going
+SET ERROR=%ERRORLEVEL%
+IF NOT "%ERROR%" == "0" GOTO END
 
 :END
 POPD

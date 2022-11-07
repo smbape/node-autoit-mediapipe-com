@@ -3534,6 +3534,20 @@ AutoIt:
     _Mediapipe_ObjCreate("cv.Mat").eye( $rows, $cols, $type ) -> retval
 ```
 
+```cpp
+static cv::Mat cv::Mat::eye( int rows,
+                             int type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").eye( $rows, $type ) -> retval
+```
+
+```cpp
+static cv::Mat cv::Mat::eye( int cols,
+                             int type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").eye( $cols, $type ) -> retval
+```
+
 ### cv::Mat::get_Item
 
 ```cpp
@@ -3591,6 +3605,20 @@ static cv::Mat cv::Mat::ones( int rows,
                               int type );
 AutoIt:
     _Mediapipe_ObjCreate("cv.Mat").ones( $rows, $cols, $type ) -> retval
+```
+
+```cpp
+static cv::Mat cv::Mat::ones( int cols,
+                              int type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").ones( $cols, $type ) -> retval
+```
+
+```cpp
+static cv::Mat cv::Mat::ones( int rows,
+                              int type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").ones( $rows, $type ) -> retval
 ```
 
 ```cpp
@@ -3792,6 +3820,20 @@ static cv::Mat cv::Mat::zeros( int rows,
                                int type );
 AutoIt:
     _Mediapipe_ObjCreate("cv.Mat").zeros( $rows, $cols, $type ) -> retval
+```
+
+```cpp
+static cv::Mat cv::Mat::zeros( int cols,
+                               int type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").zeros( $cols, $type ) -> retval
+```
+
+```cpp
+static cv::Mat cv::Mat::zeros( int rows,
+                               int type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").zeros( $rows, $type ) -> retval
 ```
 
 ```cpp

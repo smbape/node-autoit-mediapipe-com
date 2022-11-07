@@ -152,9 +152,29 @@ const declarations = [
         ["int", "type", "", []],
     ], "", ""],
 
+    ["cv.Mat.eye", "cv::Mat", ["/S", "/Expr=rows, rows, type"], [
+        ["int", "rows", "", []],
+        ["int", "type", "", []],
+    ], "", ""],
+
+    ["cv.Mat.eye", "cv::Mat", ["/S", "/Expr=cols, cols, type"], [
+        ["int", "cols", "", []],
+        ["int", "type", "", []],
+    ], "", ""],
+
     ["cv.Mat.zeros", "cv::Mat", ["/S"], [
         ["int", "rows", "", []],
         ["int", "cols", "", []],
+        ["int", "type", "", []],
+    ], "", ""],
+
+    ["cv.Mat.zeros", "cv::Mat", ["/S", "/Expr=1, cols, type"], [
+        ["int", "cols", "", []],
+        ["int", "type", "", []],
+    ], "", ""],
+
+    ["cv.Mat.zeros", "cv::Mat", ["/S", "/Expr=rows, 1, type"], [
+        ["int", "rows", "", []],
         ["int", "type", "", []],
     ], "", ""],
 
@@ -166,6 +186,16 @@ const declarations = [
     ["cv.Mat.ones", "cv::Mat", ["/S"], [
         ["int", "rows", "", []],
         ["int", "cols", "", []],
+        ["int", "type", "", []],
+    ], "", ""],
+
+    ["cv.Mat.ones", "cv::Mat", ["/S", "/Expr=1, cols, type"], [
+        ["int", "cols", "", []],
+        ["int", "type", "", []],
+    ], "", ""],
+
+    ["cv.Mat.ones", "cv::Mat", ["/S", "/Expr=rows, 1, type"], [
+        ["int", "rows", "", []],
         ["int", "type", "", []],
     ], "", ""],
 

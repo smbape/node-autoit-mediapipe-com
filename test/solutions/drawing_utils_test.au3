@@ -51,6 +51,7 @@ Func Test()
 			'landmark {x: 0.5 y: 0.1 visibility: 0.5}' _
 			)
 	test_draw_axis()
+	test_draw_axis_zero_translation()
 EndFunc   ;==>Test
 
 Func test_draw_keypoints_only()
@@ -146,10 +147,10 @@ Func test_draw_axis()
 	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
 	Local $expected_result = $image.copy()
 
-	Local $origin = _OpenCV_Point(50, 50)
-	Local $x_axis = _OpenCV_Point(75, 50)
-	Local $y_axis = _OpenCV_Point(50, 23)
-	Local $z_axis = _OpenCV_Point(50, 77)
+	Local $origin[] = [50, 50]
+	Local $x_axis[] = [75, 50]
+	Local $y_axis[] = [50, 23]
+	Local $z_axis[] = [50, 77]
 
 	$cv.arrowedLine($expected_result, $origin, $x_axis, $drawing_utils.RED_COLOR, _
 			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
@@ -168,6 +169,28 @@ Func test_draw_axis()
 	$drawing_utils.draw_axis($image, $rotation, $translation)
 	_AssertMatEqual($image, $expected_result)
 EndFunc   ;==>test_draw_axis
+
+Func test_draw_axis_zero_translation()
+	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
+	Local $expected_result = $image.copy()
+
+	Local $origin[] = [50, 50]
+	Local $x_axis[] = [0, 50]
+	Local $y_axis[] = [50, 100]
+	Local $z_axis[] = [50, 50]
+
+	$cv.arrowedLine($expected_result, $origin, $x_axis, $drawing_utils.RED_COLOR, _
+			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
+	$cv.arrowedLine($expected_result, $origin, $y_axis, $drawing_utils.GREEN_COLOR, _
+			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
+	$cv.arrowedLine($expected_result, $origin, $z_axis, $drawing_utils.BLUE_COLOR, _
+			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
+
+	Local $rotation = _OpenCV_ObjCreate("Mat").eye(3, $CV_64F)
+	Local $translation = _OpenCV_ObjCreate("Mat").zeros(3, $CV_64F)
+	$drawing_utils.draw_axis($image, $rotation, $translation)
+	_AssertMatEqual($image, $expected_result)
+EndFunc   ;==>test_draw_axis_zero_translation
 
 Func _OnAutoItExit()
 	_OpenCV_Unregister_And_Close()
