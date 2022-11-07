@@ -52,6 +52,8 @@ Func Test()
 			)
 	test_draw_axis()
 	test_draw_axis_zero_translation()
+	test_min_and_max_coordinate_values()
+	test_drawing_spec()
 EndFunc   ;==>Test
 
 Func test_draw_keypoints_only()
@@ -191,6 +193,77 @@ Func test_draw_axis_zero_translation()
 	$drawing_utils.draw_axis($image, $rotation, $translation)
 	_AssertMatEqual($image, $expected_result)
 EndFunc   ;==>test_draw_axis_zero_translation
+
+Func test_min_and_max_coordinate_values()
+	Local $landmark_list = $text_format.Parse( _
+			'landmark {x: 0.0 y: 1.0}' & @CRLF & _
+			'landmark {x: 1.0 y: 0.0}', $landmark_pb2.NormalizedLandmarkList())
+	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
+	Local $expected_result = $image.copy()
+
+	Local $start_point = _OpenCV_Point(0, 99)
+	Local $end_point = _OpenCV_Point(99, 0)
+
+	$cv.line($expected_result, $start_point, $end_point, _
+			$DEFAULT_CONNECTION_DRAWING_SPEC.color, _
+			$DEFAULT_CONNECTION_DRAWING_SPEC.thickness)
+	$cv.circle($expected_result, $start_point, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.circle_radius + 1, _
+			$DEFAULT_CYCLE_BORDER_COLOR, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.thickness)
+	$cv.circle($expected_result, $end_point, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.circle_radius + 1, _
+			$DEFAULT_CYCLE_BORDER_COLOR, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.thickness)
+	$cv.circle($expected_result, $start_point, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.circle_radius, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.color, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.thickness)
+	$cv.circle($expected_result, $end_point, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.circle_radius, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.color, _
+			$DEFAULT_CIRCLE_DRAWING_SPEC.thickness)
+	$drawing_utils.draw_landmarks($image, $landmark_list, _Mediapipe_Tuple(_Mediapipe_Tuple(0, 1)))
+	_AssertMatEqual($image, $expected_result)
+EndFunc   ;==>test_min_and_max_coordinate_values
+
+Func test_drawing_spec()
+	Local $landmark_list = $text_format.Parse( _
+			'landmark {x: 0.1 y: 0.1}' & @CRLF & _
+			'landmark {x: 0.8 y: 0.8}', $landmark_pb2.NormalizedLandmarkList())
+	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
+	Local $expected_result = $image.copy()
+
+	Local $landmark_drawing_spec = $drawing_utils.DrawingSpec(_Mediapipe_Tuple(0, 0, 255), 5)
+	Local $connection_drawing_spec = $drawing_utils.DrawingSpec(_Mediapipe_Tuple(255, 0, 0), 3)
+
+	Local $start_point = _OpenCV_Point(10, 10)
+	Local $end_point = _OpenCV_Point(80, 80)
+
+	$cv.line($expected_result, $start_point, $end_point, _
+			$connection_drawing_spec.color, $connection_drawing_spec.thickness)
+	$cv.circle($expected_result, $start_point, _
+			$landmark_drawing_spec.circle_radius + 1, _
+			$DEFAULT_CYCLE_BORDER_COLOR, $landmark_drawing_spec.thickness)
+	$cv.circle($expected_result, $end_point, _
+			$landmark_drawing_spec.circle_radius + 1, _
+			$DEFAULT_CYCLE_BORDER_COLOR, $landmark_drawing_spec.thickness)
+	$cv.circle($expected_result, $start_point, _
+			$landmark_drawing_spec.circle_radius, $landmark_drawing_spec.color, _
+			$landmark_drawing_spec.thickness)
+	$cv.circle($expected_result, $end_point, $landmark_drawing_spec.circle_radius, _
+			$landmark_drawing_spec.color, $landmark_drawing_spec.thickness)
+
+	$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+			"image", $image, _
+			"landmark_list", $landmark_list, _
+			"connections", _Mediapipe_Tuple(_Mediapipe_Tuple(0, 1)), _
+			"landmark_drawing_spec", $landmark_drawing_spec, _
+			"connection_drawing_spec", $connection_drawing_spec _
+			))
+
+	_AssertMatEqual($image, $expected_result)
+EndFunc   ;==>test_drawing_spec
 
 Func _OnAutoItExit()
 	_OpenCV_Unregister_And_Close()

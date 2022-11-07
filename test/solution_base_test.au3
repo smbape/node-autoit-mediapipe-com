@@ -257,7 +257,6 @@ Func test_solution_stream_type_hints()
 			"" & @CRLF
 
 	Local $config_proto = $text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig())
-	MsgBox(262144, 'Debug line ~' & @ScriptLineNumber, 'Selection:' & @CRLF & '$text_config' & @CRLF & @CRLF & 'Return:' & @CRLF & $text_config) ;### Debug MSGBOX
 	Local $input_image = _RandomImage(3, 3, $CV_8UC3, 0, 27)
 
 	Local $outputs

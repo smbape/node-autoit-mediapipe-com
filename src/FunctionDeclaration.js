@@ -461,7 +461,7 @@ Object.assign(exports, {
                         idlname = new_idlname;
                         has_idlname_changed = true;
                     } else if (idlname !== new_idlname) {
-                        throw new Error(`différent idlnames for ${ fname } : ${ idlname } != ${ new_idlname }`);
+                        throw new Error(`different idlnames for ${ fname } : ${ idlname } != ${ new_idlname }`);
                     }
                 } else if (modifier.startsWith("/id=")) {
                     const new_id = modifier.slice("/id=".length);
@@ -1017,6 +1017,8 @@ Object.assign(exports, {
             }
         }
 
+        const is_propput = attrs.includes("propput");
+
         const idlargs = vars.map(i => {
             const attributes = ["in"];
 
@@ -1024,7 +1026,13 @@ Object.assign(exports, {
                 attributes.push("out");
             }
 
-            if (i >= minopt && (!attrs.includes("propput") || i !== maxargc - 1)) {
+            if (
+                // NamedParameters can be the only parameter of the function
+                (minopt === 0 || i > 0)
+
+                // proput last parameter cannot be optional
+                && (!is_propput || i !== maxargc - 1)
+            ) {
                 attributes.push("optional");
             }
 
