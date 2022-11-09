@@ -122,7 +122,7 @@ Func _Mediapipe_FindFile($sFile, $sFilter = Default, $sDir = Default, $iFlag = D
 	If $sDir == Default Then $sDir = @ScriptDir
 	If $aSearchPaths == Default Then $aSearchPaths = _Mediapipe_Tuple(1, ".")
 
-	_Mediapipe_DebugMsg("_Mediapipe_FindFile('" & $sFile & "', '" & $sDir & "') " & VarGetType($aSearchPaths))
+	_Mediapipe_DebugMsg("_Mediapipe_FindFile('" & $sFile & "', '" & $sFilter & "', '" & $sDir & "') " & VarGetType($aSearchPaths))
 
 	Local $sFound = "", $sPath, $aFileList
 	Local $sDrive = "", $sFileName = "", $sExtension = ""
@@ -472,3 +472,33 @@ Func _Mediapipe_MapOfStringAndVariant($sKey1 = Default, $vVal1 = Default, $sKey2
             Return SetError(1, 0, -1)
     EndSwitch
 EndFunc   ;==>_Mediapipe_MapOfStringAndVariant
+
+Func _Mediapipe_FindResourceDir()
+	Local $aSearchPaths[] = [ _
+			0, _
+			"autoit-mediapipe-com\build_x64\.pip", _
+			"autoit-mediapipe-com", _
+			"." _
+			]
+	$aSearchPaths[0] = UBound($aSearchPaths) - 1
+
+	Local Const $sFile = "mediapipe\modules\face_detection\face_detection_short_range_cpu.binarypb"
+
+	Local Const $_SHORT_RANGE_GRAPH_FILE_PATH = _Mediapipe_FindFile($sFile, Default, Default, $FLTA_FILES, $aSearchPaths)
+
+	If $_SHORT_RANGE_GRAPH_FILE_PATH == "" Then
+		Return ""
+	EndIf
+
+	Local Const $iCount = StringLen($_SHORT_RANGE_GRAPH_FILE_PATH) - StringLen($sFile) - 1
+	Return StringLeft($_SHORT_RANGE_GRAPH_FILE_PATH, $iCount)
+EndFunc   ;==>_Mediapipe_FindResourceDir
+
+Func _Mediapipe_SetResourceDir($root_path = _Mediapipe_FindResourceDir())
+	If $root_path <> "" And StringRight($root_path, 1) <> "\" Then
+		$root_path &= "\"
+	EndIf
+	_Mediapipe_DebugMsg('_Mediapipe_SetResourceDir("' & $root_path & '"')
+	Local Const $resource_util = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
+	$resource_util.set_resource_dir($root_path)
+EndFunc   ;==>_Mediapipe_SetResourceDir

@@ -15,9 +15,10 @@ const files = [
 ];
 
 files.push([
-    sysPath.join(project, "build_x64/mediapipe-prefix/src/mediapipe/bazel-bin"),
+    sysPath.join(project, "build_x64/.pip"),
+    "-r",
+    "*.tflite",
     "*.binarypb",
-    "-r"
 ]);
 
 for (const mode of ["dbg", "opt"]) {

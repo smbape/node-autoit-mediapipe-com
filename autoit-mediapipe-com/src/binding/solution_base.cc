@@ -3,6 +3,7 @@
 #include "binding/message.h"
 #include "binding/repeated_container.h"
 #include "binding/resource_util.h"
+#include "binding/util.h"
 #include "mediapipe/calculators/core/constant_side_packet_calculator.pb.h"
 #include "mediapipe/calculators/image/image_transformation_calculator.pb.h"
 #include "mediapipe/calculators/tensor/tensors_to_detections_calculator.pb.h"
@@ -102,13 +103,6 @@ namespace mediapipe {
 
 			const std::vector<std::string>& noVector() {
 				return _noneVector;
-			}
-
-			inline static _variant_t default_variant() {
-				_variant_t vtDefault;
-				V_VT(&vtDefault) = VT_ERROR;
-				V_ERROR(&vtDefault) = DISP_E_PARAMNOTFOUND;
-				return vtDefault;
 			}
 
 			static _variant_t None = default_variant();
@@ -552,7 +546,7 @@ namespace mediapipe {
 				case PacketDataType::IMAGE_LIST: {
 					const auto& image_list = GetContent<std::vector<Image>>(output_packet);
 					std::vector<cv::Mat> mat_list;
-					mat_list.reserve(image_list.size());
+					mat_list.resize(image_list.size());
 					int i = 0;
 					for (const auto& image : image_list) {
 						mat_list[i++] = mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get());
@@ -618,7 +612,7 @@ namespace mediapipe {
 			}
 
 			static const std::string GetResourcePath(const std::string& binary_graph_path) {
-				const std::string& root_path = mediapipe::resource_util::get_resource_dir();
+				const std::string& root_path = mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir();
 				return root_path + binary_graph_path;
 			}
 

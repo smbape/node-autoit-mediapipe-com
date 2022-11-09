@@ -89,5 +89,19 @@ namespace mediapipe {
 			RaiseAutoItErrorIfNotOk(wrapper.status());
 			return std::move(wrapper).value();
 		}
+
+		inline _variant_t default_variant() {
+			_variant_t vtDefault;
+			V_VT(&vtDefault) = VT_ERROR;
+			V_ERROR(&vtDefault) = DISP_E_PARAMNOTFOUND;
+			return vtDefault;
+		}
+
+		inline _variant_t null_variant() {
+			_variant_t vtNull;
+			V_VT(&vtNull) = VT_NULL;
+			return vtNull;
+		}
+
 	}
 }

@@ -30,14 +30,14 @@ Func Test()
 	Local Const $cv = _OpenCV_get()
 	_AssertTrue(IsObj($cv), "Failed to load opencv")
 
-	test_create_image_frame_from_gray_cv_mat($ImageFrame)
-	test_create_image_frame_from_rgb_cv_mat($ImageFrame)
-	test_create_image_frame_from_rgb48_cv_mat($ImageFrame)
-	test_image_frame_mat_view_with_contiguous_data($ImageFrame)
-	test_image_frame_numpy_view_with_non_contiguous_data($ImageFrame)
+	test_create_image_frame_from_gray_cv_mat()
+	test_create_image_frame_from_rgb_cv_mat()
+	test_create_image_frame_from_rgb48_cv_mat()
+	test_image_frame_mat_view_with_contiguous_data()
+	test_image_frame_numpy_view_with_non_contiguous_data()
 EndFunc   ;==>Test
 
-Func test_create_image_frame_from_gray_cv_mat($ImageFrame)
+Func test_create_image_frame_from_gray_cv_mat()
 	Local $w = Floor(Random(3, 100))
 	Local $h = Floor(Random(3, 100))
 	Local $mat = _RandomImage($w, $h, $CV_8UC1, 0, 2 ^ 8)
@@ -71,7 +71,7 @@ Func test_create_image_frame_from_gray_cv_mat($ImageFrame)
 
 EndFunc   ;==>test_create_image_frame_from_gray_cv_mat
 
-Func test_create_image_frame_from_rgb_cv_mat($ImageFrame)
+Func test_create_image_frame_from_rgb_cv_mat()
 	Local $w = 46 ; Floor(Random(3, 100))
 	Local $h = 52 ; Floor(Random(3, 100))
 	Local $channels = 3
@@ -110,7 +110,7 @@ Func test_create_image_frame_from_rgb_cv_mat($ImageFrame)
 	_AssertEqual(43, _MatGetAt($rgb_image_frame_mat, "byte", 2, 2, 1))
 EndFunc   ;==>test_create_image_frame_from_rgb_cv_mat
 
-Func test_create_image_frame_from_rgb48_cv_mat($ImageFrame)
+Func test_create_image_frame_from_rgb48_cv_mat()
 	Local $w = Floor(Random(3, 100))
 	Local $h = Floor(Random(3, 100))
 	Local $channels = 3
@@ -151,7 +151,7 @@ EndFunc   ;==>test_create_image_frame_from_rgb48_cv_mat
 
 ; For image frames that store contiguous data, the output of mat_view()
 ; points to the pixel data of the original image frame object.
-Func test_image_frame_mat_view_with_contiguous_data($ImageFrame)
+Func test_image_frame_mat_view_with_contiguous_data()
 	Local $w = 640
 	Local $h = 480
 	Local $mat = _RandomImage($w, $h, $CV_8UC3, 0, 2 ^ 8)
@@ -170,7 +170,7 @@ EndFunc   ;==>test_image_frame_mat_view_with_contiguous_data
 
 ; For image frames that store non contiguous data, the output of mat_view()
 ; points to the pixel data of the original image frame object.
-Func test_image_frame_numpy_view_with_non_contiguous_data($ImageFrame)
+Func test_image_frame_numpy_view_with_non_contiguous_data()
 	Local $w = 641
 	Local $h = 481
 	Local $mat = _RandomImage($w, $h, $CV_8UC3, 0, 2 ^ 8)

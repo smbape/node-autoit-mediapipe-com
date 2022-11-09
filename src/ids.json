@@ -43,9 +43,13 @@
         "iid": "3a763fe6-b57f-4838-86c8-1e23db8d8459",
         "clsid": "4f721198-e946-4b71-844b-6069e2f1a82e"
     },
-    "mediapipe::resource_util": {
-        "iid": "dfafdce2-7f7a-4ea4-a0a2-bdf904648cc0",
-        "clsid": "bb43d259-8a75-418f-a06f-957b33459101"
+    "mediapipe::autoit::_framework_bindings": {
+        "iid": "b50dde3f-b556-4b1d-b514-01763559479e",
+        "clsid": "6f6efefc-9d13-4cd3-8c77-e328e2469019"
+    },
+    "mediapipe::autoit::_framework_bindings::resource_util": {
+        "iid": "747f893b-144b-4ccb-93ff-70311c33c702",
+        "clsid": "74345131-2a6c-403d-9ab7-63b2f267c688"
     },
     "mediapipe::autoit::solutions": {
         "iid": "5b720861-2603-4f1e-bbc4-6788cfc2fa0d",
@@ -94,10 +98,6 @@
     "mediapipe::CalculatorGraph::GraphInputStreamAddMode": {
         "iid": "805f1442-7b49-4aea-988a-b2c2faf54fc3",
         "clsid": "d7831daa-af6e-4d88-be12-83615c5ffb03"
-    },
-    "mediapipe::autoit::_framework_bindings": {
-        "iid": "b50dde3f-b556-4b1d-b514-01763559479e",
-        "clsid": "6f6efefc-9d13-4cd3-8c77-e328e2469019"
     },
     "mediapipe::autoit::_framework_bindings::calculator_graph": {
         "iid": "d734c6eb-64c8-4d02-8d52-879f9ecb48bd",

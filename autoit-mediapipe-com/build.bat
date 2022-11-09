@@ -29,7 +29,7 @@ IF NOT DEFINED CMAKE_BUILD_TYPE SET CMAKE_BUILD_TYPE=Release
 SET GENERAL_CMAKE_CONFIG_FLAGS=%GENERAL_CMAKE_CONFIG_FLAGS% -DCMAKE_BUILD_TYPE:STRING="%CMAKE_BUILD_TYPE%" -DCMAKE_INSTALL_PREFIX:STRING=install
 
 SET cmode=opt
-IF [%CMAKE_BUILD_TYPE%] == [Debug] SET cmode=dbg
+IF [%CMAKE_BUILD_TYPE%] == [Debug] SET cmode=dbg --cxxopt=/DPROTOBUF_NO_INLINE
 
 ::Find python
 FOR %%i IN (python.exe) DO SET PYTHON_BIN_PATH=%%~$PATH:i
@@ -71,7 +71,8 @@ GOTO END
 
 :MAKE
 SET ERROR=0
-SET "MEDIAPIPE_SRC=%CWD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe"
+SET MEDIAPIPE_SRC=%CWD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe
+SET BAZEL_BUILD=bazel --output_user_root=C:/_bazel_ build -c %cmode% --strip=never --define MEDIAPIPE_DISABLE_GPU=1 --action_env "PYTHON_BIN_PATH=%PYTHON_BIN_PATH%" --verbose_failures
 
 :DOWNLOAD_OPENCV
 SET _skip_build=%skip_build%
@@ -90,7 +91,7 @@ IF [%skip_node%] == [1] GOTO MAKE_CONFIG
 
 IF NOT EXIST "%MEDIAPIPE_SRC%\bazel-mediapipe\external\com_google_protobuf\src" (
     CD /d "%MEDIAPIPE_SRC%"
-    bazel --output_user_root=C:/_bazel_ build -c !cmode! --strip=never --define MEDIAPIPE_DISABLE_GPU=1 --action_env "PYTHON_BIN_PATH=!PYTHON_BIN_PATH!" --verbose_failures mediapipe/python:builtin_calculators
+    %BAZEL_BUILD% mediapipe/python:builtin_calculators
 )
 SET ERROR=%ERRORLEVEL%
 IF NOT "%ERROR%" == "0" GOTO END
@@ -127,11 +128,11 @@ IF NOT [%TARGET%] == [ALL_BUILD] GOTO END
 
 CD /d "%MEDIAPIPE_SRC%"
 
-bazel --output_user_root=C:/_bazel_ build -c %cmode% --strip=never --define MEDIAPIPE_DISABLE_GPU=1 --action_env "PYTHON_BIN_PATH=!PYTHON_BIN_PATH!" --verbose_failures mediapipe/autoit:lib_pch
+%BAZEL_BUILD% mediapipe/autoit:lib_pch
 SET ERROR=%ERRORLEVEL%
 IF NOT "%ERROR%" == "0" GOTO END
 
-bazel --output_user_root=C:/_bazel_ build -c %cmode% --strip=never --define MEDIAPIPE_DISABLE_GPU=1 --action_env "PYTHON_BIN_PATH=!PYTHON_BIN_PATH!" --verbose_failures mediapipe/autoit:lib --keep_going
+%BAZEL_BUILD% mediapipe/autoit:lib --keep_going
 SET ERROR=%ERRORLEVEL%
 IF NOT "%ERROR%" == "0" GOTO END
 

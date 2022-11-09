@@ -91,7 +91,7 @@ namespace google {
 					repeatedField->SwapElements(i, i + deleteCount);
 				}
 
-				list.reserve(deleteCount);
+				list.resize(deleteCount);
 				return true;
 			}
 
@@ -174,7 +174,7 @@ namespace google {
 				if (count <= 0) {
 					return;
 				}
-				list.reserve(count);
+				list.resize(count);
 				for (size_t i = 0; i < count; i++) {
 					list[i] = repeatedField->Get(start + i);
 				}
@@ -204,7 +204,7 @@ namespace google {
 				if (count <= 0) {
 					return;
 				}
-				list.reserve(count);
+				list.resize(count);
 				for (size_t i = 0; i < count; i++) {
 					list[i] = ::autoit::reference_internal(repeatedField->Mutable(start + i));
 				}

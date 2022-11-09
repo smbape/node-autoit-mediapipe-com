@@ -1,6 +1,7 @@
 #include "binding/message.h"
 #include "binding/map_container.h"
 #include "binding/repeated_container.h"
+#include "binding/util.h"
 #include "Google_Protobuf_Autoit_MapContainer_Object.h"
 #include "Google_Protobuf_Autoit_RepeatedContainer_Object.h"
 #include "Google_Protobuf_Message_Object.h"
@@ -36,14 +37,7 @@ namespace google {
 
 		namespace autoit {
 			namespace cmessage {
-				inline static _variant_t default_variant() {
-					_variant_t vtDefault;
-					V_VT(&vtDefault) = VT_ERROR;
-					V_ERROR(&vtDefault) = DISP_E_PARAMNOTFOUND;
-					return vtDefault;
-				}
-
-				static _variant_t None = default_variant();
+				static _variant_t None = mediapipe::autoit::default_variant();
 
 				const FieldDescriptor* FindFieldWithOneofs(
 					const Message& message,

@@ -251,7 +251,7 @@ namespace google {
 				Arena* arena = Arena::InternalHelper<Message>::GetArenaForAllocation(message);
 				GOOGLE_DCHECK_EQ(arena, nullptr) << "autoit protobuf is expected to be allocated from heap";
 
-				list.reserve(deleteCount);
+				list.resize(deleteCount);
 				_variant_t obj;
 				VARIANT* out_val = &obj;
 				VariantInit(out_val);
@@ -300,7 +300,7 @@ namespace google {
 				if (count <= 0) {
 					return;
 				}
-				list.reserve(count);
+				list.resize(count);
 				for (size_t i = 0; i < count; i++) {
 					list[i] = GetItem(start + i);
 				}

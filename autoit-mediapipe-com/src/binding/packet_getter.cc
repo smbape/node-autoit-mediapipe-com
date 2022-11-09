@@ -146,7 +146,7 @@ const std::vector<std::shared_ptr<Message>> mediapipe::autoit::packet_getter::ge
 		return proto_list;
 	}
 
-	proto_list.reserve(size);
+	proto_list.resize(size);
 	auto type_name = proto_vector[0]->GetTypeName();
 
 	int i = 0;

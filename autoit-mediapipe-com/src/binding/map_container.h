@@ -1,6 +1,7 @@
 #pragma once
 
 #include "autoit_bridge.h"
+#include "binding/util.h"
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/map_field.h>
 
@@ -27,8 +28,6 @@ namespace google {
 		using MapRefectionFriend = MutableRepeatedFieldRef<autoit::MapContainer, void>;
 
 		namespace autoit {
-			_variant_t noValue();
-
 			class MapIterator {
 			public:
 				MapIterator() = default;
@@ -61,7 +60,7 @@ namespace google {
 				CV_WRAP_AS(clear) void Clear();
 				CV_WRAP_AS(length) size_t Length() const;
 				CV_WRAP size_t size() const;
-				CV_WRAP_AS(get) _variant_t Get(_variant_t key, _variant_t default_value = noValue()) const;
+				CV_WRAP_AS(get) _variant_t Get(_variant_t key, _variant_t default_value = mediapipe::autoit::default_variant()) const;
 
 				CV_WRAP_AS(get Item) _variant_t GetItem(_variant_t key) const;
 				CV_WRAP_AS(put Item) void SetItem(_variant_t key, _variant_t arg);

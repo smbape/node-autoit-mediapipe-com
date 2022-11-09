@@ -106,9 +106,9 @@
   - [google::protobuf::autoit::RepeatedContainer::sort](#googleprotobufautoitrepeatedcontainersort)
   - [google::protobuf::autoit::RepeatedContainer::splice](#googleprotobufautoitrepeatedcontainersplice)
   - [google::protobuf::autoit::RepeatedContainer::str](#googleprotobufautoitrepeatedcontainerstr)
-- [mediapipe::resource_util](#mediapiperesource_util)
-  - [mediapipe::resource_util::get_resource_dir](#mediapiperesource_utilget_resource_dir)
-  - [mediapipe::resource_util::set_resource_dir](#mediapiperesource_utilset_resource_dir)
+- [mediapipe::autoit::_framework_bindings::resource_util](#mediapipeautoit_framework_bindingsresource_util)
+  - [mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir](#mediapipeautoit_framework_bindingsresource_utilget_resource_dir)
+  - [mediapipe::autoit::_framework_bindings::resource_util::set_resource_dir](#mediapipeautoit_framework_bindingsresource_utilset_resource_dir)
 - [mediapipe::autoit::solutions::drawing_utils](#mediapipeautoitsolutionsdrawing_utils)
   - [mediapipe::autoit::solutions::drawing_utils::draw_axis](#mediapipeautoitsolutionsdrawing_utilsdraw_axis)
   - [mediapipe::autoit::solutions::drawing_utils::draw_detection](#mediapipeautoitsolutionsdrawing_utilsdraw_detection)
@@ -2086,7 +2086,7 @@ AutoIt:
 
 ```cpp
 _variant_t google::protobuf::autoit::MapContainer::get( _variant_t key,
-                                                        _variant_t default_value = noValue() ) const;
+                                                        _variant_t default_value = mediapipe::autoit::default_variant() ) const;
 AutoIt:
     $oMapContainer.get( $key[, $default_value] ) -> retval
 ```
@@ -2753,22 +2753,22 @@ AutoIt:
     $oRepeatedContainer.str() -> retval
 ```
 
-## mediapipe::resource_util
+## mediapipe::autoit::_framework_bindings::resource_util
 
-### mediapipe::resource_util::get_resource_dir
+### mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir
 
 ```cpp
-std::string mediapipe::resource_util::get_resource_dir();
+std::string mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir();
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.resource_util").get_resource_dir() -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util").get_resource_dir() -> retval
 ```
 
-### mediapipe::resource_util::set_resource_dir
+### mediapipe::autoit::_framework_bindings::resource_util::set_resource_dir
 
 ```cpp
-void mediapipe::resource_util::set_resource_dir( const std::string& str );
+void mediapipe::autoit::_framework_bindings::resource_util::set_resource_dir( const std::string& str );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.resource_util").set_resource_dir( $str ) -> None
+    _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util").set_resource_dir( $str ) -> None
 ```
 
 ## mediapipe::autoit::solutions::drawing_utils

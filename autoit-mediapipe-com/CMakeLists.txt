@@ -18,8 +18,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_compile_options(/MP)
 
-add_definitions(-DMEDIAPIPE_VERSION=${MEDIAPIPE_VERSION})
-add_definitions(-DCVAPI_EXPORTS)
+set(MEDIAPIPE_VERSION 0.8.11)
 
 set(OPENCV_DOWNLOAD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
 set(OPENCV_VERSION 4.6.0)
@@ -30,6 +29,18 @@ file(TO_NATIVE_PATH "${OPENCV_DOWNLOAD_DIR_ESC}" OPENCV_DOWNLOAD_DIR_ESC)
 string(REPLACE \\ \\\\ OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR_ESC}")
 
 set(PROJECT_BUILD_STEPS_FILE "${CMAKE_CURRENT_SOURCE_DIR}/project_build_steps.cmake")
+
+# install PyPI Python mediapipe using pip
+set(MEDIAPIPE_PYTHON_INIT "${CMAKE_CURRENT_BINARY_DIR}/.pip/mediapipe/__init__.py")
+find_package(Python COMPONENTS Interpreter REQUIRED)
+add_custom_command(OUTPUT "${MEDIAPIPE_PYTHON_INIT}"
+  COMMAND "${Python_EXECUTABLE}" -m pip install --no-deps -t "${CMAKE_CURRENT_BINARY_DIR}/.pip" -U mediapipe==${MEDIAPIPE_VERSION}
+)
+add_custom_target(mediapipe-python DEPENDS "${MEDIAPIPE_PYTHON_INIT}")
+file(DOWNLOAD
+  https://github.com/tensorflow/tfjs-models/raw/master/face-detection/test_data/portrait.jpg
+  "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/testdata/portrait.jpg")
+
 
 # Tell cmake we will need opencv.
 include(ExternalProject)
@@ -48,8 +59,8 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" 
 # Tell cmake we will need mediapipe.
 include(ExternalProject)
 ExternalProject_Add(mediapipe
-  URL               https://fossies.org/linux/misc/mediapipe-0.8.11.tar.gz
-                    https://github.com/google/mediapipe/archive/refs/tags/v0.8.11.tar.gz
+  URL               https://fossies.org/linux/misc/mediapipe-${MEDIAPIPE_VERSION}.tar.gz
+                    https://github.com/google/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
   URL_HASH          SHA256=5b331a46b459900d0789967f9e26e4a64d1466bc1e74dd0712eb3077358c5473
   PATCH_COMMAND
     "${CMAKE_COMMAND}"
@@ -61,6 +72,7 @@ ExternalProject_Add(mediapipe
   BUILD_COMMAND     ""
   INSTALL_COMMAND   ""
   DEPENDS           opencv
+                    mediapipe-python
 )
 
 # Tell cmake we will need autoit-opencv-com.
@@ -75,6 +87,9 @@ ExternalProject_Add(autoit-opencv-com
   INSTALL_COMMAND   7z x "${OPENCV_DOWNLOAD_DIR}/autoit-opencv-${OPENCV_VERSION}-com-v2.1.0.7z" -aoa "-o${OPENCV_DOWNLOAD_DIR}/autoit-opencv-com" -y
   DEPENDS           opencv
 )
+
+add_definitions(-DMEDIAPIPE_VERSION=${MEDIAPIPE_VERSION})
+add_definitions(-DCVAPI_EXPORTS)
 
 file(GLOB_RECURSE project_source_resources "src/*.rc" "src/*.rgs")
 file(GLOB_RECURSE project_source_headers "src/targetver.h")

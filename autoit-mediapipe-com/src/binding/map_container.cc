@@ -83,15 +83,6 @@ namespace google {
 		}
 
 		namespace autoit {
-			static _variant_t _none;
-
-			_variant_t noValue() {
-				VariantInit(&_none);
-				V_VT(&_none) = VT_ERROR;
-				V_ERROR(&_none) = DISP_E_PARAMNOTFOUND;
-				return _none;
-			}
-
 			MapIterator::MapIterator(
 				MapContainer* container,
 				const ::google::protobuf::MapIterator&& iter

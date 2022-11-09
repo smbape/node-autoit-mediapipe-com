@@ -292,9 +292,6 @@ def add_com_library(name, intdir, compilation_mode):
         copts = ["/Zc:__cplusplus"] + select({
             ":windows-opt-dbg": [
                 "/Z7",
-                # "/Zi",
-                # "/Fd" + pdb,
-                # "/FS",
             ],
             "//conditions:default": [],
         }),
