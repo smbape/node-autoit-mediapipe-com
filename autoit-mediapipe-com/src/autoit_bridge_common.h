@@ -58,6 +58,15 @@
 #define AUTOIT_QUOTE_STRING(x) AUTOIT_QUOTE_STRING2(x)
 #endif
 
+#ifndef AUTOIT_INFO
+#define AUTOIT_INFO( _message ) do { \
+	std::ostringstream _out; _out << _message;	\
+	fflush(stdout); fflush(stderr);         \
+	fprintf(stderr, AUTOIT_QUOTE_STRING(AUTOIT_LIB_NAME) "(%s) Info: %s (%s) in %s, file %s, line %d\n", AUTOIT_QUOTE_STRING(AUTOIT_LIB_VERSION), _out.str().c_str(), "", AutoIt_Func, __FILE__, __LINE__); \
+	fflush(stdout); fflush(stderr);         \
+} while(0)
+#endif
+
 #ifndef AUTOIT_WARN
 #define AUTOIT_WARN( _message ) do { \
 	std::ostringstream _out; _out << _message;	\

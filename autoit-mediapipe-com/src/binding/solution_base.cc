@@ -1,3 +1,4 @@
+#include <filesystem>
 #include "autoit_bridge.h"
 #include "binding/calculator_graph.h"
 #include "binding/message.h"
@@ -24,6 +25,7 @@
 #undef FLOAT
 #endif
 
+namespace fs = std::filesystem;
 using namespace google::protobuf;
 using namespace google::protobuf::autoit::cmessage;
 using namespace mediapipe::autoit::packet_getter;
@@ -612,8 +614,8 @@ namespace mediapipe {
 			}
 
 			static const std::string GetResourcePath(const std::string& binary_graph_path) {
-				const std::string& root_path = mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir();
-				return root_path + binary_graph_path;
+				fs::path root_path(mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir());
+				return (root_path / binary_graph_path).string();
 			}
 
 			SolutionBase::SolutionBase(

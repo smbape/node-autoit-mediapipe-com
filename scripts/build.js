@@ -17,7 +17,7 @@ const files = [
 files.push([
     sysPath.join(project, "build_x64/.pip"),
     "-r",
-    "*.tflite",
+    // "*.tflite", // too much space taken on disk
     "*.binarypb",
 ]);
 

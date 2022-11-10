@@ -109,6 +109,8 @@
 - [mediapipe::autoit::_framework_bindings::resource_util](#mediapipeautoit_framework_bindingsresource_util)
   - [mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir](#mediapipeautoit_framework_bindingsresource_utilget_resource_dir)
   - [mediapipe::autoit::_framework_bindings::resource_util::set_resource_dir](#mediapipeautoit_framework_bindingsresource_utilset_resource_dir)
+- [mediapipe::autoit::solutions::download_utils](#mediapipeautoitsolutionsdownload_utils)
+  - [mediapipe::autoit::solutions::download_utils::download_oss_model](#mediapipeautoitsolutionsdownload_utilsdownload_oss_model)
 - [mediapipe::autoit::solutions::drawing_utils](#mediapipeautoitsolutionsdrawing_utils)
   - [mediapipe::autoit::solutions::drawing_utils::draw_axis](#mediapipeautoitsolutionsdrawing_utilsdraw_axis)
   - [mediapipe::autoit::solutions::drawing_utils::draw_detection](#mediapipeautoitsolutionsdrawing_utilsdraw_detection)
@@ -2769,6 +2771,16 @@ AutoIt:
 void mediapipe::autoit::_framework_bindings::resource_util::set_resource_dir( const std::string& str );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util").set_resource_dir( $str ) -> None
+```
+
+## mediapipe::autoit::solutions::download_utils
+
+### mediapipe::autoit::solutions::download_utils::download_oss_model
+
+```cpp
+void mediapipe::autoit::solutions::download_utils::download_oss_model( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils").download_oss_model( $model_path ) -> None
 ```
 
 ## mediapipe::autoit::solutions::drawing_utils

@@ -476,6 +476,7 @@ EndFunc   ;==>_Mediapipe_MapOfStringAndVariant
 Func _Mediapipe_FindResourceDir()
 	Local $aSearchPaths[] = [ _
 			0, _
+			"autoit-mediapipe-com\build_x64\mediapipe-prefix\src\mediapipe\bazel-bin", _
 			"autoit-mediapipe-com\build_x64\.pip", _
 			"autoit-mediapipe-com", _
 			"." _
@@ -495,9 +496,6 @@ Func _Mediapipe_FindResourceDir()
 EndFunc   ;==>_Mediapipe_FindResourceDir
 
 Func _Mediapipe_SetResourceDir($root_path = _Mediapipe_FindResourceDir())
-	If $root_path <> "" And StringRight($root_path, 1) <> "\" Then
-		$root_path &= "\"
-	EndIf
 	_Mediapipe_DebugMsg('_Mediapipe_SetResourceDir("' & $root_path & '"')
 	Local Const $resource_util = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
 	$resource_util.set_resource_dir($root_path)

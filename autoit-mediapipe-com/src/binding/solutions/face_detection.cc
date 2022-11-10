@@ -1,8 +1,12 @@
 #include "binding/solutions/face_detection.h"
+#include "binding/solutions/download_utils.h"
 #include "Cv_Mat_Object.h"
 
 static const std::string _SHORT_RANGE_GRAPH_FILE_PATH = "mediapipe/modules/face_detection/face_detection_short_range_cpu.binarypb";
 static const std::string _FULL_RANGE_GRAPH_FILE_PATH = "mediapipe/modules/face_detection/face_detection_full_range_cpu.binarypb";
+
+static const std::string _SHORT_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/face_detection/face_detection_short_range.tflite";
+static const std::string _FULL_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/face_detection/face_detection_full_range_sparse.tflite";
 
 namespace mediapipe {
 	namespace autoit {
@@ -45,6 +49,7 @@ namespace mediapipe {
 				}
 
 				const std::string& FaceDetection::GetModelPath(short model_selection) {
+                    download_utils::download_oss_model(model_selection == 1 ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
 					return model_selection == 1 ? _FULL_RANGE_GRAPH_FILE_PATH : _SHORT_RANGE_GRAPH_FILE_PATH;
 				}
 			}

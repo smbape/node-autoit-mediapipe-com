@@ -37,10 +37,23 @@ add_custom_command(OUTPUT "${MEDIAPIPE_PYTHON_INIT}"
   COMMAND "${Python_EXECUTABLE}" -m pip install --no-deps -t "${CMAKE_CURRENT_BINARY_DIR}/.pip" -U mediapipe==${MEDIAPIPE_VERSION}
 )
 add_custom_target(mediapipe-python DEPENDS "${MEDIAPIPE_PYTHON_INIT}")
-file(DOWNLOAD
-  https://github.com/tensorflow/tfjs-models/raw/master/face-detection/test_data/portrait.jpg
-  "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/testdata/portrait.jpg")
 
+# file(DOWNLOAD
+#   https://github.com/tensorflow/tfjs-models/raw/master/face-detection/test_data/portrait.jpg
+#   "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/testdata/portrait.jpg")
+
+# # download objector models
+# foreach(objectron_model
+#   object_detection_ssd_mobilenetv2_oidv4_fp16.tflite
+#   object_detection_3d_sneakers.tflite
+#   object_detection_3d_chair.tflite
+#   object_detection_3d_camera.tflite
+#   object_detection_3d_cup.tflite
+# )
+#   file(DOWNLOAD
+#     https://storage.googleapis.com/mediapipe-assets/${objectron_model}
+#     "${CMAKE_CURRENT_BINARY_DIR}/.pip/mediapipe/modules/objectron/${objectron_model}")
+# endforeach()
 
 # Tell cmake we will need opencv.
 include(ExternalProject)

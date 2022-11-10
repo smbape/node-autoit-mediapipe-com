@@ -55,6 +55,10 @@
         "iid": "5b720861-2603-4f1e-bbc4-6788cfc2fa0d",
         "clsid": "e1af48c2-c0dc-472f-8159-34dd803c7b4d"
     },
+    "mediapipe::autoit::solutions::download_utils": {
+        "iid": "b4a6be46-f3c9-4134-9f29-3e7ab752c7a5",
+        "clsid": "9d4cc2d3-437f-4863-b75e-aee2caaa5d31"
+    },
     "mediapipe::autoit::solutions::drawing_utils": {
         "iid": "c41d4678-ee76-4158-99fd-d325d23f928f",
         "clsid": "2acd182d-3f55-4c0d-93da-6da43be9e4a8"
