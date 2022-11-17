@@ -9,3 +9,13 @@
 #ifdef StrCat
 #undef StrCat
 #endif
+
+// mediapipe/modules/objectron/calculators/a_r_capture_metadata.proto
+// define 2 enums RELATIVE and ABSOLUTE
+// which conflict with RELATIVE and ABSOLUTE macro on windows
+#ifdef RELATIVE
+#undef RELATIVE
+#endif
+#ifdef ABSOLUTE
+#undef ABSOLUTE
+#endif

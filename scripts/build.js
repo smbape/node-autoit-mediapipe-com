@@ -14,11 +14,21 @@ const files = [
     [sysPath.join(project, "generated"), "mediapipeCOM.tlb"],
 ];
 
+// files.push([
+//     sysPath.join(project, "build_x64/.pip"),
+//     "-r",
+//     "*.tflite", // too much space taken on disk
+// ]);
+
 files.push([
-    sysPath.join(project, "build_x64/.pip"),
+    sysPath.join(project, "build_x64/mediapipe-prefix/src/mediapipe/bazel-bin"),
     "-r",
-    // "*.tflite", // too much space taken on disk
     "*.binarypb",
+]);
+
+files.push([
+    sysPath.join(project, "build_x64/mediapipe-prefix/src/mediapipe"),
+    "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt",
 ]);
 
 for (const mode of ["dbg", "opt"]) {

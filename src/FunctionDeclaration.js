@@ -496,7 +496,7 @@ Object.assign(exports, {
             let outstr;
 
             if (is_constructor) {
-                outstr = `<${ fqn.split("::").join(".") } object>`;
+                outstr = `<${ fqn.replaceAll("::", ".") } object>`;
             } else if (outlist.length !== 0) {
                 outstr = outlist.join(", ");
             } else {
@@ -856,7 +856,7 @@ Object.assign(exports, {
                     const is_out_array = /^(?:Input)?OutputArray(?:OfArrays)?$/.test(argtype);
 
                     if (is_in_array || is_out_array) {
-                        str += argtype;
+                        str += `cv::${ argtype }`;
                     } else if (enumtype !== null) {
                         str += enumtype;
                     } else {

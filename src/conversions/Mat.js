@@ -1,6 +1,12 @@
 const Point = "std::tuple<int, int>";
 
 module.exports = (header = [], impl = [], options = {}) => {
+    impl.push(`
+        #include "Cv_Mat_Object.h"
+    `.trim().replace(/^ {8}/mg, ""));
+
+    impl.push("");
+
     for (const args of [
         [
             ["int", "i0", "", []],
@@ -22,8 +28,6 @@ module.exports = (header = [], impl = [], options = {}) => {
         const argexpr = args.map(([argtype, argname]) => (argtype === Point ? `cv::Point(std::get<0>(${ argname }), std::get<1>(${ argname }))` : argname)).join(", ");
 
         impl.push(`
-            #include "Cv_Mat_Object.h"
-
             const double CCv_Mat_Object::at(${ argdecl }, HRESULT& hr) {
                 const auto& m = *__self->get();
 

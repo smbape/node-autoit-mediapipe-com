@@ -62,6 +62,8 @@ namespace mediapipe {
 
 			class CV_EXPORTS_W SolutionBase {
 			public:
+				SolutionBase() = default;
+
 				CV_WRAP SolutionBase(
 					const CalculatorGraphConfig& graph_config,
 					const std::map<std::string, _variant_t>& calculator_params = noMap(),
@@ -71,7 +73,25 @@ namespace mediapipe {
 					const std::map<std::string, PacketDataType>& stream_type_hints = noTypeMap()
 				);
 
+				void __init__(
+					const CalculatorGraphConfig& graph_config,
+					const std::map<std::string, _variant_t>& calculator_params = noMap(),
+					const std::shared_ptr<google::protobuf::Message>& graph_options = std::shared_ptr<google::protobuf::Message>(),
+					const std::map<std::string, _variant_t>& side_inputs = noMap(),
+					const std::vector<std::string>& outputs = noVector(),
+					const std::map<std::string, PacketDataType>& stream_type_hints = noTypeMap()
+				);
+
 				CV_WRAP SolutionBase(
+					const std::string& binary_graph_path,
+					const std::map<std::string, _variant_t>& calculator_params = noMap(),
+					const std::shared_ptr<google::protobuf::Message>& graph_options = std::shared_ptr<google::protobuf::Message>(),
+					const std::map<std::string, _variant_t>& side_inputs = noMap(),
+					const std::vector<std::string>& outputs = noVector(),
+					const std::map<std::string, PacketDataType>& stream_type_hints = noTypeMap()
+				);
+
+				void __init__(
 					const std::string& binary_graph_path,
 					const std::map<std::string, _variant_t>& calculator_params = noMap(),
 					const std::shared_ptr<google::protobuf::Message>& graph_options = std::shared_ptr<google::protobuf::Message>(),
@@ -108,7 +128,7 @@ namespace mediapipe {
 					const std::map<std::string, _variant_t>& values
 				);
 
-				~SolutionBase() = default;
+				virtual ~SolutionBase() = default;
 
 			private:
 				// since I don't know the copy behaviour

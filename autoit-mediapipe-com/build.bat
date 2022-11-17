@@ -15,6 +15,10 @@ SET nparms=20
 IF %nparms%==0 GOTO :MAIN
 IF [%1] == [nojs] SET skip_node=1
 IF [%1] == [-g] SET skip_build=1
+IF [%1] == [--target] (
+    SET TARGET=%2
+    SHIFT
+)
 SET /a nparms -=1
 SHIFT
 GOTO LOOP
@@ -77,12 +81,13 @@ SET BAZEL_BUILD=bazel --output_user_root=C:/_bazel_ build -c %cmode% --strip=nev
 :DOWNLOAD_OPENCV
 SET _skip_build=%skip_build%
 SET skip_build=0
+SET _TARGET=%TARGET%
 SET TARGET=mediapipe
 CALL :MAKE_CONFIG
 SET ERROR=%ERRORLEVEL%
 IF NOT "%ERROR%" == "0" GOTO END
 
-SET TARGET=ALL_BUILD
+SET TARGET=%_TARGET%
 SET skip_build=%_skip_build%
 CD /d %CWD%
 
@@ -124,14 +129,19 @@ IF [%skip_build%] == [1] GOTO END
 SET ERROR=%ERRORLEVEL%
 IF NOT "%ERROR%" == "0" GOTO END
 
-IF NOT [%TARGET%] == [ALL_BUILD] GOTO END
-
 CD /d "%MEDIAPIPE_SRC%"
 
+IF [%TARGET%] == [ALL_BUILD] GOTO BUILD_PCH
+IF [%TARGET%] == [lib_pch] GOTO BUILD_PCH
+IF [%TARGET%] == [lib] GOTO BUILD_LIB
+GOTO END
+
+:BUILD_PCH
 %BAZEL_BUILD% mediapipe/autoit:lib_pch
 SET ERROR=%ERRORLEVEL%
 IF NOT "%ERROR%" == "0" GOTO END
 
+:BUILD_LIB
 %BAZEL_BUILD% mediapipe/autoit:lib --keep_going
 SET ERROR=%ERRORLEVEL%
 IF NOT "%ERROR%" == "0" GOTO END

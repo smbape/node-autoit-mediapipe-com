@@ -1,7 +1,7 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_UseX64=y
 #AutoIt3Wrapper_Change2CUI=y
-#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 ; -w 2 -w 3 -w 4 -w 5 -w 6
+#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
@@ -20,29 +20,19 @@ OnAutoItExitRegister("_OnAutoItExit")
 
 Global $cv = _OpenCV_get()
 
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+_AssertTrue(IsObj($download_utils), "Failed to load mediapipe.autoit.solutions.download_utils")
+
 Global $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
 _AssertTrue(IsObj($mp_drawing), "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
 Global $mp_faces = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection")
 _AssertTrue(IsObj($mp_faces), "Failed to load mediapipe.autoit.solutions.face_detection")
 
-Global $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS = _OpenCV_ObjCreate("Mat").createFromVectorOfVec2i(_OpenCV_Tuple( _
-		_OpenCV_Tuple(363, 182), _
-		_OpenCV_Tuple(460, 186), _
-		_OpenCV_Tuple(420, 241), _
-		_OpenCV_Tuple(417, 284), _
-		_OpenCV_Tuple(295, 199), _
-		_OpenCV_Tuple(502, 198) _
-		)).reshape(1, 6)
-
-Global $FULL_RANGE_EXPECTED_FACE_KEY_POINTS = _OpenCV_ObjCreate("Mat").createFromVectorOfVec2i(_OpenCV_Tuple( _
-		_OpenCV_Tuple(363, 181), _
-		_OpenCV_Tuple(455, 181), _
-		_OpenCV_Tuple(413, 233), _
-		_OpenCV_Tuple(411, 278), _
-		_OpenCV_Tuple(306, 204), _
-		_OpenCV_Tuple(499, 207) _
-		)).reshape(1, 6)
+Global $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS[][] = [[363, 182], [460, 186], [420, 241], _
+		[417, 284], [295, 199], [502, 198]]
+Global $FULL_RANGE_EXPECTED_FACE_KEY_POINTS[][] = [[363, 181], [455, 181], [413, 233], _
+		[411, 278], [306, 204], [499, 207]]
 
 Global Const $DIFF_THRESHOLD = 5 ; pixels
 
@@ -67,6 +57,11 @@ Func test_blank_image()
 EndFunc   ;==>test_blank_image
 
 Func test_face($id, $model_selection)
+	$download_utils.download( _
+			"https://github.com/tensorflow/tfjs-models/raw/master/face-detection/test_data/portrait.jpg", _
+			@ScriptDir & "/testdata/portrait.jpg" _
+			)
+
 	Local $image_path = @ScriptDir & "/testdata/portrait.jpg"
 	Local $image = $cv.imread($image_path)
 	Local $rows = $image.rows
@@ -77,7 +72,7 @@ Func test_face($id, $model_selection)
 
 	For $idx = 0 To 4
 		$results = $faces.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-		_annotate("test_face_" & $id, $image.copy(), $results, $idx)
+		_annotate("test_face_" & $id, $image, $results, $idx)
 		$location_data = $results("detections")[0].location_data
 		$face_keypoints = _OpenCV_ObjCreate("Mat").create($location_data.relative_keypoints.size(), 2, $CV_32SC1)
 		$i = 0
@@ -88,7 +83,9 @@ Func test_face($id, $model_selection)
 		Next
 
 		Local $prediction_error = $cv.absdiff($face_keypoints, _
-				$model_selection == 0 ? $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS : $FULL_RANGE_EXPECTED_FACE_KEY_POINTS)
+				_OpenCV_ObjCreate("Mat").createFromArray( _
+				$model_selection == 0 ? $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS : $FULL_RANGE_EXPECTED_FACE_KEY_POINTS _
+				))
 
 		_AssertLen($results("detections"), 1)
 		_AssertEqual($location_data.relative_keypoints.size(), 6)
@@ -97,6 +94,8 @@ Func test_face($id, $model_selection)
 EndFunc   ;==>test_face
 
 Func _annotate($id, $frame, $results, $idx)
+	$frame = $frame.copy()
+
 	For $detection In $results("detections")
 		$mp_drawing.draw_detection($frame, $detection)
 	Next

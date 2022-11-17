@@ -55,6 +55,19 @@ const declarations = [
         ["tuple_int_and_int_and_int_and_int", "roi", "", ["/Expr=std::get<0>(roi), std::get<1>(roi), std::get<2>(roi), std::get<3>(roi)", "/Cast=Rect"]]
     ], "", ""],
 
+    ["cv.Mat.Mat", "", ["/Expr=$0, true"], [
+        ["std::vector<double>", "vec", "", []],
+    ], "", ""],
+
+    ["cv.Mat.Mat", "", ["/Expr=$0, true"], [
+        ["std::vector<int>", "vec", "", []],
+    ], "", ""],
+
+    ["cv.Mat.createFromArray", "cv::Mat", ["/External", "/S"], [
+        ["_variant_t", "array", "", []],
+        ["int", "depth", "-1", []],
+    ], "", ""],
+
     ["cv.Mat.row", "cv::Mat", [], [
         ["int", "y", "", []],
     ], "", ""],
@@ -145,6 +158,8 @@ const declarations = [
         ["float", "newHeight", "", []],
         ["int", "interpolation", "7", []],
     ], "", ""],
+
+    ["cv.Mat.asArray", "_variant_t", ["/External"], [], "", ""],
 
     ["cv.Mat.eye", "cv::Mat", ["/S"], [
         ["int", "rows", "", []],
@@ -262,6 +277,14 @@ const declarations = [
         ["vector_int", "params", "std::vector<int>()", []],
     ], "", ""],
 ];
+
+const types = new Set(["int", "float", "double"]);
+
+for (const type of types) {
+    declarations.push(["cv.Mat.Mat", "", [`=createFromVectorOf${ type[0].toUpperCase() }${ type.slice(1) }`, "/Expr=$0, true"], [
+        [`vector_${ type }`, "vec", "", []],
+    ], "", ""]);
+}
 
 for (const args of [
     [

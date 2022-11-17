@@ -225,7 +225,7 @@ Object.assign(exports, {
 
         const obj = `${ is_static ? `${ fqn }::` : "__self->get()->" }`;
 
-        if (is_static || is_enum || modifiers.includes("/R") || modifiers.includes("/RW") || rname) {
+        if (is_static || is_enum || modifiers.includes("/R") || modifiers.includes("/RW") || (!modifiers.includes("/W") && !wname) || rname) {
             id = coclass.addIDLName(idlname, `get_${ idlname }`, id);
 
             const attributes = [`id(${ id })`, "propget"].concat(attrs);

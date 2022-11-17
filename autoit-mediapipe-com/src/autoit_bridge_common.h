@@ -12,6 +12,7 @@
 #include <memory>
 #include <numeric>
 #include <OleAuto.h>
+#include <sstream>
 #include <string>
 #include <tuple>
 #include <type_traits>
@@ -76,13 +77,22 @@
 } while(0)
 #endif
 
+#ifndef AUTOIT_ERROR
+#define AUTOIT_ERROR( _message ) do { \
+	std::ostringstream _out; _out << _message;	\
+	fflush(stdout); fflush(stderr);         \
+	fprintf(stderr, AUTOIT_QUOTE_STRING(AUTOIT_LIB_NAME) "(%s) Error: %s (%s) in %s, file %s, line %d\n", AUTOIT_QUOTE_STRING(AUTOIT_LIB_VERSION), _out.str().c_str(), "", AutoIt_Func, __FILE__, __LINE__); \
+	fflush(stdout); fflush(stderr);         \
+} while(0)
+#endif
+
 #ifndef AUTOIT_THROW
 #define AUTOIT_THROW( _message ) do { \
 	std::ostringstream _out; _out << _message;	\
 	fflush(stdout); fflush(stderr);         \
 	fprintf(stderr, AUTOIT_QUOTE_STRING(AUTOIT_LIB_NAME) "(%s) Error: %s (%s) in %s, file %s, line %d\n", AUTOIT_QUOTE_STRING(AUTOIT_LIB_VERSION), _out.str().c_str(), "", AutoIt_Func, __FILE__, __LINE__); \
-	fflush(stdout); fflush(stderr);         \
-	throw std::exception(_out.str().c_str());    \
+	fflush(stdout); fflush(stderr);           \
+	throw std::exception(_out.str().c_str()); \
 } while(0)
 #endif
 
@@ -303,7 +313,7 @@ const HRESULT autoit_from(const std::vector<_Tp>& in_val, VARIANT*& out_val) {
 		hr = autoit_from(in_val[i], pvalue);
 
 		if (SUCCEEDED(hr)) {
-			vArray.SetAt(i, value);
+			AUTOIT_ASSERT_THROW(SUCCEEDED(vArray.SetAt(i, value)), "Failed to set value a index " << i);
 		}
 
 		VariantClear(&value);
@@ -416,7 +426,7 @@ autoit_from(const std::tuple<_Ts...>& in_val, VARIANT*& out_val) {
 	hr = autoit_from(std::get<I>(in_val), pvalue);
 
 	if (SUCCEEDED(hr)) {
-		vArray.SetAt(I, value);
+		AUTOIT_ASSERT_THROW(SUCCEEDED(vArray.SetAt(I, value)), "Failed to set value a index " << I);
 	}
 
 	VariantClear(&value);
@@ -508,22 +518,24 @@ HRESULT autoit_from(const std::pair<_Ty1, _Ty2>& in_val, VARIANT*& out_val) {
 
 	HRESULT hr;
 
-	VARIANT value = { VT_EMPTY };
+	VARIANT value;
+	VariantInit(&value);
 	auto* pvalue = &value;
 
 	hr = autoit_from(in_val.first, pvalue);
 	if (SUCCEEDED(hr)) {
-		vArray.SetAt(0, value);
+		AUTOIT_ASSERT_THROW(SUCCEEDED(vArray.SetAt(0, value)), "Failed to set value a index " << 0);
 
 		VariantClear(&value);
 		hr = autoit_from(in_val.second, pvalue);
 		if (SUCCEEDED(hr)) {
-			vArray.SetAt(1, value);
+			AUTOIT_ASSERT_THROW(SUCCEEDED(vArray.SetAt(1, value)), "Failed to set value a index " << 1);
 		}
 	}
 
 	VariantClear(&value);
 
+	VariantInit(out_val);
 	V_VT(out_val) = VT_ARRAY | VT_VARIANT;
 	V_ARRAY(out_val) = vArray.Detach();
 	return S_OK;

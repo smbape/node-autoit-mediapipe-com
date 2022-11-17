@@ -33,7 +33,11 @@ const parseArguments = PROJECT_DIR => {
         },
         namespaces: new Set([
             "cv",
+            "google::protobuf",
             "mediapipe",
+            "mediapipe::autoit",
+            "mediapipe::autoit::solution_base",
+            "mediapipe::autoit::solutions",
             "std",
         ]),
         other_namespaces: new Set([]),
@@ -65,6 +69,8 @@ const parseArguments = PROJECT_DIR => {
                 generator.as_stl_enum(coclass, vtype);
                 coclass.cpptype = vtype;
                 coclass.idltype = generator.getIDLType(vtype, coclass, opts);
+            } else if (fqn === "mediapipe::autoit::solutions::objectron::ObjectronOutputs") {
+                generator.add_vector(`vector<${ fqn }>`, coclass, opts);
             }
         },
         convert: (generator, coclass, header, impl, opts) => {
@@ -190,15 +196,24 @@ waterfall([
 
     next => {
         const srcfiles = [];
+        const protofiles = new Set();
+        const matcher = /#include "([^"]+)\.pb\.h"/g;
 
         explore(SRC_DIR, async (path, stats, next) => {
             const extname = sysPath.extname(path);
             const isheader = extname.startsWith(".h");
             let include = isheader && path.slice(SRC_DIR.length + 1).replace("\\", "/").startsWith("binding/");
 
+            const content = await fsPromises.readFile(path);
+
             if (!include && isheader) {
-                const content = await fsPromises.readFile(path);
                 include = content.includes("CV_EXPORTS");
+            }
+
+            let match;
+            matcher.lastIndex = 0;
+            while ((match = matcher.exec(content))) {
+                protofiles.add(`${ match[1] }.proto`);
             }
 
             if (include) {
@@ -208,11 +223,11 @@ waterfall([
             next();
         }, {followSymlink: true}, err => {
             const generated_include = srcfiles.map(path => `#include "${ path.slice(SRC_DIR.length + 1).replace("\\", "/") }"`);
-            next(err, srcfiles, generated_include);
+            next(err, srcfiles, protofiles, generated_include);
         });
     },
 
-    (srcfiles, generated_include, next) => {
+    (srcfiles, protofiles, generated_include, next) => {
         const outputs = Parser.createOutputs();
         const cache = new Map();
         const opts = {
@@ -222,20 +237,7 @@ waterfall([
             ]
         };
 
-        for (const filename of [
-            "mediapipe/framework/calculator.proto",
-            "mediapipe/framework/formats/detection.proto",
-            "mediapipe/framework/formats/image_format.proto",
-
-            // solution base calculators
-            "mediapipe/calculators/core/constant_side_packet_calculator.proto",
-            "mediapipe/calculators/image/image_transformation_calculator.proto",
-            "mediapipe/calculators/tensor/tensors_to_detections_calculator.proto",
-            "mediapipe/calculators/util/landmarks_smoothing_calculator.proto",
-            "mediapipe/calculators/util/logic_calculator.proto",
-            "mediapipe/calculators/util/thresholding_calculator.proto",
-            "mediapipe/modules/objectron/calculators/lift_2d_frame_annotation_to_3d_calculator.proto",
-        ]) {
+        for (const filename of protofiles) {
             opts.filename = filename;
             const parser = new Parser();
             parser.parseFile(fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/${ filename }`), opts, outputs, cache);

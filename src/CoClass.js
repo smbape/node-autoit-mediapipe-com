@@ -99,7 +99,7 @@ class CoClass {
     }
 
     addMethod(decl) {
-        const [name, return_value_type, list_of_modifiers, list_of_arguments] = decl;
+        const [name, , list_of_modifiers, list_of_arguments] = decl;
         const path = name.split(".");
 
         let fname = path[path.length - 1];
@@ -135,7 +135,7 @@ class CoClass {
         }
 
         const signature = JSON.stringify(decl);
-        if (!this.methods.get(fname).some(idecl => JSON.stringify(idecl) === decl)) {
+        if (!this.methods.get(fname).some(idecl => JSON.stringify(idecl) === signature)) {
             this.methods.get(fname).push(decl);
         }
     }

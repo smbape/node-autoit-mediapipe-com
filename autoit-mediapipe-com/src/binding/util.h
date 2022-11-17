@@ -103,5 +103,12 @@ namespace mediapipe {
 			return vtNull;
 		}
 
+		template<typename _Tp>
+		inline _variant_t to_variant_t(_Tp in_val) {
+			_variant_t out;
+			VARIANT* out_val = &out;
+			autoit_from(in_val, out_val);
+			return out;
+		}
 	}
 }

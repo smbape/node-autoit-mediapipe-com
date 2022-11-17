@@ -38,23 +38,6 @@ add_custom_command(OUTPUT "${MEDIAPIPE_PYTHON_INIT}"
 )
 add_custom_target(mediapipe-python DEPENDS "${MEDIAPIPE_PYTHON_INIT}")
 
-# file(DOWNLOAD
-#   https://github.com/tensorflow/tfjs-models/raw/master/face-detection/test_data/portrait.jpg
-#   "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/testdata/portrait.jpg")
-
-# # download objector models
-# foreach(objectron_model
-#   object_detection_ssd_mobilenetv2_oidv4_fp16.tflite
-#   object_detection_3d_sneakers.tflite
-#   object_detection_3d_chair.tflite
-#   object_detection_3d_camera.tflite
-#   object_detection_3d_cup.tflite
-# )
-#   file(DOWNLOAD
-#     https://storage.googleapis.com/mediapipe-assets/${objectron_model}
-#     "${CMAKE_CURRENT_BINARY_DIR}/.pip/mediapipe/modules/objectron/${objectron_model}")
-# endforeach()
-
 # Tell cmake we will need opencv.
 include(ExternalProject)
 ExternalProject_Add(opencv
@@ -85,8 +68,19 @@ ExternalProject_Add(mediapipe
   BUILD_COMMAND     ""
   INSTALL_COMMAND   ""
   DEPENDS           opencv
-                    mediapipe-python
 )
+
+set(MEDIAPIPE_SRC_DIR "${CMAKE_CURRENT_BINARY_DIR}/mediapipe-prefix/src/mediapipe")
+
+# copy mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt
+add_custom_command(OUTPUT "${MEDIAPIPE_SRC_DIR}/bazel-bin/mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
+  COMMAND "${CMAKE_COMMAND}" -E copy
+    "${MEDIAPIPE_SRC_DIR}/mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
+    "${MEDIAPIPE_SRC_DIR}/bazel-bin/mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
+  DEPENDS mediapipe
+)
+add_custom_target(object_detection_oidv4_labelmap
+  DEPENDS "${MEDIAPIPE_SRC_DIR}/bazel-bin/mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt")
 
 # Tell cmake we will need autoit-opencv-com.
 include(ExternalProject)
@@ -99,6 +93,8 @@ ExternalProject_Add(autoit-opencv-com
   BUILD_COMMAND     ""
   INSTALL_COMMAND   7z x "${OPENCV_DOWNLOAD_DIR}/autoit-opencv-${OPENCV_VERSION}-com-v2.1.0.7z" -aoa "-o${OPENCV_DOWNLOAD_DIR}/autoit-opencv-com" -y
   DEPENDS           opencv
+                    mediapipe-python
+                    object_detection_oidv4_labelmap
 )
 
 add_definitions(-DMEDIAPIPE_VERSION=${MEDIAPIPE_VERSION})

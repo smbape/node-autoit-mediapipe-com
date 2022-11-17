@@ -88,7 +88,7 @@ class Parser {
     }
 
     isEnum(type, scopes) {
-        const fqn = this.getCppType(type, scopes).split("::").join(".");
+        const fqn = this.getCppType(type, scopes).replaceAll("::", ".");
         return this.export_enums.has(fqn) || this.import_enums.has(fqn);
     }
 
@@ -181,6 +181,10 @@ class Parser {
 
     parseFile(filename, options = {}, outputs = Parser.createOutputs(), cache = new Map()) {
         filename = fs.realpathSync(filename);
+
+        if (cache.has(filename)) {
+            return;
+        }
 
         cache.set(filename, {
             exports: this.exports,

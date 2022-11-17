@@ -1,17 +1,10 @@
+const {getTypeDef} = require("./alias");
 const PropertyDeclaration = require("./PropertyDeclaration");
 
 exports.declare = (generator, type, parent, options = {}) => {
     const cpptype = generator.getCppType(type, parent, options);
 
-    const fqn = cpptype
-        .replace(/std::map/g, "MapOf")
-        .replace(/std::pair/g, "PairOf")
-        .replace(/std::vector/g, "VectorOf")
-        .replace(/\b_variant_t\b/g, "Variant")
-        .replace(/\w+::/g, "")
-        .replace(/\b[a-z]/g, m => m.toUpperCase())
-        .replace(/, /g, "And")
-        .replace(/[<>]/g, "");
+    const fqn = getTypeDef(cpptype, options);
 
     if (generator.classes.has(fqn)) {
         return fqn;

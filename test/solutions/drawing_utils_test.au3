@@ -10,9 +10,9 @@
 #include "..\_assert.au3"
 #include "..\_mat_utils.au3"
 
-$_mediapipe_build_type = "Release"
+$_mediapipe_build_type = "Debug"
 $_mediapipe_debug = 0
-$_cv_build_type = "Release"
+$_cv_build_type = "Debug"
 $_cv_debug = 0
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
@@ -162,12 +162,12 @@ Func test_draw_axis()
 			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
 
 	Local $r = Sqrt(2) / 2
-	Local $rotation = _OpenCV_ObjCreate("Mat").createFromVectorOfVec3d(_OpenCV_Tuple( _
+	Local $rotation = _OpenCV_ObjCreate("Mat").createFromVectorOfVec3f(_OpenCV_Tuple( _
 			_OpenCV_Tuple(1, 0, 0), _
 			_OpenCV_Tuple(0, $r, -$r), _
 			_OpenCV_Tuple(0, $r, $r) _
 			))
-	Local $translation = _OpenCV_ObjCreate("Mat").createFromVec3d(_OpenCV_Tuple(0, 0, -0.2))
+	Local $translation = _OpenCV_ObjCreate("Mat").createFromVec3f(_OpenCV_Tuple(0, 0, -0.2))
 	$drawing_utils.draw_axis($image, $rotation, $translation)
 	_AssertMatEqual($image, $expected_result)
 EndFunc   ;==>test_draw_axis
@@ -188,8 +188,8 @@ Func test_draw_axis_zero_translation()
 	$cv.arrowedLine($expected_result, $origin, $z_axis, $drawing_utils.BLUE_COLOR, _
 			$DEFAULT_AXIS_DRAWING_SPEC.thickness)
 
-	Local $rotation = _OpenCV_ObjCreate("Mat").eye(3, $CV_64F)
-	Local $translation = _OpenCV_ObjCreate("Mat").zeros(3, $CV_64F)
+	Local $rotation = _OpenCV_ObjCreate("Mat").eye(3, $CV_32F)
+	Local $translation = _OpenCV_ObjCreate("Mat").zeros(3, $CV_32F)
 	$drawing_utils.draw_axis($image, $rotation, $translation)
 	_AssertMatEqual($image, $expected_result)
 EndFunc   ;==>test_draw_axis_zero_translation

@@ -63,7 +63,7 @@ exports.removeNamespaces = (str, options = {}) => {
         return str;
     }
 
-    const reg = new RegExp(`\\b(?:${ Array.from(options.namespaces).join("|") })::`, "g");
+    const reg = new RegExp(`\\b(?:${ Array.from(options.namespaces).sort((a, b) => b.length - a.length).join("|") })::`, "g");
 
     return str.replace(reg, "");
 };
@@ -94,4 +94,17 @@ exports.useNamespaces = (body, method, coclass, generator) => {
     }
 
     body[method](...namespaces);
+};
+
+exports.getTypeDef = (type, options) => {
+    type = type
+        .replace(/std::map/g, "MapOf")
+        .replace(/std::pair/g, "PairOf")
+        .replace(/std::vector/g, "VectorOf");
+    return exports.removeNamespaces(type, options)
+        .replace(/\b_variant_t\b/g, "Variant")
+        .replace(/::/g, "_")
+        .replace(/\b[a-z]/g, m => m.toUpperCase())
+        .replace(/, /g, "And")
+        .replace(/[<>]/g, "");
 };

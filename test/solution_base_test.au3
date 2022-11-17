@@ -178,8 +178,8 @@ Func test_valid_input_data_type_proto()
 	$text_format.Parse('score: 0.5, detection_id: 1', $expected_detection_1)
 	Local $expected_detection_2 = $detection_pb2.Detection()
 	$text_format.Parse('score: 0.8, detection_id: 2', $expected_detection_2)
-	_AssertEqual($results("output_detections").detection(0).str(), $expected_detection_1.str())
-	_AssertEqual($results("output_detections").detection(1).str(), $expected_detection_2.str())
+	_AssertEqual($results("output_detections").detection(0).__str__(), $expected_detection_1.__str__())
+	_AssertEqual($results("output_detections").detection(1).__str__(), $expected_detection_2.__str__())
 EndFunc   ;==>test_valid_input_data_type_proto
 
 Func test_solution_process($text_config, $side_inputs = Default)

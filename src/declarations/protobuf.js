@@ -1,7 +1,7 @@
 module.exports = [
     ["class google.protobuf.Message", "", [], [], "", ""],
 
-    ["google.protobuf.Message.ToStr", "void", ["=str", "/Call=google::protobuf::autoit::Print", "/Expr=*__self->get(), $0"], [
+    ["google.protobuf.Message.ToStr", "void", ["=__str__", "/Call=google::protobuf::autoit::Print", "/Expr=*__self->get(), $0"], [
         ["std::string*", "output", "", ["/O"]],
     ], "", ""],
 

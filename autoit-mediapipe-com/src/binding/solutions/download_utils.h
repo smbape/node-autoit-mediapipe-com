@@ -13,6 +13,8 @@ namespace mediapipe {
 				 * @param model_path [description]
 				 */
 				CV_WRAP void download_oss_model(const std::string& model_path);
+
+				CV_WRAP void download(const std::string& url, const std::string& file);
 			}
 		}
 	}

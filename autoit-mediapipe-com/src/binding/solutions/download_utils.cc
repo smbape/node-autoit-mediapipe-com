@@ -18,20 +18,27 @@ namespace mediapipe {
 					fs::path mp_root_path(mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir());
 					auto model_abspath = fs::absolute(mp_root_path / model_path);
 
-					auto status = file::Exists(model_abspath.string());
+					auto pos_end = model_path.find_last_of('/');
+					auto model_url = _GCS_URL_PREFIX + model_path.substr(pos_end == std::string::npos ? 0 : pos_end + 1);
+
+					download(model_url, model_abspath.string());
+				}
+
+				void download(const std::string& url, const std::string& file) {
+					auto file_abspath = fs::absolute(fs::path(file));
+
+					auto status = file::Exists(file_abspath.string());
 					if (status.ok()) {
 						return;
 					}
 
-					auto pos_end = model_path.find_last_of('/');
-					auto model_url = _GCS_URL_PREFIX + model_path.substr(pos_end == std::string::npos ? 0 : pos_end + 1);
-					AUTOIT_INFO("Downloading " << model_url << " model to " << model_abspath);
+					AUTOIT_INFO("Downloading " << url << " to " << file_abspath);
 
 					// create directory tree
-					fs::create_directories(model_abspath.parent_path());
+					fs::create_directories(file_abspath.parent_path());
 
-					auto sFileNameL = model_abspath.string();
-					HRESULT hr = URLDownloadToFile(NULL, model_url.c_str(), sFileNameL.c_str(), 0, NULL);
+					auto sFileNameL = file_abspath.string();
+					HRESULT hr = URLDownloadToFile(NULL, url.c_str(), sFileNameL.c_str(), 0, NULL);
 
 					if (FAILED(hr)) {
 						if (hr == E_OUTOFMEMORY) {

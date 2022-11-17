@@ -51,7 +51,7 @@ EndFunc   ;==>_AssertLen
 Func _AssertIsNone($vVal, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
     If $sMessage == Default Then $sMessage = "expecting value to be none"
     Return _AssertEqual($vVal, Default, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
-EndFunc   ;==>_AssertLen
+EndFunc   ;==>_AssertIsNone
 
 Func _AssertFalse($bCondition, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	If $sMessage == Default Then $sMessage = "expecting " & $bCondition & " to be False"

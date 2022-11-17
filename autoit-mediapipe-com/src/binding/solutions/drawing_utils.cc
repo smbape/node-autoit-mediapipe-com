@@ -4,8 +4,8 @@
 
 using namespace google::protobuf::autoit::cmessage;
 
-#define _PRESENCE_THRESHOLD 0.5
-#define _VISIBILITY_THRESHOLD 0.5
+static const float _PRESENCE_THRESHOLD = 0.5f;
+static const float _VISIBILITY_THRESHOLD = 0.5f;
 
 namespace mediapipe {
 	namespace autoit {
@@ -59,12 +59,9 @@ namespace mediapipe {
 					return std::make_shared<cv::Point>(x_px, y_px);
 				}
 
-				static cv::Scalar color_to_scalar(std::tuple<int, int, int> color) {
-					return cv::Scalar(
-						std::get<0>(color),
-						std::get<1>(color),
-						std::get<2>(color)
-					);
+				static inline cv::Scalar color_to_scalar(std::tuple<int, int, int> color) {
+					const auto& [b, g, r] = color;
+					return cv::Scalar(b, g, r);
 				}
 
 				void draw_detection(
@@ -326,7 +323,7 @@ namespace mediapipe {
 				void draw_axis(
 					cv::Mat& image,
 					cv::Mat& rotation,
-					cv::Mat& translation,
+					cv::Mat& _translation,
 					const std::tuple<float, float>& focal_length,
 					const std::tuple<float, float>& principal_point,
 					float axis_length,
@@ -336,7 +333,7 @@ namespace mediapipe {
 					auto image_cols = image.cols;
 
 					// Create axis points in camera coordinate frame.
-					cv::Mat axis_world = (cv::Mat_<double>({
+					cv::Mat axis_world = (cv::Mat_<float>({
 						0, 0, 0,
 						1, 0, 0,
 						0, 1, 0,
@@ -350,6 +347,15 @@ namespace mediapipe {
 
 					cv::Mat axis_cam;
 					cv::transpose(transposed, axis_cam);
+
+					// translation only works with CV_64F matrixes
+					cv::Mat translation;
+					if (_translation.depth() != CV_64F) {
+						_translation.convertTo(translation, CV_64F);
+					} else {
+						translation = _translation;
+					}
+
 					axis_cam = axis_cam.reshape(3) + translation.reshape(1, 1);
 
 					cv::Mat channels[3];

@@ -65,10 +65,8 @@ class AutoItGenerator {
             }
         }
 
-        // this.options = options;
-
         for (const namespace of namespaces) {
-            this.namespaces.add(namespace.split(".").join("::"));
+            this.namespaces.add(namespace.replaceAll(".", "::"));
         }
 
         for (const decl of decls) {
@@ -93,7 +91,7 @@ class AutoItGenerator {
 
         for (const fqn of this.classes.keys()) {
             const coclass = this.classes.get(fqn);
-            for (const [fname, overrides] of coclass.methods.entries()) {
+            for (const [, overrides] of coclass.methods.entries()) {
                 for (const decl of overrides) {
                     const [, return_value_type, func_modifiers, list_of_arguments] = decl;
                     if (return_value_type !== "" && !func_modifiers.includes("/CO")) {
@@ -781,7 +779,7 @@ class AutoItGenerator {
         const constReplacer = options.constReplacer || new Map();
 
         const getPrefixVariableName = prefix => {
-            prefix = prefix.split(".").join("_").replace(/[a-z][A-Z]/g, match => `${ match[0] }_${ match[1] }`).toUpperCase();
+            prefix = prefix.replaceAll(".", "_").replace(/[a-z][A-Z]/g, match => `${ match[0] }_${ match[1] }`).toUpperCase();
             return (options.global_prefix ? options.global_prefix : "") + prefix;
         };
 

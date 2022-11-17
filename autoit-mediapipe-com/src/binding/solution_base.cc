@@ -571,7 +571,30 @@ namespace mediapipe {
 				return result;
 			}
 
+			static const std::string GetResourcePath(const std::string& binary_graph_path) {
+				fs::path root_path(mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir());
+				return (root_path / binary_graph_path).string();
+			}
+
 			SolutionBase::SolutionBase(
+				const CalculatorGraphConfig& graph_config,
+				const std::map<std::string, _variant_t>& calculator_params,
+				const std::shared_ptr<google::protobuf::Message>& graph_options,
+				const std::map<std::string, _variant_t>& side_inputs,
+				const std::vector<std::string>& outputs,
+				const std::map<std::string, PacketDataType>& stream_type_hints
+			) {
+				__init__(
+					graph_config,
+					calculator_params,
+					graph_options,
+					side_inputs,
+					outputs,
+					stream_type_hints
+				);
+			}
+
+			void SolutionBase::__init__(
 				const CalculatorGraphConfig& graph_config,
 				const std::map<std::string, _variant_t>& calculator_params,
 				const std::shared_ptr<google::protobuf::Message>& graph_options,
@@ -613,11 +636,6 @@ namespace mediapipe {
 				RaiseAutoItErrorIfNotOk(m_graph->StartRun(m_input_side_packets));
 			}
 
-			static const std::string GetResourcePath(const std::string& binary_graph_path) {
-				fs::path root_path(mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir());
-				return (root_path / binary_graph_path).string();
-			}
-
 			SolutionBase::SolutionBase(
 				const std::string& binary_graph_path,
 				const std::map<std::string, _variant_t>& calculator_params,
@@ -625,15 +643,33 @@ namespace mediapipe {
 				const std::map<std::string, _variant_t>& side_inputs,
 				const std::vector<std::string>& outputs,
 				const std::map<std::string, PacketDataType>& stream_type_hints
-			) : SolutionBase(
-				ReadCalculatorGraphConfigFromFile(GetResourcePath(binary_graph_path)),
-				calculator_params,
-				graph_options,
-				side_inputs,
-				outputs,
-				stream_type_hints
 			) {
-				// Nothing to do
+				__init__(
+					binary_graph_path,
+					calculator_params,
+					graph_options,
+					side_inputs,
+					outputs,
+					stream_type_hints
+				);
+			}
+
+			void SolutionBase::__init__(
+				const std::string& binary_graph_path,
+				const std::map<std::string, _variant_t>& calculator_params,
+				const std::shared_ptr<google::protobuf::Message>& graph_options,
+				const std::map<std::string, _variant_t>& side_inputs,
+				const std::vector<std::string>& outputs,
+				const std::map<std::string, PacketDataType>& stream_type_hints
+			) {
+				__init__(
+					ReadCalculatorGraphConfigFromFile(GetResourcePath(binary_graph_path)),
+					calculator_params,
+					graph_options,
+					side_inputs,
+					outputs,
+					stream_type_hints
+				);
 			}
 
 			void SolutionBase::process(const cv::Mat& input_data, std::map<std::string, _variant_t>& solution_outputs) {
