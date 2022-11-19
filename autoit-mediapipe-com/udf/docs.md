@@ -112,6 +112,13 @@
 - [mediapipe::autoit::solutions::download_utils](#mediapipeautoitsolutionsdownload_utils)
   - [mediapipe::autoit::solutions::download_utils::download](#mediapipeautoitsolutionsdownload_utilsdownload)
   - [mediapipe::autoit::solutions::download_utils::download_oss_model](#mediapipeautoitsolutionsdownload_utilsdownload_oss_model)
+- [mediapipe::autoit::solutions::drawing_styles](#mediapipeautoitsolutionsdrawing_styles)
+  - [mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_contours_style](#mediapipeautoitsolutionsdrawing_stylesget_default_face_mesh_contours_style)
+  - [mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_iris_connections_style](#mediapipeautoitsolutionsdrawing_stylesget_default_face_mesh_iris_connections_style)
+  - [mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_tesselation_style](#mediapipeautoitsolutionsdrawing_stylesget_default_face_mesh_tesselation_style)
+  - [mediapipe::autoit::solutions::drawing_styles::get_default_hand_connections_style](#mediapipeautoitsolutionsdrawing_stylesget_default_hand_connections_style)
+  - [mediapipe::autoit::solutions::drawing_styles::get_default_hand_landmarks_style](#mediapipeautoitsolutionsdrawing_stylesget_default_hand_landmarks_style)
+  - [mediapipe::autoit::solutions::drawing_styles::get_default_pose_landmarks_style](#mediapipeautoitsolutionsdrawing_stylesget_default_pose_landmarks_style)
 - [mediapipe::autoit::solutions::drawing_utils](#mediapipeautoitsolutionsdrawing_utils)
   - [mediapipe::autoit::solutions::drawing_utils::draw_axis](#mediapipeautoitsolutionsdrawing_utilsdraw_axis)
   - [mediapipe::autoit::solutions::drawing_utils::draw_detection](#mediapipeautoitsolutionsdrawing_utilsdraw_detection)
@@ -123,6 +130,12 @@
 - [mediapipe::autoit::solutions::face_detection::FaceDetection](#mediapipeautoitsolutionsface_detectionfacedetection)
   - [mediapipe::autoit::solutions::face_detection::FaceDetection::get_create](#mediapipeautoitsolutionsface_detectionfacedetectionget_create)
   - [mediapipe::autoit::solutions::face_detection::FaceDetection::process](#mediapipeautoitsolutionsface_detectionfacedetectionprocess)
+- [mediapipe::autoit::solutions::face_mesh::FaceMesh](#mediapipeautoitsolutionsface_meshfacemesh)
+  - [mediapipe::autoit::solutions::face_mesh::FaceMesh::get_create](#mediapipeautoitsolutionsface_meshfacemeshget_create)
+  - [mediapipe::autoit::solutions::face_mesh::FaceMesh::process](#mediapipeautoitsolutionsface_meshfacemeshprocess)
+- [mediapipe::autoit::solutions::hands::Hands](#mediapipeautoitsolutionshandshands)
+  - [mediapipe::autoit::solutions::hands::Hands::get_create](#mediapipeautoitsolutionshandshandsget_create)
+  - [mediapipe::autoit::solutions::hands::Hands::process](#mediapipeautoitsolutionshandshandsprocess)
 - [mediapipe::autoit::solutions::objectron::ObjectronModel](#mediapipeautoitsolutionsobjectronobjectronmodel)
   - [mediapipe::autoit::solutions::objectron::ObjectronModel::get_create](#mediapipeautoitsolutionsobjectronobjectronmodelget_create)
 - [mediapipe::autoit::solutions::objectron::ShoeModel](#mediapipeautoitsolutionsobjectronshoemodel)
@@ -159,6 +172,9 @@
 - [mediapipe::autoit::solutions::objectron::Objectron](#mediapipeautoitsolutionsobjectronobjectron)
   - [mediapipe::autoit::solutions::objectron::Objectron::get_create](#mediapipeautoitsolutionsobjectronobjectronget_create)
   - [mediapipe::autoit::solutions::objectron::Objectron::process](#mediapipeautoitsolutionsobjectronobjectronprocess)
+- [mediapipe::autoit::solutions::pose::Pose](#mediapipeautoitsolutionsposepose)
+  - [mediapipe::autoit::solutions::pose::Pose::get_create](#mediapipeautoitsolutionsposeposeget_create)
+  - [mediapipe::autoit::solutions::pose::Pose::process](#mediapipeautoitsolutionsposeposeprocess)
 - [mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation](#mediapipeautoitsolutionsselfie_segmentationselfiesegmentation)
   - [mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::get_create](#mediapipeautoitsolutionsselfie_segmentationselfiesegmentationget_create)
   - [mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::process](#mediapipeautoitsolutionsselfie_segmentationselfiesegmentationprocess)
@@ -1984,27 +2000,6 @@
   - [VectorOfShared_ptrMessage::sort](#vectorofshared_ptrmessagesort)
   - [VectorOfShared_ptrMessage::sort_variant](#vectorofshared_ptrmessagesort_variant)
   - [VectorOfShared_ptrMessage::start](#vectorofshared_ptrmessagestart)
-- [VectorOfTupleIntAndInt](#vectoroftupleintandint)
-  - [VectorOfTupleIntAndInt::create](#vectoroftupleintandintcreate)
-  - [VectorOfTupleIntAndInt::Add](#vectoroftupleintandintadd)
-  - [VectorOfTupleIntAndInt::Items](#vectoroftupleintandintitems)
-  - [VectorOfTupleIntAndInt::Keys](#vectoroftupleintandintkeys)
-  - [VectorOfTupleIntAndInt::Remove](#vectoroftupleintandintremove)
-  - [VectorOfTupleIntAndInt::append](#vectoroftupleintandintappend)
-  - [VectorOfTupleIntAndInt::at](#vectoroftupleintandintat)
-  - [VectorOfTupleIntAndInt::clear](#vectoroftupleintandintclear)
-  - [VectorOfTupleIntAndInt::empty](#vectoroftupleintandintempty)
-  - [VectorOfTupleIntAndInt::end](#vectoroftupleintandintend)
-  - [VectorOfTupleIntAndInt::get_Item](#vectoroftupleintandintget_item)
-  - [VectorOfTupleIntAndInt::get__NewEnum](#vectoroftupleintandintget__newenum)
-  - [VectorOfTupleIntAndInt::push_back](#vectoroftupleintandintpush_back)
-  - [VectorOfTupleIntAndInt::push_vector](#vectoroftupleintandintpush_vector)
-  - [VectorOfTupleIntAndInt::put_Item](#vectoroftupleintandintput_item)
-  - [VectorOfTupleIntAndInt::size](#vectoroftupleintandintsize)
-  - [VectorOfTupleIntAndInt::slice](#vectoroftupleintandintslice)
-  - [VectorOfTupleIntAndInt::sort](#vectoroftupleintandintsort)
-  - [VectorOfTupleIntAndInt::sort_variant](#vectoroftupleintandintsort_variant)
-  - [VectorOfTupleIntAndInt::start](#vectoroftupleintandintstart)
 - [MapOfIntAndDrawing_utils_DrawingSpec](#mapofintanddrawing_utils_drawingspec)
   - [MapOfIntAndDrawing_utils_DrawingSpec::create](#mapofintanddrawing_utils_drawingspeccreate)
   - [MapOfIntAndDrawing_utils_DrawingSpec::Add](#mapofintanddrawing_utils_drawingspecadd)
@@ -2127,6 +2122,27 @@
   - [VectorOfMapOfIntAndDrawing_utils_DrawingSpec::sort](#vectorofmapofintanddrawing_utils_drawingspecsort)
   - [VectorOfMapOfIntAndDrawing_utils_DrawingSpec::sort_variant](#vectorofmapofintanddrawing_utils_drawingspecsort_variant)
   - [VectorOfMapOfIntAndDrawing_utils_DrawingSpec::start](#vectorofmapofintanddrawing_utils_drawingspecstart)
+- [VectorOfTupleIntAndInt](#vectoroftupleintandint)
+  - [VectorOfTupleIntAndInt::create](#vectoroftupleintandintcreate)
+  - [VectorOfTupleIntAndInt::Add](#vectoroftupleintandintadd)
+  - [VectorOfTupleIntAndInt::Items](#vectoroftupleintandintitems)
+  - [VectorOfTupleIntAndInt::Keys](#vectoroftupleintandintkeys)
+  - [VectorOfTupleIntAndInt::Remove](#vectoroftupleintandintremove)
+  - [VectorOfTupleIntAndInt::append](#vectoroftupleintandintappend)
+  - [VectorOfTupleIntAndInt::at](#vectoroftupleintandintat)
+  - [VectorOfTupleIntAndInt::clear](#vectoroftupleintandintclear)
+  - [VectorOfTupleIntAndInt::empty](#vectoroftupleintandintempty)
+  - [VectorOfTupleIntAndInt::end](#vectoroftupleintandintend)
+  - [VectorOfTupleIntAndInt::get_Item](#vectoroftupleintandintget_item)
+  - [VectorOfTupleIntAndInt::get__NewEnum](#vectoroftupleintandintget__newenum)
+  - [VectorOfTupleIntAndInt::push_back](#vectoroftupleintandintpush_back)
+  - [VectorOfTupleIntAndInt::push_vector](#vectoroftupleintandintpush_vector)
+  - [VectorOfTupleIntAndInt::put_Item](#vectoroftupleintandintput_item)
+  - [VectorOfTupleIntAndInt::size](#vectoroftupleintandintsize)
+  - [VectorOfTupleIntAndInt::slice](#vectoroftupleintandintslice)
+  - [VectorOfTupleIntAndInt::sort](#vectoroftupleintandintsort)
+  - [VectorOfTupleIntAndInt::sort_variant](#vectoroftupleintandintsort_variant)
+  - [VectorOfTupleIntAndInt::start](#vectoroftupleintandintstart)
 - [VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark](#vectoroftupleobjectron_boxlandmarkandobjectron_boxlandmark)
   - [VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::create](#vectoroftupleobjectron_boxlandmarkandobjectron_boxlandmarkcreate)
   - [VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::Add](#vectoroftupleobjectron_boxlandmarkandobjectron_boxlandmarkadd)
@@ -3928,6 +3944,56 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils").download_oss_model( $model_path ) -> None
 ```
 
+## mediapipe::autoit::solutions::drawing_styles
+
+### mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_contours_style
+
+```cpp
+std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_contours_style();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_contours_style() -> retval
+```
+
+### mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_iris_connections_style
+
+```cpp
+std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_iris_connections_style();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_iris_connections_style() -> retval
+```
+
+### mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_tesselation_style
+
+```cpp
+mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_tesselation_style();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_tesselation_style() -> retval
+```
+
+### mediapipe::autoit::solutions::drawing_styles::get_default_hand_connections_style
+
+```cpp
+std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_hand_connections_style();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_hand_connections_style() -> retval
+```
+
+### mediapipe::autoit::solutions::drawing_styles::get_default_hand_landmarks_style
+
+```cpp
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> mediapipe::autoit::solutions::drawing_styles::get_default_hand_landmarks_style();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_hand_landmarks_style() -> retval
+```
+
+### mediapipe::autoit::solutions::drawing_styles::get_default_pose_landmarks_style
+
+```cpp
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> mediapipe::autoit::solutions::drawing_styles::get_default_pose_landmarks_style();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_pose_landmarks_style() -> retval
+```
+
 ## mediapipe::autoit::solutions::drawing_utils
 
 ### mediapipe::autoit::solutions::drawing_utils::draw_axis
@@ -4040,6 +4106,54 @@ void mediapipe::autoit::solutions::face_detection::FaceDetection::process( const
                                                                            std::map<std::string, _variant_t>& solution_outputs );
 AutoIt:
     $oFaceDetection.process( $image[, $solution_outputs] ) -> $solution_outputs
+```
+
+## mediapipe::autoit::solutions::face_mesh::FaceMesh
+
+### mediapipe::autoit::solutions::face_mesh::FaceMesh::get_create
+
+```cpp
+static mediapipe::autoit::solutions::face_mesh::FaceMesh mediapipe::autoit::solutions::face_mesh::FaceMesh::get_create( bool  static_image_mode = false,
+                                                                                                                        int   max_num_faces = 1,
+                                                                                                                        bool  refine_landmarks = false,
+                                                                                                                        float min_detection_confidence = 0.5f,
+                                                                                                                        float min_tracking_confidence = 0.5f );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_mesh.FaceMesh").create( [$static_image_mode[, $max_num_faces[, $refine_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.face_mesh.FaceMesh object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_mesh.FaceMesh")( [$static_image_mode[, $max_num_faces[, $refine_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.face_mesh.FaceMesh object>
+```
+
+### mediapipe::autoit::solutions::face_mesh::FaceMesh::process
+
+```cpp
+void mediapipe::autoit::solutions::face_mesh::FaceMesh::process( const cv::Mat&                     image,
+                                                                 std::map<std::string, _variant_t>& solution_outputs );
+AutoIt:
+    $oFaceMesh.process( $image[, $solution_outputs] ) -> $solution_outputs
+```
+
+## mediapipe::autoit::solutions::hands::Hands
+
+### mediapipe::autoit::solutions::hands::Hands::get_create
+
+```cpp
+static mediapipe::autoit::solutions::hands::Hands mediapipe::autoit::solutions::hands::Hands::get_create( bool  static_image_mode = false,
+                                                                                                          int   max_num_hands = 2,
+                                                                                                          BYTE  model_complexity = 1,
+                                                                                                          float min_detection_confidence = 0.5f,
+                                                                                                          float min_tracking_confidence = 0.5f );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.hands.Hands").create( [$static_image_mode[, $max_num_hands[, $model_complexity[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.hands.Hands object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.hands.Hands")( [$static_image_mode[, $max_num_hands[, $model_complexity[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.hands.Hands object>
+```
+
+### mediapipe::autoit::solutions::hands::Hands::process
+
+```cpp
+void mediapipe::autoit::solutions::hands::Hands::process( const cv::Mat&                     image,
+                                                          std::map<std::string, _variant_t>& solution_outputs );
+AutoIt:
+    $oHands.process( $image[, $solution_outputs] ) -> $solution_outputs
 ```
 
 ## mediapipe::autoit::solutions::objectron::ObjectronModel
@@ -4329,6 +4443,32 @@ void mediapipe::autoit::solutions::objectron::Objectron::process( const cv::Mat&
                                                                   std::map<std::string, _variant_t>& solution_outputs );
 AutoIt:
     $oObjectron.process( $image[, $solution_outputs] ) -> $solution_outputs
+```
+
+## mediapipe::autoit::solutions::pose::Pose
+
+### mediapipe::autoit::solutions::pose::Pose::get_create
+
+```cpp
+static mediapipe::autoit::solutions::pose::Pose mediapipe::autoit::solutions::pose::Pose::get_create( bool  static_image_mode = false,
+                                                                                                      BYTE  model_complexity = 1,
+                                                                                                      bool  smooth_landmarks = true,
+                                                                                                      bool  enable_segmentation = false,
+                                                                                                      bool  smooth_segmentation = true,
+                                                                                                      float min_detection_confidence = 0.5f,
+                                                                                                      float min_tracking_confidence = 0.5f );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.pose.Pose").create( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $min_detection_confidence[, $min_tracking_confidence]]]]]]] ) -> <mediapipe.autoit.solutions.pose.Pose object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.pose.Pose")( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $min_detection_confidence[, $min_tracking_confidence]]]]]]] ) -> <mediapipe.autoit.solutions.pose.Pose object>
+```
+
+### mediapipe::autoit::solutions::pose::Pose::process
+
+```cpp
+void mediapipe::autoit::solutions::pose::Pose::process( const cv::Mat&                     image,
+                                                        std::map<std::string, _variant_t>& solution_outputs );
+AutoIt:
+    $oPose.process( $image[, $solution_outputs] ) -> $solution_outputs
 ```
 
 ## mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation
@@ -20822,202 +20962,6 @@ AutoIt:
     $oVectorOfShared_ptrMessage.start() -> retval
 ```
 
-## VectorOfTupleIntAndInt
-
-### VectorOfTupleIntAndInt::create
-
-```cpp
-static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create();
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create() -> <VectorOfTupleIntAndInt object>
-```
-
-```cpp
-static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create( size_t size );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create( $size ) -> <VectorOfTupleIntAndInt object>
-```
-
-```cpp
-static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create( VectorOfTupleIntAndInt other );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create( $other ) -> <VectorOfTupleIntAndInt object>
-```
-
-### VectorOfTupleIntAndInt::Add
-
-```cpp
-void VectorOfTupleIntAndInt::Add( std::tuple<int, int> value );
-AutoIt:
-    $oVectorOfTupleIntAndInt.Add( $value ) -> None
-```
-
-### VectorOfTupleIntAndInt::Items
-
-```cpp
-VectorOfTupleIntAndInt VectorOfTupleIntAndInt::Items();
-AutoIt:
-    $oVectorOfTupleIntAndInt.Items() -> retval
-```
-
-### VectorOfTupleIntAndInt::Keys
-
-```cpp
-std::vector<int> VectorOfTupleIntAndInt::Keys();
-AutoIt:
-    $oVectorOfTupleIntAndInt.Keys() -> retval
-```
-
-### VectorOfTupleIntAndInt::Remove
-
-```cpp
-void VectorOfTupleIntAndInt::Remove( size_t index );
-AutoIt:
-    $oVectorOfTupleIntAndInt.Remove( $index ) -> None
-```
-
-### VectorOfTupleIntAndInt::append
-
-```cpp
-void VectorOfTupleIntAndInt::append( std::tuple<int, int> value );
-AutoIt:
-    $oVectorOfTupleIntAndInt.append( $value ) -> None
-```
-
-### VectorOfTupleIntAndInt::at
-
-```cpp
-std::tuple<int, int> VectorOfTupleIntAndInt::at( size_t index );
-AutoIt:
-    $oVectorOfTupleIntAndInt.at( $index ) -> retval
-```
-
-```cpp
-void VectorOfTupleIntAndInt::at( size_t               index,
-                                 std::tuple<int, int> value );
-AutoIt:
-    $oVectorOfTupleIntAndInt.at( $index, $value ) -> None
-```
-
-### VectorOfTupleIntAndInt::clear
-
-```cpp
-void VectorOfTupleIntAndInt::clear();
-AutoIt:
-    $oVectorOfTupleIntAndInt.clear() -> None
-```
-
-### VectorOfTupleIntAndInt::empty
-
-```cpp
-bool VectorOfTupleIntAndInt::empty();
-AutoIt:
-    $oVectorOfTupleIntAndInt.empty() -> retval
-```
-
-### VectorOfTupleIntAndInt::end
-
-```cpp
-void* VectorOfTupleIntAndInt::end();
-AutoIt:
-    $oVectorOfTupleIntAndInt.end() -> retval
-```
-
-### VectorOfTupleIntAndInt::get_Item
-
-```cpp
-std::tuple<int, int> VectorOfTupleIntAndInt::get_Item( size_t vIndex );
-AutoIt:
-    $oVectorOfTupleIntAndInt.Item( $vIndex ) -> retval
-    $oVectorOfTupleIntAndInt( $vIndex ) -> retval
-```
-
-### VectorOfTupleIntAndInt::get__NewEnum
-
-```cpp
-IUnknown* VectorOfTupleIntAndInt::get__NewEnum();
-AutoIt:
-    $oVectorOfTupleIntAndInt._NewEnum() -> retval
-```
-
-### VectorOfTupleIntAndInt::push_back
-
-```cpp
-void VectorOfTupleIntAndInt::push_back( std::tuple<int, int> value );
-AutoIt:
-    $oVectorOfTupleIntAndInt.push_back( $value ) -> None
-```
-
-### VectorOfTupleIntAndInt::push_vector
-
-```cpp
-void VectorOfTupleIntAndInt::push_vector( VectorOfTupleIntAndInt other );
-AutoIt:
-    $oVectorOfTupleIntAndInt.push_vector( $other ) -> None
-```
-
-```cpp
-void VectorOfTupleIntAndInt::push_vector( VectorOfTupleIntAndInt other,
-                                          size_t                 count,
-                                          size_t                 start = 0 );
-AutoIt:
-    $oVectorOfTupleIntAndInt.push_vector( $other, $count[, $start] ) -> None
-```
-
-### VectorOfTupleIntAndInt::put_Item
-
-```cpp
-void VectorOfTupleIntAndInt::put_Item( size_t               vIndex,
-                                       std::tuple<int, int> vItem );
-AutoIt:
-    $oVectorOfTupleIntAndInt.Item( $vIndex ) = $vItem
-```
-
-### VectorOfTupleIntAndInt::size
-
-```cpp
-size_t VectorOfTupleIntAndInt::size();
-AutoIt:
-    $oVectorOfTupleIntAndInt.size() -> retval
-```
-
-### VectorOfTupleIntAndInt::slice
-
-```cpp
-VectorOfTupleIntAndInt VectorOfTupleIntAndInt::slice( size_t start = 0,
-                                                      size_t count = __self->get()->size() );
-AutoIt:
-    $oVectorOfTupleIntAndInt.slice( [$start[, $count]] ) -> retval
-```
-
-### VectorOfTupleIntAndInt::sort
-
-```cpp
-void VectorOfTupleIntAndInt::sort( void*  comparator,
-                                   size_t start = 0,
-                                   size_t count = __self->get()->size() );
-AutoIt:
-    $oVectorOfTupleIntAndInt.sort( $comparator[, $start[, $count]] ) -> None
-```
-
-### VectorOfTupleIntAndInt::sort_variant
-
-```cpp
-void VectorOfTupleIntAndInt::sort_variant( void*  comparator,
-                                           size_t start = 0,
-                                           size_t count = __self->get()->size() );
-AutoIt:
-    $oVectorOfTupleIntAndInt.sort_variant( $comparator[, $start[, $count]] ) -> None
-```
-
-### VectorOfTupleIntAndInt::start
-
-```cpp
-void* VectorOfTupleIntAndInt::start();
-AutoIt:
-    $oVectorOfTupleIntAndInt.start() -> retval
-```
-
 ## MapOfIntAndDrawing_utils_DrawingSpec
 
 ### MapOfIntAndDrawing_utils_DrawingSpec::create
@@ -22110,6 +22054,202 @@ AutoIt:
 void* VectorOfMapOfIntAndDrawing_utils_DrawingSpec::start();
 AutoIt:
     $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.start() -> retval
+```
+
+## VectorOfTupleIntAndInt
+
+### VectorOfTupleIntAndInt::create
+
+```cpp
+static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create() -> <VectorOfTupleIntAndInt object>
+```
+
+```cpp
+static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create( $size ) -> <VectorOfTupleIntAndInt object>
+```
+
+```cpp
+static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create( VectorOfTupleIntAndInt other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create( $other ) -> <VectorOfTupleIntAndInt object>
+```
+
+### VectorOfTupleIntAndInt::Add
+
+```cpp
+void VectorOfTupleIntAndInt::Add( std::tuple<int, int> value );
+AutoIt:
+    $oVectorOfTupleIntAndInt.Add( $value ) -> None
+```
+
+### VectorOfTupleIntAndInt::Items
+
+```cpp
+VectorOfTupleIntAndInt VectorOfTupleIntAndInt::Items();
+AutoIt:
+    $oVectorOfTupleIntAndInt.Items() -> retval
+```
+
+### VectorOfTupleIntAndInt::Keys
+
+```cpp
+std::vector<int> VectorOfTupleIntAndInt::Keys();
+AutoIt:
+    $oVectorOfTupleIntAndInt.Keys() -> retval
+```
+
+### VectorOfTupleIntAndInt::Remove
+
+```cpp
+void VectorOfTupleIntAndInt::Remove( size_t index );
+AutoIt:
+    $oVectorOfTupleIntAndInt.Remove( $index ) -> None
+```
+
+### VectorOfTupleIntAndInt::append
+
+```cpp
+void VectorOfTupleIntAndInt::append( std::tuple<int, int> value );
+AutoIt:
+    $oVectorOfTupleIntAndInt.append( $value ) -> None
+```
+
+### VectorOfTupleIntAndInt::at
+
+```cpp
+std::tuple<int, int> VectorOfTupleIntAndInt::at( size_t index );
+AutoIt:
+    $oVectorOfTupleIntAndInt.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfTupleIntAndInt::at( size_t               index,
+                                 std::tuple<int, int> value );
+AutoIt:
+    $oVectorOfTupleIntAndInt.at( $index, $value ) -> None
+```
+
+### VectorOfTupleIntAndInt::clear
+
+```cpp
+void VectorOfTupleIntAndInt::clear();
+AutoIt:
+    $oVectorOfTupleIntAndInt.clear() -> None
+```
+
+### VectorOfTupleIntAndInt::empty
+
+```cpp
+bool VectorOfTupleIntAndInt::empty();
+AutoIt:
+    $oVectorOfTupleIntAndInt.empty() -> retval
+```
+
+### VectorOfTupleIntAndInt::end
+
+```cpp
+void* VectorOfTupleIntAndInt::end();
+AutoIt:
+    $oVectorOfTupleIntAndInt.end() -> retval
+```
+
+### VectorOfTupleIntAndInt::get_Item
+
+```cpp
+std::tuple<int, int> VectorOfTupleIntAndInt::get_Item( size_t vIndex );
+AutoIt:
+    $oVectorOfTupleIntAndInt.Item( $vIndex ) -> retval
+    $oVectorOfTupleIntAndInt( $vIndex ) -> retval
+```
+
+### VectorOfTupleIntAndInt::get__NewEnum
+
+```cpp
+IUnknown* VectorOfTupleIntAndInt::get__NewEnum();
+AutoIt:
+    $oVectorOfTupleIntAndInt._NewEnum() -> retval
+```
+
+### VectorOfTupleIntAndInt::push_back
+
+```cpp
+void VectorOfTupleIntAndInt::push_back( std::tuple<int, int> value );
+AutoIt:
+    $oVectorOfTupleIntAndInt.push_back( $value ) -> None
+```
+
+### VectorOfTupleIntAndInt::push_vector
+
+```cpp
+void VectorOfTupleIntAndInt::push_vector( VectorOfTupleIntAndInt other );
+AutoIt:
+    $oVectorOfTupleIntAndInt.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfTupleIntAndInt::push_vector( VectorOfTupleIntAndInt other,
+                                          size_t                 count,
+                                          size_t                 start = 0 );
+AutoIt:
+    $oVectorOfTupleIntAndInt.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfTupleIntAndInt::put_Item
+
+```cpp
+void VectorOfTupleIntAndInt::put_Item( size_t               vIndex,
+                                       std::tuple<int, int> vItem );
+AutoIt:
+    $oVectorOfTupleIntAndInt.Item( $vIndex ) = $vItem
+```
+
+### VectorOfTupleIntAndInt::size
+
+```cpp
+size_t VectorOfTupleIntAndInt::size();
+AutoIt:
+    $oVectorOfTupleIntAndInt.size() -> retval
+```
+
+### VectorOfTupleIntAndInt::slice
+
+```cpp
+VectorOfTupleIntAndInt VectorOfTupleIntAndInt::slice( size_t start = 0,
+                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTupleIntAndInt.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfTupleIntAndInt::sort
+
+```cpp
+void VectorOfTupleIntAndInt::sort( void*  comparator,
+                                   size_t start = 0,
+                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTupleIntAndInt.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfTupleIntAndInt::sort_variant
+
+```cpp
+void VectorOfTupleIntAndInt::sort_variant( void*  comparator,
+                                           size_t start = 0,
+                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTupleIntAndInt.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfTupleIntAndInt::start
+
+```cpp
+void* VectorOfTupleIntAndInt::start();
+AutoIt:
+    $oVectorOfTupleIntAndInt.start() -> retval
 ```
 
 ## VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark

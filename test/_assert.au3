@@ -55,7 +55,7 @@ EndFunc   ;==>_AssertIsNone
 
 Func _AssertFalse($bCondition, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	If $sMessage == Default Then $sMessage = "expecting " & $bCondition & " to be False"
-	_AssertTrue(Not $bCondition, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	Return _AssertTrue(Not $bCondition, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertFalse
 
 Func _AssertTrue($bCondition, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)

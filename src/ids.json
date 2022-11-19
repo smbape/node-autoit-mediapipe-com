@@ -59,6 +59,10 @@
         "iid": "b4a6be46-f3c9-4134-9f29-3e7ab752c7a5",
         "clsid": "9d4cc2d3-437f-4863-b75e-aee2caaa5d31"
     },
+    "mediapipe::autoit::solutions::drawing_styles": {
+        "iid": "00da88a5-1746-44f4-a298-a00d2f858416",
+        "clsid": "f9b98e1e-6f56-4396-be2b-a9c43b274675"
+    },
     "mediapipe::autoit::solutions::drawing_utils": {
         "iid": "c41d4678-ee76-4158-99fd-d325d23f928f",
         "clsid": "2acd182d-3f55-4c0d-93da-6da43be9e4a8"
@@ -78,6 +82,26 @@
     "mediapipe::autoit::solutions::face_detection::FaceDetection": {
         "iid": "d87abe07-c0d5-4ce4-8bb2-df618b48ef8d",
         "clsid": "8635932b-2554-4f91-bca0-8f4c8da1e868"
+    },
+    "mediapipe::autoit::solutions::face_mesh": {
+        "iid": "38527f01-c19a-4257-8f61-0d6b141fc777",
+        "clsid": "e00f86de-ec5b-40b1-9346-ca56da984836"
+    },
+    "mediapipe::autoit::solutions::face_mesh::FaceMesh": {
+        "iid": "2cec9458-4adb-4cf9-80d6-21210d65c0c0",
+        "clsid": "90cd65f0-0c45-4ed8-b7d3-7ea7fb6814e1"
+    },
+    "mediapipe::autoit::solutions::hands": {
+        "iid": "0bd7efa8-dc25-4238-8832-4b5bc9048119",
+        "clsid": "35783698-4de5-4cd8-9877-1392c9fb6ce3"
+    },
+    "mediapipe::autoit::solutions::hands::HandLandmark": {
+        "iid": "11c54d15-7cc2-4590-a803-28035b8b3f55",
+        "clsid": "97dd3c3b-4edf-4948-9e47-88a2ec8e3e99"
+    },
+    "mediapipe::autoit::solutions::hands::Hands": {
+        "iid": "48f40c6f-7443-43d4-96dc-9482abc26ee8",
+        "clsid": "10ad32b5-4ac0-45aa-ab42-228aeecaf8a9"
     },
     "mediapipe::autoit::solutions::objectron": {
         "iid": "df6167b2-4cda-48ee-9d57-ee644f7936db",
@@ -119,6 +143,18 @@
         "iid": "53080968-0f0b-432a-81fc-8a4e84463345",
         "clsid": "9bf8897a-0da0-43f0-84f2-6f624f0cff41"
     },
+    "mediapipe::autoit::solutions::pose": {
+        "iid": "ea9dbff9-0ecd-4606-9294-d3b31c3f1fab",
+        "clsid": "e58a7405-d329-4fff-8b32-f2713f296560"
+    },
+    "mediapipe::autoit::solutions::pose::PoseLandmark": {
+        "iid": "3fe20314-f1b2-462a-abe4-031386f69882",
+        "clsid": "06715a76-12e8-4e71-9005-f210697f0c03"
+    },
+    "mediapipe::autoit::solutions::pose::Pose": {
+        "iid": "6b4ecdd5-30bd-4156-947b-a89001df117d",
+        "clsid": "90ffe620-c947-4bf2-ad3d-f64339211f89"
+    },
     "mediapipe::autoit::solutions::selfie_segmentation": {
         "iid": "2e8f1cd2-f870-4faf-8a34-4d15ca09ff39",
         "clsid": "b7a630e2-1d19-4e0e-8418-d2b05fa71085"
@@ -155,6 +191,14 @@
         "iid": "d734c6eb-64c8-4d02-8d52-879f9ecb48bd",
         "clsid": "f9dc142f-7f99-431b-968e-5da05c2abf22"
     },
+    "mediapipe::autoit::solutions::face_mesh_connections": {
+        "iid": "015bb806-0e65-4cf6-851e-cc0ad083d3aa",
+        "clsid": "4be4d59c-b267-499d-99df-6550542794c3"
+    },
+    "mediapipe::autoit::solutions::hands_connections": {
+        "iid": "690fcaa4-c2cb-4d2a-b71f-d636f9016d6e",
+        "clsid": "05ed1a2b-847c-45dc-9074-b5bbd2499e55"
+    },
     "mediapipe::Image": {
         "iid": "3ead0412-84fa-41f6-9f2e-218dd57c4001",
         "clsid": "1503bebd-4b60-4195-a08d-69c996326ac0"
@@ -182,6 +226,10 @@
     "mediapipe::autoit::_framework_bindings::packet": {
         "iid": "252a9837-27d5-4a18-9789-d15c46d0d73e",
         "clsid": "761e8185-39fd-464e-9a91-d0ede7a9e298"
+    },
+    "mediapipe::autoit::solutions::pose_connections": {
+        "iid": "2487be66-997d-4e70-870d-145be18d6224",
+        "clsid": "32a2485f-c091-4dde-992f-ab3cd556753f"
     },
     "google::protobuf::Message": {
         "iid": "d5e10a6a-bb2b-48c6-b038-eddf6e51178b",
@@ -1127,10 +1175,6 @@
         "iid": "f6e7f9c3-bb17-4a53-8e84-31ac819bd56a",
         "clsid": "0be4c50c-271e-4d5f-a807-3249e4fe47e1"
     },
-    "VectorOfTupleIntAndInt": {
-        "iid": "b12afc5b-3642-449a-93dc-ea6db1b20e21",
-        "clsid": "ce652372-b94c-4334-aefb-48f922035fe0"
-    },
     "MapOfIntAndDrawing_utils_DrawingSpec": {
         "iid": "644d475f-fbaa-41ff-9ce0-437da76f2a2c",
         "clsid": "3afbba66-bf2f-4f5b-85d0-d2836268b7c9"
@@ -1154,6 +1198,10 @@
     "VectorOfMapOfIntAndDrawing_utils_DrawingSpec": {
         "iid": "1164b36f-8395-4e2c-9b8f-de54e461d333",
         "clsid": "bdba5eb2-f81c-4bde-b90b-c7868c34a980"
+    },
+    "VectorOfTupleIntAndInt": {
+        "iid": "b12afc5b-3642-449a-93dc-ea6db1b20e21",
+        "clsid": "ce652372-b94c-4334-aefb-48f922035fe0"
     },
     "VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark": {
         "iid": "79b3e077-781c-476b-89bd-af1769346403",

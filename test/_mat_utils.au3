@@ -22,29 +22,37 @@ EndFunc   ;==>_MatSetAt
 Func _AssertMatEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	If $sMessage == Default Then $sMessage = "expecting both matrix to be equals"
 
-	_AssertEqual($oMatA.rows, $oMatB.rows, "expecting both matrix to have the same number of rows", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
-	_AssertEqual($oMatA.cols, $oMatB.cols, "expecting both matrix to have the same number of columns", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
-	_AssertEqual($oMatA.channels(), $oMatB.channels(), "expecting both matrix to have the same number of channels", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
-	_AssertEqual($oMatA.depth(), $oMatB.depth(), "expecting both matrix to have the same number of depth", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	Local $bCondition = True
+
+	$bCondition = _AssertEqual($oMatA.rows, $oMatB.rows, "expecting both matrix to have the same number of rows", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
+	$bCondition = _AssertEqual($oMatA.cols, $oMatB.cols, "expecting both matrix to have the same number of columns", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
+	$bCondition = _AssertEqual($oMatA.channels(), $oMatB.channels(), "expecting both matrix to have the same number of channels", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
+	$bCondition = _AssertEqual($oMatA.depth(), $oMatB.depth(), "expecting both matrix to have the same number of depth", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
 
 	Local Const $cv = _OpenCV_get()
 	Local $absdiff = $cv.absdiff(Ptr($oMatA.self), Ptr($oMatB.self)).reshape(1)
-	_AssertEqual($cv.countNonZero($absdiff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	$bCondition = _AssertEqual($cv.countNonZero($absdiff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
+
+	Return $bCondition
 EndFunc   ;==>_AssertMatEqual
 
 Func _AssertMatAlmostEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	If $sMessage == Default Then $sMessage = "expecting both matrix to be almost equals"
 
-	_AssertEqual($oMatA.rows, $oMatB.rows, "expecting both matrix to have the same number of rows", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
-	_AssertEqual($oMatA.cols, $oMatB.cols, "expecting both matrix to have the same number of columns", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
-	_AssertEqual($oMatA.channels(), $oMatB.channels(), "expecting both matrix to have the same number of channels", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
-	_AssertEqual($oMatA.depth(), $oMatB.depth(), "expecting both matrix to have the same number of depth", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	Local $bCondition = True
+
+	$bCondition = _AssertEqual($oMatA.rows, $oMatB.rows, "expecting both matrix to have the same number of rows", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
+	$bCondition = _AssertEqual($oMatA.cols, $oMatB.cols, "expecting both matrix to have the same number of columns", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
+	$bCondition = _AssertEqual($oMatA.channels(), $oMatB.channels(), "expecting both matrix to have the same number of channels", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
+	$bCondition = _AssertEqual($oMatA.depth(), $oMatB.depth(), "expecting both matrix to have the same number of depth", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
 
 	Local Const $cv = _OpenCV_get()
 	Local $absdiff = $cv.absdiff(Ptr($oMatA.self), Ptr($oMatB.self)).reshape(1)
 	$absdiff = $cv.compare($absdiff, 10 ^ - 7, $CV_CMP_GE)
 
-	_AssertEqual($cv.countNonZero($absdiff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	$bCondition = _AssertEqual($cv.countNonZero($absdiff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
+
+	Return $bCondition
 EndFunc   ;==>_AssertMatAlmostEqual
 
 Func _AssertMatLess($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
@@ -58,5 +66,5 @@ Func _AssertMatLess($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode =
 
 	Local Const $cv = _OpenCV_get()
 	Local $diff = $cv.compare($oMatA, $oMatB, $CV_CMP_GE)
-	_AssertEqual($cv.countNonZero($diff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	Return _AssertEqual($cv.countNonZero($diff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertMatLess

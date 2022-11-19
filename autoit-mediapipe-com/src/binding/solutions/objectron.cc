@@ -111,8 +111,6 @@ namespace mediapipe {
 					);
 				}
 
-				static _variant_t None = default_variant();
-
 				static _variant_t _convert_format(_variant_t inputs_variant) {
 					FrameAnnotation inputs = ::autoit::cast<FrameAnnotation>(&inputs_variant);
 
@@ -153,6 +151,8 @@ namespace mediapipe {
 
 					return to_variant_t(new_outputs);
 				}
+
+				static _variant_t None = default_variant();
 
 				void Objectron::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
 					_variant_t input_data_variant;

@@ -32,6 +32,8 @@ _AssertTrue(IsObj($mp_drawing), "Failed to load mediapipe.autoit.solutions.drawi
 Global $mp_faces = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection")
 _AssertTrue(IsObj($mp_faces), "Failed to load mediapipe.autoit.solutions.face_detection")
 
+Global $Mat = _OpenCV_ObjCreate("Mat")
+
 Global $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS[][] = [[363, 182], [460, 186], [420, 241], _
 		[417, 284], [295, 199], [502, 198]]
 Global $FULL_RANGE_EXPECTED_FACE_KEY_POINTS[][] = [[363, 181], [455, 181], [413, 233], _
@@ -50,7 +52,7 @@ Func Test()
 EndFunc   ;==>Test
 
 Func test_blank_image()
-	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
+	Local $image = $Mat.zeros(100, 100, $CV_8UC3)
 	$image.setTo(255.0)
 
 	Local $faces = $mp_faces.FaceDetection(0.5)
@@ -86,15 +88,15 @@ Func test_face($id, $model_selection)
 			$i = $i + 1
 		Next
 
-		Local $prediction_error = $cv.absdiff(_OpenCV_ObjCreate("Mat").createFromArray($face_keypoints, $CV_32S), _
-				_OpenCV_ObjCreate("Mat").createFromArray( _
+		Local $prediction_error = $cv.absdiff($Mat.createFromArray($face_keypoints, $CV_32S), _
+				$Mat.createFromArray( _
 				$model_selection == 0 ? $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS : $FULL_RANGE_EXPECTED_FACE_KEY_POINTS _
 				))
 
 		_AssertLen($results("detections"), 1)
 		_AssertMatLess($prediction_error, $DIFF_THRESHOLD)
 
-		; $results = $cv.format(_OpenCV_ObjCreate("Mat").createFromArray($face_keypoints, $CV_32S))
+		; $results = $cv.format($Mat.createFromArray($face_keypoints, $CV_32S))
 		; ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $results = ' & $results & @CRLF) ;### Debug Console
 	Next
 EndFunc   ;==>test_face
