@@ -73,6 +73,18 @@ const parseArguments = PROJECT_DIR => {
                 generator.add_vector(`vector<${ fqn }>`, coclass, opts);
             }
         },
+        onClass: (generator, coclass, opts) => {
+            const {fqn, name} = coclass;
+
+            if (fqn.startsWith("mediapipe::autoit::solution") || fqn.startsWith("mediapipe::autoit::solution_base")) {
+                // expose a ${ name } property like in mediapipe python
+                const parts = fqn.split("::");
+                parts[parts.length - 1] = "";
+                generator.add_func([parts.join("."), "", ["/Properties"], [
+                    [fqn, name, "", ["/R", "=this"]],
+                ], "", ""]);
+            }
+        },
         convert: (generator, coclass, header, impl, opts) => {
             const {fqn} = coclass;
 

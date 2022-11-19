@@ -277,7 +277,7 @@ def add_com_library(name, intdir, compilation_mode):
         name = name,
         intdir = intdir,
         compilation_mode = compilation_mode,
-        pchhdrs = ["src/autoit_bridge.h"],
+        pchhdrs = ["generated/autoit_bridge_generated_pch.h"],
         includes = ["src/", "generated/"],
         local_defines = select({
             "@bazel_tools//src/conditions:windows": [

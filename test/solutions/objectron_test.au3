@@ -10,6 +10,9 @@
 #include "..\_assert.au3"
 #include "..\_mat_utils.au3"
 
+;~ Sources:
+;~     https://github.com/google/mediapipe/blob/v0.8.11/mediapipe/python/solutions/objectron_test.py
+
 $_mediapipe_build_type = "Release"
 $_mediapipe_debug = 0
 $_cv_build_type = "Release"

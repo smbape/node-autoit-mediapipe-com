@@ -12,6 +12,11 @@ namespace mediapipe {
 	namespace autoit {
 		namespace solutions {
 			namespace face_detection {
+                static const std::string& GetModelPath(BYTE model_selection) {
+                    download_utils::download_oss_model(model_selection == 1 ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
+                    return model_selection == 1 ? _FULL_RANGE_GRAPH_FILE_PATH : _SHORT_RANGE_GRAPH_FILE_PATH;
+                }
+
 				std::shared_ptr<LocationData::RelativeKeypoint> get_key_point(
 					const Detection& detection,
 					FaceKeyPoint key_point_enum
@@ -26,9 +31,9 @@ namespace mediapipe {
 
 				FaceDetection::FaceDetection(
 					float min_detection_confidence,
-					short model_selection
+					BYTE model_selection
 				) : SolutionBase(
-					FaceDetection::GetModelPath(model_selection),
+					GetModelPath(model_selection),
 					noMap(),
 					SolutionBase::create_graph_options(std::make_shared<FaceDetectionOptions>(), { {"min_score_thresh", _variant_t(model_selection)} }),
 					noMap(),
@@ -46,11 +51,6 @@ namespace mediapipe {
 					input_dict["image"] = input_data_variant;
 
 					SolutionBase::process(input_dict, solution_outputs);
-				}
-
-				const std::string& FaceDetection::GetModelPath(short model_selection) {
-                    download_utils::download_oss_model(model_selection == 1 ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
-					return model_selection == 1 ? _FULL_RANGE_GRAPH_FILE_PATH : _SHORT_RANGE_GRAPH_FILE_PATH;
 				}
 			}
 		}

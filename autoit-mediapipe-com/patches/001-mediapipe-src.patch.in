@@ -11,6 +11,25 @@ index d3cc40f..f243b06 100644
  )
  
  http_archive(
+diff --git a/mediapipe/framework/port/opencv_video_inc.h b/mediapipe/framework/port/opencv_video_inc.h
+index dc84bf5..4678f3c 100644
+--- a/mediapipe/framework/port/opencv_video_inc.h
++++ b/mediapipe/framework/port/opencv_video_inc.h
+@@ -85,13 +85,7 @@ inline int fourcc(char c1, char c2, char c3, char c4) {
+ #include <opencv2/videoio.hpp>
+ 
+ #if CV_VERSION_MAJOR == 4 && !defined(MEDIAPIPE_MOBILE)
+-#include <opencv2/optflow.hpp>
+-
+-namespace cv {
+-inline Ptr<DenseOpticalFlow> createOptFlow_DualTVL1() {
+-  return optflow::createOptFlow_DualTVL1();
+-}
+-}  // namespace cv
++#include <opencv2/video/tracking.hpp>
+ #endif
+ 
+ namespace mediapipe {
 diff --git a/mediapipe/tasks/BUILD b/mediapipe/tasks/BUILD
 index 242a88c..304eb75 100644
 --- a/mediapipe/tasks/BUILD

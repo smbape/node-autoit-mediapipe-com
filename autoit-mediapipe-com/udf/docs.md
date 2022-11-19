@@ -159,6 +159,9 @@
 - [mediapipe::autoit::solutions::objectron::Objectron](#mediapipeautoitsolutionsobjectronobjectron)
   - [mediapipe::autoit::solutions::objectron::Objectron::get_create](#mediapipeautoitsolutionsobjectronobjectronget_create)
   - [mediapipe::autoit::solutions::objectron::Objectron::process](#mediapipeautoitsolutionsobjectronobjectronprocess)
+- [mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation](#mediapipeautoitsolutionsselfie_segmentationselfiesegmentation)
+  - [mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::get_create](#mediapipeautoitsolutionsselfie_segmentationselfiesegmentationget_create)
+  - [mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::process](#mediapipeautoitsolutionsselfie_segmentationselfiesegmentationprocess)
 - [mediapipe::autoit::solution_base::SolutionBase](#mediapipeautoitsolution_basesolutionbase)
   - [mediapipe::autoit::solution_base::SolutionBase::get_create](#mediapipeautoitsolution_basesolutionbaseget_create)
   - [mediapipe::autoit::solution_base::SolutionBase::close](#mediapipeautoitsolution_basesolutionbaseclose)
@@ -4024,7 +4027,7 @@ AutoIt:
 
 ```cpp
 static mediapipe::autoit::solutions::face_detection::FaceDetection mediapipe::autoit::solutions::face_detection::FaceDetection::get_create( float min_detection_confidence = 0,
-                                                                                                                                            short model_selection = 0 );
+                                                                                                                                            BYTE  model_selection = 0 );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection.FaceDetection").create( [$min_detection_confidence[, $model_selection]] ) -> <mediapipe.autoit.solutions.face_detection.FaceDetection object>
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection.FaceDetection")( [$min_detection_confidence[, $model_selection]] ) -> <mediapipe.autoit.solutions.face_detection.FaceDetection object>
@@ -4326,6 +4329,26 @@ void mediapipe::autoit::solutions::objectron::Objectron::process( const cv::Mat&
                                                                   std::map<std::string, _variant_t>& solution_outputs );
 AutoIt:
     $oObjectron.process( $image[, $solution_outputs] ) -> $solution_outputs
+```
+
+## mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation
+
+### mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::get_create
+
+```cpp
+static mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::get_create( BYTE model_selection = 0 );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation").create( [$model_selection] ) -> <mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation")( [$model_selection] ) -> <mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation object>
+```
+
+### mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::process
+
+```cpp
+void mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::process( const cv::Mat&                     image,
+                                                                                     std::map<std::string, _variant_t>& solution_outputs );
+AutoIt:
+    $oSelfieSegmentation.process( $image[, $solution_outputs] ) -> $solution_outputs
 ```
 
 ## mediapipe::autoit::solution_base::SolutionBase

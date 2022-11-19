@@ -10,6 +10,9 @@
 #include "..\_assert.au3"
 #include "..\_mat_utils.au3"
 
+;~ Sources:
+;~     https://github.com/google/mediapipe/blob/v0.8.11/mediapipe/python/solutions/face_detection_test.py
+
 $_mediapipe_build_type = "Release"
 $_mediapipe_debug = 0
 $_cv_build_type = "Release"
@@ -68,34 +71,35 @@ Func test_face($id, $model_selection)
 	Local $cols = $image.cols
 
 	Local $faces = $mp_faces.FaceDetection(0.5, $model_selection)
-	Local $results, $location_data, $face_keypoints, $i
+	Local $results, $location_data, $i
+	Local $face_keypoints[6][2]
 
 	For $idx = 0 To 4
 		$results = $faces.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-		_annotate("test_face_" & $id, $image, $results, $idx)
+		_annotate("test_face_" & $id, $image.copy(), $results, $idx)
 		$location_data = $results("detections")[0].location_data
-		$face_keypoints = _OpenCV_ObjCreate("Mat").create($location_data.relative_keypoints.size(), 2, $CV_32SC1)
+		_AssertEqual($location_data.relative_keypoints.size(), 6)
 		$i = 0
 		For $keypoint In $location_data.relative_keypoints
-			$face_keypoints($i, 0) = $keypoint.x * $cols
-			$face_keypoints($i, 1) = $keypoint.y * $rows
+			$face_keypoints[$i][0] = $keypoint.x * $cols
+			$face_keypoints[$i][1] = $keypoint.y * $rows
 			$i = $i + 1
 		Next
 
-		Local $prediction_error = $cv.absdiff($face_keypoints, _
+		Local $prediction_error = $cv.absdiff(_OpenCV_ObjCreate("Mat").createFromArray($face_keypoints, $CV_32S), _
 				_OpenCV_ObjCreate("Mat").createFromArray( _
 				$model_selection == 0 ? $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS : $FULL_RANGE_EXPECTED_FACE_KEY_POINTS _
 				))
 
 		_AssertLen($results("detections"), 1)
-		_AssertEqual($location_data.relative_keypoints.size(), 6)
 		_AssertMatLess($prediction_error, $DIFF_THRESHOLD)
+
+		; $results = $cv.format(_OpenCV_ObjCreate("Mat").createFromArray($face_keypoints, $CV_32S))
+		; ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $results = ' & $results & @CRLF) ;### Debug Console
 	Next
 EndFunc   ;==>test_face
 
 Func _annotate($id, $frame, $results, $idx)
-	$frame = $frame.copy()
-
 	For $detection In $results("detections")
 		$mp_drawing.draw_detection($frame, $detection)
 	Next

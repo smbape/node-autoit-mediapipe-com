@@ -52,6 +52,9 @@ Func _AssertMatLess($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode =
 
 	If IsNumber($oMatA) Then $oMatA = Number($oMatA, $NUMBER_DOUBLE)
 	If IsNumber($oMatB) Then $oMatB = Number($oMatB, $NUMBER_DOUBLE)
+	If IsObj($oMatA) And IsObj($oMatB) And $oMatA.depth() <> $oMatB.depth() Then
+		$oMatA = $oMatA.convertTo($oMatB.depth())
+	EndIf
 
 	Local Const $cv = _OpenCV_get()
 	Local $diff = $cv.compare($oMatA, $oMatB, $CV_CMP_GE)

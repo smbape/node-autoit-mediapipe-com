@@ -410,7 +410,13 @@ class AutoItGenerator {
                 const bases = [
                     "public CComObjectRootEx<CComSingleThreadModel>",
                     `public CComCoClass<C${ cotype }, &CLSID_${ cotype }>`,
-                    `public IDispatchImpl<${ dispimpl }, &IID_I${ cotype }, &LIBID_${ LIBRARY }, /*wMajor =*/ ${ VERSION_MAJOR }, /*wMinor =*/ ${ VERSION_MINOR }>`,
+                    `public ATL::IDispatchImpl<
+                        ${ dispimpl.split("\n").join(`\n${ " ".repeat(24) }`) },
+                        &IID_I${ cotype },
+                        &LIBID_${ LIBRARY },
+                        /*wMajor =*/ ${ VERSION_MAJOR },
+                        /*wMinor =*/ ${ VERSION_MINOR }
+                    >`.replace(/^ {20}/mg, ""),
                 ];
 
                 if (is_idl_class) {
@@ -433,7 +439,7 @@ class AutoItGenerator {
 
                 coclass.iface.header = `
                     class ATL_NO_VTABLE C${ cotype } :
-                        ${ bases.join(`,\n${ " ".repeat(24) }`) }
+                        ${ bases.join(",\n").split("\n").join(`\n${ " ".repeat(24) }`) }
                     {
                     public:
                         C${ cotype }()
@@ -609,7 +615,10 @@ class AutoItGenerator {
         const _conversions = custom_conversions.map(fn => fn([], [], options));
 
         if (options.hdr !== false) {
-            files.set(sysPath.join(options.output, "generated_include.h"), `#pragma once\n\n${ generated_include.join("\n").trim().replace(/[^\S\n]+$/mg, "") }${ LF }`);
+            files.set(
+                sysPath.join(options.output, "generated_include.h"),
+                `#pragma once\n\n${ generated_include.join("\n").trim().replace(/[^\S\n]+$/mg, "") }${ LF }`
+            );
 
             const bridge_header = [
                 `
@@ -658,6 +667,7 @@ class AutoItGenerator {
                 }).join("\n").split("\n").join(`\n${ " ".repeat(16) }`) }
 
                 `.replace(/^ {16}/mg, ""),
+
                 conversion.number.declare("char", "CHAR", options), "",
                 conversion.number.declare("unsigned char", "BYTE", options), "",
                 conversion.number.declare("short", "SHORT", options), "",
@@ -672,18 +682,30 @@ class AutoItGenerator {
                 conversion.number.declare("size_t", "ULONGLONG", options), "",
             ];
 
-            _conversions.forEach(cvt => {
-                bridge_header.push(cvt[0], "");
+            _conversions.forEach(([header]) => {
+                const text = header.trim();
+                if (text.length !== 0) {
+                    bridge_header.push(text, "");
+                }
             });
 
             bridge_header.push("");
 
             files.set(sysPath.join(options.output, "autoit_bridge_generated.h"), bridge_header.join("\n").trim().replace(/[^\S\n]+$/mg, "") + LF);
+
+            const pch_header = [
+                "#pragma once\n",
+                "#include \"autoit_bridge.h\"\n",
+            ];
+            pch_header.push(...Array.from(this.classes.entries()).map(([, coclass]) => {
+                return `#include "${ coclass.getClassName() }.h"`;
+            }).sort());
+
+            files.set(sysPath.join(options.output, "autoit_bridge_generated_pch.h"), pch_header.join("\n").trim().replace(/[^\S\n]+$/mg, "") + LF);
         }
 
         const bridge_impl = [
-            "#pragma once\n",
-            "#include \"autoit_bridge.h\"\n",
+            "#include \"autoit_bridge.h\"", "",
             conversion.number.define("char", "CHAR", options), "",
             conversion.number.define("unsigned char", "BYTE", options), "",
             conversion.number.define("short", "SHORT", options), "",
@@ -699,8 +721,11 @@ class AutoItGenerator {
             ""
         ];
 
-        _conversions.forEach(cvt => {
-            bridge_impl.push(cvt[1], "");
+        _conversions.forEach(([, impl]) => {
+            const text = impl.trim();
+            if (text.length !== 0) {
+                bridge_impl.push(text, "");
+            }
         });
 
         bridge_impl.push("");
@@ -1071,6 +1096,10 @@ class AutoItGenerator {
 
             this.derives.get(parent).add(fqn);
         }
+
+        if (typeof options.onClass === "function") {
+            options.onClass(this, coclass, options);
+        }
     }
 
     add_enum(decl, options = {}) {
@@ -1334,7 +1363,14 @@ class AutoItGenerator {
         const type_ = type;
         type = PropertyDeclaration.restoreOriginalType(removeNamespaces(type, options), options);
 
-        if (type === "IUnknown*" || type === "IEnumVARIANT*" || type === "IDispatch*" || type === "VARIANT*" || type === "VARIANT" || type === "_variant_t") {
+        if (
+            type === "IUnknown*" ||
+            type === "IEnumVARIANT*" ||
+            type === "IDispatch*" ||
+            type === "VARIANT*" ||
+            type === "VARIANT" ||
+            type === "_variant_t"
+        ) {
             return type;
         }
 
@@ -1457,9 +1493,20 @@ class AutoItGenerator {
     as_stl_enum(coclass, iterator) {
         const {fqn} = coclass;
         const cotype = coclass.getClassName();
-        const _Copy = `::autoit::GenericCopy<${ iterator }>`;
-        const _CComEnum = `CComEnumOnSTL<IEnumVARIANT, &IID_IEnumVARIANT, VARIANT, ${ _Copy }, ${ fqn }>`;
-        const ICollection = `ATL::IAutoItCollectionEnumOnSTLImpl<I${ cotype }, ${ fqn }, ${ _CComEnum }, AutoItObject<${ fqn }>>`;
+        const ICollection = `
+            ATL::IAutoItCollectionEnumOnSTLImpl<
+                I${ cotype },
+                ${ fqn },
+                ATL::CComEnumOnSTL<
+                    IEnumVARIANT,
+                    &IID_IEnumVARIANT,
+                    VARIANT,
+                    ::autoit::GenericCopy<${ iterator }>,
+                    ${ fqn }
+                >,
+                AutoItObject<${ fqn }>
+            >
+            `.trim().replace(/^ {12}/mg, "");
 
         coclass.dispimpl = ICollection;
 

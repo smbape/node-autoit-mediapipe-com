@@ -10,6 +10,9 @@
 #include "_assert.au3"
 #include "_mat_utils.au3"
 
+;~ Sources:
+;~     https://github.com/google/mediapipe/blob/v0.8.11/mediapipe/python/solution_base_test.py
+
 $_mediapipe_build_type = "Release"
 $_mediapipe_debug = 0
 $_cv_build_type = "Release"
@@ -27,8 +30,8 @@ _AssertTrue(IsObj($calculator_pb2), "Failed to load mediapipe.framework.calculat
 Global $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
 _AssertTrue(IsObj($detection_pb2), "Failed to load mediapipe.framework.formats.detection_pb2")
 
-Global $solution_base = _Mediapipe_ObjCreate("mediapipe.framework.solution_base")
-_AssertTrue(IsObj($solution_base), "Failed to load mediapipe.framework.solution_base")
+Global $solution_base = _Mediapipe_ObjCreate("mediapipe.autoit.solution_base")
+_AssertTrue(IsObj($solution_base), "Failed to load mediapipe.autoit.solution_base")
 
 Global Const $CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG = "" & @CRLF & _
 		"  input_stream: 'image_in'" & @CRLF & _

@@ -27,12 +27,10 @@ namespace mediapipe {
 				public:
 					CV_WRAP FaceDetection(
 						float min_detection_confidence = 0,
-						short model_selection = 0
+						BYTE model_selection = 0
 					);
 
 					CV_WRAP void process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
-				private:
-					static const std::string& GetModelPath(short model_selection);
 				};
 			}
 		}

@@ -240,13 +240,16 @@ Object.assign(exports, {
                             // Nothing to do
                         } else if (${ dispatchConditions.join(" && ") }) {
                             auto obj = ${ dynamicCast };
-                            if (!obj) {
-                                printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
-                                return E_INVALIDARG;
+                            if (obj) {
+                                ${ pointer }.reset(obj->create${ arrtype }());
+                                ${ set_from_pointer } = true;
+                            } else {
+                                hr = autoit_to(${ in_val }, ${ placeholder_name });
+                                if (FAILED(hr)) {
+                                    printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
+                                    return hr;
+                                }
                             }
-
-                            ${ pointer }.reset(obj->create${ arrtype }());
-                            ${ set_from_pointer } = true;
                         }`.replace(/^ {24}/mg, "");
 
                     // do not take numbers as Array because
