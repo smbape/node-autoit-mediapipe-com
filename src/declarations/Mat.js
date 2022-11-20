@@ -129,6 +129,10 @@ const declarations = [
     ], "", ""],
 
     ["cv.Mat.size", "tuple_int_and_int", ["/Output=std::tuple<int, int>(__self->get()->cols, __self->get()->rows)"], [], "", ""],
+    ["cv.Mat.shape", "std::tuple<int, int, int>", [
+        "/Output=std::tuple<int, int, int>(__self->get()->rows, __self->get()->cols, __self->get()->channels())"
+    ], [], "", ""],
+
     ["cv.Mat.pop_back", "void", [], [
         ["size_t", "value", "", []]
     ], "", ""],

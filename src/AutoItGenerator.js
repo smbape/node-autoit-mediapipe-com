@@ -549,7 +549,13 @@ class AutoItGenerator {
                 : [];
 
             const idl_deps = dependencies.filter(dependency => !dependency.noidl).map(dependency => {
-                return `import "${ dependency.iface.filename }";\ncpp_quote("#include \\"${ dependency.iface.filename.replace(".idl", ".h") }\\"")`;
+                const { filename, hdr_id: _hdr_id } = dependency.iface;
+                return [
+                    `#ifndef ${ _hdr_id }IDL_FILE_`,
+                    `import "${ filename }";`,
+                    `cpp_quote("#include \\"${ filename.replace(".idl", ".h") }\\"")`,
+                    "#endif\n"
+                ].join("\n");
             });
 
             if (dependencies.length !== 0) {
@@ -568,7 +574,7 @@ class AutoItGenerator {
                 import "ocidl.idl";
                 #endif
 
-                ${ idl_deps.join(`\n${ " ".repeat(16) }`) }
+                ${ idl_deps.join(`\n${ " ".repeat(16) }`).trim() }
 
                 ${ iface.definition.trim().split("\n").join(`\n${ " ".repeat(16) }`) }
                 #endif //  ${ hdr_id }IDL_FILE_
@@ -960,7 +966,7 @@ class AutoItGenerator {
                     const dirname = sysPath.dirname(filename);
                     const basename = sysPath.basename(filename, ".idl");
 
-                    const child = spawn("midl.exe", options.includes.map(path => `/I${ path }`).concat([
+                    const argv = options.includes.map(path => `/I${ path }`).concat([
                         `/I${ dirname }`,
                         "/W1", "/nologo",
                         "/char", "signed",
@@ -969,10 +975,14 @@ class AutoItGenerator {
                         "/iid", `${ basename }_i.c`,
                         "/proxy", `${ basename }_p.c`,
                         "/tlb", `${ basename }.tlb`,
-                        "/target", "NT60",
+                        "/target", "NT100",
                         `/out${ dirname }`,
                         filename
-                    ]));
+                    ]);
+
+                    console.log("midl.exe", argv.map(arg => arg.includes(" ") ? `"${ arg }"` : arg).join(" "));
+
+                    const child = spawn("midl.exe", argv);
 
                     const stdout = [];
                     let nout = 0;

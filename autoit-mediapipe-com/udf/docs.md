@@ -257,6 +257,7 @@
   - [cv::Mat::row](#cvmatrow)
   - [cv::Mat::rowRange](#cvmatrowrange)
   - [cv::Mat::set_at](#cvmatset_at)
+  - [cv::Mat::shape](#cvmatshape)
   - [cv::Mat::size](#cvmatsize)
   - [cv::Mat::step1](#cvmatstep1)
   - [cv::Mat::t](#cvmatt)
@@ -3141,10 +3142,10 @@ AutoIt:
 ### NamedParameters::get_Item
 
 ```cpp
-_variant_t NamedParameters::get_Item( std::string vKey );
+_variant_t NamedParameters::get_Item( std::string key );
 AutoIt:
-    $oNamedParameters.Item( $vKey ) -> retval
-    $oNamedParameters( $vKey ) -> retval
+    $oNamedParameters.Item( $key ) -> retval
+    $oNamedParameters( $key ) -> retval
 ```
 
 ### NamedParameters::get__NewEnum
@@ -3182,10 +3183,10 @@ AutoIt:
 ### NamedParameters::put_Item
 
 ```cpp
-void NamedParameters::put_Item( std::string vKey,
-                                _variant_t  vItem );
+void NamedParameters::put_Item( std::string key,
+                                _variant_t  item );
 AutoIt:
-    $oNamedParameters.Item( $vKey ) = $vItem
+    $oNamedParameters.Item( $key ) = $item
 ```
 
 ### NamedParameters::size
@@ -4326,10 +4327,10 @@ AutoIt:
 ### VectorOfObjectron_ObjectronOutputs::get_Item
 
 ```cpp
-mediapipe::autoit::solutions::objectron::ObjectronOutputs VectorOfObjectron_ObjectronOutputs::get_Item( size_t vIndex );
+mediapipe::autoit::solutions::objectron::ObjectronOutputs VectorOfObjectron_ObjectronOutputs::get_Item( size_t index );
 AutoIt:
-    $oVectorOfObjectron_ObjectronOutputs.Item( $vIndex ) -> retval
-    $oVectorOfObjectron_ObjectronOutputs( $vIndex ) -> retval
+    $oVectorOfObjectron_ObjectronOutputs.Item( $index ) -> retval
+    $oVectorOfObjectron_ObjectronOutputs( $index ) -> retval
 ```
 
 ### VectorOfObjectron_ObjectronOutputs::get__NewEnum
@@ -4367,10 +4368,10 @@ AutoIt:
 ### VectorOfObjectron_ObjectronOutputs::put_Item
 
 ```cpp
-void VectorOfObjectron_ObjectronOutputs::put_Item( size_t                                                    vIndex,
-                                                   mediapipe::autoit::solutions::objectron::ObjectronOutputs vItem );
+void VectorOfObjectron_ObjectronOutputs::put_Item( size_t                                                    index,
+                                                   mediapipe::autoit::solutions::objectron::ObjectronOutputs item );
 AutoIt:
-    $oVectorOfObjectron_ObjectronOutputs.Item( $vIndex ) = $vItem
+    $oVectorOfObjectron_ObjectronOutputs.Item( $index ) = $item
 ```
 
 ### VectorOfObjectron_ObjectronOutputs::size
@@ -5422,6 +5423,14 @@ void cv::Mat::set_at( std::tuple<int, int> pt,
                       double               value );
 AutoIt:
     $oMat.set_at( $pt, $value ) -> None
+```
+
+### cv::Mat::shape
+
+```cpp
+std::tuple<int, int, int> cv::Mat::shape();
+AutoIt:
+    $oMat.shape() -> retval
 ```
 
 ### cv::Mat::size
@@ -18951,10 +18960,10 @@ AutoIt:
 ### VectorOfString::get_Item
 
 ```cpp
-std::string VectorOfString::get_Item( size_t vIndex );
+std::string VectorOfString::get_Item( size_t index );
 AutoIt:
-    $oVectorOfString.Item( $vIndex ) -> retval
-    $oVectorOfString( $vIndex ) -> retval
+    $oVectorOfString.Item( $index ) -> retval
+    $oVectorOfString( $index ) -> retval
 ```
 
 ### VectorOfString::get__NewEnum
@@ -18992,10 +19001,10 @@ AutoIt:
 ### VectorOfString::put_Item
 
 ```cpp
-void VectorOfString::put_Item( size_t      vIndex,
-                               std::string vItem );
+void VectorOfString::put_Item( size_t      index,
+                               std::string item );
 AutoIt:
-    $oVectorOfString.Item( $vIndex ) = $vItem
+    $oVectorOfString.Item( $index ) = $item
 ```
 
 ### VectorOfString::size
@@ -19147,10 +19156,10 @@ AutoIt:
 ### VectorOfVariant::get_Item
 
 ```cpp
-_variant_t VectorOfVariant::get_Item( size_t vIndex );
+_variant_t VectorOfVariant::get_Item( size_t index );
 AutoIt:
-    $oVectorOfVariant.Item( $vIndex ) -> retval
-    $oVectorOfVariant( $vIndex ) -> retval
+    $oVectorOfVariant.Item( $index ) -> retval
+    $oVectorOfVariant( $index ) -> retval
 ```
 
 ### VectorOfVariant::get__NewEnum
@@ -19188,10 +19197,10 @@ AutoIt:
 ### VectorOfVariant::put_Item
 
 ```cpp
-void VectorOfVariant::put_Item( size_t     vIndex,
-                                _variant_t vItem );
+void VectorOfVariant::put_Item( size_t     index,
+                                _variant_t item );
 AutoIt:
-    $oVectorOfVariant.Item( $vIndex ) = $vItem
+    $oVectorOfVariant.Item( $index ) = $item
 ```
 
 ### VectorOfVariant::size
@@ -19343,10 +19352,10 @@ AutoIt:
 ### VectorOfBool::get_Item
 
 ```cpp
-bool VectorOfBool::get_Item( size_t vIndex );
+bool VectorOfBool::get_Item( size_t index );
 AutoIt:
-    $oVectorOfBool.Item( $vIndex ) -> retval
-    $oVectorOfBool( $vIndex ) -> retval
+    $oVectorOfBool.Item( $index ) -> retval
+    $oVectorOfBool( $index ) -> retval
 ```
 
 ### VectorOfBool::get__NewEnum
@@ -19384,10 +19393,10 @@ AutoIt:
 ### VectorOfBool::put_Item
 
 ```cpp
-void VectorOfBool::put_Item( size_t vIndex,
-                             bool   vItem );
+void VectorOfBool::put_Item( size_t index,
+                             bool   item );
 AutoIt:
-    $oVectorOfBool.Item( $vIndex ) = $vItem
+    $oVectorOfBool.Item( $index ) = $item
 ```
 
 ### VectorOfBool::size
@@ -19539,10 +19548,10 @@ AutoIt:
 ### VectorOfFloat::get_Item
 
 ```cpp
-float VectorOfFloat::get_Item( size_t vIndex );
+float VectorOfFloat::get_Item( size_t index );
 AutoIt:
-    $oVectorOfFloat.Item( $vIndex ) -> retval
-    $oVectorOfFloat( $vIndex ) -> retval
+    $oVectorOfFloat.Item( $index ) -> retval
+    $oVectorOfFloat( $index ) -> retval
 ```
 
 ### VectorOfFloat::get__NewEnum
@@ -19580,10 +19589,10 @@ AutoIt:
 ### VectorOfFloat::put_Item
 
 ```cpp
-void VectorOfFloat::put_Item( size_t vIndex,
-                              float  vItem );
+void VectorOfFloat::put_Item( size_t index,
+                              float  item );
 AutoIt:
-    $oVectorOfFloat.Item( $vIndex ) = $vItem
+    $oVectorOfFloat.Item( $index ) = $item
 ```
 
 ### VectorOfFloat::size
@@ -19735,10 +19744,10 @@ AutoIt:
 ### VectorOfImage::get_Item
 
 ```cpp
-mediapipe::Image VectorOfImage::get_Item( size_t vIndex );
+mediapipe::Image VectorOfImage::get_Item( size_t index );
 AutoIt:
-    $oVectorOfImage.Item( $vIndex ) -> retval
-    $oVectorOfImage( $vIndex ) -> retval
+    $oVectorOfImage.Item( $index ) -> retval
+    $oVectorOfImage( $index ) -> retval
 ```
 
 ### VectorOfImage::get__NewEnum
@@ -19776,10 +19785,10 @@ AutoIt:
 ### VectorOfImage::put_Item
 
 ```cpp
-void VectorOfImage::put_Item( size_t           vIndex,
-                              mediapipe::Image vItem );
+void VectorOfImage::put_Item( size_t           index,
+                              mediapipe::Image item );
 AutoIt:
-    $oVectorOfImage.Item( $vIndex ) = $vItem
+    $oVectorOfImage.Item( $index ) = $item
 ```
 
 ### VectorOfImage::size
@@ -19931,10 +19940,10 @@ AutoIt:
 ### VectorOfInt::get_Item
 
 ```cpp
-int VectorOfInt::get_Item( size_t vIndex );
+int VectorOfInt::get_Item( size_t index );
 AutoIt:
-    $oVectorOfInt.Item( $vIndex ) -> retval
-    $oVectorOfInt( $vIndex ) -> retval
+    $oVectorOfInt.Item( $index ) -> retval
+    $oVectorOfInt( $index ) -> retval
 ```
 
 ### VectorOfInt::get__NewEnum
@@ -19972,10 +19981,10 @@ AutoIt:
 ### VectorOfInt::put_Item
 
 ```cpp
-void VectorOfInt::put_Item( size_t vIndex,
-                            int    vItem );
+void VectorOfInt::put_Item( size_t index,
+                            int    item );
 AutoIt:
-    $oVectorOfInt.Item( $vIndex ) = $vItem
+    $oVectorOfInt.Item( $index ) = $item
 ```
 
 ### VectorOfInt::size
@@ -20127,10 +20136,10 @@ AutoIt:
 ### VectorOfPacket::get_Item
 
 ```cpp
-mediapipe::Packet VectorOfPacket::get_Item( size_t vIndex );
+mediapipe::Packet VectorOfPacket::get_Item( size_t index );
 AutoIt:
-    $oVectorOfPacket.Item( $vIndex ) -> retval
-    $oVectorOfPacket( $vIndex ) -> retval
+    $oVectorOfPacket.Item( $index ) -> retval
+    $oVectorOfPacket( $index ) -> retval
 ```
 
 ### VectorOfPacket::get__NewEnum
@@ -20168,10 +20177,10 @@ AutoIt:
 ### VectorOfPacket::put_Item
 
 ```cpp
-void VectorOfPacket::put_Item( size_t            vIndex,
-                               mediapipe::Packet vItem );
+void VectorOfPacket::put_Item( size_t            index,
+                               mediapipe::Packet item );
 AutoIt:
-    $oVectorOfPacket.Item( $vIndex ) = $vItem
+    $oVectorOfPacket.Item( $index ) = $item
 ```
 
 ### VectorOfPacket::size
@@ -20319,10 +20328,10 @@ AutoIt:
 ### MapOfStringAndPacket::get_Item
 
 ```cpp
-mediapipe::Packet MapOfStringAndPacket::get_Item( std::string vKey );
+mediapipe::Packet MapOfStringAndPacket::get_Item( std::string key );
 AutoIt:
-    $oMapOfStringAndPacket.Item( $vKey ) -> retval
-    $oMapOfStringAndPacket( $vKey ) -> retval
+    $oMapOfStringAndPacket.Item( $key ) -> retval
+    $oMapOfStringAndPacket( $key ) -> retval
 ```
 
 ### MapOfStringAndPacket::get__NewEnum
@@ -20360,10 +20369,10 @@ AutoIt:
 ### MapOfStringAndPacket::put_Item
 
 ```cpp
-void MapOfStringAndPacket::put_Item( std::string       vKey,
-                                     mediapipe::Packet vItem );
+void MapOfStringAndPacket::put_Item( std::string       key,
+                                     mediapipe::Packet item );
 AutoIt:
-    $oMapOfStringAndPacket.Item( $vKey ) = $vItem
+    $oMapOfStringAndPacket.Item( $key ) = $item
 ```
 
 ### MapOfStringAndPacket::size
@@ -20478,10 +20487,10 @@ AutoIt:
 ### VectorOfPairOfStringAndPacket::get_Item
 
 ```cpp
-std::pair<std::string, mediapipe::Packet> VectorOfPairOfStringAndPacket::get_Item( size_t vIndex );
+std::pair<std::string, mediapipe::Packet> VectorOfPairOfStringAndPacket::get_Item( size_t index );
 AutoIt:
-    $oVectorOfPairOfStringAndPacket.Item( $vIndex ) -> retval
-    $oVectorOfPairOfStringAndPacket( $vIndex ) -> retval
+    $oVectorOfPairOfStringAndPacket.Item( $index ) -> retval
+    $oVectorOfPairOfStringAndPacket( $index ) -> retval
 ```
 
 ### VectorOfPairOfStringAndPacket::get__NewEnum
@@ -20519,10 +20528,10 @@ AutoIt:
 ### VectorOfPairOfStringAndPacket::put_Item
 
 ```cpp
-void VectorOfPairOfStringAndPacket::put_Item( size_t                                    vIndex,
-                                              std::pair<std::string, mediapipe::Packet> vItem );
+void VectorOfPairOfStringAndPacket::put_Item( size_t                                    index,
+                                              std::pair<std::string, mediapipe::Packet> item );
 AutoIt:
-    $oVectorOfPairOfStringAndPacket.Item( $vIndex ) = $vItem
+    $oVectorOfPairOfStringAndPacket.Item( $index ) = $item
 ```
 
 ### VectorOfPairOfStringAndPacket::size
@@ -20674,10 +20683,10 @@ AutoIt:
 ### VectorOfInt64::get_Item
 
 ```cpp
-int64 VectorOfInt64::get_Item( size_t vIndex );
+int64 VectorOfInt64::get_Item( size_t index );
 AutoIt:
-    $oVectorOfInt64.Item( $vIndex ) -> retval
-    $oVectorOfInt64( $vIndex ) -> retval
+    $oVectorOfInt64.Item( $index ) -> retval
+    $oVectorOfInt64( $index ) -> retval
 ```
 
 ### VectorOfInt64::get__NewEnum
@@ -20715,10 +20724,10 @@ AutoIt:
 ### VectorOfInt64::put_Item
 
 ```cpp
-void VectorOfInt64::put_Item( size_t vIndex,
-                              int64  vItem );
+void VectorOfInt64::put_Item( size_t index,
+                              int64  item );
 AutoIt:
-    $oVectorOfInt64.Item( $vIndex ) = $vItem
+    $oVectorOfInt64.Item( $index ) = $item
 ```
 
 ### VectorOfInt64::size
@@ -20870,10 +20879,10 @@ AutoIt:
 ### VectorOfShared_ptrMessage::get_Item
 
 ```cpp
-std::shared_ptr<google::protobuf::Message> VectorOfShared_ptrMessage::get_Item( size_t vIndex );
+std::shared_ptr<google::protobuf::Message> VectorOfShared_ptrMessage::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrMessage.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrMessage( $vIndex ) -> retval
+    $oVectorOfShared_ptrMessage.Item( $index ) -> retval
+    $oVectorOfShared_ptrMessage( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrMessage::get__NewEnum
@@ -20911,10 +20920,10 @@ AutoIt:
 ### VectorOfShared_ptrMessage::put_Item
 
 ```cpp
-void VectorOfShared_ptrMessage::put_Item( size_t                                     vIndex,
-                                          std::shared_ptr<google::protobuf::Message> vItem );
+void VectorOfShared_ptrMessage::put_Item( size_t                                     index,
+                                          std::shared_ptr<google::protobuf::Message> item );
 AutoIt:
-    $oVectorOfShared_ptrMessage.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrMessage.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrMessage::size
@@ -21062,10 +21071,10 @@ AutoIt:
 ### MapOfIntAndDrawing_utils_DrawingSpec::get_Item
 
 ```cpp
-mediapipe::autoit::solutions::drawing_utils::DrawingSpec MapOfIntAndDrawing_utils_DrawingSpec::get_Item( int vKey );
+mediapipe::autoit::solutions::drawing_utils::DrawingSpec MapOfIntAndDrawing_utils_DrawingSpec::get_Item( int key );
 AutoIt:
-    $oMapOfIntAndDrawing_utils_DrawingSpec.Item( $vKey ) -> retval
-    $oMapOfIntAndDrawing_utils_DrawingSpec( $vKey ) -> retval
+    $oMapOfIntAndDrawing_utils_DrawingSpec.Item( $key ) -> retval
+    $oMapOfIntAndDrawing_utils_DrawingSpec( $key ) -> retval
 ```
 
 ### MapOfIntAndDrawing_utils_DrawingSpec::get__NewEnum
@@ -21103,10 +21112,10 @@ AutoIt:
 ### MapOfIntAndDrawing_utils_DrawingSpec::put_Item
 
 ```cpp
-void MapOfIntAndDrawing_utils_DrawingSpec::put_Item( int                                                      vKey,
-                                                     mediapipe::autoit::solutions::drawing_utils::DrawingSpec vItem );
+void MapOfIntAndDrawing_utils_DrawingSpec::put_Item( int                                                      key,
+                                                     mediapipe::autoit::solutions::drawing_utils::DrawingSpec item );
 AutoIt:
-    $oMapOfIntAndDrawing_utils_DrawingSpec.Item( $vKey ) = $vItem
+    $oMapOfIntAndDrawing_utils_DrawingSpec.Item( $key ) = $item
 ```
 
 ### MapOfIntAndDrawing_utils_DrawingSpec::size
@@ -21221,10 +21230,10 @@ AutoIt:
 ### VectorOfPairOfIntAndDrawing_utils_DrawingSpec::get_Item
 
 ```cpp
-std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfPairOfIntAndDrawing_utils_DrawingSpec::get_Item( size_t vIndex );
+std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfPairOfIntAndDrawing_utils_DrawingSpec::get_Item( size_t index );
 AutoIt:
-    $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.Item( $vIndex ) -> retval
-    $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec( $vIndex ) -> retval
+    $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.Item( $index ) -> retval
+    $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec( $index ) -> retval
 ```
 
 ### VectorOfPairOfIntAndDrawing_utils_DrawingSpec::get__NewEnum
@@ -21262,10 +21271,10 @@ AutoIt:
 ### VectorOfPairOfIntAndDrawing_utils_DrawingSpec::put_Item
 
 ```cpp
-void VectorOfPairOfIntAndDrawing_utils_DrawingSpec::put_Item( size_t                                                                   vIndex,
-                                                              std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> vItem );
+void VectorOfPairOfIntAndDrawing_utils_DrawingSpec::put_Item( size_t                                                                   index,
+                                                              std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> item );
 AutoIt:
-    $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.Item( $vIndex ) = $vItem
+    $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.Item( $index ) = $item
 ```
 
 ### VectorOfPairOfIntAndDrawing_utils_DrawingSpec::size
@@ -21417,10 +21426,10 @@ AutoIt:
 ### VectorOfDrawing_utils_DrawingSpec::get_Item
 
 ```cpp
-mediapipe::autoit::solutions::drawing_utils::DrawingSpec VectorOfDrawing_utils_DrawingSpec::get_Item( size_t vIndex );
+mediapipe::autoit::solutions::drawing_utils::DrawingSpec VectorOfDrawing_utils_DrawingSpec::get_Item( size_t index );
 AutoIt:
-    $oVectorOfDrawing_utils_DrawingSpec.Item( $vIndex ) -> retval
-    $oVectorOfDrawing_utils_DrawingSpec( $vIndex ) -> retval
+    $oVectorOfDrawing_utils_DrawingSpec.Item( $index ) -> retval
+    $oVectorOfDrawing_utils_DrawingSpec( $index ) -> retval
 ```
 
 ### VectorOfDrawing_utils_DrawingSpec::get__NewEnum
@@ -21458,10 +21467,10 @@ AutoIt:
 ### VectorOfDrawing_utils_DrawingSpec::put_Item
 
 ```cpp
-void VectorOfDrawing_utils_DrawingSpec::put_Item( size_t                                                   vIndex,
-                                                  mediapipe::autoit::solutions::drawing_utils::DrawingSpec vItem );
+void VectorOfDrawing_utils_DrawingSpec::put_Item( size_t                                                   index,
+                                                  mediapipe::autoit::solutions::drawing_utils::DrawingSpec item );
 AutoIt:
-    $oVectorOfDrawing_utils_DrawingSpec.Item( $vIndex ) = $vItem
+    $oVectorOfDrawing_utils_DrawingSpec.Item( $index ) = $item
 ```
 
 ### VectorOfDrawing_utils_DrawingSpec::size
@@ -21609,10 +21618,10 @@ AutoIt:
 ### MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::get_Item
 
 ```cpp
-std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::get_Item( int vKey );
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::get_Item( int key );
 AutoIt:
-    $oMapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Item( $vKey ) -> retval
-    $oMapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec( $vKey ) -> retval
+    $oMapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Item( $key ) -> retval
+    $oMapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec( $key ) -> retval
 ```
 
 ### MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::get__NewEnum
@@ -21650,10 +21659,10 @@ AutoIt:
 ### MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::put_Item
 
 ```cpp
-void MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::put_Item( int                                                                     vKey,
-                                                                std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> vItem );
+void MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::put_Item( int                                                                     key,
+                                                                std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> item );
 AutoIt:
-    $oMapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Item( $vKey ) = $vItem
+    $oMapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Item( $key ) = $item
 ```
 
 ### MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::size
@@ -21768,10 +21777,10 @@ AutoIt:
 ### VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::get_Item
 
 ```cpp
-std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::get_Item( size_t vIndex );
+std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::get_Item( size_t index );
 AutoIt:
-    $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Item( $vIndex ) -> retval
-    $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec( $vIndex ) -> retval
+    $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Item( $index ) -> retval
+    $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec( $index ) -> retval
 ```
 
 ### VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::get__NewEnum
@@ -21809,10 +21818,10 @@ AutoIt:
 ### VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::put_Item
 
 ```cpp
-void VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::put_Item( size_t                                                                                  vIndex,
-                                                                         std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> vItem );
+void VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::put_Item( size_t                                                                                  index,
+                                                                         std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> item );
 AutoIt:
-    $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Item( $vIndex ) = $vItem
+    $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Item( $index ) = $item
 ```
 
 ### VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::size
@@ -21964,10 +21973,10 @@ AutoIt:
 ### VectorOfMapOfIntAndDrawing_utils_DrawingSpec::get_Item
 
 ```cpp
-std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfMapOfIntAndDrawing_utils_DrawingSpec::get_Item( size_t vIndex );
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfMapOfIntAndDrawing_utils_DrawingSpec::get_Item( size_t index );
 AutoIt:
-    $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.Item( $vIndex ) -> retval
-    $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec( $vIndex ) -> retval
+    $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.Item( $index ) -> retval
+    $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec( $index ) -> retval
 ```
 
 ### VectorOfMapOfIntAndDrawing_utils_DrawingSpec::get__NewEnum
@@ -22005,10 +22014,10 @@ AutoIt:
 ### VectorOfMapOfIntAndDrawing_utils_DrawingSpec::put_Item
 
 ```cpp
-void VectorOfMapOfIntAndDrawing_utils_DrawingSpec::put_Item( size_t                                                                  vIndex,
-                                                             std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> vItem );
+void VectorOfMapOfIntAndDrawing_utils_DrawingSpec::put_Item( size_t                                                                  index,
+                                                             std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> item );
 AutoIt:
-    $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.Item( $vIndex ) = $vItem
+    $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.Item( $index ) = $item
 ```
 
 ### VectorOfMapOfIntAndDrawing_utils_DrawingSpec::size
@@ -22160,10 +22169,10 @@ AutoIt:
 ### VectorOfTupleIntAndInt::get_Item
 
 ```cpp
-std::tuple<int, int> VectorOfTupleIntAndInt::get_Item( size_t vIndex );
+std::tuple<int, int> VectorOfTupleIntAndInt::get_Item( size_t index );
 AutoIt:
-    $oVectorOfTupleIntAndInt.Item( $vIndex ) -> retval
-    $oVectorOfTupleIntAndInt( $vIndex ) -> retval
+    $oVectorOfTupleIntAndInt.Item( $index ) -> retval
+    $oVectorOfTupleIntAndInt( $index ) -> retval
 ```
 
 ### VectorOfTupleIntAndInt::get__NewEnum
@@ -22201,10 +22210,10 @@ AutoIt:
 ### VectorOfTupleIntAndInt::put_Item
 
 ```cpp
-void VectorOfTupleIntAndInt::put_Item( size_t               vIndex,
-                                       std::tuple<int, int> vItem );
+void VectorOfTupleIntAndInt::put_Item( size_t               index,
+                                       std::tuple<int, int> item );
 AutoIt:
-    $oVectorOfTupleIntAndInt.Item( $vIndex ) = $vItem
+    $oVectorOfTupleIntAndInt.Item( $index ) = $item
 ```
 
 ### VectorOfTupleIntAndInt::size
@@ -22356,10 +22365,10 @@ AutoIt:
 ### VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::get_Item
 
 ```cpp
-std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark> VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::get_Item( size_t vIndex );
+std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark> VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::get_Item( size_t index );
 AutoIt:
-    $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.Item( $vIndex ) -> retval
-    $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark( $vIndex ) -> retval
+    $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.Item( $index ) -> retval
+    $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark( $index ) -> retval
 ```
 
 ### VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::get__NewEnum
@@ -22397,10 +22406,10 @@ AutoIt:
 ### VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::put_Item
 
 ```cpp
-void VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::put_Item( size_t                                                                                                                 vIndex,
-                                                                           std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark> vItem );
+void VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::put_Item( size_t                                                                                                                 index,
+                                                                           std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark> item );
 AutoIt:
-    $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.Item( $vIndex ) = $vItem
+    $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.Item( $index ) = $item
 ```
 
 ### VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::size
@@ -22548,10 +22557,10 @@ AutoIt:
 ### MapOfStringAndPacketDataType::get_Item
 
 ```cpp
-mediapipe::autoit::solution_base::PacketDataType MapOfStringAndPacketDataType::get_Item( std::string vKey );
+mediapipe::autoit::solution_base::PacketDataType MapOfStringAndPacketDataType::get_Item( std::string key );
 AutoIt:
-    $oMapOfStringAndPacketDataType.Item( $vKey ) -> retval
-    $oMapOfStringAndPacketDataType( $vKey ) -> retval
+    $oMapOfStringAndPacketDataType.Item( $key ) -> retval
+    $oMapOfStringAndPacketDataType( $key ) -> retval
 ```
 
 ### MapOfStringAndPacketDataType::get__NewEnum
@@ -22589,10 +22598,10 @@ AutoIt:
 ### MapOfStringAndPacketDataType::put_Item
 
 ```cpp
-void MapOfStringAndPacketDataType::put_Item( std::string                                      vKey,
-                                             mediapipe::autoit::solution_base::PacketDataType vItem );
+void MapOfStringAndPacketDataType::put_Item( std::string                                      key,
+                                             mediapipe::autoit::solution_base::PacketDataType item );
 AutoIt:
-    $oMapOfStringAndPacketDataType.Item( $vKey ) = $vItem
+    $oMapOfStringAndPacketDataType.Item( $key ) = $item
 ```
 
 ### MapOfStringAndPacketDataType::size
@@ -22707,10 +22716,10 @@ AutoIt:
 ### VectorOfPairOfStringAndPacketDataType::get_Item
 
 ```cpp
-std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> VectorOfPairOfStringAndPacketDataType::get_Item( size_t vIndex );
+std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> VectorOfPairOfStringAndPacketDataType::get_Item( size_t index );
 AutoIt:
-    $oVectorOfPairOfStringAndPacketDataType.Item( $vIndex ) -> retval
-    $oVectorOfPairOfStringAndPacketDataType( $vIndex ) -> retval
+    $oVectorOfPairOfStringAndPacketDataType.Item( $index ) -> retval
+    $oVectorOfPairOfStringAndPacketDataType( $index ) -> retval
 ```
 
 ### VectorOfPairOfStringAndPacketDataType::get__NewEnum
@@ -22748,10 +22757,10 @@ AutoIt:
 ### VectorOfPairOfStringAndPacketDataType::put_Item
 
 ```cpp
-void VectorOfPairOfStringAndPacketDataType::put_Item( size_t                                                                   vIndex,
-                                                      std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> vItem );
+void VectorOfPairOfStringAndPacketDataType::put_Item( size_t                                                                   index,
+                                                      std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType> item );
 AutoIt:
-    $oVectorOfPairOfStringAndPacketDataType.Item( $vIndex ) = $vItem
+    $oVectorOfPairOfStringAndPacketDataType.Item( $index ) = $item
 ```
 
 ### VectorOfPairOfStringAndPacketDataType::size
@@ -22903,10 +22912,10 @@ AutoIt:
 ### VectorOfPacketDataType::get_Item
 
 ```cpp
-mediapipe::autoit::solution_base::PacketDataType VectorOfPacketDataType::get_Item( size_t vIndex );
+mediapipe::autoit::solution_base::PacketDataType VectorOfPacketDataType::get_Item( size_t index );
 AutoIt:
-    $oVectorOfPacketDataType.Item( $vIndex ) -> retval
-    $oVectorOfPacketDataType( $vIndex ) -> retval
+    $oVectorOfPacketDataType.Item( $index ) -> retval
+    $oVectorOfPacketDataType( $index ) -> retval
 ```
 
 ### VectorOfPacketDataType::get__NewEnum
@@ -22944,10 +22953,10 @@ AutoIt:
 ### VectorOfPacketDataType::put_Item
 
 ```cpp
-void VectorOfPacketDataType::put_Item( size_t                                           vIndex,
-                                       mediapipe::autoit::solution_base::PacketDataType vItem );
+void VectorOfPacketDataType::put_Item( size_t                                           index,
+                                       mediapipe::autoit::solution_base::PacketDataType item );
 AutoIt:
-    $oVectorOfPacketDataType.Item( $vIndex ) = $vItem
+    $oVectorOfPacketDataType.Item( $index ) = $item
 ```
 
 ### VectorOfPacketDataType::size
@@ -23099,10 +23108,10 @@ AutoIt:
 ### VectorOfUchar::get_Item
 
 ```cpp
-uchar VectorOfUchar::get_Item( size_t vIndex );
+uchar VectorOfUchar::get_Item( size_t index );
 AutoIt:
-    $oVectorOfUchar.Item( $vIndex ) -> retval
-    $oVectorOfUchar( $vIndex ) -> retval
+    $oVectorOfUchar.Item( $index ) -> retval
+    $oVectorOfUchar( $index ) -> retval
 ```
 
 ### VectorOfUchar::get__NewEnum
@@ -23140,10 +23149,10 @@ AutoIt:
 ### VectorOfUchar::put_Item
 
 ```cpp
-void VectorOfUchar::put_Item( size_t vIndex,
-                              uchar  vItem );
+void VectorOfUchar::put_Item( size_t index,
+                              uchar  item );
 AutoIt:
-    $oVectorOfUchar.Item( $vIndex ) = $vItem
+    $oVectorOfUchar.Item( $index ) = $item
 ```
 
 ### VectorOfUchar::size
@@ -23295,10 +23304,10 @@ AutoIt:
 ### VectorOfMat::get_Item
 
 ```cpp
-cv::Mat VectorOfMat::get_Item( size_t vIndex );
+cv::Mat VectorOfMat::get_Item( size_t index );
 AutoIt:
-    $oVectorOfMat.Item( $vIndex ) -> retval
-    $oVectorOfMat( $vIndex ) -> retval
+    $oVectorOfMat.Item( $index ) -> retval
+    $oVectorOfMat( $index ) -> retval
 ```
 
 ### VectorOfMat::get__NewEnum
@@ -23336,10 +23345,10 @@ AutoIt:
 ### VectorOfMat::put_Item
 
 ```cpp
-void VectorOfMat::put_Item( size_t  vIndex,
-                            cv::Mat vItem );
+void VectorOfMat::put_Item( size_t  index,
+                            cv::Mat item );
 AutoIt:
-    $oVectorOfMat.Item( $vIndex ) = $vItem
+    $oVectorOfMat.Item( $index ) = $item
 ```
 
 ### VectorOfMat::size
@@ -23491,10 +23500,10 @@ AutoIt:
 ### VectorOfDouble::get_Item
 
 ```cpp
-double VectorOfDouble::get_Item( size_t vIndex );
+double VectorOfDouble::get_Item( size_t index );
 AutoIt:
-    $oVectorOfDouble.Item( $vIndex ) -> retval
-    $oVectorOfDouble( $vIndex ) -> retval
+    $oVectorOfDouble.Item( $index ) -> retval
+    $oVectorOfDouble( $index ) -> retval
 ```
 
 ### VectorOfDouble::get__NewEnum
@@ -23532,10 +23541,10 @@ AutoIt:
 ### VectorOfDouble::put_Item
 
 ```cpp
-void VectorOfDouble::put_Item( size_t vIndex,
-                               double vItem );
+void VectorOfDouble::put_Item( size_t index,
+                               double item );
 AutoIt:
-    $oVectorOfDouble.Item( $vIndex ) = $vItem
+    $oVectorOfDouble.Item( $index ) = $item
 ```
 
 ### VectorOfDouble::size
@@ -23687,10 +23696,10 @@ AutoIt:
 ### VectorOfShared_ptrPacketFactoryConfig::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::PacketFactoryConfig> VectorOfShared_ptrPacketFactoryConfig::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::PacketFactoryConfig> VectorOfShared_ptrPacketFactoryConfig::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrPacketFactoryConfig.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrPacketFactoryConfig( $vIndex ) -> retval
+    $oVectorOfShared_ptrPacketFactoryConfig.Item( $index ) -> retval
+    $oVectorOfShared_ptrPacketFactoryConfig( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrPacketFactoryConfig::get__NewEnum
@@ -23728,10 +23737,10 @@ AutoIt:
 ### VectorOfShared_ptrPacketFactoryConfig::put_Item
 
 ```cpp
-void VectorOfShared_ptrPacketFactoryConfig::put_Item( size_t                                          vIndex,
-                                                      std::shared_ptr<mediapipe::PacketFactoryConfig> vItem );
+void VectorOfShared_ptrPacketFactoryConfig::put_Item( size_t                                          index,
+                                                      std::shared_ptr<mediapipe::PacketFactoryConfig> item );
 AutoIt:
-    $oVectorOfShared_ptrPacketFactoryConfig.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrPacketFactoryConfig.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrPacketFactoryConfig::size
@@ -23883,10 +23892,10 @@ AutoIt:
 ### VectorOfShared_ptrInputCollection::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::InputCollection> VectorOfShared_ptrInputCollection::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::InputCollection> VectorOfShared_ptrInputCollection::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrInputCollection.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrInputCollection( $vIndex ) -> retval
+    $oVectorOfShared_ptrInputCollection.Item( $index ) -> retval
+    $oVectorOfShared_ptrInputCollection( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrInputCollection::get__NewEnum
@@ -23924,10 +23933,10 @@ AutoIt:
 ### VectorOfShared_ptrInputCollection::put_Item
 
 ```cpp
-void VectorOfShared_ptrInputCollection::put_Item( size_t                                      vIndex,
-                                                  std::shared_ptr<mediapipe::InputCollection> vItem );
+void VectorOfShared_ptrInputCollection::put_Item( size_t                                      index,
+                                                  std::shared_ptr<mediapipe::InputCollection> item );
 AutoIt:
-    $oVectorOfShared_ptrInputCollection.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrInputCollection.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrInputCollection::size
@@ -24079,10 +24088,10 @@ AutoIt:
 ### VectorOfShared_ptrCalculatorGraphConfig_Node::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> VectorOfShared_ptrCalculatorGraphConfig_Node::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> VectorOfShared_ptrCalculatorGraphConfig_Node::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrCalculatorGraphConfig_Node.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrCalculatorGraphConfig_Node( $vIndex ) -> retval
+    $oVectorOfShared_ptrCalculatorGraphConfig_Node.Item( $index ) -> retval
+    $oVectorOfShared_ptrCalculatorGraphConfig_Node( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrCalculatorGraphConfig_Node::get__NewEnum
@@ -24120,10 +24129,10 @@ AutoIt:
 ### VectorOfShared_ptrCalculatorGraphConfig_Node::put_Item
 
 ```cpp
-void VectorOfShared_ptrCalculatorGraphConfig_Node::put_Item( size_t                                                  vIndex,
-                                                             std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> vItem );
+void VectorOfShared_ptrCalculatorGraphConfig_Node::put_Item( size_t                                                  index,
+                                                             std::shared_ptr<mediapipe::CalculatorGraphConfig::Node> item );
 AutoIt:
-    $oVectorOfShared_ptrCalculatorGraphConfig_Node.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrCalculatorGraphConfig_Node.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrCalculatorGraphConfig_Node::size
@@ -24275,10 +24284,10 @@ AutoIt:
 ### VectorOfShared_ptrPacketGeneratorConfig::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::PacketGeneratorConfig> VectorOfShared_ptrPacketGeneratorConfig::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::PacketGeneratorConfig> VectorOfShared_ptrPacketGeneratorConfig::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrPacketGeneratorConfig.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrPacketGeneratorConfig( $vIndex ) -> retval
+    $oVectorOfShared_ptrPacketGeneratorConfig.Item( $index ) -> retval
+    $oVectorOfShared_ptrPacketGeneratorConfig( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrPacketGeneratorConfig::get__NewEnum
@@ -24316,10 +24325,10 @@ AutoIt:
 ### VectorOfShared_ptrPacketGeneratorConfig::put_Item
 
 ```cpp
-void VectorOfShared_ptrPacketGeneratorConfig::put_Item( size_t                                            vIndex,
-                                                        std::shared_ptr<mediapipe::PacketGeneratorConfig> vItem );
+void VectorOfShared_ptrPacketGeneratorConfig::put_Item( size_t                                            index,
+                                                        std::shared_ptr<mediapipe::PacketGeneratorConfig> item );
 AutoIt:
-    $oVectorOfShared_ptrPacketGeneratorConfig.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrPacketGeneratorConfig.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrPacketGeneratorConfig::size
@@ -24471,10 +24480,10 @@ AutoIt:
 ### VectorOfShared_ptrStatusHandlerConfig::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::StatusHandlerConfig> VectorOfShared_ptrStatusHandlerConfig::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::StatusHandlerConfig> VectorOfShared_ptrStatusHandlerConfig::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrStatusHandlerConfig.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrStatusHandlerConfig( $vIndex ) -> retval
+    $oVectorOfShared_ptrStatusHandlerConfig.Item( $index ) -> retval
+    $oVectorOfShared_ptrStatusHandlerConfig( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrStatusHandlerConfig::get__NewEnum
@@ -24512,10 +24521,10 @@ AutoIt:
 ### VectorOfShared_ptrStatusHandlerConfig::put_Item
 
 ```cpp
-void VectorOfShared_ptrStatusHandlerConfig::put_Item( size_t                                          vIndex,
-                                                      std::shared_ptr<mediapipe::StatusHandlerConfig> vItem );
+void VectorOfShared_ptrStatusHandlerConfig::put_Item( size_t                                          index,
+                                                      std::shared_ptr<mediapipe::StatusHandlerConfig> item );
 AutoIt:
-    $oVectorOfShared_ptrStatusHandlerConfig.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrStatusHandlerConfig.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrStatusHandlerConfig::size
@@ -24667,10 +24676,10 @@ AutoIt:
 ### VectorOfShared_ptrExecutorConfig::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ExecutorConfig> VectorOfShared_ptrExecutorConfig::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ExecutorConfig> VectorOfShared_ptrExecutorConfig::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrExecutorConfig.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrExecutorConfig( $vIndex ) -> retval
+    $oVectorOfShared_ptrExecutorConfig.Item( $index ) -> retval
+    $oVectorOfShared_ptrExecutorConfig( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrExecutorConfig::get__NewEnum
@@ -24708,10 +24717,10 @@ AutoIt:
 ### VectorOfShared_ptrExecutorConfig::put_Item
 
 ```cpp
-void VectorOfShared_ptrExecutorConfig::put_Item( size_t                                     vIndex,
-                                                 std::shared_ptr<mediapipe::ExecutorConfig> vItem );
+void VectorOfShared_ptrExecutorConfig::put_Item( size_t                                     index,
+                                                 std::shared_ptr<mediapipe::ExecutorConfig> item );
 AutoIt:
-    $oVectorOfShared_ptrExecutorConfig.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrExecutorConfig.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrExecutorConfig::size
@@ -24863,10 +24872,10 @@ AutoIt:
 ### VectorOfShared_ptrAny::get_Item
 
 ```cpp
-std::shared_ptr<google::protobuf::Any> VectorOfShared_ptrAny::get_Item( size_t vIndex );
+std::shared_ptr<google::protobuf::Any> VectorOfShared_ptrAny::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrAny.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrAny( $vIndex ) -> retval
+    $oVectorOfShared_ptrAny.Item( $index ) -> retval
+    $oVectorOfShared_ptrAny( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrAny::get__NewEnum
@@ -24904,10 +24913,10 @@ AutoIt:
 ### VectorOfShared_ptrAny::put_Item
 
 ```cpp
-void VectorOfShared_ptrAny::put_Item( size_t                                 vIndex,
-                                      std::shared_ptr<google::protobuf::Any> vItem );
+void VectorOfShared_ptrAny::put_Item( size_t                                 index,
+                                      std::shared_ptr<google::protobuf::Any> item );
 AutoIt:
-    $oVectorOfShared_ptrAny.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrAny.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrAny::size
@@ -25059,10 +25068,10 @@ AutoIt:
 ### VectorOfShared_ptrInputStreamInfo::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::InputStreamInfo> VectorOfShared_ptrInputStreamInfo::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::InputStreamInfo> VectorOfShared_ptrInputStreamInfo::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrInputStreamInfo.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrInputStreamInfo( $vIndex ) -> retval
+    $oVectorOfShared_ptrInputStreamInfo.Item( $index ) -> retval
+    $oVectorOfShared_ptrInputStreamInfo( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrInputStreamInfo::get__NewEnum
@@ -25100,10 +25109,10 @@ AutoIt:
 ### VectorOfShared_ptrInputStreamInfo::put_Item
 
 ```cpp
-void VectorOfShared_ptrInputStreamInfo::put_Item( size_t                                      vIndex,
-                                                  std::shared_ptr<mediapipe::InputStreamInfo> vItem );
+void VectorOfShared_ptrInputStreamInfo::put_Item( size_t                                      index,
+                                                  std::shared_ptr<mediapipe::InputStreamInfo> item );
 AutoIt:
-    $oVectorOfShared_ptrInputStreamInfo.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrInputStreamInfo.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrInputStreamInfo::size
@@ -25255,10 +25264,10 @@ AutoIt:
 ### VectorOfShared_ptrTemplateExpression::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::TemplateExpression> VectorOfShared_ptrTemplateExpression::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::TemplateExpression> VectorOfShared_ptrTemplateExpression::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrTemplateExpression.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrTemplateExpression( $vIndex ) -> retval
+    $oVectorOfShared_ptrTemplateExpression.Item( $index ) -> retval
+    $oVectorOfShared_ptrTemplateExpression( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrTemplateExpression::get__NewEnum
@@ -25296,10 +25305,10 @@ AutoIt:
 ### VectorOfShared_ptrTemplateExpression::put_Item
 
 ```cpp
-void VectorOfShared_ptrTemplateExpression::put_Item( size_t                                         vIndex,
-                                                     std::shared_ptr<mediapipe::TemplateExpression> vItem );
+void VectorOfShared_ptrTemplateExpression::put_Item( size_t                                         index,
+                                                     std::shared_ptr<mediapipe::TemplateExpression> item );
 AutoIt:
-    $oVectorOfShared_ptrTemplateExpression.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrTemplateExpression.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrTemplateExpression::size
@@ -25451,10 +25460,10 @@ AutoIt:
 ### VectorOfShared_ptrTemplateArgument::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::TemplateArgument> VectorOfShared_ptrTemplateArgument::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::TemplateArgument> VectorOfShared_ptrTemplateArgument::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrTemplateArgument.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrTemplateArgument( $vIndex ) -> retval
+    $oVectorOfShared_ptrTemplateArgument.Item( $index ) -> retval
+    $oVectorOfShared_ptrTemplateArgument( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrTemplateArgument::get__NewEnum
@@ -25492,10 +25501,10 @@ AutoIt:
 ### VectorOfShared_ptrTemplateArgument::put_Item
 
 ```cpp
-void VectorOfShared_ptrTemplateArgument::put_Item( size_t                                       vIndex,
-                                                   std::shared_ptr<mediapipe::TemplateArgument> vItem );
+void VectorOfShared_ptrTemplateArgument::put_Item( size_t                                       index,
+                                                   std::shared_ptr<mediapipe::TemplateArgument> item );
 AutoIt:
-    $oVectorOfShared_ptrTemplateArgument.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrTemplateArgument.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrTemplateArgument::size
@@ -25647,10 +25656,10 @@ AutoIt:
 ### VectorOfShared_ptrTemplateDict_Parameter::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::TemplateDict::Parameter> VectorOfShared_ptrTemplateDict_Parameter::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::TemplateDict::Parameter> VectorOfShared_ptrTemplateDict_Parameter::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrTemplateDict_Parameter.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrTemplateDict_Parameter( $vIndex ) -> retval
+    $oVectorOfShared_ptrTemplateDict_Parameter.Item( $index ) -> retval
+    $oVectorOfShared_ptrTemplateDict_Parameter( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrTemplateDict_Parameter::get__NewEnum
@@ -25688,10 +25697,10 @@ AutoIt:
 ### VectorOfShared_ptrTemplateDict_Parameter::put_Item
 
 ```cpp
-void VectorOfShared_ptrTemplateDict_Parameter::put_Item( size_t                                              vIndex,
-                                                         std::shared_ptr<mediapipe::TemplateDict::Parameter> vItem );
+void VectorOfShared_ptrTemplateDict_Parameter::put_Item( size_t                                              index,
+                                                         std::shared_ptr<mediapipe::TemplateDict::Parameter> item );
 AutoIt:
-    $oVectorOfShared_ptrTemplateDict_Parameter.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrTemplateDict_Parameter.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrTemplateDict_Parameter::size
@@ -25843,10 +25852,10 @@ AutoIt:
 ### VectorOfShared_ptrRasterization_Interval::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::Rasterization::Interval> VectorOfShared_ptrRasterization_Interval::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::Rasterization::Interval> VectorOfShared_ptrRasterization_Interval::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrRasterization_Interval.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrRasterization_Interval( $vIndex ) -> retval
+    $oVectorOfShared_ptrRasterization_Interval.Item( $index ) -> retval
+    $oVectorOfShared_ptrRasterization_Interval( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrRasterization_Interval::get__NewEnum
@@ -25884,10 +25893,10 @@ AutoIt:
 ### VectorOfShared_ptrRasterization_Interval::put_Item
 
 ```cpp
-void VectorOfShared_ptrRasterization_Interval::put_Item( size_t                                              vIndex,
-                                                         std::shared_ptr<mediapipe::Rasterization::Interval> vItem );
+void VectorOfShared_ptrRasterization_Interval::put_Item( size_t                                              index,
+                                                         std::shared_ptr<mediapipe::Rasterization::Interval> item );
 AutoIt:
-    $oVectorOfShared_ptrRasterization_Interval.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrRasterization_Interval.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrRasterization_Interval::size
@@ -26039,10 +26048,10 @@ AutoIt:
 ### VectorOfShared_ptrLocationData_RelativeKeypoint::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::LocationData::RelativeKeypoint> VectorOfShared_ptrLocationData_RelativeKeypoint::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::LocationData::RelativeKeypoint> VectorOfShared_ptrLocationData_RelativeKeypoint::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrLocationData_RelativeKeypoint.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrLocationData_RelativeKeypoint( $vIndex ) -> retval
+    $oVectorOfShared_ptrLocationData_RelativeKeypoint.Item( $index ) -> retval
+    $oVectorOfShared_ptrLocationData_RelativeKeypoint( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrLocationData_RelativeKeypoint::get__NewEnum
@@ -26080,10 +26089,10 @@ AutoIt:
 ### VectorOfShared_ptrLocationData_RelativeKeypoint::put_Item
 
 ```cpp
-void VectorOfShared_ptrLocationData_RelativeKeypoint::put_Item( size_t                                                     vIndex,
-                                                                std::shared_ptr<mediapipe::LocationData::RelativeKeypoint> vItem );
+void VectorOfShared_ptrLocationData_RelativeKeypoint::put_Item( size_t                                                     index,
+                                                                std::shared_ptr<mediapipe::LocationData::RelativeKeypoint> item );
 AutoIt:
-    $oVectorOfShared_ptrLocationData_RelativeKeypoint.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrLocationData_RelativeKeypoint.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrLocationData_RelativeKeypoint::size
@@ -26235,10 +26244,10 @@ AutoIt:
 ### VectorOfShared_ptrDetection_AssociatedDetection::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::Detection::AssociatedDetection> VectorOfShared_ptrDetection_AssociatedDetection::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::Detection::AssociatedDetection> VectorOfShared_ptrDetection_AssociatedDetection::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrDetection_AssociatedDetection.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrDetection_AssociatedDetection( $vIndex ) -> retval
+    $oVectorOfShared_ptrDetection_AssociatedDetection.Item( $index ) -> retval
+    $oVectorOfShared_ptrDetection_AssociatedDetection( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrDetection_AssociatedDetection::get__NewEnum
@@ -26276,10 +26285,10 @@ AutoIt:
 ### VectorOfShared_ptrDetection_AssociatedDetection::put_Item
 
 ```cpp
-void VectorOfShared_ptrDetection_AssociatedDetection::put_Item( size_t                                                     vIndex,
-                                                                std::shared_ptr<mediapipe::Detection::AssociatedDetection> vItem );
+void VectorOfShared_ptrDetection_AssociatedDetection::put_Item( size_t                                                     index,
+                                                                std::shared_ptr<mediapipe::Detection::AssociatedDetection> item );
 AutoIt:
-    $oVectorOfShared_ptrDetection_AssociatedDetection.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrDetection_AssociatedDetection.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrDetection_AssociatedDetection::size
@@ -26431,10 +26440,10 @@ AutoIt:
 ### VectorOfShared_ptrDetection::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::Detection> VectorOfShared_ptrDetection::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::Detection> VectorOfShared_ptrDetection::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrDetection.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrDetection( $vIndex ) -> retval
+    $oVectorOfShared_ptrDetection.Item( $index ) -> retval
+    $oVectorOfShared_ptrDetection( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrDetection::get__NewEnum
@@ -26472,10 +26481,10 @@ AutoIt:
 ### VectorOfShared_ptrDetection::put_Item
 
 ```cpp
-void VectorOfShared_ptrDetection::put_Item( size_t                                vIndex,
-                                            std::shared_ptr<mediapipe::Detection> vItem );
+void VectorOfShared_ptrDetection::put_Item( size_t                                index,
+                                            std::shared_ptr<mediapipe::Detection> item );
 AutoIt:
-    $oVectorOfShared_ptrDetection.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrDetection.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrDetection::size
@@ -26627,10 +26636,10 @@ AutoIt:
 ### VectorOfShared_ptrLandmark::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::Landmark> VectorOfShared_ptrLandmark::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::Landmark> VectorOfShared_ptrLandmark::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrLandmark.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrLandmark( $vIndex ) -> retval
+    $oVectorOfShared_ptrLandmark.Item( $index ) -> retval
+    $oVectorOfShared_ptrLandmark( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrLandmark::get__NewEnum
@@ -26668,10 +26677,10 @@ AutoIt:
 ### VectorOfShared_ptrLandmark::put_Item
 
 ```cpp
-void VectorOfShared_ptrLandmark::put_Item( size_t                               vIndex,
-                                           std::shared_ptr<mediapipe::Landmark> vItem );
+void VectorOfShared_ptrLandmark::put_Item( size_t                               index,
+                                           std::shared_ptr<mediapipe::Landmark> item );
 AutoIt:
-    $oVectorOfShared_ptrLandmark.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrLandmark.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrLandmark::size
@@ -26823,10 +26832,10 @@ AutoIt:
 ### VectorOfShared_ptrLandmarkList::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::LandmarkList> VectorOfShared_ptrLandmarkList::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::LandmarkList> VectorOfShared_ptrLandmarkList::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrLandmarkList.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrLandmarkList( $vIndex ) -> retval
+    $oVectorOfShared_ptrLandmarkList.Item( $index ) -> retval
+    $oVectorOfShared_ptrLandmarkList( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrLandmarkList::get__NewEnum
@@ -26864,10 +26873,10 @@ AutoIt:
 ### VectorOfShared_ptrLandmarkList::put_Item
 
 ```cpp
-void VectorOfShared_ptrLandmarkList::put_Item( size_t                                   vIndex,
-                                               std::shared_ptr<mediapipe::LandmarkList> vItem );
+void VectorOfShared_ptrLandmarkList::put_Item( size_t                                   index,
+                                               std::shared_ptr<mediapipe::LandmarkList> item );
 AutoIt:
-    $oVectorOfShared_ptrLandmarkList.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrLandmarkList.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrLandmarkList::size
@@ -27019,10 +27028,10 @@ AutoIt:
 ### VectorOfShared_ptrNormalizedLandmark::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::NormalizedLandmark> VectorOfShared_ptrNormalizedLandmark::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::NormalizedLandmark> VectorOfShared_ptrNormalizedLandmark::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrNormalizedLandmark.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrNormalizedLandmark( $vIndex ) -> retval
+    $oVectorOfShared_ptrNormalizedLandmark.Item( $index ) -> retval
+    $oVectorOfShared_ptrNormalizedLandmark( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrNormalizedLandmark::get__NewEnum
@@ -27060,10 +27069,10 @@ AutoIt:
 ### VectorOfShared_ptrNormalizedLandmark::put_Item
 
 ```cpp
-void VectorOfShared_ptrNormalizedLandmark::put_Item( size_t                                         vIndex,
-                                                     std::shared_ptr<mediapipe::NormalizedLandmark> vItem );
+void VectorOfShared_ptrNormalizedLandmark::put_Item( size_t                                         index,
+                                                     std::shared_ptr<mediapipe::NormalizedLandmark> item );
 AutoIt:
-    $oVectorOfShared_ptrNormalizedLandmark.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrNormalizedLandmark.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrNormalizedLandmark::size
@@ -27215,10 +27224,10 @@ AutoIt:
 ### VectorOfShared_ptrNormalizedLandmarkList::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::NormalizedLandmarkList> VectorOfShared_ptrNormalizedLandmarkList::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::NormalizedLandmarkList> VectorOfShared_ptrNormalizedLandmarkList::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrNormalizedLandmarkList.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrNormalizedLandmarkList( $vIndex ) -> retval
+    $oVectorOfShared_ptrNormalizedLandmarkList.Item( $index ) -> retval
+    $oVectorOfShared_ptrNormalizedLandmarkList( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrNormalizedLandmarkList::get__NewEnum
@@ -27256,10 +27265,10 @@ AutoIt:
 ### VectorOfShared_ptrNormalizedLandmarkList::put_Item
 
 ```cpp
-void VectorOfShared_ptrNormalizedLandmarkList::put_Item( size_t                                             vIndex,
-                                                         std::shared_ptr<mediapipe::NormalizedLandmarkList> vItem );
+void VectorOfShared_ptrNormalizedLandmarkList::put_Item( size_t                                             index,
+                                                         std::shared_ptr<mediapipe::NormalizedLandmarkList> item );
 AutoIt:
-    $oVectorOfShared_ptrNormalizedLandmarkList.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrNormalizedLandmarkList.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrNormalizedLandmarkList::size
@@ -27411,10 +27420,10 @@ AutoIt:
 ### VectorOfShared_ptrARFaceGeometry_Vertex::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ARFaceGeometry::Vertex> VectorOfShared_ptrARFaceGeometry_Vertex::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ARFaceGeometry::Vertex> VectorOfShared_ptrARFaceGeometry_Vertex::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrARFaceGeometry_Vertex.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrARFaceGeometry_Vertex( $vIndex ) -> retval
+    $oVectorOfShared_ptrARFaceGeometry_Vertex.Item( $index ) -> retval
+    $oVectorOfShared_ptrARFaceGeometry_Vertex( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrARFaceGeometry_Vertex::get__NewEnum
@@ -27452,10 +27461,10 @@ AutoIt:
 ### VectorOfShared_ptrARFaceGeometry_Vertex::put_Item
 
 ```cpp
-void VectorOfShared_ptrARFaceGeometry_Vertex::put_Item( size_t                                             vIndex,
-                                                        std::shared_ptr<mediapipe::ARFaceGeometry::Vertex> vItem );
+void VectorOfShared_ptrARFaceGeometry_Vertex::put_Item( size_t                                             index,
+                                                        std::shared_ptr<mediapipe::ARFaceGeometry::Vertex> item );
 AutoIt:
-    $oVectorOfShared_ptrARFaceGeometry_Vertex.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrARFaceGeometry_Vertex.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrARFaceGeometry_Vertex::size
@@ -27607,10 +27616,10 @@ AutoIt:
 ### VectorOfShared_ptrARFaceGeometry_TextureCoordinate::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate> VectorOfShared_ptrARFaceGeometry_TextureCoordinate::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate> VectorOfShared_ptrARFaceGeometry_TextureCoordinate::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrARFaceGeometry_TextureCoordinate.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrARFaceGeometry_TextureCoordinate( $vIndex ) -> retval
+    $oVectorOfShared_ptrARFaceGeometry_TextureCoordinate.Item( $index ) -> retval
+    $oVectorOfShared_ptrARFaceGeometry_TextureCoordinate( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrARFaceGeometry_TextureCoordinate::get__NewEnum
@@ -27648,10 +27657,10 @@ AutoIt:
 ### VectorOfShared_ptrARFaceGeometry_TextureCoordinate::put_Item
 
 ```cpp
-void VectorOfShared_ptrARFaceGeometry_TextureCoordinate::put_Item( size_t                                                        vIndex,
-                                                                   std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate> vItem );
+void VectorOfShared_ptrARFaceGeometry_TextureCoordinate::put_Item( size_t                                                        index,
+                                                                   std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate> item );
 AutoIt:
-    $oVectorOfShared_ptrARFaceGeometry_TextureCoordinate.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrARFaceGeometry_TextureCoordinate.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrARFaceGeometry_TextureCoordinate::size
@@ -27803,10 +27812,10 @@ AutoIt:
 ### VectorOfShared_ptrARBlendShapeMap_MapEntry::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry> VectorOfShared_ptrARBlendShapeMap_MapEntry::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry> VectorOfShared_ptrARBlendShapeMap_MapEntry::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrARBlendShapeMap_MapEntry.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrARBlendShapeMap_MapEntry( $vIndex ) -> retval
+    $oVectorOfShared_ptrARBlendShapeMap_MapEntry.Item( $index ) -> retval
+    $oVectorOfShared_ptrARBlendShapeMap_MapEntry( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrARBlendShapeMap_MapEntry::get__NewEnum
@@ -27844,10 +27853,10 @@ AutoIt:
 ### VectorOfShared_ptrARBlendShapeMap_MapEntry::put_Item
 
 ```cpp
-void VectorOfShared_ptrARBlendShapeMap_MapEntry::put_Item( size_t                                                vIndex,
-                                                           std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry> vItem );
+void VectorOfShared_ptrARBlendShapeMap_MapEntry::put_Item( size_t                                                index,
+                                                           std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry> item );
 AutoIt:
-    $oVectorOfShared_ptrARBlendShapeMap_MapEntry.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrARBlendShapeMap_MapEntry.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrARBlendShapeMap_MapEntry::size
@@ -27999,10 +28008,10 @@ AutoIt:
 ### VectorOfShared_ptrARPlaneGeometry_Vertex::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex> VectorOfShared_ptrARPlaneGeometry_Vertex::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex> VectorOfShared_ptrARPlaneGeometry_Vertex::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrARPlaneGeometry_Vertex.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrARPlaneGeometry_Vertex( $vIndex ) -> retval
+    $oVectorOfShared_ptrARPlaneGeometry_Vertex.Item( $index ) -> retval
+    $oVectorOfShared_ptrARPlaneGeometry_Vertex( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrARPlaneGeometry_Vertex::get__NewEnum
@@ -28040,10 +28049,10 @@ AutoIt:
 ### VectorOfShared_ptrARPlaneGeometry_Vertex::put_Item
 
 ```cpp
-void VectorOfShared_ptrARPlaneGeometry_Vertex::put_Item( size_t                                              vIndex,
-                                                         std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex> vItem );
+void VectorOfShared_ptrARPlaneGeometry_Vertex::put_Item( size_t                                              index,
+                                                         std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex> item );
 AutoIt:
-    $oVectorOfShared_ptrARPlaneGeometry_Vertex.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrARPlaneGeometry_Vertex.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrARPlaneGeometry_Vertex::size
@@ -28195,10 +28204,10 @@ AutoIt:
 ### VectorOfShared_ptrARPlaneGeometry_TextureCoordinate::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate> VectorOfShared_ptrARPlaneGeometry_TextureCoordinate::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate> VectorOfShared_ptrARPlaneGeometry_TextureCoordinate::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrARPlaneGeometry_TextureCoordinate.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrARPlaneGeometry_TextureCoordinate( $vIndex ) -> retval
+    $oVectorOfShared_ptrARPlaneGeometry_TextureCoordinate.Item( $index ) -> retval
+    $oVectorOfShared_ptrARPlaneGeometry_TextureCoordinate( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrARPlaneGeometry_TextureCoordinate::get__NewEnum
@@ -28236,10 +28245,10 @@ AutoIt:
 ### VectorOfShared_ptrARPlaneGeometry_TextureCoordinate::put_Item
 
 ```cpp
-void VectorOfShared_ptrARPlaneGeometry_TextureCoordinate::put_Item( size_t                                                         vIndex,
-                                                                    std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate> vItem );
+void VectorOfShared_ptrARPlaneGeometry_TextureCoordinate::put_Item( size_t                                                         index,
+                                                                    std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate> item );
 AutoIt:
-    $oVectorOfShared_ptrARPlaneGeometry_TextureCoordinate.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrARPlaneGeometry_TextureCoordinate.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrARPlaneGeometry_TextureCoordinate::size
@@ -28391,10 +28400,10 @@ AutoIt:
 ### VectorOfShared_ptrARPointCloud_Point::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ARPointCloud::Point> VectorOfShared_ptrARPointCloud_Point::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ARPointCloud::Point> VectorOfShared_ptrARPointCloud_Point::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrARPointCloud_Point.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrARPointCloud_Point( $vIndex ) -> retval
+    $oVectorOfShared_ptrARPointCloud_Point.Item( $index ) -> retval
+    $oVectorOfShared_ptrARPointCloud_Point( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrARPointCloud_Point::get__NewEnum
@@ -28432,10 +28441,10 @@ AutoIt:
 ### VectorOfShared_ptrARPointCloud_Point::put_Item
 
 ```cpp
-void VectorOfShared_ptrARPointCloud_Point::put_Item( size_t                                          vIndex,
-                                                     std::shared_ptr<mediapipe::ARPointCloud::Point> vItem );
+void VectorOfShared_ptrARPointCloud_Point::put_Item( size_t                                          index,
+                                                     std::shared_ptr<mediapipe::ARPointCloud::Point> item );
 AutoIt:
-    $oVectorOfShared_ptrARPointCloud_Point.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrARPointCloud_Point.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrARPointCloud_Point::size
@@ -28587,10 +28596,10 @@ AutoIt:
 ### VectorOfShared_ptrARPlaneAnchor::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ARPlaneAnchor> VectorOfShared_ptrARPlaneAnchor::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ARPlaneAnchor> VectorOfShared_ptrARPlaneAnchor::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrARPlaneAnchor.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrARPlaneAnchor( $vIndex ) -> retval
+    $oVectorOfShared_ptrARPlaneAnchor.Item( $index ) -> retval
+    $oVectorOfShared_ptrARPlaneAnchor( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrARPlaneAnchor::get__NewEnum
@@ -28628,10 +28637,10 @@ AutoIt:
 ### VectorOfShared_ptrARPlaneAnchor::put_Item
 
 ```cpp
-void VectorOfShared_ptrARPlaneAnchor::put_Item( size_t                                    vIndex,
-                                                std::shared_ptr<mediapipe::ARPlaneAnchor> vItem );
+void VectorOfShared_ptrARPlaneAnchor::put_Item( size_t                                    index,
+                                                std::shared_ptr<mediapipe::ARPlaneAnchor> item );
 AutoIt:
-    $oVectorOfShared_ptrARPlaneAnchor.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrARPlaneAnchor.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrARPlaneAnchor::size
@@ -28783,10 +28792,10 @@ AutoIt:
 ### VectorOfShared_ptrKeyPoint::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::KeyPoint> VectorOfShared_ptrKeyPoint::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::KeyPoint> VectorOfShared_ptrKeyPoint::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrKeyPoint.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrKeyPoint( $vIndex ) -> retval
+    $oVectorOfShared_ptrKeyPoint.Item( $index ) -> retval
+    $oVectorOfShared_ptrKeyPoint( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrKeyPoint::get__NewEnum
@@ -28824,10 +28833,10 @@ AutoIt:
 ### VectorOfShared_ptrKeyPoint::put_Item
 
 ```cpp
-void VectorOfShared_ptrKeyPoint::put_Item( size_t                               vIndex,
-                                           std::shared_ptr<mediapipe::KeyPoint> vItem );
+void VectorOfShared_ptrKeyPoint::put_Item( size_t                               index,
+                                           std::shared_ptr<mediapipe::KeyPoint> item );
 AutoIt:
-    $oVectorOfShared_ptrKeyPoint.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrKeyPoint.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrKeyPoint::size
@@ -28979,10 +28988,10 @@ AutoIt:
 ### VectorOfShared_ptrEdge::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::Edge> VectorOfShared_ptrEdge::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::Edge> VectorOfShared_ptrEdge::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrEdge.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrEdge( $vIndex ) -> retval
+    $oVectorOfShared_ptrEdge.Item( $index ) -> retval
+    $oVectorOfShared_ptrEdge( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrEdge::get__NewEnum
@@ -29020,10 +29029,10 @@ AutoIt:
 ### VectorOfShared_ptrEdge::put_Item
 
 ```cpp
-void VectorOfShared_ptrEdge::put_Item( size_t                           vIndex,
-                                       std::shared_ptr<mediapipe::Edge> vItem );
+void VectorOfShared_ptrEdge::put_Item( size_t                           index,
+                                       std::shared_ptr<mediapipe::Edge> item );
 AutoIt:
-    $oVectorOfShared_ptrEdge.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrEdge.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrEdge::size
@@ -29175,10 +29184,10 @@ AutoIt:
 ### VectorOfShared_ptrSkeleton::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::Skeleton> VectorOfShared_ptrSkeleton::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::Skeleton> VectorOfShared_ptrSkeleton::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrSkeleton.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrSkeleton( $vIndex ) -> retval
+    $oVectorOfShared_ptrSkeleton.Item( $index ) -> retval
+    $oVectorOfShared_ptrSkeleton( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrSkeleton::get__NewEnum
@@ -29216,10 +29225,10 @@ AutoIt:
 ### VectorOfShared_ptrSkeleton::put_Item
 
 ```cpp
-void VectorOfShared_ptrSkeleton::put_Item( size_t                               vIndex,
-                                           std::shared_ptr<mediapipe::Skeleton> vItem );
+void VectorOfShared_ptrSkeleton::put_Item( size_t                               index,
+                                           std::shared_ptr<mediapipe::Skeleton> item );
 AutoIt:
-    $oVectorOfShared_ptrSkeleton.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrSkeleton.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrSkeleton::size
@@ -29371,10 +29380,10 @@ AutoIt:
 ### VectorOfShared_ptrAnnotatedKeyPoint::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::AnnotatedKeyPoint> VectorOfShared_ptrAnnotatedKeyPoint::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::AnnotatedKeyPoint> VectorOfShared_ptrAnnotatedKeyPoint::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrAnnotatedKeyPoint.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrAnnotatedKeyPoint( $vIndex ) -> retval
+    $oVectorOfShared_ptrAnnotatedKeyPoint.Item( $index ) -> retval
+    $oVectorOfShared_ptrAnnotatedKeyPoint( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrAnnotatedKeyPoint::get__NewEnum
@@ -29412,10 +29421,10 @@ AutoIt:
 ### VectorOfShared_ptrAnnotatedKeyPoint::put_Item
 
 ```cpp
-void VectorOfShared_ptrAnnotatedKeyPoint::put_Item( size_t                                        vIndex,
-                                                    std::shared_ptr<mediapipe::AnnotatedKeyPoint> vItem );
+void VectorOfShared_ptrAnnotatedKeyPoint::put_Item( size_t                                        index,
+                                                    std::shared_ptr<mediapipe::AnnotatedKeyPoint> item );
 AutoIt:
-    $oVectorOfShared_ptrAnnotatedKeyPoint.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrAnnotatedKeyPoint.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrAnnotatedKeyPoint::size
@@ -29567,10 +29576,10 @@ AutoIt:
 ### VectorOfShared_ptrObjectAnnotation::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ObjectAnnotation> VectorOfShared_ptrObjectAnnotation::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ObjectAnnotation> VectorOfShared_ptrObjectAnnotation::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrObjectAnnotation.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrObjectAnnotation( $vIndex ) -> retval
+    $oVectorOfShared_ptrObjectAnnotation.Item( $index ) -> retval
+    $oVectorOfShared_ptrObjectAnnotation( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrObjectAnnotation::get__NewEnum
@@ -29608,10 +29617,10 @@ AutoIt:
 ### VectorOfShared_ptrObjectAnnotation::put_Item
 
 ```cpp
-void VectorOfShared_ptrObjectAnnotation::put_Item( size_t                                       vIndex,
-                                                   std::shared_ptr<mediapipe::ObjectAnnotation> vItem );
+void VectorOfShared_ptrObjectAnnotation::put_Item( size_t                                       index,
+                                                   std::shared_ptr<mediapipe::ObjectAnnotation> item );
 AutoIt:
-    $oVectorOfShared_ptrObjectAnnotation.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrObjectAnnotation.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrObjectAnnotation::size
@@ -29763,10 +29772,10 @@ AutoIt:
 ### VectorOfShared_ptrObject::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::Object> VectorOfShared_ptrObject::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::Object> VectorOfShared_ptrObject::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrObject.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrObject( $vIndex ) -> retval
+    $oVectorOfShared_ptrObject.Item( $index ) -> retval
+    $oVectorOfShared_ptrObject( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrObject::get__NewEnum
@@ -29804,10 +29813,10 @@ AutoIt:
 ### VectorOfShared_ptrObject::put_Item
 
 ```cpp
-void VectorOfShared_ptrObject::put_Item( size_t                             vIndex,
-                                         std::shared_ptr<mediapipe::Object> vItem );
+void VectorOfShared_ptrObject::put_Item( size_t                             index,
+                                         std::shared_ptr<mediapipe::Object> item );
 AutoIt:
-    $oVectorOfShared_ptrObject.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrObject.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrObject::size
@@ -29959,10 +29968,10 @@ AutoIt:
 ### VectorOfShared_ptrFrameAnnotation::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::FrameAnnotation> VectorOfShared_ptrFrameAnnotation::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::FrameAnnotation> VectorOfShared_ptrFrameAnnotation::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrFrameAnnotation.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrFrameAnnotation( $vIndex ) -> retval
+    $oVectorOfShared_ptrFrameAnnotation.Item( $index ) -> retval
+    $oVectorOfShared_ptrFrameAnnotation( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrFrameAnnotation::get__NewEnum
@@ -30000,10 +30009,10 @@ AutoIt:
 ### VectorOfShared_ptrFrameAnnotation::put_Item
 
 ```cpp
-void VectorOfShared_ptrFrameAnnotation::put_Item( size_t                                      vIndex,
-                                                  std::shared_ptr<mediapipe::FrameAnnotation> vItem );
+void VectorOfShared_ptrFrameAnnotation::put_Item( size_t                                      index,
+                                                  std::shared_ptr<mediapipe::FrameAnnotation> item );
 AutoIt:
-    $oVectorOfShared_ptrFrameAnnotation.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrFrameAnnotation.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrFrameAnnotation::size
@@ -30155,10 +30164,10 @@ AutoIt:
 ### VectorOfShared_ptrClassification::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::Classification> VectorOfShared_ptrClassification::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::Classification> VectorOfShared_ptrClassification::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrClassification.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrClassification( $vIndex ) -> retval
+    $oVectorOfShared_ptrClassification.Item( $index ) -> retval
+    $oVectorOfShared_ptrClassification( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrClassification::get__NewEnum
@@ -30196,10 +30205,10 @@ AutoIt:
 ### VectorOfShared_ptrClassification::put_Item
 
 ```cpp
-void VectorOfShared_ptrClassification::put_Item( size_t                                     vIndex,
-                                                 std::shared_ptr<mediapipe::Classification> vItem );
+void VectorOfShared_ptrClassification::put_Item( size_t                                     index,
+                                                 std::shared_ptr<mediapipe::Classification> item );
 AutoIt:
-    $oVectorOfShared_ptrClassification.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrClassification.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrClassification::size
@@ -30351,10 +30360,10 @@ AutoIt:
 ### VectorOfShared_ptrClassificationList::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ClassificationList> VectorOfShared_ptrClassificationList::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ClassificationList> VectorOfShared_ptrClassificationList::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrClassificationList.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrClassificationList( $vIndex ) -> retval
+    $oVectorOfShared_ptrClassificationList.Item( $index ) -> retval
+    $oVectorOfShared_ptrClassificationList( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrClassificationList::get__NewEnum
@@ -30392,10 +30401,10 @@ AutoIt:
 ### VectorOfShared_ptrClassificationList::put_Item
 
 ```cpp
-void VectorOfShared_ptrClassificationList::put_Item( size_t                                         vIndex,
-                                                     std::shared_ptr<mediapipe::ClassificationList> vItem );
+void VectorOfShared_ptrClassificationList::put_Item( size_t                                         index,
+                                                     std::shared_ptr<mediapipe::ClassificationList> item );
 AutoIt:
-    $oVectorOfShared_ptrClassificationList.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrClassificationList.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrClassificationList::size
@@ -30547,10 +30556,10 @@ AutoIt:
 ### VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket::get_Item
 
 ```cpp
-std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket> VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket::get_Item( size_t vIndex );
+std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket> VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket::get_Item( size_t index );
 AutoIt:
-    $oVectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket.Item( $vIndex ) -> retval
-    $oVectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket( $vIndex ) -> retval
+    $oVectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket.Item( $index ) -> retval
+    $oVectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket( $index ) -> retval
 ```
 
 ### VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket::get__NewEnum
@@ -30588,10 +30597,10 @@ AutoIt:
 ### VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket::put_Item
 
 ```cpp
-void VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket::put_Item( size_t                                                                              vIndex,
-                                                                                         std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket> vItem );
+void VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket::put_Item( size_t                                                                              index,
+                                                                                         std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket> item );
 AutoIt:
-    $oVectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket.Item( $vIndex ) = $vItem
+    $oVectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket.Item( $index ) = $item
 ```
 
 ### VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket::size

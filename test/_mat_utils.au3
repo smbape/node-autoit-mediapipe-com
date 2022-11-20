@@ -60,8 +60,17 @@ Func _AssertMatLess($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode =
 
 	If IsNumber($oMatA) Then $oMatA = Number($oMatA, $NUMBER_DOUBLE)
 	If IsNumber($oMatB) Then $oMatB = Number($oMatB, $NUMBER_DOUBLE)
+
 	If IsObj($oMatA) And IsObj($oMatB) And $oMatA.depth() <> $oMatB.depth() Then
 		$oMatA = $oMatA.convertTo($oMatB.depth())
+	EndIf
+
+	If IsNumber($oMatA) And IsObj($oMatB) Then
+		$oMatB = $oMatB.reshape(1)
+	EndIf
+
+	If IsObj($oMatA) And IsNumber($oMatB) Then
+		$oMatA = $oMatA.reshape(1)
 	EndIf
 
 	Local Const $cv = _OpenCV_get()

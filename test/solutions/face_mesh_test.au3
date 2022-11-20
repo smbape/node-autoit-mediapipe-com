@@ -125,27 +125,33 @@ Func test_face($id, $static_image_mode, $refine_landmarks, $num_frames)
 			"min_detection_confidence", 0.5 _
 			))
 
-	Local $results, $multi_face_landmarks[1], $face_landmarks, $i
+	Local $results, $multi_face_landmarks[1], $face_landmarks, $i, $li
 	Local $eye_idx, $iris_idx, $gt_lds, $prediction_error
 
 	For $idx = 0 To $num_frames - 1
 		$results = $faces.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
         _annotate("test_face_" & $id, $image.copy(), $results, $idx, $refine_landmarks)
 
+        ReDim $multi_face_landmarks[UBound($results("multi_face_landmarks"))]
+
+        $li = 0
         For $landmarks In $results("multi_face_landmarks")
             _AssertEqual($landmarks.landmark.size(), _
                 $refine_landmarks ? $mp_faces.FACEMESH_NUM_LANDMARKS_WITH_IRISES : $mp_faces.FACEMESH_NUM_LANDMARKS)
             $face_landmarks = $Mat.create($landmarks.landmark.size(), 2, $CV_32FC1)
+
             $i = 0
             For $landmark In $landmarks.landmark
                 $face_landmarks($i, 0) = $landmark.x * $cols
                 $face_landmarks($i, 1) = $landmark.y * $rows
-                $i = $i + 1
+                $i += 1
             Next
-            $multi_face_landmarks[0] = $face_landmarks
+
+            $multi_face_landmarks[$li] = $face_landmarks
+            $li += 1
         Next
 
-        _AssertLen($results("multi_face_landmarks"), 1)
+        _AssertLen($multi_face_landmarks, 1)
 
         ; Verify the eye landmarks are correct as sanity check.
         For $vPair In $EYE_INDICES_TO_LANDMARKS
@@ -159,8 +165,8 @@ Func test_face($id, $static_image_mode, $refine_landmarks, $num_frames)
 				$prediction_error = $Mat.createFromArray($multi_face_landmarks[0].Vec2f_at($eye_idx), $CV_32F)
 				ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $idx = ' & $idx & @CRLF) ;### Debug Console
 				ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $eye_idx = ' & $eye_idx & @CRLF) ;### Debug Console
-				ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $cv.format($prediction_error) = ' & $cv.format($prediction_error) & @CRLF) ;### Debug Console
-				ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $cv.format($prediction_error) = ' & $cv.format($Mat.createFromArray($gt_lds, $CV_32F)) & @CRLF) ;### Debug Console
+				ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $prediction_error = ' & $cv.format($prediction_error) & @CRLF) ;### Debug Console
+				ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $gt_lds = ' & $cv.format($Mat.createFromArray($gt_lds, $CV_32F)) & @CRLF) ;### Debug Console
 			EndIf
         Next
 
@@ -176,8 +182,8 @@ Func test_face($id, $static_image_mode, $refine_landmarks, $num_frames)
                     $prediction_error = $Mat.createFromArray($multi_face_landmarks[0].Vec2f_at($iris_idx), $CV_32F)
                     ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $idx = ' & $idx & @CRLF) ;### Debug Console
                     ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $iris_idx = ' & $iris_idx & @CRLF) ;### Debug Console
-                    ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $cv.format($prediction_error) = ' & $cv.format($prediction_error) & @CRLF) ;### Debug Console
-                    ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $cv.format($prediction_error) = ' & $cv.format($Mat.createFromArray($gt_lds, $CV_32F)) & @CRLF) ;### Debug Console
+                    ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $prediction_error = ' & $cv.format($prediction_error) & @CRLF) ;### Debug Console
+                    ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $gt_lds = ' & $cv.format($Mat.createFromArray($gt_lds, $CV_32F)) & @CRLF) ;### Debug Console
                 EndIf
             Next
         EndIf

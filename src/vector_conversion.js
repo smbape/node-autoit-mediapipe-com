@@ -51,7 +51,7 @@ exports.declare = (generator, type, parent, options = {}) => {
         ["size_t", "index", "", ["/Expr=std::next(__self->get()->begin() + index)"]],
     ], "", ""]);
 
-    coclass.addMethod([`${ fqn }.at`, vtype, [], [
+    coclass.addMethod([`${ fqn }.at`, vtype, ["/External"], [
         ["size_t", "index", "", []],
     ], "", ""]);
 
@@ -60,13 +60,13 @@ exports.declare = (generator, type, parent, options = {}) => {
         [vtype, "value", "", []],
     ], "", ""]);
 
-    coclass.addMethod([`${ fqn }.at`, vtype, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE"], [
-        ["size_t", "vIndex", "", []],
+    coclass.addMethod([`${ fqn }.at`, vtype, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE", "/ExternalNoDecl"], [
+        ["size_t", "index", "", []],
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.at`, "void", ["/attr=propput", "/idlname=Item", "=put_Item", "/id=DISPID_VALUE", "/ExternalNoDecl"], [
-        ["size_t", "vIndex", "", []],
-        [vtype, "vItem", "", []],
+        ["size_t", "index", "", []],
+        [vtype, "item", "", []],
     ], "", ""]);
 
     coclass.addMethod([`${ fqn }.size`, "size_t", [], [], "", ""]);
@@ -113,12 +113,12 @@ exports.convert_sort = (coclass, header, impl, options = {}) => {
     const cotype = coclass.getClassName();
     const comparator = `${ coclass.fqn.replaceAll("::", "_") }Comparator`;
     const ptr_comparator = `${ coclass.fqn.replaceAll("::", "_") }PtrComparator`;
-    const { cpptype } = coclass;
+    const { cpptype: vtype } = coclass;
     const idltype = coclass.idltype === "VARIANT" || coclass.idltype[0] === "I" ? "VARIANT" : coclass.idltype;
     const to_variant = idltype === "VARIANT";
     const default_value = to_variant ? "{ VT_EMPTY }" : "NULL";
-    const ptrtype = to_variant ? idltype : cpptype;
-    const byref = cpptype !== "void*" && cpptype !== "uchar*" && (idltype === "VARIANT" || idltype[0] === "I");
+    const ptrtype = to_variant ? idltype : vtype;
+    const byref = vtype !== "void*" && vtype !== "uchar*" && (idltype === "VARIANT" || idltype[0] === "I");
 
     const cmp = (to_variant || idltype[0] === "I" ? `
         ${ to_variant ? "_variant_t" : idltype } va = ${ default_value };
@@ -136,7 +136,7 @@ exports.convert_sort = (coclass, header, impl, options = {}) => {
     `).replace(/^ {8}/mg, "").trim().split("\n");
 
     header.push(`
-        typedef bool (*${ comparator })(${ cpptype }${ byref ? "&" : "" } a, ${ cpptype }${ byref ? "&" : "" } b);
+        typedef bool (*${ comparator })(${ vtype }${ byref ? "&" : "" } a, ${ vtype }${ byref ? "&" : "" } b);
         typedef bool (*${ ptr_comparator })(${ ptrtype }* a, ${ ptrtype }* b);
         typedef struct _${ comparator }Proxy  ${ comparator }Proxy;
     `.replace(/^ {8}/mg, ""));
@@ -144,7 +144,7 @@ exports.convert_sort = (coclass, header, impl, options = {}) => {
     impl.push(`
         typedef struct _${ comparator }Proxy {
             ${ ptr_comparator } cmp;
-            bool operator() (${ cpptype }${ byref ? "&" : "" } a, ${ cpptype }${ byref ? "&" : "" } b) {
+            bool operator() (${ vtype }${ byref ? "&" : "" } a, ${ vtype }${ byref ? "&" : "" } b) {
                 ${ cmp.join(`\n${ " ".repeat(16) }`) }
             }
         } ${ comparator }Proxy;
@@ -171,9 +171,9 @@ exports.convert = (coclass, header, impl, options = {}) => {
     exports.convert_sort(coclass, header, impl, options);
 
     const cotype = coclass.getClassName();
-    const { cpptype } = coclass;
+    const { cpptype: vtype } = coclass;
     const idltype = coclass.idltype === "VARIANT" || coclass.idltype[0] === "I" ? "VARIANT" : coclass.idltype;
-    const byref = cpptype !== "void*" && cpptype !== "uchar*" && (idltype === "VARIANT" || idltype[0] === "I");
+    const byref = vtype !== "void*" && vtype !== "uchar*" && (idltype === "VARIANT" || idltype[0] === "I");
 
     impl.push(`
         const std::vector<int> C${ cotype }::Keys(HRESULT& hr) {
@@ -183,9 +183,26 @@ exports.convert = (coclass, header, impl, options = {}) => {
             return keys;
         }
 
-        void C${ cotype }::at(size_t i, ${ cpptype }${ byref ? "&" : "" } value, HRESULT& hr) {
+        const ${ vtype } C${ cotype }::at(size_t i, HRESULT& hr) {
+            auto& v = *__self->get();
+            if (i >= v.size()) {
+                hr = E_INVALIDARG;
+                AUTOIT_ERROR("index " << i << " is out of range");
+                return ${ vtype }();
+            }
             hr = S_OK;
-            (*__self->get())[i] = value;
+            return v.at(i);
+        }
+
+        void C${ cotype }::at(size_t i, ${ vtype }${ byref ? "&" : "" } value, HRESULT& hr) {
+            auto& v = *__self->get();
+            if (i >= v.size()) {
+                hr = E_INVALIDARG;
+                AUTOIT_ERROR("index " << i << " is out of range");
+                return;
+            }
+            hr = S_OK;
+            v[i] = value;
         }
 
         void C${ cotype }::push_vector(${ coclass.fqn }& other, HRESULT& hr) {
@@ -211,14 +228,14 @@ exports.convert = (coclass, header, impl, options = {}) => {
         const void* C${ cotype }::start(HRESULT& hr) {
             hr = S_OK;
             auto& v = *__self->get();
-            ${ cpptype === "bool" ? "void*" : "auto" } _result = ${ cpptype === "bool" ? "NULL" : "v.empty() ? NULL : static_cast<const void*>(&v[0])" };
+            ${ vtype === "bool" ? "void*" : "auto" } _result = ${ vtype === "bool" ? "NULL" : "v.empty() ? NULL : static_cast<const void*>(&v[0])" };
             return _result;
         }
 
         const void* C${ cotype }::end(HRESULT& hr) {
             hr = S_OK;
             auto& v = *__self->get();
-            ${ cpptype === "bool" ? "void*" : "auto" } _result = ${ cpptype === "bool" ? "NULL" : "v.empty() ? NULL : static_cast<const void*>(&v[v.size()])" };
+            ${ vtype === "bool" ? "void*" : "auto" } _result = ${ vtype === "bool" ? "NULL" : "v.empty() ? NULL : static_cast<const void*>(&v[v.size()])" };
             return _result;
         }
 

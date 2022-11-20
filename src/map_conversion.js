@@ -34,7 +34,7 @@ exports.declare = (generator, type, parent, options = {}) => {
     ], "", ""]);
 
     // Element access
-    coclass.addMethod([`${ fqn }.at`, value_type, ["=Get"], [
+    coclass.addMethod([`${ fqn }.at`, value_type, ["=Get", "/External"], [
         [key_type, "key", "", []],
     ], "", ""]);
 
@@ -80,13 +80,13 @@ exports.declare = (generator, type, parent, options = {}) => {
         [key_type, "key", "", []],
     ], "", ""]);
 
-    coclass.addMethod([`${ coclass.fqn }.at`, coclass.value_type, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE"], [
-        [coclass.key_type, "vKey", "", []],
+    coclass.addMethod([`${ fqn }.at`, value_type, ["/attr=propget", "/idlname=Item", "=get_Item", "/id=DISPID_VALUE", "/ExternalNoDecl"], [
+        [key_type, "key", "", []],
     ], "", ""]);
 
-    coclass.addMethod([`${ coclass.fqn }.insert_or_assign`, "void", ["/attr=propput", "/idlname=Item", "=put_Item", "/id=DISPID_VALUE"], [
-        [coclass.key_type, "vKey", "", []],
-        [coclass.value_type, "vItem", "", []],
+    coclass.addMethod([`${ fqn }.insert_or_assign`, "void", ["/attr=propput", "/idlname=Item", "=put_Item", "/id=DISPID_VALUE"], [
+        [key_type, "key", "", []],
+        [value_type, "item", "", []],
     ], "", ""]);
 
     // make map to be recognized as a collection
@@ -121,6 +121,17 @@ exports.convert = (coclass, header, impl, { shared_ptr, make_shared } = {}) => {
             }
 
             return keys;
+        }
+
+        const ${ value_type } C${ cotype }::at(${ key_type } key, HRESULT& hr) {
+            hr = S_OK;
+            auto& map = *__self->get();
+            if (!map.count(key)) {
+                AUTOIT_ERROR("the container does not have an element with the specified key '" << key << "'");
+                hr = E_INVALIDARG;
+                return ${ value_type }();
+            }
+            return map.at(key);
         }
 
         const std::vector<${ value_type }> C${ cotype }::Items(HRESULT& hr) {

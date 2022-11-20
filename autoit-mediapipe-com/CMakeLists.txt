@@ -30,14 +30,6 @@ string(REPLACE \\ \\\\ OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR_ESC}")
 
 set(PROJECT_BUILD_STEPS_FILE "${CMAKE_CURRENT_SOURCE_DIR}/project_build_steps.cmake")
 
-# install PyPI Python mediapipe using pip
-set(MEDIAPIPE_PYTHON_INIT "${CMAKE_CURRENT_BINARY_DIR}/.pip/mediapipe/__init__.py")
-find_package(Python COMPONENTS Interpreter REQUIRED)
-add_custom_command(OUTPUT "${MEDIAPIPE_PYTHON_INIT}"
-  COMMAND "${Python_EXECUTABLE}" -m pip install --no-deps -t "${CMAKE_CURRENT_BINARY_DIR}/.pip" -U mediapipe==${MEDIAPIPE_VERSION}
-)
-add_custom_target(mediapipe-python DEPENDS "${MEDIAPIPE_PYTHON_INIT}")
-
 # Tell cmake we will need opencv.
 include(ExternalProject)
 ExternalProject_Add(opencv
@@ -70,17 +62,27 @@ ExternalProject_Add(mediapipe
   DEPENDS           opencv
 )
 
+set(AUTOIT_OPENCV_DEPENDENCIES opencv)
 set(MEDIAPIPE_SRC_DIR "${CMAKE_CURRENT_BINARY_DIR}/mediapipe-prefix/src/mediapipe")
 
-# copy mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt
-add_custom_command(OUTPUT "${MEDIAPIPE_SRC_DIR}/bazel-bin/mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
-  COMMAND "${CMAKE_COMMAND}" -E copy
-    "${MEDIAPIPE_SRC_DIR}/mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
-    "${MEDIAPIPE_SRC_DIR}/bazel-bin/mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
-  DEPENDS mediapipe
+foreach(item
+  "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
+  "mediapipe/modules/hand_landmark/handedness.txt"
 )
-add_custom_target(object_detection_oidv4_labelmap
-  DEPENDS "${MEDIAPIPE_SRC_DIR}/bazel-bin/mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt")
+  # copy ${item} to bazel-bin/${item}
+  add_custom_command(OUTPUT "${MEDIAPIPE_SRC_DIR}/bazel-bin/${item}"
+    COMMAND "${CMAKE_COMMAND}" -E copy
+      "${MEDIAPIPE_SRC_DIR}/${item}"
+      "${MEDIAPIPE_SRC_DIR}/bazel-bin/${item}"
+    DEPENDS mediapipe
+  )
+
+  get_filename_component(item_target "${item}" NAME_WLE)
+  add_custom_target(${item_target}
+    DEPENDS "${MEDIAPIPE_SRC_DIR}/bazel-bin/${item}")
+
+  list(APPEND AUTOIT_OPENCV_DEPENDENCIES ${item_target})
+endforeach()
 
 # Tell cmake we will need autoit-opencv-com.
 include(ExternalProject)
@@ -92,9 +94,7 @@ ExternalProject_Add(autoit-opencv-com
   CONFIGURE_COMMAND ""
   BUILD_COMMAND     ""
   INSTALL_COMMAND   7z x "${OPENCV_DOWNLOAD_DIR}/autoit-opencv-${OPENCV_VERSION}-com-v2.1.0.7z" -aoa "-o${OPENCV_DOWNLOAD_DIR}/autoit-opencv-com" -y
-  DEPENDS           opencv
-                    mediapipe-python
-                    object_detection_oidv4_labelmap
+  DEPENDS           ${AUTOIT_OPENCV_DEPENDENCIES}
 )
 
 add_definitions(-DMEDIAPIPE_VERSION=${MEDIAPIPE_VERSION})

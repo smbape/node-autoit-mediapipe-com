@@ -7,6 +7,9 @@ static const std::string _BINARYPB_FILE_PATH = "mediapipe/modules/hand_landmark/
 static const std::string _HAND_LANDMARK_LITE_TFLITE_FILE_PATH = "mediapipe/modules/hand_landmark/hand_landmark_lite.tflite";
 static const std::string _HAND_LANDMARK_FULL_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/hand_landmark/hand_landmark_full.tflite";
 
+static const std::string _PALM_DETECTION_LITE_TFLITE_FILE_PATH = "mediapipe/modules/palm_detection/palm_detection_lite.tflite";
+static const std::string _PALM_DETECTION_FULL_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/palm_detection/palm_detection_full.tflite";
+
 namespace mediapipe {
 	namespace autoit {
 		namespace solutions {
@@ -20,6 +23,10 @@ namespace mediapipe {
 				) {
 					download_utils::download_oss_model(
 						model_complexity == 1 ? _HAND_LANDMARK_FULL_RANGE_TFLITE_FILE_PATH : _HAND_LANDMARK_LITE_TFLITE_FILE_PATH
+					);
+
+					download_utils::download_oss_model(
+						model_complexity == 1 ? _PALM_DETECTION_FULL_RANGE_TFLITE_FILE_PATH : _PALM_DETECTION_LITE_TFLITE_FILE_PATH
 					);
 
 					__init__(

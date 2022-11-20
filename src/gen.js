@@ -52,7 +52,6 @@ const parseArguments = PROJECT_DIR => {
             ["std::numeric_limits<int32_t>::min()", "-0x80000000"],
             ["std::numeric_limits<int32_t>::max()", "0x7FFFFFFF"],
         ]),
-        registered: new Set(),
         onCoClass: (generator, coclass, opts) => {
             const {fqn} = coclass;
 
@@ -76,14 +75,16 @@ const parseArguments = PROJECT_DIR => {
         onClass: (generator, coclass, opts) => {
             const {fqn, name} = coclass;
 
-            if (fqn.startsWith("mediapipe::autoit::solution") || fqn.startsWith("mediapipe::autoit::solution_base")) {
-                // expose a ${ name } property like in mediapipe python
-                const parts = fqn.split("::");
-                parts[parts.length - 1] = "";
-                generator.add_func([parts.join("."), "", ["/Properties"], [
-                    [fqn, name, "", ["/R", "=this"]],
-                ], "", ""]);
+            if (!fqn.startsWith("mediapipe::autoit::")) {
+                return;
             }
+
+            // expose a ${ name } property like in mediapipe python
+            const parts = fqn.split("::");
+            parts[parts.length - 1] = "";
+            generator.add_func([parts.join("."), "", ["/Properties"], [
+                [fqn, name, "", ["/R", "=this"]],
+            ], "", ""]);
         },
         convert: (generator, coclass, header, impl, opts) => {
             const {fqn} = coclass;
