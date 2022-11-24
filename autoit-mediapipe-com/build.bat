@@ -6,15 +6,15 @@ CD /d %CD%
 SET "PATH=%CD%;%PATH%"
 SET "CWD=%CD%"
 
-SET skip_node=0
 SET skip_build=0
+SET skip_config=0
 SET TARGET=ALL_BUILD
 
 SET nparms=20
 :LOOP
 IF %nparms%==0 GOTO :MAIN
-IF [%1] == [nojs] SET skip_node=1
-IF [%1] == [-g] SET skip_build=1
+IF [%1] == [--skip-build]  SET skip_build=1
+IF [%1] == [--skip-config] SET skip_config=1
 IF [%1] == [--target] (
     SET TARGET=%2
     SHIFT
@@ -32,13 +32,6 @@ SET BUILD_ARCH=-A x64
 IF NOT DEFINED CMAKE_BUILD_TYPE SET CMAKE_BUILD_TYPE=Release
 SET GENERAL_CMAKE_CONFIG_FLAGS=%GENERAL_CMAKE_CONFIG_FLAGS% -DCMAKE_BUILD_TYPE:STRING="%CMAKE_BUILD_TYPE%" -DCMAKE_INSTALL_PREFIX:STRING=install
 
-SET cmode=opt
-IF [%CMAKE_BUILD_TYPE%] == [Debug] SET cmode=dbg
-
-::Find python
-FOR %%i IN (python.exe) DO SET PYTHON_BIN_PATH=%%~$PATH:i
-SET PYTHON_BIN_PATH=%PYTHON_BIN_PATH:\=//%
-
 ::Find CMake
 SET CMAKE="cmake.exe"
 IF EXIST "%PROGRAMFILES_DIR_X86%\CMake\bin\cmake.exe" SET CMAKE="%PROGRAMFILES_DIR_X86%\CMake\bin\cmake.exe"
@@ -50,21 +43,21 @@ FOR /F "usebackq tokens=* USEBACKQ" %%F IN (`vswhere.exe -legacy -version [10.0^
 
 FOR /F "usebackq tokens=* USEBACKQ" %%F IN (`vswhere.exe -version [16.0^,^) -property installationPath -latest`) DO (
     SET CMAKE_CONF="Visual Studio %VS_VERSION:~0,2%" -A x64
-    rem CALL "%%F\VC\Auxiliary\Build\vcvars64.bat"
+    CALL "%%F\VC\Auxiliary\Build\vcvars64.bat"
     GOTO MAKE
     EXIT /b %ERRORLEVEL%
 )
 
 FOR /F "usebackq tokens=* USEBACKQ" %%F IN (`vswhere.exe -version [15.0^,16.0^) -property installationPath -latest`) DO (
     SET CMAKE_CONF="Visual Studio %VS_VERSION:~0,2% Win64"
-    rem CALL "%%F\VC\Auxiliary\Build\vcvars64.bat"
+    CALL "%%F\VC\Auxiliary\Build\vcvars64.bat"
     GOTO MAKE
     EXIT /b %ERRORLEVEL%
 )
 
 FOR /F "usebackq tokens=* USEBACKQ" %%F IN (`vswhere.exe -legacy -version [10.0^,15.0^) -property installationPath -latest`) DO (
     SET CMAKE_CONF="Visual Studio %VS_VERSION:~0,2% Win64"
-    rem CALL "%%F\VC\vcvarsall.bat" x64
+    CALL "%%F\VC\vcvarsall.bat" x64
     GOTO MAKE
     EXIT /b %ERRORLEVEL%
 )
@@ -75,76 +68,24 @@ GOTO END
 
 :MAKE
 SET ERROR=0
-SET MEDIAPIPE_SRC=%CWD%\%BUILD_FOLDER%\mediapipe-prefix\src\mediapipe
-SET BAZEL_BUILD=bazel --output_user_root=C:/_bazel_ build -c %cmode% --strip=never --define MEDIAPIPE_DISABLE_GPU=1 --action_env "PYTHON_BIN_PATH=%PYTHON_BIN_PATH%" --verbose_failures
-
-:DOWNLOAD_OPENCV
-SET _skip_build=%skip_build%
-SET skip_build=0
-SET _TARGET=%TARGET%
-SET TARGET=mediapipe
-CALL :MAKE_CONFIG
-SET ERROR=%ERRORLEVEL%
-IF NOT "%ERROR%" == "0" GOTO END
-
-SET TARGET=%_TARGET%
-SET skip_build=%_skip_build%
-CD /d %CWD%
-
-:GEN_SOURCES
-IF [%skip_node%] == [1] GOTO MAKE_CONFIG
-
-IF NOT EXIST "%MEDIAPIPE_SRC%\bazel-mediapipe\external\com_google_protobuf\src" (
-    CD /d "%MEDIAPIPE_SRC%"
-    %BAZEL_BUILD% mediapipe/python:builtin_calculators
-)
-SET ERROR=%ERRORLEVEL%
-IF NOT "%ERROR%" == "0" GOTO END
-
-CD /d %CWD%
-
-IF NOT EXIST "%MEDIAPIPE_SRC%\mediapipe\autoit" (
-    MKLINK /j "%MEDIAPIPE_SRC%\mediapipe\autoit" "%CWD%"
-)
-
-node --unhandled-rejections=strict --trace-uncaught --trace-warnings ..\src\gen.js --skip=vs
-SET ERROR=%ERRORLEVEL%
-IF NOT "%ERROR%" == "0" GOTO END
 
 :MAKE_CONFIG
 IF [%skip_config%] == [1] GOTO BUILD
 
 IF NOT EXIST %BUILD_FOLDER% mkdir %BUILD_FOLDER%
 CD %BUILD_FOLDER%
-rem IF EXIST "CMakeCache.txt" del CMakeCache.txt
+REM IF EXIST "CMakeCache.txt" del CMakeCache.txt
 
-:RUN_CMAKE
+ECHO %CMAKE% -G %CMAKE_CONF% %GENERAL_CMAKE_CONFIG_FLAGS% ..\
 %CMAKE% -G %CMAKE_CONF% %GENERAL_CMAKE_CONFIG_FLAGS% ..\
 SET ERROR=%ERRORLEVEL%
 IF NOT "%ERROR%" == "0" GOTO END
 
 :BUILD
 IF [%skip_build%] == [1] GOTO END
+ECHO %CMAKE% --build . --config %CMAKE_BUILD_TYPE% --target %TARGET%
 %CMAKE% --build . --config %CMAKE_BUILD_TYPE% --target %TARGET%
 SET ERROR=%ERRORLEVEL%
-IF NOT "%ERROR%" == "0" GOTO END
-
-CD /d "%MEDIAPIPE_SRC%"
-
-IF [%TARGET%] == [ALL_BUILD] GOTO BUILD_PCH
-IF [%TARGET%] == [lib_pch] GOTO BUILD_PCH
-IF [%TARGET%] == [lib] GOTO BUILD_LIB
-GOTO END
-
-:BUILD_PCH
-%BAZEL_BUILD% mediapipe/autoit:lib_pch
-SET ERROR=%ERRORLEVEL%
-IF NOT "%ERROR%" == "0" GOTO END
-
-:BUILD_LIB
-%BAZEL_BUILD% mediapipe/autoit:lib --keep_going
-SET ERROR=%ERRORLEVEL%
-IF NOT "%ERROR%" == "0" GOTO END
 
 :END
 POPD

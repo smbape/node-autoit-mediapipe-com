@@ -7,6 +7,9 @@ static const std::string _BINARYPB_FILE_PATH = "mediapipe/modules/face_landmark/
 static const std::string _FACE_LANDMARK_TFLITE_FILE_PATH = "mediapipe/modules/face_landmark/face_landmark.tflite";
 static const std::string _FACE_LANDMARK_WITH_ATTENTION_TFLITE_FILE_PATH = "mediapipe/modules/face_landmark/face_landmark_with_attention.tflite";
 
+static const std::string _SHORT_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/face_detection/face_detection_short_range.tflite";
+static const std::string _FULL_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/face_detection/face_detection_full_range_sparse.tflite";
+
 namespace mediapipe {
     namespace autoit {
         namespace solutions {
@@ -19,6 +22,7 @@ namespace mediapipe {
                         float min_tracking_confidence
                 ) {
                     download_utils::download_oss_model(refine_landmarks ? _FACE_LANDMARK_WITH_ATTENTION_TFLITE_FILE_PATH : _FACE_LANDMARK_TFLITE_FILE_PATH);
+                    download_utils::download_oss_model(refine_landmarks ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
 
                     __init__(
                         _BINARYPB_FILE_PATH,

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.19)
 
 # Name of the project (will be the name of the plugin)
 project(autoit_mediapipe_com)
@@ -18,71 +18,95 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_compile_options(/MP)
 
-set(MEDIAPIPE_VERSION 0.8.11)
+# https://github.com/scivision/cmake-patch-file/blob/main/cmake/PatchFile.cmake
+if(WIN32)
+  # prioritize Git Patch on Windows as other Patches may be very old and incompatible.
+  find_package(Git)
+  if(Git_FOUND)
+    get_filename_component(GIT_DIR ${GIT_EXECUTABLE} DIRECTORY)
+    get_filename_component(GIT_DIR ${GIT_DIR} DIRECTORY)
+  endif()
+endif()
 
-set(OPENCV_DOWNLOAD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/..")
-set(OPENCV_VERSION 4.6.0)
-string(REPLACE . "" OPENCV_VERSION_ "${OPENCV_VERSION}")
+find_program(PATCH
+  NAMES patch
+  HINTS ${GIT_DIR}
+  PATH_SUFFIXES usr/bin
+)
 
-get_filename_component(OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR}" REALPATH)
-file(TO_NATIVE_PATH "${OPENCV_DOWNLOAD_DIR_ESC}" OPENCV_DOWNLOAD_DIR_ESC)
-string(REPLACE \\ \\\\ OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR_ESC}")
+if(NOT PATCH)
+  message(FATAL_ERROR "Did not find GNU Patch")
+endif()
+
+if("${CMAKE_BUILD_TYPE}" STREQUAL Debug)
+  set(CMODE dbg)
+else()
+  set(CMODE opt)
+endif()
+
+find_package(Python COMPONENTS Interpreter REQUIRED)
+string(REPLACE / // PYTHON_BIN_PATH "${Python_EXECUTABLE}")
+
+set(BAZEL_BUILD bazel
+  --output_user_root=C:/_bazel_
+  build -c ${CMODE}
+  --strip=never
+  --define MEDIAPIPE_DISABLE_GPU=1
+  --action_env "PYTHON_BIN_PATH=${PYTHON_BIN_PATH}"
+  --verbose_failures
+)
 
 set(PROJECT_BUILD_STEPS_FILE "${CMAKE_CURRENT_SOURCE_DIR}/project_build_steps.cmake")
 
 # Tell cmake we will need opencv.
-include(ExternalProject)
-ExternalProject_Add(opencv
-  URL               https://github.com/opencv/opencv/releases/download/${OPENCV_VERSION}/opencv-${OPENCV_VERSION}-vc14_vc15.exe
-  URL_HASH          SHA256=3fb046e14dc5b50719a86ea0395b5b1e3299e2343111ebd2e31828aa31d6d477
+get_filename_component(OPENCV_DOWNLOAD_DIR "${CMAKE_CURRENT_SOURCE_DIR}" DIRECTORY)
+set(OPENCV_VERSION        4.6.0)
+string(REPLACE . "" OPENCV_VERSION_POSTFIX "${OPENCV_VERSION}")
+set(OPENCV_DOWNLOAD_NAME  opencv-${OPENCV_VERSION}-vc14_vc15.exe)
+set(OPENCV_URL            https://github.com/opencv/opencv/releases/download/${OPENCV_VERSION}/${OPENCV_DOWNLOAD_NAME})
+set(OPENCV_URL_HASH       SHA256=3fb046e14dc5b50719a86ea0395b5b1e3299e2343111ebd2e31828aa31d6d477)
+
+if("${CMAKE_BUILD_TYPE}" STREQUAL Debug)
+  set(OPENCV_VERSION_POSTFIX "${OPENCV_VERSION_POSTFIX}d")
+endif()
+
+include(FetchContent)
+FetchContent_Declare(opencv
+  URL                 ${OPENCV_URL}
+  URL_HASH            ${OPENCV_URL_HASH}
   DOWNLOAD_NO_EXTRACT TRUE
-  DOWNLOAD_DIR      "${OPENCV_DOWNLOAD_DIR}"
-  CONFIGURE_COMMAND "${OPENCV_DOWNLOAD_DIR}/opencv-${OPENCV_VERSION}-vc14_vc15.exe" "-o${OPENCV_DOWNLOAD_DIR}/opencv-${OPENCV_VERSION}-vc14_vc15" -y
-  BUILD_COMMAND     patch -p 1 -d "${OPENCV_DOWNLOAD_DIR}/opencv-${OPENCV_VERSION}-vc14_vc15/opencv/sources/" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-opencv-src.patch"
-  INSTALL_COMMAND   ""
+  DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
+  SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
+  PATCH_COMMAND       "<DOWNLOAD_DIR>/${OPENCV_DOWNLOAD_NAME}" "-o<DOWNLOAD_DIR>/opencv-${OPENCV_VERSION}-vc14_vc15" -y
 )
 
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch" @ONLY)
+include(FetchContent)
+FetchContent_Declare(opencv-patch
+  URL                 ${OPENCV_URL}
+  URL_HASH            ${OPENCV_URL_HASH}
+  DOWNLOAD_NO_EXTRACT TRUE
+  DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
+  SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
+  PATCH_COMMAND       "${PATCH}" -p 1 -d "<DOWNLOAD_DIR>/opencv-${OPENCV_VERSION}-vc14_vc15/opencv/sources/"
+                        -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-opencv-src.patch"
+)
 
 # Tell cmake we will need mediapipe.
-include(ExternalProject)
-ExternalProject_Add(mediapipe
+set(MEDIAPIPE_VERSION 0.8.11)
+
+# Used in 001-mediapipe-src.patch.in
+get_filename_component(OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR}" REALPATH)
+file(TO_NATIVE_PATH "${OPENCV_DOWNLOAD_DIR_ESC}" OPENCV_DOWNLOAD_DIR_ESC)
+string(REPLACE \\ \\\\ OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR_ESC}")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch" @ONLY)
+
+include(FetchContent)
+FetchContent_Declare(mediapipe
   URL               https://fossies.org/linux/misc/mediapipe-${MEDIAPIPE_VERSION}.tar.gz
                     https://github.com/google/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
   URL_HASH          SHA256=5b331a46b459900d0789967f9e26e4a64d1466bc1e74dd0712eb3077358c5473
-  PATCH_COMMAND
-    "${CMAKE_COMMAND}"
-    "-DSOURCE_DIR=<SOURCE_DIR>"
-    "-DPATCH_FILE=${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
-    -DBUILD_STEP=patch
-    -P "${PROJECT_BUILD_STEPS_FILE}"
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND     ""
-  INSTALL_COMMAND   ""
-  DEPENDS           opencv
+  PATCH_COMMAND     "${PATCH}" -p 1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
 )
-
-set(AUTOIT_OPENCV_DEPENDENCIES opencv)
-set(MEDIAPIPE_SRC_DIR "${CMAKE_CURRENT_BINARY_DIR}/mediapipe-prefix/src/mediapipe")
-
-foreach(item
-  "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
-  "mediapipe/modules/hand_landmark/handedness.txt"
-)
-  # copy ${item} to bazel-bin/${item}
-  add_custom_command(OUTPUT "${MEDIAPIPE_SRC_DIR}/bazel-bin/${item}"
-    COMMAND "${CMAKE_COMMAND}" -E copy
-      "${MEDIAPIPE_SRC_DIR}/${item}"
-      "${MEDIAPIPE_SRC_DIR}/bazel-bin/${item}"
-    DEPENDS mediapipe
-  )
-
-  get_filename_component(item_target "${item}" NAME_WLE)
-  add_custom_target(${item_target}
-    DEPENDS "${MEDIAPIPE_SRC_DIR}/bazel-bin/${item}")
-
-  list(APPEND AUTOIT_OPENCV_DEPENDENCIES ${item_target})
-endforeach()
 
 # Tell cmake we will need autoit-opencv-com.
 include(ExternalProject)
@@ -91,10 +115,40 @@ ExternalProject_Add(autoit-opencv-com
   URL_HASH          SHA256=e6f70b1ea79be92db72e4a93b9ec07926ef0db3752af308cd0448572c009ab8f
   DOWNLOAD_NO_EXTRACT TRUE
   DOWNLOAD_DIR      "${OPENCV_DOWNLOAD_DIR}"
+  SOURCE_DIR        "${OPENCV_DOWNLOAD_DIR}"
   CONFIGURE_COMMAND ""
   BUILD_COMMAND     ""
-  INSTALL_COMMAND   7z x "${OPENCV_DOWNLOAD_DIR}/autoit-opencv-${OPENCV_VERSION}-com-v2.1.0.7z" -aoa "-o${OPENCV_DOWNLOAD_DIR}/autoit-opencv-com" -y
-  DEPENDS           ${AUTOIT_OPENCV_DEPENDENCIES}
+  INSTALL_COMMAND   7z x "<DOWNLOAD_DIR>/autoit-opencv-${OPENCV_VERSION}-com-v2.1.0.7z" -aoa "-o<DOWNLOAD_DIR>/autoit-opencv-com" -y
+)
+
+FetchContent_Populate(opencv)
+FetchContent_Populate(opencv-patch)
+FetchContent_Populate(mediapipe)
+
+set(mediapipe_BINARY_DIR "${mediapipe_SOURCE_DIR}/bazel-out/x64_windows-${CMODE}/bin")
+
+# generate source files
+if(NOT EXISTS "${mediapipe_BINARY_DIR}/external/com_google_protobuf/any_proto-descriptor-set.proto.bin")
+  execute_process(
+    COMMAND "${Python_EXECUTABLE}" -m pip install numpy
+    WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
+    COMMAND_ECHO STDERR
+    COMMAND_ERROR_IS_FATAL ANY
+  )
+
+  execute_process(
+    COMMAND ${BAZEL_BUILD} mediapipe/python:builtin_calculators
+    WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
+    COMMAND_ECHO STDERR
+    COMMAND_ERROR_IS_FATAL ANY
+  )
+endif()
+
+execute_process(
+  COMMAND node --unhandled-rejections=strict --trace-uncaught --trace-warnings src/gen.js --skip=vs
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/.."
+  COMMAND_ECHO STDERR
+  COMMAND_ERROR_IS_FATAL ANY
 )
 
 add_definitions(-DMEDIAPIPE_VERSION=${MEDIAPIPE_VERSION})
@@ -114,7 +168,68 @@ source_group("Source Resources" FILES ${project_source_resources})
 source_group("Source Headers" FILES ${project_source_headers})
 source_group("Generated Resources" FILES ${project_generated_resources})
 
-# Build a shared library named as the project
-add_library(${PROJECT_NAME} OBJECT ${SRC_FILES})
-target_include_directories(${PROJECT_NAME} PUBLIC "src")
-target_include_directories(${PROJECT_NAME} PUBLIC "generated")
+# Build resource file needed by bazel
+add_library(${PROJECT_NAME}_res OBJECT ${SRC_FILES})
+target_include_directories(${PROJECT_NAME}_res PUBLIC "src")
+target_include_directories(${PROJECT_NAME}_res PUBLIC "generated")
+
+file(GLOB_RECURSE project_source_headers
+  "src/**/*.h*"
+  "generated/**/*.h*"
+)
+
+file(GLOB_RECURSE project_sources_files
+  "src/**/*.c"
+  "src/**/*.cc"
+  "src/**/*.cpp"
+  "src/**/*.cxx"
+  "generated/**/*.c"
+  "generated/**/*.cc"
+  "generated/**/*.cpp"
+  "generated/**/*.cxx"
+)
+
+set(MEDIAPIPE_AUTOIT "${mediapipe_SOURCE_DIR}/mediapipe/autoit")
+add_custom_command(
+  OUTPUT "${MEDIAPIPE_AUTOIT}/CMakeLists.txt"
+  COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}" "${MEDIAPIPE_AUTOIT}"
+  VERBATIM
+)
+add_custom_target(${PROJECT_NAME}_data DEPENDS "${MEDIAPIPE_AUTOIT}/CMakeLists.txt")
+
+set(PROJECT_PCH "${mediapipe_BINARY_DIR}/mediapipe/autoit/_pch_autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OPENCV_VERSION_POSTFIX}.pch")
+add_custom_command(OUTPUT "${PROJECT_PCH}"
+  COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib_pch
+  WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
+  DEPENDS           ${project_source_headers} ${PROJECT_NAME}_data
+  VERBATIM
+)
+add_custom_target(${PROJECT_NAME}_lib_pch DEPENDS "${PROJECT_PCH}")
+
+set(PROJECT_LIBRARY "${mediapipe_BINARY_DIR}/mediapipe/autoit/autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OPENCV_VERSION_POSTFIX}.dll")
+add_custom_command(OUTPUT "${PROJECT_LIBRARY}"
+  COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib
+  WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
+  DEPENDS           ${PROJECT_NAME}_res ${PROJECT_NAME}_lib_pch ${project_sources_files}
+  VERBATIM
+)
+add_custom_target(${PROJECT_NAME} ALL DEPENDS "${PROJECT_LIBRARY}" autoit-opencv-com)
+
+foreach(item
+  "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
+  "mediapipe/modules/hand_landmark/handedness.txt"
+)
+  get_filename_component(item_target "${item}" NAME_WLE)
+
+  # copy ${mediapipe_SOURCE_DIR}/${item} to ${mediapipe_BINARY_DIR}/${item}
+  add_custom_command(OUTPUT "${mediapipe_BINARY_DIR}/${item}"
+    COMMAND "${CMAKE_COMMAND}" -E copy_if_different
+      "${mediapipe_SOURCE_DIR}/${item}"
+      "${mediapipe_BINARY_DIR}/${item}"
+    DEPENDS "${PROJECT_LIBRARY}"
+    VERBATIM
+  )
+  add_custom_target(${item_target} DEPENDS "${mediapipe_BINARY_DIR}/${item}")
+
+  add_dependencies(${PROJECT_NAME} ${item_target})
+endforeach()

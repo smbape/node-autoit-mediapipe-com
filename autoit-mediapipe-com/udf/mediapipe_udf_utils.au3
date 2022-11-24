@@ -172,7 +172,7 @@ Func _Mediapipe_FindDLL($sFile, $sFilter = Default, $sDir = Default, $bReverse =
 	Local $sBuildType = $_mediapipe_build_type == "Debug" ? "Debug" : "Release"
 	Local $sPostfix = $_mediapipe_build_type == "Debug" ? "d" : ""
 	Local $sCompileMode = $_mediapipe_build_type == "Debug" ? "dbg" : "opt"
-	Local $sBazelOut = "build_x64\mediapipe-prefix\src\mediapipe\bazel-out\x64_windows-" & _
+	Local $sBazelOut = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & _
 			$sCompileMode & "\bin\mediapipe\autoit"
 
 	Local $aSearchPaths[] = [ _
@@ -474,10 +474,11 @@ Func _Mediapipe_MapOfStringAndVariant($sKey1 = Default, $vVal1 = Default, $sKey2
 EndFunc   ;==>_Mediapipe_MapOfStringAndVariant
 
 Func _Mediapipe_FindResourceDir()
+	Local $sCompileMode = $_mediapipe_build_type == "Debug" ? "dbg" : "opt"
+
 	Local $aSearchPaths[] = [ _
 			0, _
-			"autoit-mediapipe-com\build_x64\mediapipe-prefix\src\mediapipe\bazel-bin", _
-			"autoit-mediapipe-com\build_x64\.pip", _
+			"autoit-mediapipe-com\build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & $sCompileMode & "\bin", _
 			"autoit-mediapipe-com", _
 			"." _
 			]

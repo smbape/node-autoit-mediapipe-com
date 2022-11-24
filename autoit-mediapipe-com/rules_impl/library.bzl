@@ -254,7 +254,7 @@ def _add_com_library(name, intdir, compilation_mode, pchhdrs, **kwargs):
         "//conditions:default": [],
     })
     kwargs["linkopts"] = kwargs.get("linkopts", []) + [
-        "mediapipe/autoit/build_x64/autoit_mediapipe_com.dir/" + intdir + "/mediapipeCOM.res",
+        "mediapipe/autoit/build_x64/autoit_mediapipe_com_res.dir/" + intdir + "/mediapipeCOM.res",
     ]
 
     native.cc_binary(

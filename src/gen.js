@@ -241,19 +241,21 @@ waterfall([
     },
 
     (srcfiles, protofiles, generated_include, next) => {
+        const mediapipe_SOURCE_DIR = fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/_deps/mediapipe-src`);
+
         const outputs = Parser.createOutputs();
         const cache = new Map();
         const opts = {
             proto_path: [
-                fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe`),
-                fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/bazel-mediapipe/external/com_google_protobuf/src`),
+                mediapipe_SOURCE_DIR,
+                fs.realpathSync(`${mediapipe_SOURCE_DIR}/bazel-mediapipe-src/external/com_google_protobuf/src`),
             ]
         };
 
         for (const filename of protofiles) {
             opts.filename = filename;
             const parser = new Parser();
-            parser.parseFile(fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/${ filename }`), opts, outputs, cache);
+            parser.parseFile(fs.realpathSync(`${mediapipe_SOURCE_DIR}/${ filename }`), opts, outputs, cache);
         }
 
         custom_declarations.push(...outputs.decls);

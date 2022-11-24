@@ -15,13 +15,13 @@ const files = [
 ];
 
 files.push([
-    sysPath.join(project, "build_x64/mediapipe-prefix/src/mediapipe/bazel-bin"),
+    sysPath.join(project, "build_x64/_deps/mediapipe-src/bazel-out/x64_windows-opt/bin"),
     "-r",
     "*.binarypb",
 ]);
 
 files.push([
-    sysPath.join(project, "build_x64/mediapipe-prefix/src/mediapipe"),
+    sysPath.join(project, "build_x64/_deps/mediapipe-src/mediapipe"),
     "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt",
     "mediapipe/modules/hand_landmark/handedness.txt",
 ]);
@@ -29,7 +29,7 @@ files.push([
 for (const mode of ["dbg", "opt"]) {
     for (const extname of ["dll", "lib", "exp", "pdb"]) {
         files.push([
-            sysPath.join(project, `build_x64/mediapipe-prefix/src/mediapipe/bazel-out/x64_windows-${ mode }/bin/mediapipe/autoit`),
+            sysPath.join(project, `build_x64/_deps/mediapipe-src/bazel-out/x64_windows-${ mode }/bin/mediapipe/autoit`),
             `autoit*.${ extname }`
         ]);
     }
@@ -41,6 +41,17 @@ eachOfLimit(files, 1, ([cwd, ...args], i, next) => {
         stdio: "inherit"
     });
 
-    child.on("close", next);
-    child.on("error", next);
+    child.on("close", () => {
+        if (next !== null) {
+            next();
+        }
+    });
+    child.on("error", err => {
+        if (next !== null) {
+            next(err);
+            next = null;
+        } else {
+            console.error(err);
+        }
+    });
 });
