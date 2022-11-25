@@ -56,9 +56,7 @@ set(BAZEL_BUILD bazel
   --verbose_failures
 )
 
-set(PROJECT_BUILD_STEPS_FILE "${CMAKE_CURRENT_SOURCE_DIR}/project_build_steps.cmake")
-
-# Tell cmake we will need opencv.
+# Tell cmake that we will need opencv.
 get_filename_component(OPENCV_DOWNLOAD_DIR "${CMAKE_CURRENT_SOURCE_DIR}" DIRECTORY)
 set(OPENCV_VERSION        4.6.0)
 string(REPLACE . "" OPENCV_VERSION_POSTFIX "${OPENCV_VERSION}")
@@ -91,13 +89,14 @@ FetchContent_Declare(opencv-patch
                         -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-opencv-src.patch"
 )
 
-# Tell cmake we will need mediapipe.
+# Tell cmake that we will need mediapipe.
 set(MEDIAPIPE_VERSION 0.8.11)
 
 # Used in 001-mediapipe-src.patch.in
 get_filename_component(OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR}" REALPATH)
 file(TO_NATIVE_PATH "${OPENCV_DOWNLOAD_DIR_ESC}" OPENCV_DOWNLOAD_DIR_ESC)
 string(REPLACE \\ \\\\ OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR_ESC}")
+string(REPLACE . "" OPENCV_VERSION_ "${OPENCV_VERSION}")
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch" @ONLY)
 
 include(FetchContent)
@@ -108,7 +107,7 @@ FetchContent_Declare(mediapipe
   PATCH_COMMAND     "${PATCH}" -p 1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
 )
 
-# Tell cmake we will need autoit-opencv-com.
+# Tell cmake that we will need autoit-opencv-com.
 include(ExternalProject)
 ExternalProject_Add(autoit-opencv-com
   URL               https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.1.0/autoit-opencv-${OPENCV_VERSION}-com-v2.1.0.7z
@@ -189,19 +188,13 @@ file(GLOB_RECURSE project_sources_files
   "generated/**/*.cxx"
 )
 
-set(MEDIAPIPE_AUTOIT "${mediapipe_SOURCE_DIR}/mediapipe/autoit")
-add_custom_command(
-  OUTPUT "${MEDIAPIPE_AUTOIT}/CMakeLists.txt"
-  COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}" "${MEDIAPIPE_AUTOIT}"
-  VERBATIM
-)
-add_custom_target(${PROJECT_NAME}_data DEPENDS "${MEDIAPIPE_AUTOIT}/CMakeLists.txt")
+file(CREATE_LINK "${CMAKE_CURRENT_SOURCE_DIR}" "${mediapipe_SOURCE_DIR}/mediapipe/autoit" SYMBOLIC)
 
 set(PROJECT_PCH "${mediapipe_BINARY_DIR}/mediapipe/autoit/_pch_autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OPENCV_VERSION_POSTFIX}.pch")
 add_custom_command(OUTPUT "${PROJECT_PCH}"
   COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib_pch
   WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
-  DEPENDS           ${project_source_headers} ${PROJECT_NAME}_data
+  DEPENDS           ${project_source_headers}
   VERBATIM
 )
 add_custom_target(${PROJECT_NAME}_lib_pch DEPENDS "${PROJECT_PCH}")

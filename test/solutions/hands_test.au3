@@ -37,6 +37,8 @@ _AssertTrue(IsObj($mp_hands), "Failed to load mediapipe.autoit.solutions.hands")
 
 Global $Mat = _OpenCV_ObjCreate("Mat")
 
+#include ".\test_on_video_fullasl_hand.full.au3"
+
 Global Const $LITE_MODEL_DIFF_THRESHOLD = 25  ; pixels
 Global Const $FULL_MODEL_DIFF_THRESHOLD = 20  ; pixels
 Global $EXPECTED_HAND_COORDINATES_PREDICTION[][][] = [[[580, 34], [504, 50], [459, 94], _
@@ -149,22 +151,23 @@ Func test_on_video($id, $model_complexity, $expected_name)
 			@ScriptDir & "/testdata/asl_hand.25fps.mp4" _
 			)
 
-	; $download_utils.download( _
-	; 		"https://github.com/tensorflow/tfjs-models/raw/master/hand-pose-detection/test_data/" & StringReplace($expected_name, ".npz", ".json"), _
-	; 		@ScriptDir & "/testdata/" & StringReplace($expected_name, ".npz", ".json") _
-	; 		)
+	; Set threshold for comparing actual and expected predictions in pixels.
+	Local Const $diff_threshold = 18
+	Local Const $world_diff_threshold = 0.05
 
-    ; Set threshold for comparing actual and expected predictions in pixels.
-    Local Const $diff_threshold = 18
-    Local Const $world_diff_threshold = 0.05
+	Local $video_path = @ScriptDir & "/testdata/asl_hand.25fps.mp4"
 
-    Local $video_path = @ScriptDir & "/testdata/asl_hand.25fps.mp4"
+	Local $aTuple = _process_video($model_complexity, $video_path)
+	Local $actual = $aTuple[0]
+	Local $actual_world = $aTuple[1]
 
-    Local $aTuple = _process_video($model_complexity, $video_path)
-    Local $actual = $aTuple[0]
-    Local $actual_world = $aTuple[1]
+	Local $prediction_error
 
-    #forceref $diff_threshold, $world_diff_threshold, $actual, $actual_world
+	$prediction_error = $cv.absdiff($actual, $EXPECTED_PREDICTIONS_LANDMARKS_PER_FRAME)
+	_AssertMatLess($prediction_error, $diff_threshold)
+
+	$prediction_error = $cv.absdiff($actual_world, $EXPECTED_PREDICTIONS_WORLD_LANDMARKS_PER_FRAME)
+	_AssertMatLess($prediction_error, $world_diff_threshold)
 EndFunc   ;==>test_on_video
 
 Func _get_output_path($id, $name)
@@ -221,46 +224,46 @@ Func _annotate($id, $frame, $results, $idx)
 EndFunc   ;==>_annotate
 
 Func _process_video($model_complexity, $video_path, $max_num_hands = 1)
-    ; Predict pose landmarks for each frame.
-    Local $video_cap = _OpenCV_ObjCreate("cv.VideoCapture").create($video_path)
-    If Not _AssertTrue($video_cap.isOpened(), "cannot open the video file " & $video_path & ".") Then
-        Return _Mediapipe_Tuple(Default, Default)
-    EndIf
+	; Predict pose landmarks for each frame.
+	Local $video_cap = _OpenCV_ObjCreate("cv.VideoCapture").create($video_path)
+	If Not _AssertTrue($video_cap.isOpened(), "cannot open the video file " & $video_path & ".") Then
+		Return _Mediapipe_Tuple(Default, Default)
+	EndIf
 
-    Local $hands = $mp_hands.Hands(_Mediapipe_Params( _
-            "static_image_mode", false, _
-            "max_num_hands", $max_num_hands, _
-            "model_complexity", $model_complexity, _
-            "min_detection_confidence", 0.5 _
-            ))
+	Local $hands = $mp_hands.Hands(_Mediapipe_Params( _
+			"static_image_mode", false, _
+			"max_num_hands", $max_num_hands, _
+			"model_complexity", $model_complexity, _
+			"min_detection_confidence", 0.5 _
+			))
 
-    Local $landmarks_per_frame = _OpenCV_ObjCreate("VectorOfVectorOfMat")
-    Local $w_landmarks_per_frame = _OpenCV_ObjCreate("VectorOfVectorOfMat")
+	Local $landmarks_per_frame = _OpenCV_ObjCreate("VectorOfMat")
+	Local $w_landmarks_per_frame = _OpenCV_ObjCreate("VectorOfMat")
 
-    Local $input_frame = $Mat.create()
-    Local $frame_shape, $results, $frame_landmarks, $frame_w_landmarks
+	Local $input_frame = $Mat.create()
+	Local $frame_shape, $results, $frame_landmarks, $frame_w_landmarks
 
-    While $video_cap.read($input_frame)
-        $frame_shape = $input_frame.shape()
-        $results = $hands.process($cv.cvtColor($input_frame, $CV_COLOR_BGR2RGB))
+	While $video_cap.read($input_frame)
+		$frame_shape = $input_frame.shape()
+		$results = $hands.process($cv.cvtColor($input_frame, $CV_COLOR_BGR2RGB))
 
-        $frame_landmarks = _OpenCV_ObjCreate("VectorOfMat")
-        For $landmarks In $results("multi_hand_landmarks")
-            $landmarks = _landmarks_list_to_array($landmarks, $frame_shape)
-            $frame_landmarks.append($landmarks)
-        Next
+		$frame_landmarks = _OpenCV_ObjCreate("VectorOfMat")
+		For $landmarks In $results("multi_hand_landmarks")
+			$landmarks = _landmarks_list_to_array($landmarks, $frame_shape)
+			$frame_landmarks.append($landmarks)
+		Next
 
-        $frame_w_landmarks = _OpenCV_ObjCreate("VectorOfMat")
-        For $w_landmarks In $results("multi_hand_world_landmarks")
-            $w_landmarks = _world_landmarks_list_to_array($w_landmarks)
-            $frame_w_landmarks.append($w_landmarks)
-        Next
+		$frame_w_landmarks = _OpenCV_ObjCreate("VectorOfMat")
+		For $w_landmarks In $results("multi_hand_world_landmarks")
+			$w_landmarks = _world_landmarks_list_to_array($w_landmarks)
+			$frame_w_landmarks.append($w_landmarks)
+		Next
 
-        $landmarks_per_frame.append($frame_landmarks)
-        $w_landmarks_per_frame.append($frame_w_landmarks)
-    WEnd
+		$landmarks_per_frame.append($cv.vconcat($frame_landmarks))
+		$w_landmarks_per_frame.append($cv.vconcat($frame_w_landmarks))
+	WEnd
 
-    Return _Mediapipe_Tuple($landmarks_per_frame, $w_landmarks_per_frame)
+	Return _Mediapipe_Tuple($cv.vconcat($landmarks_per_frame), $cv.vconcat($w_landmarks_per_frame))
 EndFunc   ;==>_process_video
 
 Func _OnAutoItExit()
