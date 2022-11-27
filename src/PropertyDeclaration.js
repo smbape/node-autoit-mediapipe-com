@@ -197,11 +197,14 @@ Object.assign(exports, {
         const is_static = !coclass.is_class && !coclass.is_struct || modifiers.includes("/S");
         const is_enum = modifiers.includes("/Enum");
         const is_external = modifiers.includes("/External");
+        const has_docs = !fqn.endsWith("AndVariant");
 
         let is_private = true;
         let propname = idlname;
         let rname, wname;
         let id = null;
+        let is_propget = false;
+        let is_propput = false;
         const attrs = [];
 
         for (const modifier of modifiers) {
@@ -226,6 +229,7 @@ Object.assign(exports, {
         const obj = `${ is_static ? `${ fqn }::` : "__self->get()->" }`;
 
         if (is_static || is_enum || modifiers.includes("/R") || modifiers.includes("/RW") || (!modifiers.includes("/W") && !wname) || rname) {
+            is_propget = true;
             id = coclass.addIDLName(idlname, `get_${ idlname }`, id);
 
             const attributes = [`id(${ id })`, "propget"].concat(attrs);
@@ -286,6 +290,7 @@ Object.assign(exports, {
         }
 
         if (modifiers.includes("/W") || modifiers.includes("/RW") || wname) {
+            is_propput = true;
             id = coclass.addIDLName(idlname, `put_${ idlname }`, id);
 
             const attributes = [`id(${ id })`, "propput"].concat(attrs);
@@ -315,6 +320,35 @@ Object.assign(exports, {
 
         if (is_private) {
             iprivate.push(`${ cpptype } ${ propname };`);
+        } else if (has_docs) {
+            // generate docs header
+            generator.docs.push(`### ${ coclass.name }.${ idlname }\n`.replaceAll("_", "\\_"));
+
+            const cppsignature = [];
+            if (is_static) {
+                cppsignature.push("static");
+            }
+            cppsignature.push(cpptype, `${ fqn }::${ propname }`);
+
+            const attributes = [];
+
+            if (is_propget) {
+                attributes.push("propget");
+            }
+
+            if (is_propput) {
+                attributes.push("propput");
+            }
+
+            generator.docs.push([
+                "```cpp",
+                cppsignature.join(" "),
+                // "",
+                "AutoIt:",
+                `${ " ".repeat(4) }[${ attributes.join(" ") }] $o${ coclass.name }.${ idlname }`,
+                "```",
+                ""
+            ].join("\n").replace(/\s*\( {2}\)/g, "()"));
         }
     }
 });

@@ -492,7 +492,7 @@ class AutoItGenerator {
             coclass.iface.impl = impl.join("\n");
 
             if (docid !== this.docs.length) {
-                this.docs.splice(docid, 0, `## ${ fqn }\n`);
+                this.docs.splice(docid, 0, `## ${ fqn }\n`.replaceAll("_", "\\_"));
             }
         }
 
@@ -980,7 +980,7 @@ class AutoItGenerator {
                         filename
                     ]);
 
-                    console.log("midl.exe", argv.map(arg => arg.includes(" ") ? `"${ arg }"` : arg).join(" "));
+                    console.log("midl.exe", argv.map(arg => (arg.includes(" ") ? `"${ arg }"` : arg)).join(" "));
 
                     const child = spawn("midl.exe", argv);
 

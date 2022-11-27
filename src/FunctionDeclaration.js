@@ -8,7 +8,7 @@ const {makeExpansion, useNamespaces} = require("./alias");
 Object.assign(exports, {
     declare: (generator, coclass, overrides, fname, idlname, iidl, ipublic, impl, is_test, options = {}) => {
         const {shared_ptr} = options;
-        const fqn = coclass.fqn;
+        const {fqn} = coclass;
         const cotype = coclass.getClassName();
         const has_override = overrides.length !== 1;
         const varprefix = "pVarArg";
@@ -25,7 +25,7 @@ Object.assign(exports, {
 
         if (has_docs) {
             // generate docs header
-            generator.docs.push(`### ${ fqn }::${ fname }\n`);
+            generator.docs.push(`### ${ fqn }::${ fname }\n`.replaceAll("_", "\\_"));
         }
 
         for (const decl of overrides) {
@@ -748,6 +748,7 @@ Object.assign(exports, {
                     if (has_kwarg && SUCCEEDED(ohr)) {
                         // all named parameters should have been used
                         if (usedkw != kwargs.size()) {
+                            AUTOIT_ERROR("there are " << (kwargs.size() - usedkw) << " unknown named parameters");
                             ohr = E_INVALIDARG;
                         } else {
                             ${ indexes.map(i => `${ varprefix }${ i } = _${ varprefix }${ i };`).join(`\n${ " ".repeat(28) }`) }

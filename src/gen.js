@@ -248,14 +248,14 @@ waterfall([
         const opts = {
             proto_path: [
                 mediapipe_SOURCE_DIR,
-                fs.realpathSync(`${mediapipe_SOURCE_DIR}/bazel-mediapipe-src/external/com_google_protobuf/src`),
+                fs.realpathSync(`${ mediapipe_SOURCE_DIR }/bazel-mediapipe-src/external/com_google_protobuf/src`),
             ]
         };
 
         for (const filename of protofiles) {
             opts.filename = filename;
             const parser = new Parser();
-            parser.parseFile(fs.realpathSync(`${mediapipe_SOURCE_DIR}/${ filename }`), opts, outputs, cache);
+            parser.parseFile(fs.realpathSync(`${ mediapipe_SOURCE_DIR }/${ filename }`), opts, outputs, cache);
         }
 
         custom_declarations.push(...outputs.decls);
