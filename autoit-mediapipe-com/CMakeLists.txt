@@ -128,7 +128,10 @@ FetchContent_Populate(mediapipe)
 set(mediapipe_BINARY_DIR "${mediapipe_SOURCE_DIR}/bazel-out/x64_windows-${CMODE}/bin")
 
 # generate source files
-if(NOT EXISTS "${mediapipe_BINARY_DIR}/external/com_google_protobuf/any_proto-descriptor-set.proto.bin")
+if(
+  (NOT EXISTS "${mediapipe_BINARY_DIR}/external/com_google_protobuf/any_proto-descriptor-set.proto.bin") OR
+  (NOT EXISTS "${mediapipe_SOURCE_DIR}/bazel-mediapipe-src/external/com_google_protobuf/src")
+)
   execute_process(
     COMMAND "${Python_EXECUTABLE}" -m pip install numpy
     WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"

@@ -198,6 +198,15 @@
 - [mediapipe::autoit::solutions::hands::Hands](#mediapipeautoitsolutionshandshands)
   - [mediapipe::autoit::solutions::hands::Hands::get\_create](#mediapipeautoitsolutionshandshandsget%5C_create)
   - [mediapipe::autoit::solutions::hands::Hands::process](#mediapipeautoitsolutionshandshandsprocess)
+- [mediapipe::autoit::solutions::holistic](#mediapipeautoitsolutionsholistic)
+  - [holistic.Holistic](#holisticholistic)
+  - [holistic.FACEMESH\_CONTOURS](#holisticfacemesh%5C_contours)
+  - [holistic.FACEMESH\_TESSELATION](#holisticfacemesh%5C_tesselation)
+  - [holistic.HAND\_CONNECTIONS](#holistichand%5C_connections)
+  - [holistic.POSE\_CONNECTIONS](#holisticpose%5C_connections)
+- [mediapipe::autoit::solutions::holistic::Holistic](#mediapipeautoitsolutionsholisticholistic)
+  - [mediapipe::autoit::solutions::holistic::Holistic::get\_create](#mediapipeautoitsolutionsholisticholisticget%5C_create)
+  - [mediapipe::autoit::solutions::holistic::Holistic::process](#mediapipeautoitsolutionsholisticholisticprocess)
 - [mediapipe::autoit::solutions::objectron](#mediapipeautoitsolutionsobjectron)
   - [objectron.ObjectronModel](#objectronobjectronmodel)
   - [objectron.ShoeModel](#objectronshoemodel)
@@ -5607,6 +5616,75 @@ void mediapipe::autoit::solutions::hands::Hands::process( const cv::Mat&        
                                                           std::map<std::string, _variant_t>& solution_outputs );
 AutoIt:
     $oHands.process( $image[, $solution_outputs] ) -> $solution_outputs
+```
+
+## mediapipe::autoit::solutions::holistic
+
+### holistic.Holistic
+
+```cpp
+static mediapipe::autoit::solutions::holistic::Holistic mediapipe::autoit::solutions::holistic::this
+AutoIt:
+    [propget] $oholistic.Holistic
+```
+
+### holistic.FACEMESH\_CONTOURS
+
+```cpp
+static std::vector<std::tuple<int, int>> mediapipe::autoit::solutions::holistic::FACEMESH_CONTOURS
+AutoIt:
+    [propget] $oholistic.FACEMESH_CONTOURS
+```
+
+### holistic.FACEMESH\_TESSELATION
+
+```cpp
+static std::vector<std::tuple<int, int>> mediapipe::autoit::solutions::holistic::FACEMESH_TESSELATION
+AutoIt:
+    [propget] $oholistic.FACEMESH_TESSELATION
+```
+
+### holistic.HAND\_CONNECTIONS
+
+```cpp
+static std::vector<std::tuple<int, int>> mediapipe::autoit::solutions::holistic::HAND_CONNECTIONS
+AutoIt:
+    [propget] $oholistic.HAND_CONNECTIONS
+```
+
+### holistic.POSE\_CONNECTIONS
+
+```cpp
+static std::vector<std::tuple<int, int>> mediapipe::autoit::solutions::holistic::POSE_CONNECTIONS
+AutoIt:
+    [propget] $oholistic.POSE_CONNECTIONS
+```
+
+## mediapipe::autoit::solutions::holistic::Holistic
+
+### mediapipe::autoit::solutions::holistic::Holistic::get\_create
+
+```cpp
+static mediapipe::autoit::solutions::holistic::Holistic mediapipe::autoit::solutions::holistic::Holistic::get_create( bool  static_image_mode = false,
+                                                                                                                      BYTE  model_complexity = 1,
+                                                                                                                      bool  smooth_landmarks = true,
+                                                                                                                      bool  enable_segmentation = false,
+                                                                                                                      bool  smooth_segmentation = true,
+                                                                                                                      bool  refine_face_landmarks = false,
+                                                                                                                      float min_detection_confidence = 0.5f,
+                                                                                                                      float min_tracking_confidence = 0.5f );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.holistic.Holistic").create( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $refine_face_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]]]]] ) -> <mediapipe.autoit.solutions.holistic.Holistic object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.holistic.Holistic")( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $refine_face_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]]]]] ) -> <mediapipe.autoit.solutions.holistic.Holistic object>
+```
+
+### mediapipe::autoit::solutions::holistic::Holistic::process
+
+```cpp
+void mediapipe::autoit::solutions::holistic::Holistic::process( const cv::Mat&                     image,
+                                                                std::map<std::string, _variant_t>& solution_outputs );
+AutoIt:
+    $oHolistic.process( $image[, $solution_outputs] ) -> $solution_outputs
 ```
 
 ## mediapipe::autoit::solutions::objectron

@@ -43,7 +43,12 @@ Func _AssertAlmostEqual($vA, $vB, $fDelta = Default, $iPlaces = Default, $sMessa
 EndFunc   ;==>_AssertAlmostEqual
 
 Func _AssertLen($aArr, $iLength, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
-	Local Const $iALength = UBound($aArr)
+	Local $iALength
+    If IsArray($aArr) Then
+        $iALength = UBound($aArr)
+    Else
+        $iALength = $aArr.size()
+    EndIf
 	If $sMessage == Default Then $sMessage = "expecting length " & $iALength & " to be equal to " & $iLength
 	Return _AssertEqual($iALength, $iLength, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertLen

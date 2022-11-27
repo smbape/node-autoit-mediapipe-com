@@ -22,11 +22,11 @@ namespace mediapipe {
 					float min_tracking_confidence
 				) {
 					download_utils::download_oss_model(
-						model_complexity == 1 ? _HAND_LANDMARK_FULL_RANGE_TFLITE_FILE_PATH : _HAND_LANDMARK_LITE_TFLITE_FILE_PATH
+						model_complexity == 0 ? _HAND_LANDMARK_LITE_TFLITE_FILE_PATH : _HAND_LANDMARK_FULL_RANGE_TFLITE_FILE_PATH
 					);
 
 					download_utils::download_oss_model(
-						model_complexity == 1 ? _PALM_DETECTION_FULL_RANGE_TFLITE_FILE_PATH : _PALM_DETECTION_LITE_TFLITE_FILE_PATH
+						model_complexity == 0 ? _PALM_DETECTION_LITE_TFLITE_FILE_PATH : _PALM_DETECTION_FULL_RANGE_TFLITE_FILE_PATH
 					);
 
 					__init__(

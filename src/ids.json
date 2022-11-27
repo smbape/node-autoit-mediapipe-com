@@ -103,6 +103,14 @@
         "iid": "48f40c6f-7443-43d4-96dc-9482abc26ee8",
         "clsid": "10ad32b5-4ac0-45aa-ab42-228aeecaf8a9"
     },
+    "mediapipe::autoit::solutions::holistic": {
+        "iid": "c69faa6e-e5f1-4898-a07d-0477d1d427fc",
+        "clsid": "9f893054-f503-4b04-a30c-a9bbe0446a64"
+    },
+    "mediapipe::autoit::solutions::holistic::Holistic": {
+        "iid": "0471993c-903f-416c-a85a-e0cde86454dc",
+        "clsid": "937ea38a-dff1-400e-afbb-8a416371799a"
+    },
     "mediapipe::autoit::solutions::objectron": {
         "iid": "df6167b2-4cda-48ee-9d57-ee644f7936db",
         "clsid": "f55bb01d-93dd-44e3-b6de-8c8123f422e7"
