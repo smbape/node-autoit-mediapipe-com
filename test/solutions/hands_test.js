@@ -7,7 +7,7 @@ const data = JSON.parse(test_on_video_fullasl_hand);
 const text = ["#include-once", ""];
 
 for (const name of ["predictions", "predictions_world"]) {
-    const varName = `$EXPECTED_${ name.toUpperCase() }_LANDMARKS_PER_FRAME`;
+    const varName = `$EXPECTED_${ name.toUpperCase() }_HANDS_LANDMARKS_PER_FRAME`;
     text.push(`Global ${ varName } = _OpenCV_ObjCreate("VectorOfMat")`, "");
 
     for (const frame of data[name]) {
