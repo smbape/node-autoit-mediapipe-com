@@ -161,13 +161,8 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	Local $actual = $aTuple[0]
 	Local $actual_world = $aTuple[1]
 
-	Local $prediction_error
-
-	$prediction_error = $cv.absdiff($actual, $EXPECTED_PREDICTIONS_LANDMARKS_PER_FRAME)
-	_AssertMatLess($prediction_error, $diff_threshold)
-
-	$prediction_error = $cv.absdiff($actual_world, $EXPECTED_PREDICTIONS_WORLD_LANDMARKS_PER_FRAME)
-	_AssertMatLess($prediction_error, $world_diff_threshold)
+	_AssertMatDiffLess($actual, $EXPECTED_PREDICTIONS_HANDS_LANDMARKS_PER_FRAME, $diff_threshold)
+	_AssertMatDiffLess($actual_world, $EXPECTED_PREDICTIONS_WORLD_HANDS_LANDMARKS_PER_FRAME, $world_diff_threshold)
 EndFunc   ;==>test_on_video
 
 Func _get_output_path($id, $name)
@@ -204,13 +199,6 @@ Func _world_landmarks_list_to_array($landmark_list)
 	Return $Mat.createFromArray($aArray, $CV_32F)
 EndFunc   ;==>_world_landmarks_list_to_array
 
-Func _assert_diff_less($array1, $array2, $threshold)
-	Local $prediction_error = $cv.absdiff($Mat.createFromArray($array1, $CV_32F), _
-			$Mat.createFromArray($array2, $CV_32F))
-
-	_AssertMatLess($prediction_error, $threshold)
-EndFunc   ;==>_assert_diff_less
-
 Func _annotate($id, $frame, $results, $idx)
 	For $hand_landmarks In $results("multi_hand_landmarks")
 		$mp_drawing.draw_landmarks( _
@@ -244,7 +232,7 @@ Func _process_video($model_complexity, $video_path, $max_num_hands = 1)
 	Local $frame_shape, $results, $frame_landmarks, $frame_w_landmarks
 
 	While $video_cap.read($input_frame)
-		$frame_shape = $input_frame.shape()
+		$frame_shape = $input_frame.shape
 		$results = $hands.process($cv.cvtColor($input_frame, $CV_COLOR_BGR2RGB))
 
 		$frame_landmarks = _OpenCV_ObjCreate("VectorOfMat")

@@ -9,7 +9,8 @@ const declarations = [
         ["uchar*", "data", "", ["/RW"]],
         ["size_t", "step", "", ["/RW"]],
         ["int", "width", "", ["/RW", "=cols"]],
-        ["int", "height", "", ["/RW", "=rows"]]
+        ["int", "height", "", ["/RW", "=rows"]],
+        ["std::tuple<int, int, int>", "shape", "", ["/R", "/RExpr=std::tuple<int, int, int>(__self->get()->rows, __self->get()->cols, __self->get()->channels())"]],
     ], "", ""],
 
     ["cv.Mat.Mat", "", [], [], "", ""],
@@ -129,9 +130,6 @@ const declarations = [
     ], "", ""],
 
     ["cv.Mat.size", "tuple_int_and_int", ["/Output=std::tuple<int, int>(__self->get()->cols, __self->get()->rows)"], [], "", ""],
-    ["cv.Mat.shape", "std::tuple<int, int, int>", [
-        "/Output=std::tuple<int, int, int>(__self->get()->rows, __self->get()->cols, __self->get()->channels())"
-    ], [], "", ""],
 
     ["cv.Mat.pop_back", "void", [], [
         ["size_t", "value", "", []]

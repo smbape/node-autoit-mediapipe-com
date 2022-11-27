@@ -257,7 +257,6 @@
   - [cv::Mat::row](#cvmatrow)
   - [cv::Mat::rowRange](#cvmatrowrange)
   - [cv::Mat::set_at](#cvmatset_at)
-  - [cv::Mat::shape](#cvmatshape)
   - [cv::Mat::size](#cvmatsize)
   - [cv::Mat::step1](#cvmatstep1)
   - [cv::Mat::t](#cvmatt)
@@ -5423,14 +5422,6 @@ void cv::Mat::set_at( std::tuple<int, int> pt,
                       double               value );
 AutoIt:
     $oMat.set_at( $pt, $value ) -> None
-```
-
-### cv::Mat::shape
-
-```cpp
-std::tuple<int, int, int> cv::Mat::shape();
-AutoIt:
-    $oMat.shape() -> retval
 ```
 
 ### cv::Mat::size

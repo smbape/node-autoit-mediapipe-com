@@ -9,6 +9,8 @@ static const std::string _POSE_LANDMARK_LITE_TFLITE_FILE_PATH = "mediapipe/modul
 static const std::string _POSE_LANDMARK_FULL_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/pose_landmark/pose_landmark_full.tflite";
 static const std::string _POSE_LANDMARK_HEAVY_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/pose_landmark/pose_landmark_heavy.tflite";
 
+static const std::string _POSE_DETECTION_TFLITE_FILE_PATH = "mediapipe/modules/pose_detection/pose_detection.tflite";
+
 namespace mediapipe {
 	namespace autoit {
 		namespace solutions {
@@ -24,6 +26,7 @@ namespace mediapipe {
 					float min_detection_confidence,
 					float min_tracking_confidence
 				) {
+					download_utils::download_oss_model(_POSE_DETECTION_TFLITE_FILE_PATH);
 					download_utils::download_oss_model(
 						model_complexity == 1 ? _POSE_LANDMARK_FULL_RANGE_TFLITE_FILE_PATH :
 						model_complexity == 2 ? _POSE_LANDMARK_HEAVY_RANGE_TFLITE_FILE_PATH :
@@ -63,7 +66,7 @@ namespace mediapipe {
 						&& !PARAMETER_MISSING(&solution_outputs["pose_landmarks"])
 					) {
 						NormalizedLandmarkList pose_landmarks = ::autoit::cast<NormalizedLandmarkList>(&solution_outputs["pose_landmarks"]);
-						for (auto& landmark : *pose_landmarks.mutable_landmark())	 {
+						for (auto& landmark : *pose_landmarks.mutable_landmark()) {
 							ClearField(landmark, "presence");
 						}
 					}
@@ -73,7 +76,7 @@ namespace mediapipe {
 						&& !PARAMETER_MISSING(&solution_outputs["pose_world_landmarks"])
 					) {
 						LandmarkList pose_world_landmarks = ::autoit::cast<LandmarkList>(&solution_outputs["pose_world_landmarks"]);
-						for (auto& landmark : *pose_world_landmarks.mutable_landmark())	 {
+						for (auto& landmark : *pose_world_landmarks.mutable_landmark()) {
 							ClearField(landmark, "presence");
 						}
 					}

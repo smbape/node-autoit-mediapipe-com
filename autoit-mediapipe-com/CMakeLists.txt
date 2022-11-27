@@ -54,6 +54,7 @@ set(BAZEL_BUILD bazel
   --define MEDIAPIPE_DISABLE_GPU=1
   --action_env "PYTHON_BIN_PATH=${PYTHON_BIN_PATH}"
   --verbose_failures
+  --keep_going
 )
 
 # Tell cmake that we will need opencv.
@@ -173,26 +174,29 @@ target_include_directories(${PROJECT_NAME}_res PUBLIC "src")
 target_include_directories(${PROJECT_NAME}_res PUBLIC "generated")
 
 file(GLOB_RECURSE project_source_headers
-  "src/**/*.h*"
-  "generated/**/*.h*"
+  "src/*.h*"
+  "generated/*.h*"
 )
 
-file(GLOB_RECURSE project_sources_files
-  "src/**/*.c"
-  "src/**/*.cc"
-  "src/**/*.cpp"
-  "src/**/*.cxx"
-  "generated/**/*.c"
-  "generated/**/*.cc"
-  "generated/**/*.cpp"
-  "generated/**/*.cxx"
+file(GLOB_RECURSE project_source_files
+  "src/*.c"
+  "src/*.cc"
+  "src/*.cpp"
+  "src/*.cxx"
+  "generated/*.c"
+  "generated/*.cc"
+  "generated/*.cpp"
+  "generated/*.cxx"
 )
 
 file(CREATE_LINK "${CMAKE_CURRENT_SOURCE_DIR}" "${mediapipe_SOURCE_DIR}/mediapipe/autoit" SYMBOLIC)
 
+# https://samthursfield.wordpress.com/2015/11/21/cmake-dependencies-between-targets-and-files-and-custom-commands/
+
 set(PROJECT_PCH "${mediapipe_BINARY_DIR}/mediapipe/autoit/_pch_autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OPENCV_VERSION_POSTFIX}.pch")
 add_custom_command(OUTPUT "${PROJECT_PCH}"
   COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib_pch
+  COMMAND           cmake -E touch "${PROJECT_PCH}"
   WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
   DEPENDS           ${project_source_headers}
   VERBATIM
@@ -202,11 +206,14 @@ add_custom_target(${PROJECT_NAME}_lib_pch DEPENDS "${PROJECT_PCH}")
 set(PROJECT_LIBRARY "${mediapipe_BINARY_DIR}/mediapipe/autoit/autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OPENCV_VERSION_POSTFIX}.dll")
 add_custom_command(OUTPUT "${PROJECT_LIBRARY}"
   COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib
+  COMMAND           cmake -E touch "${PROJECT_LIBRARY}"
   WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
-  DEPENDS           ${PROJECT_NAME}_res ${PROJECT_NAME}_lib_pch ${project_sources_files}
+  DEPENDS           ${PROJECT_NAME}_res ${PROJECT_NAME}_lib_pch "${PROJECT_PCH}" ${project_source_files}
   VERBATIM
 )
-add_custom_target(${PROJECT_NAME} ALL DEPENDS "${PROJECT_LIBRARY}" autoit-opencv-com)
+add_custom_target(${PROJECT_NAME}_lib DEPENDS "${PROJECT_LIBRARY}")
+
+add_custom_target(${PROJECT_NAME} ALL DEPENDS ${PROJECT_NAME}_lib autoit-opencv-com)
 
 foreach(item
   "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
@@ -219,7 +226,7 @@ foreach(item
     COMMAND "${CMAKE_COMMAND}" -E copy_if_different
       "${mediapipe_SOURCE_DIR}/${item}"
       "${mediapipe_BINARY_DIR}/${item}"
-    DEPENDS "${PROJECT_LIBRARY}"
+    DEPENDS ${PROJECT_NAME}_lib
     VERBATIM
   )
   add_custom_target(${item_target} DEPENDS "${mediapipe_BINARY_DIR}/${item}")
