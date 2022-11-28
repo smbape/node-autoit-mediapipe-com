@@ -44,18 +44,18 @@ EndFunc   ;==>_AssertAlmostEqual
 
 Func _AssertLen($aArr, $iLength, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	Local $iALength
-    If IsArray($aArr) Then
-        $iALength = UBound($aArr)
-    Else
-        $iALength = $aArr.size()
-    EndIf
+	If IsArray($aArr) Then
+		$iALength = UBound($aArr)
+	Else
+		$iALength = $aArr.size()
+	EndIf
 	If $sMessage == Default Then $sMessage = "expecting length " & $iALength & " to be equal to " & $iLength
 	Return _AssertEqual($iALength, $iLength, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertLen
 
 Func _AssertIsNone($vVal, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
-    If $sMessage == Default Then $sMessage = "expecting value to be none"
-    Return _AssertEqual($vVal, Default, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	If $sMessage == Default Then $sMessage = "expecting value to be none"
+	Return _AssertEqual($vVal, Default, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertIsNone
 
 Func _AssertFalse($bCondition, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)

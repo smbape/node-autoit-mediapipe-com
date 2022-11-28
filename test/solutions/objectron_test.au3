@@ -36,12 +36,12 @@ _AssertTrue(IsObj($mp_objectron), "Failed to load mediapipe.autoit.solutions.obj
 Global Const $DIFF_THRESHOLD = 30 ; pixels
 
 Global $EXPECTED_BOX_COORDINATES_PREDICTION[][][] = [ _
-	[[322, 142], [366, 109], [222, 209], _
-	[365, 55], [206, 154], [422, 135], _
-	[273, 254], [426, 74], [259, 195]], _
-	[[176, 113], [226, 94], [88, 164], _
-	[220, 47], [68, 113], [265, 115], _
-	[127, 195], [262, 65], [110, 140]]]
+		[[322, 142], [366, 109], [222, 209], _
+		[365, 55], [206, 154], [422, 135], _
+		[273, 254], [426, 74], [259, 195]], _
+		[[176, 113], [226, 94], [88, 164], _
+		[220, 47], [68, 113], [265, 115], _
+		[127, 195], [262, 65], [110, 140]]]
 
 Test()
 
@@ -119,7 +119,7 @@ Func _annotate($id, $frame, $results, $idx)
 
 	For $detected_object In $results("detected_objects")
 		$mp_drawing.draw_landmarks($frame, $detected_object.landmarks_2d, $mp_objectron.BOX_CONNECTIONS)
-        $mp_drawing.draw_axis($frame, $detected_object.rotation, $detected_object.translation)
+		$mp_drawing.draw_axis($frame, $detected_object.rotation, $detected_object.translation)
 	Next
 
 	Local Const $path = @TempDir & "\" & $id & "_frame_" & $idx & ".png"

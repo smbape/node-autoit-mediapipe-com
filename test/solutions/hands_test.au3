@@ -220,7 +220,7 @@ Func _process_video($model_complexity, $video_path, $max_num_hands = 1)
 	EndIf
 
 	Local $hands = $mp_hands.Hands(_Mediapipe_Params( _
-			"static_image_mode", false, _
+			"static_image_mode", False, _
 			"max_num_hands", $max_num_hands, _
 			"model_complexity", $model_complexity, _
 			"min_detection_confidence", 0.5 _

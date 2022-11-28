@@ -123,7 +123,7 @@ Func test_on_image($id, $static_image_mode, $model_complexity, $num_frames)
 		$results = $pose.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
 		$segmentation = $Mat.create($results("segmentation_mask")).convertTo($CV_8U)
 
-        ; TODO: Add rendering of world 3D when supported.
+		; TODO: Add rendering of world 3D when supported.
 		_annotate("test_on_image_" & $id, $image.copy(), $results, $idx)
 		_annotate_segmentation("test_on_image_" & $id, $segmentation, $expected_segmentation, $idx)
 
@@ -180,12 +180,12 @@ Func test_on_video($id, $model_complexity, $expected_name)
 		$actual_per_frame.append($pose_landmarks)
 		$actual_world_per_frame.append($pose_world_landmarks)
 
-        _annotate("test_on_video_" & $id, $input_frame, $results, $frame_idx)
-        $frame_idx += 1
+		_annotate("test_on_video_" & $id, $input_frame, $results, $frame_idx)
+		$frame_idx += 1
 	WEnd
 
-    Local $actual = $cv.vconcat($actual_per_frame)
-    Local $actual_world = $cv.vconcat($actual_world_per_frame)
+	Local $actual = $cv.vconcat($actual_per_frame)
+	Local $actual_world = $cv.vconcat($actual_world_per_frame)
 
 	_AssertMatDiffLess($actual, $EXPECTED_PREDICTIONS_POSE_LANDMARKS_PER_FRAME, $diff_threshold)
 	_AssertMatDiffLess($actual_world, $EXPECTED_PREDICTIONS_WORLD_POSE_LANDMARKS_PER_FRAME, $world_diff_threshold)
