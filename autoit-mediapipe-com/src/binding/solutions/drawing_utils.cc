@@ -352,7 +352,8 @@ namespace mediapipe {
 					cv::Mat translation;
 					if (_translation.depth() != CV_64F) {
 						_translation.convertTo(translation, CV_64F);
-					} else {
+					}
+					else {
 						translation = _translation;
 					}
 

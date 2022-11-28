@@ -123,7 +123,7 @@ const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_image(co
 }
 
 const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_image(const cv::Mat& data, ImageFormat::Format format, bool copy) {
-	if (!copy)	 {
+	if (!copy) {
 		AUTOIT_WARN("'data' is still writeable. Taking a reference of the data to create Image packet is dangerous.");
 	}
 	auto image_frame = CreateImageFrame(format, data, copy);

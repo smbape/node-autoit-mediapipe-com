@@ -12,10 +12,10 @@ namespace mediapipe {
 	namespace autoit {
 		namespace solutions {
 			namespace face_detection {
-                static const std::string& GetModelPath(BYTE model_selection) {
-                    download_utils::download_oss_model(model_selection == 1 ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
-                    return model_selection == 1 ? _FULL_RANGE_GRAPH_FILE_PATH : _SHORT_RANGE_GRAPH_FILE_PATH;
-                }
+				static const std::string& GetModelPath(BYTE model_selection) {
+					download_utils::download_oss_model(model_selection == 1 ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
+					return model_selection == 1 ? _FULL_RANGE_GRAPH_FILE_PATH : _SHORT_RANGE_GRAPH_FILE_PATH;
+				}
 
 				std::shared_ptr<LocationData::RelativeKeypoint> get_key_point(
 					const Detection& detection,

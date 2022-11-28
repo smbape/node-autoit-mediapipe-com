@@ -39,7 +39,8 @@ namespace mediapipe {
 
 				if (use_binary_path) {
 					graph_config = ReadCalculatorGraphConfigFromFile(binary_graph_path);
-				} else if (use_graph_config) {
+				}
+				else if (use_graph_config) {
 					graph_config = ParseProto<CalculatorGraphConfig>(graph_config_proto);
 				}
 

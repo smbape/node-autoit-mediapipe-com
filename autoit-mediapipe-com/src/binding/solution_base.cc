@@ -769,11 +769,13 @@ namespace mediapipe {
 						autoit_container.Splice(list, 0, autoit_container.size());
 
 						autoit_container.Extend(items);
-					} else if (field_descriptor->cpp_type() == FieldDescriptor::CPPTYPE_MESSAGE) {
+					}
+					else if (field_descriptor->cpp_type() == FieldDescriptor::CPPTYPE_MESSAGE) {
 						std::shared_ptr<Message> other_message;
 						AUTOIT_ASSERT_THROW(SUCCEEDED(autoit_to(&value, other_message)), "property " << field << " is not a message");
 						CopyFrom(&options_message, other_message.get());
-					} else {
+					}
+					else {
 						SetFieldValue(*m, fields[last], value);
 					}
 				}
@@ -789,7 +791,8 @@ namespace mediapipe {
 					HRESULT hr = autoit_to(&value, items);
 					AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "items property must be a map<string, _variant_t>");
 					_create_graph_options(*options_message, items);
-				} else {
+				}
+				else {
 					_create_graph_options(*options_message, values);
 				}
 				return options_message;

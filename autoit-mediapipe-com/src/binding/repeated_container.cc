@@ -389,7 +389,8 @@ namespace google {
 					HRESULT hr = autoit_to(&item, sub_attrs);
 					if (SUCCEEDED(hr)) {
 						cmessage::InitAttributes(*sub_message, sub_attrs);
-					} else {
+					}
+					else {
 						auto value = ::autoit::cast<std::shared_ptr<Message>>(&item);
 						sub_message->MergeFrom(*value);
 					}

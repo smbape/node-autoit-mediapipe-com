@@ -86,7 +86,7 @@ const std::vector<int64> mediapipe::autoit::packet_getter::get_int_list(const Pa
 		auto int_list = packet.Get<std::vector<int64>>();
 		return std::vector<int64>(int_list.begin(), int_list.end());
 	}
-	
+
 	AUTOIT_THROW("Packet doesn't contain int, int8, int16, int32, or int64 containers.");
 }
 

@@ -772,9 +772,11 @@ static LPSAFEARRAY _asArray(const cv::Mat& mat) {
 	UINT uDims;
 	if (channels == 1) {
 		uDims = cols == 1 ? 1 : 2;
-	} else if (cols == 1) {
+	}
+	else if (cols == 1) {
 		uDims = 2;
-	} else {
+	}
+	else {
 		uDims = 3;
 	}
 
@@ -784,12 +786,14 @@ static LPSAFEARRAY _asArray(const cv::Mat& mat) {
 	if (uDims == 1) {
 		bound[0].SetCount(rows * cols * channels);
 		bound[0].SetLowerBound(0);
-	} else if (uDims == 2) {
+	}
+	else if (uDims == 2) {
 		bound[1].SetCount(rows);
 		bound[1].SetLowerBound(0);
 		bound[0].SetCount(cols * channels);
 		bound[0].SetLowerBound(0);
-	} else if (uDims == 3) {
+	}
+	else if (uDims == 3) {
 		bound[2].SetCount(rows);
 		bound[2].SetLowerBound(0);
 		bound[1].SetCount(cols);
@@ -817,7 +821,8 @@ static LPSAFEARRAY _asArray(const cv::Mat& mat) {
 				}
 			}
 		}
-	} else if (uDims == 2) {
+	}
+	else if (uDims == 2) {
 		for (LONG i = 0; i < rows; i++) {
 			aIndex[1] = i;
 			for (LONG j = 0; j < cols; j++) {
@@ -829,7 +834,8 @@ static LPSAFEARRAY _asArray(const cv::Mat& mat) {
 				}
 			}
 		}
-	} else {
+	}
+	else {
 		for (LONG i = 0; i < rows; i++) {
 			for (LONG j = 0; j < cols; j++) {
 				for (LONG k = 0; k < channels; k++) {
@@ -841,8 +847,8 @@ static LPSAFEARRAY _asArray(const cv::Mat& mat) {
 		}
 	}
 
-	delete [] bound;
-	delete [] aIndex;
+	delete[] bound;
+	delete[] aIndex;
 
 	return vArray.Detach();
 }

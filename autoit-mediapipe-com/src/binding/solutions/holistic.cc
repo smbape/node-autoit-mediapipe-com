@@ -38,8 +38,8 @@ namespace mediapipe {
 					float min_detection_confidence,
 					float min_tracking_confidence
 				) {
-                    download_utils::download_oss_model(refine_face_landmarks ? _FACE_LANDMARK_WITH_ATTENTION_TFLITE_FILE_PATH : _FACE_LANDMARK_TFLITE_FILE_PATH);
-                    download_utils::download_oss_model(refine_face_landmarks ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
+					download_utils::download_oss_model(refine_face_landmarks ? _FACE_LANDMARK_WITH_ATTENTION_TFLITE_FILE_PATH : _FACE_LANDMARK_TFLITE_FILE_PATH);
+					download_utils::download_oss_model(refine_face_landmarks ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
 
 					download_utils::download_oss_model(
 						model_complexity == 0 ? _HAND_LANDMARK_LITE_TFLITE_FILE_PATH : _HAND_LANDMARK_FULL_RANGE_TFLITE_FILE_PATH
@@ -52,7 +52,7 @@ namespace mediapipe {
 						_POSE_LANDMARK_LITE_TFLITE_FILE_PATH
 					);
 
-                    download_utils::download_oss_model(_HOLISTIC_LANDMARK_HAND_RECROP_TFLITE_FILE_PATH);
+					download_utils::download_oss_model(_HOLISTIC_LANDMARK_HAND_RECROP_TFLITE_FILE_PATH);
 
 					__init__(
 						_BINARYPB_FILE_PATH,

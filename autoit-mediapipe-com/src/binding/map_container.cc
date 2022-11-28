@@ -99,7 +99,7 @@ namespace google {
 			MapIterator& MapIterator::operator=(const MapIterator& other) {
 				m_container = other.m_container;
 				m_iter = std::move(std::make_unique<::google::protobuf::MapIterator>(*other.m_iter));
-    			return *this;
+				return *this;
 			}
 
 			MapIterator& MapIterator::operator++() noexcept {

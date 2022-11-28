@@ -273,7 +273,8 @@ namespace google {
 					HRESULT hr = autoit_to(&item, attrs);
 					if (SUCCEEDED(hr)) {
 						RepeatedField_AddMessage(repeatedField, attrs);
-					} else {
+					}
+					else {
 						auto value = ::autoit::cast<std::shared_ptr<Element>>(&item);
 						RepeatedField_AddMessage(repeatedField, value.get());
 					}
