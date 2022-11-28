@@ -2,7 +2,7 @@
 #include "mediapipe_interface.au3"
 #include "mediapipe_enums.au3"
 
-Global $_mediapipe_build_type = "Release"
+Global $_mediapipe_build_type = EnvGet("MEDIAPIPE_BUILD_TYPE")
 Global $_mediapipe_debug = 0
 
 Global $h_mediapipe_world_dll = -1

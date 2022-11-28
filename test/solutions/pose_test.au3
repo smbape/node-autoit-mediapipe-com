@@ -13,10 +13,11 @@
 ;~ Sources:
 ;~     https://github.com/google/mediapipe/blob/v0.8.11/mediapipe/python/solutions/pose_test.py
 
-$_mediapipe_build_type = "Release"
-$_mediapipe_debug = 0
-$_cv_build_type = "Release"
-$_cv_debug = 0
+; $_mediapipe_build_type = "Release"
+; $_mediapipe_debug = 0
+; $_cv_build_type = "Release"
+; $_cv_debug = 0
+
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
 OnAutoItExitRegister("_OnAutoItExit")
