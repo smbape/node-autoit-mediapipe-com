@@ -3,7 +3,7 @@
 #include "mediapipe_enums.au3"
 
 Global $_mediapipe_build_type = EnvGet("MEDIAPIPE_BUILD_TYPE")
-Global $_mediapipe_debug = 0
+Global $_mediapipe_debug = Number(EnvGet("MEDIAPIPE_DEBUG"))
 
 Global $h_mediapipe_world_dll = -1
 Global $h_autoit_mediapipe_com_dll = -1

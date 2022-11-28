@@ -139,15 +139,15 @@ Func test_face($id, $static_image_mode, $refine_landmarks, $num_frames)
 		For $landmarks In $results("multi_face_landmarks")
 			_AssertEqual($landmarks.landmark.size(), _
 					$refine_landmarks ? $mp_faces.FACEMESH_NUM_LANDMARKS_WITH_IRISES : $mp_faces.FACEMESH_NUM_LANDMARKS)
-			$face_landmarks = $Mat.create($landmarks.landmark.size(), 2, $CV_32FC1)
+			$face_landmarks = $Mat.create($landmarks.landmark.size(), 1, $CV_32FC2)
 
 			$i = 0
 			For $landmark In $landmarks.landmark
-				$face_landmarks($i, 0) = $landmark.x * $cols
-				$face_landmarks($i, 1) = $landmark.y * $rows
+				$face_landmarks.Vec2f_set_at($i, _OpenCV_Tuple($landmark.x * $cols, $landmark.y * $rows))
 				$i += 1
 			Next
 
+			$face_landmarks.Vec2f_at(($EYE_INDICES_TO_LANDMARKS[0])[0])
 			$multi_face_landmarks[$li] = $face_landmarks
 			$li += 1
 		Next

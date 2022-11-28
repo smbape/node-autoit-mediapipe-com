@@ -21,7 +21,7 @@ files.push([
 ]);
 
 files.push([
-    sysPath.join(project, "build_x64/_deps/mediapipe-src/mediapipe"),
+    sysPath.join(project, "build_x64/_deps/mediapipe-src"),
     "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt",
     "mediapipe/modules/hand_landmark/handedness.txt",
 ]);

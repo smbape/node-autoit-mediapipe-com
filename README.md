@@ -3,12 +3,10 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Mediapipe autoit udf](#mediapipe-autoit-udf)
-  - [What is missing](#what-is-missing)
 - [Usage of the UDF](#usage-of-the-udf)
   - [Prerequisites](#prerequisites)
   - [Usage](#usage)
     - [AutoIt](#autoit)
-      - [With opencv COM+ binding](#with-opencv-com-binding)
   - [Running examples](#running-examples)
   - [Developpement](#developpement)
     - [Prerequisites](#prerequisites-1)
