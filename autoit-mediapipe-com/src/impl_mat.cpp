@@ -23,7 +23,7 @@ namespace Gdiplus {
 			IN UINT flags,
 			IN PixelFormat format
 		) : bitmap(in_bitmap) {
-			CV_Assert(bitmap.LockBits(rect, flags, format, &data) == Ok);
+			CV_Assert(bitmap.LockBits(rect, flags, format, &data) == Gdiplus::Ok);
 			isOk = true;
 		}
 
@@ -33,7 +33,7 @@ namespace Gdiplus {
 			IN PixelFormat format
 		) : bitmap(in_bitmap) {
 			auto rect = Gdiplus::Rect(0, 0, bitmap.GetWidth(), bitmap.GetHeight());
-			CV_Assert(bitmap.LockBits(&rect, flags, format, &data) == Ok);
+			CV_Assert(bitmap.LockBits(&rect, flags, format, &data) == Gdiplus::Ok);
 			isOk = true;
 		}
 
@@ -42,13 +42,13 @@ namespace Gdiplus {
 			IN UINT flags
 		) : bitmap(in_bitmap) {
 			auto rect = Gdiplus::Rect(0, 0, bitmap.GetWidth(), bitmap.GetHeight());
-			CV_Assert(bitmap.LockBits(&rect, flags, bitmap.GetPixelFormat(), &data) == Ok);
+			CV_Assert(bitmap.LockBits(&rect, flags, bitmap.GetPixelFormat(), &data) == Gdiplus::Ok);
 			isOk = true;
 		}
 
 		~BitmapLock() {
 			if (isOk) {
-				CV_Assert(bitmap.UnlockBits(&data) == Ok);
+				CV_Assert(bitmap.UnlockBits(&data) == Gdiplus::Ok);
 			}
 		}
 
@@ -107,7 +107,7 @@ namespace Gdiplus {
 				static_cast<GpBitmap*>(nativeImage),
 				&gpdstBitmap
 			);
-			CV_Assert(status == Ok);
+			CV_Assert(status == Gdiplus::Ok);
 
 			return gpdstBitmap;
 		}
@@ -201,7 +201,7 @@ cv::Mat cv::createMatFromBitmap(void* ptr, bool copy) {
 
 	// Attach nativeBitmap
 	CvBitmap bitmap(nativeBitmap);
-	CV_Assert(bitmap.GetLastStatus() == Ok);
+	CV_Assert(bitmap.GetLastStatus() == Gdiplus::Ok);
 
 	Mat mat; createMatFromBitmap_(bitmap, mat, copy);
 
@@ -288,48 +288,59 @@ namespace {
 		return palette;
 	}
 
-	void RawDataToBitmap(uchar* scan0, size_t step, cv::Size size, int dstColorType, int channels, int srcDepth, Gdiplus::CvBitmap& dst) {
+	void RawDataToBitmap(cv::Mat& image, int dstColorType, int channels, int srcDepth, Gdiplus::CvBitmap& dst) {
 		using namespace Gdiplus;
 
-		if (dstColorType == CV_8UC1 && srcDepth == CV_8U) {
-			CvBitmap bmpGray(
-				size.width,
-				size.height,
-				step,
-				PixelFormat8bppIndexed,
-				scan0
-			);
+		auto scan0 = image.ptr();
+		auto step = image.step1();
+		auto size = image.size();
 
-			CV_Assert(bmpGray.GetLastStatus() == Ok);
+		// The value passed to stride parameter must be a multiple of four.
+		if (step % 4 == 0) {
+			if (dstColorType == CV_8UC1 && srcDepth == CV_8U) {
+				CvBitmap bmpGray(
+					size.width,
+					size.height,
+					step,
+					PixelFormat8bppIndexed,
+					scan0
+				);
 
-			bmpGray.SetPalette(GenerateGrayscalePalette());
+				CV_Assert(bmpGray.GetLastStatus() == Gdiplus::Ok);
 
-			dst.Attach(bmpGray.Detach());
-			return;
-		}
-		else if (dstColorType == CV_8UC3 && srcDepth == CV_8U) {
-			CvBitmap bmp(
-				size.width,
-				size.height,
-				step,
-				PixelFormat24bppRGB,
-				scan0
-			);
-			CV_Assert(bmp.GetLastStatus() == Ok);
-			dst.Attach(bmp.Detach());
-			return;
-		}
-		else if (dstColorType == CV_8UC4 && srcDepth == CV_8U) {
-			CvBitmap bmp(
-				size.width,
-				size.height,
-				step,
-				PixelFormat32bppARGB,
-				scan0
-			);
-			CV_Assert(bmp.GetLastStatus() == Ok);
-			dst.Attach(bmp.Detach());
-			return;
+				bmpGray.SetPalette(GenerateGrayscalePalette());
+
+				dst.Attach(bmpGray.Detach());
+				return;
+			}
+			else if (dstColorType == CV_8UC3 && srcDepth == CV_8U) {
+				CvBitmap bmp(
+					size.width,
+					size.height,
+					step,
+					PixelFormat24bppRGB,
+					scan0
+				);
+
+				CV_Assert(bmp.GetLastStatus() == Gdiplus::Ok);
+
+				dst.Attach(bmp.Detach());
+				return;
+			}
+			else if (dstColorType == CV_8UC4 && srcDepth == CV_8U) {
+				CvBitmap bmp(
+					size.width,
+					size.height,
+					step,
+					PixelFormat32bppARGB,
+					scan0
+				);
+
+				CV_Assert(bmp.GetLastStatus() == Gdiplus::Ok);
+
+				dst.Attach(bmp.Detach());
+				return;
+			}
 		}
 
 		PixelFormat format;
@@ -347,12 +358,12 @@ namespace {
 			cv::Mat m(size.height, size.width, CV_MAKETYPE(srcDepth, channels), scan0, step);
 			cv::Mat m2;
 			cv::cvtColor(m, m2, dstColorType, CV_8UC3);
-			RawDataToBitmap(m2.ptr(), m2.step1(), m2.size(), CV_8UC3, 3, srcDepth, dst);
+			RawDataToBitmap(m2, CV_8UC3, 3, srcDepth, dst);
 			return;
 		}
 
 		CvBitmap bmp(size.width, size.height, format);
-		CV_Assert(bmp.GetLastStatus() == Ok);
+		CV_Assert(bmp.GetLastStatus() == Gdiplus::Ok);
 
 		{
 			// Block to ensure unlocks before detach
@@ -412,7 +423,7 @@ const void* CCv_Mat_Object::convertToBitmap(bool copy, HRESULT& hr) {
 	if (channels == 1) {
 		if ((src.cols | 3) != 0) { //handle the special case where width is not a multiple of 4
 			CvBitmap bitmap(src.cols, src.rows, PixelFormat8bppIndexed);
-			CV_Assert(bitmap.GetLastStatus() == Ok);
+			CV_Assert(bitmap.GetLastStatus() == Gdiplus::Ok);
 
 			bitmap.SetPalette(GenerateGrayscalePalette());
 			{
@@ -432,7 +443,7 @@ const void* CCv_Mat_Object::convertToBitmap(bool copy, HRESULT& hr) {
 	}
 
 	CvBitmap dst;
-	RawDataToBitmap(src.ptr(), src.step1(), src.size(), colorType, channels, src.depth(), dst);
+	RawDataToBitmap(src, colorType, channels, src.depth(), dst);
 	return copy ? dst.CloneNativeImage() : dst.Detach();
 }
 
@@ -441,16 +452,16 @@ const cv::Mat CCv_Mat_Object::GdiplusResize(float newWidth, float newHeight, int
 
 	GpBitmap* nativeBitmap = static_cast<GpBitmap*>(const_cast<void*>(convertToBitmap(true, hr)));
 	CvBitmap bitmap(nativeBitmap);
-	CV_Assert(bitmap.GetLastStatus() == Ok);
+	CV_Assert(bitmap.GetLastStatus() == Gdiplus::Ok);
 
 	CvBitmap hBitmap(static_cast<int>(newWidth), static_cast<int>(newHeight), bitmap.GetPixelFormat());
-	CV_Assert(hBitmap.GetLastStatus() == Ok);
+	CV_Assert(hBitmap.GetLastStatus() == Gdiplus::Ok);
 
 	Gdiplus::Graphics hBmpCtxt(&hBitmap);
-	CV_Assert(hBmpCtxt.GetLastStatus() == Ok);
+	CV_Assert(hBmpCtxt.GetLastStatus() == Gdiplus::Ok);
 
-	CV_Assert(hBmpCtxt.SetInterpolationMode(static_cast<Gdiplus::InterpolationMode>(interpolation)) == Ok);
-	CV_Assert(hBmpCtxt.DrawImage(&bitmap, 0.0, 0.0, newWidth, newHeight) == Ok);
+	CV_Assert(hBmpCtxt.SetInterpolationMode(static_cast<Gdiplus::InterpolationMode>(interpolation)) == Gdiplus::Ok);
+	CV_Assert(hBmpCtxt.DrawImage(&bitmap, 0.0, 0.0, newWidth, newHeight) == Gdiplus::Ok);
 
 	cv::Mat mat; createMatFromBitmap_(hBitmap, mat, true);
 

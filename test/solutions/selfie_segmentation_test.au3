@@ -36,8 +36,6 @@ _AssertTrue(IsObj($mp_selfie_segmentation), "Failed to load mediapipe.autoit.sol
 Test()
 
 Func Test()
-	_Mediapipe_SetResourceDir()
-
 	test_blank_image()
 	test_segmentation("general", 0)
 	test_segmentation("landscape", 1)

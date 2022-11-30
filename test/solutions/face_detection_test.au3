@@ -45,8 +45,6 @@ Global Const $DIFF_THRESHOLD = 5 ; pixels
 Test()
 
 Func Test()
-	_Mediapipe_SetResourceDir()
-
 	test_blank_image()
 	test_face("short_range_model", 0)
 	test_face("full_range_model", 1)

@@ -71,20 +71,24 @@ const parseArguments = PROJECT_DIR => {
             } else if (fqn === "mediapipe::autoit::solutions::objectron::ObjectronOutputs") {
                 generator.add_vector(`vector<${ fqn }>`, coclass, opts);
             }
-        },
-        onClass: (generator, coclass, opts) => {
-            const {fqn, name} = coclass;
 
-            if (!fqn.startsWith("mediapipe::autoit::")) {
-                return;
+            // from mediapipe.python import *
+            // import mediapipe.python.solutions as solutions
+            if (fqn.startsWith("mediapipe::autoit::")) {
+                const parts = fqn.split("::");
+
+                for (let i = 1; i < parts.length; i++) {
+                    generator.add_func([`${ parts.slice(0, i).join(".") }.`, "", ["/Properties"], [
+                        [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this"]],
+                    ], "", ""]);
+                }
+
+                for (let i = 2; i < parts.length; i++) {
+                    generator.add_func([`${ [parts[0]].concat(parts.slice(2, i)).join(".") }.`, "", ["/Properties"], [
+                        [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this"]],
+                    ], "", ""]);
+                }
             }
-
-            // expose a ${ name } property like in mediapipe python
-            const parts = fqn.split("::");
-            parts[parts.length - 1] = "";
-            generator.add_func([parts.join("."), "", ["/Properties"], [
-                [fqn, name, "", ["/R", "=this"]],
-            ], "", ""]);
         },
         convert: (generator, coclass, header, impl, opts) => {
             const {fqn} = coclass;

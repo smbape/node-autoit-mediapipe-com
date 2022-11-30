@@ -42,11 +42,20 @@
   - [google::protobuf::autoit::cmessage::GetFieldValue](#googleprotobufautoitcmessagegetfieldvalue)
   - [google::protobuf::autoit::cmessage::SetFieldValue](#googleprotobufautoitcmessagesetfieldvalue)
 - [mediapipe](#mediapipe)
+  - [mediapipe.autoit](#mediapipeautoit)
+  - [mediapipe.packet\_creator](#mediapipepacket%5C_creator)
+  - [mediapipe.packet\_getter](#mediapipepacket%5C_getter)
+  - [mediapipe.\_framework\_bindings](#mediapipe%5C_framework%5C_bindings)
+  - [mediapipe.solutions](#mediapipesolutions)
+  - [mediapipe.solution\_base](#mediapipesolution%5C_base)
   - [mediapipe.extended](#mediapipeextended)
   - [mediapipe::variant](#mediapipevariant)
 - [mediapipe::autoit](#mediapipeautoit)
   - [autoit.packet\_creator](#autoitpacket%5C_creator)
   - [autoit.packet\_getter](#autoitpacket%5C_getter)
+  - [autoit.\_framework\_bindings](#autoit%5C_framework%5C_bindings)
+  - [autoit.solutions](#autoitsolutions)
+  - [autoit.solution\_base](#autoitsolution%5C_base)
 - [mediapipe::autoit::packet\_creator](#mediapipeautoitpacket%5C_creator)
   - [mediapipe::autoit::packet\_creator::create\_bool](#mediapipeautoitpacket%5C_creatorcreate%5C_bool)
   - [mediapipe::autoit::packet\_creator::create\_bool\_vector](#mediapipeautoitpacket%5C_creatorcreate%5C_bool%5C_vector)
@@ -111,12 +120,56 @@
   - [google::protobuf::autoit::RepeatedContainer::sort](#googleprotobufautoitrepeatedcontainersort)
   - [google::protobuf::autoit::RepeatedContainer::splice](#googleprotobufautoitrepeatedcontainersplice)
   - [google::protobuf::autoit::RepeatedContainer::str](#googleprotobufautoitrepeatedcontainerstr)
+- [mediapipe::autoit::\_framework\_bindings](#mediapipeautoit%5C_framework%5C_bindings)
+  - [\_framework\_bindings.resource\_util](#%5C_framework%5C_bindingsresource%5C_util)
+  - [\_framework\_bindings.calculator\_graph](#%5C_framework%5C_bindingscalculator%5C_graph)
+  - [\_framework\_bindings.image](#%5C_framework%5C_bindingsimage)
+  - [\_framework\_bindings.image\_frame](#%5C_framework%5C_bindingsimage%5C_frame)
+  - [\_framework\_bindings.packet](#%5C_framework%5C_bindingspacket)
+  - [\_framework\_bindings.timestamp](#%5C_framework%5C_bindingstimestamp)
+  - [\_framework\_bindings.validated\_graph\_config](#%5C_framework%5C_bindingsvalidated%5C_graph%5C_config)
 - [mediapipe::autoit::\_framework\_bindings::resource\_util](#mediapipeautoit%5C_framework%5C_bindingsresource%5C_util)
   - [mediapipe::autoit::\_framework\_bindings::resource\_util::get\_resource\_dir](#mediapipeautoit%5C_framework%5C_bindingsresource%5C_utilget%5C_resource%5C_dir)
   - [mediapipe::autoit::\_framework\_bindings::resource\_util::set\_resource\_dir](#mediapipeautoit%5C_framework%5C_bindingsresource%5C_utilset%5C_resource%5C_dir)
+- [mediapipe::\_framework\_bindings](#mediapipe%5C_framework%5C_bindings)
+  - [\_framework\_bindings.resource\_util](#%5C_framework%5C_bindingsresource%5C_util-1)
+  - [\_framework\_bindings.calculator\_graph](#%5C_framework%5C_bindingscalculator%5C_graph-1)
+  - [\_framework\_bindings.image](#%5C_framework%5C_bindingsimage-1)
+  - [\_framework\_bindings.image\_frame](#%5C_framework%5C_bindingsimage%5C_frame-1)
+  - [\_framework\_bindings.packet](#%5C_framework%5C_bindingspacket-1)
+  - [\_framework\_bindings.timestamp](#%5C_framework%5C_bindingstimestamp-1)
+  - [\_framework\_bindings.validated\_graph\_config](#%5C_framework%5C_bindingsvalidated%5C_graph%5C_config-1)
+- [mediapipe::autoit::solutions](#mediapipeautoitsolutions)
+  - [solutions.download\_utils](#solutionsdownload%5C_utils)
+  - [solutions.drawing\_styles](#solutionsdrawing%5C_styles)
+  - [solutions.drawing\_utils](#solutionsdrawing%5C_utils)
+  - [solutions.face\_detection](#solutionsface%5C_detection)
+  - [solutions.face\_mesh](#solutionsface%5C_mesh)
+  - [solutions.hands](#solutionshands)
+  - [solutions.holistic](#solutionsholistic)
+  - [solutions.objectron](#solutionsobjectron)
+  - [solutions.pose](#solutionspose)
+  - [solutions.selfie\_segmentation](#solutionsselfie%5C_segmentation)
+  - [solutions.face\_mesh\_connections](#solutionsface%5C_mesh%5C_connections)
+  - [solutions.hands\_connections](#solutionshands%5C_connections)
+  - [solutions.pose\_connections](#solutionspose%5C_connections)
 - [mediapipe::autoit::solutions::download\_utils](#mediapipeautoitsolutionsdownload%5C_utils)
   - [mediapipe::autoit::solutions::download\_utils::download](#mediapipeautoitsolutionsdownload%5C_utilsdownload)
   - [mediapipe::autoit::solutions::download\_utils::download\_oss\_model](#mediapipeautoitsolutionsdownload%5C_utilsdownload%5C_oss%5C_model)
+- [mediapipe::solutions](#mediapipesolutions)
+  - [solutions.download\_utils](#solutionsdownload%5C_utils-1)
+  - [solutions.drawing\_styles](#solutionsdrawing%5C_styles-1)
+  - [solutions.drawing\_utils](#solutionsdrawing%5C_utils-1)
+  - [solutions.face\_detection](#solutionsface%5C_detection-1)
+  - [solutions.face\_mesh](#solutionsface%5C_mesh-1)
+  - [solutions.hands](#solutionshands-1)
+  - [solutions.holistic](#solutionsholistic-1)
+  - [solutions.objectron](#solutionsobjectron-1)
+  - [solutions.pose](#solutionspose-1)
+  - [solutions.selfie\_segmentation](#solutionsselfie%5C_segmentation-1)
+  - [solutions.face\_mesh\_connections](#solutionsface%5C_mesh%5C_connections-1)
+  - [solutions.hands\_connections](#solutionshands%5C_connections-1)
+  - [solutions.pose\_connections](#solutionspose%5C_connections-1)
 - [mediapipe::autoit::solutions::drawing\_styles](#mediapipeautoitsolutionsdrawing%5C_styles)
   - [mediapipe::autoit::solutions::drawing\_styles::get\_default\_face\_mesh\_contours\_style](#mediapipeautoitsolutionsdrawing%5C_stylesget%5C_default%5C_face%5C_mesh%5C_contours%5C_style)
   - [mediapipe::autoit::solutions::drawing\_styles::get\_default\_face\_mesh\_iris\_connections\_style](#mediapipeautoitsolutionsdrawing%5C_stylesget%5C_default%5C_face%5C_mesh%5C_iris%5C_connections%5C_style)
@@ -139,6 +192,8 @@
   - [DrawingSpec.thickness](#drawingspecthickness)
   - [DrawingSpec.circle\_radius](#drawingspeccircle%5C_radius)
   - [mediapipe::autoit::solutions::drawing\_utils::DrawingSpec::get\_create](#mediapipeautoitsolutionsdrawing%5C_utilsdrawingspecget%5C_create)
+- [mediapipe::solutions::drawing\_utils](#mediapipesolutionsdrawing%5C_utils)
+  - [drawing\_utils.DrawingSpec](#drawing%5C_utilsdrawingspec-1)
 - [mediapipe::autoit::solutions::face\_detection](#mediapipeautoitsolutionsface%5C_detection)
   - [face\_detection.FaceDetection](#face%5C_detectionfacedetection)
   - [mediapipe::autoit::solutions::face\_detection::get\_key\_point](#mediapipeautoitsolutionsface%5C_detectionget%5C_key%5C_point)
@@ -149,6 +204,8 @@
   - [FaceKeyPoint.MOUTH\_CENTER\_](#facekeypointmouth%5C_center%5C_)
   - [FaceKeyPoint.RIGHT\_EAR\_TRAGION\_](#facekeypointright%5C_ear%5C_tragion%5C_)
   - [FaceKeyPoint.LEFT\_EAR\_TRAGION\_](#facekeypointleft%5C_ear%5C_tragion%5C_)
+- [mediapipe::solutions::face\_detection](#mediapipesolutionsface%5C_detection)
+  - [face\_detection.FaceDetection](#face%5C_detectionfacedetection-1)
 - [mediapipe::autoit::solutions::face\_detection::FaceDetection](#mediapipeautoitsolutionsface%5C_detectionfacedetection)
   - [mediapipe::autoit::solutions::face\_detection::FaceDetection::get\_create](#mediapipeautoitsolutionsface%5C_detectionfacedetectionget%5C_create)
   - [mediapipe::autoit::solutions::face\_detection::FaceDetection::process](#mediapipeautoitsolutionsface%5C_detectionfacedetectionprocess)
@@ -170,6 +227,8 @@
 - [mediapipe::autoit::solutions::face\_mesh::FaceMesh](#mediapipeautoitsolutionsface%5C_meshfacemesh)
   - [mediapipe::autoit::solutions::face\_mesh::FaceMesh::get\_create](#mediapipeautoitsolutionsface%5C_meshfacemeshget%5C_create)
   - [mediapipe::autoit::solutions::face\_mesh::FaceMesh::process](#mediapipeautoitsolutionsface%5C_meshfacemeshprocess)
+- [mediapipe::solutions::face\_mesh](#mediapipesolutionsface%5C_mesh)
+  - [face\_mesh.FaceMesh](#face%5C_meshfacemesh-1)
 - [mediapipe::autoit::solutions::hands](#mediapipeautoitsolutionshands)
   - [hands.Hands](#handshands)
   - [hands.HAND\_CONNECTIONS](#handshand%5C_connections)
@@ -195,6 +254,8 @@
   - [HandLandmark.PINKY\_PIP\_](#handlandmarkpinky%5C_pip%5C_)
   - [HandLandmark.PINKY\_DIP\_](#handlandmarkpinky%5C_dip%5C_)
   - [HandLandmark.PINKY\_TIP\_](#handlandmarkpinky%5C_tip%5C_)
+- [mediapipe::solutions::hands](#mediapipesolutionshands)
+  - [hands.Hands](#handshands-1)
 - [mediapipe::autoit::solutions::hands::Hands](#mediapipeautoitsolutionshandshands)
   - [mediapipe::autoit::solutions::hands::Hands::get\_create](#mediapipeautoitsolutionshandshandsget%5C_create)
   - [mediapipe::autoit::solutions::hands::Hands::process](#mediapipeautoitsolutionshandshandsprocess)
@@ -207,6 +268,8 @@
 - [mediapipe::autoit::solutions::holistic::Holistic](#mediapipeautoitsolutionsholisticholistic)
   - [mediapipe::autoit::solutions::holistic::Holistic::get\_create](#mediapipeautoitsolutionsholisticholisticget%5C_create)
   - [mediapipe::autoit::solutions::holistic::Holistic::process](#mediapipeautoitsolutionsholisticholisticprocess)
+- [mediapipe::solutions::holistic](#mediapipesolutionsholistic)
+  - [holistic.Holistic](#holisticholistic-1)
 - [mediapipe::autoit::solutions::objectron](#mediapipeautoitsolutionsobjectron)
   - [objectron.ObjectronModel](#objectronobjectronmodel)
   - [objectron.ShoeModel](#objectronshoemodel)
@@ -226,6 +289,14 @@
   - [BoxLandmark.FRONT\_BOTTOM\_RIGHT\_](#boxlandmarkfront%5C_bottom%5C_right%5C_)
   - [BoxLandmark.BACK\_TOP\_RIGHT\_](#boxlandmarkback%5C_top%5C_right%5C_)
   - [BoxLandmark.FRONT\_TOP\_RIGHT\_](#boxlandmarkfront%5C_top%5C_right%5C_)
+- [mediapipe::solutions::objectron](#mediapipesolutionsobjectron)
+  - [objectron.ObjectronModel](#objectronobjectronmodel-1)
+  - [objectron.ShoeModel](#objectronshoemodel-1)
+  - [objectron.ChairModel](#objectronchairmodel-1)
+  - [objectron.CameraModel](#objectroncameramodel-1)
+  - [objectron.CupModel](#objectroncupmodel-1)
+  - [objectron.ObjectronOutputs](#objectronobjectronoutputs-1)
+  - [objectron.Objectron](#objectronobjectron-1)
 - [mediapipe::autoit::solutions::objectron::ObjectronModel](#mediapipeautoitsolutionsobjectronobjectronmodel)
   - [ObjectronModel.model\_path](#objectronmodelmodel%5C_path)
   - [ObjectronModel.label\_name](#objectronmodellabel%5C_name)
@@ -307,6 +378,8 @@
   - [PoseLandmark.RIGHT\_HEEL\_](#poselandmarkright%5C_heel%5C_)
   - [PoseLandmark.LEFT\_FOOT\_INDEX\_](#poselandmarkleft%5C_foot%5C_index%5C_)
   - [PoseLandmark.RIGHT\_FOOT\_INDEX\_](#poselandmarkright%5C_foot%5C_index%5C_)
+- [mediapipe::solutions::pose](#mediapipesolutionspose)
+  - [pose.Pose](#posepose-1)
 - [mediapipe::autoit::solutions::pose::Pose](#mediapipeautoitsolutionsposepose)
   - [mediapipe::autoit::solutions::pose::Pose::get\_create](#mediapipeautoitsolutionsposeposeget%5C_create)
   - [mediapipe::autoit::solutions::pose::Pose::process](#mediapipeautoitsolutionsposeposeprocess)
@@ -315,6 +388,8 @@
 - [mediapipe::autoit::solutions::selfie\_segmentation::SelfieSegmentation](#mediapipeautoitsolutionsselfie%5C_segmentationselfiesegmentation)
   - [mediapipe::autoit::solutions::selfie\_segmentation::SelfieSegmentation::get\_create](#mediapipeautoitsolutionsselfie%5C_segmentationselfiesegmentationget%5C_create)
   - [mediapipe::autoit::solutions::selfie\_segmentation::SelfieSegmentation::process](#mediapipeautoitsolutionsselfie%5C_segmentationselfiesegmentationprocess)
+- [mediapipe::solutions::selfie\_segmentation](#mediapipesolutionsselfie%5C_segmentation)
+  - [selfie\_segmentation.SelfieSegmentation](#selfie%5C_segmentationselfiesegmentation-1)
 - [mediapipe::autoit::solution\_base](#mediapipeautoitsolution%5C_base)
   - [solution\_base.SolutionBase](#solution%5C_basesolutionbase)
 - [mediapipe::autoit::solution\_base::PacketDataType](#mediapipeautoitsolution%5C_basepacketdatatype)
@@ -331,6 +406,8 @@
   - [PacketDataType.IMAGE\_FRAME\_](#packetdatatypeimage%5C_frame%5C_)
   - [PacketDataType.PROTO\_](#packetdatatypeproto%5C_)
   - [PacketDataType.PROTO\_LIST\_](#packetdatatypeproto%5C_list%5C_)
+- [mediapipe::solution\_base](#mediapipesolution%5C_base)
+  - [solution\_base.SolutionBase](#solution%5C_basesolutionbase-1)
 - [mediapipe::autoit::solution\_base::SolutionBase](#mediapipeautoitsolution%5C_basesolutionbase)
   - [mediapipe::autoit::solution\_base::SolutionBase::get\_create](#mediapipeautoitsolution%5C_basesolutionbaseget%5C_create)
   - [mediapipe::autoit::solution\_base::SolutionBase::close](#mediapipeautoitsolution%5C_basesolutionbaseclose)
@@ -4322,6 +4399,54 @@ AutoIt:
 
 ## mediapipe
 
+### mediapipe.autoit
+
+```cpp
+static mediapipe::autoit mediapipe::this
+AutoIt:
+    [propget] $omediapipe.autoit
+```
+
+### mediapipe.packet\_creator
+
+```cpp
+static mediapipe::autoit::packet_creator mediapipe::this
+AutoIt:
+    [propget] $omediapipe.packet_creator
+```
+
+### mediapipe.packet\_getter
+
+```cpp
+static mediapipe::autoit::packet_getter mediapipe::this
+AutoIt:
+    [propget] $omediapipe.packet_getter
+```
+
+### mediapipe.\_framework\_bindings
+
+```cpp
+static mediapipe::autoit::_framework_bindings mediapipe::this
+AutoIt:
+    [propget] $omediapipe._framework_bindings
+```
+
+### mediapipe.solutions
+
+```cpp
+static mediapipe::autoit::solutions mediapipe::this
+AutoIt:
+    [propget] $omediapipe.solutions
+```
+
+### mediapipe.solution\_base
+
+```cpp
+static mediapipe::autoit::solution_base mediapipe::this
+AutoIt:
+    [propget] $omediapipe.solution_base
+```
+
 ### mediapipe.extended
 
 ```cpp
@@ -4354,6 +4479,30 @@ AutoIt:
 static mediapipe::autoit::packet_getter mediapipe::autoit::this
 AutoIt:
     [propget] $oautoit.packet_getter
+```
+
+### autoit.\_framework\_bindings
+
+```cpp
+static mediapipe::autoit::_framework_bindings mediapipe::autoit::this
+AutoIt:
+    [propget] $oautoit._framework_bindings
+```
+
+### autoit.solutions
+
+```cpp
+static mediapipe::autoit::solutions mediapipe::autoit::this
+AutoIt:
+    [propget] $oautoit.solutions
+```
+
+### autoit.solution\_base
+
+```cpp
+static mediapipe::autoit::solution_base mediapipe::autoit::this
+AutoIt:
+    [propget] $oautoit.solution_base
 ```
 
 ## mediapipe::autoit::packet\_creator
@@ -4937,6 +5086,64 @@ AutoIt:
     $oRepeatedContainer.str() -> retval
 ```
 
+## mediapipe::autoit::\_framework\_bindings
+
+### \_framework\_bindings.resource\_util
+
+```cpp
+static mediapipe::autoit::_framework_bindings::resource_util mediapipe::autoit::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.resource_util
+```
+
+### \_framework\_bindings.calculator\_graph
+
+```cpp
+static mediapipe::autoit::_framework_bindings::calculator_graph mediapipe::autoit::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.calculator_graph
+```
+
+### \_framework\_bindings.image
+
+```cpp
+static mediapipe::autoit::_framework_bindings::image mediapipe::autoit::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.image
+```
+
+### \_framework\_bindings.image\_frame
+
+```cpp
+static mediapipe::autoit::_framework_bindings::image_frame mediapipe::autoit::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.image_frame
+```
+
+### \_framework\_bindings.packet
+
+```cpp
+static mediapipe::autoit::_framework_bindings::packet mediapipe::autoit::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.packet
+```
+
+### \_framework\_bindings.timestamp
+
+```cpp
+static mediapipe::autoit::_framework_bindings::timestamp mediapipe::autoit::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.timestamp
+```
+
+### \_framework\_bindings.validated\_graph\_config
+
+```cpp
+static mediapipe::autoit::_framework_bindings::validated_graph_config mediapipe::autoit::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.validated_graph_config
+```
+
 ## mediapipe::autoit::\_framework\_bindings::resource\_util
 
 ### mediapipe::autoit::\_framework\_bindings::resource\_util::get\_resource\_dir
@@ -4953,6 +5160,170 @@ AutoIt:
 void mediapipe::autoit::_framework_bindings::resource_util::set_resource_dir( const std::string& str );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util").set_resource_dir( $str ) -> None
+```
+
+## mediapipe::\_framework\_bindings
+
+### \_framework\_bindings.resource\_util
+
+```cpp
+static mediapipe::autoit::_framework_bindings::resource_util mediapipe::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.resource_util
+```
+
+### \_framework\_bindings.calculator\_graph
+
+```cpp
+static mediapipe::autoit::_framework_bindings::calculator_graph mediapipe::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.calculator_graph
+```
+
+### \_framework\_bindings.image
+
+```cpp
+static mediapipe::autoit::_framework_bindings::image mediapipe::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.image
+```
+
+### \_framework\_bindings.image\_frame
+
+```cpp
+static mediapipe::autoit::_framework_bindings::image_frame mediapipe::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.image_frame
+```
+
+### \_framework\_bindings.packet
+
+```cpp
+static mediapipe::autoit::_framework_bindings::packet mediapipe::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.packet
+```
+
+### \_framework\_bindings.timestamp
+
+```cpp
+static mediapipe::autoit::_framework_bindings::timestamp mediapipe::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.timestamp
+```
+
+### \_framework\_bindings.validated\_graph\_config
+
+```cpp
+static mediapipe::autoit::_framework_bindings::validated_graph_config mediapipe::_framework_bindings::this
+AutoIt:
+    [propget] $o_framework_bindings.validated_graph_config
+```
+
+## mediapipe::autoit::solutions
+
+### solutions.download\_utils
+
+```cpp
+static mediapipe::autoit::solutions::download_utils mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.download_utils
+```
+
+### solutions.drawing\_styles
+
+```cpp
+static mediapipe::autoit::solutions::drawing_styles mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.drawing_styles
+```
+
+### solutions.drawing\_utils
+
+```cpp
+static mediapipe::autoit::solutions::drawing_utils mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.drawing_utils
+```
+
+### solutions.face\_detection
+
+```cpp
+static mediapipe::autoit::solutions::face_detection mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.face_detection
+```
+
+### solutions.face\_mesh
+
+```cpp
+static mediapipe::autoit::solutions::face_mesh mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.face_mesh
+```
+
+### solutions.hands
+
+```cpp
+static mediapipe::autoit::solutions::hands mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.hands
+```
+
+### solutions.holistic
+
+```cpp
+static mediapipe::autoit::solutions::holistic mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.holistic
+```
+
+### solutions.objectron
+
+```cpp
+static mediapipe::autoit::solutions::objectron mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.objectron
+```
+
+### solutions.pose
+
+```cpp
+static mediapipe::autoit::solutions::pose mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.pose
+```
+
+### solutions.selfie\_segmentation
+
+```cpp
+static mediapipe::autoit::solutions::selfie_segmentation mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.selfie_segmentation
+```
+
+### solutions.face\_mesh\_connections
+
+```cpp
+static mediapipe::autoit::solutions::face_mesh_connections mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.face_mesh_connections
+```
+
+### solutions.hands\_connections
+
+```cpp
+static mediapipe::autoit::solutions::hands_connections mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.hands_connections
+```
+
+### solutions.pose\_connections
+
+```cpp
+static mediapipe::autoit::solutions::pose_connections mediapipe::autoit::solutions::this
+AutoIt:
+    [propget] $osolutions.pose_connections
 ```
 
 ## mediapipe::autoit::solutions::download\_utils
@@ -4972,6 +5343,112 @@ AutoIt:
 void mediapipe::autoit::solutions::download_utils::download_oss_model( const std::string& model_path );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils").download_oss_model( $model_path ) -> None
+```
+
+## mediapipe::solutions
+
+### solutions.download\_utils
+
+```cpp
+static mediapipe::autoit::solutions::download_utils mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.download_utils
+```
+
+### solutions.drawing\_styles
+
+```cpp
+static mediapipe::autoit::solutions::drawing_styles mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.drawing_styles
+```
+
+### solutions.drawing\_utils
+
+```cpp
+static mediapipe::autoit::solutions::drawing_utils mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.drawing_utils
+```
+
+### solutions.face\_detection
+
+```cpp
+static mediapipe::autoit::solutions::face_detection mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.face_detection
+```
+
+### solutions.face\_mesh
+
+```cpp
+static mediapipe::autoit::solutions::face_mesh mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.face_mesh
+```
+
+### solutions.hands
+
+```cpp
+static mediapipe::autoit::solutions::hands mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.hands
+```
+
+### solutions.holistic
+
+```cpp
+static mediapipe::autoit::solutions::holistic mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.holistic
+```
+
+### solutions.objectron
+
+```cpp
+static mediapipe::autoit::solutions::objectron mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.objectron
+```
+
+### solutions.pose
+
+```cpp
+static mediapipe::autoit::solutions::pose mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.pose
+```
+
+### solutions.selfie\_segmentation
+
+```cpp
+static mediapipe::autoit::solutions::selfie_segmentation mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.selfie_segmentation
+```
+
+### solutions.face\_mesh\_connections
+
+```cpp
+static mediapipe::autoit::solutions::face_mesh_connections mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.face_mesh_connections
+```
+
+### solutions.hands\_connections
+
+```cpp
+static mediapipe::autoit::solutions::hands_connections mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.hands_connections
+```
+
+### solutions.pose\_connections
+
+```cpp
+static mediapipe::autoit::solutions::pose_connections mediapipe::solutions::this
+AutoIt:
+    [propget] $osolutions.pose_connections
 ```
 
 ## mediapipe::autoit::solutions::drawing\_styles
@@ -5178,6 +5655,16 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec")( [$color[, $thickness[, $circle_radius]]] ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
 ```
 
+## mediapipe::solutions::drawing\_utils
+
+### drawing\_utils.DrawingSpec
+
+```cpp
+static mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::solutions::drawing_utils::this
+AutoIt:
+    [propget] $odrawing_utils.DrawingSpec
+```
+
 ## mediapipe::autoit::solutions::face\_detection
 
 ### face\_detection.FaceDetection
@@ -5245,6 +5732,16 @@ AutoIt:
 static int mediapipe::autoit::solutions::face_detection::FaceKeyPoint::LEFT_EAR_TRAGION
 AutoIt:
     [propget] $oFaceKeyPoint.LEFT_EAR_TRAGION_
+```
+
+## mediapipe::solutions::face\_detection
+
+### face\_detection.FaceDetection
+
+```cpp
+static mediapipe::autoit::solutions::face_detection::FaceDetection mediapipe::solutions::face_detection::this
+AutoIt:
+    [propget] $oface_detection.FaceDetection
 ```
 
 ## mediapipe::autoit::solutions::face\_detection::FaceDetection
@@ -5404,6 +5901,16 @@ void mediapipe::autoit::solutions::face_mesh::FaceMesh::process( const cv::Mat& 
                                                                  std::map<std::string, _variant_t>& solution_outputs );
 AutoIt:
     $oFaceMesh.process( $image[, $solution_outputs] ) -> $solution_outputs
+```
+
+## mediapipe::solutions::face\_mesh
+
+### face\_mesh.FaceMesh
+
+```cpp
+static mediapipe::autoit::solutions::face_mesh::FaceMesh mediapipe::solutions::face_mesh::this
+AutoIt:
+    [propget] $oface_mesh.FaceMesh
 ```
 
 ## mediapipe::autoit::solutions::hands
@@ -5594,6 +6101,16 @@ AutoIt:
     [propget] $oHandLandmark.PINKY_TIP_
 ```
 
+## mediapipe::solutions::hands
+
+### hands.Hands
+
+```cpp
+static mediapipe::autoit::solutions::hands::Hands mediapipe::solutions::hands::this
+AutoIt:
+    [propget] $ohands.Hands
+```
+
 ## mediapipe::autoit::solutions::hands::Hands
 
 ### mediapipe::autoit::solutions::hands::Hands::get\_create
@@ -5685,6 +6202,16 @@ void mediapipe::autoit::solutions::holistic::Holistic::process( const cv::Mat&  
                                                                 std::map<std::string, _variant_t>& solution_outputs );
 AutoIt:
     $oHolistic.process( $image[, $solution_outputs] ) -> $solution_outputs
+```
+
+## mediapipe::solutions::holistic
+
+### holistic.Holistic
+
+```cpp
+static mediapipe::autoit::solutions::holistic::Holistic mediapipe::solutions::holistic::this
+AutoIt:
+    [propget] $oholistic.Holistic
 ```
 
 ## mediapipe::autoit::solutions::objectron
@@ -5825,6 +6352,64 @@ AutoIt:
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::FRONT_TOP_RIGHT
 AutoIt:
     [propget] $oBoxLandmark.FRONT_TOP_RIGHT_
+```
+
+## mediapipe::solutions::objectron
+
+### objectron.ObjectronModel
+
+```cpp
+static mediapipe::autoit::solutions::objectron::ObjectronModel mediapipe::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.ObjectronModel
+```
+
+### objectron.ShoeModel
+
+```cpp
+static mediapipe::autoit::solutions::objectron::ShoeModel mediapipe::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.ShoeModel
+```
+
+### objectron.ChairModel
+
+```cpp
+static mediapipe::autoit::solutions::objectron::ChairModel mediapipe::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.ChairModel
+```
+
+### objectron.CameraModel
+
+```cpp
+static mediapipe::autoit::solutions::objectron::CameraModel mediapipe::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.CameraModel
+```
+
+### objectron.CupModel
+
+```cpp
+static mediapipe::autoit::solutions::objectron::CupModel mediapipe::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.CupModel
+```
+
+### objectron.ObjectronOutputs
+
+```cpp
+static mediapipe::autoit::solutions::objectron::ObjectronOutputs mediapipe::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.ObjectronOutputs
+```
+
+### objectron.Objectron
+
+```cpp
+static mediapipe::autoit::solutions::objectron::Objectron mediapipe::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.Objectron
 ```
 
 ## mediapipe::autoit::solutions::objectron::ObjectronModel
@@ -6464,6 +7049,16 @@ AutoIt:
     [propget] $oPoseLandmark.RIGHT_FOOT_INDEX_
 ```
 
+## mediapipe::solutions::pose
+
+### pose.Pose
+
+```cpp
+static mediapipe::autoit::solutions::pose::Pose mediapipe::solutions::pose::this
+AutoIt:
+    [propget] $opose.Pose
+```
+
 ## mediapipe::autoit::solutions::pose::Pose
 
 ### mediapipe::autoit::solutions::pose::Pose::get\_create
@@ -6518,6 +7113,16 @@ void mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::proc
                                                                                      std::map<std::string, _variant_t>& solution_outputs );
 AutoIt:
     $oSelfieSegmentation.process( $image[, $solution_outputs] ) -> $solution_outputs
+```
+
+## mediapipe::solutions::selfie\_segmentation
+
+### selfie\_segmentation.SelfieSegmentation
+
+```cpp
+static mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation mediapipe::solutions::selfie_segmentation::this
+AutoIt:
+    [propget] $oselfie_segmentation.SelfieSegmentation
 ```
 
 ## mediapipe::autoit::solution\_base
@@ -6634,6 +7239,16 @@ AutoIt:
 static int mediapipe::autoit::solution_base::PacketDataType::PROTO_LIST
 AutoIt:
     [propget] $oPacketDataType.PROTO_LIST_
+```
+
+## mediapipe::solution\_base
+
+### solution\_base.SolutionBase
+
+```cpp
+static mediapipe::autoit::solution_base::SolutionBase mediapipe::solution_base::this
+AutoIt:
+    [propget] $osolution_base.SolutionBase
 ```
 
 ## mediapipe::autoit::solution\_base::SolutionBase

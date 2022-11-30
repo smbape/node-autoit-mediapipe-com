@@ -163,7 +163,7 @@ Object.assign(exports, {
             `.replace(/^ {16}/mg, "").trim();
         }
 
-        return `hr = autoit_from(${ generator.castFromEnumIfNeeded(in_type, in_val, coclass) }, ${ out_val });`;
+        return `hr = autoit_from(${ generator.castFromEnumIfNeeded(in_type, in_val, coclass, options) }, ${ out_val });`;
     },
 
     convertFromIdl(in_type, in_val, out_type, obj, propname, setter, is_enum) {
@@ -224,6 +224,13 @@ Object.assign(exports, {
             } else if (modifier.startsWith("/attr=")) {
                 attrs.push(modifier.slice("/attr=".length));
             }
+        }
+
+        // enums cannot be exported as this
+        const enum_type = generator.getEnumType(type, coclass, options);
+        if (propname === "this" && enum_type) {
+            console.log(`Enum type property ignored : ${ enum_type }`);
+            return;
         }
 
         const obj = `${ is_static ? `${ fqn }::` : "__self->get()->" }`;

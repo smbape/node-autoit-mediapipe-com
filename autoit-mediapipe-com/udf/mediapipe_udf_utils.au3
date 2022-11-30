@@ -496,7 +496,8 @@ Func _Mediapipe_FindResourceDir()
 	Return StringLeft($_SHORT_RANGE_GRAPH_FILE_PATH, $iCount)
 EndFunc   ;==>_Mediapipe_FindResourceDir
 
-Func _Mediapipe_SetResourceDir($root_path = _Mediapipe_FindResourceDir())
+Func _Mediapipe_SetResourceDir($root_path = Default)
+	If $root_path == Default Then $root_path = _Mediapipe_FindResourceDir()
 	_Mediapipe_DebugMsg('_Mediapipe_SetResourceDir("' & $root_path & '"')
 	Local Const $resource_util = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
 	$resource_util.set_resource_dir($root_path)

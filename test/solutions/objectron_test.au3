@@ -46,8 +46,6 @@ Global $EXPECTED_BOX_COORDINATES_PREDICTION[][][] = [ _
 Test()
 
 Func Test()
-	_Mediapipe_SetResourceDir()
-
 	test_blank_image()
 	test_multi_objects("static_image_mode", True, 1)
 	test_multi_objects("video_mode", False, 5)

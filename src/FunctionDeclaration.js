@@ -882,7 +882,7 @@ Object.assign(exports, {
                     callee = `reinterpret_cast<ULONGLONG>(${ callee })`;
                 }
 
-                const autoit_from = `autoit_from(${ generator.castFromEnumIfNeeded(return_value_type, "$1", coclass) }, $2)`;
+                const autoit_from = `autoit_from(${ generator.castFromEnumIfNeeded(return_value_type, "$1", coclass, options) }, $2)`;
 
                 if (is_external) {
                     const idltype = generator.getIDLType(return_value_type, coclass, options);

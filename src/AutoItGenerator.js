@@ -1267,6 +1267,7 @@ class AutoItGenerator {
     }
 
     getIDLType(type, coclass, options = {}) {
+        const type_ = type;
         const shared_ptr = removeNamespaces(options.shared_ptr, options);
         type = PropertyDeclaration.restoreOriginalType(removeNamespaces(type, options), options);
 
@@ -1336,7 +1337,7 @@ class AutoItGenerator {
             include = include.include;
         }
 
-        for (const fqn of this.getTypes(type, include)) {
+        for (const fqn of this.getTypes(type_, include).concat(this.getTypes(type, include))) {
             if (this.enums.has(fqn)) {
                 const pos = fqn.lastIndexOf("::");
                 this.addDependency(coclass.fqn, fqn.slice(0, pos));
@@ -1421,7 +1422,7 @@ class AutoItGenerator {
             include = include.include;
         }
 
-        for (const fqn of this.getTypes(type, include)) {
+        for (const fqn of this.getTypes(type_, include).concat(this.getTypes(type, include))) {
             if (this.enums.has(fqn)) {
                 return fqn;
             }
@@ -1487,13 +1488,13 @@ class AutoItGenerator {
         return fqn === null ? value : `static_cast<${ fqn }>(${ value })`;
     }
 
-    castFromEnumIfNeeded(type, value, coclass) {
+    castFromEnumIfNeeded(type, value, coclass, options = {}) {
         let include = coclass;
         while (include.include) {
             include = include.include;
         }
 
-        if (this.getTypes(type, include).some(fqn => this.enums.has(fqn))) {
+        if (this.getEnumType(type, coclass, options)) {
             return `static_cast<int>(${ value })`;
         }
 

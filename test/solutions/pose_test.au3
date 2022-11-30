@@ -73,8 +73,6 @@ Global Const $IOU_THRESHOLD = 0.85 ; percents
 Test()
 
 Func Test()
-	_Mediapipe_SetResourceDir()
-
 	test_blank_image()
 	test_on_image('static_lite', True, 0, 3)
 	test_on_image('static_full', True, 1, 3)

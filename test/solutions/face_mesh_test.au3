@@ -91,8 +91,6 @@ Global Const $IRIS_INDICES_TO_LANDMARKS[] = [ _
 Test()
 
 Func Test()
-	_Mediapipe_SetResourceDir()
-
 	test_blank_image()
 	test_face("static_image_mode_no_attention", True, False, 5)
 	test_face("static_image_mode_with_attention", True, True, 5)

@@ -73,13 +73,13 @@ Func _Mediapipe_Install($s_mediapipe_wolrd_dll = Default, $s_autoit_mediapipe_co
 	If $bClose And $h_mediapipe_world_dll <> -1 Then DllClose($h_mediapipe_world_dll)
 	If $bOpen Then
 		$h_mediapipe_world_dll = _Mediapipe_LoadDLL($s_mediapipe_wolrd_dll)
-		If $h_mediapipe_world_dll == -1 Then Return False
+		If $h_mediapipe_world_dll == -1 Then Return SetError(@error, 0, False)
 	EndIf
 
 	If $bClose And $h_autoit_mediapipe_com_dll <> -1 Then DllClose($h_autoit_mediapipe_com_dll)
 	If $bOpen Then
 		$h_autoit_mediapipe_com_dll = _Mediapipe_LoadDLL($s_autoit_mediapipe_com_dll)
-		If $h_autoit_mediapipe_com_dll == -1 Then Return False
+		If $h_autoit_mediapipe_com_dll == -1 Then Return SetError(@error, 0, False)
 		_Mediapipe_ObjCreate("mediapipe", $s_autoit_mediapipe_com_dll)
 	EndIf
 
@@ -89,7 +89,7 @@ Func _Mediapipe_Install($s_mediapipe_wolrd_dll = Default, $s_autoit_mediapipe_co
 		$hresult = _Mediapipe_DllCall($h_autoit_mediapipe_com_dll, "long", "DllInstall", "bool", False, "wstr", $bUser ? "user" : "")
 		If $hresult < 0 Then
 			ConsoleWriteError('!>Error: DllInstall(false, "' & ($bUser ? "user" : "") & '") 0x' & Hex($hresult) & @CRLF)
-			Return False
+			Return SetError(1, 0, False)
 		EndIf
 	EndIf
 
@@ -97,8 +97,11 @@ Func _Mediapipe_Install($s_mediapipe_wolrd_dll = Default, $s_autoit_mediapipe_co
 		$hresult = _Mediapipe_DllCall($h_autoit_mediapipe_com_dll, "long", "DllInstall", "bool", True, "wstr", $bUser ? "user" : "")
 		If $hresult < 0 Then
 			ConsoleWriteError('!>Error: DllInstall(true, "' & ($bUser ? "user" : "") & '") 0x' & Hex($hresult) & @CRLF)
-			Return False
+			Return SetError(1, 0, False)
 		EndIf
+
+		; use call because method is defined after
+		Call("_Mediapipe_SetResourceDir", Default)
 	EndIf
 
 	Return True
@@ -138,7 +141,7 @@ Func _Mediapipe_LoadDLL($dll)
 		ConsoleWriteError('!>Error: unable to load ' & $dll & @CRLF)
 	EndIf
 	_Mediapipe_DebugMsg('Loaded ' & $dll)
-	Return $result
+	Return SetError($result == -1 ? 1 : 0, 0, $result)
 EndFunc   ;==>_Mediapipe_LoadDLL
 
 Func _Mediapipe_PrintDLLError($error, $sFunction = "function")

@@ -60,8 +60,6 @@ Global $EXPECTED_HAND_COORDINATES_PREDICTION[][][] = [[[580, 34], [504, 50], [45
 Test()
 
 Func Test()
-	_Mediapipe_SetResourceDir()
-
 	test_blank_image()
 	test_multi_hands("static_image_mode_with_lite_model", True, 0, 5)
 	test_multi_hands("video_mode_with_lite_model", False, 0, 10)

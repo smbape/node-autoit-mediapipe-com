@@ -72,8 +72,6 @@ Global Const $EXPECTED_RIGHT_HAND_LANDMARKS[][] = [[143, 132], [150, 128], [155,
 Test()
 
 Func Test()
-	_Mediapipe_SetResourceDir()
-
 	test_blank_image()
 	test_on_image('static_lite', True, 0, False, 3)
 	test_on_image('static_full', True, 1, False, 3)

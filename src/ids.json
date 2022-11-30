@@ -51,6 +51,10 @@
         "iid": "747f893b-144b-4ccb-93ff-70311c33c702",
         "clsid": "74345131-2a6c-403d-9ab7-63b2f267c688"
     },
+    "mediapipe::_framework_bindings": {
+        "iid": "afe0d439-b4b0-4b46-8f6d-72f49983270f",
+        "clsid": "a5ba78b6-1da3-4af8-8f96-4444cba01d36"
+    },
     "mediapipe::autoit::solutions": {
         "iid": "5b720861-2603-4f1e-bbc4-6788cfc2fa0d",
         "clsid": "e1af48c2-c0dc-472f-8159-34dd803c7b4d"
@@ -58,6 +62,10 @@
     "mediapipe::autoit::solutions::download_utils": {
         "iid": "b4a6be46-f3c9-4134-9f29-3e7ab752c7a5",
         "clsid": "9d4cc2d3-437f-4863-b75e-aee2caaa5d31"
+    },
+    "mediapipe::solutions": {
+        "iid": "affb54a9-f828-490f-8f56-93982463883a",
+        "clsid": "53e71f03-f1e0-4eb0-abbc-94d7c8720074"
     },
     "mediapipe::autoit::solutions::drawing_styles": {
         "iid": "00da88a5-1746-44f4-a298-a00d2f858416",
@@ -71,6 +79,10 @@
         "iid": "8f1a3558-537f-451c-ae7c-e588c42fa2e4",
         "clsid": "6e8dac36-3680-418b-ab76-c07d3cd8ce7a"
     },
+    "mediapipe::solutions::drawing_utils": {
+        "iid": "ce65d334-d844-483f-936d-9e6e689c28ce",
+        "clsid": "461b0b75-1b69-4fd4-8edf-b311853e7596"
+    },
     "mediapipe::autoit::solutions::face_detection": {
         "iid": "2e7df523-e5df-4785-86ad-a2f5e2070cf2",
         "clsid": "697ce5df-f18b-45a4-9afa-6970485721cd"
@@ -78,6 +90,10 @@
     "mediapipe::autoit::solutions::face_detection::FaceKeyPoint": {
         "iid": "1843e545-bdfd-4ad5-ae60-90efc4d605a8",
         "clsid": "d203dca4-2695-43fb-ad37-a563a89022a3"
+    },
+    "mediapipe::solutions::face_detection": {
+        "iid": "ee0d8caa-1fc5-46e6-943d-e1f4778bb57b",
+        "clsid": "b9c6a237-4eca-47a5-be83-a488c1ce92ce"
     },
     "mediapipe::autoit::solutions::face_detection::FaceDetection": {
         "iid": "d87abe07-c0d5-4ce4-8bb2-df618b48ef8d",
@@ -91,6 +107,10 @@
         "iid": "2cec9458-4adb-4cf9-80d6-21210d65c0c0",
         "clsid": "90cd65f0-0c45-4ed8-b7d3-7ea7fb6814e1"
     },
+    "mediapipe::solutions::face_mesh": {
+        "iid": "f3dfa789-dfaf-4db4-9962-c7de34d50d17",
+        "clsid": "1025abe0-1b7f-41b9-b2de-f66d6ac60439"
+    },
     "mediapipe::autoit::solutions::hands": {
         "iid": "0bd7efa8-dc25-4238-8832-4b5bc9048119",
         "clsid": "35783698-4de5-4cd8-9877-1392c9fb6ce3"
@@ -98,6 +118,10 @@
     "mediapipe::autoit::solutions::hands::HandLandmark": {
         "iid": "11c54d15-7cc2-4590-a803-28035b8b3f55",
         "clsid": "97dd3c3b-4edf-4948-9e47-88a2ec8e3e99"
+    },
+    "mediapipe::solutions::hands": {
+        "iid": "066d076c-3dd5-402e-94a5-0b9b02cfb6f2",
+        "clsid": "043e2d87-8c81-4c82-b1ab-5b2bd38a62f7"
     },
     "mediapipe::autoit::solutions::hands::Hands": {
         "iid": "48f40c6f-7443-43d4-96dc-9482abc26ee8",
@@ -111,6 +135,10 @@
         "iid": "0471993c-903f-416c-a85a-e0cde86454dc",
         "clsid": "937ea38a-dff1-400e-afbb-8a416371799a"
     },
+    "mediapipe::solutions::holistic": {
+        "iid": "0b35931e-fc31-4602-a353-59f0f69550a4",
+        "clsid": "14b30202-65c0-45fb-a49a-8fac7aa7b8cb"
+    },
     "mediapipe::autoit::solutions::objectron": {
         "iid": "df6167b2-4cda-48ee-9d57-ee644f7936db",
         "clsid": "f55bb01d-93dd-44e3-b6de-8c8123f422e7"
@@ -118,6 +146,10 @@
     "mediapipe::autoit::solutions::objectron::BoxLandmark": {
         "iid": "b0ae6e1c-c2ef-4ab0-8946-8c4511b56a53",
         "clsid": "981f19b6-c735-4dad-847f-39c1260597c8"
+    },
+    "mediapipe::solutions::objectron": {
+        "iid": "9c547f9c-d411-4952-b940-79b1342d16fb",
+        "clsid": "f384b260-560c-4263-9366-fe490fcd1f9f"
     },
     "mediapipe::autoit::solutions::objectron::ObjectronModel": {
         "iid": "74ba469e-a61e-4155-9798-9b7e0031da3f",
@@ -159,6 +191,10 @@
         "iid": "3fe20314-f1b2-462a-abe4-031386f69882",
         "clsid": "06715a76-12e8-4e71-9005-f210697f0c03"
     },
+    "mediapipe::solutions::pose": {
+        "iid": "2006d3be-f2ca-4810-acfb-b1b6a3d454a8",
+        "clsid": "66bd7eb7-5a4a-420c-ad3d-8e825a886f82"
+    },
     "mediapipe::autoit::solutions::pose::Pose": {
         "iid": "6b4ecdd5-30bd-4156-947b-a89001df117d",
         "clsid": "90ffe620-c947-4bf2-ad3d-f64339211f89"
@@ -171,6 +207,10 @@
         "iid": "32ed20a8-7881-456e-b85e-c5c4b3f2cbfe",
         "clsid": "4201021b-6e46-4cea-a9ae-768170b76fd8"
     },
+    "mediapipe::solutions::selfie_segmentation": {
+        "iid": "0ed6945b-28ca-4a60-8052-1984a0184e6b",
+        "clsid": "2fb6a725-fff4-4dee-959d-766a4dbf3d67"
+    },
     "mediapipe::autoit::solution_base": {
         "iid": "86b271a7-844d-415d-936a-3c9a9cce08d1",
         "clsid": "249f4463-6f0e-4cc1-a229-0a7ae6fd743a"
@@ -178,6 +218,10 @@
     "mediapipe::autoit::solution_base::PacketDataType": {
         "iid": "04b9c4fa-f39f-4f78-97af-c3ca669c756c",
         "clsid": "77e89060-6255-4035-b85b-f66076709c8b"
+    },
+    "mediapipe::solution_base": {
+        "iid": "8b318ec4-59f8-47de-8879-d36e6f8aef55",
+        "clsid": "3f7543cc-3d31-4edd-9e7f-39373cb2f20c"
     },
     "mediapipe::autoit::solution_base::SolutionBase": {
         "iid": "e07404f8-424b-4698-ae00-a85514cc9502",
