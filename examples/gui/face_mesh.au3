@@ -5,9 +5,6 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
-EnvSet("MEDIAPIPE_BUILD_TYPE", "Debug")
-EnvSet("OPENCV_BUILD_TYPE", "Debug")
-
 #include <GDIPlus.au3>
 #include <GUIConstantsEx.au3>
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
@@ -85,7 +82,7 @@ WEnd
 Func Main()
 	$_cv_gdi_resize = _IsChecked($CheckboxUseGDI)
 
-	Local $sImagePath = ControlGetText($FormGUI, "", $sSrcImage)
+	Local $sImagePath = ControlGetText($FormGUI, "", $InputSrcImage)
 	Local $image = _OpenCV_imread_and_check($sImagePath)
 	If @error Then Return
 
