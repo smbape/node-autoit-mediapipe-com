@@ -5456,49 +5456,49 @@ AutoIt:
 ### mediapipe::autoit::solutions::drawing\_styles::get\_default\_face\_mesh\_contours\_style
 
 ```cpp
-std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_contours_style();
+std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_contours_style( float scale = 1.0 );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_contours_style() -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_contours_style( [$scale] ) -> retval
 ```
 
 ### mediapipe::autoit::solutions::drawing\_styles::get\_default\_face\_mesh\_iris\_connections\_style
 
 ```cpp
-std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_iris_connections_style();
+std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_iris_connections_style( float scale = 1.0 );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_iris_connections_style() -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_iris_connections_style( [$scale] ) -> retval
 ```
 
 ### mediapipe::autoit::solutions::drawing\_styles::get\_default\_face\_mesh\_tesselation\_style
 
 ```cpp
-mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_tesselation_style();
+mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::autoit::solutions::drawing_styles::get_default_face_mesh_tesselation_style( float scale = 1.0 );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_tesselation_style() -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_face_mesh_tesselation_style( [$scale] ) -> retval
 ```
 
 ### mediapipe::autoit::solutions::drawing\_styles::get\_default\_hand\_connections\_style
 
 ```cpp
-std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_hand_connections_style();
+std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> mediapipe::autoit::solutions::drawing_styles::get_default_hand_connections_style( float scale = 1.0 );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_hand_connections_style() -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_hand_connections_style( [$scale] ) -> retval
 ```
 
 ### mediapipe::autoit::solutions::drawing\_styles::get\_default\_hand\_landmarks\_style
 
 ```cpp
-std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> mediapipe::autoit::solutions::drawing_styles::get_default_hand_landmarks_style();
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> mediapipe::autoit::solutions::drawing_styles::get_default_hand_landmarks_style( float scale = 1.0 );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_hand_landmarks_style() -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_hand_landmarks_style( [$scale] ) -> retval
 ```
 
 ### mediapipe::autoit::solutions::drawing\_styles::get\_default\_pose\_landmarks\_style
 
 ```cpp
-std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> mediapipe::autoit::solutions::drawing_styles::get_default_pose_landmarks_style();
+std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> mediapipe::autoit::solutions::drawing_styles::get_default_pose_landmarks_style( float scale = 1.0 );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_pose_landmarks_style() -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles").get_default_pose_landmarks_style( [$scale] ) -> retval
 ```
 
 ## mediapipe::autoit::solutions::drawing\_utils

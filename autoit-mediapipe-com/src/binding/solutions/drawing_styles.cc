@@ -10,6 +10,16 @@ namespace mediapipe {
 				using namespace mediapipe::autoit::solutions::pose_connections;
 				using namespace mediapipe::autoit::solutions::pose;
 
+				static DrawingSpec GetDrawingSpectWithScale(const DrawingSpec& drawing_spec, float scale) {
+					if (scale == 1.0) {
+						return drawing_spec;
+					}
+					DrawingSpec result(drawing_spec);
+					result.thickness *= scale;
+					result.circle_radius *= scale;
+					return result;
+				}
+
 				static const int _RADIUS = 5;
 				static const DrawingColor _RED = { 48, 48, 255 };
 				static const DrawingColor _GREEN = { 48, 255, 48 };
@@ -98,50 +108,53 @@ namespace mediapipe {
 				};
 
 
-				std::map<int, DrawingSpec> get_default_hand_landmarks_style() {
+				std::map<int, DrawingSpec> get_default_hand_landmarks_style(float scale) {
 					std::map<int, DrawingSpec> hand_landmark_style;
 					for (const auto& [k, v] : _HAND_LANDMARK_STYLE) {
+						DrawingSpec drawing_spec = GetDrawingSpectWithScale(v, scale);
 						for (const auto& landmark : k) {
-							hand_landmark_style.insert_or_assign(static_cast<int>(landmark), v);
+							hand_landmark_style.insert_or_assign(static_cast<int>(landmark), drawing_spec);
 						}
 					}
 					return hand_landmark_style;
 				}
 
-				std::map<int, std::map<int, DrawingSpec>> get_default_hand_connections_style() {
+				std::map<int, std::map<int, DrawingSpec>> get_default_hand_connections_style(float scale) {
 					std::map<int, std::map<int, DrawingSpec>> hand_connection_style;
 					for (const auto& [k, v] : _HAND_CONNECTION_STYLE) {
+						DrawingSpec drawing_spec = GetDrawingSpectWithScale(v, scale);
 						for (const auto& [start, end] : k) {
 							if (!hand_connection_style.count(start)) {
 								hand_connection_style.insert_or_assign(start, std::map<int, DrawingSpec>());
 							}
-							hand_connection_style.at(start).insert_or_assign(end, v);
+							hand_connection_style.at(start).insert_or_assign(end, drawing_spec);
 						}
 					}
 					return hand_connection_style;
 				}
 
-				std::map<int, std::map<int, DrawingSpec>> get_default_face_mesh_contours_style() {
+				std::map<int, std::map<int, DrawingSpec>> get_default_face_mesh_contours_style(float scale) {
 					std::map<int, std::map<int, DrawingSpec>> face_mesh_contours_connection_style;
 					for (const auto& [k, v] : _FACEMESH_CONTOURS_CONNECTION_STYLE) {
+						DrawingSpec drawing_spec = GetDrawingSpectWithScale(v, scale);
 						for (const auto& [start, end] : k) {
 							if (!face_mesh_contours_connection_style.count(start)) {
 								face_mesh_contours_connection_style.insert_or_assign(start, std::map<int, DrawingSpec>());
 							}
-							face_mesh_contours_connection_style.at(start).insert_or_assign(end, v);
+							face_mesh_contours_connection_style.at(start).insert_or_assign(end, drawing_spec);
 						}
 					}
 					return face_mesh_contours_connection_style;
 				}
 
-				DrawingSpec get_default_face_mesh_tesselation_style() {
-					return DrawingSpec(_GRAY, _THICKNESS_TESSELATION);
+				DrawingSpec get_default_face_mesh_tesselation_style(float scale) {
+					return DrawingSpec(_GRAY, _THICKNESS_TESSELATION * scale);
 				}
 
-				std::map<int, std::map<int, DrawingSpec>> get_default_face_mesh_iris_connections_style() {
+				std::map<int, std::map<int, DrawingSpec>> get_default_face_mesh_iris_connections_style(float scale) {
 					std::map<int, std::map<int, DrawingSpec>> face_mesh_iris_connections_style;
 
-					DrawingSpec left_spec(_GREEN, _THICKNESS_CONTOURS);
+					DrawingSpec left_spec(_GREEN, _THICKNESS_CONTOURS * scale);
 					for (const auto& [start, end] : FACEMESH_LEFT_IRIS) {
 						if (!face_mesh_iris_connections_style.count(start)) {
 							face_mesh_iris_connections_style.insert_or_assign(start, std::map<int, DrawingSpec>());
@@ -149,8 +162,8 @@ namespace mediapipe {
 						face_mesh_iris_connections_style.at(start).insert_or_assign(end, left_spec);
 					}
 
-					DrawingSpec right_spec(_RED, _THICKNESS_CONTOURS);
-					for (const auto& [start, end] : FACEMESH_LEFT_IRIS) {
+					DrawingSpec right_spec(_RED, _THICKNESS_CONTOURS * scale);
+					for (const auto& [start, end] : FACEMESH_RIGHT_IRIS) {
 						if (!face_mesh_iris_connections_style.count(start)) {
 							face_mesh_iris_connections_style.insert_or_assign(start, std::map<int, DrawingSpec>());
 						}
@@ -160,20 +173,20 @@ namespace mediapipe {
 					return face_mesh_iris_connections_style;
 				}
 
-				std::map<int, DrawingSpec> get_default_pose_landmarks_style() {
+				std::map<int, DrawingSpec> get_default_pose_landmarks_style(float scale) {
 					std::map<int, DrawingSpec> pose_landmark_style;
 
-					DrawingSpec left_spec({ 0, 138, 255 }, _THICKNESS_POSE_LANDMARKS);
+					DrawingSpec left_spec({ 0, 138, 255 }, _THICKNESS_POSE_LANDMARKS * scale);
 					for (const auto& landmark : _POSE_LANDMARKS_LEFT) {
 						pose_landmark_style.insert_or_assign(static_cast<int>(landmark), left_spec);
 					}
 
-					DrawingSpec right_spec({ 231, 217, 0 }, _THICKNESS_POSE_LANDMARKS);
+					DrawingSpec right_spec({ 231, 217, 0 }, _THICKNESS_POSE_LANDMARKS * scale);
 					for (const auto& landmark : _POSE_LANDMARKS_RIGHT) {
 						pose_landmark_style.insert_or_assign(static_cast<int>(landmark), right_spec);
 					}
 
-					pose_landmark_style.insert_or_assign(static_cast<int>(PoseLandmark::NOSE), DrawingSpec(_WHITE, _THICKNESS_POSE_LANDMARKS));
+					pose_landmark_style.insert_or_assign(static_cast<int>(PoseLandmark::NOSE), DrawingSpec(_WHITE, _THICKNESS_POSE_LANDMARKS * scale));
 
 					return pose_landmark_style;
 				}
