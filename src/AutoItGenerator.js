@@ -1166,19 +1166,23 @@ class AutoItGenerator {
 
             // Make enumerations available via a COM property.
             // Because com properties and methods are case insensitive,
-            // an enum name cannot be the same as a property or a method.
-            // To workaround this limitation, an underscore is added a the end of the enum name.
-            // More over, office vba does not allow names to start with an underscore.
-            // Therefore, putting the underscore at the end is also to workaround this limitation
+            // an enum name cannot be the same as a property or a method name.
+            // To get around that limitation, an underscore is added at the end of the enum name.
+            // More over, office vba does not allow properties/methods names to start with an underscore.
+            // Therefore, putting the underscore at the end is also to get around that office vba limitation.
             // For exemple, cv::FileNode as a method 'real' and an enum 'REAL'
             // The enum will be named REAL_
             //
             // Sources:
             // https://docs.microsoft.com/en-us/windows/win32/com/com-technical-overview
             // https://docs.microsoft.com/it-ch/office/vba/language/reference/user-interface-help/bad-interface-for-implements-method-has-underscore-in-name
+
+            // There is no name conflict with enum class properties
             const basename = epath[epath.length - 1];
+            const propname = epath.slice(0, -1).join("::") === fqn ? basename : `${ basename }_`;
+
             const coclass = this.getCoClass(epath.slice(0, -1).join("::"), options);
-            coclass.addProperty(["int", `${ basename }_`, `static_cast<int>(${ epath.join("::") })`, ["/R", "/S", "/Enum", `=${ basename }`]]);
+            coclass.addProperty(["int", propname, `static_cast<int>(${ epath.join("::") })`, ["/R", "/S", "/Enum", `=${ basename }`]]);
         }
     }
 
@@ -1337,7 +1341,7 @@ class AutoItGenerator {
             include = include.include;
         }
 
-        for (const fqn of this.getTypes(type_, include).concat(this.getTypes(type, include))) {
+        for (const fqn of this.getTypes(type_, include)) {
             if (this.enums.has(fqn)) {
                 const pos = fqn.lastIndexOf("::");
                 this.addDependency(coclass.fqn, fqn.slice(0, pos));
@@ -1422,7 +1426,7 @@ class AutoItGenerator {
             include = include.include;
         }
 
-        for (const fqn of this.getTypes(type_, include).concat(this.getTypes(type, include))) {
+        for (const fqn of this.getTypes(type_, include)) {
             if (this.enums.has(fqn)) {
                 return fqn;
             }

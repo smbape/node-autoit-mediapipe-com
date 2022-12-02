@@ -195,16 +195,18 @@
 - [mediapipe::solutions::drawing\_utils](#mediapipesolutionsdrawing%5C_utils)
   - [drawing\_utils.DrawingSpec](#drawing%5C_utilsdrawingspec-1)
 - [mediapipe::autoit::solutions::face\_detection](#mediapipeautoitsolutionsface%5C_detection)
+  - [face\_detection.FaceKeyPoint](#face%5C_detectionfacekeypoint)
   - [face\_detection.FaceDetection](#face%5C_detectionfacedetection)
   - [mediapipe::autoit::solutions::face\_detection::get\_key\_point](#mediapipeautoitsolutionsface%5C_detectionget%5C_key%5C_point)
 - [mediapipe::autoit::solutions::face\_detection::FaceKeyPoint](#mediapipeautoitsolutionsface%5C_detectionfacekeypoint)
-  - [FaceKeyPoint.RIGHT\_EYE\_](#facekeypointright%5C_eye%5C_)
-  - [FaceKeyPoint.LEFT\_EYE\_](#facekeypointleft%5C_eye%5C_)
-  - [FaceKeyPoint.NOSE\_TIP\_](#facekeypointnose%5C_tip%5C_)
-  - [FaceKeyPoint.MOUTH\_CENTER\_](#facekeypointmouth%5C_center%5C_)
-  - [FaceKeyPoint.RIGHT\_EAR\_TRAGION\_](#facekeypointright%5C_ear%5C_tragion%5C_)
-  - [FaceKeyPoint.LEFT\_EAR\_TRAGION\_](#facekeypointleft%5C_ear%5C_tragion%5C_)
+  - [FaceKeyPoint.RIGHT\_EYE](#facekeypointright%5C_eye)
+  - [FaceKeyPoint.LEFT\_EYE](#facekeypointleft%5C_eye)
+  - [FaceKeyPoint.NOSE\_TIP](#facekeypointnose%5C_tip)
+  - [FaceKeyPoint.MOUTH\_CENTER](#facekeypointmouth%5C_center)
+  - [FaceKeyPoint.RIGHT\_EAR\_TRAGION](#facekeypointright%5C_ear%5C_tragion)
+  - [FaceKeyPoint.LEFT\_EAR\_TRAGION](#facekeypointleft%5C_ear%5C_tragion)
 - [mediapipe::solutions::face\_detection](#mediapipesolutionsface%5C_detection)
+  - [face\_detection.FaceKeyPoint](#face%5C_detectionfacekeypoint-1)
   - [face\_detection.FaceDetection](#face%5C_detectionfacedetection-1)
 - [mediapipe::autoit::solutions::face\_detection::FaceDetection](#mediapipeautoitsolutionsface%5C_detectionfacedetection)
   - [mediapipe::autoit::solutions::face\_detection::FaceDetection::get\_create](#mediapipeautoitsolutionsface%5C_detectionfacedetectionget%5C_create)
@@ -230,31 +232,33 @@
 - [mediapipe::solutions::face\_mesh](#mediapipesolutionsface%5C_mesh)
   - [face\_mesh.FaceMesh](#face%5C_meshfacemesh-1)
 - [mediapipe::autoit::solutions::hands](#mediapipeautoitsolutionshands)
+  - [hands.HandLandmark](#handshandlandmark)
   - [hands.Hands](#handshands)
   - [hands.HAND\_CONNECTIONS](#handshand%5C_connections)
 - [mediapipe::autoit::solutions::hands::HandLandmark](#mediapipeautoitsolutionshandshandlandmark)
-  - [HandLandmark.WRIST\_](#handlandmarkwrist%5C_)
-  - [HandLandmark.THUMB\_CMC\_](#handlandmarkthumb%5C_cmc%5C_)
-  - [HandLandmark.THUMB\_MCP\_](#handlandmarkthumb%5C_mcp%5C_)
-  - [HandLandmark.THUMB\_IP\_](#handlandmarkthumb%5C_ip%5C_)
-  - [HandLandmark.THUMB\_TIP\_](#handlandmarkthumb%5C_tip%5C_)
-  - [HandLandmark.INDEX\_FINGER\_MCP\_](#handlandmarkindex%5C_finger%5C_mcp%5C_)
-  - [HandLandmark.INDEX\_FINGER\_PIP\_](#handlandmarkindex%5C_finger%5C_pip%5C_)
-  - [HandLandmark.INDEX\_FINGER\_DIP\_](#handlandmarkindex%5C_finger%5C_dip%5C_)
-  - [HandLandmark.INDEX\_FINGER\_TIP\_](#handlandmarkindex%5C_finger%5C_tip%5C_)
-  - [HandLandmark.MIDDLE\_FINGER\_MCP\_](#handlandmarkmiddle%5C_finger%5C_mcp%5C_)
-  - [HandLandmark.MIDDLE\_FINGER\_PIP\_](#handlandmarkmiddle%5C_finger%5C_pip%5C_)
-  - [HandLandmark.MIDDLE\_FINGER\_DIP\_](#handlandmarkmiddle%5C_finger%5C_dip%5C_)
-  - [HandLandmark.MIDDLE\_FINGER\_TIP\_](#handlandmarkmiddle%5C_finger%5C_tip%5C_)
-  - [HandLandmark.RING\_FINGER\_MCP\_](#handlandmarkring%5C_finger%5C_mcp%5C_)
-  - [HandLandmark.RING\_FINGER\_PIP\_](#handlandmarkring%5C_finger%5C_pip%5C_)
-  - [HandLandmark.RING\_FINGER\_DIP\_](#handlandmarkring%5C_finger%5C_dip%5C_)
-  - [HandLandmark.RING\_FINGER\_TIP\_](#handlandmarkring%5C_finger%5C_tip%5C_)
-  - [HandLandmark.PINKY\_MCP\_](#handlandmarkpinky%5C_mcp%5C_)
-  - [HandLandmark.PINKY\_PIP\_](#handlandmarkpinky%5C_pip%5C_)
-  - [HandLandmark.PINKY\_DIP\_](#handlandmarkpinky%5C_dip%5C_)
-  - [HandLandmark.PINKY\_TIP\_](#handlandmarkpinky%5C_tip%5C_)
+  - [HandLandmark.WRIST](#handlandmarkwrist)
+  - [HandLandmark.THUMB\_CMC](#handlandmarkthumb%5C_cmc)
+  - [HandLandmark.THUMB\_MCP](#handlandmarkthumb%5C_mcp)
+  - [HandLandmark.THUMB\_IP](#handlandmarkthumb%5C_ip)
+  - [HandLandmark.THUMB\_TIP](#handlandmarkthumb%5C_tip)
+  - [HandLandmark.INDEX\_FINGER\_MCP](#handlandmarkindex%5C_finger%5C_mcp)
+  - [HandLandmark.INDEX\_FINGER\_PIP](#handlandmarkindex%5C_finger%5C_pip)
+  - [HandLandmark.INDEX\_FINGER\_DIP](#handlandmarkindex%5C_finger%5C_dip)
+  - [HandLandmark.INDEX\_FINGER\_TIP](#handlandmarkindex%5C_finger%5C_tip)
+  - [HandLandmark.MIDDLE\_FINGER\_MCP](#handlandmarkmiddle%5C_finger%5C_mcp)
+  - [HandLandmark.MIDDLE\_FINGER\_PIP](#handlandmarkmiddle%5C_finger%5C_pip)
+  - [HandLandmark.MIDDLE\_FINGER\_DIP](#handlandmarkmiddle%5C_finger%5C_dip)
+  - [HandLandmark.MIDDLE\_FINGER\_TIP](#handlandmarkmiddle%5C_finger%5C_tip)
+  - [HandLandmark.RING\_FINGER\_MCP](#handlandmarkring%5C_finger%5C_mcp)
+  - [HandLandmark.RING\_FINGER\_PIP](#handlandmarkring%5C_finger%5C_pip)
+  - [HandLandmark.RING\_FINGER\_DIP](#handlandmarkring%5C_finger%5C_dip)
+  - [HandLandmark.RING\_FINGER\_TIP](#handlandmarkring%5C_finger%5C_tip)
+  - [HandLandmark.PINKY\_MCP](#handlandmarkpinky%5C_mcp)
+  - [HandLandmark.PINKY\_PIP](#handlandmarkpinky%5C_pip)
+  - [HandLandmark.PINKY\_DIP](#handlandmarkpinky%5C_dip)
+  - [HandLandmark.PINKY\_TIP](#handlandmarkpinky%5C_tip)
 - [mediapipe::solutions::hands](#mediapipesolutionshands)
+  - [hands.HandLandmark](#handshandlandmark-1)
   - [hands.Hands](#handshands-1)
 - [mediapipe::autoit::solutions::hands::Hands](#mediapipeautoitsolutionshandshands)
   - [mediapipe::autoit::solutions::hands::Hands::get\_create](#mediapipeautoitsolutionshandshandsget%5C_create)
@@ -271,6 +275,7 @@
 - [mediapipe::solutions::holistic](#mediapipesolutionsholistic)
   - [holistic.Holistic](#holisticholistic-1)
 - [mediapipe::autoit::solutions::objectron](#mediapipeautoitsolutionsobjectron)
+  - [objectron.BoxLandmark](#objectronboxlandmark)
   - [objectron.ObjectronModel](#objectronobjectronmodel)
   - [objectron.ShoeModel](#objectronshoemodel)
   - [objectron.ChairModel](#objectronchairmodel)
@@ -280,16 +285,17 @@
   - [objectron.Objectron](#objectronobjectron)
   - [objectron.BOX\_CONNECTIONS](#objectronbox%5C_connections)
 - [mediapipe::autoit::solutions::objectron::BoxLandmark](#mediapipeautoitsolutionsobjectronboxlandmark)
-  - [BoxLandmark.CENTER\_](#boxlandmarkcenter%5C_)
-  - [BoxLandmark.BACK\_BOTTOM\_LEFT\_](#boxlandmarkback%5C_bottom%5C_left%5C_)
-  - [BoxLandmark.FRONT\_BOTTOM\_LEFT\_](#boxlandmarkfront%5C_bottom%5C_left%5C_)
-  - [BoxLandmark.BACK\_TOP\_LEFT\_](#boxlandmarkback%5C_top%5C_left%5C_)
-  - [BoxLandmark.FRONT\_TOP\_LEFT\_](#boxlandmarkfront%5C_top%5C_left%5C_)
-  - [BoxLandmark.BACK\_BOTTOM\_RIGHT\_](#boxlandmarkback%5C_bottom%5C_right%5C_)
-  - [BoxLandmark.FRONT\_BOTTOM\_RIGHT\_](#boxlandmarkfront%5C_bottom%5C_right%5C_)
-  - [BoxLandmark.BACK\_TOP\_RIGHT\_](#boxlandmarkback%5C_top%5C_right%5C_)
-  - [BoxLandmark.FRONT\_TOP\_RIGHT\_](#boxlandmarkfront%5C_top%5C_right%5C_)
+  - [BoxLandmark.CENTER](#boxlandmarkcenter)
+  - [BoxLandmark.BACK\_BOTTOM\_LEFT](#boxlandmarkback%5C_bottom%5C_left)
+  - [BoxLandmark.FRONT\_BOTTOM\_LEFT](#boxlandmarkfront%5C_bottom%5C_left)
+  - [BoxLandmark.BACK\_TOP\_LEFT](#boxlandmarkback%5C_top%5C_left)
+  - [BoxLandmark.FRONT\_TOP\_LEFT](#boxlandmarkfront%5C_top%5C_left)
+  - [BoxLandmark.BACK\_BOTTOM\_RIGHT](#boxlandmarkback%5C_bottom%5C_right)
+  - [BoxLandmark.FRONT\_BOTTOM\_RIGHT](#boxlandmarkfront%5C_bottom%5C_right)
+  - [BoxLandmark.BACK\_TOP\_RIGHT](#boxlandmarkback%5C_top%5C_right)
+  - [BoxLandmark.FRONT\_TOP\_RIGHT](#boxlandmarkfront%5C_top%5C_right)
 - [mediapipe::solutions::objectron](#mediapipesolutionsobjectron)
+  - [objectron.BoxLandmark](#objectronboxlandmark-1)
   - [objectron.ObjectronModel](#objectronobjectronmodel-1)
   - [objectron.ShoeModel](#objectronshoemodel-1)
   - [objectron.ChairModel](#objectronchairmodel-1)
@@ -342,43 +348,45 @@
   - [mediapipe::autoit::solutions::objectron::Objectron::get\_create](#mediapipeautoitsolutionsobjectronobjectronget%5C_create)
   - [mediapipe::autoit::solutions::objectron::Objectron::process](#mediapipeautoitsolutionsobjectronobjectronprocess)
 - [mediapipe::autoit::solutions::pose](#mediapipeautoitsolutionspose)
+  - [pose.PoseLandmark](#poseposelandmark)
   - [pose.Pose](#posepose)
   - [pose.POSE\_CONNECTIONS](#posepose%5C_connections)
 - [mediapipe::autoit::solutions::pose::PoseLandmark](#mediapipeautoitsolutionsposeposelandmark)
-  - [PoseLandmark.NOSE\_](#poselandmarknose%5C_)
-  - [PoseLandmark.LEFT\_EYE\_INNER\_](#poselandmarkleft%5C_eye%5C_inner%5C_)
-  - [PoseLandmark.LEFT\_EYE\_](#poselandmarkleft%5C_eye%5C_)
-  - [PoseLandmark.LEFT\_EYE\_OUTER\_](#poselandmarkleft%5C_eye%5C_outer%5C_)
-  - [PoseLandmark.RIGHT\_EYE\_INNER\_](#poselandmarkright%5C_eye%5C_inner%5C_)
-  - [PoseLandmark.RIGHT\_EYE\_](#poselandmarkright%5C_eye%5C_)
-  - [PoseLandmark.RIGHT\_EYE\_OUTER\_](#poselandmarkright%5C_eye%5C_outer%5C_)
-  - [PoseLandmark.LEFT\_EAR\_](#poselandmarkleft%5C_ear%5C_)
-  - [PoseLandmark.RIGHT\_EAR\_](#poselandmarkright%5C_ear%5C_)
-  - [PoseLandmark.MOUTH\_LEFT\_](#poselandmarkmouth%5C_left%5C_)
-  - [PoseLandmark.MOUTH\_RIGHT\_](#poselandmarkmouth%5C_right%5C_)
-  - [PoseLandmark.LEFT\_SHOULDER\_](#poselandmarkleft%5C_shoulder%5C_)
-  - [PoseLandmark.RIGHT\_SHOULDER\_](#poselandmarkright%5C_shoulder%5C_)
-  - [PoseLandmark.LEFT\_ELBOW\_](#poselandmarkleft%5C_elbow%5C_)
-  - [PoseLandmark.RIGHT\_ELBOW\_](#poselandmarkright%5C_elbow%5C_)
-  - [PoseLandmark.LEFT\_WRIST\_](#poselandmarkleft%5C_wrist%5C_)
-  - [PoseLandmark.RIGHT\_WRIST\_](#poselandmarkright%5C_wrist%5C_)
-  - [PoseLandmark.LEFT\_PINKY\_](#poselandmarkleft%5C_pinky%5C_)
-  - [PoseLandmark.RIGHT\_PINKY\_](#poselandmarkright%5C_pinky%5C_)
-  - [PoseLandmark.LEFT\_INDEX\_](#poselandmarkleft%5C_index%5C_)
-  - [PoseLandmark.RIGHT\_INDEX\_](#poselandmarkright%5C_index%5C_)
-  - [PoseLandmark.LEFT\_THUMB\_](#poselandmarkleft%5C_thumb%5C_)
-  - [PoseLandmark.RIGHT\_THUMB\_](#poselandmarkright%5C_thumb%5C_)
-  - [PoseLandmark.LEFT\_HIP\_](#poselandmarkleft%5C_hip%5C_)
-  - [PoseLandmark.RIGHT\_HIP\_](#poselandmarkright%5C_hip%5C_)
-  - [PoseLandmark.LEFT\_KNEE\_](#poselandmarkleft%5C_knee%5C_)
-  - [PoseLandmark.RIGHT\_KNEE\_](#poselandmarkright%5C_knee%5C_)
-  - [PoseLandmark.LEFT\_ANKLE\_](#poselandmarkleft%5C_ankle%5C_)
-  - [PoseLandmark.RIGHT\_ANKLE\_](#poselandmarkright%5C_ankle%5C_)
-  - [PoseLandmark.LEFT\_HEEL\_](#poselandmarkleft%5C_heel%5C_)
-  - [PoseLandmark.RIGHT\_HEEL\_](#poselandmarkright%5C_heel%5C_)
-  - [PoseLandmark.LEFT\_FOOT\_INDEX\_](#poselandmarkleft%5C_foot%5C_index%5C_)
-  - [PoseLandmark.RIGHT\_FOOT\_INDEX\_](#poselandmarkright%5C_foot%5C_index%5C_)
+  - [PoseLandmark.NOSE](#poselandmarknose)
+  - [PoseLandmark.LEFT\_EYE\_INNER](#poselandmarkleft%5C_eye%5C_inner)
+  - [PoseLandmark.LEFT\_EYE](#poselandmarkleft%5C_eye)
+  - [PoseLandmark.LEFT\_EYE\_OUTER](#poselandmarkleft%5C_eye%5C_outer)
+  - [PoseLandmark.RIGHT\_EYE\_INNER](#poselandmarkright%5C_eye%5C_inner)
+  - [PoseLandmark.RIGHT\_EYE](#poselandmarkright%5C_eye)
+  - [PoseLandmark.RIGHT\_EYE\_OUTER](#poselandmarkright%5C_eye%5C_outer)
+  - [PoseLandmark.LEFT\_EAR](#poselandmarkleft%5C_ear)
+  - [PoseLandmark.RIGHT\_EAR](#poselandmarkright%5C_ear)
+  - [PoseLandmark.MOUTH\_LEFT](#poselandmarkmouth%5C_left)
+  - [PoseLandmark.MOUTH\_RIGHT](#poselandmarkmouth%5C_right)
+  - [PoseLandmark.LEFT\_SHOULDER](#poselandmarkleft%5C_shoulder)
+  - [PoseLandmark.RIGHT\_SHOULDER](#poselandmarkright%5C_shoulder)
+  - [PoseLandmark.LEFT\_ELBOW](#poselandmarkleft%5C_elbow)
+  - [PoseLandmark.RIGHT\_ELBOW](#poselandmarkright%5C_elbow)
+  - [PoseLandmark.LEFT\_WRIST](#poselandmarkleft%5C_wrist)
+  - [PoseLandmark.RIGHT\_WRIST](#poselandmarkright%5C_wrist)
+  - [PoseLandmark.LEFT\_PINKY](#poselandmarkleft%5C_pinky)
+  - [PoseLandmark.RIGHT\_PINKY](#poselandmarkright%5C_pinky)
+  - [PoseLandmark.LEFT\_INDEX](#poselandmarkleft%5C_index)
+  - [PoseLandmark.RIGHT\_INDEX](#poselandmarkright%5C_index)
+  - [PoseLandmark.LEFT\_THUMB](#poselandmarkleft%5C_thumb)
+  - [PoseLandmark.RIGHT\_THUMB](#poselandmarkright%5C_thumb)
+  - [PoseLandmark.LEFT\_HIP](#poselandmarkleft%5C_hip)
+  - [PoseLandmark.RIGHT\_HIP](#poselandmarkright%5C_hip)
+  - [PoseLandmark.LEFT\_KNEE](#poselandmarkleft%5C_knee)
+  - [PoseLandmark.RIGHT\_KNEE](#poselandmarkright%5C_knee)
+  - [PoseLandmark.LEFT\_ANKLE](#poselandmarkleft%5C_ankle)
+  - [PoseLandmark.RIGHT\_ANKLE](#poselandmarkright%5C_ankle)
+  - [PoseLandmark.LEFT\_HEEL](#poselandmarkleft%5C_heel)
+  - [PoseLandmark.RIGHT\_HEEL](#poselandmarkright%5C_heel)
+  - [PoseLandmark.LEFT\_FOOT\_INDEX](#poselandmarkleft%5C_foot%5C_index)
+  - [PoseLandmark.RIGHT\_FOOT\_INDEX](#poselandmarkright%5C_foot%5C_index)
 - [mediapipe::solutions::pose](#mediapipesolutionspose)
+  - [pose.PoseLandmark](#poseposelandmark-1)
   - [pose.Pose](#posepose-1)
 - [mediapipe::autoit::solutions::pose::Pose](#mediapipeautoitsolutionsposepose)
   - [mediapipe::autoit::solutions::pose::Pose::get\_create](#mediapipeautoitsolutionsposeposeget%5C_create)
@@ -391,22 +399,24 @@
 - [mediapipe::solutions::selfie\_segmentation](#mediapipesolutionsselfie%5C_segmentation)
   - [selfie\_segmentation.SelfieSegmentation](#selfie%5C_segmentationselfiesegmentation-1)
 - [mediapipe::autoit::solution\_base](#mediapipeautoitsolution%5C_base)
+  - [solution\_base.PacketDataType](#solution%5C_basepacketdatatype)
   - [solution\_base.SolutionBase](#solution%5C_basesolutionbase)
 - [mediapipe::autoit::solution\_base::PacketDataType](#mediapipeautoitsolution%5C_basepacketdatatype)
-  - [PacketDataType.STRING\_](#packetdatatypestring%5C_)
-  - [PacketDataType.BOOL\_](#packetdatatypebool%5C_)
-  - [PacketDataType.BOOL\_LIST\_](#packetdatatypebool%5C_list%5C_)
-  - [PacketDataType.INT\_](#packetdatatypeint%5C_)
-  - [PacketDataType.INT\_LIST\_](#packetdatatypeint%5C_list%5C_)
-  - [PacketDataType.FLOAT\_](#packetdatatypefloat%5C_)
-  - [PacketDataType.FLOAT\_LIST\_](#packetdatatypefloat%5C_list%5C_)
-  - [PacketDataType.AUDIO\_](#packetdatatypeaudio%5C_)
-  - [PacketDataType.IMAGE\_](#packetdatatypeimage%5C_)
-  - [PacketDataType.IMAGE\_LIST\_](#packetdatatypeimage%5C_list%5C_)
-  - [PacketDataType.IMAGE\_FRAME\_](#packetdatatypeimage%5C_frame%5C_)
-  - [PacketDataType.PROTO\_](#packetdatatypeproto%5C_)
-  - [PacketDataType.PROTO\_LIST\_](#packetdatatypeproto%5C_list%5C_)
+  - [PacketDataType.STRING](#packetdatatypestring)
+  - [PacketDataType.BOOL](#packetdatatypebool)
+  - [PacketDataType.BOOL\_LIST](#packetdatatypebool%5C_list)
+  - [PacketDataType.INT](#packetdatatypeint)
+  - [PacketDataType.INT\_LIST](#packetdatatypeint%5C_list)
+  - [PacketDataType.FLOAT](#packetdatatypefloat)
+  - [PacketDataType.FLOAT\_LIST](#packetdatatypefloat%5C_list)
+  - [PacketDataType.AUDIO](#packetdatatypeaudio)
+  - [PacketDataType.IMAGE](#packetdatatypeimage)
+  - [PacketDataType.IMAGE\_LIST](#packetdatatypeimage%5C_list)
+  - [PacketDataType.IMAGE\_FRAME](#packetdatatypeimage%5C_frame)
+  - [PacketDataType.PROTO](#packetdatatypeproto)
+  - [PacketDataType.PROTO\_LIST](#packetdatatypeproto%5C_list)
 - [mediapipe::solution\_base](#mediapipesolution%5C_base)
+  - [solution\_base.PacketDataType](#solution%5C_basepacketdatatype-1)
   - [solution\_base.SolutionBase](#solution%5C_basesolutionbase-1)
 - [mediapipe::autoit::solution\_base::SolutionBase](#mediapipeautoitsolution%5C_basesolutionbase)
   - [mediapipe::autoit::solution\_base::SolutionBase::get\_create](#mediapipeautoitsolution%5C_basesolutionbaseget%5C_create)
@@ -444,8 +454,8 @@
   - [mediapipe::CalculatorGraph::wait\_until\_done](#mediapipecalculatorgraphwait%5C_until%5C_done)
   - [mediapipe::CalculatorGraph::wait\_until\_idle](#mediapipecalculatorgraphwait%5C_until%5C_idle)
 - [mediapipe::CalculatorGraph::GraphInputStreamAddMode](#mediapipecalculatorgraphgraphinputstreamaddmode)
-  - [GraphInputStreamAddMode.WAIT\_TILL\_NOT\_FULL\_](#graphinputstreamaddmodewait%5C_till%5C_not%5C_full%5C_)
-  - [GraphInputStreamAddMode.ADD\_IF\_NOT\_FULL\_](#graphinputstreamaddmodeadd%5C_if%5C_not%5C_full%5C_)
+  - [GraphInputStreamAddMode.WAIT\_TILL\_NOT\_FULL](#graphinputstreamaddmodewait%5C_till%5C_not%5C_full)
+  - [GraphInputStreamAddMode.ADD\_IF\_NOT\_FULL](#graphinputstreamaddmodeadd%5C_if%5C_not%5C_full)
 - [mediapipe::autoit::\_framework\_bindings::calculator\_graph](#mediapipeautoit%5C_framework%5C_bindingscalculator%5C_graph)
   - [calculator\_graph.CalculatorGraph](#calculator%5C_graphcalculatorgraph)
 - [mediapipe::autoit::solutions::face\_mesh\_connections](#mediapipeautoitsolutionsface%5C_mesh%5C_connections)
@@ -5667,6 +5677,14 @@ AutoIt:
 
 ## mediapipe::autoit::solutions::face\_detection
 
+### face\_detection.FaceKeyPoint
+
+```cpp
+static mediapipe::autoit::solutions::face_detection::FaceKeyPoint mediapipe::autoit::solutions::face_detection::this
+AutoIt:
+    [propget] $oface_detection.FaceKeyPoint
+```
+
 ### face\_detection.FaceDetection
 
 ```cpp
@@ -5686,55 +5704,63 @@ AutoIt:
 
 ## mediapipe::autoit::solutions::face\_detection::FaceKeyPoint
 
-### FaceKeyPoint.RIGHT\_EYE\_
+### FaceKeyPoint.RIGHT\_EYE
 
 ```cpp
 static int mediapipe::autoit::solutions::face_detection::FaceKeyPoint::RIGHT_EYE
 AutoIt:
-    [propget] $oFaceKeyPoint.RIGHT_EYE_
+    [propget] $oFaceKeyPoint.RIGHT_EYE
 ```
 
-### FaceKeyPoint.LEFT\_EYE\_
+### FaceKeyPoint.LEFT\_EYE
 
 ```cpp
 static int mediapipe::autoit::solutions::face_detection::FaceKeyPoint::LEFT_EYE
 AutoIt:
-    [propget] $oFaceKeyPoint.LEFT_EYE_
+    [propget] $oFaceKeyPoint.LEFT_EYE
 ```
 
-### FaceKeyPoint.NOSE\_TIP\_
+### FaceKeyPoint.NOSE\_TIP
 
 ```cpp
 static int mediapipe::autoit::solutions::face_detection::FaceKeyPoint::NOSE_TIP
 AutoIt:
-    [propget] $oFaceKeyPoint.NOSE_TIP_
+    [propget] $oFaceKeyPoint.NOSE_TIP
 ```
 
-### FaceKeyPoint.MOUTH\_CENTER\_
+### FaceKeyPoint.MOUTH\_CENTER
 
 ```cpp
 static int mediapipe::autoit::solutions::face_detection::FaceKeyPoint::MOUTH_CENTER
 AutoIt:
-    [propget] $oFaceKeyPoint.MOUTH_CENTER_
+    [propget] $oFaceKeyPoint.MOUTH_CENTER
 ```
 
-### FaceKeyPoint.RIGHT\_EAR\_TRAGION\_
+### FaceKeyPoint.RIGHT\_EAR\_TRAGION
 
 ```cpp
 static int mediapipe::autoit::solutions::face_detection::FaceKeyPoint::RIGHT_EAR_TRAGION
 AutoIt:
-    [propget] $oFaceKeyPoint.RIGHT_EAR_TRAGION_
+    [propget] $oFaceKeyPoint.RIGHT_EAR_TRAGION
 ```
 
-### FaceKeyPoint.LEFT\_EAR\_TRAGION\_
+### FaceKeyPoint.LEFT\_EAR\_TRAGION
 
 ```cpp
 static int mediapipe::autoit::solutions::face_detection::FaceKeyPoint::LEFT_EAR_TRAGION
 AutoIt:
-    [propget] $oFaceKeyPoint.LEFT_EAR_TRAGION_
+    [propget] $oFaceKeyPoint.LEFT_EAR_TRAGION
 ```
 
 ## mediapipe::solutions::face\_detection
+
+### face\_detection.FaceKeyPoint
+
+```cpp
+static mediapipe::autoit::solutions::face_detection::FaceKeyPoint mediapipe::solutions::face_detection::this
+AutoIt:
+    [propget] $oface_detection.FaceKeyPoint
+```
 
 ### face\_detection.FaceDetection
 
@@ -5915,6 +5941,14 @@ AutoIt:
 
 ## mediapipe::autoit::solutions::hands
 
+### hands.HandLandmark
+
+```cpp
+static mediapipe::autoit::solutions::hands::HandLandmark mediapipe::autoit::solutions::hands::this
+AutoIt:
+    [propget] $ohands.HandLandmark
+```
+
 ### hands.Hands
 
 ```cpp
@@ -5933,175 +5967,183 @@ AutoIt:
 
 ## mediapipe::autoit::solutions::hands::HandLandmark
 
-### HandLandmark.WRIST\_
+### HandLandmark.WRIST
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::WRIST
 AutoIt:
-    [propget] $oHandLandmark.WRIST_
+    [propget] $oHandLandmark.WRIST
 ```
 
-### HandLandmark.THUMB\_CMC\_
+### HandLandmark.THUMB\_CMC
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::THUMB_CMC
 AutoIt:
-    [propget] $oHandLandmark.THUMB_CMC_
+    [propget] $oHandLandmark.THUMB_CMC
 ```
 
-### HandLandmark.THUMB\_MCP\_
+### HandLandmark.THUMB\_MCP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::THUMB_MCP
 AutoIt:
-    [propget] $oHandLandmark.THUMB_MCP_
+    [propget] $oHandLandmark.THUMB_MCP
 ```
 
-### HandLandmark.THUMB\_IP\_
+### HandLandmark.THUMB\_IP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::THUMB_IP
 AutoIt:
-    [propget] $oHandLandmark.THUMB_IP_
+    [propget] $oHandLandmark.THUMB_IP
 ```
 
-### HandLandmark.THUMB\_TIP\_
+### HandLandmark.THUMB\_TIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::THUMB_TIP
 AutoIt:
-    [propget] $oHandLandmark.THUMB_TIP_
+    [propget] $oHandLandmark.THUMB_TIP
 ```
 
-### HandLandmark.INDEX\_FINGER\_MCP\_
+### HandLandmark.INDEX\_FINGER\_MCP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::INDEX_FINGER_MCP
 AutoIt:
-    [propget] $oHandLandmark.INDEX_FINGER_MCP_
+    [propget] $oHandLandmark.INDEX_FINGER_MCP
 ```
 
-### HandLandmark.INDEX\_FINGER\_PIP\_
+### HandLandmark.INDEX\_FINGER\_PIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::INDEX_FINGER_PIP
 AutoIt:
-    [propget] $oHandLandmark.INDEX_FINGER_PIP_
+    [propget] $oHandLandmark.INDEX_FINGER_PIP
 ```
 
-### HandLandmark.INDEX\_FINGER\_DIP\_
+### HandLandmark.INDEX\_FINGER\_DIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::INDEX_FINGER_DIP
 AutoIt:
-    [propget] $oHandLandmark.INDEX_FINGER_DIP_
+    [propget] $oHandLandmark.INDEX_FINGER_DIP
 ```
 
-### HandLandmark.INDEX\_FINGER\_TIP\_
+### HandLandmark.INDEX\_FINGER\_TIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::INDEX_FINGER_TIP
 AutoIt:
-    [propget] $oHandLandmark.INDEX_FINGER_TIP_
+    [propget] $oHandLandmark.INDEX_FINGER_TIP
 ```
 
-### HandLandmark.MIDDLE\_FINGER\_MCP\_
+### HandLandmark.MIDDLE\_FINGER\_MCP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::MIDDLE_FINGER_MCP
 AutoIt:
-    [propget] $oHandLandmark.MIDDLE_FINGER_MCP_
+    [propget] $oHandLandmark.MIDDLE_FINGER_MCP
 ```
 
-### HandLandmark.MIDDLE\_FINGER\_PIP\_
+### HandLandmark.MIDDLE\_FINGER\_PIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::MIDDLE_FINGER_PIP
 AutoIt:
-    [propget] $oHandLandmark.MIDDLE_FINGER_PIP_
+    [propget] $oHandLandmark.MIDDLE_FINGER_PIP
 ```
 
-### HandLandmark.MIDDLE\_FINGER\_DIP\_
+### HandLandmark.MIDDLE\_FINGER\_DIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::MIDDLE_FINGER_DIP
 AutoIt:
-    [propget] $oHandLandmark.MIDDLE_FINGER_DIP_
+    [propget] $oHandLandmark.MIDDLE_FINGER_DIP
 ```
 
-### HandLandmark.MIDDLE\_FINGER\_TIP\_
+### HandLandmark.MIDDLE\_FINGER\_TIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::MIDDLE_FINGER_TIP
 AutoIt:
-    [propget] $oHandLandmark.MIDDLE_FINGER_TIP_
+    [propget] $oHandLandmark.MIDDLE_FINGER_TIP
 ```
 
-### HandLandmark.RING\_FINGER\_MCP\_
+### HandLandmark.RING\_FINGER\_MCP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::RING_FINGER_MCP
 AutoIt:
-    [propget] $oHandLandmark.RING_FINGER_MCP_
+    [propget] $oHandLandmark.RING_FINGER_MCP
 ```
 
-### HandLandmark.RING\_FINGER\_PIP\_
+### HandLandmark.RING\_FINGER\_PIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::RING_FINGER_PIP
 AutoIt:
-    [propget] $oHandLandmark.RING_FINGER_PIP_
+    [propget] $oHandLandmark.RING_FINGER_PIP
 ```
 
-### HandLandmark.RING\_FINGER\_DIP\_
+### HandLandmark.RING\_FINGER\_DIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::RING_FINGER_DIP
 AutoIt:
-    [propget] $oHandLandmark.RING_FINGER_DIP_
+    [propget] $oHandLandmark.RING_FINGER_DIP
 ```
 
-### HandLandmark.RING\_FINGER\_TIP\_
+### HandLandmark.RING\_FINGER\_TIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::RING_FINGER_TIP
 AutoIt:
-    [propget] $oHandLandmark.RING_FINGER_TIP_
+    [propget] $oHandLandmark.RING_FINGER_TIP
 ```
 
-### HandLandmark.PINKY\_MCP\_
+### HandLandmark.PINKY\_MCP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::PINKY_MCP
 AutoIt:
-    [propget] $oHandLandmark.PINKY_MCP_
+    [propget] $oHandLandmark.PINKY_MCP
 ```
 
-### HandLandmark.PINKY\_PIP\_
+### HandLandmark.PINKY\_PIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::PINKY_PIP
 AutoIt:
-    [propget] $oHandLandmark.PINKY_PIP_
+    [propget] $oHandLandmark.PINKY_PIP
 ```
 
-### HandLandmark.PINKY\_DIP\_
+### HandLandmark.PINKY\_DIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::PINKY_DIP
 AutoIt:
-    [propget] $oHandLandmark.PINKY_DIP_
+    [propget] $oHandLandmark.PINKY_DIP
 ```
 
-### HandLandmark.PINKY\_TIP\_
+### HandLandmark.PINKY\_TIP
 
 ```cpp
 static int mediapipe::autoit::solutions::hands::HandLandmark::PINKY_TIP
 AutoIt:
-    [propget] $oHandLandmark.PINKY_TIP_
+    [propget] $oHandLandmark.PINKY_TIP
 ```
 
 ## mediapipe::solutions::hands
+
+### hands.HandLandmark
+
+```cpp
+static mediapipe::autoit::solutions::hands::HandLandmark mediapipe::solutions::hands::this
+AutoIt:
+    [propget] $ohands.HandLandmark
+```
 
 ### hands.Hands
 
@@ -6216,6 +6258,14 @@ AutoIt:
 
 ## mediapipe::autoit::solutions::objectron
 
+### objectron.BoxLandmark
+
+```cpp
+static mediapipe::autoit::solutions::objectron::BoxLandmark mediapipe::autoit::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.BoxLandmark
+```
+
 ### objectron.ObjectronModel
 
 ```cpp
@@ -6282,79 +6332,87 @@ AutoIt:
 
 ## mediapipe::autoit::solutions::objectron::BoxLandmark
 
-### BoxLandmark.CENTER\_
+### BoxLandmark.CENTER
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::CENTER
 AutoIt:
-    [propget] $oBoxLandmark.CENTER_
+    [propget] $oBoxLandmark.CENTER
 ```
 
-### BoxLandmark.BACK\_BOTTOM\_LEFT\_
+### BoxLandmark.BACK\_BOTTOM\_LEFT
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::BACK_BOTTOM_LEFT
 AutoIt:
-    [propget] $oBoxLandmark.BACK_BOTTOM_LEFT_
+    [propget] $oBoxLandmark.BACK_BOTTOM_LEFT
 ```
 
-### BoxLandmark.FRONT\_BOTTOM\_LEFT\_
+### BoxLandmark.FRONT\_BOTTOM\_LEFT
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::FRONT_BOTTOM_LEFT
 AutoIt:
-    [propget] $oBoxLandmark.FRONT_BOTTOM_LEFT_
+    [propget] $oBoxLandmark.FRONT_BOTTOM_LEFT
 ```
 
-### BoxLandmark.BACK\_TOP\_LEFT\_
+### BoxLandmark.BACK\_TOP\_LEFT
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::BACK_TOP_LEFT
 AutoIt:
-    [propget] $oBoxLandmark.BACK_TOP_LEFT_
+    [propget] $oBoxLandmark.BACK_TOP_LEFT
 ```
 
-### BoxLandmark.FRONT\_TOP\_LEFT\_
+### BoxLandmark.FRONT\_TOP\_LEFT
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::FRONT_TOP_LEFT
 AutoIt:
-    [propget] $oBoxLandmark.FRONT_TOP_LEFT_
+    [propget] $oBoxLandmark.FRONT_TOP_LEFT
 ```
 
-### BoxLandmark.BACK\_BOTTOM\_RIGHT\_
+### BoxLandmark.BACK\_BOTTOM\_RIGHT
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::BACK_BOTTOM_RIGHT
 AutoIt:
-    [propget] $oBoxLandmark.BACK_BOTTOM_RIGHT_
+    [propget] $oBoxLandmark.BACK_BOTTOM_RIGHT
 ```
 
-### BoxLandmark.FRONT\_BOTTOM\_RIGHT\_
+### BoxLandmark.FRONT\_BOTTOM\_RIGHT
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::FRONT_BOTTOM_RIGHT
 AutoIt:
-    [propget] $oBoxLandmark.FRONT_BOTTOM_RIGHT_
+    [propget] $oBoxLandmark.FRONT_BOTTOM_RIGHT
 ```
 
-### BoxLandmark.BACK\_TOP\_RIGHT\_
+### BoxLandmark.BACK\_TOP\_RIGHT
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::BACK_TOP_RIGHT
 AutoIt:
-    [propget] $oBoxLandmark.BACK_TOP_RIGHT_
+    [propget] $oBoxLandmark.BACK_TOP_RIGHT
 ```
 
-### BoxLandmark.FRONT\_TOP\_RIGHT\_
+### BoxLandmark.FRONT\_TOP\_RIGHT
 
 ```cpp
 static int mediapipe::autoit::solutions::objectron::BoxLandmark::FRONT_TOP_RIGHT
 AutoIt:
-    [propget] $oBoxLandmark.FRONT_TOP_RIGHT_
+    [propget] $oBoxLandmark.FRONT_TOP_RIGHT
 ```
 
 ## mediapipe::solutions::objectron
+
+### objectron.BoxLandmark
+
+```cpp
+static mediapipe::autoit::solutions::objectron::BoxLandmark mediapipe::solutions::objectron::this
+AutoIt:
+    [propget] $oobjectron.BoxLandmark
+```
 
 ### objectron.ObjectronModel
 
@@ -6767,6 +6825,14 @@ AutoIt:
 
 ## mediapipe::autoit::solutions::pose
 
+### pose.PoseLandmark
+
+```cpp
+static mediapipe::autoit::solutions::pose::PoseLandmark mediapipe::autoit::solutions::pose::this
+AutoIt:
+    [propget] $opose.PoseLandmark
+```
+
 ### pose.Pose
 
 ```cpp
@@ -6785,271 +6851,279 @@ AutoIt:
 
 ## mediapipe::autoit::solutions::pose::PoseLandmark
 
-### PoseLandmark.NOSE\_
+### PoseLandmark.NOSE
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::NOSE
 AutoIt:
-    [propget] $oPoseLandmark.NOSE_
+    [propget] $oPoseLandmark.NOSE
 ```
 
-### PoseLandmark.LEFT\_EYE\_INNER\_
+### PoseLandmark.LEFT\_EYE\_INNER
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_EYE_INNER
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_EYE_INNER_
+    [propget] $oPoseLandmark.LEFT_EYE_INNER
 ```
 
-### PoseLandmark.LEFT\_EYE\_
+### PoseLandmark.LEFT\_EYE
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_EYE
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_EYE_
+    [propget] $oPoseLandmark.LEFT_EYE
 ```
 
-### PoseLandmark.LEFT\_EYE\_OUTER\_
+### PoseLandmark.LEFT\_EYE\_OUTER
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_EYE_OUTER
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_EYE_OUTER_
+    [propget] $oPoseLandmark.LEFT_EYE_OUTER
 ```
 
-### PoseLandmark.RIGHT\_EYE\_INNER\_
+### PoseLandmark.RIGHT\_EYE\_INNER
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_EYE_INNER
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_EYE_INNER_
+    [propget] $oPoseLandmark.RIGHT_EYE_INNER
 ```
 
-### PoseLandmark.RIGHT\_EYE\_
+### PoseLandmark.RIGHT\_EYE
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_EYE
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_EYE_
+    [propget] $oPoseLandmark.RIGHT_EYE
 ```
 
-### PoseLandmark.RIGHT\_EYE\_OUTER\_
+### PoseLandmark.RIGHT\_EYE\_OUTER
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_EYE_OUTER
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_EYE_OUTER_
+    [propget] $oPoseLandmark.RIGHT_EYE_OUTER
 ```
 
-### PoseLandmark.LEFT\_EAR\_
+### PoseLandmark.LEFT\_EAR
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_EAR
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_EAR_
+    [propget] $oPoseLandmark.LEFT_EAR
 ```
 
-### PoseLandmark.RIGHT\_EAR\_
+### PoseLandmark.RIGHT\_EAR
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_EAR
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_EAR_
+    [propget] $oPoseLandmark.RIGHT_EAR
 ```
 
-### PoseLandmark.MOUTH\_LEFT\_
+### PoseLandmark.MOUTH\_LEFT
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::MOUTH_LEFT
 AutoIt:
-    [propget] $oPoseLandmark.MOUTH_LEFT_
+    [propget] $oPoseLandmark.MOUTH_LEFT
 ```
 
-### PoseLandmark.MOUTH\_RIGHT\_
+### PoseLandmark.MOUTH\_RIGHT
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::MOUTH_RIGHT
 AutoIt:
-    [propget] $oPoseLandmark.MOUTH_RIGHT_
+    [propget] $oPoseLandmark.MOUTH_RIGHT
 ```
 
-### PoseLandmark.LEFT\_SHOULDER\_
+### PoseLandmark.LEFT\_SHOULDER
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_SHOULDER
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_SHOULDER_
+    [propget] $oPoseLandmark.LEFT_SHOULDER
 ```
 
-### PoseLandmark.RIGHT\_SHOULDER\_
+### PoseLandmark.RIGHT\_SHOULDER
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_SHOULDER
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_SHOULDER_
+    [propget] $oPoseLandmark.RIGHT_SHOULDER
 ```
 
-### PoseLandmark.LEFT\_ELBOW\_
+### PoseLandmark.LEFT\_ELBOW
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_ELBOW
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_ELBOW_
+    [propget] $oPoseLandmark.LEFT_ELBOW
 ```
 
-### PoseLandmark.RIGHT\_ELBOW\_
+### PoseLandmark.RIGHT\_ELBOW
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_ELBOW
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_ELBOW_
+    [propget] $oPoseLandmark.RIGHT_ELBOW
 ```
 
-### PoseLandmark.LEFT\_WRIST\_
+### PoseLandmark.LEFT\_WRIST
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_WRIST
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_WRIST_
+    [propget] $oPoseLandmark.LEFT_WRIST
 ```
 
-### PoseLandmark.RIGHT\_WRIST\_
+### PoseLandmark.RIGHT\_WRIST
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_WRIST
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_WRIST_
+    [propget] $oPoseLandmark.RIGHT_WRIST
 ```
 
-### PoseLandmark.LEFT\_PINKY\_
+### PoseLandmark.LEFT\_PINKY
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_PINKY
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_PINKY_
+    [propget] $oPoseLandmark.LEFT_PINKY
 ```
 
-### PoseLandmark.RIGHT\_PINKY\_
+### PoseLandmark.RIGHT\_PINKY
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_PINKY
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_PINKY_
+    [propget] $oPoseLandmark.RIGHT_PINKY
 ```
 
-### PoseLandmark.LEFT\_INDEX\_
+### PoseLandmark.LEFT\_INDEX
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_INDEX
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_INDEX_
+    [propget] $oPoseLandmark.LEFT_INDEX
 ```
 
-### PoseLandmark.RIGHT\_INDEX\_
+### PoseLandmark.RIGHT\_INDEX
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_INDEX
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_INDEX_
+    [propget] $oPoseLandmark.RIGHT_INDEX
 ```
 
-### PoseLandmark.LEFT\_THUMB\_
+### PoseLandmark.LEFT\_THUMB
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_THUMB
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_THUMB_
+    [propget] $oPoseLandmark.LEFT_THUMB
 ```
 
-### PoseLandmark.RIGHT\_THUMB\_
+### PoseLandmark.RIGHT\_THUMB
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_THUMB
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_THUMB_
+    [propget] $oPoseLandmark.RIGHT_THUMB
 ```
 
-### PoseLandmark.LEFT\_HIP\_
+### PoseLandmark.LEFT\_HIP
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_HIP
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_HIP_
+    [propget] $oPoseLandmark.LEFT_HIP
 ```
 
-### PoseLandmark.RIGHT\_HIP\_
+### PoseLandmark.RIGHT\_HIP
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_HIP
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_HIP_
+    [propget] $oPoseLandmark.RIGHT_HIP
 ```
 
-### PoseLandmark.LEFT\_KNEE\_
+### PoseLandmark.LEFT\_KNEE
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_KNEE
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_KNEE_
+    [propget] $oPoseLandmark.LEFT_KNEE
 ```
 
-### PoseLandmark.RIGHT\_KNEE\_
+### PoseLandmark.RIGHT\_KNEE
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_KNEE
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_KNEE_
+    [propget] $oPoseLandmark.RIGHT_KNEE
 ```
 
-### PoseLandmark.LEFT\_ANKLE\_
+### PoseLandmark.LEFT\_ANKLE
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_ANKLE
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_ANKLE_
+    [propget] $oPoseLandmark.LEFT_ANKLE
 ```
 
-### PoseLandmark.RIGHT\_ANKLE\_
+### PoseLandmark.RIGHT\_ANKLE
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_ANKLE
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_ANKLE_
+    [propget] $oPoseLandmark.RIGHT_ANKLE
 ```
 
-### PoseLandmark.LEFT\_HEEL\_
+### PoseLandmark.LEFT\_HEEL
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_HEEL
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_HEEL_
+    [propget] $oPoseLandmark.LEFT_HEEL
 ```
 
-### PoseLandmark.RIGHT\_HEEL\_
+### PoseLandmark.RIGHT\_HEEL
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_HEEL
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_HEEL_
+    [propget] $oPoseLandmark.RIGHT_HEEL
 ```
 
-### PoseLandmark.LEFT\_FOOT\_INDEX\_
+### PoseLandmark.LEFT\_FOOT\_INDEX
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::LEFT_FOOT_INDEX
 AutoIt:
-    [propget] $oPoseLandmark.LEFT_FOOT_INDEX_
+    [propget] $oPoseLandmark.LEFT_FOOT_INDEX
 ```
 
-### PoseLandmark.RIGHT\_FOOT\_INDEX\_
+### PoseLandmark.RIGHT\_FOOT\_INDEX
 
 ```cpp
 static int mediapipe::autoit::solutions::pose::PoseLandmark::RIGHT_FOOT_INDEX
 AutoIt:
-    [propget] $oPoseLandmark.RIGHT_FOOT_INDEX_
+    [propget] $oPoseLandmark.RIGHT_FOOT_INDEX
 ```
 
 ## mediapipe::solutions::pose
+
+### pose.PoseLandmark
+
+```cpp
+static mediapipe::autoit::solutions::pose::PoseLandmark mediapipe::solutions::pose::this
+AutoIt:
+    [propget] $opose.PoseLandmark
+```
 
 ### pose.Pose
 
@@ -7127,6 +7201,14 @@ AutoIt:
 
 ## mediapipe::autoit::solution\_base
 
+### solution\_base.PacketDataType
+
+```cpp
+static mediapipe::autoit::solution_base::PacketDataType mediapipe::autoit::solution_base::this
+AutoIt:
+    [propget] $osolution_base.PacketDataType
+```
+
 ### solution\_base.SolutionBase
 
 ```cpp
@@ -7137,111 +7219,119 @@ AutoIt:
 
 ## mediapipe::autoit::solution\_base::PacketDataType
 
-### PacketDataType.STRING\_
+### PacketDataType.STRING
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::STRING
 AutoIt:
-    [propget] $oPacketDataType.STRING_
+    [propget] $oPacketDataType.STRING
 ```
 
-### PacketDataType.BOOL\_
+### PacketDataType.BOOL
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::BOOL
 AutoIt:
-    [propget] $oPacketDataType.BOOL_
+    [propget] $oPacketDataType.BOOL
 ```
 
-### PacketDataType.BOOL\_LIST\_
+### PacketDataType.BOOL\_LIST
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::BOOL_LIST
 AutoIt:
-    [propget] $oPacketDataType.BOOL_LIST_
+    [propget] $oPacketDataType.BOOL_LIST
 ```
 
-### PacketDataType.INT\_
+### PacketDataType.INT
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::INT
 AutoIt:
-    [propget] $oPacketDataType.INT_
+    [propget] $oPacketDataType.INT
 ```
 
-### PacketDataType.INT\_LIST\_
+### PacketDataType.INT\_LIST
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::INT_LIST
 AutoIt:
-    [propget] $oPacketDataType.INT_LIST_
+    [propget] $oPacketDataType.INT_LIST
 ```
 
-### PacketDataType.FLOAT\_
+### PacketDataType.FLOAT
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::FLOAT
 AutoIt:
-    [propget] $oPacketDataType.FLOAT_
+    [propget] $oPacketDataType.FLOAT
 ```
 
-### PacketDataType.FLOAT\_LIST\_
+### PacketDataType.FLOAT\_LIST
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::FLOAT_LIST
 AutoIt:
-    [propget] $oPacketDataType.FLOAT_LIST_
+    [propget] $oPacketDataType.FLOAT_LIST
 ```
 
-### PacketDataType.AUDIO\_
+### PacketDataType.AUDIO
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::AUDIO
 AutoIt:
-    [propget] $oPacketDataType.AUDIO_
+    [propget] $oPacketDataType.AUDIO
 ```
 
-### PacketDataType.IMAGE\_
+### PacketDataType.IMAGE
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::IMAGE
 AutoIt:
-    [propget] $oPacketDataType.IMAGE_
+    [propget] $oPacketDataType.IMAGE
 ```
 
-### PacketDataType.IMAGE\_LIST\_
+### PacketDataType.IMAGE\_LIST
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::IMAGE_LIST
 AutoIt:
-    [propget] $oPacketDataType.IMAGE_LIST_
+    [propget] $oPacketDataType.IMAGE_LIST
 ```
 
-### PacketDataType.IMAGE\_FRAME\_
+### PacketDataType.IMAGE\_FRAME
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::IMAGE_FRAME
 AutoIt:
-    [propget] $oPacketDataType.IMAGE_FRAME_
+    [propget] $oPacketDataType.IMAGE_FRAME
 ```
 
-### PacketDataType.PROTO\_
+### PacketDataType.PROTO
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::PROTO
 AutoIt:
-    [propget] $oPacketDataType.PROTO_
+    [propget] $oPacketDataType.PROTO
 ```
 
-### PacketDataType.PROTO\_LIST\_
+### PacketDataType.PROTO\_LIST
 
 ```cpp
 static int mediapipe::autoit::solution_base::PacketDataType::PROTO_LIST
 AutoIt:
-    [propget] $oPacketDataType.PROTO_LIST_
+    [propget] $oPacketDataType.PROTO_LIST
 ```
 
 ## mediapipe::solution\_base
+
+### solution\_base.PacketDataType
+
+```cpp
+static mediapipe::autoit::solution_base::PacketDataType mediapipe::solution_base::this
+AutoIt:
+    [propget] $osolution_base.PacketDataType
+```
 
 ### solution\_base.SolutionBase
 
@@ -7585,20 +7675,20 @@ AutoIt:
 
 ## mediapipe::CalculatorGraph::GraphInputStreamAddMode
 
-### GraphInputStreamAddMode.WAIT\_TILL\_NOT\_FULL\_
+### GraphInputStreamAddMode.WAIT\_TILL\_NOT\_FULL
 
 ```cpp
 static int mediapipe::CalculatorGraph::GraphInputStreamAddMode::WAIT_TILL_NOT_FULL
 AutoIt:
-    [propget] $oGraphInputStreamAddMode.WAIT_TILL_NOT_FULL_
+    [propget] $oGraphInputStreamAddMode.WAIT_TILL_NOT_FULL
 ```
 
-### GraphInputStreamAddMode.ADD\_IF\_NOT\_FULL\_
+### GraphInputStreamAddMode.ADD\_IF\_NOT\_FULL
 
 ```cpp
 static int mediapipe::CalculatorGraph::GraphInputStreamAddMode::ADD_IF_NOT_FULL
 AutoIt:
-    [propget] $oGraphInputStreamAddMode.ADD_IF_NOT_FULL_
+    [propget] $oGraphInputStreamAddMode.ADD_IF_NOT_FULL
 ```
 
 ## mediapipe::autoit::\_framework\_bindings::calculator\_graph

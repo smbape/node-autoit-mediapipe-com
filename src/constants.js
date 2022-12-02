@@ -24,6 +24,8 @@ exports.IDL_TYPES = new Map([
     ["String", "BSTR"],
     ["string", "BSTR"],
     ["uchar", "BYTE"],
+    ["cv::String", "BSTR"],
+    ["std::string", "BSTR"],
 
     ["InputArray", "VARIANT"],
     ["InputArrayOfArrays", "VARIANT"],

@@ -224,7 +224,7 @@ const cv::Mat CCv_Mat_Object::convertToShow(cv::Mat& dst, bool toRGB, HRESULT& h
 
 	double scale = 1.0, shift = 0.0;
 	double minVal = 0, maxVal = 0;
-	Point minLoc, maxLoc;
+	cv::Point minLoc, maxLoc;
 
 	const int src_depth = src.depth();
 	CV_Assert(src_depth != CV_16F && src_depth != CV_32S);
@@ -461,7 +461,12 @@ const cv::Mat CCv_Mat_Object::GdiplusResize(float newWidth, float newHeight, int
 	CV_Assert(hBmpCtxt.GetLastStatus() == Gdiplus::Ok);
 
 	CV_Assert(hBmpCtxt.SetInterpolationMode(static_cast<Gdiplus::InterpolationMode>(interpolation)) == Gdiplus::Ok);
-	CV_Assert(hBmpCtxt.DrawImage(&bitmap, 0.0, 0.0, newWidth, newHeight) == Gdiplus::Ok);
+	CV_Assert(hBmpCtxt.SetPixelOffsetMode(PixelOffsetModeHighQuality) == Gdiplus::Ok);
+
+	Gdiplus::ImageAttributes hIA;
+	hIA.SetWrapMode(Gdiplus::WrapModeTileFlipXY, Gdiplus::Color(0xFF, 0, 0, 0));
+	Gdiplus::RectF rect(0.0, 0.0, newWidth, newHeight);
+	CV_Assert(hBmpCtxt.DrawImage(&bitmap, rect, 0, 0, bitmap.GetWidth(), bitmap.GetHeight(), Gdiplus::UnitPixel, &hIA) == Gdiplus::Ok);
 
 	cv::Mat mat; createMatFromBitmap_(hBitmap, mat, true);
 

@@ -82,65 +82,67 @@ WEnd
 Func Main()
 	$_cv_gdi_resize = _IsChecked($CheckboxUseGDI)
 
-	Local $sImagePath = ControlGetText($FormGUI, "", $InputSrcImage)
-	Local $image = _OpenCV_imread_and_check($sImagePath)
+	Local $image_path = ControlGetText($FormGUI, "", $InputSrcImage)
+	Local $image = _OpenCV_imread_and_check($image_path)
 	If @error Then Return
 
 	; show the image before detection
 	_OpenCV_imshow_ControlPic($image, $FormGUI, $PicImage)
 
-    Local $mp_face_mesh = $mp.solutions.face_mesh
-    Local $mp_drawing = $mp.solutions.drawing_utils
-    Local $mp_drawing_styles = $mp.solutions.drawing_styles
+	Local $mp_face_mesh = $mp.solutions.face_mesh
+	Local $mp_drawing = $mp.solutions.drawing_utils
+	Local $mp_drawing_styles = $mp.solutions.drawing_styles
 
-    ; Run MediaPipe Face Mesh
-    Local $face_mesh = $mp_face_mesh.FaceMesh(_Mediapipe_Params( _
-            "static_image_mode", True, _
-            "refine_landmarks", True, _
-            "max_num_faces", 2, _
-            "min_detection_confidence", 0.5 _
-            ))
+	; Run MediaPipe Face Mesh
+	Local $face_mesh = $mp_face_mesh.FaceMesh(_Mediapipe_Params( _
+			"static_image_mode", True, _
+			"refine_landmarks", True, _
+			"max_num_faces", 2, _
+			"min_detection_confidence", 0.5 _
+			))
 
-    Local $results = $face_mesh.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-    If $results("multi_face_landmarks") == Default Then
-        ConsoleWrite("No face detection for " & $sImagePath & @CRLF)
-        _OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
-        Return
-    EndIf
+	Local $results = $face_mesh.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+	If $results("multi_face_landmarks") == Default Then
+		ConsoleWrite("No face detection for " & $image_path & @CRLF)
+		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
+		Return
+	EndIf
 
 	; keep drawings visible after resize
 	Local $ratio = _OpenCV_resizeRatio_ControlPic($image, $FormGUI, $PicResult)
-    Local $scale = 1 / $ratio
+	Local $scale = 1 / $ratio
 
-    ; enlarge/shrink drawings to keep them visible after resize
-    Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-    $landmark_drawing_spec.tickness *= $scale
-    $landmark_drawing_spec.circle_radius *= $scale
+	; enlarge/shrink drawings to keep them visible after resize
+	Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
+	$landmark_drawing_spec.tickness *= $scale
+	$landmark_drawing_spec.circle_radius *= $scale
 
-    ; Draw face detections of each face.
-    For $face_landmarks In $results("multi_face_landmarks")
-        $mp_drawing.draw_landmarks(_Mediapipe_Params( _
-                "image", $image, _
-                "landmark_list", $face_landmarks, _
-                "connections", $mp_face_mesh.FACEMESH_TESSELATION, _
-                "landmark_drawing_spec", $landmark_drawing_spec, _
-                "connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)))
-        $mp_drawing.draw_landmarks(_Mediapipe_Params( _
-                "image", $image, _
-                "landmark_list", $face_landmarks, _
-                "connections", $mp_face_mesh.FACEMESH_CONTOURS, _
-                "landmark_drawing_spec", $landmark_drawing_spec, _
-                "connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_contours_style($scale)))
-        $mp_drawing.draw_landmarks(_Mediapipe_Params( _
-                "image", $image, _
-                "landmark_list", $face_landmarks, _
-                "connections", $mp_face_mesh.FACEMESH_IRISES, _
-                "landmark_drawing_spec", $landmark_drawing_spec, _
-                "connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
-    Next
+	Local $annotated_image = $image.copy()
+
+	; Draw face detections of each face.
+	For $face_landmarks In $results("multi_face_landmarks")
+		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $mp_face_mesh.FACEMESH_TESSELATION, _
+				"landmark_drawing_spec", $landmark_drawing_spec, _
+				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)))
+		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $mp_face_mesh.FACEMESH_CONTOURS, _
+				"landmark_drawing_spec", $landmark_drawing_spec, _
+				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_contours_style($scale)))
+		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $mp_face_mesh.FACEMESH_IRISES, _
+				"landmark_drawing_spec", $landmark_drawing_spec, _
+				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+	Next
 
 	; show the image after detection
-	_OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
+	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicResult)
 EndFunc   ;==>RunFaceDetection
 
 Func _IsChecked($idControlID)
