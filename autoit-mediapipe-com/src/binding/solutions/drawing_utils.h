@@ -23,6 +23,8 @@ namespace mediapipe {
 						int circle_radius = 2
 					) : color(color), thickness(thickness), circle_radius(circle_radius) {}
 
+					CV_WRAP DrawingSpec(const DrawingSpec& other) = default;
+
 					// Color for drawing the annotation. Default to the white color.
 					CV_PROP_RW DrawingColor color;
 					// Thickness for drawing the annotation. Default to 2 pixels.

@@ -120,9 +120,9 @@ Func RunFaceDetection($model_selection, $controlID, $Picture)
 
 	; keep drawings visible after resize
 	Local $ratio = _OpenCV_resizeRatio_ControlPic($image, $FormGUI, $Picture)
-	Local $tickness = 2 / $ratio
-	Local $keypoint_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR, $tickness, $tickness)
-	Local $bbox_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.WHITE_COLOR, $tickness, $tickness)
+	Local $thickness = 2 / $ratio
+	Local $keypoint_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR, $thickness, $thickness)
+	Local $bbox_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.WHITE_COLOR, $thickness, $thickness)
 
 	; Draw face detections of each face.
 	For $detection In $results("detections")

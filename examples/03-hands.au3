@@ -5,9 +5,6 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
-; EnvSet("MEDIAPIPE_BUILD_TYPE", "Debug")
-; EnvSet("OPENCV_BUILD_TYPE", "Debug")
-
 #include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
@@ -70,7 +67,7 @@ Func Example()
 
 	; enlarge/shrink drawings to keep them visible after resize
 	Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-	$landmark_drawing_spec.tickness *= $scale
+	$landmark_drawing_spec.thickness *= $scale
 	$landmark_drawing_spec.circle_radius *= $scale
 
 	; Draw hand landmarks of each hand.
@@ -104,26 +101,25 @@ Func Example()
 EndFunc   ;==>Example
 
 Func resize_and_show($title, $image)
-	Local Const $DESIRED_HEIGHT = 480
-	Local Const $DESIRED_WIDTH = 480
-	Local $w = $image.width
-	Local $h = $image.height
+    Local Const $DESIRED_HEIGHT = 480
+    Local Const $DESIRED_WIDTH = 480
+    Local $w = $image.width
+    Local $h = $image.height
 
-	If $h < $w Then
-		$h = $h / ($w / $DESIRED_WIDTH)
-		$w = $DESIRED_WIDTH
-	Else
-		$w = $w / ($h / $DESIRED_HEIGHT)
-		$h = $DESIRED_HEIGHT
-	EndIf
+    If $h < $w Then
+        $h = $h / ($w / $DESIRED_WIDTH)
+        $w = $DESIRED_WIDTH
+    Else
+        $w = $w / ($h / $DESIRED_HEIGHT)
+        $h = $DESIRED_HEIGHT
+    EndIf
 
-	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
-	Local $ratio = $DESIRED_WIDTH / $image.width
+    Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
 
-	$image = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
-	$cv.imshow($title, $image)
+    Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
+    $cv.imshow($title, $img)
 
-	Return $ratio
+    Return $img.width / $image.width
 EndFunc   ;==>resize_and_show
 
 Func _OnAutoItExit()

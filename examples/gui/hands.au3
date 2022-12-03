@@ -122,7 +122,7 @@ Func Main()
 
     ; enlarge/shrink drawings to keep them visible after resize
     Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-    $landmark_drawing_spec.tickness *= $scale
+    $landmark_drawing_spec.thickness *= $scale
     $landmark_drawing_spec.circle_radius *= $scale
 
     ; Draw hand landmarks of each hand.

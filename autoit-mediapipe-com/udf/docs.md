@@ -267,7 +267,9 @@
   - [holistic.Holistic](#holisticholistic)
   - [holistic.FACEMESH\_CONTOURS](#holisticfacemesh%5C_contours)
   - [holistic.FACEMESH\_TESSELATION](#holisticfacemesh%5C_tesselation)
+  - [holistic.HandLandmark](#holistichandlandmark)
   - [holistic.HAND\_CONNECTIONS](#holistichand%5C_connections)
+  - [holistic.PoseLandmark](#holisticposelandmark)
   - [holistic.POSE\_CONNECTIONS](#holisticpose%5C_connections)
 - [mediapipe::autoit::solutions::holistic::Holistic](#mediapipeautoitsolutionsholisticholistic)
   - [mediapipe::autoit::solutions::holistic::Holistic::get\_create](#mediapipeautoitsolutionsholisticholisticget%5C_create)
@@ -5665,6 +5667,13 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec")( [$color[, $thickness[, $circle_radius]]] ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
 ```
 
+```cpp
+static mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::autoit::solutions::drawing_utils::DrawingSpec::get_create( const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec").create( $other ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
+    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec")( $other ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
+```
+
 ## mediapipe::solutions::drawing\_utils
 
 ### drawing\_utils.DrawingSpec
@@ -6203,12 +6212,28 @@ AutoIt:
     [propget] $oholistic.FACEMESH_TESSELATION
 ```
 
+### holistic.HandLandmark
+
+```cpp
+static mediapipe::autoit::solutions::hands::HandLandmark mediapipe::autoit::solutions::holistic::this
+AutoIt:
+    [propget] $oholistic.HandLandmark
+```
+
 ### holistic.HAND\_CONNECTIONS
 
 ```cpp
 static std::vector<std::tuple<int, int>> mediapipe::autoit::solutions::holistic::HAND_CONNECTIONS
 AutoIt:
     [propget] $oholistic.HAND_CONNECTIONS
+```
+
+### holistic.PoseLandmark
+
+```cpp
+static mediapipe::autoit::solutions::pose::PoseLandmark mediapipe::autoit::solutions::holistic::this
+AutoIt:
+    [propget] $oholistic.PoseLandmark
 ```
 
 ### holistic.POSE\_CONNECTIONS

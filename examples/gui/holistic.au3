@@ -11,7 +11,7 @@
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
 ;~ Sources:
-;~     https://mediapipe.page.link/face_mesh_py_colab
+;~     https://mediapipe.page.link/holistic_py_colab
 
 _GDIPlus_Startup()
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
@@ -35,7 +35,7 @@ Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
 #Region ### START Koda GUI section ### Form=
 Global $FormGUI = GUICreate("Discrete Fourier Transform", 1065, 640, 192, 124)
 
-Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\garrett-jackson-auTAb39ImXg-unsplash.jpg", 230, 16, 449, 21)
+Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\thao-lee-v4zceVZ5HK8-unsplash.jpg", 230, 16, 449, 21)
 Global $BtnSrcImage = GUICtrlCreateButton("Browse", 689, 14, 75, 25)
 
 Global $CheckboxUseGDI = GUICtrlCreateCheckbox("Use GDI+", 780, 14, 97, 17)
@@ -49,7 +49,7 @@ Global $GroupImage = GUICtrlCreateGroup("", 20, 103, 510, 516)
 Global $PicImage = GUICtrlCreatePic("", 25, 114, 500, 500)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-Global $LabelResult = GUICtrlCreateLabel("Face mesh", 747, 80, 80, 20)
+Global $LabelResult = GUICtrlCreateLabel("Holistic", 747, 80, 80, 20)
 GUICtrlSetFont(-1, 10, 800, 0, "MS Sans Serif")
 Global $GroupResult = GUICtrlCreateGroup("", 532, 103, 510, 516)
 Global $PicResult = GUICtrlCreatePic("", 537, 114, 500, 500)
@@ -89,22 +89,22 @@ Func Main()
 	; show the image before detection
 	_OpenCV_imshow_ControlPic($image, $FormGUI, $PicImage)
 
-	Local $mp_face_mesh = $mp.solutions.face_mesh
+	Local $mp_holistic = $mp.solutions.holistic
 	Local $mp_drawing = $mp.solutions.drawing_utils
 	Local $mp_drawing_styles = $mp.solutions.drawing_styles
 
-	; Run MediaPipe Face Mesh
-	Local $face_mesh = $mp_face_mesh.FaceMesh(_Mediapipe_Params( _
+	; Run MediaPipe Holistic and draw pose landmarks.
+	Local $holistic = $mp_holistic.Holistic(_Mediapipe_Params( _
 			"static_image_mode", True, _
-			"refine_landmarks", True, _
-			"max_num_faces", 2, _
-			"min_detection_confidence", 0.5 _
+			"min_detection_confidence", 0.5, _
+			"model_complexity", 2 _
 			))
 
-	Local $results = $face_mesh.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-	If $results("multi_face_landmarks") == Default Then
-		ConsoleWrite("No face detection for " & $image_path & @CRLF)
-		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
+	; Convert the BGR image to RGB and process it with MediaPipe Pose.
+	Local $results = $holistic.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+
+	If $results("pose_landmarks") == Default Then
+		ConsoleWrite("No holistic detection for " & $image_path & @CRLF)
 		Return
 	EndIf
 
@@ -117,33 +117,44 @@ Func Main()
 	$landmark_drawing_spec.thickness *= $scale
 	$landmark_drawing_spec.circle_radius *= $scale
 
-	Local $annotated_image = $image.copy()
+	Local $connection_drawing_spec = $mp_drawing.DrawingSpec()
+	$connection_drawing_spec.thickness *= $scale
+	$connection_drawing_spec.circle_radius *= $scale
 
-	; Draw face detections of each face.
-	For $face_landmarks In $results("multi_face_landmarks")
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_TESSELATION, _
-				"landmark_drawing_spec", $landmark_drawing_spec, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)))
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_CONTOURS, _
-				"landmark_drawing_spec", $landmark_drawing_spec, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_contours_style($scale)))
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_IRISES, _
-				"landmark_drawing_spec", $landmark_drawing_spec, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
-	Next
+	; Print nose coordinates.
+	Local $image_width = $image.width
+	Local $image_height = $image.height
+	ConsoleWrite( _
+			'Nose coordinates: (' & _
+			$results("pose_landmarks").landmark($mp_holistic.PoseLandmark.NOSE).x * $image_width & ', ' & _
+			$results("pose_landmarks").landmark($mp_holistic.PoseLandmark.NOSE).y * $image_height & ')' & _
+			@CRLF _
+			)
+
+	; Draw pose landmarks.
+	Local $annotated_image = $image.copy()
+	$mp_drawing.draw_landmarks($annotated_image, $results("left_hand_landmarks"), $mp_holistic.HAND_CONNECTIONS, $landmark_drawing_spec)
+	$mp_drawing.draw_landmarks($annotated_image, $results("right_hand_landmarks"), $mp_holistic.HAND_CONNECTIONS, $landmark_drawing_spec)
+	$mp_drawing.draw_landmarks( _
+			$annotated_image, _
+			$results("face_landmarks"), _
+			$mp_holistic.FACEMESH_TESSELATION, _
+			_Mediapipe_Params( _
+			"landmark_drawing_spec", $landmark_drawing_spec, _
+			"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale) _
+			))
+	$mp_drawing.draw_landmarks( _
+			$annotated_image, _
+			$results("pose_landmarks"), _
+			$mp_holistic.POSE_CONNECTIONS, _
+			_Mediapipe_Params( _
+			"landmark_drawing_spec", $mp_drawing_styles.get_default_pose_landmarks_style($scale), _
+			"connection_drawing_spec", $connection_drawing_spec _
+			))
 
 	; show the image after detection
 	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicResult)
-EndFunc   ;==>RunFaceDetection
+EndFunc   ;==>Main
 
 Func _IsChecked($idControlID)
 	Return BitAND(GUICtrlRead($idControlID), $GUI_CHECKED) = $GUI_CHECKED

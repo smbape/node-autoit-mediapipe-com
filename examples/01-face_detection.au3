@@ -50,9 +50,9 @@ Func Example()
 	EndIf
 
 	; enlarge/shrink drawings to keep them visible after resize
-	Local $tickness = 2 / $ratio
-	Local $keypoint_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR, $tickness, $tickness)
-	Local $bbox_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.WHITE_COLOR, $tickness, $tickness)
+	Local $thickness = 2 / $ratio
+	Local $keypoint_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR, $thickness, $thickness)
+	Local $bbox_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.WHITE_COLOR, $thickness, $thickness)
 
 	; Draw face detections of each face.
 	For $detection In $results("detections")
@@ -81,12 +81,11 @@ Func resize_and_show($title, $image)
 	EndIf
 
 	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
-	Local $ratio = $DESIRED_WIDTH / $image.width
 
-	$image = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
-	$cv.imshow($title, $image)
+	Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
+	$cv.imshow($title, $img)
 
-	Return $ratio
+	Return $img.width / $image.width
 EndFunc   ;==>resize_and_show
 
 Func _OnAutoItExit()
