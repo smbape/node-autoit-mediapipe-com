@@ -11,6 +11,13 @@
 ;~ Sources:
 ;~     https://mediapipe.page.link/face_detection_py_colab
 
+;~ Images:
+;~     https://unsplash.com/photos/JyVcAIUAcPM
+;~     https://unsplash.com/photos/auTAb39ImXg
+;~     https://unsplash.com/photos/ezgW6z6oIvA
+;~     https://unsplash.com/photos/_veZpXKU71c
+
+
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
 OnAutoItExitRegister("_OnAutoItExit")
@@ -43,6 +50,7 @@ Func Example()
 	; Run MediaPipe Face Detection
 	Local $face_detection = $mp_face_detection.FaceDetection()
 
+	; Convert the BGR image to RGB and process it with MediaPipe Face Detection.
 	Local $results = $face_detection.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
 	If $results("detections") == Default Then
 		ConsoleWrite("No face detection for " & $image_path & @CRLF)

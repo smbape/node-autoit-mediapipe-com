@@ -13,6 +13,10 @@
 ;~ Sources:
 ;~     https://mediapipe.page.link/face_mesh_py_colab
 
+;~ Images:
+;~     https://unsplash.com/photos/JyVcAIUAcPM
+;~     https://unsplash.com/photos/auTAb39ImXg
+
 _GDIPlus_Startup()
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
@@ -58,7 +62,7 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUISetState(@SW_SHOW)
 #EndRegion ### END Koda GUI section ###
 
-Global $sSrcImage, $sSrcResult
+Global $sSrcImage
 Global $nMsg
 
 Main()
@@ -101,6 +105,7 @@ Func Main()
 			"min_detection_confidence", 0.5 _
 			))
 
+	; Convert the BGR image to RGB and process it with MediaPipe Face Mesh.
 	Local $results = $face_mesh.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
 	If $results("multi_face_landmarks") == Default Then
 		ConsoleWrite("No face detection for " & $image_path & @CRLF)

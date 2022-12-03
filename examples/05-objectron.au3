@@ -9,11 +9,14 @@
 #include "..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
 ;~ Sources:
-;~     https://mediapipe.page.link/face_mesh_py_colab
+;~     https://mediapipe.page.link/objectron_py_colab
 
 ;~ Images:
-;~     https://unsplash.com/photos/JyVcAIUAcPM
-;~     https://unsplash.com/photos/auTAb39ImXg
+;~     https://unsplash.com/photos/8dukMg99Hd8
+;~     https://unsplash.com/photos/PqbL_mxmaUE
+;~     https://unsplash.com/photos/7T8vSHYXq4U
+;~     https://unsplash.com/photos/WJ7gZ3cilBA
+;~     https://unsplash.com/photos/XzL8YAWdirE
 
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
@@ -34,7 +37,7 @@ EndIf
 Example()
 
 Func Example()
-	Local Const $image_path = _OpenCV_FindFile("examples\data\garrett-jackson-auTAb39ImXg-unsplash.jpg")
+	Local Const $image_path = _OpenCV_FindFile("examples\data\aisfaris-jr-8dukMg99Hd8-unsplash.jpg")
 	Local $image = _OpenCV_imread_and_check($image_path)
 	If @error Then Return
 
@@ -42,22 +45,22 @@ Func Example()
 	Local $ratio = resize_and_show("preview", $image)
 	Local $scale = 1 / $ratio
 
-	Local $mp_face_mesh = $mp.solutions.face_mesh
+	Local $mp_objectron = $mp.solutions.objectron
 	Local $mp_drawing = $mp.solutions.drawing_utils
-	Local $mp_drawing_styles = $mp.solutions.drawing_styles
 
-	; Run MediaPipe Face Mesh
-	Local $face_mesh = $mp_face_mesh.FaceMesh(_Mediapipe_Params( _
+	; Run MediaPipe Objectron and draw pose landmarks.
+	Local $objectron = $mp_objectron.Objectron(_Mediapipe_Params( _
 			"static_image_mode", True, _
-			"refine_landmarks", True, _
-			"max_num_faces", 2, _
-			"min_detection_confidence", 0.5 _
+			"max_num_objects", 5, _
+			"min_detection_confidence", 0.5, _
+			"model_name", "Shoe" _
 			))
 
-	; Convert the BGR image to RGB and process it with MediaPipe Face Mesh.
-	Local $results = $face_mesh.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-	If $results("multi_face_landmarks") == Default Then
-		ConsoleWrite("No face detection for " & $image_path & @CRLF)
+	; Convert the BGR image to RGB and process it with MediaPipe Objectron.
+	Local $results = $objectron.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+
+	If $results("detected_objects") == Default Then
+		ConsoleWrite("No box landmarks detected on " & $image_path & @CRLF)
 		Return
 	EndIf
 
@@ -66,31 +69,24 @@ Func Example()
 	$landmark_drawing_spec.thickness *= $scale
 	$landmark_drawing_spec.circle_radius *= $scale
 
-	Local $annotated_image = $image.copy()
+	Local $connection_drawing_spec = $mp_drawing.DrawingSpec()
+	$connection_drawing_spec.thickness *= $scale
+	$connection_drawing_spec.circle_radius *= $scale
 
-	; Draw face detections of each face.
-	For $face_landmarks In $results("multi_face_landmarks")
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_TESSELATION, _
+	; Draw box landmarks.
+	ConsoleWrite('Box landmarks of ' & $image_path & ':' & @CRLF)
+	Local $annotated_image = $image.copy()
+	For $detected_object In $results("detected_objects")
+		$mp_drawing.draw_landmarks($annotated_image, $detected_object.landmarks_2d, $mp_objectron.BOX_CONNECTIONS, _
+				_Mediapipe_Params( _
 				"landmark_drawing_spec", $landmark_drawing_spec, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)))
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_CONTOURS, _
-				"landmark_drawing_spec", $landmark_drawing_spec, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_contours_style($scale)))
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_IRISES, _
-				"landmark_drawing_spec", $landmark_drawing_spec, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+				"connection_drawing_spec", $connection_drawing_spec _
+				))
+		$mp_drawing.draw_axis($annotated_image, $detected_object.rotation, $detected_object.translation, _
+				_Mediapipe_Params("axis_drawing_spec", $connection_drawing_spec))
 	Next
 
-	resize_and_show("face mesh", $annotated_image)
+	resize_and_show("objectron", $annotated_image)
 
 	; display images until a keyboard action is detected
 	$cv.waitKey()

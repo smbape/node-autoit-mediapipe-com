@@ -11,6 +11,10 @@
 ;~ Sources:
 ;~     https://mediapipe.page.link/holistic_py_colab
 
+;~ Images:
+;~     https://unsplash.com/photos/v4zceVZ5HK8
+;~     https://unsplash.com/photos/e_rhazQLaSs
+
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
 OnAutoItExitRegister("_OnAutoItExit")
@@ -49,7 +53,7 @@ Func Example()
 			"model_complexity", 2 _
 			))
 
-	; Convert the BGR image to RGB and process it with MediaPipe Pose.
+	; Convert the BGR image to RGB and process it with MediaPipe Holistic.
 	Local $results = $holistic.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
 
 	If $results("pose_landmarks") == Default Then

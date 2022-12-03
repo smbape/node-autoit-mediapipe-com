@@ -11,6 +11,10 @@
 ;~ Sources:
 ;~     https://mediapipe.page.link/hands_py_colab
 
+;~ Images:
+;~     https://unsplash.com/photos/QyCH5jwrD_A
+;~     https://unsplash.com/photos/mt2fyrdXxzk
+
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
 OnAutoItExitRegister("_OnAutoItExit")
