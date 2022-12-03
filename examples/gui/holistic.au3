@@ -37,7 +37,7 @@ EndIf
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
 
 #Region ### START Koda GUI section ### Form=
-Global $FormGUI = GUICreate("Holistic", 1560, 640, 192, 124)
+Global $FormGUI = GUICreate("Holistic", 1570, 640, 192, 124)
 
 Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\thao-lee-v4zceVZ5HK8-unsplash.jpg", 230, 16, 449, 21)
 Global $BtnSrcImage = GUICtrlCreateButton("Browse", 689, 14, 75, 25)
@@ -59,10 +59,10 @@ Global $GroupResult = GUICtrlCreateGroup("", 532, 103, 510, 516)
 Global $PicResult = GUICtrlCreatePic("", 537, 114, 500, 500)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-Global $LabelSegmentation = GUICtrlCreateLabel("Segmentation", 1233, 80, 98, 20)
+Global $LabelSegmentation = GUICtrlCreateLabel("Segmentation", 1250, 80, 98, 20)
 GUICtrlSetFont(-1, 10, 800, 0, "MS Sans Serif")
-Global $GroupSegmentation = GUICtrlCreateGroup("", 1027, 103, 510, 516)
-Global $PicSegmentation = GUICtrlCreatePic("", 1032, 114, 500, 500)
+Global $GroupSegmentation = GUICtrlCreateGroup("", 1044, 103, 510, 516)
+Global $PicSegmentation = GUICtrlCreatePic("", 1049, 114, 500, 500)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 GUISetState(@SW_SHOW)

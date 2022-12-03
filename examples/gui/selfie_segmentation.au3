@@ -11,11 +11,11 @@
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
 ;~ Sources:
-;~     https://mediapipe.page.link/pose_py_colab
+;~     https://mediapipe.page.link/selfie_segmentation_py_colab
 
 ;~ Images:
-;~     https://unsplash.com/photos/v4zceVZ5HK8
-;~     https://unsplash.com/photos/e_rhazQLaSs
+;~     https://unsplash.com/photos/oB1mqkdDiU0
+;~     https://unsplash.com/photos/fU3EJRO_qGY
 
 _GDIPlus_Startup()
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
@@ -37,9 +37,9 @@ EndIf
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
 
 #Region ### START Koda GUI section ### Form=
-Global $FormGUI = GUICreate("Pose", 1570, 640, 192, 124)
+Global $FormGUI = GUICreate("Selfie Segmentation", 1570, 640, 192, 124)
 
-Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\thao-lee-v4zceVZ5HK8-unsplash.jpg", 230, 16, 449, 21)
+Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\ilya-mirnyy-fU3EJRO_qGY-unsplash.jpg", 230, 16, 449, 21)
 Global $BtnSrcImage = GUICtrlCreateButton("Browse", 689, 14, 75, 25)
 
 Global $CheckboxUseGDI = GUICtrlCreateCheckbox("Use GDI+", 780, 14, 97, 17)
@@ -53,7 +53,7 @@ Global $GroupImage = GUICtrlCreateGroup("", 20, 103, 510, 516)
 Global $PicImage = GUICtrlCreatePic("", 25, 114, 500, 500)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-Global $LabelResult = GUICtrlCreateLabel("Pose", 747, 80, 80, 20)
+Global $LabelResult = GUICtrlCreateLabel("Blurred", 747, 80, 80, 20)
 GUICtrlSetFont(-1, 10, 800, 0, "MS Sans Serif")
 Global $GroupResult = GUICtrlCreateGroup("", 532, 103, 510, 516)
 Global $PicResult = GUICtrlCreatePic("", 537, 114, 500, 500)
@@ -99,85 +99,40 @@ Func Main()
 	; Preview the images.
 	_OpenCV_imshow_ControlPic($image, $FormGUI, $PicImage)
 
-	Local $mp_pose = $mp.solutions.pose
-	Local $mp_drawing = $mp.solutions.drawing_utils
-	Local $mp_drawing_styles = $mp.solutions.drawing_styles
+	Local $mp_selfie_segmentation = $mp.solutions.selfie_segmentation
 
-	; Run MediaPipe Pose and draw pose landmarks.
-	Local $pose = $mp_pose.Pose(_Mediapipe_Params( _
-			"static_image_mode", True, _
-			"min_detection_confidence", 0.5, _
-			"model_complexity", 2 _
-			))
+	; Show segmentation masks.
+	Local $BG_COLOR = _OpenCV_Scalar(192, 192, 192) ; gray
+	Local $MASK_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 
-	; Convert the BGR image to RGB and process it with MediaPipe Pose.
-	Local $results = $pose.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+	; Run MediaPipe Face Mesh
+	Local $selfie_segmentation = $mp_selfie_segmentation.SelfieSegmentation()
 
-	If $results("pose_landmarks") == Default Then
-		ConsoleWrite("No pose detection for " & $image_path & @CRLF)
-		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
+	; Convert the BGR image to RGB and process it with MediaPipe Selfie Segmentation.
+	Local $results = $selfie_segmentation.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+	If $results("segmentation_mask") == Default Then
+		ConsoleWrite("No selfie segmentation for " & $image_path & @CRLF)
 		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicSegmentation)
+		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
 		Return
 	EndIf
 
-	; keep drawings visible after resize
-	Local $ratio = _OpenCV_resizeRatio_ControlPic($image, $FormGUI, $PicResult)
-	Local $scale = 1 / $ratio
+	; Generate solid color images for showing the output selfie segmentation mask.
+	Local $fg_image = _OpenCV_ObjCreate("Mat").create($image.size(), $CV_8UC3, $MASK_COLOR)
+	Local $bg_image = _OpenCV_ObjCreate("Mat").create($image.size(), $CV_8UC3, $BG_COLOR)
 
-	; enlarge/shrink drawings to keep them visible after resize
-	Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-	$landmark_drawing_spec.thickness *= $scale
-	$landmark_drawing_spec.circle_radius *= $scale
+	Local $segmentation_mask = $cv.compare($results("segmentation_mask"), 0.2, $CV_CMP_GT)
 
-	Local $connection_drawing_spec = $mp_drawing.DrawingSpec()
-	$connection_drawing_spec.thickness *= $scale
-	$connection_drawing_spec.circle_radius *= $scale
+	Local $output_image = $bg_image.copy()
+	$fg_image.copyTo($segmentation_mask, $output_image)
 
-	; Print nose coordinates.
-	Local $image_width = $image.width
-	Local $image_height = $image.height
-	ConsoleWrite( _
-			'Nose coordinates: (' & _
-			$results("pose_landmarks").landmark($mp_pose.PoseLandmark.NOSE).x * $image_width & ', ' & _
-			$results("pose_landmarks").landmark($mp_pose.PoseLandmark.NOSE).y * $image_height & ')' & _
-			@CRLF _
-			)
+	_OpenCV_imshow_ControlPic($output_image, $FormGUI, $PicSegmentation)
 
-	; Draw pose landmarks.
-	ConsoleWrite('Pose landmarks of ' & $image_path & ':' & @CRLF)
-	Local $annotated_image = $image.copy()
-	$mp_drawing.draw_landmarks( _
-			$annotated_image, _
-			$results("pose_landmarks"), _
-			$mp_pose.POSE_CONNECTIONS, _
-			_Mediapipe_Params( _
-			"landmark_drawing_spec", $mp_drawing_styles.get_default_pose_landmarks_style($scale), _
-			"connection_drawing_spec", $connection_drawing_spec _
-			))
+	; Blur the image background based on the segmentation mask.
+	Local $blurred_image = $cv.GaussianBlur($image, _OpenCV_Size(55, 55), 0)
+	$image.copyTo($segmentation_mask, $blurred_image)
 
-	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicResult)
-
-	; Run MediaPipe Pose with `enable_segmentation=True` to get pose segmentation.
-	$pose = $mp_pose.Pose(_Mediapipe_Params( _
-			"static_image_mode", True, _
-			"min_detection_confidence", 0.5, _
-			"model_complexity", 2, _
-			"enable_segmentation", True _
-			))
-
-	$results = $pose.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-
-	; Draw pose segmentation.
-	ConsoleWrite('Pose segmentation of ' & $image_path & ':' & @CRLF)
-	$annotated_image = $image.copy()
-	Local $red_img = _OpenCV_ObjCreate("Mat").create($image.rows, $image.cols, $CV_32FC3, _OpenCV_Scalar(255, 255, 255))
-	Local $segm_2class = $cv.add($cv.multiply($results("segmentation_mask"), 0.8), 0.2)
-	$segm_2class = $cv.merge(_OpenCV_Tuple($segm_2class, $segm_2class, $segm_2class))
-	$annotated_image = $cv.multiply($annotated_image.convertTo($CV_32F), $segm_2class)
-	$red_img = $cv.multiply($red_img, $cv.subtract(1.0, $segm_2class))
-	$annotated_image = $cv.add($annotated_image, $red_img)
-
-	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicSegmentation)
+	_OpenCV_imshow_ControlPic($blurred_image, $FormGUI, $PicResult)
 EndFunc   ;==>Main
 
 Func _IsChecked($idControlID)
