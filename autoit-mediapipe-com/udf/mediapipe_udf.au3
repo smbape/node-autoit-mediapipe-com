@@ -240,7 +240,7 @@ Func _Mediapipe_DllCall($dll, $return_type, $function, $type1 = Default, $param1
 		Case 63
 			$_aResult = Call("DllCall", $dll, $return_type, $function, $type1, $param1, $type2, $param2, $type3, $param3, $type4, $param4, $type5, $param5, $type6, $param6, $type7, $param7, $type8, $param8, $type9, $param9, $type10, $param10, $type11, $param11, $type12, $param12, $type13, $param13, $type14, $param14, $type15, $param15, $type16, $param16, $type17, $param17, $type18, $param18, $type19, $param19, $type20, $param20, $type21, $param21, $type22, $param22, $type23, $param23, $type24, $param24, $type25, $param25, $type26, $param26, $type27, $param27, $type28, $param28, $type29, $param29, $type30, $param30)
 		Case Else
-			ConsoleWriteError('!>Error: Invalid number of arguments for ' & $function)
+			ConsoleWriteError('!>Error: Invalid number of arguments for ' & $function & @CRLF)
 			Return SetError(1, 0, -1)
 	EndSwitch
 
@@ -358,7 +358,7 @@ Func _Mediapipe_Tuple($val0 = 0, $val1 = 0, $val2 = 0, $val3 = 0, $val4 = 0, $va
 			Local $_aResult[@NumParams] = [$val0, $val1, $val2, $val3, $val4, $val5, $val6, $val7, $val8, $val9, $val10, $val11, $val12, $val13, $val14, $val15, $val16, $val17, $val18, $val19, $val20, $val21, $val22, $val23, $val24, $val25, $val26, $val27, $val28, $val29]
 			Return $_aResult
 		Case Else
-			ConsoleWriteError('!>Error: Invalid number of arguments')
+			ConsoleWriteError('!>Error: Invalid number of arguments' & @CRLF)
 			Return SetError(1, 0, -1)
 	EndSwitch
 EndFunc   ;==>_Mediapipe_Tuple
@@ -432,7 +432,7 @@ Func _Mediapipe_Params($sKey1 = Default, $vVal1 = Default, $sKey2 = Default, $vV
 		Case 60
 			Return $NamedParameters.create(_Mediapipe_Tuple(_Mediapipe_Tuple($sKey1, $vVal1), _Mediapipe_Tuple($sKey2, $vVal2), _Mediapipe_Tuple($sKey3, $vVal3), _Mediapipe_Tuple($sKey4, $vVal4), _Mediapipe_Tuple($sKey5, $vVal5), _Mediapipe_Tuple($sKey6, $vVal6), _Mediapipe_Tuple($sKey7, $vVal7), _Mediapipe_Tuple($sKey8, $vVal8), _Mediapipe_Tuple($sKey9, $vVal9), _Mediapipe_Tuple($sKey10, $vVal10), _Mediapipe_Tuple($sKey11, $vVal11), _Mediapipe_Tuple($sKey12, $vVal12), _Mediapipe_Tuple($sKey13, $vVal13), _Mediapipe_Tuple($sKey14, $vVal14), _Mediapipe_Tuple($sKey15, $vVal15), _Mediapipe_Tuple($sKey16, $vVal16), _Mediapipe_Tuple($sKey17, $vVal17), _Mediapipe_Tuple($sKey18, $vVal18), _Mediapipe_Tuple($sKey19, $vVal19), _Mediapipe_Tuple($sKey20, $vVal20), _Mediapipe_Tuple($sKey21, $vVal21), _Mediapipe_Tuple($sKey22, $vVal22), _Mediapipe_Tuple($sKey23, $vVal23), _Mediapipe_Tuple($sKey24, $vVal24), _Mediapipe_Tuple($sKey25, $vVal25), _Mediapipe_Tuple($sKey26, $vVal26), _Mediapipe_Tuple($sKey27, $vVal27), _Mediapipe_Tuple($sKey28, $vVal28), _Mediapipe_Tuple($sKey29, $vVal29), _Mediapipe_Tuple($sKey30, $vVal30)))
 		Case Else
-			ConsoleWriteError('!>Error: Invalid number of arguments')
+			ConsoleWriteError('!>Error: Invalid number of arguments' & @CRLF)
 			Return SetError(1, 0, -1)
 	EndSwitch
 EndFunc   ;==>_Mediapipe_Params
@@ -506,7 +506,7 @@ Func _Mediapipe_Map($sKeyType, $sValueType, $sKey1 = Default, $vVal1 = Default, 
 		Case 62
 			Return $MapType.create(_Mediapipe_Tuple(_Mediapipe_Tuple($sKey1, $vVal1), _Mediapipe_Tuple($sKey2, $vVal2), _Mediapipe_Tuple($sKey3, $vVal3), _Mediapipe_Tuple($sKey4, $vVal4), _Mediapipe_Tuple($sKey5, $vVal5), _Mediapipe_Tuple($sKey6, $vVal6), _Mediapipe_Tuple($sKey7, $vVal7), _Mediapipe_Tuple($sKey8, $vVal8), _Mediapipe_Tuple($sKey9, $vVal9), _Mediapipe_Tuple($sKey10, $vVal10), _Mediapipe_Tuple($sKey11, $vVal11), _Mediapipe_Tuple($sKey12, $vVal12), _Mediapipe_Tuple($sKey13, $vVal13), _Mediapipe_Tuple($sKey14, $vVal14), _Mediapipe_Tuple($sKey15, $vVal15), _Mediapipe_Tuple($sKey16, $vVal16), _Mediapipe_Tuple($sKey17, $vVal17), _Mediapipe_Tuple($sKey18, $vVal18), _Mediapipe_Tuple($sKey19, $vVal19), _Mediapipe_Tuple($sKey20, $vVal20), _Mediapipe_Tuple($sKey21, $vVal21), _Mediapipe_Tuple($sKey22, $vVal22), _Mediapipe_Tuple($sKey23, $vVal23), _Mediapipe_Tuple($sKey24, $vVal24), _Mediapipe_Tuple($sKey25, $vVal25), _Mediapipe_Tuple($sKey26, $vVal26), _Mediapipe_Tuple($sKey27, $vVal27), _Mediapipe_Tuple($sKey28, $vVal28), _Mediapipe_Tuple($sKey29, $vVal29), _Mediapipe_Tuple($sKey30, $vVal30)))
 		Case Else
-			ConsoleWriteError('!>Error: Invalid number of arguments')
+			ConsoleWriteError('!>Error: Invalid number of arguments' & @CRLF)
 			Return SetError(1, 0, -1)
 	EndSwitch
 EndFunc   ;==>_Mediapipe_Map
