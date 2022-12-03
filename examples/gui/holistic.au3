@@ -33,7 +33,7 @@ EndIf
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
 
 #Region ### START Koda GUI section ### Form=
-Global $FormGUI = GUICreate("Discrete Fourier Transform", 1065, 640, 192, 124)
+Global $FormGUI = GUICreate("Holistic", 1560, 640, 192, 124)
 
 Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\thao-lee-v4zceVZ5HK8-unsplash.jpg", 230, 16, 449, 21)
 Global $BtnSrcImage = GUICtrlCreateButton("Browse", 689, 14, 75, 25)
@@ -53,6 +53,12 @@ Global $LabelResult = GUICtrlCreateLabel("Holistic", 747, 80, 80, 20)
 GUICtrlSetFont(-1, 10, 800, 0, "MS Sans Serif")
 Global $GroupResult = GUICtrlCreateGroup("", 532, 103, 510, 516)
 Global $PicResult = GUICtrlCreatePic("", 537, 114, 500, 500)
+GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+Global $LabelSegmentation = GUICtrlCreateLabel("Segmentation", 1233, 80, 98, 20)
+GUICtrlSetFont(-1, 10, 800, 0, "MS Sans Serif")
+Global $GroupSegmentation = GUICtrlCreateGroup("", 1027, 103, 510, 516)
+Global $PicSegmentation = GUICtrlCreatePic("", 1032, 114, 500, 500)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 GUISetState(@SW_SHOW)
@@ -86,7 +92,7 @@ Func Main()
 	Local $image = _OpenCV_imread_and_check($image_path)
 	If @error Then Return
 
-	; show the image before detection
+	; Preview the images.
 	_OpenCV_imshow_ControlPic($image, $FormGUI, $PicImage)
 
 	Local $mp_holistic = $mp.solutions.holistic
@@ -105,6 +111,8 @@ Func Main()
 
 	If $results("pose_landmarks") == Default Then
 		ConsoleWrite("No holistic detection for " & $image_path & @CRLF)
+		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
+		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicSegmentation)
 		Return
 	EndIf
 
@@ -152,8 +160,27 @@ Func Main()
 			"connection_drawing_spec", $connection_drawing_spec _
 			))
 
-	; show the image after detection
 	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicResult)
+
+	; Run MediaPipe Holistic with `enable_segmentation=True` to get pose segmentation.
+	$holistic = $mp_holistic.Holistic(_Mediapipe_Params( _
+			"static_image_mode", True, _
+			"enable_segmentation", True _
+			))
+
+	$results = $holistic.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+
+	; Draw pose segmentation.
+	ConsoleWrite('Pose segmentation of ' & $image_path & ':' & @CRLF)
+	$annotated_image = $image.copy()
+	Local $red_img = _OpenCV_ObjCreate("Mat").create($image.rows, $image.cols, $CV_32FC3, _OpenCV_Scalar(255, 255, 255))
+	Local $segm_2class = $cv.add($cv.multiply($results("segmentation_mask"), 0.8), 0.2)
+	$segm_2class = $cv.merge(_OpenCV_Tuple($segm_2class, $segm_2class, $segm_2class))
+	$annotated_image = $cv.multiply($annotated_image.convertTo($CV_32F), $segm_2class)
+	$red_img = $cv.multiply($red_img, $cv.subtract(1.0, $segm_2class))
+	$annotated_image = $cv.add($annotated_image, $red_img)
+
+	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicSegmentation)
 EndFunc   ;==>Main
 
 Func _IsChecked($idControlID)

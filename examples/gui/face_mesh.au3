@@ -33,7 +33,7 @@ EndIf
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
 
 #Region ### START Koda GUI section ### Form=
-Global $FormGUI = GUICreate("Discrete Fourier Transform", 1065, 640, 192, 124)
+Global $FormGUI = GUICreate("Face Mesh", 1065, 640, 192, 124)
 
 Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\garrett-jackson-auTAb39ImXg-unsplash.jpg", 230, 16, 449, 21)
 Global $BtnSrcImage = GUICtrlCreateButton("Browse", 689, 14, 75, 25)
@@ -86,7 +86,7 @@ Func Main()
 	Local $image = _OpenCV_imread_and_check($image_path)
 	If @error Then Return
 
-	; show the image before detection
+	; Preview the images.
 	_OpenCV_imshow_ControlPic($image, $FormGUI, $PicImage)
 
 	Local $mp_face_mesh = $mp.solutions.face_mesh
@@ -141,9 +141,8 @@ Func Main()
 				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
 	Next
 
-	; show the image after detection
 	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicResult)
-EndFunc   ;==>RunFaceDetection
+EndFunc   ;==>Main
 
 Func _IsChecked($idControlID)
 	Return BitAND(GUICtrlRead($idControlID), $GUI_CHECKED) = $GUI_CHECKED

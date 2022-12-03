@@ -93,10 +93,10 @@ Func _AssertMatDiffLess($oMatA, $oMatB, $threshold, $sMessage = Default, $bExit 
 	If $sMessage == Default Then $sMessage = "Diff between matrices is not less than " & $threshold
 
 	Local Const $cv = _OpenCV_get()
-	Local Const $Mat = _OpenCV_ObjCreate("Mat")
+	Local Const $mat = _OpenCV_ObjCreate("Mat")
 
-	If IsArray($oMatA) Then $oMatA = $Mat.createFromArray($oMatA, $CV_32F)
-	If IsArray($oMatB) Then $oMatB = $Mat.createFromArray($oMatB, $CV_32F)
+	If IsArray($oMatA) Then $oMatA = $mat.createFromArray($oMatA, $CV_32F)
+	If IsArray($oMatB) Then $oMatB = $mat.createFromArray($oMatB, $CV_32F)
 
 	Local $bCondition = True
 

@@ -145,8 +145,8 @@ Func test_on_video($id, $model_complexity, $expected_name)
 			)
 
 	; Set threshold for comparing actual and expected predictions in pixels.
-	Local Const $diff_threshold = 15
-	Local Const $world_diff_threshold = 0.1
+	Local Const $DIFF_THRESHOLD = 15
+	Local Const $WORLD_DIFF_THRESHOLD = 0.1
 
 	Local $video_path = @ScriptDir & "/testdata/pose_squats.mp4"
 
@@ -185,8 +185,8 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	Local $actual = $cv.vconcat($actual_per_frame)
 	Local $actual_world = $cv.vconcat($actual_world_per_frame)
 
-	_AssertMatDiffLess($actual, $EXPECTED_PREDICTIONS_POSE_LANDMARKS_PER_FRAME, $diff_threshold)
-	_AssertMatDiffLess($actual_world, $EXPECTED_PREDICTIONS_WORLD_POSE_LANDMARKS_PER_FRAME, $world_diff_threshold)
+	_AssertMatDiffLess($actual, $EXPECTED_PREDICTIONS_POSE_LANDMARKS_PER_FRAME, $DIFF_THRESHOLD)
+	_AssertMatDiffLess($actual_world, $EXPECTED_PREDICTIONS_WORLD_POSE_LANDMARKS_PER_FRAME, $WORLD_DIFF_THRESHOLD)
 EndFunc   ;==>test_on_video
 
 Func _get_output_path($id, $name)

@@ -34,8 +34,8 @@ Func Example()
 	Local $image = _OpenCV_imread_and_check($image_path)
 	If @error Then Return
 
-	; show the image before detection
-	Local $ratio = resize_and_show("before holistic", $image)
+	; Preview the images.
+	Local $ratio = resize_and_show("preview", $image)
 	Local $scale = 1 / $ratio
 
 	Local $mp_holistic = $mp.solutions.holistic
@@ -98,8 +98,26 @@ Func Example()
 			"connection_drawing_spec", $connection_drawing_spec _
 			))
 
-	; show the image after detection
-	resize_and_show("after holistic", $annotated_image)
+	resize_and_show("holistic", $annotated_image)
+
+	; Run MediaPipe Holistic with `enable_segmentation=True` to get pose segmentation.
+	$holistic = $mp_holistic.Holistic(_Mediapipe_Params( _
+			"static_image_mode", True, _
+			"enable_segmentation", True _
+			))
+
+	$results = $holistic.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+
+	; Draw pose segmentation.
+	ConsoleWrite('Pose segmentation of ' & $image_path & ':' & @CRLF)
+	$annotated_image = $image.copy()
+	Local $red_img = _OpenCV_ObjCreate("Mat").create($image.rows, $image.cols, $CV_32FC3, _OpenCV_Scalar(255, 255, 255))
+	Local $segm_2class = $cv.add($cv.multiply($results("segmentation_mask"), 0.8), 0.2)
+	$segm_2class = $cv.merge(_OpenCV_Tuple($segm_2class, $segm_2class, $segm_2class))
+	$annotated_image = $cv.multiply($annotated_image.convertTo($CV_32F), $segm_2class)
+	$red_img = $cv.multiply($red_img, $cv.subtract(1.0, $segm_2class))
+	$annotated_image = $cv.add($annotated_image, $red_img)
+	resize_and_show("segmentation", $annotated_image)
 
 	; display images until a keyboard action is detected
 	$cv.waitKey()
@@ -122,7 +140,7 @@ Func resize_and_show($title, $image)
 	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
 
 	Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
-	$cv.imshow($title, $img)
+	$cv.imshow($title, $img.convertToShow())
 
 	Return $img.width / $image.width
 EndFunc   ;==>resize_and_show

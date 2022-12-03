@@ -20,20 +20,20 @@ OnAutoItExitRegister("_OnAutoItExit")
 
 Global $mp = _Mediapipe_get()
 If Not IsObj($mp) Then
-    ConsoleWriteError("Failed to load mediapipe" & @CRLF)
-    Exit
+	ConsoleWriteError("Failed to load mediapipe" & @CRLF)
+	Exit
 EndIf
 
 Global $cv = _OpenCV_get()
 If Not IsObj($cv) Then
-    ConsoleWriteError("Failed to load opencv" & @CRLF)
-    Exit
+	ConsoleWriteError("Failed to load opencv" & @CRLF)
+	Exit
 EndIf
 
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
 
 #Region ### START Koda GUI section ### Form=
-Global $FormGUI = GUICreate("Discrete Fourier Transform", 1065, 640, 192, 124)
+Global $FormGUI = GUICreate("Hands", 1065, 640, 192, 124)
 
 Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\brooke-cagle-mt2fyrdXxzk-unsplash.jpg", 230, 16, 449, 21)
 Global $BtnSrcImage = GUICtrlCreateButton("Browse", 689, 14, 75, 25)
@@ -64,100 +64,100 @@ Global $nMsg
 Main()
 
 While 1
-    $nMsg = GUIGetMsg()
-    Switch $nMsg
-        Case $GUI_EVENT_CLOSE
-            ExitLoop
-        Case $BtnSrcImage
-            $sSrcImage = ControlGetText($FormGUI, "", $InputSrcImage)
-            $sSrcImage = FileOpenDialog("Select an image", $MEDIAPIPE_SAMPLES_DATA_PATH, "Image files (*.bmp;*.dlib;*.jpg;*.jpeg;*.png;*.pbm;*.pgm;*.ppm;*.pxm;*.pnm;*.pfm;*.sr;*.ras;*.tiff;*.tif;*.exr;*.hdr;.pic)", $FD_FILEMUSTEXIST, $sSrcImage)
-            If Not @error Then
-                ControlSetText($FormGUI, "", $InputSrcImage, $sSrcImage)
-            EndIf
-        Case $BtnExec
-            Main()
-    EndSwitch
+	$nMsg = GUIGetMsg()
+	Switch $nMsg
+		Case $GUI_EVENT_CLOSE
+			ExitLoop
+		Case $BtnSrcImage
+			$sSrcImage = ControlGetText($FormGUI, "", $InputSrcImage)
+			$sSrcImage = FileOpenDialog("Select an image", $MEDIAPIPE_SAMPLES_DATA_PATH, "Image files (*.bmp;*.dlib;*.jpg;*.jpeg;*.png;*.pbm;*.pgm;*.ppm;*.pxm;*.pnm;*.pfm;*.sr;*.ras;*.tiff;*.tif;*.exr;*.hdr;.pic)", $FD_FILEMUSTEXIST, $sSrcImage)
+			If Not @error Then
+				ControlSetText($FormGUI, "", $InputSrcImage, $sSrcImage)
+			EndIf
+		Case $BtnExec
+			Main()
+	EndSwitch
 WEnd
 
 Func Main()
-    $_cv_gdi_resize = _IsChecked($CheckboxUseGDI)
+	$_cv_gdi_resize = _IsChecked($CheckboxUseGDI)
 
-    Local $image_path = ControlGetText($FormGUI, "", $InputSrcImage)
-    Local $image = _OpenCV_imread_and_check($image_path)
-    If @error Then Return
+	Local $image_path = ControlGetText($FormGUI, "", $InputSrcImage)
+	Local $image = _OpenCV_imread_and_check($image_path)
+	If @error Then Return
 
-    ; show the image before detection
-    _OpenCV_imshow_ControlPic($image, $FormGUI, $PicImage)
+	; Preview the images.
+	_OpenCV_imshow_ControlPic($image, $FormGUI, $PicImage)
 
-    Local $mp_hands = $mp.solutions.hands
-    Local $mp_drawing = $mp.solutions.drawing_utils
-    Local $mp_drawing_styles = $mp.solutions.drawing_styles
+	Local $mp_hands = $mp.solutions.hands
+	Local $mp_drawing = $mp.solutions.drawing_utils
+	Local $mp_drawing_styles = $mp.solutions.drawing_styles
 
-    ; Run MediaPipe Hands
-    Local $hands = $mp_hands.Hands(_Mediapipe_Params( _
-            "static_image_mode", True, _
-            "max_num_hands", 2, _
-            "min_detection_confidence", 0.7 _
-            ))
+	; Run MediaPipe Hands
+	Local $hands = $mp_hands.Hands(_Mediapipe_Params( _
+			"static_image_mode", True, _
+			"max_num_hands", 2, _
+			"min_detection_confidence", 0.7 _
+			))
 
-    ; Convert the BGR image to RGB, flip the image around y-axis for correct
-    ; handedness output and process it with MediaPipe Hands.
-    Local $results = $hands.process($cv.flip($cv.cvtColor($image, $CV_COLOR_BGR2RGB), 1))
+	; Convert the BGR image to RGB, flip the image around y-axis for correct
+	; handedness output and process it with MediaPipe Hands.
+	Local $results = $hands.process($cv.flip($cv.cvtColor($image, $CV_COLOR_BGR2RGB), 1))
 
-    ConsoleWrite("Handedness of " & $image_path & @CRLF)
-    For $classificationList In $results("multi_handedness")
-        For $classification In $classificationList.classification
-            ConsoleWrite($classification.__str__() & @CRLF)
-        Next
-    Next
+	If $results("multi_hand_landmarks") == Default Then
+		ConsoleWrite("No hand detection for " & $image_path & @CRLF)
+		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
+		Return
+	EndIf
 
-    If $results("multi_hand_landmarks") == Default Then
-        ConsoleWrite("No hand detection for " & $image_path & @CRLF)
-        Return
-    EndIf
+	ConsoleWrite("Handedness of " & $image_path & @CRLF)
+	For $classificationList In $results("multi_handedness")
+		For $classification In $classificationList.classification
+			ConsoleWrite($classification.__str__() & @CRLF)
+		Next
+	Next
 
-    ; keep drawings visible after resize
-    Local $ratio = _OpenCV_resizeRatio_ControlPic($image, $FormGUI, $PicResult)
-    Local $scale = 1 / $ratio
+	; keep drawings visible after resize
+	Local $ratio = _OpenCV_resizeRatio_ControlPic($image, $FormGUI, $PicResult)
+	Local $scale = 1 / $ratio
 
-    ; enlarge/shrink drawings to keep them visible after resize
-    Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-    $landmark_drawing_spec.thickness *= $scale
-    $landmark_drawing_spec.circle_radius *= $scale
+	; enlarge/shrink drawings to keep them visible after resize
+	Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
+	$landmark_drawing_spec.thickness *= $scale
+	$landmark_drawing_spec.circle_radius *= $scale
 
-    ; Draw hand landmarks of each hand.
-    ConsoleWrite('Hand landmarks of ' & $image_path & ':' & @CRLF)
-    Local $image_width = $image.width
-    Local $image_height = $image.height
-    Local $annotated_image = $cv.flip($image.copy(), 1)
+	; Draw hand landmarks of each hand.
+	ConsoleWrite('Hand landmarks of ' & $image_path & ':' & @CRLF)
+	Local $image_width = $image.width
+	Local $image_height = $image.height
+	Local $annotated_image = $cv.flip($image.copy(), 1)
 
-    ; Draw face detections of each face.
-    For $hand_landmarks In $results("multi_hand_landmarks")
-        ; Print index finger tip coordinates.
-        ConsoleWrite( _
-                'Index finger tip coordinate: (' & _
-                $hand_landmarks.landmark($mp_hands.HandLandmark.INDEX_FINGER_TIP).x * $image_width & ', ' & _
-                $hand_landmarks.landmark($mp_hands.HandLandmark.INDEX_FINGER_TIP).y * $image_height & ')' & _
-                @CRLF _
-                )
-        $mp_drawing.draw_landmarks( _
-                $annotated_image, _
-                $hand_landmarks, _
-                $mp_hands.HAND_CONNECTIONS, _
-                $mp_drawing_styles.get_default_hand_landmarks_style($scale), _
-                $mp_drawing_styles.get_default_hand_connections_style($scale))
-    Next
+	; Draw face detections of each face.
+	For $hand_landmarks In $results("multi_hand_landmarks")
+		; Print index finger tip coordinates.
+		ConsoleWrite( _
+				'Index finger tip coordinate: (' & _
+				$hand_landmarks.landmark($mp_hands.HandLandmark.INDEX_FINGER_TIP).x * $image_width & ', ' & _
+				$hand_landmarks.landmark($mp_hands.HandLandmark.INDEX_FINGER_TIP).y * $image_height & ')' & _
+				@CRLF _
+				)
+		$mp_drawing.draw_landmarks( _
+				$annotated_image, _
+				$hand_landmarks, _
+				$mp_hands.HAND_CONNECTIONS, _
+				$mp_drawing_styles.get_default_hand_landmarks_style($scale), _
+				$mp_drawing_styles.get_default_hand_connections_style($scale))
+	Next
 
-    ; show the image after detection
-    _OpenCV_imshow_ControlPic($cv.flip($annotated_image, 1), $FormGUI, $PicResult)
-EndFunc   ;==>RunFaceDetection
+	_OpenCV_imshow_ControlPic($cv.flip($annotated_image, 1), $FormGUI, $PicResult)
+EndFunc   ;==>Main
 
 Func _IsChecked($idControlID)
-    Return BitAND(GUICtrlRead($idControlID), $GUI_CHECKED) = $GUI_CHECKED
+	Return BitAND(GUICtrlRead($idControlID), $GUI_CHECKED) = $GUI_CHECKED
 EndFunc   ;==>_IsChecked
 
 Func _OnAutoItExit()
-    _OpenCV_Unregister_And_Close()
-    _Mediapipe_Unregister_And_Close()
-    _GDIPlus_Shutdown()
+	_OpenCV_Unregister_And_Close()
+	_Mediapipe_Unregister_And_Close()
+	_GDIPlus_Shutdown()
 EndFunc   ;==>_OnAutoItExit

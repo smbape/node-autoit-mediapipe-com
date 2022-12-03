@@ -34,8 +34,8 @@ Func Example()
 	Local $image = _OpenCV_imread_and_check($image_path)
 	If @error Then Return
 
-	; show the image before detection
-	Local $ratio = resize_and_show("before hands", $image)
+	; Preview the images.
+	Local $ratio = resize_and_show("preview", $image)
 	Local $scale = 1 / $ratio
 
 	Local $mp_hands = $mp.solutions.hands
@@ -53,12 +53,12 @@ Func Example()
 	; handedness output and process it with MediaPipe Hands.
 	Local $results = $hands.process($cv.flip($cv.cvtColor($image, $CV_COLOR_BGR2RGB), 1))
 
-    ConsoleWrite("Handedness of " & $image_path & @CRLF)
-    For $classificationList In $results("multi_handedness")
-        For $classification In $classificationList.classification
-            ConsoleWrite($classification.__str__() & @CRLF)
-        Next
-    Next
+	ConsoleWrite("Handedness of " & $image_path & @CRLF)
+	For $classificationList In $results("multi_handedness")
+		For $classification In $classificationList.classification
+			ConsoleWrite($classification.__str__() & @CRLF)
+		Next
+	Next
 
 	If $results("multi_hand_landmarks") == Default Then
 		ConsoleWrite("No hand detection for " & $image_path & @CRLF)
@@ -93,33 +93,32 @@ Func Example()
 				$mp_drawing_styles.get_default_hand_connections_style($scale))
 	Next
 
-	; show the image after detection
-	resize_and_show("after hands", $cv.flip($annotated_image, 1))
+	resize_and_show("hands", $cv.flip($annotated_image, 1))
 
 	; display images until a keyboard action is detected
 	$cv.waitKey()
 EndFunc   ;==>Example
 
 Func resize_and_show($title, $image)
-    Local Const $DESIRED_HEIGHT = 480
-    Local Const $DESIRED_WIDTH = 480
-    Local $w = $image.width
-    Local $h = $image.height
+	Local Const $DESIRED_HEIGHT = 480
+	Local Const $DESIRED_WIDTH = 480
+	Local $w = $image.width
+	Local $h = $image.height
 
-    If $h < $w Then
-        $h = $h / ($w / $DESIRED_WIDTH)
-        $w = $DESIRED_WIDTH
-    Else
-        $w = $w / ($h / $DESIRED_HEIGHT)
-        $h = $DESIRED_HEIGHT
-    EndIf
+	If $h < $w Then
+		$h = $h / ($w / $DESIRED_WIDTH)
+		$w = $DESIRED_WIDTH
+	Else
+		$w = $w / ($h / $DESIRED_HEIGHT)
+		$h = $DESIRED_HEIGHT
+	EndIf
 
-    Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
+	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
 
-    Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
-    $cv.imshow($title, $img)
+	Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
+	$cv.imshow($title, $img.convertToShow())
 
-    Return $img.width / $image.width
+	Return $img.width / $image.width
 EndFunc   ;==>resize_and_show
 
 Func _OnAutoItExit()

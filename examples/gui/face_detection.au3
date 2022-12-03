@@ -33,7 +33,7 @@ EndIf
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
 
 #Region ### START Koda GUI section ### Form=
-Global $FormGUI = GUICreate("Discrete Fourier Transform", 1065, 700, 192, 124)
+Global $FormGUI = GUICreate("Face Detection", 1065, 700, 192, 124)
 
 Global $InputSrcShortRange = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\garrett-jackson-auTAb39ImXg-unsplash.jpg", 230, 16, 449, 21)
 Global $BtnSrcShortRange = GUICtrlCreateButton("Short range image", 689, 14, 99, 25)
@@ -103,7 +103,7 @@ Func RunFaceDetection($model_selection, $controlID, $Picture)
 	Local $image = _OpenCV_imread_and_check($sImagePath)
 	If @error Then Return
 
-	; show the image before detection
+	; Preview the images.
 	_OpenCV_imshow_ControlPic($image, $FormGUI, $Picture)
 
 	Local $mp_face_detection = $mp.solutions.face_detection
@@ -115,6 +115,7 @@ Func RunFaceDetection($model_selection, $controlID, $Picture)
 	Local $results = $face_detection.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
 	If $results("detections") == Default Then
 		ConsoleWrite("No face detection for " & $sImagePath & @CRLF)
+		_OpenCV_imshow_ControlPic($image, $FormGUI, $Picture)
 		Return
 	EndIf
 
@@ -129,7 +130,6 @@ Func RunFaceDetection($model_selection, $controlID, $Picture)
 		$mp_drawing.draw_detection($image, $detection, $keypoint_drawing_spec, $bbox_drawing_spec)
 	Next
 
-	; show the image after detection
 	_OpenCV_imshow_ControlPic($image, $FormGUI, $Picture)
 EndFunc   ;==>RunFaceDetection
 

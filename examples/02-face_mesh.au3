@@ -34,8 +34,8 @@ Func Example()
 	Local $image = _OpenCV_imread_and_check($image_path)
 	If @error Then Return
 
-	; show the image before detection
-	Local $ratio = resize_and_show("before face mesh", $image)
+	; Preview the images.
+	Local $ratio = resize_and_show("preview", $image)
 	Local $scale = 1 / $ratio
 
 	Local $mp_face_mesh = $mp.solutions.face_mesh
@@ -85,8 +85,7 @@ Func Example()
 				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
 	Next
 
-	; show the image after detection
-	resize_and_show("after face mesh", $annotated_image)
+	resize_and_show("face mesh", $annotated_image)
 
 	; display images until a keyboard action is detected
 	$cv.waitKey()
@@ -109,7 +108,7 @@ Func resize_and_show($title, $image)
 	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
 
 	Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
-	$cv.imshow($title, $img)
+	$cv.imshow($title, $img.convertToShow())
 
 	Return $img.width / $image.width
 EndFunc   ;==>resize_and_show
