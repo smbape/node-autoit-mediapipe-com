@@ -5591,11 +5591,11 @@ AutoIt:
 ### mediapipe::autoit::solutions::drawing\_utils::draw\_landmarks
 
 ```cpp
-void mediapipe::autoit::solutions::drawing_utils::draw_landmarks( cv::Mat&                                                        image,
-                                                                  const mediapipe::NormalizedLandmarkList&                        landmark_list,
-                                                                  const std::vector<std::tuple<int, int>>&                        connections = std::vector<std::tuple<int, int>>(),
-                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& landmark_drawing_spec = DrawingSpec(RED_COLOR),
-                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& connection_drawing_spec = DrawingSpec() );
+void mediapipe::autoit::solutions::drawing_utils::draw_landmarks( cv::Mat&                                                                         image,
+                                                                  const mediapipe::NormalizedLandmarkList&                                         landmark_list,
+                                                                  const std::vector<std::tuple<int, int>>&                                         connections = std::vector<std::tuple<int, int>>(),
+                                                                  const std::shared_ptr<mediapipe::autoit::solutions::drawing_utils::DrawingSpec>& landmark_drawing_spec = std::make_shared<DrawingSpec>(RED_COLOR),
+                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec&                  connection_drawing_spec = DrawingSpec() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils").draw_landmarks( $image, $landmark_list[, $connections[, $landmark_drawing_spec[, $connection_drawing_spec]]] ) -> None
 ```
@@ -5614,7 +5614,7 @@ AutoIt:
 void mediapipe::autoit::solutions::drawing_utils::draw_landmarks( cv::Mat&                                                                                      image,
                                                                   const mediapipe::NormalizedLandmarkList&                                                      landmark_list,
                                                                   const std::vector<std::tuple<int, int>>&                                                      connections = std::vector<std::tuple<int, int>>(),
-                                                                  const mediapipe::autoit::solutions::drawing_utils::DrawingSpec&                               landmark_drawing_spec = DrawingSpec(RED_COLOR),
+                                                                  const std::shared_ptr<mediapipe::autoit::solutions::drawing_utils::DrawingSpec>&              landmark_drawing_spec = std::make_shared<DrawingSpec>(RED_COLOR),
                                                                   const std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& connection_drawing_spec = std::map<int, std::map<int, DrawingSpec>>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils").draw_landmarks( $image, $landmark_list[, $connections[, $landmark_drawing_spec[, $connection_drawing_spec]]] ) -> None

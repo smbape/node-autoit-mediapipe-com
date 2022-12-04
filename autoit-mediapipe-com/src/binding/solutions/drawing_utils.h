@@ -44,7 +44,7 @@ namespace mediapipe {
 					cv::Mat& image,
 					const NormalizedLandmarkList& landmark_list,
 					const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
-					const DrawingSpec& landmark_drawing_spec = DrawingSpec(RED_COLOR),
+					const std::shared_ptr<DrawingSpec>& landmark_drawing_spec = std::make_shared<DrawingSpec>(RED_COLOR),
 					const DrawingSpec& connection_drawing_spec = DrawingSpec()
 				);
 
@@ -60,7 +60,7 @@ namespace mediapipe {
 					cv::Mat& image,
 					const NormalizedLandmarkList& landmark_list,
 					const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
-					const DrawingSpec& landmark_drawing_spec = DrawingSpec(RED_COLOR),
+					const std::shared_ptr<DrawingSpec>& landmark_drawing_spec = std::make_shared<DrawingSpec>(RED_COLOR),
 					const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec = std::map<int, std::map<int, DrawingSpec>>()
 				);
 

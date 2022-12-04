@@ -61,11 +61,6 @@ Func Example()
 		Return
 	EndIf
 
-	; enlarge/shrink drawings to keep them visible after resize
-	Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-	$landmark_drawing_spec.thickness *= $scale
-	$landmark_drawing_spec.circle_radius *= $scale
-
 	Local $annotated_image = $image.copy()
 
 	; Draw face detections of each face.
@@ -74,19 +69,19 @@ Func Example()
 				"image", $annotated_image, _
 				"landmark_list", $face_landmarks, _
 				"connections", $mp_face_mesh.FACEMESH_TESSELATION, _
-				"landmark_drawing_spec", $landmark_drawing_spec, _
+				"landmark_drawing_spec", Null, _
 				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)))
 		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
 				"landmark_list", $face_landmarks, _
 				"connections", $mp_face_mesh.FACEMESH_CONTOURS, _
-				"landmark_drawing_spec", $landmark_drawing_spec, _
+				"landmark_drawing_spec", Null, _
 				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_contours_style($scale)))
 		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
 				"landmark_list", $face_landmarks, _
 				"connections", $mp_face_mesh.FACEMESH_IRISES, _
-				"landmark_drawing_spec", $landmark_drawing_spec, _
+				"landmark_drawing_spec", Null, _
 				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
 	Next
 
@@ -110,7 +105,7 @@ Func resize_and_show($title, $image)
 		$h = $DESIRED_HEIGHT
 	EndIf
 
-	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
+	Local $interpolation = ($DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height) ? $CV_INTER_CUBIC : $CV_INTER_AREA
 
 	Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
 	$cv.imshow($title, $img.convertToShow())

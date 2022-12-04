@@ -106,7 +106,7 @@ Func resize_and_show($title, $image)
 		$h = $DESIRED_HEIGHT
 	EndIf
 
-	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
+	Local $interpolation = ($DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height) ? $CV_INTER_CUBIC : $CV_INTER_AREA
 
 	Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
 	$cv.imshow($title, $img.convertToShow())

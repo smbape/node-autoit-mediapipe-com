@@ -121,10 +121,10 @@ namespace mediapipe {
 				}
 
 				template<typename _Tp>
-				struct _DrawingSpec;
+				struct OptionalDrawingSpec;
 
 				template<>
-				struct _DrawingSpec<DrawingSpec> {
+				struct OptionalDrawingSpec<DrawingSpec> {
 					inline static const bool has(
 						const DrawingSpec& connection_drawing_spec,
 						const std::tuple<int, int> connection
@@ -138,24 +138,33 @@ namespace mediapipe {
 					) {
 						return connection_drawing_spec;
 					}
+				};
+
+				template<>
+				struct OptionalDrawingSpec<std::shared_ptr<DrawingSpec>> {
+					inline static const bool empty(
+						const std::shared_ptr<DrawingSpec>& landmark_drawing_spec
+					) {
+						return !landmark_drawing_spec.get();
+					}
 
 					inline static const bool has(
-						const DrawingSpec& landmark_drawing_spec,
+						const std::shared_ptr<DrawingSpec>& landmark_drawing_spec,
 						int idx
 					) {
-						return true;
+						return landmark_drawing_spec.get();
 					}
 
 					inline static const DrawingSpec& get(
-						const DrawingSpec& landmark_drawing_spec,
+						const std::shared_ptr<DrawingSpec>& landmark_drawing_spec,
 						int idx
 					) {
-						return landmark_drawing_spec;
+						return *landmark_drawing_spec.get();
 					}
 				};
 
 				template<>
-				struct _DrawingSpec<std::map<int, std::map<int, DrawingSpec>>> {
+				struct OptionalDrawingSpec<std::map<int, std::map<int, DrawingSpec>>> {
 					inline static const bool has(
 						const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec,
 						const std::tuple<int, int> connection
@@ -175,7 +184,13 @@ namespace mediapipe {
 				};
 
 				template<>
-				struct _DrawingSpec<std::map<int, DrawingSpec>> {
+				struct OptionalDrawingSpec<std::map<int, DrawingSpec>> {
+					inline static const bool empty(
+						const std::map<int, DrawingSpec>& landmark_drawing_spec
+					) {
+						return landmark_drawing_spec.empty();
+					}
+
 					inline static const bool has(
 						const std::map<int, DrawingSpec>& landmark_drawing_spec,
 						int idx
@@ -234,9 +249,9 @@ namespace mediapipe {
 							if (
 								idx_to_coordinates.count(start_idx)
 								&& idx_to_coordinates.count(end_idx)
-								&& _DrawingSpec<_ConnectionType>::has(connection_drawing_spec, connection)
+								&& OptionalDrawingSpec<_ConnectionType>::has(connection_drawing_spec, connection)
 								) {
-								auto drawing_spec = _DrawingSpec<_ConnectionType>::get(connection_drawing_spec, connection);
+								auto drawing_spec = OptionalDrawingSpec<_ConnectionType>::get(connection_drawing_spec, connection);
 
 								cv::line(
 									image,
@@ -249,14 +264,18 @@ namespace mediapipe {
 						}
 					}
 
+					if (OptionalDrawingSpec<_LandmarkType>::empty(landmark_drawing_spec)) {
+						return;
+					}
+
 					// Draws landmark points after finishing the connection lines, which is
 					// aesthetically better.
 					for (const auto& [idx, landmark_px] : idx_to_coordinates) {
-						if (!_DrawingSpec<_LandmarkType>::has(landmark_drawing_spec, idx)) {
+						if (!OptionalDrawingSpec<_LandmarkType>::has(landmark_drawing_spec, idx)) {
 							continue;
 						}
 
-						auto drawing_spec = _DrawingSpec<_LandmarkType>::get(landmark_drawing_spec, idx);
+						auto drawing_spec = OptionalDrawingSpec<_LandmarkType>::get(landmark_drawing_spec, idx);
 
 						//  White circle border
 						auto circle_border_radius = std::max(
@@ -277,7 +296,7 @@ namespace mediapipe {
 					cv::Mat& image,
 					const NormalizedLandmarkList& landmark_list,
 					const std::vector<std::tuple<int, int>>& connections,
-					const DrawingSpec& landmark_drawing_spec,
+					const std::shared_ptr<DrawingSpec>& landmark_drawing_spec,
 					const DrawingSpec& connection_drawing_spec
 				) {
 					_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec);
@@ -297,7 +316,7 @@ namespace mediapipe {
 					cv::Mat& image,
 					const NormalizedLandmarkList& landmark_list,
 					const std::vector<std::tuple<int, int>>& connections,
-					const DrawingSpec& landmark_drawing_spec,
+					const std::shared_ptr<DrawingSpec>& landmark_drawing_spec,
 					const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec
 				) {
 					_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec);

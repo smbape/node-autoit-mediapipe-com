@@ -152,7 +152,7 @@ Func Main()
 			$results("face_landmarks"), _
 			$mp_holistic.FACEMESH_TESSELATION, _
 			_Mediapipe_Params( _
-			"landmark_drawing_spec", $landmark_drawing_spec, _
+			"landmark_drawing_spec", Null, _
 			"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale) _
 			))
 	$mp_drawing.draw_landmarks( _

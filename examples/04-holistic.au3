@@ -90,7 +90,7 @@ Func Example()
 			$results("face_landmarks"), _
 			$mp_holistic.FACEMESH_TESSELATION, _
 			_Mediapipe_Params( _
-			"landmark_drawing_spec", $landmark_drawing_spec, _
+			"landmark_drawing_spec", Null, _
 			"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale) _
 			))
 	$mp_drawing.draw_landmarks( _
@@ -141,7 +141,7 @@ Func resize_and_show($title, $image)
 		$h = $DESIRED_HEIGHT
 	EndIf
 
-	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
+	Local $interpolation = ($DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height) ? $CV_INTER_CUBIC : $CV_INTER_AREA
 
 	Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
 	$cv.imshow($title, $img.convertToShow())

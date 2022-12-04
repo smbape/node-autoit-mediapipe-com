@@ -24,7 +24,8 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 ## Prerequisites
 
   - Download and extract [opencv-4.6.0-vc14_vc15.exe](https://sourceforge.net/projects/opencvlibrary/files/4.6.0/opencv-4.6.0-vc14_vc15.exe/download) into a folder
-  - Download and extract [autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.0.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z) into a folder
+  - Download and extract [autoit-opencv-4.6.0-com-v2.2.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.0/autoit-opencv-4.6.0-com-v2.2.0.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z) into a folder
 
 ## Usage
 
@@ -45,49 +46,106 @@ _Mediapipe_Open_And_Register("opencv-4.6.0-vc14_vc15\opencv\build\x64\vc15\bin\o
 _OpenCV_Open_And_Register("opencv-4.6.0-vc14_vc15\opencv\build\x64\vc15\bin\opencv_world460.dll", "autoit-opencv-com\autoit_opencv_com460.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
+Global $mp = _Mediapipe_get()
+If Not IsObj($mp) Then
+  ConsoleWriteError("Failed to load mediapipe" & @CRLF)
+  Exit
+EndIf
+
+Global $cv = _OpenCV_get()
+If Not IsObj($cv) Then
+  ConsoleWriteError("Failed to load opencv" & @CRLF)
+  Exit
+EndIf
+
 Example()
 
 Func Example()
-  Local $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-  If Not IsObj($download_utils) Then Return
-
-  Local $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
-  If Not IsObj($mp_drawing) Then Return
-
-  Local $mp_selfie_segmentation = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.selfie_segmentation")
-  If Not IsObj($mp_selfie_segmentation) Then Return
-
-  Local Const $cv = _OpenCV_get()
-  If Not IsObj($cv) Then Return
-
-  ; tell mediapipe to lookup for need files relatively to this udf
-  _Mediapipe_SetResourceDir()
+  Local $download_utils = $mp.solutions.download_utils
 
   $download_utils.download( _
       "https://github.com/tensorflow/tfjs-models/raw/master/face-detection/test_data/portrait.jpg", _
       @ScriptDir & "/testdata/portrait.jpg" _
       )
 
+  Local $mp_face_mesh = $mp.solutions.face_mesh
+  Local $mp_drawing = $mp.solutions.drawing_utils
+  Local $mp_drawing_styles = $mp.solutions.drawing_styles
+
   Local $image_path = @ScriptDir & "/testdata/portrait.jpg"
   Local $image = $cv.imread($image_path)
 
-  Local $selfie_segmentation = $mp_selfie_segmentation.SelfieSegmentation()
-  Local $results = $selfie_segmentation.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-  Local $segmentation_mask = $cv.multiply($results("segmentation_mask"), 255.0).convertTo($CV_32S)
+  ; Preview the images.
+  Local $ratio = resize_and_show("preview", $image)
+  Local $scale = 1 / $ratio
 
-  ; image and mask must have the same size and type to perform cv::min
-  If $image.depth() <> $segmentation_mask.depth() Then
-    $segmentation_mask = $segmentation_mask.convertTo($image.depth())
+  ; Run MediaPipe Face Mesh
+  Local $face_mesh = $mp_face_mesh.FaceMesh(_Mediapipe_Params( _
+      "static_image_mode", True, _
+      "refine_landmarks", True, _
+      "max_num_faces", 2, _
+      "min_detection_confidence", 0.5 _
+      ))
+
+  ; Convert the BGR image to RGB and process it with MediaPipe Face Mesh.
+  Local $results = $face_mesh.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+  If $results("multi_face_landmarks") == Default Then
+    ConsoleWrite("No face detection for " & $image_path & @CRLF)
+    Return
   EndIf
 
-  ; set the background to black
-  Local $image_mask[] = [$segmentation_mask, $segmentation_mask, $segmentation_mask]
-  $image = $cv.min($image, $cv.merge($image_mask))
+  Local $annotated_image = $image.copy()
 
-  $cv.imshow("selfie segmentation", $image)
+  ; Draw face detections of each face.
+  For $face_landmarks In $results("multi_face_landmarks")
+    $mp_drawing.draw_landmarks(_Mediapipe_Params( _
+        "image", $annotated_image, _
+        "landmark_list", $face_landmarks, _
+        "connections", $mp_face_mesh.FACEMESH_TESSELATION, _
+        "landmark_drawing_spec", Null, _
+        "connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)))
+    $mp_drawing.draw_landmarks(_Mediapipe_Params( _
+        "image", $annotated_image, _
+        "landmark_list", $face_landmarks, _
+        "connections", $mp_face_mesh.FACEMESH_CONTOURS, _
+        "landmark_drawing_spec", Null, _
+        "connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_contours_style($scale)))
+    $mp_drawing.draw_landmarks(_Mediapipe_Params( _
+        "image", $annotated_image, _
+        "landmark_list", $face_landmarks, _
+        "connections", $mp_face_mesh.FACEMESH_IRISES, _
+        "landmark_drawing_spec", Null, _
+        "connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+  Next
+
+  resize_and_show("face mesh", $annotated_image)
+
+  ; display images until a keyboard action is detected
   $cv.waitKey()
   $cv.destroyAllWindows()
 EndFunc   ;==>Example
+
+Func resize_and_show($title, $image)
+  Local Const $DESIRED_HEIGHT = 480
+  Local Const $DESIRED_WIDTH = 480
+  Local $w = $image.width
+  Local $h = $image.height
+
+  If $h < $w Then
+    $h = $h / ($w / $DESIRED_WIDTH)
+    $w = $DESIRED_WIDTH
+  Else
+    $w = $w / ($h / $DESIRED_HEIGHT)
+    $h = $DESIRED_HEIGHT
+  EndIf
+
+  Local $interpolation = ($DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height) ? $CV_INTER_CUBIC : $CV_INTER_AREA
+
+  Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
+  $cv.imshow($title, $img.convertToShow())
+
+  Return $img.width / $image.width
+EndFunc   ;==>resize_and_show
 
 Func _OnAutoItExit()
   _OpenCV_Unregister_And_Close()
@@ -102,17 +160,17 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.0.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z
+# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z
 
-# extract the content of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z -aoa -oautoit-mediapipe-com
 
-# download autoit-opencv-4.6.0-com-v2.1.0.7z
-curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.1.0/autoit-opencv-4.6.0-com-v2.1.0.7z' -o autoit-opencv-4.6.0-com-v2.1.0.7z
+# download autoit-opencv-4.6.0-com-v2.2.0.7z
+curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.0/autoit-opencv-4.6.0-com-v2.2.0.7z' -o autoit-opencv-4.6.0-com-v2.2.0.7z
 
-# extract the content of autoit-opencv-4.6.0-com-v2.1.0.7z into a folder named autoit-opencv-com
-7z x autoit-opencv-4.6.0-com-v2.1.0.7z -aoa -oautoit-opencv-com
+# extract the content of autoit-opencv-4.6.0-com-v2.2.0.7z into a folder named autoit-opencv-com
+7z x autoit-opencv-4.6.0-com-v2.2.0.7z -aoa -oautoit-opencv-com
 
 # download opencv-4.6.0-vc14_vc15.exe
 curl -L 'https://github.com/opencv/opencv/releases/download/4.6.0/opencv-4.6.0-vc14_vc15.exe' -o opencv-4.6.0-vc14_vc15.exe
@@ -120,13 +178,13 @@ curl -L 'https://github.com/opencv/opencv/releases/download/4.6.0/opencv-4.6.0-v
 # extract the content of opencv-4.6.0-vc14_vc15.exe into a folder named opencv-4.6.0-vc14_vc15
 ./opencv-4.6.0-vc14_vc15.exe -oopencv-4.6.0-vc14_vc15 -y
 
-# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.0.0.zip' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0-src.zip
+# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.1.0.zip' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0-src.zip
-7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0-src.zip -aoa 'node-autoit-mediapipe-com-0.0.0\examples'
-cp -rf node-autoit-mediapipe-com-0.0.0/* ./
-rm -rf node-autoit-mediapipe-com-0.0.0
+# extract the examples folder of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
+7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip -aoa 'node-autoit-mediapipe-com-0.1.0\examples'
+cp -rf node-autoit-mediapipe-com-0.1.0/* ./
+rm -rf node-autoit-mediapipe-com-0.1.0
 ```
 
 Now you can run any file in the `examples` folder.

@@ -69,11 +69,6 @@ Func Example()
 		Return
 	EndIf
 
-	; enlarge/shrink drawings to keep them visible after resize
-	Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-	$landmark_drawing_spec.thickness *= $scale
-	$landmark_drawing_spec.circle_radius *= $scale
-
 	; Draw hand landmarks of each hand.
 	ConsoleWrite('Hand landmarks of ' & $image_path & ':' & @CRLF)
 	Local $image_width = $image.width
@@ -117,7 +112,7 @@ Func resize_and_show($title, $image)
 		$h = $DESIRED_HEIGHT
 	EndIf
 
-	Local $interpolation = $DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height ? $CV_INTER_CUBIC : $CV_INTER_AREA
+	Local $interpolation = ($DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height) ? $CV_INTER_CUBIC : $CV_INTER_AREA
 
 	Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
 	$cv.imshow($title, $img.convertToShow())

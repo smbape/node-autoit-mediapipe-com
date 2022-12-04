@@ -125,11 +125,6 @@ Func Main()
 	Local $ratio = _OpenCV_resizeRatio_ControlPic($image, $FormGUI, $PicResult)
 	Local $scale = 1 / $ratio
 
-	; enlarge/shrink drawings to keep them visible after resize
-	Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-	$landmark_drawing_spec.thickness *= $scale
-	$landmark_drawing_spec.circle_radius *= $scale
-
 	; Draw hand landmarks of each hand.
 	ConsoleWrite('Hand landmarks of ' & $image_path & ':' & @CRLF)
 	Local $image_width = $image.width

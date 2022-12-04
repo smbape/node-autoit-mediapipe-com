@@ -339,7 +339,7 @@ waterfall([
             print(json.dumps({"decls": all_decls, "namespaces": sorted(parser.namespaces)}, indent=4))
         `.trim().replace(/^ {12}/mg, "");
 
-        fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
+        // fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
 
         child.stdin.write(code);
         child.stdin.end();
