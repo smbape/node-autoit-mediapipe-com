@@ -3,6 +3,10 @@
         "iid": "4cf70f94-bfbe-46b1-bea1-320a3b475ddc",
         "clsid": "abef06d8-3634-4d4e-89d2-63bdabbc28de"
     },
+    "autoit": {
+        "iid": "b4f3233d-a206-4ffa-aa36-a5b4390bc9a0",
+        "clsid": "3082eaaa-f420-437a-81bb-7e2d1b796600"
+    },
     "google": {
         "iid": "6041b82c-f241-480d-8a91-da7b2169f554",
         "clsid": "59a20724-9b93-4753-84e2-ca440b90cb48"

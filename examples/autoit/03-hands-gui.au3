@@ -22,6 +22,8 @@ _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\op
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+_Mediapipe_SetResourceDir()
+
 Global $mp = _Mediapipe_get()
 If Not IsObj($mp) Then
 	ConsoleWriteError("Failed to load mediapipe" & @CRLF)

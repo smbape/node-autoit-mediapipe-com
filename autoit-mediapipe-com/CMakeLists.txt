@@ -111,14 +111,14 @@ FetchContent_Declare(mediapipe
 # Tell cmake that we will need autoit-opencv-com.
 include(ExternalProject)
 ExternalProject_Add(autoit-opencv-com
-  URL               https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.0/autoit-opencv-${OPENCV_VERSION}-com-v2.2.0.7z
-  URL_HASH          SHA256=88ecb37405e4ef6935388548b75d997785edf4cd6b106d45d2b19eb96f10b8c2
+  URL               https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.2/autoit-opencv-${OPENCV_VERSION}-com-v2.2.2.7z
+  URL_HASH          SHA256=75c5ba62841effd6efd66d7d120ece0ee1873f3b1ed533056042d3ff2437646c
   DOWNLOAD_NO_EXTRACT TRUE
   DOWNLOAD_DIR      "${OPENCV_DOWNLOAD_DIR}"
   SOURCE_DIR        "${OPENCV_DOWNLOAD_DIR}"
   CONFIGURE_COMMAND ""
   BUILD_COMMAND     ""
-  INSTALL_COMMAND   7z x "<DOWNLOAD_DIR>/autoit-opencv-${OPENCV_VERSION}-com-v2.2.0.7z" -aoa "-o<DOWNLOAD_DIR>/autoit-opencv-com" -y
+  INSTALL_COMMAND   7z x "<DOWNLOAD_DIR>/autoit-opencv-${OPENCV_VERSION}-com-v2.2.2.7z" -aoa "-o<DOWNLOAD_DIR>/autoit-opencv-com" -y
 )
 
 FetchContent_Populate(opencv)
@@ -236,3 +236,26 @@ foreach(item
 
   add_dependencies(${PROJECT_NAME} ${item_target})
 endforeach()
+
+if (CMAKE_GENERATOR MATCHES "Visual Studio")
+# ===============
+# C# Interop target
+# ===============
+include(CSharpUtilities)
+enable_language(CSharp)
+
+file(GLOB cs_files "dotnet/*.cs")
+add_library(interop_mediapipe SHARED ${cs_files})
+
+set_target_properties(interop_mediapipe PROPERTIES
+  OUTPUT_NAME "interop.mediapipe-0"
+  DEBUG_POSTFIX d
+  VS_DOTNET_REFERENCES "Microsoft.CSharp;System"
+)
+
+foreach( BUILD_TYPE ${CMAKE_CONFIGURATION_TYPES} )
+  string( TOUPPER ${BUILD_TYPE} BUILD_TYPE_UPPER )
+  set_target_properties(interop_mediapipe PROPERTIES RUNTIME_OUTPUT_DIRECTORY_${BUILD_TYPE_UPPER} "${CMAKE_BINARY_DIR}/${BUILD_TYPE}/dotnet")
+endforeach()
+
+endif()

@@ -1,7 +1,7 @@
 const fs = require("node:fs");
 const sysPath = require("node:path");
 
-const test_on_video_fullpose_squats = fs.readFileSync("C:\\Users\\smbape\\AppData\\Local\\Temp\\test_on_video_fullpose_squats.full.json");
+const test_on_video_fullpose_squats = fs.readFileSync(process.env.APPDATA + "..\\Local\\Temp\\test_on_video_fullpose_squats.full.json");
 const data = JSON.parse(test_on_video_fullpose_squats);
 
 const text = ["#include-once", ""];

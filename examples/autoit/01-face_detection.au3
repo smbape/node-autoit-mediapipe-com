@@ -5,19 +5,24 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
-#include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
-#include "..\autoit-opencv-com\udf\opencv_udf_utils.au3"
+#include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
+#include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
 ;~ Sources:
-;~     https://mediapipe.page.link/face_mesh_py_colab
+;~     https://mediapipe.page.link/face_detection_py_colab
 
 ;~ Images:
 ;~     https://unsplash.com/photos/JyVcAIUAcPM
 ;~     https://unsplash.com/photos/auTAb39ImXg
+;~     https://unsplash.com/photos/ezgW6z6oIvA
+;~     https://unsplash.com/photos/_veZpXKU71c
+
 
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
 OnAutoItExitRegister("_OnAutoItExit")
+
+_Mediapipe_SetResourceDir()
 
 Global $mp = _Mediapipe_get()
 If Not IsObj($mp) Then
@@ -40,52 +45,31 @@ Func Example()
 
 	; Preview the images.
 	Local $ratio = resize_and_show("preview", $image)
-	Local $scale = 1 / $ratio
 
-	Local $mp_face_mesh = $mp.solutions.face_mesh
+	Local $mp_face_detection = $mp.solutions.face_detection
 	Local $mp_drawing = $mp.solutions.drawing_utils
-	Local $mp_drawing_styles = $mp.solutions.drawing_styles
 
-	; Run MediaPipe Face Mesh
-	Local $face_mesh = $mp_face_mesh.FaceMesh(_Mediapipe_Params( _
-			"static_image_mode", True, _
-			"refine_landmarks", True, _
-			"max_num_faces", 2, _
-			"min_detection_confidence", 0.5 _
-			))
+	; Run MediaPipe Face Detection
+	Local $face_detection = $mp_face_detection.FaceDetection()
 
-	; Convert the BGR image to RGB and process it with MediaPipe Face Mesh.
-	Local $results = $face_mesh.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-	If $results("multi_face_landmarks") == Default Then
+	; Convert the BGR image to RGB and process it with MediaPipe Face Detection.
+	Local $results = $face_detection.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+	If $results("detections") == Default Then
 		ConsoleWrite("No face detection for " & $image_path & @CRLF)
 		Return
 	EndIf
 
-	Local $annotated_image = $image.copy()
+	; enlarge/shrink drawings to keep them visible after resize
+	Local $thickness = 2 / $ratio
+	Local $keypoint_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR, $thickness, $thickness)
+	Local $bbox_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.WHITE_COLOR, $thickness, $thickness)
 
 	; Draw face detections of each face.
-	For $face_landmarks In $results("multi_face_landmarks")
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_TESSELATION, _
-				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)))
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_CONTOURS, _
-				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_contours_style($scale)))
-		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
-				"image", $annotated_image, _
-				"landmark_list", $face_landmarks, _
-				"connections", $mp_face_mesh.FACEMESH_IRISES, _
-				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+	For $detection In $results("detections")
+		$mp_drawing.draw_detection($image, $detection, $keypoint_drawing_spec, $bbox_drawing_spec)
 	Next
 
-	resize_and_show("face mesh", $annotated_image)
+	resize_and_show("face detection", $image)
 
 	; display images until a keyboard action is detected
 	$cv.waitKey()

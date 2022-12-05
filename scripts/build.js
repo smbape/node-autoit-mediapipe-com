@@ -11,7 +11,11 @@ const files = [
     [project, "install.bat"],
     [project, "udf/*.au3"],
     [project, "udf/*.md"],
-    [sysPath.join(project, "generated"), "mediapipeCOM.tlb"],
+    [project, "dotnet/*.cs"],
+    [sysPath.join(sources, "examples"), "dotnet/*.psm1"],
+    [sysPath.join(project, "generated"), "*.tlb"],
+    [sysPath.join(project, "build_x64", "Debug"), "autoit*", "dotnet/*"],
+    [sysPath.join(project, "build_x64", "RelWithDebInfo"), "autoit*", "dotnet/*"],
 ];
 
 files.push([

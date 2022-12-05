@@ -28,14 +28,13 @@ Func _Mediapipe_FindFiles($aParts, $sDir = Default, $iFlag = Default, $bReturnPa
 	Local $aFileList[0]
 	Local $aNextFileList[0]
 	Local $iParts = UBound($aParts)
-	Local $iFound = 0, $iNextFound = 0
 	Local $iLen = StringLen($sDir)
-	Local $sPath = "", $iiFlags = 0
+	Local $iLastPart = $iParts - 1, $iFound = 0, $iNextFound = 0, $sPath = "", $iiFlags = 0
 
-	For $i = 0 To $iParts - 1
+	For $i = 0 To $iLastPart
 		$bFound = False
 
-		If ($iFlag == $FLTA_FILESFOLDERS Or $i <> $iParts - 1) And StringInStr($aParts[$i], "?") == 0 And StringInStr($aParts[$i], "*") == 0 Then
+		If ($iFlag == $FLTA_FILESFOLDERS Or $i <> $iLastPart) And StringInStr($aParts[$i], "?") == 0 And StringInStr($aParts[$i], "*") == 0 Then
 			_Mediapipe_DebugMsg("Looking for " & $sDir & "\" & $aParts[$i])
 			$bFound = FileExists($sDir & "\" & $aParts[$i])
 			If Not $bFound Then
@@ -47,12 +46,12 @@ Func _Mediapipe_FindFiles($aParts, $sDir = Default, $iFlag = Default, $bReturnPa
 		EndIf
 
 		_Mediapipe_DebugMsg("Listing " & $sDir & "\=" & $aParts[$i])
-		$iiFlags = $i == $iParts - 1 ? $iFlag : $FLTA_FILESFOLDERS
+		$iiFlags = $i == $iLastPart ? $iFlag : $FLTA_FILESFOLDERS
 
 		$aFileList = _FileListToArray($sDir, $aParts[$i], $iiFlags, $bReturnPath)
 		If @error Then ExitLoop
 
-		If $i == $iParts - 1 Then
+		If $i == $iLastPart Then
 			ReDim $aMatches[$aFileList[0]]
 
 			For $j = 1 To $aFileList[0]
@@ -69,7 +68,7 @@ Func _Mediapipe_FindFiles($aParts, $sDir = Default, $iFlag = Default, $bReturnPa
 		EndIf
 
 		ReDim $aNextParts[$iParts - $i - 1]
-		For $j = $i + 1 To $iParts - 1
+		For $j = $i + 1 To $iLastPart
 			$aNextParts[$j - $i - 1] = $aParts[$j]
 		Next
 
@@ -169,9 +168,9 @@ Func _Mediapipe_FindFile($sFile, $sFilter = Default, $sDir = Default, $iFlag = D
 EndFunc   ;==>_Mediapipe_FindFile
 
 Func _Mediapipe_FindDLL($sFile, $sFilter = Default, $sDir = Default, $bReverse = Default)
-	Local $sBuildType = $_mediapipe_build_type == "Debug" ? "Debug" : "Release"
-	Local $sPostfix = $_mediapipe_build_type == "Debug" ? "d" : ""
-	Local $sCompileMode = $_mediapipe_build_type == "Debug" ? "dbg" : "opt"
+	Local $sBuildType = EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" ? "Debug" : "Release"
+	Local $sPostfix = EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" ? "d" : ""
+	Local $sCompileMode = EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" ? "dbg" : "opt"
 	Local $sBazelOut = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & _
 			$sCompileMode & "\bin\mediapipe\autoit"
 
@@ -182,7 +181,9 @@ Func _Mediapipe_FindDLL($sFile, $sFilter = Default, $sDir = Default, $bReverse =
 			"build_x64\" & $sBuildType, _
 			"build", _
 			"build\x64", _
+			"build\x64\vc17\bin", _
 			"build\x64\vc15\bin", _
+			"build\x64\vc14\bin", _
 			$sBazelOut, _
 			"autoit-mediapipe-com", _
 			"autoit-mediapipe-com\build_x64", _
@@ -473,32 +474,37 @@ Func _Mediapipe_MapOfStringAndVariant($sKey1 = Default, $vVal1 = Default, $sKey2
 	EndSwitch
 EndFunc   ;==>_Mediapipe_MapOfStringAndVariant
 
-Func _Mediapipe_FindResourceDir()
-	Local $sCompileMode = $_mediapipe_build_type == "Debug" ? "dbg" : "opt"
+Func _Mediapipe_FindResourceDir($sDir = Default)
+	If $sDir == Default Then $sDir = @ScriptDir
+
+	Local $sCompileMode = EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" ? "dbg" : "opt"
+	Local $sBazelBin = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & $sCompileMode & "\bin"
 
 	Local $aSearchPaths[] = [ _
 			0, _
-			"autoit-mediapipe-com\build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & $sCompileMode & "\bin", _
+			".", _
 			"autoit-mediapipe-com", _
-			"." _
+			$sBazelBin, _
+			"autoit-mediapipe-com\" & $sBazelBin _
 			]
 	$aSearchPaths[0] = UBound($aSearchPaths) - 1
 
 	Local Const $sFile = "mediapipe\modules\face_detection\face_detection_short_range_cpu.binarypb"
 
-	Local Const $_SHORT_RANGE_GRAPH_FILE_PATH = _Mediapipe_FindFile($sFile, Default, Default, $FLTA_FILES, $aSearchPaths)
+	Local Const $sGraphFile = _Mediapipe_FindFile($sFile, Default, $sDir, $FLTA_FILES, $aSearchPaths)
 
-	If $_SHORT_RANGE_GRAPH_FILE_PATH == "" Then
+	If $sGraphFile == "" Then
 		Return ""
 	EndIf
 
-	Local Const $iCount = StringLen($_SHORT_RANGE_GRAPH_FILE_PATH) - StringLen($sFile) - 1
-	Return StringLeft($_SHORT_RANGE_GRAPH_FILE_PATH, $iCount)
+	Local Const $iCount = StringLen($sGraphFile) - StringLen($sFile) - 1
+	Return StringLeft($sGraphFile, $iCount)
 EndFunc   ;==>_Mediapipe_FindResourceDir
 
 Func _Mediapipe_SetResourceDir($root_path = Default)
 	If $root_path == Default Then $root_path = _Mediapipe_FindResourceDir()
 	_Mediapipe_DebugMsg('_Mediapipe_SetResourceDir("' & $root_path & '"')
-	Local Const $resource_util = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
+
+	Local Static  $resource_util = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
 	$resource_util.set_resource_dir($root_path)
 EndFunc   ;==>_Mediapipe_SetResourceDir

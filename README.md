@@ -7,6 +7,7 @@
   - [Prerequisites](#prerequisites)
   - [Usage](#usage)
     - [AutoIt](#autoit)
+    - [PowerShell](#powershell)
   - [Running examples](#running-examples)
   - [Developpement](#developpement)
     - [Prerequisites](#prerequisites-1)
@@ -24,8 +25,8 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 ## Prerequisites
 
   - Download and extract [opencv-4.6.0-vc14_vc15.exe](https://sourceforge.net/projects/opencvlibrary/files/4.6.0/opencv-4.6.0-vc14_vc15.exe/download) into a folder
-  - Download and extract [autoit-opencv-4.6.0-com-v2.2.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.0/autoit-opencv-4.6.0-com-v2.2.0.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z) into a folder
+  - Download and extract [autoit-opencv-4.6.0-com-v2.2.2.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.2/autoit-opencv-4.6.0-com-v2.2.2.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.0.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z) into a folder
 
 ## Usage
 
@@ -153,6 +154,115 @@ Func _OnAutoItExit()
 EndFunc   ;==>_OnAutoItExit
 ```
 
+### PowerShell
+
+```powershell
+#requires -version 5.0
+
+Import-Module .\autoit-mediapipe-com\dotnet\mediapipe_utils.psm1
+Import-Module .\autoit-opencv-com\dotnet\opencv_utils.psm1
+
+function resize_and_show([string] $title, [Object] $image) {
+    $DESIRED_HEIGHT = 480
+    $DESIRED_WIDTH = 480
+    $w = $image.width
+    $h = $image.height
+    $width = $w
+    $height = $h
+
+    if ($h -lt $w) {
+        $h = $h / ($w / $DESIRED_WIDTH)
+        $w = $DESIRED_WIDTH
+    } else {
+        $w = $w / ($h / $DESIRED_HEIGHT)
+        $h = $DESIRED_HEIGHT
+    }
+
+    $interpolation = if ($DESIRED_WIDTH -gt $width -or $DESIRED_HEIGHT -gt $height) { $cv.INTER_CUBIC_ } else { $cv.INTER_AREA_ }
+
+    $img = $cv.resize($image, @($w, $h), [OpenCvComInterop]::Params([ref] @{ interpolation = $interpolation }))
+    $cv.imshow($title, $img.convertToShow())
+    $w / $width
+}
+
+function Example() {
+    $image_path = _Mediapipe_FindFile "examples\data\garrett-jackson-auTAb39ImXg-unsplash.jpg"
+    $image = $cv.imread($image_path)
+
+    $mp_face_mesh = $mp.solutions.face_mesh
+    $mp_drawing = $mp.solutions.drawing_utils
+    $mp_drawing_styles = $mp.solutions.drawing_styles
+
+    # Preview the images.
+    $ratio = resize_and_show -title "preview" -image $image
+    $scale = 1 / $ratio
+
+    # Run MediaPipe Face Detection
+    $face_mesh = $mp_face_mesh.FaceMesh([MediapipeComInterop]::Params([ref] @{
+        static_image_mode = $true;
+        refine_landmarks = $true;
+        max_num_faces = 2;
+        min_detection_confidence = 0.5
+    }))
+
+    # Convert the BGR image to RGB and process it with MediaPipe Face Mesh.
+    $results = $face_mesh.process($cv.cvtColor($image, $cv.COLOR_BGR2RGB_))
+    If (-not $results["multi_face_landmarks"]) {
+        Write-Error "No face detection for $image_path"
+        return
+    }
+
+    $annotated_image = $image.copy()
+
+    # Draw face detections of each face.
+    foreach ($face_landmarks in $results["multi_face_landmarks"]) {
+        $mp_drawing.draw_landmarks([MediapipeComInterop]::Params([ref] @{
+                image =  $annotated_image;
+                landmark_list =  $face_landmarks;
+                connections =  $mp_face_mesh.FACEMESH_TESSELATION;
+                landmark_drawing_spec =  $null;
+                connection_drawing_spec = $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)}))
+        $mp_drawing.draw_landmarks([MediapipeComInterop]::Params([ref] @{
+                image =  $annotated_image;
+                landmark_list =  $face_landmarks;
+                connections =  $mp_face_mesh.FACEMESH_CONTOURS;
+                landmark_drawing_spec =  $null;
+                connection_drawing_spec = $mp_drawing_styles.get_default_face_mesh_contours_style($scale)}))
+        $mp_drawing.draw_landmarks([MediapipeComInterop]::Params([ref] @{
+                image =  $annotated_image;
+                landmark_list =  $face_landmarks;
+                connections =  $mp_face_mesh.FACEMESH_IRISES;
+                landmark_drawing_spec =  $null;
+                connection_drawing_spec = $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)}))
+    }
+
+    resize_and_show -title "face mesh" -image $annotated_image | Out-Null
+
+    $cv.waitKey() | Out-Null
+    $cv.destroyAllWindows()
+}
+
+[MediapipeComInterop]::DllOpen("opencv-4.6.0-vc14_vc15\opencv\build\x64\vc15\bin\opencv_world460.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.8.11-460.dll")
+[OpenCvComInterop]::DllOpen("opencv-4.6.0-vc14_vc15\opencv\build\x64\vc15\bin\opencv_world460.dll", "autoit-opencv-com\autoit_opencv_com460.dll")
+
+[MediapipeComInterop]::Register()
+[OpenCvComInterop]::Register()
+
+$resource_util = [MediapipeComInterop]::ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
+$resource_util.set_resource_dir("autoit-mediapipe-com")
+
+$cv = [OpenCvComInterop]::ObjCreate("cv")
+$mp = [MediapipeComInterop]::ObjCreate("mediapipe")
+
+Example
+
+[MediapipeComInterop]::Unregister()
+[OpenCvComInterop]::Unregister()
+
+[MediapipeComInterop]::DllClose()
+[OpenCvComInterop]::DllClose()
+```
+
 ## Running examples
 
 Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to you system PATH environment variable
@@ -160,17 +270,17 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z
+# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.0.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z
 
-# extract the content of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0.7z -aoa -oautoit-mediapipe-com
 
-# download autoit-opencv-4.6.0-com-v2.2.0.7z
-curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.0/autoit-opencv-4.6.0-com-v2.2.0.7z' -o autoit-opencv-4.6.0-com-v2.2.0.7z
+# download autoit-opencv-4.6.0-com-v2.2.2.7z
+curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.2/autoit-opencv-4.6.0-com-v2.2.2.7z' -o autoit-opencv-4.6.0-com-v2.2.2.7z
 
-# extract the content of autoit-opencv-4.6.0-com-v2.2.0.7z into a folder named autoit-opencv-com
-7z x autoit-opencv-4.6.0-com-v2.2.0.7z -aoa -oautoit-opencv-com
+# extract the content of autoit-opencv-4.6.0-com-v2.2.2.7z into a folder named autoit-opencv-com
+7z x autoit-opencv-4.6.0-com-v2.2.2.7z -aoa -oautoit-opencv-com
 
 # download opencv-4.6.0-vc14_vc15.exe
 curl -L 'https://github.com/opencv/opencv/releases/download/4.6.0/opencv-4.6.0-vc14_vc15.exe' -o opencv-4.6.0-vc14_vc15.exe
@@ -178,13 +288,13 @@ curl -L 'https://github.com/opencv/opencv/releases/download/4.6.0/opencv-4.6.0-v
 # extract the content of opencv-4.6.0-vc14_vc15.exe into a folder named opencv-4.6.0-vc14_vc15
 ./opencv-4.6.0-vc14_vc15.exe -oopencv-4.6.0-vc14_vc15 -y
 
-# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.1.0.zip' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
+# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.0.0.zip' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
-7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip -aoa 'node-autoit-mediapipe-com-0.1.0\examples'
-cp -rf node-autoit-mediapipe-com-0.1.0/* ./
-rm -rf node-autoit-mediapipe-com-0.1.0
+# extract the examples folder of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0-src.zip
+7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.0.0-src.zip -aoa 'node-autoit-mediapipe-com-0.0.0\examples'
+cp -rf node-autoit-mediapipe-com-0.0.0/* ./
+rm -rf node-autoit-mediapipe-com-0.0.0
 ```
 
 Now you can run any file in the `examples` folder.

@@ -25,6 +25,9 @@
   - [NamedParameters::merge](#namedparametersmerge)
   - [NamedParameters::put\_Item](#namedparametersput%5C_item)
   - [NamedParameters::size](#namedparameterssize)
+- [autoit](#autoit)
+  - [autoit::findFile](#autoitfindfile)
+  - [autoit::findFiles](#autoitfindfiles)
 - [google::protobuf::autoit::MapContainer](#googleprotobufautoitmapcontainer)
   - [google::protobuf::autoit::MapContainer::create](#googleprotobufautoitmapcontainercreate)
   - [google::protobuf::autoit::MapContainer::MergeFrom](#googleprotobufautoitmapcontainermergefrom)
@@ -4137,6 +4140,12 @@
 ### NamedParameters::create
 
 ```cpp
+static NamedParameters NamedParameters::create();
+AutoIt:
+    _Mediapipe_ObjCreate("NamedParameters").create() -> <NamedParameters object>
+```
+
+```cpp
 static std::shared_ptr<NamedParameters> NamedParameters::create( std::vector<std::pair<std::string, _variant_t>> pairs );
 AutoIt:
     _Mediapipe_ObjCreate("NamedParameters").create( $pairs ) -> retval
@@ -4279,6 +4288,31 @@ AutoIt:
 size_t NamedParameters::size();
 AutoIt:
     $oNamedParameters.size() -> retval
+```
+
+## autoit
+
+### autoit::findFile
+
+```cpp
+std::string autoit::findFile( const std::string&              path,
+                              const std::string&              directory,
+                              const std::string&              filter = "",
+                              const std::vector<std::string>& hints = std::vector<std::string>(1, "." ) );
+AutoIt:
+    _Mediapipe_ObjCreate("autoit").findFile( $path, $directory[, $filter[, $hints]] ) -> retval
+```
+
+### autoit::findFiles
+
+```cpp
+void autoit::findFiles( std::vector<std::string>& matches,
+                        const std::string&        path,
+                        const std::string&        directory,
+                        int                       flags = FLTA_FILESFOLDERS,
+                        bool                      relative = true );
+AutoIt:
+    _Mediapipe_ObjCreate("autoit").findFiles( $path, $directory[, $flags[, $relative[, $matches]]] ) -> $matches
 ```
 
 ## google::protobuf::autoit::MapContainer

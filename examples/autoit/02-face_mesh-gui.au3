@@ -11,16 +11,18 @@
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
 ;~ Sources:
-;~     https://mediapipe.page.link/pose_py_colab
+;~     https://mediapipe.page.link/face_mesh_py_colab
 
 ;~ Images:
-;~     https://unsplash.com/photos/v4zceVZ5HK8
-;~     https://unsplash.com/photos/e_rhazQLaSs
+;~     https://unsplash.com/photos/JyVcAIUAcPM
+;~     https://unsplash.com/photos/auTAb39ImXg
 
 _GDIPlus_Startup()
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 _OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
 OnAutoItExitRegister("_OnAutoItExit")
+
+_Mediapipe_SetResourceDir()
 
 Global $mp = _Mediapipe_get()
 If Not IsObj($mp) Then
@@ -37,9 +39,9 @@ EndIf
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
 
 #Region ### START Koda GUI section ### Form=
-Global $FormGUI = GUICreate("Pose", 1570, 640, 192, 124)
+Global $FormGUI = GUICreate("Face Mesh", 1065, 640, 192, 124)
 
-Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\thao-lee-v4zceVZ5HK8-unsplash.jpg", 230, 16, 449, 21)
+Global $InputSrcImage = GUICtrlCreateInput($MEDIAPIPE_SAMPLES_DATA_PATH & "\garrett-jackson-auTAb39ImXg-unsplash.jpg", 230, 16, 449, 21)
 Global $BtnSrcImage = GUICtrlCreateButton("Browse", 689, 14, 75, 25)
 
 Global $CheckboxUseGDI = GUICtrlCreateCheckbox("Use GDI+", 780, 14, 97, 17)
@@ -53,16 +55,10 @@ Global $GroupImage = GUICtrlCreateGroup("", 20, 103, 510, 516)
 Global $PicImage = GUICtrlCreatePic("", 25, 114, 500, 500)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-Global $LabelResult = GUICtrlCreateLabel("Pose", 747, 80, 80, 20)
+Global $LabelResult = GUICtrlCreateLabel("Face mesh", 747, 80, 80, 20)
 GUICtrlSetFont(-1, 10, 800, 0, "MS Sans Serif")
 Global $GroupResult = GUICtrlCreateGroup("", 532, 103, 510, 516)
 Global $PicResult = GUICtrlCreatePic("", 537, 114, 500, 500)
-GUICtrlCreateGroup("", -99, -99, 1, 1)
-
-Global $LabelSegmentation = GUICtrlCreateLabel("Segmentation", 1250, 80, 98, 20)
-GUICtrlSetFont(-1, 10, 800, 0, "MS Sans Serif")
-Global $GroupSegmentation = GUICtrlCreateGroup("", 1044, 103, 510, 516)
-Global $PicSegmentation = GUICtrlCreatePic("", 1049, 114, 500, 500)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 GUISetState(@SW_SHOW)
@@ -99,24 +95,23 @@ Func Main()
 	; Preview the images.
 	_OpenCV_imshow_ControlPic($image, $FormGUI, $PicImage)
 
-	Local $mp_pose = $mp.solutions.pose
+	Local $mp_face_mesh = $mp.solutions.face_mesh
 	Local $mp_drawing = $mp.solutions.drawing_utils
 	Local $mp_drawing_styles = $mp.solutions.drawing_styles
 
-	; Run MediaPipe Pose and draw pose landmarks.
-	Local $pose = $mp_pose.Pose(_Mediapipe_Params( _
+	; Run MediaPipe Face Mesh
+	Local $face_mesh = $mp_face_mesh.FaceMesh(_Mediapipe_Params( _
 			"static_image_mode", True, _
-			"min_detection_confidence", 0.5, _
-			"model_complexity", 2 _
+			"refine_landmarks", True, _
+			"max_num_faces", 2, _
+			"min_detection_confidence", 0.5 _
 			))
 
-	; Convert the BGR image to RGB and process it with MediaPipe Pose.
-	Local $results = $pose.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-
-	If $results("pose_landmarks") == Default Then
-		ConsoleWrite("No pose detection for " & $image_path & @CRLF)
+	; Convert the BGR image to RGB and process it with MediaPipe Face Mesh.
+	Local $results = $face_mesh.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
+	If $results("multi_face_landmarks") == Default Then
+		ConsoleWrite("No face detection for " & $image_path & @CRLF)
 		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicResult)
-		_OpenCV_imshow_ControlPic($image, $FormGUI, $PicSegmentation)
 		Return
 	EndIf
 
@@ -124,60 +119,31 @@ Func Main()
 	Local $ratio = _OpenCV_resizeRatio_ControlPic($image, $FormGUI, $PicResult)
 	Local $scale = 1 / $ratio
 
-	; enlarge/shrink drawings to keep them visible after resize
-	Local $landmark_drawing_spec = $mp_drawing.DrawingSpec($mp_drawing.RED_COLOR)
-	$landmark_drawing_spec.thickness *= $scale
-	$landmark_drawing_spec.circle_radius *= $scale
-
-	Local $connection_drawing_spec = $mp_drawing.DrawingSpec()
-	$connection_drawing_spec.thickness *= $scale
-	$connection_drawing_spec.circle_radius *= $scale
-
-	; Print nose coordinates.
-	Local $image_width = $image.width
-	Local $image_height = $image.height
-	ConsoleWrite( _
-			'Nose coordinates: (' & _
-			$results("pose_landmarks").landmark($mp_pose.PoseLandmark.NOSE).x * $image_width & ', ' & _
-			$results("pose_landmarks").landmark($mp_pose.PoseLandmark.NOSE).y * $image_height & ')' & _
-			@CRLF _
-			)
-
-	; Draw pose landmarks.
-	ConsoleWrite('Pose landmarks of ' & $image_path & ':' & @CRLF)
 	Local $annotated_image = $image.copy()
-	$mp_drawing.draw_landmarks( _
-			$annotated_image, _
-			$results("pose_landmarks"), _
-			$mp_pose.POSE_CONNECTIONS, _
-			_Mediapipe_Params( _
-			"landmark_drawing_spec", $mp_drawing_styles.get_default_pose_landmarks_style($scale), _
-			"connection_drawing_spec", $connection_drawing_spec _
-			))
+
+	; Draw face detections of each face.
+	For $face_landmarks In $results("multi_face_landmarks")
+		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $mp_face_mesh.FACEMESH_TESSELATION, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_tesselation_style($scale)))
+		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $mp_face_mesh.FACEMESH_CONTOURS, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_contours_style($scale)))
+		$mp_drawing.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $mp_face_mesh.FACEMESH_IRISES, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $mp_drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+	Next
 
 	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicResult)
-
-	; Run MediaPipe Pose with `enable_segmentation=True` to get pose segmentation.
-	$pose = $mp_pose.Pose(_Mediapipe_Params( _
-			"static_image_mode", True, _
-			"min_detection_confidence", 0.5, _
-			"model_complexity", 2, _
-			"enable_segmentation", True _
-			))
-
-	$results = $pose.process($cv.cvtColor($image, $CV_COLOR_BGR2RGB))
-
-	; Draw pose segmentation.
-	ConsoleWrite('Pose segmentation of ' & $image_path & ':' & @CRLF)
-	$annotated_image = $image.copy()
-	Local $red_img = _OpenCV_ObjCreate("Mat").create($image.rows, $image.cols, $CV_32FC3, _OpenCV_Scalar(255, 255, 255))
-	Local $segm_2class = $cv.add($cv.multiply($results("segmentation_mask"), 0.8), 0.2)
-	$segm_2class = $cv.merge(_OpenCV_Tuple($segm_2class, $segm_2class, $segm_2class))
-	$annotated_image = $cv.multiply($annotated_image.convertTo($CV_32F), $segm_2class)
-	$red_img = $cv.multiply($red_img, $cv.subtract(1.0, $segm_2class))
-	$annotated_image = $cv.add($annotated_image, $red_img)
-
-	_OpenCV_imshow_ControlPic($annotated_image, $FormGUI, $PicSegmentation)
 EndFunc   ;==>Main
 
 Func _IsChecked($idControlID)

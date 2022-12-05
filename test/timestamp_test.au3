@@ -11,11 +11,10 @@
 ;~ Sources:
 ;~     https://github.com/google/mediapipe/blob/v0.8.11/mediapipe/python/timestamp_test.py
 
-; $_mediapipe_build_type = "Release"
-; $_mediapipe_debug = 0
-
 _Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
 OnAutoItExitRegister("_OnAutoItExit")
+
+_Mediapipe_SetResourceDir()
 
 ; AutoIt variable names are case insensitive
 ; Add an _ to differentiate timestamp and Timestamp

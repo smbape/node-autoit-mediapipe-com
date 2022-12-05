@@ -67,7 +67,7 @@ namespace mediapipe {
 		inline ::mediapipe::CalculatorGraphConfig ReadCalculatorGraphConfigFromFile(const std::string& file_name) {
 			::mediapipe::CalculatorGraphConfig graph_config_proto;
 			auto status = file::Exists(file_name);
-			AUTOIT_ASSERT_THROW(status.ok(), "File not found: " << status.message().data());
+			AUTOIT_ASSERT_THROW(status.ok(), "File " << file_name << " was not found: " << status.message().data());
 
 			std::string graph_config_string;
 			RaiseAutoItErrorIfNotOk(file::GetContents(file_name, &graph_config_string, /*read_as_binary=*/true));
