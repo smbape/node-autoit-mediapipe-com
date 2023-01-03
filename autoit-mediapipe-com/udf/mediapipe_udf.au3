@@ -3,14 +3,13 @@
 #include "mediapipe_enums.au3"
 
 Global $h_mediapipe_world_dll = -1
+Global $h_mediapipe_ffmpeg_dll = -1
 Global $h_autoit_mediapipe_com_dll = -1
 
-Func _Mediapipe_ObjCreate($sClassname, $sFilename = Default)
-	Local Static $s_autoit_mediapipe_com_dll = ""
-	If $s_autoit_mediapipe_com_dll == "" Or $sFilename <> Default Then $s_autoit_mediapipe_com_dll = $sFilename
-	If $sFilename == Default Then $sFilename = $s_autoit_mediapipe_com_dll
+Func _Mediapipe_ObjCreate($sClassname)
+	_Mediapipe_ActivateActCtx()
 
-	Local Const $namespaces[] = [ _
+	Local Static $namespaces[] = [ _
 			"", _
 			"Mediapipe.", _
 			"Mediapipe.mediapipe.", _
@@ -23,19 +22,14 @@ Func _Mediapipe_ObjCreate($sClassname, $sFilename = Default)
 		$siClassname = $namespaces[$i] & $sClassname
 		_Mediapipe_DebugMsg("Try ObjCreate " & $siClassname)
 
-		$oObj = ObjGet($s_autoit_mediapipe_com_dll, $siClassname)
-		If IsObj($oObj) Then
-			_Mediapipe_DebugMsg("ObjCreate " & $siClassname)
-			Return $oObj
-		EndIf
-
 		$oObj = ObjCreate($siClassname)
 		If IsObj($oObj) Then
 			_Mediapipe_DebugMsg("ObjCreate " & $siClassname)
-			Return $oObj
+			ExitLoop
 		EndIf
 	Next
 
+	_Mediapipe_DeactivateActCtx()
 	Return $oObj
 EndFunc   ;==>_Mediapipe_ObjCreate
 
@@ -63,8 +57,8 @@ Func _Mediapipe_Unregister_And_Close($bUser = Default)
 EndFunc   ;==>_Mediapipe_Unregister_And_Close
 
 Func _Mediapipe_Install($s_mediapipe_world_dll = Default, $s_autoit_mediapipe_com_dll = Default, $bUser = Default, $bOpen = True, $bClose = True, $bInstall = False, $bUninstall = False)
-	If $s_mediapipe_world_dll == Default Then $s_mediapipe_world_dll = "opencv_world460.dll"
-	If $s_autoit_mediapipe_com_dll == Default Then $s_autoit_mediapipe_com_dll = "autoit_mediapipe_com-0.8.11-460.dll"
+	If $s_mediapipe_world_dll == Default Then $s_mediapipe_world_dll = "opencv_world470.dll"
+	If $s_autoit_mediapipe_com_dll == Default Then $s_autoit_mediapipe_com_dll = "autoit_mediapipe_com-0.8.11-470.dll"
 	If $bUser == Default Then $bUser = Not IsAdmin()
 
 	If $bClose And $h_mediapipe_world_dll <> -1 Then DllClose($h_mediapipe_world_dll)
@@ -73,11 +67,24 @@ Func _Mediapipe_Install($s_mediapipe_world_dll = Default, $s_autoit_mediapipe_co
 		If $h_mediapipe_world_dll == -1 Then Return SetError(@error, 0, False)
 	EndIf
 
-	If $bClose And $h_autoit_mediapipe_com_dll <> -1 Then DllClose($h_autoit_mediapipe_com_dll)
+	; ffmpeg is looked on PATH when loaded in debug mode, not relatively to opencv_world470d.dll
+	; this is a work around to load ffmpeg relatively to opencv_world470d.dll
+	If $bClose And $h_mediapipe_ffmpeg_dll <> -1 Then DllClose($h_mediapipe_ffmpeg_dll)
+	If $bOpen And EnvGet("OPENCV_BUILD_TYPE") == "Debug" Then
+		$h_mediapipe_ffmpeg_dll = _Mediapipe_LoadDLL(StringReplace($s_mediapipe_world_dll, "opencv_world470d.dll", "opencv_videoio_ffmpeg470_64.dll"))
+		If $h_mediapipe_ffmpeg_dll == -1 Then Return SetError(@error, 0, False)
+	EndIf
+
+	If $bClose Then
+		If $h_autoit_mediapipe_com_dll <> -1 Then
+			DllClose($h_autoit_mediapipe_com_dll)
+			$h_autoit_mediapipe_com_dll = -1
+		EndIf
+	EndIf
+
 	If $bOpen Then
 		$h_autoit_mediapipe_com_dll = _Mediapipe_LoadDLL($s_autoit_mediapipe_com_dll)
 		If $h_autoit_mediapipe_com_dll == -1 Then Return SetError(@error, 0, False)
-		_Mediapipe_ObjCreate("mediapipe", $s_autoit_mediapipe_com_dll)
 	EndIf
 
 	Local $hresult
@@ -107,7 +114,6 @@ EndFunc   ;==>_Mediapipe_Open
 
 Func _Mediapipe_Close()
 	_Mediapipe_get(0)
-	_Mediapipe_ObjCreate("mediapipe", "")
 	Return _Mediapipe_Install(Default, Default, Default, False)
 EndFunc   ;==>_Mediapipe_Close
 
@@ -119,8 +125,17 @@ Func _Mediapipe_Unregister($bUser = Default)
 	Return _Mediapipe_Install(Default, Default, $bUser, False, False, False, True)
 EndFunc   ;==>_Mediapipe_Unregister
 
+Func _Mediapipe_ActivateActCtx()
+	Return _Mediapipe_DllCall($h_autoit_mediapipe_com_dll, "BOOL", "DLLActivateActCtx")
+EndFunc   ;==>_Mediapipe_ActivateActCtx
+
+Func _Mediapipe_DeactivateActCtx()
+	Return _Mediapipe_DllCall($h_autoit_mediapipe_com_dll, "BOOL", "DLLDeactivateActCtx")
+EndFunc   ;==>_Mediapipe_DeactivateActCtx
+
 Func _Mediapipe_DebugMsg($msg)
-	If BitAND(Number(EnvGet("MEDIAPIPE_DEBUG")), 1) Then
+	Local $_mediapipe_debug = Number(EnvGet("MEDIAPIPE_DEBUG"))
+	If BitAND($_mediapipe_debug, 1) Then
 		ConsoleWrite($msg & @CRLF)
 	EndIf
 	If BitAND(Number(EnvGet("MEDIAPIPE_DEBUG")), 2) Then
@@ -239,12 +254,13 @@ Func _Mediapipe_DllCall($dll, $return_type, $function, $type1 = Default, $param1
 	EndSwitch
 
 	Local $error = @error
+	Local $extended = @extended
 
 	_Mediapipe_DebugMsg('Called ' & $function)
 
 	If $error Then
 		_Mediapipe_PrintDLLError($error, $function)
-		Return -1
+		Return SetError($error, $extended, -1)
 	EndIf
 
 	Return $_aResult[0]

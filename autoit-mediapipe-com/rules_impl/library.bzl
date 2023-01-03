@@ -286,6 +286,8 @@ def add_com_library(name, intdir, compilation_mode):
                 "_MBCS",
                 "_WINDLL",
                 "CVAPI_EXPORTS",
+                "ISOLATION_AWARE_ENABLED",
+                "_WIN32_FUSION=0x010",
             ],
             "//conditions:default": [],
         }),

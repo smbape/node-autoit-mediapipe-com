@@ -5,7 +5,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [NamedParameters](#namedparameters)
   - [NamedParameters::create](#namedparameterscreate)
   - [NamedParameters::Add](#namedparametersadd)
@@ -4448,7 +4447,7 @@ AutoIt:
 ### mediapipe.autoit
 
 ```cpp
-static mediapipe::autoit mediapipe::this
+static mediapipe::autoit
 AutoIt:
     [propget] $omediapipe.autoit
 ```
@@ -4456,7 +4455,7 @@ AutoIt:
 ### mediapipe.packet\_creator
 
 ```cpp
-static mediapipe::autoit::packet_creator mediapipe::this
+static mediapipe::autoit::packet_creator
 AutoIt:
     [propget] $omediapipe.packet_creator
 ```
@@ -4464,7 +4463,7 @@ AutoIt:
 ### mediapipe.packet\_getter
 
 ```cpp
-static mediapipe::autoit::packet_getter mediapipe::this
+static mediapipe::autoit::packet_getter
 AutoIt:
     [propget] $omediapipe.packet_getter
 ```
@@ -4472,7 +4471,7 @@ AutoIt:
 ### mediapipe.\_framework\_bindings
 
 ```cpp
-static mediapipe::autoit::_framework_bindings mediapipe::this
+static mediapipe::autoit::_framework_bindings
 AutoIt:
     [propget] $omediapipe._framework_bindings
 ```
@@ -4480,7 +4479,7 @@ AutoIt:
 ### mediapipe.solutions
 
 ```cpp
-static mediapipe::autoit::solutions mediapipe::this
+static mediapipe::autoit::solutions
 AutoIt:
     [propget] $omediapipe.solutions
 ```
@@ -4488,7 +4487,7 @@ AutoIt:
 ### mediapipe.solution\_base
 
 ```cpp
-static mediapipe::autoit::solution_base mediapipe::this
+static mediapipe::autoit::solution_base
 AutoIt:
     [propget] $omediapipe.solution_base
 ```
@@ -4514,7 +4513,7 @@ AutoIt:
 ### autoit.packet\_creator
 
 ```cpp
-static mediapipe::autoit::packet_creator mediapipe::autoit::this
+static mediapipe::autoit::packet_creator
 AutoIt:
     [propget] $oautoit.packet_creator
 ```
@@ -4522,7 +4521,7 @@ AutoIt:
 ### autoit.packet\_getter
 
 ```cpp
-static mediapipe::autoit::packet_getter mediapipe::autoit::this
+static mediapipe::autoit::packet_getter
 AutoIt:
     [propget] $oautoit.packet_getter
 ```
@@ -4530,7 +4529,7 @@ AutoIt:
 ### autoit.\_framework\_bindings
 
 ```cpp
-static mediapipe::autoit::_framework_bindings mediapipe::autoit::this
+static mediapipe::autoit::_framework_bindings
 AutoIt:
     [propget] $oautoit._framework_bindings
 ```
@@ -4538,7 +4537,7 @@ AutoIt:
 ### autoit.solutions
 
 ```cpp
-static mediapipe::autoit::solutions mediapipe::autoit::this
+static mediapipe::autoit::solutions
 AutoIt:
     [propget] $oautoit.solutions
 ```
@@ -4546,7 +4545,7 @@ AutoIt:
 ### autoit.solution\_base
 
 ```cpp
-static mediapipe::autoit::solution_base mediapipe::autoit::this
+static mediapipe::autoit::solution_base
 AutoIt:
     [propget] $oautoit.solution_base
 ```
@@ -5137,7 +5136,7 @@ AutoIt:
 ### \_framework\_bindings.resource\_util
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::resource_util mediapipe::autoit::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::resource_util
 AutoIt:
     [propget] $o_framework_bindings.resource_util
 ```
@@ -5145,7 +5144,7 @@ AutoIt:
 ### \_framework\_bindings.calculator\_graph
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::calculator_graph mediapipe::autoit::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::calculator_graph
 AutoIt:
     [propget] $o_framework_bindings.calculator_graph
 ```
@@ -5153,7 +5152,7 @@ AutoIt:
 ### \_framework\_bindings.image
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::image mediapipe::autoit::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::image
 AutoIt:
     [propget] $o_framework_bindings.image
 ```
@@ -5161,7 +5160,7 @@ AutoIt:
 ### \_framework\_bindings.image\_frame
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::image_frame mediapipe::autoit::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::image_frame
 AutoIt:
     [propget] $o_framework_bindings.image_frame
 ```
@@ -5169,7 +5168,7 @@ AutoIt:
 ### \_framework\_bindings.packet
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::packet mediapipe::autoit::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::packet
 AutoIt:
     [propget] $o_framework_bindings.packet
 ```
@@ -5177,7 +5176,7 @@ AutoIt:
 ### \_framework\_bindings.timestamp
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::timestamp mediapipe::autoit::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::timestamp
 AutoIt:
     [propget] $o_framework_bindings.timestamp
 ```
@@ -5185,7 +5184,7 @@ AutoIt:
 ### \_framework\_bindings.validated\_graph\_config
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::validated_graph_config mediapipe::autoit::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::validated_graph_config
 AutoIt:
     [propget] $o_framework_bindings.validated_graph_config
 ```
@@ -5213,7 +5212,7 @@ AutoIt:
 ### \_framework\_bindings.resource\_util
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::resource_util mediapipe::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::resource_util
 AutoIt:
     [propget] $o_framework_bindings.resource_util
 ```
@@ -5221,7 +5220,7 @@ AutoIt:
 ### \_framework\_bindings.calculator\_graph
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::calculator_graph mediapipe::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::calculator_graph
 AutoIt:
     [propget] $o_framework_bindings.calculator_graph
 ```
@@ -5229,7 +5228,7 @@ AutoIt:
 ### \_framework\_bindings.image
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::image mediapipe::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::image
 AutoIt:
     [propget] $o_framework_bindings.image
 ```
@@ -5237,7 +5236,7 @@ AutoIt:
 ### \_framework\_bindings.image\_frame
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::image_frame mediapipe::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::image_frame
 AutoIt:
     [propget] $o_framework_bindings.image_frame
 ```
@@ -5245,7 +5244,7 @@ AutoIt:
 ### \_framework\_bindings.packet
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::packet mediapipe::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::packet
 AutoIt:
     [propget] $o_framework_bindings.packet
 ```
@@ -5253,7 +5252,7 @@ AutoIt:
 ### \_framework\_bindings.timestamp
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::timestamp mediapipe::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::timestamp
 AutoIt:
     [propget] $o_framework_bindings.timestamp
 ```
@@ -5261,7 +5260,7 @@ AutoIt:
 ### \_framework\_bindings.validated\_graph\_config
 
 ```cpp
-static mediapipe::autoit::_framework_bindings::validated_graph_config mediapipe::_framework_bindings::this
+static mediapipe::autoit::_framework_bindings::validated_graph_config
 AutoIt:
     [propget] $o_framework_bindings.validated_graph_config
 ```
@@ -5271,7 +5270,7 @@ AutoIt:
 ### solutions.download\_utils
 
 ```cpp
-static mediapipe::autoit::solutions::download_utils mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::download_utils
 AutoIt:
     [propget] $osolutions.download_utils
 ```
@@ -5279,7 +5278,7 @@ AutoIt:
 ### solutions.drawing\_styles
 
 ```cpp
-static mediapipe::autoit::solutions::drawing_styles mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::drawing_styles
 AutoIt:
     [propget] $osolutions.drawing_styles
 ```
@@ -5287,7 +5286,7 @@ AutoIt:
 ### solutions.drawing\_utils
 
 ```cpp
-static mediapipe::autoit::solutions::drawing_utils mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::drawing_utils
 AutoIt:
     [propget] $osolutions.drawing_utils
 ```
@@ -5295,7 +5294,7 @@ AutoIt:
 ### solutions.face\_detection
 
 ```cpp
-static mediapipe::autoit::solutions::face_detection mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::face_detection
 AutoIt:
     [propget] $osolutions.face_detection
 ```
@@ -5303,7 +5302,7 @@ AutoIt:
 ### solutions.face\_mesh
 
 ```cpp
-static mediapipe::autoit::solutions::face_mesh mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::face_mesh
 AutoIt:
     [propget] $osolutions.face_mesh
 ```
@@ -5311,7 +5310,7 @@ AutoIt:
 ### solutions.hands
 
 ```cpp
-static mediapipe::autoit::solutions::hands mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::hands
 AutoIt:
     [propget] $osolutions.hands
 ```
@@ -5319,7 +5318,7 @@ AutoIt:
 ### solutions.holistic
 
 ```cpp
-static mediapipe::autoit::solutions::holistic mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::holistic
 AutoIt:
     [propget] $osolutions.holistic
 ```
@@ -5327,7 +5326,7 @@ AutoIt:
 ### solutions.objectron
 
 ```cpp
-static mediapipe::autoit::solutions::objectron mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::objectron
 AutoIt:
     [propget] $osolutions.objectron
 ```
@@ -5335,7 +5334,7 @@ AutoIt:
 ### solutions.pose
 
 ```cpp
-static mediapipe::autoit::solutions::pose mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::pose
 AutoIt:
     [propget] $osolutions.pose
 ```
@@ -5343,7 +5342,7 @@ AutoIt:
 ### solutions.selfie\_segmentation
 
 ```cpp
-static mediapipe::autoit::solutions::selfie_segmentation mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::selfie_segmentation
 AutoIt:
     [propget] $osolutions.selfie_segmentation
 ```
@@ -5351,7 +5350,7 @@ AutoIt:
 ### solutions.face\_mesh\_connections
 
 ```cpp
-static mediapipe::autoit::solutions::face_mesh_connections mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::face_mesh_connections
 AutoIt:
     [propget] $osolutions.face_mesh_connections
 ```
@@ -5359,7 +5358,7 @@ AutoIt:
 ### solutions.hands\_connections
 
 ```cpp
-static mediapipe::autoit::solutions::hands_connections mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::hands_connections
 AutoIt:
     [propget] $osolutions.hands_connections
 ```
@@ -5367,7 +5366,7 @@ AutoIt:
 ### solutions.pose\_connections
 
 ```cpp
-static mediapipe::autoit::solutions::pose_connections mediapipe::autoit::solutions::this
+static mediapipe::autoit::solutions::pose_connections
 AutoIt:
     [propget] $osolutions.pose_connections
 ```
@@ -5396,7 +5395,7 @@ AutoIt:
 ### solutions.download\_utils
 
 ```cpp
-static mediapipe::autoit::solutions::download_utils mediapipe::solutions::this
+static mediapipe::autoit::solutions::download_utils
 AutoIt:
     [propget] $osolutions.download_utils
 ```
@@ -5404,7 +5403,7 @@ AutoIt:
 ### solutions.drawing\_styles
 
 ```cpp
-static mediapipe::autoit::solutions::drawing_styles mediapipe::solutions::this
+static mediapipe::autoit::solutions::drawing_styles
 AutoIt:
     [propget] $osolutions.drawing_styles
 ```
@@ -5412,7 +5411,7 @@ AutoIt:
 ### solutions.drawing\_utils
 
 ```cpp
-static mediapipe::autoit::solutions::drawing_utils mediapipe::solutions::this
+static mediapipe::autoit::solutions::drawing_utils
 AutoIt:
     [propget] $osolutions.drawing_utils
 ```
@@ -5420,7 +5419,7 @@ AutoIt:
 ### solutions.face\_detection
 
 ```cpp
-static mediapipe::autoit::solutions::face_detection mediapipe::solutions::this
+static mediapipe::autoit::solutions::face_detection
 AutoIt:
     [propget] $osolutions.face_detection
 ```
@@ -5428,7 +5427,7 @@ AutoIt:
 ### solutions.face\_mesh
 
 ```cpp
-static mediapipe::autoit::solutions::face_mesh mediapipe::solutions::this
+static mediapipe::autoit::solutions::face_mesh
 AutoIt:
     [propget] $osolutions.face_mesh
 ```
@@ -5436,7 +5435,7 @@ AutoIt:
 ### solutions.hands
 
 ```cpp
-static mediapipe::autoit::solutions::hands mediapipe::solutions::this
+static mediapipe::autoit::solutions::hands
 AutoIt:
     [propget] $osolutions.hands
 ```
@@ -5444,7 +5443,7 @@ AutoIt:
 ### solutions.holistic
 
 ```cpp
-static mediapipe::autoit::solutions::holistic mediapipe::solutions::this
+static mediapipe::autoit::solutions::holistic
 AutoIt:
     [propget] $osolutions.holistic
 ```
@@ -5452,7 +5451,7 @@ AutoIt:
 ### solutions.objectron
 
 ```cpp
-static mediapipe::autoit::solutions::objectron mediapipe::solutions::this
+static mediapipe::autoit::solutions::objectron
 AutoIt:
     [propget] $osolutions.objectron
 ```
@@ -5460,7 +5459,7 @@ AutoIt:
 ### solutions.pose
 
 ```cpp
-static mediapipe::autoit::solutions::pose mediapipe::solutions::this
+static mediapipe::autoit::solutions::pose
 AutoIt:
     [propget] $osolutions.pose
 ```
@@ -5468,7 +5467,7 @@ AutoIt:
 ### solutions.selfie\_segmentation
 
 ```cpp
-static mediapipe::autoit::solutions::selfie_segmentation mediapipe::solutions::this
+static mediapipe::autoit::solutions::selfie_segmentation
 AutoIt:
     [propget] $osolutions.selfie_segmentation
 ```
@@ -5476,7 +5475,7 @@ AutoIt:
 ### solutions.face\_mesh\_connections
 
 ```cpp
-static mediapipe::autoit::solutions::face_mesh_connections mediapipe::solutions::this
+static mediapipe::autoit::solutions::face_mesh_connections
 AutoIt:
     [propget] $osolutions.face_mesh_connections
 ```
@@ -5484,7 +5483,7 @@ AutoIt:
 ### solutions.hands\_connections
 
 ```cpp
-static mediapipe::autoit::solutions::hands_connections mediapipe::solutions::this
+static mediapipe::autoit::solutions::hands_connections
 AutoIt:
     [propget] $osolutions.hands_connections
 ```
@@ -5492,7 +5491,7 @@ AutoIt:
 ### solutions.pose\_connections
 
 ```cpp
-static mediapipe::autoit::solutions::pose_connections mediapipe::solutions::this
+static mediapipe::autoit::solutions::pose_connections
 AutoIt:
     [propget] $osolutions.pose_connections
 ```
@@ -5552,7 +5551,7 @@ AutoIt:
 ### drawing\_utils.DrawingSpec
 
 ```cpp
-static mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::autoit::solutions::drawing_utils::this
+static mediapipe::autoit::solutions::drawing_utils::DrawingSpec
 AutoIt:
     [propget] $odrawing_utils.DrawingSpec
 ```
@@ -5671,7 +5670,7 @@ AutoIt:
 ```cpp
 std::tuple<int, int, int> mediapipe::autoit::solutions::drawing_utils::DrawingSpec::color
 AutoIt:
-    [propget propput] $oDrawingSpec.color
+    [propget, propput] $oDrawingSpec.color
 ```
 
 ### DrawingSpec.thickness
@@ -5679,7 +5678,7 @@ AutoIt:
 ```cpp
 int mediapipe::autoit::solutions::drawing_utils::DrawingSpec::thickness
 AutoIt:
-    [propget propput] $oDrawingSpec.thickness
+    [propget, propput] $oDrawingSpec.thickness
 ```
 
 ### DrawingSpec.circle\_radius
@@ -5687,7 +5686,7 @@ AutoIt:
 ```cpp
 int mediapipe::autoit::solutions::drawing_utils::DrawingSpec::circle_radius
 AutoIt:
-    [propget propput] $oDrawingSpec.circle_radius
+    [propget, propput] $oDrawingSpec.circle_radius
 ```
 
 ### mediapipe::autoit::solutions::drawing\_utils::DrawingSpec::get\_create
@@ -5698,14 +5697,14 @@ static mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::autoi
                                                                                                                                       int                       circle_radius = 2 );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec").create( [$color[, $thickness[, $circle_radius]]] ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec")( [$color[, $thickness[, $circle_radius]]] ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
+    $oDrawingSpec( [$color[, $thickness[, $circle_radius]]] ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
 ```
 
 ```cpp
 static mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::autoit::solutions::drawing_utils::DrawingSpec::get_create( const mediapipe::autoit::solutions::drawing_utils::DrawingSpec& other );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec").create( $other ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils.DrawingSpec")( $other ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
+    $oDrawingSpec( $other ) -> <mediapipe.autoit.solutions.drawing_utils.DrawingSpec object>
 ```
 
 ## mediapipe::solutions::drawing\_utils
@@ -5713,7 +5712,7 @@ AutoIt:
 ### drawing\_utils.DrawingSpec
 
 ```cpp
-static mediapipe::autoit::solutions::drawing_utils::DrawingSpec mediapipe::solutions::drawing_utils::this
+static mediapipe::autoit::solutions::drawing_utils::DrawingSpec
 AutoIt:
     [propget] $odrawing_utils.DrawingSpec
 ```
@@ -5723,7 +5722,7 @@ AutoIt:
 ### face\_detection.FaceKeyPoint
 
 ```cpp
-static mediapipe::autoit::solutions::face_detection::FaceKeyPoint mediapipe::autoit::solutions::face_detection::this
+static mediapipe::autoit::solutions::face_detection::FaceKeyPoint
 AutoIt:
     [propget] $oface_detection.FaceKeyPoint
 ```
@@ -5731,7 +5730,7 @@ AutoIt:
 ### face\_detection.FaceDetection
 
 ```cpp
-static mediapipe::autoit::solutions::face_detection::FaceDetection mediapipe::autoit::solutions::face_detection::this
+static mediapipe::autoit::solutions::face_detection::FaceDetection
 AutoIt:
     [propget] $oface_detection.FaceDetection
 ```
@@ -5800,7 +5799,7 @@ AutoIt:
 ### face\_detection.FaceKeyPoint
 
 ```cpp
-static mediapipe::autoit::solutions::face_detection::FaceKeyPoint mediapipe::solutions::face_detection::this
+static mediapipe::autoit::solutions::face_detection::FaceKeyPoint
 AutoIt:
     [propget] $oface_detection.FaceKeyPoint
 ```
@@ -5808,7 +5807,7 @@ AutoIt:
 ### face\_detection.FaceDetection
 
 ```cpp
-static mediapipe::autoit::solutions::face_detection::FaceDetection mediapipe::solutions::face_detection::this
+static mediapipe::autoit::solutions::face_detection::FaceDetection
 AutoIt:
     [propget] $oface_detection.FaceDetection
 ```
@@ -5822,7 +5821,7 @@ static mediapipe::autoit::solutions::face_detection::FaceDetection mediapipe::au
                                                                                                                                             BYTE  model_selection = 0 );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection.FaceDetection").create( [$min_detection_confidence[, $model_selection]] ) -> <mediapipe.autoit.solutions.face_detection.FaceDetection object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection.FaceDetection")( [$min_detection_confidence[, $model_selection]] ) -> <mediapipe.autoit.solutions.face_detection.FaceDetection object>
+    $oFaceDetection( [$min_detection_confidence[, $model_selection]] ) -> <mediapipe.autoit.solutions.face_detection.FaceDetection object>
 ```
 
 ### mediapipe::autoit::solutions::face\_detection::FaceDetection::process
@@ -5839,7 +5838,7 @@ AutoIt:
 ### face\_mesh.FaceMesh
 
 ```cpp
-static mediapipe::autoit::solutions::face_mesh::FaceMesh mediapipe::autoit::solutions::face_mesh::this
+static mediapipe::autoit::solutions::face_mesh::FaceMesh
 AutoIt:
     [propget] $oface_mesh.FaceMesh
 ```
@@ -5960,7 +5959,7 @@ static mediapipe::autoit::solutions::face_mesh::FaceMesh mediapipe::autoit::solu
                                                                                                                         float min_tracking_confidence = 0.5f );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_mesh.FaceMesh").create( [$static_image_mode[, $max_num_faces[, $refine_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.face_mesh.FaceMesh object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_mesh.FaceMesh")( [$static_image_mode[, $max_num_faces[, $refine_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.face_mesh.FaceMesh object>
+    $oFaceMesh( [$static_image_mode[, $max_num_faces[, $refine_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.face_mesh.FaceMesh object>
 ```
 
 ### mediapipe::autoit::solutions::face\_mesh::FaceMesh::process
@@ -5977,7 +5976,7 @@ AutoIt:
 ### face\_mesh.FaceMesh
 
 ```cpp
-static mediapipe::autoit::solutions::face_mesh::FaceMesh mediapipe::solutions::face_mesh::this
+static mediapipe::autoit::solutions::face_mesh::FaceMesh
 AutoIt:
     [propget] $oface_mesh.FaceMesh
 ```
@@ -5987,7 +5986,7 @@ AutoIt:
 ### hands.HandLandmark
 
 ```cpp
-static mediapipe::autoit::solutions::hands::HandLandmark mediapipe::autoit::solutions::hands::this
+static mediapipe::autoit::solutions::hands::HandLandmark
 AutoIt:
     [propget] $ohands.HandLandmark
 ```
@@ -5995,7 +5994,7 @@ AutoIt:
 ### hands.Hands
 
 ```cpp
-static mediapipe::autoit::solutions::hands::Hands mediapipe::autoit::solutions::hands::this
+static mediapipe::autoit::solutions::hands::Hands
 AutoIt:
     [propget] $ohands.Hands
 ```
@@ -6183,7 +6182,7 @@ AutoIt:
 ### hands.HandLandmark
 
 ```cpp
-static mediapipe::autoit::solutions::hands::HandLandmark mediapipe::solutions::hands::this
+static mediapipe::autoit::solutions::hands::HandLandmark
 AutoIt:
     [propget] $ohands.HandLandmark
 ```
@@ -6191,7 +6190,7 @@ AutoIt:
 ### hands.Hands
 
 ```cpp
-static mediapipe::autoit::solutions::hands::Hands mediapipe::solutions::hands::this
+static mediapipe::autoit::solutions::hands::Hands
 AutoIt:
     [propget] $ohands.Hands
 ```
@@ -6208,7 +6207,7 @@ static mediapipe::autoit::solutions::hands::Hands mediapipe::autoit::solutions::
                                                                                                           float min_tracking_confidence = 0.5f );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.hands.Hands").create( [$static_image_mode[, $max_num_hands[, $model_complexity[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.hands.Hands object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.hands.Hands")( [$static_image_mode[, $max_num_hands[, $model_complexity[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.hands.Hands object>
+    $oHands( [$static_image_mode[, $max_num_hands[, $model_complexity[, $min_detection_confidence[, $min_tracking_confidence]]]]] ) -> <mediapipe.autoit.solutions.hands.Hands object>
 ```
 
 ### mediapipe::autoit::solutions::hands::Hands::process
@@ -6225,7 +6224,7 @@ AutoIt:
 ### holistic.Holistic
 
 ```cpp
-static mediapipe::autoit::solutions::holistic::Holistic mediapipe::autoit::solutions::holistic::this
+static mediapipe::autoit::solutions::holistic::Holistic
 AutoIt:
     [propget] $oholistic.Holistic
 ```
@@ -6249,7 +6248,7 @@ AutoIt:
 ### holistic.HandLandmark
 
 ```cpp
-static mediapipe::autoit::solutions::hands::HandLandmark mediapipe::autoit::solutions::holistic::this
+static mediapipe::autoit::solutions::hands::HandLandmark
 AutoIt:
     [propget] $oholistic.HandLandmark
 ```
@@ -6265,7 +6264,7 @@ AutoIt:
 ### holistic.PoseLandmark
 
 ```cpp
-static mediapipe::autoit::solutions::pose::PoseLandmark mediapipe::autoit::solutions::holistic::this
+static mediapipe::autoit::solutions::pose::PoseLandmark
 AutoIt:
     [propget] $oholistic.PoseLandmark
 ```
@@ -6293,7 +6292,7 @@ static mediapipe::autoit::solutions::holistic::Holistic mediapipe::autoit::solut
                                                                                                                       float min_tracking_confidence = 0.5f );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.holistic.Holistic").create( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $refine_face_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]]]]] ) -> <mediapipe.autoit.solutions.holistic.Holistic object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.holistic.Holistic")( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $refine_face_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]]]]] ) -> <mediapipe.autoit.solutions.holistic.Holistic object>
+    $oHolistic( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $refine_face_landmarks[, $min_detection_confidence[, $min_tracking_confidence]]]]]]]] ) -> <mediapipe.autoit.solutions.holistic.Holistic object>
 ```
 
 ### mediapipe::autoit::solutions::holistic::Holistic::process
@@ -6310,7 +6309,7 @@ AutoIt:
 ### holistic.Holistic
 
 ```cpp
-static mediapipe::autoit::solutions::holistic::Holistic mediapipe::solutions::holistic::this
+static mediapipe::autoit::solutions::holistic::Holistic
 AutoIt:
     [propget] $oholistic.Holistic
 ```
@@ -6320,7 +6319,7 @@ AutoIt:
 ### objectron.BoxLandmark
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::BoxLandmark mediapipe::autoit::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::BoxLandmark
 AutoIt:
     [propget] $oobjectron.BoxLandmark
 ```
@@ -6328,7 +6327,7 @@ AutoIt:
 ### objectron.ObjectronModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::ObjectronModel mediapipe::autoit::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::ObjectronModel
 AutoIt:
     [propget] $oobjectron.ObjectronModel
 ```
@@ -6336,7 +6335,7 @@ AutoIt:
 ### objectron.ShoeModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::ShoeModel mediapipe::autoit::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::ShoeModel
 AutoIt:
     [propget] $oobjectron.ShoeModel
 ```
@@ -6344,7 +6343,7 @@ AutoIt:
 ### objectron.ChairModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::ChairModel mediapipe::autoit::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::ChairModel
 AutoIt:
     [propget] $oobjectron.ChairModel
 ```
@@ -6352,7 +6351,7 @@ AutoIt:
 ### objectron.CameraModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::CameraModel mediapipe::autoit::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::CameraModel
 AutoIt:
     [propget] $oobjectron.CameraModel
 ```
@@ -6360,7 +6359,7 @@ AutoIt:
 ### objectron.CupModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::CupModel mediapipe::autoit::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::CupModel
 AutoIt:
     [propget] $oobjectron.CupModel
 ```
@@ -6368,7 +6367,7 @@ AutoIt:
 ### objectron.ObjectronOutputs
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::ObjectronOutputs mediapipe::autoit::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::ObjectronOutputs
 AutoIt:
     [propget] $oobjectron.ObjectronOutputs
 ```
@@ -6376,7 +6375,7 @@ AutoIt:
 ### objectron.Objectron
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::Objectron mediapipe::autoit::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::Objectron
 AutoIt:
     [propget] $oobjectron.Objectron
 ```
@@ -6468,7 +6467,7 @@ AutoIt:
 ### objectron.BoxLandmark
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::BoxLandmark mediapipe::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::BoxLandmark
 AutoIt:
     [propget] $oobjectron.BoxLandmark
 ```
@@ -6476,7 +6475,7 @@ AutoIt:
 ### objectron.ObjectronModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::ObjectronModel mediapipe::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::ObjectronModel
 AutoIt:
     [propget] $oobjectron.ObjectronModel
 ```
@@ -6484,7 +6483,7 @@ AutoIt:
 ### objectron.ShoeModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::ShoeModel mediapipe::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::ShoeModel
 AutoIt:
     [propget] $oobjectron.ShoeModel
 ```
@@ -6492,7 +6491,7 @@ AutoIt:
 ### objectron.ChairModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::ChairModel mediapipe::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::ChairModel
 AutoIt:
     [propget] $oobjectron.ChairModel
 ```
@@ -6500,7 +6499,7 @@ AutoIt:
 ### objectron.CameraModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::CameraModel mediapipe::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::CameraModel
 AutoIt:
     [propget] $oobjectron.CameraModel
 ```
@@ -6508,7 +6507,7 @@ AutoIt:
 ### objectron.CupModel
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::CupModel mediapipe::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::CupModel
 AutoIt:
     [propget] $oobjectron.CupModel
 ```
@@ -6516,7 +6515,7 @@ AutoIt:
 ### objectron.ObjectronOutputs
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::ObjectronOutputs mediapipe::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::ObjectronOutputs
 AutoIt:
     [propget] $oobjectron.ObjectronOutputs
 ```
@@ -6524,7 +6523,7 @@ AutoIt:
 ### objectron.Objectron
 
 ```cpp
-static mediapipe::autoit::solutions::objectron::Objectron mediapipe::solutions::objectron::this
+static mediapipe::autoit::solutions::objectron::Objectron
 AutoIt:
     [propget] $oobjectron.Objectron
 ```
@@ -6536,7 +6535,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::autoit::solutions::objectron::ObjectronModel::model_path
 AutoIt:
-    [propget propput] $oObjectronModel.model_path
+    [propget, propput] $oObjectronModel.model_path
 ```
 
 ### ObjectronModel.label\_name
@@ -6544,7 +6543,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::autoit::solutions::objectron::ObjectronModel::label_name
 AutoIt:
-    [propget propput] $oObjectronModel.label_name
+    [propget, propput] $oObjectronModel.label_name
 ```
 
 ### mediapipe::autoit::solutions::objectron::ObjectronModel::get\_create
@@ -6553,7 +6552,6 @@ AutoIt:
 static mediapipe::autoit::solutions::objectron::ObjectronModel mediapipe::autoit::solutions::objectron::ObjectronModel::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.ObjectronModel").create() -> <mediapipe.autoit.solutions.objectron.ObjectronModel object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.ObjectronModel")() -> <mediapipe.autoit.solutions.objectron.ObjectronModel object>
 ```
 
 ## mediapipe::autoit::solutions::objectron::ShoeModel
@@ -6564,7 +6562,6 @@ AutoIt:
 static mediapipe::autoit::solutions::objectron::ShoeModel mediapipe::autoit::solutions::objectron::ShoeModel::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.ShoeModel").create() -> <mediapipe.autoit.solutions.objectron.ShoeModel object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.ShoeModel")() -> <mediapipe.autoit.solutions.objectron.ShoeModel object>
 ```
 
 ## mediapipe::autoit::solutions::objectron::ChairModel
@@ -6575,7 +6572,6 @@ AutoIt:
 static mediapipe::autoit::solutions::objectron::ChairModel mediapipe::autoit::solutions::objectron::ChairModel::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.ChairModel").create() -> <mediapipe.autoit.solutions.objectron.ChairModel object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.ChairModel")() -> <mediapipe.autoit.solutions.objectron.ChairModel object>
 ```
 
 ## mediapipe::autoit::solutions::objectron::CameraModel
@@ -6586,7 +6582,6 @@ AutoIt:
 static mediapipe::autoit::solutions::objectron::CameraModel mediapipe::autoit::solutions::objectron::CameraModel::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.CameraModel").create() -> <mediapipe.autoit.solutions.objectron.CameraModel object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.CameraModel")() -> <mediapipe.autoit.solutions.objectron.CameraModel object>
 ```
 
 ## mediapipe::autoit::solutions::objectron::CupModel
@@ -6597,7 +6592,6 @@ AutoIt:
 static mediapipe::autoit::solutions::objectron::CupModel mediapipe::autoit::solutions::objectron::CupModel::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.CupModel").create() -> <mediapipe.autoit.solutions.objectron.CupModel object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.CupModel")() -> <mediapipe.autoit.solutions.objectron.CupModel object>
 ```
 
 ## mediapipe::autoit::solutions::objectron::ObjectronOutputs
@@ -6607,7 +6601,7 @@ AutoIt:
 ```cpp
 mediapipe::NormalizedLandmarkList mediapipe::autoit::solutions::objectron::ObjectronOutputs::landmarks_2d
 AutoIt:
-    [propget propput] $oObjectronOutputs.landmarks_2d
+    [propget, propput] $oObjectronOutputs.landmarks_2d
 ```
 
 ### ObjectronOutputs.landmarks\_3d
@@ -6615,7 +6609,7 @@ AutoIt:
 ```cpp
 mediapipe::LandmarkList mediapipe::autoit::solutions::objectron::ObjectronOutputs::landmarks_3d
 AutoIt:
-    [propget propput] $oObjectronOutputs.landmarks_3d
+    [propget, propput] $oObjectronOutputs.landmarks_3d
 ```
 
 ### ObjectronOutputs.rotation
@@ -6623,7 +6617,7 @@ AutoIt:
 ```cpp
 cv::Mat mediapipe::autoit::solutions::objectron::ObjectronOutputs::rotation
 AutoIt:
-    [propget propput] $oObjectronOutputs.rotation
+    [propget, propput] $oObjectronOutputs.rotation
 ```
 
 ### ObjectronOutputs.translation
@@ -6631,7 +6625,7 @@ AutoIt:
 ```cpp
 cv::Mat mediapipe::autoit::solutions::objectron::ObjectronOutputs::translation
 AutoIt:
-    [propget propput] $oObjectronOutputs.translation
+    [propget, propput] $oObjectronOutputs.translation
 ```
 
 ### ObjectronOutputs.scale
@@ -6639,7 +6633,7 @@ AutoIt:
 ```cpp
 cv::Mat mediapipe::autoit::solutions::objectron::ObjectronOutputs::scale
 AutoIt:
-    [propget propput] $oObjectronOutputs.scale
+    [propget, propput] $oObjectronOutputs.scale
 ```
 
 ### mediapipe::autoit::solutions::objectron::ObjectronOutputs::get\_create
@@ -6648,7 +6642,6 @@ AutoIt:
 static mediapipe::autoit::solutions::objectron::ObjectronOutputs mediapipe::autoit::solutions::objectron::ObjectronOutputs::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.ObjectronOutputs").create() -> <mediapipe.autoit.solutions.objectron.ObjectronOutputs object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.ObjectronOutputs")() -> <mediapipe.autoit.solutions.objectron.ObjectronOutputs object>
 ```
 
 ## VectorOfObjectron\_ObjectronOutputs
@@ -6870,7 +6863,7 @@ static mediapipe::autoit::solutions::objectron::Objectron mediapipe::autoit::sol
                                                                                                                           const std::tuple<int, int>      image_size = noSize() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.Objectron").create( [$static_image_mode[, $max_num_objects[, $min_detection_confidence[, $min_tracking_confidence[, $model_name[, $focal_length[, $principal_point[, $image_size]]]]]]]] ) -> <mediapipe.autoit.solutions.objectron.Objectron object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron.Objectron")( [$static_image_mode[, $max_num_objects[, $min_detection_confidence[, $min_tracking_confidence[, $model_name[, $focal_length[, $principal_point[, $image_size]]]]]]]] ) -> <mediapipe.autoit.solutions.objectron.Objectron object>
+    $oObjectron( [$static_image_mode[, $max_num_objects[, $min_detection_confidence[, $min_tracking_confidence[, $model_name[, $focal_length[, $principal_point[, $image_size]]]]]]]] ) -> <mediapipe.autoit.solutions.objectron.Objectron object>
 ```
 
 ### mediapipe::autoit::solutions::objectron::Objectron::process
@@ -6887,7 +6880,7 @@ AutoIt:
 ### pose.PoseLandmark
 
 ```cpp
-static mediapipe::autoit::solutions::pose::PoseLandmark mediapipe::autoit::solutions::pose::this
+static mediapipe::autoit::solutions::pose::PoseLandmark
 AutoIt:
     [propget] $opose.PoseLandmark
 ```
@@ -6895,7 +6888,7 @@ AutoIt:
 ### pose.Pose
 
 ```cpp
-static mediapipe::autoit::solutions::pose::Pose mediapipe::autoit::solutions::pose::this
+static mediapipe::autoit::solutions::pose::Pose
 AutoIt:
     [propget] $opose.Pose
 ```
@@ -7179,7 +7172,7 @@ AutoIt:
 ### pose.PoseLandmark
 
 ```cpp
-static mediapipe::autoit::solutions::pose::PoseLandmark mediapipe::solutions::pose::this
+static mediapipe::autoit::solutions::pose::PoseLandmark
 AutoIt:
     [propget] $opose.PoseLandmark
 ```
@@ -7187,7 +7180,7 @@ AutoIt:
 ### pose.Pose
 
 ```cpp
-static mediapipe::autoit::solutions::pose::Pose mediapipe::solutions::pose::this
+static mediapipe::autoit::solutions::pose::Pose
 AutoIt:
     [propget] $opose.Pose
 ```
@@ -7206,7 +7199,7 @@ static mediapipe::autoit::solutions::pose::Pose mediapipe::autoit::solutions::po
                                                                                                       float min_tracking_confidence = 0.5f );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.pose.Pose").create( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $min_detection_confidence[, $min_tracking_confidence]]]]]]] ) -> <mediapipe.autoit.solutions.pose.Pose object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.pose.Pose")( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $min_detection_confidence[, $min_tracking_confidence]]]]]]] ) -> <mediapipe.autoit.solutions.pose.Pose object>
+    $oPose( [$static_image_mode[, $model_complexity[, $smooth_landmarks[, $enable_segmentation[, $smooth_segmentation[, $min_detection_confidence[, $min_tracking_confidence]]]]]]] ) -> <mediapipe.autoit.solutions.pose.Pose object>
 ```
 
 ### mediapipe::autoit::solutions::pose::Pose::process
@@ -7223,7 +7216,7 @@ AutoIt:
 ### selfie\_segmentation.SelfieSegmentation
 
 ```cpp
-static mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation mediapipe::autoit::solutions::selfie_segmentation::this
+static mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation
 AutoIt:
     [propget] $oselfie_segmentation.SelfieSegmentation
 ```
@@ -7236,7 +7229,7 @@ AutoIt:
 static mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation::get_create( BYTE model_selection = 0 );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation").create( [$model_selection] ) -> <mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation")( [$model_selection] ) -> <mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation object>
+    $oSelfieSegmentation( [$model_selection] ) -> <mediapipe.autoit.solutions.selfie_segmentation.SelfieSegmentation object>
 ```
 
 ### mediapipe::autoit::solutions::selfie\_segmentation::SelfieSegmentation::process
@@ -7253,7 +7246,7 @@ AutoIt:
 ### selfie\_segmentation.SelfieSegmentation
 
 ```cpp
-static mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation mediapipe::solutions::selfie_segmentation::this
+static mediapipe::autoit::solutions::selfie_segmentation::SelfieSegmentation
 AutoIt:
     [propget] $oselfie_segmentation.SelfieSegmentation
 ```
@@ -7263,7 +7256,7 @@ AutoIt:
 ### solution\_base.PacketDataType
 
 ```cpp
-static mediapipe::autoit::solution_base::PacketDataType mediapipe::autoit::solution_base::this
+static mediapipe::autoit::solution_base::PacketDataType
 AutoIt:
     [propget] $osolution_base.PacketDataType
 ```
@@ -7271,7 +7264,7 @@ AutoIt:
 ### solution\_base.SolutionBase
 
 ```cpp
-static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solution_base::this
+static mediapipe::autoit::solution_base::SolutionBase
 AutoIt:
     [propget] $osolution_base.SolutionBase
 ```
@@ -7387,7 +7380,7 @@ AutoIt:
 ### solution\_base.PacketDataType
 
 ```cpp
-static mediapipe::autoit::solution_base::PacketDataType mediapipe::solution_base::this
+static mediapipe::autoit::solution_base::PacketDataType
 AutoIt:
     [propget] $osolution_base.PacketDataType
 ```
@@ -7395,7 +7388,7 @@ AutoIt:
 ### solution\_base.SolutionBase
 
 ```cpp
-static mediapipe::autoit::solution_base::SolutionBase mediapipe::solution_base::this
+static mediapipe::autoit::solution_base::SolutionBase
 AutoIt:
     [propget] $osolution_base.SolutionBase
 ```
@@ -7413,7 +7406,7 @@ static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solutio
                                                                                                                   const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = noTypeMap() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase").create( $graph_config[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase")( $graph_config[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
+    $oSolutionBase( $graph_config[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
 ```
 
 ```cpp
@@ -7425,7 +7418,7 @@ static mediapipe::autoit::solution_base::SolutionBase mediapipe::autoit::solutio
                                                                                                                   const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& stream_type_hints = noTypeMap() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase").create( $binary_graph_path[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
-    _Mediapipe_ObjCreate("mediapipe.autoit.solution_base.SolutionBase")( $binary_graph_path[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
+    $oSolutionBase( $binary_graph_path[, $calculator_params[, $graph_options[, $side_inputs[, $outputs[, $stream_type_hints]]]]] ) -> <mediapipe.autoit.solution_base.SolutionBase object>
 ```
 
 ### mediapipe::autoit::solution\_base::SolutionBase::close
@@ -7605,7 +7598,7 @@ AutoIt:
 ```cpp
 mediapipe::CalculatorGraph::GraphInputStreamAddMode mediapipe::CalculatorGraph::graph_input_stream_add_mode
 AutoIt:
-    [propget propput] $oCalculatorGraph.graph_input_stream_add_mode
+    [propget, propput] $oCalculatorGraph.graph_input_stream_add_mode
 ```
 
 ### mediapipe::CalculatorGraph::get\_create
@@ -7614,7 +7607,7 @@ AutoIt:
 static std::shared_ptr<mediapipe::CalculatorGraph> mediapipe::CalculatorGraph::get_create( mediapipe::CalculatorGraphConfig& graph_config_proto );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraph").create( $graph_config_proto ) -> retval
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraph")( $graph_config_proto ) -> retval
+    $oCalculatorGraph( $graph_config_proto ) -> retval
 ```
 
 ```cpp
@@ -7622,14 +7615,14 @@ static std::shared_ptr<mediapipe::CalculatorGraph> mediapipe::CalculatorGraph::g
                                                                                            std::string& graph_config = "" );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraph").create( [$binary_graph_path[, $graph_config]] ) -> retval
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraph")( [$binary_graph_path[, $graph_config]] ) -> retval
+    $oCalculatorGraph( [$binary_graph_path[, $graph_config]] ) -> retval
 ```
 
 ```cpp
 static std::shared_ptr<mediapipe::CalculatorGraph> mediapipe::CalculatorGraph::get_create( mediapipe::ValidatedGraphConfig& validated_graph_config );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraph").create( $validated_graph_config ) -> retval
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraph")( $validated_graph_config ) -> retval
+    $oCalculatorGraph( $validated_graph_config ) -> retval
 ```
 
 ### mediapipe::CalculatorGraph::add\_packet\_to\_input\_stream
@@ -7755,7 +7748,7 @@ AutoIt:
 ### calculator\_graph.CalculatorGraph
 
 ```cpp
-static mediapipe::CalculatorGraph mediapipe::autoit::_framework_bindings::calculator_graph::this
+static mediapipe::CalculatorGraph
 AutoIt:
     [propget] $ocalculator_graph.CalculatorGraph
 ```
@@ -7964,7 +7957,6 @@ AutoIt:
 static mediapipe::Image mediapipe::Image::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Image").create() -> <mediapipe.Image object>
-    _Mediapipe_ObjCreate("mediapipe.Image")() -> <mediapipe.Image object>
 ```
 
 ```cpp
@@ -7973,7 +7965,7 @@ static std::shared_ptr<mediapipe::Image> mediapipe::Image::get_create( mediapipe
                                                                        bool                           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Image").create( $image_format, $image[, $copy] ) -> retval
-    _Mediapipe_ObjCreate("mediapipe.Image")( $image_format, $image[, $copy] ) -> retval
+    $oImage( $image_format, $image[, $copy] ) -> retval
 ```
 
 ```cpp
@@ -7981,7 +7973,7 @@ static std::shared_ptr<mediapipe::Image> mediapipe::Image::get_create( const cv:
                                                                        bool           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Image").create( $image[, $copy] ) -> retval
-    _Mediapipe_ObjCreate("mediapipe.Image")( $image[, $copy] ) -> retval
+    $oImage( $image[, $copy] ) -> retval
 ```
 
 ### mediapipe::Image::is\_aligned
@@ -8029,7 +8021,7 @@ AutoIt:
 ### image.Image
 
 ```cpp
-static mediapipe::Image mediapipe::autoit::_framework_bindings::image::this
+static mediapipe::Image
 AutoIt:
     [propget] $oimage.Image
 ```
@@ -8092,7 +8084,7 @@ static std::shared_ptr<mediapipe::ImageFrame> mediapipe::ImageFrame::get_create(
                                                                                  bool                           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageFrame").create( $image_format, $image[, $copy] ) -> retval
-    _Mediapipe_ObjCreate("mediapipe.ImageFrame")( $image_format, $image[, $copy] ) -> retval
+    $oImageFrame( $image_format, $image[, $copy] ) -> retval
 ```
 
 ```cpp
@@ -8100,7 +8092,7 @@ static std::shared_ptr<mediapipe::ImageFrame> mediapipe::ImageFrame::get_create(
                                                                                  bool           copy = true );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageFrame").create( $image[, $copy] ) -> retval
-    _Mediapipe_ObjCreate("mediapipe.ImageFrame")( $image[, $copy] ) -> retval
+    $oImageFrame( $image[, $copy] ) -> retval
 ```
 
 ### mediapipe::ImageFrame::is\_aligned
@@ -8140,7 +8132,7 @@ AutoIt:
 ### image\_frame.ImageFrame
 
 ```cpp
-static mediapipe::ImageFrame mediapipe::autoit::_framework_bindings::image_frame::this
+static mediapipe::ImageFrame
 AutoIt:
     [propget] $oimage_frame.ImageFrame
 ```
@@ -8152,7 +8144,7 @@ AutoIt:
 ```cpp
 int cv::Mat::flags
 AutoIt:
-    [propget propput] $oMat.flags
+    [propget, propput] $oMat.flags
 ```
 
 ### Mat.dims
@@ -8160,7 +8152,7 @@ AutoIt:
 ```cpp
 int cv::Mat::dims
 AutoIt:
-    [propget propput] $oMat.dims
+    [propget, propput] $oMat.dims
 ```
 
 ### Mat.rows
@@ -8168,7 +8160,7 @@ AutoIt:
 ```cpp
 int cv::Mat::rows
 AutoIt:
-    [propget propput] $oMat.rows
+    [propget, propput] $oMat.rows
 ```
 
 ### Mat.cols
@@ -8176,7 +8168,7 @@ AutoIt:
 ```cpp
 int cv::Mat::cols
 AutoIt:
-    [propget propput] $oMat.cols
+    [propget, propput] $oMat.cols
 ```
 
 ### Mat.data
@@ -8184,7 +8176,7 @@ AutoIt:
 ```cpp
 uchar* cv::Mat::data
 AutoIt:
-    [propget propput] $oMat.data
+    [propget, propput] $oMat.data
 ```
 
 ### Mat.step
@@ -8192,7 +8184,7 @@ AutoIt:
 ```cpp
 size_t cv::Mat::step
 AutoIt:
-    [propget propput] $oMat.step
+    [propget, propput] $oMat.step
 ```
 
 ### Mat.width
@@ -8200,7 +8192,7 @@ AutoIt:
 ```cpp
 int cv::Mat::cols
 AutoIt:
-    [propget propput] $oMat.width
+    [propget, propput] $oMat.width
 ```
 
 ### Mat.height
@@ -8208,7 +8200,7 @@ AutoIt:
 ```cpp
 int cv::Mat::rows
 AutoIt:
-    [propget propput] $oMat.height
+    [propget, propput] $oMat.height
 ```
 
 ### Mat.shape
@@ -8815,14 +8807,13 @@ AutoIt:
 static mediapipe::Packet mediapipe::Packet::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Packet").create() -> <mediapipe.Packet object>
-    _Mediapipe_ObjCreate("mediapipe.Packet")() -> <mediapipe.Packet object>
 ```
 
 ```cpp
 static mediapipe::Packet mediapipe::Packet::get_create( const mediapipe::Packet& Packet );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Packet").create( $Packet ) -> <mediapipe.Packet object>
-    _Mediapipe_ObjCreate("mediapipe.Packet")( $Packet ) -> <mediapipe.Packet object>
+    $oPacket( $Packet ) -> <mediapipe.Packet object>
 ```
 
 ### mediapipe::Packet::at
@@ -8876,7 +8867,7 @@ AutoIt:
 ### packet.Packet
 
 ```cpp
-static mediapipe::Packet mediapipe::autoit::_framework_bindings::packet::this
+static mediapipe::Packet
 AutoIt:
     [propget] $opacket.Packet
 ```
@@ -8989,7 +8980,7 @@ AutoIt:
 ```cpp
 std::string google::protobuf::Any::type_url
 AutoIt:
-    [propget propput] $oAny.type_url
+    [propget, propput] $oAny.type_url
 ```
 
 ### Any.value
@@ -8997,7 +8988,7 @@ AutoIt:
 ```cpp
 std::string google::protobuf::Any::value
 AutoIt:
-    [propget propput] $oAny.value
+    [propget, propput] $oAny.value
 ```
 
 ### google::protobuf::Any::get\_create
@@ -9006,7 +8997,6 @@ AutoIt:
 static google::protobuf::Any google::protobuf::Any::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Any").create() -> <google.protobuf.Any object>
-    _Mediapipe_ObjCreate("google.protobuf.Any")() -> <google.protobuf.Any object>
 ```
 
 ### google::protobuf::Any::Clear
@@ -9064,7 +9054,7 @@ AutoIt:
 ```cpp
 int cv::Range::start
 AutoIt:
-    [propget propput] $oRange.start
+    [propget, propput] $oRange.start
 ```
 
 ### Range.end
@@ -9072,7 +9062,7 @@ AutoIt:
 ```cpp
 int cv::Range::end
 AutoIt:
-    [propget propput] $oRange.end
+    [propget, propput] $oRange.end
 ```
 
 ### cv::Range::get\_create
@@ -9081,7 +9071,6 @@ AutoIt:
 static cv::Range cv::Range::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("cv.Range").create() -> <cv.Range object>
-    _Mediapipe_ObjCreate("cv.Range")() -> <cv.Range object>
 ```
 
 ```cpp
@@ -9089,7 +9078,7 @@ static cv::Range cv::Range::get_create( int start,
                                         int end );
 AutoIt:
     _Mediapipe_ObjCreate("cv.Range").create( $start, $end ) -> <cv.Range object>
-    _Mediapipe_ObjCreate("cv.Range")( $start, $end ) -> <cv.Range object>
+    $oRange( $start, $end ) -> <cv.Range object>
 ```
 
 ### cv::Range::all
@@ -9188,14 +9177,14 @@ AutoIt:
 static mediapipe::Timestamp mediapipe::Timestamp::get_create( const mediapipe::Timestamp& timestamp );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Timestamp").create( $timestamp ) -> <mediapipe.Timestamp object>
-    _Mediapipe_ObjCreate("mediapipe.Timestamp")( $timestamp ) -> <mediapipe.Timestamp object>
+    $oTimestamp( $timestamp ) -> <mediapipe.Timestamp object>
 ```
 
 ```cpp
 static mediapipe::Timestamp mediapipe::Timestamp::get_create( int64 timestamp );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Timestamp").create( $timestamp ) -> <mediapipe.Timestamp object>
-    _Mediapipe_ObjCreate("mediapipe.Timestamp")( $timestamp ) -> <mediapipe.Timestamp object>
+    $oTimestamp( $timestamp ) -> <mediapipe.Timestamp object>
 ```
 
 ### mediapipe::Timestamp::eq
@@ -9349,7 +9338,7 @@ AutoIt:
 ### timestamp.Timestamp
 
 ```cpp
-static mediapipe::Timestamp mediapipe::autoit::_framework_bindings::timestamp::this
+static mediapipe::Timestamp
 AutoIt:
     [propget] $otimestamp.Timestamp
 ```
@@ -9378,7 +9367,6 @@ AutoIt:
 static mediapipe::ValidatedGraphConfig mediapipe::ValidatedGraphConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ValidatedGraphConfig").create() -> <mediapipe.ValidatedGraphConfig object>
-    _Mediapipe_ObjCreate("mediapipe.ValidatedGraphConfig")() -> <mediapipe.ValidatedGraphConfig object>
 ```
 
 ### mediapipe::ValidatedGraphConfig::initialize
@@ -9424,7 +9412,7 @@ AutoIt:
 ### validated\_graph\_config.ValidatedGraphConfig
 
 ```cpp
-static mediapipe::ValidatedGraphConfig mediapipe::autoit::_framework_bindings::validated_graph_config::this
+static mediapipe::ValidatedGraphConfig
 AutoIt:
     [propget] $ovalidated_graph_config.ValidatedGraphConfig
 ```
@@ -9436,7 +9424,7 @@ AutoIt:
 ```cpp
 bool mediapipe::CalculatorOptions::merge_fields
 AutoIt:
-    [propget propput] $oCalculatorOptions.merge_fields
+    [propget, propput] $oCalculatorOptions.merge_fields
 ```
 
 ### mediapipe::CalculatorOptions::get\_create
@@ -9445,7 +9433,6 @@ AutoIt:
 static mediapipe::CalculatorOptions mediapipe::CalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorOptions").create() -> <mediapipe.CalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.CalculatorOptions")() -> <mediapipe.CalculatorOptions object>
 ```
 
 ### mediapipe::CalculatorOptions::Clear
@@ -9547,7 +9534,7 @@ AutoIt:
 ### calculator\_options\_pb2.CalculatorOptions
 
 ```cpp
-static mediapipe::CalculatorOptions mediapipe::framework::calculator_options_pb2::this
+static mediapipe::CalculatorOptions
 AutoIt:
     [propget] $ocalculator_options_pb2.CalculatorOptions
 ```
@@ -9557,7 +9544,7 @@ AutoIt:
 ### any\_pb2.Any
 
 ```cpp
-static google::protobuf::Any google::protobuf::any_pb2::this
+static google::protobuf::Any
 AutoIt:
     [propget] $oany_pb2.Any
 ```
@@ -9570,7 +9557,6 @@ AutoIt:
 static mediapipe::MediaPipeOptions mediapipe::MediaPipeOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.MediaPipeOptions").create() -> <mediapipe.MediaPipeOptions object>
-    _Mediapipe_ObjCreate("mediapipe.MediaPipeOptions")() -> <mediapipe.MediaPipeOptions object>
 ```
 
 ### mediapipe::MediaPipeOptions::Clear
@@ -9610,7 +9596,7 @@ AutoIt:
 ### mediapipe\_options\_pb2.MediaPipeOptions
 
 ```cpp
-static mediapipe::MediaPipeOptions mediapipe::framework::mediapipe_options_pb2::this
+static mediapipe::MediaPipeOptions
 AutoIt:
     [propget] $omediapipe_options_pb2.MediaPipeOptions
 ```
@@ -9623,7 +9609,6 @@ AutoIt:
 static mediapipe::PacketFactoryOptions mediapipe::PacketFactoryOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryOptions").create() -> <mediapipe.PacketFactoryOptions object>
-    _Mediapipe_ObjCreate("mediapipe.PacketFactoryOptions")() -> <mediapipe.PacketFactoryOptions object>
 ```
 
 ### mediapipe::PacketFactoryOptions::Clear
@@ -9665,7 +9650,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::PacketFactoryConfig::packet_factory
 AutoIt:
-    [propget propput] $oPacketFactoryConfig.packet_factory
+    [propget, propput] $oPacketFactoryConfig.packet_factory
 ```
 
 ### PacketFactoryConfig.output\_side\_packet
@@ -9673,7 +9658,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::PacketFactoryConfig::output_side_packet
 AutoIt:
-    [propget propput] $oPacketFactoryConfig.output_side_packet
+    [propget, propput] $oPacketFactoryConfig.output_side_packet
 ```
 
 ### PacketFactoryConfig.external\_output
@@ -9681,7 +9666,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::PacketFactoryConfig::external_output
 AutoIt:
-    [propget propput] $oPacketFactoryConfig.external_output
+    [propget, propput] $oPacketFactoryConfig.external_output
 ```
 
 ### PacketFactoryConfig.options
@@ -9698,7 +9683,6 @@ AutoIt:
 static mediapipe::PacketFactoryConfig mediapipe::PacketFactoryConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryConfig").create() -> <mediapipe.PacketFactoryConfig object>
-    _Mediapipe_ObjCreate("mediapipe.PacketFactoryConfig")() -> <mediapipe.PacketFactoryConfig object>
 ```
 
 ### mediapipe::PacketFactoryConfig::Clear
@@ -9749,7 +9733,6 @@ AutoIt:
 static mediapipe::PacketManagerConfig mediapipe::PacketManagerConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketManagerConfig").create() -> <mediapipe.PacketManagerConfig object>
-    _Mediapipe_ObjCreate("mediapipe.PacketManagerConfig")() -> <mediapipe.PacketManagerConfig object>
 ```
 
 ### mediapipe::PacketManagerConfig::Clear
@@ -10008,7 +9991,7 @@ AutoIt:
 ### packet\_factory\_pb2.PacketFactoryOptions
 
 ```cpp
-static mediapipe::PacketFactoryOptions mediapipe::framework::packet_factory_pb2::this
+static mediapipe::PacketFactoryOptions
 AutoIt:
     [propget] $opacket_factory_pb2.PacketFactoryOptions
 ```
@@ -10016,7 +9999,7 @@ AutoIt:
 ### packet\_factory\_pb2.PacketFactoryConfig
 
 ```cpp
-static mediapipe::PacketFactoryConfig mediapipe::framework::packet_factory_pb2::this
+static mediapipe::PacketFactoryConfig
 AutoIt:
     [propget] $opacket_factory_pb2.PacketFactoryConfig
 ```
@@ -10024,7 +10007,7 @@ AutoIt:
 ### packet\_factory\_pb2.PacketManagerConfig
 
 ```cpp
-static mediapipe::PacketManagerConfig mediapipe::framework::packet_factory_pb2::this
+static mediapipe::PacketManagerConfig
 AutoIt:
     [propget] $opacket_factory_pb2.PacketManagerConfig
 ```
@@ -10036,7 +10019,7 @@ AutoIt:
 ```cpp
 bool mediapipe::PacketGeneratorOptions::merge_fields
 AutoIt:
-    [propget propput] $oPacketGeneratorOptions.merge_fields
+    [propget, propput] $oPacketGeneratorOptions.merge_fields
 ```
 
 ### mediapipe::PacketGeneratorOptions::get\_create
@@ -10045,7 +10028,6 @@ AutoIt:
 static mediapipe::PacketGeneratorOptions mediapipe::PacketGeneratorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorOptions").create() -> <mediapipe.PacketGeneratorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.PacketGeneratorOptions")() -> <mediapipe.PacketGeneratorOptions object>
 ```
 
 ### mediapipe::PacketGeneratorOptions::Clear
@@ -10087,7 +10069,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::PacketGeneratorConfig::packet_generator
 AutoIt:
-    [propget propput] $oPacketGeneratorConfig.packet_generator
+    [propget, propput] $oPacketGeneratorConfig.packet_generator
 ```
 
 ### PacketGeneratorConfig.input\_side\_packet
@@ -10136,7 +10118,6 @@ AutoIt:
 static mediapipe::PacketGeneratorConfig mediapipe::PacketGeneratorConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorConfig").create() -> <mediapipe.PacketGeneratorConfig object>
-    _Mediapipe_ObjCreate("mediapipe.PacketGeneratorConfig")() -> <mediapipe.PacketGeneratorConfig object>
 ```
 
 ### mediapipe::PacketGeneratorConfig::Clear
@@ -10378,7 +10359,7 @@ AutoIt:
 ### packet\_generator\_pb2.PacketGeneratorOptions
 
 ```cpp
-static mediapipe::PacketGeneratorOptions mediapipe::framework::packet_generator_pb2::this
+static mediapipe::PacketGeneratorOptions
 AutoIt:
     [propget] $opacket_generator_pb2.PacketGeneratorOptions
 ```
@@ -10386,7 +10367,7 @@ AutoIt:
 ### packet\_generator\_pb2.PacketGeneratorConfig
 
 ```cpp
-static mediapipe::PacketGeneratorConfig mediapipe::framework::packet_generator_pb2::this
+static mediapipe::PacketGeneratorConfig
 AutoIt:
     [propget] $opacket_generator_pb2.PacketGeneratorConfig
 ```
@@ -10398,7 +10379,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::StatusHandlerConfig::status_handler
 AutoIt:
-    [propget propput] $oStatusHandlerConfig.status_handler
+    [propget, propput] $oStatusHandlerConfig.status_handler
 ```
 
 ### StatusHandlerConfig.input\_side\_packet
@@ -10431,7 +10412,6 @@ AutoIt:
 static mediapipe::StatusHandlerConfig mediapipe::StatusHandlerConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.StatusHandlerConfig").create() -> <mediapipe.StatusHandlerConfig object>
-    _Mediapipe_ObjCreate("mediapipe.StatusHandlerConfig")() -> <mediapipe.StatusHandlerConfig object>
 ```
 
 ### mediapipe::StatusHandlerConfig::Clear
@@ -10471,7 +10451,7 @@ AutoIt:
 ### status\_handler\_pb2.StatusHandlerConfig
 
 ```cpp
-static mediapipe::StatusHandlerConfig mediapipe::framework::status_handler_pb2::this
+static mediapipe::StatusHandlerConfig
 AutoIt:
     [propget] $ostatus_handler_pb2.StatusHandlerConfig
 ```
@@ -10483,7 +10463,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InputStreamHandlerConfig::input_stream_handler
 AutoIt:
-    [propget propput] $oInputStreamHandlerConfig.input_stream_handler
+    [propget, propput] $oInputStreamHandlerConfig.input_stream_handler
 ```
 
 ### InputStreamHandlerConfig.options
@@ -10500,7 +10480,6 @@ AutoIt:
 static mediapipe::InputStreamHandlerConfig mediapipe::InputStreamHandlerConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputStreamHandlerConfig").create() -> <mediapipe.InputStreamHandlerConfig object>
-    _Mediapipe_ObjCreate("mediapipe.InputStreamHandlerConfig")() -> <mediapipe.InputStreamHandlerConfig object>
 ```
 
 ### mediapipe::InputStreamHandlerConfig::Clear
@@ -10542,7 +10521,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::OutputStreamHandlerConfig::output_stream_handler
 AutoIt:
-    [propget propput] $oOutputStreamHandlerConfig.output_stream_handler
+    [propget, propput] $oOutputStreamHandlerConfig.output_stream_handler
 ```
 
 ### OutputStreamHandlerConfig.input\_side\_packet
@@ -10567,7 +10546,6 @@ AutoIt:
 static mediapipe::OutputStreamHandlerConfig mediapipe::OutputStreamHandlerConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.OutputStreamHandlerConfig").create() -> <mediapipe.OutputStreamHandlerConfig object>
-    _Mediapipe_ObjCreate("mediapipe.OutputStreamHandlerConfig")() -> <mediapipe.OutputStreamHandlerConfig object>
 ```
 
 ### mediapipe::OutputStreamHandlerConfig::Clear
@@ -10607,7 +10585,7 @@ AutoIt:
 ### stream\_handler\_pb2.InputStreamHandlerConfig
 
 ```cpp
-static mediapipe::InputStreamHandlerConfig mediapipe::framework::stream_handler_pb2::this
+static mediapipe::InputStreamHandlerConfig
 AutoIt:
     [propget] $ostream_handler_pb2.InputStreamHandlerConfig
 ```
@@ -10615,7 +10593,7 @@ AutoIt:
 ### stream\_handler\_pb2.OutputStreamHandlerConfig
 
 ```cpp
-static mediapipe::OutputStreamHandlerConfig mediapipe::framework::stream_handler_pb2::this
+static mediapipe::OutputStreamHandlerConfig
 AutoIt:
     [propget] $ostream_handler_pb2.OutputStreamHandlerConfig
 ```
@@ -10627,7 +10605,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::ExecutorConfig::name
 AutoIt:
-    [propget propput] $oExecutorConfig.name
+    [propget, propput] $oExecutorConfig.name
 ```
 
 ### ExecutorConfig.type
@@ -10635,7 +10613,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::ExecutorConfig::type
 AutoIt:
-    [propget propput] $oExecutorConfig.type
+    [propget, propput] $oExecutorConfig.type
 ```
 
 ### ExecutorConfig.options
@@ -10652,7 +10630,6 @@ AutoIt:
 static mediapipe::ExecutorConfig mediapipe::ExecutorConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ExecutorConfig").create() -> <mediapipe.ExecutorConfig object>
-    _Mediapipe_ObjCreate("mediapipe.ExecutorConfig")() -> <mediapipe.ExecutorConfig object>
 ```
 
 ### mediapipe::ExecutorConfig::Clear
@@ -10694,7 +10671,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InputCollection::name
 AutoIt:
-    [propget propput] $oInputCollection.name
+    [propget, propput] $oInputCollection.name
 ```
 
 ### InputCollection.side\_packet\_name
@@ -10718,7 +10695,7 @@ AutoIt:
 ```cpp
 mediapipe::InputCollection::InputType mediapipe::InputCollection::input_type
 AutoIt:
-    [propget propput] $oInputCollection.input_type
+    [propget, propput] $oInputCollection.input_type
 ```
 
 ### InputCollection.file\_name
@@ -10726,7 +10703,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InputCollection::file_name
 AutoIt:
-    [propget propput] $oInputCollection.file_name
+    [propget, propput] $oInputCollection.file_name
 ```
 
 ### mediapipe::InputCollection::get\_create
@@ -10735,7 +10712,6 @@ AutoIt:
 static mediapipe::InputCollection mediapipe::InputCollection::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputCollection").create() -> <mediapipe.InputCollection object>
-    _Mediapipe_ObjCreate("mediapipe.InputCollection")() -> <mediapipe.InputCollection object>
 ```
 
 ### mediapipe::InputCollection::Clear
@@ -10826,7 +10802,6 @@ AutoIt:
 static mediapipe::InputCollectionSet mediapipe::InputCollectionSet::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputCollectionSet").create() -> <mediapipe.InputCollectionSet object>
-    _Mediapipe_ObjCreate("mediapipe.InputCollectionSet")() -> <mediapipe.InputCollectionSet object>
 ```
 
 ### mediapipe::InputCollectionSet::Clear
@@ -11087,7 +11062,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InputStreamInfo::tag_index
 AutoIt:
-    [propget propput] $oInputStreamInfo.tag_index
+    [propget, propput] $oInputStreamInfo.tag_index
 ```
 
 ### InputStreamInfo.back\_edge
@@ -11095,7 +11070,7 @@ AutoIt:
 ```cpp
 bool mediapipe::InputStreamInfo::back_edge
 AutoIt:
-    [propget propput] $oInputStreamInfo.back_edge
+    [propget, propput] $oInputStreamInfo.back_edge
 ```
 
 ### mediapipe::InputStreamInfo::get\_create
@@ -11104,7 +11079,6 @@ AutoIt:
 static mediapipe::InputStreamInfo mediapipe::InputStreamInfo::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputStreamInfo").create() -> <mediapipe.InputStreamInfo object>
-    _Mediapipe_ObjCreate("mediapipe.InputStreamInfo")() -> <mediapipe.InputStreamInfo object>
 ```
 
 ### mediapipe::InputStreamInfo::Clear
@@ -11146,7 +11120,7 @@ AutoIt:
 ```cpp
 int64 mediapipe::ProfilerConfig::histogram_interval_size_usec
 AutoIt:
-    [propget propput] $oProfilerConfig.histogram_interval_size_usec
+    [propget, propput] $oProfilerConfig.histogram_interval_size_usec
 ```
 
 ### ProfilerConfig.num\_histogram\_intervals
@@ -11154,7 +11128,7 @@ AutoIt:
 ```cpp
 int64 mediapipe::ProfilerConfig::num_histogram_intervals
 AutoIt:
-    [propget propput] $oProfilerConfig.num_histogram_intervals
+    [propget, propput] $oProfilerConfig.num_histogram_intervals
 ```
 
 ### ProfilerConfig.enable\_input\_output\_latency
@@ -11162,7 +11136,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ProfilerConfig::enable_input_output_latency
 AutoIt:
-    [propget propput] $oProfilerConfig.enable_input_output_latency
+    [propget, propput] $oProfilerConfig.enable_input_output_latency
 ```
 
 ### ProfilerConfig.enable\_profiler
@@ -11170,7 +11144,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ProfilerConfig::enable_profiler
 AutoIt:
-    [propget propput] $oProfilerConfig.enable_profiler
+    [propget, propput] $oProfilerConfig.enable_profiler
 ```
 
 ### ProfilerConfig.enable\_stream\_latency
@@ -11178,7 +11152,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ProfilerConfig::enable_stream_latency
 AutoIt:
-    [propget propput] $oProfilerConfig.enable_stream_latency
+    [propget, propput] $oProfilerConfig.enable_stream_latency
 ```
 
 ### ProfilerConfig.use\_packet\_timestamp\_for\_added\_packet
@@ -11186,7 +11160,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ProfilerConfig::use_packet_timestamp_for_added_packet
 AutoIt:
-    [propget propput] $oProfilerConfig.use_packet_timestamp_for_added_packet
+    [propget, propput] $oProfilerConfig.use_packet_timestamp_for_added_packet
 ```
 
 ### ProfilerConfig.trace\_log\_capacity
@@ -11194,7 +11168,7 @@ AutoIt:
 ```cpp
 int64 mediapipe::ProfilerConfig::trace_log_capacity
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_capacity
+    [propget, propput] $oProfilerConfig.trace_log_capacity
 ```
 
 ### ProfilerConfig.trace\_event\_types\_disabled
@@ -11210,7 +11184,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::ProfilerConfig::trace_log_path
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_path
+    [propget, propput] $oProfilerConfig.trace_log_path
 ```
 
 ### ProfilerConfig.trace\_log\_count
@@ -11218,7 +11192,7 @@ AutoIt:
 ```cpp
 int mediapipe::ProfilerConfig::trace_log_count
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_count
+    [propget, propput] $oProfilerConfig.trace_log_count
 ```
 
 ### ProfilerConfig.trace\_log\_interval\_usec
@@ -11226,7 +11200,7 @@ AutoIt:
 ```cpp
 int64 mediapipe::ProfilerConfig::trace_log_interval_usec
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_interval_usec
+    [propget, propput] $oProfilerConfig.trace_log_interval_usec
 ```
 
 ### ProfilerConfig.trace\_log\_margin\_usec
@@ -11234,7 +11208,7 @@ AutoIt:
 ```cpp
 int64 mediapipe::ProfilerConfig::trace_log_margin_usec
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_margin_usec
+    [propget, propput] $oProfilerConfig.trace_log_margin_usec
 ```
 
 ### ProfilerConfig.trace\_log\_duration\_events
@@ -11242,7 +11216,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ProfilerConfig::trace_log_duration_events
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_duration_events
+    [propget, propput] $oProfilerConfig.trace_log_duration_events
 ```
 
 ### ProfilerConfig.trace\_log\_interval\_count
@@ -11250,7 +11224,7 @@ AutoIt:
 ```cpp
 int mediapipe::ProfilerConfig::trace_log_interval_count
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_interval_count
+    [propget, propput] $oProfilerConfig.trace_log_interval_count
 ```
 
 ### ProfilerConfig.trace\_log\_disabled
@@ -11258,7 +11232,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ProfilerConfig::trace_log_disabled
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_disabled
+    [propget, propput] $oProfilerConfig.trace_log_disabled
 ```
 
 ### ProfilerConfig.trace\_enabled
@@ -11266,7 +11240,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ProfilerConfig::trace_enabled
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_enabled
+    [propget, propput] $oProfilerConfig.trace_enabled
 ```
 
 ### ProfilerConfig.trace\_log\_instant\_events
@@ -11274,7 +11248,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ProfilerConfig::trace_log_instant_events
 AutoIt:
-    [propget propput] $oProfilerConfig.trace_log_instant_events
+    [propget, propput] $oProfilerConfig.trace_log_instant_events
 ```
 
 ### ProfilerConfig.calculator\_filter
@@ -11282,7 +11256,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::ProfilerConfig::calculator_filter
 AutoIt:
-    [propget propput] $oProfilerConfig.calculator_filter
+    [propget, propput] $oProfilerConfig.calculator_filter
 ```
 
 ### mediapipe::ProfilerConfig::get\_create
@@ -11291,7 +11265,6 @@ AutoIt:
 static mediapipe::ProfilerConfig mediapipe::ProfilerConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ProfilerConfig").create() -> <mediapipe.ProfilerConfig object>
-    _Mediapipe_ObjCreate("mediapipe.ProfilerConfig")() -> <mediapipe.ProfilerConfig object>
 ```
 
 ### mediapipe::ProfilerConfig::Clear
@@ -11559,7 +11532,7 @@ AutoIt:
 ```cpp
 int mediapipe::CalculatorGraphConfig::num_threads
 AutoIt:
-    [propget propput] $oCalculatorGraphConfig.num_threads
+    [propget, propput] $oCalculatorGraphConfig.num_threads
 ```
 
 ### CalculatorGraphConfig.status\_handler
@@ -11607,7 +11580,7 @@ AutoIt:
 ```cpp
 int mediapipe::CalculatorGraphConfig::max_queue_size
 AutoIt:
-    [propget propput] $oCalculatorGraphConfig.max_queue_size
+    [propget, propput] $oCalculatorGraphConfig.max_queue_size
 ```
 
 ### CalculatorGraphConfig.report\_deadlock
@@ -11615,7 +11588,7 @@ AutoIt:
 ```cpp
 bool mediapipe::CalculatorGraphConfig::report_deadlock
 AutoIt:
-    [propget propput] $oCalculatorGraphConfig.report_deadlock
+    [propget, propput] $oCalculatorGraphConfig.report_deadlock
 ```
 
 ### CalculatorGraphConfig.input\_stream\_handler
@@ -11655,7 +11628,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::CalculatorGraphConfig::package
 AutoIt:
-    [propget propput] $oCalculatorGraphConfig.package
+    [propget, propput] $oCalculatorGraphConfig.package
 ```
 
 ### CalculatorGraphConfig.type
@@ -11663,7 +11636,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::CalculatorGraphConfig::type
 AutoIt:
-    [propget propput] $oCalculatorGraphConfig.type
+    [propget, propput] $oCalculatorGraphConfig.type
 ```
 
 ### CalculatorGraphConfig.options
@@ -11688,7 +11661,6 @@ AutoIt:
 static mediapipe::CalculatorGraphConfig mediapipe::CalculatorGraphConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig").create() -> <mediapipe.CalculatorGraphConfig object>
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig")() -> <mediapipe.CalculatorGraphConfig object>
 ```
 
 ### mediapipe::CalculatorGraphConfig::Clear
@@ -12825,7 +12797,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::CalculatorGraphConfig::Node::name
 AutoIt:
-    [propget propput] $oNode.name
+    [propget, propput] $oNode.name
 ```
 
 ### Node.calculator
@@ -12833,7 +12805,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::CalculatorGraphConfig::Node::calculator
 AutoIt:
-    [propget propput] $oNode.calculator
+    [propget, propput] $oNode.calculator
 ```
 
 ### Node.input\_stream
@@ -12889,7 +12861,7 @@ AutoIt:
 ```cpp
 int mediapipe::CalculatorGraphConfig::Node::source_layer
 AutoIt:
-    [propget propput] $oNode.source_layer
+    [propget, propput] $oNode.source_layer
 ```
 
 ### Node.buffer\_size\_hint
@@ -12897,7 +12869,7 @@ AutoIt:
 ```cpp
 int mediapipe::CalculatorGraphConfig::Node::buffer_size_hint
 AutoIt:
-    [propget propput] $oNode.buffer_size_hint
+    [propget, propput] $oNode.buffer_size_hint
 ```
 
 ### Node.input\_stream\_handler
@@ -12929,7 +12901,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::CalculatorGraphConfig::Node::executor
 AutoIt:
-    [propget propput] $oNode.executor
+    [propget, propput] $oNode.executor
 ```
 
 ### Node.profiler\_config
@@ -12945,7 +12917,7 @@ AutoIt:
 ```cpp
 int mediapipe::CalculatorGraphConfig::Node::max_in_flight
 AutoIt:
-    [propget propput] $oNode.max_in_flight
+    [propget, propput] $oNode.max_in_flight
 ```
 
 ### Node.option\_value
@@ -12970,7 +12942,6 @@ AutoIt:
 static mediapipe::CalculatorGraphConfig::Node mediapipe::CalculatorGraphConfig::Node::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig.Node").create() -> <mediapipe.CalculatorGraphConfig.Node object>
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig.Node")() -> <mediapipe.CalculatorGraphConfig.Node object>
 ```
 
 ### mediapipe::CalculatorGraphConfig::Node::Clear
@@ -13229,7 +13200,7 @@ AutoIt:
 ### calculator\_pb2.ExecutorConfig
 
 ```cpp
-static mediapipe::ExecutorConfig mediapipe::framework::calculator_pb2::this
+static mediapipe::ExecutorConfig
 AutoIt:
     [propget] $ocalculator_pb2.ExecutorConfig
 ```
@@ -13237,7 +13208,7 @@ AutoIt:
 ### calculator\_pb2.InputCollection
 
 ```cpp
-static mediapipe::InputCollection mediapipe::framework::calculator_pb2::this
+static mediapipe::InputCollection
 AutoIt:
     [propget] $ocalculator_pb2.InputCollection
 ```
@@ -13245,7 +13216,7 @@ AutoIt:
 ### calculator\_pb2.InputCollectionSet
 
 ```cpp
-static mediapipe::InputCollectionSet mediapipe::framework::calculator_pb2::this
+static mediapipe::InputCollectionSet
 AutoIt:
     [propget] $ocalculator_pb2.InputCollectionSet
 ```
@@ -13253,7 +13224,7 @@ AutoIt:
 ### calculator\_pb2.InputStreamInfo
 
 ```cpp
-static mediapipe::InputStreamInfo mediapipe::framework::calculator_pb2::this
+static mediapipe::InputStreamInfo
 AutoIt:
     [propget] $ocalculator_pb2.InputStreamInfo
 ```
@@ -13261,7 +13232,7 @@ AutoIt:
 ### calculator\_pb2.ProfilerConfig
 
 ```cpp
-static mediapipe::ProfilerConfig mediapipe::framework::calculator_pb2::this
+static mediapipe::ProfilerConfig
 AutoIt:
     [propget] $ocalculator_pb2.ProfilerConfig
 ```
@@ -13269,7 +13240,7 @@ AutoIt:
 ### calculator\_pb2.CalculatorGraphConfig
 
 ```cpp
-static mediapipe::CalculatorGraphConfig mediapipe::framework::calculator_pb2::this
+static mediapipe::CalculatorGraphConfig
 AutoIt:
     [propget] $ocalculator_pb2.CalculatorGraphConfig
 ```
@@ -13279,7 +13250,7 @@ AutoIt:
 ### CalculatorGraphConfig.Node
 
 ```cpp
-static mediapipe::CalculatorGraphConfig::Node mediapipe::framework::calculator_pb2::CalculatorGraphConfig::this
+static mediapipe::CalculatorGraphConfig::Node
 AutoIt:
     [propget] $oCalculatorGraphConfig.Node
 ```
@@ -13292,7 +13263,6 @@ AutoIt:
 static mediapipe::FieldDescriptorProto mediapipe::FieldDescriptorProto::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.FieldDescriptorProto").create() -> <mediapipe.FieldDescriptorProto object>
-    _Mediapipe_ObjCreate("mediapipe.FieldDescriptorProto")() -> <mediapipe.FieldDescriptorProto object>
 ```
 
 ### mediapipe::FieldDescriptorProto::Clear
@@ -13484,7 +13454,7 @@ AutoIt:
 ### proto\_descriptor\_pb2.FieldDescriptorProto
 
 ```cpp
-static mediapipe::FieldDescriptorProto mediapipe::framework::deps::proto_descriptor_pb2::this
+static mediapipe::FieldDescriptorProto
 AutoIt:
     [propget] $oproto_descriptor_pb2.FieldDescriptorProto
 ```
@@ -13496,7 +13466,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::TemplateExpression::param
 AutoIt:
-    [propget propput] $oTemplateExpression.param
+    [propget, propput] $oTemplateExpression.param
 ```
 
 ### TemplateExpression.op
@@ -13504,7 +13474,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::TemplateExpression::op
 AutoIt:
-    [propget propput] $oTemplateExpression.op
+    [propget, propput] $oTemplateExpression.op
 ```
 
 ### TemplateExpression.arg
@@ -13520,7 +13490,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::TemplateExpression::path
 AutoIt:
-    [propget propput] $oTemplateExpression.path
+    [propget, propput] $oTemplateExpression.path
 ```
 
 ### TemplateExpression.field\_type
@@ -13528,7 +13498,7 @@ AutoIt:
 ```cpp
 mediapipe::FieldDescriptorProto::Type mediapipe::TemplateExpression::field_type
 AutoIt:
-    [propget propput] $oTemplateExpression.field_type
+    [propget, propput] $oTemplateExpression.field_type
 ```
 
 ### TemplateExpression.field\_value
@@ -13536,7 +13506,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::TemplateExpression::field_value
 AutoIt:
-    [propget propput] $oTemplateExpression.field_value
+    [propget, propput] $oTemplateExpression.field_value
 ```
 
 ### mediapipe::TemplateExpression::get\_create
@@ -13545,7 +13515,6 @@ AutoIt:
 static mediapipe::TemplateExpression mediapipe::TemplateExpression::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateExpression").create() -> <mediapipe.TemplateExpression object>
-    _Mediapipe_ObjCreate("mediapipe.TemplateExpression")() -> <mediapipe.TemplateExpression object>
 ```
 
 ### mediapipe::TemplateExpression::Clear
@@ -13823,7 +13792,6 @@ AutoIt:
 static mediapipe::CalculatorGraphTemplate mediapipe::CalculatorGraphTemplate::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphTemplate").create() -> <mediapipe.CalculatorGraphTemplate object>
-    _Mediapipe_ObjCreate("mediapipe.CalculatorGraphTemplate")() -> <mediapipe.CalculatorGraphTemplate object>
 ```
 
 ### mediapipe::CalculatorGraphTemplate::Clear
@@ -13865,7 +13833,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::TemplateArgument::str
 AutoIt:
-    [propget propput] $oTemplateArgument.str
+    [propget, propput] $oTemplateArgument.str
 ```
 
 ### TemplateArgument.num
@@ -13873,7 +13841,7 @@ AutoIt:
 ```cpp
 double mediapipe::TemplateArgument::num
 AutoIt:
-    [propget propput] $oTemplateArgument.num
+    [propget, propput] $oTemplateArgument.num
 ```
 
 ### TemplateArgument.dict
@@ -13898,7 +13866,6 @@ AutoIt:
 static mediapipe::TemplateArgument mediapipe::TemplateArgument::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateArgument").create() -> <mediapipe.TemplateArgument object>
-    _Mediapipe_ObjCreate("mediapipe.TemplateArgument")() -> <mediapipe.TemplateArgument object>
 ```
 
 ### mediapipe::TemplateArgument::Clear
@@ -14168,7 +14135,6 @@ AutoIt:
 static mediapipe::TemplateDict mediapipe::TemplateDict::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateDict").create() -> <mediapipe.TemplateDict object>
-    _Mediapipe_ObjCreate("mediapipe.TemplateDict")() -> <mediapipe.TemplateDict object>
 ```
 
 ### mediapipe::TemplateDict::Clear
@@ -14429,7 +14395,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::TemplateDict::Parameter::key
 AutoIt:
-    [propget propput] $oParameter.key
+    [propget, propput] $oParameter.key
 ```
 
 ### Parameter.value
@@ -14446,7 +14412,6 @@ AutoIt:
 static mediapipe::TemplateDict::Parameter mediapipe::TemplateDict::Parameter::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateDict.Parameter").create() -> <mediapipe.TemplateDict.Parameter object>
-    _Mediapipe_ObjCreate("mediapipe.TemplateDict.Parameter")() -> <mediapipe.TemplateDict.Parameter object>
 ```
 
 ### mediapipe::TemplateDict::Parameter::Clear
@@ -14505,7 +14470,6 @@ AutoIt:
 static mediapipe::TemplateSubgraphOptions mediapipe::TemplateSubgraphOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateSubgraphOptions").create() -> <mediapipe.TemplateSubgraphOptions object>
-    _Mediapipe_ObjCreate("mediapipe.TemplateSubgraphOptions")() -> <mediapipe.TemplateSubgraphOptions object>
 ```
 
 ### mediapipe::TemplateSubgraphOptions::Clear
@@ -14545,7 +14509,7 @@ AutoIt:
 ### calculator\_graph\_template\_pb2.TemplateExpression
 
 ```cpp
-static mediapipe::TemplateExpression mediapipe::framework::tool::calculator_graph_template_pb2::this
+static mediapipe::TemplateExpression
 AutoIt:
     [propget] $ocalculator_graph_template_pb2.TemplateExpression
 ```
@@ -14553,7 +14517,7 @@ AutoIt:
 ### calculator\_graph\_template\_pb2.CalculatorGraphTemplate
 
 ```cpp
-static mediapipe::CalculatorGraphTemplate mediapipe::framework::tool::calculator_graph_template_pb2::this
+static mediapipe::CalculatorGraphTemplate
 AutoIt:
     [propget] $ocalculator_graph_template_pb2.CalculatorGraphTemplate
 ```
@@ -14561,7 +14525,7 @@ AutoIt:
 ### calculator\_graph\_template\_pb2.TemplateArgument
 
 ```cpp
-static mediapipe::TemplateArgument mediapipe::framework::tool::calculator_graph_template_pb2::this
+static mediapipe::TemplateArgument
 AutoIt:
     [propget] $ocalculator_graph_template_pb2.TemplateArgument
 ```
@@ -14569,7 +14533,7 @@ AutoIt:
 ### calculator\_graph\_template\_pb2.TemplateDict
 
 ```cpp
-static mediapipe::TemplateDict mediapipe::framework::tool::calculator_graph_template_pb2::this
+static mediapipe::TemplateDict
 AutoIt:
     [propget] $ocalculator_graph_template_pb2.TemplateDict
 ```
@@ -14577,7 +14541,7 @@ AutoIt:
 ### calculator\_graph\_template\_pb2.TemplateSubgraphOptions
 
 ```cpp
-static mediapipe::TemplateSubgraphOptions mediapipe::framework::tool::calculator_graph_template_pb2::this
+static mediapipe::TemplateSubgraphOptions
 AutoIt:
     [propget] $ocalculator_graph_template_pb2.TemplateSubgraphOptions
 ```
@@ -14587,7 +14551,7 @@ AutoIt:
 ### TemplateDict.Parameter
 
 ```cpp
-static mediapipe::TemplateDict::Parameter mediapipe::framework::tool::calculator_graph_template_pb2::TemplateDict::this
+static mediapipe::TemplateDict::Parameter
 AutoIt:
     [propget] $oTemplateDict.Parameter
 ```
@@ -14608,7 +14572,6 @@ AutoIt:
 static mediapipe::Rasterization mediapipe::Rasterization::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rasterization").create() -> <mediapipe.Rasterization object>
-    _Mediapipe_ObjCreate("mediapipe.Rasterization")() -> <mediapipe.Rasterization object>
 ```
 
 ### mediapipe::Rasterization::Clear
@@ -14869,7 +14832,7 @@ AutoIt:
 ```cpp
 int mediapipe::Rasterization::Interval::y
 AutoIt:
-    [propget propput] $oInterval.y
+    [propget, propput] $oInterval.y
 ```
 
 ### Interval.left\_x
@@ -14877,7 +14840,7 @@ AutoIt:
 ```cpp
 int mediapipe::Rasterization::Interval::left_x
 AutoIt:
-    [propget propput] $oInterval.left_x
+    [propget, propput] $oInterval.left_x
 ```
 
 ### Interval.right\_x
@@ -14885,7 +14848,7 @@ AutoIt:
 ```cpp
 int mediapipe::Rasterization::Interval::right_x
 AutoIt:
-    [propget propput] $oInterval.right_x
+    [propget, propput] $oInterval.right_x
 ```
 
 ### mediapipe::Rasterization::Interval::get\_create
@@ -14894,7 +14857,6 @@ AutoIt:
 static mediapipe::Rasterization::Interval mediapipe::Rasterization::Interval::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rasterization.Interval").create() -> <mediapipe.Rasterization.Interval object>
-    _Mediapipe_ObjCreate("mediapipe.Rasterization.Interval")() -> <mediapipe.Rasterization.Interval object>
 ```
 
 ### mediapipe::Rasterization::Interval::Clear
@@ -14934,7 +14896,7 @@ AutoIt:
 ### rasterization\_pb2.Rasterization
 
 ```cpp
-static mediapipe::Rasterization mediapipe::framework::formats::annotation::rasterization_pb2::this
+static mediapipe::Rasterization
 AutoIt:
     [propget] $orasterization_pb2.Rasterization
 ```
@@ -14944,7 +14906,7 @@ AutoIt:
 ### Rasterization.Interval
 
 ```cpp
-static mediapipe::Rasterization::Interval mediapipe::framework::formats::annotation::rasterization_pb2::Rasterization::this
+static mediapipe::Rasterization::Interval
 AutoIt:
     [propget] $oRasterization.Interval
 ```
@@ -14956,7 +14918,7 @@ AutoIt:
 ```cpp
 mediapipe::LocationData::Format mediapipe::LocationData::format
 AutoIt:
-    [propget propput] $oLocationData.format
+    [propget, propput] $oLocationData.format
 ```
 
 ### LocationData.bounding\_box
@@ -14997,7 +14959,6 @@ AutoIt:
 static mediapipe::LocationData mediapipe::LocationData::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData").create() -> <mediapipe.LocationData object>
-    _Mediapipe_ObjCreate("mediapipe.LocationData")() -> <mediapipe.LocationData object>
 ```
 
 ### mediapipe::LocationData::Clear
@@ -15290,7 +15251,7 @@ AutoIt:
 ```cpp
 int mediapipe::LocationData::BoundingBox::xmin
 AutoIt:
-    [propget propput] $oBoundingBox.xmin
+    [propget, propput] $oBoundingBox.xmin
 ```
 
 ### BoundingBox.ymin
@@ -15298,7 +15259,7 @@ AutoIt:
 ```cpp
 int mediapipe::LocationData::BoundingBox::ymin
 AutoIt:
-    [propget propput] $oBoundingBox.ymin
+    [propget, propput] $oBoundingBox.ymin
 ```
 
 ### BoundingBox.width
@@ -15306,7 +15267,7 @@ AutoIt:
 ```cpp
 int mediapipe::LocationData::BoundingBox::width
 AutoIt:
-    [propget propput] $oBoundingBox.width
+    [propget, propput] $oBoundingBox.width
 ```
 
 ### BoundingBox.height
@@ -15314,7 +15275,7 @@ AutoIt:
 ```cpp
 int mediapipe::LocationData::BoundingBox::height
 AutoIt:
-    [propget propput] $oBoundingBox.height
+    [propget, propput] $oBoundingBox.height
 ```
 
 ### mediapipe::LocationData::BoundingBox::get\_create
@@ -15323,7 +15284,6 @@ AutoIt:
 static mediapipe::LocationData::BoundingBox mediapipe::LocationData::BoundingBox::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.BoundingBox").create() -> <mediapipe.LocationData.BoundingBox object>
-    _Mediapipe_ObjCreate("mediapipe.LocationData.BoundingBox")() -> <mediapipe.LocationData.BoundingBox object>
 ```
 
 ### mediapipe::LocationData::BoundingBox::Clear
@@ -15365,7 +15325,7 @@ AutoIt:
 ```cpp
 float mediapipe::LocationData::RelativeBoundingBox::xmin
 AutoIt:
-    [propget propput] $oRelativeBoundingBox.xmin
+    [propget, propput] $oRelativeBoundingBox.xmin
 ```
 
 ### RelativeBoundingBox.ymin
@@ -15373,7 +15333,7 @@ AutoIt:
 ```cpp
 float mediapipe::LocationData::RelativeBoundingBox::ymin
 AutoIt:
-    [propget propput] $oRelativeBoundingBox.ymin
+    [propget, propput] $oRelativeBoundingBox.ymin
 ```
 
 ### RelativeBoundingBox.width
@@ -15381,7 +15341,7 @@ AutoIt:
 ```cpp
 float mediapipe::LocationData::RelativeBoundingBox::width
 AutoIt:
-    [propget propput] $oRelativeBoundingBox.width
+    [propget, propput] $oRelativeBoundingBox.width
 ```
 
 ### RelativeBoundingBox.height
@@ -15389,7 +15349,7 @@ AutoIt:
 ```cpp
 float mediapipe::LocationData::RelativeBoundingBox::height
 AutoIt:
-    [propget propput] $oRelativeBoundingBox.height
+    [propget, propput] $oRelativeBoundingBox.height
 ```
 
 ### mediapipe::LocationData::RelativeBoundingBox::get\_create
@@ -15398,7 +15358,6 @@ AutoIt:
 static mediapipe::LocationData::RelativeBoundingBox mediapipe::LocationData::RelativeBoundingBox::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeBoundingBox").create() -> <mediapipe.LocationData.RelativeBoundingBox object>
-    _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeBoundingBox")() -> <mediapipe.LocationData.RelativeBoundingBox object>
 ```
 
 ### mediapipe::LocationData::RelativeBoundingBox::Clear
@@ -15440,7 +15399,7 @@ AutoIt:
 ```cpp
 int mediapipe::LocationData::BinaryMask::width
 AutoIt:
-    [propget propput] $oBinaryMask.width
+    [propget, propput] $oBinaryMask.width
 ```
 
 ### BinaryMask.height
@@ -15448,7 +15407,7 @@ AutoIt:
 ```cpp
 int mediapipe::LocationData::BinaryMask::height
 AutoIt:
-    [propget propput] $oBinaryMask.height
+    [propget, propput] $oBinaryMask.height
 ```
 
 ### BinaryMask.rasterization
@@ -15465,7 +15424,6 @@ AutoIt:
 static mediapipe::LocationData::BinaryMask mediapipe::LocationData::BinaryMask::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.BinaryMask").create() -> <mediapipe.LocationData.BinaryMask object>
-    _Mediapipe_ObjCreate("mediapipe.LocationData.BinaryMask")() -> <mediapipe.LocationData.BinaryMask object>
 ```
 
 ### mediapipe::LocationData::BinaryMask::Clear
@@ -15507,7 +15465,7 @@ AutoIt:
 ```cpp
 float mediapipe::LocationData::RelativeKeypoint::x
 AutoIt:
-    [propget propput] $oRelativeKeypoint.x
+    [propget, propput] $oRelativeKeypoint.x
 ```
 
 ### RelativeKeypoint.y
@@ -15515,7 +15473,7 @@ AutoIt:
 ```cpp
 float mediapipe::LocationData::RelativeKeypoint::y
 AutoIt:
-    [propget propput] $oRelativeKeypoint.y
+    [propget, propput] $oRelativeKeypoint.y
 ```
 
 ### RelativeKeypoint.keypoint\_label
@@ -15523,7 +15481,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::LocationData::RelativeKeypoint::keypoint_label
 AutoIt:
-    [propget propput] $oRelativeKeypoint.keypoint_label
+    [propget, propput] $oRelativeKeypoint.keypoint_label
 ```
 
 ### RelativeKeypoint.score
@@ -15531,7 +15489,7 @@ AutoIt:
 ```cpp
 float mediapipe::LocationData::RelativeKeypoint::score
 AutoIt:
-    [propget propput] $oRelativeKeypoint.score
+    [propget, propput] $oRelativeKeypoint.score
 ```
 
 ### mediapipe::LocationData::RelativeKeypoint::get\_create
@@ -15540,7 +15498,6 @@ AutoIt:
 static mediapipe::LocationData::RelativeKeypoint mediapipe::LocationData::RelativeKeypoint::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeKeypoint").create() -> <mediapipe.LocationData.RelativeKeypoint object>
-    _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeKeypoint")() -> <mediapipe.LocationData.RelativeKeypoint object>
 ```
 
 ### mediapipe::LocationData::RelativeKeypoint::Clear
@@ -15580,7 +15537,7 @@ AutoIt:
 ### location\_data\_pb2.LocationData
 
 ```cpp
-static mediapipe::LocationData mediapipe::framework::formats::location_data_pb2::this
+static mediapipe::LocationData
 AutoIt:
     [propget] $olocation_data_pb2.LocationData
 ```
@@ -15590,7 +15547,7 @@ AutoIt:
 ### LocationData.BoundingBox
 
 ```cpp
-static mediapipe::LocationData::BoundingBox mediapipe::framework::formats::location_data_pb2::LocationData::this
+static mediapipe::LocationData::BoundingBox
 AutoIt:
     [propget] $oLocationData.BoundingBox
 ```
@@ -15598,7 +15555,7 @@ AutoIt:
 ### LocationData.RelativeBoundingBox
 
 ```cpp
-static mediapipe::LocationData::RelativeBoundingBox mediapipe::framework::formats::location_data_pb2::LocationData::this
+static mediapipe::LocationData::RelativeBoundingBox
 AutoIt:
     [propget] $oLocationData.RelativeBoundingBox
 ```
@@ -15606,7 +15563,7 @@ AutoIt:
 ### LocationData.BinaryMask
 
 ```cpp
-static mediapipe::LocationData::BinaryMask mediapipe::framework::formats::location_data_pb2::LocationData::this
+static mediapipe::LocationData::BinaryMask
 AutoIt:
     [propget] $oLocationData.BinaryMask
 ```
@@ -15614,7 +15571,7 @@ AutoIt:
 ### LocationData.RelativeKeypoint
 
 ```cpp
-static mediapipe::LocationData::RelativeKeypoint mediapipe::framework::formats::location_data_pb2::LocationData::this
+static mediapipe::LocationData::RelativeKeypoint
 AutoIt:
     [propget] $oLocationData.RelativeKeypoint
 ```
@@ -15658,7 +15615,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::Detection::feature_tag
 AutoIt:
-    [propget propput] $oDetection.feature_tag
+    [propget, propput] $oDetection.feature_tag
 ```
 
 ### Detection.track\_id
@@ -15666,7 +15623,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::Detection::track_id
 AutoIt:
-    [propget propput] $oDetection.track_id
+    [propget, propput] $oDetection.track_id
 ```
 
 ### Detection.detection\_id
@@ -15674,7 +15631,7 @@ AutoIt:
 ```cpp
 int64 mediapipe::Detection::detection_id
 AutoIt:
-    [propget propput] $oDetection.detection_id
+    [propget, propput] $oDetection.detection_id
 ```
 
 ### Detection.associated\_detections
@@ -15698,7 +15655,7 @@ AutoIt:
 ```cpp
 int64 mediapipe::Detection::timestamp_usec
 AutoIt:
-    [propget propput] $oDetection.timestamp_usec
+    [propget, propput] $oDetection.timestamp_usec
 ```
 
 ### mediapipe::Detection::get\_create
@@ -15707,7 +15664,6 @@ AutoIt:
 static mediapipe::Detection mediapipe::Detection::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection").create() -> <mediapipe.Detection object>
-    _Mediapipe_ObjCreate("mediapipe.Detection")() -> <mediapipe.Detection object>
 ```
 
 ### mediapipe::Detection::Clear
@@ -16170,7 +16126,7 @@ AutoIt:
 ```cpp
 int mediapipe::Detection::AssociatedDetection::id
 AutoIt:
-    [propget propput] $oAssociatedDetection.id
+    [propget, propput] $oAssociatedDetection.id
 ```
 
 ### AssociatedDetection.confidence
@@ -16178,7 +16134,7 @@ AutoIt:
 ```cpp
 float mediapipe::Detection::AssociatedDetection::confidence
 AutoIt:
-    [propget propput] $oAssociatedDetection.confidence
+    [propget, propput] $oAssociatedDetection.confidence
 ```
 
 ### mediapipe::Detection::AssociatedDetection::get\_create
@@ -16187,7 +16143,6 @@ AutoIt:
 static mediapipe::Detection::AssociatedDetection mediapipe::Detection::AssociatedDetection::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection.AssociatedDetection").create() -> <mediapipe.Detection.AssociatedDetection object>
-    _Mediapipe_ObjCreate("mediapipe.Detection.AssociatedDetection")() -> <mediapipe.Detection.AssociatedDetection object>
 ```
 
 ### mediapipe::Detection::AssociatedDetection::Clear
@@ -16238,7 +16193,6 @@ AutoIt:
 static mediapipe::DetectionList mediapipe::DetectionList::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.DetectionList").create() -> <mediapipe.DetectionList object>
-    _Mediapipe_ObjCreate("mediapipe.DetectionList")() -> <mediapipe.DetectionList object>
 ```
 
 ### mediapipe::DetectionList::Clear
@@ -16497,7 +16451,7 @@ AutoIt:
 ### detection\_pb2.Detection
 
 ```cpp
-static mediapipe::Detection mediapipe::framework::formats::detection_pb2::this
+static mediapipe::Detection
 AutoIt:
     [propget] $odetection_pb2.Detection
 ```
@@ -16505,7 +16459,7 @@ AutoIt:
 ### detection\_pb2.DetectionList
 
 ```cpp
-static mediapipe::DetectionList mediapipe::framework::formats::detection_pb2::this
+static mediapipe::DetectionList
 AutoIt:
     [propget] $odetection_pb2.DetectionList
 ```
@@ -16515,7 +16469,7 @@ AutoIt:
 ### Detection.AssociatedDetection
 
 ```cpp
-static mediapipe::Detection::AssociatedDetection mediapipe::framework::formats::detection_pb2::Detection::this
+static mediapipe::Detection::AssociatedDetection
 AutoIt:
     [propget] $oDetection.AssociatedDetection
 ```
@@ -16528,7 +16482,6 @@ AutoIt:
 static mediapipe::ImageFormat mediapipe::ImageFormat::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageFormat").create() -> <mediapipe.ImageFormat object>
-    _Mediapipe_ObjCreate("mediapipe.ImageFormat")() -> <mediapipe.ImageFormat object>
 ```
 
 ### mediapipe::ImageFormat::Clear
@@ -16672,7 +16625,7 @@ AutoIt:
 ### image\_format\_pb2.ImageFormat
 
 ```cpp
-static mediapipe::ImageFormat mediapipe::framework::formats::image_format_pb2::this
+static mediapipe::ImageFormat
 AutoIt:
     [propget] $oimage_format_pb2.ImageFormat
 ```
@@ -16684,7 +16637,7 @@ AutoIt:
 ```cpp
 float mediapipe::Landmark::x
 AutoIt:
-    [propget propput] $oLandmark.x
+    [propget, propput] $oLandmark.x
 ```
 
 ### Landmark.y
@@ -16692,7 +16645,7 @@ AutoIt:
 ```cpp
 float mediapipe::Landmark::y
 AutoIt:
-    [propget propput] $oLandmark.y
+    [propget, propput] $oLandmark.y
 ```
 
 ### Landmark.z
@@ -16700,7 +16653,7 @@ AutoIt:
 ```cpp
 float mediapipe::Landmark::z
 AutoIt:
-    [propget propput] $oLandmark.z
+    [propget, propput] $oLandmark.z
 ```
 
 ### Landmark.visibility
@@ -16708,7 +16661,7 @@ AutoIt:
 ```cpp
 float mediapipe::Landmark::visibility
 AutoIt:
-    [propget propput] $oLandmark.visibility
+    [propget, propput] $oLandmark.visibility
 ```
 
 ### Landmark.presence
@@ -16716,7 +16669,7 @@ AutoIt:
 ```cpp
 float mediapipe::Landmark::presence
 AutoIt:
-    [propget propput] $oLandmark.presence
+    [propget, propput] $oLandmark.presence
 ```
 
 ### mediapipe::Landmark::get\_create
@@ -16725,7 +16678,6 @@ AutoIt:
 static mediapipe::Landmark mediapipe::Landmark::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Landmark").create() -> <mediapipe.Landmark object>
-    _Mediapipe_ObjCreate("mediapipe.Landmark")() -> <mediapipe.Landmark object>
 ```
 
 ### mediapipe::Landmark::Clear
@@ -16776,7 +16728,6 @@ AutoIt:
 static mediapipe::LandmarkList mediapipe::LandmarkList::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarkList").create() -> <mediapipe.LandmarkList object>
-    _Mediapipe_ObjCreate("mediapipe.LandmarkList")() -> <mediapipe.LandmarkList object>
 ```
 
 ### mediapipe::LandmarkList::Clear
@@ -17046,7 +16997,6 @@ AutoIt:
 static mediapipe::LandmarkListCollection mediapipe::LandmarkListCollection::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarkListCollection").create() -> <mediapipe.LandmarkListCollection object>
-    _Mediapipe_ObjCreate("mediapipe.LandmarkListCollection")() -> <mediapipe.LandmarkListCollection object>
 ```
 
 ### mediapipe::LandmarkListCollection::Clear
@@ -17307,7 +17257,7 @@ AutoIt:
 ```cpp
 float mediapipe::NormalizedLandmark::x
 AutoIt:
-    [propget propput] $oNormalizedLandmark.x
+    [propget, propput] $oNormalizedLandmark.x
 ```
 
 ### NormalizedLandmark.y
@@ -17315,7 +17265,7 @@ AutoIt:
 ```cpp
 float mediapipe::NormalizedLandmark::y
 AutoIt:
-    [propget propput] $oNormalizedLandmark.y
+    [propget, propput] $oNormalizedLandmark.y
 ```
 
 ### NormalizedLandmark.z
@@ -17323,7 +17273,7 @@ AutoIt:
 ```cpp
 float mediapipe::NormalizedLandmark::z
 AutoIt:
-    [propget propput] $oNormalizedLandmark.z
+    [propget, propput] $oNormalizedLandmark.z
 ```
 
 ### NormalizedLandmark.visibility
@@ -17331,7 +17281,7 @@ AutoIt:
 ```cpp
 float mediapipe::NormalizedLandmark::visibility
 AutoIt:
-    [propget propput] $oNormalizedLandmark.visibility
+    [propget, propput] $oNormalizedLandmark.visibility
 ```
 
 ### NormalizedLandmark.presence
@@ -17339,7 +17289,7 @@ AutoIt:
 ```cpp
 float mediapipe::NormalizedLandmark::presence
 AutoIt:
-    [propget propput] $oNormalizedLandmark.presence
+    [propget, propput] $oNormalizedLandmark.presence
 ```
 
 ### mediapipe::NormalizedLandmark::get\_create
@@ -17348,7 +17298,6 @@ AutoIt:
 static mediapipe::NormalizedLandmark mediapipe::NormalizedLandmark::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmark").create() -> <mediapipe.NormalizedLandmark object>
-    _Mediapipe_ObjCreate("mediapipe.NormalizedLandmark")() -> <mediapipe.NormalizedLandmark object>
 ```
 
 ### mediapipe::NormalizedLandmark::Clear
@@ -17399,7 +17348,6 @@ AutoIt:
 static mediapipe::NormalizedLandmarkList mediapipe::NormalizedLandmarkList::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkList").create() -> <mediapipe.NormalizedLandmarkList object>
-    _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkList")() -> <mediapipe.NormalizedLandmarkList object>
 ```
 
 ### mediapipe::NormalizedLandmarkList::Clear
@@ -17669,7 +17617,6 @@ AutoIt:
 static mediapipe::NormalizedLandmarkListCollection mediapipe::NormalizedLandmarkListCollection::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkListCollection").create() -> <mediapipe.NormalizedLandmarkListCollection object>
-    _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkListCollection")() -> <mediapipe.NormalizedLandmarkListCollection object>
 ```
 
 ### mediapipe::NormalizedLandmarkListCollection::Clear
@@ -17928,7 +17875,7 @@ AutoIt:
 ### landmark\_pb2.Landmark
 
 ```cpp
-static mediapipe::Landmark mediapipe::framework::formats::landmark_pb2::this
+static mediapipe::Landmark
 AutoIt:
     [propget] $olandmark_pb2.Landmark
 ```
@@ -17936,7 +17883,7 @@ AutoIt:
 ### landmark\_pb2.LandmarkList
 
 ```cpp
-static mediapipe::LandmarkList mediapipe::framework::formats::landmark_pb2::this
+static mediapipe::LandmarkList
 AutoIt:
     [propget] $olandmark_pb2.LandmarkList
 ```
@@ -17944,7 +17891,7 @@ AutoIt:
 ### landmark\_pb2.LandmarkListCollection
 
 ```cpp
-static mediapipe::LandmarkListCollection mediapipe::framework::formats::landmark_pb2::this
+static mediapipe::LandmarkListCollection
 AutoIt:
     [propget] $olandmark_pb2.LandmarkListCollection
 ```
@@ -17952,7 +17899,7 @@ AutoIt:
 ### landmark\_pb2.NormalizedLandmark
 
 ```cpp
-static mediapipe::NormalizedLandmark mediapipe::framework::formats::landmark_pb2::this
+static mediapipe::NormalizedLandmark
 AutoIt:
     [propget] $olandmark_pb2.NormalizedLandmark
 ```
@@ -17960,7 +17907,7 @@ AutoIt:
 ### landmark\_pb2.NormalizedLandmarkList
 
 ```cpp
-static mediapipe::NormalizedLandmarkList mediapipe::framework::formats::landmark_pb2::this
+static mediapipe::NormalizedLandmarkList
 AutoIt:
     [propget] $olandmark_pb2.NormalizedLandmarkList
 ```
@@ -17968,7 +17915,7 @@ AutoIt:
 ### landmark\_pb2.NormalizedLandmarkListCollection
 
 ```cpp
-static mediapipe::NormalizedLandmarkListCollection mediapipe::framework::formats::landmark_pb2::this
+static mediapipe::NormalizedLandmarkListCollection
 AutoIt:
     [propget] $olandmark_pb2.NormalizedLandmarkListCollection
 ```
@@ -17980,7 +17927,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InferenceCalculatorOptions::model_path
 AutoIt:
-    [propget propput] $oInferenceCalculatorOptions.model_path
+    [propget, propput] $oInferenceCalculatorOptions.model_path
 ```
 
 ### InferenceCalculatorOptions.use\_gpu
@@ -17988,7 +17935,7 @@ AutoIt:
 ```cpp
 bool mediapipe::InferenceCalculatorOptions::use_gpu
 AutoIt:
-    [propget propput] $oInferenceCalculatorOptions.use_gpu
+    [propget, propput] $oInferenceCalculatorOptions.use_gpu
 ```
 
 ### InferenceCalculatorOptions.use\_nnapi
@@ -17996,7 +17943,7 @@ AutoIt:
 ```cpp
 bool mediapipe::InferenceCalculatorOptions::use_nnapi
 AutoIt:
-    [propget propput] $oInferenceCalculatorOptions.use_nnapi
+    [propget, propput] $oInferenceCalculatorOptions.use_nnapi
 ```
 
 ### InferenceCalculatorOptions.cpu\_num\_thread
@@ -18004,7 +17951,7 @@ AutoIt:
 ```cpp
 int mediapipe::InferenceCalculatorOptions::cpu_num_thread
 AutoIt:
-    [propget propput] $oInferenceCalculatorOptions.cpu_num_thread
+    [propget, propput] $oInferenceCalculatorOptions.cpu_num_thread
 ```
 
 ### InferenceCalculatorOptions.delegate
@@ -18029,7 +17976,6 @@ AutoIt:
 static mediapipe::InferenceCalculatorOptions mediapipe::InferenceCalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions").create() -> <mediapipe.InferenceCalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions")() -> <mediapipe.InferenceCalculatorOptions object>
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Clear
@@ -18104,7 +18050,6 @@ AutoIt:
 static mediapipe::InferenceCalculatorOptions::Delegate mediapipe::InferenceCalculatorOptions::Delegate::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate").create() -> <mediapipe.InferenceCalculatorOptions.Delegate object>
-    _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate")() -> <mediapipe.InferenceCalculatorOptions.Delegate object>
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Clear
@@ -18147,7 +18092,6 @@ AutoIt:
 static mediapipe::InferenceCalculatorOptions::Delegate::TfLite mediapipe::InferenceCalculatorOptions::Delegate::TfLite::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.TfLite").create() -> <mediapipe.InferenceCalculatorOptions.Delegate.TfLite object>
-    _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.TfLite")() -> <mediapipe.InferenceCalculatorOptions.Delegate.TfLite object>
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::Clear
@@ -18189,7 +18133,7 @@ AutoIt:
 ```cpp
 bool mediapipe::InferenceCalculatorOptions::Delegate::Gpu::use_advanced_gpu_api
 AutoIt:
-    [propget propput] $oGpu.use_advanced_gpu_api
+    [propget, propput] $oGpu.use_advanced_gpu_api
 ```
 
 ### Gpu.api
@@ -18197,7 +18141,7 @@ AutoIt:
 ```cpp
 mediapipe::InferenceCalculatorOptions::Delegate::Gpu::Api mediapipe::InferenceCalculatorOptions::Delegate::Gpu::api
 AutoIt:
-    [propget propput] $oGpu.api
+    [propget, propput] $oGpu.api
 ```
 
 ### Gpu.allow\_precision\_loss
@@ -18205,7 +18149,7 @@ AutoIt:
 ```cpp
 bool mediapipe::InferenceCalculatorOptions::Delegate::Gpu::allow_precision_loss
 AutoIt:
-    [propget propput] $oGpu.allow_precision_loss
+    [propget, propput] $oGpu.allow_precision_loss
 ```
 
 ### Gpu.cached\_kernel\_path
@@ -18213,7 +18157,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InferenceCalculatorOptions::Delegate::Gpu::cached_kernel_path
 AutoIt:
-    [propget propput] $oGpu.cached_kernel_path
+    [propget, propput] $oGpu.cached_kernel_path
 ```
 
 ### Gpu.serialized\_model\_dir
@@ -18221,7 +18165,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InferenceCalculatorOptions::Delegate::Gpu::serialized_model_dir
 AutoIt:
-    [propget propput] $oGpu.serialized_model_dir
+    [propget, propput] $oGpu.serialized_model_dir
 ```
 
 ### Gpu.model\_token
@@ -18229,7 +18173,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InferenceCalculatorOptions::Delegate::Gpu::model_token
 AutoIt:
-    [propget propput] $oGpu.model_token
+    [propget, propput] $oGpu.model_token
 ```
 
 ### Gpu.usage
@@ -18237,7 +18181,7 @@ AutoIt:
 ```cpp
 mediapipe::InferenceCalculatorOptions::Delegate::Gpu::InferenceUsage mediapipe::InferenceCalculatorOptions::Delegate::Gpu::usage
 AutoIt:
-    [propget propput] $oGpu.usage
+    [propget, propput] $oGpu.usage
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::get\_create
@@ -18246,7 +18190,6 @@ AutoIt:
 static mediapipe::InferenceCalculatorOptions::Delegate::Gpu mediapipe::InferenceCalculatorOptions::Delegate::Gpu::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Gpu").create() -> <mediapipe.InferenceCalculatorOptions.Delegate.Gpu object>
-    _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Gpu")() -> <mediapipe.InferenceCalculatorOptions.Delegate.Gpu object>
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::Clear
@@ -18336,7 +18279,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::cache_dir
 AutoIt:
-    [propget propput] $oNnapi.cache_dir
+    [propget, propput] $oNnapi.cache_dir
 ```
 
 ### Nnapi.model\_token
@@ -18344,7 +18287,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::model_token
 AutoIt:
-    [propget propput] $oNnapi.model_token
+    [propget, propput] $oNnapi.model_token
 ```
 
 ### Nnapi.accelerator\_name
@@ -18352,7 +18295,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::accelerator_name
 AutoIt:
-    [propget propput] $oNnapi.accelerator_name
+    [propget, propput] $oNnapi.accelerator_name
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::get\_create
@@ -18361,7 +18304,6 @@ AutoIt:
 static mediapipe::InferenceCalculatorOptions::Delegate::Nnapi mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Nnapi").create() -> <mediapipe.InferenceCalculatorOptions.Delegate.Nnapi object>
-    _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Nnapi")() -> <mediapipe.InferenceCalculatorOptions.Delegate.Nnapi object>
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::Clear
@@ -18403,7 +18345,7 @@ AutoIt:
 ```cpp
 int mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::num_threads
 AutoIt:
-    [propget propput] $oXnnpack.num_threads
+    [propget, propput] $oXnnpack.num_threads
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::get\_create
@@ -18412,7 +18354,6 @@ AutoIt:
 static mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Xnnpack").create() -> <mediapipe.InferenceCalculatorOptions.Delegate.Xnnpack object>
-    _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Xnnpack")() -> <mediapipe.InferenceCalculatorOptions.Delegate.Xnnpack object>
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::Clear
@@ -18452,7 +18393,7 @@ AutoIt:
 ### inference\_calculator\_pb2.InferenceCalculatorOptions
 
 ```cpp
-static mediapipe::InferenceCalculatorOptions mediapipe::calculators::tensor::inference_calculator_pb2::this
+static mediapipe::InferenceCalculatorOptions
 AutoIt:
     [propget] $oinference_calculator_pb2.InferenceCalculatorOptions
 ```
@@ -18462,7 +18403,7 @@ AutoIt:
 ### InferenceCalculatorOptions.Delegate
 
 ```cpp
-static mediapipe::InferenceCalculatorOptions::Delegate mediapipe::calculators::tensor::inference_calculator_pb2::InferenceCalculatorOptions::this
+static mediapipe::InferenceCalculatorOptions::Delegate
 AutoIt:
     [propget] $oInferenceCalculatorOptions.Delegate
 ```
@@ -18472,7 +18413,7 @@ AutoIt:
 ### Delegate.TfLite
 
 ```cpp
-static mediapipe::InferenceCalculatorOptions::Delegate::TfLite mediapipe::calculators::tensor::inference_calculator_pb2::InferenceCalculatorOptions::Delegate::this
+static mediapipe::InferenceCalculatorOptions::Delegate::TfLite
 AutoIt:
     [propget] $oDelegate.TfLite
 ```
@@ -18480,7 +18421,7 @@ AutoIt:
 ### Delegate.Gpu
 
 ```cpp
-static mediapipe::InferenceCalculatorOptions::Delegate::Gpu mediapipe::calculators::tensor::inference_calculator_pb2::InferenceCalculatorOptions::Delegate::this
+static mediapipe::InferenceCalculatorOptions::Delegate::Gpu
 AutoIt:
     [propget] $oDelegate.Gpu
 ```
@@ -18488,7 +18429,7 @@ AutoIt:
 ### Delegate.Nnapi
 
 ```cpp
-static mediapipe::InferenceCalculatorOptions::Delegate::Nnapi mediapipe::calculators::tensor::inference_calculator_pb2::InferenceCalculatorOptions::Delegate::this
+static mediapipe::InferenceCalculatorOptions::Delegate::Nnapi
 AutoIt:
     [propget] $oDelegate.Nnapi
 ```
@@ -18496,7 +18437,7 @@ AutoIt:
 ### Delegate.Xnnpack
 
 ```cpp
-static mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack mediapipe::calculators::tensor::inference_calculator_pb2::InferenceCalculatorOptions::Delegate::this
+static mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack
 AutoIt:
     [propget] $oDelegate.Xnnpack
 ```
@@ -18509,7 +18450,6 @@ AutoIt:
 static mediapipe::GpuOrigin mediapipe::GpuOrigin::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.GpuOrigin").create() -> <mediapipe.GpuOrigin object>
-    _Mediapipe_ObjCreate("mediapipe.GpuOrigin")() -> <mediapipe.GpuOrigin object>
 ```
 
 ### mediapipe::GpuOrigin::Clear
@@ -18573,7 +18513,7 @@ AutoIt:
 ### gpu\_origin\_pb2.GpuOrigin
 
 ```cpp
-static mediapipe::GpuOrigin mediapipe::gpu::gpu_origin_pb2::this
+static mediapipe::GpuOrigin
 AutoIt:
     [propget] $ogpu_origin_pb2.GpuOrigin
 ```
@@ -18585,7 +18525,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::FaceDetectionOptions::model_path
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.model_path
+    [propget, propput] $oFaceDetectionOptions.model_path
 ```
 
 ### FaceDetectionOptions.gpu\_origin
@@ -18593,7 +18533,7 @@ AutoIt:
 ```cpp
 mediapipe::GpuOrigin::Mode mediapipe::FaceDetectionOptions::gpu_origin
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.gpu_origin
+    [propget, propput] $oFaceDetectionOptions.gpu_origin
 ```
 
 ### FaceDetectionOptions.tensor\_width
@@ -18601,7 +18541,7 @@ AutoIt:
 ```cpp
 int mediapipe::FaceDetectionOptions::tensor_width
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.tensor_width
+    [propget, propput] $oFaceDetectionOptions.tensor_width
 ```
 
 ### FaceDetectionOptions.tensor\_height
@@ -18609,7 +18549,7 @@ AutoIt:
 ```cpp
 int mediapipe::FaceDetectionOptions::tensor_height
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.tensor_height
+    [propget, propput] $oFaceDetectionOptions.tensor_height
 ```
 
 ### FaceDetectionOptions.num\_layers
@@ -18617,7 +18557,7 @@ AutoIt:
 ```cpp
 int mediapipe::FaceDetectionOptions::num_layers
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.num_layers
+    [propget, propput] $oFaceDetectionOptions.num_layers
 ```
 
 ### FaceDetectionOptions.strides
@@ -18633,7 +18573,7 @@ AutoIt:
 ```cpp
 float mediapipe::FaceDetectionOptions::interpolated_scale_aspect_ratio
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.interpolated_scale_aspect_ratio
+    [propget, propput] $oFaceDetectionOptions.interpolated_scale_aspect_ratio
 ```
 
 ### FaceDetectionOptions.num\_boxes
@@ -18641,7 +18581,7 @@ AutoIt:
 ```cpp
 int mediapipe::FaceDetectionOptions::num_boxes
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.num_boxes
+    [propget, propput] $oFaceDetectionOptions.num_boxes
 ```
 
 ### FaceDetectionOptions.x\_scale
@@ -18649,7 +18589,7 @@ AutoIt:
 ```cpp
 float mediapipe::FaceDetectionOptions::x_scale
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.x_scale
+    [propget, propput] $oFaceDetectionOptions.x_scale
 ```
 
 ### FaceDetectionOptions.y\_scale
@@ -18657,7 +18597,7 @@ AutoIt:
 ```cpp
 float mediapipe::FaceDetectionOptions::y_scale
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.y_scale
+    [propget, propput] $oFaceDetectionOptions.y_scale
 ```
 
 ### FaceDetectionOptions.w\_scale
@@ -18665,7 +18605,7 @@ AutoIt:
 ```cpp
 float mediapipe::FaceDetectionOptions::w_scale
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.w_scale
+    [propget, propput] $oFaceDetectionOptions.w_scale
 ```
 
 ### FaceDetectionOptions.h\_scale
@@ -18673,7 +18613,7 @@ AutoIt:
 ```cpp
 float mediapipe::FaceDetectionOptions::h_scale
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.h_scale
+    [propget, propput] $oFaceDetectionOptions.h_scale
 ```
 
 ### FaceDetectionOptions.min\_score\_thresh
@@ -18681,7 +18621,7 @@ AutoIt:
 ```cpp
 float mediapipe::FaceDetectionOptions::min_score_thresh
 AutoIt:
-    [propget propput] $oFaceDetectionOptions.min_score_thresh
+    [propget, propput] $oFaceDetectionOptions.min_score_thresh
 ```
 
 ### FaceDetectionOptions.delegate
@@ -18706,7 +18646,6 @@ AutoIt:
 static mediapipe::FaceDetectionOptions mediapipe::FaceDetectionOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.FaceDetectionOptions").create() -> <mediapipe.FaceDetectionOptions object>
-    _Mediapipe_ObjCreate("mediapipe.FaceDetectionOptions")() -> <mediapipe.FaceDetectionOptions object>
 ```
 
 ### mediapipe::FaceDetectionOptions::Clear
@@ -18746,7 +18685,7 @@ AutoIt:
 ### face\_detection\_pb2.FaceDetectionOptions
 
 ```cpp
-static mediapipe::FaceDetectionOptions mediapipe::modules::face_detection::face_detection_pb2::this
+static mediapipe::FaceDetectionOptions
 AutoIt:
     [propget] $oface_detection_pb2.FaceDetectionOptions
 ```
@@ -18766,7 +18705,7 @@ AutoIt:
 ```cpp
 float mediapipe::AVCameraCalibrationData::intrinsic_matrix_reference_dimension_width
 AutoIt:
-    [propget propput] $oAVCameraCalibrationData.intrinsic_matrix_reference_dimension_width
+    [propget, propput] $oAVCameraCalibrationData.intrinsic_matrix_reference_dimension_width
 ```
 
 ### AVCameraCalibrationData.intrinsic\_matrix\_reference\_dimension\_height
@@ -18774,7 +18713,7 @@ AutoIt:
 ```cpp
 float mediapipe::AVCameraCalibrationData::intrinsic_matrix_reference_dimension_height
 AutoIt:
-    [propget propput] $oAVCameraCalibrationData.intrinsic_matrix_reference_dimension_height
+    [propget, propput] $oAVCameraCalibrationData.intrinsic_matrix_reference_dimension_height
 ```
 
 ### AVCameraCalibrationData.extrinsic\_matrix
@@ -18790,7 +18729,7 @@ AutoIt:
 ```cpp
 float mediapipe::AVCameraCalibrationData::pixel_size
 AutoIt:
-    [propget propput] $oAVCameraCalibrationData.pixel_size
+    [propget, propput] $oAVCameraCalibrationData.pixel_size
 ```
 
 ### AVCameraCalibrationData.lens\_distortion\_lookup\_values
@@ -18814,7 +18753,7 @@ AutoIt:
 ```cpp
 float mediapipe::AVCameraCalibrationData::lens_distortion_center_x
 AutoIt:
-    [propget propput] $oAVCameraCalibrationData.lens_distortion_center_x
+    [propget, propput] $oAVCameraCalibrationData.lens_distortion_center_x
 ```
 
 ### AVCameraCalibrationData.lens\_distortion\_center\_y
@@ -18822,7 +18761,7 @@ AutoIt:
 ```cpp
 float mediapipe::AVCameraCalibrationData::lens_distortion_center_y
 AutoIt:
-    [propget propput] $oAVCameraCalibrationData.lens_distortion_center_y
+    [propget, propput] $oAVCameraCalibrationData.lens_distortion_center_y
 ```
 
 ### mediapipe::AVCameraCalibrationData::get\_create
@@ -18831,7 +18770,6 @@ AutoIt:
 static mediapipe::AVCameraCalibrationData mediapipe::AVCameraCalibrationData::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.AVCameraCalibrationData").create() -> <mediapipe.AVCameraCalibrationData object>
-    _Mediapipe_ObjCreate("mediapipe.AVCameraCalibrationData")() -> <mediapipe.AVCameraCalibrationData object>
 ```
 
 ### mediapipe::AVCameraCalibrationData::Clear
@@ -18873,7 +18811,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::AVDepthData::depth_data_map
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_map
+    [propget, propput] $oAVDepthData.depth_data_map
 ```
 
 ### AVDepthData.depth\_data\_type
@@ -18881,7 +18819,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::AVDepthData::depth_data_type
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_type
+    [propget, propput] $oAVDepthData.depth_data_type
 ```
 
 ### AVDepthData.depth\_data\_accuracy
@@ -18889,7 +18827,7 @@ AutoIt:
 ```cpp
 mediapipe::AVDepthData::Accuracy mediapipe::AVDepthData::depth_data_accuracy
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_accuracy
+    [propget, propput] $oAVDepthData.depth_data_accuracy
 ```
 
 ### AVDepthData.depth\_data\_filtered
@@ -18897,7 +18835,7 @@ AutoIt:
 ```cpp
 bool mediapipe::AVDepthData::depth_data_filtered
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_filtered
+    [propget, propput] $oAVDepthData.depth_data_filtered
 ```
 
 ### AVDepthData.depth\_data\_quality
@@ -18905,7 +18843,7 @@ AutoIt:
 ```cpp
 mediapipe::AVDepthData::Quality mediapipe::AVDepthData::depth_data_quality
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_quality
+    [propget, propput] $oAVDepthData.depth_data_quality
 ```
 
 ### AVDepthData.camera\_calibration\_data
@@ -18921,7 +18859,7 @@ AutoIt:
 ```cpp
 float mediapipe::AVDepthData::depth_data_map_original_minimum_value
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_map_original_minimum_value
+    [propget, propput] $oAVDepthData.depth_data_map_original_minimum_value
 ```
 
 ### AVDepthData.depth\_data\_map\_original\_maximum\_value
@@ -18929,7 +18867,7 @@ AutoIt:
 ```cpp
 float mediapipe::AVDepthData::depth_data_map_original_maximum_value
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_map_original_maximum_value
+    [propget, propput] $oAVDepthData.depth_data_map_original_maximum_value
 ```
 
 ### AVDepthData.depth\_data\_map\_width
@@ -18937,7 +18875,7 @@ AutoIt:
 ```cpp
 int mediapipe::AVDepthData::depth_data_map_width
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_map_width
+    [propget, propput] $oAVDepthData.depth_data_map_width
 ```
 
 ### AVDepthData.depth\_data\_map\_height
@@ -18945,7 +18883,7 @@ AutoIt:
 ```cpp
 int mediapipe::AVDepthData::depth_data_map_height
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_map_height
+    [propget, propput] $oAVDepthData.depth_data_map_height
 ```
 
 ### AVDepthData.depth\_data\_map\_raw\_values
@@ -18953,7 +18891,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::AVDepthData::depth_data_map_raw_values
 AutoIt:
-    [propget propput] $oAVDepthData.depth_data_map_raw_values
+    [propget, propput] $oAVDepthData.depth_data_map_raw_values
 ```
 
 ### mediapipe::AVDepthData::get\_create
@@ -18962,7 +18900,6 @@ AutoIt:
 static mediapipe::AVDepthData mediapipe::AVDepthData::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.AVDepthData").create() -> <mediapipe.AVDepthData object>
-    _Mediapipe_ObjCreate("mediapipe.AVDepthData")() -> <mediapipe.AVDepthData object>
 ```
 
 ### mediapipe::AVDepthData::Clear
@@ -19052,7 +18989,7 @@ AutoIt:
 ```cpp
 double mediapipe::ARLightEstimate::ambient_intensity
 AutoIt:
-    [propget propput] $oARLightEstimate.ambient_intensity
+    [propget, propput] $oARLightEstimate.ambient_intensity
 ```
 
 ### ARLightEstimate.ambient\_color\_temperature
@@ -19060,7 +18997,7 @@ AutoIt:
 ```cpp
 double mediapipe::ARLightEstimate::ambient_color_temperature
 AutoIt:
-    [propget propput] $oARLightEstimate.ambient_color_temperature
+    [propget, propput] $oARLightEstimate.ambient_color_temperature
 ```
 
 ### ARLightEstimate.spherical\_harmonics\_coefficients
@@ -19084,7 +19021,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARLightEstimate::primary_light_intensity
 AutoIt:
-    [propget propput] $oARLightEstimate.primary_light_intensity
+    [propget, propput] $oARLightEstimate.primary_light_intensity
 ```
 
 ### mediapipe::ARLightEstimate::get\_create
@@ -19093,7 +19030,6 @@ AutoIt:
 static mediapipe::ARLightEstimate mediapipe::ARLightEstimate::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARLightEstimate").create() -> <mediapipe.ARLightEstimate object>
-    _Mediapipe_ObjCreate("mediapipe.ARLightEstimate")() -> <mediapipe.ARLightEstimate object>
 ```
 
 ### mediapipe::ARLightEstimate::Clear
@@ -19135,7 +19071,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARLightEstimate::DirectionVector::x
 AutoIt:
-    [propget propput] $oDirectionVector.x
+    [propget, propput] $oDirectionVector.x
 ```
 
 ### DirectionVector.y
@@ -19143,7 +19079,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARLightEstimate::DirectionVector::y
 AutoIt:
-    [propget propput] $oDirectionVector.y
+    [propget, propput] $oDirectionVector.y
 ```
 
 ### DirectionVector.z
@@ -19151,7 +19087,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARLightEstimate::DirectionVector::z
 AutoIt:
-    [propget propput] $oDirectionVector.z
+    [propget, propput] $oDirectionVector.z
 ```
 
 ### mediapipe::ARLightEstimate::DirectionVector::get\_create
@@ -19160,7 +19096,6 @@ AutoIt:
 static mediapipe::ARLightEstimate::DirectionVector mediapipe::ARLightEstimate::DirectionVector::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARLightEstimate.DirectionVector").create() -> <mediapipe.ARLightEstimate.DirectionVector object>
-    _Mediapipe_ObjCreate("mediapipe.ARLightEstimate.DirectionVector")() -> <mediapipe.ARLightEstimate.DirectionVector object>
 ```
 
 ### mediapipe::ARLightEstimate::DirectionVector::Clear
@@ -19202,7 +19137,7 @@ AutoIt:
 ```cpp
 mediapipe::ARCamera::TrackingState mediapipe::ARCamera::tracking_state
 AutoIt:
-    [propget propput] $oARCamera.tracking_state
+    [propget, propput] $oARCamera.tracking_state
 ```
 
 ### ARCamera.tracking\_state\_reason
@@ -19210,7 +19145,7 @@ AutoIt:
 ```cpp
 mediapipe::ARCamera::TrackingStateReason mediapipe::ARCamera::tracking_state_reason
 AutoIt:
-    [propget propput] $oARCamera.tracking_state_reason
+    [propget, propput] $oARCamera.tracking_state_reason
 ```
 
 ### ARCamera.transform
@@ -19234,7 +19169,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARCamera::image_resolution_width
 AutoIt:
-    [propget propput] $oARCamera.image_resolution_width
+    [propget, propput] $oARCamera.image_resolution_width
 ```
 
 ### ARCamera.image\_resolution\_height
@@ -19242,7 +19177,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARCamera::image_resolution_height
 AutoIt:
-    [propget propput] $oARCamera.image_resolution_height
+    [propget, propput] $oARCamera.image_resolution_height
 ```
 
 ### ARCamera.intrinsics
@@ -19275,7 +19210,6 @@ AutoIt:
 static mediapipe::ARCamera mediapipe::ARCamera::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARCamera").create() -> <mediapipe.ARCamera object>
-    _Mediapipe_ObjCreate("mediapipe.ARCamera")() -> <mediapipe.ARCamera object>
 ```
 
 ### mediapipe::ARCamera::Clear
@@ -19397,7 +19331,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARCamera::EulerAngles::roll
 AutoIt:
-    [propget propput] $oEulerAngles.roll
+    [propget, propput] $oEulerAngles.roll
 ```
 
 ### EulerAngles.pitch
@@ -19405,7 +19339,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARCamera::EulerAngles::pitch
 AutoIt:
-    [propget propput] $oEulerAngles.pitch
+    [propget, propput] $oEulerAngles.pitch
 ```
 
 ### EulerAngles.yaw
@@ -19413,7 +19347,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARCamera::EulerAngles::yaw
 AutoIt:
-    [propget propput] $oEulerAngles.yaw
+    [propget, propput] $oEulerAngles.yaw
 ```
 
 ### mediapipe::ARCamera::EulerAngles::get\_create
@@ -19422,7 +19356,6 @@ AutoIt:
 static mediapipe::ARCamera::EulerAngles mediapipe::ARCamera::EulerAngles::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARCamera.EulerAngles").create() -> <mediapipe.ARCamera.EulerAngles object>
-    _Mediapipe_ObjCreate("mediapipe.ARCamera.EulerAngles")() -> <mediapipe.ARCamera.EulerAngles object>
 ```
 
 ### mediapipe::ARCamera::EulerAngles::Clear
@@ -19472,7 +19405,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARFaceGeometry::vertex_count
 AutoIt:
-    [propget propput] $oARFaceGeometry.vertex_count
+    [propget, propput] $oARFaceGeometry.vertex_count
 ```
 
 ### ARFaceGeometry.texture\_coordinates
@@ -19488,7 +19421,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARFaceGeometry::texture_coordinate_count
 AutoIt:
-    [propget propput] $oARFaceGeometry.texture_coordinate_count
+    [propget, propput] $oARFaceGeometry.texture_coordinate_count
 ```
 
 ### ARFaceGeometry.triangle\_indices
@@ -19504,7 +19437,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARFaceGeometry::triangle_count
 AutoIt:
-    [propget propput] $oARFaceGeometry.triangle_count
+    [propget, propput] $oARFaceGeometry.triangle_count
 ```
 
 ### mediapipe::ARFaceGeometry::get\_create
@@ -19513,7 +19446,6 @@ AutoIt:
 static mediapipe::ARFaceGeometry mediapipe::ARFaceGeometry::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry").create() -> <mediapipe.ARFaceGeometry object>
-    _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry")() -> <mediapipe.ARFaceGeometry object>
 ```
 
 ### mediapipe::ARFaceGeometry::Clear
@@ -19993,7 +19925,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARFaceGeometry::Vertex::x
 AutoIt:
-    [propget propput] $oVertex.x
+    [propget, propput] $oVertex.x
 ```
 
 ### Vertex.y
@@ -20001,7 +19933,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARFaceGeometry::Vertex::y
 AutoIt:
-    [propget propput] $oVertex.y
+    [propget, propput] $oVertex.y
 ```
 
 ### Vertex.z
@@ -20009,7 +19941,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARFaceGeometry::Vertex::z
 AutoIt:
-    [propget propput] $oVertex.z
+    [propget, propput] $oVertex.z
 ```
 
 ### mediapipe::ARFaceGeometry::Vertex::get\_create
@@ -20018,7 +19950,6 @@ AutoIt:
 static mediapipe::ARFaceGeometry::Vertex mediapipe::ARFaceGeometry::Vertex::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry.Vertex").create() -> <mediapipe.ARFaceGeometry.Vertex object>
-    _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry.Vertex")() -> <mediapipe.ARFaceGeometry.Vertex object>
 ```
 
 ### mediapipe::ARFaceGeometry::Vertex::Clear
@@ -20060,7 +19991,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARFaceGeometry::TextureCoordinate::u
 AutoIt:
-    [propget propput] $oTextureCoordinate.u
+    [propget, propput] $oTextureCoordinate.u
 ```
 
 ### TextureCoordinate.v
@@ -20068,7 +19999,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARFaceGeometry::TextureCoordinate::v
 AutoIt:
-    [propget propput] $oTextureCoordinate.v
+    [propget, propput] $oTextureCoordinate.v
 ```
 
 ### mediapipe::ARFaceGeometry::TextureCoordinate::get\_create
@@ -20077,7 +20008,6 @@ AutoIt:
 static mediapipe::ARFaceGeometry::TextureCoordinate mediapipe::ARFaceGeometry::TextureCoordinate::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry.TextureCoordinate").create() -> <mediapipe.ARFaceGeometry.TextureCoordinate object>
-    _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry.TextureCoordinate")() -> <mediapipe.ARFaceGeometry.TextureCoordinate object>
 ```
 
 ### mediapipe::ARFaceGeometry::TextureCoordinate::Clear
@@ -20128,7 +20058,6 @@ AutoIt:
 static mediapipe::ARBlendShapeMap mediapipe::ARBlendShapeMap::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARBlendShapeMap").create() -> <mediapipe.ARBlendShapeMap object>
-    _Mediapipe_ObjCreate("mediapipe.ARBlendShapeMap")() -> <mediapipe.ARBlendShapeMap object>
 ```
 
 ### mediapipe::ARBlendShapeMap::Clear
@@ -20389,7 +20318,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::ARBlendShapeMap::MapEntry::blend_shape_location
 AutoIt:
-    [propget propput] $oMapEntry.blend_shape_location
+    [propget, propput] $oMapEntry.blend_shape_location
 ```
 
 ### MapEntry.blend\_shape\_coefficient
@@ -20397,7 +20326,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARBlendShapeMap::MapEntry::blend_shape_coefficient
 AutoIt:
-    [propget propput] $oMapEntry.blend_shape_coefficient
+    [propget, propput] $oMapEntry.blend_shape_coefficient
 ```
 
 ### mediapipe::ARBlendShapeMap::MapEntry::get\_create
@@ -20406,7 +20335,6 @@ AutoIt:
 static mediapipe::ARBlendShapeMap::MapEntry mediapipe::ARBlendShapeMap::MapEntry::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARBlendShapeMap.MapEntry").create() -> <mediapipe.ARBlendShapeMap.MapEntry object>
-    _Mediapipe_ObjCreate("mediapipe.ARBlendShapeMap.MapEntry")() -> <mediapipe.ARBlendShapeMap.MapEntry object>
 ```
 
 ### mediapipe::ARBlendShapeMap::MapEntry::Clear
@@ -20472,7 +20400,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ARFaceAnchor::is_tracked
 AutoIt:
-    [propget propput] $oARFaceAnchor.is_tracked
+    [propget, propput] $oARFaceAnchor.is_tracked
 ```
 
 ### mediapipe::ARFaceAnchor::get\_create
@@ -20481,7 +20409,6 @@ AutoIt:
 static mediapipe::ARFaceAnchor mediapipe::ARFaceAnchor::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFaceAnchor").create() -> <mediapipe.ARFaceAnchor object>
-    _Mediapipe_ObjCreate("mediapipe.ARFaceAnchor")() -> <mediapipe.ARFaceAnchor object>
 ```
 
 ### mediapipe::ARFaceAnchor::Clear
@@ -20531,7 +20458,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARPlaneGeometry::vertex_count
 AutoIt:
-    [propget propput] $oARPlaneGeometry.vertex_count
+    [propget, propput] $oARPlaneGeometry.vertex_count
 ```
 
 ### ARPlaneGeometry.texture\_coordinates
@@ -20547,7 +20474,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARPlaneGeometry::texture_coordinate_count
 AutoIt:
-    [propget propput] $oARPlaneGeometry.texture_coordinate_count
+    [propget, propput] $oARPlaneGeometry.texture_coordinate_count
 ```
 
 ### ARPlaneGeometry.triangle\_indices
@@ -20563,7 +20490,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARPlaneGeometry::triangle_count
 AutoIt:
-    [propget propput] $oARPlaneGeometry.triangle_count
+    [propget, propput] $oARPlaneGeometry.triangle_count
 ```
 
 ### ARPlaneGeometry.boundary\_vertices
@@ -20579,7 +20506,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARPlaneGeometry::boundary_vertex_count
 AutoIt:
-    [propget propput] $oARPlaneGeometry.boundary_vertex_count
+    [propget, propput] $oARPlaneGeometry.boundary_vertex_count
 ```
 
 ### mediapipe::ARPlaneGeometry::get\_create
@@ -20588,7 +20515,6 @@ AutoIt:
 static mediapipe::ARPlaneGeometry mediapipe::ARPlaneGeometry::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry").create() -> <mediapipe.ARPlaneGeometry object>
-    _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry")() -> <mediapipe.ARPlaneGeometry object>
 ```
 
 ### mediapipe::ARPlaneGeometry::Clear
@@ -21068,7 +20994,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPlaneGeometry::Vertex::x
 AutoIt:
-    [propget propput] $oVertex.x
+    [propget, propput] $oVertex.x
 ```
 
 ### Vertex.y
@@ -21076,7 +21002,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPlaneGeometry::Vertex::y
 AutoIt:
-    [propget propput] $oVertex.y
+    [propget, propput] $oVertex.y
 ```
 
 ### Vertex.z
@@ -21084,7 +21010,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPlaneGeometry::Vertex::z
 AutoIt:
-    [propget propput] $oVertex.z
+    [propget, propput] $oVertex.z
 ```
 
 ### mediapipe::ARPlaneGeometry::Vertex::get\_create
@@ -21093,7 +21019,6 @@ AutoIt:
 static mediapipe::ARPlaneGeometry::Vertex mediapipe::ARPlaneGeometry::Vertex::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry.Vertex").create() -> <mediapipe.ARPlaneGeometry.Vertex object>
-    _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry.Vertex")() -> <mediapipe.ARPlaneGeometry.Vertex object>
 ```
 
 ### mediapipe::ARPlaneGeometry::Vertex::Clear
@@ -21135,7 +21060,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPlaneGeometry::TextureCoordinate::u
 AutoIt:
-    [propget propput] $oTextureCoordinate.u
+    [propget, propput] $oTextureCoordinate.u
 ```
 
 ### TextureCoordinate.v
@@ -21143,7 +21068,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPlaneGeometry::TextureCoordinate::v
 AutoIt:
-    [propget propput] $oTextureCoordinate.v
+    [propget, propput] $oTextureCoordinate.v
 ```
 
 ### mediapipe::ARPlaneGeometry::TextureCoordinate::get\_create
@@ -21152,7 +21077,6 @@ AutoIt:
 static mediapipe::ARPlaneGeometry::TextureCoordinate mediapipe::ARPlaneGeometry::TextureCoordinate::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry.TextureCoordinate").create() -> <mediapipe.ARPlaneGeometry.TextureCoordinate object>
-    _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry.TextureCoordinate")() -> <mediapipe.ARPlaneGeometry.TextureCoordinate object>
 ```
 
 ### mediapipe::ARPlaneGeometry::TextureCoordinate::Clear
@@ -21194,7 +21118,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::ARPlaneAnchor::identifier
 AutoIt:
-    [propget propput] $oARPlaneAnchor.identifier
+    [propget, propput] $oARPlaneAnchor.identifier
 ```
 
 ### ARPlaneAnchor.transform
@@ -21210,7 +21134,7 @@ AutoIt:
 ```cpp
 mediapipe::ARPlaneAnchor::Alignment mediapipe::ARPlaneAnchor::alignment
 AutoIt:
-    [propget propput] $oARPlaneAnchor.alignment
+    [propget, propput] $oARPlaneAnchor.alignment
 ```
 
 ### ARPlaneAnchor.geometry
@@ -21242,7 +21166,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ARPlaneAnchor::classification_supported
 AutoIt:
-    [propget propput] $oARPlaneAnchor.classification_supported
+    [propget, propput] $oARPlaneAnchor.classification_supported
 ```
 
 ### ARPlaneAnchor.classification
@@ -21250,7 +21174,7 @@ AutoIt:
 ```cpp
 mediapipe::ARPlaneAnchor::PlaneClassification mediapipe::ARPlaneAnchor::classification
 AutoIt:
-    [propget propput] $oARPlaneAnchor.classification
+    [propget, propput] $oARPlaneAnchor.classification
 ```
 
 ### ARPlaneAnchor.classification\_status
@@ -21258,7 +21182,7 @@ AutoIt:
 ```cpp
 mediapipe::ARPlaneAnchor::PlaneClassificationStatus mediapipe::ARPlaneAnchor::classification_status
 AutoIt:
-    [propget propput] $oARPlaneAnchor.classification_status
+    [propget, propput] $oARPlaneAnchor.classification_status
 ```
 
 ### mediapipe::ARPlaneAnchor::get\_create
@@ -21267,7 +21191,6 @@ AutoIt:
 static mediapipe::ARPlaneAnchor mediapipe::ARPlaneAnchor::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneAnchor").create() -> <mediapipe.ARPlaneAnchor object>
-    _Mediapipe_ObjCreate("mediapipe.ARPlaneAnchor")() -> <mediapipe.ARPlaneAnchor object>
 ```
 
 ### mediapipe::ARPlaneAnchor::Clear
@@ -21413,7 +21336,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPlaneAnchor::PlaneVector::x
 AutoIt:
-    [propget propput] $oPlaneVector.x
+    [propget, propput] $oPlaneVector.x
 ```
 
 ### PlaneVector.y
@@ -21421,7 +21344,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPlaneAnchor::PlaneVector::y
 AutoIt:
-    [propget propput] $oPlaneVector.y
+    [propget, propput] $oPlaneVector.y
 ```
 
 ### PlaneVector.z
@@ -21429,7 +21352,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPlaneAnchor::PlaneVector::z
 AutoIt:
-    [propget propput] $oPlaneVector.z
+    [propget, propput] $oPlaneVector.z
 ```
 
 ### mediapipe::ARPlaneAnchor::PlaneVector::get\_create
@@ -21438,7 +21361,6 @@ AutoIt:
 static mediapipe::ARPlaneAnchor::PlaneVector mediapipe::ARPlaneAnchor::PlaneVector::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneAnchor.PlaneVector").create() -> <mediapipe.ARPlaneAnchor.PlaneVector object>
-    _Mediapipe_ObjCreate("mediapipe.ARPlaneAnchor.PlaneVector")() -> <mediapipe.ARPlaneAnchor.PlaneVector object>
 ```
 
 ### mediapipe::ARPlaneAnchor::PlaneVector::Clear
@@ -21480,7 +21402,7 @@ AutoIt:
 ```cpp
 int mediapipe::ARPointCloud::count
 AutoIt:
-    [propget propput] $oARPointCloud.count
+    [propget, propput] $oARPointCloud.count
 ```
 
 ### ARPointCloud.point
@@ -21505,7 +21427,6 @@ AutoIt:
 static mediapipe::ARPointCloud mediapipe::ARPointCloud::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPointCloud").create() -> <mediapipe.ARPointCloud object>
-    _Mediapipe_ObjCreate("mediapipe.ARPointCloud")() -> <mediapipe.ARPointCloud object>
 ```
 
 ### mediapipe::ARPointCloud::Clear
@@ -21968,7 +21889,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPointCloud::Point::x
 AutoIt:
-    [propget propput] $oPoint.x
+    [propget, propput] $oPoint.x
 ```
 
 ### Point.y
@@ -21976,7 +21897,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPointCloud::Point::y
 AutoIt:
-    [propget propput] $oPoint.y
+    [propget, propput] $oPoint.y
 ```
 
 ### Point.z
@@ -21984,7 +21905,7 @@ AutoIt:
 ```cpp
 float mediapipe::ARPointCloud::Point::z
 AutoIt:
-    [propget propput] $oPoint.z
+    [propget, propput] $oPoint.z
 ```
 
 ### mediapipe::ARPointCloud::Point::get\_create
@@ -21993,7 +21914,6 @@ AutoIt:
 static mediapipe::ARPointCloud::Point mediapipe::ARPointCloud::Point::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPointCloud.Point").create() -> <mediapipe.ARPointCloud.Point object>
-    _Mediapipe_ObjCreate("mediapipe.ARPointCloud.Point")() -> <mediapipe.ARPointCloud.Point object>
 ```
 
 ### mediapipe::ARPointCloud::Point::Clear
@@ -22035,7 +21955,7 @@ AutoIt:
 ```cpp
 double mediapipe::ARFrame::timestamp
 AutoIt:
-    [propget propput] $oARFrame.timestamp
+    [propget, propput] $oARFrame.timestamp
 ```
 
 ### ARFrame.depth\_data
@@ -22051,7 +21971,7 @@ AutoIt:
 ```cpp
 double mediapipe::ARFrame::depth_data_timestamp
 AutoIt:
-    [propget propput] $oARFrame.depth_data_timestamp
+    [propget, propput] $oARFrame.depth_data_timestamp
 ```
 
 ### ARFrame.camera
@@ -22100,7 +22020,6 @@ AutoIt:
 static mediapipe::ARFrame mediapipe::ARFrame::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFrame").create() -> <mediapipe.ARFrame object>
-    _Mediapipe_ObjCreate("mediapipe.ARFrame")() -> <mediapipe.ARFrame object>
 ```
 
 ### mediapipe::ARFrame::Clear
@@ -22359,7 +22278,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.AVCameraCalibrationData
 
 ```cpp
-static mediapipe::AVCameraCalibrationData mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::AVCameraCalibrationData
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.AVCameraCalibrationData
 ```
@@ -22367,7 +22286,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.AVDepthData
 
 ```cpp
-static mediapipe::AVDepthData mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::AVDepthData
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.AVDepthData
 ```
@@ -22375,7 +22294,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARLightEstimate
 
 ```cpp
-static mediapipe::ARLightEstimate mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARLightEstimate
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARLightEstimate
 ```
@@ -22383,7 +22302,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARCamera
 
 ```cpp
-static mediapipe::ARCamera mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARCamera
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARCamera
 ```
@@ -22391,7 +22310,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARFaceGeometry
 
 ```cpp
-static mediapipe::ARFaceGeometry mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARFaceGeometry
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARFaceGeometry
 ```
@@ -22399,7 +22318,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARBlendShapeMap
 
 ```cpp
-static mediapipe::ARBlendShapeMap mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARBlendShapeMap
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARBlendShapeMap
 ```
@@ -22407,7 +22326,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARFaceAnchor
 
 ```cpp
-static mediapipe::ARFaceAnchor mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARFaceAnchor
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARFaceAnchor
 ```
@@ -22415,7 +22334,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARPlaneGeometry
 
 ```cpp
-static mediapipe::ARPlaneGeometry mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARPlaneGeometry
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARPlaneGeometry
 ```
@@ -22423,7 +22342,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARPlaneAnchor
 
 ```cpp
-static mediapipe::ARPlaneAnchor mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARPlaneAnchor
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARPlaneAnchor
 ```
@@ -22431,7 +22350,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARPointCloud
 
 ```cpp
-static mediapipe::ARPointCloud mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARPointCloud
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARPointCloud
 ```
@@ -22439,7 +22358,7 @@ AutoIt:
 ### a\_r\_capture\_metadata\_pb2.ARFrame
 
 ```cpp
-static mediapipe::ARFrame mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::this
+static mediapipe::ARFrame
 AutoIt:
     [propget] $oa_r_capture_metadata_pb2.ARFrame
 ```
@@ -22449,7 +22368,7 @@ AutoIt:
 ### ARLightEstimate.DirectionVector
 
 ```cpp
-static mediapipe::ARLightEstimate::DirectionVector mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARLightEstimate::this
+static mediapipe::ARLightEstimate::DirectionVector
 AutoIt:
     [propget] $oARLightEstimate.DirectionVector
 ```
@@ -22459,7 +22378,7 @@ AutoIt:
 ### ARCamera.EulerAngles
 
 ```cpp
-static mediapipe::ARCamera::EulerAngles mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARCamera::this
+static mediapipe::ARCamera::EulerAngles
 AutoIt:
     [propget] $oARCamera.EulerAngles
 ```
@@ -22469,7 +22388,7 @@ AutoIt:
 ### ARFaceGeometry.Vertex
 
 ```cpp
-static mediapipe::ARFaceGeometry::Vertex mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARFaceGeometry::this
+static mediapipe::ARFaceGeometry::Vertex
 AutoIt:
     [propget] $oARFaceGeometry.Vertex
 ```
@@ -22477,7 +22396,7 @@ AutoIt:
 ### ARFaceGeometry.TextureCoordinate
 
 ```cpp
-static mediapipe::ARFaceGeometry::TextureCoordinate mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARFaceGeometry::this
+static mediapipe::ARFaceGeometry::TextureCoordinate
 AutoIt:
     [propget] $oARFaceGeometry.TextureCoordinate
 ```
@@ -22487,7 +22406,7 @@ AutoIt:
 ### ARBlendShapeMap.MapEntry
 
 ```cpp
-static mediapipe::ARBlendShapeMap::MapEntry mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARBlendShapeMap::this
+static mediapipe::ARBlendShapeMap::MapEntry
 AutoIt:
     [propget] $oARBlendShapeMap.MapEntry
 ```
@@ -22497,7 +22416,7 @@ AutoIt:
 ### ARPlaneGeometry.Vertex
 
 ```cpp
-static mediapipe::ARPlaneGeometry::Vertex mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARPlaneGeometry::this
+static mediapipe::ARPlaneGeometry::Vertex
 AutoIt:
     [propget] $oARPlaneGeometry.Vertex
 ```
@@ -22505,7 +22424,7 @@ AutoIt:
 ### ARPlaneGeometry.TextureCoordinate
 
 ```cpp
-static mediapipe::ARPlaneGeometry::TextureCoordinate mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARPlaneGeometry::this
+static mediapipe::ARPlaneGeometry::TextureCoordinate
 AutoIt:
     [propget] $oARPlaneGeometry.TextureCoordinate
 ```
@@ -22515,7 +22434,7 @@ AutoIt:
 ### ARPlaneAnchor.PlaneVector
 
 ```cpp
-static mediapipe::ARPlaneAnchor::PlaneVector mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARPlaneAnchor::this
+static mediapipe::ARPlaneAnchor::PlaneVector
 AutoIt:
     [propget] $oARPlaneAnchor.PlaneVector
 ```
@@ -22525,7 +22444,7 @@ AutoIt:
 ### ARPointCloud.Point
 
 ```cpp
-static mediapipe::ARPointCloud::Point mediapipe::modules::objectron::calculators::a_r_capture_metadata_pb2::ARPointCloud::this
+static mediapipe::ARPointCloud::Point
 AutoIt:
     [propget] $oARPointCloud.Point
 ```
@@ -22537,7 +22456,7 @@ AutoIt:
 ```cpp
 float mediapipe::KeyPoint::x
 AutoIt:
-    [propget propput] $oKeyPoint.x
+    [propget, propput] $oKeyPoint.x
 ```
 
 ### KeyPoint.y
@@ -22545,7 +22464,7 @@ AutoIt:
 ```cpp
 float mediapipe::KeyPoint::y
 AutoIt:
-    [propget propput] $oKeyPoint.y
+    [propget, propput] $oKeyPoint.y
 ```
 
 ### KeyPoint.z
@@ -22553,7 +22472,7 @@ AutoIt:
 ```cpp
 float mediapipe::KeyPoint::z
 AutoIt:
-    [propget propput] $oKeyPoint.z
+    [propget, propput] $oKeyPoint.z
 ```
 
 ### KeyPoint.confidence\_radius
@@ -22561,7 +22480,7 @@ AutoIt:
 ```cpp
 float mediapipe::KeyPoint::confidence_radius
 AutoIt:
-    [propget propput] $oKeyPoint.confidence_radius
+    [propget, propput] $oKeyPoint.confidence_radius
 ```
 
 ### KeyPoint.name
@@ -22569,7 +22488,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::KeyPoint::name
 AutoIt:
-    [propget propput] $oKeyPoint.name
+    [propget, propput] $oKeyPoint.name
 ```
 
 ### KeyPoint.hidden
@@ -22577,7 +22496,7 @@ AutoIt:
 ```cpp
 bool mediapipe::KeyPoint::hidden
 AutoIt:
-    [propget propput] $oKeyPoint.hidden
+    [propget, propput] $oKeyPoint.hidden
 ```
 
 ### mediapipe::KeyPoint::get\_create
@@ -22586,7 +22505,6 @@ AutoIt:
 static mediapipe::KeyPoint mediapipe::KeyPoint::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.KeyPoint").create() -> <mediapipe.KeyPoint object>
-    _Mediapipe_ObjCreate("mediapipe.KeyPoint")() -> <mediapipe.KeyPoint object>
 ```
 
 ### mediapipe::KeyPoint::Clear
@@ -22628,7 +22546,7 @@ AutoIt:
 ```cpp
 int mediapipe::Object::id
 AutoIt:
-    [propget propput] $oObject.id
+    [propget, propput] $oObject.id
 ```
 
 ### Object.category
@@ -22636,7 +22554,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::Object::category
 AutoIt:
-    [propget propput] $oObject.category
+    [propget, propput] $oObject.category
 ```
 
 ### Object.type
@@ -22644,7 +22562,7 @@ AutoIt:
 ```cpp
 mediapipe::Object::Type mediapipe::Object::type
 AutoIt:
-    [propget propput] $oObject.type
+    [propget, propput] $oObject.type
 ```
 
 ### Object.rotation
@@ -22684,7 +22602,7 @@ AutoIt:
 ```cpp
 mediapipe::Object::Method mediapipe::Object::method
 AutoIt:
-    [propget propput] $oObject.method
+    [propget, propput] $oObject.method
 ```
 
 ### mediapipe::Object::get\_create
@@ -22693,7 +22611,6 @@ AutoIt:
 static mediapipe::Object mediapipe::Object::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Object").create() -> <mediapipe.Object object>
-    _Mediapipe_ObjCreate("mediapipe.Object")() -> <mediapipe.Object object>
 ```
 
 ### mediapipe::Object::Clear
@@ -23002,7 +22919,7 @@ AutoIt:
 ```cpp
 int mediapipe::Edge::source
 AutoIt:
-    [propget propput] $oEdge.source
+    [propget, propput] $oEdge.source
 ```
 
 ### Edge.sink
@@ -23010,7 +22927,7 @@ AutoIt:
 ```cpp
 int mediapipe::Edge::sink
 AutoIt:
-    [propget propput] $oEdge.sink
+    [propget, propput] $oEdge.sink
 ```
 
 ### mediapipe::Edge::get\_create
@@ -23019,7 +22936,6 @@ AutoIt:
 static mediapipe::Edge mediapipe::Edge::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Edge").create() -> <mediapipe.Edge object>
-    _Mediapipe_ObjCreate("mediapipe.Edge")() -> <mediapipe.Edge object>
 ```
 
 ### mediapipe::Edge::Clear
@@ -23061,7 +22977,7 @@ AutoIt:
 ```cpp
 int mediapipe::Skeleton::reference_keypoint
 AutoIt:
-    [propget propput] $oSkeleton.reference_keypoint
+    [propget, propput] $oSkeleton.reference_keypoint
 ```
 
 ### Skeleton.category
@@ -23069,7 +22985,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::Skeleton::category
 AutoIt:
-    [propget propput] $oSkeleton.category
+    [propget, propput] $oSkeleton.category
 ```
 
 ### Skeleton.keypoints
@@ -23094,7 +23010,6 @@ AutoIt:
 static mediapipe::Skeleton mediapipe::Skeleton::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Skeleton").create() -> <mediapipe.Skeleton object>
-    _Mediapipe_ObjCreate("mediapipe.Skeleton")() -> <mediapipe.Skeleton object>
 ```
 
 ### mediapipe::Skeleton::Clear
@@ -23364,7 +23279,6 @@ AutoIt:
 static mediapipe::Skeletons mediapipe::Skeletons::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Skeletons").create() -> <mediapipe.Skeletons object>
-    _Mediapipe_ObjCreate("mediapipe.Skeletons")() -> <mediapipe.Skeletons object>
 ```
 
 ### mediapipe::Skeletons::Clear
@@ -23623,7 +23537,7 @@ AutoIt:
 ### object\_pb2.KeyPoint
 
 ```cpp
-static mediapipe::KeyPoint mediapipe::modules::objectron::calculators::object_pb2::this
+static mediapipe::KeyPoint
 AutoIt:
     [propget] $oobject_pb2.KeyPoint
 ```
@@ -23631,7 +23545,7 @@ AutoIt:
 ### object\_pb2.Object
 
 ```cpp
-static mediapipe::Object mediapipe::modules::objectron::calculators::object_pb2::this
+static mediapipe::Object
 AutoIt:
     [propget] $oobject_pb2.Object
 ```
@@ -23639,7 +23553,7 @@ AutoIt:
 ### object\_pb2.Edge
 
 ```cpp
-static mediapipe::Edge mediapipe::modules::objectron::calculators::object_pb2::this
+static mediapipe::Edge
 AutoIt:
     [propget] $oobject_pb2.Edge
 ```
@@ -23647,7 +23561,7 @@ AutoIt:
 ### object\_pb2.Skeleton
 
 ```cpp
-static mediapipe::Skeleton mediapipe::modules::objectron::calculators::object_pb2::this
+static mediapipe::Skeleton
 AutoIt:
     [propget] $oobject_pb2.Skeleton
 ```
@@ -23655,7 +23569,7 @@ AutoIt:
 ### object\_pb2.Skeletons
 
 ```cpp
-static mediapipe::Skeletons mediapipe::modules::objectron::calculators::object_pb2::this
+static mediapipe::Skeletons
 AutoIt:
     [propget] $oobject_pb2.Skeletons
 ```
@@ -23667,7 +23581,7 @@ AutoIt:
 ```cpp
 float mediapipe::NormalizedPoint2D::x
 AutoIt:
-    [propget propput] $oNormalizedPoint2D.x
+    [propget, propput] $oNormalizedPoint2D.x
 ```
 
 ### NormalizedPoint2D.y
@@ -23675,7 +23589,7 @@ AutoIt:
 ```cpp
 float mediapipe::NormalizedPoint2D::y
 AutoIt:
-    [propget propput] $oNormalizedPoint2D.y
+    [propget, propput] $oNormalizedPoint2D.y
 ```
 
 ### NormalizedPoint2D.depth
@@ -23683,7 +23597,7 @@ AutoIt:
 ```cpp
 float mediapipe::NormalizedPoint2D::depth
 AutoIt:
-    [propget propput] $oNormalizedPoint2D.depth
+    [propget, propput] $oNormalizedPoint2D.depth
 ```
 
 ### mediapipe::NormalizedPoint2D::get\_create
@@ -23692,7 +23606,6 @@ AutoIt:
 static mediapipe::NormalizedPoint2D mediapipe::NormalizedPoint2D::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedPoint2D").create() -> <mediapipe.NormalizedPoint2D object>
-    _Mediapipe_ObjCreate("mediapipe.NormalizedPoint2D")() -> <mediapipe.NormalizedPoint2D object>
 ```
 
 ### mediapipe::NormalizedPoint2D::Clear
@@ -23734,7 +23647,7 @@ AutoIt:
 ```cpp
 float mediapipe::Point3D::x
 AutoIt:
-    [propget propput] $oPoint3D.x
+    [propget, propput] $oPoint3D.x
 ```
 
 ### Point3D.y
@@ -23742,7 +23655,7 @@ AutoIt:
 ```cpp
 float mediapipe::Point3D::y
 AutoIt:
-    [propget propput] $oPoint3D.y
+    [propget, propput] $oPoint3D.y
 ```
 
 ### Point3D.z
@@ -23750,7 +23663,7 @@ AutoIt:
 ```cpp
 float mediapipe::Point3D::z
 AutoIt:
-    [propget propput] $oPoint3D.z
+    [propget, propput] $oPoint3D.z
 ```
 
 ### mediapipe::Point3D::get\_create
@@ -23759,7 +23672,6 @@ AutoIt:
 static mediapipe::Point3D mediapipe::Point3D::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Point3D").create() -> <mediapipe.Point3D object>
-    _Mediapipe_ObjCreate("mediapipe.Point3D")() -> <mediapipe.Point3D object>
 ```
 
 ### mediapipe::Point3D::Clear
@@ -23801,7 +23713,7 @@ AutoIt:
 ```cpp
 int mediapipe::AnnotatedKeyPoint::id
 AutoIt:
-    [propget propput] $oAnnotatedKeyPoint.id
+    [propget, propput] $oAnnotatedKeyPoint.id
 ```
 
 ### AnnotatedKeyPoint.point\_3d
@@ -23825,7 +23737,7 @@ AutoIt:
 ```cpp
 bool mediapipe::AnnotatedKeyPoint::hidden
 AutoIt:
-    [propget propput] $oAnnotatedKeyPoint.hidden
+    [propget, propput] $oAnnotatedKeyPoint.hidden
 ```
 
 ### mediapipe::AnnotatedKeyPoint::get\_create
@@ -23834,7 +23746,6 @@ AutoIt:
 static mediapipe::AnnotatedKeyPoint mediapipe::AnnotatedKeyPoint::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.AnnotatedKeyPoint").create() -> <mediapipe.AnnotatedKeyPoint object>
-    _Mediapipe_ObjCreate("mediapipe.AnnotatedKeyPoint")() -> <mediapipe.AnnotatedKeyPoint object>
 ```
 
 ### mediapipe::AnnotatedKeyPoint::Clear
@@ -23876,7 +23787,7 @@ AutoIt:
 ```cpp
 int mediapipe::ObjectAnnotation::object_id
 AutoIt:
-    [propget propput] $oObjectAnnotation.object_id
+    [propget, propput] $oObjectAnnotation.object_id
 ```
 
 ### ObjectAnnotation.keypoints
@@ -23892,7 +23803,7 @@ AutoIt:
 ```cpp
 float mediapipe::ObjectAnnotation::visibility
 AutoIt:
-    [propget propput] $oObjectAnnotation.visibility
+    [propget, propput] $oObjectAnnotation.visibility
 ```
 
 ### ObjectAnnotation.rotation
@@ -23925,7 +23836,6 @@ AutoIt:
 static mediapipe::ObjectAnnotation mediapipe::ObjectAnnotation::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ObjectAnnotation").create() -> <mediapipe.ObjectAnnotation object>
-    _Mediapipe_ObjCreate("mediapipe.ObjectAnnotation")() -> <mediapipe.ObjectAnnotation object>
 ```
 
 ### mediapipe::ObjectAnnotation::Clear
@@ -24186,7 +24096,7 @@ AutoIt:
 ```cpp
 int mediapipe::FrameAnnotation::frame_id
 AutoIt:
-    [propget propput] $oFrameAnnotation.frame_id
+    [propget, propput] $oFrameAnnotation.frame_id
 ```
 
 ### FrameAnnotation.annotations
@@ -24210,7 +24120,7 @@ AutoIt:
 ```cpp
 double mediapipe::FrameAnnotation::timestamp
 AutoIt:
-    [propget propput] $oFrameAnnotation.timestamp
+    [propget, propput] $oFrameAnnotation.timestamp
 ```
 
 ### FrameAnnotation.plane\_center
@@ -24235,7 +24145,6 @@ AutoIt:
 static mediapipe::FrameAnnotation mediapipe::FrameAnnotation::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.FrameAnnotation").create() -> <mediapipe.FrameAnnotation object>
-    _Mediapipe_ObjCreate("mediapipe.FrameAnnotation")() -> <mediapipe.FrameAnnotation object>
 ```
 
 ### mediapipe::FrameAnnotation::Clear
@@ -24513,7 +24422,6 @@ AutoIt:
 static mediapipe::Sequence mediapipe::Sequence::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Sequence").create() -> <mediapipe.Sequence object>
-    _Mediapipe_ObjCreate("mediapipe.Sequence")() -> <mediapipe.Sequence object>
 ```
 
 ### mediapipe::Sequence::Clear
@@ -24991,7 +24899,7 @@ AutoIt:
 ### annotation\_data\_pb2.NormalizedPoint2D
 
 ```cpp
-static mediapipe::NormalizedPoint2D mediapipe::modules::objectron::calculators::annotation_data_pb2::this
+static mediapipe::NormalizedPoint2D
 AutoIt:
     [propget] $oannotation_data_pb2.NormalizedPoint2D
 ```
@@ -24999,7 +24907,7 @@ AutoIt:
 ### annotation\_data\_pb2.Point3D
 
 ```cpp
-static mediapipe::Point3D mediapipe::modules::objectron::calculators::annotation_data_pb2::this
+static mediapipe::Point3D
 AutoIt:
     [propget] $oannotation_data_pb2.Point3D
 ```
@@ -25007,7 +24915,7 @@ AutoIt:
 ### annotation\_data\_pb2.AnnotatedKeyPoint
 
 ```cpp
-static mediapipe::AnnotatedKeyPoint mediapipe::modules::objectron::calculators::annotation_data_pb2::this
+static mediapipe::AnnotatedKeyPoint
 AutoIt:
     [propget] $oannotation_data_pb2.AnnotatedKeyPoint
 ```
@@ -25015,7 +24923,7 @@ AutoIt:
 ### annotation\_data\_pb2.ObjectAnnotation
 
 ```cpp
-static mediapipe::ObjectAnnotation mediapipe::modules::objectron::calculators::annotation_data_pb2::this
+static mediapipe::ObjectAnnotation
 AutoIt:
     [propget] $oannotation_data_pb2.ObjectAnnotation
 ```
@@ -25023,7 +24931,7 @@ AutoIt:
 ### annotation\_data\_pb2.FrameAnnotation
 
 ```cpp
-static mediapipe::FrameAnnotation mediapipe::modules::objectron::calculators::annotation_data_pb2::this
+static mediapipe::FrameAnnotation
 AutoIt:
     [propget] $oannotation_data_pb2.FrameAnnotation
 ```
@@ -25031,7 +24939,7 @@ AutoIt:
 ### annotation\_data\_pb2.Sequence
 
 ```cpp
-static mediapipe::Sequence mediapipe::modules::objectron::calculators::annotation_data_pb2::this
+static mediapipe::Sequence
 AutoIt:
     [propget] $oannotation_data_pb2.Sequence
 ```
@@ -25043,7 +24951,7 @@ AutoIt:
 ```cpp
 int mediapipe::Classification::index
 AutoIt:
-    [propget propput] $oClassification.index
+    [propget, propput] $oClassification.index
 ```
 
 ### Classification.score
@@ -25051,7 +24959,7 @@ AutoIt:
 ```cpp
 float mediapipe::Classification::score
 AutoIt:
-    [propget propput] $oClassification.score
+    [propget, propput] $oClassification.score
 ```
 
 ### Classification.label
@@ -25059,7 +24967,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::Classification::label
 AutoIt:
-    [propget propput] $oClassification.label
+    [propget, propput] $oClassification.label
 ```
 
 ### Classification.display\_name
@@ -25067,7 +24975,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::Classification::display_name
 AutoIt:
-    [propget propput] $oClassification.display_name
+    [propget, propput] $oClassification.display_name
 ```
 
 ### mediapipe::Classification::get\_create
@@ -25076,7 +24984,6 @@ AutoIt:
 static mediapipe::Classification mediapipe::Classification::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Classification").create() -> <mediapipe.Classification object>
-    _Mediapipe_ObjCreate("mediapipe.Classification")() -> <mediapipe.Classification object>
 ```
 
 ### mediapipe::Classification::Clear
@@ -25127,7 +25034,6 @@ AutoIt:
 static mediapipe::ClassificationList mediapipe::ClassificationList::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ClassificationList").create() -> <mediapipe.ClassificationList object>
-    _Mediapipe_ObjCreate("mediapipe.ClassificationList")() -> <mediapipe.ClassificationList object>
 ```
 
 ### mediapipe::ClassificationList::Clear
@@ -25397,7 +25303,6 @@ AutoIt:
 static mediapipe::ClassificationListCollection mediapipe::ClassificationListCollection::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ClassificationListCollection").create() -> <mediapipe.ClassificationListCollection object>
-    _Mediapipe_ObjCreate("mediapipe.ClassificationListCollection")() -> <mediapipe.ClassificationListCollection object>
 ```
 
 ### mediapipe::ClassificationListCollection::Clear
@@ -25656,7 +25561,7 @@ AutoIt:
 ### classification\_pb2.Classification
 
 ```cpp
-static mediapipe::Classification mediapipe::framework::formats::classification_pb2::this
+static mediapipe::Classification
 AutoIt:
     [propget] $oclassification_pb2.Classification
 ```
@@ -25664,7 +25569,7 @@ AutoIt:
 ### classification\_pb2.ClassificationList
 
 ```cpp
-static mediapipe::ClassificationList mediapipe::framework::formats::classification_pb2::this
+static mediapipe::ClassificationList
 AutoIt:
     [propget] $oclassification_pb2.ClassificationList
 ```
@@ -25672,7 +25577,7 @@ AutoIt:
 ### classification\_pb2.ClassificationListCollection
 
 ```cpp
-static mediapipe::ClassificationListCollection mediapipe::framework::formats::classification_pb2::this
+static mediapipe::ClassificationListCollection
 AutoIt:
     [propget] $oclassification_pb2.ClassificationListCollection
 ```
@@ -25701,7 +25606,6 @@ AutoIt:
 static mediapipe::ConstantSidePacketCalculatorOptions mediapipe::ConstantSidePacketCalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions").create() -> <mediapipe.ConstantSidePacketCalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions")() -> <mediapipe.ConstantSidePacketCalculatorOptions object>
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::Clear
@@ -25962,7 +25866,7 @@ AutoIt:
 ```cpp
 int mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::int_value
 AutoIt:
-    [propget propput] $oConstantSidePacket.int_value
+    [propget, propput] $oConstantSidePacket.int_value
 ```
 
 ### ConstantSidePacket.float\_value
@@ -25970,7 +25874,7 @@ AutoIt:
 ```cpp
 float mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::float_value
 AutoIt:
-    [propget propput] $oConstantSidePacket.float_value
+    [propget, propput] $oConstantSidePacket.float_value
 ```
 
 ### ConstantSidePacket.bool\_value
@@ -25978,7 +25882,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::bool_value
 AutoIt:
-    [propget propput] $oConstantSidePacket.bool_value
+    [propget, propput] $oConstantSidePacket.bool_value
 ```
 
 ### ConstantSidePacket.string\_value
@@ -25986,7 +25890,7 @@ AutoIt:
 ```cpp
 std::string mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::string_value
 AutoIt:
-    [propget propput] $oConstantSidePacket.string_value
+    [propget, propput] $oConstantSidePacket.string_value
 ```
 
 ### ConstantSidePacket.uint64\_value
@@ -25994,7 +25898,7 @@ AutoIt:
 ```cpp
 uint64 mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::uint64_value
 AutoIt:
-    [propget propput] $oConstantSidePacket.uint64_value
+    [propget, propput] $oConstantSidePacket.uint64_value
 ```
 
 ### ConstantSidePacket.classification\_list\_value
@@ -26018,7 +25922,7 @@ AutoIt:
 ```cpp
 double mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::double_value
 AutoIt:
-    [propget propput] $oConstantSidePacket.double_value
+    [propget, propput] $oConstantSidePacket.double_value
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get\_create
@@ -26027,7 +25931,6 @@ AutoIt:
 static mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket").create() -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
-    _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket")() -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::Clear
@@ -26067,7 +25970,7 @@ AutoIt:
 ### constant\_side\_packet\_calculator\_pb2.ConstantSidePacketCalculatorOptions
 
 ```cpp
-static mediapipe::ConstantSidePacketCalculatorOptions mediapipe::calculators::core::constant_side_packet_calculator_pb2::this
+static mediapipe::ConstantSidePacketCalculatorOptions
 AutoIt:
     [propget] $oconstant_side_packet_calculator_pb2.ConstantSidePacketCalculatorOptions
 ```
@@ -26077,7 +25980,7 @@ AutoIt:
 ### ConstantSidePacketCalculatorOptions.ConstantSidePacket
 
 ```cpp
-static mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket mediapipe::calculators::core::constant_side_packet_calculator_pb2::ConstantSidePacketCalculatorOptions::this
+static mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket
 AutoIt:
     [propget] $oConstantSidePacketCalculatorOptions.ConstantSidePacket
 ```
@@ -26090,7 +25993,6 @@ AutoIt:
 static mediapipe::ScaleMode mediapipe::ScaleMode::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ScaleMode").create() -> <mediapipe.ScaleMode object>
-    _Mediapipe_ObjCreate("mediapipe.ScaleMode")() -> <mediapipe.ScaleMode object>
 ```
 
 ### mediapipe::ScaleMode::Clear
@@ -26162,7 +26064,7 @@ AutoIt:
 ### scale\_mode\_pb2.ScaleMode
 
 ```cpp
-static mediapipe::ScaleMode mediapipe::gpu::scale_mode_pb2::this
+static mediapipe::ScaleMode
 AutoIt:
     [propget] $oscale_mode_pb2.ScaleMode
 ```
@@ -26175,7 +26077,6 @@ AutoIt:
 static mediapipe::RotationMode mediapipe::RotationMode::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.RotationMode").create() -> <mediapipe.RotationMode object>
-    _Mediapipe_ObjCreate("mediapipe.RotationMode")() -> <mediapipe.RotationMode object>
 ```
 
 ### mediapipe::RotationMode::Clear
@@ -26257,7 +26158,7 @@ AutoIt:
 ```cpp
 int mediapipe::ImageTransformationCalculatorOptions::output_width
 AutoIt:
-    [propget propput] $oImageTransformationCalculatorOptions.output_width
+    [propget, propput] $oImageTransformationCalculatorOptions.output_width
 ```
 
 ### ImageTransformationCalculatorOptions.output\_height
@@ -26265,7 +26166,7 @@ AutoIt:
 ```cpp
 int mediapipe::ImageTransformationCalculatorOptions::output_height
 AutoIt:
-    [propget propput] $oImageTransformationCalculatorOptions.output_height
+    [propget, propput] $oImageTransformationCalculatorOptions.output_height
 ```
 
 ### ImageTransformationCalculatorOptions.rotation\_mode
@@ -26273,7 +26174,7 @@ AutoIt:
 ```cpp
 mediapipe::RotationMode::Mode mediapipe::ImageTransformationCalculatorOptions::rotation_mode
 AutoIt:
-    [propget propput] $oImageTransformationCalculatorOptions.rotation_mode
+    [propget, propput] $oImageTransformationCalculatorOptions.rotation_mode
 ```
 
 ### ImageTransformationCalculatorOptions.flip\_vertically
@@ -26281,7 +26182,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ImageTransformationCalculatorOptions::flip_vertically
 AutoIt:
-    [propget propput] $oImageTransformationCalculatorOptions.flip_vertically
+    [propget, propput] $oImageTransformationCalculatorOptions.flip_vertically
 ```
 
 ### ImageTransformationCalculatorOptions.flip\_horizontally
@@ -26289,7 +26190,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ImageTransformationCalculatorOptions::flip_horizontally
 AutoIt:
-    [propget propput] $oImageTransformationCalculatorOptions.flip_horizontally
+    [propget, propput] $oImageTransformationCalculatorOptions.flip_horizontally
 ```
 
 ### ImageTransformationCalculatorOptions.scale\_mode
@@ -26297,7 +26198,7 @@ AutoIt:
 ```cpp
 mediapipe::ScaleMode::Mode mediapipe::ImageTransformationCalculatorOptions::scale_mode
 AutoIt:
-    [propget propput] $oImageTransformationCalculatorOptions.scale_mode
+    [propget, propput] $oImageTransformationCalculatorOptions.scale_mode
 ```
 
 ### ImageTransformationCalculatorOptions.constant\_padding
@@ -26305,7 +26206,7 @@ AutoIt:
 ```cpp
 bool mediapipe::ImageTransformationCalculatorOptions::constant_padding
 AutoIt:
-    [propget propput] $oImageTransformationCalculatorOptions.constant_padding
+    [propget, propput] $oImageTransformationCalculatorOptions.constant_padding
 ```
 
 ### ImageTransformationCalculatorOptions.ext
@@ -26322,7 +26223,6 @@ AutoIt:
 static mediapipe::ImageTransformationCalculatorOptions mediapipe::ImageTransformationCalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageTransformationCalculatorOptions").create() -> <mediapipe.ImageTransformationCalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.ImageTransformationCalculatorOptions")() -> <mediapipe.ImageTransformationCalculatorOptions object>
 ```
 
 ### mediapipe::ImageTransformationCalculatorOptions::Clear
@@ -26362,7 +26262,7 @@ AutoIt:
 ### image\_transformation\_calculator\_pb2.RotationMode
 
 ```cpp
-static mediapipe::RotationMode mediapipe::calculators::image::image_transformation_calculator_pb2::this
+static mediapipe::RotationMode
 AutoIt:
     [propget] $oimage_transformation_calculator_pb2.RotationMode
 ```
@@ -26370,7 +26270,7 @@ AutoIt:
 ### image\_transformation\_calculator\_pb2.ImageTransformationCalculatorOptions
 
 ```cpp
-static mediapipe::ImageTransformationCalculatorOptions mediapipe::calculators::image::image_transformation_calculator_pb2::this
+static mediapipe::ImageTransformationCalculatorOptions
 AutoIt:
     [propget] $oimage_transformation_calculator_pb2.ImageTransformationCalculatorOptions
 ```
@@ -26382,7 +26282,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::num_classes
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.num_classes
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.num_classes
 ```
 
 ### TensorsToDetectionsCalculatorOptions.num\_boxes
@@ -26390,7 +26290,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::num_boxes
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.num_boxes
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.num_boxes
 ```
 
 ### TensorsToDetectionsCalculatorOptions.num\_coords
@@ -26398,7 +26298,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::num_coords
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.num_coords
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.num_coords
 ```
 
 ### TensorsToDetectionsCalculatorOptions.keypoint\_coord\_offset
@@ -26406,7 +26306,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::keypoint_coord_offset
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.keypoint_coord_offset
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.keypoint_coord_offset
 ```
 
 ### TensorsToDetectionsCalculatorOptions.num\_keypoints
@@ -26414,7 +26314,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::num_keypoints
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.num_keypoints
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.num_keypoints
 ```
 
 ### TensorsToDetectionsCalculatorOptions.num\_values\_per\_keypoint
@@ -26422,7 +26322,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::num_values_per_keypoint
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.num_values_per_keypoint
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.num_values_per_keypoint
 ```
 
 ### TensorsToDetectionsCalculatorOptions.box\_coord\_offset
@@ -26430,7 +26330,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::box_coord_offset
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.box_coord_offset
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.box_coord_offset
 ```
 
 ### TensorsToDetectionsCalculatorOptions.x\_scale
@@ -26438,7 +26338,7 @@ AutoIt:
 ```cpp
 float mediapipe::TensorsToDetectionsCalculatorOptions::x_scale
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.x_scale
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.x_scale
 ```
 
 ### TensorsToDetectionsCalculatorOptions.y\_scale
@@ -26446,7 +26346,7 @@ AutoIt:
 ```cpp
 float mediapipe::TensorsToDetectionsCalculatorOptions::y_scale
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.y_scale
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.y_scale
 ```
 
 ### TensorsToDetectionsCalculatorOptions.w\_scale
@@ -26454,7 +26354,7 @@ AutoIt:
 ```cpp
 float mediapipe::TensorsToDetectionsCalculatorOptions::w_scale
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.w_scale
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.w_scale
 ```
 
 ### TensorsToDetectionsCalculatorOptions.h\_scale
@@ -26462,7 +26362,7 @@ AutoIt:
 ```cpp
 float mediapipe::TensorsToDetectionsCalculatorOptions::h_scale
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.h_scale
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.h_scale
 ```
 
 ### TensorsToDetectionsCalculatorOptions.apply\_exponential\_on\_box\_size
@@ -26470,7 +26370,7 @@ AutoIt:
 ```cpp
 bool mediapipe::TensorsToDetectionsCalculatorOptions::apply_exponential_on_box_size
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.apply_exponential_on_box_size
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.apply_exponential_on_box_size
 ```
 
 ### TensorsToDetectionsCalculatorOptions.reverse\_output\_order
@@ -26478,7 +26378,7 @@ AutoIt:
 ```cpp
 bool mediapipe::TensorsToDetectionsCalculatorOptions::reverse_output_order
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.reverse_output_order
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.reverse_output_order
 ```
 
 ### TensorsToDetectionsCalculatorOptions.ignore\_classes
@@ -26502,7 +26402,7 @@ AutoIt:
 ```cpp
 bool mediapipe::TensorsToDetectionsCalculatorOptions::sigmoid_score
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.sigmoid_score
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.sigmoid_score
 ```
 
 ### TensorsToDetectionsCalculatorOptions.score\_clipping\_thresh
@@ -26510,7 +26410,7 @@ AutoIt:
 ```cpp
 float mediapipe::TensorsToDetectionsCalculatorOptions::score_clipping_thresh
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.score_clipping_thresh
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.score_clipping_thresh
 ```
 
 ### TensorsToDetectionsCalculatorOptions.flip\_vertically
@@ -26518,7 +26418,7 @@ AutoIt:
 ```cpp
 bool mediapipe::TensorsToDetectionsCalculatorOptions::flip_vertically
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.flip_vertically
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.flip_vertically
 ```
 
 ### TensorsToDetectionsCalculatorOptions.min\_score\_thresh
@@ -26526,7 +26426,7 @@ AutoIt:
 ```cpp
 float mediapipe::TensorsToDetectionsCalculatorOptions::min_score_thresh
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.min_score_thresh
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.min_score_thresh
 ```
 
 ### TensorsToDetectionsCalculatorOptions.max\_results
@@ -26534,7 +26434,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::max_results
 AutoIt:
-    [propget propput] $oTensorsToDetectionsCalculatorOptions.max_results
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.max_results
 ```
 
 ### TensorsToDetectionsCalculatorOptions.tensor\_mapping
@@ -26567,7 +26467,6 @@ AutoIt:
 static mediapipe::TensorsToDetectionsCalculatorOptions mediapipe::TensorsToDetectionsCalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions").create() -> <mediapipe.TensorsToDetectionsCalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions")() -> <mediapipe.TensorsToDetectionsCalculatorOptions object>
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::Clear
@@ -26609,7 +26508,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::detections_tensor_index
 AutoIt:
-    [propget propput] $oTensorMapping.detections_tensor_index
+    [propget, propput] $oTensorMapping.detections_tensor_index
 ```
 
 ### TensorMapping.classes\_tensor\_index
@@ -26617,7 +26516,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::classes_tensor_index
 AutoIt:
-    [propget propput] $oTensorMapping.classes_tensor_index
+    [propget, propput] $oTensorMapping.classes_tensor_index
 ```
 
 ### TensorMapping.scores\_tensor\_index
@@ -26625,7 +26524,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::scores_tensor_index
 AutoIt:
-    [propget propput] $oTensorMapping.scores_tensor_index
+    [propget, propput] $oTensorMapping.scores_tensor_index
 ```
 
 ### TensorMapping.num\_detections\_tensor\_index
@@ -26633,7 +26532,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::num_detections_tensor_index
 AutoIt:
-    [propget propput] $oTensorMapping.num_detections_tensor_index
+    [propget, propput] $oTensorMapping.num_detections_tensor_index
 ```
 
 ### TensorMapping.anchors\_tensor\_index
@@ -26641,7 +26540,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::anchors_tensor_index
 AutoIt:
-    [propget propput] $oTensorMapping.anchors_tensor_index
+    [propget, propput] $oTensorMapping.anchors_tensor_index
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::get\_create
@@ -26650,7 +26549,6 @@ AutoIt:
 static mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping").create() -> <mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping object>
-    _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping")() -> <mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping object>
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::Clear
@@ -26692,7 +26590,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ymin
 AutoIt:
-    [propget propput] $oBoxBoundariesIndices.ymin
+    [propget, propput] $oBoxBoundariesIndices.ymin
 ```
 
 ### BoxBoundariesIndices.xmin
@@ -26700,7 +26598,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::xmin
 AutoIt:
-    [propget propput] $oBoxBoundariesIndices.xmin
+    [propget, propput] $oBoxBoundariesIndices.xmin
 ```
 
 ### BoxBoundariesIndices.ymax
@@ -26708,7 +26606,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ymax
 AutoIt:
-    [propget propput] $oBoxBoundariesIndices.ymax
+    [propget, propput] $oBoxBoundariesIndices.ymax
 ```
 
 ### BoxBoundariesIndices.xmax
@@ -26716,7 +26614,7 @@ AutoIt:
 ```cpp
 int mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::xmax
 AutoIt:
-    [propget propput] $oBoxBoundariesIndices.xmax
+    [propget, propput] $oBoxBoundariesIndices.xmax
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::get\_create
@@ -26725,7 +26623,6 @@ AutoIt:
 static mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices").create() -> <mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices object>
-    _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices")() -> <mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices object>
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::Clear
@@ -26765,7 +26662,7 @@ AutoIt:
 ### tensors\_to\_detections\_calculator\_pb2.TensorsToDetectionsCalculatorOptions
 
 ```cpp
-static mediapipe::TensorsToDetectionsCalculatorOptions mediapipe::calculators::tensor::tensors_to_detections_calculator_pb2::this
+static mediapipe::TensorsToDetectionsCalculatorOptions
 AutoIt:
     [propget] $otensors_to_detections_calculator_pb2.TensorsToDetectionsCalculatorOptions
 ```
@@ -26775,7 +26672,7 @@ AutoIt:
 ### TensorsToDetectionsCalculatorOptions.TensorMapping
 
 ```cpp
-static mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping mediapipe::calculators::tensor::tensors_to_detections_calculator_pb2::TensorsToDetectionsCalculatorOptions::this
+static mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping
 AutoIt:
     [propget] $oTensorsToDetectionsCalculatorOptions.TensorMapping
 ```
@@ -26783,7 +26680,7 @@ AutoIt:
 ### TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices
 
 ```cpp
-static mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices mediapipe::calculators::tensor::tensors_to_detections_calculator_pb2::TensorsToDetectionsCalculatorOptions::this
+static mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices
 AutoIt:
     [propget] $oTensorsToDetectionsCalculatorOptions.BoxBoundariesIndices
 ```
@@ -26828,7 +26725,6 @@ AutoIt:
 static mediapipe::LandmarksSmoothingCalculatorOptions mediapipe::LandmarksSmoothingCalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions")() -> <mediapipe.LandmarksSmoothingCalculatorOptions object>
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::Clear
@@ -26871,7 +26767,6 @@ AutoIt:
 static mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter object>
-    _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter object>
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::Clear
@@ -26913,7 +26808,7 @@ AutoIt:
 ```cpp
 int mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::window_size
 AutoIt:
-    [propget propput] $oVelocityFilter.window_size
+    [propget, propput] $oVelocityFilter.window_size
 ```
 
 ### VelocityFilter.velocity\_scale
@@ -26921,7 +26816,7 @@ AutoIt:
 ```cpp
 float mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::velocity_scale
 AutoIt:
-    [propget propput] $oVelocityFilter.velocity_scale
+    [propget, propput] $oVelocityFilter.velocity_scale
 ```
 
 ### VelocityFilter.min\_allowed\_object\_scale
@@ -26929,7 +26824,7 @@ AutoIt:
 ```cpp
 float mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::min_allowed_object_scale
 AutoIt:
-    [propget propput] $oVelocityFilter.min_allowed_object_scale
+    [propget, propput] $oVelocityFilter.min_allowed_object_scale
 ```
 
 ### VelocityFilter.disable\_value\_scaling
@@ -26937,7 +26832,7 @@ AutoIt:
 ```cpp
 bool mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::disable_value_scaling
 AutoIt:
-    [propget propput] $oVelocityFilter.disable_value_scaling
+    [propget, propput] $oVelocityFilter.disable_value_scaling
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::get\_create
@@ -26946,7 +26841,6 @@ AutoIt:
 static mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter object>
-    _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter object>
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::Clear
@@ -26988,7 +26882,7 @@ AutoIt:
 ```cpp
 float mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::frequency
 AutoIt:
-    [propget propput] $oOneEuroFilter.frequency
+    [propget, propput] $oOneEuroFilter.frequency
 ```
 
 ### OneEuroFilter.min\_cutoff
@@ -26996,7 +26890,7 @@ AutoIt:
 ```cpp
 float mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::min_cutoff
 AutoIt:
-    [propget propput] $oOneEuroFilter.min_cutoff
+    [propget, propput] $oOneEuroFilter.min_cutoff
 ```
 
 ### OneEuroFilter.beta
@@ -27004,7 +26898,7 @@ AutoIt:
 ```cpp
 float mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::beta
 AutoIt:
-    [propget propput] $oOneEuroFilter.beta
+    [propget, propput] $oOneEuroFilter.beta
 ```
 
 ### OneEuroFilter.derivate\_cutoff
@@ -27012,7 +26906,7 @@ AutoIt:
 ```cpp
 float mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::derivate_cutoff
 AutoIt:
-    [propget propput] $oOneEuroFilter.derivate_cutoff
+    [propget, propput] $oOneEuroFilter.derivate_cutoff
 ```
 
 ### OneEuroFilter.min\_allowed\_object\_scale
@@ -27020,7 +26914,7 @@ AutoIt:
 ```cpp
 float mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::min_allowed_object_scale
 AutoIt:
-    [propget propput] $oOneEuroFilter.min_allowed_object_scale
+    [propget, propput] $oOneEuroFilter.min_allowed_object_scale
 ```
 
 ### OneEuroFilter.disable\_value\_scaling
@@ -27028,7 +26922,7 @@ AutoIt:
 ```cpp
 bool mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::disable_value_scaling
 AutoIt:
-    [propget propput] $oOneEuroFilter.disable_value_scaling
+    [propget, propput] $oOneEuroFilter.disable_value_scaling
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::get\_create
@@ -27037,7 +26931,6 @@ AutoIt:
 static mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter object>
-    _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter")() -> <mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter object>
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::Clear
@@ -27077,7 +26970,7 @@ AutoIt:
 ### landmarks\_smoothing\_calculator\_pb2.LandmarksSmoothingCalculatorOptions
 
 ```cpp
-static mediapipe::LandmarksSmoothingCalculatorOptions mediapipe::calculators::util::landmarks_smoothing_calculator_pb2::this
+static mediapipe::LandmarksSmoothingCalculatorOptions
 AutoIt:
     [propget] $olandmarks_smoothing_calculator_pb2.LandmarksSmoothingCalculatorOptions
 ```
@@ -27087,7 +26980,7 @@ AutoIt:
 ### LandmarksSmoothingCalculatorOptions.NoFilter
 
 ```cpp
-static mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter mediapipe::calculators::util::landmarks_smoothing_calculator_pb2::LandmarksSmoothingCalculatorOptions::this
+static mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter
 AutoIt:
     [propget] $oLandmarksSmoothingCalculatorOptions.NoFilter
 ```
@@ -27095,7 +26988,7 @@ AutoIt:
 ### LandmarksSmoothingCalculatorOptions.VelocityFilter
 
 ```cpp
-static mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter mediapipe::calculators::util::landmarks_smoothing_calculator_pb2::LandmarksSmoothingCalculatorOptions::this
+static mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter
 AutoIt:
     [propget] $oLandmarksSmoothingCalculatorOptions.VelocityFilter
 ```
@@ -27103,7 +26996,7 @@ AutoIt:
 ### LandmarksSmoothingCalculatorOptions.OneEuroFilter
 
 ```cpp
-static mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter mediapipe::calculators::util::landmarks_smoothing_calculator_pb2::LandmarksSmoothingCalculatorOptions::this
+static mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter
 AutoIt:
     [propget] $oLandmarksSmoothingCalculatorOptions.OneEuroFilter
 ```
@@ -27115,7 +27008,7 @@ AutoIt:
 ```cpp
 mediapipe::LogicCalculatorOptions::Operation mediapipe::LogicCalculatorOptions::op
 AutoIt:
-    [propget propput] $oLogicCalculatorOptions.op
+    [propget, propput] $oLogicCalculatorOptions.op
 ```
 
 ### LogicCalculatorOptions.negate
@@ -27123,7 +27016,7 @@ AutoIt:
 ```cpp
 bool mediapipe::LogicCalculatorOptions::negate
 AutoIt:
-    [propget propput] $oLogicCalculatorOptions.negate
+    [propget, propput] $oLogicCalculatorOptions.negate
 ```
 
 ### LogicCalculatorOptions.input\_value
@@ -27148,7 +27041,6 @@ AutoIt:
 static mediapipe::LogicCalculatorOptions mediapipe::LogicCalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LogicCalculatorOptions").create() -> <mediapipe.LogicCalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.LogicCalculatorOptions")() -> <mediapipe.LogicCalculatorOptions object>
 ```
 
 ### mediapipe::LogicCalculatorOptions::Clear
@@ -27414,7 +27306,7 @@ AutoIt:
 ### logic\_calculator\_pb2.LogicCalculatorOptions
 
 ```cpp
-static mediapipe::LogicCalculatorOptions mediapipe::calculators::util::logic_calculator_pb2::this
+static mediapipe::LogicCalculatorOptions
 AutoIt:
     [propget] $ologic_calculator_pb2.LogicCalculatorOptions
 ```
@@ -27426,7 +27318,7 @@ AutoIt:
 ```cpp
 double mediapipe::ThresholdingCalculatorOptions::threshold
 AutoIt:
-    [propget propput] $oThresholdingCalculatorOptions.threshold
+    [propget, propput] $oThresholdingCalculatorOptions.threshold
 ```
 
 ### ThresholdingCalculatorOptions.ext
@@ -27443,7 +27335,6 @@ AutoIt:
 static mediapipe::ThresholdingCalculatorOptions mediapipe::ThresholdingCalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ThresholdingCalculatorOptions").create() -> <mediapipe.ThresholdingCalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.ThresholdingCalculatorOptions")() -> <mediapipe.ThresholdingCalculatorOptions object>
 ```
 
 ### mediapipe::ThresholdingCalculatorOptions::Clear
@@ -27483,7 +27374,7 @@ AutoIt:
 ### thresholding\_calculator\_pb2.ThresholdingCalculatorOptions
 
 ```cpp
-static mediapipe::ThresholdingCalculatorOptions mediapipe::calculators::util::thresholding_calculator_pb2::this
+static mediapipe::ThresholdingCalculatorOptions
 AutoIt:
     [propget] $othresholding_calculator_pb2.ThresholdingCalculatorOptions
 ```
@@ -27495,7 +27386,7 @@ AutoIt:
 ```cpp
 float mediapipe::BeliefDecoderConfig::heatmap_threshold
 AutoIt:
-    [propget propput] $oBeliefDecoderConfig.heatmap_threshold
+    [propget, propput] $oBeliefDecoderConfig.heatmap_threshold
 ```
 
 ### BeliefDecoderConfig.local\_max\_distance
@@ -27503,7 +27394,7 @@ AutoIt:
 ```cpp
 float mediapipe::BeliefDecoderConfig::local_max_distance
 AutoIt:
-    [propget propput] $oBeliefDecoderConfig.local_max_distance
+    [propget, propput] $oBeliefDecoderConfig.local_max_distance
 ```
 
 ### BeliefDecoderConfig.offset\_scale\_coef
@@ -27511,7 +27402,7 @@ AutoIt:
 ```cpp
 float mediapipe::BeliefDecoderConfig::offset_scale_coef
 AutoIt:
-    [propget propput] $oBeliefDecoderConfig.offset_scale_coef
+    [propget, propput] $oBeliefDecoderConfig.offset_scale_coef
 ```
 
 ### BeliefDecoderConfig.voting\_radius
@@ -27519,7 +27410,7 @@ AutoIt:
 ```cpp
 int mediapipe::BeliefDecoderConfig::voting_radius
 AutoIt:
-    [propget propput] $oBeliefDecoderConfig.voting_radius
+    [propget, propput] $oBeliefDecoderConfig.voting_radius
 ```
 
 ### BeliefDecoderConfig.voting\_allowance
@@ -27527,7 +27418,7 @@ AutoIt:
 ```cpp
 int mediapipe::BeliefDecoderConfig::voting_allowance
 AutoIt:
-    [propget propput] $oBeliefDecoderConfig.voting_allowance
+    [propget, propput] $oBeliefDecoderConfig.voting_allowance
 ```
 
 ### BeliefDecoderConfig.voting\_threshold
@@ -27535,7 +27426,7 @@ AutoIt:
 ```cpp
 float mediapipe::BeliefDecoderConfig::voting_threshold
 AutoIt:
-    [propget propput] $oBeliefDecoderConfig.voting_threshold
+    [propget, propput] $oBeliefDecoderConfig.voting_threshold
 ```
 
 ### mediapipe::BeliefDecoderConfig::get\_create
@@ -27544,7 +27435,6 @@ AutoIt:
 static mediapipe::BeliefDecoderConfig mediapipe::BeliefDecoderConfig::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.BeliefDecoderConfig").create() -> <mediapipe.BeliefDecoderConfig object>
-    _Mediapipe_ObjCreate("mediapipe.BeliefDecoderConfig")() -> <mediapipe.BeliefDecoderConfig object>
 ```
 
 ### mediapipe::BeliefDecoderConfig::Clear
@@ -27584,7 +27474,7 @@ AutoIt:
 ### belief\_decoder\_config\_pb2.BeliefDecoderConfig
 
 ```cpp
-static mediapipe::BeliefDecoderConfig mediapipe::modules::objectron::calculators::belief_decoder_config_pb2::this
+static mediapipe::BeliefDecoderConfig
 AutoIt:
     [propget] $obelief_decoder_config_pb2.BeliefDecoderConfig
 ```
@@ -27604,7 +27494,7 @@ AutoIt:
 ```cpp
 float mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::normalized_focal_x
 AutoIt:
-    [propget propput] $oLift2DFrameAnnotationTo3DCalculatorOptions.normalized_focal_x
+    [propget, propput] $oLift2DFrameAnnotationTo3DCalculatorOptions.normalized_focal_x
 ```
 
 ### Lift2DFrameAnnotationTo3DCalculatorOptions.normalized\_focal\_y
@@ -27612,7 +27502,7 @@ AutoIt:
 ```cpp
 float mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::normalized_focal_y
 AutoIt:
-    [propget propput] $oLift2DFrameAnnotationTo3DCalculatorOptions.normalized_focal_y
+    [propget, propput] $oLift2DFrameAnnotationTo3DCalculatorOptions.normalized_focal_y
 ```
 
 ### Lift2DFrameAnnotationTo3DCalculatorOptions.normalized\_principal\_point\_x
@@ -27620,7 +27510,7 @@ AutoIt:
 ```cpp
 float mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::normalized_principal_point_x
 AutoIt:
-    [propget propput] $oLift2DFrameAnnotationTo3DCalculatorOptions.normalized_principal_point_x
+    [propget, propput] $oLift2DFrameAnnotationTo3DCalculatorOptions.normalized_principal_point_x
 ```
 
 ### Lift2DFrameAnnotationTo3DCalculatorOptions.normalized\_principal\_point\_y
@@ -27628,7 +27518,7 @@ AutoIt:
 ```cpp
 float mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::normalized_principal_point_y
 AutoIt:
-    [propget propput] $oLift2DFrameAnnotationTo3DCalculatorOptions.normalized_principal_point_y
+    [propget, propput] $oLift2DFrameAnnotationTo3DCalculatorOptions.normalized_principal_point_y
 ```
 
 ### Lift2DFrameAnnotationTo3DCalculatorOptions.ext
@@ -27645,7 +27535,6 @@ AutoIt:
 static mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions").create() -> <mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions object>
-    _Mediapipe_ObjCreate("mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions")() -> <mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions object>
 ```
 
 ### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::Clear
@@ -27685,7 +27574,7 @@ AutoIt:
 ### lift\_2d\_frame\_annotation\_to\_3d\_calculator\_pb2.Lift2DFrameAnnotationTo3DCalculatorOptions
 
 ```cpp
-static mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions mediapipe::modules::objectron::calculators::lift_2d_frame_annotation_to_3d_calculator_pb2::this
+static mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions
 AutoIt:
     [propget] $olift_2d_frame_annotation_to_3d_calculator_pb2.Lift2DFrameAnnotationTo3DCalculatorOptions
 ```

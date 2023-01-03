@@ -20,11 +20,11 @@ trap { throw $Error[0] }
 Import-Module "$PSScriptRoot\mediapipe_utils.psm1" -ArgumentList $BuildType
 Import-Module ( _Mediapipe_FindFile -Path "opencv_utils.psm1" -SearchPaths @(".", "autoit-opencv-com", "autoit-opencv-com\dotnet") ) -ArgumentList $BuildType
 
-$BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "RelWithDebInfo" }
+$BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "Release" }
 
-$OpenCVWorldDll = if ([string]::IsNullOrEmpty($OpenCVWorldDll)) { _OpenCV_FindDLL "opencv_world4*" "opencv-4.*\opencv" -BuildType $BuildType } else { $OpenCVWorldDll }
-$OpenCVComDll = if ([string]::IsNullOrEmpty($OpenCVComDll)) { _OpenCV_FindDLL "autoit_opencv_com4*" -BuildType $BuildType } else { $OpenCVComDll }
-$MediapipeComDll = if ([string]::IsNullOrEmpty($MediapipeComDll)) { _Mediapipe_FindDLL "autoit_mediapipe_com-*" -BuildType $BuildType } else { $MediapipeComDll }
+$OpenCVWorldDll = if ([string]::IsNullOrEmpty($OpenCVWorldDll)) { _OpenCV_FindDLL "opencv_world470*" -BuildType $BuildType } else { $OpenCVWorldDll }
+$OpenCVComDll = if ([string]::IsNullOrEmpty($OpenCVComDll)) { _OpenCV_FindDLL "autoit_opencv_com470*" -BuildType $BuildType } else { $OpenCVComDll }
+$MediapipeComDll = if ([string]::IsNullOrEmpty($MediapipeComDll)) { _Mediapipe_FindDLL "autoit_mediapipe_com-*-470*" -BuildType $BuildType } else { $MediapipeComDll }
 $ResourceDir = if ([string]::IsNullOrEmpty($ResourceDir)) { _Mediapipe_FindResourceDir -BuildType $BuildType } else { $ResourceDir }
 $Image = if ([string]::IsNullOrEmpty($Image)) { _Mediapipe_FindFile "examples\data\garrett-jackson-auTAb39ImXg-unsplash.jpg" } else { $Image }
 
@@ -44,7 +44,7 @@ function resize_and_show([string] $title, [Object] $image) {
         $h = $DESIRED_HEIGHT
     }
 
-    $interpolation = if ($DESIRED_WIDTH -gt $width -or $DESIRED_HEIGHT -gt $height) { $cv.INTER_CUBIC_ } else { $cv.INTER_AREA_ }
+    $interpolation = if ($DESIRED_WIDTH -gt $width -or $DESIRED_HEIGHT -gt $height) { $cv.enums.INTER_CUBIC } else { $cv.enums.INTER_AREA }
 
     $img = $cv.resize($image, @($w, $h), [OpenCvComInterop]::Params([ref] @{ interpolation = $interpolation }))
     $cv.imshow($title, $img.convertToShow())
@@ -72,7 +72,7 @@ function Example() {
     }))
 
     # Convert the BGR image to RGB and process it with MediaPipe Face Mesh.
-    $results = $face_mesh.process($cv.cvtColor($image, $cv.COLOR_BGR2RGB_))
+    $results = $face_mesh.process($cv.cvtColor($image, $cv.enums.COLOR_BGR2RGB))
     If (-not $results["multi_face_landmarks"]) {
         Write-Error "No face detection for $image_path"
         return

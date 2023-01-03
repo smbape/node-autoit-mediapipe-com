@@ -11,6 +11,10 @@ const {explore} = require("fs-explorer");
 const Parser = require("./protobuf/Parser");
 const vector_conversion = require("./vector_conversion");
 
+const OpenCV_VERSION = "opencv-4.7.0";
+const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
+const MEDIAPIPE_VERSION = "0.8.11";
+
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
 ]);
@@ -20,6 +24,9 @@ const parseArguments = PROJECT_DIR => {
         APP_NAME: "Mediapipe",
         LIB_UID: "29090432-104c-c6cd-cd2b-9f2a43abd5b6",
         LIBRARY: "mediapipeCOM",
+        OUTPUT_NAME: `autoit_mediapipe_com-${ MEDIAPIPE_VERSION }-${ OpenCV_DLLVERSION }`,
+        OUTPUT_DIRECTORY_DEBUG: `${ PROJECT_DIR }/build_x64/_deps/mediapipe-src/bazel-out/x64_windows-dbg/bin/mediapipe/autoit`,
+        OUTPUT_DIRECTORY_RELEASE: `${ PROJECT_DIR }/build_x64/_deps/mediapipe-src/bazel-out/x64_windows-opt/bin/mediapipe/autoit`,
         namespace: "mediapipe",
         shared_ptr: "std::shared_ptr",
         make_shared: "std::make_shared",
@@ -44,7 +51,6 @@ const parseArguments = PROJECT_DIR => {
         build: new Set(),
         notest: new Set(),
         skip: new Set(),
-        make: sysPath.join(PROJECT_DIR, "build.bat"),
         includes: [sysPath.join(PROJECT_DIR, "src")],
         output: sysPath.join(PROJECT_DIR, "generated"),
         toc: true,
@@ -140,7 +146,7 @@ const parseArguments = PROJECT_DIR => {
         },
     };
 
-    for (const opt of ["iface", "hdr", "impl", "idl", "rgs", "res", "save"]) {
+    for (const opt of ["iface", "hdr", "impl", "idl", "manifest", "rgs", "res", "save"]) {
         options[opt] = !process.argv.includes(`--no-${ opt }`);
     }
 
@@ -176,27 +182,15 @@ const {
 } = require("./constants");
 
 const {replaceAliases} = require("./alias");
-
+const {findFile} = require("./FileUtils");
 const custom_declarations = require("./custom_declarations");
 const AutoItGenerator = require("./AutoItGenerator");
 
 const PROJECT_DIR = sysPath.resolve(__dirname, "../autoit-mediapipe-com");
 const SRC_DIR = sysPath.join(PROJECT_DIR, "src");
+const opencv_SOURCE_DIR = findFile(`${ OpenCV_VERSION }-*/opencv/sources`, sysPath.resolve(__dirname, ".."));
 
-const candidates = fs.readdirSync(sysPath.join(__dirname, "..")).filter(path => {
-    if (!path.startsWith("opencv-4.")) {
-        return false;
-    }
-
-    try {
-        fs.accessSync(sysPath.join(__dirname, "..", path, "opencv"), fs.constants.R_OK);
-        return true;
-    } catch (err) {
-        return false;
-    }
-});
-
-const src2 = sysPath.resolve(__dirname, "..", candidates[0], "opencv/sources/modules/python/src2");
+const src2 = sysPath.resolve(opencv_SOURCE_DIR, "modules/python/src2");
 
 const hdr_parser = fs.readFileSync(sysPath.join(src2, "hdr_parser.py")).toString();
 const hdr_parser_start = hdr_parser.indexOf("class CppHeaderParser");

@@ -59,11 +59,11 @@ cc_library(
     ],
 )
 
-OPENCV_VERSION = "460"  # 4.6.0
+OPENCV_VERSION = "470"  # 4.7.0
 MEDIAPIPE_VERSION = "0.8.11"
 OUTPUT_NAME = "autoit_mediapipe_com-%s-%s" % (MEDIAPIPE_VERSION, OPENCV_VERSION)
 
-add_com_library(OUTPUT_NAME, "RelWithDebInfo", "opt")
+add_com_library(OUTPUT_NAME, "Release", "opt")
 add_com_library(OUTPUT_NAME + "d", "Debug", "dbg")
 
 alias(

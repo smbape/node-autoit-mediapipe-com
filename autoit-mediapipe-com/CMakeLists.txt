@@ -5,38 +5,99 @@ project(autoit_mediapipe_com)
 
 set(DEFAULT_BUILD_TYPE "Release")
 
-if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+if(NOT DEFINED CMAKE_BUILD_TYPE)
   message(STATUS "Setting build type to '${DEFAULT_BUILD_TYPE}' as none was specified.")
-  set(CMAKE_BUILD_TYPE "${DEFAULT_BUILD_TYPE}" CACHE STRING "Choose the type of build." FORCE)
-  # Set the possible values of build type for cmake-gui
-  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+  set(CMAKE_BUILD_TYPE "${DEFAULT_BUILD_TYPE}" CACHE STRING "Choose the type of build.")
 endif()
+
+# Set the possible values of build type for cmake-gui
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel;RelWithDebInfo" CACHE STRING "Configs" FORCE)
+set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "${CMAKE_CONFIGURATION_TYPES}")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_compile_options(/MP)
-
-# https://github.com/scivision/cmake-patch-file/blob/main/cmake/PatchFile.cmake
-if(WIN32)
-  # prioritize Git Patch on Windows as other Patches may be very old and incompatible.
-  find_package(Git)
-  if(Git_FOUND)
-    get_filename_component(GIT_DIR ${GIT_EXECUTABLE} DIRECTORY)
-    get_filename_component(GIT_DIR ${GIT_DIR} DIRECTORY)
-  endif()
+if(WIN32 AND MSVC)
+  add_compile_options(/MP)
 endif()
 
-find_program(PATCH
-  NAMES patch
-  HINTS ${GIT_DIR}
-  PATH_SUFFIXES usr/bin
+set(MEDIAPIPE_VERSION 0.8.11 CACHE STRING "Choose the dlib version.")
+set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.8.11" "0.8.10.2")
+string(REPLACE "." "" MEDIAPIPE_DLLVERSION ${MEDIAPIPE_VERSION})
+
+set(MEDIAPIPE_URL_HASH_SHA256_0811 5b331a46b459900d0789967f9e26e4a64d1466bc1e74dd0712eb3077358c5473)
+set(MEDIAPIPE_URL_HASH_SHA256_08102 a312bf8e69dbe34d3b5c7ea226dcc122aa9e640cbfbf35e1be65d0150b35f1e5)
+
+string(REPLACE "." ";" MEDIAPIPE_VERSION_LIST ${MEDIAPIPE_VERSION})
+list(GET MEDIAPIPE_VERSION_LIST 0 MEDIAPIPE_VERSION_MAJOR)
+list(GET MEDIAPIPE_VERSION_LIST 1 MEDIAPIPE_VERSION_MINOR)
+list(GET MEDIAPIPE_VERSION_LIST 2 MEDIAPIPE_VERSION_PATCH)
+
+# Used in 001-mediapipe-src.patch.in
+file(TO_NATIVE_PATH "${OpenCV_DIR}" OpenCV_DIR_ESC)
+string(REPLACE \\ \\\\ OpenCV_DIR_ESC "${OpenCV_DIR_ESC}")
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch" @ONLY)
+
+# Tell cmake that we will need mediapipe.
+include(FetchContent)
+FetchContent_Declare(mediapipe
+  URL               https://fossies.org/linux/misc/mediapipe-${MEDIAPIPE_VERSION}.tar.gz
+                    https://github.com/google/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
+  URL_HASH          SHA256=${MEDIAPIPE_URL_HASH_SHA256_${MEDIAPIPE_DLLVERSION}}
+  PATCH_COMMAND     "${PATCH}" -p 1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
+)
+FetchContent_Populate(mediapipe)
+
+# Tell cmake that we will need autoit-opencv-com.
+set(opencv_com_VERSION 2.3.0)
+include(ExternalProject)
+ExternalProject_Add(autoit-opencv-com
+  URL               https://github.com/smbape/node-autoit-opencv-com/releases/download/v${opencv_com_VERSION}/autoit-opencv-${OpenCV_VERSION}-com-v${opencv_com_VERSION}.7z
+  URL_HASH          SHA256=cf297ba161c5c5536f604f02ca347828837b3631eef993082d301dde5ecc583d
+  DOWNLOAD_NO_EXTRACT TRUE
+  DOWNLOAD_DIR      "${OPENCV_DOWNLOAD_DIR}"
+  SOURCE_DIR        "${OPENCV_DOWNLOAD_DIR}"
+  CONFIGURE_COMMAND ""
+  BUILD_COMMAND     ""
+  INSTALL_COMMAND   7z x "<DOWNLOAD_DIR>/autoit-opencv-${OpenCV_VERSION}-com-v${opencv_com_VERSION}.7z" -aoa "-o<DOWNLOAD_DIR>/autoit-opencv-com" -y
 )
 
-if(NOT PATCH)
-  message(FATAL_ERROR "Did not find GNU Patch")
-endif()
+find_package(Python COMPONENTS Interpreter REQUIRED)
+include(cmake/RequireOpenCV.cmake)
+include(cmake/vcpkg_regex_replace_string.cmake)
+
+# update version in files
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "OPENCV_VERSION = \"[0-9]+\"  # [0-9]+\\.[0-9]+\\.[0-9]+" "OPENCV_VERSION = \"${OpenCV_DLLVERSION}\"  # ${OpenCV_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "MEDIAPIPE_VERSION = \"[0-9]+\\.[0-9]+\\.[0-9]+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/install.bat" "autoit_mediapipe_com-[0-9]+\\.[0-9]+\\.[0-9]+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/install.bat" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)\\\\opencv\\\\build\\\\x64\\\\vc[^\\\\]*\\\\bin" "${OpenCV_RELATIVE_BINARY_DIR_ESC}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/src/mediapipeCOM.rc" "autoit_mediapipe_com-[0-9]+\\.[0-9]+\\.[0-9]+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/dotnet/MediapipeComInterop.cs" "(opencv_world|autoit_opencv_com|opencv_videoio_ffmpeg)[0-9]+" "opencv_videoio_ffmpeg${OpenCV_DLLVERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/src/autoit_def.h" "[0-9]+\\.[0-9]+\\.[0-9]+" "${MEDIAPIPE_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/udf/mediapipe_udf.au3" "opencv_world[0-9]+" "opencv_world${OpenCV_DLLVERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/udf/mediapipe_udf.au3" "autoit_mediapipe_com-[0-9]+\\.[0-9]+\\.[0-9]+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/udf/mediapipe_udf_utils.au3" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+" "opencv-${OpenCV_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../scripts/build.js" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+" "opencv-${OpenCV_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../scripts/build.js" "mediapipe-[0-9]+\\.[0-9]+\\.[0-9]+" "mediapipe-${MEDIAPIPE_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../src/gen.js" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+" "opencv-${OpenCV_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../src/gen.js" "MEDIAPIPE_VERSION = \"[0-9]+\\.[0-9]+\\.[0-9]+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "autoit_mediapipe_com-[0-9]+\\.[0-9]+\\.[0-9]+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)\\.(exe|zip)" "${OpenCV_DOWNLOAD_NAME}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)" "${OpenCV_OUTPUT_DIR}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+" "opencv-${OpenCV_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "mediapipe-[0-9]+\\.[0-9]+\\.[0-9]+" "mediapipe-${MEDIAPIPE_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "/[0-9]+\\.[0-9]+\\.[0-9]+/" "${OpenCV_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "opencv_world[0-9]+" "opencv_world${OpenCV_DLLVERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "(autoit-opencv-com/releases/download/|autoit-opencv-[0-9]+\\.[0-9]+\\.[0-9]+-com-)v[0-9]+\\.[0-9]+\\.[0-9]+" "\\1v${opencv_com_VERSION}")
+
+file(GLOB_RECURSE files_to_change "../examples/*.au3" "../examples/*.cs" "../examples/*.ps1")
+foreach(item ${files_to_change})
+  vcpkg_regex_replace_string("${item}" "/v[0-9]+\\.[0-9]+\\.[0-9]+/mediapipe/" "/v${MEDIAPIPE_VERSION}/mediapipe/")
+endforeach()
+
+set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE PATH "Output directory for applications")
+set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/lib" CACHE PATH "Output directory for libraries")
 
 if("${CMAKE_BUILD_TYPE}" STREQUAL Debug)
   set(CMODE dbg)
@@ -44,9 +105,9 @@ else()
   set(CMODE opt)
 endif()
 
-find_package(Python COMPONENTS Interpreter REQUIRED)
-string(REPLACE / // PYTHON_BIN_PATH "${Python_EXECUTABLE}")
+set(mediapipe_BINARY_DIR "${mediapipe_SOURCE_DIR}/bazel-out/x64_windows-${CMODE}/bin")
 
+string(REPLACE / // PYTHON_BIN_PATH "${Python_EXECUTABLE}")
 set(BAZEL_BUILD bazel
   --output_user_root=C:/_bazel_
   build -c ${CMODE}
@@ -56,76 +117,6 @@ set(BAZEL_BUILD bazel
   --verbose_failures
   --keep_going
 )
-
-# Tell cmake that we will need opencv.
-get_filename_component(OPENCV_DOWNLOAD_DIR "${CMAKE_CURRENT_SOURCE_DIR}" DIRECTORY)
-set(OPENCV_VERSION        4.6.0)
-string(REPLACE . "" OPENCV_VERSION_POSTFIX "${OPENCV_VERSION}")
-set(OPENCV_DOWNLOAD_NAME  opencv-${OPENCV_VERSION}-vc14_vc15.exe)
-set(OPENCV_URL            https://github.com/opencv/opencv/releases/download/${OPENCV_VERSION}/${OPENCV_DOWNLOAD_NAME})
-set(OPENCV_URL_HASH       SHA256=3fb046e14dc5b50719a86ea0395b5b1e3299e2343111ebd2e31828aa31d6d477)
-
-if("${CMAKE_BUILD_TYPE}" STREQUAL Debug)
-  set(OPENCV_VERSION_POSTFIX "${OPENCV_VERSION_POSTFIX}d")
-endif()
-
-include(FetchContent)
-FetchContent_Declare(opencv
-  URL                 ${OPENCV_URL}
-  URL_HASH            ${OPENCV_URL_HASH}
-  DOWNLOAD_NO_EXTRACT TRUE
-  DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
-  SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
-  PATCH_COMMAND       "<DOWNLOAD_DIR>/${OPENCV_DOWNLOAD_NAME}" "-o<DOWNLOAD_DIR>/opencv-${OPENCV_VERSION}-vc14_vc15" -y
-)
-
-include(FetchContent)
-FetchContent_Declare(opencv-patch
-  URL                 ${OPENCV_URL}
-  URL_HASH            ${OPENCV_URL_HASH}
-  DOWNLOAD_NO_EXTRACT TRUE
-  DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
-  SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
-  PATCH_COMMAND       "${PATCH}" -p 1 -d "<DOWNLOAD_DIR>/opencv-${OPENCV_VERSION}-vc14_vc15/opencv/sources/"
-                        -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-opencv-src.patch"
-)
-
-# Tell cmake that we will need mediapipe.
-set(MEDIAPIPE_VERSION 0.8.11)
-
-# Used in 001-mediapipe-src.patch.in
-get_filename_component(OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR}" REALPATH)
-file(TO_NATIVE_PATH "${OPENCV_DOWNLOAD_DIR_ESC}" OPENCV_DOWNLOAD_DIR_ESC)
-string(REPLACE \\ \\\\ OPENCV_DOWNLOAD_DIR_ESC "${OPENCV_DOWNLOAD_DIR_ESC}")
-string(REPLACE . "" OPENCV_VERSION_ "${OPENCV_VERSION}")
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch" @ONLY)
-
-include(FetchContent)
-FetchContent_Declare(mediapipe
-  URL               https://fossies.org/linux/misc/mediapipe-${MEDIAPIPE_VERSION}.tar.gz
-                    https://github.com/google/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
-  URL_HASH          SHA256=5b331a46b459900d0789967f9e26e4a64d1466bc1e74dd0712eb3077358c5473
-  PATCH_COMMAND     "${PATCH}" -p 1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
-)
-
-# Tell cmake that we will need autoit-opencv-com.
-include(ExternalProject)
-ExternalProject_Add(autoit-opencv-com
-  URL               https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.2/autoit-opencv-${OPENCV_VERSION}-com-v2.2.2.7z
-  URL_HASH          SHA256=75c5ba62841effd6efd66d7d120ece0ee1873f3b1ed533056042d3ff2437646c
-  DOWNLOAD_NO_EXTRACT TRUE
-  DOWNLOAD_DIR      "${OPENCV_DOWNLOAD_DIR}"
-  SOURCE_DIR        "${OPENCV_DOWNLOAD_DIR}"
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND     ""
-  INSTALL_COMMAND   7z x "<DOWNLOAD_DIR>/autoit-opencv-${OPENCV_VERSION}-com-v2.2.2.7z" -aoa "-o<DOWNLOAD_DIR>/autoit-opencv-com" -y
-)
-
-FetchContent_Populate(opencv)
-FetchContent_Populate(opencv-patch)
-FetchContent_Populate(mediapipe)
-
-set(mediapipe_BINARY_DIR "${mediapipe_SOURCE_DIR}/bazel-out/x64_windows-${CMODE}/bin")
 
 # generate source files
 if(
@@ -148,7 +139,7 @@ if(
 endif()
 
 execute_process(
-  COMMAND node --unhandled-rejections=strict --trace-uncaught --trace-warnings src/gen.js --skip=vs
+  COMMAND node --unhandled-rejections=strict --trace-uncaught --trace-warnings src/gen.js
   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/.."
   COMMAND_ECHO STDERR
   COMMAND_ERROR_IS_FATAL ANY
@@ -196,7 +187,13 @@ file(CREATE_LINK "${CMAKE_CURRENT_SOURCE_DIR}" "${mediapipe_SOURCE_DIR}/mediapip
 
 # https://samthursfield.wordpress.com/2015/11/21/cmake-dependencies-between-targets-and-files-and-custom-commands/
 
-set(PROJECT_PCH "${mediapipe_BINARY_DIR}/mediapipe/autoit/_pch_autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OPENCV_VERSION_POSTFIX}.pch")
+if("${CMAKE_BUILD_TYPE}" STREQUAL Debug)
+  set(OpenCV_DLLVERSION_POSTFIX "${OpenCV_DLLVERSION}${OpenCV_DEBUG_POSTFIX}")
+else()
+  set(OpenCV_DLLVERSION_POSTFIX "${OpenCV_DLLVERSION}")
+endif()
+
+set(PROJECT_PCH "${mediapipe_BINARY_DIR}/mediapipe/autoit/_pch_autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION_POSTFIX}.pch")
 add_custom_command(OUTPUT "${PROJECT_PCH}"
   COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib_pch
   COMMAND           cmake -E touch "${PROJECT_PCH}"
@@ -206,7 +203,7 @@ add_custom_command(OUTPUT "${PROJECT_PCH}"
 )
 add_custom_target(${PROJECT_NAME}_lib_pch DEPENDS "${PROJECT_PCH}")
 
-set(PROJECT_LIBRARY "${mediapipe_BINARY_DIR}/mediapipe/autoit/autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OPENCV_VERSION_POSTFIX}.dll")
+set(PROJECT_LIBRARY "${mediapipe_BINARY_DIR}/mediapipe/autoit/autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION_POSTFIX}.dll")
 add_custom_command(OUTPUT "${PROJECT_LIBRARY}"
   COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib
   COMMAND           cmake -E touch "${PROJECT_LIBRARY}"
@@ -217,6 +214,16 @@ add_custom_command(OUTPUT "${PROJECT_LIBRARY}"
 add_custom_target(${PROJECT_NAME}_lib DEPENDS "${PROJECT_LIBRARY}")
 
 add_custom_target(${PROJECT_NAME} ALL DEPENDS ${PROJECT_NAME}_lib autoit-opencv-com)
+
+string(REPLACE ".dll" ".sxs.manifest" PROJECT_MANIFEST "${PROJECT_LIBRARY}")
+add_custom_command(
+  TARGET ${PROJECT_NAME}
+  POST_BUILD
+  COMMAND attrib -r \"${PROJECT_LIBRARY}\"
+  COMMAND mt.exe -manifest \"${PROJECT_MANIFEST}\" -outputresource:\"${PROJECT_LIBRARY}\"\;\#2
+  COMMAND attrib +r \"${PROJECT_LIBRARY}\"
+  COMMENT "Adding manifest..." 
+)
 
 foreach(item
   "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt"
@@ -248,14 +255,19 @@ file(GLOB cs_files "dotnet/*.cs")
 add_library(interop_mediapipe SHARED ${cs_files})
 
 set_target_properties(interop_mediapipe PROPERTIES
-  OUTPUT_NAME "interop.mediapipe-0"
+  OUTPUT_NAME "interop.mediapipe-${MEDIAPIPE_VERSION_MAJOR}"
   DEBUG_POSTFIX d
   VS_DOTNET_REFERENCES "Microsoft.CSharp;System"
 )
 
 foreach( BUILD_TYPE ${CMAKE_CONFIGURATION_TYPES} )
   string( TOUPPER ${BUILD_TYPE} BUILD_TYPE_UPPER )
-  set_target_properties(interop_mediapipe PROPERTIES RUNTIME_OUTPUT_DIRECTORY_${BUILD_TYPE_UPPER} "${CMAKE_BINARY_DIR}/${BUILD_TYPE}/dotnet")
+  set_target_properties(interop_mediapipe PROPERTIES RUNTIME_OUTPUT_DIRECTORY_${BUILD_TYPE_UPPER} "${EXECUTABLE_OUTPUT_PATH}/${BUILD_TYPE}/dotnet")
 endforeach()
+
+# Always generate debug files
+if(MSVC AND NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+  target_compile_options(interop_mediapipe PRIVATE "-debug:pdbonly")
+endif()
 
 endif()

@@ -77,17 +77,17 @@ BEGIN
         BLOCK "040C04B0"
         BEGIN
             // VALUE "CompanyName", "TODO: <Nom de la société>"
-            VALUE "FileDescription", "COM+ for OpenCV"
+            VALUE "FileDescription", "COM+ for Mediapipe"
             VALUE "FileVersion", "0.1.0"
             // VALUE "LegalCopyright", "TODO: (c) <Nom de la société>.  Tous droits réservés."
 #ifdef _DEBUG
-            VALUE "InternalName", "mediapipe_autoit_comd.dll"
-            VALUE "OriginalFilename", "mediapipe_autoit_comd.dll"
+            VALUE "InternalName", "autoit_mediapipe_com-0.8.11-470d.dll"
+            VALUE "OriginalFilename", "autoit_mediapipe_com-0.8.11-470d.dll"
 #else
-            VALUE "InternalName", "mediapipe_autoit_com.dll"
-            VALUE "OriginalFilename", "mediapipe_autoit_com.dll"
+            VALUE "InternalName", "autoit_mediapipe_com-0.8.11-470.dll"
+            VALUE "OriginalFilename", "autoit_mediapipe_com-0.8.11-470.dll"
 #endif
-            VALUE "ProductName", "AutoIt OpenCV COM"
+            VALUE "ProductName", "AutoIt Mediapipe COM"
             VALUE "ProductVersion", "0.1.0"
         END
     END

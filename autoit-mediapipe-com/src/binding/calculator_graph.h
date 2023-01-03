@@ -13,7 +13,7 @@
 
 namespace mediapipe {
 	namespace autoit {
-		typedef void (*StreamPacketCallback)(const std::string& stream_name, const Packet& packet);
+		using StreamPacketCallback = void (*)(const std::string&, const Packet&);
 		namespace calculator_graph {
 			std::shared_ptr<CalculatorGraph> create(CalculatorGraphConfig& graph_config);
 			std::shared_ptr<CalculatorGraph> create(ValidatedGraphConfig& validated_graph_config);

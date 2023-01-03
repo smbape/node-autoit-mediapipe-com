@@ -13,8 +13,8 @@
 ;~ Sources:
 ;~     https://github.com/google/mediapipe/blob/v0.8.11/mediapipe/python/solutions/hands_test.py
 
-_Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
-_OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 _Mediapipe_SetResourceDir()
@@ -251,6 +251,6 @@ Func _process_video($model_complexity, $video_path, $max_num_hands = 1)
 EndFunc   ;==>_process_video
 
 Func _OnAutoItExit()
-	_OpenCV_Unregister_And_Close()
-	_Mediapipe_Unregister_And_Close()
+	_OpenCV_Close()
+	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit

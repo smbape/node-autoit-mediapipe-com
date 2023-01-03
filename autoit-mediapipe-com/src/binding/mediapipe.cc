@@ -1,6 +1,8 @@
 #include "Mediapipe_Object.h"
 
 STDMETHODIMP CMediapipe_Object::get_extended(VARIANT* _retval) {
+	CActCtxActivator ScopedContext(ExtendedHolder::_ActCtx);
+
 	VARIANT out_val = { 0 };
 	V_VT(&out_val) = VT_ARRAY | VT_VARIANT;
 	V_ARRAY(&out_val) = ExtendedHolder::extended.Detach();

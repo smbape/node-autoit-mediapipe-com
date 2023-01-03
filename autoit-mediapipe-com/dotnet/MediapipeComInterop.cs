@@ -10,20 +10,25 @@ using System.Security.Principal;
 public static class MediapipeComInterop
 {
     [DllImport("kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true)]
-    private static extern IntPtr LoadLibrary(String dllToLoad);
+    public static extern IntPtr LoadLibrary(String dllToLoad);
 
     [DllImport("kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true)]
-    private static extern bool FreeLibrary(IntPtr hModule);
+    public static extern bool FreeLibrary(IntPtr hModule);
 
     [DllImport("kernel32.dll", CharSet = CharSet.Ansi, SetLastError = true)]
     private static extern IntPtr GetProcAddress(IntPtr hModule, String name);
 
     private delegate long DllInstall_api(bool bInstall, [In, MarshalAs(UnmanagedType.LPWStr)] String cmdLine);
+    private delegate bool DLLActivateActCtx_api();
+    private delegate bool DLLDeactivateActCtx_api();
 
-    private static IntPtr _h_opencv_world_dll = IntPtr.Zero;
-    private static IntPtr _h_opencv_ffmpeg_dll = IntPtr.Zero;
-    private static IntPtr _h_autoit_mediapipe_com_dll = IntPtr.Zero;
+    private static IntPtr hOpenCvWorld = IntPtr.Zero;
+    private static IntPtr hOpenCvFfmpeg = IntPtr.Zero;
+    private static IntPtr hMediapipeCom = IntPtr.Zero;
+
     private static DllInstall_api DllInstall;
+    private static DLLActivateActCtx_api DLLActivateActCtx_t;
+    private static DLLDeactivateActCtx_api DLLDeactivateActCtx_t;
 
     public static bool IsAdministrator()
     {
@@ -34,45 +39,66 @@ public static class MediapipeComInterop
         }
     }
 
-    public static void DllOpen(String opencv_world_dll, String autoit_mediapipe_com_dll)
+    public static void DllOpen(String openCvWorldDll, String mediapipeComDll)
     {
-        _h_opencv_world_dll = LoadLibrary(opencv_world_dll);
-        if (_h_opencv_world_dll == IntPtr.Zero)
+        hOpenCvWorld = LoadLibrary(openCvWorldDll);
+        if (hOpenCvWorld == IntPtr.Zero)
         {
-            throw new Win32Exception("Failed to load opencv library " + opencv_world_dll);
+            throw new Win32Exception("Failed to load opencv library '" + openCvWorldDll + "'");
         }
 
-        String opencv_ffmpeg_dll = opencv_world_dll
-            .Replace("opencv_world460.dll", "opencv_videoio_ffmpeg460_64.dll")
-            .Replace("opencv_world460d.dll", "opencv_videoio_ffmpeg460_64.dll")
-            ;
-
-        _h_opencv_ffmpeg_dll = LoadLibrary(opencv_ffmpeg_dll);
-        if (_h_opencv_ffmpeg_dll == IntPtr.Zero)
+        var parts = openCvWorldDll.Split(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
+        parts[parts.Length - 1] = "opencv_videoio_ffmpeg470_64.dll";
+        var openCvFfmpegDll = String.Join(Path.DirectorySeparatorChar.ToString(), parts);
+        hOpenCvFfmpeg = LoadLibrary(openCvFfmpegDll);
+        if (hOpenCvFfmpeg == IntPtr.Zero)
         {
-            throw new Win32Exception("Failed to load ffmpeg library " + opencv_ffmpeg_dll);
+            throw new Win32Exception("Failed to load ffmpeg library '" + openCvFfmpegDll + "'");
         }
 
-        _h_autoit_mediapipe_com_dll = LoadLibrary(autoit_mediapipe_com_dll);
-        if (_h_autoit_mediapipe_com_dll == IntPtr.Zero)
+        hMediapipeCom = LoadLibrary(mediapipeComDll);
+        if (hMediapipeCom == IntPtr.Zero)
         {
-            throw new Win32Exception("Failed to open autoit mediapipe com library " + autoit_mediapipe_com_dll);
+            throw new Win32Exception("Failed to open autoit mediapipe com library '" + mediapipeComDll + "'");
         }
 
-        IntPtr DllInstall_addr = GetProcAddress(_h_autoit_mediapipe_com_dll, "DllInstall");
+        IntPtr DllInstall_addr = GetProcAddress(hMediapipeCom, "DllInstall");
         if (DllInstall_addr == IntPtr.Zero)
         {
             throw new Win32Exception("Unable to find DllInstall method");
         }
-
         DllInstall = (DllInstall_api)Marshal.GetDelegateForFunctionPointer(DllInstall_addr, typeof(DllInstall_api));
+
+        IntPtr DLLActivateActCtx_addr = GetProcAddress(hMediapipeCom, "DLLActivateActCtx");
+        if (DLLActivateActCtx_addr == IntPtr.Zero)
+        {
+            throw new Win32Exception("Unable to find DLLActivateActCtx method");
+        }
+        DLLActivateActCtx_t = (DLLActivateActCtx_api) Marshal.GetDelegateForFunctionPointer(DLLActivateActCtx_addr, typeof(DLLActivateActCtx_api));
+
+        IntPtr DLLDeactivateActCtx_addr = GetProcAddress(hMediapipeCom, "DLLDeactivateActCtx");
+        if (DLLDeactivateActCtx_addr == IntPtr.Zero)
+        {
+            throw new Win32Exception("Unable to find DLLDeactivateActCtx method");
+        }
+        DLLDeactivateActCtx_t = (DLLDeactivateActCtx_api) Marshal.GetDelegateForFunctionPointer(DLLDeactivateActCtx_addr, typeof(DLLDeactivateActCtx_api));
     }
 
     public static void DllClose()
     {
-        FreeLibrary(_h_autoit_mediapipe_com_dll);
-        FreeLibrary(_h_opencv_world_dll);
-        FreeLibrary(_h_opencv_ffmpeg_dll);
+        FreeLibrary(hMediapipeCom);
+        FreeLibrary(hOpenCvWorld);
+        FreeLibrary(hOpenCvFfmpeg);
+    }
+
+    public static bool DLLActivateActCtx()
+    {
+        return DLLActivateActCtx_t();
+    }
+
+    public static bool DLLDeactivateActCtx()
+    {
+        return DLLDeactivateActCtx_t();
     }
 
     public static void Register(String cmdLine = "")
@@ -105,16 +131,24 @@ public static class MediapipeComInterop
 
     public static dynamic ObjCreate(String progID)
     {
-        String[] namespaces = { "", "Mediapipe.", "Mediapipe.mediapipe.", "Mediapipe.mediapipe.autoit.", "Mediapipe.mediapipe.autoit._framework_bindings." };
-        foreach (String itNamespace in namespaces)
-        {
-            Type ObjType = Type.GetTypeFromProgID(itNamespace + progID);
-            if (ObjType != null)
+        DLLActivateActCtx();
+
+        try {
+            String[] namespaces = { "", "Mediapipe.", "Mediapipe.mediapipe.", "Mediapipe.mediapipe.autoit.", "Mediapipe.mediapipe.autoit._framework_bindings." };
+            foreach (String itNamespace in namespaces)
             {
-                return Activator.CreateInstance(ObjType);
+                Type ObjType = Type.GetTypeFromProgID(itNamespace + progID);
+                if (ObjType != null)
+                {
+                    return Activator.CreateInstance(ObjType);
+                }
             }
+
+            return null;
         }
-        return null;
+        finally {
+            DLLDeactivateActCtx();
+        }
     }
 
     public static dynamic Params(ref Hashtable kwargs)
@@ -232,7 +266,7 @@ public static class MediapipeComInterop
         return matches;
     }
 
-    private static String NormalizePath(String path)
+    public static String NormalizePath(String path)
     {
         var parts = path.Split('/', '\\');
         int end = 0;
@@ -281,7 +315,7 @@ public static class MediapipeComInterop
         return FindFile(path, rootPath);
     }
 
-    public static String FindFile(String path, String rootPath, String filter = "")
+    public static String FindFile(String path, String rootPath, String filter = null)
     {
         return FindFile(path, rootPath, filter, new[] { "." });
     }
@@ -334,27 +368,23 @@ public static class MediapipeComInterop
         return found;
     }
 
-    public static String FindDLL(String path, String filter = "")
+    public static String FindDLL(String path, String filter = null, String rootPath = null, String buildType = null)
     {
-        String rootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        return FindDLL(path, filter, rootPath);
+        if (String.IsNullOrWhiteSpace(rootPath)) {
+            rootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
     }
 
-    public static String FindDLL(String path, String filter, String rootPath)
-    {
+        if (String.IsNullOrWhiteSpace(buildType)) {
 #if DEBUG
-        const string buildType = "Debug";
+        buildType = "Debug";
 #else
-        const string buildType = "RelWithDebInfo";
+        buildType = "Release";
 #endif
-        return FindDLL(path, filter, rootPath, buildType);
     }
 
-    public static String FindDLL(String path, String filter, String rootPath, String buildType)
-    {
         if (buildType != "Debug")
         {
-            buildType = "RelWithDebInfo";
+            buildType = "Release";
         }
 
         String postSuffix = buildType == "Debug" ? "d" : "";

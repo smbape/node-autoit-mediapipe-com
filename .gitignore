@@ -3,6 +3,12 @@
 /autoit-mediapipe-v*-src.zip
 /autoit-opencv-*
 /node_modules
+/opencv/__build__
+/opencv/build
+/opencv/download
+/opencv/install
+/opencv/opencv
+/opencv/opencv_contrib
 /opencv-*
 /*.sublime-workspace
 BackUp

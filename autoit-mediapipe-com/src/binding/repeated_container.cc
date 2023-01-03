@@ -435,7 +435,7 @@ namespace google {
 				return list[0];
 			}
 
-			typedef bool (*RepeatedContainerComparator)(VARIANT* a, VARIANT* b);
+			using RepeatedContainerComparator = bool (*)(VARIANT* a, VARIANT* b);
 
 			typedef struct _RepeatedContainerComparatorProxy {
 				RepeatedContainerComparator cmp;

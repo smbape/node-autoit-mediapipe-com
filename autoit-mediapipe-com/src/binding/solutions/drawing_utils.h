@@ -8,7 +8,7 @@ namespace mediapipe {
 	namespace autoit {
 		namespace solutions {
 			namespace drawing_utils {
-				typedef std::tuple<int, int, int> DrawingColor;
+				using DrawingColor = std::tuple<int, int, int>;
 
 				static const DrawingColor WHITE_COLOR = { 224, 224, 224 };
 				static const DrawingColor BLACK_COLOR = { 0, 0, 0 };

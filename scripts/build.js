@@ -4,7 +4,7 @@ const eachOfLimit = require("async/eachOfLimit");
 
 const version = process.env.npm_package_version || require("../package.json").version;
 const sources = sysPath.resolve(__dirname, "..");
-const archive = sysPath.join(sources, `autoit-mediapipe-0.8.11-opencv-4.6.0-com-v${ version }.7z`);
+const archive = sysPath.join(sources, `autoit-mediapipe-0.8.11-opencv-4.7.0-com-v${ version }.7z`);
 const project = sysPath.join(sources, "autoit-mediapipe-com");
 
 const files = [
@@ -14,8 +14,8 @@ const files = [
     [project, "dotnet/*.cs"],
     [sysPath.join(sources, "examples"), "dotnet/*.psm1"],
     [sysPath.join(project, "generated"), "*.tlb"],
-    [sysPath.join(project, "build_x64", "Debug"), "autoit*", "dotnet/*"],
-    [sysPath.join(project, "build_x64", "RelWithDebInfo"), "autoit*", "dotnet/*"],
+    [sysPath.join(project, "build_x64", "bin", "Debug"), "autoit*", "dotnet/*"],
+    [sysPath.join(project, "build_x64", "bin", "Release"), "autoit*", "dotnet/*"],
 ];
 
 files.push([

@@ -126,74 +126,234 @@ Func _Mediapipe_FindFile($sFile, $sFilter = Default, $sDir = Default, $iFlag = D
 	Local $sFound = "", $sPath, $aFileList
 	Local $sDrive = "", $sFileName = "", $sExtension = ""
 
+	Local $iSearchStart, $iSearchEnd
+	If IsNumber($aSearchPaths[0]) Then
+		$iSearchStart = 1
+		$iSearchEnd = $aSearchPaths[0]
+	Else
+		$iSearchStart = 0
+		$iSearchEnd = UBound($aSearchPaths) - 1
+	EndIf
+
+	Local $aFilters[1]
+	If IsArray($sFilter) Then
+		$aFilters = $sFilter
+	Else
+		$aFilters[0] = $sFilter
+	EndIf
+
 	While 1
-		For $i = 1 To $aSearchPaths[0]
-			$sPath = ""
+		For $sFilter In $aFilters
+			For $i = $iSearchStart To $iSearchEnd
+				$sPath = ""
 
-			If $sFilter <> "" Then
-				$sPath = $sFilter
-			EndIf
-
-			If StringCompare($aSearchPaths[$i], ".") <> 0 Then
-				If $sPath == "" Then
-					$sPath = $aSearchPaths[$i]
-				Else
-					$sPath &= "\" & $aSearchPaths[$i]
+				If $sFilter <> "" Then
+					$sPath = $sFilter
 				EndIf
-			EndIf
 
-			If $sPath == "" Then
-				$sPath = $sFile
-			Else
-				$sPath &= "\" & $sFile
-			EndIf
+				If StringCompare($aSearchPaths[$i], ".") <> 0 Then
+					If $sPath == "" Then
+						$sPath = $aSearchPaths[$i]
+					Else
+						$sPath &= "\" & $aSearchPaths[$i]
+					EndIf
+				EndIf
 
-			$aFileList = _Mediapipe_FindFiles($sPath, $sDir, $iFlag, True, $bReverse)
-			$sFound = UBound($aFileList) == 0 ? "" : $aFileList[0]
+				If $sPath == "" Then
+					$sPath = $sFile
+				Else
+					$sPath &= "\" & $sFile
+				EndIf
 
-			If $sFound <> "" Then
-				_Mediapipe_DebugMsg("Found " & $sFound & @CRLF)
+				$aFileList = _Mediapipe_FindFiles($sPath, $sDir, $iFlag, True, $bReverse)
+				$sFound = UBound($aFileList) == 0 ? "" : $aFileList[0]
+
+				If $sFound <> "" Then
+					_Mediapipe_DebugMsg("Found " & $sFound & @CRLF)
+					ExitLoop 3
+				EndIf
+			Next
+
+			_PathSplit($sDir, $sDrive, $sDir, $sFileName, $sExtension)
+			If $sDir == "" Then
 				ExitLoop 2
 			EndIf
+			$sDir = $sDrive & StringLeft($sDir, StringLen($sDir) - 1)
 		Next
-
-		_PathSplit($sDir, $sDrive, $sDir, $sFileName, $sExtension)
-		If $sDir == "" Then
-			ExitLoop
-		EndIf
-		$sDir = $sDrive & StringLeft($sDir, StringLen($sDir) - 1)
 	WEnd
 
 	Return $sFound
 EndFunc   ;==>_Mediapipe_FindFile
 
 Func _Mediapipe_FindDLL($sFile, $sFilter = Default, $sDir = Default, $bReverse = Default)
-	Local $sBuildType = EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" ? "Debug" : "Release"
-	Local $sPostfix = EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" ? "d" : ""
-	Local $sCompileMode = EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" ? "dbg" : "opt"
-	Local $sBazelOut = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & _
-			$sCompileMode & "\bin\mediapipe\autoit"
+	Local $_mediapipe_build_type = EnvGet("MEDIAPIPE_BUILD_TYPE")
+	Local $sBuildType = $_mediapipe_build_type == "Debug" ? "Debug" : "Release"
+	Local $sPostfix = $_mediapipe_build_type == "Debug" ? "d" : ""
+	Local $sCompileMode = $_mediapipe_build_type == "Debug" ? "dbg" : "opt"
+	Local $sBazelOut = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & $sCompileMode & "\bin\mediapipe\autoit"
 
 	Local $aSearchPaths[] = [ _
-			0, _
 			".", _
-			"build_x64", _
-			"build_x64\" & $sBuildType, _
-			"build", _
-			"build\x64", _
-			"build\x64\vc17\bin", _
-			"build\x64\vc15\bin", _
-			"build\x64\vc14\bin", _
-			$sBazelOut, _
 			"autoit-mediapipe-com", _
-			"autoit-mediapipe-com\build_x64", _
-			"autoit-mediapipe-com\build_x64\" & $sBuildType, _
+			"autoit-mediapipe-com\build_x64\bin\" & $sBuildType, _
+			"autoit-opencv-com", _
+			"autoit-opencv-com\build_x64\bin\" & $sBuildType, _
+			"opencv\build\x64\vc*\bin", _
+			"opencv-4.7.0-*\build\x64\vc*\bin", _
+			"opencv-4.7.0-*\opencv\build\x64\vc*\bin", _
 			"autoit-mediapipe-com\" & $sBazelOut _
 			]
-	$aSearchPaths[0] = UBound($aSearchPaths) - 1
 
 	Return _Mediapipe_FindFile($sFile & $sPostfix & ".dll", $sFilter, $sDir, $FLTA_FILES, $aSearchPaths, $bReverse)
 EndFunc   ;==>_Mediapipe_FindDLL
+
+; #FUNCTION# ====================================================================================================================
+; Name ..........: _Mediapipe_GetDevices
+; Description ...: Return devices
+; Syntax ........: _Mediapipe_GetDevices([$iDeviceCategory = Default])
+; Parameters ....: $iDeviceCategory     - [optional] device type to return. Default is 2.
+;                                         $iDeviceCategory = 0 : Audio and Video devices
+;                                         $iDeviceCategory = 1 : Audio devices
+;                                         $iDeviceCategory = 2 : Video devices
+; Return values .: None
+; Author ........: Your Name
+; Modified ......:
+; Remarks .......:
+; Related .......:
+; Link ..........:
+; Example .......: No
+; ===============================================================================================================================
+Func _Mediapipe_GetDevices($iDeviceCategory = Default)
+	Local $devices = _Mediapipe_ObjCreate("VectorOfString")
+
+	If $iDeviceCategory == 0 Then
+		$devices.push_vector(_Mediapipe_GetDevices(1))
+		$devices.push_vector(_Mediapipe_GetDevices(2))
+		Return $devices
+	EndIf
+
+	;===============================================================================
+	#interface "ICreateDevEnum"
+	Local Static $sCLSID_SystemDeviceEnum = '{62BE5D10-60EB-11D0-BD3B-00A0C911CE86}'
+	Local Static $sIID_ICreateDevEnum = '{29840822-5B84-11D0-BD3B-00A0C911CE86}'
+	Local Static $tagICreateDevEnum = "CreateClassEnumerator hresult(clsid;ptr*;dword);"
+	;===============================END=============================================
+
+	;===============================================================================
+	#interface "IEnumMoniker"
+	Local Static $sIID_IEnumMoniker = '{00000102-0000-0000-C000-000000000046}'
+	Local Static $tagIEnumMoniker = "Next hresult(dword;ptr*;dword*);" & _
+			"Skip hresult(dword);" & _
+			"Reset hresult();" & _
+			"Clone hresult(ptr*);"
+	;===============================END=============================================
+
+	;===============================================================================
+	#interface "IMoniker"
+	Local Static $sIID_IMoniker = '{0000000F-0000-0000-C000-000000000046}'
+	Local Static $tagIMoniker = "GetClassID hresult( clsid )" & _
+			"IsDirty hresult(  );" & _
+			"Load hresult( ptr );" & _
+			"Save hresult( ptr, bool );" & _
+			"GetSizeMax hresult( uint64 );" & _
+			"BindToObject hresult( ptr;ptr;clsid;ptr*);" & _
+			"BindToStorage hresult( ptr;ptr;clsid;ptr*);" & _
+			"Reduce hresult( ptr;dword;ptr*;ptr*);" & _
+			"ComposeWith hresult( ptr;bool;ptr*);" & _
+			"Enum hresult( bool;ptr*);" & _
+			"IsEqual hresult( ptr);" & _
+			"Hash hresult( dword);" & _
+			"IsRunning hresult( ptr;ptr;ptr);" & _
+			"GetTimeOfLastChange hresult( ptr;ptr;uint64);" & _
+			"Inverse hresult( ptr*);" & _
+			"CommonPrefixWith hresult( ptr;ptr*);" & _
+			"RelativePathTo hresult( ptr;ptr*);" & _
+			"GetDisplayName hresult( ptr;ptr;ushort);" & _
+			"ParseDisplayName hresult( ptr;ptr;ushort;ulong;ptr*);" & _
+			"IsSystemMoniker hresult( dword);"
+	;===============================END=============================================
+
+	;===============================================================================
+	#interface "IPropertyBag"
+	Local Static $sIID_IPropertyBag = '{55272A00-42CB-11CE-8135-00AA004BB851}'
+	Local Static $tagIPropertyBag = "Read hresult( wstr;variant*;ptr* );" & _
+			"Write hresult( wstr;variant );"
+	;===============================END=============================================
+
+	Local Static $S_FALSE = 1
+	Local Static $VFW_E_NOT_FOUND = 0x80040216
+	Local Static $sCLSID_AudioInputDeviceCategory = '{33D9A762-90C8-11D0-BD43-00A0C911CE86}'
+	Local Static $sCLSID_VideoInputDeviceCategory = '{860BB310-5D01-11D0-BD3B-00A0C911CE86}'
+
+	Local $sCLSID_category = $iDeviceCategory == 1 ? $sCLSID_AudioInputDeviceCategory : $sCLSID_VideoInputDeviceCategory
+
+	;  // Create a helper object To find the capture device.
+	;  hr = CoCreateInstance(CLSID_SystemDeviceEnum, Null, CLSCTX_INPROC_SERVER, IID_ICreateDevEnum, (LPVOID *) & pDevEnum);
+	Local $oDevEnum = ObjCreateInterface($sCLSID_SystemDeviceEnum, $sIID_ICreateDevEnum, $tagICreateDevEnum)
+	If Not IsObj($oDevEnum) Then
+		ConsoleWriteError('@@ Debug(' & @ScriptLineNumber & ') : Failed to create SystemDeviceEnum' & @CRLF)
+		Return $devices
+	EndIf
+
+	; IEnumMoniker *pEnum = 0;
+	; hr = pDevEnum->CreateClassEnumerator(CLSID_category, &pEnum, 0);
+	Local $pEnum = 0
+	Local $hr = $oDevEnum.CreateClassEnumerator($sCLSID_category, $pEnum, 0)
+	If $hr == $S_FALSE Then
+		$hr = $VFW_E_NOT_FOUND ; The category is empty. Treat as an error.
+	EndIf
+
+	If $hr < 0 Then
+		ConsoleWriteError('@@ Debug(' & @ScriptLineNumber & ') : Failed to create the device enumerator' & @CRLF)
+		Return $devices
+	EndIf
+
+	Local $oEnum = ObjCreateInterface(Ptr($pEnum), $sIID_IEnumMoniker, $tagIEnumMoniker)
+	If Not IsObj($oEnum) Then
+		ConsoleWriteError('@@ Debug(' & @ScriptLineNumber & ') : Failed to enumerate devices' & @CRLF)
+	EndIf
+
+	; IMoniker *pMoniker = 0;
+	Local $pMoniker, $oMoniker, $pPropBag, $oPropBag, $var
+
+	; while (pEnum->Next(1, &pMoniker, NULL) == S_OK) {
+	While $oEnum.Next(1, $pMoniker, 0) == $S_OK
+		$oMoniker = ObjCreateInterface($pMoniker, $sIID_IMoniker, $tagIMoniker)
+		If Not IsObj($oMoniker) Then
+			ConsoleWriteError('@@ Debug(' & @ScriptLineNumber & ') : Failed to get device' & @CRLF)
+			ContinueLoop
+		EndIf
+
+		; HRESULT hr = pMoniker->BindToStorage(0, 0, IID_PPV_ARGS(&pPropBag));
+		$hr = $oMoniker.BindToStorage(0, 0, $sIID_IPropertyBag, $pPropBag)
+		If $hr < 0 Then
+			ConsoleWriteError('@@ Debug(' & @ScriptLineNumber & ') : Failed bind device properties' & @CRLF)
+			ContinueLoop
+		EndIf
+
+		$oPropBag = ObjCreateInterface($pPropBag, $sIID_IPropertyBag, $tagIPropertyBag)
+		If Not IsObj($oPropBag) Then
+			ConsoleWriteError('@@ Debug(' & @ScriptLineNumber & ') : Failed to get device properties' & @CRLF)
+			ContinueLoop
+		EndIf
+
+		; hr = pPropBag->Read(L"Description", &var, 0);
+		$hr = $oPropBag.Read('Description', $var, 0)
+		If $hr < 0 Then
+			; hr = pPropBag->Read(L"FriendlyName", &var, 0);
+			$hr = $oPropBag.Read('FriendlyName', $var, 0)
+		EndIf
+
+		If $hr < 0 Then
+			ConsoleWriteError('@@ Debug(' & @ScriptLineNumber & ') : Failed get device FriendlyName' & @CRLF)
+			ContinueLoop
+		EndIf
+
+		$devices.Add($var)
+	WEnd
+
+	Return $devices
+EndFunc   ;==>_Mediapipe_GetDevices
 
 Func _Mediapipe_ArraySort(ByRef $aArray, $sCompare = Default, $iOrder = Default, $iStart = Default, $iEnd = Default)
 	_Mediapipe_Sort($aArray, "__Mediapipe_ArraySize", "__Mediapipe_ArrayGetter", "__Mediapipe_ArraySetter", $sCompare, $iOrder, $iStart, $iEnd)
@@ -505,6 +665,6 @@ Func _Mediapipe_SetResourceDir($root_path = Default)
 	If $root_path == Default Then $root_path = _Mediapipe_FindResourceDir()
 	_Mediapipe_DebugMsg('_Mediapipe_SetResourceDir("' & $root_path & '"')
 
-	Local Static  $resource_util = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
+	Local Static $resource_util = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
 	$resource_util.set_resource_dir($root_path)
 EndFunc   ;==>_Mediapipe_SetResourceDir

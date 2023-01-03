@@ -34,7 +34,7 @@ function _Mediapipe_NormalizePath([Parameter(Mandatory, Position=0)] $Path) {
         }
 
         if ($sPart -eq '..') {
-            $end = [math]::Max(0, $end - 1)
+            $end = [Math]::Max(0, $end - 1)
             continue
         }
 
@@ -234,25 +234,21 @@ function _Mediapipe_FindDLL(
     [Parameter(Position=2)] [string] $Directory = $PSScriptRoot,
     [Parameter(Position=3)] [string] $BuildType = $Env:BUILD_TYPE
 ) {
-    $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "RelWithDebInfo" }
+    $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "Release" }
     $PostSuffix = if ($BuildType -eq "Debug") { "d" } else { "" }
     $CompileMode = if ($BuildType -eq "Debug") { "dbg" } else { "opt" }
     $BazelOut = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-$CompileMode\bin\mediapipe\autoit"
 
     $aSearchPaths = @(
         "."
-        "build_x64"
-        "build_x64\$BuildType"
-        "build"
-        "build\x64"
-        "build\x64\vc17\bin"
-        "build\x64\vc15\bin"
-        "build\x64\vc14\bin"
-        $BazelOut
         "autoit-mediapipe-com"
-        "autoit-mediapipe-com\build_x64"
-        "autoit-mediapipe-com\build_x64\$BuildType"
+        "autoit-mediapipe-com\build_x64\bin\$BuildType"
         "autoit-mediapipe-com\$BazelOut"
+        "autoit-opencv-com"
+        "autoit-opencv-com\build_x64\bin\$BuildType"
+        "opencv\build\x64\vc*\bin"
+        "opencv-4.7.0-*\build\x64\vc*\bin"
+        "opencv-4.7.0-*\opencv\build\x64\vc*\bin"
     )
 
     _Mediapipe_FindFile -Path "$Path$PostSuffix.dll" -Filter $Filter -Directory $Directory -SearchPaths $aSearchPaths
@@ -267,7 +263,7 @@ function _Mediapipe_FindResourceDir(
     [Parameter(Position=0)] [string] $Directory = $PSScriptRoot,
     [Parameter(Position=1)] [string] $BuildType = $Env:BUILD_TYPE
 ) {
-    $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "RelWithDebInfo" }
+    $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "Release" }
     $CompileMode = if ($BuildType -eq "Debug") { "dbg" } else { "opt" }
     $BazelBin = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-$CompileMode\bin"
 

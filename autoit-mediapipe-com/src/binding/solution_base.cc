@@ -109,8 +109,8 @@ namespace mediapipe {
 
 			static _variant_t None = default_variant();
 
-			typedef std::vector<std::pair<std::string, _variant_t>> OptionsFieldList;
-			typedef std::map<std::string, OptionsFieldList> MapOfStringAndOptionsFieldList;
+			using OptionsFieldList = std::vector<std::pair<std::string, _variant_t>>;
+			using MapOfStringAndOptionsFieldList = std::map<std::string, OptionsFieldList>;
 
 			const std::map<std::string, PacketDataType> NAME_TO_TYPE = {
 				{"string", PacketDataType::STRING},

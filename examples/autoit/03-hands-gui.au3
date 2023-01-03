@@ -18,8 +18,8 @@
 ;~     https://unsplash.com/photos/mt2fyrdXxzk
 
 _GDIPlus_Startup()
-_Mediapipe_Open_And_Register(_Mediapipe_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _Mediapipe_FindDLL("autoit_mediapipe_com-*"))
-_OpenCV_Open_And_Register(_OpenCV_FindDLL("opencv_world4*", "opencv-4.*\opencv"), _OpenCV_FindDLL("autoit_opencv_com4*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 _Mediapipe_SetResourceDir()
@@ -158,7 +158,7 @@ Func _IsChecked($idControlID)
 EndFunc   ;==>_IsChecked
 
 Func _OnAutoItExit()
-	_OpenCV_Unregister_And_Close()
-	_Mediapipe_Unregister_And_Close()
+	_OpenCV_Close()
+	_Mediapipe_Close()
 	_GDIPlus_Shutdown()
 EndFunc   ;==>_OnAutoItExit

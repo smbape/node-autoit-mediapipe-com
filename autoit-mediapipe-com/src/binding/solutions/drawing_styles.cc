@@ -39,7 +39,7 @@ namespace mediapipe {
 				static const std::vector<HandLandmark> _PALM_LANMARKS = { HandLandmark::WRIST, HandLandmark::THUMB_CMC,
 								  HandLandmark::INDEX_FINGER_MCP, HandLandmark::MIDDLE_FINGER_MCP,
 								  HandLandmark::RING_FINGER_MCP, HandLandmark::PINKY_MCP };
-				static const std::vector<HandLandmark> _THUMP_LANDMARKS = { HandLandmark::THUMB_MCP, HandLandmark::THUMB_IP,
+				static const std::vector<HandLandmark> _THUMB_LANDMARKS = { HandLandmark::THUMB_MCP, HandLandmark::THUMB_IP,
 									HandLandmark::THUMB_TIP };
 				static const std::vector<HandLandmark> _INDEX_FINGER_LANDMARKS = { HandLandmark::INDEX_FINGER_PIP,
 										   HandLandmark::INDEX_FINGER_DIP,
@@ -55,7 +55,7 @@ namespace mediapipe {
 
 				static const std::vector<std::tuple<std::vector<HandLandmark>, DrawingSpec>> _HAND_LANDMARK_STYLE = {
 					{_PALM_LANMARKS, DrawingSpec(_RED, _THICKNESS_DOT, _RADIUS)},
-					{_THUMP_LANDMARKS, DrawingSpec(_PEACH, _THICKNESS_DOT, _RADIUS)},
+					{_THUMB_LANDMARKS, DrawingSpec(_PEACH, _THICKNESS_DOT, _RADIUS)},
 					{_INDEX_FINGER_LANDMARKS, DrawingSpec(_PURPLE, _THICKNESS_DOT, _RADIUS)},
 					{_MIDDLE_FINGER_LANDMARKS, DrawingSpec(_YELLOW, _THICKNESS_DOT, _RADIUS)},
 					{_RING_FINGER_LANDMARKS, DrawingSpec(_GREEN, _THICKNESS_DOT, _RADIUS)},

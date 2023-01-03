@@ -24,9 +24,9 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 
 ## Prerequisites
 
-  - Download and extract [opencv-4.6.0-vc14_vc15.exe](https://sourceforge.net/projects/opencvlibrary/files/4.6.0/opencv-4.6.0-vc14_vc15.exe/download) into a folder
-  - Download and extract [autoit-opencv-4.6.0-com-v2.2.2.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.2/autoit-opencv-4.6.0-com-v2.2.2.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z) into a folder
+  - Download and extract [opencv-4.7.0-windows.zip](https://sourceforge.net/projects/opencvlibrary/files4.7.0opencv-4.7.0-windows.zip/download) into a folder
+  - Download and extract [autoit-opencv-4.7.0-com-v.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v/autoit-opencv-4.7.0-com-v.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z) into a folder
 
 ## Usage
 
@@ -43,9 +43,12 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open_And_Register("opencv-4.6.0-vc14_vc15\opencv\build\x64\vc15\bin\opencv_world460.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.8.11-460.dll")
-_OpenCV_Open_And_Register("opencv-4.6.0-vc14_vc15\opencv\build\x64\vc15\bin\opencv_world460.dll", "autoit-opencv-com\autoit_opencv_com460.dll")
+_Mediapipe_Open("opencv-4.7.0-windows\opencv\build\x64\vc15\bin\opencv_world470.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.8.11-470.dll")
+_OpenCV_Open("opencv-4.7.0-windows\opencv\build\x64\vc15\bin\opencv_world470.dll", "autoit-opencv-com\autoit_opencv_com460.dll")
 OnAutoItExitRegister("_OnAutoItExit")
+
+; Tell mediapipe where to look its resource files
+_Mediapipe_SetResourceDir()
 
 Global $mp = _Mediapipe_get()
 If Not IsObj($mp) Then
@@ -149,8 +152,8 @@ Func resize_and_show($title, $image)
 EndFunc   ;==>resize_and_show
 
 Func _OnAutoItExit()
-  _OpenCV_Unregister_And_Close()
-  _Mediapipe_Unregister_And_Close()
+  _OpenCV_Close()
+  _Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit
 ```
 
@@ -178,7 +181,7 @@ function resize_and_show([string] $title, [Object] $image) {
         $h = $DESIRED_HEIGHT
     }
 
-    $interpolation = if ($DESIRED_WIDTH -gt $width -or $DESIRED_HEIGHT -gt $height) { $cv.INTER_CUBIC_ } else { $cv.INTER_AREA_ }
+    $interpolation = if ($DESIRED_WIDTH -gt $width -or $DESIRED_HEIGHT -gt $height) { $cv.enums.INTER_CUBIC } else { $cv.enums.INTER_AREA }
 
     $img = $cv.resize($image, @($w, $h), [OpenCvComInterop]::Params([ref] @{ interpolation = $interpolation }))
     $cv.imshow($title, $img.convertToShow())
@@ -206,7 +209,7 @@ function Example() {
     }))
 
     # Convert the BGR image to RGB and process it with MediaPipe Face Mesh.
-    $results = $face_mesh.process($cv.cvtColor($image, $cv.COLOR_BGR2RGB_))
+    $results = $face_mesh.process($cv.cvtColor($image, $cv.enums.COLOR_BGR2RGB))
     If (-not $results["multi_face_landmarks"]) {
         Write-Error "No face detection for $image_path"
         return
@@ -242,8 +245,8 @@ function Example() {
     $cv.destroyAllWindows()
 }
 
-[MediapipeComInterop]::DllOpen("opencv-4.6.0-vc14_vc15\opencv\build\x64\vc15\bin\opencv_world460.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.8.11-460.dll")
-[OpenCvComInterop]::DllOpen("opencv-4.6.0-vc14_vc15\opencv\build\x64\vc15\bin\opencv_world460.dll", "autoit-opencv-com\autoit_opencv_com460.dll")
+[MediapipeComInterop]::DllOpen("opencv-4.7.0-windows\opencv\build\x64\vc15\bin\opencv_world470.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.8.11-470.dll")
+[OpenCvComInterop]::DllOpen("opencv-4.7.0-windows\opencv\build\x64\vc15\bin\opencv_world470.dll", "autoit-opencv-com\autoit_opencv_com460.dll")
 
 [MediapipeComInterop]::Register()
 [OpenCvComInterop]::Register()
@@ -270,29 +273,29 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z
+# download autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z' -o autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z
 
-# extract the content of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z -aoa -oautoit-mediapipe-com
 
-# download autoit-opencv-4.6.0-com-v2.2.2.7z
-curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.2.2/autoit-opencv-4.6.0-com-v2.2.2.7z' -o autoit-opencv-4.6.0-com-v2.2.2.7z
+# download autoit-opencv-4.7.0-com-v.7z
+curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v/autoit-opencv-4.7.0-com-v.7z' -o autoit-opencv-4.7.0-com-v.7z
 
-# extract the content of autoit-opencv-4.6.0-com-v2.2.2.7z into a folder named autoit-opencv-com
-7z x autoit-opencv-4.6.0-com-v2.2.2.7z -aoa -oautoit-opencv-com
+# extract the content of autoit-opencv-4.7.0-com-v.7z into a folder named autoit-opencv-com
+7z x autoit-opencv-4.7.0-com-v.7z -aoa -oautoit-opencv-com
 
-# download opencv-4.6.0-vc14_vc15.exe
-curl -L 'https://github.com/opencv/opencv/releases/download/4.6.0/opencv-4.6.0-vc14_vc15.exe' -o opencv-4.6.0-vc14_vc15.exe
+# download opencv-4.7.0-windows.zip
+curl -L 'https://github.com/opencv/opencv/releases/download4.7.0opencv-4.7.0-windows.zip' -o opencv-4.7.0-windows.zip
 
-# extract the content of opencv-4.6.0-vc14_vc15.exe into a folder named opencv-4.6.0-vc14_vc15
-./opencv-4.6.0-vc14_vc15.exe -oopencv-4.6.0-vc14_vc15 -y
+# extract the content of opencv-4.7.0-windows.zip into a folder named opencv-4.7.0-windows
+./opencv-4.7.0-windows.zip -oopencv-4.7.0-windows -y
 
-# download autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.1.0.zip' -o autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
+# download autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.1.0.zip' -o autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip
-7z x autoit-mediapipe-0.8.11-opencv-4.6.0-com-v0.1.0-src.zip -aoa 'node-autoit-mediapipe-com-0.1.0\examples'
+# extract the examples folder of autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0-src.zip
+7z x autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0-src.zip -aoa 'node-autoit-mediapipe-com-0.1.0\examples'
 cp -rf node-autoit-mediapipe-com-0.1.0/* ./
 rm -rf node-autoit-mediapipe-com-0.1.0
 ```
