@@ -26,7 +26,7 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 
   - Download and extract [opencv-4.7.0-windows.zip](https://sourceforge.net/projects/opencvlibrary/files4.7.0opencv-4.7.0-windows.zip/download) into a folder
   - Download and extract [autoit-opencv-4.7.0-com-v.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v/autoit-opencv-4.7.0-com-v.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.2.0/autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0.7z) into a folder
 
 ## Usage
 
@@ -273,11 +273,11 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.1.0/autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z' -o autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z
+# download autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.2.0/autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0.7z' -o autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0.7z
 
-# extract the content of autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0.7z -aoa -oautoit-mediapipe-com
 
 # download autoit-opencv-4.7.0-com-v.7z
 curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v/autoit-opencv-4.7.0-com-v.7z' -o autoit-opencv-4.7.0-com-v.7z
@@ -291,13 +291,13 @@ curl -L 'https://github.com/opencv/opencv/releases/download4.7.0opencv-4.7.0-win
 # extract the content of opencv-4.7.0-windows.zip into a folder named opencv-4.7.0-windows
 ./opencv-4.7.0-windows.zip -oopencv-4.7.0-windows -y
 
-# download autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.1.0.zip' -o autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0-src.zip
+# download autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.2.0.zip' -o autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0-src.zip
-7z x autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.1.0-src.zip -aoa 'node-autoit-mediapipe-com-0.1.0\examples'
-cp -rf node-autoit-mediapipe-com-0.1.0/* ./
-rm -rf node-autoit-mediapipe-com-0.1.0
+# extract the examples folder of autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0-src.zip
+7z x autoit-mediapipe-0.8.11-opencv-4.7.0-com-v0.2.0-src.zip -aoa 'node-autoit-mediapipe-com-0.2.0\examples'
+cp -rf node-autoit-mediapipe-com-0.2.0/* ./
+rm -rf node-autoit-mediapipe-com-0.2.0
 ```
 
 Now you can run any file in the `examples` folder.
