@@ -113,12 +113,28 @@ waterfall([
                 updateContent(sysPath.join(__dirname, "..", "autoit-mediapipe-com", "src", "mediapipeCOM.rc"), oldContent => {
                     const vsversion = version.split(".").join(",").replace(/[^\d,]/g, "");
                     return oldContent
-                        .replace(/FILEVERSION \S+/, `FILEVERSION ${ vsversion }`)
-                        .replace(/PRODUCTVERSION \S+/, `PRODUCTVERSION ${ vsversion }`)
-                        .replace(/"FileVersion", "\S+"/, `"FileVersion", "${ version }"`)
-                        .replace(/"ProductVersion", "\S+"/, `"ProductVersion", "${ version }"`);
+                        .replace(/(FILE|PRODUCT)VERSION \S+/g, `$1VERSION ${ vsversion }`)
+                        .replace(/"(File|Product)Version", "\S+"/g, `"$1Version", "${ version }"`);
                 }, next);
-            }
+            },
+
+            (hasChanged, next) => {
+                updateContent(sysPath.join(__dirname, "..", "autoit-mediapipe-com", "dotnet", "Properties", "AssemblyInfo.cs"), oldContent => {
+                    return oldContent.replace(/(Assembly|AssemblyFile)Version\("[^"\s*]+"\)/g, `$1Version("${ version }.0")`);
+                }, next);
+            },
+
+            (hasChanged, next) => {
+                updateContent(sysPath.join(__dirname, "..", "autoit-mediapipe-com", "udf", "mediapiped.sxs.manifest"), oldContent => {
+                    return oldContent.replace(/name="(mediapipe[^"\s]*|autoit_mediapipe_com[^"\s]*).sxs" version="[^"\s*]+"/g, `name="$1.sxs" version="${ version }.0"`);
+                }, next);
+            },
+
+            (hasChanged, next) => {
+                updateContent(sysPath.join(__dirname, "..", "autoit-mediapipe-com", "udf", "mediapipe.sxs.manifest"), oldContent => {
+                    return oldContent.replace(/name="(mediapipe[^"\s]*|autoit_mediapipe_com[^"\s]*).sxs" version="[^"\s*]+"/g, `name="$1.sxs" version="${ version }.0"`);
+                }, next);
+            },
         ], next);
     }
 ], err => {

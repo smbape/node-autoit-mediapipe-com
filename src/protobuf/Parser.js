@@ -265,7 +265,7 @@ class Parser {
                 [`${ proto }.${ type_name }`, "", [], [], "", ""],
             ]);
 
-            const {scopes, options: opts} = raw_fields;
+            const {scopes} = raw_fields;
 
             for (const [field_type, field_name, field_rule] of raw_fields.fields) {
                 const is_map = field_type.startsWith("map<");
@@ -915,8 +915,9 @@ class Parser {
     addRepeatedField(proto, fields, field_type, field_name, scopes) {
         const {decls, typedefs} = this.outputs;
 
-        const value_type = this.getCppType(field_type, scopes);
-        const byref = isScalar(field_type) || this.isEnum(field_type, scopes) ? "" : "*";
+        const isEnum = this.isEnum(field_type, scopes);
+        const value_type = isEnum ? "int" : this.getCppType(field_type, scopes);
+        const byref = isScalar(field_type) || isEnum ? "" : "*";
         const name = `Repeated_${ value_type.replaceAll("::", "_") }`;
         const fqn = `google.protobuf.${ name }`;
         const cpptype = fqn.replaceAll(".", "::");

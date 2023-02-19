@@ -1043,6 +1043,18 @@
         "iid": "37ef0cb1-8f38-4faa-ad86-2e68d01bf058",
         "clsid": "80be3e31-6acb-4557-ad0f-a37dfb3165ca"
     },
+    "mediapipe::RotationMode": {
+        "iid": "58c4c26a-a671-4b8a-866a-f9f6904563a0",
+        "clsid": "eecb3c9c-fb8a-48b2-8331-11b7aa4c5147"
+    },
+    "mediapipe::calculators::image": {
+        "iid": "65d212d0-0ced-4012-be52-9a7af51dfe48",
+        "clsid": "b30d9cc6-a292-4b97-9d9d-daf01a7c17d3"
+    },
+    "mediapipe::calculators::image::rotation_mode_pb2": {
+        "iid": "02a74e06-dc41-4139-95b1-e1e231c1b002",
+        "clsid": "ffe92a9a-6eb7-4843-8947-764770ca151f"
+    },
     "mediapipe::ScaleMode": {
         "iid": "87aed07d-29d9-40bd-b7a6-5c964648df74",
         "clsid": "a280583c-e9eb-49d0-bd09-ab775a23702f"
@@ -1051,17 +1063,9 @@
         "iid": "5ed67c3f-0283-4fc3-a71b-fac9be008da3",
         "clsid": "f2e2fb41-e0f7-4c76-b619-ec139851ea0f"
     },
-    "mediapipe::RotationMode": {
-        "iid": "58c4c26a-a671-4b8a-866a-f9f6904563a0",
-        "clsid": "eecb3c9c-fb8a-48b2-8331-11b7aa4c5147"
-    },
     "mediapipe::ImageTransformationCalculatorOptions": {
         "iid": "e6987715-ab8b-4a75-9a74-dfa7935f5de2",
         "clsid": "899054d0-58d5-4e65-a0ba-ef4a23a4ac49"
-    },
-    "mediapipe::calculators::image": {
-        "iid": "65d212d0-0ced-4012-be52-9a7af51dfe48",
-        "clsid": "b30d9cc6-a292-4b97-9d9d-daf01a7c17d3"
     },
     "mediapipe::calculators::image::image_transformation_calculator_pb2": {
         "iid": "79f61435-8824-4277-b371-f43928ab03f3",

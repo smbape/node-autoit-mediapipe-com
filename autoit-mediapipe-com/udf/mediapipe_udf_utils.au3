@@ -189,8 +189,6 @@ Func _Mediapipe_FindDLL($sFile, $sFilter = Default, $sDir = Default, $bReverse =
 	Local $_mediapipe_build_type = EnvGet("MEDIAPIPE_BUILD_TYPE")
 	Local $sBuildType = $_mediapipe_build_type == "Debug" ? "Debug" : "Release"
 	Local $sPostfix = $_mediapipe_build_type == "Debug" ? "d" : ""
-	Local $sCompileMode = $_mediapipe_build_type == "Debug" ? "dbg" : "opt"
-	Local $sBazelOut = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & $sCompileMode & "\bin\mediapipe\autoit"
 
 	Local $aSearchPaths[] = [ _
 			".", _
@@ -200,8 +198,7 @@ Func _Mediapipe_FindDLL($sFile, $sFilter = Default, $sDir = Default, $bReverse =
 			"autoit-opencv-com\build_x64\bin\" & $sBuildType, _
 			"opencv\build\x64\vc*\bin", _
 			"opencv-4.7.0-*\build\x64\vc*\bin", _
-			"opencv-4.7.0-*\opencv\build\x64\vc*\bin", _
-			"autoit-mediapipe-com\" & $sBazelOut _
+			"opencv-4.7.0-*\opencv\build\x64\vc*\bin" _
 			]
 
 	Return _Mediapipe_FindFile($sFile & $sPostfix & ".dll", $sFilter, $sDir, $FLTA_FILES, $aSearchPaths, $bReverse)

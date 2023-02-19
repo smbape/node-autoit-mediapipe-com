@@ -333,6 +333,7 @@ def add_com_library(name, intdir, compilation_mode):
             # image
             "//mediapipe/framework:type_map",
             "//mediapipe/framework/formats:image",
+            "@stblib//:stb_image",
 
             # packet
             "//mediapipe/framework:packet",

@@ -11,13 +11,18 @@
 #include "_mat_utils.au3"
 
 ;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.8.11/mediapipe/python/image_test.py
+;~     https://github.com/google/mediapipe/blob/v0.9.1/mediapipe/python/image_test.py
 
 _Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
 _OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 _Mediapipe_SetResourceDir()
+
+Global $cv = _OpenCV_get()
+
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+_AssertTrue(IsObj($download_utils), "Failed to load mediapipe.autoit.solutions.download_utils")
 
 Global Const $_image = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
 _AssertTrue(IsObj($_image), "Failed to load mediapipe.autoit._framework_bindings.image")
@@ -28,14 +33,12 @@ _AssertTrue(IsObj($Image), "Failed to load image.Image")
 Test()
 
 Func Test()
-	Local Const $cv = _OpenCV_get()
-	_AssertTrue(IsObj($cv), "Failed to load opencv")
-
 	test_create_image_from_gray_cv_mat()
 	test_create_image_from_rgb_cv_mat()
 	test_create_image_from_rgb48_cv_mat()
 	test_image_mat_view_with_contiguous_data()
-	test_image_numpy_view_with_non_contiguous_data()
+	test_image_mat_view_with_non_contiguous_data()
+	test_image_create_from_cvmat()
 EndFunc   ;==>Test
 
 Func test_create_image_from_gray_cv_mat()
@@ -79,7 +82,6 @@ Func test_create_image_from_rgb_cv_mat()
 
 	; OpenCV color space is BGR by default
 	; convert it to RGB as expected by mediapipe
-	Local Const $cv = _OpenCV_get()
 	$mat = $cv.cvtColor($mat, $CV_COLOR_BGR2RGB)
 
 	_MatSetAt($mat, "byte", 2, 2, 1, 42)
@@ -117,7 +119,6 @@ Func test_create_image_from_rgb48_cv_mat()
 
 	; OpenCV color space is BGR by default
 	; convert it to RGB as expected by mediapipe
-	Local Const $cv = _OpenCV_get()
 	$mat = $cv.cvtColor($mat, $CV_COLOR_BGR2RGB)
 
 	_MatSetAt($mat, "ushort", 2, 2, 1, 42)
@@ -168,7 +169,7 @@ EndFunc   ;==>test_image_mat_view_with_contiguous_data
 
 ; For image frames that store non contiguous data, the output of mat_view()
 ; points to the pixel data of the original image frame object.
-Func test_image_numpy_view_with_non_contiguous_data()
+Func test_image_mat_view_with_non_contiguous_data()
 	Local $w = 641
 	Local $h = 481
 	Local $mat = _RandomImage($w, $h, $CV_8UC3, 0, 2 ^ 8)
@@ -183,7 +184,25 @@ Func test_image_numpy_view_with_non_contiguous_data()
 
 	Local $np_view2 = $rgb_image.mat_view()
 	_AssertEqual(Ptr($rgb_image.data), Ptr($np_view2.data))
-EndFunc   ;==>test_image_numpy_view_with_non_contiguous_data
+EndFunc   ;==>test_image_mat_view_with_non_contiguous_data
+
+Func test_image_create_from_cvmat()
+	$download_utils.download( _
+			"https://github.com/tensorflow/tfjs-models/raw/master/hand-pose-detection/test_data/hands.jpg", _
+			@ScriptDir & "/solutions/testdata/hands.jpg" _
+			)
+
+	Local $image_path = @ScriptDir & "/solutions/testdata/hands.jpg"
+
+	Local $mat = $cv.imread($image_path)
+	$mat = $cv.cvtColor($mat, $CV_COLOR_BGR2RGB)
+	Local $rgb_image = $Image($MEDIAPIPE_IMAGE_FORMAT_SRGB, $mat)
+	_AssertEqual($rgb_image.width, 720)
+	_AssertEqual($rgb_image.height, 382)
+	_AssertEqual($rgb_image.channels, 3)
+	_AssertEqual($rgb_image.image_format, $MEDIAPIPE_IMAGE_FORMAT_SRGB)
+	_AssertMatEqual($mat, $rgb_image.mat_view())
+EndFunc   ;==>test_image_create_from_cvmat
 
 Func _OnAutoItExit()
 	_OpenCV_Close()

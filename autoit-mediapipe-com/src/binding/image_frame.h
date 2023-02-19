@@ -5,6 +5,7 @@
 #include "mediapipe/framework/formats/image_frame.h"
 #include "mediapipe/framework/formats/image_frame_opencv.h"
 #include "mediapipe/framework/port/logging.h"
+#include "stb_image.h"
 #include "binding/util.h"
 #include <opencv2/imgcodecs.hpp>
 
@@ -12,7 +13,8 @@ namespace mediapipe {
 	namespace autoit {
 		inline std::unique_ptr<ImageFrame> CreateImageFrame(
 			ImageFormat::Format format,
-			const cv::Mat& data, bool copy = true
+			const cv::Mat& data,
+			bool copy = true
 		) {
 			switch (format) {
 				case ImageFormat::SRGB:
@@ -97,6 +99,41 @@ namespace mediapipe {
 
 			AUTOIT_THROW("Unsupported image format. Supported formats are "
 				"CV_8U, CV_8UC3, CV_8UC4, CV_16U, CV_16UC3, CV_16UC4, CV_32F, CV_32FC2");
+		}
+
+		inline std::unique_ptr<ImageFrame> CreateImageFrame(const std::string& file_name) {
+			int width;
+			int height;
+			int channels;
+			auto* image_data =
+				stbi_load(file_name.c_str(), &width, &height, &channels,
+						  /*desired_channels=*/0);
+			AUTOIT_ASSERT_THROW(image_data != nullptr, "Image decoding failed (" << stbi_failure_reason() << "): " << file_name);
+
+			std::unique_ptr<ImageFrame> image_frame;
+			switch (channels) {
+			  case 1:
+				image_frame = std::make_unique<ImageFrame>(
+					ImageFormat::GRAY8, width, height, width, image_data,
+					stbi_image_free);
+				break;
+			  case 3:
+				image_frame = std::make_unique<ImageFrame>(
+					ImageFormat::SRGB, width, height, 3 * width, image_data,
+					stbi_image_free);
+				break;
+			  case 4:
+				image_frame = std::make_unique<ImageFrame>(
+					ImageFormat::SRGBA, width, height, 4 * width, image_data,
+					stbi_image_free);
+				break;
+			  default:
+				AUTOIT_THROW(
+					"Expected image with 1 (grayscale), 3 (RGB) or 4 "
+					"(RGBA) channels, found " << channels << " channels.");
+			}
+
+			return image_frame;
 		}
 
 		template <typename T>

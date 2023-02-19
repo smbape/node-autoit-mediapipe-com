@@ -13,7 +13,8 @@ const vector_conversion = require("./vector_conversion");
 
 const OpenCV_VERSION = "opencv-4.7.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
-const MEDIAPIPE_VERSION = "0.8.11";
+const MEDIAPIPE_VERSION = "0.9.1";
+const OPENCV_COM_VERSION = "2.3.1";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
@@ -144,6 +145,18 @@ const parseArguments = PROJECT_DIR => {
                 }).join(`\n${ " ".repeat(16) }`) }
             }`.replace(/^ {12}/mg, "");
         },
+        // updateAssembly: (assemblies, debugPostFix, opts) => {
+        //     assemblies.push("", `
+        //         <dependency>
+        //             <dependentAssembly>
+        //                 <assemblyIdentity
+        //                     type="win32"
+        //                     name="autoit_opencv_com470${ debugPostFix }.sxs"
+        //                     version="${ OPENCV_COM_VERSION }.0" />
+        //             </dependentAssembly>
+        //         </dependency>
+        //     `.replace(/^ {16}/mg, "").trim());
+        // }
     };
 
     for (const opt of ["iface", "hdr", "impl", "idl", "manifest", "rgs", "res", "save"]) {

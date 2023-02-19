@@ -236,14 +236,11 @@ function _Mediapipe_FindDLL(
 ) {
     $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "Release" }
     $PostSuffix = if ($BuildType -eq "Debug") { "d" } else { "" }
-    $CompileMode = if ($BuildType -eq "Debug") { "dbg" } else { "opt" }
-    $BazelOut = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-$CompileMode\bin\mediapipe\autoit"
 
     $aSearchPaths = @(
         "."
         "autoit-mediapipe-com"
         "autoit-mediapipe-com\build_x64\bin\$BuildType"
-        "autoit-mediapipe-com\$BazelOut"
         "autoit-opencv-com"
         "autoit-opencv-com\build_x64\bin\$BuildType"
         "opencv\build\x64\vc*\bin"
@@ -283,7 +280,7 @@ function _Mediapipe_FindResourceDir(
         return
     }
 
-    $sGraphFile.Substring(0, $sGraphFile.Length -$sFile.Length - 1)
+    $sGraphFile.Substring(0, $sGraphFile.Length - $sFile.Length - 1)
 }
 Export-ModuleMember -Function _Mediapipe_FindResourceDir
 

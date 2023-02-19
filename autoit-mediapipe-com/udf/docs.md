@@ -490,6 +490,7 @@
   - [Image.image\_format](#imageimage%5C_format)
   - [Image.data](#imagedata)
   - [mediapipe::Image::get\_create](#mediapipeimageget%5C_create)
+  - [mediapipe::Image::create\_from\_file](#mediapipeimagecreate%5C_from%5C_file)
   - [mediapipe::Image::is\_aligned](#mediapipeimageis%5C_aligned)
   - [mediapipe::Image::is\_contiguous](#mediapipeimageis%5C_contiguous)
   - [mediapipe::Image::is\_empty](#mediapipeimageis%5C_empty)
@@ -505,6 +506,7 @@
   - [ImageFrame.image\_format](#imageframeimage%5C_format)
   - [ImageFrame.data](#imageframedata)
   - [mediapipe::ImageFrame::get\_create](#mediapipeimageframeget%5C_create)
+  - [mediapipe::ImageFrame::create\_from\_file](#mediapipeimageframecreate%5C_from%5C_file)
   - [mediapipe::ImageFrame::is\_aligned](#mediapipeimageframeis%5C_aligned)
   - [mediapipe::ImageFrame::is\_contiguous](#mediapipeimageframeis%5C_contiguous)
   - [mediapipe::ImageFrame::is\_empty](#mediapipeimageframeis%5C_empty)
@@ -1113,6 +1115,7 @@
   - [TemplateExpression.arg](#templateexpressionarg)
   - [TemplateExpression.path](#templateexpressionpath)
   - [TemplateExpression.field\_type](#templateexpressionfield%5C_type)
+  - [TemplateExpression.key\_type](#templateexpressionkey%5C_type)
   - [TemplateExpression.field\_value](#templateexpressionfield%5C_value)
   - [mediapipe::TemplateExpression::get\_create](#mediapipetemplateexpressionget%5C_create)
   - [mediapipe::TemplateExpression::Clear](#mediapipetemplateexpressionclear)
@@ -2587,6 +2590,19 @@
   - [constant\_side\_packet\_calculator\_pb2.ConstantSidePacketCalculatorOptions](#constant%5C_side%5C_packet%5C_calculator%5C_pb2constantsidepacketcalculatoroptions)
 - [mediapipe::calculators::core::constant\_side\_packet\_calculator\_pb2::ConstantSidePacketCalculatorOptions](#mediapipecalculatorscoreconstant%5C_side%5C_packet%5C_calculator%5C_pb2constantsidepacketcalculatoroptions)
   - [ConstantSidePacketCalculatorOptions.ConstantSidePacket](#constantsidepacketcalculatoroptionsconstantsidepacket)
+- [mediapipe::RotationMode](#mediapiperotationmode)
+  - [mediapipe::RotationMode::get\_create](#mediapiperotationmodeget%5C_create)
+  - [mediapipe::RotationMode::Clear](#mediapiperotationmodeclear)
+  - [mediapipe::RotationMode::ClearField](#mediapiperotationmodeclearfield)
+  - [mediapipe::RotationMode::CopyFrom](#mediapiperotationmodecopyfrom)
+  - [mediapipe::RotationMode::\_\_str\_\_](#mediapiperotationmode%5C_%5C_str%5C_%5C_)
+  - [RotationMode.UNKNOWN\_](#rotationmodeunknown%5C_)
+  - [RotationMode.ROTATION\_0\_](#rotationmoderotation%5C_0%5C_)
+  - [RotationMode.ROTATION\_90\_](#rotationmoderotation%5C_90%5C_)
+  - [RotationMode.ROTATION\_180\_](#rotationmoderotation%5C_180%5C_)
+  - [RotationMode.ROTATION\_270\_](#rotationmoderotation%5C_270%5C_)
+- [mediapipe::calculators::image::rotation\_mode\_pb2](#mediapipecalculatorsimagerotation%5C_mode%5C_pb2)
+  - [rotation\_mode\_pb2.RotationMode](#rotation%5C_mode%5C_pb2rotationmode)
 - [mediapipe::ScaleMode](#mediapipescalemode)
   - [mediapipe::ScaleMode::get\_create](#mediapipescalemodeget%5C_create)
   - [mediapipe::ScaleMode::Clear](#mediapipescalemodeclear)
@@ -2599,17 +2615,6 @@
   - [ScaleMode.FILL\_AND\_CROP\_](#scalemodefill%5C_and%5C_crop%5C_)
 - [mediapipe::gpu::scale\_mode\_pb2](#mediapipegpuscale%5C_mode%5C_pb2)
   - [scale\_mode\_pb2.ScaleMode](#scale%5C_mode%5C_pb2scalemode)
-- [mediapipe::RotationMode](#mediapiperotationmode)
-  - [mediapipe::RotationMode::get\_create](#mediapiperotationmodeget%5C_create)
-  - [mediapipe::RotationMode::Clear](#mediapiperotationmodeclear)
-  - [mediapipe::RotationMode::ClearField](#mediapiperotationmodeclearfield)
-  - [mediapipe::RotationMode::CopyFrom](#mediapiperotationmodecopyfrom)
-  - [mediapipe::RotationMode::\_\_str\_\_](#mediapiperotationmode%5C_%5C_str%5C_%5C_)
-  - [RotationMode.UNKNOWN\_](#rotationmodeunknown%5C_)
-  - [RotationMode.ROTATION\_0\_](#rotationmoderotation%5C_0%5C_)
-  - [RotationMode.ROTATION\_90\_](#rotationmoderotation%5C_90%5C_)
-  - [RotationMode.ROTATION\_180\_](#rotationmoderotation%5C_180%5C_)
-  - [RotationMode.ROTATION\_270\_](#rotationmoderotation%5C_270%5C_)
 - [mediapipe::ImageTransformationCalculatorOptions](#mediapipeimagetransformationcalculatoroptions)
   - [ImageTransformationCalculatorOptions.output\_width](#imagetransformationcalculatoroptionsoutput%5C_width)
   - [ImageTransformationCalculatorOptions.output\_height](#imagetransformationcalculatoroptionsoutput%5C_height)
@@ -2625,7 +2630,6 @@
   - [mediapipe::ImageTransformationCalculatorOptions::CopyFrom](#mediapipeimagetransformationcalculatoroptionscopyfrom)
   - [mediapipe::ImageTransformationCalculatorOptions::\_\_str\_\_](#mediapipeimagetransformationcalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::image::image\_transformation\_calculator\_pb2](#mediapipecalculatorsimageimage%5C_transformation%5C_calculator%5C_pb2)
-  - [image\_transformation\_calculator\_pb2.RotationMode](#image%5C_transformation%5C_calculator%5C_pb2rotationmode)
   - [image\_transformation\_calculator\_pb2.ImageTransformationCalculatorOptions](#image%5C_transformation%5C_calculator%5C_pb2imagetransformationcalculatoroptions)
 - [mediapipe::TensorsToDetectionsCalculatorOptions](#mediapipetensorstodetectionscalculatoroptions)
   - [TensorsToDetectionsCalculatorOptions.num\_classes](#tensorstodetectionscalculatoroptionsnum%5C_classes)
@@ -7976,6 +7980,21 @@ AutoIt:
     $oImage( $image[, $copy] ) -> retval
 ```
 
+```cpp
+static std::shared_ptr<mediapipe::Image> mediapipe::Image::get_create( const std::string& file_name );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.Image").create( $file_name ) -> retval
+    $oImage( $file_name ) -> retval
+```
+
+### mediapipe::Image::create\_from\_file
+
+```cpp
+static std::shared_ptr<mediapipe::Image> mediapipe::Image::create_from_file( const std::string& file_name );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.Image").create_from_file( $file_name ) -> retval
+```
+
 ### mediapipe::Image::is\_aligned
 
 ```cpp
@@ -8093,6 +8112,21 @@ static std::shared_ptr<mediapipe::ImageFrame> mediapipe::ImageFrame::get_create(
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageFrame").create( $image[, $copy] ) -> retval
     $oImageFrame( $image[, $copy] ) -> retval
+```
+
+```cpp
+static std::shared_ptr<mediapipe::ImageFrame> mediapipe::ImageFrame::get_create( const std::string& file_name );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ImageFrame").create( $file_name ) -> retval
+    $oImageFrame( $file_name ) -> retval
+```
+
+### mediapipe::ImageFrame::create\_from\_file
+
+```cpp
+static std::shared_ptr<mediapipe::ImageFrame> mediapipe::ImageFrame::create_from_file( const std::string& file_name );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ImageFrame").create_from_file( $file_name ) -> retval
 ```
 
 ### mediapipe::ImageFrame::is\_aligned
@@ -13499,6 +13533,14 @@ AutoIt:
 mediapipe::FieldDescriptorProto::Type mediapipe::TemplateExpression::field_type
 AutoIt:
     [propget, propput] $oTemplateExpression.field_type
+```
+
+### TemplateExpression.key\_type
+
+```cpp
+google::protobuf::Repeated_int* mediapipe::TemplateExpression::key_type
+AutoIt:
+    [propget] $oTemplateExpression.key_type
 ```
 
 ### TemplateExpression.field\_value
@@ -25985,6 +26027,98 @@ AutoIt:
     [propget] $oConstantSidePacketCalculatorOptions.ConstantSidePacket
 ```
 
+## mediapipe::RotationMode
+
+### mediapipe::RotationMode::get\_create
+
+```cpp
+static mediapipe::RotationMode mediapipe::RotationMode::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RotationMode").create() -> <mediapipe.RotationMode object>
+```
+
+### mediapipe::RotationMode::Clear
+
+```cpp
+void mediapipe::RotationMode::Clear();
+AutoIt:
+    $oRotationMode.Clear() -> None
+```
+
+### mediapipe::RotationMode::ClearField
+
+```cpp
+void mediapipe::RotationMode::ClearField( const std::string& field_name );
+AutoIt:
+    $oRotationMode.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RotationMode::CopyFrom
+
+```cpp
+void mediapipe::RotationMode::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRotationMode.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RotationMode::\_\_str\_\_
+
+```cpp
+void mediapipe::RotationMode::__str__( std::string* output );
+AutoIt:
+    $oRotationMode.__str__( [$output] ) -> $output
+```
+
+### RotationMode.UNKNOWN\_
+
+```cpp
+static int mediapipe::RotationMode::UNKNOWN
+AutoIt:
+    [propget] $oRotationMode.UNKNOWN_
+```
+
+### RotationMode.ROTATION\_0\_
+
+```cpp
+static int mediapipe::RotationMode::ROTATION_0
+AutoIt:
+    [propget] $oRotationMode.ROTATION_0_
+```
+
+### RotationMode.ROTATION\_90\_
+
+```cpp
+static int mediapipe::RotationMode::ROTATION_90
+AutoIt:
+    [propget] $oRotationMode.ROTATION_90_
+```
+
+### RotationMode.ROTATION\_180\_
+
+```cpp
+static int mediapipe::RotationMode::ROTATION_180
+AutoIt:
+    [propget] $oRotationMode.ROTATION_180_
+```
+
+### RotationMode.ROTATION\_270\_
+
+```cpp
+static int mediapipe::RotationMode::ROTATION_270
+AutoIt:
+    [propget] $oRotationMode.ROTATION_270_
+```
+
+## mediapipe::calculators::image::rotation\_mode\_pb2
+
+### rotation\_mode\_pb2.RotationMode
+
+```cpp
+static mediapipe::RotationMode
+AutoIt:
+    [propget] $orotation_mode_pb2.RotationMode
+```
+
 ## mediapipe::ScaleMode
 
 ### mediapipe::ScaleMode::get\_create
@@ -26067,88 +26201,6 @@ AutoIt:
 static mediapipe::ScaleMode
 AutoIt:
     [propget] $oscale_mode_pb2.ScaleMode
-```
-
-## mediapipe::RotationMode
-
-### mediapipe::RotationMode::get\_create
-
-```cpp
-static mediapipe::RotationMode mediapipe::RotationMode::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.RotationMode").create() -> <mediapipe.RotationMode object>
-```
-
-### mediapipe::RotationMode::Clear
-
-```cpp
-void mediapipe::RotationMode::Clear();
-AutoIt:
-    $oRotationMode.Clear() -> None
-```
-
-### mediapipe::RotationMode::ClearField
-
-```cpp
-void mediapipe::RotationMode::ClearField( const std::string& field_name );
-AutoIt:
-    $oRotationMode.ClearField( $field_name ) -> None
-```
-
-### mediapipe::RotationMode::CopyFrom
-
-```cpp
-void mediapipe::RotationMode::CopyFrom( const google::protobuf::Message* other_message );
-AutoIt:
-    $oRotationMode.CopyFrom( $other_message ) -> None
-```
-
-### mediapipe::RotationMode::\_\_str\_\_
-
-```cpp
-void mediapipe::RotationMode::__str__( std::string* output );
-AutoIt:
-    $oRotationMode.__str__( [$output] ) -> $output
-```
-
-### RotationMode.UNKNOWN\_
-
-```cpp
-static int mediapipe::RotationMode::UNKNOWN
-AutoIt:
-    [propget] $oRotationMode.UNKNOWN_
-```
-
-### RotationMode.ROTATION\_0\_
-
-```cpp
-static int mediapipe::RotationMode::ROTATION_0
-AutoIt:
-    [propget] $oRotationMode.ROTATION_0_
-```
-
-### RotationMode.ROTATION\_90\_
-
-```cpp
-static int mediapipe::RotationMode::ROTATION_90
-AutoIt:
-    [propget] $oRotationMode.ROTATION_90_
-```
-
-### RotationMode.ROTATION\_180\_
-
-```cpp
-static int mediapipe::RotationMode::ROTATION_180
-AutoIt:
-    [propget] $oRotationMode.ROTATION_180_
-```
-
-### RotationMode.ROTATION\_270\_
-
-```cpp
-static int mediapipe::RotationMode::ROTATION_270
-AutoIt:
-    [propget] $oRotationMode.ROTATION_270_
 ```
 
 ## mediapipe::ImageTransformationCalculatorOptions
@@ -26258,14 +26310,6 @@ AutoIt:
 ```
 
 ## mediapipe::calculators::image::image\_transformation\_calculator\_pb2
-
-### image\_transformation\_calculator\_pb2.RotationMode
-
-```cpp
-static mediapipe::RotationMode
-AutoIt:
-    [propget] $oimage_transformation_calculator_pb2.RotationMode
-```
 
 ### image\_transformation\_calculator\_pb2.ImageTransformationCalculatorOptions
 

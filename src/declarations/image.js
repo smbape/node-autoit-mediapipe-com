@@ -21,6 +21,14 @@ module.exports = [
         ["bool", "copy", "true", []],
     ], "", ""],
 
+    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", "/Output=std::make_shared<Image>(std::shared_ptr<ImageFrame>($0.release()))"], [
+        ["std::string", "file_name", "", ["/C", "/Ref"]],
+    ], "", ""],
+
+    ["mediapipe.Image.create_from_file", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", "/Output=std::make_shared<Image>(std::shared_ptr<ImageFrame>($0.release()))"], [
+        ["std::string", "file_name", "", ["/C", "/Ref"]],
+    ], "", ""],
+
     ["mediapipe.Image.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", "/Expr=__self->get()->GetImageFrameSharedPtr().get()"], [], "", ""],
     ["mediapipe.Image.UsesGpu", "bool", ["=uses_gpu"], [], "", ""],
     ["mediapipe.Image.IsContiguous", "bool", ["=is_contiguous", "/Prop=GetImageFrameSharedPtr()"], [], "", ""],

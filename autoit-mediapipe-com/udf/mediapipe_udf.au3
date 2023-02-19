@@ -7,7 +7,7 @@ Global $h_mediapipe_ffmpeg_dll = -1
 Global $h_autoit_mediapipe_com_dll = -1
 
 Func _Mediapipe_ObjCreate($sClassname)
-	_Mediapipe_ActivateActCtx()
+	_Mediapipe_ActivateManifest()
 
 	Local Static $namespaces[] = [ _
 			"", _
@@ -58,7 +58,7 @@ EndFunc   ;==>_Mediapipe_Unregister_And_Close
 
 Func _Mediapipe_Install($s_mediapipe_world_dll = Default, $s_autoit_mediapipe_com_dll = Default, $bUser = Default, $bOpen = True, $bClose = True, $bInstall = False, $bUninstall = False)
 	If $s_mediapipe_world_dll == Default Then $s_mediapipe_world_dll = "opencv_world470.dll"
-	If $s_autoit_mediapipe_com_dll == Default Then $s_autoit_mediapipe_com_dll = "autoit_mediapipe_com-0.8.11-470.dll"
+	If $s_autoit_mediapipe_com_dll == Default Then $s_autoit_mediapipe_com_dll = "autoit_mediapipe_com-0.9.1-470.dll"
 	If $bUser == Default Then $bUser = Not IsAdmin()
 
 	If $bClose And $h_mediapipe_world_dll <> -1 Then DllClose($h_mediapipe_world_dll)
@@ -125,12 +125,13 @@ Func _Mediapipe_Unregister($bUser = Default)
 	Return _Mediapipe_Install(Default, Default, $bUser, False, False, False, True)
 EndFunc   ;==>_Mediapipe_Unregister
 
-Func _Mediapipe_ActivateActCtx()
-	Return _Mediapipe_DllCall($h_autoit_mediapipe_com_dll, "BOOL", "DLLActivateActCtx")
-EndFunc   ;==>_Mediapipe_ActivateActCtx
+Func _Mediapipe_ActivateManifest($sManifest = Default)
+	If $sManifest == Default Then $sManifest = EnvGet("MEDIAPIPE_ACTCTX_MANIFEST")
+	Return _Mediapipe_DllCall($h_autoit_mediapipe_com_dll, "BOOL", "DllActivateManifest", "wstr", $sManifest)
+EndFunc   ;==>_Mediapipe_ActivateManifest
 
 Func _Mediapipe_DeactivateActCtx()
-	Return _Mediapipe_DllCall($h_autoit_mediapipe_com_dll, "BOOL", "DLLDeactivateActCtx")
+	Return _Mediapipe_DllCall($h_autoit_mediapipe_com_dll, "BOOL", "DllDeactivateActCtx")
 EndFunc   ;==>_Mediapipe_DeactivateActCtx
 
 Func _Mediapipe_DebugMsg($msg)
