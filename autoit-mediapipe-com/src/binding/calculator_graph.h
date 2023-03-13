@@ -13,7 +13,8 @@
 
 namespace mediapipe {
 	namespace autoit {
-		using StreamPacketCallback = void (*)(const std::string&, const Packet&);
+		using PacketCallback = void (*)(const std::string&, const Packet&);
+
 		namespace calculator_graph {
 			std::shared_ptr<CalculatorGraph> create(CalculatorGraphConfig& graph_config);
 			std::shared_ptr<CalculatorGraph> create(ValidatedGraphConfig& validated_graph_config);
@@ -23,7 +24,7 @@ namespace mediapipe {
 			void observe_output_stream(
 				CalculatorGraph* self,
 				const std::string& stream_name,
-				StreamPacketCallback callback_fn,
+				PacketCallback callback_fn,
 				bool observe_timestamp_bounds
 			);
 			void close(CalculatorGraph* self);
@@ -31,4 +32,4 @@ namespace mediapipe {
 	}
 }
 
-PTR_BRIDGE_DECL(mediapipe::autoit::StreamPacketCallback)
+PTR_BRIDGE_DECL(mediapipe::autoit::PacketCallback)

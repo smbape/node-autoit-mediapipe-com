@@ -1,316 +1,524 @@
-const declarations = [
-    // cv::Mat Class Reference
+module.exports = ({ shared_ptr }) => {
+    const declarations = [
+        ["class cv._InputArray", "", [], [], "", ""],
+        ["class cv._OutputArray", "", [], [], "", ""],
+        ["class cv._InputOutputArray", "", [], [], "", ""],
 
-    ["class cv.Mat", "", ["/Simple"], [
-        ["int", "flags", "", ["/RW"]],
-        ["int", "dims", "", ["/RW"]],
-        ["int", "rows", "", ["/RW"]],
-        ["int", "cols", "", ["/RW"]],
-        ["uchar*", "data", "", ["/RW"]],
-        ["size_t", "step", "", ["/RW"]],
-        ["int", "width", "", ["/RW", "=cols"]],
-        ["int", "height", "", ["/RW", "=rows"]],
-        ["std::tuple<int, int, int>", "shape", "", ["/R", "/RExpr=std::tuple<int, int, int>(__self->get()->rows, __self->get()->cols, __self->get()->channels())"]],
-    ], "", ""],
+        ["class cv.Mat", "", ["/Simple"], [
+            // Public Attributes
 
-    ["cv.Mat.Mat", "", [], [], "", ""],
+            ["int", "cols", "", ["/RW"]],
+            ["uchar*", "data", "", ["/RW"]],
+            ["int", "dims", "", ["/RW"]],
+            ["int", "flags", "", ["/RW"]],
+            ["int", "rows", "", ["/RW"]],
+            ["size_t", "step", "", ["/RW"]],
 
-    ["cv.Mat.Mat", "", [], [
-        ["int", "rows", "", []],
-        ["int", "cols", "", []],
-        ["int", "type", "", []]
-    ], "", ""],
+            // Custom Attributes
 
-    ["cv.Mat.Mat", "", [], [
-        ["tuple_int_and_int", "size", "", ["/Expr=std::get<0>(size), std::get<1>(size)", "/Cast=Size"]],
-        ["int", "type", "", []]
-    ], "", ""],
+            ["int", "width", "", ["/RW", "=cols"]],
+            ["int", "height", "", ["/RW", "=rows"]],
+            ["std::tuple<int, int, int>", "shape", "", ["/R", "/RExpr=std::tuple<int, int, int>(__self->get()->rows, __self->get()->cols, __self->get()->channels())"]],
+            ["std::vector<int>", "sizes", "", ["/R", "/RExpr=std::vector<int>(__self->get()->size.p, __self->get()->size.p + __self->get()->dims)"]],
+            ["std::vector<size_t>", "steps", "", ["/R", "/RExpr=std::vector<size_t>(__self->get()->step.p, __self->get()->step.p + __self->get()->dims)"]],
+        ], "", ""],
 
-    ["cv.Mat.Mat", "", [], [
-        ["int", "rows", "", []],
-        ["int", "cols", "", []],
-        ["int", "type", "", []],
-        ["tuple_double_and_double_and_double_and_double", "s", "", ["/Expr=std::get<0>(s), std::get<1>(s), std::get<2>(s), std::get<3>(s)", "/Cast=Scalar"]],
-    ], "", ""],
+        // Public Member Functions
 
-    ["cv.Mat.Mat", "", [], [
-        ["tuple_int_and_int", "size", "", ["/Expr=std::get<0>(size), std::get<1>(size)", "/Cast=Size"]],
-        ["int", "type", "", []],
-        ["tuple_double_and_double_and_double_and_double", "s", "", ["/Expr=std::get<0>(s), std::get<1>(s), std::get<2>(s), std::get<3>(s)", "/Cast=Scalar"]],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [], "", ""],
 
-    ["cv.Mat.Mat", "", [], [
-        ["int", "rows", "", []],
-        ["int", "cols", "", []],
-        ["int", "type", "", []],
-        ["void*", "data", "", []],
-        ["size_t", "step", "cv::Mat::AUTO_STEP", []]
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["int", "rows", "", []],
+            ["int", "cols", "", []],
+            ["int", "type", "", []]
+        ], "", ""],
 
-    ["cv.Mat.Mat", "", [], [
-        ["Mat", "m", "", []]
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["Size", "size", "", []],
+            ["int", "type", "", []]
+        ], "", ""],
 
-    ["cv.Mat.Mat", "", [], [
-        ["Mat", "src", "", []],
-        ["tuple_int_and_int_and_int_and_int", "roi", "", ["/Expr=std::get<0>(roi), std::get<1>(roi), std::get<2>(roi), std::get<3>(roi)", "/Cast=Rect"]]
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["int", "rows", "", []],
+            ["int", "cols", "", []],
+            ["int", "type", "", []],
+            ["Scalar", "s", "", []],
+        ], "", ""],
 
-    ["cv.Mat.Mat", "", ["/Expr=$0, true"], [
-        ["std::vector<double>", "vec", "", []],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["Size", "size", "", []],
+            ["int", "type", "", []],
+            ["Scalar", "s", "", []],
+        ], "", ""],
 
-    ["cv.Mat.Mat", "", ["/Expr=$0, true"], [
-        ["std::vector<int>", "vec", "", []],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["vector_int", "sizes", "", ["/Ref", "/C"]],
+            ["int", "type", "", []],
+        ], "", ""],
 
-    ["cv.Mat.createFromArray", "cv::Mat", ["/External", "/S"], [
-        ["_variant_t", "array", "", []],
-        ["int", "depth", "-1", []],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["vector_int", "sizes", "", ["/Ref", "/C"]],
+            ["int", "type", "", []],
+            ["Scalar", "s", "", []],
+        ], "", ""],
 
-    ["cv.Mat.row", "cv::Mat", [], [
-        ["int", "y", "", []],
-    ], "", ""],
-    ["cv.Mat.col", "cv::Mat", [], [
-        ["int", "x", "", []],
-    ], "", ""],
-    ["cv.Mat.rowRange", "cv::Mat", [], [
-        ["int", "startrow", "", []],
-        ["int", "endrow", "", []],
-    ], "", ""],
-    ["cv.Mat.rowRange", "cv::Mat", [], [
-        ["Range", "r", "", []],
-    ], "", ""],
-    ["cv.Mat.colRange", "cv::Mat", [], [
-        ["int", "startcol", "", []],
-        ["int", "endcol", "", []],
-    ], "", ""],
-    ["cv.Mat.colRange", "cv::Mat", [], [
-        ["Range", "r", "", []],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["Mat", "m", "", ["/Ref", "/C"]]
+        ], "", ""],
 
-    ["cv.Mat.isContinuous", "bool", [], [], "", ""],
-    ["cv.Mat.isSubmatrix", "bool", [], [], "", ""],
-    ["cv.Mat.elemSize", "size_t", [], [], "", ""],
-    ["cv.Mat.elemSize1", "size_t", [], [], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["int", "rows", "", []],
+            ["int", "cols", "", []],
+            ["int", "type", "", []],
+            ["void*", "data", "", []],
+            ["size_t", "step", "Mat::AUTO_STEP", []]
+        ], "", ""],
 
-    ["cv.Mat.type", "int", [], [], "", ""],
-    ["cv.Mat.depth", "int", [], [], "", ""],
-    ["cv.Mat.channels", "int", [], [], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["Size", "size", "", []],
+            ["int", "type", "", []],
+            ["void*", "data", "", []],
+            ["size_t", "step", "Mat::AUTO_STEP", []]
+        ], "", ""],
 
-    ["cv.Mat.step1", "size_t", [], [
-        ["int", "i", "0", []]
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["vector_int", "sizes", "", ["/Ref", "/C"]],
+            ["int", "type", "", []],
+            ["void*", "data", "", []],
+            ["std::vector<size_t>", "steps", "std::vector<size_t>()", ["/Ref", "/C", "/Expr=static_cast<size_t*>(steps.empty() ? 0 : steps.data())"]]
+        ], "", ""],
 
-    ["cv.Mat.empty", "bool", [], [], "", ""],
-    ["cv.Mat.total", "size_t", [], [], "", ""],
-    ["cv.Mat.total", "size_t", [], [
-        ["int", "startDim", "", []],
-        ["int", "endDim", "INT_MAX", []],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["Mat", "m", "", ["/Ref", "/C"]],
+            ["Range", "rowRange", "", ["/Ref", "/C"]],
+            ["Range", "colRange", "Range::all()", ["/Ref", "/C"]],
+        ], "", ""],
 
-    ["cv.Mat.checkVector", "int", [], [
-        ["int", "elemChannels", "", []],
-        ["int", "depth", "-1", []],
-        ["int", "requireContinuous", "true", []],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["Mat", "m", "", ["/Ref", "/C"]],
+            ["Rect", "roi", "", []],
+        ], "", ""],
 
-    ["cv.Mat.ptr", "uchar*", [], [
-        ["int", "y", "0", []]
-    ], "", ""],
-    ["cv.Mat.ptr", "uchar*", [], [
-        ["int", "i0", "", []],
-        ["int", "i1", "", []],
-    ], "", ""],
-    ["cv.Mat.ptr", "uchar*", [], [
-        ["int", "i0", "", []],
-        ["int", "i1", "", []],
-        ["int", "i2", "", []],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["Mat", "m", "", ["/Ref", "/C"]],
+            ["std::vector<Range>", "ranges", "", ["/Ref", "/C"]],
+        ], "", ""],
 
-    ["cv.Mat.size", "tuple_int_and_int", ["/Output=std::tuple<int, int>(__self->get()->cols, __self->get()->rows)"], [], "", ""],
+        ["cv.Mat.Mat", "", ["/Expr=$0, true"], [
+            ["std::vector<double>", "vec", "", ["/Ref", "/C"]],
+        ], "", ""],
 
-    ["cv.Mat.pop_back", "void", [], [
-        ["size_t", "value", "", []]
-    ], "", ""],
-    ["cv.Mat.push_back", "void", [], [
-        ["Mat", "value", "", []]
-    ], "", ""],
-    ["cv.Mat.clone", "Mat", [], [], "", ""],
-    ["cv.Mat.clone", "Mat", ["=copy"], [], "", ""],
-    ["cv.Mat.reshape", "cv::Mat", [], [
-        ["int", "cn", "", []],
-        ["int", "rows", "0", []],
-    ], "", ""],
-    ["cv.Mat.diag", "cv::Mat", [], [
-        ["int", "d", "0", []],
-    ], "", ""],
-    ["cv.Mat.t", "cv::Mat", [], [], "", ""],
+        ["cv.Mat.Mat", "", ["/Expr=$0, true"], [
+            ["std::vector<int>", "vec", "", ["/Ref", "/C"]],
+        ], "", ""],
 
-    ["cv.Mat.convertToBitmap", "void*", ["/External"], [
-        ["bool", "copy", "true", []],
-    ], "", ""],
-    ["cv.Mat.convertToShow", "cv::Mat", ["/External"], [
-        ["Mat", "dst", "Mat::zeros(__self->get()->rows, __self->get()->cols, CV_8UC3)", ["/IO"]],
-        ["bool", "toRGB", "false", []],
-    ], "", ""],
-    ["cv.Mat.GdiplusResize", "cv::Mat", ["/External"], [
-        ["float", "newWidth", "", []],
-        ["float", "newHeight", "", []],
-        ["int", "interpolation", "7", []],
-    ], "", ""],
+        ["cv.Mat.Mat", "", [], [
+            ["cuda::GpuMat", "m", "", ["/Ref", "/C"]]
+        ], "", ""],
 
-    ["cv.Mat.asArray", "_variant_t", ["/External"], [], "", ""],
+        // ["cv.Mat.addref", "void", [], [], "", ""],
 
-    ["cv.Mat.eye", "cv::Mat", ["/S"], [
-        ["int", "rows", "", []],
-        ["int", "cols", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.adjustROI", `${ shared_ptr }<Mat>`, ["/Ref", "/WrapAs=::autoit::reference_internal"], [
+            ["int", "dtop", "", []],
+            ["int", "dbottom", "", []],
+            ["int", "dleft", "", []],
+            ["int", "dright", "", []],
+        ], "", ""],
 
-    ["cv.Mat.eye", "cv::Mat", ["/S", "/Expr=rows, rows, type"], [
-        ["int", "rows", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.assignTo", "void", [], [
+            ["Mat", "m", "", ["/Ref", "/C"]],
+            ["int", "type", "-1", []],
+        ], "", ""],
 
-    ["cv.Mat.eye", "cv::Mat", ["/S", "/Expr=cols, cols, type"], [
-        ["int", "cols", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.channels", "int", [], [], "", ""],
 
-    ["cv.Mat.zeros", "cv::Mat", ["/S"], [
-        ["int", "rows", "", []],
-        ["int", "cols", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.checkVector", "int", [], [
+            ["int", "elemChannels", "", []],
+            ["int", "depth", "-1", []],
+            ["int", "requireContinuous", "true", []],
+        ], "", ""],
 
-    ["cv.Mat.zeros", "cv::Mat", ["/S", "/Expr=1, cols, type"], [
-        ["int", "cols", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.clone", "Mat", [], [], "", ""],
+        ["cv.Mat.clone", "Mat", ["=copy"], [], "", ""],
 
-    ["cv.Mat.zeros", "cv::Mat", ["/S", "/Expr=rows, 1, type"], [
-        ["int", "rows", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.col", "Mat", [], [
+            ["int", "x", "", []],
+        ], "", ""],
 
-    ["cv.Mat.zeros", "cv::Mat", ["/S"], [
-        ["tuple_int_and_int", "size", "", ["/Expr=std::get<0>(size), std::get<1>(size)", "/Cast=Size"]],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.colRange", "Mat", [], [
+            ["int", "startcol", "", []],
+            ["int", "endcol", "__self->get()->cols", []],
+        ], "", ""],
+        ["cv.Mat.colRange", "Mat", [], [
+            ["Range", "r", "", ["/Ref", "/C"]],
+        ], "", ""],
 
-    ["cv.Mat.ones", "cv::Mat", ["/S"], [
-        ["int", "rows", "", []],
-        ["int", "cols", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.convertTo", "void", [], [
+            ["OutputArray", "m", "", []],
+            ["int", "rtype", "", []],
+            ["double", "alpha", "1.0", []],
+            ["double", "beta", "0.0", []],
+        ], "", ""],
+        ["cv.Mat.convertTo", "void", [], [
+            ["OutputArray", "m", "", []],
+            ["int", "rtype", "-1", []],
+            ["double", "alpha", "1.0", []],
+            ["double", "beta", "0.0", []],
+        ], "", ""],
 
-    ["cv.Mat.ones", "cv::Mat", ["/S", "/Expr=1, cols, type"], [
-        ["int", "cols", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.copySize", "void", [], [
+            ["Mat", "m", "", ["/Ref", "/C"]],
+        ], "", ""],
 
-    ["cv.Mat.ones", "cv::Mat", ["/S", "/Expr=rows, 1, type"], [
-        ["int", "rows", "", []],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.copyTo", "void", [], [
+            ["OutputArray", "m", "", []],
+        ], "", ""],
 
-    ["cv.Mat.ones", "cv::Mat", ["/S"], [
-        ["tuple_int_and_int", "size", "", ["/Expr=std::get<0>(size), std::get<1>(size)", "/Cast=Size"]],
-        ["int", "type", "", []],
-    ], "", ""],
+        ["cv.Mat.copyTo", "void", [], [
+            ["OutputArray", "m", "", []],
+            ["InputArray", "mask", "", []],
+        ], "", ""],
 
-    // Image file reading and writing
+        ["cv.Mat.cross", "Mat", [], [
+            ["InputArray", "m", "", []],
+        ], "", ""],
 
-    ["cv.haveImageReader", "bool", [], [
-        ["string", "filename", "", []],
-    ], "", ""],
+        ["cv.Mat.depth", "int", [], [], "", ""],
 
-    ["cv.haveImageWriter", "bool", [], [
-        ["string", "filename", "", []],
-    ], "", ""],
+        ["cv.Mat.diag", "Mat", [], [
+            ["int", "d", "0", []],
+        ], "", ""],
 
-    ["cv.imcount", "size_t", [], [
-        ["string", "filename", "", []],
-        ["int", "flags", "IMREAD_ANYCOLOR", []],
-    ], "", ""],
+        ["cv.Mat.dot", "double", [], [
+            ["InputArray", "m", "", []],
+        ], "", ""],
 
-    ["cv.imdecode", "Mat", [], [
-        ["Mat", "buf", "", []],
-        ["int", "flags", "", []],
-    ], "", ""],
+        ["cv.Mat.elemSize", "size_t", [], [], "", ""],
+        ["cv.Mat.elemSize1", "size_t", [], [], "", ""],
+        ["cv.Mat.empty", "bool", [], [], "", ""],
 
-    ["cv.imencode", "bool", [], [
-        ["string", "ext", "", []],
-        ["Mat", "img", "", []],
-        ["vector_uchar", "buf", "", ["/O"]],
-        ["vector_int", "params", "std::vector<int>()", []],
-    ], "", ""],
+        ["cv.Mat.getUMat", "UMat", [], [
+            ["AccessFlag", "accessFlags", "", []],
+            ["UMatUsageFlags", "usageFlags", "USAGE_DEFAULT", []],
+        ], "", ""],
 
-    ["cv.imread", "Mat", [], [
-        ["string", "filename", "", []],
-        ["int", "flags", "IMREAD_COLOR", []],
-    ], "", ""],
+        ["cv.Mat.inv", "Mat", [""], [
+            ["int", "method", "DECOMP_LU", []],
+        ], "", ""],
 
-    ["cv.imreadmulti", "bool", [], [
-        ["string", "filename", "", []],
-        ["vector_Mat", "mats", "", ["/O"]],
-        ["int", "flags", "IMREAD_ANYCOLOR", []],
-    ], "", ""],
+        ["cv.Mat.isContinuous", "bool", [], [], "", ""],
+        ["cv.Mat.isSubmatrix", "bool", [], [], "", ""],
 
-    ["cv.imreadmulti", "bool", [], [
-        ["string", "filename", "", []],
-        ["vector_Mat", "mats", "", ["/O"]],
-        ["int", "start", "", []],
-        ["int", "count", "", []],
-        ["int", "flags", "IMREAD_ANYCOLOR", []],
-    ], "", ""],
+        ["cv.Mat.locateROI", "void", [], [
+            ["Size", "wholeSize", "", ["/O", "/Ref"]],
+            ["Point", "ofs", "", ["/O", "/Ref"]],
+        ], "", ""],
 
-    ["cv.imwrite", "bool", [], [
-        ["string", "filename", "", []],
-        ["Mat", "img", "", []],
-        ["vector_int", "params", "std::vector<int>()", []],
-    ], "", ""],
+        ["cv.Mat.mul", "Mat", [], [
+            ["InputArray", "m", "", []],
+            ["double", "scale", "1", []],
+        ], "", ""],
 
-    ["cv.imwritemulti", "bool", [], [
-        ["string", "filename", "", []],
-        ["vector_Mat", "img", "", []],
-        ["vector_int", "params", "std::vector<int>()", []],
-    ], "", ""],
-];
+        ["cv.Mat.pop_back", "void", [], [
+            ["size_t", "value", "", []]
+        ], "", ""],
 
-const types = new Set(["int", "float", "double"]);
+        ["cv.Mat.ptr", "uchar*", [], [
+            ["int", "y", "0", []]
+        ], "", ""],
+        ["cv.Mat.ptr", "uchar*", [], [
+            ["int", "i0", "", []],
+            ["int", "i1", "", []],
+        ], "", ""],
+        ["cv.Mat.ptr", "uchar*", [], [
+            ["int", "i0", "", []],
+            ["int", "i1", "", []],
+            ["int", "i2", "", []],
+        ], "", ""],
+        ["cv.Mat.ptr", "uchar*", [], [
+            ["std::vector<int>", "idx", "std::vector<int>()", ["/Ref", "/C", "/Expr=idx.data()"]]
+        ], "", ""],
 
-for (const type of types) {
-    declarations.push(["cv.Mat.Mat", "", [`=createFromVectorOf${ type[0].toUpperCase() }${ type.slice(1) }`, "/Expr=$0, true"], [
-        [`vector_${ type }`, "vec", "", []],
-    ], "", ""]);
-}
+        ["cv.Mat.push_back", "void", [], [
+            ["Mat", "m", "", ["/Ref", "/C"]]
+        ], "", ""],
 
-for (const args of [
-    [
-        ["int", "i0", "", []],
-    ],
-    [
-        ["int", "row", "", []],
-        ["int", "col", "", []],
-    ],
-    [
-        ["int", "i0", "", []],
-        ["int", "i1", "", []],
-        ["int", "i2", "", []],
-    ],
-    [
-        ["tuple_int_and_int", "pt", "", []],
-    ],
-]) {
-    declarations.push(...[
-        ["cv.Mat.at", "double", ["/External"], args, "", ""],
-        ["cv.Mat.set_at", "void", ["/External"], args.concat([["double", "value", "", []]]), "", ""],
-        ["cv.Mat.at", "double", ["/ExternalNoDecl", "/attr=propget", "=get_Item", "/idlname=Item", "/id=DISPID_VALUE"], args, "", ""],
-        ["cv.Mat.set_at", "void", ["/ExternalNoDecl", "/attr=propput", "=put_Item", "/idlname=Item", "/id=DISPID_VALUE"], args.concat([["double", "value", "", []]]), "", ""],
-    ]);
-}
+        // ["cv.Mat.release", "void", [], [], "", ""],
 
-module.exports = declarations;
+        ["cv.Mat.reserve", "void", [], [
+            ["size_t", "sz", "", []],
+        ], "", ""],
+
+        ["cv.Mat.reserveBuffer", "void", [], [
+            ["size_t", "sz", "", []],
+        ], "", ""],
+
+        ["cv.Mat.reshape", "Mat", [], [
+            ["int", "cn", "", []],
+            ["int", "rows", "0", []],
+        ], "", ""],
+
+        ["cv.Mat.reshape", "Mat", [], [
+            ["int", "cn", "", []],
+            ["std::vector<int>", "newshape", "", ["/Ref", "/C"]],
+        ], "", ""],
+
+        ["cv.Mat.resize", "void", [], [
+            ["size_t", "sz", "", []],
+        ], "", ""],
+
+        ["cv.Mat.resize", "void", [], [
+            ["size_t", "sz", "", []],
+            ["Scalar", "s", "", ["/Ref", "/C"]],
+        ], "", ""],
+
+        ["cv.Mat.row", "Mat", [], [
+            ["int", "y", "", []],
+        ], "", ""],
+        ["cv.Mat.rowRange", "Mat", [], [
+            ["int", "startrow", "", []],
+            ["int", "endrow", "__self->get()->rows", []],
+        ], "", ""],
+        ["cv.Mat.rowRange", "Mat", [], [
+            ["Range", "r", "", []],
+        ], "", ""],
+
+        ["cv.Mat.setTo", "void", [], [
+            ["InputArray", "value", "", []],
+            ["InputArray", "mask", "noArray()", []],
+        ], "", ""],
+
+        ["cv.Mat.size", "Size", [], [], "", ""],
+
+        ["cv.Mat.step1", "size_t", [], [
+            ["int", "i", "0", []]
+        ], "", ""],
+
+        ["cv.Mat.t", "Mat", [], [], "", ""],
+
+        ["cv.Mat.total", "size_t", [], [], "", ""],
+        ["cv.Mat.total", "size_t", [], [
+            ["int", "startDim", "", []],
+            ["int", "endDim", "INT_MAX", []],
+        ], "", ""],
+
+        ["cv.Mat.type", "int", [], [], "", ""],
+
+        ["cv.Mat.updateContinuityFlag", "void", [], [], "", ""],
+
+        // Static Public Member Functions
+
+        ["cv.Mat.diag", "Mat", ["/S"], [
+            ["Mat", "d", "", ["/Ref", "/C"]],
+        ], "", ""],
+
+        ["cv.Mat.eye", "Mat", ["/S"], [
+            ["int", "rows", "", []],
+            ["int", "cols", "", []],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.eye", "Mat", ["/S"], [
+            ["int", "rows", "", ["/Expr=rows, rows"]],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.eye", "Mat", ["/S"], [
+            ["int", "cols", "", ["/Expr=cols, cols"]],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.eye", "Mat", ["/S"], [
+            ["Size", "size", "", []],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.ones", "Mat", ["/S"], [
+            ["int", "rows", "", []],
+            ["int", "cols", "", []],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.ones", "Mat", ["/S"], [
+            ["int", "cols", "", ["/Expr=1, cols"]],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.ones", "Mat", ["/S"], [
+            ["int", "rows", "", ["/Expr=rows, 1"]],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.ones", "Mat", ["/S"], [
+            ["Size", "size", "", []],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.ones", "Mat", ["/S"], [
+            ["std::vector<int>", "sizes", "", ["/Expr=sizes.size(), sizes.data()"]],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.zeros", "Mat", ["/S"], [
+            ["int", "rows", "", []],
+            ["int", "cols", "", []],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.zeros", "Mat", ["/S"], [
+            ["int", "cols", "", ["/Expr=1, cols"]],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.zeros", "Mat", ["/S"], [
+            ["int", "rows", "", ["/Expr=rows, 1"]],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.zeros", "Mat", ["/S"], [
+            ["Size", "size", "", []],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        ["cv.Mat.zeros", "Mat", ["/S"], [
+            ["std::vector<int>", "sizes", "", ["/Expr=sizes.size(), sizes.data()"]],
+            ["int", "type", "", []],
+        ], "", ""],
+
+        // Extended Functions
+
+        ["cv.Mat.makeInputArray", `${ shared_ptr }<_InputArray>`, ["/Call=this->createInputArray", `/Output=${ shared_ptr }<_InputArray>($0)`], [], "", ""],
+        ["cv.Mat.makeOutputArray", `${ shared_ptr }<_OutputArray>`, ["/Call=this->createOutputArray", `/Output=${ shared_ptr }<_OutputArray>($0)`], [], "", ""],
+        ["cv.Mat.makeInputOutputArray", `${ shared_ptr }<_InputOutputArray>`, ["/Call=this->createInputOutputArray", `/Output=${ shared_ptr }<_InputOutputArray>($0)`], [], "", ""],
+
+        ["cv.Mat.convertToShow", "void", ["/Call=::autoit::cvextra::convertToShow", "/Expr=*__self->get(), $0"], [
+            ["Mat", "dst", "Mat::zeros(__self->get()->rows, __self->get()->cols, CV_8UC3)", ["/IO"]],
+            ["bool", "toRGB", "false", []],
+        ], "", ""],
+        ["cv.Mat.convertToBitmap", "void*", ["/Call=::autoit::cvextra::convertToBitmap", "/Expr=*__self->get(), $0"], [
+            ["bool", "copy", "true", []],
+        ], "", ""],
+        ["cv.Mat.GdiplusResize", "void", ["/Call=::autoit::cvextra::GdiplusResize", "/Expr=*__self->get(), $0"], [
+            ["Mat", "dst", "", ["/O"]],
+            ["float", "newWidth", "", []],
+            ["float", "newHeight", "", []],
+            ["int", "interpolation", "7", []],
+        ], "", ""],
+
+        ["cv.Mat.createFromArray", "Mat", ["/External", "/S"], [
+            ["_variant_t", "array", "", []],
+            ["int", "depth", "-1", []],
+        ], "", ""],
+
+        ["cv.Mat.asArray", "_variant_t", ["/External"], [], "", ""],
+
+        ["cv.Mat.PixelSearch", "_variant_t", ["/External"], [
+            ["Scalar", "color", "", []],
+            ["int", "left", "0", []],
+            ["int", "top", "0", []],
+            ["int", "right", "__self->get()->cols - 1", []],
+            ["int", "bottom", "__self->get()->rows - 1", []],
+            ["uchar", "shade_variation", "0", []],
+            ["int", "step", "1", []],
+        ], "", ""],
+
+        ["cv.Mat.PixelSearch", "_variant_t", ["/External"], [
+            ["Scalar", "color", "", []],
+            ["Rect", "rect", "cv::Rect(0, 0, __self->get()->cols, __self->get()->rows)", []],
+            ["uchar", "shade_variation", "0", []],
+            ["int", "step", "1", []],
+        ], "", ""],
+
+        ["cv.Mat.PixelChecksum", "size_t", ["/External"], [
+            ["int", "left", "0", []],
+            ["int", "top", "0", []],
+            ["int", "right", "__self->get()->cols - 1", []],
+            ["int", "bottom", "__self->get()->rows - 1", []],
+            ["int", "step", "1", []],
+            ["int", "mode", "0", []],
+        ], "", ""],
+
+        ["cv.Mat.PixelChecksum", "size_t", ["/External"], [
+            ["Rect", "rect", "cv::Rect(0, 0, __self->get()->cols, __self->get()->rows)", []],
+            ["int", "step", "1", []],
+            ["int", "mode", "0", []],
+        ], "", ""],
+    ];
+
+    const types = new Set(["int", "float", "double"]);
+
+    for (const _Tp of ["b", "s", "w"]) {
+        for (const cn of [2, 3, 4]) { // eslint-disable-line no-magic-numbers
+            types.add(`Vec${ cn }${ _Tp }`);
+        }
+    }
+
+    for (const cn of [2, 3, 4, 6, 8]) { // eslint-disable-line no-magic-numbers
+        types.add(`Vec${ cn }i`);
+    }
+
+    for (const _Tp of ["f", "d"]) {
+        for (const cn of [2, 3, 4, 6]) { // eslint-disable-line no-magic-numbers
+            types.add(`Vec${ cn }${ _Tp }`);
+        }
+    }
+
+    for (const type of types) {
+        if (type.startsWith("Vec")) {
+            declarations.push(["cv.Mat.Mat", "", [`=createFrom${ type }`, "/Expr=$0, true"], [
+                [type, "vec", "", []],
+            ], "", ""]);
+        }
+
+        declarations.push(["cv.Mat.Mat", "", [`=createFromVectorOf${ type[0].toUpperCase() }${ type.slice(1) }`, "/Expr=$0, true"], [
+            [`vector_${ type }`, "vec", "", []],
+        ], "", ""]);
+    }
+
+    for (const args of [
+        [
+            ["int", "i0", "", []],
+        ],
+        [
+            ["int", "row", "", []],
+            ["int", "col", "", []],
+        ],
+        [
+            ["int", "i0", "", []],
+            ["int", "i1", "", []],
+            ["int", "i2", "", []],
+        ],
+        [
+            ["Point", "pt", "", []],
+        ],
+        [
+            ["std::vector<int>", "idx", "", ["/Ref", "/C", "/Expr=idx.data()"]]
+        ],
+    ]) {
+        declarations.push(...[
+            ["cv.Mat.Point_at", "Point2d", ["/External"], args, "", ""],
+            ["cv.Mat.at", "double", ["/External"], args, "", ""],
+            ["cv.Mat.set_at", "void", ["/External"], args.concat([["double", "value", "", []]]), "", ""],
+            ["cv.Mat.at", "double", ["/ExternalNoDecl", "/attr=propget", "=get_Item", "/idlname=Item", "/id=DISPID_VALUE"], args, "", ""],
+            ["cv.Mat.set_at", "void", ["/ExternalNoDecl", "/attr=propput", "=put_Item", "/idlname=Item", "/id=DISPID_VALUE"], args.concat([["double", "value", "", []]]), "", ""],
+        ]);
+
+        const argexpr = args.map(([, callarg, , arg_modifiers]) => {
+            for (const modifier of arg_modifiers) {
+                if (modifier.startsWith("/Expr=")) {
+                    callarg = modifier.slice("/Expr=".length);
+                }
+            }
+            return callarg;
+        }).join(", ");
+
+        for (const type of types) {
+            declarations.push(...[
+                [`cv.Mat.at<${ type }>`, type, [`=${ type }_at`], args, "", ""],
+                [`cv.Mat.at<${ type }>`, "void", [`=${ type }_set_at`, `/Expr=${ argexpr }) = (value`], args.concat([[type, "value", "", []]]), "", ""],
+            ]);
+        }
+    }
+
+    return declarations;
+};

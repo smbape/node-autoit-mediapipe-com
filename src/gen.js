@@ -2,8 +2,8 @@
 
 const fs = require("node:fs");
 const fsPromises = require("node:fs/promises");
-const sysPath = require("path");
-const {spawn} = require("child_process");
+const sysPath = require("node:path");
+const {spawn} = require("node:child_process");
 
 const mkdirp = require("mkdirp");
 const waterfall = require("async/waterfall");
@@ -14,7 +14,6 @@ const vector_conversion = require("./vector_conversion");
 const OpenCV_VERSION = "opencv-4.7.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
 const MEDIAPIPE_VERSION = "0.9.1";
-const OPENCV_COM_VERSION = "2.3.1";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
@@ -49,6 +48,15 @@ const parseArguments = PROJECT_DIR => {
             "std",
         ]),
         other_namespaces: new Set([]),
+        remove_namespaces: new Set([
+            "cv",
+            "google::protobuf",
+            "mediapipe",
+            "mediapipe::autoit",
+            "mediapipe::autoit::solution_base",
+            "mediapipe::autoit::solutions",
+            "std",
+        ]),
         build: new Set(),
         notest: new Set(),
         skip: new Set(),
@@ -81,12 +89,12 @@ const parseArguments = PROJECT_DIR => {
 
             // from mediapipe.python import *
             // import mediapipe.python.solutions as solutions
-            if (fqn.startsWith("mediapipe::autoit::")) {
+            if (fqn.startsWith("mediapipe::autoit::") || fqn.startsWith("mediapipe::tasks::autoit::")) {
                 const parts = fqn.split("::");
 
                 for (let i = 1; i < parts.length; i++) {
                     generator.add_func([`${ parts.slice(0, i).join(".") }.`, "", ["/Properties"], [
-                        [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this"]],
+                    [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "/S", "=this"]],
                     ], "", ""]);
                 }
 
@@ -145,18 +153,6 @@ const parseArguments = PROJECT_DIR => {
                 }).join(`\n${ " ".repeat(16) }`) }
             }`.replace(/^ {12}/mg, "");
         },
-        // updateAssembly: (assemblies, debugPostFix, opts) => {
-        //     assemblies.push("", `
-        //         <dependency>
-        //             <dependentAssembly>
-        //                 <assemblyIdentity
-        //                     type="win32"
-        //                     name="autoit_opencv_com470${ debugPostFix }.sxs"
-        //                     version="${ OPENCV_COM_VERSION }.0" />
-        //             </dependentAssembly>
-        //         </dependency>
-        //     `.replace(/^ {16}/mg, "").trim());
-        // }
     };
 
     for (const opt of ["iface", "hdr", "impl", "idl", "manifest", "rgs", "res", "save"]) {
@@ -194,7 +190,6 @@ const {
     CUSTOM_CLASSES,
 } = require("./constants");
 
-const {replaceAliases} = require("./alias");
 const {findFile} = require("./FileUtils");
 const custom_declarations = require("./custom_declarations");
 const AutoItGenerator = require("./AutoItGenerator");
@@ -293,10 +288,8 @@ waterfall([
 
             const buffer = Buffer.concat(buffers, nlen);
 
-            const json = JSON.parse(replaceAliases(buffer.toString(), options));
-            json.decls.push(...custom_declarations);
-
-            const configuration = JSON.parse(replaceAliases(JSON.stringify(json), options));
+            const configuration = JSON.parse(buffer.toString());
+            configuration.decls.push(...custom_declarations.load(options));
             configuration.generated_include = generated_include;
 
             for (const [name, modifiers] of CUSTOM_CLASSES) {

@@ -31,7 +31,10 @@ Object.assign(exports, {
     restoreOriginalType: (type, options = {}) => {
         const shared_ptr = removeNamespaces(options.shared_ptr, options);
 
+        const templates = new RegExp(`\\b(?:${ ["std::map", "std::pair", "std::tuple", "std::vector", "cv::GArray", "cv::GOpaque", options.shared_ptr].join("|") })<`, "g");
+
         type = type
+            .replace(templates, match => match.slice(match.indexOf("::") + "::".length))
             .replace(/_and_/g, ", ")
             .replace(/_end_/g, ">");
 
@@ -195,7 +198,8 @@ Object.assign(exports, {
         const cpptype = generator.getCppType(type, coclass, options);
         const is_static = !coclass.is_class && !coclass.is_struct || modifiers.includes("/S");
         const is_enum = modifiers.includes("/Enum");
-        const is_external = modifiers.includes("/External");
+        const no_external_decl = modifiers.includes("/ExternalNoDecl");
+        const is_external = no_external_decl || modifiers.includes("/External");
         const has_docs = !fqn.endsWith("AndVariant");
 
         let is_private = true;

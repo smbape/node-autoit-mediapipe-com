@@ -7,11 +7,14 @@
 #include <atlctl.h>
 #include <atlsafe.h>
 #include <comutil.h>
+#include <chrono>
 #include <iostream>
 #include <map>
 #include <memory>
+#include <mutex>
 #include <numeric>
 #include <OleAuto.h>
+#include <queue>
 #include <sstream>
 #include <string>
 #include <tuple>
@@ -680,6 +683,7 @@ extern const HRESULT autoit_from(_Tp const& in_val, _Tp*& out_val) {
 
 #pragma push_macro("CV_EXPORTS_W_SIMPLE")
 #pragma push_macro("CV_EXPORTS_W")
+#pragma push_macro("CV_WRAP")
 #pragma push_macro("CV_OUT")
 #define MapOfStringAndVariant std::map<std::string, _variant_t>
 
@@ -693,12 +697,26 @@ extern const HRESULT autoit_from(_Tp const& in_val, _Tp*& out_val) {
 #endif
 #define CV_EXPORTS_W
 
+#ifdef CV_WRAP
+#undef CV_WRAP
+#endif
+#define CV_WRAP
+
 #ifdef CV_OUT
 #undef CV_OUT
 #endif
 #define CV_OUT
 
-class CV_EXPORTS_W_SIMPLE NamedParameters : public MapOfStringAndVariant {};
+class CV_EXPORTS_W_SIMPLE NamedParameters : public MapOfStringAndVariant {
+public:
+	CV_WRAP static bool isNamedParameters(const NamedParameters& value) {
+		return true;
+	}
+
+	CV_WRAP static bool isNamedParameters(VARIANT* value = nullptr) {
+		return false;
+	}
+};
 
 namespace autoit {
 	template <typename _Tp>
@@ -827,8 +845,34 @@ namespace autoit {
 	);
 }
 
+namespace com {
+	class CV_EXPORTS_W Thread {
+	public:
+		using Function = void (*)();
+
+		CV_WRAP Thread(void* func) : m_func(reinterpret_cast<Function>(func)) {}
+		CV_WRAP void start();
+		CV_WRAP void join();
+	private:
+		Function m_func = nullptr;
+		std::unique_ptr<std::thread> m_thread;
+	};
+
+	class CV_EXPORTS_W ThreadSafeQueue : public std::queue<VARIANT*>
+	{
+	public:
+		CV_WRAP ThreadSafeQueue() {}
+		CV_WRAP void push(VARIANT* entry);
+		CV_WRAP VARIANT* get();
+		CV_WRAP void clear();
+	private:
+		std::mutex m_mutex;
+	};
+}
+
 #pragma pop_macro("CV_EXPORTS_W_SIMPLE")
 #pragma pop_macro("CV_EXPORTS_W")
+#pragma pop_macro("CV_WRAP")
 #pragma pop_macro("CV_OUT")
 #undef MapOfStringAndVariant
 

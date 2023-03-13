@@ -388,5 +388,66 @@ def add_com_library(name, intdir, compilation_mode):
 
             # solution_base
             "//mediapipe/calculators/util:logic_calculator_cc_proto",
+
+            # task_runner
+            # "//mediapipe/framework:calculator_cc_proto",
+            "//mediapipe/framework/api2:builder",
+            # "//mediapipe/framework/port:parse_text_proto",
+            "//mediapipe/tasks/cc/core:mediapipe_builtin_op_resolver",
+            "//mediapipe/tasks/cc/core:task_runner",
+            "@org_tensorflow//tensorflow/lite/core/api:op_resolver",
+
+            # rect
+            "//mediapipe/framework/formats:rect_cc_proto",
+
+            # landmark
+            "//mediapipe/framework/formats:landmark_cc_proto",
+
+            # landmark_detection_result
+            # ":landmark",
+            # ":rect",
+            "//mediapipe/framework/formats:classification_cc_proto",
+            # "//mediapipe/framework/formats:landmark_cc_proto",
+            "//mediapipe/tasks/cc/components/containers/proto:landmarks_detection_result_cc_proto",
+
+            # category
+            # "//mediapipe/framework/formats:classification_cc_proto",
+
+            # detections
+            # ":bounding_box",
+            # ":category",
+            # "//mediapipe/framework/formats:detection_cc_proto",
+            "//mediapipe/framework/formats:location_data_cc_proto",
+
+            # classification_result
+            # ":category",
+            # "//mediapipe/framework/formats:classification_cc_proto",
+            "//mediapipe/tasks/cc/components/containers/proto:classifications_cc_proto",
+
+            # embedding_result
+            "//mediapipe/tasks/cc/components/containers/proto:embeddings_cc_proto",
+
+            # classifier_options
+            "//mediapipe/tasks/cc/components/processors/proto:classifier_options_cc_proto",
+
+            # audio_classifier
+            "//mediapipe/tasks/cc/audio/audio_classifier/proto:audio_classifier_graph_options_cc_proto",
+            # "//mediapipe/tasks/cc/components/containers/proto:classifications_cc_proto",
+            # "//mediapipe/tasks/cc/components/processors/proto:classifier_options_cc_proto",
+
+            # audio_embedder
+            "//mediapipe/tasks/cc/audio/audio_embedder/proto:audio_embedder_graph_options_cc_proto",
+            # "//mediapipe/tasks/cc/components/containers/proto:embeddings_cc_proto",
+            "//mediapipe/tasks/cc/components/processors/proto:embedder_options_cc_proto",
+
+            # text_classifier
+            # "//mediapipe/tasks/cc/components/containers/proto:classifications_cc_proto",
+            # "//mediapipe/tasks/cc/components/processors/proto:classifier_options_cc_proto",
+            "//mediapipe/tasks/cc/text/text_classifier/proto:text_classifier_graph_options_cc_proto",
+
+            # text_embedder
+            # "//mediapipe/tasks/cc/components/containers/proto:embeddings_cc_proto",
+            # "//mediapipe/tasks/cc/components/processors/proto:embedder_options_cc_proto",
+            "//mediapipe/tasks/cc/text/text_embedder/proto:text_embedder_graph_options_cc_proto",
         ],
     )

@@ -1,5 +1,3 @@
-const Point = "std::tuple<int, int>";
-
 module.exports = (header = [], impl = [], options = {}) => {
     impl.push(`
         #include "Cv_Mat_Object.h"
@@ -21,13 +19,48 @@ module.exports = (header = [], impl = [], options = {}) => {
             ["int", "i2", "", []],
         ],
         [
-            [Point, "pt", "", []],
+            ["cv::Point", "pt", "", []],
+        ],
+        [
+            ["std::vector<int>", "idx", "", ["/Ref", "/C", "/Expr=idx.data()"]]
         ],
     ]) {
-        const argdecl = args.map(([argtype, argname]) => `${ argtype }${ argtype === Point ? "&" : "" } ${ argname }`).join(", ");
-        const argexpr = args.map(([argtype, argname]) => (argtype === Point ? `cv::Point(std::get<0>(${ argname }), std::get<1>(${ argname }))` : argname)).join(", ");
+        const argdecl = args.map(([argtype, argname]) => `${ argtype === "std::vector<int>" ? "const " : "" }${ argtype }${ argtype !== "int" ? "&" : "" } ${ argname }`).join(", ");
+        const argexpr = args.map(([, callarg, , arg_modifiers]) => {
+            for (const modifier of arg_modifiers) {
+                if (modifier.startsWith("/Expr=")) {
+                    callarg = modifier.slice("/Expr=".length);
+                }
+            }
+            return callarg;
+        }).join(", ");
 
         impl.push(`
+            const cv::Point2d CCv_Mat_Object::Point_at(${ argdecl }, HRESULT& hr) {
+                using namespace cv;
+                const auto& m = *__self->get();
+
+                switch (m.depth()) {
+                case CV_8U:
+                    return Point2d(m.at<Vec2b>(${ argexpr })[0], m.at<Vec2b>(${ argexpr })[1]);
+                case CV_8S:
+                    return Point2d(m.at<Vec<char, 2>>(${ argexpr })[0], m.at<Vec<char, 2>>(${ argexpr })[1]);
+                case CV_16U:
+                    return Point2d(m.at<Vec2w>(${ argexpr })[0], m.at<Vec2w>(${ argexpr })[1]);
+                case CV_16S:
+                    return Point2d(m.at<Vec2s>(${ argexpr })[0], m.at<Vec2s>(${ argexpr })[1]);
+                case CV_32S:
+                    return Point2d(m.at<Vec2i>(${ argexpr })[0], m.at<Vec2i>(${ argexpr })[1]);
+                case CV_32F:
+                    return Point2d(m.at<Vec2f>(${ argexpr })[0], m.at<Vec2f>(${ argexpr })[1]);
+                case CV_64F:
+                    return Point2d(m.at<Vec2d>(${ argexpr })[0], m.at<Vec2d>(${ argexpr })[1]);
+                default:
+                    hr = E_INVALIDARG;
+                    return Point2d();
+                }
+            }
+
             const double CCv_Mat_Object::at(${ argdecl }, HRESULT& hr) {
                 const auto& m = *__self->get();
 
@@ -82,7 +115,7 @@ module.exports = (header = [], impl = [], options = {}) => {
                 }
             }
 
-        `.trim().replace(/^ {12}/mg, ""));
+        `.trim().replace(/^ {12}/mg, ""), "");
     }
 
     return [header.join("\n"), impl.join("\n")];

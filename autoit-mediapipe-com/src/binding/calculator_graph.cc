@@ -1,6 +1,6 @@
 #include "Mediapipe_CalculatorGraph_Object.h"
 
-PTR_BRIDGE_IMPL(mediapipe::autoit::StreamPacketCallback)
+PTR_BRIDGE_IMPL(mediapipe::autoit::PacketCallback)
 
 using namespace mediapipe;
 using namespace mediapipe::autoit;
@@ -64,7 +64,7 @@ namespace mediapipe {
 			void observe_output_stream(
 				CalculatorGraph* self,
 				const std::string& stream_name,
-				StreamPacketCallback callback_fn,
+				PacketCallback callback_fn,
 				bool observe_timestamp_bounds
 			) {
 				RaiseAutoItErrorIfNotOk(self->ObserveOutputStream(

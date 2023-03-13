@@ -29,8 +29,8 @@ namespace google {
 				CV_WRAP_AS(length) size_t Length() const;
 				CV_WRAP size_t size() const;
 
-				CV_WRAP_AS(get Item) _variant_t GetItem(SSIZE_T index) const;
-				CV_WRAP_AS(put Item) void SetItem(SSIZE_T index, _variant_t arg);
+				CV_WRAP_AS(get_default Item) _variant_t GetItem(SSIZE_T index) const;
+				CV_WRAP_AS(put_default Item) void SetItem(SSIZE_T index, _variant_t arg);
 				CV_WRAP_AS(splice) void Splice(CV_OUT std::vector<_variant_t>& list, SSIZE_T start = 0);
 				CV_WRAP_AS(splice) void Splice(CV_OUT std::vector<_variant_t>& list, SSIZE_T start, SSIZE_T deleteCount);
 				CV_WRAP_AS(slice) void Slice(CV_OUT std::vector<_variant_t>& list, SSIZE_T start = 0) const;

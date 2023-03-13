@@ -62,8 +62,8 @@ namespace google {
 				CV_WRAP size_t size() const;
 				CV_WRAP_AS(get) _variant_t Get(_variant_t key, _variant_t default_value = mediapipe::autoit::default_variant()) const;
 
-				CV_WRAP_AS(get Item) _variant_t GetItem(_variant_t key) const;
-				CV_WRAP_AS(put Item) void SetItem(_variant_t key, _variant_t arg);
+				CV_WRAP_AS(get_default Item) _variant_t GetItem(_variant_t key) const;
+				CV_WRAP_AS(put_default Item) void SetItem(_variant_t key, _variant_t arg);
 
 				CV_WRAP_AS(setFields) void SetFields(std::vector<std::pair<_variant_t, _variant_t>>& fields);
 

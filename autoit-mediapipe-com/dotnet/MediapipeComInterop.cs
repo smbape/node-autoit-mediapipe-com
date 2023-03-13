@@ -193,7 +193,15 @@ public static class MediapipeComInterop
         DllActivateManifest();
 
         try {
-            string[] namespaces = { "", "Mediapipe.", "Mediapipe.mediapipe.", "Mediapipe.mediapipe.autoit.", "Mediapipe.mediapipe.autoit._framework_bindings." };
+            string[] namespaces = {
+                "",
+                "Mediapipe.",
+                "Mediapipe.mediapipe.",
+                "Mediapipe.mediapipe.autoit.",
+                "Mediapipe.mediapipe.autoit._framework_bindings.",
+                "Mediapipe.com.",
+                "Mediapipe.std."
+            };
             foreach (string itNamespace in namespaces)
             {
                 Type ObjType = Type.GetTypeFromProgID(itNamespace + progID);

@@ -36,11 +36,11 @@ index ebe13f05c7..e38cf218ec 100755
          npos = decl_str.find("CV_EXPORTS_AS")
          if npos >= 0:
              arg, npos3 = self.get_macro_arg(decl_str, npos)
-+            if arg.startswith("get ") or arg.startswith("put "):
++            if arg.startswith("get ") or arg.startswith("put ") or arg.startswith("get_default ") or arg.startswith("put_default "):
 +                accessor = arg[:3]
-+                arg = arg[4:]
++                arg = arg[4:] if arg.startswith("get ") or arg.startswith("put ") else arg[12:]
 +                func_modlist.append("/attr=prop" + accessor)
-+                func_modlist.append("/id=DISPID_VALUE")
++                if arg.startswith("get_default ") or arg.startswith("put_default ") : func_modlist.append("/id=DISPID_VALUE")
 +                func_modlist.append("/idlname=" + arg)
 +                arg = accessor + "_" + arg
              func_modlist.append("="+arg)
@@ -48,11 +48,11 @@ index ebe13f05c7..e38cf218ec 100755
          npos = decl_str.find("CV_WRAP_AS")
          if npos >= 0:
              arg, npos3 = self.get_macro_arg(decl_str, npos)
-+            if arg.startswith("get ") or arg.startswith("put "):
++            if arg.startswith("get ") or arg.startswith("put ") or arg.startswith("get_default ") or arg.startswith("put_default "):
 +                accessor = arg[:3]
-+                arg = arg[4:]
++                arg = arg[4:] if arg.startswith("get ") or arg.startswith("put ") else arg[12:]
 +                func_modlist.append("/attr=prop" + accessor)
-+                func_modlist.append("/id=DISPID_VALUE")
++                if arg.startswith("get_default ") or arg.startswith("put_default ") : func_modlist.append("/id=DISPID_VALUE")
 +                func_modlist.append("/idlname=" + arg)
 +                arg = accessor + "_" + arg
              func_modlist.append("="+arg)

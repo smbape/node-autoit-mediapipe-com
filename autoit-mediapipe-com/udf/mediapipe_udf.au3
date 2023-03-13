@@ -14,7 +14,9 @@ Func _Mediapipe_ObjCreate($sClassname)
 			"Mediapipe.", _
 			"Mediapipe.mediapipe.", _
 			"Mediapipe.mediapipe.autoit.", _
-			"Mediapipe.mediapipe.autoit._framework_bindings." _
+			"Mediapipe.mediapipe.autoit._framework_bindings." _, _
+			"Mediapipe.com." _, _
+			"Mediapipe.std." _
 			]
 	Local $siClassname, $oObj
 

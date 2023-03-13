@@ -49,7 +49,7 @@ module.exports = [
 
     ["mediapipe.CalculatorGraph.observe_output_stream", "void", ["/Call=mediapipe::autoit::calculator_graph::observe_output_stream", "/Expr=__self->get(), $0"], [
         ["std::string", "stream_name", "", []],
-        ["mediapipe::autoit::StreamPacketCallback", "callback_fn", "", []],
+        ["mediapipe::autoit::PacketCallback", "callback_fn", "", []],
         ["bool", "observe_timestamp_bounds", "false", []],
     ], "", ""],
 
