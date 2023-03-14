@@ -31,6 +31,7 @@ const parseArguments = PROJECT_DIR => {
         shared_ptr: "std::shared_ptr",
         make_shared: "std::make_shared",
         assert: "AUTOIT_ASSERT",
+        maxFilenameLength: 120,
         progid: progid => {
             if (progids.has(progid)) {
                 return progids.get(progid);

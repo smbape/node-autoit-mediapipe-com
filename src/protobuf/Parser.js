@@ -97,38 +97,23 @@ class Parser {
             return SCALAR_TYPES.get(type);
         }
 
-        if (type[0] === ".") {
-            const message = type.slice(1);
+        const pkg = type[0] === "." ? "" : `${ this.package }${ scopes.join(".") }.`;
+        const message = type[0] === "." ? type.slice(1) : type;
+        scopes = pkg.split(".");
 
-            // lookup in exports
-            if (this.exports.has(message)) {
-                return message.replaceAll(".", "::");
+        // lookup in exports
+        for (let i = scopes.length - 1; i >= -1; i--) {
+            const fqn = i === -1 ? message : `${ scopes.slice(0, i).join(".") }.${ message }`;
+            if (this.exports.has(fqn)) {
+                return fqn.replaceAll(".", "::");
             }
+        }
 
-            // lookup in imports
-            if (this.imports.has(message)) {
-                return message.replaceAll(".", "::");
-            }
-        } else {
-            const message = type;
-
-            // lookup in exports
-            for (let i = scopes.length - 1; i >= -1; i--) {
-                const fqn = i === -1 ? this.package + message : `${ this.package }${ scopes.slice(0, i + 1) }.${ message }`;
-                if (this.exports.has(fqn)) {
-                    return fqn.replaceAll(".", "::");
-                }
-            }
-
-            // lookup in imports with package
-            const imported = this.package + message;
-            if (this.imports.has(imported)) {
-                return imported.replaceAll(".", "::");
-            }
-
-            // lookup in imports without package
-            if (this.imports.has(message)) {
-                return message.replaceAll(".", "::");
+        // lookup in imports
+        for (let i = scopes.length - 1; i >= -1; i--) {
+            const fqn = i === -1 ? message : `${ scopes.slice(0, i).join(".") }.${ message }`;
+            if (this.imports.has(fqn)) {
+                return fqn.replaceAll(".", "::");
             }
         }
 

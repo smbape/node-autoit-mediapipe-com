@@ -2,7 +2,7 @@
 
 namespace mediapipe {
 	namespace tasks {
-		namespace python {
+		namespace autoit {
 			namespace audio {
 				namespace core {
 					namespace audio_task_running_mode {

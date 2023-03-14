@@ -4,7 +4,7 @@
 
 namespace mediapipe {
 	namespace tasks {
-		namespace python {
+		namespace autoit {
 			namespace audio {
 				namespace core {
 					namespace base_audio_task_api {
@@ -26,7 +26,7 @@ namespace mediapipe {
 									"callback should not be provided.");
 							}
 
-							_runner = mediapipe::autoit::task_runner::create(graph_config, packet_callback);
+							_runner = mediapipe::autoit::task_runner::create(graph_config, std::move(packet_callback));
 							_running_mode = running_mode;
 						}
 

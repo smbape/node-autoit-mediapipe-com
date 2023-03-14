@@ -1,5 +1,7 @@
 #include "binding/tasks/core/task_runner.h"
 
+PTR_BRIDGE_IMPL(mediapipe::autoit::PacketsRawCallback);
+
 namespace {
 	using ::mediapipe::tasks::core::MediaPipeBuiltinOpResolver;
 	using ::mediapipe::tasks::core::PacketMap;
@@ -37,5 +39,3 @@ namespace mediapipe {
 		}
 	}
 }
-
-PTR_BRIDGE_IMPL(mediapipe::autoit::PacketsCallback)

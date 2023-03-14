@@ -8,7 +8,7 @@ module.exports = [
     ], "", ""],
 
     ["mediapipe.Packet.Timestamp", "mediapipe::Timestamp", ["/attr=propget", "=get_timestamp", "/idlname=timestamp"], [], "", ""],
-    ["mediapipe.Packet.Timestamp", "void", ["/attr=propput", "=put_timestamp", "/idlname=timestamp", "/Output=*__self->get() = __self->get()->At(Timestamp(ts_value))"], [
+    ["mediapipe.Packet.Timestamp", "void", ["/attr=propput", "=put_timestamp", "/idlname=timestamp", "/Output=*__self->get() = std::move(__self->get()->At(Timestamp(ts_value)))"], [
         ["int64", "ts_value", "", []],
     ], "", ""],
 

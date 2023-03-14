@@ -69,6 +69,7 @@
   - [autoit.\_framework\_bindings](#autoit%5C_framework%5C_bindings)
   - [autoit.solutions](#autoitsolutions)
   - [autoit.solution\_base](#autoitsolution%5C_base)
+  - [autoit.audio](#autoitaudio)
   - [autoit.components](#autoitcomponents)
   - [autoit.core](#autoitcore)
 - [mediapipe::autoit::packet\_creator](#mediapipeautoitpacket%5C_creator)
@@ -88,6 +89,7 @@
   - [mediapipe::autoit::packet\_creator::create\_int8](#mediapipeautoitpacket%5C_creatorcreate%5C_int8)
   - [mediapipe::autoit::packet\_creator::create\_int\_array](#mediapipeautoitpacket%5C_creatorcreate%5C_int%5C_array)
   - [mediapipe::autoit::packet\_creator::create\_int\_vector](#mediapipeautoitpacket%5C_creatorcreate%5C_int%5C_vector)
+  - [mediapipe::autoit::packet\_creator::create\_matrix](#mediapipeautoitpacket%5C_creatorcreate%5C_matrix)
   - [mediapipe::autoit::packet\_creator::create\_packet\_vector](#mediapipeautoitpacket%5C_creatorcreate%5C_packet%5C_vector)
   - [mediapipe::autoit::packet\_creator::create\_proto](#mediapipeautoitpacket%5C_creatorcreate%5C_proto)
   - [mediapipe::autoit::packet\_creator::create\_string](#mediapipeautoitpacket%5C_creatorcreate%5C_string)
@@ -445,18 +447,56 @@
   - [mediapipe::autoit::solution\_base::SolutionBase::reset](#mediapipeautoitsolution%5C_basesolutionbasereset)
 - [mediapipe::tasks](#mediapipetasks)
   - [tasks.autoit](#tasksautoit)
-- [mediapipe::tasks::python::audio::core::audio\_task\_running\_mode::AudioTaskRunningMode](#mediapipetaskspythonaudiocoreaudio%5C_task%5C_running%5C_modeaudiotaskrunningmode)
-  - [AudioTaskRunningMode.AUDIO\_CLIPS](#audiotaskrunningmodeaudio%5C_clips)
-  - [AudioTaskRunningMode.AUDIO\_STREAM](#audiotaskrunningmodeaudio%5C_stream)
-- [mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi](#mediapipetaskspythonaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi)
-  - [mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::get\_create](#mediapipetaskspythonaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapiget%5C_create)
-  - [mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_process\_audio\_clip](#mediapipetaskspythonaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi%5C_process%5C_audio%5C_clip)
-  - [mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_send\_audio\_stream\_data](#mediapipetaskspythonaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi%5C_send%5C_audio%5C_stream%5C_data)
-  - [mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_set\_sample\_rate](#mediapipetaskspythonaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi%5C_set%5C_sample%5C_rate)
-  - [mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::close](#mediapipetaskspythonaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapiclose)
 - [mediapipe::tasks::autoit](#mediapipetasksautoit)
+  - [autoit.audio](#autoitaudio-1)
   - [autoit.components](#autoitcomponents-1)
   - [autoit.core](#autoitcore-1)
+- [mediapipe::tasks::autoit::audio](#mediapipetasksautoitaudio)
+  - [audio.audio\_classifier](#audioaudio%5C_classifier)
+  - [audio.core](#audiocore)
+- [mediapipe::tasks::autoit::audio::audio\_classifier](#mediapipetasksautoitaudioaudio%5C_classifier)
+  - [audio\_classifier.AudioClassifierOptions](#audio%5C_classifieraudioclassifieroptions)
+  - [audio\_classifier.AudioClassifier](#audio%5C_classifieraudioclassifier)
+- [mediapipe::autoit::audio](#mediapipeautoitaudio)
+  - [audio.audio\_classifier](#audioaudio%5C_classifier-1)
+  - [audio.core](#audiocore-1)
+- [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifieroptions)
+  - [AudioClassifierOptions.base\_options](#audioclassifieroptionsbase%5C_options)
+  - [AudioClassifierOptions.running\_mode](#audioclassifieroptionsrunning%5C_mode)
+  - [AudioClassifierOptions.display\_names\_locale](#audioclassifieroptionsdisplay%5C_names%5C_locale)
+  - [AudioClassifierOptions.max\_results](#audioclassifieroptionsmax%5C_results)
+  - [AudioClassifierOptions.score\_threshold](#audioclassifieroptionsscore%5C_threshold)
+  - [AudioClassifierOptions.category\_allowlist](#audioclassifieroptionscategory%5C_allowlist)
+  - [AudioClassifierOptions.category\_denylist](#audioclassifieroptionscategory%5C_denylist)
+  - [AudioClassifierOptions.result\_callback](#audioclassifieroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions::get\_create](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifieroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions::to\_pb2](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifieroptionsto%5C_pb2)
+- [mediapipe::autoit::audio::audio\_classifier](#mediapipeautoitaudioaudio%5C_classifier)
+  - [audio\_classifier.AudioClassifierOptions](#audio%5C_classifieraudioclassifieroptions-1)
+  - [audio\_classifier.AudioClassifier](#audio%5C_classifieraudioclassifier-1)
+- [mediapipe::tasks::autoit::audio::core](#mediapipetasksautoitaudiocore)
+  - [core.audio\_task\_running\_mode](#coreaudio%5C_task%5C_running%5C_mode)
+  - [core.base\_audio\_task\_api](#corebase%5C_audio%5C_task%5C_api)
+- [mediapipe::tasks::autoit::audio::core::audio\_task\_running\_mode](#mediapipetasksautoitaudiocoreaudio%5C_task%5C_running%5C_mode)
+  - [audio\_task\_running\_mode.AudioTaskRunningMode](#audio%5C_task%5C_running%5C_modeaudiotaskrunningmode)
+- [mediapipe::autoit::audio::core](#mediapipeautoitaudiocore)
+  - [core.audio\_task\_running\_mode](#coreaudio%5C_task%5C_running%5C_mode-1)
+  - [core.base\_audio\_task\_api](#corebase%5C_audio%5C_task%5C_api-1)
+- [mediapipe::tasks::autoit::audio::core::audio\_task\_running\_mode::AudioTaskRunningMode](#mediapipetasksautoitaudiocoreaudio%5C_task%5C_running%5C_modeaudiotaskrunningmode)
+  - [AudioTaskRunningMode.AUDIO\_CLIPS](#audiotaskrunningmodeaudio%5C_clips)
+  - [AudioTaskRunningMode.AUDIO\_STREAM](#audiotaskrunningmodeaudio%5C_stream)
+- [mediapipe::autoit::audio::core::audio\_task\_running\_mode](#mediapipeautoitaudiocoreaudio%5C_task%5C_running%5C_mode)
+  - [audio\_task\_running\_mode.AudioTaskRunningMode](#audio%5C_task%5C_running%5C_modeaudiotaskrunningmode-1)
+- [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_api)
+  - [base\_audio\_task\_api.BaseAudioTaskApi](#base%5C_audio%5C_task%5C_apibaseaudiotaskapi)
+- [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi)
+  - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::get\_create](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapiget%5C_create)
+  - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_process\_audio\_clip](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi%5C_process%5C_audio%5C_clip)
+  - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_send\_audio\_stream\_data](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi%5C_send%5C_audio%5C_stream%5C_data)
+  - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_set\_sample\_rate](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi%5C_set%5C_sample%5C_rate)
+  - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::close](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapiclose)
+- [mediapipe::autoit::audio::core::base\_audio\_task\_api](#mediapipeautoitaudiocorebase%5C_audio%5C_task%5C_api)
+  - [base\_audio\_task\_api.BaseAudioTaskApi](#base%5C_audio%5C_task%5C_apibaseaudiotaskapi-1)
 - [mediapipe::tasks::autoit::components](#mediapipetasksautoitcomponents)
   - [components.containers](#componentscontainers)
   - [components.processors](#componentsprocessors)
@@ -663,24 +703,32 @@
 - [mediapipe::autoit::components::utils](#mediapipeautoitcomponentsutils)
   - [utils.cosine\_similarity](#utilscosine%5C_similarity-1)
 - [mediapipe::tasks::autoit::core](#mediapipetasksautoitcore)
-  - [core.BaseOptions](#corebaseoptions)
-  - [core.TaskInfo](#coretaskinfo)
-- [mediapipe::tasks::autoit::core::BaseOptions](#mediapipetasksautoitcorebaseoptions)
+  - [core.base\_options](#corebase%5C_options)
+  - [core.task\_info](#coretask%5C_info)
+- [mediapipe::tasks::autoit::core::base\_options](#mediapipetasksautoitcorebase%5C_options)
+  - [base\_options.BaseOptions](#base%5C_optionsbaseoptions)
+- [mediapipe::autoit::core](#mediapipeautoitcore)
+  - [core.base\_options](#corebase%5C_options-1)
+  - [core.task\_info](#coretask%5C_info-1)
+- [mediapipe::tasks::autoit::core::base\_options::BaseOptions](#mediapipetasksautoitcorebase%5C_optionsbaseoptions)
   - [BaseOptions.model\_asset\_path](#baseoptionsmodel%5C_asset%5C_path)
   - [BaseOptions.model\_asset\_buffer](#baseoptionsmodel%5C_asset%5C_buffer)
-  - [mediapipe::tasks::autoit::core::BaseOptions::get\_create](#mediapipetasksautoitcorebaseoptionsget%5C_create)
-  - [mediapipe::tasks::autoit::core::BaseOptions::create\_from\_pb2](#mediapipetasksautoitcorebaseoptionscreate%5C_from%5C_pb2)
-  - [mediapipe::tasks::autoit::core::BaseOptions::to\_pb2](#mediapipetasksautoitcorebaseoptionsto%5C_pb2)
-- [mediapipe::autoit::core](#mediapipeautoitcore)
-  - [core.BaseOptions](#corebaseoptions-1)
-  - [core.TaskInfo](#coretaskinfo-1)
-- [mediapipe::tasks::autoit::core::TaskInfo](#mediapipetasksautoitcoretaskinfo)
+  - [mediapipe::tasks::autoit::core::base\_options::BaseOptions::get\_create](#mediapipetasksautoitcorebase%5C_optionsbaseoptionsget%5C_create)
+  - [mediapipe::tasks::autoit::core::base\_options::BaseOptions::create\_from\_pb2](#mediapipetasksautoitcorebase%5C_optionsbaseoptionscreate%5C_from%5C_pb2)
+  - [mediapipe::tasks::autoit::core::base\_options::BaseOptions::to\_pb2](#mediapipetasksautoitcorebase%5C_optionsbaseoptionsto%5C_pb2)
+- [mediapipe::autoit::core::base\_options](#mediapipeautoitcorebase%5C_options)
+  - [base\_options.BaseOptions](#base%5C_optionsbaseoptions-1)
+- [mediapipe::tasks::autoit::core::task\_info](#mediapipetasksautoitcoretask%5C_info)
+  - [task\_info.TaskInfo](#task%5C_infotaskinfo)
+- [mediapipe::tasks::autoit::core::task\_info::TaskInfo](#mediapipetasksautoitcoretask%5C_infotaskinfo)
   - [TaskInfo.task\_graph](#taskinfotask%5C_graph)
   - [TaskInfo.input\_streams](#taskinfoinput%5C_streams)
   - [TaskInfo.output\_streams](#taskinfooutput%5C_streams)
   - [TaskInfo.task\_options](#taskinfotask%5C_options)
-  - [mediapipe::tasks::autoit::core::TaskInfo::get\_create](#mediapipetasksautoitcoretaskinfoget%5C_create)
-  - [mediapipe::tasks::autoit::core::TaskInfo::generate\_graph\_config](#mediapipetasksautoitcoretaskinfogenerate%5C_graph%5C_config)
+  - [mediapipe::tasks::autoit::core::task\_info::TaskInfo::get\_create](#mediapipetasksautoitcoretask%5C_infotaskinfoget%5C_create)
+  - [mediapipe::tasks::autoit::core::task\_info::TaskInfo::generate\_graph\_config](#mediapipetasksautoitcoretask%5C_infotaskinfogenerate%5C_graph%5C_config)
+- [mediapipe::autoit::core::task\_info](#mediapipeautoitcoretask%5C_info)
+  - [task\_info.TaskInfo](#task%5C_infotaskinfo-1)
 - [cv](#cv)
   - [cv::createMatFromBitmap](#cvcreatematfrombitmap)
   - [cv::haveImageReader](#cvhaveimagereader)
@@ -2878,6 +2926,84 @@
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::\_\_str\_\_](#mediapipelift2dframeannotationto3dcalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::modules::objectron::calculators::lift\_2d\_frame\_annotation\_to\_3d\_calculator\_pb2](#mediapipemodulesobjectroncalculatorslift%5C_2d%5C_frame%5C_annotation%5C_to%5C_3d%5C_calculator%5C_pb2)
   - [lift\_2d\_frame\_annotation\_to\_3d\_calculator\_pb2.Lift2DFrameAnnotationTo3DCalculatorOptions](#lift%5C_2d%5C_frame%5C_annotation%5C_to%5C_3d%5C_calculator%5C_pb2lift2dframeannotationto3dcalculatoroptions)
+- [mediapipe::tasks::components::processors::proto::ClassifierOptions](#mediapipetaskscomponentsprocessorsprotoclassifieroptions)
+  - [ClassifierOptions.display\_names\_locale](#classifieroptionsdisplay%5C_names%5C_locale-1)
+  - [ClassifierOptions.max\_results](#classifieroptionsmax%5C_results-1)
+  - [ClassifierOptions.score\_threshold](#classifieroptionsscore%5C_threshold-1)
+  - [ClassifierOptions.category\_allowlist](#classifieroptionscategory%5C_allowlist-1)
+  - [ClassifierOptions.category\_denylist](#classifieroptionscategory%5C_denylist-1)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::get\_create](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsget%5C_create)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::Clear](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsclear)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::ClearField](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsclearfield)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::CopyFrom](#mediapipetaskscomponentsprocessorsprotoclassifieroptionscopyfrom)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::\_\_str\_\_](#mediapipetaskscomponentsprocessorsprotoclassifieroptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::components::processors::proto::classifier\_options\_pb2](#mediapipetaskscccomponentsprocessorsprotoclassifier%5C_options%5C_pb2)
+  - [classifier\_options\_pb2.ClassifierOptions](#classifier%5C_options%5C_pb2classifieroptions)
+- [mediapipe::tasks::core::proto::Acceleration](#mediapipetaskscoreprotoacceleration)
+  - [Acceleration.xnnpack](#accelerationxnnpack)
+  - [Acceleration.gpu](#accelerationgpu)
+  - [Acceleration.tflite](#accelerationtflite)
+  - [mediapipe::tasks::core::proto::Acceleration::get\_create](#mediapipetaskscoreprotoaccelerationget%5C_create)
+  - [mediapipe::tasks::core::proto::Acceleration::Clear](#mediapipetaskscoreprotoaccelerationclear)
+  - [mediapipe::tasks::core::proto::Acceleration::ClearField](#mediapipetaskscoreprotoaccelerationclearfield)
+  - [mediapipe::tasks::core::proto::Acceleration::CopyFrom](#mediapipetaskscoreprotoaccelerationcopyfrom)
+  - [mediapipe::tasks::core::proto::Acceleration::\_\_str\_\_](#mediapipetaskscoreprotoacceleration%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::core::proto::acceleration\_pb2](#mediapipetaskscccoreprotoacceleration%5C_pb2)
+  - [acceleration\_pb2.Acceleration](#acceleration%5C_pb2acceleration)
+- [mediapipe::tasks::core::proto::ExternalFile](#mediapipetaskscoreprotoexternalfile)
+  - [ExternalFile.file\_content](#externalfilefile%5C_content)
+  - [ExternalFile.file\_name](#externalfilefile%5C_name)
+  - [ExternalFile.file\_descriptor\_meta](#externalfilefile%5C_descriptor%5C_meta)
+  - [ExternalFile.file\_pointer\_meta](#externalfilefile%5C_pointer%5C_meta)
+  - [mediapipe::tasks::core::proto::ExternalFile::get\_create](#mediapipetaskscoreprotoexternalfileget%5C_create)
+  - [mediapipe::tasks::core::proto::ExternalFile::Clear](#mediapipetaskscoreprotoexternalfileclear)
+  - [mediapipe::tasks::core::proto::ExternalFile::ClearField](#mediapipetaskscoreprotoexternalfileclearfield)
+  - [mediapipe::tasks::core::proto::ExternalFile::CopyFrom](#mediapipetaskscoreprotoexternalfilecopyfrom)
+  - [mediapipe::tasks::core::proto::ExternalFile::\_\_str\_\_](#mediapipetaskscoreprotoexternalfile%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::core::proto::FileDescriptorMeta](#mediapipetaskscoreprotofiledescriptormeta)
+  - [FileDescriptorMeta.fd](#filedescriptormetafd)
+  - [FileDescriptorMeta.length](#filedescriptormetalength)
+  - [FileDescriptorMeta.offset](#filedescriptormetaoffset)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::get\_create](#mediapipetaskscoreprotofiledescriptormetaget%5C_create)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::Clear](#mediapipetaskscoreprotofiledescriptormetaclear)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::ClearField](#mediapipetaskscoreprotofiledescriptormetaclearfield)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::CopyFrom](#mediapipetaskscoreprotofiledescriptormetacopyfrom)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::\_\_str\_\_](#mediapipetaskscoreprotofiledescriptormeta%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::core::proto::FilePointerMeta](#mediapipetaskscoreprotofilepointermeta)
+  - [FilePointerMeta.pointer](#filepointermetapointer)
+  - [FilePointerMeta.length](#filepointermetalength)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::get\_create](#mediapipetaskscoreprotofilepointermetaget%5C_create)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::Clear](#mediapipetaskscoreprotofilepointermetaclear)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::ClearField](#mediapipetaskscoreprotofilepointermetaclearfield)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::CopyFrom](#mediapipetaskscoreprotofilepointermetacopyfrom)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::\_\_str\_\_](#mediapipetaskscoreprotofilepointermeta%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::core::proto::external\_file\_pb2](#mediapipetaskscccoreprotoexternal%5C_file%5C_pb2)
+  - [external\_file\_pb2.ExternalFile](#external%5C_file%5C_pb2externalfile)
+  - [external\_file\_pb2.FileDescriptorMeta](#external%5C_file%5C_pb2filedescriptormeta)
+  - [external\_file\_pb2.FilePointerMeta](#external%5C_file%5C_pb2filepointermeta)
+- [mediapipe::tasks::core::proto::BaseOptions](#mediapipetaskscoreprotobaseoptions)
+  - [BaseOptions.model\_asset](#baseoptionsmodel%5C_asset)
+  - [BaseOptions.use\_stream\_mode](#baseoptionsuse%5C_stream%5C_mode)
+  - [BaseOptions.acceleration](#baseoptionsacceleration)
+  - [mediapipe::tasks::core::proto::BaseOptions::get\_create](#mediapipetaskscoreprotobaseoptionsget%5C_create)
+  - [mediapipe::tasks::core::proto::BaseOptions::Clear](#mediapipetaskscoreprotobaseoptionsclear)
+  - [mediapipe::tasks::core::proto::BaseOptions::ClearField](#mediapipetaskscoreprotobaseoptionsclearfield)
+  - [mediapipe::tasks::core::proto::BaseOptions::CopyFrom](#mediapipetaskscoreprotobaseoptionscopyfrom)
+  - [mediapipe::tasks::core::proto::BaseOptions::\_\_str\_\_](#mediapipetaskscoreprotobaseoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::core::proto::base\_options\_pb2](#mediapipetaskscccoreprotobase%5C_options%5C_pb2)
+  - [base\_options\_pb2.BaseOptions](#base%5C_options%5C_pb2baseoptions)
+- [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptions)
+  - [AudioClassifierGraphOptions.base\_options](#audioclassifiergraphoptionsbase%5C_options)
+  - [AudioClassifierGraphOptions.classifier\_options](#audioclassifiergraphoptionsclassifier%5C_options)
+  - [AudioClassifierGraphOptions.default\_input\_audio\_sample\_rate](#audioclassifiergraphoptionsdefault%5C_input%5C_audio%5C_sample%5C_rate)
+  - [AudioClassifierGraphOptions.ext](#audioclassifiergraphoptionsext)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::get\_create](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsget%5C_create)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::Clear](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsclear)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::ClearField](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsclearfield)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::CopyFrom](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionscopyfrom)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::\_\_str\_\_](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::audio::audio\_classifier::proto::audio\_classifier\_graph\_options\_pb2](#mediapipetasksccaudioaudio%5C_classifierprotoaudio%5C_classifier%5C_graph%5C_options%5C_pb2)
+  - [audio\_classifier\_graph\_options\_pb2.AudioClassifierGraphOptions](#audio%5C_classifier%5C_graph%5C_options%5C_pb2audioclassifiergraphoptions)
 - [mediapipe::tasks::components::containers::proto::Classifications](#mediapipetaskscomponentscontainersprotoclassifications)
   - [Classifications.classification\_list](#classificationsclassification%5C_list)
   - [Classifications.head\_index](#classificationshead%5C_index-1)
@@ -3051,72 +3177,6 @@
 - [mediapipe::tasks::cc::components::containers::proto::landmarks\_detection\_result\_pb2](#mediapipetaskscccomponentscontainersprotolandmarks%5C_detection%5C_result%5C_pb2)
   - [landmarks\_detection\_result\_pb2.LandmarksDetectionResult](#landmarks%5C_detection%5C_result%5C_pb2landmarksdetectionresult)
   - [landmarks\_detection\_result\_pb2.MultiLandmarksDetectionResult](#landmarks%5C_detection%5C_result%5C_pb2multilandmarksdetectionresult)
-- [mediapipe::tasks::components::processors::proto::ClassifierOptions](#mediapipetaskscomponentsprocessorsprotoclassifieroptions)
-  - [ClassifierOptions.display\_names\_locale](#classifieroptionsdisplay%5C_names%5C_locale-1)
-  - [ClassifierOptions.max\_results](#classifieroptionsmax%5C_results-1)
-  - [ClassifierOptions.score\_threshold](#classifieroptionsscore%5C_threshold-1)
-  - [ClassifierOptions.category\_allowlist](#classifieroptionscategory%5C_allowlist-1)
-  - [ClassifierOptions.category\_denylist](#classifieroptionscategory%5C_denylist-1)
-  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::get\_create](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsget%5C_create)
-  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::Clear](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsclear)
-  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::ClearField](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsclearfield)
-  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::CopyFrom](#mediapipetaskscomponentsprocessorsprotoclassifieroptionscopyfrom)
-  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::\_\_str\_\_](#mediapipetaskscomponentsprocessorsprotoclassifieroptions%5C_%5C_str%5C_%5C_)
-- [mediapipe::tasks::cc::components::processors::proto::classifier\_options\_pb2](#mediapipetaskscccomponentsprocessorsprotoclassifier%5C_options%5C_pb2)
-  - [classifier\_options\_pb2.ClassifierOptions](#classifier%5C_options%5C_pb2classifieroptions)
-- [mediapipe::tasks::core::proto::Acceleration](#mediapipetaskscoreprotoacceleration)
-  - [Acceleration.xnnpack](#accelerationxnnpack)
-  - [Acceleration.gpu](#accelerationgpu)
-  - [Acceleration.tflite](#accelerationtflite)
-  - [mediapipe::tasks::core::proto::Acceleration::get\_create](#mediapipetaskscoreprotoaccelerationget%5C_create)
-  - [mediapipe::tasks::core::proto::Acceleration::Clear](#mediapipetaskscoreprotoaccelerationclear)
-  - [mediapipe::tasks::core::proto::Acceleration::ClearField](#mediapipetaskscoreprotoaccelerationclearfield)
-  - [mediapipe::tasks::core::proto::Acceleration::CopyFrom](#mediapipetaskscoreprotoaccelerationcopyfrom)
-  - [mediapipe::tasks::core::proto::Acceleration::\_\_str\_\_](#mediapipetaskscoreprotoacceleration%5C_%5C_str%5C_%5C_)
-- [mediapipe::tasks::cc::core::proto::acceleration\_pb2](#mediapipetaskscccoreprotoacceleration%5C_pb2)
-  - [acceleration\_pb2.Acceleration](#acceleration%5C_pb2acceleration)
-- [mediapipe::tasks::core::proto::ExternalFile](#mediapipetaskscoreprotoexternalfile)
-  - [ExternalFile.file\_content](#externalfilefile%5C_content)
-  - [ExternalFile.file\_name](#externalfilefile%5C_name)
-  - [ExternalFile.file\_descriptor\_meta](#externalfilefile%5C_descriptor%5C_meta)
-  - [ExternalFile.file\_pointer\_meta](#externalfilefile%5C_pointer%5C_meta)
-  - [mediapipe::tasks::core::proto::ExternalFile::get\_create](#mediapipetaskscoreprotoexternalfileget%5C_create)
-  - [mediapipe::tasks::core::proto::ExternalFile::Clear](#mediapipetaskscoreprotoexternalfileclear)
-  - [mediapipe::tasks::core::proto::ExternalFile::ClearField](#mediapipetaskscoreprotoexternalfileclearfield)
-  - [mediapipe::tasks::core::proto::ExternalFile::CopyFrom](#mediapipetaskscoreprotoexternalfilecopyfrom)
-  - [mediapipe::tasks::core::proto::ExternalFile::\_\_str\_\_](#mediapipetaskscoreprotoexternalfile%5C_%5C_str%5C_%5C_)
-- [mediapipe::tasks::core::proto::FileDescriptorMeta](#mediapipetaskscoreprotofiledescriptormeta)
-  - [FileDescriptorMeta.fd](#filedescriptormetafd)
-  - [FileDescriptorMeta.length](#filedescriptormetalength)
-  - [FileDescriptorMeta.offset](#filedescriptormetaoffset)
-  - [mediapipe::tasks::core::proto::FileDescriptorMeta::get\_create](#mediapipetaskscoreprotofiledescriptormetaget%5C_create)
-  - [mediapipe::tasks::core::proto::FileDescriptorMeta::Clear](#mediapipetaskscoreprotofiledescriptormetaclear)
-  - [mediapipe::tasks::core::proto::FileDescriptorMeta::ClearField](#mediapipetaskscoreprotofiledescriptormetaclearfield)
-  - [mediapipe::tasks::core::proto::FileDescriptorMeta::CopyFrom](#mediapipetaskscoreprotofiledescriptormetacopyfrom)
-  - [mediapipe::tasks::core::proto::FileDescriptorMeta::\_\_str\_\_](#mediapipetaskscoreprotofiledescriptormeta%5C_%5C_str%5C_%5C_)
-- [mediapipe::tasks::core::proto::FilePointerMeta](#mediapipetaskscoreprotofilepointermeta)
-  - [FilePointerMeta.pointer](#filepointermetapointer)
-  - [FilePointerMeta.length](#filepointermetalength)
-  - [mediapipe::tasks::core::proto::FilePointerMeta::get\_create](#mediapipetaskscoreprotofilepointermetaget%5C_create)
-  - [mediapipe::tasks::core::proto::FilePointerMeta::Clear](#mediapipetaskscoreprotofilepointermetaclear)
-  - [mediapipe::tasks::core::proto::FilePointerMeta::ClearField](#mediapipetaskscoreprotofilepointermetaclearfield)
-  - [mediapipe::tasks::core::proto::FilePointerMeta::CopyFrom](#mediapipetaskscoreprotofilepointermetacopyfrom)
-  - [mediapipe::tasks::core::proto::FilePointerMeta::\_\_str\_\_](#mediapipetaskscoreprotofilepointermeta%5C_%5C_str%5C_%5C_)
-- [mediapipe::tasks::cc::core::proto::external\_file\_pb2](#mediapipetaskscccoreprotoexternal%5C_file%5C_pb2)
-  - [external\_file\_pb2.ExternalFile](#external%5C_file%5C_pb2externalfile)
-  - [external\_file\_pb2.FileDescriptorMeta](#external%5C_file%5C_pb2filedescriptormeta)
-  - [external\_file\_pb2.FilePointerMeta](#external%5C_file%5C_pb2filepointermeta)
-- [mediapipe::tasks::core::proto::BaseOptions](#mediapipetaskscoreprotobaseoptions)
-  - [BaseOptions.model\_asset](#baseoptionsmodel%5C_asset)
-  - [BaseOptions.use\_stream\_mode](#baseoptionsuse%5C_stream%5C_mode)
-  - [BaseOptions.acceleration](#baseoptionsacceleration)
-  - [mediapipe::tasks::core::proto::BaseOptions::get\_create](#mediapipetaskscoreprotobaseoptionsget%5C_create)
-  - [mediapipe::tasks::core::proto::BaseOptions::Clear](#mediapipetaskscoreprotobaseoptionsclear)
-  - [mediapipe::tasks::core::proto::BaseOptions::ClearField](#mediapipetaskscoreprotobaseoptionsclearfield)
-  - [mediapipe::tasks::core::proto::BaseOptions::CopyFrom](#mediapipetaskscoreprotobaseoptionscopyfrom)
-  - [mediapipe::tasks::core::proto::BaseOptions::\_\_str\_\_](#mediapipetaskscoreprotobaseoptions%5C_%5C_str%5C_%5C_)
-- [mediapipe::tasks::cc::core::proto::base\_options\_pb2](#mediapipetaskscccoreprotobase%5C_options%5C_pb2)
-  - [base\_options\_pb2.BaseOptions](#base%5C_options%5C_pb2baseoptions)
 - [mediapipe::FlowLimiterCalculatorOptions](#mediapipeflowlimitercalculatoroptions)
   - [FlowLimiterCalculatorOptions.max\_in\_flight](#flowlimitercalculatoroptionsmax%5C_in%5C_flight)
   - [FlowLimiterCalculatorOptions.max\_in\_queue](#flowlimitercalculatoroptionsmax%5C_in%5C_queue)
@@ -6069,6 +6129,14 @@ AutoIt:
     [propget] $oautoit.solution_base
 ```
 
+### autoit.audio
+
+```cpp
+static mediapipe::tasks::autoit::audio
+AutoIt:
+    [propget] $oautoit.audio
+```
+
 ### autoit.components
 
 ```cpp
@@ -6261,6 +6329,15 @@ AutoIt:
 std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int_vector( const std::vector<int>& data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_int_vector( $data ) -> retval
+```
+
+### mediapipe::autoit::packet\_creator::create\_matrix
+
+```cpp
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_matrix( const cv::Mat& data,
+                                                                                     bool           transpose = false );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_matrix( $data[, $transpose] ) -> retval
 ```
 
 ### mediapipe::autoit::packet\_creator::create\_packet\_vector
@@ -9023,71 +9100,15 @@ AutoIt:
     [propget] $otasks.autoit
 ```
 
-## mediapipe::tasks::python::audio::core::audio\_task\_running\_mode::AudioTaskRunningMode
-
-### AudioTaskRunningMode.AUDIO\_CLIPS
-
-```cpp
-static int mediapipe::tasks::python::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_CLIPS
-AutoIt:
-    [propget] $oAudioTaskRunningMode.AUDIO_CLIPS
-```
-
-### AudioTaskRunningMode.AUDIO\_STREAM
-
-```cpp
-static int mediapipe::tasks::python::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_STREAM
-AutoIt:
-    [propget] $oAudioTaskRunningMode.AUDIO_STREAM
-```
-
-## mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi
-
-### mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::get\_create
-
-```cpp
-static mediapipe::tasks::python::audio::core::base_audio_task_api::BaseAudioTaskApi mediapipe::tasks::python::audio::core::base_audio_task_api::BaseAudioTaskApi::get_create( const mediapipe::CalculatorGraphConfig&                                              graph_config,
-                                                                                                                                                                              mediapipe::tasks::python::audio::core::audio_task_running_mode::AudioTaskRunningMode running_mode,
-                                                                                                                                                                              mediapipe::autoit::PacketsCallback                                                   packet_callback = nullptr );
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.python.audio.core.base_audio_task_api.BaseAudioTaskApi").create( $graph_config, $running_mode[, $packet_callback] ) -> <mediapipe.tasks.python.audio.core.base_audio_task_api.BaseAudioTaskApi object>
-    $oBaseAudioTaskApi( $graph_config, $running_mode[, $packet_callback] ) -> <mediapipe.tasks.python.audio.core.base_audio_task_api.BaseAudioTaskApi object>
-```
-
-### mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_process\_audio\_clip
-
-```cpp
-std::map<std::string, mediapipe::Packet> mediapipe::tasks::python::audio::core::base_audio_task_api::BaseAudioTaskApi::_process_audio_clip( const std::map<std::string, mediapipe::Packet>& inputs );
-AutoIt:
-    $oBaseAudioTaskApi._process_audio_clip( $inputs ) -> retval
-```
-
-### mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_send\_audio\_stream\_data
-
-```cpp
-void mediapipe::tasks::python::audio::core::base_audio_task_api::BaseAudioTaskApi::_send_audio_stream_data( const std::map<std::string, mediapipe::Packet>& inputs );
-AutoIt:
-    $oBaseAudioTaskApi._send_audio_stream_data( $inputs ) -> None
-```
-
-### mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_set\_sample\_rate
-
-```cpp
-void mediapipe::tasks::python::audio::core::base_audio_task_api::BaseAudioTaskApi::_set_sample_rate( const std::string& sample_rate_stream_name,
-                                                                                                     float              sample_rate );
-AutoIt:
-    $oBaseAudioTaskApi._set_sample_rate( $sample_rate_stream_name, $sample_rate ) -> None
-```
-
-### mediapipe::tasks::python::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::close
-
-```cpp
-void mediapipe::tasks::python::audio::core::base_audio_task_api::BaseAudioTaskApi::close();
-AutoIt:
-    $oBaseAudioTaskApi.close() -> None
-```
-
 ## mediapipe::tasks::autoit
+
+### autoit.audio
+
+```cpp
+static mediapipe::tasks::autoit::audio
+AutoIt:
+    [propget] $oautoit.audio
+```
 
 ### autoit.components
 
@@ -9103,6 +9124,315 @@ AutoIt:
 static mediapipe::tasks::autoit::core
 AutoIt:
     [propget] $oautoit.core
+```
+
+## mediapipe::tasks::autoit::audio
+
+### audio.audio\_classifier
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier
+AutoIt:
+    [propget] $oaudio.audio_classifier
+```
+
+### audio.core
+
+```cpp
+static mediapipe::tasks::autoit::audio::core
+AutoIt:
+    [propget] $oaudio.core
+```
+
+## mediapipe::tasks::autoit::audio::audio\_classifier
+
+### audio\_classifier.AudioClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions
+AutoIt:
+    [propget] $oaudio_classifier.AudioClassifierOptions
+```
+
+### audio\_classifier.AudioClassifier
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier
+AutoIt:
+    [propget] $oaudio_classifier.AudioClassifier
+```
+
+## mediapipe::autoit::audio
+
+### audio.audio\_classifier
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier
+AutoIt:
+    [propget] $oaudio.audio_classifier
+```
+
+### audio.core
+
+```cpp
+static mediapipe::tasks::autoit::audio::core
+AutoIt:
+    [propget] $oaudio.core
+```
+
+## mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions
+
+### AudioClassifierOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::base_options
+AutoIt:
+    [propget, propput] $oAudioClassifierOptions.base_options
+```
+
+### AudioClassifierOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::running_mode
+AutoIt:
+    [propget, propput] $oAudioClassifierOptions.running_mode
+```
+
+### AudioClassifierOptions.display\_names\_locale
+
+```cpp
+std::string mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::display_names_locale
+AutoIt:
+    [propget, propput] $oAudioClassifierOptions.display_names_locale
+```
+
+### AudioClassifierOptions.max\_results
+
+```cpp
+int mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::max_results
+AutoIt:
+    [propget, propput] $oAudioClassifierOptions.max_results
+```
+
+### AudioClassifierOptions.score\_threshold
+
+```cpp
+float mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::score_threshold
+AutoIt:
+    [propget, propput] $oAudioClassifierOptions.score_threshold
+```
+
+### AudioClassifierOptions.category\_allowlist
+
+```cpp
+std::vector<std::string> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::category_allowlist
+AutoIt:
+    [propget, propput] $oAudioClassifierOptions.category_allowlist
+```
+
+### AudioClassifierOptions.category\_denylist
+
+```cpp
+std::vector<std::string> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::category_denylist
+AutoIt:
+    [propget, propput] $oAudioClassifierOptions.category_denylist
+```
+
+### AudioClassifierOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::result_callback
+AutoIt:
+    [propput] $oAudioClassifierOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::get_create( const mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_classifier.AudioClassifierOptions").create( $other ) -> <mediapipe.tasks.autoit.audio.audio_classifier.AudioClassifierOptions object>
+    $oAudioClassifierOptions( $other ) -> <mediapipe.tasks.autoit.audio.audio_classifier.AudioClassifierOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>           base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                        mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode running_mode = tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_CLIPS,
+                                                                                                                                                                        const std::string&                                                                   display_names_locale = "en",
+                                                                                                                                                                        int                                                                                  max_results = -1,
+                                                                                                                                                                        float                                                                                score_threshold = 0.0f,
+                                                                                                                                                                        const std::vector<std::string>&                                                      category_allowlist = std::vector<std::string>(),
+                                                                                                                                                                        const std::vector<std::string>&                                                      category_denylist = std::vector<std::string>(),
+                                                                                                                                                                        mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback  result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_classifier.AudioClassifierOptions").create( [$base_options[, $running_mode[, $display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist[, $result_callback]]]]]]]] ) -> <mediapipe.tasks.autoit.audio.audio_classifier.AudioClassifierOptions object>
+    $oAudioClassifierOptions( [$base_options[, $running_mode[, $display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist[, $result_callback]]]]]]]] ) -> <mediapipe.tasks.autoit.audio.audio_classifier.AudioClassifierOptions object>
+```
+
+### mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions::to\_pb2
+
+```cpp
+std::shared_ptr<mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::to_pb2();
+AutoIt:
+    $oAudioClassifierOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::audio::audio\_classifier
+
+### audio\_classifier.AudioClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions
+AutoIt:
+    [propget] $oaudio_classifier.AudioClassifierOptions
+```
+
+### audio\_classifier.AudioClassifier
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier
+AutoIt:
+    [propget] $oaudio_classifier.AudioClassifier
+```
+
+## mediapipe::tasks::autoit::audio::core
+
+### core.audio\_task\_running\_mode
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::audio_task_running_mode
+AutoIt:
+    [propget] $ocore.audio_task_running_mode
+```
+
+### core.base\_audio\_task\_api
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::base_audio_task_api
+AutoIt:
+    [propget] $ocore.base_audio_task_api
+```
+
+## mediapipe::tasks::autoit::audio::core::audio\_task\_running\_mode
+
+### audio\_task\_running\_mode.AudioTaskRunningMode
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode
+AutoIt:
+    [propget] $oaudio_task_running_mode.AudioTaskRunningMode
+```
+
+## mediapipe::autoit::audio::core
+
+### core.audio\_task\_running\_mode
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::audio_task_running_mode
+AutoIt:
+    [propget] $ocore.audio_task_running_mode
+```
+
+### core.base\_audio\_task\_api
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::base_audio_task_api
+AutoIt:
+    [propget] $ocore.base_audio_task_api
+```
+
+## mediapipe::tasks::autoit::audio::core::audio\_task\_running\_mode::AudioTaskRunningMode
+
+### AudioTaskRunningMode.AUDIO\_CLIPS
+
+```cpp
+static int mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_CLIPS
+AutoIt:
+    [propget] $oAudioTaskRunningMode.AUDIO_CLIPS
+```
+
+### AudioTaskRunningMode.AUDIO\_STREAM
+
+```cpp
+static int mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_STREAM
+AutoIt:
+    [propget] $oAudioTaskRunningMode.AUDIO_STREAM
+```
+
+## mediapipe::autoit::audio::core::audio\_task\_running\_mode
+
+### audio\_task\_running\_mode.AudioTaskRunningMode
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode
+AutoIt:
+    [propget] $oaudio_task_running_mode.AudioTaskRunningMode
+```
+
+## mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api
+
+### base\_audio\_task\_api.BaseAudioTaskApi
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi
+AutoIt:
+    [propget] $obase_audio_task_api.BaseAudioTaskApi
+```
+
+## mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi
+
+### mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi::get_create( const mediapipe::CalculatorGraphConfig&                                              graph_config,
+                                                                                                                                                                              mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode running_mode,
+                                                                                                                                                                              mediapipe::autoit::PacketsRawCallback                                                packet_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.core.base_audio_task_api.BaseAudioTaskApi").create( $graph_config, $running_mode[, $packet_callback] ) -> <mediapipe.tasks.autoit.audio.core.base_audio_task_api.BaseAudioTaskApi object>
+    $oBaseAudioTaskApi( $graph_config, $running_mode[, $packet_callback] ) -> <mediapipe.tasks.autoit.audio.core.base_audio_task_api.BaseAudioTaskApi object>
+```
+
+### mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_process\_audio\_clip
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi::_process_audio_clip( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oBaseAudioTaskApi._process_audio_clip( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_send\_audio\_stream\_data
+
+```cpp
+void mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi::_send_audio_stream_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oBaseAudioTaskApi._send_audio_stream_data( $inputs ) -> None
+```
+
+### mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_set\_sample\_rate
+
+```cpp
+void mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi::_set_sample_rate( const std::string& sample_rate_stream_name,
+                                                                                                     float              sample_rate );
+AutoIt:
+    $oBaseAudioTaskApi._set_sample_rate( $sample_rate_stream_name, $sample_rate ) -> None
+```
+
+### mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::close
+
+```cpp
+void mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi::close();
+AutoIt:
+    $oBaseAudioTaskApi.close() -> None
+```
+
+## mediapipe::autoit::audio::core::base\_audio\_task\_api
+
+### base\_audio\_task\_api.BaseAudioTaskApi
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi
+AutoIt:
+    [propget] $obase_audio_task_api.BaseAudioTaskApi
 ```
 
 ## mediapipe::tasks::autoit::components
@@ -9424,7 +9754,7 @@ AutoIt:
 ### AudioDataFormat.sample\_rate
 
 ```cpp
-float mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat::sample_rate
+std::optional<float> mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat::sample_rate
 AutoIt:
     [propget, propput] $oAudioDataFormat.sample_rate
 ```
@@ -9439,8 +9769,8 @@ AutoIt:
 ```
 
 ```cpp
-static mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat::get_create( int   num_channels = 1,
-                                                                                                                                                                                float sample_rate = 0.0f );
+static mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat::get_create( int                  num_channels = 1,
+                                                                                                                                                                                std::optional<float> sample_rate = std::optional<float>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat").create( [$num_channels[, $sample_rate]] ) -> <mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat object>
     $oAudioDataFormat( [$num_channels[, $sample_rate]] ) -> <mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat object>
@@ -9487,8 +9817,8 @@ AutoIt:
 ### mediapipe::tasks::autoit::components::containers::audio\_data::AudioData::create\_from\_mat
 
 ```cpp
-static std::shared_ptr<mediapipe::tasks::autoit::components::containers::audio_data::AudioData> mediapipe::tasks::autoit::components::containers::audio_data::AudioData::create_from_mat( cv::Mat src,
-                                                                                                                                                                                          float   sample_rate = 0.0f );
+static std::shared_ptr<mediapipe::tasks::autoit::components::containers::audio_data::AudioData> mediapipe::tasks::autoit::components::containers::audio_data::AudioData::create_from_mat( cv::Mat              src,
+                                                                                                                                                                                          std::optional<float> sample_rate = std::optional<float>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.audio_data.AudioData").create_from_mat( $src[, $sample_rate] ) -> retval
 ```
@@ -9496,7 +9826,7 @@ AutoIt:
 ### mediapipe::tasks::autoit::components::containers::audio\_data::AudioData::get\_audio\_format
 
 ```cpp
-mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat mediapipe::tasks::autoit::components::containers::audio_data::AudioData::get_audio_format();
+mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat mediapipe::tasks::autoit::components::containers::audio_data::AudioData::get_audio_format() const;
 AutoIt:
     $oAudioData.audio_format() -> retval
 ```
@@ -9512,7 +9842,7 @@ AutoIt:
 ### mediapipe::tasks::autoit::components::containers::audio\_data::AudioData::get\_buffer\_length
 
 ```cpp
-int mediapipe::tasks::autoit::components::containers::audio_data::AudioData::get_buffer_length();
+int mediapipe::tasks::autoit::components::containers::audio_data::AudioData::get_buffer_length() const;
 AutoIt:
     $oAudioData.buffer_length() -> retval
 ```
@@ -10462,12 +10792,12 @@ AutoIt:
 ```
 
 ```cpp
-static mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::components::containers::rect::NormalizedRect::get_create( float x_center = 0.0f,
-                                                                                                                                                                  float y_center = 0.0f,
-                                                                                                                                                                  float width = 0.0f,
-                                                                                                                                                                  float height = 0.0f,
-                                                                                                                                                                  float rotation = 0.0f,
-                                                                                                                                                                  int   rect_id = -1 );
+static mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::components::containers::rect::NormalizedRect::get_create( float   x_center = 0.0f,
+                                                                                                                                                                  float   y_center = 0.0f,
+                                                                                                                                                                  float   width = 0.0f,
+                                                                                                                                                                  float   height = 0.0f,
+                                                                                                                                                                  float   rotation = 0.0f,
+                                                                                                                                                                  int64_t rect_id = -1 );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.rect.NormalizedRect").create( [$x_center[, $y_center[, $width[, $height[, $rotation[, $rect_id]]]]]] ) -> <mediapipe.tasks.autoit.components.containers.rect.NormalizedRect object>
     $oNormalizedRect( [$x_center[, $y_center[, $width[, $height[, $rotation[, $rect_id]]]]]] ) -> <mediapipe.tasks.autoit.components.containers.rect.NormalizedRect object>
@@ -10524,7 +10854,7 @@ AutoIt:
 ### ClassifierOptions.display\_names\_locale
 
 ```cpp
-std::string mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::display_names_locale
+std::optional<std::string> mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::display_names_locale
 AutoIt:
     [propget, propput] $oClassifierOptions.display_names_locale
 ```
@@ -10532,7 +10862,7 @@ AutoIt:
 ### ClassifierOptions.max\_results
 
 ```cpp
-int mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::max_results
+std::optional<int> mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::max_results
 AutoIt:
     [propget, propput] $oClassifierOptions.max_results
 ```
@@ -10540,7 +10870,7 @@ AutoIt:
 ### ClassifierOptions.score\_threshold
 
 ```cpp
-float mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::score_threshold
+std::optional<float> mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::score_threshold
 AutoIt:
     [propget, propput] $oClassifierOptions.score_threshold
 ```
@@ -10571,11 +10901,11 @@ AutoIt:
 ```
 
 ```cpp
-static mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::get_create( const std::string&              display_names_locale = "en",
-                                                                                                                                                                                                    int                             max_results = -1,
-                                                                                                                                                                                                    float                           score_threshold = 0.0f,
-                                                                                                                                                                                                    const std::vector<std::string>& category_allowlist = std::vector<std::string>(),
-                                                                                                                                                                                                    const std::vector<std::string>& category_denylist = std::vector<std::string>() );
+static mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::get_create( const std::optional<std::string>& display_names_locale = std::optional<std::string>(),
+                                                                                                                                                                                                    std::optional<int>                max_results = std::optional<int>(),
+                                                                                                                                                                                                    std::optional<float>              score_threshold = std::optional<float>(),
+                                                                                                                                                                                                    const std::vector<std::string>&   category_allowlist = std::vector<std::string>(),
+                                                                                                                                                                                                    const std::vector<std::string>&   category_denylist = std::vector<std::string>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.processors.classifier_options.ClassifierOptions").create( [$display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist]]]]] ) -> <mediapipe.tasks.autoit.components.processors.classifier_options.ClassifierOptions object>
     $oClassifierOptions( [$display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist]]]]] ) -> <mediapipe.tasks.autoit.components.processors.classifier_options.ClassifierOptions object>
@@ -10640,28 +10970,56 @@ AutoIt:
 
 ## mediapipe::tasks::autoit::core
 
-### core.BaseOptions
+### core.base\_options
 
 ```cpp
-static mediapipe::tasks::autoit::core::BaseOptions
+static mediapipe::tasks::autoit::core::base_options
 AutoIt:
-    [propget] $ocore.BaseOptions
+    [propget] $ocore.base_options
 ```
 
-### core.TaskInfo
+### core.task\_info
 
 ```cpp
-static mediapipe::tasks::autoit::core::TaskInfo
+static mediapipe::tasks::autoit::core::task_info
 AutoIt:
-    [propget] $ocore.TaskInfo
+    [propget] $ocore.task_info
 ```
 
-## mediapipe::tasks::autoit::core::BaseOptions
+## mediapipe::tasks::autoit::core::base\_options
+
+### base\_options.BaseOptions
+
+```cpp
+static mediapipe::tasks::autoit::core::base_options::BaseOptions
+AutoIt:
+    [propget] $obase_options.BaseOptions
+```
+
+## mediapipe::autoit::core
+
+### core.base\_options
+
+```cpp
+static mediapipe::tasks::autoit::core::base_options
+AutoIt:
+    [propget] $ocore.base_options
+```
+
+### core.task\_info
+
+```cpp
+static mediapipe::tasks::autoit::core::task_info
+AutoIt:
+    [propget] $ocore.task_info
+```
+
+## mediapipe::tasks::autoit::core::base\_options::BaseOptions
 
 ### BaseOptions.model\_asset\_path
 
 ```cpp
-std::string mediapipe::tasks::autoit::core::BaseOptions::model_asset_path
+std::string mediapipe::tasks::autoit::core::base_options::BaseOptions::model_asset_path
 AutoIt:
     [propget, propput] $oBaseOptions.model_asset_path
 ```
@@ -10669,68 +11027,70 @@ AutoIt:
 ### BaseOptions.model\_asset\_buffer
 
 ```cpp
-std::string mediapipe::tasks::autoit::core::BaseOptions::model_asset_buffer
+std::string mediapipe::tasks::autoit::core::base_options::BaseOptions::model_asset_buffer
 AutoIt:
     [propget, propput] $oBaseOptions.model_asset_buffer
 ```
 
-### mediapipe::tasks::autoit::core::BaseOptions::get\_create
+### mediapipe::tasks::autoit::core::base\_options::BaseOptions::get\_create
 
 ```cpp
-static mediapipe::tasks::autoit::core::BaseOptions mediapipe::tasks::autoit::core::BaseOptions::get_create( const mediapipe::tasks::autoit::core::BaseOptions& other );
+static mediapipe::tasks::autoit::core::base_options::BaseOptions mediapipe::tasks::autoit::core::base_options::BaseOptions::get_create( const mediapipe::tasks::autoit::core::base_options::BaseOptions& other );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.BaseOptions").create( $other ) -> <mediapipe.tasks.autoit.core.BaseOptions object>
-    $oBaseOptions( $other ) -> <mediapipe.tasks.autoit.core.BaseOptions object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions").create( $other ) -> <mediapipe.tasks.autoit.core.base_options.BaseOptions object>
+    $oBaseOptions( $other ) -> <mediapipe.tasks.autoit.core.base_options.BaseOptions object>
 ```
 
 ```cpp
-static mediapipe::tasks::autoit::core::BaseOptions mediapipe::tasks::autoit::core::BaseOptions::get_create( const std::string& model_asset_path = "",
-                                                                                                            const std::string& model_asset_buffer = "" );
+static mediapipe::tasks::autoit::core::base_options::BaseOptions mediapipe::tasks::autoit::core::base_options::BaseOptions::get_create( const std::string& model_asset_path = "",
+                                                                                                                                        const std::string& model_asset_buffer = "" );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.BaseOptions").create( [$model_asset_path[, $model_asset_buffer]] ) -> <mediapipe.tasks.autoit.core.BaseOptions object>
-    $oBaseOptions( [$model_asset_path[, $model_asset_buffer]] ) -> <mediapipe.tasks.autoit.core.BaseOptions object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions").create( [$model_asset_path[, $model_asset_buffer]] ) -> <mediapipe.tasks.autoit.core.base_options.BaseOptions object>
+    $oBaseOptions( [$model_asset_path[, $model_asset_buffer]] ) -> <mediapipe.tasks.autoit.core.base_options.BaseOptions object>
 ```
 
-### mediapipe::tasks::autoit::core::BaseOptions::create\_from\_pb2
+### mediapipe::tasks::autoit::core::base\_options::BaseOptions::create\_from\_pb2
 
 ```cpp
-static std::shared_ptr<mediapipe::tasks::autoit::core::BaseOptions> mediapipe::tasks::autoit::core::BaseOptions::create_from_pb2( const mediapipe::tasks::core::proto::BaseOptions& pb2_obj );
+static std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::core::base_options::BaseOptions::create_from_pb2( const mediapipe::tasks::core::proto::BaseOptions& pb2_obj );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.BaseOptions").create_from_pb2( $pb2_obj ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions").create_from_pb2( $pb2_obj ) -> retval
 ```
 
-### mediapipe::tasks::autoit::core::BaseOptions::to\_pb2
+### mediapipe::tasks::autoit::core::base\_options::BaseOptions::to\_pb2
 
 ```cpp
-std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions> mediapipe::tasks::autoit::core::BaseOptions::to_pb2();
+std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions> mediapipe::tasks::autoit::core::base_options::BaseOptions::to_pb2();
 AutoIt:
     $oBaseOptions.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::core
+## mediapipe::autoit::core::base\_options
 
-### core.BaseOptions
-
-```cpp
-static mediapipe::tasks::autoit::core::BaseOptions
-AutoIt:
-    [propget] $ocore.BaseOptions
-```
-
-### core.TaskInfo
+### base\_options.BaseOptions
 
 ```cpp
-static mediapipe::tasks::autoit::core::TaskInfo
+static mediapipe::tasks::autoit::core::base_options::BaseOptions
 AutoIt:
-    [propget] $ocore.TaskInfo
+    [propget] $obase_options.BaseOptions
 ```
 
-## mediapipe::tasks::autoit::core::TaskInfo
+## mediapipe::tasks::autoit::core::task\_info
+
+### task\_info.TaskInfo
+
+```cpp
+static mediapipe::tasks::autoit::core::task_info::TaskInfo
+AutoIt:
+    [propget] $otask_info.TaskInfo
+```
+
+## mediapipe::tasks::autoit::core::task\_info::TaskInfo
 
 ### TaskInfo.task\_graph
 
 ```cpp
-std::string mediapipe::tasks::autoit::core::TaskInfo::task_graph
+std::string mediapipe::tasks::autoit::core::task_info::TaskInfo::task_graph
 AutoIt:
     [propget, propput] $oTaskInfo.task_graph
 ```
@@ -10738,7 +11098,7 @@ AutoIt:
 ### TaskInfo.input\_streams
 
 ```cpp
-std::vector<std::string> mediapipe::tasks::autoit::core::TaskInfo::input_streams
+std::vector<std::string> mediapipe::tasks::autoit::core::task_info::TaskInfo::input_streams
 AutoIt:
     [propget, propput] $oTaskInfo.input_streams
 ```
@@ -10746,7 +11106,7 @@ AutoIt:
 ### TaskInfo.output\_streams
 
 ```cpp
-std::vector<std::string> mediapipe::tasks::autoit::core::TaskInfo::output_streams
+std::vector<std::string> mediapipe::tasks::autoit::core::task_info::TaskInfo::output_streams
 AutoIt:
     [propget, propput] $oTaskInfo.output_streams
 ```
@@ -10754,46 +11114,46 @@ AutoIt:
 ### TaskInfo.task\_options
 
 ```cpp
-std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions> mediapipe::tasks::autoit::core::TaskInfo::task_options
+std::shared_ptr<google::protobuf::Message> mediapipe::tasks::autoit::core::task_info::TaskInfo::task_options
 AutoIt:
     [propget, propput] $oTaskInfo.task_options
 ```
 
-### mediapipe::tasks::autoit::core::TaskInfo::get\_create
+### mediapipe::tasks::autoit::core::task\_info::TaskInfo::get\_create
 
 ```cpp
-static mediapipe::tasks::autoit::core::TaskInfo mediapipe::tasks::autoit::core::TaskInfo::get_create( const mediapipe::tasks::autoit::core::TaskInfo& other );
+static mediapipe::tasks::autoit::core::task_info::TaskInfo mediapipe::tasks::autoit::core::task_info::TaskInfo::get_create( const mediapipe::tasks::autoit::core::task_info::TaskInfo& other );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.TaskInfo").create( $other ) -> <mediapipe.tasks.autoit.core.TaskInfo object>
-    $oTaskInfo( $other ) -> <mediapipe.tasks.autoit.core.TaskInfo object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.task_info.TaskInfo").create( $other ) -> <mediapipe.tasks.autoit.core.task_info.TaskInfo object>
+    $oTaskInfo( $other ) -> <mediapipe.tasks.autoit.core.task_info.TaskInfo object>
 ```
 
 ```cpp
-static mediapipe::tasks::autoit::core::TaskInfo mediapipe::tasks::autoit::core::TaskInfo::get_create( const std::string&                                                 task_graph = "",
-                                                                                                      const std::vector<std::string>&                                    input_streams = std::vector<std::string>(),
-                                                                                                      const std::vector<std::string>&                                    output_streams = std::vector<std::string>(),
-                                                                                                      const std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>& task_options = std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>() );
+static mediapipe::tasks::autoit::core::task_info::TaskInfo mediapipe::tasks::autoit::core::task_info::TaskInfo::get_create( const std::string&                                task_graph = "",
+                                                                                                                            const std::vector<std::string>&                   input_streams = std::vector<std::string>(),
+                                                                                                                            const std::vector<std::string>&                   output_streams = std::vector<std::string>(),
+                                                                                                                            const std::shared_ptr<google::protobuf::Message>& task_options = std::shared_ptr<google::protobuf::Message>() );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.TaskInfo").create( [$task_graph[, $input_streams[, $output_streams[, $task_options]]]] ) -> <mediapipe.tasks.autoit.core.TaskInfo object>
-    $oTaskInfo( [$task_graph[, $input_streams[, $output_streams[, $task_options]]]] ) -> <mediapipe.tasks.autoit.core.TaskInfo object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.task_info.TaskInfo").create( [$task_graph[, $input_streams[, $output_streams[, $task_options]]]] ) -> <mediapipe.tasks.autoit.core.task_info.TaskInfo object>
+    $oTaskInfo( [$task_graph[, $input_streams[, $output_streams[, $task_options]]]] ) -> <mediapipe.tasks.autoit.core.task_info.TaskInfo object>
 ```
 
-```cpp
-static mediapipe::tasks::autoit::core::TaskInfo mediapipe::tasks::autoit::core::TaskInfo::get_create( const std::shared_ptr<mediapipe::tasks::autoit::core::BaseOptions>& task_options,
-                                                                                                      const std::string&                                                  task_graph = "",
-                                                                                                      const std::vector<std::string>&                                     input_streams = std::vector<std::string>(),
-                                                                                                      const std::vector<std::string>&                                     output_streams = std::vector<std::string>() );
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.TaskInfo").create( $task_options[, $task_graph[, $input_streams[, $output_streams]]] ) -> <mediapipe.tasks.autoit.core.TaskInfo object>
-    $oTaskInfo( $task_options[, $task_graph[, $input_streams[, $output_streams]]] ) -> <mediapipe.tasks.autoit.core.TaskInfo object>
-```
-
-### mediapipe::tasks::autoit::core::TaskInfo::generate\_graph\_config
+### mediapipe::tasks::autoit::core::task\_info::TaskInfo::generate\_graph\_config
 
 ```cpp
-std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::core::TaskInfo::generate_graph_config( bool enable_flow_limiting = true );
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::core::task_info::TaskInfo::generate_graph_config( bool enable_flow_limiting = true );
 AutoIt:
     $oTaskInfo.generate_graph_config( [$enable_flow_limiting] ) -> retval
+```
+
+## mediapipe::autoit::core::task\_info
+
+### task\_info.TaskInfo
+
+```cpp
+static mediapipe::tasks::autoit::core::task_info::TaskInfo
+AutoIt:
+    [propget] $otask_info.TaskInfo
 ```
 
 ## cv
@@ -11089,6 +11449,12 @@ AutoIt:
 
 ```cpp
 mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
@@ -29233,6 +29599,558 @@ AutoIt:
     [propget] $olift_2d_frame_annotation_to_3d_calculator_pb2.Lift2DFrameAnnotationTo3DCalculatorOptions
 ```
 
+## mediapipe::tasks::components::processors::proto::ClassifierOptions
+
+### ClassifierOptions.display\_names\_locale
+
+```cpp
+std::string mediapipe::tasks::components::processors::proto::ClassifierOptions::display_names_locale
+AutoIt:
+    [propget, propput] $oClassifierOptions.display_names_locale
+```
+
+### ClassifierOptions.max\_results
+
+```cpp
+int mediapipe::tasks::components::processors::proto::ClassifierOptions::max_results
+AutoIt:
+    [propget, propput] $oClassifierOptions.max_results
+```
+
+### ClassifierOptions.score\_threshold
+
+```cpp
+float mediapipe::tasks::components::processors::proto::ClassifierOptions::score_threshold
+AutoIt:
+    [propget, propput] $oClassifierOptions.score_threshold
+```
+
+### ClassifierOptions.category\_allowlist
+
+```cpp
+google::protobuf::Repeated_std_string* mediapipe::tasks::components::processors::proto::ClassifierOptions::category_allowlist
+AutoIt:
+    [propget] $oClassifierOptions.category_allowlist
+```
+
+### ClassifierOptions.category\_denylist
+
+```cpp
+google::protobuf::Repeated_std_string* mediapipe::tasks::components::processors::proto::ClassifierOptions::category_denylist
+AutoIt:
+    [propget] $oClassifierOptions.category_denylist
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::get\_create
+
+```cpp
+static mediapipe::tasks::components::processors::proto::ClassifierOptions mediapipe::tasks::components::processors::proto::ClassifierOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.components.processors.proto.ClassifierOptions").create() -> <mediapipe.tasks.components.processors.proto.ClassifierOptions object>
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::Clear
+
+```cpp
+void mediapipe::tasks::components::processors::proto::ClassifierOptions::Clear();
+AutoIt:
+    $oClassifierOptions.Clear() -> None
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::ClearField
+
+```cpp
+void mediapipe::tasks::components::processors::proto::ClassifierOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oClassifierOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::components::processors::proto::ClassifierOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oClassifierOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::components::processors::proto::ClassifierOptions::__str__( std::string* output );
+AutoIt:
+    $oClassifierOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::components::processors::proto::classifier\_options\_pb2
+
+### classifier\_options\_pb2.ClassifierOptions
+
+```cpp
+static mediapipe::tasks::components::processors::proto::ClassifierOptions
+AutoIt:
+    [propget] $oclassifier_options_pb2.ClassifierOptions
+```
+
+## mediapipe::tasks::core::proto::Acceleration
+
+### Acceleration.xnnpack
+
+```cpp
+mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack* mediapipe::tasks::core::proto::Acceleration::xnnpack
+AutoIt:
+    [propget] $oAcceleration.xnnpack
+```
+
+### Acceleration.gpu
+
+```cpp
+mediapipe::InferenceCalculatorOptions::Delegate::Gpu* mediapipe::tasks::core::proto::Acceleration::gpu
+AutoIt:
+    [propget] $oAcceleration.gpu
+```
+
+### Acceleration.tflite
+
+```cpp
+mediapipe::InferenceCalculatorOptions::Delegate::TfLite* mediapipe::tasks::core::proto::Acceleration::tflite
+AutoIt:
+    [propget] $oAcceleration.tflite
+```
+
+### mediapipe::tasks::core::proto::Acceleration::get\_create
+
+```cpp
+static mediapipe::tasks::core::proto::Acceleration mediapipe::tasks::core::proto::Acceleration::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.Acceleration").create() -> <mediapipe.tasks.core.proto.Acceleration object>
+```
+
+### mediapipe::tasks::core::proto::Acceleration::Clear
+
+```cpp
+void mediapipe::tasks::core::proto::Acceleration::Clear();
+AutoIt:
+    $oAcceleration.Clear() -> None
+```
+
+### mediapipe::tasks::core::proto::Acceleration::ClearField
+
+```cpp
+void mediapipe::tasks::core::proto::Acceleration::ClearField( const std::string& field_name );
+AutoIt:
+    $oAcceleration.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::core::proto::Acceleration::CopyFrom
+
+```cpp
+void mediapipe::tasks::core::proto::Acceleration::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oAcceleration.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::Acceleration::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::core::proto::Acceleration::__str__( std::string* output );
+AutoIt:
+    $oAcceleration.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::core::proto::acceleration\_pb2
+
+### acceleration\_pb2.Acceleration
+
+```cpp
+static mediapipe::tasks::core::proto::Acceleration
+AutoIt:
+    [propget] $oacceleration_pb2.Acceleration
+```
+
+## mediapipe::tasks::core::proto::ExternalFile
+
+### ExternalFile.file\_content
+
+```cpp
+std::string mediapipe::tasks::core::proto::ExternalFile::file_content
+AutoIt:
+    [propget, propput] $oExternalFile.file_content
+```
+
+### ExternalFile.file\_name
+
+```cpp
+std::string mediapipe::tasks::core::proto::ExternalFile::file_name
+AutoIt:
+    [propget, propput] $oExternalFile.file_name
+```
+
+### ExternalFile.file\_descriptor\_meta
+
+```cpp
+mediapipe::tasks::core::proto::FileDescriptorMeta* mediapipe::tasks::core::proto::ExternalFile::file_descriptor_meta
+AutoIt:
+    [propget] $oExternalFile.file_descriptor_meta
+```
+
+### ExternalFile.file\_pointer\_meta
+
+```cpp
+mediapipe::tasks::core::proto::FilePointerMeta* mediapipe::tasks::core::proto::ExternalFile::file_pointer_meta
+AutoIt:
+    [propget] $oExternalFile.file_pointer_meta
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::get\_create
+
+```cpp
+static mediapipe::tasks::core::proto::ExternalFile mediapipe::tasks::core::proto::ExternalFile::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.ExternalFile").create() -> <mediapipe.tasks.core.proto.ExternalFile object>
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::Clear
+
+```cpp
+void mediapipe::tasks::core::proto::ExternalFile::Clear();
+AutoIt:
+    $oExternalFile.Clear() -> None
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::ClearField
+
+```cpp
+void mediapipe::tasks::core::proto::ExternalFile::ClearField( const std::string& field_name );
+AutoIt:
+    $oExternalFile.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::CopyFrom
+
+```cpp
+void mediapipe::tasks::core::proto::ExternalFile::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oExternalFile.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::core::proto::ExternalFile::__str__( std::string* output );
+AutoIt:
+    $oExternalFile.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::core::proto::FileDescriptorMeta
+
+### FileDescriptorMeta.fd
+
+```cpp
+int mediapipe::tasks::core::proto::FileDescriptorMeta::fd
+AutoIt:
+    [propget, propput] $oFileDescriptorMeta.fd
+```
+
+### FileDescriptorMeta.length
+
+```cpp
+int64 mediapipe::tasks::core::proto::FileDescriptorMeta::length
+AutoIt:
+    [propget, propput] $oFileDescriptorMeta.length
+```
+
+### FileDescriptorMeta.offset
+
+```cpp
+int64 mediapipe::tasks::core::proto::FileDescriptorMeta::offset
+AutoIt:
+    [propget, propput] $oFileDescriptorMeta.offset
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::get\_create
+
+```cpp
+static mediapipe::tasks::core::proto::FileDescriptorMeta mediapipe::tasks::core::proto::FileDescriptorMeta::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.FileDescriptorMeta").create() -> <mediapipe.tasks.core.proto.FileDescriptorMeta object>
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::Clear
+
+```cpp
+void mediapipe::tasks::core::proto::FileDescriptorMeta::Clear();
+AutoIt:
+    $oFileDescriptorMeta.Clear() -> None
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::ClearField
+
+```cpp
+void mediapipe::tasks::core::proto::FileDescriptorMeta::ClearField( const std::string& field_name );
+AutoIt:
+    $oFileDescriptorMeta.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::CopyFrom
+
+```cpp
+void mediapipe::tasks::core::proto::FileDescriptorMeta::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFileDescriptorMeta.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::core::proto::FileDescriptorMeta::__str__( std::string* output );
+AutoIt:
+    $oFileDescriptorMeta.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::core::proto::FilePointerMeta
+
+### FilePointerMeta.pointer
+
+```cpp
+uint64 mediapipe::tasks::core::proto::FilePointerMeta::pointer
+AutoIt:
+    [propget, propput] $oFilePointerMeta.pointer
+```
+
+### FilePointerMeta.length
+
+```cpp
+int64 mediapipe::tasks::core::proto::FilePointerMeta::length
+AutoIt:
+    [propget, propput] $oFilePointerMeta.length
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::get\_create
+
+```cpp
+static mediapipe::tasks::core::proto::FilePointerMeta mediapipe::tasks::core::proto::FilePointerMeta::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.FilePointerMeta").create() -> <mediapipe.tasks.core.proto.FilePointerMeta object>
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::Clear
+
+```cpp
+void mediapipe::tasks::core::proto::FilePointerMeta::Clear();
+AutoIt:
+    $oFilePointerMeta.Clear() -> None
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::ClearField
+
+```cpp
+void mediapipe::tasks::core::proto::FilePointerMeta::ClearField( const std::string& field_name );
+AutoIt:
+    $oFilePointerMeta.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::CopyFrom
+
+```cpp
+void mediapipe::tasks::core::proto::FilePointerMeta::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFilePointerMeta.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::core::proto::FilePointerMeta::__str__( std::string* output );
+AutoIt:
+    $oFilePointerMeta.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::core::proto::external\_file\_pb2
+
+### external\_file\_pb2.ExternalFile
+
+```cpp
+static mediapipe::tasks::core::proto::ExternalFile
+AutoIt:
+    [propget] $oexternal_file_pb2.ExternalFile
+```
+
+### external\_file\_pb2.FileDescriptorMeta
+
+```cpp
+static mediapipe::tasks::core::proto::FileDescriptorMeta
+AutoIt:
+    [propget] $oexternal_file_pb2.FileDescriptorMeta
+```
+
+### external\_file\_pb2.FilePointerMeta
+
+```cpp
+static mediapipe::tasks::core::proto::FilePointerMeta
+AutoIt:
+    [propget] $oexternal_file_pb2.FilePointerMeta
+```
+
+## mediapipe::tasks::core::proto::BaseOptions
+
+### BaseOptions.model\_asset
+
+```cpp
+mediapipe::tasks::core::proto::ExternalFile* mediapipe::tasks::core::proto::BaseOptions::model_asset
+AutoIt:
+    [propget] $oBaseOptions.model_asset
+```
+
+### BaseOptions.use\_stream\_mode
+
+```cpp
+bool mediapipe::tasks::core::proto::BaseOptions::use_stream_mode
+AutoIt:
+    [propget, propput] $oBaseOptions.use_stream_mode
+```
+
+### BaseOptions.acceleration
+
+```cpp
+mediapipe::tasks::core::proto::Acceleration* mediapipe::tasks::core::proto::BaseOptions::acceleration
+AutoIt:
+    [propget] $oBaseOptions.acceleration
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::get\_create
+
+```cpp
+static mediapipe::tasks::core::proto::BaseOptions mediapipe::tasks::core::proto::BaseOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.BaseOptions").create() -> <mediapipe.tasks.core.proto.BaseOptions object>
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::Clear
+
+```cpp
+void mediapipe::tasks::core::proto::BaseOptions::Clear();
+AutoIt:
+    $oBaseOptions.Clear() -> None
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::ClearField
+
+```cpp
+void mediapipe::tasks::core::proto::BaseOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oBaseOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::core::proto::BaseOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oBaseOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::core::proto::BaseOptions::__str__( std::string* output );
+AutoIt:
+    $oBaseOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::core::proto::base\_options\_pb2
+
+### base\_options\_pb2.BaseOptions
+
+```cpp
+static mediapipe::tasks::core::proto::BaseOptions
+AutoIt:
+    [propget] $obase_options_pb2.BaseOptions
+```
+
+## mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions
+
+### AudioClassifierGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::base_options
+AutoIt:
+    [propget] $oAudioClassifierGraphOptions.base_options
+```
+
+### AudioClassifierGraphOptions.classifier\_options
+
+```cpp
+mediapipe::tasks::components::processors::proto::ClassifierOptions* mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::classifier_options
+AutoIt:
+    [propget] $oAudioClassifierGraphOptions.classifier_options
+```
+
+### AudioClassifierGraphOptions.default\_input\_audio\_sample\_rate
+
+```cpp
+double mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::default_input_audio_sample_rate
+AutoIt:
+    [propget, propput] $oAudioClassifierGraphOptions.default_input_audio_sample_rate
+```
+
+### AudioClassifierGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions* mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::ext
+AutoIt:
+    [propget] $oAudioClassifierGraphOptions.ext
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.audio.audio_classifier.proto.AudioClassifierGraphOptions").create() -> <mediapipe.tasks.audio.audio_classifier.proto.AudioClassifierGraphOptions object>
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::Clear();
+AutoIt:
+    $oAudioClassifierGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oAudioClassifierGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oAudioClassifierGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oAudioClassifierGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::audio::audio\_classifier::proto::audio\_classifier\_graph\_options\_pb2
+
+### audio\_classifier\_graph\_options\_pb2.AudioClassifierGraphOptions
+
+```cpp
+static mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions
+AutoIt:
+    [propget] $oaudio_classifier_graph_options_pb2.AudioClassifierGraphOptions
+```
+
 ## mediapipe::tasks::components::containers::proto::Classifications
 
 ### Classifications.classification\_list
@@ -30662,474 +31580,6 @@ AutoIt:
     [propget] $olandmarks_detection_result_pb2.MultiLandmarksDetectionResult
 ```
 
-## mediapipe::tasks::components::processors::proto::ClassifierOptions
-
-### ClassifierOptions.display\_names\_locale
-
-```cpp
-std::string mediapipe::tasks::components::processors::proto::ClassifierOptions::display_names_locale
-AutoIt:
-    [propget, propput] $oClassifierOptions.display_names_locale
-```
-
-### ClassifierOptions.max\_results
-
-```cpp
-int mediapipe::tasks::components::processors::proto::ClassifierOptions::max_results
-AutoIt:
-    [propget, propput] $oClassifierOptions.max_results
-```
-
-### ClassifierOptions.score\_threshold
-
-```cpp
-float mediapipe::tasks::components::processors::proto::ClassifierOptions::score_threshold
-AutoIt:
-    [propget, propput] $oClassifierOptions.score_threshold
-```
-
-### ClassifierOptions.category\_allowlist
-
-```cpp
-google::protobuf::Repeated_std_string* mediapipe::tasks::components::processors::proto::ClassifierOptions::category_allowlist
-AutoIt:
-    [propget] $oClassifierOptions.category_allowlist
-```
-
-### ClassifierOptions.category\_denylist
-
-```cpp
-google::protobuf::Repeated_std_string* mediapipe::tasks::components::processors::proto::ClassifierOptions::category_denylist
-AutoIt:
-    [propget] $oClassifierOptions.category_denylist
-```
-
-### mediapipe::tasks::components::processors::proto::ClassifierOptions::get\_create
-
-```cpp
-static mediapipe::tasks::components::processors::proto::ClassifierOptions mediapipe::tasks::components::processors::proto::ClassifierOptions::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.components.processors.proto.ClassifierOptions").create() -> <mediapipe.tasks.components.processors.proto.ClassifierOptions object>
-```
-
-### mediapipe::tasks::components::processors::proto::ClassifierOptions::Clear
-
-```cpp
-void mediapipe::tasks::components::processors::proto::ClassifierOptions::Clear();
-AutoIt:
-    $oClassifierOptions.Clear() -> None
-```
-
-### mediapipe::tasks::components::processors::proto::ClassifierOptions::ClearField
-
-```cpp
-void mediapipe::tasks::components::processors::proto::ClassifierOptions::ClearField( const std::string& field_name );
-AutoIt:
-    $oClassifierOptions.ClearField( $field_name ) -> None
-```
-
-### mediapipe::tasks::components::processors::proto::ClassifierOptions::CopyFrom
-
-```cpp
-void mediapipe::tasks::components::processors::proto::ClassifierOptions::CopyFrom( const google::protobuf::Message* other_message );
-AutoIt:
-    $oClassifierOptions.CopyFrom( $other_message ) -> None
-```
-
-### mediapipe::tasks::components::processors::proto::ClassifierOptions::\_\_str\_\_
-
-```cpp
-void mediapipe::tasks::components::processors::proto::ClassifierOptions::__str__( std::string* output );
-AutoIt:
-    $oClassifierOptions.__str__( [$output] ) -> $output
-```
-
-## mediapipe::tasks::cc::components::processors::proto::classifier\_options\_pb2
-
-### classifier\_options\_pb2.ClassifierOptions
-
-```cpp
-static mediapipe::tasks::components::processors::proto::ClassifierOptions
-AutoIt:
-    [propget] $oclassifier_options_pb2.ClassifierOptions
-```
-
-## mediapipe::tasks::core::proto::Acceleration
-
-### Acceleration.xnnpack
-
-```cpp
-mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack* mediapipe::tasks::core::proto::Acceleration::xnnpack
-AutoIt:
-    [propget] $oAcceleration.xnnpack
-```
-
-### Acceleration.gpu
-
-```cpp
-mediapipe::InferenceCalculatorOptions::Delegate::Gpu* mediapipe::tasks::core::proto::Acceleration::gpu
-AutoIt:
-    [propget] $oAcceleration.gpu
-```
-
-### Acceleration.tflite
-
-```cpp
-mediapipe::InferenceCalculatorOptions::Delegate::TfLite* mediapipe::tasks::core::proto::Acceleration::tflite
-AutoIt:
-    [propget] $oAcceleration.tflite
-```
-
-### mediapipe::tasks::core::proto::Acceleration::get\_create
-
-```cpp
-static mediapipe::tasks::core::proto::Acceleration mediapipe::tasks::core::proto::Acceleration::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.Acceleration").create() -> <mediapipe.tasks.core.proto.Acceleration object>
-```
-
-### mediapipe::tasks::core::proto::Acceleration::Clear
-
-```cpp
-void mediapipe::tasks::core::proto::Acceleration::Clear();
-AutoIt:
-    $oAcceleration.Clear() -> None
-```
-
-### mediapipe::tasks::core::proto::Acceleration::ClearField
-
-```cpp
-void mediapipe::tasks::core::proto::Acceleration::ClearField( const std::string& field_name );
-AutoIt:
-    $oAcceleration.ClearField( $field_name ) -> None
-```
-
-### mediapipe::tasks::core::proto::Acceleration::CopyFrom
-
-```cpp
-void mediapipe::tasks::core::proto::Acceleration::CopyFrom( const google::protobuf::Message* other_message );
-AutoIt:
-    $oAcceleration.CopyFrom( $other_message ) -> None
-```
-
-### mediapipe::tasks::core::proto::Acceleration::\_\_str\_\_
-
-```cpp
-void mediapipe::tasks::core::proto::Acceleration::__str__( std::string* output );
-AutoIt:
-    $oAcceleration.__str__( [$output] ) -> $output
-```
-
-## mediapipe::tasks::cc::core::proto::acceleration\_pb2
-
-### acceleration\_pb2.Acceleration
-
-```cpp
-static mediapipe::tasks::core::proto::Acceleration
-AutoIt:
-    [propget] $oacceleration_pb2.Acceleration
-```
-
-## mediapipe::tasks::core::proto::ExternalFile
-
-### ExternalFile.file\_content
-
-```cpp
-std::string mediapipe::tasks::core::proto::ExternalFile::file_content
-AutoIt:
-    [propget, propput] $oExternalFile.file_content
-```
-
-### ExternalFile.file\_name
-
-```cpp
-std::string mediapipe::tasks::core::proto::ExternalFile::file_name
-AutoIt:
-    [propget, propput] $oExternalFile.file_name
-```
-
-### ExternalFile.file\_descriptor\_meta
-
-```cpp
-mediapipe::tasks::core::proto::FileDescriptorMeta* mediapipe::tasks::core::proto::ExternalFile::file_descriptor_meta
-AutoIt:
-    [propget] $oExternalFile.file_descriptor_meta
-```
-
-### ExternalFile.file\_pointer\_meta
-
-```cpp
-mediapipe::tasks::core::proto::FilePointerMeta* mediapipe::tasks::core::proto::ExternalFile::file_pointer_meta
-AutoIt:
-    [propget] $oExternalFile.file_pointer_meta
-```
-
-### mediapipe::tasks::core::proto::ExternalFile::get\_create
-
-```cpp
-static mediapipe::tasks::core::proto::ExternalFile mediapipe::tasks::core::proto::ExternalFile::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.ExternalFile").create() -> <mediapipe.tasks.core.proto.ExternalFile object>
-```
-
-### mediapipe::tasks::core::proto::ExternalFile::Clear
-
-```cpp
-void mediapipe::tasks::core::proto::ExternalFile::Clear();
-AutoIt:
-    $oExternalFile.Clear() -> None
-```
-
-### mediapipe::tasks::core::proto::ExternalFile::ClearField
-
-```cpp
-void mediapipe::tasks::core::proto::ExternalFile::ClearField( const std::string& field_name );
-AutoIt:
-    $oExternalFile.ClearField( $field_name ) -> None
-```
-
-### mediapipe::tasks::core::proto::ExternalFile::CopyFrom
-
-```cpp
-void mediapipe::tasks::core::proto::ExternalFile::CopyFrom( const google::protobuf::Message* other_message );
-AutoIt:
-    $oExternalFile.CopyFrom( $other_message ) -> None
-```
-
-### mediapipe::tasks::core::proto::ExternalFile::\_\_str\_\_
-
-```cpp
-void mediapipe::tasks::core::proto::ExternalFile::__str__( std::string* output );
-AutoIt:
-    $oExternalFile.__str__( [$output] ) -> $output
-```
-
-## mediapipe::tasks::core::proto::FileDescriptorMeta
-
-### FileDescriptorMeta.fd
-
-```cpp
-int mediapipe::tasks::core::proto::FileDescriptorMeta::fd
-AutoIt:
-    [propget, propput] $oFileDescriptorMeta.fd
-```
-
-### FileDescriptorMeta.length
-
-```cpp
-int64 mediapipe::tasks::core::proto::FileDescriptorMeta::length
-AutoIt:
-    [propget, propput] $oFileDescriptorMeta.length
-```
-
-### FileDescriptorMeta.offset
-
-```cpp
-int64 mediapipe::tasks::core::proto::FileDescriptorMeta::offset
-AutoIt:
-    [propget, propput] $oFileDescriptorMeta.offset
-```
-
-### mediapipe::tasks::core::proto::FileDescriptorMeta::get\_create
-
-```cpp
-static mediapipe::tasks::core::proto::FileDescriptorMeta mediapipe::tasks::core::proto::FileDescriptorMeta::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.FileDescriptorMeta").create() -> <mediapipe.tasks.core.proto.FileDescriptorMeta object>
-```
-
-### mediapipe::tasks::core::proto::FileDescriptorMeta::Clear
-
-```cpp
-void mediapipe::tasks::core::proto::FileDescriptorMeta::Clear();
-AutoIt:
-    $oFileDescriptorMeta.Clear() -> None
-```
-
-### mediapipe::tasks::core::proto::FileDescriptorMeta::ClearField
-
-```cpp
-void mediapipe::tasks::core::proto::FileDescriptorMeta::ClearField( const std::string& field_name );
-AutoIt:
-    $oFileDescriptorMeta.ClearField( $field_name ) -> None
-```
-
-### mediapipe::tasks::core::proto::FileDescriptorMeta::CopyFrom
-
-```cpp
-void mediapipe::tasks::core::proto::FileDescriptorMeta::CopyFrom( const google::protobuf::Message* other_message );
-AutoIt:
-    $oFileDescriptorMeta.CopyFrom( $other_message ) -> None
-```
-
-### mediapipe::tasks::core::proto::FileDescriptorMeta::\_\_str\_\_
-
-```cpp
-void mediapipe::tasks::core::proto::FileDescriptorMeta::__str__( std::string* output );
-AutoIt:
-    $oFileDescriptorMeta.__str__( [$output] ) -> $output
-```
-
-## mediapipe::tasks::core::proto::FilePointerMeta
-
-### FilePointerMeta.pointer
-
-```cpp
-uint64 mediapipe::tasks::core::proto::FilePointerMeta::pointer
-AutoIt:
-    [propget, propput] $oFilePointerMeta.pointer
-```
-
-### FilePointerMeta.length
-
-```cpp
-int64 mediapipe::tasks::core::proto::FilePointerMeta::length
-AutoIt:
-    [propget, propput] $oFilePointerMeta.length
-```
-
-### mediapipe::tasks::core::proto::FilePointerMeta::get\_create
-
-```cpp
-static mediapipe::tasks::core::proto::FilePointerMeta mediapipe::tasks::core::proto::FilePointerMeta::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.FilePointerMeta").create() -> <mediapipe.tasks.core.proto.FilePointerMeta object>
-```
-
-### mediapipe::tasks::core::proto::FilePointerMeta::Clear
-
-```cpp
-void mediapipe::tasks::core::proto::FilePointerMeta::Clear();
-AutoIt:
-    $oFilePointerMeta.Clear() -> None
-```
-
-### mediapipe::tasks::core::proto::FilePointerMeta::ClearField
-
-```cpp
-void mediapipe::tasks::core::proto::FilePointerMeta::ClearField( const std::string& field_name );
-AutoIt:
-    $oFilePointerMeta.ClearField( $field_name ) -> None
-```
-
-### mediapipe::tasks::core::proto::FilePointerMeta::CopyFrom
-
-```cpp
-void mediapipe::tasks::core::proto::FilePointerMeta::CopyFrom( const google::protobuf::Message* other_message );
-AutoIt:
-    $oFilePointerMeta.CopyFrom( $other_message ) -> None
-```
-
-### mediapipe::tasks::core::proto::FilePointerMeta::\_\_str\_\_
-
-```cpp
-void mediapipe::tasks::core::proto::FilePointerMeta::__str__( std::string* output );
-AutoIt:
-    $oFilePointerMeta.__str__( [$output] ) -> $output
-```
-
-## mediapipe::tasks::cc::core::proto::external\_file\_pb2
-
-### external\_file\_pb2.ExternalFile
-
-```cpp
-static mediapipe::tasks::core::proto::ExternalFile
-AutoIt:
-    [propget] $oexternal_file_pb2.ExternalFile
-```
-
-### external\_file\_pb2.FileDescriptorMeta
-
-```cpp
-static mediapipe::tasks::core::proto::FileDescriptorMeta
-AutoIt:
-    [propget] $oexternal_file_pb2.FileDescriptorMeta
-```
-
-### external\_file\_pb2.FilePointerMeta
-
-```cpp
-static mediapipe::tasks::core::proto::FilePointerMeta
-AutoIt:
-    [propget] $oexternal_file_pb2.FilePointerMeta
-```
-
-## mediapipe::tasks::core::proto::BaseOptions
-
-### BaseOptions.model\_asset
-
-```cpp
-mediapipe::tasks::core::proto::ExternalFile* mediapipe::tasks::core::proto::BaseOptions::model_asset
-AutoIt:
-    [propget] $oBaseOptions.model_asset
-```
-
-### BaseOptions.use\_stream\_mode
-
-```cpp
-bool mediapipe::tasks::core::proto::BaseOptions::use_stream_mode
-AutoIt:
-    [propget, propput] $oBaseOptions.use_stream_mode
-```
-
-### BaseOptions.acceleration
-
-```cpp
-mediapipe::tasks::core::proto::Acceleration* mediapipe::tasks::core::proto::BaseOptions::acceleration
-AutoIt:
-    [propget] $oBaseOptions.acceleration
-```
-
-### mediapipe::tasks::core::proto::BaseOptions::get\_create
-
-```cpp
-static mediapipe::tasks::core::proto::BaseOptions mediapipe::tasks::core::proto::BaseOptions::get_create();
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.BaseOptions").create() -> <mediapipe.tasks.core.proto.BaseOptions object>
-```
-
-### mediapipe::tasks::core::proto::BaseOptions::Clear
-
-```cpp
-void mediapipe::tasks::core::proto::BaseOptions::Clear();
-AutoIt:
-    $oBaseOptions.Clear() -> None
-```
-
-### mediapipe::tasks::core::proto::BaseOptions::ClearField
-
-```cpp
-void mediapipe::tasks::core::proto::BaseOptions::ClearField( const std::string& field_name );
-AutoIt:
-    $oBaseOptions.ClearField( $field_name ) -> None
-```
-
-### mediapipe::tasks::core::proto::BaseOptions::CopyFrom
-
-```cpp
-void mediapipe::tasks::core::proto::BaseOptions::CopyFrom( const google::protobuf::Message* other_message );
-AutoIt:
-    $oBaseOptions.CopyFrom( $other_message ) -> None
-```
-
-### mediapipe::tasks::core::proto::BaseOptions::\_\_str\_\_
-
-```cpp
-void mediapipe::tasks::core::proto::BaseOptions::__str__( std::string* output );
-AutoIt:
-    $oBaseOptions.__str__( [$output] ) -> $output
-```
-
-## mediapipe::tasks::cc::core::proto::base\_options\_pb2
-
-### base\_options\_pb2.BaseOptions
-
-```cpp
-static mediapipe::tasks::core::proto::BaseOptions
-AutoIt:
-    [propget] $obase_options_pb2.BaseOptions
-```
-
 ## mediapipe::FlowLimiterCalculatorOptions
 
 ### FlowLimiterCalculatorOptions.max\_in\_flight
@@ -31333,9 +31783,9 @@ AutoIt:
 ### mediapipe::CalculatorGraph::observe\_output\_stream
 
 ```cpp
-void mediapipe::CalculatorGraph::observe_output_stream( std::string                       stream_name,
-                                                        mediapipe::autoit::PacketCallback callback_fn,
-                                                        bool                              observe_timestamp_bounds = false );
+void mediapipe::CalculatorGraph::observe_output_stream( std::string                          stream_name,
+                                                        mediapipe::autoit::PacketRawCallback callback_fn,
+                                                        bool                                 observe_timestamp_bounds = false );
 AutoIt:
     $oCalculatorGraph.observe_output_stream( $stream_name, $callback_fn[, $observe_timestamp_bounds] ) -> None
 ```
@@ -35419,8 +35869,8 @@ AutoIt:
 ### mediapipe::tasks::core::TaskRunner::get\_create
 
 ```cpp
-static std::shared_ptr<mediapipe::tasks::core::TaskRunner> mediapipe::tasks::core::TaskRunner::get_create( mediapipe::CalculatorGraphConfig&  graph_config,
-                                                                                                           mediapipe::autoit::PacketsCallback packets_callback = nullptr );
+static std::shared_ptr<mediapipe::tasks::core::TaskRunner> mediapipe::tasks::core::TaskRunner::get_create( mediapipe::CalculatorGraphConfig&     graph_config,
+                                                                                                           mediapipe::autoit::PacketsRawCallback packets_callback = nullptr );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.core.TaskRunner").create( $graph_config[, $packets_callback] ) -> retval
     $oTaskRunner( $graph_config[, $packets_callback] ) -> retval

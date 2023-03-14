@@ -41,7 +41,7 @@ namespace mediapipe {
 								float width = 0.0f,
 								float height = 0.0f,
 								float rotation = 0.0f,
-								int rect_id = -1
+								int64_t rect_id = -1
 							)
 								:
 								x_center(x_center),
@@ -60,7 +60,7 @@ namespace mediapipe {
 							float width;
 							float height;
 							float rotation;
-							int rect_id;
+							int64_t rect_id;
 
 						};
 					}

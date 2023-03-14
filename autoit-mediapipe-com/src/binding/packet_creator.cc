@@ -1,4 +1,5 @@
 #include "Mediapipe_Autoit_Packet_creator_Object.h"
+#include <opencv2/core/eigen.hpp>
 
 namespace mediapipe {
 	namespace autoit {
@@ -128,6 +129,25 @@ const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_image(co
 	}
 	auto image_frame = CreateImageFrame(format, data, copy);
 	return CreateImagePacket(image_frame);
+}
+
+const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_matrix(const cv::Mat& data, bool transpose) {
+	AUTOIT_ASSERT_THROW(data.type() == CV_32F, "The data should be a float matrix");
+	AUTOIT_ASSERT_THROW(data.dims == 2, "The data is expected to have at most 2 dimensions");
+	AUTOIT_ASSERT_THROW(data.cols == 1 || data.channels() == 1, "The data is expected be a Nx1 matrix");
+
+	// Eigen Map class
+	// (https://eigen.tuxfamily.org/dox/group__TutorialMapClass.html) is the
+	// way to reuse the external memory as an Eigen type. However, when
+	// creating an Eigen::MatrixXf from an Eigen Map object, the data copy
+	// still happens. We can  make a packet of an Eigen Map type for reusing
+	// external memory. However,the packet data type is no longer
+	// Eigen::MatrixXf.
+	// https://stackoverflow.com/questions/54971083/how-to-use-cvmat-and-eigenmatrix-correctly-opencv-eigen/54975764#54975764
+	// https://stackoverflow.com/questions/14783329/opencv-cvmat-and-eigenmatrix/14874440#14874440
+	Eigen::MatrixXf matrix;
+	cv::cv2eigen(data.reshape(1), matrix);
+	return std::make_shared<Packet>(std::move(MakePacket<Matrix>(transpose ? matrix.transpose() : matrix)));
 }
 
 const std::shared_ptr<Packet> mediapipe::autoit::packet_creator::create_proto(const google::protobuf::Message& message) {

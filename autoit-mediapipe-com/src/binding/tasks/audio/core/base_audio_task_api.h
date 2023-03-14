@@ -8,7 +8,7 @@
 
 namespace mediapipe {
 	namespace tasks {
-		namespace python {
+		namespace autoit {
 			namespace audio {
 				namespace core {
 					namespace base_audio_task_api {
@@ -17,17 +17,17 @@ namespace mediapipe {
 							CV_WRAP BaseAudioTaskApi(
 								const CalculatorGraphConfig& graph_config,
 								audio_task_running_mode::AudioTaskRunningMode running_mode,
-								autoit::PacketsCallback packet_callback = nullptr
+								mediapipe::autoit::PacketsCallback packet_callback = nullptr
 							);
 
 							CV_WRAP std::map<std::string, Packet> _process_audio_clip(const std::map<std::string, Packet>& inputs);
 							CV_WRAP void _set_sample_rate(const std::string& sample_rate_stream_name, float sample_rate);
 							CV_WRAP void _send_audio_stream_data(const std::map<std::string, Packet>& inputs);
 							CV_WRAP void close();
-						private:
+						protected:
 							std::shared_ptr<mediapipe::tasks::core::TaskRunner> _runner;
 							audio_task_running_mode::AudioTaskRunningMode _running_mode;
-							// float _default_sample_rate;
+							std::optional<float> _default_sample_rate;
 						};
 					}
 				}

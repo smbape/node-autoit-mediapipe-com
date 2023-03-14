@@ -10,10 +10,12 @@
 #include "mediapipe/framework/tool/calculator_graph_template.pb.h"
 #include "mediapipe/framework/formats/detection.pb.h"
 #include "binding/util.h"
+#include <functional>
 
 namespace mediapipe {
 	namespace autoit {
-		using PacketCallback = void (*)(const std::string&, const Packet&);
+		using PacketRawCallback = void(*)(const std::string&, const Packet&);
+		using PacketCallback = std::function<void(const std::string&, const Packet&)>;
 
 		namespace calculator_graph {
 			std::shared_ptr<CalculatorGraph> create(CalculatorGraphConfig& graph_config);
@@ -32,4 +34,4 @@ namespace mediapipe {
 	}
 }
 
-PTR_BRIDGE_DECL(mediapipe::autoit::PacketCallback)
+PTR_BRIDGE_DECL(mediapipe::autoit::PacketRawCallback);

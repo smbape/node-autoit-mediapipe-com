@@ -1,6 +1,6 @@
 #include "Mediapipe_CalculatorGraph_Object.h"
 
-PTR_BRIDGE_IMPL(mediapipe::autoit::PacketCallback)
+PTR_BRIDGE_IMPL(mediapipe::autoit::PacketRawCallback);
 
 using namespace mediapipe;
 using namespace mediapipe::autoit;
