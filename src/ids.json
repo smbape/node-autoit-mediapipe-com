@@ -275,6 +275,22 @@
         "iid": "2fe3ce26-766d-4c18-96a7-54cb45780c0f",
         "clsid": "627664ae-6388-4542-af06-7515e800b763"
     },
+    "mediapipe::tasks::autoit::audio::audio_embedder": {
+        "iid": "b4eb2ad5-9971-4a3d-9fba-84e0849039c9",
+        "clsid": "ebcd53cc-c1a3-47cd-b362-f4910793e74b"
+    },
+    "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions": {
+        "iid": "f8f134c2-721c-4a5b-ac4b-0f4fb17a4044",
+        "clsid": "2109ad11-d210-405a-a454-7797a332703f"
+    },
+    "mediapipe::autoit::audio::audio_embedder": {
+        "iid": "d50f6f06-0473-42f5-9b5d-b65ef00afc8d",
+        "clsid": "2a9826de-accb-4173-af61-a392718be23c"
+    },
+    "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder": {
+        "iid": "c3b37f16-3f9e-401a-b15c-e78435ecda2a",
+        "clsid": "807c55db-6d66-4bb2-b0cb-6ab5d3e8a1c8"
+    },
     "mediapipe::tasks::autoit::audio::core": {
         "iid": "2bb84306-9f30-484a-b7a1-d5f4a618a90e",
         "clsid": "ac6cc423-4c1d-43f0-8099-c88a7e34d8e5"
@@ -518,6 +534,66 @@
     "mediapipe::autoit::core::task_info": {
         "iid": "608262a5-4e95-476d-898d-30cf2115f063",
         "clsid": "75a738d6-9cad-43dc-b740-23e93a80b9f6"
+    },
+    "mediapipe::tasks::autoit::text": {
+        "iid": "c04c4af2-f745-4aab-9270-1991b4d04bc5",
+        "clsid": "2101b383-83a1-4b92-b154-931bd3b6501c"
+    },
+    "mediapipe::tasks::autoit::text::core": {
+        "iid": "9ac69a56-084e-4ca2-8313-589f7c5dbd0c",
+        "clsid": "d26f5200-e07f-437d-8ba2-2092145723d9"
+    },
+    "mediapipe::autoit::text": {
+        "iid": "d24272fc-2b69-4353-bcb0-659e32735b70",
+        "clsid": "89a5910a-e3e5-4d68-952b-594a0b03bd45"
+    },
+    "mediapipe::tasks::autoit::text::core::base_text_task_api": {
+        "iid": "bbf960c8-1805-4107-89c2-b0e436984dfd",
+        "clsid": "063626d3-b854-4bb1-bb7a-e6febbfb7cba"
+    },
+    "mediapipe::autoit::text::core": {
+        "iid": "a1bff055-69d9-44e6-b000-22cee43c33de",
+        "clsid": "98cabfc1-ea13-4cdd-84d8-222a6c193d8a"
+    },
+    "mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi": {
+        "iid": "112cb3bf-9e17-4bb4-80b0-6f23b9ae7ce0",
+        "clsid": "c9d88c56-907f-4609-b516-ba722b7f8e17"
+    },
+    "mediapipe::autoit::text::core::base_text_task_api": {
+        "iid": "50fc65be-1f15-47c2-b3f2-8eff55c579f2",
+        "clsid": "04a3725c-7162-4d9d-b0a0-f6fc820cf027"
+    },
+    "mediapipe::tasks::autoit::text::text_classifier": {
+        "iid": "80b8f3da-2865-4025-acb3-d9b32743e355",
+        "clsid": "5009618a-2353-47e3-b978-18bd5eb187b4"
+    },
+    "mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions": {
+        "iid": "7c225c54-05b4-43ac-b34c-61ce420a8f1d",
+        "clsid": "9ac46f23-6853-4e81-922d-453638a7fcf2"
+    },
+    "mediapipe::autoit::text::text_classifier": {
+        "iid": "a24e7ed9-4e9e-47c6-baa2-2b6b85cba498",
+        "clsid": "1c4c6f7b-9432-4262-b9a3-2e472a75a195"
+    },
+    "mediapipe::tasks::autoit::text::text_classifier::TextClassifier": {
+        "iid": "bb0643ff-d391-41cc-b3ba-2f303b86bcb0",
+        "clsid": "82fe61b1-f263-44e7-8410-17da75572bb8"
+    },
+    "mediapipe::tasks::autoit::text::text_embedder": {
+        "iid": "e9f6f722-a6a4-4dcc-8c66-556aae92f4ac",
+        "clsid": "a9706cf4-4379-4f8c-b582-dd9a5ffca5e9"
+    },
+    "mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions": {
+        "iid": "a242d806-02ae-467b-a81b-630c01e2076d",
+        "clsid": "b1eb73a7-a22a-49ef-b25c-74ea79100147"
+    },
+    "mediapipe::autoit::text::text_embedder": {
+        "iid": "8ae0902e-eef4-4806-9971-81fe803685ad",
+        "clsid": "c999626a-0bf7-4057-b1c5-70587deedd61"
+    },
+    "mediapipe::tasks::autoit::text::text_embedder::TextEmbedder": {
+        "iid": "cd4969ab-2a93-4dfb-be1c-a15244888e81",
+        "clsid": "dc7677ce-6863-440b-a825-4454619fc31b"
     },
     "cv": {
         "iid": "f4d16f5c-a74e-4873-a8ff-b65ab43d2598",
@@ -1535,6 +1611,42 @@
         "iid": "2dffe504-07dd-4e64-a642-693675789d20",
         "clsid": "5aeee1db-718d-4db0-b572-9673f2e9bb2e"
     },
+    "mediapipe::tasks::components::processors::proto::EmbedderOptions": {
+        "iid": "e909549c-d4d0-49f3-9204-7b82d55c6431",
+        "clsid": "213e1fe4-af76-4eb9-a559-0e268b055f27"
+    },
+    "mediapipe::tasks::cc::components::processors::proto::embedder_options_pb2": {
+        "iid": "5ee176c4-7759-4be4-92c4-aa18a8751dab",
+        "clsid": "a7d84f1b-e768-4ae7-8110-d775265bdbc2"
+    },
+    "mediapipe::tasks::audio::audio_embedder": {
+        "iid": "bb18b490-47d0-485e-a013-6eedf49427c9",
+        "clsid": "361eea6e-2886-4e55-8515-1daaf971ee16"
+    },
+    "mediapipe::tasks::audio::audio_embedder::proto": {
+        "iid": "e22dad45-c8b4-482c-ba37-0d809d731036",
+        "clsid": "0e6e0ffb-1ac3-4660-a42f-1b7f87245710"
+    },
+    "mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions": {
+        "iid": "2df91a82-72fa-42b3-887d-570ed4ecf1dd",
+        "clsid": "4b040053-1474-46fd-b90e-cb5bf4dca2b4"
+    },
+    "mediapipe::tasks::cc::audio::audio_embedder": {
+        "iid": "5187ff38-e326-44f6-9c57-079368c68abc",
+        "clsid": "0a0dddd0-3d8f-41c9-bce3-faab37bbbfa3"
+    },
+    "mediapipe::tasks::cc::audio::audio_embedder::proto": {
+        "iid": "a9234c89-28aa-49b7-b91d-e1acff5b4015",
+        "clsid": "5f700a8a-6624-4f4f-84d6-5d80481384b0"
+    },
+    "mediapipe::tasks::cc::audio::audio_embedder::proto::audio_embedder_graph_options_pb2": {
+        "iid": "d5ac0008-e664-43ae-bee2-2430fced339a",
+        "clsid": "1b8901c6-22c0-4ed6-9c79-6ad24558e0ee"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions": {
+        "iid": "d3aaa2ce-ac1b-4449-a345-3eaedd327570",
+        "clsid": "e240ebf4-2617-48e0-a977-af7188dd5363"
+    },
     "mediapipe::tasks::components::containers::proto::FloatEmbedding": {
         "iid": "321c2133-c628-4017-a55d-1990529c355f",
         "clsid": "3f1f3cae-d721-47e1-b615-986b4a6b0c54"
@@ -1606,6 +1718,70 @@
     "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions": {
         "iid": "9c9d0c8c-1fdd-420c-a434-e67896d9d0ba",
         "clsid": "808dd4a2-1104-415a-ba78-86b72b92eeb0"
+    },
+    "mediapipe::tasks::text": {
+        "iid": "704c7bab-2759-4054-9ab5-50c0b0cb6007",
+        "clsid": "f8d36b15-544d-4beb-b8d0-2a71c9648478"
+    },
+    "mediapipe::tasks::text::text_classifier": {
+        "iid": "17486957-b2e6-40a7-94c6-1c2f39835488",
+        "clsid": "46ade18d-3abe-47ca-9b7b-2b9682d88b1d"
+    },
+    "mediapipe::tasks::text::text_classifier::proto": {
+        "iid": "3a443184-fa78-4b01-a7c7-d6d4fb9f6fe4",
+        "clsid": "eb95983f-3611-45e3-bfb6-7ee661dbe7c6"
+    },
+    "mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions": {
+        "iid": "2373ee0c-6a77-4aba-aabd-9191a3c2f0f4",
+        "clsid": "d719b55c-11b7-4e34-83fa-2a4293f41761"
+    },
+    "mediapipe::tasks::cc::text": {
+        "iid": "f968f652-ca4d-49a1-9fab-da47e8f5a8f2",
+        "clsid": "716346f1-470d-483d-9614-60f26b057831"
+    },
+    "mediapipe::tasks::cc::text::text_classifier": {
+        "iid": "47c8af50-0573-4eb8-84c4-8d5bd79c0279",
+        "clsid": "cfc34498-b2c4-4fec-b806-d2be6060c202"
+    },
+    "mediapipe::tasks::cc::text::text_classifier::proto": {
+        "iid": "778838ef-d8ac-4fd6-9d64-b5d0be831c9d",
+        "clsid": "decce899-3629-4625-a26e-b2e81557ee9d"
+    },
+    "mediapipe::tasks::cc::text::text_classifier::proto::text_classifier_graph_options_pb2": {
+        "iid": "fd2a0c27-2019-4808-82cd-7483563c89eb",
+        "clsid": "0d48b4f9-2491-4b1a-89f0-328c8bc42bb0"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions": {
+        "iid": "ec933377-56fb-4293-8a8c-806525e2a957",
+        "clsid": "b4b73120-5f97-4ced-80a2-662b57e29a40"
+    },
+    "mediapipe::tasks::text::text_embedder": {
+        "iid": "354fb79e-f442-461a-bf5c-a1dd1eea15c5",
+        "clsid": "16e9504f-3283-4938-8c8d-4dfe55978fc4"
+    },
+    "mediapipe::tasks::text::text_embedder::proto": {
+        "iid": "12626dc7-2429-47c5-a310-741afc4bbd32",
+        "clsid": "1be9707c-8b5d-4620-bc28-e40583a565f7"
+    },
+    "mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions": {
+        "iid": "73205033-1540-4309-998b-a4fa0e4bc056",
+        "clsid": "908e0f2d-db28-40bd-8ee5-6bf7b6bcac7c"
+    },
+    "mediapipe::tasks::cc::text::text_embedder": {
+        "iid": "a9d1e04a-fec4-4017-8d9c-333933bf61f8",
+        "clsid": "ceaec495-2347-4d9b-983c-aad6237c1224"
+    },
+    "mediapipe::tasks::cc::text::text_embedder::proto": {
+        "iid": "c49be3a4-84c8-4f07-ba7e-c19db5604bc5",
+        "clsid": "42dc1f41-27cc-4d9d-bcf4-db6cefbfacc7"
+    },
+    "mediapipe::tasks::cc::text::text_embedder::proto::text_embedder_graph_options_pb2": {
+        "iid": "d85f7eea-0042-4615-9ce5-0209d6792900",
+        "clsid": "59c14a69-7422-49e4-9f3d-4cfad1cef46f"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions": {
+        "iid": "135ef3b2-8564-4f51-8431-e6e16021af41",
+        "clsid": "6e49120a-f3db-488d-81f1-615dc1eb69fd"
     },
     "mediapipe::CalculatorGraph": {
         "iid": "3637f144-8536-4c06-879b-0a2ea04b7f9e",

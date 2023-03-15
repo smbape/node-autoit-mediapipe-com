@@ -72,6 +72,7 @@
   - [autoit.audio](#autoitaudio)
   - [autoit.components](#autoitcomponents)
   - [autoit.core](#autoitcore)
+  - [autoit.text](#autoittext)
 - [mediapipe::autoit::packet\_creator](#mediapipeautoitpacket%5C_creator)
   - [mediapipe::autoit::packet\_creator::create\_bool](#mediapipeautoitpacket%5C_creatorcreate%5C_bool)
   - [mediapipe::autoit::packet\_creator::create\_bool\_vector](#mediapipeautoitpacket%5C_creatorcreate%5C_bool%5C_vector)
@@ -451,14 +452,24 @@
   - [autoit.audio](#autoitaudio-1)
   - [autoit.components](#autoitcomponents-1)
   - [autoit.core](#autoitcore-1)
+  - [autoit.text](#autoittext-1)
 - [mediapipe::tasks::autoit::audio](#mediapipetasksautoitaudio)
   - [audio.audio\_classifier](#audioaudio%5C_classifier)
+  - [audio.audio\_embedder](#audioaudio%5C_embedder)
   - [audio.core](#audiocore)
+  - [audio.AudioClassifier](#audioaudioclassifier)
+  - [audio.AudioClassifierOptions](#audioaudioclassifieroptions)
+  - [audio.AudioClassifierResult](#audioaudioclassifierresult)
+  - [audio.AudioEmbedder](#audioaudioembedder)
+  - [audio.AudioEmbedderOptions](#audioaudioembedderoptions)
+  - [audio.AudioEmbedderResult](#audioaudioembedderresult)
+  - [audio.RunningMode](#audiorunningmode)
 - [mediapipe::tasks::autoit::audio::audio\_classifier](#mediapipetasksautoitaudioaudio%5C_classifier)
   - [audio\_classifier.AudioClassifierOptions](#audio%5C_classifieraudioclassifieroptions)
   - [audio\_classifier.AudioClassifier](#audio%5C_classifieraudioclassifier)
 - [mediapipe::autoit::audio](#mediapipeautoitaudio)
   - [audio.audio\_classifier](#audioaudio%5C_classifier-1)
+  - [audio.audio\_embedder](#audioaudio%5C_embedder-1)
   - [audio.core](#audiocore-1)
 - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifieroptions)
   - [AudioClassifierOptions.base\_options](#audioclassifieroptionsbase%5C_options)
@@ -474,6 +485,20 @@
 - [mediapipe::autoit::audio::audio\_classifier](#mediapipeautoitaudioaudio%5C_classifier)
   - [audio\_classifier.AudioClassifierOptions](#audio%5C_classifieraudioclassifieroptions-1)
   - [audio\_classifier.AudioClassifier](#audio%5C_classifieraudioclassifier-1)
+- [mediapipe::tasks::autoit::audio::audio\_embedder](#mediapipetasksautoitaudioaudio%5C_embedder)
+  - [audio\_embedder.AudioEmbedderOptions](#audio%5C_embedderaudioembedderoptions)
+  - [audio\_embedder.AudioEmbedder](#audio%5C_embedderaudioembedder)
+- [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedderOptions](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedderoptions)
+  - [AudioEmbedderOptions.base\_options](#audioembedderoptionsbase%5C_options)
+  - [AudioEmbedderOptions.running\_mode](#audioembedderoptionsrunning%5C_mode)
+  - [AudioEmbedderOptions.l2\_normalize](#audioembedderoptionsl2%5C_normalize)
+  - [AudioEmbedderOptions.quantize](#audioembedderoptionsquantize)
+  - [AudioEmbedderOptions.result\_callback](#audioembedderoptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedderOptions::get\_create](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedderoptionsget%5C_create)
+  - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedderOptions::to\_pb2](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedderoptionsto%5C_pb2)
+- [mediapipe::autoit::audio::audio\_embedder](#mediapipeautoitaudioaudio%5C_embedder)
+  - [audio\_embedder.AudioEmbedderOptions](#audio%5C_embedderaudioembedderoptions-1)
+  - [audio\_embedder.AudioEmbedder](#audio%5C_embedderaudioembedder-1)
 - [mediapipe::tasks::autoit::audio::core](#mediapipetasksautoitaudiocore)
   - [core.audio\_task\_running\_mode](#coreaudio%5C_task%5C_running%5C_mode)
   - [core.base\_audio\_task\_api](#corebase%5C_audio%5C_task%5C_api)
@@ -729,6 +754,58 @@
   - [mediapipe::tasks::autoit::core::task\_info::TaskInfo::generate\_graph\_config](#mediapipetasksautoitcoretask%5C_infotaskinfogenerate%5C_graph%5C_config)
 - [mediapipe::autoit::core::task\_info](#mediapipeautoitcoretask%5C_info)
   - [task\_info.TaskInfo](#task%5C_infotaskinfo-1)
+- [mediapipe::tasks::autoit::text](#mediapipetasksautoittext)
+  - [text.core](#textcore)
+  - [text.text\_classifier](#texttext%5C_classifier)
+  - [text.text\_embedder](#texttext%5C_embedder)
+  - [text.TextClassifier](#texttextclassifier)
+  - [text.TextClassifierOptions](#texttextclassifieroptions)
+  - [text.TextClassifierResult](#texttextclassifierresult)
+  - [text.TextEmbedder](#texttextembedder)
+  - [text.TextEmbedderOptions](#texttextembedderoptions)
+  - [text.TextEmbedderResult](#texttextembedderresult)
+- [mediapipe::tasks::autoit::text::core](#mediapipetasksautoittextcore)
+  - [core.base\_text\_task\_api](#corebase%5C_text%5C_task%5C_api)
+- [mediapipe::autoit::text](#mediapipeautoittext)
+  - [text.core](#textcore-1)
+  - [text.text\_classifier](#texttext%5C_classifier-1)
+  - [text.text\_embedder](#texttext%5C_embedder-1)
+- [mediapipe::tasks::autoit::text::core::base\_text\_task\_api](#mediapipetasksautoittextcorebase%5C_text%5C_task%5C_api)
+  - [base\_text\_task\_api.BaseTextTaskApi](#base%5C_text%5C_task%5C_apibasetexttaskapi)
+- [mediapipe::autoit::text::core](#mediapipeautoittextcore)
+  - [core.base\_text\_task\_api](#corebase%5C_text%5C_task%5C_api-1)
+- [mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi](#mediapipetasksautoittextcorebase%5C_text%5C_task%5C_apibasetexttaskapi)
+  - [mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi::get\_create](#mediapipetasksautoittextcorebase%5C_text%5C_task%5C_apibasetexttaskapiget%5C_create)
+  - [mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi::close](#mediapipetasksautoittextcorebase%5C_text%5C_task%5C_apibasetexttaskapiclose)
+- [mediapipe::autoit::text::core::base\_text\_task\_api](#mediapipeautoittextcorebase%5C_text%5C_task%5C_api)
+  - [base\_text\_task\_api.BaseTextTaskApi](#base%5C_text%5C_task%5C_apibasetexttaskapi-1)
+- [mediapipe::tasks::autoit::text::text\_classifier](#mediapipetasksautoittexttext%5C_classifier)
+  - [text\_classifier.TextClassifierOptions](#text%5C_classifiertextclassifieroptions)
+  - [text\_classifier.TextClassifier](#text%5C_classifiertextclassifier)
+- [mediapipe::tasks::autoit::text::text\_classifier::TextClassifierOptions](#mediapipetasksautoittexttext%5C_classifiertextclassifieroptions)
+  - [TextClassifierOptions.base\_options](#textclassifieroptionsbase%5C_options)
+  - [TextClassifierOptions.display\_names\_locale](#textclassifieroptionsdisplay%5C_names%5C_locale)
+  - [TextClassifierOptions.max\_results](#textclassifieroptionsmax%5C_results)
+  - [TextClassifierOptions.score\_threshold](#textclassifieroptionsscore%5C_threshold)
+  - [TextClassifierOptions.category\_allowlist](#textclassifieroptionscategory%5C_allowlist)
+  - [TextClassifierOptions.category\_denylist](#textclassifieroptionscategory%5C_denylist)
+  - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifierOptions::get\_create](#mediapipetasksautoittexttext%5C_classifiertextclassifieroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifierOptions::to\_pb2](#mediapipetasksautoittexttext%5C_classifiertextclassifieroptionsto%5C_pb2)
+- [mediapipe::autoit::text::text\_classifier](#mediapipeautoittexttext%5C_classifier)
+  - [text\_classifier.TextClassifierOptions](#text%5C_classifiertextclassifieroptions-1)
+  - [text\_classifier.TextClassifier](#text%5C_classifiertextclassifier-1)
+- [mediapipe::tasks::autoit::text::text\_embedder](#mediapipetasksautoittexttext%5C_embedder)
+  - [text\_embedder.TextEmbedderOptions](#text%5C_embeddertextembedderoptions)
+  - [text\_embedder.TextEmbedder](#text%5C_embeddertextembedder)
+- [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedderOptions](#mediapipetasksautoittexttext%5C_embeddertextembedderoptions)
+  - [TextEmbedderOptions.base\_options](#textembedderoptionsbase%5C_options)
+  - [TextEmbedderOptions.l2\_normalize](#textembedderoptionsl2%5C_normalize)
+  - [TextEmbedderOptions.quantize](#textembedderoptionsquantize)
+  - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedderOptions::get\_create](#mediapipetasksautoittexttext%5C_embeddertextembedderoptionsget%5C_create)
+  - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedderOptions::to\_pb2](#mediapipetasksautoittexttext%5C_embeddertextembedderoptionsto%5C_pb2)
+- [mediapipe::autoit::text::text\_embedder](#mediapipeautoittexttext%5C_embedder)
+  - [text\_embedder.TextEmbedderOptions](#text%5C_embeddertextembedderoptions-1)
+  - [text\_embedder.TextEmbedder](#text%5C_embeddertextembedder-1)
 - [cv](#cv)
   - [cv::createMatFromBitmap](#cvcreatematfrombitmap)
   - [cv::haveImageReader](#cvhaveimagereader)
@@ -3046,6 +3123,27 @@
 - [mediapipe::tasks::cc::components::containers::proto::classifications\_pb2](#mediapipetaskscccomponentscontainersprotoclassifications%5C_pb2)
   - [classifications\_pb2.Classifications](#classifications%5C_pb2classifications)
   - [classifications\_pb2.ClassificationResult](#classifications%5C_pb2classificationresult)
+- [mediapipe::tasks::components::processors::proto::EmbedderOptions](#mediapipetaskscomponentsprocessorsprotoembedderoptions)
+  - [EmbedderOptions.l2\_normalize](#embedderoptionsl2%5C_normalize)
+  - [EmbedderOptions.quantize](#embedderoptionsquantize)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::get\_create](#mediapipetaskscomponentsprocessorsprotoembedderoptionsget%5C_create)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::Clear](#mediapipetaskscomponentsprocessorsprotoembedderoptionsclear)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::ClearField](#mediapipetaskscomponentsprocessorsprotoembedderoptionsclearfield)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::CopyFrom](#mediapipetaskscomponentsprocessorsprotoembedderoptionscopyfrom)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::\_\_str\_\_](#mediapipetaskscomponentsprocessorsprotoembedderoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::components::processors::proto::embedder\_options\_pb2](#mediapipetaskscccomponentsprocessorsprotoembedder%5C_options%5C_pb2)
+  - [embedder\_options\_pb2.EmbedderOptions](#embedder%5C_options%5C_pb2embedderoptions)
+- [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptions)
+  - [AudioEmbedderGraphOptions.base\_options](#audioembeddergraphoptionsbase%5C_options)
+  - [AudioEmbedderGraphOptions.embedder\_options](#audioembeddergraphoptionsembedder%5C_options)
+  - [AudioEmbedderGraphOptions.ext](#audioembeddergraphoptionsext)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::get\_create](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsget%5C_create)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::Clear](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsclear)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::ClearField](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsclearfield)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::CopyFrom](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionscopyfrom)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::\_\_str\_\_](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::audio::audio\_embedder::proto::audio\_embedder\_graph\_options\_pb2](#mediapipetasksccaudioaudio%5C_embedderprotoaudio%5C_embedder%5C_graph%5C_options%5C_pb2)
+  - [audio\_embedder\_graph\_options\_pb2.AudioEmbedderGraphOptions](#audio%5C_embedder%5C_graph%5C_options%5C_pb2audioembeddergraphoptions)
 - [mediapipe::tasks::components::containers::proto::FloatEmbedding](#mediapipetaskscomponentscontainersprotofloatembedding)
   - [FloatEmbedding.values](#floatembeddingvalues)
   - [mediapipe::tasks::components::containers::proto::FloatEmbedding::get\_create](#mediapipetaskscomponentscontainersprotofloatembeddingget%5C_create)
@@ -3189,6 +3287,28 @@
   - [mediapipe::FlowLimiterCalculatorOptions::\_\_str\_\_](#mediapipeflowlimitercalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::core::flow\_limiter\_calculator\_pb2](#mediapipecalculatorscoreflow%5C_limiter%5C_calculator%5C_pb2)
   - [flow\_limiter\_calculator\_pb2.FlowLimiterCalculatorOptions](#flow%5C_limiter%5C_calculator%5C_pb2flowlimitercalculatoroptions)
+- [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptions)
+  - [TextClassifierGraphOptions.base\_options](#textclassifiergraphoptionsbase%5C_options)
+  - [TextClassifierGraphOptions.classifier\_options](#textclassifiergraphoptionsclassifier%5C_options)
+  - [TextClassifierGraphOptions.ext](#textclassifiergraphoptionsext)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::get\_create](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsget%5C_create)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::Clear](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsclear)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::ClearField](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsclearfield)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::CopyFrom](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionscopyfrom)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::\_\_str\_\_](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::text::text\_classifier::proto::text\_classifier\_graph\_options\_pb2](#mediapipetaskscctexttext%5C_classifierprototext%5C_classifier%5C_graph%5C_options%5C_pb2)
+  - [text\_classifier\_graph\_options\_pb2.TextClassifierGraphOptions](#text%5C_classifier%5C_graph%5C_options%5C_pb2textclassifiergraphoptions)
+- [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptions)
+  - [TextEmbedderGraphOptions.base\_options](#textembeddergraphoptionsbase%5C_options)
+  - [TextEmbedderGraphOptions.embedder\_options](#textembeddergraphoptionsembedder%5C_options)
+  - [TextEmbedderGraphOptions.ext](#textembeddergraphoptionsext)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::get\_create](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsget%5C_create)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::Clear](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsclear)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::ClearField](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsclearfield)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::CopyFrom](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionscopyfrom)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::\_\_str\_\_](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::text::text\_embedder::proto::text\_embedder\_graph\_options\_pb2](#mediapipetaskscctexttext%5C_embedderprototext%5C_embedder%5C_graph%5C_options%5C_pb2)
+  - [text\_embedder\_graph\_options\_pb2.TextEmbedderGraphOptions](#text%5C_embedder%5C_graph%5C_options%5C_pb2textembeddergraphoptions)
 - [mediapipe::CalculatorGraph](#mediapipecalculatorgraph)
   - [CalculatorGraph.text\_config](#calculatorgraphtext%5C_config)
   - [CalculatorGraph.binary\_config](#calculatorgraphbinary%5C_config)
@@ -6151,6 +6271,14 @@ AutoIt:
 static mediapipe::tasks::autoit::core
 AutoIt:
     [propget] $oautoit.core
+```
+
+### autoit.text
+
+```cpp
+static mediapipe::tasks::autoit::text
+AutoIt:
+    [propget] $oautoit.text
 ```
 
 ## mediapipe::autoit::packet\_creator
@@ -9126,6 +9254,14 @@ AutoIt:
     [propget] $oautoit.core
 ```
 
+### autoit.text
+
+```cpp
+static mediapipe::tasks::autoit::text
+AutoIt:
+    [propget] $oautoit.text
+```
+
 ## mediapipe::tasks::autoit::audio
 
 ### audio.audio\_classifier
@@ -9136,12 +9272,76 @@ AutoIt:
     [propget] $oaudio.audio_classifier
 ```
 
+### audio.audio\_embedder
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder
+AutoIt:
+    [propget] $oaudio.audio_embedder
+```
+
 ### audio.core
 
 ```cpp
 static mediapipe::tasks::autoit::audio::core
 AutoIt:
     [propget] $oaudio.core
+```
+
+### audio.AudioClassifier
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier
+AutoIt:
+    [propget] $oaudio.AudioClassifier
+```
+
+### audio.AudioClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions
+AutoIt:
+    [propget] $oaudio.AudioClassifierOptions
+```
+
+### audio.AudioClassifierResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult
+AutoIt:
+    [propget] $oaudio.AudioClassifierResult
+```
+
+### audio.AudioEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder
+AutoIt:
+    [propget] $oaudio.AudioEmbedder
+```
+
+### audio.AudioEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions
+AutoIt:
+    [propget] $oaudio.AudioEmbedderOptions
+```
+
+### audio.AudioEmbedderResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult
+AutoIt:
+    [propget] $oaudio.AudioEmbedderResult
+```
+
+### audio.RunningMode
+
+```cpp
+static mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode
+AutoIt:
+    [propget] $oaudio.RunningMode
 ```
 
 ## mediapipe::tasks::autoit::audio::audio\_classifier
@@ -9170,6 +9370,14 @@ AutoIt:
 static mediapipe::tasks::autoit::audio::audio_classifier
 AutoIt:
     [propget] $oaudio.audio_classifier
+```
+
+### audio.audio\_embedder
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder
+AutoIt:
+    [propget] $oaudio.audio_embedder
 ```
 
 ### audio.core
@@ -9201,7 +9409,7 @@ AutoIt:
 ### AudioClassifierOptions.display\_names\_locale
 
 ```cpp
-std::string mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::display_names_locale
+std::optional<std::string> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::display_names_locale
 AutoIt:
     [propget, propput] $oAudioClassifierOptions.display_names_locale
 ```
@@ -9209,7 +9417,7 @@ AutoIt:
 ### AudioClassifierOptions.max\_results
 
 ```cpp
-int mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::max_results
+std::optional<int> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::max_results
 AutoIt:
     [propget, propput] $oAudioClassifierOptions.max_results
 ```
@@ -9217,7 +9425,7 @@ AutoIt:
 ### AudioClassifierOptions.score\_threshold
 
 ```cpp
-float mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::score_threshold
+std::optional<float> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::score_threshold
 AutoIt:
     [propget, propput] $oAudioClassifierOptions.score_threshold
 ```
@@ -9258,9 +9466,9 @@ AutoIt:
 ```cpp
 static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>           base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
                                                                                                                                                                         mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode running_mode = tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_CLIPS,
-                                                                                                                                                                        const std::string&                                                                   display_names_locale = "en",
-                                                                                                                                                                        int                                                                                  max_results = -1,
-                                                                                                                                                                        float                                                                                score_threshold = 0.0f,
+                                                                                                                                                                        const std::optional<std::string>&                                                    display_names_locale = std::optional<std::string>(),
+                                                                                                                                                                        std::optional<int>                                                                   max_results = std::optional<int>(),
+                                                                                                                                                                        std::optional<float>                                                                 score_threshold = std::optional<float>(),
                                                                                                                                                                         const std::vector<std::string>&                                                      category_allowlist = std::vector<std::string>(),
                                                                                                                                                                         const std::vector<std::string>&                                                      category_denylist = std::vector<std::string>(),
                                                                                                                                                                         mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback  result_callback = nullptr );
@@ -9293,6 +9501,112 @@ AutoIt:
 static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier
 AutoIt:
     [propget] $oaudio_classifier.AudioClassifier
+```
+
+## mediapipe::tasks::autoit::audio::audio\_embedder
+
+### audio\_embedder.AudioEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions
+AutoIt:
+    [propget] $oaudio_embedder.AudioEmbedderOptions
+```
+
+### audio\_embedder.AudioEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder
+AutoIt:
+    [propget] $oaudio_embedder.AudioEmbedder
+```
+
+## mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedderOptions
+
+### AudioEmbedderOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::base_options
+AutoIt:
+    [propget, propput] $oAudioEmbedderOptions.base_options
+```
+
+### AudioEmbedderOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::running_mode
+AutoIt:
+    [propget, propput] $oAudioEmbedderOptions.running_mode
+```
+
+### AudioEmbedderOptions.l2\_normalize
+
+```cpp
+std::optional<bool> mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::l2_normalize
+AutoIt:
+    [propget, propput] $oAudioEmbedderOptions.l2_normalize
+```
+
+### AudioEmbedderOptions.quantize
+
+```cpp
+std::optional<bool> mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::quantize
+AutoIt:
+    [propget, propput] $oAudioEmbedderOptions.quantize
+```
+
+### AudioEmbedderOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::result_callback
+AutoIt:
+    [propput] $oAudioEmbedderOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedderOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::get_create( const mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedderOptions").create( $other ) -> <mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedderOptions object>
+    $oAudioEmbedderOptions( $other ) -> <mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedderOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>           base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode running_mode = tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_CLIPS,
+                                                                                                                                                                std::optional<bool>                                                                  l2_normalize = std::optional<bool>(),
+                                                                                                                                                                std::optional<bool>                                                                  quantize = std::optional<bool>(),
+                                                                                                                                                                mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback      result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedderOptions").create( [$base_options[, $running_mode[, $l2_normalize[, $quantize[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedderOptions object>
+    $oAudioEmbedderOptions( [$base_options[, $running_mode[, $l2_normalize[, $quantize[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedderOptions object>
+```
+
+### mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedderOptions::to\_pb2
+
+```cpp
+std::shared_ptr<mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions> mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::to_pb2();
+AutoIt:
+    $oAudioEmbedderOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::audio::audio\_embedder
+
+### audio\_embedder.AudioEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions
+AutoIt:
+    [propget] $oaudio_embedder.AudioEmbedderOptions
+```
+
+### audio\_embedder.AudioEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder
+AutoIt:
+    [propget] $oaudio_embedder.AudioEmbedder
 ```
 
 ## mediapipe::tasks::autoit::audio::core
@@ -11156,6 +11470,368 @@ AutoIt:
     [propget] $otask_info.TaskInfo
 ```
 
+## mediapipe::tasks::autoit::text
+
+### text.core
+
+```cpp
+static mediapipe::tasks::autoit::text::core
+AutoIt:
+    [propget] $otext.core
+```
+
+### text.text\_classifier
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier
+AutoIt:
+    [propget] $otext.text_classifier
+```
+
+### text.text\_embedder
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder
+AutoIt:
+    [propget] $otext.text_embedder
+```
+
+### text.TextClassifier
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier::TextClassifier
+AutoIt:
+    [propget] $otext.TextClassifier
+```
+
+### text.TextClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions
+AutoIt:
+    [propget] $otext.TextClassifierOptions
+```
+
+### text.TextClassifierResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult
+AutoIt:
+    [propget] $otext.TextClassifierResult
+```
+
+### text.TextEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder::TextEmbedder
+AutoIt:
+    [propget] $otext.TextEmbedder
+```
+
+### text.TextEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions
+AutoIt:
+    [propget] $otext.TextEmbedderOptions
+```
+
+### text.TextEmbedderResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult
+AutoIt:
+    [propget] $otext.TextEmbedderResult
+```
+
+## mediapipe::tasks::autoit::text::core
+
+### core.base\_text\_task\_api
+
+```cpp
+static mediapipe::tasks::autoit::text::core::base_text_task_api
+AutoIt:
+    [propget] $ocore.base_text_task_api
+```
+
+## mediapipe::autoit::text
+
+### text.core
+
+```cpp
+static mediapipe::tasks::autoit::text::core
+AutoIt:
+    [propget] $otext.core
+```
+
+### text.text\_classifier
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier
+AutoIt:
+    [propget] $otext.text_classifier
+```
+
+### text.text\_embedder
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder
+AutoIt:
+    [propget] $otext.text_embedder
+```
+
+## mediapipe::tasks::autoit::text::core::base\_text\_task\_api
+
+### base\_text\_task\_api.BaseTextTaskApi
+
+```cpp
+static mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi
+AutoIt:
+    [propget] $obase_text_task_api.BaseTextTaskApi
+```
+
+## mediapipe::autoit::text::core
+
+### core.base\_text\_task\_api
+
+```cpp
+static mediapipe::tasks::autoit::text::core::base_text_task_api
+AutoIt:
+    [propget] $ocore.base_text_task_api
+```
+
+## mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi
+
+### mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi::get_create( const mediapipe::CalculatorGraphConfig& graph_config );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.core.base_text_task_api.BaseTextTaskApi").create( $graph_config ) -> <mediapipe.tasks.autoit.text.core.base_text_task_api.BaseTextTaskApi object>
+    $oBaseTextTaskApi( $graph_config ) -> <mediapipe.tasks.autoit.text.core.base_text_task_api.BaseTextTaskApi object>
+```
+
+### mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi::close
+
+```cpp
+void mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi::close();
+AutoIt:
+    $oBaseTextTaskApi.close() -> None
+```
+
+## mediapipe::autoit::text::core::base\_text\_task\_api
+
+### base\_text\_task\_api.BaseTextTaskApi
+
+```cpp
+static mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi
+AutoIt:
+    [propget] $obase_text_task_api.BaseTextTaskApi
+```
+
+## mediapipe::tasks::autoit::text::text\_classifier
+
+### text\_classifier.TextClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions
+AutoIt:
+    [propget] $otext_classifier.TextClassifierOptions
+```
+
+### text\_classifier.TextClassifier
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier::TextClassifier
+AutoIt:
+    [propget] $otext_classifier.TextClassifier
+```
+
+## mediapipe::tasks::autoit::text::text\_classifier::TextClassifierOptions
+
+### TextClassifierOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::base_options
+AutoIt:
+    [propget, propput] $oTextClassifierOptions.base_options
+```
+
+### TextClassifierOptions.display\_names\_locale
+
+```cpp
+std::optional<std::string> mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::display_names_locale
+AutoIt:
+    [propget, propput] $oTextClassifierOptions.display_names_locale
+```
+
+### TextClassifierOptions.max\_results
+
+```cpp
+std::optional<int> mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::max_results
+AutoIt:
+    [propget, propput] $oTextClassifierOptions.max_results
+```
+
+### TextClassifierOptions.score\_threshold
+
+```cpp
+std::optional<float> mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::score_threshold
+AutoIt:
+    [propget, propput] $oTextClassifierOptions.score_threshold
+```
+
+### TextClassifierOptions.category\_allowlist
+
+```cpp
+std::vector<std::string> mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::category_allowlist
+AutoIt:
+    [propget, propput] $oTextClassifierOptions.category_allowlist
+```
+
+### TextClassifierOptions.category\_denylist
+
+```cpp
+std::vector<std::string> mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::category_denylist
+AutoIt:
+    [propget, propput] $oTextClassifierOptions.category_denylist
+```
+
+### mediapipe::tasks::autoit::text::text\_classifier::TextClassifierOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::get_create( const mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_classifier.TextClassifierOptions").create( $other ) -> <mediapipe.tasks.autoit.text.text_classifier.TextClassifierOptions object>
+    $oTextClassifierOptions( $other ) -> <mediapipe.tasks.autoit.text.text_classifier.TextClassifierOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                  const std::optional<std::string>&                                          display_names_locale = std::optional<std::string>(),
+                                                                                                                                                                  std::optional<int>                                                         max_results = std::optional<int>(),
+                                                                                                                                                                  std::optional<float>                                                       score_threshold = std::optional<float>(),
+                                                                                                                                                                  const std::vector<std::string>&                                            category_allowlist = std::vector<std::string>(),
+                                                                                                                                                                  const std::vector<std::string>&                                            category_denylist = std::vector<std::string>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_classifier.TextClassifierOptions").create( [$base_options[, $display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist]]]]]] ) -> <mediapipe.tasks.autoit.text.text_classifier.TextClassifierOptions object>
+    $oTextClassifierOptions( [$base_options[, $display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist]]]]]] ) -> <mediapipe.tasks.autoit.text.text_classifier.TextClassifierOptions object>
+```
+
+### mediapipe::tasks::autoit::text::text\_classifier::TextClassifierOptions::to\_pb2
+
+```cpp
+std::shared_ptr<mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions> mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::to_pb2();
+AutoIt:
+    $oTextClassifierOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::text::text\_classifier
+
+### text\_classifier.TextClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions
+AutoIt:
+    [propget] $otext_classifier.TextClassifierOptions
+```
+
+### text\_classifier.TextClassifier
+
+```cpp
+static mediapipe::tasks::autoit::text::text_classifier::TextClassifier
+AutoIt:
+    [propget] $otext_classifier.TextClassifier
+```
+
+## mediapipe::tasks::autoit::text::text\_embedder
+
+### text\_embedder.TextEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions
+AutoIt:
+    [propget] $otext_embedder.TextEmbedderOptions
+```
+
+### text\_embedder.TextEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder::TextEmbedder
+AutoIt:
+    [propget] $otext_embedder.TextEmbedder
+```
+
+## mediapipe::tasks::autoit::text::text\_embedder::TextEmbedderOptions
+
+### TextEmbedderOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions::base_options
+AutoIt:
+    [propget, propput] $oTextEmbedderOptions.base_options
+```
+
+### TextEmbedderOptions.l2\_normalize
+
+```cpp
+std::optional<bool> mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions::l2_normalize
+AutoIt:
+    [propget, propput] $oTextEmbedderOptions.l2_normalize
+```
+
+### TextEmbedderOptions.quantize
+
+```cpp
+std::optional<bool> mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions::quantize
+AutoIt:
+    [propget, propput] $oTextEmbedderOptions.quantize
+```
+
+### mediapipe::tasks::autoit::text::text\_embedder::TextEmbedderOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions::get_create( const mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions").create( $other ) -> <mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions object>
+    $oTextEmbedderOptions( $other ) -> <mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                          std::optional<bool>                                                        l2_normalize = std::optional<bool>(),
+                                                                                                                                                          std::optional<bool>                                                        quantize = std::optional<bool>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions").create( [$base_options[, $l2_normalize[, $quantize]]] ) -> <mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions object>
+    $oTextEmbedderOptions( [$base_options[, $l2_normalize[, $quantize]]] ) -> <mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions object>
+```
+
+### mediapipe::tasks::autoit::text::text\_embedder::TextEmbedderOptions::to\_pb2
+
+```cpp
+std::shared_ptr<mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions> mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions::to_pb2();
+AutoIt:
+    $oTextEmbedderOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::text::text\_embedder
+
+### text\_embedder.TextEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions
+AutoIt:
+    [propget] $otext_embedder.TextEmbedderOptions
+```
+
+### text\_embedder.TextEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::text::text_embedder::TextEmbedder
+AutoIt:
+    [propget] $otext_embedder.TextEmbedder
+```
+
 ## cv
 
 ### cv::createMatFromBitmap
@@ -11460,7 +12136,25 @@ AutoIt:
 ```
 
 ```cpp
+mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
 mediapipe::FlowLimiterCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
@@ -30512,6 +31206,150 @@ AutoIt:
     [propget] $oclassifications_pb2.ClassificationResult
 ```
 
+## mediapipe::tasks::components::processors::proto::EmbedderOptions
+
+### EmbedderOptions.l2\_normalize
+
+```cpp
+bool mediapipe::tasks::components::processors::proto::EmbedderOptions::l2_normalize
+AutoIt:
+    [propget, propput] $oEmbedderOptions.l2_normalize
+```
+
+### EmbedderOptions.quantize
+
+```cpp
+bool mediapipe::tasks::components::processors::proto::EmbedderOptions::quantize
+AutoIt:
+    [propget, propput] $oEmbedderOptions.quantize
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::get\_create
+
+```cpp
+static mediapipe::tasks::components::processors::proto::EmbedderOptions mediapipe::tasks::components::processors::proto::EmbedderOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.components.processors.proto.EmbedderOptions").create() -> <mediapipe.tasks.components.processors.proto.EmbedderOptions object>
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::Clear
+
+```cpp
+void mediapipe::tasks::components::processors::proto::EmbedderOptions::Clear();
+AutoIt:
+    $oEmbedderOptions.Clear() -> None
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::ClearField
+
+```cpp
+void mediapipe::tasks::components::processors::proto::EmbedderOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oEmbedderOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::components::processors::proto::EmbedderOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oEmbedderOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::components::processors::proto::EmbedderOptions::__str__( std::string* output );
+AutoIt:
+    $oEmbedderOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::components::processors::proto::embedder\_options\_pb2
+
+### embedder\_options\_pb2.EmbedderOptions
+
+```cpp
+static mediapipe::tasks::components::processors::proto::EmbedderOptions
+AutoIt:
+    [propget] $oembedder_options_pb2.EmbedderOptions
+```
+
+## mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions
+
+### AudioEmbedderGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::base_options
+AutoIt:
+    [propget] $oAudioEmbedderGraphOptions.base_options
+```
+
+### AudioEmbedderGraphOptions.embedder\_options
+
+```cpp
+mediapipe::tasks::components::processors::proto::EmbedderOptions* mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::embedder_options
+AutoIt:
+    [propget] $oAudioEmbedderGraphOptions.embedder_options
+```
+
+### AudioEmbedderGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions* mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::ext
+AutoIt:
+    [propget] $oAudioEmbedderGraphOptions.ext
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.audio.audio_embedder.proto.AudioEmbedderGraphOptions").create() -> <mediapipe.tasks.audio.audio_embedder.proto.AudioEmbedderGraphOptions object>
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::Clear();
+AutoIt:
+    $oAudioEmbedderGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oAudioEmbedderGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oAudioEmbedderGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oAudioEmbedderGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::audio::audio\_embedder::proto::audio\_embedder\_graph\_options\_pb2
+
+### audio\_embedder\_graph\_options\_pb2.AudioEmbedderGraphOptions
+
+```cpp
+static mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions
+AutoIt:
+    [propget] $oaudio_embedder_graph_options_pb2.AudioEmbedderGraphOptions
+```
+
 ## mediapipe::tasks::components::containers::proto::FloatEmbedding
 
 ### FloatEmbedding.values
@@ -31662,6 +32500,158 @@ AutoIt:
 static mediapipe::FlowLimiterCalculatorOptions
 AutoIt:
     [propget] $oflow_limiter_calculator_pb2.FlowLimiterCalculatorOptions
+```
+
+## mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions
+
+### TextClassifierGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::base_options
+AutoIt:
+    [propget] $oTextClassifierGraphOptions.base_options
+```
+
+### TextClassifierGraphOptions.classifier\_options
+
+```cpp
+mediapipe::tasks::components::processors::proto::ClassifierOptions* mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::classifier_options
+AutoIt:
+    [propget] $oTextClassifierGraphOptions.classifier_options
+```
+
+### TextClassifierGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions* mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::ext
+AutoIt:
+    [propget] $oTextClassifierGraphOptions.ext
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.text.text_classifier.proto.TextClassifierGraphOptions").create() -> <mediapipe.tasks.text.text_classifier.proto.TextClassifierGraphOptions object>
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::Clear();
+AutoIt:
+    $oTextClassifierGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oTextClassifierGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oTextClassifierGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oTextClassifierGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::text::text\_classifier::proto::text\_classifier\_graph\_options\_pb2
+
+### text\_classifier\_graph\_options\_pb2.TextClassifierGraphOptions
+
+```cpp
+static mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions
+AutoIt:
+    [propget] $otext_classifier_graph_options_pb2.TextClassifierGraphOptions
+```
+
+## mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions
+
+### TextEmbedderGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::base_options
+AutoIt:
+    [propget] $oTextEmbedderGraphOptions.base_options
+```
+
+### TextEmbedderGraphOptions.embedder\_options
+
+```cpp
+mediapipe::tasks::components::processors::proto::EmbedderOptions* mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::embedder_options
+AutoIt:
+    [propget] $oTextEmbedderGraphOptions.embedder_options
+```
+
+### TextEmbedderGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions* mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::ext
+AutoIt:
+    [propget] $oTextEmbedderGraphOptions.ext
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.text.text_embedder.proto.TextEmbedderGraphOptions").create() -> <mediapipe.tasks.text.text_embedder.proto.TextEmbedderGraphOptions object>
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::Clear();
+AutoIt:
+    $oTextEmbedderGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oTextEmbedderGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oTextEmbedderGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oTextEmbedderGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::text::text\_embedder::proto::text\_embedder\_graph\_options\_pb2
+
+### text\_embedder\_graph\_options\_pb2.TextEmbedderGraphOptions
+
+```cpp
+static mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions
+AutoIt:
+    [propget] $otext_embedder_graph_options_pb2.TextEmbedderGraphOptions
 ```
 
 ## mediapipe::CalculatorGraph

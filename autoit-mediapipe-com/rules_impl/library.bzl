@@ -449,5 +449,28 @@ def add_com_library(name, intdir, compilation_mode):
             # "//mediapipe/tasks/cc/components/containers/proto:embeddings_cc_proto",
             # "//mediapipe/tasks/cc/components/processors/proto:embedder_options_cc_proto",
             "//mediapipe/tasks/cc/text/text_embedder/proto:text_embedder_graph_options_cc_proto",
+
+            # object_detector
+            "//mediapipe/tasks/cc/vision/object_detector/proto:object_detector_options_cc_proto",
+
+            # image_classifier
+            # "//mediapipe/tasks/cc/components/containers/proto:classifications_cc_proto",
+            # "//mediapipe/tasks/cc/components/processors/proto:classifier_options_cc_proto",
+            "//mediapipe/tasks/cc/vision/image_classifier/proto:image_classifier_graph_options_cc_proto",
+
+            # image_segmenter
+            "//mediapipe/tasks/cc/vision/image_segmenter/proto:image_segmenter_graph_options_cc_proto",
+            "//mediapipe/tasks/cc/vision/image_segmenter/proto:segmenter_options_cc_proto",
+
+            # image_embedder
+            # "//mediapipe/tasks/cc/components/containers/proto:embeddings_cc_proto",
+            # "//mediapipe/tasks/cc/components/processors/proto:embedder_options_cc_proto",
+            "//mediapipe/tasks/cc/vision/image_embedder/proto:image_embedder_graph_options_cc_proto",
+
+            # gesture_recognizer
+            "//mediapipe/tasks/cc/vision/gesture_recognizer/proto:gesture_recognizer_graph_options_cc_proto",
+
+            # hand_landmarker
+            "//mediapipe/tasks/cc/vision/hand_landmarker/proto:hand_landmarker_graph_options_cc_proto",
         ],
     )

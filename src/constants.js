@@ -100,6 +100,15 @@ exports.ALIASES = new Map([
     ["mediapipe::autoit::PacketsCallback", "mediapipe::autoit::PacketsRawCallback"],
     ["mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultCallback", "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback"],
     ["AudioClassifierResultCallback", "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback"],
+    ["tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions", "mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions"],
+    ["tasks_components_processors_proto_ClassifierOptions", "mediapipe::tasks::components::processors::proto::ClassifierOptions"],
+    ["mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultCallback", "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback"],
+    ["AudioEmbedderResultCallback", "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback"],
+    ["components_containers_embedding_result_Embedding", "mediapipe::tasks::components::containers::embedding_result::Embedding"],
+    ["components_containers_embedding_result_EmbeddingResult", "mediapipe::tasks::components::containers::embedding_result::EmbeddingResult"],
+    ["core_base_text_task_api_BaseTextTaskApi", "mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi"],
+    ["tasks_text_text_classifier_proto_TextClassifierGraphOptions", "mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions"],
+    ["tasks_text_text_embedder_proto_TextEmbedderGraphOptions", "mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions"],
 ]);
 
 exports.CLASS_PTR = new Set([
@@ -112,6 +121,7 @@ exports.PTR = new Set([
     "mediapipe::autoit::PacketRawCallback",
     "mediapipe::autoit::PacketsRawCallback",
     "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback",
+    "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback",
 ]);
 
 exports.CUSTOM_CLASSES = [
