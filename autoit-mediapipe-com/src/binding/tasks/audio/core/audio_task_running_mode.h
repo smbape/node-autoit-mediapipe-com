@@ -19,6 +19,10 @@ namespace mediapipe {
 
 					}
 				}
+
+				inline const char* StringifyAudioTaskRunningMode(core::audio_task_running_mode::AudioTaskRunningMode enum_value) {
+					return core::audio_task_running_mode::AudioTaskRunningModeToChar[static_cast<int>(enum_value)];
+				}
 			}
 		}
 	}

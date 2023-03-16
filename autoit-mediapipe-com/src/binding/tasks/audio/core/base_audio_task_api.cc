@@ -1,7 +1,5 @@
 #include "binding/tasks/audio/core/base_audio_task_api.h"
 
-#define StringifyAudioTaskRunningMode(enum_value) AudioTaskRunningModeToChar[static_cast<int>(enum_value)]
-
 namespace mediapipe {
 	namespace tasks {
 		namespace autoit {
@@ -32,14 +30,14 @@ namespace mediapipe {
 
 						std::map<std::string, Packet> BaseAudioTaskApi::_process_audio_clip(const std::map<std::string, Packet>& inputs) {
 							AUTOIT_ASSERT_THROW(_running_mode == AudioTaskRunningMode::AUDIO_CLIPS,
-								"Task is not initialized with the audio clips mode. Current running mode:"
+								"Task is not initialized with the audio clips mode. Current running mode: "
 								<< StringifyAudioTaskRunningMode(_running_mode));
 							return mediapipe::autoit::AssertAutoItValue(_runner->Process(inputs));
 						}
 
 						void BaseAudioTaskApi::_set_sample_rate(const std::string& sample_rate_stream_name, float sample_rate) {
 							AUTOIT_ASSERT_THROW(_running_mode == AudioTaskRunningMode::AUDIO_STREAM,
-								"Task is not initialized with the audio stream mode. Current running mode:"
+								"Task is not initialized with the audio stream mode. Current running mode: "
 								<< StringifyAudioTaskRunningMode(_running_mode));
 							_runner->Send({
 								{sample_rate_stream_name, std::move(std::move(MakePacket<double>(sample_rate)).At(Timestamp::PreStream()))}
@@ -48,7 +46,7 @@ namespace mediapipe {
 
 						void BaseAudioTaskApi::_send_audio_stream_data(const std::map<std::string, Packet>& inputs) {
 							AUTOIT_ASSERT_THROW(_running_mode == AudioTaskRunningMode::AUDIO_STREAM,
-								"Task is not initialized with the audio stream mode. Current running mode:"
+								"Task is not initialized with the audio stream mode. Current running mode: "
 								<< StringifyAudioTaskRunningMode(_running_mode));
 							_runner->Send(inputs);
 						}

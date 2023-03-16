@@ -1,5 +1,3 @@
-#pragma once
-
 #include "binding/tasks/audio/audio_embedder.h"
 #include "binding/packet_getter.h"
 #include "binding/packet_creator.h"
@@ -64,8 +62,6 @@ namespace mediapipe {
 		namespace autoit {
 			namespace audio {
 				namespace audio_embedder {
-					using PacketsRawCallback = void(*)(const ::mediapipe::tasks::core::PacketMap&);
-
 					std::shared_ptr<AudioEmbedderGraphOptions> AudioEmbedderOptions::to_pb2() {
 						auto pb2_obj = std::make_shared<AudioEmbedderGraphOptions>();
 
@@ -124,7 +120,7 @@ namespace mediapipe {
 							);
 					}
 
-					std::vector<std::shared_ptr<AudioEmbedderResult>> AudioEmbedder::embed(const AudioData& audio_clip) {
+					void AudioEmbedder::embed(std::vector<std::shared_ptr<AudioEmbedderResult>>& output_list, const AudioData& audio_clip) {
 						AUTOIT_ASSERT_THROW(audio_clip.audio_format().sample_rate, "Must provide the audio sample rate in audio data.");
 						auto packet = mediapipe::autoit::packet_creator::create_matrix(audio_clip.buffer(), true);
 
@@ -133,16 +129,12 @@ namespace mediapipe {
 							{ _SAMPLE_RATE_IN_STREAM_NAME, std::move(MakePacket<double>(*audio_clip.audio_format().sample_rate)) },
 							});
 
-						std::vector<std::shared_ptr<AudioEmbedderResult>> output_list;
-
 						auto embedding_result_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets[_TIMESTAMPED_EMBEDDINGS_STREAM_NAME]);
 						for (const auto& proto : embedding_result_proto_list) {
 							mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
 							embedding_result_proto.CopyFrom(*proto);
 							output_list.push_back(AudioEmbedderResult::create_from_pb2(embedding_result_proto));
 						}
-
-						return output_list;
 					}
 
 					void AudioEmbedder::embed_async(const AudioData& audio_block, int64_t timestamp_ms) {

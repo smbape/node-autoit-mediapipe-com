@@ -51,7 +51,7 @@ namespace mediapipe {
 
 						CV_WRAP static std::shared_ptr<TextClassifier> create_from_model_path(const std::string& model_path);
 						CV_WRAP static std::shared_ptr<TextClassifier> create_from_options(std::shared_ptr<TextClassifierOptions> options);
-						CV_WRAP std::shared_ptr<components::containers::classification_result::ClassificationResult> classify(const std::string& text);
+						CV_WRAP std::shared_ptr<TextClassifierResult> classify(const std::string& text);
 					};
 				}
 			}

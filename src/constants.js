@@ -71,44 +71,76 @@ exports.CPP_TYPES = new Map([
 exports.ALIASES = new Map([
     ["mediapipe::solutions::face_detection::SolutionBase", "mediapipe::autoit::solution_base::SolutionBase"],
     ["DrawingColor", "tuple_int_and_int_and_int"],
-    ["audio_task_running_mode_AudioTaskRunningMode", "mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode"],
-    ["autoit_core_base_options_BaseOptions", "mediapipe::tasks::autoit::core::base_options::BaseOptions"],
+
     ["autoit_PacketsCallback", "mediapipe::autoit::PacketsRawCallback"],
+    ["mediapipe::autoit::PacketsCallback", "mediapipe::autoit::PacketsRawCallback"],
+
+    ["autoit_core_base_options_BaseOptions", "mediapipe::tasks::autoit::core::base_options::BaseOptions"],
     ["base_options_BaseOptions", "mediapipe::tasks::autoit::core::base_options::BaseOptions"],
+    ["tasks_core_proto_BaseOptions", "mediapipe::tasks::core::proto::BaseOptions"],
+
+    ["tasks_components_processors_proto_ClassifierOptions", "mediapipe::tasks::components::processors::proto::ClassifierOptions"],
+    ["mediapipe::autoit::PacketCallback", "mediapipe::autoit::PacketRawCallback"],
+
+    ["components_containers_audio_data_AudioData", "mediapipe::tasks::autoit::components::containers::AudioData"],
     ["bounding_box_BoundingBox", "mediapipe::tasks::autoit::components::containers::bounding_box::BoundingBox"],
     ["category_Category", "mediapipe::tasks::autoit::components::containers::category::Category"],
-    ["components_containers_audio_data_AudioData", "mediapipe::tasks::autoit::components::containers::AudioData"],
-    ["components_containers_classification_result_ClassificationResult", "mediapipe::tasks::components::containers::classification_result::ClassificationResult"],
-    ["containers_embedding_result_Embedding", "mediapipe::tasks::autoit::components::containers::embedding_result::Embedding"],
-    ["core_audio_task_running_mode_AudioTaskRunningMode", "mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode"],
-    ["core_base_audio_task_api_BaseAudioTaskApi", "mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi"],
     ["detections_Detection", "mediapipe::tasks::autoit::components::containers::detections::Detection"],
     ["detections_DetectionResult", "mediapipe::tasks::autoit::components::containers::detections::DetectionResult"],
+    ["containers_embedding_result_Embedding", "mediapipe::tasks::autoit::components::containers::embedding_result::Embedding"],
     ["landmark_Landmark", "mediapipe::tasks::autoit::components::containers::landmark::Landmark"],
     ["landmark_NormalizedLandmark", "mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark"],
     ["rect_NormalizedRect", "mediapipe::tasks::autoit::components::containers::rect::NormalizedRect"],
+    ["components_containers_rect_Rect", "mediapipe::tasks::autoit::components::containers::rect::Rect"],
     ["rect_Rect", "mediapipe::tasks::autoit::components::containers::rect::Rect"],
-    ["tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions", "mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions"],
+
+    ["components_containers_embedding_result_Embedding", "mediapipe::tasks::components::containers::embedding_result::Embedding"],
     ["tasks_components_containers_proto_ClassificationResult", "mediapipe::tasks::components::containers::proto::ClassificationResult"],
     ["tasks_components_containers_proto_Classifications", "mediapipe::tasks::components::containers::proto::Classifications"],
     ["tasks_components_containers_proto_Embedding", "mediapipe::tasks::components::containers::proto::Embedding"],
     ["tasks_components_containers_proto_EmbeddingResult", "mediapipe::tasks::components::containers::proto::EmbeddingResult"],
-    ["tasks_components_processors_proto_ClassifierOptions", "mediapipe::tasks::components::processors::proto::ClassifierOptions"],
+
+    ["AudioEmbedderResult", "mediapipe::tasks::components::containers::embedding_result::EmbeddingResult"],
+    ["TextEmbedderResult", "mediapipe::tasks::components::containers::embedding_result::EmbeddingResult"],
+
     ["tasks_containers_proto_LandmarksDetectionResult", "mediapipe::tasks::containers::proto::LandmarksDetectionResult"],
-    ["tasks_core_proto_BaseOptions", "mediapipe::tasks::core::proto::BaseOptions"],
-    ["mediapipe::autoit::PacketCallback", "mediapipe::autoit::PacketRawCallback"],
-    ["mediapipe::autoit::PacketsCallback", "mediapipe::autoit::PacketsRawCallback"],
-    ["mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultCallback", "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback"],
+
     ["AudioClassifierResultCallback", "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback"],
-    ["tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions", "mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions"],
-    ["tasks_components_processors_proto_ClassifierOptions", "mediapipe::tasks::components::processors::proto::ClassifierOptions"],
-    ["mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultCallback", "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback"],
     ["AudioEmbedderResultCallback", "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback"],
-    ["components_containers_embedding_result_Embedding", "mediapipe::tasks::components::containers::embedding_result::Embedding"],
-    ["components_containers_embedding_result_EmbeddingResult", "mediapipe::tasks::components::containers::embedding_result::EmbeddingResult"],
+    ["audio_task_running_mode_AudioTaskRunningMode", "mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode"],
+    ["core_audio_task_running_mode_AudioTaskRunningMode", "mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode"],
+    ["core_base_audio_task_api_BaseAudioTaskApi", "mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi"],
+
+    ["tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions", "mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions"],
+    ["tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions", "mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions"],
+
     ["core_base_text_task_api_BaseTextTaskApi", "mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi"],
     ["tasks_text_text_classifier_proto_TextClassifierGraphOptions", "mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions"],
     ["tasks_text_text_embedder_proto_TextEmbedderGraphOptions", "mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions"],
+
+    ["core_base_vision_task_api_BaseVisionTaskApi", "mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi"],
+    ["core_vision_task_running_mode_VisionTaskRunningMode", "mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode"],
+    ["vision_task_running_mode_VisionTaskRunningMode", "mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode"],
+    ["ImageClassifierResultCallback", "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback"],
+    ["ImageEmbedderResultCallback", "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback"],
+
+    ["AudioClassifierResult", "mediapipe::tasks::components::containers::classification_result::ClassificationResult"],
+    ["TextClassifierResult", "mediapipe::tasks::components::containers::classification_result::ClassificationResult"],
+    ["ImageClassifierResult", "mediapipe::tasks::components::containers::classification_result::ClassificationResult"],
+
+    ["tasks_vision_image_classifier_proto_ImageClassifierGraphOptions", "mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions"],
+    ["tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions", "mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions"],
+
+    ["components_containers_rect_NormalizedRect", "mediapipe::tasks::autoit::components::containers::rect::NormalizedRect"],
+    ["image_processing_options_ImageProcessingOptions", "mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions"],
+    ["core_image_processing_options_ImageProcessingOptions", "mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions"],
+
+    ["tasks_vision_image_segmenter_proto_SegmenterOptions_OutputType", "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType"],
+    ["tasks_vision_image_segmenter_proto_SegmenterOptions_Activation", "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation"],
+    ["ImageSegmenterResultCallback", "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback"],
+
+    ["ObjectDetectorResult", "mediapipe::tasks::autoit::components::containers::detections::DetectionResult"],
+    ["ObjectDetectorResultCallback", "mediapipe::tasks::autoit::vision::image_embedder::ObjectDetectorResultRawCallback"],
 ]);
 
 exports.CLASS_PTR = new Set([
@@ -120,8 +152,15 @@ exports.PTR = new Set([
     "HWND",
     "mediapipe::autoit::PacketRawCallback",
     "mediapipe::autoit::PacketsRawCallback",
+
     "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback",
     "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback",
+
+    "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback",
+    "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback",
+
+    "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback",
+    "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback",
 ]);
 
 exports.CUSTOM_CLASSES = [

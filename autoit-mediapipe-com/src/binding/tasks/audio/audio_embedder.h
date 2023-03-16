@@ -55,7 +55,7 @@ namespace mediapipe {
 
 						CV_WRAP static std::shared_ptr<AudioEmbedder> create_from_model_path(const std::string& model_path);
 						CV_WRAP static std::shared_ptr<AudioEmbedder> create_from_options(std::shared_ptr<AudioEmbedderOptions> options);
-						CV_WRAP std::vector<std::shared_ptr<components::containers::embedding_result::EmbeddingResult>> embed(const components::containers::audio_data::AudioData& audio_clip);
+						CV_WRAP void embed(CV_OUT std::vector<std::shared_ptr<AudioEmbedderResult>>& output_list, const components::containers::audio_data::AudioData& audio_clip);
 						CV_WRAP void embed_async(const components::containers::audio_data::AudioData& audio_block, int64_t timestamp_ms);
 						CV_WRAP static float cosine_similarity(const components::containers::embedding_result::Embedding& u, const components::containers::embedding_result::Embedding& v);
 					};

@@ -63,7 +63,7 @@ namespace mediapipe {
 
 						CV_WRAP static std::shared_ptr<AudioClassifier> create_from_model_path(const std::string& model_path);
 						CV_WRAP static std::shared_ptr<AudioClassifier> create_from_options(std::shared_ptr<AudioClassifierOptions> options);
-						CV_WRAP std::vector<std::shared_ptr<components::containers::classification_result::ClassificationResult>> classify(const components::containers::audio_data::AudioData& audio_clip);
+						CV_WRAP void classify(CV_OUT std::vector<std::shared_ptr<AudioClassifierResult>>& output_list, const components::containers::audio_data::AudioData& audio_clip);
 						CV_WRAP void classify_async(const components::containers::audio_data::AudioData& audio_block, int64_t timestamp_ms);
 					};
 				}

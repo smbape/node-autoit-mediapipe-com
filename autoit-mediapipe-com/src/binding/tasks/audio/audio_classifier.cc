@@ -1,5 +1,3 @@
-#pragma once
-
 #include "binding/tasks/audio/audio_classifier.h"
 #include "binding/packet_getter.h"
 #include "binding/packet_creator.h"
@@ -63,8 +61,6 @@ namespace mediapipe {
 		namespace autoit {
 			namespace audio {
 				namespace audio_classifier {
-					using PacketsRawCallback = void(*)(const ::mediapipe::tasks::core::PacketMap&);
-
 					std::shared_ptr<AudioClassifierGraphOptions> AudioClassifierOptions::to_pb2() {
 						auto pb2_obj = std::make_shared<AudioClassifierGraphOptions>();
 
@@ -127,7 +123,7 @@ namespace mediapipe {
 							);
 					}
 
-					std::vector<std::shared_ptr<AudioClassifierResult>> AudioClassifier::classify(const AudioData& audio_clip) {
+					void AudioClassifier::classify(std::vector<std::shared_ptr<AudioClassifierResult>>& output_list, const AudioData& audio_clip) {
 						AUTOIT_ASSERT_THROW(audio_clip.audio_format().sample_rate, "Must provide the audio sample rate in audio data.");
 						auto packet = mediapipe::autoit::packet_creator::create_matrix(audio_clip.buffer(), true);
 
@@ -136,16 +132,12 @@ namespace mediapipe {
 							{ _SAMPLE_RATE_IN_STREAM_NAME, std::move(MakePacket<double>(*audio_clip.audio_format().sample_rate)) },
 							});
 
-						std::vector<std::shared_ptr<AudioClassifierResult>> output_list;
-
 						auto classification_result_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets[_TIMESTAMPED_CLASSIFICATIONS_STREAM_NAME]);
 						for (const auto& proto : classification_result_proto_list) {
 							mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 							classification_result_proto.CopyFrom(*proto);
 							output_list.push_back(AudioClassifierResult::create_from_pb2(classification_result_proto));
 						}
-
-						return output_list;
 					}
 
 					void AudioClassifier::classify_async(const AudioData& audio_block, int64_t timestamp_ms) {

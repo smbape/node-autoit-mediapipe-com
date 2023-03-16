@@ -73,6 +73,7 @@
   - [autoit.components](#autoitcomponents)
   - [autoit.core](#autoitcore)
   - [autoit.text](#autoittext)
+  - [autoit.vision](#autoitvision)
 - [mediapipe::autoit::packet\_creator](#mediapipeautoitpacket%5C_creator)
   - [mediapipe::autoit::packet\_creator::create\_bool](#mediapipeautoitpacket%5C_creatorcreate%5C_bool)
   - [mediapipe::autoit::packet\_creator::create\_bool\_vector](#mediapipeautoitpacket%5C_creatorcreate%5C_bool%5C_vector)
@@ -453,6 +454,7 @@
   - [autoit.components](#autoitcomponents-1)
   - [autoit.core](#autoitcore-1)
   - [autoit.text](#autoittext-1)
+  - [autoit.vision](#autoitvision-1)
 - [mediapipe::tasks::autoit::audio](#mediapipetasksautoitaudio)
   - [audio.audio\_classifier](#audioaudio%5C_classifier)
   - [audio.audio\_embedder](#audioaudio%5C_embedder)
@@ -806,6 +808,96 @@
 - [mediapipe::autoit::text::text\_embedder](#mediapipeautoittexttext%5C_embedder)
   - [text\_embedder.TextEmbedderOptions](#text%5C_embeddertextembedderoptions-1)
   - [text\_embedder.TextEmbedder](#text%5C_embeddertextembedder-1)
+- [mediapipe::tasks::autoit::vision](#mediapipetasksautoitvision)
+  - [vision.core](#visioncore)
+  - [vision.image\_classifier](#visionimage%5C_classifier)
+  - [vision.image\_embedder](#visionimage%5C_embedder)
+  - [vision.image\_segmenter](#visionimage%5C_segmenter)
+- [mediapipe::tasks::autoit::vision::core](#mediapipetasksautoitvisioncore)
+  - [core.base\_vision\_task\_api](#corebase%5C_vision%5C_task%5C_api)
+  - [core.image\_processing\_options](#coreimage%5C_processing%5C_options)
+  - [core.vision\_task\_running\_mode](#corevision%5C_task%5C_running%5C_mode)
+- [mediapipe::autoit::vision](#mediapipeautoitvision)
+  - [vision.core](#visioncore-1)
+  - [vision.image\_classifier](#visionimage%5C_classifier-1)
+  - [vision.image\_embedder](#visionimage%5C_embedder-1)
+  - [vision.image\_segmenter](#visionimage%5C_segmenter-1)
+- [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_api)
+  - [base\_vision\_task\_api.BaseVisionTaskApi](#base%5C_vision%5C_task%5C_apibasevisiontaskapi)
+- [mediapipe::autoit::vision::core](#mediapipeautoitvisioncore)
+  - [core.base\_vision\_task\_api](#corebase%5C_vision%5C_task%5C_api-1)
+  - [core.image\_processing\_options](#coreimage%5C_processing%5C_options-1)
+  - [core.vision\_task\_running\_mode](#corevision%5C_task%5C_running%5C_mode-1)
+- [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapi)
+  - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::get\_create](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiget%5C_create)
+  - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::\_process\_image\_data](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapi%5C_process%5C_image%5C_data)
+  - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::\_process\_video\_data](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapi%5C_process%5C_video%5C_data)
+  - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::\_send\_live\_stream\_data](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapi%5C_send%5C_live%5C_stream%5C_data)
+  - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::close](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiclose)
+  - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::convert\_to\_normalized\_rect](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiconvert%5C_to%5C_normalized%5C_rect)
+- [mediapipe::autoit::vision::core::base\_vision\_task\_api](#mediapipeautoitvisioncorebase%5C_vision%5C_task%5C_api)
+  - [base\_vision\_task\_api.BaseVisionTaskApi](#base%5C_vision%5C_task%5C_apibasevisiontaskapi-1)
+- [mediapipe::tasks::autoit::vision::core::image\_processing\_options](#mediapipetasksautoitvisioncoreimage%5C_processing%5C_options)
+  - [image\_processing\_options.ImageProcessingOptions](#image%5C_processing%5C_optionsimageprocessingoptions)
+- [mediapipe::tasks::autoit::vision::core::image\_processing\_options::ImageProcessingOptions](#mediapipetasksautoitvisioncoreimage%5C_processing%5C_optionsimageprocessingoptions)
+  - [ImageProcessingOptions.region\_of\_interest](#imageprocessingoptionsregion%5C_of%5C_interest)
+  - [ImageProcessingOptions.rotation\_degrees](#imageprocessingoptionsrotation%5C_degrees)
+  - [mediapipe::tasks::autoit::vision::core::image\_processing\_options::ImageProcessingOptions::get\_create](#mediapipetasksautoitvisioncoreimage%5C_processing%5C_optionsimageprocessingoptionsget%5C_create)
+- [mediapipe::autoit::vision::core::image\_processing\_options](#mediapipeautoitvisioncoreimage%5C_processing%5C_options)
+  - [image\_processing\_options.ImageProcessingOptions](#image%5C_processing%5C_optionsimageprocessingoptions-1)
+- [mediapipe::tasks::autoit::vision::core::vision\_task\_running\_mode](#mediapipetasksautoitvisioncorevision%5C_task%5C_running%5C_mode)
+  - [vision\_task\_running\_mode.VisionTaskRunningMode](#vision%5C_task%5C_running%5C_modevisiontaskrunningmode)
+- [mediapipe::tasks::autoit::vision::core::vision\_task\_running\_mode::VisionTaskRunningMode](#mediapipetasksautoitvisioncorevision%5C_task%5C_running%5C_modevisiontaskrunningmode)
+  - [VisionTaskRunningMode.IMAGE](#visiontaskrunningmodeimage)
+  - [VisionTaskRunningMode.VIDEO](#visiontaskrunningmodevideo)
+  - [VisionTaskRunningMode.LIVE\_STREAM](#visiontaskrunningmodelive%5C_stream)
+- [mediapipe::autoit::vision::core::vision\_task\_running\_mode](#mediapipeautoitvisioncorevision%5C_task%5C_running%5C_mode)
+  - [vision\_task\_running\_mode.VisionTaskRunningMode](#vision%5C_task%5C_running%5C_modevisiontaskrunningmode-1)
+- [mediapipe::tasks::autoit::vision::image\_classifier](#mediapipetasksautoitvisionimage%5C_classifier)
+  - [image\_classifier.ImageClassifierOptions](#image%5C_classifierimageclassifieroptions)
+  - [image\_classifier.ImageClassifier](#image%5C_classifierimageclassifier)
+- [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions](#mediapipetasksautoitvisionimage%5C_classifierimageclassifieroptions)
+  - [ImageClassifierOptions.base\_options](#imageclassifieroptionsbase%5C_options)
+  - [ImageClassifierOptions.running\_mode](#imageclassifieroptionsrunning%5C_mode)
+  - [ImageClassifierOptions.display\_names\_locale](#imageclassifieroptionsdisplay%5C_names%5C_locale)
+  - [ImageClassifierOptions.max\_results](#imageclassifieroptionsmax%5C_results)
+  - [ImageClassifierOptions.score\_threshold](#imageclassifieroptionsscore%5C_threshold)
+  - [ImageClassifierOptions.category\_allowlist](#imageclassifieroptionscategory%5C_allowlist)
+  - [ImageClassifierOptions.category\_denylist](#imageclassifieroptionscategory%5C_denylist)
+  - [ImageClassifierOptions.result\_callback](#imageclassifieroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions::get\_create](#mediapipetasksautoitvisionimage%5C_classifierimageclassifieroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions::to\_pb2](#mediapipetasksautoitvisionimage%5C_classifierimageclassifieroptionsto%5C_pb2)
+- [mediapipe::autoit::vision::image\_classifier](#mediapipeautoitvisionimage%5C_classifier)
+  - [image\_classifier.ImageClassifierOptions](#image%5C_classifierimageclassifieroptions-1)
+  - [image\_classifier.ImageClassifier](#image%5C_classifierimageclassifier-1)
+- [mediapipe::tasks::autoit::vision::image\_embedder](#mediapipetasksautoitvisionimage%5C_embedder)
+  - [image\_embedder.ImageEmbedderOptions](#image%5C_embedderimageembedderoptions)
+  - [image\_embedder.ImageEmbedder](#image%5C_embedderimageembedder)
+- [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions](#mediapipetasksautoitvisionimage%5C_embedderimageembedderoptions)
+  - [ImageEmbedderOptions.base\_options](#imageembedderoptionsbase%5C_options)
+  - [ImageEmbedderOptions.running\_mode](#imageembedderoptionsrunning%5C_mode)
+  - [ImageEmbedderOptions.l2\_normalize](#imageembedderoptionsl2%5C_normalize)
+  - [ImageEmbedderOptions.quantize](#imageembedderoptionsquantize)
+  - [ImageEmbedderOptions.result\_callback](#imageembedderoptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions::get\_create](#mediapipetasksautoitvisionimage%5C_embedderimageembedderoptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions::to\_pb2](#mediapipetasksautoitvisionimage%5C_embedderimageembedderoptionsto%5C_pb2)
+- [mediapipe::autoit::vision::image\_embedder](#mediapipeautoitvisionimage%5C_embedder)
+  - [image\_embedder.ImageEmbedderOptions](#image%5C_embedderimageembedderoptions-1)
+  - [image\_embedder.ImageEmbedder](#image%5C_embedderimageembedder-1)
+- [mediapipe::tasks::autoit::vision::image\_segmenter](#mediapipetasksautoitvisionimage%5C_segmenter)
+  - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions)
+  - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter)
+- [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptions)
+  - [ImageSegmenterOptions.base\_options](#imagesegmenteroptionsbase%5C_options)
+  - [ImageSegmenterOptions.running\_mode](#imagesegmenteroptionsrunning%5C_mode)
+  - [ImageSegmenterOptions.output\_type](#imagesegmenteroptionsoutput%5C_type)
+  - [ImageSegmenterOptions.activation](#imagesegmenteroptionsactivation)
+  - [ImageSegmenterOptions.result\_callback](#imagesegmenteroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions::get\_create](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions::to\_pb2](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptionsto%5C_pb2)
+- [mediapipe::autoit::vision::image\_segmenter](#mediapipeautoitvisionimage%5C_segmenter)
+  - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions-1)
+  - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter-1)
 - [cv](#cv)
   - [cv::createMatFromBitmap](#cvcreatematfrombitmap)
   - [cv::haveImageReader](#cvhaveimagereader)
@@ -3309,6 +3401,56 @@
   - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::\_\_str\_\_](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::text::text\_embedder::proto::text\_embedder\_graph\_options\_pb2](#mediapipetaskscctexttext%5C_embedderprototext%5C_embedder%5C_graph%5C_options%5C_pb2)
   - [text\_embedder\_graph\_options\_pb2.TextEmbedderGraphOptions](#text%5C_embedder%5C_graph%5C_options%5C_pb2textembeddergraphoptions)
+- [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptions)
+  - [ImageClassifierGraphOptions.base\_options](#imageclassifiergraphoptionsbase%5C_options)
+  - [ImageClassifierGraphOptions.classifier\_options](#imageclassifiergraphoptionsclassifier%5C_options)
+  - [ImageClassifierGraphOptions.ext](#imageclassifiergraphoptionsext)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::get\_create](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::Clear](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsclear)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::ClearField](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::CopyFrom](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::image\_classifier::proto::image\_classifier\_graph\_options\_pb2](#mediapipetasksccvisionimage%5C_classifierprotoimage%5C_classifier%5C_graph%5C_options%5C_pb2)
+  - [image\_classifier\_graph\_options\_pb2.ImageClassifierGraphOptions](#image%5C_classifier%5C_graph%5C_options%5C_pb2imageclassifiergraphoptions)
+- [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptions)
+  - [ImageEmbedderGraphOptions.base\_options](#imageembeddergraphoptionsbase%5C_options)
+  - [ImageEmbedderGraphOptions.embedder\_options](#imageembeddergraphoptionsembedder%5C_options)
+  - [ImageEmbedderGraphOptions.ext](#imageembeddergraphoptionsext)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::get\_create](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::Clear](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsclear)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::ClearField](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::CopyFrom](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::image\_embedder::proto::image\_embedder\_graph\_options\_pb2](#mediapipetasksccvisionimage%5C_embedderprotoimage%5C_embedder%5C_graph%5C_options%5C_pb2)
+  - [image\_embedder\_graph\_options\_pb2.ImageEmbedderGraphOptions](#image%5C_embedder%5C_graph%5C_options%5C_pb2imageembeddergraphoptions)
+- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptions)
+  - [SegmenterOptions.output\_type](#segmenteroptionsoutput%5C_type)
+  - [SegmenterOptions.activation](#segmenteroptionsactivation)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::get\_create](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsget%5C_create)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Clear](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsclear)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::ClearField](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsclearfield)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::CopyFrom](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionscopyfrom)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptions%5C_%5C_str%5C_%5C_)
+  - [SegmenterOptions.UNSPECIFIED\_](#segmenteroptionsunspecified%5C_)
+  - [SegmenterOptions.CATEGORY\_MASK\_](#segmenteroptionscategory%5C_mask%5C_)
+  - [SegmenterOptions.CONFIDENCE\_MASK\_](#segmenteroptionsconfidence%5C_mask%5C_)
+  - [SegmenterOptions.NONE\_](#segmenteroptionsnone%5C_)
+  - [SegmenterOptions.SIGMOID\_](#segmenteroptionssigmoid%5C_)
+  - [SegmenterOptions.SOFTMAX\_](#segmenteroptionssoftmax%5C_)
+- [mediapipe::tasks::cc::vision::image\_segmenter::proto::segmenter\_options\_pb2](#mediapipetasksccvisionimage%5C_segmenterprotosegmenter%5C_options%5C_pb2)
+  - [segmenter\_options\_pb2.SegmenterOptions](#segmenter%5C_options%5C_pb2segmenteroptions)
+- [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptions)
+  - [ImageSegmenterGraphOptions.base\_options](#imagesegmentergraphoptionsbase%5C_options)
+  - [ImageSegmenterGraphOptions.display\_names\_locale](#imagesegmentergraphoptionsdisplay%5C_names%5C_locale)
+  - [ImageSegmenterGraphOptions.segmenter\_options](#imagesegmentergraphoptionssegmenter%5C_options)
+  - [ImageSegmenterGraphOptions.ext](#imagesegmentergraphoptionsext)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::get\_create](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::Clear](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsclear)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::ClearField](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::CopyFrom](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::image\_segmenter::proto::image\_segmenter\_graph\_options\_pb2](#mediapipetasksccvisionimage%5C_segmenterprotoimage%5C_segmenter%5C_graph%5C_options%5C_pb2)
+  - [image\_segmenter\_graph\_options\_pb2.ImageSegmenterGraphOptions](#image%5C_segmenter%5C_graph%5C_options%5C_pb2imagesegmentergraphoptions)
 - [mediapipe::CalculatorGraph](#mediapipecalculatorgraph)
   - [CalculatorGraph.text\_config](#calculatorgraphtext%5C_config)
   - [CalculatorGraph.binary\_config](#calculatorgraphbinary%5C_config)
@@ -6279,6 +6421,14 @@ AutoIt:
 static mediapipe::tasks::autoit::text
 AutoIt:
     [propget] $oautoit.text
+```
+
+### autoit.vision
+
+```cpp
+static mediapipe::tasks::autoit::vision
+AutoIt:
+    [propget] $oautoit.vision
 ```
 
 ## mediapipe::autoit::packet\_creator
@@ -9262,6 +9412,14 @@ AutoIt:
     [propget] $oautoit.text
 ```
 
+### autoit.vision
+
+```cpp
+static mediapipe::tasks::autoit::vision
+AutoIt:
+    [propget] $oautoit.vision
+```
+
 ## mediapipe::tasks::autoit::audio
 
 ### audio.audio\_classifier
@@ -11832,6 +11990,646 @@ AutoIt:
     [propget] $otext_embedder.TextEmbedder
 ```
 
+## mediapipe::tasks::autoit::vision
+
+### vision.core
+
+```cpp
+static mediapipe::tasks::autoit::vision::core
+AutoIt:
+    [propget] $ovision.core
+```
+
+### vision.image\_classifier
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier
+AutoIt:
+    [propget] $ovision.image_classifier
+```
+
+### vision.image\_embedder
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder
+AutoIt:
+    [propget] $ovision.image_embedder
+```
+
+### vision.image\_segmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter
+AutoIt:
+    [propget] $ovision.image_segmenter
+```
+
+## mediapipe::tasks::autoit::vision::core
+
+### core.base\_vision\_task\_api
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::base_vision_task_api
+AutoIt:
+    [propget] $ocore.base_vision_task_api
+```
+
+### core.image\_processing\_options
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::image_processing_options
+AutoIt:
+    [propget] $ocore.image_processing_options
+```
+
+### core.vision\_task\_running\_mode
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::vision_task_running_mode
+AutoIt:
+    [propget] $ocore.vision_task_running_mode
+```
+
+## mediapipe::autoit::vision
+
+### vision.core
+
+```cpp
+static mediapipe::tasks::autoit::vision::core
+AutoIt:
+    [propget] $ovision.core
+```
+
+### vision.image\_classifier
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier
+AutoIt:
+    [propget] $ovision.image_classifier
+```
+
+### vision.image\_embedder
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder
+AutoIt:
+    [propget] $ovision.image_embedder
+```
+
+### vision.image\_segmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter
+AutoIt:
+    [propget] $ovision.image_segmenter
+```
+
+## mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api
+
+### base\_vision\_task\_api.BaseVisionTaskApi
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi
+AutoIt:
+    [propget] $obase_vision_task_api.BaseVisionTaskApi
+```
+
+## mediapipe::autoit::vision::core
+
+### core.base\_vision\_task\_api
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::base_vision_task_api
+AutoIt:
+    [propget] $ocore.base_vision_task_api
+```
+
+### core.image\_processing\_options
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::image_processing_options
+AutoIt:
+    [propget] $ocore.image_processing_options
+```
+
+### core.vision\_task\_running\_mode
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::vision_task_running_mode
+AutoIt:
+    [propget] $ocore.vision_task_running_mode
+```
+
+## mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi
+
+### mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi::get_create( const mediapipe::CalculatorGraphConfig&                                                 graph_config,
+                                                                                                                                                                                    mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode,
+                                                                                                                                                                                    mediapipe::autoit::PacketsRawCallback                                                   packet_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.base_vision_task_api.BaseVisionTaskApi").create( $graph_config, $running_mode[, $packet_callback] ) -> <mediapipe.tasks.autoit.vision.core.base_vision_task_api.BaseVisionTaskApi object>
+    $oBaseVisionTaskApi( $graph_config, $running_mode[, $packet_callback] ) -> <mediapipe.tasks.autoit.vision.core.base_vision_task_api.BaseVisionTaskApi object>
+```
+
+### mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::\_process\_image\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi::_process_image_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oBaseVisionTaskApi._process_image_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::\_process\_video\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi::_process_video_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oBaseVisionTaskApi._process_video_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::\_send\_live\_stream\_data
+
+```cpp
+void mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi::_send_live_stream_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oBaseVisionTaskApi._send_live_stream_data( $inputs ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::close
+
+```cpp
+void mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi::close();
+AutoIt:
+    $oBaseVisionTaskApi.close() -> None
+```
+
+### mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::convert\_to\_normalized\_rect
+
+```cpp
+mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                                    bool                                                                                                      roi_allowed = true );
+AutoIt:
+    $oBaseVisionTaskApi.convert_to_normalized_rect( $options[, $roi_allowed] ) -> retval
+```
+
+## mediapipe::autoit::vision::core::base\_vision\_task\_api
+
+### base\_vision\_task\_api.BaseVisionTaskApi
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi
+AutoIt:
+    [propget] $obase_vision_task_api.BaseVisionTaskApi
+```
+
+## mediapipe::tasks::autoit::vision::core::image\_processing\_options
+
+### image\_processing\_options.ImageProcessingOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions
+AutoIt:
+    [propget] $oimage_processing_options.ImageProcessingOptions
+```
+
+## mediapipe::tasks::autoit::vision::core::image\_processing\_options::ImageProcessingOptions
+
+### ImageProcessingOptions.region\_of\_interest
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::rect::Rect> mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions::region_of_interest
+AutoIt:
+    [propget, propput] $oImageProcessingOptions.region_of_interest
+```
+
+### ImageProcessingOptions.rotation\_degrees
+
+```cpp
+int mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions::rotation_degrees
+AutoIt:
+    [propget, propput] $oImageProcessingOptions.rotation_degrees
+```
+
+### mediapipe::tasks::autoit::vision::core::image\_processing\_options::ImageProcessingOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions::get_create( const mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options.ImageProcessingOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.core.image_processing_options.ImageProcessingOptions object>
+    $oImageProcessingOptions( $other ) -> <mediapipe.tasks.autoit.vision.core.image_processing_options.ImageProcessingOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::components::containers::rect::Rect> region_of_interest = std::shared_ptr<components::containers::rect::Rect>(),
+                                                                                                                                                                                                      int                                                                           rotation_degrees = 0 );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options.ImageProcessingOptions").create( [$region_of_interest[, $rotation_degrees]] ) -> <mediapipe.tasks.autoit.vision.core.image_processing_options.ImageProcessingOptions object>
+    $oImageProcessingOptions( [$region_of_interest[, $rotation_degrees]] ) -> <mediapipe.tasks.autoit.vision.core.image_processing_options.ImageProcessingOptions object>
+```
+
+## mediapipe::autoit::vision::core::image\_processing\_options
+
+### image\_processing\_options.ImageProcessingOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions
+AutoIt:
+    [propget] $oimage_processing_options.ImageProcessingOptions
+```
+
+## mediapipe::tasks::autoit::vision::core::vision\_task\_running\_mode
+
+### vision\_task\_running\_mode.VisionTaskRunningMode
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode
+AutoIt:
+    [propget] $ovision_task_running_mode.VisionTaskRunningMode
+```
+
+## mediapipe::tasks::autoit::vision::core::vision\_task\_running\_mode::VisionTaskRunningMode
+
+### VisionTaskRunningMode.IMAGE
+
+```cpp
+static int mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE
+AutoIt:
+    [propget] $oVisionTaskRunningMode.IMAGE
+```
+
+### VisionTaskRunningMode.VIDEO
+
+```cpp
+static int mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::VIDEO
+AutoIt:
+    [propget] $oVisionTaskRunningMode.VIDEO
+```
+
+### VisionTaskRunningMode.LIVE\_STREAM
+
+```cpp
+static int mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::LIVE_STREAM
+AutoIt:
+    [propget] $oVisionTaskRunningMode.LIVE_STREAM
+```
+
+## mediapipe::autoit::vision::core::vision\_task\_running\_mode
+
+### vision\_task\_running\_mode.VisionTaskRunningMode
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode
+AutoIt:
+    [propget] $ovision_task_running_mode.VisionTaskRunningMode
+```
+
+## mediapipe::tasks::autoit::vision::image\_classifier
+
+### image\_classifier.ImageClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions
+AutoIt:
+    [propget] $oimage_classifier.ImageClassifierOptions
+```
+
+### image\_classifier.ImageClassifier
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier
+AutoIt:
+    [propget] $oimage_classifier.ImageClassifier
+```
+
+## mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions
+
+### ImageClassifierOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::base_options
+AutoIt:
+    [propget, propput] $oImageClassifierOptions.base_options
+```
+
+### ImageClassifierOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::running_mode
+AutoIt:
+    [propget, propput] $oImageClassifierOptions.running_mode
+```
+
+### ImageClassifierOptions.display\_names\_locale
+
+```cpp
+std::optional<std::string> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::display_names_locale
+AutoIt:
+    [propget, propput] $oImageClassifierOptions.display_names_locale
+```
+
+### ImageClassifierOptions.max\_results
+
+```cpp
+std::optional<int> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::max_results
+AutoIt:
+    [propget, propput] $oImageClassifierOptions.max_results
+```
+
+### ImageClassifierOptions.score\_threshold
+
+```cpp
+std::optional<float> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::score_threshold
+AutoIt:
+    [propget, propput] $oImageClassifierOptions.score_threshold
+```
+
+### ImageClassifierOptions.category\_allowlist
+
+```cpp
+std::vector<std::string> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::category_allowlist
+AutoIt:
+    [propget, propput] $oImageClassifierOptions.category_allowlist
+```
+
+### ImageClassifierOptions.category\_denylist
+
+```cpp
+std::vector<std::string> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::category_denylist
+AutoIt:
+    [propget, propput] $oImageClassifierOptions.category_denylist
+```
+
+### ImageClassifierOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::result_callback
+AutoIt:
+    [propput] $oImageClassifierOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::get_create( const mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_classifier.ImageClassifierOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.image_classifier.ImageClassifierOptions object>
+    $oImageClassifierOptions( $other ) -> <mediapipe.tasks.autoit.vision.image_classifier.ImageClassifierOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                          mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                                          const std::optional<std::string>&                                                       display_names_locale = std::optional<std::string>(),
+                                                                                                                                                                          std::optional<int>                                                                      max_results = std::optional<int>(),
+                                                                                                                                                                          std::optional<float>                                                                    score_threshold = std::optional<float>(),
+                                                                                                                                                                          const std::vector<std::string>&                                                         category_allowlist = std::vector<std::string>(),
+                                                                                                                                                                          const std::vector<std::string>&                                                         category_denylist = std::vector<std::string>(),
+                                                                                                                                                                          mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback    result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_classifier.ImageClassifierOptions").create( [$base_options[, $running_mode[, $display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist[, $result_callback]]]]]]]] ) -> <mediapipe.tasks.autoit.vision.image_classifier.ImageClassifierOptions object>
+    $oImageClassifierOptions( [$base_options[, $running_mode[, $display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist[, $result_callback]]]]]]]] ) -> <mediapipe.tasks.autoit.vision.image_classifier.ImageClassifierOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions::to\_pb2
+
+```cpp
+std::shared_ptr<mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::to_pb2();
+AutoIt:
+    $oImageClassifierOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::vision::image\_classifier
+
+### image\_classifier.ImageClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions
+AutoIt:
+    [propget] $oimage_classifier.ImageClassifierOptions
+```
+
+### image\_classifier.ImageClassifier
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier
+AutoIt:
+    [propget] $oimage_classifier.ImageClassifier
+```
+
+## mediapipe::tasks::autoit::vision::image\_embedder
+
+### image\_embedder.ImageEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions
+AutoIt:
+    [propget] $oimage_embedder.ImageEmbedderOptions
+```
+
+### image\_embedder.ImageEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder
+AutoIt:
+    [propget] $oimage_embedder.ImageEmbedder
+```
+
+## mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions
+
+### ImageEmbedderOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::base_options
+AutoIt:
+    [propget, propput] $oImageEmbedderOptions.base_options
+```
+
+### ImageEmbedderOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::running_mode
+AutoIt:
+    [propget, propput] $oImageEmbedderOptions.running_mode
+```
+
+### ImageEmbedderOptions.l2\_normalize
+
+```cpp
+std::optional<bool> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::l2_normalize
+AutoIt:
+    [propget, propput] $oImageEmbedderOptions.l2_normalize
+```
+
+### ImageEmbedderOptions.quantize
+
+```cpp
+std::optional<bool> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::quantize
+AutoIt:
+    [propget, propput] $oImageEmbedderOptions.quantize
+```
+
+### ImageEmbedderOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::result_callback
+AutoIt:
+    [propput] $oImageEmbedderOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::get_create( const mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedderOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedderOptions object>
+    $oImageEmbedderOptions( $other ) -> <mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedderOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                  mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                                  std::optional<bool>                                                                     l2_normalize = std::optional<bool>(),
+                                                                                                                                                                  std::optional<bool>                                                                     quantize = std::optional<bool>(),
+                                                                                                                                                                  mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback        result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedderOptions").create( [$base_options[, $running_mode[, $l2_normalize[, $quantize[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedderOptions object>
+    $oImageEmbedderOptions( [$base_options[, $running_mode[, $l2_normalize[, $quantize[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedderOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions::to\_pb2
+
+```cpp
+std::shared_ptr<mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::to_pb2();
+AutoIt:
+    $oImageEmbedderOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::vision::image\_embedder
+
+### image\_embedder.ImageEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions
+AutoIt:
+    [propget] $oimage_embedder.ImageEmbedderOptions
+```
+
+### image\_embedder.ImageEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder
+AutoIt:
+    [propget] $oimage_embedder.ImageEmbedder
+```
+
+## mediapipe::tasks::autoit::vision::image\_segmenter
+
+### image\_segmenter.ImageSegmenterOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions
+AutoIt:
+    [propget] $oimage_segmenter.ImageSegmenterOptions
+```
+
+### image\_segmenter.ImageSegmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter
+AutoIt:
+    [propget] $oimage_segmenter.ImageSegmenter
+```
+
+## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions
+
+### ImageSegmenterOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions::base_options
+AutoIt:
+    [propget, propput] $oImageSegmenterOptions.base_options
+```
+
+### ImageSegmenterOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions::running_mode
+AutoIt:
+    [propget, propput] $oImageSegmenterOptions.running_mode
+```
+
+### ImageSegmenterOptions.output\_type
+
+```cpp
+mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions::output_type
+AutoIt:
+    [propget, propput] $oImageSegmenterOptions.output_type
+```
+
+### ImageSegmenterOptions.activation
+
+```cpp
+mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions::activation
+AutoIt:
+    [propget, propput] $oImageSegmenterOptions.activation
+```
+
+### ImageSegmenterOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions::result_callback
+AutoIt:
+    [propput] $oImageSegmenterOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions::get_create( const mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenterOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenterOptions object>
+    $oImageSegmenterOptions( $other ) -> <mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenterOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                      mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                                      mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType          output_type = mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::CATEGORY_MASK,
+                                                                                                                                                                      mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation          activation = mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::NONE,
+                                                                                                                                                                      mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback      result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenterOptions").create( [$base_options[, $running_mode[, $output_type[, $activation[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenterOptions object>
+    $oImageSegmenterOptions( [$base_options[, $running_mode[, $output_type[, $activation[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenterOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions::to\_pb2
+
+```cpp
+std::shared_ptr<tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions> mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions::to_pb2();
+AutoIt:
+    $oImageSegmenterOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::vision::image\_segmenter
+
+### image\_segmenter.ImageSegmenterOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions
+AutoIt:
+    [propget] $oimage_segmenter.ImageSegmenterOptions
+```
+
+### image\_segmenter.ImageSegmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter
+AutoIt:
+    [propget] $oimage_segmenter.ImageSegmenter
+```
+
 ## cv
 
 ### cv::createMatFromBitmap
@@ -12155,6 +12953,24 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
@@ -32652,6 +33468,358 @@ AutoIt:
 static mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions
 AutoIt:
     [propget] $otext_embedder_graph_options_pb2.TextEmbedderGraphOptions
+```
+
+## mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions
+
+### ImageClassifierGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::base_options
+AutoIt:
+    [propget] $oImageClassifierGraphOptions.base_options
+```
+
+### ImageClassifierGraphOptions.classifier\_options
+
+```cpp
+mediapipe::tasks::components::processors::proto::ClassifierOptions* mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::classifier_options
+AutoIt:
+    [propget] $oImageClassifierGraphOptions.classifier_options
+```
+
+### ImageClassifierGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions* mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::ext
+AutoIt:
+    [propget] $oImageClassifierGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.image_classifier.proto.ImageClassifierGraphOptions").create() -> <mediapipe.tasks.vision.image_classifier.proto.ImageClassifierGraphOptions object>
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::Clear();
+AutoIt:
+    $oImageClassifierGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oImageClassifierGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oImageClassifierGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oImageClassifierGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::image\_classifier::proto::image\_classifier\_graph\_options\_pb2
+
+### image\_classifier\_graph\_options\_pb2.ImageClassifierGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions
+AutoIt:
+    [propget] $oimage_classifier_graph_options_pb2.ImageClassifierGraphOptions
+```
+
+## mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions
+
+### ImageEmbedderGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::base_options
+AutoIt:
+    [propget] $oImageEmbedderGraphOptions.base_options
+```
+
+### ImageEmbedderGraphOptions.embedder\_options
+
+```cpp
+mediapipe::tasks::components::processors::proto::EmbedderOptions* mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::embedder_options
+AutoIt:
+    [propget] $oImageEmbedderGraphOptions.embedder_options
+```
+
+### ImageEmbedderGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions* mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::ext
+AutoIt:
+    [propget] $oImageEmbedderGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.image_embedder.proto.ImageEmbedderGraphOptions").create() -> <mediapipe.tasks.vision.image_embedder.proto.ImageEmbedderGraphOptions object>
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::Clear();
+AutoIt:
+    $oImageEmbedderGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oImageEmbedderGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oImageEmbedderGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oImageEmbedderGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::image\_embedder::proto::image\_embedder\_graph\_options\_pb2
+
+### image\_embedder\_graph\_options\_pb2.ImageEmbedderGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions
+AutoIt:
+    [propget] $oimage_embedder_graph_options_pb2.ImageEmbedderGraphOptions
+```
+
+## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions
+
+### SegmenterOptions.output\_type
+
+```cpp
+mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::output_type
+AutoIt:
+    [propget, propput] $oSegmenterOptions.output_type
+```
+
+### SegmenterOptions.activation
+
+```cpp
+mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::activation
+AutoIt:
+    [propget, propput] $oSegmenterOptions.activation
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.image_segmenter.proto.SegmenterOptions").create() -> <mediapipe.tasks.vision.image_segmenter.proto.SegmenterOptions object>
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Clear();
+AutoIt:
+    $oSegmenterOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oSegmenterOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oSegmenterOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::__str__( std::string* output );
+AutoIt:
+    $oSegmenterOptions.__str__( [$output] ) -> $output
+```
+
+### SegmenterOptions.UNSPECIFIED\_
+
+```cpp
+static int mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::UNSPECIFIED
+AutoIt:
+    [propget] $oSegmenterOptions.UNSPECIFIED_
+```
+
+### SegmenterOptions.CATEGORY\_MASK\_
+
+```cpp
+static int mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::CATEGORY_MASK
+AutoIt:
+    [propget] $oSegmenterOptions.CATEGORY_MASK_
+```
+
+### SegmenterOptions.CONFIDENCE\_MASK\_
+
+```cpp
+static int mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::CONFIDENCE_MASK
+AutoIt:
+    [propget] $oSegmenterOptions.CONFIDENCE_MASK_
+```
+
+### SegmenterOptions.NONE\_
+
+```cpp
+static int mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::NONE
+AutoIt:
+    [propget] $oSegmenterOptions.NONE_
+```
+
+### SegmenterOptions.SIGMOID\_
+
+```cpp
+static int mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::SIGMOID
+AutoIt:
+    [propget] $oSegmenterOptions.SIGMOID_
+```
+
+### SegmenterOptions.SOFTMAX\_
+
+```cpp
+static int mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::SOFTMAX
+AutoIt:
+    [propget] $oSegmenterOptions.SOFTMAX_
+```
+
+## mediapipe::tasks::cc::vision::image\_segmenter::proto::segmenter\_options\_pb2
+
+### segmenter\_options\_pb2.SegmenterOptions
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions
+AutoIt:
+    [propget] $osegmenter_options_pb2.SegmenterOptions
+```
+
+## mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions
+
+### ImageSegmenterGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::base_options
+AutoIt:
+    [propget] $oImageSegmenterGraphOptions.base_options
+```
+
+### ImageSegmenterGraphOptions.display\_names\_locale
+
+```cpp
+std::string mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::display_names_locale
+AutoIt:
+    [propget, propput] $oImageSegmenterGraphOptions.display_names_locale
+```
+
+### ImageSegmenterGraphOptions.segmenter\_options
+
+```cpp
+mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions* mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::segmenter_options
+AutoIt:
+    [propget] $oImageSegmenterGraphOptions.segmenter_options
+```
+
+### ImageSegmenterGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions* mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::ext
+AutoIt:
+    [propget] $oImageSegmenterGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.image_segmenter.proto.ImageSegmenterGraphOptions").create() -> <mediapipe.tasks.vision.image_segmenter.proto.ImageSegmenterGraphOptions object>
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::Clear();
+AutoIt:
+    $oImageSegmenterGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oImageSegmenterGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oImageSegmenterGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oImageSegmenterGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::image\_segmenter::proto::image\_segmenter\_graph\_options\_pb2
+
+### image\_segmenter\_graph\_options\_pb2.ImageSegmenterGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions
+AutoIt:
+    [propget] $oimage_segmenter_graph_options_pb2.ImageSegmenterGraphOptions
 ```
 
 ## mediapipe::CalculatorGraph

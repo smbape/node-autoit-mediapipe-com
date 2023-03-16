@@ -1,5 +1,3 @@
-#pragma once
-
 #include "binding/tasks/text/text_embedder.h"
 #include "binding/packet_getter.h"
 #include "binding/packet_creator.h"

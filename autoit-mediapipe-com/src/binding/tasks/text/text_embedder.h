@@ -43,7 +43,7 @@ namespace mediapipe {
 
 						CV_WRAP static std::shared_ptr<TextEmbedder> create_from_model_path(const std::string& model_path);
 						CV_WRAP static std::shared_ptr<TextEmbedder> create_from_options(std::shared_ptr<TextEmbedderOptions> options);
-						CV_WRAP std::shared_ptr<components::containers::embedding_result::EmbeddingResult> embed(const std::string& text);
+						CV_WRAP std::shared_ptr<TextEmbedderResult> embed(const std::string& text);
 						CV_WRAP static float cosine_similarity(const components::containers::embedding_result::Embedding& u, const components::containers::embedding_result::Embedding& v);
 					};
 				}
