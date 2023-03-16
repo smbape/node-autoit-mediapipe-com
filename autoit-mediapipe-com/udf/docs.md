@@ -813,6 +813,7 @@
   - [vision.image\_classifier](#visionimage%5C_classifier)
   - [vision.image\_embedder](#visionimage%5C_embedder)
   - [vision.image\_segmenter](#visionimage%5C_segmenter)
+  - [vision.object\_detector](#visionobject%5C_detector)
 - [mediapipe::tasks::autoit::vision::core](#mediapipetasksautoitvisioncore)
   - [core.base\_vision\_task\_api](#corebase%5C_vision%5C_task%5C_api)
   - [core.image\_processing\_options](#coreimage%5C_processing%5C_options)
@@ -822,6 +823,7 @@
   - [vision.image\_classifier](#visionimage%5C_classifier-1)
   - [vision.image\_embedder](#visionimage%5C_embedder-1)
   - [vision.image\_segmenter](#visionimage%5C_segmenter-1)
+  - [vision.object\_detector](#visionobject%5C_detector-1)
 - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_api)
   - [base\_vision\_task\_api.BaseVisionTaskApi](#base%5C_vision%5C_task%5C_apibasevisiontaskapi)
 - [mediapipe::autoit::vision::core](#mediapipeautoitvisioncore)
@@ -898,6 +900,23 @@
 - [mediapipe::autoit::vision::image\_segmenter](#mediapipeautoitvisionimage%5C_segmenter)
   - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions-1)
   - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter-1)
+- [mediapipe::tasks::autoit::vision::object\_detector](#mediapipetasksautoitvisionobject%5C_detector)
+  - [object\_detector.ObjectDetectorOptions](#object%5C_detectorobjectdetectoroptions)
+  - [object\_detector.ObjectDetector](#object%5C_detectorobjectdetector)
+- [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectoroptions)
+  - [ObjectDetectorOptions.base\_options](#objectdetectoroptionsbase%5C_options)
+  - [ObjectDetectorOptions.running\_mode](#objectdetectoroptionsrunning%5C_mode)
+  - [ObjectDetectorOptions.display\_names\_locale](#objectdetectoroptionsdisplay%5C_names%5C_locale)
+  - [ObjectDetectorOptions.max\_results](#objectdetectoroptionsmax%5C_results)
+  - [ObjectDetectorOptions.score\_threshold](#objectdetectoroptionsscore%5C_threshold)
+  - [ObjectDetectorOptions.category\_allowlist](#objectdetectoroptionscategory%5C_allowlist)
+  - [ObjectDetectorOptions.category\_denylist](#objectdetectoroptionscategory%5C_denylist)
+  - [ObjectDetectorOptions.result\_callback](#objectdetectoroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions::get\_create](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectoroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions::to\_pb2](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectoroptionsto%5C_pb2)
+- [mediapipe::autoit::vision::object\_detector](#mediapipeautoitvisionobject%5C_detector)
+  - [object\_detector.ObjectDetectorOptions](#object%5C_detectorobjectdetectoroptions-1)
+  - [object\_detector.ObjectDetector](#object%5C_detectorobjectdetector-1)
 - [cv](#cv)
   - [cv::createMatFromBitmap](#cvcreatematfrombitmap)
   - [cv::haveImageReader](#cvhaveimagereader)
@@ -3451,6 +3470,21 @@
   - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::image\_segmenter::proto::image\_segmenter\_graph\_options\_pb2](#mediapipetasksccvisionimage%5C_segmenterprotoimage%5C_segmenter%5C_graph%5C_options%5C_pb2)
   - [image\_segmenter\_graph\_options\_pb2.ImageSegmenterGraphOptions](#image%5C_segmenter%5C_graph%5C_options%5C_pb2imagesegmentergraphoptions)
+- [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptions)
+  - [ObjectDetectorOptions.base\_options](#objectdetectoroptionsbase%5C_options-1)
+  - [ObjectDetectorOptions.display\_names\_locale](#objectdetectoroptionsdisplay%5C_names%5C_locale-1)
+  - [ObjectDetectorOptions.max\_results](#objectdetectoroptionsmax%5C_results-1)
+  - [ObjectDetectorOptions.score\_threshold](#objectdetectoroptionsscore%5C_threshold-1)
+  - [ObjectDetectorOptions.category\_allowlist](#objectdetectoroptionscategory%5C_allowlist-1)
+  - [ObjectDetectorOptions.category\_denylist](#objectdetectoroptionscategory%5C_denylist-1)
+  - [ObjectDetectorOptions.ext](#objectdetectoroptionsext)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::get\_create](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsget%5C_create)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::Clear](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsclear)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::ClearField](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsclearfield)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::CopyFrom](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionscopyfrom)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::\_\_str\_\_](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::object\_detector::proto::object\_detector\_options\_pb2](#mediapipetasksccvisionobject%5C_detectorprotoobject%5C_detector%5C_options%5C_pb2)
+  - [object\_detector\_options\_pb2.ObjectDetectorOptions](#object%5C_detector%5C_options%5C_pb2objectdetectoroptions)
 - [mediapipe::CalculatorGraph](#mediapipecalculatorgraph)
   - [CalculatorGraph.text\_config](#calculatorgraphtext%5C_config)
   - [CalculatorGraph.binary\_config](#calculatorgraphbinary%5C_config)
@@ -12024,6 +12058,14 @@ AutoIt:
     [propget] $ovision.image_segmenter
 ```
 
+### vision.object\_detector
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector
+AutoIt:
+    [propget] $ovision.object_detector
+```
+
 ## mediapipe::tasks::autoit::vision::core
 
 ### core.base\_vision\_task\_api
@@ -12082,6 +12124,14 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::image_segmenter
 AutoIt:
     [propget] $ovision.image_segmenter
+```
+
+### vision.object\_detector
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector
+AutoIt:
+    [propget] $ovision.object_detector
 ```
 
 ## mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api
@@ -12630,6 +12680,139 @@ AutoIt:
     [propget] $oimage_segmenter.ImageSegmenter
 ```
 
+## mediapipe::tasks::autoit::vision::object\_detector
+
+### object\_detector.ObjectDetectorOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions
+AutoIt:
+    [propget] $oobject_detector.ObjectDetectorOptions
+```
+
+### object\_detector.ObjectDetector
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector::ObjectDetector
+AutoIt:
+    [propget] $oobject_detector.ObjectDetector
+```
+
+## mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions
+
+### ObjectDetectorOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::base_options
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.base_options
+```
+
+### ObjectDetectorOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::running_mode
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.running_mode
+```
+
+### ObjectDetectorOptions.display\_names\_locale
+
+```cpp
+std::optional<std::string> mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::display_names_locale
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.display_names_locale
+```
+
+### ObjectDetectorOptions.max\_results
+
+```cpp
+std::optional<int> mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::max_results
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.max_results
+```
+
+### ObjectDetectorOptions.score\_threshold
+
+```cpp
+std::optional<float> mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::score_threshold
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.score_threshold
+```
+
+### ObjectDetectorOptions.category\_allowlist
+
+```cpp
+std::vector<std::string> mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::category_allowlist
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.category_allowlist
+```
+
+### ObjectDetectorOptions.category\_denylist
+
+```cpp
+std::vector<std::string> mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::category_denylist
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.category_denylist
+```
+
+### ObjectDetectorOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::result_callback
+AutoIt:
+    [propput] $oObjectDetectorOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::get_create( const mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.object_detector.ObjectDetectorOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.object_detector.ObjectDetectorOptions object>
+    $oObjectDetectorOptions( $other ) -> <mediapipe.tasks.autoit.vision.object_detector.ObjectDetectorOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                      mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                                      const std::optional<std::string>&                                                       display_names_locale = std::optional<std::string>(),
+                                                                                                                                                                      std::optional<int>                                                                      max_results = std::optional<int>(),
+                                                                                                                                                                      std::optional<float>                                                                    score_threshold = std::optional<float>(),
+                                                                                                                                                                      const std::vector<std::string>&                                                         category_allowlist = std::vector<std::string>(),
+                                                                                                                                                                      const std::vector<std::string>&                                                         category_denylist = std::vector<std::string>(),
+                                                                                                                                                                      mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback      result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.object_detector.ObjectDetectorOptions").create( [$base_options[, $running_mode[, $display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist[, $result_callback]]]]]]]] ) -> <mediapipe.tasks.autoit.vision.object_detector.ObjectDetectorOptions object>
+    $oObjectDetectorOptions( [$base_options[, $running_mode[, $display_names_locale[, $max_results[, $score_threshold[, $category_allowlist[, $category_denylist[, $result_callback]]]]]]]] ) -> <mediapipe.tasks.autoit.vision.object_detector.ObjectDetectorOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions::to\_pb2
+
+```cpp
+std::shared_ptr<tasks_vision_object_detector_proto_ObjectDetectorOptions> mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::to_pb2();
+AutoIt:
+    $oObjectDetectorOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::vision::object\_detector
+
+### object\_detector.ObjectDetectorOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions
+AutoIt:
+    [propget] $oobject_detector.ObjectDetectorOptions
+```
+
+### object\_detector.ObjectDetector
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector::ObjectDetector
+AutoIt:
+    [propget] $oobject_detector.ObjectDetector
+```
+
 ## cv
 
 ### cv::createMatFromBitmap
@@ -12971,6 +13154,12 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
@@ -33820,6 +34009,114 @@ AutoIt:
 static mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions
 AutoIt:
     [propget] $oimage_segmenter_graph_options_pb2.ImageSegmenterGraphOptions
+```
+
+## mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions
+
+### ObjectDetectorOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::base_options
+AutoIt:
+    [propget] $oObjectDetectorOptions.base_options
+```
+
+### ObjectDetectorOptions.display\_names\_locale
+
+```cpp
+std::string mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::display_names_locale
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.display_names_locale
+```
+
+### ObjectDetectorOptions.max\_results
+
+```cpp
+int mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::max_results
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.max_results
+```
+
+### ObjectDetectorOptions.score\_threshold
+
+```cpp
+float mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::score_threshold
+AutoIt:
+    [propget, propput] $oObjectDetectorOptions.score_threshold
+```
+
+### ObjectDetectorOptions.category\_allowlist
+
+```cpp
+google::protobuf::Repeated_std_string* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::category_allowlist
+AutoIt:
+    [propget] $oObjectDetectorOptions.category_allowlist
+```
+
+### ObjectDetectorOptions.category\_denylist
+
+```cpp
+google::protobuf::Repeated_std_string* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::category_denylist
+AutoIt:
+    [propget] $oObjectDetectorOptions.category_denylist
+```
+
+### ObjectDetectorOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::ext
+AutoIt:
+    [propget] $oObjectDetectorOptions.ext
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.object_detector.proto.ObjectDetectorOptions").create() -> <mediapipe.tasks.vision.object_detector.proto.ObjectDetectorOptions object>
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::Clear();
+AutoIt:
+    $oObjectDetectorOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oObjectDetectorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oObjectDetectorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::__str__( std::string* output );
+AutoIt:
+    $oObjectDetectorOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::object\_detector::proto::object\_detector\_options\_pb2
+
+### object\_detector\_options\_pb2.ObjectDetectorOptions
+
+```cpp
+static mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions
+AutoIt:
+    [propget] $oobject_detector_options_pb2.ObjectDetectorOptions
 ```
 
 ## mediapipe::CalculatorGraph

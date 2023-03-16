@@ -41,17 +41,6 @@ namespace {
 	const std::string _NORM_RECT_TAG = "NORM_RECT";
 	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.image_classifier.ImageClassifierGraph";
 	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
-
-	const std::string optional_to_string(std::optional<float> v) {
-		std::ostringstream ss;
-		if (v.has_value()) {
-			ss << *v;
-		}
-		else {
-			ss << "None";
-		}
-		return ss.str();
-	}
 }
 
 namespace mediapipe {
@@ -108,8 +97,8 @@ namespace mediapipe {
 						TaskInfo task_info;
 						task_info.task_graph = _TASK_GRAPH_NAME;
 						task_info.input_streams = {
-								_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
-								_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME
+							_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
+							_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME
 						};
 						task_info.output_streams = {
 							_CLASSIFICATIONS_TAG + ":" + _CLASSIFICATIONS_STREAM_NAME,

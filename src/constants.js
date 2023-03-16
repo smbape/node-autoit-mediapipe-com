@@ -140,7 +140,7 @@ exports.ALIASES = new Map([
     ["ImageSegmenterResultCallback", "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback"],
 
     ["ObjectDetectorResult", "mediapipe::tasks::autoit::components::containers::detections::DetectionResult"],
-    ["ObjectDetectorResultCallback", "mediapipe::tasks::autoit::vision::image_embedder::ObjectDetectorResultRawCallback"],
+    ["ObjectDetectorResultCallback", "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback"],
 ]);
 
 exports.CLASS_PTR = new Set([

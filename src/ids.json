@@ -695,6 +695,22 @@
         "iid": "5fd7546d-f938-4544-961f-576c73fc284f",
         "clsid": "6cce6231-3612-4037-81bc-794d330bc06b"
     },
+    "mediapipe::tasks::autoit::vision::object_detector": {
+        "iid": "f99f0d45-6af6-4c81-8dfe-04be02b275a4",
+        "clsid": "be2ed6bc-e17c-4c3c-80f5-8992b719d54f"
+    },
+    "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions": {
+        "iid": "f1a1b420-c31a-48a1-b068-0089245f7b1f",
+        "clsid": "cad1b536-7b7b-4861-8ff5-c7527114c2ff"
+    },
+    "mediapipe::autoit::vision::object_detector": {
+        "iid": "d23cb00c-7cf4-4680-a2cc-0a4c05638d97",
+        "clsid": "40103f7d-8480-444b-81ea-061dcc98d2bc"
+    },
+    "mediapipe::tasks::autoit::vision::object_detector::ObjectDetector": {
+        "iid": "f7db496b-691c-49a6-b20d-3f98ffd99482",
+        "clsid": "f38f4380-1c71-4aa6-a992-4527ee317544"
+    },
     "cv": {
         "iid": "f4d16f5c-a74e-4873-a8ff-b65ab43d2598",
         "clsid": "bca8e816-7967-4bba-b313-3cb340291d0c"
@@ -1982,6 +1998,34 @@
     "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions": {
         "iid": "8f64b2a5-152c-41cc-83a5-705bc8d80a46",
         "clsid": "b16fee19-43f5-45d3-8fcb-440c358bd2f8"
+    },
+    "mediapipe::tasks::vision::object_detector": {
+        "iid": "5f7570d8-0ae2-4ad1-9dd6-26b2076c94b5",
+        "clsid": "afd735f7-62e6-4c89-a9e5-5e3418ee86ff"
+    },
+    "mediapipe::tasks::vision::object_detector::proto": {
+        "iid": "dc35e908-42a4-4160-a102-c41256a8bf5a",
+        "clsid": "f1b2da9c-426d-4b20-886a-73a880a44190"
+    },
+    "mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions": {
+        "iid": "53ab8856-05b2-424f-8872-2da0bcf6f086",
+        "clsid": "796018db-1965-4711-a806-a3b35f10a47b"
+    },
+    "mediapipe::tasks::cc::vision::object_detector": {
+        "iid": "45da4383-d89d-4f29-a132-f1c44b6bcdca",
+        "clsid": "1898cda0-9a08-482d-8599-dc9e47eb383f"
+    },
+    "mediapipe::tasks::cc::vision::object_detector::proto": {
+        "iid": "605231e8-1292-44c1-becb-c6ddb604bb7f",
+        "clsid": "428814e3-0edd-44ac-b592-02716aa83b64"
+    },
+    "mediapipe::tasks::cc::vision::object_detector::proto::object_detector_options_pb2": {
+        "iid": "c4dd508f-c4c1-467b-b811-0eff3e0769bb",
+        "clsid": "12c1cc72-2df9-4d20-b129-ecd8ee96994e"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions": {
+        "iid": "b15c30fd-903f-4711-b935-a26307306f45",
+        "clsid": "2d7e709a-0ee2-4dd6-8f2e-b2b272e8af39"
     },
     "mediapipe::CalculatorGraph": {
         "iid": "3637f144-8536-4c06-879b-0a2ea04b7f9e",

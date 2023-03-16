@@ -104,8 +104,8 @@ namespace mediapipe {
 						TaskInfo task_info;
 						task_info.task_graph = _TASK_GRAPH_NAME;
 						task_info.input_streams = {
-								_AUDIO_TAG + ":" + _AUDIO_IN_STREAM_NAME,
-								_SAMPLE_RATE_TAG + ":" + _SAMPLE_RATE_IN_STREAM_NAME
+							_AUDIO_TAG + ":" + _AUDIO_IN_STREAM_NAME,
+							_SAMPLE_RATE_TAG + ":" + _SAMPLE_RATE_IN_STREAM_NAME
 						};
 						task_info.output_streams = {
 							_EMBEDDINGS_TAG + ":" + _EMBEDDINGS_STREAM_NAME,
