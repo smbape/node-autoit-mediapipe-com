@@ -94,6 +94,8 @@ exports.ALIASES = new Map([
     ["components_containers_rect_Rect", "mediapipe::tasks::autoit::components::containers::rect::Rect"],
     ["rect_Rect", "mediapipe::tasks::autoit::components::containers::rect::Rect"],
 
+    ["classifier_options_ClassifierOptions", "mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions"],
+
     ["components_containers_embedding_result_Embedding", "mediapipe::tasks::components::containers::embedding_result::Embedding"],
     ["tasks_components_containers_proto_ClassificationResult", "mediapipe::tasks::components::containers::proto::ClassificationResult"],
     ["tasks_components_containers_proto_Classifications", "mediapipe::tasks::components::containers::proto::Classifications"],
@@ -141,6 +143,8 @@ exports.ALIASES = new Map([
 
     ["ObjectDetectorResult", "mediapipe::tasks::autoit::components::containers::detections::DetectionResult"],
     ["ObjectDetectorResultCallback", "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback"],
+
+    ["GestureRecognizerResultCallback", "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback"],
 ]);
 
 exports.CLASS_PTR = new Set([
@@ -161,6 +165,8 @@ exports.PTR = new Set([
 
     "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback",
     "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback",
+
+    "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback",
 ]);
 
 exports.CUSTOM_CLASSES = [

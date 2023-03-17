@@ -53,7 +53,7 @@ namespace mediapipe {
 
 						mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
 						embedding_result_proto.CopyFrom(
-							*mediapipe::autoit::packet_getter::get_proto(output_packets[_EMBEDDINGS_OUT_STREAM_NAME])
+							*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
 						);
 
 						return TextEmbedderResult::create_from_pb2(embedding_result_proto);

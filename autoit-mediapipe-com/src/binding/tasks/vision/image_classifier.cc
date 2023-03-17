@@ -1,7 +1,6 @@
 #include "binding/tasks/vision/image_classifier.h"
 #include "binding/packet_getter.h"
 #include "binding/packet_creator.h"
-#include <opencv2/core/eigen.hpp>
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback);
 
@@ -74,17 +73,17 @@ namespace mediapipe {
 						PacketsCallback packets_callback = nullptr;
 
 						if (options->result_callback) {
-							packets_callback = [options](PacketMap output_packets) {
-								if (output_packets[_IMAGE_OUT_STREAM_NAME].IsEmpty()) {
+							packets_callback = [options](const PacketMap& output_packets) {
+								if (output_packets.at(_IMAGE_OUT_STREAM_NAME).IsEmpty()) {
 									return;
 								}
 
-								auto timestamp_ms = output_packets[_IMAGE_OUT_STREAM_NAME].Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
-								auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets[_IMAGE_OUT_STREAM_NAME]);
+								auto timestamp_ms = output_packets.at(_IMAGE_OUT_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
+								auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets.at(_IMAGE_OUT_STREAM_NAME));
 
 								mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 								classification_result_proto.CopyFrom(
-									*mediapipe::autoit::packet_getter::get_proto(output_packets[_CLASSIFICATIONS_STREAM_NAME])
+									*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 								);
 								options->result_callback(
 									*ImageClassifierResult::create_from_pb2(classification_result_proto),
@@ -125,7 +124,7 @@ namespace mediapipe {
 
 						mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 						classification_result_proto.CopyFrom(
-							*mediapipe::autoit::packet_getter::get_proto(output_packets[_CLASSIFICATIONS_STREAM_NAME])
+							*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 						);
 
 						return ImageClassifierResult::create_from_pb2(classification_result_proto);
@@ -149,7 +148,7 @@ namespace mediapipe {
 
 						mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 						classification_result_proto.CopyFrom(
-							*mediapipe::autoit::packet_getter::get_proto(output_packets[_CLASSIFICATIONS_STREAM_NAME])
+							*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 						);
 
 						return ImageClassifierResult::create_from_pb2(classification_result_proto);

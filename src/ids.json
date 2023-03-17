@@ -647,6 +647,26 @@
         "iid": "97ae305c-5cce-4116-98cf-40323f5d1300",
         "clsid": "1b0cdf77-758a-4bb3-9d0d-8cf761f5d4d3"
     },
+    "mediapipe::tasks::autoit::vision::gesture_recognizer": {
+        "iid": "c7576820-20c7-44fb-9eb9-3b106eb447fa",
+        "clsid": "6ceb7419-8412-4bb4-ace8-8ac9481c3063"
+    },
+    "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult": {
+        "iid": "68f06d1b-394d-4920-87b7-f372b6a6a8d7",
+        "clsid": "22fc7bd3-3ccb-4058-99dd-b08fceecd189"
+    },
+    "mediapipe::autoit::vision::gesture_recognizer": {
+        "iid": "16351ce9-a735-4268-a1f1-3912e6f686ed",
+        "clsid": "99797557-1735-4c3d-988f-dec662b42314"
+    },
+    "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions": {
+        "iid": "e0fcac5d-044b-4363-bdaf-3857d108beca",
+        "clsid": "c84e38e0-542b-40cf-a94a-5a8090d58830"
+    },
+    "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer": {
+        "iid": "450703d9-2fcb-46d3-8e1b-26962c59434a",
+        "clsid": "c7bc6bfe-7a76-48c7-b67c-88764b14c694"
+    },
     "mediapipe::tasks::autoit::vision::image_classifier": {
         "iid": "73aded08-6809-4806-8169-5648df9f58eb",
         "clsid": "078e4984-0ab0-4a57-ae23-6f5f0ac5b248"
@@ -1903,6 +1923,142 @@
         "iid": "5110465a-9ba8-49c9-a255-e47492138ff2",
         "clsid": "03d78d51-a707-493f-aead-0a6170587133"
     },
+    "mediapipe::tasks::vision::gesture_recognizer": {
+        "iid": "215f0266-5fec-4095-9168-e7e2e743e6da",
+        "clsid": "7c2e2de5-952b-446d-b656-5cdc4d98f284"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto": {
+        "iid": "f3ae650d-ccd4-4be3-9633-8b30b49a8fd7",
+        "clsid": "1ca2f359-1d3d-4b45-b731-fe58819b40bd"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions": {
+        "iid": "51d96067-dce2-445d-a75c-b18588259c0f",
+        "clsid": "b40d4250-ef67-4658-bb84-e914d7b11020"
+    },
+    "mediapipe::tasks::cc::vision": {
+        "iid": "d3e38543-4126-4f4f-8b24-6c725dc4413f",
+        "clsid": "fe0be6a9-bdb4-4a3a-acf3-95c86a27bdf4"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer": {
+        "iid": "fd5cfb19-3276-4f8a-bd53-49a9e0ceb12a",
+        "clsid": "7a5c26ed-eb1a-4f45-9ebd-2b9cd876a63e"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto": {
+        "iid": "4519249b-309d-413b-9d1b-008ac81238b7",
+        "clsid": "fb986c3c-8958-4fd9-aef4-bba69add05cb"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto::gesture_classifier_graph_options_pb2": {
+        "iid": "703783d8-ac92-4855-b2b4-b2749a631a23",
+        "clsid": "67227139-f7e0-403d-bc18-ee2529740c9f"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions": {
+        "iid": "6d68a565-a22d-46ac-a451-9455d613bd50",
+        "clsid": "c18c8162-3e33-4db5-912d-e12ab9db6f6e"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions": {
+        "iid": "1ec33d31-f0ca-4b27-b043-c9f7587255df",
+        "clsid": "b4ce96f4-5677-4e68-ac30-944f7c74cc79"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto::gesture_embedder_graph_options_pb2": {
+        "iid": "34cb1640-e377-4069-9595-29f9c0950425",
+        "clsid": "4d908048-40fb-445e-ad98-6f216905c9cd"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions": {
+        "iid": "353ba507-3b61-4db5-a9e5-7a5ff8a23e9e",
+        "clsid": "c490ea34-ca06-4c9f-a09d-1ef0e6dff9c9"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions": {
+        "iid": "e8acfeee-3055-4584-a4bf-c61fa1125646",
+        "clsid": "8f54dca4-69de-46c9-8374-a689dd2a7240"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto::hand_gesture_recognizer_graph_options_pb2": {
+        "iid": "f8f69909-1511-4f9f-a68d-07f2d9f7f5d2",
+        "clsid": "52dd8854-4018-4c57-85b9-968ef05e63ee"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions": {
+        "iid": "6a71a5c1-d97f-423f-8a2e-f2aa0fb794aa",
+        "clsid": "ccb7ee77-2ebd-4768-bee7-35068c45cfe8"
+    },
+    "mediapipe::tasks::vision::hand_detector": {
+        "iid": "a7cf5baf-6cfa-4840-bd2b-f43740388db7",
+        "clsid": "6e12bcd5-50d5-4cc5-9549-29c9b3c5bd93"
+    },
+    "mediapipe::tasks::vision::hand_detector::proto": {
+        "iid": "73c1d107-115b-478a-9e7d-d5dea8b0c01f",
+        "clsid": "d30c3264-dd9f-4598-b92d-182a12afae6d"
+    },
+    "mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions": {
+        "iid": "0d38be38-7203-417b-adc2-306c5297eef8",
+        "clsid": "1a35395f-03d3-4bf1-bfeb-b1f61d9bbed8"
+    },
+    "mediapipe::tasks::cc::vision::hand_detector": {
+        "iid": "85437ba6-6b11-4b7c-bf96-e2a81e1bed59",
+        "clsid": "ad36ed07-22bd-4300-aedb-6f584fee56ca"
+    },
+    "mediapipe::tasks::cc::vision::hand_detector::proto": {
+        "iid": "1de2ea98-ebf0-45ee-a129-c99c236bffcb",
+        "clsid": "53cdbb18-e962-4b30-bac8-37c3eedc446a"
+    },
+    "mediapipe::tasks::cc::vision::hand_detector::proto::hand_detector_graph_options_pb2": {
+        "iid": "ef2204b9-c325-4d92-9e05-d5ff0d209bee",
+        "clsid": "ec9aa5a7-c68c-40c7-84e1-07d89d556322"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions": {
+        "iid": "6c28dab3-ec0e-4b11-928f-53409d6e3058",
+        "clsid": "94ad61ff-ac39-4930-8609-8ee5069154e3"
+    },
+    "mediapipe::tasks::vision::hand_landmarker": {
+        "iid": "606cf98b-abb5-42e1-84a5-4c42e165a82c",
+        "clsid": "550ceb12-c00e-4a80-b1b7-6e48ddc4d9fe"
+    },
+    "mediapipe::tasks::vision::hand_landmarker::proto": {
+        "iid": "0f4d12e2-e5fc-4043-a30a-e8e5c1f5a5d5",
+        "clsid": "f022c837-adf8-4826-b7ea-62c565415e76"
+    },
+    "mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions": {
+        "iid": "42413bee-e027-45fa-a092-1dd9cb5351e9",
+        "clsid": "6e45aae9-88d1-407b-9ae0-9fc940f76650"
+    },
+    "mediapipe::tasks::cc::vision::hand_landmarker": {
+        "iid": "817303b0-3c04-49b6-8818-1505db58876e",
+        "clsid": "9484325f-f319-4c9c-9cda-1dc53174b7a2"
+    },
+    "mediapipe::tasks::cc::vision::hand_landmarker::proto": {
+        "iid": "5176cd54-2212-4759-953d-434e384a52c0",
+        "clsid": "c5e921d2-a68e-468b-a95f-5835e0277b60"
+    },
+    "mediapipe::tasks::cc::vision::hand_landmarker::proto::hand_landmarks_detector_graph_options_pb2": {
+        "iid": "745c8661-404c-4d23-a43e-203e5fc70fb7",
+        "clsid": "6a7542fe-7b9e-4fa9-94f1-401d5f6b5c99"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions": {
+        "iid": "e3aeb6a6-1f43-47da-a4df-a526d03d93e7",
+        "clsid": "a9caa24a-e19b-4f3f-9176-0ae1a65f31a4"
+    },
+    "mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions": {
+        "iid": "cbcd7f4f-18c7-48a0-910a-cf5930af0aae",
+        "clsid": "2c2ad390-c3be-435c-96be-7573f37a0030"
+    },
+    "mediapipe::tasks::cc::vision::hand_landmarker::proto::hand_landmarker_graph_options_pb2": {
+        "iid": "5652e3d5-d56b-40ac-a9e4-e15af69464e1",
+        "clsid": "e6aa69e2-48eb-4a70-a609-ccc766c73c6f"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions": {
+        "iid": "e98e0dd5-7c3c-4587-8418-5096e1f2a021",
+        "clsid": "72d0c91b-0770-4c3d-9279-648d6aea9801"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions": {
+        "iid": "fe586eda-2981-43c5-8411-7ba553df838e",
+        "clsid": "29572fcd-6c37-45d2-883a-a8ec6608e1b3"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto::gesture_recognizer_graph_options_pb2": {
+        "iid": "217c5cb3-063b-448b-85ab-ae874cddbbab",
+        "clsid": "4d0b64a4-9de4-4edc-9301-c6c8f71b1471"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions": {
+        "iid": "66c2ea98-c8f0-4e4f-b99b-d407da469d0a",
+        "clsid": "bbf059a3-b461-4052-b1a9-3993ca0ebe6a"
+    },
     "mediapipe::tasks::vision::image_classifier": {
         "iid": "930bb328-8234-4513-954f-195e48019855",
         "clsid": "97559a93-a3b2-4061-8fd6-388cf2022a9d"
@@ -1914,10 +2070,6 @@
     "mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions": {
         "iid": "f8015491-5e08-4f90-892d-e3d7c3915959",
         "clsid": "8de65f68-9f5b-47c6-b571-3c9ddbc7fd1a"
-    },
-    "mediapipe::tasks::cc::vision": {
-        "iid": "d3e38543-4126-4f4f-8b24-6c725dc4413f",
-        "clsid": "fe0be6a9-bdb4-4a3a-acf3-95c86a27bdf4"
     },
     "mediapipe::tasks::cc::vision::image_classifier": {
         "iid": "1ef50bde-d75c-40bc-bb79-f089375e5c38",
@@ -2278,6 +2430,18 @@
     "VectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark": {
         "iid": "f991ae8c-a707-4ab1-bc7c-58045e91b74f",
         "clsid": "817a9567-07e4-4521-b84b-eda230da7cea"
+    },
+    "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category": {
+        "iid": "0669e9c6-1efb-4779-a906-269e75b211f4",
+        "clsid": "a93f14d9-2fcc-44ba-ac0c-fca0b01d9b4d"
+    },
+    "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark": {
+        "iid": "c07d9a91-6b6e-40f6-8dd6-573264b77912",
+        "clsid": "f0ac4b4c-9f22-404a-9c2b-3995485ba118"
+    },
+    "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark": {
+        "iid": "976a9bae-1a19-49ed-961f-c41e7fb7d04b",
+        "clsid": "3f113081-7819-4ce9-8fd6-e5bfc8513a11"
     },
     "VectorOfUchar": {
         "iid": "e4e3896c-ff7d-47bf-a44a-ffc2a76261b4",

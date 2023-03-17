@@ -55,7 +55,7 @@ namespace mediapipe {
 
 						mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 						classification_result_proto.CopyFrom(
-							*mediapipe::autoit::packet_getter::get_proto(output_packets[_CLASSIFICATIONS_STREAM_NAME])
+							*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 						);
 
 						return TextClassifierResult::create_from_pb2(classification_result_proto);

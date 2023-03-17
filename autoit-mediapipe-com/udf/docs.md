@@ -810,6 +810,7 @@
   - [text\_embedder.TextEmbedder](#text%5C_embeddertextembedder-1)
 - [mediapipe::tasks::autoit::vision](#mediapipetasksautoitvision)
   - [vision.core](#visioncore)
+  - [vision.gesture\_recognizer](#visiongesture%5C_recognizer)
   - [vision.image\_classifier](#visionimage%5C_classifier)
   - [vision.image\_embedder](#visionimage%5C_embedder)
   - [vision.image\_segmenter](#visionimage%5C_segmenter)
@@ -820,6 +821,7 @@
   - [core.vision\_task\_running\_mode](#corevision%5C_task%5C_running%5C_mode)
 - [mediapipe::autoit::vision](#mediapipeautoitvision)
   - [vision.core](#visioncore-1)
+  - [vision.gesture\_recognizer](#visiongesture%5C_recognizer-1)
   - [vision.image\_classifier](#visionimage%5C_classifier-1)
   - [vision.image\_embedder](#visionimage%5C_embedder-1)
   - [vision.image\_segmenter](#visionimage%5C_segmenter-1)
@@ -855,6 +857,32 @@
   - [VisionTaskRunningMode.LIVE\_STREAM](#visiontaskrunningmodelive%5C_stream)
 - [mediapipe::autoit::vision::core::vision\_task\_running\_mode](#mediapipeautoitvisioncorevision%5C_task%5C_running%5C_mode)
   - [vision\_task\_running\_mode.VisionTaskRunningMode](#vision%5C_task%5C_running%5C_modevisiontaskrunningmode-1)
+- [mediapipe::tasks::autoit::vision::gesture\_recognizer](#mediapipetasksautoitvisiongesture%5C_recognizer)
+  - [gesture\_recognizer.GestureRecognizerResult](#gesture%5C_recognizergesturerecognizerresult)
+  - [gesture\_recognizer.GestureRecognizerOptions](#gesture%5C_recognizergesturerecognizeroptions)
+  - [gesture\_recognizer.GestureRecognizer](#gesture%5C_recognizergesturerecognizer)
+- [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerResult](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerresult)
+  - [GestureRecognizerResult.gestures](#gesturerecognizerresultgestures)
+  - [GestureRecognizerResult.handedness](#gesturerecognizerresulthandedness)
+  - [GestureRecognizerResult.hand\_landmarks](#gesturerecognizerresulthand%5C_landmarks)
+  - [GestureRecognizerResult.hand\_world\_landmarks](#gesturerecognizerresulthand%5C_world%5C_landmarks)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerResult::get\_create](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerresultget%5C_create)
+- [mediapipe::autoit::vision::gesture\_recognizer](#mediapipeautoitvisiongesture%5C_recognizer)
+  - [gesture\_recognizer.GestureRecognizerResult](#gesture%5C_recognizergesturerecognizerresult-1)
+  - [gesture\_recognizer.GestureRecognizerOptions](#gesture%5C_recognizergesturerecognizeroptions-1)
+  - [gesture\_recognizer.GestureRecognizer](#gesture%5C_recognizergesturerecognizer-1)
+- [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizeroptions)
+  - [GestureRecognizerOptions.base\_options](#gesturerecognizeroptionsbase%5C_options)
+  - [GestureRecognizerOptions.running\_mode](#gesturerecognizeroptionsrunning%5C_mode)
+  - [GestureRecognizerOptions.num\_hands](#gesturerecognizeroptionsnum%5C_hands)
+  - [GestureRecognizerOptions.min\_hand\_detection\_confidence](#gesturerecognizeroptionsmin%5C_hand%5C_detection%5C_confidence)
+  - [GestureRecognizerOptions.min\_hand\_presence\_confidence](#gesturerecognizeroptionsmin%5C_hand%5C_presence%5C_confidence)
+  - [GestureRecognizerOptions.min\_tracking\_confidence](#gesturerecognizeroptionsmin%5C_tracking%5C_confidence)
+  - [GestureRecognizerOptions.canned\_gesture\_classifier\_options](#gesturerecognizeroptionscanned%5C_gesture%5C_classifier%5C_options)
+  - [GestureRecognizerOptions.custom\_gesture\_classifier\_options](#gesturerecognizeroptionscustom%5C_gesture%5C_classifier%5C_options)
+  - [GestureRecognizerOptions.result\_callback](#gesturerecognizeroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions::get\_create](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizeroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions::to\_pb2](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizeroptionsto%5C_pb2)
 - [mediapipe::tasks::autoit::vision::image\_classifier](#mediapipetasksautoitvisionimage%5C_classifier)
   - [image\_classifier.ImageClassifierOptions](#image%5C_classifierimageclassifieroptions)
   - [image\_classifier.ImageClassifier](#image%5C_classifierimageclassifier)
@@ -3420,6 +3448,88 @@
   - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::\_\_str\_\_](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::text::text\_embedder::proto::text\_embedder\_graph\_options\_pb2](#mediapipetaskscctexttext%5C_embedderprototext%5C_embedder%5C_graph%5C_options%5C_pb2)
   - [text\_embedder\_graph\_options\_pb2.TextEmbedderGraphOptions](#text%5C_embedder%5C_graph%5C_options%5C_pb2textembeddergraphoptions)
+- [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptions)
+  - [GestureClassifierGraphOptions.base\_options](#gestureclassifiergraphoptionsbase%5C_options)
+  - [GestureClassifierGraphOptions.classifier\_options](#gestureclassifiergraphoptionsclassifier%5C_options)
+  - [GestureClassifierGraphOptions.ext](#gestureclassifiergraphoptionsext)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::get\_create](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::Clear](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsclear)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::ClearField](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::CopyFrom](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::\_\_str\_\_](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_classifier\_graph\_options\_pb2](#mediapipetasksccvisiongesture%5C_recognizerprotogesture%5C_classifier%5C_graph%5C_options%5C_pb2)
+  - [gesture\_classifier\_graph\_options\_pb2.GestureClassifierGraphOptions](#gesture%5C_classifier%5C_graph%5C_options%5C_pb2gestureclassifiergraphoptions)
+- [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptions)
+  - [GestureEmbedderGraphOptions.base\_options](#gestureembeddergraphoptionsbase%5C_options)
+  - [GestureEmbedderGraphOptions.ext](#gestureembeddergraphoptionsext)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::get\_create](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::Clear](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsclear)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::ClearField](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::CopyFrom](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::\_\_str\_\_](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_embedder\_graph\_options\_pb2](#mediapipetasksccvisiongesture%5C_recognizerprotogesture%5C_embedder%5C_graph%5C_options%5C_pb2)
+  - [gesture\_embedder\_graph\_options\_pb2.GestureEmbedderGraphOptions](#gesture%5C_embedder%5C_graph%5C_options%5C_pb2gestureembeddergraphoptions)
+- [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptions)
+  - [HandGestureRecognizerGraphOptions.base\_options](#handgesturerecognizergraphoptionsbase%5C_options)
+  - [HandGestureRecognizerGraphOptions.gesture\_embedder\_graph\_options](#handgesturerecognizergraphoptionsgesture%5C_embedder%5C_graph%5C_options)
+  - [HandGestureRecognizerGraphOptions.canned\_gesture\_classifier\_graph\_options](#handgesturerecognizergraphoptionscanned%5C_gesture%5C_classifier%5C_graph%5C_options)
+  - [HandGestureRecognizerGraphOptions.custom\_gesture\_classifier\_graph\_options](#handgesturerecognizergraphoptionscustom%5C_gesture%5C_classifier%5C_graph%5C_options)
+  - [HandGestureRecognizerGraphOptions.ext](#handgesturerecognizergraphoptionsext)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::get\_create](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::Clear](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsclear)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::ClearField](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::CopyFrom](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::\_\_str\_\_](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::gesture\_recognizer::proto::hand\_gesture\_recognizer\_graph\_options\_pb2](#mediapipetasksccvisiongesture%5C_recognizerprotohand%5C_gesture%5C_recognizer%5C_graph%5C_options%5C_pb2)
+  - [hand\_gesture\_recognizer\_graph\_options\_pb2.HandGestureRecognizerGraphOptions](#hand%5C_gesture%5C_recognizer%5C_graph%5C_options%5C_pb2handgesturerecognizergraphoptions)
+- [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptions)
+  - [HandDetectorGraphOptions.base\_options](#handdetectorgraphoptionsbase%5C_options)
+  - [HandDetectorGraphOptions.min\_detection\_confidence](#handdetectorgraphoptionsmin%5C_detection%5C_confidence)
+  - [HandDetectorGraphOptions.num\_hands](#handdetectorgraphoptionsnum%5C_hands)
+  - [HandDetectorGraphOptions.ext](#handdetectorgraphoptionsext)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::get\_create](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::Clear](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsclear)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::ClearField](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsclearfield)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::CopyFrom](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::\_\_str\_\_](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::hand\_detector::proto::hand\_detector\_graph\_options\_pb2](#mediapipetasksccvisionhand%5C_detectorprotohand%5C_detector%5C_graph%5C_options%5C_pb2)
+  - [hand\_detector\_graph\_options\_pb2.HandDetectorGraphOptions](#hand%5C_detector%5C_graph%5C_options%5C_pb2handdetectorgraphoptions)
+- [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptions)
+  - [HandLandmarksDetectorGraphOptions.base\_options](#handlandmarksdetectorgraphoptionsbase%5C_options)
+  - [HandLandmarksDetectorGraphOptions.min\_detection\_confidence](#handlandmarksdetectorgraphoptionsmin%5C_detection%5C_confidence)
+  - [HandLandmarksDetectorGraphOptions.ext](#handlandmarksdetectorgraphoptionsext)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::get\_create](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::Clear](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsclear)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::ClearField](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsclearfield)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::CopyFrom](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::\_\_str\_\_](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::hand\_landmarker::proto::hand\_landmarks\_detector\_graph\_options\_pb2](#mediapipetasksccvisionhand%5C_landmarkerprotohand%5C_landmarks%5C_detector%5C_graph%5C_options%5C_pb2)
+  - [hand\_landmarks\_detector\_graph\_options\_pb2.HandLandmarksDetectorGraphOptions](#hand%5C_landmarks%5C_detector%5C_graph%5C_options%5C_pb2handlandmarksdetectorgraphoptions)
+- [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptions)
+  - [HandLandmarkerGraphOptions.base\_options](#handlandmarkergraphoptionsbase%5C_options)
+  - [HandLandmarkerGraphOptions.hand\_detector\_graph\_options](#handlandmarkergraphoptionshand%5C_detector%5C_graph%5C_options)
+  - [HandLandmarkerGraphOptions.hand\_landmarks\_detector\_graph\_options](#handlandmarkergraphoptionshand%5C_landmarks%5C_detector%5C_graph%5C_options)
+  - [HandLandmarkerGraphOptions.min\_tracking\_confidence](#handlandmarkergraphoptionsmin%5C_tracking%5C_confidence)
+  - [HandLandmarkerGraphOptions.ext](#handlandmarkergraphoptionsext)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::get\_create](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::Clear](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsclear)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::ClearField](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::CopyFrom](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::\_\_str\_\_](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::hand\_landmarker::proto::hand\_landmarker\_graph\_options\_pb2](#mediapipetasksccvisionhand%5C_landmarkerprotohand%5C_landmarker%5C_graph%5C_options%5C_pb2)
+  - [hand\_landmarker\_graph\_options\_pb2.HandLandmarkerGraphOptions](#hand%5C_landmarker%5C_graph%5C_options%5C_pb2handlandmarkergraphoptions)
+- [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptions)
+  - [GestureRecognizerGraphOptions.base\_options](#gesturerecognizergraphoptionsbase%5C_options)
+  - [GestureRecognizerGraphOptions.hand\_landmarker\_graph\_options](#gesturerecognizergraphoptionshand%5C_landmarker%5C_graph%5C_options)
+  - [GestureRecognizerGraphOptions.hand\_gesture\_recognizer\_graph\_options](#gesturerecognizergraphoptionshand%5C_gesture%5C_recognizer%5C_graph%5C_options)
+  - [GestureRecognizerGraphOptions.ext](#gesturerecognizergraphoptionsext)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::get\_create](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::Clear](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsclear)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::ClearField](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::CopyFrom](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::\_\_str\_\_](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_recognizer\_graph\_options\_pb2](#mediapipetasksccvisiongesture%5C_recognizerprotogesture%5C_recognizer%5C_graph%5C_options%5C_pb2)
+  - [gesture\_recognizer\_graph\_options\_pb2.GestureRecognizerGraphOptions](#gesture%5C_recognizer%5C_graph%5C_options%5C_pb2gesturerecognizergraphoptions)
 - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptions)
   - [ImageClassifierGraphOptions.base\_options](#imageclassifiergraphoptionsbase%5C_options)
   - [ImageClassifierGraphOptions.classifier\_options](#imageclassifiergraphoptionsclassifier%5C_options)
@@ -4471,6 +4581,72 @@
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort\_variant](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort%5C_variant)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::start](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkstart)
+- [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_category)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category.Count](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorycount)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::create](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorycreate)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Add](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryadd)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Items](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryitems)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Keys](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorykeys)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Remove](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryremove)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::append](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryappend)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::at](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryat)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::clear](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryclear)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::empty](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryempty)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::end](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryend)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryget%5C_item)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_\_NewEnum](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryget%5C_%5C_newenum)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_back](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorypush%5C_back)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_vector](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorypush%5C_vector)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::put\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryput%5C_item)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::size](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysize)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::slice](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryslice)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysort)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort\_variant](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysort%5C_variant)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::start](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorystart)
+- [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmark)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark.Count](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkcount)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::create](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkcreate)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Add](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkadd)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Items](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkitems)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Keys](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkkeys)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Remove](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkremove)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::append](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkappend)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::at](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkat)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::clear](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkclear)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::empty](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkempty)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::end](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkend)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::get\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkget%5C_item)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::get\_\_NewEnum](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkget%5C_%5C_newenum)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::push\_back](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkpush%5C_back)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::push\_vector](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkpush%5C_vector)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::put\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkput%5C_item)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::size](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarksize)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::slice](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkslice)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::sort](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarksort)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::sort\_variant](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarksort%5C_variant)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::start](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkstart)
+- [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmark)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark.Count](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkcount)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::create](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkcreate)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::Add](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkadd)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::Items](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkitems)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::Keys](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkkeys)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::Remove](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkremove)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::append](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkappend)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::at](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkat)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::clear](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkclear)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::empty](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkempty)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::end](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkend)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::get\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkget%5C_item)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::get\_\_NewEnum](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkget%5C_%5C_newenum)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::push\_back](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkpush%5C_back)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::push\_vector](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkpush%5C_vector)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::put\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkput%5C_item)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::size](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksize)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::slice](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkslice)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort\_variant](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort%5C_variant)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::start](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkstart)
 - [VectorOfUchar](#vectorofuchar)
   - [VectorOfUchar.Count](#vectorofucharcount)
   - [VectorOfUchar::create](#vectorofucharcreate)
@@ -12034,6 +12210,14 @@ AutoIt:
     [propget] $ovision.core
 ```
 
+### vision.gesture\_recognizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer
+AutoIt:
+    [propget] $ovision.gesture_recognizer
+```
+
 ### vision.image\_classifier
 
 ```cpp
@@ -12100,6 +12284,14 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::core
 AutoIt:
     [propget] $ovision.core
+```
+
+### vision.gesture\_recognizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer
+AutoIt:
+    [propget] $ovision.gesture_recognizer
 ```
 
 ### vision.image\_classifier
@@ -12333,6 +12525,217 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode
 AutoIt:
     [propget] $ovision_task_running_mode.VisionTaskRunningMode
+```
+
+## mediapipe::tasks::autoit::vision::gesture\_recognizer
+
+### gesture\_recognizer.GestureRecognizerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult
+AutoIt:
+    [propget] $ogesture_recognizer.GestureRecognizerResult
+```
+
+### gesture\_recognizer.GestureRecognizerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions
+AutoIt:
+    [propget] $ogesture_recognizer.GestureRecognizerOptions
+```
+
+### gesture\_recognizer.GestureRecognizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer
+AutoIt:
+    [propget] $ogesture_recognizer.GestureRecognizer
+```
+
+## mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerResult
+
+### GestureRecognizerResult.gestures
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult::gestures
+AutoIt:
+    [propget, propput] $oGestureRecognizerResult.gestures
+```
+
+### GestureRecognizerResult.handedness
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult::handedness
+AutoIt:
+    [propget, propput] $oGestureRecognizerResult.handedness
+```
+
+### GestureRecognizerResult.hand\_landmarks
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult::hand_landmarks
+AutoIt:
+    [propget, propput] $oGestureRecognizerResult.hand_landmarks
+```
+
+### GestureRecognizerResult.hand\_world\_landmarks
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult::hand_world_landmarks
+AutoIt:
+    [propget, propput] $oGestureRecognizerResult.hand_world_landmarks
+```
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerResult::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult::get_create( const mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult").create( $other ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult object>
+    $oGestureRecognizerResult( $other ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult::get_create( std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>           gestures = std::vector<std::vector<std::shared_ptr<category::Category>>>(),
+                                                                                                                                                                                std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>           handedness = std::vector<std::vector<std::shared_ptr<category::Category>>>(),
+                                                                                                                                                                                std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>> hand_landmarks = std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>(),
+                                                                                                                                                                                std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>           hand_world_landmarks = std::vector<std::vector<std::shared_ptr<landmark::Landmark>>>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult").create( [$gestures[, $handedness[, $hand_landmarks[, $hand_world_landmarks]]]] ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult object>
+    $oGestureRecognizerResult( [$gestures[, $handedness[, $hand_landmarks[, $hand_world_landmarks]]]] ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult object>
+```
+
+## mediapipe::autoit::vision::gesture\_recognizer
+
+### gesture\_recognizer.GestureRecognizerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult
+AutoIt:
+    [propget] $ogesture_recognizer.GestureRecognizerResult
+```
+
+### gesture\_recognizer.GestureRecognizerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions
+AutoIt:
+    [propget] $ogesture_recognizer.GestureRecognizerOptions
+```
+
+### gesture\_recognizer.GestureRecognizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer
+AutoIt:
+    [propget] $ogesture_recognizer.GestureRecognizer
+```
+
+## mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions
+
+### GestureRecognizerOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::base_options
+AutoIt:
+    [propget, propput] $oGestureRecognizerOptions.base_options
+```
+
+### GestureRecognizerOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::running_mode
+AutoIt:
+    [propget, propput] $oGestureRecognizerOptions.running_mode
+```
+
+### GestureRecognizerOptions.num\_hands
+
+```cpp
+int mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::num_hands
+AutoIt:
+    [propget, propput] $oGestureRecognizerOptions.num_hands
+```
+
+### GestureRecognizerOptions.min\_hand\_detection\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::min_hand_detection_confidence
+AutoIt:
+    [propget, propput] $oGestureRecognizerOptions.min_hand_detection_confidence
+```
+
+### GestureRecognizerOptions.min\_hand\_presence\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::min_hand_presence_confidence
+AutoIt:
+    [propget, propput] $oGestureRecognizerOptions.min_hand_presence_confidence
+```
+
+### GestureRecognizerOptions.min\_tracking\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::min_tracking_confidence
+AutoIt:
+    [propget, propput] $oGestureRecognizerOptions.min_tracking_confidence
+```
+
+### GestureRecognizerOptions.canned\_gesture\_classifier\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::canned_gesture_classifier_options
+AutoIt:
+    [propget, propput] $oGestureRecognizerOptions.canned_gesture_classifier_options
+```
+
+### GestureRecognizerOptions.custom\_gesture\_classifier\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::custom_gesture_classifier_options
+AutoIt:
+    [propget, propput] $oGestureRecognizerOptions.custom_gesture_classifier_options
+```
+
+### GestureRecognizerOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::result_callback
+AutoIt:
+    [propput] $oGestureRecognizerOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::get_create( const mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerOptions object>
+    $oGestureRecognizerOptions( $other ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>                               base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                                  mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode                  running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                                                  int                                                                                                      num_hands = 1,
+                                                                                                                                                                                  float                                                                                                    min_hand_detection_confidence = 0.5f,
+                                                                                                                                                                                  float                                                                                                    min_hand_presence_confidence = 0.5f,
+                                                                                                                                                                                  float                                                                                                    min_tracking_confidence = 0.5f,
+                                                                                                                                                                                  std::shared_ptr<mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions> canned_gesture_classifier_options = std::shared_ptr<classifier_options::ClassifierOptions>(),
+                                                                                                                                                                                  std::shared_ptr<mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions> custom_gesture_classifier_options = std::shared_ptr<classifier_options::ClassifierOptions>(),
+                                                                                                                                                                                  mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback                 result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerOptions").create( [$base_options[, $running_mode[, $num_hands[, $min_hand_detection_confidence[, $min_hand_presence_confidence[, $min_tracking_confidence[, $canned_gesture_classifier_options[, $custom_gesture_classifier_options[, $result_callback]]]]]]]]] ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerOptions object>
+    $oGestureRecognizerOptions( [$base_options[, $running_mode[, $num_hands[, $min_hand_detection_confidence[, $min_hand_presence_confidence[, $min_tracking_confidence[, $canned_gesture_classifier_options[, $custom_gesture_classifier_options[, $result_callback]]]]]]]]] ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions::to\_pb2
+
+```cpp
+std::shared_ptr<tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::to_pb2();
+AutoIt:
+    $oGestureRecognizerOptions.to_pb2() -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_classifier
@@ -13136,6 +13539,48 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
@@ -33659,6 +34104,578 @@ AutoIt:
     [propget] $otext_embedder_graph_options_pb2.TextEmbedderGraphOptions
 ```
 
+## mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions
+
+### GestureClassifierGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::base_options
+AutoIt:
+    [propget] $oGestureClassifierGraphOptions.base_options
+```
+
+### GestureClassifierGraphOptions.classifier\_options
+
+```cpp
+mediapipe::tasks::components::processors::proto::ClassifierOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::classifier_options
+AutoIt:
+    [propget] $oGestureClassifierGraphOptions.classifier_options
+```
+
+### GestureClassifierGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::ext
+AutoIt:
+    [propget] $oGestureClassifierGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.gesture_recognizer.proto.GestureClassifierGraphOptions").create() -> <mediapipe.tasks.vision.gesture_recognizer.proto.GestureClassifierGraphOptions object>
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::Clear();
+AutoIt:
+    $oGestureClassifierGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oGestureClassifierGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oGestureClassifierGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oGestureClassifierGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_classifier\_graph\_options\_pb2
+
+### gesture\_classifier\_graph\_options\_pb2.GestureClassifierGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions
+AutoIt:
+    [propget] $ogesture_classifier_graph_options_pb2.GestureClassifierGraphOptions
+```
+
+## mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions
+
+### GestureEmbedderGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::base_options
+AutoIt:
+    [propget] $oGestureEmbedderGraphOptions.base_options
+```
+
+### GestureEmbedderGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::ext
+AutoIt:
+    [propget] $oGestureEmbedderGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.gesture_recognizer.proto.GestureEmbedderGraphOptions").create() -> <mediapipe.tasks.vision.gesture_recognizer.proto.GestureEmbedderGraphOptions object>
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::Clear();
+AutoIt:
+    $oGestureEmbedderGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oGestureEmbedderGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oGestureEmbedderGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oGestureEmbedderGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_embedder\_graph\_options\_pb2
+
+### gesture\_embedder\_graph\_options\_pb2.GestureEmbedderGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions
+AutoIt:
+    [propget] $ogesture_embedder_graph_options_pb2.GestureEmbedderGraphOptions
+```
+
+## mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions
+
+### HandGestureRecognizerGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::base_options
+AutoIt:
+    [propget] $oHandGestureRecognizerGraphOptions.base_options
+```
+
+### HandGestureRecognizerGraphOptions.gesture\_embedder\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::gesture_embedder_graph_options
+AutoIt:
+    [propget] $oHandGestureRecognizerGraphOptions.gesture_embedder_graph_options
+```
+
+### HandGestureRecognizerGraphOptions.canned\_gesture\_classifier\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::canned_gesture_classifier_graph_options
+AutoIt:
+    [propget] $oHandGestureRecognizerGraphOptions.canned_gesture_classifier_graph_options
+```
+
+### HandGestureRecognizerGraphOptions.custom\_gesture\_classifier\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::custom_gesture_classifier_graph_options
+AutoIt:
+    [propget] $oHandGestureRecognizerGraphOptions.custom_gesture_classifier_graph_options
+```
+
+### HandGestureRecognizerGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::ext
+AutoIt:
+    [propget] $oHandGestureRecognizerGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.gesture_recognizer.proto.HandGestureRecognizerGraphOptions").create() -> <mediapipe.tasks.vision.gesture_recognizer.proto.HandGestureRecognizerGraphOptions object>
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::Clear();
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::gesture\_recognizer::proto::hand\_gesture\_recognizer\_graph\_options\_pb2
+
+### hand\_gesture\_recognizer\_graph\_options\_pb2.HandGestureRecognizerGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions
+AutoIt:
+    [propget] $ohand_gesture_recognizer_graph_options_pb2.HandGestureRecognizerGraphOptions
+```
+
+## mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions
+
+### HandDetectorGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::base_options
+AutoIt:
+    [propget] $oHandDetectorGraphOptions.base_options
+```
+
+### HandDetectorGraphOptions.min\_detection\_confidence
+
+```cpp
+float mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::min_detection_confidence
+AutoIt:
+    [propget, propput] $oHandDetectorGraphOptions.min_detection_confidence
+```
+
+### HandDetectorGraphOptions.num\_hands
+
+```cpp
+int mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::num_hands
+AutoIt:
+    [propget, propput] $oHandDetectorGraphOptions.num_hands
+```
+
+### HandDetectorGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions* mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::ext
+AutoIt:
+    [propget] $oHandDetectorGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.hand_detector.proto.HandDetectorGraphOptions").create() -> <mediapipe.tasks.vision.hand_detector.proto.HandDetectorGraphOptions object>
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::Clear();
+AutoIt:
+    $oHandDetectorGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oHandDetectorGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oHandDetectorGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oHandDetectorGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::hand\_detector::proto::hand\_detector\_graph\_options\_pb2
+
+### hand\_detector\_graph\_options\_pb2.HandDetectorGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions
+AutoIt:
+    [propget] $ohand_detector_graph_options_pb2.HandDetectorGraphOptions
+```
+
+## mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions
+
+### HandLandmarksDetectorGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::base_options
+AutoIt:
+    [propget] $oHandLandmarksDetectorGraphOptions.base_options
+```
+
+### HandLandmarksDetectorGraphOptions.min\_detection\_confidence
+
+```cpp
+float mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::min_detection_confidence
+AutoIt:
+    [propget, propput] $oHandLandmarksDetectorGraphOptions.min_detection_confidence
+```
+
+### HandLandmarksDetectorGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::ext
+AutoIt:
+    [propget] $oHandLandmarksDetectorGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.hand_landmarker.proto.HandLandmarksDetectorGraphOptions").create() -> <mediapipe.tasks.vision.hand_landmarker.proto.HandLandmarksDetectorGraphOptions object>
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::Clear();
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::hand\_landmarker::proto::hand\_landmarks\_detector\_graph\_options\_pb2
+
+### hand\_landmarks\_detector\_graph\_options\_pb2.HandLandmarksDetectorGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions
+AutoIt:
+    [propget] $ohand_landmarks_detector_graph_options_pb2.HandLandmarksDetectorGraphOptions
+```
+
+## mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions
+
+### HandLandmarkerGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::base_options
+AutoIt:
+    [propget] $oHandLandmarkerGraphOptions.base_options
+```
+
+### HandLandmarkerGraphOptions.hand\_detector\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::hand_detector_graph_options
+AutoIt:
+    [propget] $oHandLandmarkerGraphOptions.hand_detector_graph_options
+```
+
+### HandLandmarkerGraphOptions.hand\_landmarks\_detector\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::hand_landmarks_detector_graph_options
+AutoIt:
+    [propget] $oHandLandmarkerGraphOptions.hand_landmarks_detector_graph_options
+```
+
+### HandLandmarkerGraphOptions.min\_tracking\_confidence
+
+```cpp
+float mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::min_tracking_confidence
+AutoIt:
+    [propget, propput] $oHandLandmarkerGraphOptions.min_tracking_confidence
+```
+
+### HandLandmarkerGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::ext
+AutoIt:
+    [propget] $oHandLandmarkerGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.hand_landmarker.proto.HandLandmarkerGraphOptions").create() -> <mediapipe.tasks.vision.hand_landmarker.proto.HandLandmarkerGraphOptions object>
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::Clear();
+AutoIt:
+    $oHandLandmarkerGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oHandLandmarkerGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oHandLandmarkerGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oHandLandmarkerGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::hand\_landmarker::proto::hand\_landmarker\_graph\_options\_pb2
+
+### hand\_landmarker\_graph\_options\_pb2.HandLandmarkerGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions
+AutoIt:
+    [propget] $ohand_landmarker_graph_options_pb2.HandLandmarkerGraphOptions
+```
+
+## mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions
+
+### GestureRecognizerGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::base_options
+AutoIt:
+    [propget] $oGestureRecognizerGraphOptions.base_options
+```
+
+### GestureRecognizerGraphOptions.hand\_landmarker\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::hand_landmarker_graph_options
+AutoIt:
+    [propget] $oGestureRecognizerGraphOptions.hand_landmarker_graph_options
+```
+
+### GestureRecognizerGraphOptions.hand\_gesture\_recognizer\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::hand_gesture_recognizer_graph_options
+AutoIt:
+    [propget] $oGestureRecognizerGraphOptions.hand_gesture_recognizer_graph_options
+```
+
+### GestureRecognizerGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::ext
+AutoIt:
+    [propget] $oGestureRecognizerGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.gesture_recognizer.proto.GestureRecognizerGraphOptions").create() -> <mediapipe.tasks.vision.gesture_recognizer.proto.GestureRecognizerGraphOptions object>
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::Clear();
+AutoIt:
+    $oGestureRecognizerGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oGestureRecognizerGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oGestureRecognizerGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oGestureRecognizerGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_recognizer\_graph\_options\_pb2
+
+### gesture\_recognizer\_graph\_options\_pb2.GestureRecognizerGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions
+AutoIt:
+    [propget] $ogesture_recognizer_graph_options_pb2.GestureRecognizerGraphOptions
+```
+
 ## mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions
 
 ### ImageClassifierGraphOptions.base\_options
@@ -45004,6 +46021,618 @@ AutoIt:
 void* VectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::start();
 AutoIt:
     $oVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.start() -> retval
+```
+
+## VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category.Count
+
+```cpp
+size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::size()
+AutoIt:
+    [propget] $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Count
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::create
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create() -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
+```
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create( $size ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
+```
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create( $other ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Add
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Add( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Add( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Items
+
+```cpp
+VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Items();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Items() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Keys
+
+```cpp
+std::vector<int> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Keys();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Keys() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Remove
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Remove( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Remove( $index ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::append
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::append( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.append( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::at
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::at( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::at( size_t                                                                                             index,
+                                                                                         std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.at( $index, $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::clear
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::clear();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.clear() -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::empty
+
+```cpp
+bool VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::empty();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.empty() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::end
+
+```cpp
+void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::end();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.end() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_Item
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::get_Item( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Item( $index ) -> retval
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category( $index ) -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::get__NewEnum();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category._NewEnum() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_back
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_back( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_back( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_vector
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other,
+                                                                                                  size_t                                                                         count,
+                                                                                                  size_t                                                                         start = 0 );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::put\_Item
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::put_Item( size_t                                                                                             index,
+                                                                                               std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> item );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Item( $index ) = $item
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::size
+
+```cpp
+size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::size();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.size() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::slice
+
+```cpp
+VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::slice( size_t start = 0,
+                                                                                                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::sort( void*  comparator,
+                                                                                           size_t start = 0,
+                                                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort\_variant
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::sort_variant( void*  comparator,
+                                                                                                   size_t start = 0,
+                                                                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::start
+
+```cpp
+void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::start();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.start() -> retval
+```
+
+## VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark.Count
+
+```cpp
+size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::size()
+AutoIt:
+    [propget] $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.Count
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::create
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark").create() -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark object>
+```
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark").create( $size ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark object>
+```
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::create( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark").create( $other ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark object>
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Add
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::Add( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.Add( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Items
+
+```cpp
+VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::Items();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.Items() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Keys
+
+```cpp
+std::vector<int> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::Keys();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.Keys() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Remove
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::Remove( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.Remove( $index ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::append
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::append( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.append( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::at
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::at( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::at( size_t                                                                                                       index,
+                                                                                                   std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.at( $index, $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::clear
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::clear();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.clear() -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::empty
+
+```cpp
+bool VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::empty();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.empty() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::end
+
+```cpp
+void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::end();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.end() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::get\_Item
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::get_Item( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.Item( $index ) -> retval
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark( $index ) -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::get__NewEnum();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark._NewEnum() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::push\_back
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::push_back( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.push_back( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::push\_vector
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark other );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark other,
+                                                                                                            size_t                                                                                   count,
+                                                                                                            size_t                                                                                   start = 0 );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::put\_Item
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::put_Item( size_t                                                                                                       index,
+                                                                                                         std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> item );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.Item( $index ) = $item
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::size
+
+```cpp
+size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::size();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.size() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::slice
+
+```cpp
+VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::slice( size_t start = 0,
+                                                                                                                                                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::sort
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::sort( void*  comparator,
+                                                                                                     size_t start = 0,
+                                                                                                     size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::sort\_variant
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::sort_variant( void*  comparator,
+                                                                                                             size_t start = 0,
+                                                                                                             size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::start
+
+```cpp
+void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::start();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.start() -> retval
+```
+
+## VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark.Count
+
+```cpp
+size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::size()
+AutoIt:
+    [propget] $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.Count
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::create
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark").create() -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark object>
+```
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark").create( $size ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark object>
+```
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::create( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark").create( $other ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark object>
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::Add
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::Add( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.Add( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::Items
+
+```cpp
+VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::Items();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.Items() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::Keys
+
+```cpp
+std::vector<int> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::Keys();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.Keys() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::Remove
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::Remove( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.Remove( $index ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::append
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::append( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.append( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::at
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::at( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::at( size_t                                                                                             index,
+                                                                                         std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.at( $index, $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::clear
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::clear();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.clear() -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::empty
+
+```cpp
+bool VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::empty();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.empty() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::end
+
+```cpp
+void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::end();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.end() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::get\_Item
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::get_Item( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.Item( $index ) -> retval
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark( $index ) -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::get__NewEnum();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark._NewEnum() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::push\_back
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::push_back( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.push_back( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::push\_vector
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark other );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark other,
+                                                                                                  size_t                                                                         count,
+                                                                                                  size_t                                                                         start = 0 );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::put\_Item
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::put_Item( size_t                                                                                             index,
+                                                                                               std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> item );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.Item( $index ) = $item
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::size
+
+```cpp
+size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::size();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.size() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::slice
+
+```cpp
+VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::slice( size_t start = 0,
+                                                                                                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::sort( void*  comparator,
+                                                                                           size_t start = 0,
+                                                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort\_variant
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::sort_variant( void*  comparator,
+                                                                                                   size_t start = 0,
+                                                                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::start
+
+```cpp
+void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::start();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.start() -> retval
 ```
 
 ## VectorOfUchar

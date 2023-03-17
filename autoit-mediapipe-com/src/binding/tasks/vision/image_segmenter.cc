@@ -66,14 +66,14 @@ namespace mediapipe {
 						PacketsCallback packets_callback = nullptr;
 
 						if (options->result_callback) {
-							packets_callback = [options](PacketMap output_packets) {
-								if (output_packets[_IMAGE_OUT_STREAM_NAME].IsEmpty()) {
+							packets_callback = [options](const PacketMap& output_packets) {
+								if (output_packets.at(_IMAGE_OUT_STREAM_NAME).IsEmpty()) {
 									return;
 								}
 
-								auto segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets[_SEGMENTATION_OUT_STREAM_NAME]);
-								auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets[_IMAGE_OUT_STREAM_NAME]);
-								auto timestamp_ms = output_packets[_SEGMENTATION_OUT_STREAM_NAME].Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
+								auto segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
+								auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets.at(_IMAGE_OUT_STREAM_NAME));
+								auto timestamp_ms = output_packets.at(_SEGMENTATION_OUT_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
 								options->result_callback(segmentation_result, image, timestamp_ms);
 							};
@@ -102,7 +102,7 @@ namespace mediapipe {
 							{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_image(image))) },
 							});
 
-						segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets[_SEGMENTATION_OUT_STREAM_NAME]);
+						segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
 					}
 
 					void ImageSegmenter::segment_for_video(std::vector<Image>& segmentation_result, const Image& image, int64_t timestamp_ms) {
@@ -110,7 +110,7 @@ namespace mediapipe {
 							{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND))) }
 							});
 
-						segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets[_SEGMENTATION_OUT_STREAM_NAME]);
+						segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
 					}
 
 					void ImageSegmenter::segment_async(const Image& image, int64_t timestamp_ms) {

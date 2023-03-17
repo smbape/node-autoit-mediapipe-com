@@ -82,17 +82,17 @@ namespace mediapipe {
 						PacketsCallback packets_callback = nullptr;
 
 						if (options->result_callback) {
-							packets_callback = [options](PacketMap output_packets) {
-								auto timestamp_ms = output_packets[_EMBEDDINGS_STREAM_NAME].Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
+							packets_callback = [options](const PacketMap& output_packets) {
+								auto timestamp_ms = output_packets.at(_EMBEDDINGS_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
-								if (output_packets[_EMBEDDINGS_STREAM_NAME].IsEmpty()) {
+								if (output_packets.at(_EMBEDDINGS_STREAM_NAME).IsEmpty()) {
 									options->result_callback(AudioEmbedderResult(), timestamp_ms);
 									return;
 								}
 
 								mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
 								embedding_result_proto.CopyFrom(
-									*mediapipe::autoit::packet_getter::get_proto(output_packets[_EMBEDDINGS_STREAM_NAME])
+									*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_EMBEDDINGS_STREAM_NAME))
 								);
 								options->result_callback(
 									*AudioEmbedderResult::create_from_pb2(embedding_result_proto),
@@ -129,7 +129,7 @@ namespace mediapipe {
 							{ _SAMPLE_RATE_IN_STREAM_NAME, std::move(MakePacket<double>(*audio_clip.audio_format().sample_rate)) },
 							});
 
-						auto embedding_result_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets[_TIMESTAMPED_EMBEDDINGS_STREAM_NAME]);
+						auto embedding_result_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_TIMESTAMPED_EMBEDDINGS_STREAM_NAME));
 						for (const auto& proto : embedding_result_proto_list) {
 							mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
 							embedding_result_proto.CopyFrom(*proto);

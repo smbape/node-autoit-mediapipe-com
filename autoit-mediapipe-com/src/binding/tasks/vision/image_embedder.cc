@@ -68,18 +68,18 @@ namespace mediapipe {
 						PacketsCallback packets_callback = nullptr;
 
 						if (options->result_callback) {
-							packets_callback = [options](PacketMap output_packets) {
-								if (output_packets[_IMAGE_OUT_STREAM_NAME].IsEmpty()) {
+							packets_callback = [options](const PacketMap& output_packets) {
+								if (output_packets.at(_IMAGE_OUT_STREAM_NAME).IsEmpty()) {
 									return;
 								}
 
 								mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
 								embedding_result_proto.CopyFrom(
-									*mediapipe::autoit::packet_getter::get_proto(output_packets[_EMBEDDINGS_OUT_STREAM_NAME])
+									*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
 								);
 
-								auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets[_IMAGE_OUT_STREAM_NAME]);
-								auto timestamp_ms = output_packets[_IMAGE_OUT_STREAM_NAME].Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
+								auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets.at(_IMAGE_OUT_STREAM_NAME));
+								auto timestamp_ms = output_packets.at(_IMAGE_OUT_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
 								options->result_callback(
 									*ImageEmbedderResult::create_from_pb2(embedding_result_proto),
@@ -120,7 +120,7 @@ namespace mediapipe {
 
 						mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
 						embedding_result_proto.CopyFrom(
-							*mediapipe::autoit::packet_getter::get_proto(output_packets[_EMBEDDINGS_OUT_STREAM_NAME])
+							*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
 						);
 
 						return ImageEmbedderResult::create_from_pb2(embedding_result_proto);
@@ -144,7 +144,7 @@ namespace mediapipe {
 
 						mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
 						embedding_result_proto.CopyFrom(
-							*mediapipe::autoit::packet_getter::get_proto(output_packets[_EMBEDDINGS_OUT_STREAM_NAME])
+							*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
 						);
 
 						return ImageEmbedderResult::create_from_pb2(embedding_result_proto);

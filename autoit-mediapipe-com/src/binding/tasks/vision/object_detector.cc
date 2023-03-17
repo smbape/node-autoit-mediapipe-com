@@ -70,19 +70,19 @@ namespace mediapipe {
 						PacketsCallback packets_callback = nullptr;
 
 						if (options->result_callback) {
-							packets_callback = [options](PacketMap output_packets) {
-								if (output_packets[_IMAGE_OUT_STREAM_NAME].IsEmpty()) {
+							packets_callback = [options](const PacketMap& output_packets) {
+								if (output_packets.at(_IMAGE_OUT_STREAM_NAME).IsEmpty()) {
 									return;
 								}
 
-								auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets[_DETECTIONS_OUT_STREAM_NAME]);
+								auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
 								auto detection_result = ObjectDetectorResult();
 								for (const auto& result : detection_proto_list) {
 									detection_result.detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
 								}
 
-								auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets[_IMAGE_OUT_STREAM_NAME]);
-								auto timestamp = output_packets[_IMAGE_OUT_STREAM_NAME].Timestamp().Value();
+								auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets.at(_IMAGE_OUT_STREAM_NAME));
+								auto timestamp = output_packets.at(_IMAGE_OUT_STREAM_NAME).Timestamp().Value();
 
 								options->result_callback(detection_result, image, timestamp);
 							};
@@ -111,7 +111,7 @@ namespace mediapipe {
 							{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_image(image))) }
 							});
 
-						auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets[_DETECTIONS_OUT_STREAM_NAME]);
+						auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
 						auto detection_result = std::make_shared<ObjectDetectorResult>();
 						for (const auto& result : detection_proto_list) {
 							detection_result->detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
@@ -127,7 +127,7 @@ namespace mediapipe {
 							)) },
 							});
 
-						auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets[_DETECTIONS_OUT_STREAM_NAME]);
+						auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
 						auto detection_result = std::make_shared<ObjectDetectorResult>();
 						for (const auto& result : detection_proto_list) {
 							detection_result->detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
