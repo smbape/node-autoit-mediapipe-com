@@ -667,6 +667,30 @@
         "iid": "450703d9-2fcb-46d3-8e1b-26962c59434a",
         "clsid": "c7bc6bfe-7a76-48c7-b67c-88764b14c694"
     },
+    "mediapipe::tasks::autoit::vision::hand_landmarker": {
+        "iid": "99cb9c66-880d-41f5-970a-201496bb0b09",
+        "clsid": "f1dc616c-7729-43c7-a191-aa82846b3c53"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark": {
+        "iid": "233e3d08-a9b0-4458-98c1-df5a01539aba",
+        "clsid": "74f7dce7-d78d-4f29-a881-cfa3e8f3b30a"
+    },
+    "mediapipe::autoit::vision::hand_landmarker": {
+        "iid": "f61a52a6-2cc0-43b8-8310-ab915466cda0",
+        "clsid": "4d56a63b-c1ff-418c-8c54-7845f2e4551f"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult": {
+        "iid": "9ce100fd-437b-4364-8163-5dfbd0256188",
+        "clsid": "7efc98de-3c93-4ec5-a2f1-a687a5ab46d3"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions": {
+        "iid": "99f621ae-f837-4a4a-bf99-dbf03e28a21e",
+        "clsid": "5f9da36e-77a7-4f31-ab30-b8dff8defbdf"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker": {
+        "iid": "abe7e19c-46b8-4e3b-89b4-654e2e5ca6f7",
+        "clsid": "5d8131d4-72d7-47c7-8370-f4ec61642878"
+    },
     "mediapipe::tasks::autoit::vision::image_classifier": {
         "iid": "73aded08-6809-4806-8169-5648df9f58eb",
         "clsid": "078e4984-0ab0-4a57-ae23-6f5f0ac5b248"

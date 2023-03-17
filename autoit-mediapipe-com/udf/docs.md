@@ -811,6 +811,7 @@
 - [mediapipe::tasks::autoit::vision](#mediapipetasksautoitvision)
   - [vision.core](#visioncore)
   - [vision.gesture\_recognizer](#visiongesture%5C_recognizer)
+  - [vision.hand\_landmarker](#visionhand%5C_landmarker)
   - [vision.image\_classifier](#visionimage%5C_classifier)
   - [vision.image\_embedder](#visionimage%5C_embedder)
   - [vision.image\_segmenter](#visionimage%5C_segmenter)
@@ -822,6 +823,7 @@
 - [mediapipe::autoit::vision](#mediapipeautoitvision)
   - [vision.core](#visioncore-1)
   - [vision.gesture\_recognizer](#visiongesture%5C_recognizer-1)
+  - [vision.hand\_landmarker](#visionhand%5C_landmarker-1)
   - [vision.image\_classifier](#visionimage%5C_classifier-1)
   - [vision.image\_embedder](#visionimage%5C_embedder-1)
   - [vision.image\_segmenter](#visionimage%5C_segmenter-1)
@@ -883,6 +885,53 @@
   - [GestureRecognizerOptions.result\_callback](#gesturerecognizeroptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions::get\_create](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizeroptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions::to\_pb2](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizeroptionsto%5C_pb2)
+- [mediapipe::tasks::autoit::vision::hand\_landmarker](#mediapipetasksautoitvisionhand%5C_landmarker)
+  - [hand\_landmarker.HandLandmark](#hand%5C_landmarkerhandlandmark)
+  - [hand\_landmarker.HandLandmarkerResult](#hand%5C_landmarkerhandlandmarkerresult)
+  - [hand\_landmarker.HandLandmarkerOptions](#hand%5C_landmarkerhandlandmarkeroptions)
+  - [hand\_landmarker.HandLandmarker](#hand%5C_landmarkerhandlandmarker)
+- [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmark](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmark)
+  - [HandLandmark.WRIST](#handlandmarkwrist-1)
+  - [HandLandmark.THUMB\_CMC](#handlandmarkthumb%5C_cmc-1)
+  - [HandLandmark.THUMB\_MCP](#handlandmarkthumb%5C_mcp-1)
+  - [HandLandmark.THUMB\_IP](#handlandmarkthumb%5C_ip-1)
+  - [HandLandmark.THUMB\_TIP](#handlandmarkthumb%5C_tip-1)
+  - [HandLandmark.INDEX\_FINGER\_MCP](#handlandmarkindex%5C_finger%5C_mcp-1)
+  - [HandLandmark.INDEX\_FINGER\_PIP](#handlandmarkindex%5C_finger%5C_pip-1)
+  - [HandLandmark.INDEX\_FINGER\_DIP](#handlandmarkindex%5C_finger%5C_dip-1)
+  - [HandLandmark.INDEX\_FINGER\_TIP](#handlandmarkindex%5C_finger%5C_tip-1)
+  - [HandLandmark.MIDDLE\_FINGER\_MCP](#handlandmarkmiddle%5C_finger%5C_mcp-1)
+  - [HandLandmark.MIDDLE\_FINGER\_PIP](#handlandmarkmiddle%5C_finger%5C_pip-1)
+  - [HandLandmark.MIDDLE\_FINGER\_DIP](#handlandmarkmiddle%5C_finger%5C_dip-1)
+  - [HandLandmark.MIDDLE\_FINGER\_TIP](#handlandmarkmiddle%5C_finger%5C_tip-1)
+  - [HandLandmark.RING\_FINGER\_MCP](#handlandmarkring%5C_finger%5C_mcp-1)
+  - [HandLandmark.RING\_FINGER\_PIP](#handlandmarkring%5C_finger%5C_pip-1)
+  - [HandLandmark.RING\_FINGER\_DIP](#handlandmarkring%5C_finger%5C_dip-1)
+  - [HandLandmark.RING\_FINGER\_TIP](#handlandmarkring%5C_finger%5C_tip-1)
+  - [HandLandmark.PINKY\_MCP](#handlandmarkpinky%5C_mcp-1)
+  - [HandLandmark.PINKY\_PIP](#handlandmarkpinky%5C_pip-1)
+  - [HandLandmark.PINKY\_DIP](#handlandmarkpinky%5C_dip-1)
+  - [HandLandmark.PINKY\_TIP](#handlandmarkpinky%5C_tip-1)
+- [mediapipe::autoit::vision::hand\_landmarker](#mediapipeautoitvisionhand%5C_landmarker)
+  - [hand\_landmarker.HandLandmark](#hand%5C_landmarkerhandlandmark-1)
+  - [hand\_landmarker.HandLandmarkerResult](#hand%5C_landmarkerhandlandmarkerresult-1)
+  - [hand\_landmarker.HandLandmarkerOptions](#hand%5C_landmarkerhandlandmarkeroptions-1)
+  - [hand\_landmarker.HandLandmarker](#hand%5C_landmarkerhandlandmarker-1)
+- [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerResult](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkerresult)
+  - [HandLandmarkerResult.handedness](#handlandmarkerresulthandedness)
+  - [HandLandmarkerResult.hand\_landmarks](#handlandmarkerresulthand%5C_landmarks)
+  - [HandLandmarkerResult.hand\_world\_landmarks](#handlandmarkerresulthand%5C_world%5C_landmarks)
+  - [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerResult::get\_create](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkerresultget%5C_create)
+- [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerOptions](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkeroptions)
+  - [HandLandmarkerOptions.base\_options](#handlandmarkeroptionsbase%5C_options)
+  - [HandLandmarkerOptions.running\_mode](#handlandmarkeroptionsrunning%5C_mode)
+  - [HandLandmarkerOptions.num\_hands](#handlandmarkeroptionsnum%5C_hands)
+  - [HandLandmarkerOptions.min\_hand\_detection\_confidence](#handlandmarkeroptionsmin%5C_hand%5C_detection%5C_confidence)
+  - [HandLandmarkerOptions.min\_hand\_presence\_confidence](#handlandmarkeroptionsmin%5C_hand%5C_presence%5C_confidence)
+  - [HandLandmarkerOptions.min\_tracking\_confidence](#handlandmarkeroptionsmin%5C_tracking%5C_confidence)
+  - [HandLandmarkerOptions.result\_callback](#handlandmarkeroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerOptions::get\_create](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkeroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerOptions::to\_pb2](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkeroptionsto%5C_pb2)
 - [mediapipe::tasks::autoit::vision::image\_classifier](#mediapipetasksautoitvisionimage%5C_classifier)
   - [image\_classifier.ImageClassifierOptions](#image%5C_classifierimageclassifieroptions)
   - [image\_classifier.ImageClassifier](#image%5C_classifierimageclassifier)
@@ -12218,6 +12267,14 @@ AutoIt:
     [propget] $ovision.gesture_recognizer
 ```
 
+### vision.hand\_landmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker
+AutoIt:
+    [propget] $ovision.hand_landmarker
+```
+
 ### vision.image\_classifier
 
 ```cpp
@@ -12292,6 +12349,14 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::gesture_recognizer
 AutoIt:
     [propget] $ovision.gesture_recognizer
+```
+
+### vision.hand\_landmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker
+AutoIt:
+    [propget] $ovision.hand_landmarker
 ```
 
 ### vision.image\_classifier
@@ -12736,6 +12801,376 @@ AutoIt:
 std::shared_ptr<tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions::to_pb2();
 AutoIt:
     $oGestureRecognizerOptions.to_pb2() -> retval
+```
+
+## mediapipe::tasks::autoit::vision::hand\_landmarker
+
+### hand\_landmarker.HandLandmark
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark
+AutoIt:
+    [propget] $ohand_landmarker.HandLandmark
+```
+
+### hand\_landmarker.HandLandmarkerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult
+AutoIt:
+    [propget] $ohand_landmarker.HandLandmarkerResult
+```
+
+### hand\_landmarker.HandLandmarkerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions
+AutoIt:
+    [propget] $ohand_landmarker.HandLandmarkerOptions
+```
+
+### hand\_landmarker.HandLandmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker
+AutoIt:
+    [propget] $ohand_landmarker.HandLandmarker
+```
+
+## mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmark
+
+### HandLandmark.WRIST
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::WRIST
+AutoIt:
+    [propget] $oHandLandmark.WRIST
+```
+
+### HandLandmark.THUMB\_CMC
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::THUMB_CMC
+AutoIt:
+    [propget] $oHandLandmark.THUMB_CMC
+```
+
+### HandLandmark.THUMB\_MCP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::THUMB_MCP
+AutoIt:
+    [propget] $oHandLandmark.THUMB_MCP
+```
+
+### HandLandmark.THUMB\_IP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::THUMB_IP
+AutoIt:
+    [propget] $oHandLandmark.THUMB_IP
+```
+
+### HandLandmark.THUMB\_TIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::THUMB_TIP
+AutoIt:
+    [propget] $oHandLandmark.THUMB_TIP
+```
+
+### HandLandmark.INDEX\_FINGER\_MCP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::INDEX_FINGER_MCP
+AutoIt:
+    [propget] $oHandLandmark.INDEX_FINGER_MCP
+```
+
+### HandLandmark.INDEX\_FINGER\_PIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::INDEX_FINGER_PIP
+AutoIt:
+    [propget] $oHandLandmark.INDEX_FINGER_PIP
+```
+
+### HandLandmark.INDEX\_FINGER\_DIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::INDEX_FINGER_DIP
+AutoIt:
+    [propget] $oHandLandmark.INDEX_FINGER_DIP
+```
+
+### HandLandmark.INDEX\_FINGER\_TIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::INDEX_FINGER_TIP
+AutoIt:
+    [propget] $oHandLandmark.INDEX_FINGER_TIP
+```
+
+### HandLandmark.MIDDLE\_FINGER\_MCP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::MIDDLE_FINGER_MCP
+AutoIt:
+    [propget] $oHandLandmark.MIDDLE_FINGER_MCP
+```
+
+### HandLandmark.MIDDLE\_FINGER\_PIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::MIDDLE_FINGER_PIP
+AutoIt:
+    [propget] $oHandLandmark.MIDDLE_FINGER_PIP
+```
+
+### HandLandmark.MIDDLE\_FINGER\_DIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::MIDDLE_FINGER_DIP
+AutoIt:
+    [propget] $oHandLandmark.MIDDLE_FINGER_DIP
+```
+
+### HandLandmark.MIDDLE\_FINGER\_TIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::MIDDLE_FINGER_TIP
+AutoIt:
+    [propget] $oHandLandmark.MIDDLE_FINGER_TIP
+```
+
+### HandLandmark.RING\_FINGER\_MCP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::RING_FINGER_MCP
+AutoIt:
+    [propget] $oHandLandmark.RING_FINGER_MCP
+```
+
+### HandLandmark.RING\_FINGER\_PIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::RING_FINGER_PIP
+AutoIt:
+    [propget] $oHandLandmark.RING_FINGER_PIP
+```
+
+### HandLandmark.RING\_FINGER\_DIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::RING_FINGER_DIP
+AutoIt:
+    [propget] $oHandLandmark.RING_FINGER_DIP
+```
+
+### HandLandmark.RING\_FINGER\_TIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::RING_FINGER_TIP
+AutoIt:
+    [propget] $oHandLandmark.RING_FINGER_TIP
+```
+
+### HandLandmark.PINKY\_MCP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::PINKY_MCP
+AutoIt:
+    [propget] $oHandLandmark.PINKY_MCP
+```
+
+### HandLandmark.PINKY\_PIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::PINKY_PIP
+AutoIt:
+    [propget] $oHandLandmark.PINKY_PIP
+```
+
+### HandLandmark.PINKY\_DIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::PINKY_DIP
+AutoIt:
+    [propget] $oHandLandmark.PINKY_DIP
+```
+
+### HandLandmark.PINKY\_TIP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark::PINKY_TIP
+AutoIt:
+    [propget] $oHandLandmark.PINKY_TIP
+```
+
+## mediapipe::autoit::vision::hand\_landmarker
+
+### hand\_landmarker.HandLandmark
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark
+AutoIt:
+    [propget] $ohand_landmarker.HandLandmark
+```
+
+### hand\_landmarker.HandLandmarkerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult
+AutoIt:
+    [propget] $ohand_landmarker.HandLandmarkerResult
+```
+
+### hand\_landmarker.HandLandmarkerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions
+AutoIt:
+    [propget] $ohand_landmarker.HandLandmarkerOptions
+```
+
+### hand\_landmarker.HandLandmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker
+AutoIt:
+    [propget] $ohand_landmarker.HandLandmarker
+```
+
+## mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerResult
+
+### HandLandmarkerResult.handedness
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>> mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult::handedness
+AutoIt:
+    [propget, propput] $oHandLandmarkerResult.handedness
+```
+
+### HandLandmarkerResult.hand\_landmarks
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>> mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult::hand_landmarks
+AutoIt:
+    [propget, propput] $oHandLandmarkerResult.hand_landmarks
+```
+
+### HandLandmarkerResult.hand\_world\_landmarks
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>> mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult::hand_world_landmarks
+AutoIt:
+    [propget, propput] $oHandLandmarkerResult.hand_world_landmarks
+```
+
+### mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerResult::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult::get_create( const mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerResult").create( $other ) -> <mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerResult object>
+    $oHandLandmarkerResult( $other ) -> <mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerResult object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult::get_create( std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>           handedness = std::vector<std::vector<std::shared_ptr<category::Category>>>(),
+                                                                                                                                                                    std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>> hand_landmarks = std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>(),
+                                                                                                                                                                    std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>           hand_world_landmarks = std::vector<std::vector<std::shared_ptr<landmark::Landmark>>>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerResult").create( [$handedness[, $hand_landmarks[, $hand_world_landmarks]]] ) -> <mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerResult object>
+    $oHandLandmarkerResult( [$handedness[, $hand_landmarks[, $hand_world_landmarks]]] ) -> <mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerResult object>
+```
+
+## mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerOptions
+
+### HandLandmarkerOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::base_options
+AutoIt:
+    [propget, propput] $oHandLandmarkerOptions.base_options
+```
+
+### HandLandmarkerOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::running_mode
+AutoIt:
+    [propget, propput] $oHandLandmarkerOptions.running_mode
+```
+
+### HandLandmarkerOptions.num\_hands
+
+```cpp
+int mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::num_hands
+AutoIt:
+    [propget, propput] $oHandLandmarkerOptions.num_hands
+```
+
+### HandLandmarkerOptions.min\_hand\_detection\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::min_hand_detection_confidence
+AutoIt:
+    [propget, propput] $oHandLandmarkerOptions.min_hand_detection_confidence
+```
+
+### HandLandmarkerOptions.min\_hand\_presence\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::min_hand_presence_confidence
+AutoIt:
+    [propget, propput] $oHandLandmarkerOptions.min_hand_presence_confidence
+```
+
+### HandLandmarkerOptions.min\_tracking\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::min_tracking_confidence
+AutoIt:
+    [propget, propput] $oHandLandmarkerOptions.min_tracking_confidence
+```
+
+### HandLandmarkerOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::result_callback
+AutoIt:
+    [propput] $oHandLandmarkerOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::get_create( const mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerOptions object>
+    $oHandLandmarkerOptions( $other ) -> <mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                      mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                                      int                                                                                     num_hands = 1,
+                                                                                                                                                                      float                                                                                   min_hand_detection_confidence = 0.5f,
+                                                                                                                                                                      float                                                                                   min_hand_presence_confidence = 0.5f,
+                                                                                                                                                                      float                                                                                   min_tracking_confidence = 0.5f,
+                                                                                                                                                                      mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback      result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerOptions").create( [$base_options[, $running_mode[, $num_hands[, $min_hand_detection_confidence[, $min_hand_presence_confidence[, $min_tracking_confidence[, $result_callback]]]]]]] ) -> <mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerOptions object>
+    $oHandLandmarkerOptions( [$base_options[, $running_mode[, $num_hands[, $min_hand_detection_confidence[, $min_hand_presence_confidence[, $min_tracking_confidence[, $result_callback]]]]]]] ) -> <mediapipe.tasks.autoit.vision.hand_landmarker.HandLandmarkerOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerOptions::to\_pb2
+
+```cpp
+std::shared_ptr<tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions> mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions::to_pb2();
+AutoIt:
+    $oHandLandmarkerOptions.to_pb2() -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_classifier

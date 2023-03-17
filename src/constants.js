@@ -145,6 +145,7 @@ exports.ALIASES = new Map([
     ["ObjectDetectorResultCallback", "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback"],
 
     ["GestureRecognizerResultCallback", "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback"],
+    ["HandLandmarkerResultCallback", "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback"],
 ]);
 
 exports.CLASS_PTR = new Set([
@@ -167,6 +168,7 @@ exports.PTR = new Set([
     "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback",
 
     "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback",
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback",
 ]);
 
 exports.CUSTOM_CLASSES = [
