@@ -816,6 +816,23 @@
   - [vision.image\_embedder](#visionimage%5C_embedder)
   - [vision.image\_segmenter](#visionimage%5C_segmenter)
   - [vision.object\_detector](#visionobject%5C_detector)
+  - [vision.GestureRecognizer](#visiongesturerecognizer)
+  - [vision.GestureRecognizerOptions](#visiongesturerecognizeroptions)
+  - [vision.GestureRecognizerResult](#visiongesturerecognizerresult)
+  - [vision.HandLandmarker](#visionhandlandmarker)
+  - [vision.HandLandmarkerOptions](#visionhandlandmarkeroptions)
+  - [vision.HandLandmarkerResult](#visionhandlandmarkerresult)
+  - [vision.ImageClassifier](#visionimageclassifier)
+  - [vision.ImageClassifierOptions](#visionimageclassifieroptions)
+  - [vision.ImageClassifierResult](#visionimageclassifierresult)
+  - [vision.ImageEmbedder](#visionimageembedder)
+  - [vision.ImageEmbedderOptions](#visionimageembedderoptions)
+  - [vision.ImageEmbedderResult](#visionimageembedderresult)
+  - [vision.ImageSegmenter](#visionimagesegmenter)
+  - [vision.ImageSegmenterOptions](#visionimagesegmenteroptions)
+  - [vision.ObjectDetector](#visionobjectdetector)
+  - [vision.ObjectDetectorOptions](#visionobjectdetectoroptions)
+  - [vision.RunningMode](#visionrunningmode)
 - [mediapipe::tasks::autoit::vision::core](#mediapipetasksautoitvisioncore)
   - [core.base\_vision\_task\_api](#corebase%5C_vision%5C_task%5C_api)
   - [core.image\_processing\_options](#coreimage%5C_processing%5C_options)
@@ -12305,6 +12322,142 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::object_detector
 AutoIt:
     [propget] $ovision.object_detector
+```
+
+### vision.GestureRecognizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer
+AutoIt:
+    [propget] $ovision.GestureRecognizer
+```
+
+### vision.GestureRecognizerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions
+AutoIt:
+    [propget] $ovision.GestureRecognizerOptions
+```
+
+### vision.GestureRecognizerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult
+AutoIt:
+    [propget] $ovision.GestureRecognizerResult
+```
+
+### vision.HandLandmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker
+AutoIt:
+    [propget] $ovision.HandLandmarker
+```
+
+### vision.HandLandmarkerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions
+AutoIt:
+    [propget] $ovision.HandLandmarkerOptions
+```
+
+### vision.HandLandmarkerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult
+AutoIt:
+    [propget] $ovision.HandLandmarkerResult
+```
+
+### vision.ImageClassifier
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier
+AutoIt:
+    [propget] $ovision.ImageClassifier
+```
+
+### vision.ImageClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions
+AutoIt:
+    [propget] $ovision.ImageClassifierOptions
+```
+
+### vision.ImageClassifierResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult
+AutoIt:
+    [propget] $ovision.ImageClassifierResult
+```
+
+### vision.ImageEmbedder
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder
+AutoIt:
+    [propget] $ovision.ImageEmbedder
+```
+
+### vision.ImageEmbedderOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions
+AutoIt:
+    [propget] $ovision.ImageEmbedderOptions
+```
+
+### vision.ImageEmbedderResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult
+AutoIt:
+    [propget] $ovision.ImageEmbedderResult
+```
+
+### vision.ImageSegmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter
+AutoIt:
+    [propget] $ovision.ImageSegmenter
+```
+
+### vision.ImageSegmenterOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions
+AutoIt:
+    [propget] $ovision.ImageSegmenterOptions
+```
+
+### vision.ObjectDetector
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector::ObjectDetector
+AutoIt:
+    [propget] $ovision.ObjectDetector
+```
+
+### vision.ObjectDetectorOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions
+AutoIt:
+    [propget] $ovision.ObjectDetectorOptions
+```
+
+### vision.RunningMode
+
+```cpp
+static mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode
+AutoIt:
+    [propget] $ovision.RunningMode
 ```
 
 ## mediapipe::tasks::autoit::vision::core
