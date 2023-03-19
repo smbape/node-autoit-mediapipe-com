@@ -102,7 +102,7 @@ const parseArguments = PROJECT_DIR => {
 
             // from mediapipe.python import *
             // import mediapipe.python.solutions as solutions
-            if (fqn.startsWith("mediapipe::autoit::") || fqn.startsWith("mediapipe::tasks::autoit::")) {
+            if (fqn.startsWith("mediapipe::autoit::")) {
                 const parts = fqn.split("::");
 
                 for (let i = 1; i < parts.length; i++) {

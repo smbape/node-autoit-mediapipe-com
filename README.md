@@ -561,15 +561,6 @@ curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v
 7z x autoit-mediapipe-0.9.1-opencv-4.7.0-com-v0.3.0-src.zip -aoa 'node-autoit-mediapipe-com-0.3.0\examples'
 cp -rf node-autoit-mediapipe-com-0.3.0/* ./
 rm -rf node-autoit-mediapipe-com-0.3.0
-
-# download mediapipe-0.9.1-src.zip
-curl -L 'https://github.com/google/mediapipe/archive/refs/tags/v0.9.1.zip' -o mediapipe-0.9.1-src.zip
-
-# extract the examples\faces and examples\video_frames folders of mediapipe-0.9.1-src.zip
-7z x mediapipe-0.9.1-src.zip -aoa 'mediapipe-0.9.1\mediapipe\tasks\testdata'
-cp -rf mediapipe-0.9.1/* ./
-rm -rf mediapipe-0.9.1
-
 ```
 
 Now you can run any file in the `examples` folder.
