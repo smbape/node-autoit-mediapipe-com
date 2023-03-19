@@ -64,6 +64,18 @@ const parseArguments = PROJECT_DIR => {
         includes: [sysPath.join(PROJECT_DIR, "src")],
         output: sysPath.join(PROJECT_DIR, "generated"),
         toc: true,
+        globals: [
+            "$CV_ACCESS_READ",
+            "$CV_ACCESS_WRITE",
+            "$CV_ACCESS_RW",
+            "$CV_ACCESS_MASK",
+            "$CV_ACCESS_FAST",
+            "$CV_USAGE_DEFAULT",
+            "$CV_USAGE_ALLOCATE_HOST_MEMORY",
+            "$CV_USAGE_ALLOCATE_DEVICE_MEMORY",
+            "$CV_USAGE_ALLOCATE_SHARED_MEMORY",
+            "$CV___UMAT_USAGE_FLAGS_32BIT",
+        ],
         constReplacer: new Map([
             ["std::numeric_limits<int32_t>::min()", "-0x80000000"],
             ["std::numeric_limits<int32_t>::max()", "0x7FFFFFFF"],
@@ -340,7 +352,7 @@ waterfall([
             print(json.dumps({"decls": all_decls, "namespaces": sorted(parser.namespaces)}, indent=4))
         `.trim().replace(/^ {12}/mg, "");
 
-        // fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
+        fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
 
         child.stdin.write(code);
         child.stdin.end();

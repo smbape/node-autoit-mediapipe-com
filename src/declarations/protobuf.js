@@ -13,7 +13,21 @@ module.exports = [
         ["std::string", "field_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
+    ["google.protobuf.Message.CheckInitialized", "void", [], [], "", ""],
+
+    ["google.protobuf.Message.FindInitializationErrors", "void", [], [
+        ["std::vector<std::string>*", "errors", "", ["/O"]],
+    ], "", ""],
+
+    ["google.protobuf.Message.DiscardUnknownFields", "void", [], [], "", ""],
+    ["google.protobuf.Message.SpaceUsedLong", "size_t", [], [], "", ""],
+    ["google.protobuf.Message.IsInitialized", "bool", [], [], "", ""],
+    ["google.protobuf.Message.ByteSizeLong", "size_t", [], [], "", ""],
     ["google.protobuf.Message.Clear", "void", [], [], "", ""],
+    ["google.protobuf.Message.SerializeAsString", "std::string", [], [], "", ""],
+    ["google.protobuf.Message.SerializeToString", "void", [], [
+        ["std::string*", "output", "", ["/O"]],
+    ], "", ""],
 
     ["class google.protobuf.FieldDescriptor", "", [], [
         ["std::string", "full_name", "", ["/R=full_name"]],

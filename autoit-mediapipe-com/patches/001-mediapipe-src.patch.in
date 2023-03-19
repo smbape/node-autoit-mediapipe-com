@@ -1,8 +1,8 @@
 diff --git a/WORKSPACE b/WORKSPACE
-index d3cc40f..f243b06 100644
+index bf5e4236..5d5f58ec 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -271,7 +271,7 @@ new_local_repository(
+@@ -283,7 +283,7 @@ new_local_repository(
  new_local_repository(
      name = "windows_opencv",
      build_file = "@//third_party:opencv_windows.BUILD",
@@ -12,7 +12,7 @@ index d3cc40f..f243b06 100644
  
  http_archive(
 diff --git a/mediapipe/framework/port/opencv_video_inc.h b/mediapipe/framework/port/opencv_video_inc.h
-index dc84bf5..4678f3c 100644
+index dc84bf59..4678f3c7 100644
 --- a/mediapipe/framework/port/opencv_video_inc.h
 +++ b/mediapipe/framework/port/opencv_video_inc.h
 @@ -85,13 +85,7 @@ inline int fourcc(char c1, char c2, char c3, char c4) {
@@ -31,7 +31,7 @@ index dc84bf5..4678f3c 100644
  
  namespace mediapipe {
 diff --git a/mediapipe/tasks/BUILD b/mediapipe/tasks/BUILD
-index 242a88c..304eb75 100644
+index 98ddd577..fdd6200e 100644
 --- a/mediapipe/tasks/BUILD
 +++ b/mediapipe/tasks/BUILD
 @@ -17,6 +17,7 @@ package(default_visibility = ["//visibility:public"])
@@ -42,8 +42,31 @@ index 242a88c..304eb75 100644
          "//mediapipe/python/...",
          "//mediapipe/tasks/...",
      ],
+diff --git a/mediapipe/tasks/python/test/test_utils.py b/mediapipe/tasks/python/test/test_utils.py
+index 23ee4abe..cace1fd0 100644
+--- a/mediapipe/tasks/python/test/test_utils.py
++++ b/mediapipe/tasks/python/test/test_utils.py
+@@ -44,10 +44,17 @@ def test_srcdir():
+ 
+ def get_test_data_path(file_or_dirname_path: str) -> str:
+   """Returns full test data path."""
++  if os.path.exists(file_or_dirname_path):
++    return os.path.abspath(file_or_dirname_path)
++
+   for (directory, subdirs, files) in os.walk(test_srcdir()):
+     for f in subdirs + files:
+       path = os.path.join(directory, f)
+-      if path.endswith(file_or_dirname_path):
++
++      if os.path.exists(os.path.join(path, file_or_dirname_path)):
++        return os.path.abspath(os.path.join(path, file_or_dirname_path))
++
++      if path.endswith(os.path.normpath(file_or_dirname_path)):
+         return path
+   raise ValueError("No %s in test directory: %s." %
+                    (file_or_dirname_path, test_srcdir()))
 diff --git a/third_party/opencv_windows.BUILD b/third_party/opencv_windows.BUILD
-index ecf788e..71c52b0 100644
+index ecf788ee..ccf94a85 100644
 --- a/third_party/opencv_windows.BUILD
 +++ b/third_party/opencv_windows.BUILD
 @@ -5,7 +5,7 @@ licenses(["notice"])  # BSD license

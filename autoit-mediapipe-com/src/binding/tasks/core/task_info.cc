@@ -18,26 +18,26 @@ namespace mediapipe {
 			namespace core {
 				namespace task_info {
 					std::shared_ptr<CalculatorGraphConfig> TaskInfo::generate_graph_config(bool enable_flow_limiting) {
-						AUTOIT_ASSERT_THROW(!task_graph.empty() && !task_options, "Please provide both `task_graph` and `task_options`.");
+						AUTOIT_ASSERT_THROW(!task_graph.empty() && task_options, "Please provide both `task_graph` and `task_options`.");
 						AUTOIT_ASSERT_THROW(!input_streams.empty() && !output_streams.empty(), "Both `input_streams` and `output_streams` must be non-empty.");
 
 						CalculatorOptions task_subgraph_options;
 						const auto* ext = task_options->GetDescriptor()->FindExtensionByName("ext");
-						auto message = task_subgraph_options.GetReflection()->MutableMessage(&task_subgraph_options, ext);
+						auto* message = task_subgraph_options.GetReflection()->MutableMessage(&task_subgraph_options, ext);
 						message->CopyFrom(*task_options);
 
 						auto config = std::make_shared<CalculatorGraphConfig>();
 
 						auto* node = config->add_node();
 						node->set_calculator(task_graph);
-						std::copy(output_streams.begin(), output_streams.end(), node->mutable_output_stream()->begin());
+						node->mutable_output_stream()->Add(output_streams.begin(), output_streams.end());
 						node->mutable_options()->CopyFrom(task_subgraph_options);
 
-						std::copy(input_streams.begin(), input_streams.end(), config->mutable_input_stream()->begin());
-						std::copy(output_streams.begin(), output_streams.end(), config->mutable_output_stream()->begin());
+						config->mutable_input_stream()->Add(input_streams.begin(), input_streams.end());
+						config->mutable_output_stream()->Add(output_streams.begin(), output_streams.end());
 
 						if (!enable_flow_limiting) {
-							std::copy(input_streams.begin(), input_streams.end(), node->mutable_input_stream()->begin());
+							node->mutable_input_stream()->Add(input_streams.begin(), input_streams.end());
 							return config;
 						}
 

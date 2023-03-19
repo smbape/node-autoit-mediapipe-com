@@ -12,8 +12,8 @@ namespace mediapipe {
 							auto pb2_obj = std::make_shared<proto::ClassifierOptions>();
 
 							if (score_threshold) pb2_obj->set_score_threshold(*score_threshold);
-							std::copy(category_allowlist.begin(), category_allowlist.end(), pb2_obj->mutable_category_allowlist()->begin());
-							std::copy(category_denylist.begin(), category_denylist.end(), pb2_obj->mutable_category_denylist()->begin());
+							pb2_obj->mutable_category_allowlist()->Add(category_allowlist.begin(), category_allowlist.end());
+							pb2_obj->mutable_category_denylist()->Add(category_denylist.begin(), category_denylist.end());
 							if (display_names_locale) pb2_obj->set_display_names_locale(*display_names_locale);
 							if (max_results) pb2_obj->set_max_results(*max_results);
 

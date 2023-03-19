@@ -82,7 +82,7 @@ exports.ALIASES = new Map([
     ["tasks_components_processors_proto_ClassifierOptions", "mediapipe::tasks::components::processors::proto::ClassifierOptions"],
     ["mediapipe::autoit::PacketCallback", "mediapipe::autoit::PacketRawCallback"],
 
-    ["components_containers_audio_data_AudioData", "mediapipe::tasks::autoit::components::containers::AudioData"],
+    ["components_containers_audio_data_AudioData", "mediapipe::tasks::autoit::components::containers::audio_data::AudioData"],
     ["bounding_box_BoundingBox", "mediapipe::tasks::autoit::components::containers::bounding_box::BoundingBox"],
     ["category_Category", "mediapipe::tasks::autoit::components::containers::category::Category"],
     ["detections_Detection", "mediapipe::tasks::autoit::components::containers::detections::Detection"],
@@ -96,14 +96,14 @@ exports.ALIASES = new Map([
 
     ["classifier_options_ClassifierOptions", "mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions"],
 
-    ["components_containers_embedding_result_Embedding", "mediapipe::tasks::components::containers::embedding_result::Embedding"],
+    ["components_containers_embedding_result_Embedding", "mediapipe::tasks::autoit::components::containers::embedding_result::Embedding"],
     ["tasks_components_containers_proto_ClassificationResult", "mediapipe::tasks::components::containers::proto::ClassificationResult"],
     ["tasks_components_containers_proto_Classifications", "mediapipe::tasks::components::containers::proto::Classifications"],
     ["tasks_components_containers_proto_Embedding", "mediapipe::tasks::components::containers::proto::Embedding"],
     ["tasks_components_containers_proto_EmbeddingResult", "mediapipe::tasks::components::containers::proto::EmbeddingResult"],
 
-    ["AudioEmbedderResult", "mediapipe::tasks::components::containers::embedding_result::EmbeddingResult"],
-    ["TextEmbedderResult", "mediapipe::tasks::components::containers::embedding_result::EmbeddingResult"],
+    ["AudioEmbedderResult", "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult"],
+    ["TextEmbedderResult", "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult"],
 
     ["tasks_containers_proto_LandmarksDetectionResult", "mediapipe::tasks::containers::proto::LandmarksDetectionResult"],
 
@@ -126,9 +126,9 @@ exports.ALIASES = new Map([
     ["ImageClassifierResultCallback", "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback"],
     ["ImageEmbedderResultCallback", "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback"],
 
-    ["AudioClassifierResult", "mediapipe::tasks::components::containers::classification_result::ClassificationResult"],
-    ["TextClassifierResult", "mediapipe::tasks::components::containers::classification_result::ClassificationResult"],
-    ["ImageClassifierResult", "mediapipe::tasks::components::containers::classification_result::ClassificationResult"],
+    ["AudioClassifierResult", "mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult"],
+    ["TextClassifierResult", "mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult"],
+    ["ImageClassifierResult", "mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult"],
 
     ["tasks_vision_image_classifier_proto_ImageClassifierGraphOptions", "mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions"],
     ["tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions", "mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions"],

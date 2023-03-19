@@ -487,6 +487,11 @@
 - [mediapipe::autoit::audio::audio\_classifier](#mediapipeautoitaudioaudio%5C_classifier)
   - [audio\_classifier.AudioClassifierOptions](#audio%5C_classifieraudioclassifieroptions-1)
   - [audio\_classifier.AudioClassifier](#audio%5C_classifieraudioclassifier-1)
+- [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifier)
+  - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::classify](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifierclassify)
+  - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::classify\_async](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifierclassify%5C_async)
+  - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::create\_from\_model\_path](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifiercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::create\_from\_options](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifiercreate%5C_from%5C_options)
 - [mediapipe::tasks::autoit::audio::audio\_embedder](#mediapipetasksautoitaudioaudio%5C_embedder)
   - [audio\_embedder.AudioEmbedderOptions](#audio%5C_embedderaudioembedderoptions)
   - [audio\_embedder.AudioEmbedder](#audio%5C_embedderaudioembedder)
@@ -501,6 +506,12 @@
 - [mediapipe::autoit::audio::audio\_embedder](#mediapipeautoitaudioaudio%5C_embedder)
   - [audio\_embedder.AudioEmbedderOptions](#audio%5C_embedderaudioembedderoptions-1)
   - [audio\_embedder.AudioEmbedder](#audio%5C_embedderaudioembedder-1)
+- [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedder)
+  - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::cosine\_similarity](#mediapipetasksautoitaudioaudio%5C_embedderaudioembeddercosine%5C_similarity)
+  - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::create\_from\_model\_path](#mediapipetasksautoitaudioaudio%5C_embedderaudioembeddercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::create\_from\_options](#mediapipetasksautoitaudioaudio%5C_embedderaudioembeddercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::embed](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedderembed)
+  - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::embed\_async](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedderembed%5C_async)
 - [mediapipe::tasks::autoit::audio::core](#mediapipetasksautoitaudiocore)
   - [core.audio\_task\_running\_mode](#coreaudio%5C_task%5C_running%5C_mode)
   - [core.base\_audio\_task\_api](#corebase%5C_audio%5C_task%5C_api)
@@ -796,6 +807,10 @@
 - [mediapipe::autoit::text::text\_classifier](#mediapipeautoittexttext%5C_classifier)
   - [text\_classifier.TextClassifierOptions](#text%5C_classifiertextclassifieroptions-1)
   - [text\_classifier.TextClassifier](#text%5C_classifiertextclassifier-1)
+- [mediapipe::tasks::autoit::text::text\_classifier::TextClassifier](#mediapipetasksautoittexttext%5C_classifiertextclassifier)
+  - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifier::classify](#mediapipetasksautoittexttext%5C_classifiertextclassifierclassify)
+  - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifier::create\_from\_model\_path](#mediapipetasksautoittexttext%5C_classifiertextclassifiercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifier::create\_from\_options](#mediapipetasksautoittexttext%5C_classifiertextclassifiercreate%5C_from%5C_options)
 - [mediapipe::tasks::autoit::text::text\_embedder](#mediapipetasksautoittexttext%5C_embedder)
   - [text\_embedder.TextEmbedderOptions](#text%5C_embeddertextembedderoptions)
   - [text\_embedder.TextEmbedder](#text%5C_embeddertextembedder)
@@ -808,6 +823,11 @@
 - [mediapipe::autoit::text::text\_embedder](#mediapipeautoittexttext%5C_embedder)
   - [text\_embedder.TextEmbedderOptions](#text%5C_embeddertextembedderoptions-1)
   - [text\_embedder.TextEmbedder](#text%5C_embeddertextembedder-1)
+- [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder](#mediapipetasksautoittexttext%5C_embeddertextembedder)
+  - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::cosine\_similarity](#mediapipetasksautoittexttext%5C_embeddertextembeddercosine%5C_similarity)
+  - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::create\_from\_model\_path](#mediapipetasksautoittexttext%5C_embeddertextembeddercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::create\_from\_options](#mediapipetasksautoittexttext%5C_embeddertextembeddercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::embed](#mediapipetasksautoittexttext%5C_embeddertextembedderembed)
 - [mediapipe::tasks::autoit::vision](#mediapipetasksautoitvision)
   - [vision.core](#visioncore)
   - [vision.gesture\_recognizer](#visiongesture%5C_recognizer)
@@ -902,6 +922,12 @@
   - [GestureRecognizerOptions.result\_callback](#gesturerecognizeroptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions::get\_create](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizeroptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions::to\_pb2](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizeroptionsto%5C_pb2)
+- [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizer)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::create\_from\_model\_path](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::create\_from\_options](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerrecognize)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize\_async](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerrecognize%5C_async)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize\_for\_video](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerrecognize%5C_for%5C_video)
 - [mediapipe::tasks::autoit::vision::hand\_landmarker](#mediapipetasksautoitvisionhand%5C_landmarker)
   - [hand\_landmarker.HandLandmark](#hand%5C_landmarkerhandlandmark)
   - [hand\_landmarker.HandLandmarkerResult](#hand%5C_landmarkerhandlandmarkerresult)
@@ -966,6 +992,12 @@
 - [mediapipe::autoit::vision::image\_classifier](#mediapipeautoitvisionimage%5C_classifier)
   - [image\_classifier.ImageClassifierOptions](#image%5C_classifierimageclassifieroptions-1)
   - [image\_classifier.ImageClassifier](#image%5C_classifierimageclassifier-1)
+- [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier](#mediapipetasksautoitvisionimage%5C_classifierimageclassifier)
+  - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::classify](#mediapipetasksautoitvisionimage%5C_classifierimageclassifierclassify)
+  - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::classify\_async](#mediapipetasksautoitvisionimage%5C_classifierimageclassifierclassify%5C_async)
+  - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::classify\_for\_video](#mediapipetasksautoitvisionimage%5C_classifierimageclassifierclassify%5C_for%5C_video)
+  - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::create\_from\_model\_path](#mediapipetasksautoitvisionimage%5C_classifierimageclassifiercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::create\_from\_options](#mediapipetasksautoitvisionimage%5C_classifierimageclassifiercreate%5C_from%5C_options)
 - [mediapipe::tasks::autoit::vision::image\_embedder](#mediapipetasksautoitvisionimage%5C_embedder)
   - [image\_embedder.ImageEmbedderOptions](#image%5C_embedderimageembedderoptions)
   - [image\_embedder.ImageEmbedder](#image%5C_embedderimageembedder)
@@ -980,6 +1012,13 @@
 - [mediapipe::autoit::vision::image\_embedder](#mediapipeautoitvisionimage%5C_embedder)
   - [image\_embedder.ImageEmbedderOptions](#image%5C_embedderimageembedderoptions-1)
   - [image\_embedder.ImageEmbedder](#image%5C_embedderimageembedder-1)
+- [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder](#mediapipetasksautoitvisionimage%5C_embedderimageembedder)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::cosine\_similarity](#mediapipetasksautoitvisionimage%5C_embedderimageembeddercosine%5C_similarity)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::create\_from\_model\_path](#mediapipetasksautoitvisionimage%5C_embedderimageembeddercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::create\_from\_options](#mediapipetasksautoitvisionimage%5C_embedderimageembeddercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed](#mediapipetasksautoitvisionimage%5C_embedderimageembedderembed)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed\_async](#mediapipetasksautoitvisionimage%5C_embedderimageembedderembed%5C_async)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed\_for\_video](#mediapipetasksautoitvisionimage%5C_embedderimageembedderembed%5C_for%5C_video)
 - [mediapipe::tasks::autoit::vision::image\_segmenter](#mediapipetasksautoitvisionimage%5C_segmenter)
   - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions)
   - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter)
@@ -994,6 +1033,12 @@
 - [mediapipe::autoit::vision::image\_segmenter](#mediapipeautoitvisionimage%5C_segmenter)
   - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions-1)
   - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter-1)
+- [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter)
+  - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::create\_from\_model\_path](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::create\_from\_options](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment)
+  - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_async](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment%5C_async)
+  - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_for\_video](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment%5C_for%5C_video)
 - [mediapipe::tasks::autoit::vision::object\_detector](#mediapipetasksautoitvisionobject%5C_detector)
   - [object\_detector.ObjectDetectorOptions](#object%5C_detectorobjectdetectoroptions)
   - [object\_detector.ObjectDetector](#object%5C_detectorobjectdetector)
@@ -1011,6 +1056,12 @@
 - [mediapipe::autoit::vision::object\_detector](#mediapipeautoitvisionobject%5C_detector)
   - [object\_detector.ObjectDetectorOptions](#object%5C_detectorobjectdetectoroptions-1)
   - [object\_detector.ObjectDetector](#object%5C_detectorobjectdetector-1)
+- [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector](#mediapipetasksautoitvisionobject%5C_detectorobjectdetector)
+  - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::create\_from\_model\_path](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectorcreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::create\_from\_options](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectorcreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectordetect)
+  - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect\_async](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectordetect%5C_async)
+  - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect\_for\_video](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectordetect%5C_for%5C_video)
 - [cv](#cv)
   - [cv::createMatFromBitmap](#cvcreatematfrombitmap)
   - [cv::haveImageReader](#cvhaveimagereader)
@@ -1035,9 +1086,17 @@
 - [mediapipe::CalculatorOptions](#mediapipecalculatoroptions)
   - [CalculatorOptions.merge\_fields](#calculatoroptionsmerge%5C_fields)
   - [mediapipe::CalculatorOptions::get\_create](#mediapipecalculatoroptionsget%5C_create)
+  - [mediapipe::CalculatorOptions::ByteSizeLong](#mediapipecalculatoroptionsbytesizelong)
+  - [mediapipe::CalculatorOptions::CheckInitialized](#mediapipecalculatoroptionscheckinitialized)
   - [mediapipe::CalculatorOptions::Clear](#mediapipecalculatoroptionsclear)
   - [mediapipe::CalculatorOptions::ClearField](#mediapipecalculatoroptionsclearfield)
   - [mediapipe::CalculatorOptions::CopyFrom](#mediapipecalculatoroptionscopyfrom)
+  - [mediapipe::CalculatorOptions::DiscardUnknownFields](#mediapipecalculatoroptionsdiscardunknownfields)
+  - [mediapipe::CalculatorOptions::FindInitializationErrors](#mediapipecalculatoroptionsfindinitializationerrors)
+  - [mediapipe::CalculatorOptions::IsInitialized](#mediapipecalculatoroptionsisinitialized)
+  - [mediapipe::CalculatorOptions::SerializeAsString](#mediapipecalculatoroptionsserializeasstring)
+  - [mediapipe::CalculatorOptions::SerializeToString](#mediapipecalculatoroptionsserializetostring)
+  - [mediapipe::CalculatorOptions::SpaceUsedLong](#mediapipecalculatoroptionsspaceusedlong)
   - [mediapipe::CalculatorOptions::\_\_str\_\_](#mediapipecalculatoroptions%5C_%5C_str%5C_%5C_)
   - [mediapipe::CalculatorOptions::get\_Extensions](#mediapipecalculatoroptionsget%5C_extensions)
 - [mediapipe::framework::calculator\_options\_pb2](#mediapipeframeworkcalculator%5C_options%5C_pb2)
@@ -1046,27 +1105,51 @@
   - [Any.type\_url](#anytype%5C_url)
   - [Any.value](#anyvalue)
   - [google::protobuf::Any::get\_create](#googleprotobufanyget%5C_create)
+  - [google::protobuf::Any::ByteSizeLong](#googleprotobufanybytesizelong)
+  - [google::protobuf::Any::CheckInitialized](#googleprotobufanycheckinitialized)
   - [google::protobuf::Any::Clear](#googleprotobufanyclear)
   - [google::protobuf::Any::ClearField](#googleprotobufanyclearfield)
   - [google::protobuf::Any::CopyFrom](#googleprotobufanycopyfrom)
+  - [google::protobuf::Any::DiscardUnknownFields](#googleprotobufanydiscardunknownfields)
+  - [google::protobuf::Any::FindInitializationErrors](#googleprotobufanyfindinitializationerrors)
+  - [google::protobuf::Any::IsInitialized](#googleprotobufanyisinitialized)
   - [google::protobuf::Any::Pack](#googleprotobufanypack)
+  - [google::protobuf::Any::SerializeAsString](#googleprotobufanyserializeasstring)
+  - [google::protobuf::Any::SerializeToString](#googleprotobufanyserializetostring)
+  - [google::protobuf::Any::SpaceUsedLong](#googleprotobufanyspaceusedlong)
   - [google::protobuf::Any::Unpack](#googleprotobufanyunpack)
   - [google::protobuf::Any::\_\_str\_\_](#googleprotobufany%5C_%5C_str%5C_%5C_)
 - [google::protobuf::any\_pb2](#googleprotobufany%5C_pb2)
   - [any\_pb2.Any](#any%5C_pb2any)
 - [mediapipe::MediaPipeOptions](#mediapipemediapipeoptions)
   - [mediapipe::MediaPipeOptions::get\_create](#mediapipemediapipeoptionsget%5C_create)
+  - [mediapipe::MediaPipeOptions::ByteSizeLong](#mediapipemediapipeoptionsbytesizelong)
+  - [mediapipe::MediaPipeOptions::CheckInitialized](#mediapipemediapipeoptionscheckinitialized)
   - [mediapipe::MediaPipeOptions::Clear](#mediapipemediapipeoptionsclear)
   - [mediapipe::MediaPipeOptions::ClearField](#mediapipemediapipeoptionsclearfield)
   - [mediapipe::MediaPipeOptions::CopyFrom](#mediapipemediapipeoptionscopyfrom)
+  - [mediapipe::MediaPipeOptions::DiscardUnknownFields](#mediapipemediapipeoptionsdiscardunknownfields)
+  - [mediapipe::MediaPipeOptions::FindInitializationErrors](#mediapipemediapipeoptionsfindinitializationerrors)
+  - [mediapipe::MediaPipeOptions::IsInitialized](#mediapipemediapipeoptionsisinitialized)
+  - [mediapipe::MediaPipeOptions::SerializeAsString](#mediapipemediapipeoptionsserializeasstring)
+  - [mediapipe::MediaPipeOptions::SerializeToString](#mediapipemediapipeoptionsserializetostring)
+  - [mediapipe::MediaPipeOptions::SpaceUsedLong](#mediapipemediapipeoptionsspaceusedlong)
   - [mediapipe::MediaPipeOptions::\_\_str\_\_](#mediapipemediapipeoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::framework::mediapipe\_options\_pb2](#mediapipeframeworkmediapipe%5C_options%5C_pb2)
   - [mediapipe\_options\_pb2.MediaPipeOptions](#mediapipe%5C_options%5C_pb2mediapipeoptions)
 - [mediapipe::PacketFactoryOptions](#mediapipepacketfactoryoptions)
   - [mediapipe::PacketFactoryOptions::get\_create](#mediapipepacketfactoryoptionsget%5C_create)
+  - [mediapipe::PacketFactoryOptions::ByteSizeLong](#mediapipepacketfactoryoptionsbytesizelong)
+  - [mediapipe::PacketFactoryOptions::CheckInitialized](#mediapipepacketfactoryoptionscheckinitialized)
   - [mediapipe::PacketFactoryOptions::Clear](#mediapipepacketfactoryoptionsclear)
   - [mediapipe::PacketFactoryOptions::ClearField](#mediapipepacketfactoryoptionsclearfield)
   - [mediapipe::PacketFactoryOptions::CopyFrom](#mediapipepacketfactoryoptionscopyfrom)
+  - [mediapipe::PacketFactoryOptions::DiscardUnknownFields](#mediapipepacketfactoryoptionsdiscardunknownfields)
+  - [mediapipe::PacketFactoryOptions::FindInitializationErrors](#mediapipepacketfactoryoptionsfindinitializationerrors)
+  - [mediapipe::PacketFactoryOptions::IsInitialized](#mediapipepacketfactoryoptionsisinitialized)
+  - [mediapipe::PacketFactoryOptions::SerializeAsString](#mediapipepacketfactoryoptionsserializeasstring)
+  - [mediapipe::PacketFactoryOptions::SerializeToString](#mediapipepacketfactoryoptionsserializetostring)
+  - [mediapipe::PacketFactoryOptions::SpaceUsedLong](#mediapipepacketfactoryoptionsspaceusedlong)
   - [mediapipe::PacketFactoryOptions::\_\_str\_\_](#mediapipepacketfactoryoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::PacketFactoryConfig](#mediapipepacketfactoryconfig)
   - [PacketFactoryConfig.packet\_factory](#packetfactoryconfigpacket%5C_factory)
@@ -1074,16 +1157,32 @@
   - [PacketFactoryConfig.external\_output](#packetfactoryconfigexternal%5C_output)
   - [PacketFactoryConfig.options](#packetfactoryconfigoptions)
   - [mediapipe::PacketFactoryConfig::get\_create](#mediapipepacketfactoryconfigget%5C_create)
+  - [mediapipe::PacketFactoryConfig::ByteSizeLong](#mediapipepacketfactoryconfigbytesizelong)
+  - [mediapipe::PacketFactoryConfig::CheckInitialized](#mediapipepacketfactoryconfigcheckinitialized)
   - [mediapipe::PacketFactoryConfig::Clear](#mediapipepacketfactoryconfigclear)
   - [mediapipe::PacketFactoryConfig::ClearField](#mediapipepacketfactoryconfigclearfield)
   - [mediapipe::PacketFactoryConfig::CopyFrom](#mediapipepacketfactoryconfigcopyfrom)
+  - [mediapipe::PacketFactoryConfig::DiscardUnknownFields](#mediapipepacketfactoryconfigdiscardunknownfields)
+  - [mediapipe::PacketFactoryConfig::FindInitializationErrors](#mediapipepacketfactoryconfigfindinitializationerrors)
+  - [mediapipe::PacketFactoryConfig::IsInitialized](#mediapipepacketfactoryconfigisinitialized)
+  - [mediapipe::PacketFactoryConfig::SerializeAsString](#mediapipepacketfactoryconfigserializeasstring)
+  - [mediapipe::PacketFactoryConfig::SerializeToString](#mediapipepacketfactoryconfigserializetostring)
+  - [mediapipe::PacketFactoryConfig::SpaceUsedLong](#mediapipepacketfactoryconfigspaceusedlong)
   - [mediapipe::PacketFactoryConfig::\_\_str\_\_](#mediapipepacketfactoryconfig%5C_%5C_str%5C_%5C_)
 - [mediapipe::PacketManagerConfig](#mediapipepacketmanagerconfig)
   - [PacketManagerConfig.packet](#packetmanagerconfigpacket)
   - [mediapipe::PacketManagerConfig::get\_create](#mediapipepacketmanagerconfigget%5C_create)
+  - [mediapipe::PacketManagerConfig::ByteSizeLong](#mediapipepacketmanagerconfigbytesizelong)
+  - [mediapipe::PacketManagerConfig::CheckInitialized](#mediapipepacketmanagerconfigcheckinitialized)
   - [mediapipe::PacketManagerConfig::Clear](#mediapipepacketmanagerconfigclear)
   - [mediapipe::PacketManagerConfig::ClearField](#mediapipepacketmanagerconfigclearfield)
   - [mediapipe::PacketManagerConfig::CopyFrom](#mediapipepacketmanagerconfigcopyfrom)
+  - [mediapipe::PacketManagerConfig::DiscardUnknownFields](#mediapipepacketmanagerconfigdiscardunknownfields)
+  - [mediapipe::PacketManagerConfig::FindInitializationErrors](#mediapipepacketmanagerconfigfindinitializationerrors)
+  - [mediapipe::PacketManagerConfig::IsInitialized](#mediapipepacketmanagerconfigisinitialized)
+  - [mediapipe::PacketManagerConfig::SerializeAsString](#mediapipepacketmanagerconfigserializeasstring)
+  - [mediapipe::PacketManagerConfig::SerializeToString](#mediapipepacketmanagerconfigserializetostring)
+  - [mediapipe::PacketManagerConfig::SpaceUsedLong](#mediapipepacketmanagerconfigspaceusedlong)
   - [mediapipe::PacketManagerConfig::\_\_str\_\_](#mediapipepacketmanagerconfig%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_PacketFactoryConfig](#googleprotobufrepeated%5C_mediapipe%5C_packetfactoryconfig)
   - [Repeated\_mediapipe\_PacketFactoryConfig.Count](#repeated%5C_mediapipe%5C_packetfactoryconfigcount)
@@ -1114,9 +1213,17 @@
 - [mediapipe::PacketGeneratorOptions](#mediapipepacketgeneratoroptions)
   - [PacketGeneratorOptions.merge\_fields](#packetgeneratoroptionsmerge%5C_fields)
   - [mediapipe::PacketGeneratorOptions::get\_create](#mediapipepacketgeneratoroptionsget%5C_create)
+  - [mediapipe::PacketGeneratorOptions::ByteSizeLong](#mediapipepacketgeneratoroptionsbytesizelong)
+  - [mediapipe::PacketGeneratorOptions::CheckInitialized](#mediapipepacketgeneratoroptionscheckinitialized)
   - [mediapipe::PacketGeneratorOptions::Clear](#mediapipepacketgeneratoroptionsclear)
   - [mediapipe::PacketGeneratorOptions::ClearField](#mediapipepacketgeneratoroptionsclearfield)
   - [mediapipe::PacketGeneratorOptions::CopyFrom](#mediapipepacketgeneratoroptionscopyfrom)
+  - [mediapipe::PacketGeneratorOptions::DiscardUnknownFields](#mediapipepacketgeneratoroptionsdiscardunknownfields)
+  - [mediapipe::PacketGeneratorOptions::FindInitializationErrors](#mediapipepacketgeneratoroptionsfindinitializationerrors)
+  - [mediapipe::PacketGeneratorOptions::IsInitialized](#mediapipepacketgeneratoroptionsisinitialized)
+  - [mediapipe::PacketGeneratorOptions::SerializeAsString](#mediapipepacketgeneratoroptionsserializeasstring)
+  - [mediapipe::PacketGeneratorOptions::SerializeToString](#mediapipepacketgeneratoroptionsserializetostring)
+  - [mediapipe::PacketGeneratorOptions::SpaceUsedLong](#mediapipepacketgeneratoroptionsspaceusedlong)
   - [mediapipe::PacketGeneratorOptions::\_\_str\_\_](#mediapipepacketgeneratoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::PacketGeneratorConfig](#mediapipepacketgeneratorconfig)
   - [PacketGeneratorConfig.packet\_generator](#packetgeneratorconfigpacket%5C_generator)
@@ -1126,9 +1233,17 @@
   - [PacketGeneratorConfig.external\_output](#packetgeneratorconfigexternal%5C_output)
   - [PacketGeneratorConfig.options](#packetgeneratorconfigoptions)
   - [mediapipe::PacketGeneratorConfig::get\_create](#mediapipepacketgeneratorconfigget%5C_create)
+  - [mediapipe::PacketGeneratorConfig::ByteSizeLong](#mediapipepacketgeneratorconfigbytesizelong)
+  - [mediapipe::PacketGeneratorConfig::CheckInitialized](#mediapipepacketgeneratorconfigcheckinitialized)
   - [mediapipe::PacketGeneratorConfig::Clear](#mediapipepacketgeneratorconfigclear)
   - [mediapipe::PacketGeneratorConfig::ClearField](#mediapipepacketgeneratorconfigclearfield)
   - [mediapipe::PacketGeneratorConfig::CopyFrom](#mediapipepacketgeneratorconfigcopyfrom)
+  - [mediapipe::PacketGeneratorConfig::DiscardUnknownFields](#mediapipepacketgeneratorconfigdiscardunknownfields)
+  - [mediapipe::PacketGeneratorConfig::FindInitializationErrors](#mediapipepacketgeneratorconfigfindinitializationerrors)
+  - [mediapipe::PacketGeneratorConfig::IsInitialized](#mediapipepacketgeneratorconfigisinitialized)
+  - [mediapipe::PacketGeneratorConfig::SerializeAsString](#mediapipepacketgeneratorconfigserializeasstring)
+  - [mediapipe::PacketGeneratorConfig::SerializeToString](#mediapipepacketgeneratorconfigserializetostring)
+  - [mediapipe::PacketGeneratorConfig::SpaceUsedLong](#mediapipepacketgeneratorconfigspaceusedlong)
   - [mediapipe::PacketGeneratorConfig::\_\_str\_\_](#mediapipepacketgeneratorconfig%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_std\_string](#googleprotobufrepeated%5C_std%5C_string)
   - [Repeated\_std\_string.Count](#repeated%5C_std%5C_stringcount)
@@ -1161,9 +1276,17 @@
   - [StatusHandlerConfig.external\_input](#statushandlerconfigexternal%5C_input)
   - [StatusHandlerConfig.options](#statushandlerconfigoptions)
   - [mediapipe::StatusHandlerConfig::get\_create](#mediapipestatushandlerconfigget%5C_create)
+  - [mediapipe::StatusHandlerConfig::ByteSizeLong](#mediapipestatushandlerconfigbytesizelong)
+  - [mediapipe::StatusHandlerConfig::CheckInitialized](#mediapipestatushandlerconfigcheckinitialized)
   - [mediapipe::StatusHandlerConfig::Clear](#mediapipestatushandlerconfigclear)
   - [mediapipe::StatusHandlerConfig::ClearField](#mediapipestatushandlerconfigclearfield)
   - [mediapipe::StatusHandlerConfig::CopyFrom](#mediapipestatushandlerconfigcopyfrom)
+  - [mediapipe::StatusHandlerConfig::DiscardUnknownFields](#mediapipestatushandlerconfigdiscardunknownfields)
+  - [mediapipe::StatusHandlerConfig::FindInitializationErrors](#mediapipestatushandlerconfigfindinitializationerrors)
+  - [mediapipe::StatusHandlerConfig::IsInitialized](#mediapipestatushandlerconfigisinitialized)
+  - [mediapipe::StatusHandlerConfig::SerializeAsString](#mediapipestatushandlerconfigserializeasstring)
+  - [mediapipe::StatusHandlerConfig::SerializeToString](#mediapipestatushandlerconfigserializetostring)
+  - [mediapipe::StatusHandlerConfig::SpaceUsedLong](#mediapipestatushandlerconfigspaceusedlong)
   - [mediapipe::StatusHandlerConfig::\_\_str\_\_](#mediapipestatushandlerconfig%5C_%5C_str%5C_%5C_)
 - [mediapipe::framework::status\_handler\_pb2](#mediapipeframeworkstatus%5C_handler%5C_pb2)
   - [status\_handler\_pb2.StatusHandlerConfig](#status%5C_handler%5C_pb2statushandlerconfig)
@@ -1171,18 +1294,34 @@
   - [InputStreamHandlerConfig.input\_stream\_handler](#inputstreamhandlerconfiginput%5C_stream%5C_handler)
   - [InputStreamHandlerConfig.options](#inputstreamhandlerconfigoptions)
   - [mediapipe::InputStreamHandlerConfig::get\_create](#mediapipeinputstreamhandlerconfigget%5C_create)
+  - [mediapipe::InputStreamHandlerConfig::ByteSizeLong](#mediapipeinputstreamhandlerconfigbytesizelong)
+  - [mediapipe::InputStreamHandlerConfig::CheckInitialized](#mediapipeinputstreamhandlerconfigcheckinitialized)
   - [mediapipe::InputStreamHandlerConfig::Clear](#mediapipeinputstreamhandlerconfigclear)
   - [mediapipe::InputStreamHandlerConfig::ClearField](#mediapipeinputstreamhandlerconfigclearfield)
   - [mediapipe::InputStreamHandlerConfig::CopyFrom](#mediapipeinputstreamhandlerconfigcopyfrom)
+  - [mediapipe::InputStreamHandlerConfig::DiscardUnknownFields](#mediapipeinputstreamhandlerconfigdiscardunknownfields)
+  - [mediapipe::InputStreamHandlerConfig::FindInitializationErrors](#mediapipeinputstreamhandlerconfigfindinitializationerrors)
+  - [mediapipe::InputStreamHandlerConfig::IsInitialized](#mediapipeinputstreamhandlerconfigisinitialized)
+  - [mediapipe::InputStreamHandlerConfig::SerializeAsString](#mediapipeinputstreamhandlerconfigserializeasstring)
+  - [mediapipe::InputStreamHandlerConfig::SerializeToString](#mediapipeinputstreamhandlerconfigserializetostring)
+  - [mediapipe::InputStreamHandlerConfig::SpaceUsedLong](#mediapipeinputstreamhandlerconfigspaceusedlong)
   - [mediapipe::InputStreamHandlerConfig::\_\_str\_\_](#mediapipeinputstreamhandlerconfig%5C_%5C_str%5C_%5C_)
 - [mediapipe::OutputStreamHandlerConfig](#mediapipeoutputstreamhandlerconfig)
   - [OutputStreamHandlerConfig.output\_stream\_handler](#outputstreamhandlerconfigoutput%5C_stream%5C_handler)
   - [OutputStreamHandlerConfig.input\_side\_packet](#outputstreamhandlerconfiginput%5C_side%5C_packet)
   - [OutputStreamHandlerConfig.options](#outputstreamhandlerconfigoptions)
   - [mediapipe::OutputStreamHandlerConfig::get\_create](#mediapipeoutputstreamhandlerconfigget%5C_create)
+  - [mediapipe::OutputStreamHandlerConfig::ByteSizeLong](#mediapipeoutputstreamhandlerconfigbytesizelong)
+  - [mediapipe::OutputStreamHandlerConfig::CheckInitialized](#mediapipeoutputstreamhandlerconfigcheckinitialized)
   - [mediapipe::OutputStreamHandlerConfig::Clear](#mediapipeoutputstreamhandlerconfigclear)
   - [mediapipe::OutputStreamHandlerConfig::ClearField](#mediapipeoutputstreamhandlerconfigclearfield)
   - [mediapipe::OutputStreamHandlerConfig::CopyFrom](#mediapipeoutputstreamhandlerconfigcopyfrom)
+  - [mediapipe::OutputStreamHandlerConfig::DiscardUnknownFields](#mediapipeoutputstreamhandlerconfigdiscardunknownfields)
+  - [mediapipe::OutputStreamHandlerConfig::FindInitializationErrors](#mediapipeoutputstreamhandlerconfigfindinitializationerrors)
+  - [mediapipe::OutputStreamHandlerConfig::IsInitialized](#mediapipeoutputstreamhandlerconfigisinitialized)
+  - [mediapipe::OutputStreamHandlerConfig::SerializeAsString](#mediapipeoutputstreamhandlerconfigserializeasstring)
+  - [mediapipe::OutputStreamHandlerConfig::SerializeToString](#mediapipeoutputstreamhandlerconfigserializetostring)
+  - [mediapipe::OutputStreamHandlerConfig::SpaceUsedLong](#mediapipeoutputstreamhandlerconfigspaceusedlong)
   - [mediapipe::OutputStreamHandlerConfig::\_\_str\_\_](#mediapipeoutputstreamhandlerconfig%5C_%5C_str%5C_%5C_)
 - [mediapipe::framework::stream\_handler\_pb2](#mediapipeframeworkstream%5C_handler%5C_pb2)
   - [stream\_handler\_pb2.InputStreamHandlerConfig](#stream%5C_handler%5C_pb2inputstreamhandlerconfig)
@@ -1192,9 +1331,17 @@
   - [ExecutorConfig.type](#executorconfigtype)
   - [ExecutorConfig.options](#executorconfigoptions)
   - [mediapipe::ExecutorConfig::get\_create](#mediapipeexecutorconfigget%5C_create)
+  - [mediapipe::ExecutorConfig::ByteSizeLong](#mediapipeexecutorconfigbytesizelong)
+  - [mediapipe::ExecutorConfig::CheckInitialized](#mediapipeexecutorconfigcheckinitialized)
   - [mediapipe::ExecutorConfig::Clear](#mediapipeexecutorconfigclear)
   - [mediapipe::ExecutorConfig::ClearField](#mediapipeexecutorconfigclearfield)
   - [mediapipe::ExecutorConfig::CopyFrom](#mediapipeexecutorconfigcopyfrom)
+  - [mediapipe::ExecutorConfig::DiscardUnknownFields](#mediapipeexecutorconfigdiscardunknownfields)
+  - [mediapipe::ExecutorConfig::FindInitializationErrors](#mediapipeexecutorconfigfindinitializationerrors)
+  - [mediapipe::ExecutorConfig::IsInitialized](#mediapipeexecutorconfigisinitialized)
+  - [mediapipe::ExecutorConfig::SerializeAsString](#mediapipeexecutorconfigserializeasstring)
+  - [mediapipe::ExecutorConfig::SerializeToString](#mediapipeexecutorconfigserializetostring)
+  - [mediapipe::ExecutorConfig::SpaceUsedLong](#mediapipeexecutorconfigspaceusedlong)
   - [mediapipe::ExecutorConfig::\_\_str\_\_](#mediapipeexecutorconfig%5C_%5C_str%5C_%5C_)
 - [mediapipe::InputCollection](#mediapipeinputcollection)
   - [InputCollection.name](#inputcollectionname)
@@ -1203,9 +1350,17 @@
   - [InputCollection.input\_type](#inputcollectioninput%5C_type)
   - [InputCollection.file\_name](#inputcollectionfile%5C_name)
   - [mediapipe::InputCollection::get\_create](#mediapipeinputcollectionget%5C_create)
+  - [mediapipe::InputCollection::ByteSizeLong](#mediapipeinputcollectionbytesizelong)
+  - [mediapipe::InputCollection::CheckInitialized](#mediapipeinputcollectioncheckinitialized)
   - [mediapipe::InputCollection::Clear](#mediapipeinputcollectionclear)
   - [mediapipe::InputCollection::ClearField](#mediapipeinputcollectionclearfield)
   - [mediapipe::InputCollection::CopyFrom](#mediapipeinputcollectioncopyfrom)
+  - [mediapipe::InputCollection::DiscardUnknownFields](#mediapipeinputcollectiondiscardunknownfields)
+  - [mediapipe::InputCollection::FindInitializationErrors](#mediapipeinputcollectionfindinitializationerrors)
+  - [mediapipe::InputCollection::IsInitialized](#mediapipeinputcollectionisinitialized)
+  - [mediapipe::InputCollection::SerializeAsString](#mediapipeinputcollectionserializeasstring)
+  - [mediapipe::InputCollection::SerializeToString](#mediapipeinputcollectionserializetostring)
+  - [mediapipe::InputCollection::SpaceUsedLong](#mediapipeinputcollectionspaceusedlong)
   - [mediapipe::InputCollection::\_\_str\_\_](#mediapipeinputcollection%5C_%5C_str%5C_%5C_)
   - [InputCollection.UNKNOWN\_](#inputcollectionunknown%5C_)
   - [InputCollection.RECORDIO\_](#inputcollectionrecordio%5C_)
@@ -1215,9 +1370,17 @@
 - [mediapipe::InputCollectionSet](#mediapipeinputcollectionset)
   - [InputCollectionSet.input\_collection](#inputcollectionsetinput%5C_collection)
   - [mediapipe::InputCollectionSet::get\_create](#mediapipeinputcollectionsetget%5C_create)
+  - [mediapipe::InputCollectionSet::ByteSizeLong](#mediapipeinputcollectionsetbytesizelong)
+  - [mediapipe::InputCollectionSet::CheckInitialized](#mediapipeinputcollectionsetcheckinitialized)
   - [mediapipe::InputCollectionSet::Clear](#mediapipeinputcollectionsetclear)
   - [mediapipe::InputCollectionSet::ClearField](#mediapipeinputcollectionsetclearfield)
   - [mediapipe::InputCollectionSet::CopyFrom](#mediapipeinputcollectionsetcopyfrom)
+  - [mediapipe::InputCollectionSet::DiscardUnknownFields](#mediapipeinputcollectionsetdiscardunknownfields)
+  - [mediapipe::InputCollectionSet::FindInitializationErrors](#mediapipeinputcollectionsetfindinitializationerrors)
+  - [mediapipe::InputCollectionSet::IsInitialized](#mediapipeinputcollectionsetisinitialized)
+  - [mediapipe::InputCollectionSet::SerializeAsString](#mediapipeinputcollectionsetserializeasstring)
+  - [mediapipe::InputCollectionSet::SerializeToString](#mediapipeinputcollectionsetserializetostring)
+  - [mediapipe::InputCollectionSet::SpaceUsedLong](#mediapipeinputcollectionsetspaceusedlong)
   - [mediapipe::InputCollectionSet::\_\_str\_\_](#mediapipeinputcollectionset%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_InputCollection](#googleprotobufrepeated%5C_mediapipe%5C_inputcollection)
   - [Repeated\_mediapipe\_InputCollection.Count](#repeated%5C_mediapipe%5C_inputcollectioncount)
@@ -1245,9 +1408,17 @@
   - [InputStreamInfo.tag\_index](#inputstreaminfotag%5C_index)
   - [InputStreamInfo.back\_edge](#inputstreaminfoback%5C_edge)
   - [mediapipe::InputStreamInfo::get\_create](#mediapipeinputstreaminfoget%5C_create)
+  - [mediapipe::InputStreamInfo::ByteSizeLong](#mediapipeinputstreaminfobytesizelong)
+  - [mediapipe::InputStreamInfo::CheckInitialized](#mediapipeinputstreaminfocheckinitialized)
   - [mediapipe::InputStreamInfo::Clear](#mediapipeinputstreaminfoclear)
   - [mediapipe::InputStreamInfo::ClearField](#mediapipeinputstreaminfoclearfield)
   - [mediapipe::InputStreamInfo::CopyFrom](#mediapipeinputstreaminfocopyfrom)
+  - [mediapipe::InputStreamInfo::DiscardUnknownFields](#mediapipeinputstreaminfodiscardunknownfields)
+  - [mediapipe::InputStreamInfo::FindInitializationErrors](#mediapipeinputstreaminfofindinitializationerrors)
+  - [mediapipe::InputStreamInfo::IsInitialized](#mediapipeinputstreaminfoisinitialized)
+  - [mediapipe::InputStreamInfo::SerializeAsString](#mediapipeinputstreaminfoserializeasstring)
+  - [mediapipe::InputStreamInfo::SerializeToString](#mediapipeinputstreaminfoserializetostring)
+  - [mediapipe::InputStreamInfo::SpaceUsedLong](#mediapipeinputstreaminfospaceusedlong)
   - [mediapipe::InputStreamInfo::\_\_str\_\_](#mediapipeinputstreaminfo%5C_%5C_str%5C_%5C_)
 - [mediapipe::ProfilerConfig](#mediapipeprofilerconfig)
   - [ProfilerConfig.histogram\_interval\_size\_usec](#profilerconfighistogram%5C_interval%5C_size%5C_usec)
@@ -1269,9 +1440,17 @@
   - [ProfilerConfig.trace\_log\_instant\_events](#profilerconfigtrace%5C_log%5C_instant%5C_events)
   - [ProfilerConfig.calculator\_filter](#profilerconfigcalculator%5C_filter)
   - [mediapipe::ProfilerConfig::get\_create](#mediapipeprofilerconfigget%5C_create)
+  - [mediapipe::ProfilerConfig::ByteSizeLong](#mediapipeprofilerconfigbytesizelong)
+  - [mediapipe::ProfilerConfig::CheckInitialized](#mediapipeprofilerconfigcheckinitialized)
   - [mediapipe::ProfilerConfig::Clear](#mediapipeprofilerconfigclear)
   - [mediapipe::ProfilerConfig::ClearField](#mediapipeprofilerconfigclearfield)
   - [mediapipe::ProfilerConfig::CopyFrom](#mediapipeprofilerconfigcopyfrom)
+  - [mediapipe::ProfilerConfig::DiscardUnknownFields](#mediapipeprofilerconfigdiscardunknownfields)
+  - [mediapipe::ProfilerConfig::FindInitializationErrors](#mediapipeprofilerconfigfindinitializationerrors)
+  - [mediapipe::ProfilerConfig::IsInitialized](#mediapipeprofilerconfigisinitialized)
+  - [mediapipe::ProfilerConfig::SerializeAsString](#mediapipeprofilerconfigserializeasstring)
+  - [mediapipe::ProfilerConfig::SerializeToString](#mediapipeprofilerconfigserializetostring)
+  - [mediapipe::ProfilerConfig::SpaceUsedLong](#mediapipeprofilerconfigspaceusedlong)
   - [mediapipe::ProfilerConfig::\_\_str\_\_](#mediapipeprofilerconfig%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_int](#googleprotobufrepeated%5C_int)
   - [Repeated\_int.Count](#repeated%5C_intcount)
@@ -1316,9 +1495,17 @@
   - [CalculatorGraphConfig.options](#calculatorgraphconfigoptions)
   - [CalculatorGraphConfig.graph\_options](#calculatorgraphconfiggraph%5C_options)
   - [mediapipe::CalculatorGraphConfig::get\_create](#mediapipecalculatorgraphconfigget%5C_create)
+  - [mediapipe::CalculatorGraphConfig::ByteSizeLong](#mediapipecalculatorgraphconfigbytesizelong)
+  - [mediapipe::CalculatorGraphConfig::CheckInitialized](#mediapipecalculatorgraphconfigcheckinitialized)
   - [mediapipe::CalculatorGraphConfig::Clear](#mediapipecalculatorgraphconfigclear)
   - [mediapipe::CalculatorGraphConfig::ClearField](#mediapipecalculatorgraphconfigclearfield)
   - [mediapipe::CalculatorGraphConfig::CopyFrom](#mediapipecalculatorgraphconfigcopyfrom)
+  - [mediapipe::CalculatorGraphConfig::DiscardUnknownFields](#mediapipecalculatorgraphconfigdiscardunknownfields)
+  - [mediapipe::CalculatorGraphConfig::FindInitializationErrors](#mediapipecalculatorgraphconfigfindinitializationerrors)
+  - [mediapipe::CalculatorGraphConfig::IsInitialized](#mediapipecalculatorgraphconfigisinitialized)
+  - [mediapipe::CalculatorGraphConfig::SerializeAsString](#mediapipecalculatorgraphconfigserializeasstring)
+  - [mediapipe::CalculatorGraphConfig::SerializeToString](#mediapipecalculatorgraphconfigserializetostring)
+  - [mediapipe::CalculatorGraphConfig::SpaceUsedLong](#mediapipecalculatorgraphconfigspaceusedlong)
   - [mediapipe::CalculatorGraphConfig::\_\_str\_\_](#mediapipecalculatorgraphconfig%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_CalculatorGraphConfig\_Node](#googleprotobufrepeated%5C_mediapipe%5C_calculatorgraphconfig%5C_node)
   - [Repeated\_mediapipe\_CalculatorGraphConfig\_Node.Count](#repeated%5C_mediapipe%5C_calculatorgraphconfig%5C_nodecount)
@@ -1450,9 +1637,17 @@
   - [Node.option\_value](#nodeoption%5C_value)
   - [Node.external\_input](#nodeexternal%5C_input)
   - [mediapipe::CalculatorGraphConfig::Node::get\_create](#mediapipecalculatorgraphconfignodeget%5C_create)
+  - [mediapipe::CalculatorGraphConfig::Node::ByteSizeLong](#mediapipecalculatorgraphconfignodebytesizelong)
+  - [mediapipe::CalculatorGraphConfig::Node::CheckInitialized](#mediapipecalculatorgraphconfignodecheckinitialized)
   - [mediapipe::CalculatorGraphConfig::Node::Clear](#mediapipecalculatorgraphconfignodeclear)
   - [mediapipe::CalculatorGraphConfig::Node::ClearField](#mediapipecalculatorgraphconfignodeclearfield)
   - [mediapipe::CalculatorGraphConfig::Node::CopyFrom](#mediapipecalculatorgraphconfignodecopyfrom)
+  - [mediapipe::CalculatorGraphConfig::Node::DiscardUnknownFields](#mediapipecalculatorgraphconfignodediscardunknownfields)
+  - [mediapipe::CalculatorGraphConfig::Node::FindInitializationErrors](#mediapipecalculatorgraphconfignodefindinitializationerrors)
+  - [mediapipe::CalculatorGraphConfig::Node::IsInitialized](#mediapipecalculatorgraphconfignodeisinitialized)
+  - [mediapipe::CalculatorGraphConfig::Node::SerializeAsString](#mediapipecalculatorgraphconfignodeserializeasstring)
+  - [mediapipe::CalculatorGraphConfig::Node::SerializeToString](#mediapipecalculatorgraphconfignodeserializetostring)
+  - [mediapipe::CalculatorGraphConfig::Node::SpaceUsedLong](#mediapipecalculatorgraphconfignodespaceusedlong)
   - [mediapipe::CalculatorGraphConfig::Node::\_\_str\_\_](#mediapipecalculatorgraphconfignode%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_InputStreamInfo](#googleprotobufrepeated%5C_mediapipe%5C_inputstreaminfo)
   - [Repeated\_mediapipe\_InputStreamInfo.Count](#repeated%5C_mediapipe%5C_inputstreaminfocount)
@@ -1487,9 +1682,17 @@
   - [CalculatorGraphConfig.Node](#calculatorgraphconfignode)
 - [mediapipe::FieldDescriptorProto](#mediapipefielddescriptorproto)
   - [mediapipe::FieldDescriptorProto::get\_create](#mediapipefielddescriptorprotoget%5C_create)
+  - [mediapipe::FieldDescriptorProto::ByteSizeLong](#mediapipefielddescriptorprotobytesizelong)
+  - [mediapipe::FieldDescriptorProto::CheckInitialized](#mediapipefielddescriptorprotocheckinitialized)
   - [mediapipe::FieldDescriptorProto::Clear](#mediapipefielddescriptorprotoclear)
   - [mediapipe::FieldDescriptorProto::ClearField](#mediapipefielddescriptorprotoclearfield)
   - [mediapipe::FieldDescriptorProto::CopyFrom](#mediapipefielddescriptorprotocopyfrom)
+  - [mediapipe::FieldDescriptorProto::DiscardUnknownFields](#mediapipefielddescriptorprotodiscardunknownfields)
+  - [mediapipe::FieldDescriptorProto::FindInitializationErrors](#mediapipefielddescriptorprotofindinitializationerrors)
+  - [mediapipe::FieldDescriptorProto::IsInitialized](#mediapipefielddescriptorprotoisinitialized)
+  - [mediapipe::FieldDescriptorProto::SerializeAsString](#mediapipefielddescriptorprotoserializeasstring)
+  - [mediapipe::FieldDescriptorProto::SerializeToString](#mediapipefielddescriptorprotoserializetostring)
+  - [mediapipe::FieldDescriptorProto::SpaceUsedLong](#mediapipefielddescriptorprotospaceusedlong)
   - [mediapipe::FieldDescriptorProto::\_\_str\_\_](#mediapipefielddescriptorproto%5C_%5C_str%5C_%5C_)
   - [FieldDescriptorProto.TYPE\_INVALID\_](#fielddescriptorprototype%5C_invalid%5C_)
   - [FieldDescriptorProto.TYPE\_DOUBLE\_](#fielddescriptorprototype%5C_double%5C_)
@@ -1521,9 +1724,17 @@
   - [TemplateExpression.key\_type](#templateexpressionkey%5C_type)
   - [TemplateExpression.field\_value](#templateexpressionfield%5C_value)
   - [mediapipe::TemplateExpression::get\_create](#mediapipetemplateexpressionget%5C_create)
+  - [mediapipe::TemplateExpression::ByteSizeLong](#mediapipetemplateexpressionbytesizelong)
+  - [mediapipe::TemplateExpression::CheckInitialized](#mediapipetemplateexpressioncheckinitialized)
   - [mediapipe::TemplateExpression::Clear](#mediapipetemplateexpressionclear)
   - [mediapipe::TemplateExpression::ClearField](#mediapipetemplateexpressionclearfield)
   - [mediapipe::TemplateExpression::CopyFrom](#mediapipetemplateexpressioncopyfrom)
+  - [mediapipe::TemplateExpression::DiscardUnknownFields](#mediapipetemplateexpressiondiscardunknownfields)
+  - [mediapipe::TemplateExpression::FindInitializationErrors](#mediapipetemplateexpressionfindinitializationerrors)
+  - [mediapipe::TemplateExpression::IsInitialized](#mediapipetemplateexpressionisinitialized)
+  - [mediapipe::TemplateExpression::SerializeAsString](#mediapipetemplateexpressionserializeasstring)
+  - [mediapipe::TemplateExpression::SerializeToString](#mediapipetemplateexpressionserializetostring)
+  - [mediapipe::TemplateExpression::SpaceUsedLong](#mediapipetemplateexpressionspaceusedlong)
   - [mediapipe::TemplateExpression::\_\_str\_\_](#mediapipetemplateexpression%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_TemplateExpression](#googleprotobufrepeated%5C_mediapipe%5C_templateexpression)
   - [Repeated\_mediapipe\_TemplateExpression.Count](#repeated%5C_mediapipe%5C_templateexpressioncount)
@@ -1551,9 +1762,17 @@
   - [CalculatorGraphTemplate.config](#calculatorgraphtemplateconfig)
   - [CalculatorGraphTemplate.rule](#calculatorgraphtemplaterule)
   - [mediapipe::CalculatorGraphTemplate::get\_create](#mediapipecalculatorgraphtemplateget%5C_create)
+  - [mediapipe::CalculatorGraphTemplate::ByteSizeLong](#mediapipecalculatorgraphtemplatebytesizelong)
+  - [mediapipe::CalculatorGraphTemplate::CheckInitialized](#mediapipecalculatorgraphtemplatecheckinitialized)
   - [mediapipe::CalculatorGraphTemplate::Clear](#mediapipecalculatorgraphtemplateclear)
   - [mediapipe::CalculatorGraphTemplate::ClearField](#mediapipecalculatorgraphtemplateclearfield)
   - [mediapipe::CalculatorGraphTemplate::CopyFrom](#mediapipecalculatorgraphtemplatecopyfrom)
+  - [mediapipe::CalculatorGraphTemplate::DiscardUnknownFields](#mediapipecalculatorgraphtemplatediscardunknownfields)
+  - [mediapipe::CalculatorGraphTemplate::FindInitializationErrors](#mediapipecalculatorgraphtemplatefindinitializationerrors)
+  - [mediapipe::CalculatorGraphTemplate::IsInitialized](#mediapipecalculatorgraphtemplateisinitialized)
+  - [mediapipe::CalculatorGraphTemplate::SerializeAsString](#mediapipecalculatorgraphtemplateserializeasstring)
+  - [mediapipe::CalculatorGraphTemplate::SerializeToString](#mediapipecalculatorgraphtemplateserializetostring)
+  - [mediapipe::CalculatorGraphTemplate::SpaceUsedLong](#mediapipecalculatorgraphtemplatespaceusedlong)
   - [mediapipe::CalculatorGraphTemplate::\_\_str\_\_](#mediapipecalculatorgraphtemplate%5C_%5C_str%5C_%5C_)
 - [mediapipe::TemplateArgument](#mediapipetemplateargument)
   - [TemplateArgument.str](#templateargumentstr)
@@ -1561,9 +1780,17 @@
   - [TemplateArgument.dict](#templateargumentdict)
   - [TemplateArgument.element](#templateargumentelement)
   - [mediapipe::TemplateArgument::get\_create](#mediapipetemplateargumentget%5C_create)
+  - [mediapipe::TemplateArgument::ByteSizeLong](#mediapipetemplateargumentbytesizelong)
+  - [mediapipe::TemplateArgument::CheckInitialized](#mediapipetemplateargumentcheckinitialized)
   - [mediapipe::TemplateArgument::Clear](#mediapipetemplateargumentclear)
   - [mediapipe::TemplateArgument::ClearField](#mediapipetemplateargumentclearfield)
   - [mediapipe::TemplateArgument::CopyFrom](#mediapipetemplateargumentcopyfrom)
+  - [mediapipe::TemplateArgument::DiscardUnknownFields](#mediapipetemplateargumentdiscardunknownfields)
+  - [mediapipe::TemplateArgument::FindInitializationErrors](#mediapipetemplateargumentfindinitializationerrors)
+  - [mediapipe::TemplateArgument::IsInitialized](#mediapipetemplateargumentisinitialized)
+  - [mediapipe::TemplateArgument::SerializeAsString](#mediapipetemplateargumentserializeasstring)
+  - [mediapipe::TemplateArgument::SerializeToString](#mediapipetemplateargumentserializetostring)
+  - [mediapipe::TemplateArgument::SpaceUsedLong](#mediapipetemplateargumentspaceusedlong)
   - [mediapipe::TemplateArgument::\_\_str\_\_](#mediapipetemplateargument%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_TemplateArgument](#googleprotobufrepeated%5C_mediapipe%5C_templateargument)
   - [Repeated\_mediapipe\_TemplateArgument.Count](#repeated%5C_mediapipe%5C_templateargumentcount)
@@ -1590,9 +1817,17 @@
 - [mediapipe::TemplateDict](#mediapipetemplatedict)
   - [TemplateDict.arg](#templatedictarg)
   - [mediapipe::TemplateDict::get\_create](#mediapipetemplatedictget%5C_create)
+  - [mediapipe::TemplateDict::ByteSizeLong](#mediapipetemplatedictbytesizelong)
+  - [mediapipe::TemplateDict::CheckInitialized](#mediapipetemplatedictcheckinitialized)
   - [mediapipe::TemplateDict::Clear](#mediapipetemplatedictclear)
   - [mediapipe::TemplateDict::ClearField](#mediapipetemplatedictclearfield)
   - [mediapipe::TemplateDict::CopyFrom](#mediapipetemplatedictcopyfrom)
+  - [mediapipe::TemplateDict::DiscardUnknownFields](#mediapipetemplatedictdiscardunknownfields)
+  - [mediapipe::TemplateDict::FindInitializationErrors](#mediapipetemplatedictfindinitializationerrors)
+  - [mediapipe::TemplateDict::IsInitialized](#mediapipetemplatedictisinitialized)
+  - [mediapipe::TemplateDict::SerializeAsString](#mediapipetemplatedictserializeasstring)
+  - [mediapipe::TemplateDict::SerializeToString](#mediapipetemplatedictserializetostring)
+  - [mediapipe::TemplateDict::SpaceUsedLong](#mediapipetemplatedictspaceusedlong)
   - [mediapipe::TemplateDict::\_\_str\_\_](#mediapipetemplatedict%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_TemplateDict\_Parameter](#googleprotobufrepeated%5C_mediapipe%5C_templatedict%5C_parameter)
   - [Repeated\_mediapipe\_TemplateDict\_Parameter.Count](#repeated%5C_mediapipe%5C_templatedict%5C_parametercount)
@@ -1620,17 +1855,33 @@
   - [Parameter.key](#parameterkey)
   - [Parameter.value](#parametervalue)
   - [mediapipe::TemplateDict::Parameter::get\_create](#mediapipetemplatedictparameterget%5C_create)
+  - [mediapipe::TemplateDict::Parameter::ByteSizeLong](#mediapipetemplatedictparameterbytesizelong)
+  - [mediapipe::TemplateDict::Parameter::CheckInitialized](#mediapipetemplatedictparametercheckinitialized)
   - [mediapipe::TemplateDict::Parameter::Clear](#mediapipetemplatedictparameterclear)
   - [mediapipe::TemplateDict::Parameter::ClearField](#mediapipetemplatedictparameterclearfield)
   - [mediapipe::TemplateDict::Parameter::CopyFrom](#mediapipetemplatedictparametercopyfrom)
+  - [mediapipe::TemplateDict::Parameter::DiscardUnknownFields](#mediapipetemplatedictparameterdiscardunknownfields)
+  - [mediapipe::TemplateDict::Parameter::FindInitializationErrors](#mediapipetemplatedictparameterfindinitializationerrors)
+  - [mediapipe::TemplateDict::Parameter::IsInitialized](#mediapipetemplatedictparameterisinitialized)
+  - [mediapipe::TemplateDict::Parameter::SerializeAsString](#mediapipetemplatedictparameterserializeasstring)
+  - [mediapipe::TemplateDict::Parameter::SerializeToString](#mediapipetemplatedictparameterserializetostring)
+  - [mediapipe::TemplateDict::Parameter::SpaceUsedLong](#mediapipetemplatedictparameterspaceusedlong)
   - [mediapipe::TemplateDict::Parameter::\_\_str\_\_](#mediapipetemplatedictparameter%5C_%5C_str%5C_%5C_)
 - [mediapipe::TemplateSubgraphOptions](#mediapipetemplatesubgraphoptions)
   - [TemplateSubgraphOptions.dict](#templatesubgraphoptionsdict)
   - [TemplateSubgraphOptions.ext](#templatesubgraphoptionsext)
   - [mediapipe::TemplateSubgraphOptions::get\_create](#mediapipetemplatesubgraphoptionsget%5C_create)
+  - [mediapipe::TemplateSubgraphOptions::ByteSizeLong](#mediapipetemplatesubgraphoptionsbytesizelong)
+  - [mediapipe::TemplateSubgraphOptions::CheckInitialized](#mediapipetemplatesubgraphoptionscheckinitialized)
   - [mediapipe::TemplateSubgraphOptions::Clear](#mediapipetemplatesubgraphoptionsclear)
   - [mediapipe::TemplateSubgraphOptions::ClearField](#mediapipetemplatesubgraphoptionsclearfield)
   - [mediapipe::TemplateSubgraphOptions::CopyFrom](#mediapipetemplatesubgraphoptionscopyfrom)
+  - [mediapipe::TemplateSubgraphOptions::DiscardUnknownFields](#mediapipetemplatesubgraphoptionsdiscardunknownfields)
+  - [mediapipe::TemplateSubgraphOptions::FindInitializationErrors](#mediapipetemplatesubgraphoptionsfindinitializationerrors)
+  - [mediapipe::TemplateSubgraphOptions::IsInitialized](#mediapipetemplatesubgraphoptionsisinitialized)
+  - [mediapipe::TemplateSubgraphOptions::SerializeAsString](#mediapipetemplatesubgraphoptionsserializeasstring)
+  - [mediapipe::TemplateSubgraphOptions::SerializeToString](#mediapipetemplatesubgraphoptionsserializetostring)
+  - [mediapipe::TemplateSubgraphOptions::SpaceUsedLong](#mediapipetemplatesubgraphoptionsspaceusedlong)
   - [mediapipe::TemplateSubgraphOptions::\_\_str\_\_](#mediapipetemplatesubgraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::framework::tool::calculator\_graph\_template\_pb2](#mediapipeframeworktoolcalculator%5C_graph%5C_template%5C_pb2)
   - [calculator\_graph\_template\_pb2.TemplateExpression](#calculator%5C_graph%5C_template%5C_pb2templateexpression)
@@ -1643,9 +1894,17 @@
 - [mediapipe::Rasterization](#mediapiperasterization)
   - [Rasterization.interval](#rasterizationinterval)
   - [mediapipe::Rasterization::get\_create](#mediapiperasterizationget%5C_create)
+  - [mediapipe::Rasterization::ByteSizeLong](#mediapiperasterizationbytesizelong)
+  - [mediapipe::Rasterization::CheckInitialized](#mediapiperasterizationcheckinitialized)
   - [mediapipe::Rasterization::Clear](#mediapiperasterizationclear)
   - [mediapipe::Rasterization::ClearField](#mediapiperasterizationclearfield)
   - [mediapipe::Rasterization::CopyFrom](#mediapiperasterizationcopyfrom)
+  - [mediapipe::Rasterization::DiscardUnknownFields](#mediapiperasterizationdiscardunknownfields)
+  - [mediapipe::Rasterization::FindInitializationErrors](#mediapiperasterizationfindinitializationerrors)
+  - [mediapipe::Rasterization::IsInitialized](#mediapiperasterizationisinitialized)
+  - [mediapipe::Rasterization::SerializeAsString](#mediapiperasterizationserializeasstring)
+  - [mediapipe::Rasterization::SerializeToString](#mediapiperasterizationserializetostring)
+  - [mediapipe::Rasterization::SpaceUsedLong](#mediapiperasterizationspaceusedlong)
   - [mediapipe::Rasterization::\_\_str\_\_](#mediapiperasterization%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_Rasterization\_Interval](#googleprotobufrepeated%5C_mediapipe%5C_rasterization%5C_interval)
   - [Repeated\_mediapipe\_Rasterization\_Interval.Count](#repeated%5C_mediapipe%5C_rasterization%5C_intervalcount)
@@ -1674,9 +1933,17 @@
   - [Interval.left\_x](#intervalleft%5C_x)
   - [Interval.right\_x](#intervalright%5C_x)
   - [mediapipe::Rasterization::Interval::get\_create](#mediapiperasterizationintervalget%5C_create)
+  - [mediapipe::Rasterization::Interval::ByteSizeLong](#mediapiperasterizationintervalbytesizelong)
+  - [mediapipe::Rasterization::Interval::CheckInitialized](#mediapiperasterizationintervalcheckinitialized)
   - [mediapipe::Rasterization::Interval::Clear](#mediapiperasterizationintervalclear)
   - [mediapipe::Rasterization::Interval::ClearField](#mediapiperasterizationintervalclearfield)
   - [mediapipe::Rasterization::Interval::CopyFrom](#mediapiperasterizationintervalcopyfrom)
+  - [mediapipe::Rasterization::Interval::DiscardUnknownFields](#mediapiperasterizationintervaldiscardunknownfields)
+  - [mediapipe::Rasterization::Interval::FindInitializationErrors](#mediapiperasterizationintervalfindinitializationerrors)
+  - [mediapipe::Rasterization::Interval::IsInitialized](#mediapiperasterizationintervalisinitialized)
+  - [mediapipe::Rasterization::Interval::SerializeAsString](#mediapiperasterizationintervalserializeasstring)
+  - [mediapipe::Rasterization::Interval::SerializeToString](#mediapiperasterizationintervalserializetostring)
+  - [mediapipe::Rasterization::Interval::SpaceUsedLong](#mediapiperasterizationintervalspaceusedlong)
   - [mediapipe::Rasterization::Interval::\_\_str\_\_](#mediapiperasterizationinterval%5C_%5C_str%5C_%5C_)
 - [mediapipe::framework::formats::annotation::rasterization\_pb2](#mediapipeframeworkformatsannotationrasterization%5C_pb2)
   - [rasterization\_pb2.Rasterization](#rasterization%5C_pb2rasterization)
@@ -1689,9 +1956,17 @@
   - [LocationData.mask](#locationdatamask)
   - [LocationData.relative\_keypoints](#locationdatarelative%5C_keypoints)
   - [mediapipe::LocationData::get\_create](#mediapipelocationdataget%5C_create)
+  - [mediapipe::LocationData::ByteSizeLong](#mediapipelocationdatabytesizelong)
+  - [mediapipe::LocationData::CheckInitialized](#mediapipelocationdatacheckinitialized)
   - [mediapipe::LocationData::Clear](#mediapipelocationdataclear)
   - [mediapipe::LocationData::ClearField](#mediapipelocationdataclearfield)
   - [mediapipe::LocationData::CopyFrom](#mediapipelocationdatacopyfrom)
+  - [mediapipe::LocationData::DiscardUnknownFields](#mediapipelocationdatadiscardunknownfields)
+  - [mediapipe::LocationData::FindInitializationErrors](#mediapipelocationdatafindinitializationerrors)
+  - [mediapipe::LocationData::IsInitialized](#mediapipelocationdataisinitialized)
+  - [mediapipe::LocationData::SerializeAsString](#mediapipelocationdataserializeasstring)
+  - [mediapipe::LocationData::SerializeToString](#mediapipelocationdataserializetostring)
+  - [mediapipe::LocationData::SpaceUsedLong](#mediapipelocationdataspaceusedlong)
   - [mediapipe::LocationData::\_\_str\_\_](#mediapipelocationdata%5C_%5C_str%5C_%5C_)
   - [LocationData.GLOBAL\_](#locationdataglobal%5C_)
   - [LocationData.BOUNDING\_BOX\_](#locationdatabounding%5C_box%5C_)
@@ -1725,9 +2000,17 @@
   - [BoundingBox.width](#boundingboxwidth-1)
   - [BoundingBox.height](#boundingboxheight-1)
   - [mediapipe::LocationData::BoundingBox::get\_create](#mediapipelocationdataboundingboxget%5C_create)
+  - [mediapipe::LocationData::BoundingBox::ByteSizeLong](#mediapipelocationdataboundingboxbytesizelong)
+  - [mediapipe::LocationData::BoundingBox::CheckInitialized](#mediapipelocationdataboundingboxcheckinitialized)
   - [mediapipe::LocationData::BoundingBox::Clear](#mediapipelocationdataboundingboxclear)
   - [mediapipe::LocationData::BoundingBox::ClearField](#mediapipelocationdataboundingboxclearfield)
   - [mediapipe::LocationData::BoundingBox::CopyFrom](#mediapipelocationdataboundingboxcopyfrom)
+  - [mediapipe::LocationData::BoundingBox::DiscardUnknownFields](#mediapipelocationdataboundingboxdiscardunknownfields)
+  - [mediapipe::LocationData::BoundingBox::FindInitializationErrors](#mediapipelocationdataboundingboxfindinitializationerrors)
+  - [mediapipe::LocationData::BoundingBox::IsInitialized](#mediapipelocationdataboundingboxisinitialized)
+  - [mediapipe::LocationData::BoundingBox::SerializeAsString](#mediapipelocationdataboundingboxserializeasstring)
+  - [mediapipe::LocationData::BoundingBox::SerializeToString](#mediapipelocationdataboundingboxserializetostring)
+  - [mediapipe::LocationData::BoundingBox::SpaceUsedLong](#mediapipelocationdataboundingboxspaceusedlong)
   - [mediapipe::LocationData::BoundingBox::\_\_str\_\_](#mediapipelocationdataboundingbox%5C_%5C_str%5C_%5C_)
 - [mediapipe::LocationData::RelativeBoundingBox](#mediapipelocationdatarelativeboundingbox)
   - [RelativeBoundingBox.xmin](#relativeboundingboxxmin)
@@ -1735,18 +2018,34 @@
   - [RelativeBoundingBox.width](#relativeboundingboxwidth)
   - [RelativeBoundingBox.height](#relativeboundingboxheight)
   - [mediapipe::LocationData::RelativeBoundingBox::get\_create](#mediapipelocationdatarelativeboundingboxget%5C_create)
+  - [mediapipe::LocationData::RelativeBoundingBox::ByteSizeLong](#mediapipelocationdatarelativeboundingboxbytesizelong)
+  - [mediapipe::LocationData::RelativeBoundingBox::CheckInitialized](#mediapipelocationdatarelativeboundingboxcheckinitialized)
   - [mediapipe::LocationData::RelativeBoundingBox::Clear](#mediapipelocationdatarelativeboundingboxclear)
   - [mediapipe::LocationData::RelativeBoundingBox::ClearField](#mediapipelocationdatarelativeboundingboxclearfield)
   - [mediapipe::LocationData::RelativeBoundingBox::CopyFrom](#mediapipelocationdatarelativeboundingboxcopyfrom)
+  - [mediapipe::LocationData::RelativeBoundingBox::DiscardUnknownFields](#mediapipelocationdatarelativeboundingboxdiscardunknownfields)
+  - [mediapipe::LocationData::RelativeBoundingBox::FindInitializationErrors](#mediapipelocationdatarelativeboundingboxfindinitializationerrors)
+  - [mediapipe::LocationData::RelativeBoundingBox::IsInitialized](#mediapipelocationdatarelativeboundingboxisinitialized)
+  - [mediapipe::LocationData::RelativeBoundingBox::SerializeAsString](#mediapipelocationdatarelativeboundingboxserializeasstring)
+  - [mediapipe::LocationData::RelativeBoundingBox::SerializeToString](#mediapipelocationdatarelativeboundingboxserializetostring)
+  - [mediapipe::LocationData::RelativeBoundingBox::SpaceUsedLong](#mediapipelocationdatarelativeboundingboxspaceusedlong)
   - [mediapipe::LocationData::RelativeBoundingBox::\_\_str\_\_](#mediapipelocationdatarelativeboundingbox%5C_%5C_str%5C_%5C_)
 - [mediapipe::LocationData::BinaryMask](#mediapipelocationdatabinarymask)
   - [BinaryMask.width](#binarymaskwidth)
   - [BinaryMask.height](#binarymaskheight)
   - [BinaryMask.rasterization](#binarymaskrasterization)
   - [mediapipe::LocationData::BinaryMask::get\_create](#mediapipelocationdatabinarymaskget%5C_create)
+  - [mediapipe::LocationData::BinaryMask::ByteSizeLong](#mediapipelocationdatabinarymaskbytesizelong)
+  - [mediapipe::LocationData::BinaryMask::CheckInitialized](#mediapipelocationdatabinarymaskcheckinitialized)
   - [mediapipe::LocationData::BinaryMask::Clear](#mediapipelocationdatabinarymaskclear)
   - [mediapipe::LocationData::BinaryMask::ClearField](#mediapipelocationdatabinarymaskclearfield)
   - [mediapipe::LocationData::BinaryMask::CopyFrom](#mediapipelocationdatabinarymaskcopyfrom)
+  - [mediapipe::LocationData::BinaryMask::DiscardUnknownFields](#mediapipelocationdatabinarymaskdiscardunknownfields)
+  - [mediapipe::LocationData::BinaryMask::FindInitializationErrors](#mediapipelocationdatabinarymaskfindinitializationerrors)
+  - [mediapipe::LocationData::BinaryMask::IsInitialized](#mediapipelocationdatabinarymaskisinitialized)
+  - [mediapipe::LocationData::BinaryMask::SerializeAsString](#mediapipelocationdatabinarymaskserializeasstring)
+  - [mediapipe::LocationData::BinaryMask::SerializeToString](#mediapipelocationdatabinarymaskserializetostring)
+  - [mediapipe::LocationData::BinaryMask::SpaceUsedLong](#mediapipelocationdatabinarymaskspaceusedlong)
   - [mediapipe::LocationData::BinaryMask::\_\_str\_\_](#mediapipelocationdatabinarymask%5C_%5C_str%5C_%5C_)
 - [mediapipe::LocationData::RelativeKeypoint](#mediapipelocationdatarelativekeypoint)
   - [RelativeKeypoint.x](#relativekeypointx)
@@ -1754,9 +2053,17 @@
   - [RelativeKeypoint.keypoint\_label](#relativekeypointkeypoint%5C_label)
   - [RelativeKeypoint.score](#relativekeypointscore)
   - [mediapipe::LocationData::RelativeKeypoint::get\_create](#mediapipelocationdatarelativekeypointget%5C_create)
+  - [mediapipe::LocationData::RelativeKeypoint::ByteSizeLong](#mediapipelocationdatarelativekeypointbytesizelong)
+  - [mediapipe::LocationData::RelativeKeypoint::CheckInitialized](#mediapipelocationdatarelativekeypointcheckinitialized)
   - [mediapipe::LocationData::RelativeKeypoint::Clear](#mediapipelocationdatarelativekeypointclear)
   - [mediapipe::LocationData::RelativeKeypoint::ClearField](#mediapipelocationdatarelativekeypointclearfield)
   - [mediapipe::LocationData::RelativeKeypoint::CopyFrom](#mediapipelocationdatarelativekeypointcopyfrom)
+  - [mediapipe::LocationData::RelativeKeypoint::DiscardUnknownFields](#mediapipelocationdatarelativekeypointdiscardunknownfields)
+  - [mediapipe::LocationData::RelativeKeypoint::FindInitializationErrors](#mediapipelocationdatarelativekeypointfindinitializationerrors)
+  - [mediapipe::LocationData::RelativeKeypoint::IsInitialized](#mediapipelocationdatarelativekeypointisinitialized)
+  - [mediapipe::LocationData::RelativeKeypoint::SerializeAsString](#mediapipelocationdatarelativekeypointserializeasstring)
+  - [mediapipe::LocationData::RelativeKeypoint::SerializeToString](#mediapipelocationdatarelativekeypointserializetostring)
+  - [mediapipe::LocationData::RelativeKeypoint::SpaceUsedLong](#mediapipelocationdatarelativekeypointspaceusedlong)
   - [mediapipe::LocationData::RelativeKeypoint::\_\_str\_\_](#mediapipelocationdatarelativekeypoint%5C_%5C_str%5C_%5C_)
 - [mediapipe::framework::formats::location\_data\_pb2](#mediapipeframeworkformatslocation%5C_data%5C_pb2)
   - [location\_data\_pb2.LocationData](#location%5C_data%5C_pb2locationdata)
@@ -1777,9 +2084,17 @@
   - [Detection.display\_name](#detectiondisplay%5C_name)
   - [Detection.timestamp\_usec](#detectiontimestamp%5C_usec)
   - [mediapipe::Detection::get\_create](#mediapipedetectionget%5C_create)
+  - [mediapipe::Detection::ByteSizeLong](#mediapipedetectionbytesizelong)
+  - [mediapipe::Detection::CheckInitialized](#mediapipedetectioncheckinitialized)
   - [mediapipe::Detection::Clear](#mediapipedetectionclear)
   - [mediapipe::Detection::ClearField](#mediapipedetectionclearfield)
   - [mediapipe::Detection::CopyFrom](#mediapipedetectioncopyfrom)
+  - [mediapipe::Detection::DiscardUnknownFields](#mediapipedetectiondiscardunknownfields)
+  - [mediapipe::Detection::FindInitializationErrors](#mediapipedetectionfindinitializationerrors)
+  - [mediapipe::Detection::IsInitialized](#mediapipedetectionisinitialized)
+  - [mediapipe::Detection::SerializeAsString](#mediapipedetectionserializeasstring)
+  - [mediapipe::Detection::SerializeToString](#mediapipedetectionserializetostring)
+  - [mediapipe::Detection::SpaceUsedLong](#mediapipedetectionspaceusedlong)
   - [mediapipe::Detection::\_\_str\_\_](#mediapipedetection%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_float](#googleprotobufrepeated%5C_float)
   - [Repeated\_float.Count](#repeated%5C_floatcount)
@@ -1829,16 +2144,32 @@
   - [AssociatedDetection.id](#associateddetectionid)
   - [AssociatedDetection.confidence](#associateddetectionconfidence)
   - [mediapipe::Detection::AssociatedDetection::get\_create](#mediapipedetectionassociateddetectionget%5C_create)
+  - [mediapipe::Detection::AssociatedDetection::ByteSizeLong](#mediapipedetectionassociateddetectionbytesizelong)
+  - [mediapipe::Detection::AssociatedDetection::CheckInitialized](#mediapipedetectionassociateddetectioncheckinitialized)
   - [mediapipe::Detection::AssociatedDetection::Clear](#mediapipedetectionassociateddetectionclear)
   - [mediapipe::Detection::AssociatedDetection::ClearField](#mediapipedetectionassociateddetectionclearfield)
   - [mediapipe::Detection::AssociatedDetection::CopyFrom](#mediapipedetectionassociateddetectioncopyfrom)
+  - [mediapipe::Detection::AssociatedDetection::DiscardUnknownFields](#mediapipedetectionassociateddetectiondiscardunknownfields)
+  - [mediapipe::Detection::AssociatedDetection::FindInitializationErrors](#mediapipedetectionassociateddetectionfindinitializationerrors)
+  - [mediapipe::Detection::AssociatedDetection::IsInitialized](#mediapipedetectionassociateddetectionisinitialized)
+  - [mediapipe::Detection::AssociatedDetection::SerializeAsString](#mediapipedetectionassociateddetectionserializeasstring)
+  - [mediapipe::Detection::AssociatedDetection::SerializeToString](#mediapipedetectionassociateddetectionserializetostring)
+  - [mediapipe::Detection::AssociatedDetection::SpaceUsedLong](#mediapipedetectionassociateddetectionspaceusedlong)
   - [mediapipe::Detection::AssociatedDetection::\_\_str\_\_](#mediapipedetectionassociateddetection%5C_%5C_str%5C_%5C_)
 - [mediapipe::DetectionList](#mediapipedetectionlist)
   - [DetectionList.detection](#detectionlistdetection)
   - [mediapipe::DetectionList::get\_create](#mediapipedetectionlistget%5C_create)
+  - [mediapipe::DetectionList::ByteSizeLong](#mediapipedetectionlistbytesizelong)
+  - [mediapipe::DetectionList::CheckInitialized](#mediapipedetectionlistcheckinitialized)
   - [mediapipe::DetectionList::Clear](#mediapipedetectionlistclear)
   - [mediapipe::DetectionList::ClearField](#mediapipedetectionlistclearfield)
   - [mediapipe::DetectionList::CopyFrom](#mediapipedetectionlistcopyfrom)
+  - [mediapipe::DetectionList::DiscardUnknownFields](#mediapipedetectionlistdiscardunknownfields)
+  - [mediapipe::DetectionList::FindInitializationErrors](#mediapipedetectionlistfindinitializationerrors)
+  - [mediapipe::DetectionList::IsInitialized](#mediapipedetectionlistisinitialized)
+  - [mediapipe::DetectionList::SerializeAsString](#mediapipedetectionlistserializeasstring)
+  - [mediapipe::DetectionList::SerializeToString](#mediapipedetectionlistserializetostring)
+  - [mediapipe::DetectionList::SpaceUsedLong](#mediapipedetectionlistspaceusedlong)
   - [mediapipe::DetectionList::\_\_str\_\_](#mediapipedetectionlist%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_Detection](#googleprotobufrepeated%5C_mediapipe%5C_detection)
   - [Repeated\_mediapipe\_Detection.Count](#repeated%5C_mediapipe%5C_detectioncount)
@@ -1869,9 +2200,17 @@
   - [Detection.AssociatedDetection](#detectionassociateddetection)
 - [mediapipe::ImageFormat](#mediapipeimageformat)
   - [mediapipe::ImageFormat::get\_create](#mediapipeimageformatget%5C_create)
+  - [mediapipe::ImageFormat::ByteSizeLong](#mediapipeimageformatbytesizelong)
+  - [mediapipe::ImageFormat::CheckInitialized](#mediapipeimageformatcheckinitialized)
   - [mediapipe::ImageFormat::Clear](#mediapipeimageformatclear)
   - [mediapipe::ImageFormat::ClearField](#mediapipeimageformatclearfield)
   - [mediapipe::ImageFormat::CopyFrom](#mediapipeimageformatcopyfrom)
+  - [mediapipe::ImageFormat::DiscardUnknownFields](#mediapipeimageformatdiscardunknownfields)
+  - [mediapipe::ImageFormat::FindInitializationErrors](#mediapipeimageformatfindinitializationerrors)
+  - [mediapipe::ImageFormat::IsInitialized](#mediapipeimageformatisinitialized)
+  - [mediapipe::ImageFormat::SerializeAsString](#mediapipeimageformatserializeasstring)
+  - [mediapipe::ImageFormat::SerializeToString](#mediapipeimageformatserializetostring)
+  - [mediapipe::ImageFormat::SpaceUsedLong](#mediapipeimageformatspaceusedlong)
   - [mediapipe::ImageFormat::\_\_str\_\_](#mediapipeimageformat%5C_%5C_str%5C_%5C_)
   - [ImageFormat.UNKNOWN\_](#imageformatunknown%5C_)
   - [ImageFormat.SRGB\_](#imageformatsrgb%5C_)
@@ -1895,16 +2234,32 @@
   - [Landmark.visibility](#landmarkvisibility-1)
   - [Landmark.presence](#landmarkpresence-1)
   - [mediapipe::Landmark::get\_create](#mediapipelandmarkget%5C_create)
+  - [mediapipe::Landmark::ByteSizeLong](#mediapipelandmarkbytesizelong)
+  - [mediapipe::Landmark::CheckInitialized](#mediapipelandmarkcheckinitialized)
   - [mediapipe::Landmark::Clear](#mediapipelandmarkclear)
   - [mediapipe::Landmark::ClearField](#mediapipelandmarkclearfield)
   - [mediapipe::Landmark::CopyFrom](#mediapipelandmarkcopyfrom)
+  - [mediapipe::Landmark::DiscardUnknownFields](#mediapipelandmarkdiscardunknownfields)
+  - [mediapipe::Landmark::FindInitializationErrors](#mediapipelandmarkfindinitializationerrors)
+  - [mediapipe::Landmark::IsInitialized](#mediapipelandmarkisinitialized)
+  - [mediapipe::Landmark::SerializeAsString](#mediapipelandmarkserializeasstring)
+  - [mediapipe::Landmark::SerializeToString](#mediapipelandmarkserializetostring)
+  - [mediapipe::Landmark::SpaceUsedLong](#mediapipelandmarkspaceusedlong)
   - [mediapipe::Landmark::\_\_str\_\_](#mediapipelandmark%5C_%5C_str%5C_%5C_)
 - [mediapipe::LandmarkList](#mediapipelandmarklist)
   - [LandmarkList.landmark](#landmarklistlandmark)
   - [mediapipe::LandmarkList::get\_create](#mediapipelandmarklistget%5C_create)
+  - [mediapipe::LandmarkList::ByteSizeLong](#mediapipelandmarklistbytesizelong)
+  - [mediapipe::LandmarkList::CheckInitialized](#mediapipelandmarklistcheckinitialized)
   - [mediapipe::LandmarkList::Clear](#mediapipelandmarklistclear)
   - [mediapipe::LandmarkList::ClearField](#mediapipelandmarklistclearfield)
   - [mediapipe::LandmarkList::CopyFrom](#mediapipelandmarklistcopyfrom)
+  - [mediapipe::LandmarkList::DiscardUnknownFields](#mediapipelandmarklistdiscardunknownfields)
+  - [mediapipe::LandmarkList::FindInitializationErrors](#mediapipelandmarklistfindinitializationerrors)
+  - [mediapipe::LandmarkList::IsInitialized](#mediapipelandmarklistisinitialized)
+  - [mediapipe::LandmarkList::SerializeAsString](#mediapipelandmarklistserializeasstring)
+  - [mediapipe::LandmarkList::SerializeToString](#mediapipelandmarklistserializetostring)
+  - [mediapipe::LandmarkList::SpaceUsedLong](#mediapipelandmarklistspaceusedlong)
   - [mediapipe::LandmarkList::\_\_str\_\_](#mediapipelandmarklist%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_Landmark](#googleprotobufrepeated%5C_mediapipe%5C_landmark)
   - [Repeated\_mediapipe\_Landmark.Count](#repeated%5C_mediapipe%5C_landmarkcount)
@@ -1931,9 +2286,17 @@
 - [mediapipe::LandmarkListCollection](#mediapipelandmarklistcollection)
   - [LandmarkListCollection.landmark\_list](#landmarklistcollectionlandmark%5C_list)
   - [mediapipe::LandmarkListCollection::get\_create](#mediapipelandmarklistcollectionget%5C_create)
+  - [mediapipe::LandmarkListCollection::ByteSizeLong](#mediapipelandmarklistcollectionbytesizelong)
+  - [mediapipe::LandmarkListCollection::CheckInitialized](#mediapipelandmarklistcollectioncheckinitialized)
   - [mediapipe::LandmarkListCollection::Clear](#mediapipelandmarklistcollectionclear)
   - [mediapipe::LandmarkListCollection::ClearField](#mediapipelandmarklistcollectionclearfield)
   - [mediapipe::LandmarkListCollection::CopyFrom](#mediapipelandmarklistcollectioncopyfrom)
+  - [mediapipe::LandmarkListCollection::DiscardUnknownFields](#mediapipelandmarklistcollectiondiscardunknownfields)
+  - [mediapipe::LandmarkListCollection::FindInitializationErrors](#mediapipelandmarklistcollectionfindinitializationerrors)
+  - [mediapipe::LandmarkListCollection::IsInitialized](#mediapipelandmarklistcollectionisinitialized)
+  - [mediapipe::LandmarkListCollection::SerializeAsString](#mediapipelandmarklistcollectionserializeasstring)
+  - [mediapipe::LandmarkListCollection::SerializeToString](#mediapipelandmarklistcollectionserializetostring)
+  - [mediapipe::LandmarkListCollection::SpaceUsedLong](#mediapipelandmarklistcollectionspaceusedlong)
   - [mediapipe::LandmarkListCollection::\_\_str\_\_](#mediapipelandmarklistcollection%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_LandmarkList](#googleprotobufrepeated%5C_mediapipe%5C_landmarklist)
   - [Repeated\_mediapipe\_LandmarkList.Count](#repeated%5C_mediapipe%5C_landmarklistcount)
@@ -1964,16 +2327,32 @@
   - [NormalizedLandmark.visibility](#normalizedlandmarkvisibility-1)
   - [NormalizedLandmark.presence](#normalizedlandmarkpresence-1)
   - [mediapipe::NormalizedLandmark::get\_create](#mediapipenormalizedlandmarkget%5C_create)
+  - [mediapipe::NormalizedLandmark::ByteSizeLong](#mediapipenormalizedlandmarkbytesizelong)
+  - [mediapipe::NormalizedLandmark::CheckInitialized](#mediapipenormalizedlandmarkcheckinitialized)
   - [mediapipe::NormalizedLandmark::Clear](#mediapipenormalizedlandmarkclear)
   - [mediapipe::NormalizedLandmark::ClearField](#mediapipenormalizedlandmarkclearfield)
   - [mediapipe::NormalizedLandmark::CopyFrom](#mediapipenormalizedlandmarkcopyfrom)
+  - [mediapipe::NormalizedLandmark::DiscardUnknownFields](#mediapipenormalizedlandmarkdiscardunknownfields)
+  - [mediapipe::NormalizedLandmark::FindInitializationErrors](#mediapipenormalizedlandmarkfindinitializationerrors)
+  - [mediapipe::NormalizedLandmark::IsInitialized](#mediapipenormalizedlandmarkisinitialized)
+  - [mediapipe::NormalizedLandmark::SerializeAsString](#mediapipenormalizedlandmarkserializeasstring)
+  - [mediapipe::NormalizedLandmark::SerializeToString](#mediapipenormalizedlandmarkserializetostring)
+  - [mediapipe::NormalizedLandmark::SpaceUsedLong](#mediapipenormalizedlandmarkspaceusedlong)
   - [mediapipe::NormalizedLandmark::\_\_str\_\_](#mediapipenormalizedlandmark%5C_%5C_str%5C_%5C_)
 - [mediapipe::NormalizedLandmarkList](#mediapipenormalizedlandmarklist)
   - [NormalizedLandmarkList.landmark](#normalizedlandmarklistlandmark)
   - [mediapipe::NormalizedLandmarkList::get\_create](#mediapipenormalizedlandmarklistget%5C_create)
+  - [mediapipe::NormalizedLandmarkList::ByteSizeLong](#mediapipenormalizedlandmarklistbytesizelong)
+  - [mediapipe::NormalizedLandmarkList::CheckInitialized](#mediapipenormalizedlandmarklistcheckinitialized)
   - [mediapipe::NormalizedLandmarkList::Clear](#mediapipenormalizedlandmarklistclear)
   - [mediapipe::NormalizedLandmarkList::ClearField](#mediapipenormalizedlandmarklistclearfield)
   - [mediapipe::NormalizedLandmarkList::CopyFrom](#mediapipenormalizedlandmarklistcopyfrom)
+  - [mediapipe::NormalizedLandmarkList::DiscardUnknownFields](#mediapipenormalizedlandmarklistdiscardunknownfields)
+  - [mediapipe::NormalizedLandmarkList::FindInitializationErrors](#mediapipenormalizedlandmarklistfindinitializationerrors)
+  - [mediapipe::NormalizedLandmarkList::IsInitialized](#mediapipenormalizedlandmarklistisinitialized)
+  - [mediapipe::NormalizedLandmarkList::SerializeAsString](#mediapipenormalizedlandmarklistserializeasstring)
+  - [mediapipe::NormalizedLandmarkList::SerializeToString](#mediapipenormalizedlandmarklistserializetostring)
+  - [mediapipe::NormalizedLandmarkList::SpaceUsedLong](#mediapipenormalizedlandmarklistspaceusedlong)
   - [mediapipe::NormalizedLandmarkList::\_\_str\_\_](#mediapipenormalizedlandmarklist%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_NormalizedLandmark](#googleprotobufrepeated%5C_mediapipe%5C_normalizedlandmark)
   - [Repeated\_mediapipe\_NormalizedLandmark.Count](#repeated%5C_mediapipe%5C_normalizedlandmarkcount)
@@ -2000,9 +2379,17 @@
 - [mediapipe::NormalizedLandmarkListCollection](#mediapipenormalizedlandmarklistcollection)
   - [NormalizedLandmarkListCollection.landmark\_list](#normalizedlandmarklistcollectionlandmark%5C_list)
   - [mediapipe::NormalizedLandmarkListCollection::get\_create](#mediapipenormalizedlandmarklistcollectionget%5C_create)
+  - [mediapipe::NormalizedLandmarkListCollection::ByteSizeLong](#mediapipenormalizedlandmarklistcollectionbytesizelong)
+  - [mediapipe::NormalizedLandmarkListCollection::CheckInitialized](#mediapipenormalizedlandmarklistcollectioncheckinitialized)
   - [mediapipe::NormalizedLandmarkListCollection::Clear](#mediapipenormalizedlandmarklistcollectionclear)
   - [mediapipe::NormalizedLandmarkListCollection::ClearField](#mediapipenormalizedlandmarklistcollectionclearfield)
   - [mediapipe::NormalizedLandmarkListCollection::CopyFrom](#mediapipenormalizedlandmarklistcollectioncopyfrom)
+  - [mediapipe::NormalizedLandmarkListCollection::DiscardUnknownFields](#mediapipenormalizedlandmarklistcollectiondiscardunknownfields)
+  - [mediapipe::NormalizedLandmarkListCollection::FindInitializationErrors](#mediapipenormalizedlandmarklistcollectionfindinitializationerrors)
+  - [mediapipe::NormalizedLandmarkListCollection::IsInitialized](#mediapipenormalizedlandmarklistcollectionisinitialized)
+  - [mediapipe::NormalizedLandmarkListCollection::SerializeAsString](#mediapipenormalizedlandmarklistcollectionserializeasstring)
+  - [mediapipe::NormalizedLandmarkListCollection::SerializeToString](#mediapipenormalizedlandmarklistcollectionserializetostring)
+  - [mediapipe::NormalizedLandmarkListCollection::SpaceUsedLong](#mediapipenormalizedlandmarklistcollectionspaceusedlong)
   - [mediapipe::NormalizedLandmarkListCollection::\_\_str\_\_](#mediapipenormalizedlandmarklistcollection%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_NormalizedLandmarkList](#googleprotobufrepeated%5C_mediapipe%5C_normalizedlandmarklist)
   - [Repeated\_mediapipe\_NormalizedLandmarkList.Count](#repeated%5C_mediapipe%5C_normalizedlandmarklistcount)
@@ -2041,9 +2428,17 @@
   - [InferenceCalculatorOptions.delegate](#inferencecalculatoroptionsdelegate)
   - [InferenceCalculatorOptions.ext](#inferencecalculatoroptionsext)
   - [mediapipe::InferenceCalculatorOptions::get\_create](#mediapipeinferencecalculatoroptionsget%5C_create)
+  - [mediapipe::InferenceCalculatorOptions::ByteSizeLong](#mediapipeinferencecalculatoroptionsbytesizelong)
+  - [mediapipe::InferenceCalculatorOptions::CheckInitialized](#mediapipeinferencecalculatoroptionscheckinitialized)
   - [mediapipe::InferenceCalculatorOptions::Clear](#mediapipeinferencecalculatoroptionsclear)
   - [mediapipe::InferenceCalculatorOptions::ClearField](#mediapipeinferencecalculatoroptionsclearfield)
   - [mediapipe::InferenceCalculatorOptions::CopyFrom](#mediapipeinferencecalculatoroptionscopyfrom)
+  - [mediapipe::InferenceCalculatorOptions::DiscardUnknownFields](#mediapipeinferencecalculatoroptionsdiscardunknownfields)
+  - [mediapipe::InferenceCalculatorOptions::FindInitializationErrors](#mediapipeinferencecalculatoroptionsfindinitializationerrors)
+  - [mediapipe::InferenceCalculatorOptions::IsInitialized](#mediapipeinferencecalculatoroptionsisinitialized)
+  - [mediapipe::InferenceCalculatorOptions::SerializeAsString](#mediapipeinferencecalculatoroptionsserializeasstring)
+  - [mediapipe::InferenceCalculatorOptions::SerializeToString](#mediapipeinferencecalculatoroptionsserializetostring)
+  - [mediapipe::InferenceCalculatorOptions::SpaceUsedLong](#mediapipeinferencecalculatoroptionsspaceusedlong)
   - [mediapipe::InferenceCalculatorOptions::\_\_str\_\_](#mediapipeinferencecalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::InferenceCalculatorOptions::Delegate](#mediapipeinferencecalculatoroptionsdelegate)
   - [Delegate.tflite](#delegatetflite)
@@ -2051,15 +2446,31 @@
   - [Delegate.nnapi](#delegatennapi)
   - [Delegate.xnnpack](#delegatexnnpack)
   - [mediapipe::InferenceCalculatorOptions::Delegate::get\_create](#mediapipeinferencecalculatoroptionsdelegateget%5C_create)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::ByteSizeLong](#mediapipeinferencecalculatoroptionsdelegatebytesizelong)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::CheckInitialized](#mediapipeinferencecalculatoroptionsdelegatecheckinitialized)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Clear](#mediapipeinferencecalculatoroptionsdelegateclear)
   - [mediapipe::InferenceCalculatorOptions::Delegate::ClearField](#mediapipeinferencecalculatoroptionsdelegateclearfield)
   - [mediapipe::InferenceCalculatorOptions::Delegate::CopyFrom](#mediapipeinferencecalculatoroptionsdelegatecopyfrom)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::DiscardUnknownFields](#mediapipeinferencecalculatoroptionsdelegatediscardunknownfields)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::FindInitializationErrors](#mediapipeinferencecalculatoroptionsdelegatefindinitializationerrors)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::IsInitialized](#mediapipeinferencecalculatoroptionsdelegateisinitialized)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::SerializeAsString](#mediapipeinferencecalculatoroptionsdelegateserializeasstring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::SerializeToString](#mediapipeinferencecalculatoroptionsdelegateserializetostring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::SpaceUsedLong](#mediapipeinferencecalculatoroptionsdelegatespaceusedlong)
   - [mediapipe::InferenceCalculatorOptions::Delegate::\_\_str\_\_](#mediapipeinferencecalculatoroptionsdelegate%5C_%5C_str%5C_%5C_)
 - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite](#mediapipeinferencecalculatoroptionsdelegatetflite)
   - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::get\_create](#mediapipeinferencecalculatoroptionsdelegatetfliteget%5C_create)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::ByteSizeLong](#mediapipeinferencecalculatoroptionsdelegatetflitebytesizelong)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::CheckInitialized](#mediapipeinferencecalculatoroptionsdelegatetflitecheckinitialized)
   - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::Clear](#mediapipeinferencecalculatoroptionsdelegatetfliteclear)
   - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::ClearField](#mediapipeinferencecalculatoroptionsdelegatetfliteclearfield)
   - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::CopyFrom](#mediapipeinferencecalculatoroptionsdelegatetflitecopyfrom)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::DiscardUnknownFields](#mediapipeinferencecalculatoroptionsdelegatetflitediscardunknownfields)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::FindInitializationErrors](#mediapipeinferencecalculatoroptionsdelegatetflitefindinitializationerrors)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::IsInitialized](#mediapipeinferencecalculatoroptionsdelegatetfliteisinitialized)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SerializeAsString](#mediapipeinferencecalculatoroptionsdelegatetfliteserializeasstring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SerializeToString](#mediapipeinferencecalculatoroptionsdelegatetfliteserializetostring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SpaceUsedLong](#mediapipeinferencecalculatoroptionsdelegatetflitespaceusedlong)
   - [mediapipe::InferenceCalculatorOptions::Delegate::TfLite::\_\_str\_\_](#mediapipeinferencecalculatoroptionsdelegatetflite%5C_%5C_str%5C_%5C_)
 - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu](#mediapipeinferencecalculatoroptionsdelegategpu)
   - [Gpu.use\_advanced\_gpu\_api](#gpuuse%5C_advanced%5C_gpu%5C_api)
@@ -2070,9 +2481,17 @@
   - [Gpu.model\_token](#gpumodel%5C_token)
   - [Gpu.usage](#gpuusage)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::get\_create](#mediapipeinferencecalculatoroptionsdelegategpuget%5C_create)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::ByteSizeLong](#mediapipeinferencecalculatoroptionsdelegategpubytesizelong)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::CheckInitialized](#mediapipeinferencecalculatoroptionsdelegategpucheckinitialized)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::Clear](#mediapipeinferencecalculatoroptionsdelegategpuclear)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::ClearField](#mediapipeinferencecalculatoroptionsdelegategpuclearfield)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::CopyFrom](#mediapipeinferencecalculatoroptionsdelegategpucopyfrom)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::DiscardUnknownFields](#mediapipeinferencecalculatoroptionsdelegategpudiscardunknownfields)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::FindInitializationErrors](#mediapipeinferencecalculatoroptionsdelegategpufindinitializationerrors)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::IsInitialized](#mediapipeinferencecalculatoroptionsdelegategpuisinitialized)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SerializeAsString](#mediapipeinferencecalculatoroptionsdelegategpuserializeasstring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SerializeToString](#mediapipeinferencecalculatoroptionsdelegategpuserializetostring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SpaceUsedLong](#mediapipeinferencecalculatoroptionsdelegategpuspaceusedlong)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Gpu::\_\_str\_\_](#mediapipeinferencecalculatoroptionsdelegategpu%5C_%5C_str%5C_%5C_)
   - [Gpu.ANY\_](#gpuany%5C_)
   - [Gpu.OPENGL\_](#gpuopengl%5C_)
@@ -2085,16 +2504,32 @@
   - [Nnapi.model\_token](#nnapimodel%5C_token)
   - [Nnapi.accelerator\_name](#nnapiaccelerator%5C_name)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::get\_create](#mediapipeinferencecalculatoroptionsdelegatennapiget%5C_create)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::ByteSizeLong](#mediapipeinferencecalculatoroptionsdelegatennapibytesizelong)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::CheckInitialized](#mediapipeinferencecalculatoroptionsdelegatennapicheckinitialized)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::Clear](#mediapipeinferencecalculatoroptionsdelegatennapiclear)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::ClearField](#mediapipeinferencecalculatoroptionsdelegatennapiclearfield)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::CopyFrom](#mediapipeinferencecalculatoroptionsdelegatennapicopyfrom)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::DiscardUnknownFields](#mediapipeinferencecalculatoroptionsdelegatennapidiscardunknownfields)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::FindInitializationErrors](#mediapipeinferencecalculatoroptionsdelegatennapifindinitializationerrors)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::IsInitialized](#mediapipeinferencecalculatoroptionsdelegatennapiisinitialized)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SerializeAsString](#mediapipeinferencecalculatoroptionsdelegatennapiserializeasstring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SerializeToString](#mediapipeinferencecalculatoroptionsdelegatennapiserializetostring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SpaceUsedLong](#mediapipeinferencecalculatoroptionsdelegatennapispaceusedlong)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::\_\_str\_\_](#mediapipeinferencecalculatoroptionsdelegatennapi%5C_%5C_str%5C_%5C_)
 - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack](#mediapipeinferencecalculatoroptionsdelegatexnnpack)
   - [Xnnpack.num\_threads](#xnnpacknum%5C_threads)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::get\_create](#mediapipeinferencecalculatoroptionsdelegatexnnpackget%5C_create)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::ByteSizeLong](#mediapipeinferencecalculatoroptionsdelegatexnnpackbytesizelong)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::CheckInitialized](#mediapipeinferencecalculatoroptionsdelegatexnnpackcheckinitialized)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::Clear](#mediapipeinferencecalculatoroptionsdelegatexnnpackclear)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::ClearField](#mediapipeinferencecalculatoroptionsdelegatexnnpackclearfield)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::CopyFrom](#mediapipeinferencecalculatoroptionsdelegatexnnpackcopyfrom)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::DiscardUnknownFields](#mediapipeinferencecalculatoroptionsdelegatexnnpackdiscardunknownfields)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::FindInitializationErrors](#mediapipeinferencecalculatoroptionsdelegatexnnpackfindinitializationerrors)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::IsInitialized](#mediapipeinferencecalculatoroptionsdelegatexnnpackisinitialized)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SerializeAsString](#mediapipeinferencecalculatoroptionsdelegatexnnpackserializeasstring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SerializeToString](#mediapipeinferencecalculatoroptionsdelegatexnnpackserializetostring)
+  - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SpaceUsedLong](#mediapipeinferencecalculatoroptionsdelegatexnnpackspaceusedlong)
   - [mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::\_\_str\_\_](#mediapipeinferencecalculatoroptionsdelegatexnnpack%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::tensor::inference\_calculator\_pb2](#mediapipecalculatorstensorinference%5C_calculator%5C_pb2)
   - [inference\_calculator\_pb2.InferenceCalculatorOptions](#inference%5C_calculator%5C_pb2inferencecalculatoroptions)
@@ -2107,9 +2542,17 @@
   - [Delegate.Xnnpack](#delegatexnnpack)
 - [mediapipe::GpuOrigin](#mediapipegpuorigin)
   - [mediapipe::GpuOrigin::get\_create](#mediapipegpuoriginget%5C_create)
+  - [mediapipe::GpuOrigin::ByteSizeLong](#mediapipegpuoriginbytesizelong)
+  - [mediapipe::GpuOrigin::CheckInitialized](#mediapipegpuorigincheckinitialized)
   - [mediapipe::GpuOrigin::Clear](#mediapipegpuoriginclear)
   - [mediapipe::GpuOrigin::ClearField](#mediapipegpuoriginclearfield)
   - [mediapipe::GpuOrigin::CopyFrom](#mediapipegpuorigincopyfrom)
+  - [mediapipe::GpuOrigin::DiscardUnknownFields](#mediapipegpuorigindiscardunknownfields)
+  - [mediapipe::GpuOrigin::FindInitializationErrors](#mediapipegpuoriginfindinitializationerrors)
+  - [mediapipe::GpuOrigin::IsInitialized](#mediapipegpuoriginisinitialized)
+  - [mediapipe::GpuOrigin::SerializeAsString](#mediapipegpuoriginserializeasstring)
+  - [mediapipe::GpuOrigin::SerializeToString](#mediapipegpuoriginserializetostring)
+  - [mediapipe::GpuOrigin::SpaceUsedLong](#mediapipegpuoriginspaceusedlong)
   - [mediapipe::GpuOrigin::\_\_str\_\_](#mediapipegpuorigin%5C_%5C_str%5C_%5C_)
   - [GpuOrigin.DEFAULT\_](#gpuorigindefault%5C_)
   - [GpuOrigin.CONVENTIONAL\_](#gpuoriginconventional%5C_)
@@ -2133,9 +2576,17 @@
   - [FaceDetectionOptions.delegate](#facedetectionoptionsdelegate)
   - [FaceDetectionOptions.ext](#facedetectionoptionsext)
   - [mediapipe::FaceDetectionOptions::get\_create](#mediapipefacedetectionoptionsget%5C_create)
+  - [mediapipe::FaceDetectionOptions::ByteSizeLong](#mediapipefacedetectionoptionsbytesizelong)
+  - [mediapipe::FaceDetectionOptions::CheckInitialized](#mediapipefacedetectionoptionscheckinitialized)
   - [mediapipe::FaceDetectionOptions::Clear](#mediapipefacedetectionoptionsclear)
   - [mediapipe::FaceDetectionOptions::ClearField](#mediapipefacedetectionoptionsclearfield)
   - [mediapipe::FaceDetectionOptions::CopyFrom](#mediapipefacedetectionoptionscopyfrom)
+  - [mediapipe::FaceDetectionOptions::DiscardUnknownFields](#mediapipefacedetectionoptionsdiscardunknownfields)
+  - [mediapipe::FaceDetectionOptions::FindInitializationErrors](#mediapipefacedetectionoptionsfindinitializationerrors)
+  - [mediapipe::FaceDetectionOptions::IsInitialized](#mediapipefacedetectionoptionsisinitialized)
+  - [mediapipe::FaceDetectionOptions::SerializeAsString](#mediapipefacedetectionoptionsserializeasstring)
+  - [mediapipe::FaceDetectionOptions::SerializeToString](#mediapipefacedetectionoptionsserializetostring)
+  - [mediapipe::FaceDetectionOptions::SpaceUsedLong](#mediapipefacedetectionoptionsspaceusedlong)
   - [mediapipe::FaceDetectionOptions::\_\_str\_\_](#mediapipefacedetectionoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::modules::face\_detection::face\_detection\_pb2](#mediapipemodulesface%5C_detectionface%5C_detection%5C_pb2)
   - [face\_detection\_pb2.FaceDetectionOptions](#face%5C_detection%5C_pb2facedetectionoptions)
@@ -2150,9 +2601,17 @@
   - [AVCameraCalibrationData.lens\_distortion\_center\_x](#avcameracalibrationdatalens%5C_distortion%5C_center%5C_x)
   - [AVCameraCalibrationData.lens\_distortion\_center\_y](#avcameracalibrationdatalens%5C_distortion%5C_center%5C_y)
   - [mediapipe::AVCameraCalibrationData::get\_create](#mediapipeavcameracalibrationdataget%5C_create)
+  - [mediapipe::AVCameraCalibrationData::ByteSizeLong](#mediapipeavcameracalibrationdatabytesizelong)
+  - [mediapipe::AVCameraCalibrationData::CheckInitialized](#mediapipeavcameracalibrationdatacheckinitialized)
   - [mediapipe::AVCameraCalibrationData::Clear](#mediapipeavcameracalibrationdataclear)
   - [mediapipe::AVCameraCalibrationData::ClearField](#mediapipeavcameracalibrationdataclearfield)
   - [mediapipe::AVCameraCalibrationData::CopyFrom](#mediapipeavcameracalibrationdatacopyfrom)
+  - [mediapipe::AVCameraCalibrationData::DiscardUnknownFields](#mediapipeavcameracalibrationdatadiscardunknownfields)
+  - [mediapipe::AVCameraCalibrationData::FindInitializationErrors](#mediapipeavcameracalibrationdatafindinitializationerrors)
+  - [mediapipe::AVCameraCalibrationData::IsInitialized](#mediapipeavcameracalibrationdataisinitialized)
+  - [mediapipe::AVCameraCalibrationData::SerializeAsString](#mediapipeavcameracalibrationdataserializeasstring)
+  - [mediapipe::AVCameraCalibrationData::SerializeToString](#mediapipeavcameracalibrationdataserializetostring)
+  - [mediapipe::AVCameraCalibrationData::SpaceUsedLong](#mediapipeavcameracalibrationdataspaceusedlong)
   - [mediapipe::AVCameraCalibrationData::\_\_str\_\_](#mediapipeavcameracalibrationdata%5C_%5C_str%5C_%5C_)
 - [mediapipe::AVDepthData](#mediapipeavdepthdata)
   - [AVDepthData.depth\_data\_map](#avdepthdatadepth%5C_data%5C_map)
@@ -2167,9 +2626,17 @@
   - [AVDepthData.depth\_data\_map\_height](#avdepthdatadepth%5C_data%5C_map%5C_height)
   - [AVDepthData.depth\_data\_map\_raw\_values](#avdepthdatadepth%5C_data%5C_map%5C_raw%5C_values)
   - [mediapipe::AVDepthData::get\_create](#mediapipeavdepthdataget%5C_create)
+  - [mediapipe::AVDepthData::ByteSizeLong](#mediapipeavdepthdatabytesizelong)
+  - [mediapipe::AVDepthData::CheckInitialized](#mediapipeavdepthdatacheckinitialized)
   - [mediapipe::AVDepthData::Clear](#mediapipeavdepthdataclear)
   - [mediapipe::AVDepthData::ClearField](#mediapipeavdepthdataclearfield)
   - [mediapipe::AVDepthData::CopyFrom](#mediapipeavdepthdatacopyfrom)
+  - [mediapipe::AVDepthData::DiscardUnknownFields](#mediapipeavdepthdatadiscardunknownfields)
+  - [mediapipe::AVDepthData::FindInitializationErrors](#mediapipeavdepthdatafindinitializationerrors)
+  - [mediapipe::AVDepthData::IsInitialized](#mediapipeavdepthdataisinitialized)
+  - [mediapipe::AVDepthData::SerializeAsString](#mediapipeavdepthdataserializeasstring)
+  - [mediapipe::AVDepthData::SerializeToString](#mediapipeavdepthdataserializetostring)
+  - [mediapipe::AVDepthData::SpaceUsedLong](#mediapipeavdepthdataspaceusedlong)
   - [mediapipe::AVDepthData::\_\_str\_\_](#mediapipeavdepthdata%5C_%5C_str%5C_%5C_)
   - [AVDepthData.UNDEFINED\_ACCURACY\_](#avdepthdataundefined%5C_accuracy%5C_)
   - [AVDepthData.RELATIVE\_](#avdepthdatarelative%5C_)
@@ -2184,18 +2651,34 @@
   - [ARLightEstimate.primary\_light\_direction](#arlightestimateprimary%5C_light%5C_direction)
   - [ARLightEstimate.primary\_light\_intensity](#arlightestimateprimary%5C_light%5C_intensity)
   - [mediapipe::ARLightEstimate::get\_create](#mediapipearlightestimateget%5C_create)
+  - [mediapipe::ARLightEstimate::ByteSizeLong](#mediapipearlightestimatebytesizelong)
+  - [mediapipe::ARLightEstimate::CheckInitialized](#mediapipearlightestimatecheckinitialized)
   - [mediapipe::ARLightEstimate::Clear](#mediapipearlightestimateclear)
   - [mediapipe::ARLightEstimate::ClearField](#mediapipearlightestimateclearfield)
   - [mediapipe::ARLightEstimate::CopyFrom](#mediapipearlightestimatecopyfrom)
+  - [mediapipe::ARLightEstimate::DiscardUnknownFields](#mediapipearlightestimatediscardunknownfields)
+  - [mediapipe::ARLightEstimate::FindInitializationErrors](#mediapipearlightestimatefindinitializationerrors)
+  - [mediapipe::ARLightEstimate::IsInitialized](#mediapipearlightestimateisinitialized)
+  - [mediapipe::ARLightEstimate::SerializeAsString](#mediapipearlightestimateserializeasstring)
+  - [mediapipe::ARLightEstimate::SerializeToString](#mediapipearlightestimateserializetostring)
+  - [mediapipe::ARLightEstimate::SpaceUsedLong](#mediapipearlightestimatespaceusedlong)
   - [mediapipe::ARLightEstimate::\_\_str\_\_](#mediapipearlightestimate%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARLightEstimate::DirectionVector](#mediapipearlightestimatedirectionvector)
   - [DirectionVector.x](#directionvectorx)
   - [DirectionVector.y](#directionvectory)
   - [DirectionVector.z](#directionvectorz)
   - [mediapipe::ARLightEstimate::DirectionVector::get\_create](#mediapipearlightestimatedirectionvectorget%5C_create)
+  - [mediapipe::ARLightEstimate::DirectionVector::ByteSizeLong](#mediapipearlightestimatedirectionvectorbytesizelong)
+  - [mediapipe::ARLightEstimate::DirectionVector::CheckInitialized](#mediapipearlightestimatedirectionvectorcheckinitialized)
   - [mediapipe::ARLightEstimate::DirectionVector::Clear](#mediapipearlightestimatedirectionvectorclear)
   - [mediapipe::ARLightEstimate::DirectionVector::ClearField](#mediapipearlightestimatedirectionvectorclearfield)
   - [mediapipe::ARLightEstimate::DirectionVector::CopyFrom](#mediapipearlightestimatedirectionvectorcopyfrom)
+  - [mediapipe::ARLightEstimate::DirectionVector::DiscardUnknownFields](#mediapipearlightestimatedirectionvectordiscardunknownfields)
+  - [mediapipe::ARLightEstimate::DirectionVector::FindInitializationErrors](#mediapipearlightestimatedirectionvectorfindinitializationerrors)
+  - [mediapipe::ARLightEstimate::DirectionVector::IsInitialized](#mediapipearlightestimatedirectionvectorisinitialized)
+  - [mediapipe::ARLightEstimate::DirectionVector::SerializeAsString](#mediapipearlightestimatedirectionvectorserializeasstring)
+  - [mediapipe::ARLightEstimate::DirectionVector::SerializeToString](#mediapipearlightestimatedirectionvectorserializetostring)
+  - [mediapipe::ARLightEstimate::DirectionVector::SpaceUsedLong](#mediapipearlightestimatedirectionvectorspaceusedlong)
   - [mediapipe::ARLightEstimate::DirectionVector::\_\_str\_\_](#mediapipearlightestimatedirectionvector%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARCamera](#mediapipearcamera)
   - [ARCamera.tracking\_state](#arcameratracking%5C_state)
@@ -2208,9 +2691,17 @@
   - [ARCamera.projection\_matrix](#arcameraprojection%5C_matrix)
   - [ARCamera.view\_matrix](#arcameraview%5C_matrix)
   - [mediapipe::ARCamera::get\_create](#mediapipearcameraget%5C_create)
+  - [mediapipe::ARCamera::ByteSizeLong](#mediapipearcamerabytesizelong)
+  - [mediapipe::ARCamera::CheckInitialized](#mediapipearcameracheckinitialized)
   - [mediapipe::ARCamera::Clear](#mediapipearcameraclear)
   - [mediapipe::ARCamera::ClearField](#mediapipearcameraclearfield)
   - [mediapipe::ARCamera::CopyFrom](#mediapipearcameracopyfrom)
+  - [mediapipe::ARCamera::DiscardUnknownFields](#mediapipearcameradiscardunknownfields)
+  - [mediapipe::ARCamera::FindInitializationErrors](#mediapipearcamerafindinitializationerrors)
+  - [mediapipe::ARCamera::IsInitialized](#mediapipearcameraisinitialized)
+  - [mediapipe::ARCamera::SerializeAsString](#mediapipearcameraserializeasstring)
+  - [mediapipe::ARCamera::SerializeToString](#mediapipearcameraserializetostring)
+  - [mediapipe::ARCamera::SpaceUsedLong](#mediapipearcameraspaceusedlong)
   - [mediapipe::ARCamera::\_\_str\_\_](#mediapipearcamera%5C_%5C_str%5C_%5C_)
   - [ARCamera.UNDEFINED\_TRACKING\_STATE\_](#arcameraundefined%5C_tracking%5C_state%5C_)
   - [ARCamera.UNAVAILABLE\_](#arcameraunavailable%5C_)
@@ -2227,9 +2718,17 @@
   - [EulerAngles.pitch](#euleranglespitch)
   - [EulerAngles.yaw](#euleranglesyaw)
   - [mediapipe::ARCamera::EulerAngles::get\_create](#mediapipearcameraeuleranglesget%5C_create)
+  - [mediapipe::ARCamera::EulerAngles::ByteSizeLong](#mediapipearcameraeuleranglesbytesizelong)
+  - [mediapipe::ARCamera::EulerAngles::CheckInitialized](#mediapipearcameraeuleranglescheckinitialized)
   - [mediapipe::ARCamera::EulerAngles::Clear](#mediapipearcameraeuleranglesclear)
   - [mediapipe::ARCamera::EulerAngles::ClearField](#mediapipearcameraeuleranglesclearfield)
   - [mediapipe::ARCamera::EulerAngles::CopyFrom](#mediapipearcameraeuleranglescopyfrom)
+  - [mediapipe::ARCamera::EulerAngles::DiscardUnknownFields](#mediapipearcameraeuleranglesdiscardunknownfields)
+  - [mediapipe::ARCamera::EulerAngles::FindInitializationErrors](#mediapipearcameraeuleranglesfindinitializationerrors)
+  - [mediapipe::ARCamera::EulerAngles::IsInitialized](#mediapipearcameraeuleranglesisinitialized)
+  - [mediapipe::ARCamera::EulerAngles::SerializeAsString](#mediapipearcameraeuleranglesserializeasstring)
+  - [mediapipe::ARCamera::EulerAngles::SerializeToString](#mediapipearcameraeuleranglesserializetostring)
+  - [mediapipe::ARCamera::EulerAngles::SpaceUsedLong](#mediapipearcameraeuleranglesspaceusedlong)
   - [mediapipe::ARCamera::EulerAngles::\_\_str\_\_](#mediapipearcameraeulerangles%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARFaceGeometry](#mediapipearfacegeometry)
   - [ARFaceGeometry.vertices](#arfacegeometryvertices)
@@ -2239,9 +2738,17 @@
   - [ARFaceGeometry.triangle\_indices](#arfacegeometrytriangle%5C_indices)
   - [ARFaceGeometry.triangle\_count](#arfacegeometrytriangle%5C_count)
   - [mediapipe::ARFaceGeometry::get\_create](#mediapipearfacegeometryget%5C_create)
+  - [mediapipe::ARFaceGeometry::ByteSizeLong](#mediapipearfacegeometrybytesizelong)
+  - [mediapipe::ARFaceGeometry::CheckInitialized](#mediapipearfacegeometrycheckinitialized)
   - [mediapipe::ARFaceGeometry::Clear](#mediapipearfacegeometryclear)
   - [mediapipe::ARFaceGeometry::ClearField](#mediapipearfacegeometryclearfield)
   - [mediapipe::ARFaceGeometry::CopyFrom](#mediapipearfacegeometrycopyfrom)
+  - [mediapipe::ARFaceGeometry::DiscardUnknownFields](#mediapipearfacegeometrydiscardunknownfields)
+  - [mediapipe::ARFaceGeometry::FindInitializationErrors](#mediapipearfacegeometryfindinitializationerrors)
+  - [mediapipe::ARFaceGeometry::IsInitialized](#mediapipearfacegeometryisinitialized)
+  - [mediapipe::ARFaceGeometry::SerializeAsString](#mediapipearfacegeometryserializeasstring)
+  - [mediapipe::ARFaceGeometry::SerializeToString](#mediapipearfacegeometryserializetostring)
+  - [mediapipe::ARFaceGeometry::SpaceUsedLong](#mediapipearfacegeometryspaceusedlong)
   - [mediapipe::ARFaceGeometry::\_\_str\_\_](#mediapipearfacegeometry%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_Vertex](#googleprotobufrepeated%5C_mediapipe%5C_arfacegeometry%5C_vertex)
   - [Repeated\_mediapipe\_ARFaceGeometry\_Vertex.Count](#repeated%5C_mediapipe%5C_arfacegeometry%5C_vertexcount)
@@ -2292,24 +2799,48 @@
   - [Vertex.y](#vertexy)
   - [Vertex.z](#vertexz)
   - [mediapipe::ARFaceGeometry::Vertex::get\_create](#mediapipearfacegeometryvertexget%5C_create)
+  - [mediapipe::ARFaceGeometry::Vertex::ByteSizeLong](#mediapipearfacegeometryvertexbytesizelong)
+  - [mediapipe::ARFaceGeometry::Vertex::CheckInitialized](#mediapipearfacegeometryvertexcheckinitialized)
   - [mediapipe::ARFaceGeometry::Vertex::Clear](#mediapipearfacegeometryvertexclear)
   - [mediapipe::ARFaceGeometry::Vertex::ClearField](#mediapipearfacegeometryvertexclearfield)
   - [mediapipe::ARFaceGeometry::Vertex::CopyFrom](#mediapipearfacegeometryvertexcopyfrom)
+  - [mediapipe::ARFaceGeometry::Vertex::DiscardUnknownFields](#mediapipearfacegeometryvertexdiscardunknownfields)
+  - [mediapipe::ARFaceGeometry::Vertex::FindInitializationErrors](#mediapipearfacegeometryvertexfindinitializationerrors)
+  - [mediapipe::ARFaceGeometry::Vertex::IsInitialized](#mediapipearfacegeometryvertexisinitialized)
+  - [mediapipe::ARFaceGeometry::Vertex::SerializeAsString](#mediapipearfacegeometryvertexserializeasstring)
+  - [mediapipe::ARFaceGeometry::Vertex::SerializeToString](#mediapipearfacegeometryvertexserializetostring)
+  - [mediapipe::ARFaceGeometry::Vertex::SpaceUsedLong](#mediapipearfacegeometryvertexspaceusedlong)
   - [mediapipe::ARFaceGeometry::Vertex::\_\_str\_\_](#mediapipearfacegeometryvertex%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARFaceGeometry::TextureCoordinate](#mediapipearfacegeometrytexturecoordinate)
   - [TextureCoordinate.u](#texturecoordinateu)
   - [TextureCoordinate.v](#texturecoordinatev)
   - [mediapipe::ARFaceGeometry::TextureCoordinate::get\_create](#mediapipearfacegeometrytexturecoordinateget%5C_create)
+  - [mediapipe::ARFaceGeometry::TextureCoordinate::ByteSizeLong](#mediapipearfacegeometrytexturecoordinatebytesizelong)
+  - [mediapipe::ARFaceGeometry::TextureCoordinate::CheckInitialized](#mediapipearfacegeometrytexturecoordinatecheckinitialized)
   - [mediapipe::ARFaceGeometry::TextureCoordinate::Clear](#mediapipearfacegeometrytexturecoordinateclear)
   - [mediapipe::ARFaceGeometry::TextureCoordinate::ClearField](#mediapipearfacegeometrytexturecoordinateclearfield)
   - [mediapipe::ARFaceGeometry::TextureCoordinate::CopyFrom](#mediapipearfacegeometrytexturecoordinatecopyfrom)
+  - [mediapipe::ARFaceGeometry::TextureCoordinate::DiscardUnknownFields](#mediapipearfacegeometrytexturecoordinatediscardunknownfields)
+  - [mediapipe::ARFaceGeometry::TextureCoordinate::FindInitializationErrors](#mediapipearfacegeometrytexturecoordinatefindinitializationerrors)
+  - [mediapipe::ARFaceGeometry::TextureCoordinate::IsInitialized](#mediapipearfacegeometrytexturecoordinateisinitialized)
+  - [mediapipe::ARFaceGeometry::TextureCoordinate::SerializeAsString](#mediapipearfacegeometrytexturecoordinateserializeasstring)
+  - [mediapipe::ARFaceGeometry::TextureCoordinate::SerializeToString](#mediapipearfacegeometrytexturecoordinateserializetostring)
+  - [mediapipe::ARFaceGeometry::TextureCoordinate::SpaceUsedLong](#mediapipearfacegeometrytexturecoordinatespaceusedlong)
   - [mediapipe::ARFaceGeometry::TextureCoordinate::\_\_str\_\_](#mediapipearfacegeometrytexturecoordinate%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARBlendShapeMap](#mediapipearblendshapemap)
   - [ARBlendShapeMap.entries](#arblendshapemapentries)
   - [mediapipe::ARBlendShapeMap::get\_create](#mediapipearblendshapemapget%5C_create)
+  - [mediapipe::ARBlendShapeMap::ByteSizeLong](#mediapipearblendshapemapbytesizelong)
+  - [mediapipe::ARBlendShapeMap::CheckInitialized](#mediapipearblendshapemapcheckinitialized)
   - [mediapipe::ARBlendShapeMap::Clear](#mediapipearblendshapemapclear)
   - [mediapipe::ARBlendShapeMap::ClearField](#mediapipearblendshapemapclearfield)
   - [mediapipe::ARBlendShapeMap::CopyFrom](#mediapipearblendshapemapcopyfrom)
+  - [mediapipe::ARBlendShapeMap::DiscardUnknownFields](#mediapipearblendshapemapdiscardunknownfields)
+  - [mediapipe::ARBlendShapeMap::FindInitializationErrors](#mediapipearblendshapemapfindinitializationerrors)
+  - [mediapipe::ARBlendShapeMap::IsInitialized](#mediapipearblendshapemapisinitialized)
+  - [mediapipe::ARBlendShapeMap::SerializeAsString](#mediapipearblendshapemapserializeasstring)
+  - [mediapipe::ARBlendShapeMap::SerializeToString](#mediapipearblendshapemapserializetostring)
+  - [mediapipe::ARBlendShapeMap::SpaceUsedLong](#mediapipearblendshapemapspaceusedlong)
   - [mediapipe::ARBlendShapeMap::\_\_str\_\_](#mediapipearblendshapemap%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry](#googleprotobufrepeated%5C_mediapipe%5C_arblendshapemap%5C_mapentry)
   - [Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry.Count](#repeated%5C_mediapipe%5C_arblendshapemap%5C_mapentrycount)
@@ -2337,9 +2868,17 @@
   - [MapEntry.blend\_shape\_location](#mapentryblend%5C_shape%5C_location)
   - [MapEntry.blend\_shape\_coefficient](#mapentryblend%5C_shape%5C_coefficient)
   - [mediapipe::ARBlendShapeMap::MapEntry::get\_create](#mediapipearblendshapemapmapentryget%5C_create)
+  - [mediapipe::ARBlendShapeMap::MapEntry::ByteSizeLong](#mediapipearblendshapemapmapentrybytesizelong)
+  - [mediapipe::ARBlendShapeMap::MapEntry::CheckInitialized](#mediapipearblendshapemapmapentrycheckinitialized)
   - [mediapipe::ARBlendShapeMap::MapEntry::Clear](#mediapipearblendshapemapmapentryclear)
   - [mediapipe::ARBlendShapeMap::MapEntry::ClearField](#mediapipearblendshapemapmapentryclearfield)
   - [mediapipe::ARBlendShapeMap::MapEntry::CopyFrom](#mediapipearblendshapemapmapentrycopyfrom)
+  - [mediapipe::ARBlendShapeMap::MapEntry::DiscardUnknownFields](#mediapipearblendshapemapmapentrydiscardunknownfields)
+  - [mediapipe::ARBlendShapeMap::MapEntry::FindInitializationErrors](#mediapipearblendshapemapmapentryfindinitializationerrors)
+  - [mediapipe::ARBlendShapeMap::MapEntry::IsInitialized](#mediapipearblendshapemapmapentryisinitialized)
+  - [mediapipe::ARBlendShapeMap::MapEntry::SerializeAsString](#mediapipearblendshapemapmapentryserializeasstring)
+  - [mediapipe::ARBlendShapeMap::MapEntry::SerializeToString](#mediapipearblendshapemapmapentryserializetostring)
+  - [mediapipe::ARBlendShapeMap::MapEntry::SpaceUsedLong](#mediapipearblendshapemapmapentryspaceusedlong)
   - [mediapipe::ARBlendShapeMap::MapEntry::\_\_str\_\_](#mediapipearblendshapemapmapentry%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARFaceAnchor](#mediapipearfaceanchor)
   - [ARFaceAnchor.geometry](#arfaceanchorgeometry)
@@ -2347,9 +2886,17 @@
   - [ARFaceAnchor.transform](#arfaceanchortransform)
   - [ARFaceAnchor.is\_tracked](#arfaceanchoris%5C_tracked)
   - [mediapipe::ARFaceAnchor::get\_create](#mediapipearfaceanchorget%5C_create)
+  - [mediapipe::ARFaceAnchor::ByteSizeLong](#mediapipearfaceanchorbytesizelong)
+  - [mediapipe::ARFaceAnchor::CheckInitialized](#mediapipearfaceanchorcheckinitialized)
   - [mediapipe::ARFaceAnchor::Clear](#mediapipearfaceanchorclear)
   - [mediapipe::ARFaceAnchor::ClearField](#mediapipearfaceanchorclearfield)
   - [mediapipe::ARFaceAnchor::CopyFrom](#mediapipearfaceanchorcopyfrom)
+  - [mediapipe::ARFaceAnchor::DiscardUnknownFields](#mediapipearfaceanchordiscardunknownfields)
+  - [mediapipe::ARFaceAnchor::FindInitializationErrors](#mediapipearfaceanchorfindinitializationerrors)
+  - [mediapipe::ARFaceAnchor::IsInitialized](#mediapipearfaceanchorisinitialized)
+  - [mediapipe::ARFaceAnchor::SerializeAsString](#mediapipearfaceanchorserializeasstring)
+  - [mediapipe::ARFaceAnchor::SerializeToString](#mediapipearfaceanchorserializetostring)
+  - [mediapipe::ARFaceAnchor::SpaceUsedLong](#mediapipearfaceanchorspaceusedlong)
   - [mediapipe::ARFaceAnchor::\_\_str\_\_](#mediapipearfaceanchor%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARPlaneGeometry](#mediapipearplanegeometry)
   - [ARPlaneGeometry.vertices](#arplanegeometryvertices)
@@ -2361,9 +2908,17 @@
   - [ARPlaneGeometry.boundary\_vertices](#arplanegeometryboundary%5C_vertices)
   - [ARPlaneGeometry.boundary\_vertex\_count](#arplanegeometryboundary%5C_vertex%5C_count)
   - [mediapipe::ARPlaneGeometry::get\_create](#mediapipearplanegeometryget%5C_create)
+  - [mediapipe::ARPlaneGeometry::ByteSizeLong](#mediapipearplanegeometrybytesizelong)
+  - [mediapipe::ARPlaneGeometry::CheckInitialized](#mediapipearplanegeometrycheckinitialized)
   - [mediapipe::ARPlaneGeometry::Clear](#mediapipearplanegeometryclear)
   - [mediapipe::ARPlaneGeometry::ClearField](#mediapipearplanegeometryclearfield)
   - [mediapipe::ARPlaneGeometry::CopyFrom](#mediapipearplanegeometrycopyfrom)
+  - [mediapipe::ARPlaneGeometry::DiscardUnknownFields](#mediapipearplanegeometrydiscardunknownfields)
+  - [mediapipe::ARPlaneGeometry::FindInitializationErrors](#mediapipearplanegeometryfindinitializationerrors)
+  - [mediapipe::ARPlaneGeometry::IsInitialized](#mediapipearplanegeometryisinitialized)
+  - [mediapipe::ARPlaneGeometry::SerializeAsString](#mediapipearplanegeometryserializeasstring)
+  - [mediapipe::ARPlaneGeometry::SerializeToString](#mediapipearplanegeometryserializetostring)
+  - [mediapipe::ARPlaneGeometry::SpaceUsedLong](#mediapipearplanegeometryspaceusedlong)
   - [mediapipe::ARPlaneGeometry::\_\_str\_\_](#mediapipearplanegeometry%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_Vertex](#googleprotobufrepeated%5C_mediapipe%5C_arplanegeometry%5C_vertex)
   - [Repeated\_mediapipe\_ARPlaneGeometry\_Vertex.Count](#repeated%5C_mediapipe%5C_arplanegeometry%5C_vertexcount)
@@ -2414,17 +2969,33 @@
   - [Vertex.y](#vertexy-1)
   - [Vertex.z](#vertexz-1)
   - [mediapipe::ARPlaneGeometry::Vertex::get\_create](#mediapipearplanegeometryvertexget%5C_create)
+  - [mediapipe::ARPlaneGeometry::Vertex::ByteSizeLong](#mediapipearplanegeometryvertexbytesizelong)
+  - [mediapipe::ARPlaneGeometry::Vertex::CheckInitialized](#mediapipearplanegeometryvertexcheckinitialized)
   - [mediapipe::ARPlaneGeometry::Vertex::Clear](#mediapipearplanegeometryvertexclear)
   - [mediapipe::ARPlaneGeometry::Vertex::ClearField](#mediapipearplanegeometryvertexclearfield)
   - [mediapipe::ARPlaneGeometry::Vertex::CopyFrom](#mediapipearplanegeometryvertexcopyfrom)
+  - [mediapipe::ARPlaneGeometry::Vertex::DiscardUnknownFields](#mediapipearplanegeometryvertexdiscardunknownfields)
+  - [mediapipe::ARPlaneGeometry::Vertex::FindInitializationErrors](#mediapipearplanegeometryvertexfindinitializationerrors)
+  - [mediapipe::ARPlaneGeometry::Vertex::IsInitialized](#mediapipearplanegeometryvertexisinitialized)
+  - [mediapipe::ARPlaneGeometry::Vertex::SerializeAsString](#mediapipearplanegeometryvertexserializeasstring)
+  - [mediapipe::ARPlaneGeometry::Vertex::SerializeToString](#mediapipearplanegeometryvertexserializetostring)
+  - [mediapipe::ARPlaneGeometry::Vertex::SpaceUsedLong](#mediapipearplanegeometryvertexspaceusedlong)
   - [mediapipe::ARPlaneGeometry::Vertex::\_\_str\_\_](#mediapipearplanegeometryvertex%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARPlaneGeometry::TextureCoordinate](#mediapipearplanegeometrytexturecoordinate)
   - [TextureCoordinate.u](#texturecoordinateu-1)
   - [TextureCoordinate.v](#texturecoordinatev-1)
   - [mediapipe::ARPlaneGeometry::TextureCoordinate::get\_create](#mediapipearplanegeometrytexturecoordinateget%5C_create)
+  - [mediapipe::ARPlaneGeometry::TextureCoordinate::ByteSizeLong](#mediapipearplanegeometrytexturecoordinatebytesizelong)
+  - [mediapipe::ARPlaneGeometry::TextureCoordinate::CheckInitialized](#mediapipearplanegeometrytexturecoordinatecheckinitialized)
   - [mediapipe::ARPlaneGeometry::TextureCoordinate::Clear](#mediapipearplanegeometrytexturecoordinateclear)
   - [mediapipe::ARPlaneGeometry::TextureCoordinate::ClearField](#mediapipearplanegeometrytexturecoordinateclearfield)
   - [mediapipe::ARPlaneGeometry::TextureCoordinate::CopyFrom](#mediapipearplanegeometrytexturecoordinatecopyfrom)
+  - [mediapipe::ARPlaneGeometry::TextureCoordinate::DiscardUnknownFields](#mediapipearplanegeometrytexturecoordinatediscardunknownfields)
+  - [mediapipe::ARPlaneGeometry::TextureCoordinate::FindInitializationErrors](#mediapipearplanegeometrytexturecoordinatefindinitializationerrors)
+  - [mediapipe::ARPlaneGeometry::TextureCoordinate::IsInitialized](#mediapipearplanegeometrytexturecoordinateisinitialized)
+  - [mediapipe::ARPlaneGeometry::TextureCoordinate::SerializeAsString](#mediapipearplanegeometrytexturecoordinateserializeasstring)
+  - [mediapipe::ARPlaneGeometry::TextureCoordinate::SerializeToString](#mediapipearplanegeometrytexturecoordinateserializetostring)
+  - [mediapipe::ARPlaneGeometry::TextureCoordinate::SpaceUsedLong](#mediapipearplanegeometrytexturecoordinatespaceusedlong)
   - [mediapipe::ARPlaneGeometry::TextureCoordinate::\_\_str\_\_](#mediapipearplanegeometrytexturecoordinate%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARPlaneAnchor](#mediapipearplaneanchor)
   - [ARPlaneAnchor.identifier](#arplaneanchoridentifier)
@@ -2437,9 +3008,17 @@
   - [ARPlaneAnchor.classification](#arplaneanchorclassification)
   - [ARPlaneAnchor.classification\_status](#arplaneanchorclassification%5C_status)
   - [mediapipe::ARPlaneAnchor::get\_create](#mediapipearplaneanchorget%5C_create)
+  - [mediapipe::ARPlaneAnchor::ByteSizeLong](#mediapipearplaneanchorbytesizelong)
+  - [mediapipe::ARPlaneAnchor::CheckInitialized](#mediapipearplaneanchorcheckinitialized)
   - [mediapipe::ARPlaneAnchor::Clear](#mediapipearplaneanchorclear)
   - [mediapipe::ARPlaneAnchor::ClearField](#mediapipearplaneanchorclearfield)
   - [mediapipe::ARPlaneAnchor::CopyFrom](#mediapipearplaneanchorcopyfrom)
+  - [mediapipe::ARPlaneAnchor::DiscardUnknownFields](#mediapipearplaneanchordiscardunknownfields)
+  - [mediapipe::ARPlaneAnchor::FindInitializationErrors](#mediapipearplaneanchorfindinitializationerrors)
+  - [mediapipe::ARPlaneAnchor::IsInitialized](#mediapipearplaneanchorisinitialized)
+  - [mediapipe::ARPlaneAnchor::SerializeAsString](#mediapipearplaneanchorserializeasstring)
+  - [mediapipe::ARPlaneAnchor::SerializeToString](#mediapipearplaneanchorserializetostring)
+  - [mediapipe::ARPlaneAnchor::SpaceUsedLong](#mediapipearplaneanchorspaceusedlong)
   - [mediapipe::ARPlaneAnchor::\_\_str\_\_](#mediapipearplaneanchor%5C_%5C_str%5C_%5C_)
   - [ARPlaneAnchor.UNDEFINED\_](#arplaneanchorundefined%5C_)
   - [ARPlaneAnchor.HORIZONTAL\_](#arplaneanchorhorizontal%5C_)
@@ -2459,18 +3038,34 @@
   - [PlaneVector.y](#planevectory)
   - [PlaneVector.z](#planevectorz)
   - [mediapipe::ARPlaneAnchor::PlaneVector::get\_create](#mediapipearplaneanchorplanevectorget%5C_create)
+  - [mediapipe::ARPlaneAnchor::PlaneVector::ByteSizeLong](#mediapipearplaneanchorplanevectorbytesizelong)
+  - [mediapipe::ARPlaneAnchor::PlaneVector::CheckInitialized](#mediapipearplaneanchorplanevectorcheckinitialized)
   - [mediapipe::ARPlaneAnchor::PlaneVector::Clear](#mediapipearplaneanchorplanevectorclear)
   - [mediapipe::ARPlaneAnchor::PlaneVector::ClearField](#mediapipearplaneanchorplanevectorclearfield)
   - [mediapipe::ARPlaneAnchor::PlaneVector::CopyFrom](#mediapipearplaneanchorplanevectorcopyfrom)
+  - [mediapipe::ARPlaneAnchor::PlaneVector::DiscardUnknownFields](#mediapipearplaneanchorplanevectordiscardunknownfields)
+  - [mediapipe::ARPlaneAnchor::PlaneVector::FindInitializationErrors](#mediapipearplaneanchorplanevectorfindinitializationerrors)
+  - [mediapipe::ARPlaneAnchor::PlaneVector::IsInitialized](#mediapipearplaneanchorplanevectorisinitialized)
+  - [mediapipe::ARPlaneAnchor::PlaneVector::SerializeAsString](#mediapipearplaneanchorplanevectorserializeasstring)
+  - [mediapipe::ARPlaneAnchor::PlaneVector::SerializeToString](#mediapipearplaneanchorplanevectorserializetostring)
+  - [mediapipe::ARPlaneAnchor::PlaneVector::SpaceUsedLong](#mediapipearplaneanchorplanevectorspaceusedlong)
   - [mediapipe::ARPlaneAnchor::PlaneVector::\_\_str\_\_](#mediapipearplaneanchorplanevector%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARPointCloud](#mediapipearpointcloud)
   - [ARPointCloud.count](#arpointcloudcount)
   - [ARPointCloud.point](#arpointcloudpoint)
   - [ARPointCloud.identifier](#arpointcloudidentifier)
   - [mediapipe::ARPointCloud::get\_create](#mediapipearpointcloudget%5C_create)
+  - [mediapipe::ARPointCloud::ByteSizeLong](#mediapipearpointcloudbytesizelong)
+  - [mediapipe::ARPointCloud::CheckInitialized](#mediapipearpointcloudcheckinitialized)
   - [mediapipe::ARPointCloud::Clear](#mediapipearpointcloudclear)
   - [mediapipe::ARPointCloud::ClearField](#mediapipearpointcloudclearfield)
   - [mediapipe::ARPointCloud::CopyFrom](#mediapipearpointcloudcopyfrom)
+  - [mediapipe::ARPointCloud::DiscardUnknownFields](#mediapipearpointclouddiscardunknownfields)
+  - [mediapipe::ARPointCloud::FindInitializationErrors](#mediapipearpointcloudfindinitializationerrors)
+  - [mediapipe::ARPointCloud::IsInitialized](#mediapipearpointcloudisinitialized)
+  - [mediapipe::ARPointCloud::SerializeAsString](#mediapipearpointcloudserializeasstring)
+  - [mediapipe::ARPointCloud::SerializeToString](#mediapipearpointcloudserializetostring)
+  - [mediapipe::ARPointCloud::SpaceUsedLong](#mediapipearpointcloudspaceusedlong)
   - [mediapipe::ARPointCloud::\_\_str\_\_](#mediapipearpointcloud%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_ARPointCloud\_Point](#googleprotobufrepeated%5C_mediapipe%5C_arpointcloud%5C_point)
   - [Repeated\_mediapipe\_ARPointCloud\_Point.Count](#repeated%5C_mediapipe%5C_arpointcloud%5C_pointcount)
@@ -2521,9 +3116,17 @@
   - [Point.y](#pointy)
   - [Point.z](#pointz)
   - [mediapipe::ARPointCloud::Point::get\_create](#mediapipearpointcloudpointget%5C_create)
+  - [mediapipe::ARPointCloud::Point::ByteSizeLong](#mediapipearpointcloudpointbytesizelong)
+  - [mediapipe::ARPointCloud::Point::CheckInitialized](#mediapipearpointcloudpointcheckinitialized)
   - [mediapipe::ARPointCloud::Point::Clear](#mediapipearpointcloudpointclear)
   - [mediapipe::ARPointCloud::Point::ClearField](#mediapipearpointcloudpointclearfield)
   - [mediapipe::ARPointCloud::Point::CopyFrom](#mediapipearpointcloudpointcopyfrom)
+  - [mediapipe::ARPointCloud::Point::DiscardUnknownFields](#mediapipearpointcloudpointdiscardunknownfields)
+  - [mediapipe::ARPointCloud::Point::FindInitializationErrors](#mediapipearpointcloudpointfindinitializationerrors)
+  - [mediapipe::ARPointCloud::Point::IsInitialized](#mediapipearpointcloudpointisinitialized)
+  - [mediapipe::ARPointCloud::Point::SerializeAsString](#mediapipearpointcloudpointserializeasstring)
+  - [mediapipe::ARPointCloud::Point::SerializeToString](#mediapipearpointcloudpointserializetostring)
+  - [mediapipe::ARPointCloud::Point::SpaceUsedLong](#mediapipearpointcloudpointspaceusedlong)
   - [mediapipe::ARPointCloud::Point::\_\_str\_\_](#mediapipearpointcloudpoint%5C_%5C_str%5C_%5C_)
 - [mediapipe::ARFrame](#mediapipearframe)
   - [ARFrame.timestamp](#arframetimestamp)
@@ -2535,9 +3138,17 @@
   - [ARFrame.plane\_anchor](#arframeplane%5C_anchor)
   - [ARFrame.raw\_feature\_points](#arframeraw%5C_feature%5C_points)
   - [mediapipe::ARFrame::get\_create](#mediapipearframeget%5C_create)
+  - [mediapipe::ARFrame::ByteSizeLong](#mediapipearframebytesizelong)
+  - [mediapipe::ARFrame::CheckInitialized](#mediapipearframecheckinitialized)
   - [mediapipe::ARFrame::Clear](#mediapipearframeclear)
   - [mediapipe::ARFrame::ClearField](#mediapipearframeclearfield)
   - [mediapipe::ARFrame::CopyFrom](#mediapipearframecopyfrom)
+  - [mediapipe::ARFrame::DiscardUnknownFields](#mediapipearframediscardunknownfields)
+  - [mediapipe::ARFrame::FindInitializationErrors](#mediapipearframefindinitializationerrors)
+  - [mediapipe::ARFrame::IsInitialized](#mediapipearframeisinitialized)
+  - [mediapipe::ARFrame::SerializeAsString](#mediapipearframeserializeasstring)
+  - [mediapipe::ARFrame::SerializeToString](#mediapipearframeserializetostring)
+  - [mediapipe::ARFrame::SpaceUsedLong](#mediapipearframespaceusedlong)
   - [mediapipe::ARFrame::\_\_str\_\_](#mediapipearframe%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_ARPlaneAnchor](#googleprotobufrepeated%5C_mediapipe%5C_arplaneanchor)
   - [Repeated\_mediapipe\_ARPlaneAnchor.Count](#repeated%5C_mediapipe%5C_arplaneanchorcount)
@@ -2597,9 +3208,17 @@
   - [KeyPoint.name](#keypointname)
   - [KeyPoint.hidden](#keypointhidden)
   - [mediapipe::KeyPoint::get\_create](#mediapipekeypointget%5C_create)
+  - [mediapipe::KeyPoint::ByteSizeLong](#mediapipekeypointbytesizelong)
+  - [mediapipe::KeyPoint::CheckInitialized](#mediapipekeypointcheckinitialized)
   - [mediapipe::KeyPoint::Clear](#mediapipekeypointclear)
   - [mediapipe::KeyPoint::ClearField](#mediapipekeypointclearfield)
   - [mediapipe::KeyPoint::CopyFrom](#mediapipekeypointcopyfrom)
+  - [mediapipe::KeyPoint::DiscardUnknownFields](#mediapipekeypointdiscardunknownfields)
+  - [mediapipe::KeyPoint::FindInitializationErrors](#mediapipekeypointfindinitializationerrors)
+  - [mediapipe::KeyPoint::IsInitialized](#mediapipekeypointisinitialized)
+  - [mediapipe::KeyPoint::SerializeAsString](#mediapipekeypointserializeasstring)
+  - [mediapipe::KeyPoint::SerializeToString](#mediapipekeypointserializetostring)
+  - [mediapipe::KeyPoint::SpaceUsedLong](#mediapipekeypointspaceusedlong)
   - [mediapipe::KeyPoint::\_\_str\_\_](#mediapipekeypoint%5C_%5C_str%5C_%5C_)
 - [mediapipe::Object](#mediapipeobject)
   - [Object.id](#objectid)
@@ -2611,9 +3230,17 @@
   - [Object.keypoints](#objectkeypoints)
   - [Object.method](#objectmethod)
   - [mediapipe::Object::get\_create](#mediapipeobjectget%5C_create)
+  - [mediapipe::Object::ByteSizeLong](#mediapipeobjectbytesizelong)
+  - [mediapipe::Object::CheckInitialized](#mediapipeobjectcheckinitialized)
   - [mediapipe::Object::Clear](#mediapipeobjectclear)
   - [mediapipe::Object::ClearField](#mediapipeobjectclearfield)
   - [mediapipe::Object::CopyFrom](#mediapipeobjectcopyfrom)
+  - [mediapipe::Object::DiscardUnknownFields](#mediapipeobjectdiscardunknownfields)
+  - [mediapipe::Object::FindInitializationErrors](#mediapipeobjectfindinitializationerrors)
+  - [mediapipe::Object::IsInitialized](#mediapipeobjectisinitialized)
+  - [mediapipe::Object::SerializeAsString](#mediapipeobjectserializeasstring)
+  - [mediapipe::Object::SerializeToString](#mediapipeobjectserializetostring)
+  - [mediapipe::Object::SpaceUsedLong](#mediapipeobjectspaceusedlong)
   - [mediapipe::Object::\_\_str\_\_](#mediapipeobject%5C_%5C_str%5C_%5C_)
   - [Object.UNDEFINED\_TYPE\_](#objectundefined%5C_type%5C_)
   - [Object.BOUNDING\_BOX\_](#objectbounding%5C_box%5C_)
@@ -2647,9 +3274,17 @@
   - [Edge.source](#edgesource)
   - [Edge.sink](#edgesink)
   - [mediapipe::Edge::get\_create](#mediapipeedgeget%5C_create)
+  - [mediapipe::Edge::ByteSizeLong](#mediapipeedgebytesizelong)
+  - [mediapipe::Edge::CheckInitialized](#mediapipeedgecheckinitialized)
   - [mediapipe::Edge::Clear](#mediapipeedgeclear)
   - [mediapipe::Edge::ClearField](#mediapipeedgeclearfield)
   - [mediapipe::Edge::CopyFrom](#mediapipeedgecopyfrom)
+  - [mediapipe::Edge::DiscardUnknownFields](#mediapipeedgediscardunknownfields)
+  - [mediapipe::Edge::FindInitializationErrors](#mediapipeedgefindinitializationerrors)
+  - [mediapipe::Edge::IsInitialized](#mediapipeedgeisinitialized)
+  - [mediapipe::Edge::SerializeAsString](#mediapipeedgeserializeasstring)
+  - [mediapipe::Edge::SerializeToString](#mediapipeedgeserializetostring)
+  - [mediapipe::Edge::SpaceUsedLong](#mediapipeedgespaceusedlong)
   - [mediapipe::Edge::\_\_str\_\_](#mediapipeedge%5C_%5C_str%5C_%5C_)
 - [mediapipe::Skeleton](#mediapipeskeleton)
   - [Skeleton.reference\_keypoint](#skeletonreference%5C_keypoint)
@@ -2657,9 +3292,17 @@
   - [Skeleton.keypoints](#skeletonkeypoints)
   - [Skeleton.edges](#skeletonedges)
   - [mediapipe::Skeleton::get\_create](#mediapipeskeletonget%5C_create)
+  - [mediapipe::Skeleton::ByteSizeLong](#mediapipeskeletonbytesizelong)
+  - [mediapipe::Skeleton::CheckInitialized](#mediapipeskeletoncheckinitialized)
   - [mediapipe::Skeleton::Clear](#mediapipeskeletonclear)
   - [mediapipe::Skeleton::ClearField](#mediapipeskeletonclearfield)
   - [mediapipe::Skeleton::CopyFrom](#mediapipeskeletoncopyfrom)
+  - [mediapipe::Skeleton::DiscardUnknownFields](#mediapipeskeletondiscardunknownfields)
+  - [mediapipe::Skeleton::FindInitializationErrors](#mediapipeskeletonfindinitializationerrors)
+  - [mediapipe::Skeleton::IsInitialized](#mediapipeskeletonisinitialized)
+  - [mediapipe::Skeleton::SerializeAsString](#mediapipeskeletonserializeasstring)
+  - [mediapipe::Skeleton::SerializeToString](#mediapipeskeletonserializetostring)
+  - [mediapipe::Skeleton::SpaceUsedLong](#mediapipeskeletonspaceusedlong)
   - [mediapipe::Skeleton::\_\_str\_\_](#mediapipeskeleton%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_Edge](#googleprotobufrepeated%5C_mediapipe%5C_edge)
   - [Repeated\_mediapipe\_Edge.Count](#repeated%5C_mediapipe%5C_edgecount)
@@ -2686,9 +3329,17 @@
 - [mediapipe::Skeletons](#mediapipeskeletons)
   - [Skeletons.object](#skeletonsobject)
   - [mediapipe::Skeletons::get\_create](#mediapipeskeletonsget%5C_create)
+  - [mediapipe::Skeletons::ByteSizeLong](#mediapipeskeletonsbytesizelong)
+  - [mediapipe::Skeletons::CheckInitialized](#mediapipeskeletonscheckinitialized)
   - [mediapipe::Skeletons::Clear](#mediapipeskeletonsclear)
   - [mediapipe::Skeletons::ClearField](#mediapipeskeletonsclearfield)
   - [mediapipe::Skeletons::CopyFrom](#mediapipeskeletonscopyfrom)
+  - [mediapipe::Skeletons::DiscardUnknownFields](#mediapipeskeletonsdiscardunknownfields)
+  - [mediapipe::Skeletons::FindInitializationErrors](#mediapipeskeletonsfindinitializationerrors)
+  - [mediapipe::Skeletons::IsInitialized](#mediapipeskeletonsisinitialized)
+  - [mediapipe::Skeletons::SerializeAsString](#mediapipeskeletonsserializeasstring)
+  - [mediapipe::Skeletons::SerializeToString](#mediapipeskeletonsserializetostring)
+  - [mediapipe::Skeletons::SpaceUsedLong](#mediapipeskeletonsspaceusedlong)
   - [mediapipe::Skeletons::\_\_str\_\_](#mediapipeskeletons%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_Skeleton](#googleprotobufrepeated%5C_mediapipe%5C_skeleton)
   - [Repeated\_mediapipe\_Skeleton.Count](#repeated%5C_mediapipe%5C_skeletoncount)
@@ -2723,18 +3374,34 @@
   - [NormalizedPoint2D.y](#normalizedpoint2dy)
   - [NormalizedPoint2D.depth](#normalizedpoint2ddepth)
   - [mediapipe::NormalizedPoint2D::get\_create](#mediapipenormalizedpoint2dget%5C_create)
+  - [mediapipe::NormalizedPoint2D::ByteSizeLong](#mediapipenormalizedpoint2dbytesizelong)
+  - [mediapipe::NormalizedPoint2D::CheckInitialized](#mediapipenormalizedpoint2dcheckinitialized)
   - [mediapipe::NormalizedPoint2D::Clear](#mediapipenormalizedpoint2dclear)
   - [mediapipe::NormalizedPoint2D::ClearField](#mediapipenormalizedpoint2dclearfield)
   - [mediapipe::NormalizedPoint2D::CopyFrom](#mediapipenormalizedpoint2dcopyfrom)
+  - [mediapipe::NormalizedPoint2D::DiscardUnknownFields](#mediapipenormalizedpoint2ddiscardunknownfields)
+  - [mediapipe::NormalizedPoint2D::FindInitializationErrors](#mediapipenormalizedpoint2dfindinitializationerrors)
+  - [mediapipe::NormalizedPoint2D::IsInitialized](#mediapipenormalizedpoint2disinitialized)
+  - [mediapipe::NormalizedPoint2D::SerializeAsString](#mediapipenormalizedpoint2dserializeasstring)
+  - [mediapipe::NormalizedPoint2D::SerializeToString](#mediapipenormalizedpoint2dserializetostring)
+  - [mediapipe::NormalizedPoint2D::SpaceUsedLong](#mediapipenormalizedpoint2dspaceusedlong)
   - [mediapipe::NormalizedPoint2D::\_\_str\_\_](#mediapipenormalizedpoint2d%5C_%5C_str%5C_%5C_)
 - [mediapipe::Point3D](#mediapipepoint3d)
   - [Point3D.x](#point3dx)
   - [Point3D.y](#point3dy)
   - [Point3D.z](#point3dz)
   - [mediapipe::Point3D::get\_create](#mediapipepoint3dget%5C_create)
+  - [mediapipe::Point3D::ByteSizeLong](#mediapipepoint3dbytesizelong)
+  - [mediapipe::Point3D::CheckInitialized](#mediapipepoint3dcheckinitialized)
   - [mediapipe::Point3D::Clear](#mediapipepoint3dclear)
   - [mediapipe::Point3D::ClearField](#mediapipepoint3dclearfield)
   - [mediapipe::Point3D::CopyFrom](#mediapipepoint3dcopyfrom)
+  - [mediapipe::Point3D::DiscardUnknownFields](#mediapipepoint3ddiscardunknownfields)
+  - [mediapipe::Point3D::FindInitializationErrors](#mediapipepoint3dfindinitializationerrors)
+  - [mediapipe::Point3D::IsInitialized](#mediapipepoint3disinitialized)
+  - [mediapipe::Point3D::SerializeAsString](#mediapipepoint3dserializeasstring)
+  - [mediapipe::Point3D::SerializeToString](#mediapipepoint3dserializetostring)
+  - [mediapipe::Point3D::SpaceUsedLong](#mediapipepoint3dspaceusedlong)
   - [mediapipe::Point3D::\_\_str\_\_](#mediapipepoint3d%5C_%5C_str%5C_%5C_)
 - [mediapipe::AnnotatedKeyPoint](#mediapipeannotatedkeypoint)
   - [AnnotatedKeyPoint.id](#annotatedkeypointid)
@@ -2742,9 +3409,17 @@
   - [AnnotatedKeyPoint.point\_2d](#annotatedkeypointpoint%5C_2d)
   - [AnnotatedKeyPoint.hidden](#annotatedkeypointhidden)
   - [mediapipe::AnnotatedKeyPoint::get\_create](#mediapipeannotatedkeypointget%5C_create)
+  - [mediapipe::AnnotatedKeyPoint::ByteSizeLong](#mediapipeannotatedkeypointbytesizelong)
+  - [mediapipe::AnnotatedKeyPoint::CheckInitialized](#mediapipeannotatedkeypointcheckinitialized)
   - [mediapipe::AnnotatedKeyPoint::Clear](#mediapipeannotatedkeypointclear)
   - [mediapipe::AnnotatedKeyPoint::ClearField](#mediapipeannotatedkeypointclearfield)
   - [mediapipe::AnnotatedKeyPoint::CopyFrom](#mediapipeannotatedkeypointcopyfrom)
+  - [mediapipe::AnnotatedKeyPoint::DiscardUnknownFields](#mediapipeannotatedkeypointdiscardunknownfields)
+  - [mediapipe::AnnotatedKeyPoint::FindInitializationErrors](#mediapipeannotatedkeypointfindinitializationerrors)
+  - [mediapipe::AnnotatedKeyPoint::IsInitialized](#mediapipeannotatedkeypointisinitialized)
+  - [mediapipe::AnnotatedKeyPoint::SerializeAsString](#mediapipeannotatedkeypointserializeasstring)
+  - [mediapipe::AnnotatedKeyPoint::SerializeToString](#mediapipeannotatedkeypointserializetostring)
+  - [mediapipe::AnnotatedKeyPoint::SpaceUsedLong](#mediapipeannotatedkeypointspaceusedlong)
   - [mediapipe::AnnotatedKeyPoint::\_\_str\_\_](#mediapipeannotatedkeypoint%5C_%5C_str%5C_%5C_)
 - [mediapipe::ObjectAnnotation](#mediapipeobjectannotation)
   - [ObjectAnnotation.object\_id](#objectannotationobject%5C_id)
@@ -2754,9 +3429,17 @@
   - [ObjectAnnotation.translation](#objectannotationtranslation)
   - [ObjectAnnotation.scale](#objectannotationscale)
   - [mediapipe::ObjectAnnotation::get\_create](#mediapipeobjectannotationget%5C_create)
+  - [mediapipe::ObjectAnnotation::ByteSizeLong](#mediapipeobjectannotationbytesizelong)
+  - [mediapipe::ObjectAnnotation::CheckInitialized](#mediapipeobjectannotationcheckinitialized)
   - [mediapipe::ObjectAnnotation::Clear](#mediapipeobjectannotationclear)
   - [mediapipe::ObjectAnnotation::ClearField](#mediapipeobjectannotationclearfield)
   - [mediapipe::ObjectAnnotation::CopyFrom](#mediapipeobjectannotationcopyfrom)
+  - [mediapipe::ObjectAnnotation::DiscardUnknownFields](#mediapipeobjectannotationdiscardunknownfields)
+  - [mediapipe::ObjectAnnotation::FindInitializationErrors](#mediapipeobjectannotationfindinitializationerrors)
+  - [mediapipe::ObjectAnnotation::IsInitialized](#mediapipeobjectannotationisinitialized)
+  - [mediapipe::ObjectAnnotation::SerializeAsString](#mediapipeobjectannotationserializeasstring)
+  - [mediapipe::ObjectAnnotation::SerializeToString](#mediapipeobjectannotationserializetostring)
+  - [mediapipe::ObjectAnnotation::SpaceUsedLong](#mediapipeobjectannotationspaceusedlong)
   - [mediapipe::ObjectAnnotation::\_\_str\_\_](#mediapipeobjectannotation%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_AnnotatedKeyPoint](#googleprotobufrepeated%5C_mediapipe%5C_annotatedkeypoint)
   - [Repeated\_mediapipe\_AnnotatedKeyPoint.Count](#repeated%5C_mediapipe%5C_annotatedkeypointcount)
@@ -2788,9 +3471,17 @@
   - [FrameAnnotation.plane\_center](#frameannotationplane%5C_center)
   - [FrameAnnotation.plane\_normal](#frameannotationplane%5C_normal)
   - [mediapipe::FrameAnnotation::get\_create](#mediapipeframeannotationget%5C_create)
+  - [mediapipe::FrameAnnotation::ByteSizeLong](#mediapipeframeannotationbytesizelong)
+  - [mediapipe::FrameAnnotation::CheckInitialized](#mediapipeframeannotationcheckinitialized)
   - [mediapipe::FrameAnnotation::Clear](#mediapipeframeannotationclear)
   - [mediapipe::FrameAnnotation::ClearField](#mediapipeframeannotationclearfield)
   - [mediapipe::FrameAnnotation::CopyFrom](#mediapipeframeannotationcopyfrom)
+  - [mediapipe::FrameAnnotation::DiscardUnknownFields](#mediapipeframeannotationdiscardunknownfields)
+  - [mediapipe::FrameAnnotation::FindInitializationErrors](#mediapipeframeannotationfindinitializationerrors)
+  - [mediapipe::FrameAnnotation::IsInitialized](#mediapipeframeannotationisinitialized)
+  - [mediapipe::FrameAnnotation::SerializeAsString](#mediapipeframeannotationserializeasstring)
+  - [mediapipe::FrameAnnotation::SerializeToString](#mediapipeframeannotationserializetostring)
+  - [mediapipe::FrameAnnotation::SpaceUsedLong](#mediapipeframeannotationspaceusedlong)
   - [mediapipe::FrameAnnotation::\_\_str\_\_](#mediapipeframeannotation%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_ObjectAnnotation](#googleprotobufrepeated%5C_mediapipe%5C_objectannotation)
   - [Repeated\_mediapipe\_ObjectAnnotation.Count](#repeated%5C_mediapipe%5C_objectannotationcount)
@@ -2818,9 +3509,17 @@
   - [Sequence.objects](#sequenceobjects)
   - [Sequence.frame\_annotations](#sequenceframe%5C_annotations)
   - [mediapipe::Sequence::get\_create](#mediapipesequenceget%5C_create)
+  - [mediapipe::Sequence::ByteSizeLong](#mediapipesequencebytesizelong)
+  - [mediapipe::Sequence::CheckInitialized](#mediapipesequencecheckinitialized)
   - [mediapipe::Sequence::Clear](#mediapipesequenceclear)
   - [mediapipe::Sequence::ClearField](#mediapipesequenceclearfield)
   - [mediapipe::Sequence::CopyFrom](#mediapipesequencecopyfrom)
+  - [mediapipe::Sequence::DiscardUnknownFields](#mediapipesequencediscardunknownfields)
+  - [mediapipe::Sequence::FindInitializationErrors](#mediapipesequencefindinitializationerrors)
+  - [mediapipe::Sequence::IsInitialized](#mediapipesequenceisinitialized)
+  - [mediapipe::Sequence::SerializeAsString](#mediapipesequenceserializeasstring)
+  - [mediapipe::Sequence::SerializeToString](#mediapipesequenceserializetostring)
+  - [mediapipe::Sequence::SpaceUsedLong](#mediapipesequencespaceusedlong)
   - [mediapipe::Sequence::\_\_str\_\_](#mediapipesequence%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_Object](#googleprotobufrepeated%5C_mediapipe%5C_object)
   - [Repeated\_mediapipe\_Object.Count](#repeated%5C_mediapipe%5C_objectcount)
@@ -2879,16 +3578,32 @@
   - [Classification.label](#classificationlabel)
   - [Classification.display\_name](#classificationdisplay%5C_name)
   - [mediapipe::Classification::get\_create](#mediapipeclassificationget%5C_create)
+  - [mediapipe::Classification::ByteSizeLong](#mediapipeclassificationbytesizelong)
+  - [mediapipe::Classification::CheckInitialized](#mediapipeclassificationcheckinitialized)
   - [mediapipe::Classification::Clear](#mediapipeclassificationclear)
   - [mediapipe::Classification::ClearField](#mediapipeclassificationclearfield)
   - [mediapipe::Classification::CopyFrom](#mediapipeclassificationcopyfrom)
+  - [mediapipe::Classification::DiscardUnknownFields](#mediapipeclassificationdiscardunknownfields)
+  - [mediapipe::Classification::FindInitializationErrors](#mediapipeclassificationfindinitializationerrors)
+  - [mediapipe::Classification::IsInitialized](#mediapipeclassificationisinitialized)
+  - [mediapipe::Classification::SerializeAsString](#mediapipeclassificationserializeasstring)
+  - [mediapipe::Classification::SerializeToString](#mediapipeclassificationserializetostring)
+  - [mediapipe::Classification::SpaceUsedLong](#mediapipeclassificationspaceusedlong)
   - [mediapipe::Classification::\_\_str\_\_](#mediapipeclassification%5C_%5C_str%5C_%5C_)
 - [mediapipe::ClassificationList](#mediapipeclassificationlist)
   - [ClassificationList.classification](#classificationlistclassification)
   - [mediapipe::ClassificationList::get\_create](#mediapipeclassificationlistget%5C_create)
+  - [mediapipe::ClassificationList::ByteSizeLong](#mediapipeclassificationlistbytesizelong)
+  - [mediapipe::ClassificationList::CheckInitialized](#mediapipeclassificationlistcheckinitialized)
   - [mediapipe::ClassificationList::Clear](#mediapipeclassificationlistclear)
   - [mediapipe::ClassificationList::ClearField](#mediapipeclassificationlistclearfield)
   - [mediapipe::ClassificationList::CopyFrom](#mediapipeclassificationlistcopyfrom)
+  - [mediapipe::ClassificationList::DiscardUnknownFields](#mediapipeclassificationlistdiscardunknownfields)
+  - [mediapipe::ClassificationList::FindInitializationErrors](#mediapipeclassificationlistfindinitializationerrors)
+  - [mediapipe::ClassificationList::IsInitialized](#mediapipeclassificationlistisinitialized)
+  - [mediapipe::ClassificationList::SerializeAsString](#mediapipeclassificationlistserializeasstring)
+  - [mediapipe::ClassificationList::SerializeToString](#mediapipeclassificationlistserializetostring)
+  - [mediapipe::ClassificationList::SpaceUsedLong](#mediapipeclassificationlistspaceusedlong)
   - [mediapipe::ClassificationList::\_\_str\_\_](#mediapipeclassificationlist%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_Classification](#googleprotobufrepeated%5C_mediapipe%5C_classification)
   - [Repeated\_mediapipe\_Classification.Count](#repeated%5C_mediapipe%5C_classificationcount)
@@ -2915,9 +3630,17 @@
 - [mediapipe::ClassificationListCollection](#mediapipeclassificationlistcollection)
   - [ClassificationListCollection.classification\_list](#classificationlistcollectionclassification%5C_list)
   - [mediapipe::ClassificationListCollection::get\_create](#mediapipeclassificationlistcollectionget%5C_create)
+  - [mediapipe::ClassificationListCollection::ByteSizeLong](#mediapipeclassificationlistcollectionbytesizelong)
+  - [mediapipe::ClassificationListCollection::CheckInitialized](#mediapipeclassificationlistcollectioncheckinitialized)
   - [mediapipe::ClassificationListCollection::Clear](#mediapipeclassificationlistcollectionclear)
   - [mediapipe::ClassificationListCollection::ClearField](#mediapipeclassificationlistcollectionclearfield)
   - [mediapipe::ClassificationListCollection::CopyFrom](#mediapipeclassificationlistcollectioncopyfrom)
+  - [mediapipe::ClassificationListCollection::DiscardUnknownFields](#mediapipeclassificationlistcollectiondiscardunknownfields)
+  - [mediapipe::ClassificationListCollection::FindInitializationErrors](#mediapipeclassificationlistcollectionfindinitializationerrors)
+  - [mediapipe::ClassificationListCollection::IsInitialized](#mediapipeclassificationlistcollectionisinitialized)
+  - [mediapipe::ClassificationListCollection::SerializeAsString](#mediapipeclassificationlistcollectionserializeasstring)
+  - [mediapipe::ClassificationListCollection::SerializeToString](#mediapipeclassificationlistcollectionserializetostring)
+  - [mediapipe::ClassificationListCollection::SpaceUsedLong](#mediapipeclassificationlistcollectionspaceusedlong)
   - [mediapipe::ClassificationListCollection::\_\_str\_\_](#mediapipeclassificationlistcollection%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_ClassificationList](#googleprotobufrepeated%5C_mediapipe%5C_classificationlist)
   - [Repeated\_mediapipe\_ClassificationList.Count](#repeated%5C_mediapipe%5C_classificationlistcount)
@@ -2949,9 +3672,17 @@
   - [ConstantSidePacketCalculatorOptions.packet](#constantsidepacketcalculatoroptionspacket)
   - [ConstantSidePacketCalculatorOptions.ext](#constantsidepacketcalculatoroptionsext)
   - [mediapipe::ConstantSidePacketCalculatorOptions::get\_create](#mediapipeconstantsidepacketcalculatoroptionsget%5C_create)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ByteSizeLong](#mediapipeconstantsidepacketcalculatoroptionsbytesizelong)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::CheckInitialized](#mediapipeconstantsidepacketcalculatoroptionscheckinitialized)
   - [mediapipe::ConstantSidePacketCalculatorOptions::Clear](#mediapipeconstantsidepacketcalculatoroptionsclear)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ClearField](#mediapipeconstantsidepacketcalculatoroptionsclearfield)
   - [mediapipe::ConstantSidePacketCalculatorOptions::CopyFrom](#mediapipeconstantsidepacketcalculatoroptionscopyfrom)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::DiscardUnknownFields](#mediapipeconstantsidepacketcalculatoroptionsdiscardunknownfields)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::FindInitializationErrors](#mediapipeconstantsidepacketcalculatoroptionsfindinitializationerrors)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IsInitialized](#mediapipeconstantsidepacketcalculatoroptionsisinitialized)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::SerializeAsString](#mediapipeconstantsidepacketcalculatoroptionsserializeasstring)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::SerializeToString](#mediapipeconstantsidepacketcalculatoroptionsserializetostring)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::SpaceUsedLong](#mediapipeconstantsidepacketcalculatoroptionsspaceusedlong)
   - [mediapipe::ConstantSidePacketCalculatorOptions::\_\_str\_\_](#mediapipeconstantsidepacketcalculatoroptions%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket](#googleprotobufrepeated%5C_mediapipe%5C_constantsidepacketcalculatoroptions%5C_constantsidepacket)
   - [Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket.Count](#repeated%5C_mediapipe%5C_constantsidepacketcalculatoroptions%5C_constantsidepacketcount)
@@ -2985,9 +3716,17 @@
   - [ConstantSidePacket.landmark\_list\_value](#constantsidepacketlandmark%5C_list%5C_value)
   - [ConstantSidePacket.double\_value](#constantsidepacketdouble%5C_value)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get\_create](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketget%5C_create)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ByteSizeLong](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketbytesizelong)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CheckInitialized](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketcheckinitialized)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::Clear](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketclear)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ClearField](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketclearfield)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CopyFrom](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketcopyfrom)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::DiscardUnknownFields](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketdiscardunknownfields)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::FindInitializationErrors](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketfindinitializationerrors)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::IsInitialized](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketisinitialized)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SerializeAsString](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketserializeasstring)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SerializeToString](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketserializetostring)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SpaceUsedLong](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketspaceusedlong)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::\_\_str\_\_](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacket%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::core::constant\_side\_packet\_calculator\_pb2](#mediapipecalculatorscoreconstant%5C_side%5C_packet%5C_calculator%5C_pb2)
   - [constant\_side\_packet\_calculator\_pb2.ConstantSidePacketCalculatorOptions](#constant%5C_side%5C_packet%5C_calculator%5C_pb2constantsidepacketcalculatoroptions)
@@ -2995,9 +3734,17 @@
   - [ConstantSidePacketCalculatorOptions.ConstantSidePacket](#constantsidepacketcalculatoroptionsconstantsidepacket)
 - [mediapipe::RotationMode](#mediapiperotationmode)
   - [mediapipe::RotationMode::get\_create](#mediapiperotationmodeget%5C_create)
+  - [mediapipe::RotationMode::ByteSizeLong](#mediapiperotationmodebytesizelong)
+  - [mediapipe::RotationMode::CheckInitialized](#mediapiperotationmodecheckinitialized)
   - [mediapipe::RotationMode::Clear](#mediapiperotationmodeclear)
   - [mediapipe::RotationMode::ClearField](#mediapiperotationmodeclearfield)
   - [mediapipe::RotationMode::CopyFrom](#mediapiperotationmodecopyfrom)
+  - [mediapipe::RotationMode::DiscardUnknownFields](#mediapiperotationmodediscardunknownfields)
+  - [mediapipe::RotationMode::FindInitializationErrors](#mediapiperotationmodefindinitializationerrors)
+  - [mediapipe::RotationMode::IsInitialized](#mediapiperotationmodeisinitialized)
+  - [mediapipe::RotationMode::SerializeAsString](#mediapiperotationmodeserializeasstring)
+  - [mediapipe::RotationMode::SerializeToString](#mediapiperotationmodeserializetostring)
+  - [mediapipe::RotationMode::SpaceUsedLong](#mediapiperotationmodespaceusedlong)
   - [mediapipe::RotationMode::\_\_str\_\_](#mediapiperotationmode%5C_%5C_str%5C_%5C_)
   - [RotationMode.UNKNOWN\_](#rotationmodeunknown%5C_)
   - [RotationMode.ROTATION\_0\_](#rotationmoderotation%5C_0%5C_)
@@ -3008,9 +3755,17 @@
   - [rotation\_mode\_pb2.RotationMode](#rotation%5C_mode%5C_pb2rotationmode)
 - [mediapipe::ScaleMode](#mediapipescalemode)
   - [mediapipe::ScaleMode::get\_create](#mediapipescalemodeget%5C_create)
+  - [mediapipe::ScaleMode::ByteSizeLong](#mediapipescalemodebytesizelong)
+  - [mediapipe::ScaleMode::CheckInitialized](#mediapipescalemodecheckinitialized)
   - [mediapipe::ScaleMode::Clear](#mediapipescalemodeclear)
   - [mediapipe::ScaleMode::ClearField](#mediapipescalemodeclearfield)
   - [mediapipe::ScaleMode::CopyFrom](#mediapipescalemodecopyfrom)
+  - [mediapipe::ScaleMode::DiscardUnknownFields](#mediapipescalemodediscardunknownfields)
+  - [mediapipe::ScaleMode::FindInitializationErrors](#mediapipescalemodefindinitializationerrors)
+  - [mediapipe::ScaleMode::IsInitialized](#mediapipescalemodeisinitialized)
+  - [mediapipe::ScaleMode::SerializeAsString](#mediapipescalemodeserializeasstring)
+  - [mediapipe::ScaleMode::SerializeToString](#mediapipescalemodeserializetostring)
+  - [mediapipe::ScaleMode::SpaceUsedLong](#mediapipescalemodespaceusedlong)
   - [mediapipe::ScaleMode::\_\_str\_\_](#mediapipescalemode%5C_%5C_str%5C_%5C_)
   - [ScaleMode.DEFAULT\_](#scalemodedefault%5C_)
   - [ScaleMode.STRETCH\_](#scalemodestretch%5C_)
@@ -3028,9 +3783,17 @@
   - [ImageTransformationCalculatorOptions.constant\_padding](#imagetransformationcalculatoroptionsconstant%5C_padding)
   - [ImageTransformationCalculatorOptions.ext](#imagetransformationcalculatoroptionsext)
   - [mediapipe::ImageTransformationCalculatorOptions::get\_create](#mediapipeimagetransformationcalculatoroptionsget%5C_create)
+  - [mediapipe::ImageTransformationCalculatorOptions::ByteSizeLong](#mediapipeimagetransformationcalculatoroptionsbytesizelong)
+  - [mediapipe::ImageTransformationCalculatorOptions::CheckInitialized](#mediapipeimagetransformationcalculatoroptionscheckinitialized)
   - [mediapipe::ImageTransformationCalculatorOptions::Clear](#mediapipeimagetransformationcalculatoroptionsclear)
   - [mediapipe::ImageTransformationCalculatorOptions::ClearField](#mediapipeimagetransformationcalculatoroptionsclearfield)
   - [mediapipe::ImageTransformationCalculatorOptions::CopyFrom](#mediapipeimagetransformationcalculatoroptionscopyfrom)
+  - [mediapipe::ImageTransformationCalculatorOptions::DiscardUnknownFields](#mediapipeimagetransformationcalculatoroptionsdiscardunknownfields)
+  - [mediapipe::ImageTransformationCalculatorOptions::FindInitializationErrors](#mediapipeimagetransformationcalculatoroptionsfindinitializationerrors)
+  - [mediapipe::ImageTransformationCalculatorOptions::IsInitialized](#mediapipeimagetransformationcalculatoroptionsisinitialized)
+  - [mediapipe::ImageTransformationCalculatorOptions::SerializeAsString](#mediapipeimagetransformationcalculatoroptionsserializeasstring)
+  - [mediapipe::ImageTransformationCalculatorOptions::SerializeToString](#mediapipeimagetransformationcalculatoroptionsserializetostring)
+  - [mediapipe::ImageTransformationCalculatorOptions::SpaceUsedLong](#mediapipeimagetransformationcalculatoroptionsspaceusedlong)
   - [mediapipe::ImageTransformationCalculatorOptions::\_\_str\_\_](#mediapipeimagetransformationcalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::image::image\_transformation\_calculator\_pb2](#mediapipecalculatorsimageimage%5C_transformation%5C_calculator%5C_pb2)
   - [image\_transformation\_calculator\_pb2.ImageTransformationCalculatorOptions](#image%5C_transformation%5C_calculator%5C_pb2imagetransformationcalculatoroptions)
@@ -3059,9 +3822,17 @@
   - [TensorsToDetectionsCalculatorOptions.box\_boundaries\_indices](#tensorstodetectionscalculatoroptionsbox%5C_boundaries%5C_indices)
   - [TensorsToDetectionsCalculatorOptions.ext](#tensorstodetectionscalculatoroptionsext)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::get\_create](#mediapipetensorstodetectionscalculatoroptionsget%5C_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::ByteSizeLong](#mediapipetensorstodetectionscalculatoroptionsbytesizelong)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::CheckInitialized](#mediapipetensorstodetectionscalculatoroptionscheckinitialized)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::Clear](#mediapipetensorstodetectionscalculatoroptionsclear)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::ClearField](#mediapipetensorstodetectionscalculatoroptionsclearfield)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::CopyFrom](#mediapipetensorstodetectionscalculatoroptionscopyfrom)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::DiscardUnknownFields](#mediapipetensorstodetectionscalculatoroptionsdiscardunknownfields)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::FindInitializationErrors](#mediapipetensorstodetectionscalculatoroptionsfindinitializationerrors)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::IsInitialized](#mediapipetensorstodetectionscalculatoroptionsisinitialized)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::SerializeAsString](#mediapipetensorstodetectionscalculatoroptionsserializeasstring)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::SerializeToString](#mediapipetensorstodetectionscalculatoroptionsserializetostring)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::SpaceUsedLong](#mediapipetensorstodetectionscalculatoroptionsspaceusedlong)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::\_\_str\_\_](#mediapipetensorstodetectionscalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping](#mediapipetensorstodetectionscalculatoroptionstensormapping)
   - [TensorMapping.detections\_tensor\_index](#tensormappingdetections%5C_tensor%5C_index)
@@ -3070,9 +3841,17 @@
   - [TensorMapping.num\_detections\_tensor\_index](#tensormappingnum%5C_detections%5C_tensor%5C_index)
   - [TensorMapping.anchors\_tensor\_index](#tensormappinganchors%5C_tensor%5C_index)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::get\_create](#mediapipetensorstodetectionscalculatoroptionstensormappingget%5C_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ByteSizeLong](#mediapipetensorstodetectionscalculatoroptionstensormappingbytesizelong)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::CheckInitialized](#mediapipetensorstodetectionscalculatoroptionstensormappingcheckinitialized)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::Clear](#mediapipetensorstodetectionscalculatoroptionstensormappingclear)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ClearField](#mediapipetensorstodetectionscalculatoroptionstensormappingclearfield)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::CopyFrom](#mediapipetensorstodetectionscalculatoroptionstensormappingcopyfrom)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::DiscardUnknownFields](#mediapipetensorstodetectionscalculatoroptionstensormappingdiscardunknownfields)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::FindInitializationErrors](#mediapipetensorstodetectionscalculatoroptionstensormappingfindinitializationerrors)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::IsInitialized](#mediapipetensorstodetectionscalculatoroptionstensormappingisinitialized)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SerializeAsString](#mediapipetensorstodetectionscalculatoroptionstensormappingserializeasstring)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SerializeToString](#mediapipetensorstodetectionscalculatoroptionstensormappingserializetostring)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SpaceUsedLong](#mediapipetensorstodetectionscalculatoroptionstensormappingspaceusedlong)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::\_\_str\_\_](#mediapipetensorstodetectionscalculatoroptionstensormapping%5C_%5C_str%5C_%5C_)
 - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindices)
   - [BoxBoundariesIndices.ymin](#boxboundariesindicesymin)
@@ -3080,9 +3859,17 @@
   - [BoxBoundariesIndices.ymax](#boxboundariesindicesymax)
   - [BoxBoundariesIndices.xmax](#boxboundariesindicesxmax)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::get\_create](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesget%5C_create)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ByteSizeLong](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesbytesizelong)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::CheckInitialized](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicescheckinitialized)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::Clear](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesclear)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ClearField](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesclearfield)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::CopyFrom](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicescopyfrom)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::DiscardUnknownFields](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesdiscardunknownfields)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::FindInitializationErrors](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesfindinitializationerrors)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::IsInitialized](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesisinitialized)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SerializeAsString](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesserializeasstring)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SerializeToString](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesserializetostring)
+  - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SpaceUsedLong](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindicesspaceusedlong)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::\_\_str\_\_](#mediapipetensorstodetectionscalculatoroptionsboxboundariesindices%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::tensor::tensors\_to\_detections\_calculator\_pb2](#mediapipecalculatorstensortensors%5C_to%5C_detections%5C_calculator%5C_pb2)
   - [tensors\_to\_detections\_calculator\_pb2.TensorsToDetectionsCalculatorOptions](#tensors%5C_to%5C_detections%5C_calculator%5C_pb2tensorstodetectionscalculatoroptions)
@@ -3095,15 +3882,31 @@
   - [LandmarksSmoothingCalculatorOptions.one\_euro\_filter](#landmarkssmoothingcalculatoroptionsone%5C_euro%5C_filter)
   - [LandmarksSmoothingCalculatorOptions.ext](#landmarkssmoothingcalculatoroptionsext)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::get\_create](#mediapipelandmarkssmoothingcalculatoroptionsget%5C_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::ByteSizeLong](#mediapipelandmarkssmoothingcalculatoroptionsbytesizelong)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::CheckInitialized](#mediapipelandmarkssmoothingcalculatoroptionscheckinitialized)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::Clear](#mediapipelandmarkssmoothingcalculatoroptionsclear)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsclearfield)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::CopyFrom](#mediapipelandmarkssmoothingcalculatoroptionscopyfrom)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::DiscardUnknownFields](#mediapipelandmarkssmoothingcalculatoroptionsdiscardunknownfields)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::FindInitializationErrors](#mediapipelandmarkssmoothingcalculatoroptionsfindinitializationerrors)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::IsInitialized](#mediapipelandmarkssmoothingcalculatoroptionsisinitialized)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::SerializeAsString](#mediapipelandmarkssmoothingcalculatoroptionsserializeasstring)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::SerializeToString](#mediapipelandmarkssmoothingcalculatoroptionsserializetostring)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::SpaceUsedLong](#mediapipelandmarkssmoothingcalculatoroptionsspaceusedlong)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::\_\_str\_\_](#mediapipelandmarkssmoothingcalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter](#mediapipelandmarkssmoothingcalculatoroptionsnofilter)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::get\_create](#mediapipelandmarkssmoothingcalculatoroptionsnofilterget%5C_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ByteSizeLong](#mediapipelandmarkssmoothingcalculatoroptionsnofilterbytesizelong)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::CheckInitialized](#mediapipelandmarkssmoothingcalculatoroptionsnofiltercheckinitialized)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::Clear](#mediapipelandmarkssmoothingcalculatoroptionsnofilterclear)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsnofilterclearfield)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::CopyFrom](#mediapipelandmarkssmoothingcalculatoroptionsnofiltercopyfrom)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::DiscardUnknownFields](#mediapipelandmarkssmoothingcalculatoroptionsnofilterdiscardunknownfields)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::FindInitializationErrors](#mediapipelandmarkssmoothingcalculatoroptionsnofilterfindinitializationerrors)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::IsInitialized](#mediapipelandmarkssmoothingcalculatoroptionsnofilterisinitialized)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SerializeAsString](#mediapipelandmarkssmoothingcalculatoroptionsnofilterserializeasstring)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SerializeToString](#mediapipelandmarkssmoothingcalculatoroptionsnofilterserializetostring)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SpaceUsedLong](#mediapipelandmarkssmoothingcalculatoroptionsnofilterspaceusedlong)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::\_\_str\_\_](#mediapipelandmarkssmoothingcalculatoroptionsnofilter%5C_%5C_str%5C_%5C_)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilter)
   - [VelocityFilter.window\_size](#velocityfilterwindow%5C_size)
@@ -3111,9 +3914,17 @@
   - [VelocityFilter.min\_allowed\_object\_scale](#velocityfiltermin%5C_allowed%5C_object%5C_scale)
   - [VelocityFilter.disable\_value\_scaling](#velocityfilterdisable%5C_value%5C_scaling)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::get\_create](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterget%5C_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ByteSizeLong](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterbytesizelong)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::CheckInitialized](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfiltercheckinitialized)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::Clear](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterclear)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterclearfield)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::CopyFrom](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfiltercopyfrom)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::DiscardUnknownFields](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterdiscardunknownfields)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::FindInitializationErrors](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterfindinitializationerrors)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::IsInitialized](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterisinitialized)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SerializeAsString](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterserializeasstring)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SerializeToString](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterserializetostring)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SpaceUsedLong](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilterspaceusedlong)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::\_\_str\_\_](#mediapipelandmarkssmoothingcalculatoroptionsvelocityfilter%5C_%5C_str%5C_%5C_)
 - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilter)
   - [OneEuroFilter.frequency](#oneeurofilterfrequency)
@@ -3123,9 +3934,17 @@
   - [OneEuroFilter.min\_allowed\_object\_scale](#oneeurofiltermin%5C_allowed%5C_object%5C_scale)
   - [OneEuroFilter.disable\_value\_scaling](#oneeurofilterdisable%5C_value%5C_scaling)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::get\_create](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterget%5C_create)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ByteSizeLong](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterbytesizelong)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::CheckInitialized](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofiltercheckinitialized)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::Clear](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterclear)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ClearField](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterclearfield)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::CopyFrom](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofiltercopyfrom)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::DiscardUnknownFields](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterdiscardunknownfields)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::FindInitializationErrors](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterfindinitializationerrors)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::IsInitialized](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterisinitialized)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SerializeAsString](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterserializeasstring)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SerializeToString](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterserializetostring)
+  - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SpaceUsedLong](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilterspaceusedlong)
   - [mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::\_\_str\_\_](#mediapipelandmarkssmoothingcalculatoroptionsoneeurofilter%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::util::landmarks\_smoothing\_calculator\_pb2](#mediapipecalculatorsutillandmarks%5C_smoothing%5C_calculator%5C_pb2)
   - [landmarks\_smoothing\_calculator\_pb2.LandmarksSmoothingCalculatorOptions](#landmarks%5C_smoothing%5C_calculator%5C_pb2landmarkssmoothingcalculatoroptions)
@@ -3139,9 +3958,17 @@
   - [LogicCalculatorOptions.input\_value](#logiccalculatoroptionsinput%5C_value)
   - [LogicCalculatorOptions.ext](#logiccalculatoroptionsext)
   - [mediapipe::LogicCalculatorOptions::get\_create](#mediapipelogiccalculatoroptionsget%5C_create)
+  - [mediapipe::LogicCalculatorOptions::ByteSizeLong](#mediapipelogiccalculatoroptionsbytesizelong)
+  - [mediapipe::LogicCalculatorOptions::CheckInitialized](#mediapipelogiccalculatoroptionscheckinitialized)
   - [mediapipe::LogicCalculatorOptions::Clear](#mediapipelogiccalculatoroptionsclear)
   - [mediapipe::LogicCalculatorOptions::ClearField](#mediapipelogiccalculatoroptionsclearfield)
   - [mediapipe::LogicCalculatorOptions::CopyFrom](#mediapipelogiccalculatoroptionscopyfrom)
+  - [mediapipe::LogicCalculatorOptions::DiscardUnknownFields](#mediapipelogiccalculatoroptionsdiscardunknownfields)
+  - [mediapipe::LogicCalculatorOptions::FindInitializationErrors](#mediapipelogiccalculatoroptionsfindinitializationerrors)
+  - [mediapipe::LogicCalculatorOptions::IsInitialized](#mediapipelogiccalculatoroptionsisinitialized)
+  - [mediapipe::LogicCalculatorOptions::SerializeAsString](#mediapipelogiccalculatoroptionsserializeasstring)
+  - [mediapipe::LogicCalculatorOptions::SerializeToString](#mediapipelogiccalculatoroptionsserializetostring)
+  - [mediapipe::LogicCalculatorOptions::SpaceUsedLong](#mediapipelogiccalculatoroptionsspaceusedlong)
   - [mediapipe::LogicCalculatorOptions::\_\_str\_\_](#mediapipelogiccalculatoroptions%5C_%5C_str%5C_%5C_)
   - [LogicCalculatorOptions.AND\_](#logiccalculatoroptionsand%5C_)
   - [LogicCalculatorOptions.OR\_](#logiccalculatoroptionsor%5C_)
@@ -3174,9 +4001,17 @@
   - [ThresholdingCalculatorOptions.threshold](#thresholdingcalculatoroptionsthreshold)
   - [ThresholdingCalculatorOptions.ext](#thresholdingcalculatoroptionsext)
   - [mediapipe::ThresholdingCalculatorOptions::get\_create](#mediapipethresholdingcalculatoroptionsget%5C_create)
+  - [mediapipe::ThresholdingCalculatorOptions::ByteSizeLong](#mediapipethresholdingcalculatoroptionsbytesizelong)
+  - [mediapipe::ThresholdingCalculatorOptions::CheckInitialized](#mediapipethresholdingcalculatoroptionscheckinitialized)
   - [mediapipe::ThresholdingCalculatorOptions::Clear](#mediapipethresholdingcalculatoroptionsclear)
   - [mediapipe::ThresholdingCalculatorOptions::ClearField](#mediapipethresholdingcalculatoroptionsclearfield)
   - [mediapipe::ThresholdingCalculatorOptions::CopyFrom](#mediapipethresholdingcalculatoroptionscopyfrom)
+  - [mediapipe::ThresholdingCalculatorOptions::DiscardUnknownFields](#mediapipethresholdingcalculatoroptionsdiscardunknownfields)
+  - [mediapipe::ThresholdingCalculatorOptions::FindInitializationErrors](#mediapipethresholdingcalculatoroptionsfindinitializationerrors)
+  - [mediapipe::ThresholdingCalculatorOptions::IsInitialized](#mediapipethresholdingcalculatoroptionsisinitialized)
+  - [mediapipe::ThresholdingCalculatorOptions::SerializeAsString](#mediapipethresholdingcalculatoroptionsserializeasstring)
+  - [mediapipe::ThresholdingCalculatorOptions::SerializeToString](#mediapipethresholdingcalculatoroptionsserializetostring)
+  - [mediapipe::ThresholdingCalculatorOptions::SpaceUsedLong](#mediapipethresholdingcalculatoroptionsspaceusedlong)
   - [mediapipe::ThresholdingCalculatorOptions::\_\_str\_\_](#mediapipethresholdingcalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::util::thresholding\_calculator\_pb2](#mediapipecalculatorsutilthresholding%5C_calculator%5C_pb2)
   - [thresholding\_calculator\_pb2.ThresholdingCalculatorOptions](#thresholding%5C_calculator%5C_pb2thresholdingcalculatoroptions)
@@ -3188,9 +4023,17 @@
   - [BeliefDecoderConfig.voting\_allowance](#beliefdecoderconfigvoting%5C_allowance)
   - [BeliefDecoderConfig.voting\_threshold](#beliefdecoderconfigvoting%5C_threshold)
   - [mediapipe::BeliefDecoderConfig::get\_create](#mediapipebeliefdecoderconfigget%5C_create)
+  - [mediapipe::BeliefDecoderConfig::ByteSizeLong](#mediapipebeliefdecoderconfigbytesizelong)
+  - [mediapipe::BeliefDecoderConfig::CheckInitialized](#mediapipebeliefdecoderconfigcheckinitialized)
   - [mediapipe::BeliefDecoderConfig::Clear](#mediapipebeliefdecoderconfigclear)
   - [mediapipe::BeliefDecoderConfig::ClearField](#mediapipebeliefdecoderconfigclearfield)
   - [mediapipe::BeliefDecoderConfig::CopyFrom](#mediapipebeliefdecoderconfigcopyfrom)
+  - [mediapipe::BeliefDecoderConfig::DiscardUnknownFields](#mediapipebeliefdecoderconfigdiscardunknownfields)
+  - [mediapipe::BeliefDecoderConfig::FindInitializationErrors](#mediapipebeliefdecoderconfigfindinitializationerrors)
+  - [mediapipe::BeliefDecoderConfig::IsInitialized](#mediapipebeliefdecoderconfigisinitialized)
+  - [mediapipe::BeliefDecoderConfig::SerializeAsString](#mediapipebeliefdecoderconfigserializeasstring)
+  - [mediapipe::BeliefDecoderConfig::SerializeToString](#mediapipebeliefdecoderconfigserializetostring)
+  - [mediapipe::BeliefDecoderConfig::SpaceUsedLong](#mediapipebeliefdecoderconfigspaceusedlong)
   - [mediapipe::BeliefDecoderConfig::\_\_str\_\_](#mediapipebeliefdecoderconfig%5C_%5C_str%5C_%5C_)
 - [mediapipe::modules::objectron::calculators::belief\_decoder\_config\_pb2](#mediapipemodulesobjectroncalculatorsbelief%5C_decoder%5C_config%5C_pb2)
   - [belief\_decoder\_config\_pb2.BeliefDecoderConfig](#belief%5C_decoder%5C_config%5C_pb2beliefdecoderconfig)
@@ -3202,9 +4045,17 @@
   - [Lift2DFrameAnnotationTo3DCalculatorOptions.normalized\_principal\_point\_y](#lift2dframeannotationto3dcalculatoroptionsnormalized%5C_principal%5C_point%5C_y)
   - [Lift2DFrameAnnotationTo3DCalculatorOptions.ext](#lift2dframeannotationto3dcalculatoroptionsext)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::get\_create](#mediapipelift2dframeannotationto3dcalculatoroptionsget%5C_create)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ByteSizeLong](#mediapipelift2dframeannotationto3dcalculatoroptionsbytesizelong)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::CheckInitialized](#mediapipelift2dframeannotationto3dcalculatoroptionscheckinitialized)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::Clear](#mediapipelift2dframeannotationto3dcalculatoroptionsclear)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ClearField](#mediapipelift2dframeannotationto3dcalculatoroptionsclearfield)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::CopyFrom](#mediapipelift2dframeannotationto3dcalculatoroptionscopyfrom)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::DiscardUnknownFields](#mediapipelift2dframeannotationto3dcalculatoroptionsdiscardunknownfields)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::FindInitializationErrors](#mediapipelift2dframeannotationto3dcalculatoroptionsfindinitializationerrors)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::IsInitialized](#mediapipelift2dframeannotationto3dcalculatoroptionsisinitialized)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SerializeAsString](#mediapipelift2dframeannotationto3dcalculatoroptionsserializeasstring)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SerializeToString](#mediapipelift2dframeannotationto3dcalculatoroptionsserializetostring)
+  - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SpaceUsedLong](#mediapipelift2dframeannotationto3dcalculatoroptionsspaceusedlong)
   - [mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::\_\_str\_\_](#mediapipelift2dframeannotationto3dcalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::modules::objectron::calculators::lift\_2d\_frame\_annotation\_to\_3d\_calculator\_pb2](#mediapipemodulesobjectroncalculatorslift%5C_2d%5C_frame%5C_annotation%5C_to%5C_3d%5C_calculator%5C_pb2)
   - [lift\_2d\_frame\_annotation\_to\_3d\_calculator\_pb2.Lift2DFrameAnnotationTo3DCalculatorOptions](#lift%5C_2d%5C_frame%5C_annotation%5C_to%5C_3d%5C_calculator%5C_pb2lift2dframeannotationto3dcalculatoroptions)
@@ -3215,9 +4066,17 @@
   - [ClassifierOptions.category\_allowlist](#classifieroptionscategory%5C_allowlist-1)
   - [ClassifierOptions.category\_denylist](#classifieroptionscategory%5C_denylist-1)
   - [mediapipe::tasks::components::processors::proto::ClassifierOptions::get\_create](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsget%5C_create)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::ByteSizeLong](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsbytesizelong)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::CheckInitialized](#mediapipetaskscomponentsprocessorsprotoclassifieroptionscheckinitialized)
   - [mediapipe::tasks::components::processors::proto::ClassifierOptions::Clear](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsclear)
   - [mediapipe::tasks::components::processors::proto::ClassifierOptions::ClearField](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsclearfield)
   - [mediapipe::tasks::components::processors::proto::ClassifierOptions::CopyFrom](#mediapipetaskscomponentsprocessorsprotoclassifieroptionscopyfrom)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::DiscardUnknownFields](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsdiscardunknownfields)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::FindInitializationErrors](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsfindinitializationerrors)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::IsInitialized](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsisinitialized)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::SerializeAsString](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsserializeasstring)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::SerializeToString](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsserializetostring)
+  - [mediapipe::tasks::components::processors::proto::ClassifierOptions::SpaceUsedLong](#mediapipetaskscomponentsprocessorsprotoclassifieroptionsspaceusedlong)
   - [mediapipe::tasks::components::processors::proto::ClassifierOptions::\_\_str\_\_](#mediapipetaskscomponentsprocessorsprotoclassifieroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::components::processors::proto::classifier\_options\_pb2](#mediapipetaskscccomponentsprocessorsprotoclassifier%5C_options%5C_pb2)
   - [classifier\_options\_pb2.ClassifierOptions](#classifier%5C_options%5C_pb2classifieroptions)
@@ -3226,9 +4085,17 @@
   - [Acceleration.gpu](#accelerationgpu)
   - [Acceleration.tflite](#accelerationtflite)
   - [mediapipe::tasks::core::proto::Acceleration::get\_create](#mediapipetaskscoreprotoaccelerationget%5C_create)
+  - [mediapipe::tasks::core::proto::Acceleration::ByteSizeLong](#mediapipetaskscoreprotoaccelerationbytesizelong)
+  - [mediapipe::tasks::core::proto::Acceleration::CheckInitialized](#mediapipetaskscoreprotoaccelerationcheckinitialized)
   - [mediapipe::tasks::core::proto::Acceleration::Clear](#mediapipetaskscoreprotoaccelerationclear)
   - [mediapipe::tasks::core::proto::Acceleration::ClearField](#mediapipetaskscoreprotoaccelerationclearfield)
   - [mediapipe::tasks::core::proto::Acceleration::CopyFrom](#mediapipetaskscoreprotoaccelerationcopyfrom)
+  - [mediapipe::tasks::core::proto::Acceleration::DiscardUnknownFields](#mediapipetaskscoreprotoaccelerationdiscardunknownfields)
+  - [mediapipe::tasks::core::proto::Acceleration::FindInitializationErrors](#mediapipetaskscoreprotoaccelerationfindinitializationerrors)
+  - [mediapipe::tasks::core::proto::Acceleration::IsInitialized](#mediapipetaskscoreprotoaccelerationisinitialized)
+  - [mediapipe::tasks::core::proto::Acceleration::SerializeAsString](#mediapipetaskscoreprotoaccelerationserializeasstring)
+  - [mediapipe::tasks::core::proto::Acceleration::SerializeToString](#mediapipetaskscoreprotoaccelerationserializetostring)
+  - [mediapipe::tasks::core::proto::Acceleration::SpaceUsedLong](#mediapipetaskscoreprotoaccelerationspaceusedlong)
   - [mediapipe::tasks::core::proto::Acceleration::\_\_str\_\_](#mediapipetaskscoreprotoacceleration%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::core::proto::acceleration\_pb2](#mediapipetaskscccoreprotoacceleration%5C_pb2)
   - [acceleration\_pb2.Acceleration](#acceleration%5C_pb2acceleration)
@@ -3238,26 +4105,50 @@
   - [ExternalFile.file\_descriptor\_meta](#externalfilefile%5C_descriptor%5C_meta)
   - [ExternalFile.file\_pointer\_meta](#externalfilefile%5C_pointer%5C_meta)
   - [mediapipe::tasks::core::proto::ExternalFile::get\_create](#mediapipetaskscoreprotoexternalfileget%5C_create)
+  - [mediapipe::tasks::core::proto::ExternalFile::ByteSizeLong](#mediapipetaskscoreprotoexternalfilebytesizelong)
+  - [mediapipe::tasks::core::proto::ExternalFile::CheckInitialized](#mediapipetaskscoreprotoexternalfilecheckinitialized)
   - [mediapipe::tasks::core::proto::ExternalFile::Clear](#mediapipetaskscoreprotoexternalfileclear)
   - [mediapipe::tasks::core::proto::ExternalFile::ClearField](#mediapipetaskscoreprotoexternalfileclearfield)
   - [mediapipe::tasks::core::proto::ExternalFile::CopyFrom](#mediapipetaskscoreprotoexternalfilecopyfrom)
+  - [mediapipe::tasks::core::proto::ExternalFile::DiscardUnknownFields](#mediapipetaskscoreprotoexternalfilediscardunknownfields)
+  - [mediapipe::tasks::core::proto::ExternalFile::FindInitializationErrors](#mediapipetaskscoreprotoexternalfilefindinitializationerrors)
+  - [mediapipe::tasks::core::proto::ExternalFile::IsInitialized](#mediapipetaskscoreprotoexternalfileisinitialized)
+  - [mediapipe::tasks::core::proto::ExternalFile::SerializeAsString](#mediapipetaskscoreprotoexternalfileserializeasstring)
+  - [mediapipe::tasks::core::proto::ExternalFile::SerializeToString](#mediapipetaskscoreprotoexternalfileserializetostring)
+  - [mediapipe::tasks::core::proto::ExternalFile::SpaceUsedLong](#mediapipetaskscoreprotoexternalfilespaceusedlong)
   - [mediapipe::tasks::core::proto::ExternalFile::\_\_str\_\_](#mediapipetaskscoreprotoexternalfile%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::core::proto::FileDescriptorMeta](#mediapipetaskscoreprotofiledescriptormeta)
   - [FileDescriptorMeta.fd](#filedescriptormetafd)
   - [FileDescriptorMeta.length](#filedescriptormetalength)
   - [FileDescriptorMeta.offset](#filedescriptormetaoffset)
   - [mediapipe::tasks::core::proto::FileDescriptorMeta::get\_create](#mediapipetaskscoreprotofiledescriptormetaget%5C_create)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::ByteSizeLong](#mediapipetaskscoreprotofiledescriptormetabytesizelong)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::CheckInitialized](#mediapipetaskscoreprotofiledescriptormetacheckinitialized)
   - [mediapipe::tasks::core::proto::FileDescriptorMeta::Clear](#mediapipetaskscoreprotofiledescriptormetaclear)
   - [mediapipe::tasks::core::proto::FileDescriptorMeta::ClearField](#mediapipetaskscoreprotofiledescriptormetaclearfield)
   - [mediapipe::tasks::core::proto::FileDescriptorMeta::CopyFrom](#mediapipetaskscoreprotofiledescriptormetacopyfrom)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::DiscardUnknownFields](#mediapipetaskscoreprotofiledescriptormetadiscardunknownfields)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::FindInitializationErrors](#mediapipetaskscoreprotofiledescriptormetafindinitializationerrors)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::IsInitialized](#mediapipetaskscoreprotofiledescriptormetaisinitialized)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::SerializeAsString](#mediapipetaskscoreprotofiledescriptormetaserializeasstring)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::SerializeToString](#mediapipetaskscoreprotofiledescriptormetaserializetostring)
+  - [mediapipe::tasks::core::proto::FileDescriptorMeta::SpaceUsedLong](#mediapipetaskscoreprotofiledescriptormetaspaceusedlong)
   - [mediapipe::tasks::core::proto::FileDescriptorMeta::\_\_str\_\_](#mediapipetaskscoreprotofiledescriptormeta%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::core::proto::FilePointerMeta](#mediapipetaskscoreprotofilepointermeta)
   - [FilePointerMeta.pointer](#filepointermetapointer)
   - [FilePointerMeta.length](#filepointermetalength)
   - [mediapipe::tasks::core::proto::FilePointerMeta::get\_create](#mediapipetaskscoreprotofilepointermetaget%5C_create)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::ByteSizeLong](#mediapipetaskscoreprotofilepointermetabytesizelong)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::CheckInitialized](#mediapipetaskscoreprotofilepointermetacheckinitialized)
   - [mediapipe::tasks::core::proto::FilePointerMeta::Clear](#mediapipetaskscoreprotofilepointermetaclear)
   - [mediapipe::tasks::core::proto::FilePointerMeta::ClearField](#mediapipetaskscoreprotofilepointermetaclearfield)
   - [mediapipe::tasks::core::proto::FilePointerMeta::CopyFrom](#mediapipetaskscoreprotofilepointermetacopyfrom)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::DiscardUnknownFields](#mediapipetaskscoreprotofilepointermetadiscardunknownfields)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::FindInitializationErrors](#mediapipetaskscoreprotofilepointermetafindinitializationerrors)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::IsInitialized](#mediapipetaskscoreprotofilepointermetaisinitialized)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::SerializeAsString](#mediapipetaskscoreprotofilepointermetaserializeasstring)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::SerializeToString](#mediapipetaskscoreprotofilepointermetaserializetostring)
+  - [mediapipe::tasks::core::proto::FilePointerMeta::SpaceUsedLong](#mediapipetaskscoreprotofilepointermetaspaceusedlong)
   - [mediapipe::tasks::core::proto::FilePointerMeta::\_\_str\_\_](#mediapipetaskscoreprotofilepointermeta%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::core::proto::external\_file\_pb2](#mediapipetaskscccoreprotoexternal%5C_file%5C_pb2)
   - [external\_file\_pb2.ExternalFile](#external%5C_file%5C_pb2externalfile)
@@ -3268,9 +4159,17 @@
   - [BaseOptions.use\_stream\_mode](#baseoptionsuse%5C_stream%5C_mode)
   - [BaseOptions.acceleration](#baseoptionsacceleration)
   - [mediapipe::tasks::core::proto::BaseOptions::get\_create](#mediapipetaskscoreprotobaseoptionsget%5C_create)
+  - [mediapipe::tasks::core::proto::BaseOptions::ByteSizeLong](#mediapipetaskscoreprotobaseoptionsbytesizelong)
+  - [mediapipe::tasks::core::proto::BaseOptions::CheckInitialized](#mediapipetaskscoreprotobaseoptionscheckinitialized)
   - [mediapipe::tasks::core::proto::BaseOptions::Clear](#mediapipetaskscoreprotobaseoptionsclear)
   - [mediapipe::tasks::core::proto::BaseOptions::ClearField](#mediapipetaskscoreprotobaseoptionsclearfield)
   - [mediapipe::tasks::core::proto::BaseOptions::CopyFrom](#mediapipetaskscoreprotobaseoptionscopyfrom)
+  - [mediapipe::tasks::core::proto::BaseOptions::DiscardUnknownFields](#mediapipetaskscoreprotobaseoptionsdiscardunknownfields)
+  - [mediapipe::tasks::core::proto::BaseOptions::FindInitializationErrors](#mediapipetaskscoreprotobaseoptionsfindinitializationerrors)
+  - [mediapipe::tasks::core::proto::BaseOptions::IsInitialized](#mediapipetaskscoreprotobaseoptionsisinitialized)
+  - [mediapipe::tasks::core::proto::BaseOptions::SerializeAsString](#mediapipetaskscoreprotobaseoptionsserializeasstring)
+  - [mediapipe::tasks::core::proto::BaseOptions::SerializeToString](#mediapipetaskscoreprotobaseoptionsserializetostring)
+  - [mediapipe::tasks::core::proto::BaseOptions::SpaceUsedLong](#mediapipetaskscoreprotobaseoptionsspaceusedlong)
   - [mediapipe::tasks::core::proto::BaseOptions::\_\_str\_\_](#mediapipetaskscoreprotobaseoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::core::proto::base\_options\_pb2](#mediapipetaskscccoreprotobase%5C_options%5C_pb2)
   - [base\_options\_pb2.BaseOptions](#base%5C_options%5C_pb2baseoptions)
@@ -3280,9 +4179,17 @@
   - [AudioClassifierGraphOptions.default\_input\_audio\_sample\_rate](#audioclassifiergraphoptionsdefault%5C_input%5C_audio%5C_sample%5C_rate)
   - [AudioClassifierGraphOptions.ext](#audioclassifiergraphoptionsext)
   - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::get\_create](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsget%5C_create)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::ByteSizeLong](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsbytesizelong)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::CheckInitialized](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionscheckinitialized)
   - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::Clear](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsclear)
   - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::ClearField](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsclearfield)
   - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::CopyFrom](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionscopyfrom)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::DiscardUnknownFields](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::FindInitializationErrors](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::IsInitialized](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsisinitialized)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::SerializeAsString](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsserializeasstring)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::SerializeToString](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsserializetostring)
+  - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::SpaceUsedLong](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptionsspaceusedlong)
   - [mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::\_\_str\_\_](#mediapipetasksaudioaudio%5C_classifierprotoaudioclassifiergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::audio::audio\_classifier::proto::audio\_classifier\_graph\_options\_pb2](#mediapipetasksccaudioaudio%5C_classifierprotoaudio%5C_classifier%5C_graph%5C_options%5C_pb2)
   - [audio\_classifier\_graph\_options\_pb2.AudioClassifierGraphOptions](#audio%5C_classifier%5C_graph%5C_options%5C_pb2audioclassifiergraphoptions)
@@ -3291,17 +4198,33 @@
   - [Classifications.head\_index](#classificationshead%5C_index-1)
   - [Classifications.head\_name](#classificationshead%5C_name-1)
   - [mediapipe::tasks::components::containers::proto::Classifications::get\_create](#mediapipetaskscomponentscontainersprotoclassificationsget%5C_create)
+  - [mediapipe::tasks::components::containers::proto::Classifications::ByteSizeLong](#mediapipetaskscomponentscontainersprotoclassificationsbytesizelong)
+  - [mediapipe::tasks::components::containers::proto::Classifications::CheckInitialized](#mediapipetaskscomponentscontainersprotoclassificationscheckinitialized)
   - [mediapipe::tasks::components::containers::proto::Classifications::Clear](#mediapipetaskscomponentscontainersprotoclassificationsclear)
   - [mediapipe::tasks::components::containers::proto::Classifications::ClearField](#mediapipetaskscomponentscontainersprotoclassificationsclearfield)
   - [mediapipe::tasks::components::containers::proto::Classifications::CopyFrom](#mediapipetaskscomponentscontainersprotoclassificationscopyfrom)
+  - [mediapipe::tasks::components::containers::proto::Classifications::DiscardUnknownFields](#mediapipetaskscomponentscontainersprotoclassificationsdiscardunknownfields)
+  - [mediapipe::tasks::components::containers::proto::Classifications::FindInitializationErrors](#mediapipetaskscomponentscontainersprotoclassificationsfindinitializationerrors)
+  - [mediapipe::tasks::components::containers::proto::Classifications::IsInitialized](#mediapipetaskscomponentscontainersprotoclassificationsisinitialized)
+  - [mediapipe::tasks::components::containers::proto::Classifications::SerializeAsString](#mediapipetaskscomponentscontainersprotoclassificationsserializeasstring)
+  - [mediapipe::tasks::components::containers::proto::Classifications::SerializeToString](#mediapipetaskscomponentscontainersprotoclassificationsserializetostring)
+  - [mediapipe::tasks::components::containers::proto::Classifications::SpaceUsedLong](#mediapipetaskscomponentscontainersprotoclassificationsspaceusedlong)
   - [mediapipe::tasks::components::containers::proto::Classifications::\_\_str\_\_](#mediapipetaskscomponentscontainersprotoclassifications%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::components::containers::proto::ClassificationResult](#mediapipetaskscomponentscontainersprotoclassificationresult)
   - [ClassificationResult.classifications](#classificationresultclassifications-1)
   - [ClassificationResult.timestamp\_ms](#classificationresulttimestamp%5C_ms-1)
   - [mediapipe::tasks::components::containers::proto::ClassificationResult::get\_create](#mediapipetaskscomponentscontainersprotoclassificationresultget%5C_create)
+  - [mediapipe::tasks::components::containers::proto::ClassificationResult::ByteSizeLong](#mediapipetaskscomponentscontainersprotoclassificationresultbytesizelong)
+  - [mediapipe::tasks::components::containers::proto::ClassificationResult::CheckInitialized](#mediapipetaskscomponentscontainersprotoclassificationresultcheckinitialized)
   - [mediapipe::tasks::components::containers::proto::ClassificationResult::Clear](#mediapipetaskscomponentscontainersprotoclassificationresultclear)
   - [mediapipe::tasks::components::containers::proto::ClassificationResult::ClearField](#mediapipetaskscomponentscontainersprotoclassificationresultclearfield)
   - [mediapipe::tasks::components::containers::proto::ClassificationResult::CopyFrom](#mediapipetaskscomponentscontainersprotoclassificationresultcopyfrom)
+  - [mediapipe::tasks::components::containers::proto::ClassificationResult::DiscardUnknownFields](#mediapipetaskscomponentscontainersprotoclassificationresultdiscardunknownfields)
+  - [mediapipe::tasks::components::containers::proto::ClassificationResult::FindInitializationErrors](#mediapipetaskscomponentscontainersprotoclassificationresultfindinitializationerrors)
+  - [mediapipe::tasks::components::containers::proto::ClassificationResult::IsInitialized](#mediapipetaskscomponentscontainersprotoclassificationresultisinitialized)
+  - [mediapipe::tasks::components::containers::proto::ClassificationResult::SerializeAsString](#mediapipetaskscomponentscontainersprotoclassificationresultserializeasstring)
+  - [mediapipe::tasks::components::containers::proto::ClassificationResult::SerializeToString](#mediapipetaskscomponentscontainersprotoclassificationresultserializetostring)
+  - [mediapipe::tasks::components::containers::proto::ClassificationResult::SpaceUsedLong](#mediapipetaskscomponentscontainersprotoclassificationresultspaceusedlong)
   - [mediapipe::tasks::components::containers::proto::ClassificationResult::\_\_str\_\_](#mediapipetaskscomponentscontainersprotoclassificationresult%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications](#googleprotobufrepeated%5C_mediapipe%5C_tasks%5C_components%5C_containers%5C_proto%5C_classifications)
   - [Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications.Count](#repeated%5C_mediapipe%5C_tasks%5C_components%5C_containers%5C_proto%5C_classificationscount)
@@ -3332,9 +4255,17 @@
   - [EmbedderOptions.l2\_normalize](#embedderoptionsl2%5C_normalize)
   - [EmbedderOptions.quantize](#embedderoptionsquantize)
   - [mediapipe::tasks::components::processors::proto::EmbedderOptions::get\_create](#mediapipetaskscomponentsprocessorsprotoembedderoptionsget%5C_create)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::ByteSizeLong](#mediapipetaskscomponentsprocessorsprotoembedderoptionsbytesizelong)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::CheckInitialized](#mediapipetaskscomponentsprocessorsprotoembedderoptionscheckinitialized)
   - [mediapipe::tasks::components::processors::proto::EmbedderOptions::Clear](#mediapipetaskscomponentsprocessorsprotoembedderoptionsclear)
   - [mediapipe::tasks::components::processors::proto::EmbedderOptions::ClearField](#mediapipetaskscomponentsprocessorsprotoembedderoptionsclearfield)
   - [mediapipe::tasks::components::processors::proto::EmbedderOptions::CopyFrom](#mediapipetaskscomponentsprocessorsprotoembedderoptionscopyfrom)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::DiscardUnknownFields](#mediapipetaskscomponentsprocessorsprotoembedderoptionsdiscardunknownfields)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::FindInitializationErrors](#mediapipetaskscomponentsprocessorsprotoembedderoptionsfindinitializationerrors)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::IsInitialized](#mediapipetaskscomponentsprocessorsprotoembedderoptionsisinitialized)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::SerializeAsString](#mediapipetaskscomponentsprocessorsprotoembedderoptionsserializeasstring)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::SerializeToString](#mediapipetaskscomponentsprocessorsprotoembedderoptionsserializetostring)
+  - [mediapipe::tasks::components::processors::proto::EmbedderOptions::SpaceUsedLong](#mediapipetaskscomponentsprocessorsprotoembedderoptionsspaceusedlong)
   - [mediapipe::tasks::components::processors::proto::EmbedderOptions::\_\_str\_\_](#mediapipetaskscomponentsprocessorsprotoembedderoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::components::processors::proto::embedder\_options\_pb2](#mediapipetaskscccomponentsprocessorsprotoembedder%5C_options%5C_pb2)
   - [embedder\_options\_pb2.EmbedderOptions](#embedder%5C_options%5C_pb2embedderoptions)
@@ -3343,25 +4274,49 @@
   - [AudioEmbedderGraphOptions.embedder\_options](#audioembeddergraphoptionsembedder%5C_options)
   - [AudioEmbedderGraphOptions.ext](#audioembeddergraphoptionsext)
   - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::get\_create](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsget%5C_create)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::ByteSizeLong](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsbytesizelong)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::CheckInitialized](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionscheckinitialized)
   - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::Clear](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsclear)
   - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::ClearField](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsclearfield)
   - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::CopyFrom](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionscopyfrom)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::DiscardUnknownFields](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::FindInitializationErrors](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::IsInitialized](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsisinitialized)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::SerializeAsString](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsserializeasstring)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::SerializeToString](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsserializetostring)
+  - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::SpaceUsedLong](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptionsspaceusedlong)
   - [mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::\_\_str\_\_](#mediapipetasksaudioaudio%5C_embedderprotoaudioembeddergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::audio::audio\_embedder::proto::audio\_embedder\_graph\_options\_pb2](#mediapipetasksccaudioaudio%5C_embedderprotoaudio%5C_embedder%5C_graph%5C_options%5C_pb2)
   - [audio\_embedder\_graph\_options\_pb2.AudioEmbedderGraphOptions](#audio%5C_embedder%5C_graph%5C_options%5C_pb2audioembeddergraphoptions)
 - [mediapipe::tasks::components::containers::proto::FloatEmbedding](#mediapipetaskscomponentscontainersprotofloatembedding)
   - [FloatEmbedding.values](#floatembeddingvalues)
   - [mediapipe::tasks::components::containers::proto::FloatEmbedding::get\_create](#mediapipetaskscomponentscontainersprotofloatembeddingget%5C_create)
+  - [mediapipe::tasks::components::containers::proto::FloatEmbedding::ByteSizeLong](#mediapipetaskscomponentscontainersprotofloatembeddingbytesizelong)
+  - [mediapipe::tasks::components::containers::proto::FloatEmbedding::CheckInitialized](#mediapipetaskscomponentscontainersprotofloatembeddingcheckinitialized)
   - [mediapipe::tasks::components::containers::proto::FloatEmbedding::Clear](#mediapipetaskscomponentscontainersprotofloatembeddingclear)
   - [mediapipe::tasks::components::containers::proto::FloatEmbedding::ClearField](#mediapipetaskscomponentscontainersprotofloatembeddingclearfield)
   - [mediapipe::tasks::components::containers::proto::FloatEmbedding::CopyFrom](#mediapipetaskscomponentscontainersprotofloatembeddingcopyfrom)
+  - [mediapipe::tasks::components::containers::proto::FloatEmbedding::DiscardUnknownFields](#mediapipetaskscomponentscontainersprotofloatembeddingdiscardunknownfields)
+  - [mediapipe::tasks::components::containers::proto::FloatEmbedding::FindInitializationErrors](#mediapipetaskscomponentscontainersprotofloatembeddingfindinitializationerrors)
+  - [mediapipe::tasks::components::containers::proto::FloatEmbedding::IsInitialized](#mediapipetaskscomponentscontainersprotofloatembeddingisinitialized)
+  - [mediapipe::tasks::components::containers::proto::FloatEmbedding::SerializeAsString](#mediapipetaskscomponentscontainersprotofloatembeddingserializeasstring)
+  - [mediapipe::tasks::components::containers::proto::FloatEmbedding::SerializeToString](#mediapipetaskscomponentscontainersprotofloatembeddingserializetostring)
+  - [mediapipe::tasks::components::containers::proto::FloatEmbedding::SpaceUsedLong](#mediapipetaskscomponentscontainersprotofloatembeddingspaceusedlong)
   - [mediapipe::tasks::components::containers::proto::FloatEmbedding::\_\_str\_\_](#mediapipetaskscomponentscontainersprotofloatembedding%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding](#mediapipetaskscomponentscontainersprotoquantizedembedding)
   - [QuantizedEmbedding.values](#quantizedembeddingvalues)
   - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::get\_create](#mediapipetaskscomponentscontainersprotoquantizedembeddingget%5C_create)
+  - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::ByteSizeLong](#mediapipetaskscomponentscontainersprotoquantizedembeddingbytesizelong)
+  - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::CheckInitialized](#mediapipetaskscomponentscontainersprotoquantizedembeddingcheckinitialized)
   - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::Clear](#mediapipetaskscomponentscontainersprotoquantizedembeddingclear)
   - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::ClearField](#mediapipetaskscomponentscontainersprotoquantizedembeddingclearfield)
   - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::CopyFrom](#mediapipetaskscomponentscontainersprotoquantizedembeddingcopyfrom)
+  - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::DiscardUnknownFields](#mediapipetaskscomponentscontainersprotoquantizedembeddingdiscardunknownfields)
+  - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::FindInitializationErrors](#mediapipetaskscomponentscontainersprotoquantizedembeddingfindinitializationerrors)
+  - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::IsInitialized](#mediapipetaskscomponentscontainersprotoquantizedembeddingisinitialized)
+  - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SerializeAsString](#mediapipetaskscomponentscontainersprotoquantizedembeddingserializeasstring)
+  - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SerializeToString](#mediapipetaskscomponentscontainersprotoquantizedembeddingserializetostring)
+  - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SpaceUsedLong](#mediapipetaskscomponentscontainersprotoquantizedembeddingspaceusedlong)
   - [mediapipe::tasks::components::containers::proto::QuantizedEmbedding::\_\_str\_\_](#mediapipetaskscomponentscontainersprotoquantizedembedding%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::components::containers::proto::Embedding](#mediapipetaskscomponentscontainersprotoembedding)
   - [Embedding.float\_embedding](#embeddingfloat%5C_embedding)
@@ -3369,17 +4324,33 @@
   - [Embedding.head\_index](#embeddinghead%5C_index-1)
   - [Embedding.head\_name](#embeddinghead%5C_name-1)
   - [mediapipe::tasks::components::containers::proto::Embedding::get\_create](#mediapipetaskscomponentscontainersprotoembeddingget%5C_create)
+  - [mediapipe::tasks::components::containers::proto::Embedding::ByteSizeLong](#mediapipetaskscomponentscontainersprotoembeddingbytesizelong)
+  - [mediapipe::tasks::components::containers::proto::Embedding::CheckInitialized](#mediapipetaskscomponentscontainersprotoembeddingcheckinitialized)
   - [mediapipe::tasks::components::containers::proto::Embedding::Clear](#mediapipetaskscomponentscontainersprotoembeddingclear)
   - [mediapipe::tasks::components::containers::proto::Embedding::ClearField](#mediapipetaskscomponentscontainersprotoembeddingclearfield)
   - [mediapipe::tasks::components::containers::proto::Embedding::CopyFrom](#mediapipetaskscomponentscontainersprotoembeddingcopyfrom)
+  - [mediapipe::tasks::components::containers::proto::Embedding::DiscardUnknownFields](#mediapipetaskscomponentscontainersprotoembeddingdiscardunknownfields)
+  - [mediapipe::tasks::components::containers::proto::Embedding::FindInitializationErrors](#mediapipetaskscomponentscontainersprotoembeddingfindinitializationerrors)
+  - [mediapipe::tasks::components::containers::proto::Embedding::IsInitialized](#mediapipetaskscomponentscontainersprotoembeddingisinitialized)
+  - [mediapipe::tasks::components::containers::proto::Embedding::SerializeAsString](#mediapipetaskscomponentscontainersprotoembeddingserializeasstring)
+  - [mediapipe::tasks::components::containers::proto::Embedding::SerializeToString](#mediapipetaskscomponentscontainersprotoembeddingserializetostring)
+  - [mediapipe::tasks::components::containers::proto::Embedding::SpaceUsedLong](#mediapipetaskscomponentscontainersprotoembeddingspaceusedlong)
   - [mediapipe::tasks::components::containers::proto::Embedding::\_\_str\_\_](#mediapipetaskscomponentscontainersprotoembedding%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::components::containers::proto::EmbeddingResult](#mediapipetaskscomponentscontainersprotoembeddingresult)
   - [EmbeddingResult.embeddings](#embeddingresultembeddings-1)
   - [EmbeddingResult.timestamp\_ms](#embeddingresulttimestamp%5C_ms-1)
   - [mediapipe::tasks::components::containers::proto::EmbeddingResult::get\_create](#mediapipetaskscomponentscontainersprotoembeddingresultget%5C_create)
+  - [mediapipe::tasks::components::containers::proto::EmbeddingResult::ByteSizeLong](#mediapipetaskscomponentscontainersprotoembeddingresultbytesizelong)
+  - [mediapipe::tasks::components::containers::proto::EmbeddingResult::CheckInitialized](#mediapipetaskscomponentscontainersprotoembeddingresultcheckinitialized)
   - [mediapipe::tasks::components::containers::proto::EmbeddingResult::Clear](#mediapipetaskscomponentscontainersprotoembeddingresultclear)
   - [mediapipe::tasks::components::containers::proto::EmbeddingResult::ClearField](#mediapipetaskscomponentscontainersprotoembeddingresultclearfield)
   - [mediapipe::tasks::components::containers::proto::EmbeddingResult::CopyFrom](#mediapipetaskscomponentscontainersprotoembeddingresultcopyfrom)
+  - [mediapipe::tasks::components::containers::proto::EmbeddingResult::DiscardUnknownFields](#mediapipetaskscomponentscontainersprotoembeddingresultdiscardunknownfields)
+  - [mediapipe::tasks::components::containers::proto::EmbeddingResult::FindInitializationErrors](#mediapipetaskscomponentscontainersprotoembeddingresultfindinitializationerrors)
+  - [mediapipe::tasks::components::containers::proto::EmbeddingResult::IsInitialized](#mediapipetaskscomponentscontainersprotoembeddingresultisinitialized)
+  - [mediapipe::tasks::components::containers::proto::EmbeddingResult::SerializeAsString](#mediapipetaskscomponentscontainersprotoembeddingresultserializeasstring)
+  - [mediapipe::tasks::components::containers::proto::EmbeddingResult::SerializeToString](#mediapipetaskscomponentscontainersprotoembeddingresultserializetostring)
+  - [mediapipe::tasks::components::containers::proto::EmbeddingResult::SpaceUsedLong](#mediapipetaskscomponentscontainersprotoembeddingresultspaceusedlong)
   - [mediapipe::tasks::components::containers::proto::EmbeddingResult::\_\_str\_\_](#mediapipetaskscomponentscontainersprotoembeddingresult%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding](#googleprotobufrepeated%5C_mediapipe%5C_tasks%5C_components%5C_containers%5C_proto%5C_embedding)
   - [Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding.Count](#repeated%5C_mediapipe%5C_tasks%5C_components%5C_containers%5C_proto%5C_embeddingcount)
@@ -3416,9 +4387,17 @@
   - [Rect.rotation](#rectrotation)
   - [Rect.rect\_id](#rectrect%5C_id)
   - [mediapipe::Rect::get\_create](#mediapiperectget%5C_create)
+  - [mediapipe::Rect::ByteSizeLong](#mediapiperectbytesizelong)
+  - [mediapipe::Rect::CheckInitialized](#mediapiperectcheckinitialized)
   - [mediapipe::Rect::Clear](#mediapiperectclear)
   - [mediapipe::Rect::ClearField](#mediapiperectclearfield)
   - [mediapipe::Rect::CopyFrom](#mediapiperectcopyfrom)
+  - [mediapipe::Rect::DiscardUnknownFields](#mediapiperectdiscardunknownfields)
+  - [mediapipe::Rect::FindInitializationErrors](#mediapiperectfindinitializationerrors)
+  - [mediapipe::Rect::IsInitialized](#mediapiperectisinitialized)
+  - [mediapipe::Rect::SerializeAsString](#mediapiperectserializeasstring)
+  - [mediapipe::Rect::SerializeToString](#mediapiperectserializetostring)
+  - [mediapipe::Rect::SpaceUsedLong](#mediapiperectspaceusedlong)
   - [mediapipe::Rect::\_\_str\_\_](#mediapiperect%5C_%5C_str%5C_%5C_)
 - [mediapipe::NormalizedRect](#mediapipenormalizedrect)
   - [NormalizedRect.x\_center](#normalizedrectx%5C_center)
@@ -3428,9 +4407,17 @@
   - [NormalizedRect.rotation](#normalizedrectrotation)
   - [NormalizedRect.rect\_id](#normalizedrectrect%5C_id)
   - [mediapipe::NormalizedRect::get\_create](#mediapipenormalizedrectget%5C_create)
+  - [mediapipe::NormalizedRect::ByteSizeLong](#mediapipenormalizedrectbytesizelong)
+  - [mediapipe::NormalizedRect::CheckInitialized](#mediapipenormalizedrectcheckinitialized)
   - [mediapipe::NormalizedRect::Clear](#mediapipenormalizedrectclear)
   - [mediapipe::NormalizedRect::ClearField](#mediapipenormalizedrectclearfield)
   - [mediapipe::NormalizedRect::CopyFrom](#mediapipenormalizedrectcopyfrom)
+  - [mediapipe::NormalizedRect::DiscardUnknownFields](#mediapipenormalizedrectdiscardunknownfields)
+  - [mediapipe::NormalizedRect::FindInitializationErrors](#mediapipenormalizedrectfindinitializationerrors)
+  - [mediapipe::NormalizedRect::IsInitialized](#mediapipenormalizedrectisinitialized)
+  - [mediapipe::NormalizedRect::SerializeAsString](#mediapipenormalizedrectserializeasstring)
+  - [mediapipe::NormalizedRect::SerializeToString](#mediapipenormalizedrectserializetostring)
+  - [mediapipe::NormalizedRect::SpaceUsedLong](#mediapipenormalizedrectspaceusedlong)
   - [mediapipe::NormalizedRect::\_\_str\_\_](#mediapipenormalizedrect%5C_%5C_str%5C_%5C_)
 - [mediapipe::framework::formats::rect\_pb2](#mediapipeframeworkformatsrect%5C_pb2)
   - [rect\_pb2.Rect](#rect%5C_pb2rect)
@@ -3441,9 +4428,17 @@
   - [LandmarksDetectionResult.world\_landmarks](#landmarksdetectionresultworld%5C_landmarks-1)
   - [LandmarksDetectionResult.rect](#landmarksdetectionresultrect-1)
   - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::get\_create](#mediapipetaskscontainersprotolandmarksdetectionresultget%5C_create)
+  - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::ByteSizeLong](#mediapipetaskscontainersprotolandmarksdetectionresultbytesizelong)
+  - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::CheckInitialized](#mediapipetaskscontainersprotolandmarksdetectionresultcheckinitialized)
   - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::Clear](#mediapipetaskscontainersprotolandmarksdetectionresultclear)
   - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::ClearField](#mediapipetaskscontainersprotolandmarksdetectionresultclearfield)
   - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::CopyFrom](#mediapipetaskscontainersprotolandmarksdetectionresultcopyfrom)
+  - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::DiscardUnknownFields](#mediapipetaskscontainersprotolandmarksdetectionresultdiscardunknownfields)
+  - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::FindInitializationErrors](#mediapipetaskscontainersprotolandmarksdetectionresultfindinitializationerrors)
+  - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::IsInitialized](#mediapipetaskscontainersprotolandmarksdetectionresultisinitialized)
+  - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::SerializeAsString](#mediapipetaskscontainersprotolandmarksdetectionresultserializeasstring)
+  - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::SerializeToString](#mediapipetaskscontainersprotolandmarksdetectionresultserializetostring)
+  - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::SpaceUsedLong](#mediapipetaskscontainersprotolandmarksdetectionresultspaceusedlong)
   - [mediapipe::tasks::containers::proto::LandmarksDetectionResult::\_\_str\_\_](#mediapipetaskscontainersprotolandmarksdetectionresult%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult](#mediapipetaskscontainersprotomultilandmarksdetectionresult)
   - [MultiLandmarksDetectionResult.landmarks](#multilandmarksdetectionresultlandmarks)
@@ -3451,9 +4446,17 @@
   - [MultiLandmarksDetectionResult.world\_landmarks](#multilandmarksdetectionresultworld%5C_landmarks)
   - [MultiLandmarksDetectionResult.rects](#multilandmarksdetectionresultrects)
   - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::get\_create](#mediapipetaskscontainersprotomultilandmarksdetectionresultget%5C_create)
+  - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::ByteSizeLong](#mediapipetaskscontainersprotomultilandmarksdetectionresultbytesizelong)
+  - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::CheckInitialized](#mediapipetaskscontainersprotomultilandmarksdetectionresultcheckinitialized)
   - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::Clear](#mediapipetaskscontainersprotomultilandmarksdetectionresultclear)
   - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::ClearField](#mediapipetaskscontainersprotomultilandmarksdetectionresultclearfield)
   - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::CopyFrom](#mediapipetaskscontainersprotomultilandmarksdetectionresultcopyfrom)
+  - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::DiscardUnknownFields](#mediapipetaskscontainersprotomultilandmarksdetectionresultdiscardunknownfields)
+  - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::FindInitializationErrors](#mediapipetaskscontainersprotomultilandmarksdetectionresultfindinitializationerrors)
+  - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::IsInitialized](#mediapipetaskscontainersprotomultilandmarksdetectionresultisinitialized)
+  - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SerializeAsString](#mediapipetaskscontainersprotomultilandmarksdetectionresultserializeasstring)
+  - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SerializeToString](#mediapipetaskscontainersprotomultilandmarksdetectionresultserializetostring)
+  - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SpaceUsedLong](#mediapipetaskscontainersprotomultilandmarksdetectionresultspaceusedlong)
   - [mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::\_\_str\_\_](#mediapipetaskscontainersprotomultilandmarksdetectionresult%5C_%5C_str%5C_%5C_)
 - [google::protobuf::Repeated\_mediapipe\_NormalizedRect](#googleprotobufrepeated%5C_mediapipe%5C_normalizedrect)
   - [Repeated\_mediapipe\_NormalizedRect.Count](#repeated%5C_mediapipe%5C_normalizedrectcount)
@@ -3486,9 +4489,17 @@
   - [FlowLimiterCalculatorOptions.in\_flight\_timeout](#flowlimitercalculatoroptionsin%5C_flight%5C_timeout)
   - [FlowLimiterCalculatorOptions.ext](#flowlimitercalculatoroptionsext)
   - [mediapipe::FlowLimiterCalculatorOptions::get\_create](#mediapipeflowlimitercalculatoroptionsget%5C_create)
+  - [mediapipe::FlowLimiterCalculatorOptions::ByteSizeLong](#mediapipeflowlimitercalculatoroptionsbytesizelong)
+  - [mediapipe::FlowLimiterCalculatorOptions::CheckInitialized](#mediapipeflowlimitercalculatoroptionscheckinitialized)
   - [mediapipe::FlowLimiterCalculatorOptions::Clear](#mediapipeflowlimitercalculatoroptionsclear)
   - [mediapipe::FlowLimiterCalculatorOptions::ClearField](#mediapipeflowlimitercalculatoroptionsclearfield)
   - [mediapipe::FlowLimiterCalculatorOptions::CopyFrom](#mediapipeflowlimitercalculatoroptionscopyfrom)
+  - [mediapipe::FlowLimiterCalculatorOptions::DiscardUnknownFields](#mediapipeflowlimitercalculatoroptionsdiscardunknownfields)
+  - [mediapipe::FlowLimiterCalculatorOptions::FindInitializationErrors](#mediapipeflowlimitercalculatoroptionsfindinitializationerrors)
+  - [mediapipe::FlowLimiterCalculatorOptions::IsInitialized](#mediapipeflowlimitercalculatoroptionsisinitialized)
+  - [mediapipe::FlowLimiterCalculatorOptions::SerializeAsString](#mediapipeflowlimitercalculatoroptionsserializeasstring)
+  - [mediapipe::FlowLimiterCalculatorOptions::SerializeToString](#mediapipeflowlimitercalculatoroptionsserializetostring)
+  - [mediapipe::FlowLimiterCalculatorOptions::SpaceUsedLong](#mediapipeflowlimitercalculatoroptionsspaceusedlong)
   - [mediapipe::FlowLimiterCalculatorOptions::\_\_str\_\_](#mediapipeflowlimitercalculatoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::core::flow\_limiter\_calculator\_pb2](#mediapipecalculatorscoreflow%5C_limiter%5C_calculator%5C_pb2)
   - [flow\_limiter\_calculator\_pb2.FlowLimiterCalculatorOptions](#flow%5C_limiter%5C_calculator%5C_pb2flowlimitercalculatoroptions)
@@ -3497,9 +4508,17 @@
   - [TextClassifierGraphOptions.classifier\_options](#textclassifiergraphoptionsclassifier%5C_options)
   - [TextClassifierGraphOptions.ext](#textclassifiergraphoptionsext)
   - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::get\_create](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsget%5C_create)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::ByteSizeLong](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsbytesizelong)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::CheckInitialized](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionscheckinitialized)
   - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::Clear](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsclear)
   - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::ClearField](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsclearfield)
   - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::CopyFrom](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionscopyfrom)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::DiscardUnknownFields](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::FindInitializationErrors](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::IsInitialized](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsisinitialized)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::SerializeAsString](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsserializeasstring)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::SerializeToString](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsserializetostring)
+  - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::SpaceUsedLong](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptionsspaceusedlong)
   - [mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::\_\_str\_\_](#mediapipetaskstexttext%5C_classifierprototextclassifiergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::text::text\_classifier::proto::text\_classifier\_graph\_options\_pb2](#mediapipetaskscctexttext%5C_classifierprototext%5C_classifier%5C_graph%5C_options%5C_pb2)
   - [text\_classifier\_graph\_options\_pb2.TextClassifierGraphOptions](#text%5C_classifier%5C_graph%5C_options%5C_pb2textclassifiergraphoptions)
@@ -3508,9 +4527,17 @@
   - [TextEmbedderGraphOptions.embedder\_options](#textembeddergraphoptionsembedder%5C_options)
   - [TextEmbedderGraphOptions.ext](#textembeddergraphoptionsext)
   - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::get\_create](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsget%5C_create)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::ByteSizeLong](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsbytesizelong)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::CheckInitialized](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionscheckinitialized)
   - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::Clear](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsclear)
   - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::ClearField](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsclearfield)
   - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::CopyFrom](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionscopyfrom)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::DiscardUnknownFields](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::FindInitializationErrors](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::IsInitialized](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsisinitialized)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::SerializeAsString](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsserializeasstring)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::SerializeToString](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsserializetostring)
+  - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::SpaceUsedLong](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptionsspaceusedlong)
   - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::\_\_str\_\_](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::text::text\_embedder::proto::text\_embedder\_graph\_options\_pb2](#mediapipetaskscctexttext%5C_embedderprototext%5C_embedder%5C_graph%5C_options%5C_pb2)
   - [text\_embedder\_graph\_options\_pb2.TextEmbedderGraphOptions](#text%5C_embedder%5C_graph%5C_options%5C_pb2textembeddergraphoptions)
@@ -3519,9 +4546,17 @@
   - [GestureClassifierGraphOptions.classifier\_options](#gestureclassifiergraphoptionsclassifier%5C_options)
   - [GestureClassifierGraphOptions.ext](#gestureclassifiergraphoptionsext)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::get\_create](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::ByteSizeLong](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::CheckInitialized](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::Clear](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsclear)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::ClearField](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsclearfield)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::CopyFrom](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::DiscardUnknownFields](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::FindInitializationErrors](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::IsInitialized](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::SerializeAsString](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::SerializeToString](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::SpaceUsedLong](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::\_\_str\_\_](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_classifier\_graph\_options\_pb2](#mediapipetasksccvisiongesture%5C_recognizerprotogesture%5C_classifier%5C_graph%5C_options%5C_pb2)
   - [gesture\_classifier\_graph\_options\_pb2.GestureClassifierGraphOptions](#gesture%5C_classifier%5C_graph%5C_options%5C_pb2gestureclassifiergraphoptions)
@@ -3529,9 +4564,17 @@
   - [GestureEmbedderGraphOptions.base\_options](#gestureembeddergraphoptionsbase%5C_options)
   - [GestureEmbedderGraphOptions.ext](#gestureembeddergraphoptionsext)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::get\_create](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::ByteSizeLong](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::CheckInitialized](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::Clear](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsclear)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::ClearField](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsclearfield)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::CopyFrom](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::DiscardUnknownFields](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::FindInitializationErrors](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::IsInitialized](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::SerializeAsString](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::SerializeToString](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::SpaceUsedLong](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::\_\_str\_\_](#mediapipetasksvisiongesture%5C_recognizerprotogestureembeddergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_embedder\_graph\_options\_pb2](#mediapipetasksccvisiongesture%5C_recognizerprotogesture%5C_embedder%5C_graph%5C_options%5C_pb2)
   - [gesture\_embedder\_graph\_options\_pb2.GestureEmbedderGraphOptions](#gesture%5C_embedder%5C_graph%5C_options%5C_pb2gestureembeddergraphoptions)
@@ -3542,9 +4585,17 @@
   - [HandGestureRecognizerGraphOptions.custom\_gesture\_classifier\_graph\_options](#handgesturerecognizergraphoptionscustom%5C_gesture%5C_classifier%5C_graph%5C_options)
   - [HandGestureRecognizerGraphOptions.ext](#handgesturerecognizergraphoptionsext)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::get\_create](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::ByteSizeLong](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::CheckInitialized](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::Clear](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsclear)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::ClearField](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsclearfield)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::CopyFrom](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::DiscardUnknownFields](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::FindInitializationErrors](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::IsInitialized](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::SerializeAsString](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::SerializeToString](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::SpaceUsedLong](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::\_\_str\_\_](#mediapipetasksvisiongesture%5C_recognizerprotohandgesturerecognizergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::gesture\_recognizer::proto::hand\_gesture\_recognizer\_graph\_options\_pb2](#mediapipetasksccvisiongesture%5C_recognizerprotohand%5C_gesture%5C_recognizer%5C_graph%5C_options%5C_pb2)
   - [hand\_gesture\_recognizer\_graph\_options\_pb2.HandGestureRecognizerGraphOptions](#hand%5C_gesture%5C_recognizer%5C_graph%5C_options%5C_pb2handgesturerecognizergraphoptions)
@@ -3554,9 +4605,17 @@
   - [HandDetectorGraphOptions.num\_hands](#handdetectorgraphoptionsnum%5C_hands)
   - [HandDetectorGraphOptions.ext](#handdetectorgraphoptionsext)
   - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::get\_create](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::ByteSizeLong](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::CheckInitialized](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::Clear](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsclear)
   - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::ClearField](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsclearfield)
   - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::CopyFrom](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::DiscardUnknownFields](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::FindInitializationErrors](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::IsInitialized](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::SerializeAsString](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::SerializeToString](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::SpaceUsedLong](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::\_\_str\_\_](#mediapipetasksvisionhand%5C_detectorprotohanddetectorgraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::hand\_detector::proto::hand\_detector\_graph\_options\_pb2](#mediapipetasksccvisionhand%5C_detectorprotohand%5C_detector%5C_graph%5C_options%5C_pb2)
   - [hand\_detector\_graph\_options\_pb2.HandDetectorGraphOptions](#hand%5C_detector%5C_graph%5C_options%5C_pb2handdetectorgraphoptions)
@@ -3565,9 +4624,17 @@
   - [HandLandmarksDetectorGraphOptions.min\_detection\_confidence](#handlandmarksdetectorgraphoptionsmin%5C_detection%5C_confidence)
   - [HandLandmarksDetectorGraphOptions.ext](#handlandmarksdetectorgraphoptionsext)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::get\_create](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::ByteSizeLong](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::CheckInitialized](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::Clear](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsclear)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::ClearField](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsclearfield)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::CopyFrom](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::DiscardUnknownFields](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::FindInitializationErrors](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::IsInitialized](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::SerializeAsString](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::SerializeToString](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::SpaceUsedLong](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::\_\_str\_\_](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarksdetectorgraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::hand\_landmarker::proto::hand\_landmarks\_detector\_graph\_options\_pb2](#mediapipetasksccvisionhand%5C_landmarkerprotohand%5C_landmarks%5C_detector%5C_graph%5C_options%5C_pb2)
   - [hand\_landmarks\_detector\_graph\_options\_pb2.HandLandmarksDetectorGraphOptions](#hand%5C_landmarks%5C_detector%5C_graph%5C_options%5C_pb2handlandmarksdetectorgraphoptions)
@@ -3578,9 +4645,17 @@
   - [HandLandmarkerGraphOptions.min\_tracking\_confidence](#handlandmarkergraphoptionsmin%5C_tracking%5C_confidence)
   - [HandLandmarkerGraphOptions.ext](#handlandmarkergraphoptionsext)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::get\_create](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::ByteSizeLong](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::CheckInitialized](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::Clear](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsclear)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::ClearField](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsclearfield)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::CopyFrom](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::DiscardUnknownFields](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::FindInitializationErrors](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::IsInitialized](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::SerializeAsString](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::SerializeToString](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::SpaceUsedLong](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::\_\_str\_\_](#mediapipetasksvisionhand%5C_landmarkerprotohandlandmarkergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::hand\_landmarker::proto::hand\_landmarker\_graph\_options\_pb2](#mediapipetasksccvisionhand%5C_landmarkerprotohand%5C_landmarker%5C_graph%5C_options%5C_pb2)
   - [hand\_landmarker\_graph\_options\_pb2.HandLandmarkerGraphOptions](#hand%5C_landmarker%5C_graph%5C_options%5C_pb2handlandmarkergraphoptions)
@@ -3590,9 +4665,17 @@
   - [GestureRecognizerGraphOptions.hand\_gesture\_recognizer\_graph\_options](#gesturerecognizergraphoptionshand%5C_gesture%5C_recognizer%5C_graph%5C_options)
   - [GestureRecognizerGraphOptions.ext](#gesturerecognizergraphoptionsext)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::get\_create](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::ByteSizeLong](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::CheckInitialized](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::Clear](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsclear)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::ClearField](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsclearfield)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::CopyFrom](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::DiscardUnknownFields](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::FindInitializationErrors](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::IsInitialized](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::SerializeAsString](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::SerializeToString](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::SpaceUsedLong](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::\_\_str\_\_](#mediapipetasksvisiongesture%5C_recognizerprotogesturerecognizergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::gesture\_recognizer::proto::gesture\_recognizer\_graph\_options\_pb2](#mediapipetasksccvisiongesture%5C_recognizerprotogesture%5C_recognizer%5C_graph%5C_options%5C_pb2)
   - [gesture\_recognizer\_graph\_options\_pb2.GestureRecognizerGraphOptions](#gesture%5C_recognizer%5C_graph%5C_options%5C_pb2gesturerecognizergraphoptions)
@@ -3601,9 +4684,17 @@
   - [ImageClassifierGraphOptions.classifier\_options](#imageclassifiergraphoptionsclassifier%5C_options)
   - [ImageClassifierGraphOptions.ext](#imageclassifiergraphoptionsext)
   - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::get\_create](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::ByteSizeLong](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::CheckInitialized](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::Clear](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsclear)
   - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::ClearField](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsclearfield)
   - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::CopyFrom](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::DiscardUnknownFields](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::FindInitializationErrors](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::IsInitialized](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::SerializeAsString](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::SerializeToString](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::SpaceUsedLong](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_classifierprotoimageclassifiergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::image\_classifier::proto::image\_classifier\_graph\_options\_pb2](#mediapipetasksccvisionimage%5C_classifierprotoimage%5C_classifier%5C_graph%5C_options%5C_pb2)
   - [image\_classifier\_graph\_options\_pb2.ImageClassifierGraphOptions](#image%5C_classifier%5C_graph%5C_options%5C_pb2imageclassifiergraphoptions)
@@ -3612,9 +4703,17 @@
   - [ImageEmbedderGraphOptions.embedder\_options](#imageembeddergraphoptionsembedder%5C_options)
   - [ImageEmbedderGraphOptions.ext](#imageembeddergraphoptionsext)
   - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::get\_create](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::ByteSizeLong](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::CheckInitialized](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::Clear](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsclear)
   - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::ClearField](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsclearfield)
   - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::CopyFrom](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::DiscardUnknownFields](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::FindInitializationErrors](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::IsInitialized](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::SerializeAsString](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::SerializeToString](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::SpaceUsedLong](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_embedderprotoimageembeddergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::image\_embedder::proto::image\_embedder\_graph\_options\_pb2](#mediapipetasksccvisionimage%5C_embedderprotoimage%5C_embedder%5C_graph%5C_options%5C_pb2)
   - [image\_embedder\_graph\_options\_pb2.ImageEmbedderGraphOptions](#image%5C_embedder%5C_graph%5C_options%5C_pb2imageembeddergraphoptions)
@@ -3622,9 +4721,17 @@
   - [SegmenterOptions.output\_type](#segmenteroptionsoutput%5C_type)
   - [SegmenterOptions.activation](#segmenteroptionsactivation)
   - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::get\_create](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsget%5C_create)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::ByteSizeLong](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsbytesizelong)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::CheckInitialized](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionscheckinitialized)
   - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Clear](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsclear)
   - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::ClearField](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsclearfield)
   - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::CopyFrom](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionscopyfrom)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::DiscardUnknownFields](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::FindInitializationErrors](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::IsInitialized](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsisinitialized)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::SerializeAsString](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsserializeasstring)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::SerializeToString](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsserializetostring)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::SpaceUsedLong](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsspaceusedlong)
   - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptions%5C_%5C_str%5C_%5C_)
   - [SegmenterOptions.UNSPECIFIED\_](#segmenteroptionsunspecified%5C_)
   - [SegmenterOptions.CATEGORY\_MASK\_](#segmenteroptionscategory%5C_mask%5C_)
@@ -3640,9 +4747,17 @@
   - [ImageSegmenterGraphOptions.segmenter\_options](#imagesegmentergraphoptionssegmenter%5C_options)
   - [ImageSegmenterGraphOptions.ext](#imagesegmentergraphoptionsext)
   - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::get\_create](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::ByteSizeLong](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::CheckInitialized](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionscheckinitialized)
   - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::Clear](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsclear)
   - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::ClearField](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsclearfield)
   - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::CopyFrom](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::DiscardUnknownFields](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::FindInitializationErrors](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::IsInitialized](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::SerializeAsString](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::SerializeToString](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::SpaceUsedLong](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptionsspaceusedlong)
   - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::image\_segmenter::proto::image\_segmenter\_graph\_options\_pb2](#mediapipetasksccvisionimage%5C_segmenterprotoimage%5C_segmenter%5C_graph%5C_options%5C_pb2)
   - [image\_segmenter\_graph\_options\_pb2.ImageSegmenterGraphOptions](#image%5C_segmenter%5C_graph%5C_options%5C_pb2imagesegmentergraphoptions)
@@ -3655,9 +4770,17 @@
   - [ObjectDetectorOptions.category\_denylist](#objectdetectoroptionscategory%5C_denylist-1)
   - [ObjectDetectorOptions.ext](#objectdetectoroptionsext)
   - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::get\_create](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsget%5C_create)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::ByteSizeLong](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsbytesizelong)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::CheckInitialized](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionscheckinitialized)
   - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::Clear](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsclear)
   - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::ClearField](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsclearfield)
   - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::CopyFrom](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionscopyfrom)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::DiscardUnknownFields](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::FindInitializationErrors](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::IsInitialized](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsisinitialized)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::SerializeAsString](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsserializeasstring)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::SerializeToString](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsserializetostring)
+  - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::SpaceUsedLong](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptionsspaceusedlong)
   - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::\_\_str\_\_](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::object\_detector::proto::object\_detector\_options\_pb2](#mediapipetasksccvisionobject%5C_detectorprotoobject%5C_detector%5C_options%5C_pb2)
   - [object\_detector\_options\_pb2.ObjectDetectorOptions](#object%5C_detector%5C_options%5C_pb2objectdetectoroptions)
@@ -3926,9 +5049,17 @@
 - [mediapipe::autoit::solutions::pose\_connections](#mediapipeautoitsolutionspose%5C_connections)
   - [pose\_connections.POSE\_CONNECTIONS](#pose%5C_connectionspose%5C_connections)
 - [google::protobuf::Message](#googleprotobufmessage)
+  - [google::protobuf::Message::ByteSizeLong](#googleprotobufmessagebytesizelong)
+  - [google::protobuf::Message::CheckInitialized](#googleprotobufmessagecheckinitialized)
   - [google::protobuf::Message::Clear](#googleprotobufmessageclear)
   - [google::protobuf::Message::ClearField](#googleprotobufmessageclearfield)
   - [google::protobuf::Message::CopyFrom](#googleprotobufmessagecopyfrom)
+  - [google::protobuf::Message::DiscardUnknownFields](#googleprotobufmessagediscardunknownfields)
+  - [google::protobuf::Message::FindInitializationErrors](#googleprotobufmessagefindinitializationerrors)
+  - [google::protobuf::Message::IsInitialized](#googleprotobufmessageisinitialized)
+  - [google::protobuf::Message::SerializeAsString](#googleprotobufmessageserializeasstring)
+  - [google::protobuf::Message::SerializeToString](#googleprotobufmessageserializetostring)
+  - [google::protobuf::Message::SpaceUsedLong](#googleprotobufmessagespaceusedlong)
   - [google::protobuf::Message::\_\_str\_\_](#googleprotobufmessage%5C_%5C_str%5C_%5C_)
 - [google::protobuf::FieldDescriptor](#googleprotobuffielddescriptor)
   - [FieldDescriptor.full\_name](#fielddescriptorfull%5C_name)
@@ -4515,6 +5646,50 @@
   - [VectorOfPacketDataType::sort](#vectorofpacketdatatypesort)
   - [VectorOfPacketDataType::sort\_variant](#vectorofpacketdatatypesort%5C_variant)
   - [VectorOfPacketDataType::start](#vectorofpacketdatatypestart)
+- [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresult)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult.Count](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultcount)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::create](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultcreate)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Add](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultadd)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Items](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultitems)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Keys](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultkeys)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Remove](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultremove)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::append](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultappend)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::at](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultat)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::clear](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultclear)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::empty](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultempty)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::end](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultend)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::get\_Item](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultget%5C_item)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::get\_\_NewEnum](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::push\_back](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultpush%5C_back)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::push\_vector](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultpush%5C_vector)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::put\_Item](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultput%5C_item)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::size](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultsize)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::slice](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultslice)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::sort](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultsort)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::sort\_variant](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultsort%5C_variant)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::start](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationresultstart)
+- [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresult)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult.Count](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultcount)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::create](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultcreate)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Add](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultadd)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Items](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultitems)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Keys](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultkeys)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Remove](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultremove)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::append](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultappend)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::at](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultat)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::clear](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultclear)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::empty](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultempty)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::end](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultend)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::get\_Item](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultget%5C_item)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::get\_\_NewEnum](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::push\_back](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultpush%5C_back)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::push\_vector](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultpush%5C_vector)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::put\_Item](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultput%5C_item)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::size](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultsize)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::slice](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultslice)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::sort](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultsort)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::sort\_variant](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultsort%5C_variant)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::start](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_embedding%5C_result%5C_embeddingresultstart)
 - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_category)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category.Count](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorycount)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::create](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorycreate)
@@ -9937,6 +11112,42 @@ AutoIt:
     [propget] $oaudio_classifier.AudioClassifier
 ```
 
+## mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier
+
+### mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::classify
+
+```cpp
+void mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier::classify( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>>& output_list,
+                                                                                   const mediapipe::tasks::autoit::components::containers::audio_data::AudioData&                                               audio_clip );
+AutoIt:
+    $oAudioClassifier.classify( $audio_clip[, $output_list] ) -> $output_list
+```
+
+### mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::classify\_async
+
+```cpp
+void mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier::classify_async( const mediapipe::tasks::autoit::components::containers::audio_data::AudioData& audio_block,
+                                                                                         int64_t                                                                        timestamp_ms );
+AutoIt:
+    $oAudioClassifier.classify_async( $audio_block, $timestamp_ms ) -> None
+```
+
+### mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_classifier.AudioClassifier").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_classifier.AudioClassifier").create_from_options( $options ) -> retval
+```
+
 ## mediapipe::tasks::autoit::audio::audio\_embedder
 
 ### audio\_embedder.AudioEmbedderOptions
@@ -10041,6 +11252,51 @@ AutoIt:
 static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder
 AutoIt:
     [propget] $oaudio_embedder.AudioEmbedder
+```
+
+## mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder
+
+### mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::cosine\_similarity
+
+```cpp
+static float mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder::cosine_similarity( const mediapipe::tasks::autoit::components::containers::embedding_result::Embedding& u,
+                                                                                                const mediapipe::tasks::autoit::components::containers::embedding_result::Embedding& v );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedder").cosine_similarity( $u, $v ) -> retval
+```
+
+### mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder> mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedder").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder> mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedder").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::embed
+
+```cpp
+void mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder::embed( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>>& output_list,
+                                                                            const mediapipe::tasks::autoit::components::containers::audio_data::AudioData&                                     audio_clip );
+AutoIt:
+    $oAudioEmbedder.embed( $audio_clip[, $output_list] ) -> $output_list
+```
+
+### mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::embed\_async
+
+```cpp
+void mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder::embed_async( const mediapipe::tasks::autoit::components::containers::audio_data::AudioData& audio_block,
+                                                                                  int64_t                                                                        timestamp_ms );
+AutoIt:
+    $oAudioEmbedder.embed_async( $audio_block, $timestamp_ms ) -> None
 ```
 
 ## mediapipe::tasks::autoit::audio::core
@@ -12178,6 +13434,32 @@ AutoIt:
     [propget] $otext_classifier.TextClassifier
 ```
 
+## mediapipe::tasks::autoit::text::text\_classifier::TextClassifier
+
+### mediapipe::tasks::autoit::text::text\_classifier::TextClassifier::classify
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> mediapipe::tasks::autoit::text::text_classifier::TextClassifier::classify( const std::string& text );
+AutoIt:
+    $oTextClassifier.classify( $text ) -> retval
+```
+
+### mediapipe::tasks::autoit::text::text\_classifier::TextClassifier::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::text::text_classifier::TextClassifier> mediapipe::tasks::autoit::text::text_classifier::TextClassifier::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_classifier.TextClassifier").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::text::text\_classifier::TextClassifier::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::text::text_classifier::TextClassifier> mediapipe::tasks::autoit::text::text_classifier::TextClassifier::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_classifier.TextClassifier").create_from_options( $options ) -> retval
+```
+
 ## mediapipe::tasks::autoit::text::text\_embedder
 
 ### text\_embedder.TextEmbedderOptions
@@ -12264,6 +13546,41 @@ AutoIt:
 static mediapipe::tasks::autoit::text::text_embedder::TextEmbedder
 AutoIt:
     [propget] $otext_embedder.TextEmbedder
+```
+
+## mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder
+
+### mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::cosine\_similarity
+
+```cpp
+static float mediapipe::tasks::autoit::text::text_embedder::TextEmbedder::cosine_similarity( const mediapipe::tasks::autoit::components::containers::embedding_result::Embedding& u,
+                                                                                             const mediapipe::tasks::autoit::components::containers::embedding_result::Embedding& v );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextEmbedder").cosine_similarity( $u, $v ) -> retval
+```
+
+### mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::text::text_embedder::TextEmbedder> mediapipe::tasks::autoit::text::text_embedder::TextEmbedder::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextEmbedder").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::text::text_embedder::TextEmbedder> mediapipe::tasks::autoit::text::text_embedder::TextEmbedder::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextEmbedder").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::embed
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> mediapipe::tasks::autoit::text::text_embedder::TextEmbedder::embed( const std::string& text );
+AutoIt:
+    $oTextEmbedder.embed( $text ) -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision
@@ -12956,6 +14273,53 @@ AutoIt:
     $oGestureRecognizerOptions.to_pb2() -> retval
 ```
 
+## mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizer").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizer").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer::recognize( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                                   std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oGestureRecognizer.recognize( $image[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize\_async
+
+```cpp
+void mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer::recognize_async( const mediapipe::Image&                                                                                   image,
+                                                                                               int64_t                                                                                                   timestamp_ms,
+                                                                                               std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oGestureRecognizer.recognize_async( $image, $timestamp_ms[, $image_processing_options] ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize\_for\_video
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer::recognize_for_video( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                                             int64_t                                                                                                   timestamp_ms,
+                                                                                                                                                                                             std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oGestureRecognizer.recognize_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
+```
+
 ## mediapipe::tasks::autoit::vision::hand\_landmarker
 
 ### hand\_landmarker.HandLandmark
@@ -13459,6 +14823,53 @@ AutoIt:
     [propget] $oimage_classifier.ImageClassifier
 ```
 
+## mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier
+
+### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::classify
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier::classify( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                                              std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oImageClassifier.classify( $image[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::classify\_async
+
+```cpp
+void mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier::classify_async( const mediapipe::Image&                                                                                   image,
+                                                                                          int64_t                                                                                                   timestamp_ms,
+                                                                                          std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oImageClassifier.classify_async( $image, $timestamp_ms[, $image_processing_options] ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::classify\_for\_video
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier::classify_for_video( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                                                        int64_t                                                                                                   timestamp_ms,
+                                                                                                                                                                                                        std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oImageClassifier.classify_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_classifier.ImageClassifier").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_classifier.ImageClassifier").create_from_options( $options ) -> retval
+```
+
 ## mediapipe::tasks::autoit::vision::image\_embedder
 
 ### image\_embedder.ImageEmbedderOptions
@@ -13565,6 +14976,62 @@ AutoIt:
     [propget] $oimage_embedder.ImageEmbedder
 ```
 
+## mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::cosine\_similarity
+
+```cpp
+static float mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::cosine_similarity( const mediapipe::tasks::autoit::components::containers::embedding_result::Embedding& u,
+                                                                                                 const mediapipe::tasks::autoit::components::containers::embedding_result::Embedding& v );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedder").cosine_similarity( $u, $v ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedder").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedder").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed
+
+```cpp
+std::shared_ptr<ImageEmbedderResult> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::embed( const mediapipe::Image&                                                                                   image,
+                                                                                                             std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oImageEmbedder.embed( $image[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed\_async
+
+```cpp
+void mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::embed_async( const mediapipe::Image&                                                                                   image,
+                                                                                   int64_t                                                                                                   timestamp_ms,
+                                                                                   std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oImageEmbedder.embed_async( $image, $timestamp_ms[, $image_processing_options] ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed\_for\_video
+
+```cpp
+std::shared_ptr<ImageEmbedderResult> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::embed_for_video( const mediapipe::Image&                                                                                   image,
+                                                                                                                       int64_t                                                                                                   timestamp_ms,
+                                                                                                                       std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oImageEmbedder.embed_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
+```
+
 ## mediapipe::tasks::autoit::vision::image\_segmenter
 
 ### image\_segmenter.ImageSegmenterOptions
@@ -13669,6 +15136,52 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter
 AutoIt:
     [propget] $oimage_segmenter.ImageSegmenter
+```
+
+## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter
+
+### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter> mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenter").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter> mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenter").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment
+
+```cpp
+void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment( std::vector<mediapipe::Image>& segmentation_result,
+                                                                                 const mediapipe::Image&        image );
+AutoIt:
+    $oImageSegmenter.segment( $image[, $segmentation_result] ) -> $segmentation_result
+```
+
+### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_async
+
+```cpp
+void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment_async( const mediapipe::Image& image,
+                                                                                       int64_t                 timestamp_ms );
+AutoIt:
+    $oImageSegmenter.segment_async( $image, $timestamp_ms ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_for\_video
+
+```cpp
+void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment_for_video( std::vector<mediapipe::Image>& segmentation_result,
+                                                                                           const mediapipe::Image&        image,
+                                                                                           int64_t                        timestamp_ms );
+AutoIt:
+    $oImageSegmenter.segment_for_video( $image, $timestamp_ms[, $segmentation_result] ) -> $segmentation_result
 ```
 
 ## mediapipe::tasks::autoit::vision::object\_detector
@@ -13802,6 +15315,50 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::object_detector::ObjectDetector
 AutoIt:
     [propget] $oobject_detector.ObjectDetector
+```
+
+## mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector
+
+### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::object_detector::ObjectDetector> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.object_detector.ObjectDetector").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::object_detector::ObjectDetector> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.object_detector.ObjectDetector").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::DetectionResult> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect( const mediapipe::Image& image );
+AutoIt:
+    $oObjectDetector.detect( $image ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect\_async
+
+```cpp
+void mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect_async( const mediapipe::Image& image,
+                                                                                      int64_t                 timestamp_ms );
+AutoIt:
+    $oObjectDetector.detect_async( $image, $timestamp_ms ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect\_for\_video
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::DetectionResult> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect_for_video( const mediapipe::Image& image,
+                                                                                                                                                                                    int64_t                 timestamp_ms );
+AutoIt:
+    $oObjectDetector.detect_for_video( $image, $timestamp_ms ) -> retval
 ```
 
 ## cv
@@ -14007,6 +15564,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorOptions").create() -> <mediapipe.CalculatorOptions object>
 ```
 
+### mediapipe::CalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::CalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::CalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::CalculatorOptions::CheckInitialized();
+AutoIt:
+    $oCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::CalculatorOptions::Clear
 
 ```cpp
@@ -14029,6 +15602,54 @@ AutoIt:
 void mediapipe::CalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::CalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::CalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::CalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::CalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::CalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::CalculatorOptions::IsInitialized();
+AutoIt:
+    $oCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::CalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::CalculatorOptions::SerializeAsString();
+AutoIt:
+    $oCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::CalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::CalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::CalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::CalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::CalculatorOptions::\_\_str\_\_
@@ -14233,6 +15854,22 @@ AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Any").create() -> <google.protobuf.Any object>
 ```
 
+### google::protobuf::Any::ByteSizeLong
+
+```cpp
+size_t google::protobuf::Any::ByteSizeLong();
+AutoIt:
+    $oAny.ByteSizeLong() -> retval
+```
+
+### google::protobuf::Any::CheckInitialized
+
+```cpp
+void google::protobuf::Any::CheckInitialized();
+AutoIt:
+    $oAny.CheckInitialized() -> None
+```
+
 ### google::protobuf::Any::Clear
 
 ```cpp
@@ -14257,12 +15894,60 @@ AutoIt:
     $oAny.CopyFrom( $other_message ) -> None
 ```
 
+### google::protobuf::Any::DiscardUnknownFields
+
+```cpp
+void google::protobuf::Any::DiscardUnknownFields();
+AutoIt:
+    $oAny.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::Any::FindInitializationErrors
+
+```cpp
+void google::protobuf::Any::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAny.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::Any::IsInitialized
+
+```cpp
+bool google::protobuf::Any::IsInitialized();
+AutoIt:
+    $oAny.IsInitialized() -> retval
+```
+
 ### google::protobuf::Any::Pack
 
 ```cpp
 void google::protobuf::Any::Pack( const google::protobuf::Message& message );
 AutoIt:
     $oAny.Pack( $message ) -> None
+```
+
+### google::protobuf::Any::SerializeAsString
+
+```cpp
+std::string google::protobuf::Any::SerializeAsString();
+AutoIt:
+    $oAny.SerializeAsString() -> retval
+```
+
+### google::protobuf::Any::SerializeToString
+
+```cpp
+void google::protobuf::Any::SerializeToString( std::string* output );
+AutoIt:
+    $oAny.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::Any::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::Any::SpaceUsedLong();
+AutoIt:
+    $oAny.SpaceUsedLong() -> retval
 ```
 
 ### google::protobuf::Any::Unpack
@@ -14301,6 +15986,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.MediaPipeOptions").create() -> <mediapipe.MediaPipeOptions object>
 ```
 
+### mediapipe::MediaPipeOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::MediaPipeOptions::ByteSizeLong();
+AutoIt:
+    $oMediaPipeOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::MediaPipeOptions::CheckInitialized
+
+```cpp
+void mediapipe::MediaPipeOptions::CheckInitialized();
+AutoIt:
+    $oMediaPipeOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::MediaPipeOptions::Clear
 
 ```cpp
@@ -14323,6 +16024,54 @@ AutoIt:
 void mediapipe::MediaPipeOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oMediaPipeOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::MediaPipeOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::MediaPipeOptions::DiscardUnknownFields();
+AutoIt:
+    $oMediaPipeOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::MediaPipeOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::MediaPipeOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMediaPipeOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::MediaPipeOptions::IsInitialized
+
+```cpp
+bool mediapipe::MediaPipeOptions::IsInitialized();
+AutoIt:
+    $oMediaPipeOptions.IsInitialized() -> retval
+```
+
+### mediapipe::MediaPipeOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::MediaPipeOptions::SerializeAsString();
+AutoIt:
+    $oMediaPipeOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::MediaPipeOptions::SerializeToString
+
+```cpp
+void mediapipe::MediaPipeOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oMediaPipeOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::MediaPipeOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::MediaPipeOptions::SpaceUsedLong();
+AutoIt:
+    $oMediaPipeOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::MediaPipeOptions::\_\_str\_\_
@@ -14353,6 +16102,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryOptions").create() -> <mediapipe.PacketFactoryOptions object>
 ```
 
+### mediapipe::PacketFactoryOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::PacketFactoryOptions::ByteSizeLong();
+AutoIt:
+    $oPacketFactoryOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::PacketFactoryOptions::CheckInitialized
+
+```cpp
+void mediapipe::PacketFactoryOptions::CheckInitialized();
+AutoIt:
+    $oPacketFactoryOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::PacketFactoryOptions::Clear
 
 ```cpp
@@ -14375,6 +16140,54 @@ AutoIt:
 void mediapipe::PacketFactoryOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oPacketFactoryOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::PacketFactoryOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::PacketFactoryOptions::DiscardUnknownFields();
+AutoIt:
+    $oPacketFactoryOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::PacketFactoryOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::PacketFactoryOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPacketFactoryOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::PacketFactoryOptions::IsInitialized
+
+```cpp
+bool mediapipe::PacketFactoryOptions::IsInitialized();
+AutoIt:
+    $oPacketFactoryOptions.IsInitialized() -> retval
+```
+
+### mediapipe::PacketFactoryOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::PacketFactoryOptions::SerializeAsString();
+AutoIt:
+    $oPacketFactoryOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::PacketFactoryOptions::SerializeToString
+
+```cpp
+void mediapipe::PacketFactoryOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oPacketFactoryOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::PacketFactoryOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::PacketFactoryOptions::SpaceUsedLong();
+AutoIt:
+    $oPacketFactoryOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::PacketFactoryOptions::\_\_str\_\_
@@ -14427,6 +16240,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketFactoryConfig").create() -> <mediapipe.PacketFactoryConfig object>
 ```
 
+### mediapipe::PacketFactoryConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::PacketFactoryConfig::ByteSizeLong();
+AutoIt:
+    $oPacketFactoryConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::PacketFactoryConfig::CheckInitialized
+
+```cpp
+void mediapipe::PacketFactoryConfig::CheckInitialized();
+AutoIt:
+    $oPacketFactoryConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::PacketFactoryConfig::Clear
 
 ```cpp
@@ -14449,6 +16278,54 @@ AutoIt:
 void mediapipe::PacketFactoryConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oPacketFactoryConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::PacketFactoryConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::PacketFactoryConfig::DiscardUnknownFields();
+AutoIt:
+    $oPacketFactoryConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::PacketFactoryConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::PacketFactoryConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPacketFactoryConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::PacketFactoryConfig::IsInitialized
+
+```cpp
+bool mediapipe::PacketFactoryConfig::IsInitialized();
+AutoIt:
+    $oPacketFactoryConfig.IsInitialized() -> retval
+```
+
+### mediapipe::PacketFactoryConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::PacketFactoryConfig::SerializeAsString();
+AutoIt:
+    $oPacketFactoryConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::PacketFactoryConfig::SerializeToString
+
+```cpp
+void mediapipe::PacketFactoryConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oPacketFactoryConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::PacketFactoryConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::PacketFactoryConfig::SpaceUsedLong();
+AutoIt:
+    $oPacketFactoryConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::PacketFactoryConfig::\_\_str\_\_
@@ -14477,6 +16354,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketManagerConfig").create() -> <mediapipe.PacketManagerConfig object>
 ```
 
+### mediapipe::PacketManagerConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::PacketManagerConfig::ByteSizeLong();
+AutoIt:
+    $oPacketManagerConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::PacketManagerConfig::CheckInitialized
+
+```cpp
+void mediapipe::PacketManagerConfig::CheckInitialized();
+AutoIt:
+    $oPacketManagerConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::PacketManagerConfig::Clear
 
 ```cpp
@@ -14499,6 +16392,54 @@ AutoIt:
 void mediapipe::PacketManagerConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oPacketManagerConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::PacketManagerConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::PacketManagerConfig::DiscardUnknownFields();
+AutoIt:
+    $oPacketManagerConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::PacketManagerConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::PacketManagerConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPacketManagerConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::PacketManagerConfig::IsInitialized
+
+```cpp
+bool mediapipe::PacketManagerConfig::IsInitialized();
+AutoIt:
+    $oPacketManagerConfig.IsInitialized() -> retval
+```
+
+### mediapipe::PacketManagerConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::PacketManagerConfig::SerializeAsString();
+AutoIt:
+    $oPacketManagerConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::PacketManagerConfig::SerializeToString
+
+```cpp
+void mediapipe::PacketManagerConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oPacketManagerConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::PacketManagerConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::PacketManagerConfig::SpaceUsedLong();
+AutoIt:
+    $oPacketManagerConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::PacketManagerConfig::\_\_str\_\_
@@ -14772,6 +16713,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorOptions").create() -> <mediapipe.PacketGeneratorOptions object>
 ```
 
+### mediapipe::PacketGeneratorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::PacketGeneratorOptions::ByteSizeLong();
+AutoIt:
+    $oPacketGeneratorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::PacketGeneratorOptions::CheckInitialized
+
+```cpp
+void mediapipe::PacketGeneratorOptions::CheckInitialized();
+AutoIt:
+    $oPacketGeneratorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::PacketGeneratorOptions::Clear
 
 ```cpp
@@ -14794,6 +16751,54 @@ AutoIt:
 void mediapipe::PacketGeneratorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oPacketGeneratorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::PacketGeneratorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::PacketGeneratorOptions::DiscardUnknownFields();
+AutoIt:
+    $oPacketGeneratorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::PacketGeneratorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::PacketGeneratorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPacketGeneratorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::PacketGeneratorOptions::IsInitialized
+
+```cpp
+bool mediapipe::PacketGeneratorOptions::IsInitialized();
+AutoIt:
+    $oPacketGeneratorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::PacketGeneratorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::PacketGeneratorOptions::SerializeAsString();
+AutoIt:
+    $oPacketGeneratorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::PacketGeneratorOptions::SerializeToString
+
+```cpp
+void mediapipe::PacketGeneratorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oPacketGeneratorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::PacketGeneratorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::PacketGeneratorOptions::SpaceUsedLong();
+AutoIt:
+    $oPacketGeneratorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::PacketGeneratorOptions::\_\_str\_\_
@@ -14862,6 +16867,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.PacketGeneratorConfig").create() -> <mediapipe.PacketGeneratorConfig object>
 ```
 
+### mediapipe::PacketGeneratorConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::PacketGeneratorConfig::ByteSizeLong();
+AutoIt:
+    $oPacketGeneratorConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::PacketGeneratorConfig::CheckInitialized
+
+```cpp
+void mediapipe::PacketGeneratorConfig::CheckInitialized();
+AutoIt:
+    $oPacketGeneratorConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::PacketGeneratorConfig::Clear
 
 ```cpp
@@ -14884,6 +16905,54 @@ AutoIt:
 void mediapipe::PacketGeneratorConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oPacketGeneratorConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::PacketGeneratorConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::PacketGeneratorConfig::DiscardUnknownFields();
+AutoIt:
+    $oPacketGeneratorConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::PacketGeneratorConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::PacketGeneratorConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPacketGeneratorConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::PacketGeneratorConfig::IsInitialized
+
+```cpp
+bool mediapipe::PacketGeneratorConfig::IsInitialized();
+AutoIt:
+    $oPacketGeneratorConfig.IsInitialized() -> retval
+```
+
+### mediapipe::PacketGeneratorConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::PacketGeneratorConfig::SerializeAsString();
+AutoIt:
+    $oPacketGeneratorConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::PacketGeneratorConfig::SerializeToString
+
+```cpp
+void mediapipe::PacketGeneratorConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oPacketGeneratorConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::PacketGeneratorConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::PacketGeneratorConfig::SpaceUsedLong();
+AutoIt:
+    $oPacketGeneratorConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::PacketGeneratorConfig::\_\_str\_\_
@@ -15156,6 +17225,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.StatusHandlerConfig").create() -> <mediapipe.StatusHandlerConfig object>
 ```
 
+### mediapipe::StatusHandlerConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::StatusHandlerConfig::ByteSizeLong();
+AutoIt:
+    $oStatusHandlerConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::StatusHandlerConfig::CheckInitialized
+
+```cpp
+void mediapipe::StatusHandlerConfig::CheckInitialized();
+AutoIt:
+    $oStatusHandlerConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::StatusHandlerConfig::Clear
 
 ```cpp
@@ -15178,6 +17263,54 @@ AutoIt:
 void mediapipe::StatusHandlerConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oStatusHandlerConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::StatusHandlerConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::StatusHandlerConfig::DiscardUnknownFields();
+AutoIt:
+    $oStatusHandlerConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::StatusHandlerConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::StatusHandlerConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oStatusHandlerConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::StatusHandlerConfig::IsInitialized
+
+```cpp
+bool mediapipe::StatusHandlerConfig::IsInitialized();
+AutoIt:
+    $oStatusHandlerConfig.IsInitialized() -> retval
+```
+
+### mediapipe::StatusHandlerConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::StatusHandlerConfig::SerializeAsString();
+AutoIt:
+    $oStatusHandlerConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::StatusHandlerConfig::SerializeToString
+
+```cpp
+void mediapipe::StatusHandlerConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oStatusHandlerConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::StatusHandlerConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::StatusHandlerConfig::SpaceUsedLong();
+AutoIt:
+    $oStatusHandlerConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::StatusHandlerConfig::\_\_str\_\_
@@ -15224,6 +17357,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputStreamHandlerConfig").create() -> <mediapipe.InputStreamHandlerConfig object>
 ```
 
+### mediapipe::InputStreamHandlerConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::InputStreamHandlerConfig::ByteSizeLong();
+AutoIt:
+    $oInputStreamHandlerConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::InputStreamHandlerConfig::CheckInitialized
+
+```cpp
+void mediapipe::InputStreamHandlerConfig::CheckInitialized();
+AutoIt:
+    $oInputStreamHandlerConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::InputStreamHandlerConfig::Clear
 
 ```cpp
@@ -15246,6 +17395,54 @@ AutoIt:
 void mediapipe::InputStreamHandlerConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oInputStreamHandlerConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InputStreamHandlerConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::InputStreamHandlerConfig::DiscardUnknownFields();
+AutoIt:
+    $oInputStreamHandlerConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InputStreamHandlerConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::InputStreamHandlerConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oInputStreamHandlerConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InputStreamHandlerConfig::IsInitialized
+
+```cpp
+bool mediapipe::InputStreamHandlerConfig::IsInitialized();
+AutoIt:
+    $oInputStreamHandlerConfig.IsInitialized() -> retval
+```
+
+### mediapipe::InputStreamHandlerConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::InputStreamHandlerConfig::SerializeAsString();
+AutoIt:
+    $oInputStreamHandlerConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::InputStreamHandlerConfig::SerializeToString
+
+```cpp
+void mediapipe::InputStreamHandlerConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oInputStreamHandlerConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InputStreamHandlerConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InputStreamHandlerConfig::SpaceUsedLong();
+AutoIt:
+    $oInputStreamHandlerConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InputStreamHandlerConfig::\_\_str\_\_
@@ -15290,6 +17487,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.OutputStreamHandlerConfig").create() -> <mediapipe.OutputStreamHandlerConfig object>
 ```
 
+### mediapipe::OutputStreamHandlerConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::OutputStreamHandlerConfig::ByteSizeLong();
+AutoIt:
+    $oOutputStreamHandlerConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::OutputStreamHandlerConfig::CheckInitialized
+
+```cpp
+void mediapipe::OutputStreamHandlerConfig::CheckInitialized();
+AutoIt:
+    $oOutputStreamHandlerConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::OutputStreamHandlerConfig::Clear
 
 ```cpp
@@ -15312,6 +17525,54 @@ AutoIt:
 void mediapipe::OutputStreamHandlerConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oOutputStreamHandlerConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::OutputStreamHandlerConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::OutputStreamHandlerConfig::DiscardUnknownFields();
+AutoIt:
+    $oOutputStreamHandlerConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::OutputStreamHandlerConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::OutputStreamHandlerConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oOutputStreamHandlerConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::OutputStreamHandlerConfig::IsInitialized
+
+```cpp
+bool mediapipe::OutputStreamHandlerConfig::IsInitialized();
+AutoIt:
+    $oOutputStreamHandlerConfig.IsInitialized() -> retval
+```
+
+### mediapipe::OutputStreamHandlerConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::OutputStreamHandlerConfig::SerializeAsString();
+AutoIt:
+    $oOutputStreamHandlerConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::OutputStreamHandlerConfig::SerializeToString
+
+```cpp
+void mediapipe::OutputStreamHandlerConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oOutputStreamHandlerConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::OutputStreamHandlerConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::OutputStreamHandlerConfig::SpaceUsedLong();
+AutoIt:
+    $oOutputStreamHandlerConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::OutputStreamHandlerConfig::\_\_str\_\_
@@ -15374,6 +17635,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ExecutorConfig").create() -> <mediapipe.ExecutorConfig object>
 ```
 
+### mediapipe::ExecutorConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::ExecutorConfig::ByteSizeLong();
+AutoIt:
+    $oExecutorConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::ExecutorConfig::CheckInitialized
+
+```cpp
+void mediapipe::ExecutorConfig::CheckInitialized();
+AutoIt:
+    $oExecutorConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::ExecutorConfig::Clear
 
 ```cpp
@@ -15396,6 +17673,54 @@ AutoIt:
 void mediapipe::ExecutorConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oExecutorConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ExecutorConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::ExecutorConfig::DiscardUnknownFields();
+AutoIt:
+    $oExecutorConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ExecutorConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::ExecutorConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oExecutorConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ExecutorConfig::IsInitialized
+
+```cpp
+bool mediapipe::ExecutorConfig::IsInitialized();
+AutoIt:
+    $oExecutorConfig.IsInitialized() -> retval
+```
+
+### mediapipe::ExecutorConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::ExecutorConfig::SerializeAsString();
+AutoIt:
+    $oExecutorConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::ExecutorConfig::SerializeToString
+
+```cpp
+void mediapipe::ExecutorConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oExecutorConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ExecutorConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ExecutorConfig::SpaceUsedLong();
+AutoIt:
+    $oExecutorConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ExecutorConfig::\_\_str\_\_
@@ -15456,6 +17781,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputCollection").create() -> <mediapipe.InputCollection object>
 ```
 
+### mediapipe::InputCollection::ByteSizeLong
+
+```cpp
+size_t mediapipe::InputCollection::ByteSizeLong();
+AutoIt:
+    $oInputCollection.ByteSizeLong() -> retval
+```
+
+### mediapipe::InputCollection::CheckInitialized
+
+```cpp
+void mediapipe::InputCollection::CheckInitialized();
+AutoIt:
+    $oInputCollection.CheckInitialized() -> None
+```
+
 ### mediapipe::InputCollection::Clear
 
 ```cpp
@@ -15478,6 +17819,54 @@ AutoIt:
 void mediapipe::InputCollection::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oInputCollection.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InputCollection::DiscardUnknownFields
+
+```cpp
+void mediapipe::InputCollection::DiscardUnknownFields();
+AutoIt:
+    $oInputCollection.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InputCollection::FindInitializationErrors
+
+```cpp
+void mediapipe::InputCollection::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oInputCollection.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InputCollection::IsInitialized
+
+```cpp
+bool mediapipe::InputCollection::IsInitialized();
+AutoIt:
+    $oInputCollection.IsInitialized() -> retval
+```
+
+### mediapipe::InputCollection::SerializeAsString
+
+```cpp
+std::string mediapipe::InputCollection::SerializeAsString();
+AutoIt:
+    $oInputCollection.SerializeAsString() -> retval
+```
+
+### mediapipe::InputCollection::SerializeToString
+
+```cpp
+void mediapipe::InputCollection::SerializeToString( std::string* output );
+AutoIt:
+    $oInputCollection.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InputCollection::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InputCollection::SpaceUsedLong();
+AutoIt:
+    $oInputCollection.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InputCollection::\_\_str\_\_
@@ -15546,6 +17935,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputCollectionSet").create() -> <mediapipe.InputCollectionSet object>
 ```
 
+### mediapipe::InputCollectionSet::ByteSizeLong
+
+```cpp
+size_t mediapipe::InputCollectionSet::ByteSizeLong();
+AutoIt:
+    $oInputCollectionSet.ByteSizeLong() -> retval
+```
+
+### mediapipe::InputCollectionSet::CheckInitialized
+
+```cpp
+void mediapipe::InputCollectionSet::CheckInitialized();
+AutoIt:
+    $oInputCollectionSet.CheckInitialized() -> None
+```
+
 ### mediapipe::InputCollectionSet::Clear
 
 ```cpp
@@ -15568,6 +17973,54 @@ AutoIt:
 void mediapipe::InputCollectionSet::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oInputCollectionSet.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InputCollectionSet::DiscardUnknownFields
+
+```cpp
+void mediapipe::InputCollectionSet::DiscardUnknownFields();
+AutoIt:
+    $oInputCollectionSet.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InputCollectionSet::FindInitializationErrors
+
+```cpp
+void mediapipe::InputCollectionSet::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oInputCollectionSet.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InputCollectionSet::IsInitialized
+
+```cpp
+bool mediapipe::InputCollectionSet::IsInitialized();
+AutoIt:
+    $oInputCollectionSet.IsInitialized() -> retval
+```
+
+### mediapipe::InputCollectionSet::SerializeAsString
+
+```cpp
+std::string mediapipe::InputCollectionSet::SerializeAsString();
+AutoIt:
+    $oInputCollectionSet.SerializeAsString() -> retval
+```
+
+### mediapipe::InputCollectionSet::SerializeToString
+
+```cpp
+void mediapipe::InputCollectionSet::SerializeToString( std::string* output );
+AutoIt:
+    $oInputCollectionSet.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InputCollectionSet::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InputCollectionSet::SpaceUsedLong();
+AutoIt:
+    $oInputCollectionSet.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InputCollectionSet::\_\_str\_\_
@@ -15823,6 +18276,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InputStreamInfo").create() -> <mediapipe.InputStreamInfo object>
 ```
 
+### mediapipe::InputStreamInfo::ByteSizeLong
+
+```cpp
+size_t mediapipe::InputStreamInfo::ByteSizeLong();
+AutoIt:
+    $oInputStreamInfo.ByteSizeLong() -> retval
+```
+
+### mediapipe::InputStreamInfo::CheckInitialized
+
+```cpp
+void mediapipe::InputStreamInfo::CheckInitialized();
+AutoIt:
+    $oInputStreamInfo.CheckInitialized() -> None
+```
+
 ### mediapipe::InputStreamInfo::Clear
 
 ```cpp
@@ -15845,6 +18314,54 @@ AutoIt:
 void mediapipe::InputStreamInfo::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oInputStreamInfo.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InputStreamInfo::DiscardUnknownFields
+
+```cpp
+void mediapipe::InputStreamInfo::DiscardUnknownFields();
+AutoIt:
+    $oInputStreamInfo.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InputStreamInfo::FindInitializationErrors
+
+```cpp
+void mediapipe::InputStreamInfo::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oInputStreamInfo.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InputStreamInfo::IsInitialized
+
+```cpp
+bool mediapipe::InputStreamInfo::IsInitialized();
+AutoIt:
+    $oInputStreamInfo.IsInitialized() -> retval
+```
+
+### mediapipe::InputStreamInfo::SerializeAsString
+
+```cpp
+std::string mediapipe::InputStreamInfo::SerializeAsString();
+AutoIt:
+    $oInputStreamInfo.SerializeAsString() -> retval
+```
+
+### mediapipe::InputStreamInfo::SerializeToString
+
+```cpp
+void mediapipe::InputStreamInfo::SerializeToString( std::string* output );
+AutoIt:
+    $oInputStreamInfo.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InputStreamInfo::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InputStreamInfo::SpaceUsedLong();
+AutoIt:
+    $oInputStreamInfo.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InputStreamInfo::\_\_str\_\_
@@ -16009,6 +18526,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ProfilerConfig").create() -> <mediapipe.ProfilerConfig object>
 ```
 
+### mediapipe::ProfilerConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::ProfilerConfig::ByteSizeLong();
+AutoIt:
+    $oProfilerConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::ProfilerConfig::CheckInitialized
+
+```cpp
+void mediapipe::ProfilerConfig::CheckInitialized();
+AutoIt:
+    $oProfilerConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::ProfilerConfig::Clear
 
 ```cpp
@@ -16031,6 +18564,54 @@ AutoIt:
 void mediapipe::ProfilerConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oProfilerConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ProfilerConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::ProfilerConfig::DiscardUnknownFields();
+AutoIt:
+    $oProfilerConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ProfilerConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::ProfilerConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oProfilerConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ProfilerConfig::IsInitialized
+
+```cpp
+bool mediapipe::ProfilerConfig::IsInitialized();
+AutoIt:
+    $oProfilerConfig.IsInitialized() -> retval
+```
+
+### mediapipe::ProfilerConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::ProfilerConfig::SerializeAsString();
+AutoIt:
+    $oProfilerConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::ProfilerConfig::SerializeToString
+
+```cpp
+void mediapipe::ProfilerConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oProfilerConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ProfilerConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ProfilerConfig::SpaceUsedLong();
+AutoIt:
+    $oProfilerConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ProfilerConfig::\_\_str\_\_
@@ -16405,6 +18986,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig").create() -> <mediapipe.CalculatorGraphConfig object>
 ```
 
+### mediapipe::CalculatorGraphConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::CalculatorGraphConfig::ByteSizeLong();
+AutoIt:
+    $oCalculatorGraphConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::CalculatorGraphConfig::CheckInitialized
+
+```cpp
+void mediapipe::CalculatorGraphConfig::CheckInitialized();
+AutoIt:
+    $oCalculatorGraphConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::CalculatorGraphConfig::Clear
 
 ```cpp
@@ -16427,6 +19024,54 @@ AutoIt:
 void mediapipe::CalculatorGraphConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oCalculatorGraphConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::CalculatorGraphConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::CalculatorGraphConfig::DiscardUnknownFields();
+AutoIt:
+    $oCalculatorGraphConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::CalculatorGraphConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::CalculatorGraphConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oCalculatorGraphConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::CalculatorGraphConfig::IsInitialized
+
+```cpp
+bool mediapipe::CalculatorGraphConfig::IsInitialized();
+AutoIt:
+    $oCalculatorGraphConfig.IsInitialized() -> retval
+```
+
+### mediapipe::CalculatorGraphConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::CalculatorGraphConfig::SerializeAsString();
+AutoIt:
+    $oCalculatorGraphConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::CalculatorGraphConfig::SerializeToString
+
+```cpp
+void mediapipe::CalculatorGraphConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oCalculatorGraphConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::CalculatorGraphConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::CalculatorGraphConfig::SpaceUsedLong();
+AutoIt:
+    $oCalculatorGraphConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::CalculatorGraphConfig::\_\_str\_\_
@@ -17686,6 +20331,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphConfig.Node").create() -> <mediapipe.CalculatorGraphConfig.Node object>
 ```
 
+### mediapipe::CalculatorGraphConfig::Node::ByteSizeLong
+
+```cpp
+size_t mediapipe::CalculatorGraphConfig::Node::ByteSizeLong();
+AutoIt:
+    $oNode.ByteSizeLong() -> retval
+```
+
+### mediapipe::CalculatorGraphConfig::Node::CheckInitialized
+
+```cpp
+void mediapipe::CalculatorGraphConfig::Node::CheckInitialized();
+AutoIt:
+    $oNode.CheckInitialized() -> None
+```
+
 ### mediapipe::CalculatorGraphConfig::Node::Clear
 
 ```cpp
@@ -17708,6 +20369,54 @@ AutoIt:
 void mediapipe::CalculatorGraphConfig::Node::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oNode.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::CalculatorGraphConfig::Node::DiscardUnknownFields
+
+```cpp
+void mediapipe::CalculatorGraphConfig::Node::DiscardUnknownFields();
+AutoIt:
+    $oNode.DiscardUnknownFields() -> None
+```
+
+### mediapipe::CalculatorGraphConfig::Node::FindInitializationErrors
+
+```cpp
+void mediapipe::CalculatorGraphConfig::Node::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNode.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::CalculatorGraphConfig::Node::IsInitialized
+
+```cpp
+bool mediapipe::CalculatorGraphConfig::Node::IsInitialized();
+AutoIt:
+    $oNode.IsInitialized() -> retval
+```
+
+### mediapipe::CalculatorGraphConfig::Node::SerializeAsString
+
+```cpp
+std::string mediapipe::CalculatorGraphConfig::Node::SerializeAsString();
+AutoIt:
+    $oNode.SerializeAsString() -> retval
+```
+
+### mediapipe::CalculatorGraphConfig::Node::SerializeToString
+
+```cpp
+void mediapipe::CalculatorGraphConfig::Node::SerializeToString( std::string* output );
+AutoIt:
+    $oNode.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::CalculatorGraphConfig::Node::SpaceUsedLong
+
+```cpp
+size_t mediapipe::CalculatorGraphConfig::Node::SpaceUsedLong();
+AutoIt:
+    $oNode.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::CalculatorGraphConfig::Node::\_\_str\_\_
@@ -18007,6 +20716,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.FieldDescriptorProto").create() -> <mediapipe.FieldDescriptorProto object>
 ```
 
+### mediapipe::FieldDescriptorProto::ByteSizeLong
+
+```cpp
+size_t mediapipe::FieldDescriptorProto::ByteSizeLong();
+AutoIt:
+    $oFieldDescriptorProto.ByteSizeLong() -> retval
+```
+
+### mediapipe::FieldDescriptorProto::CheckInitialized
+
+```cpp
+void mediapipe::FieldDescriptorProto::CheckInitialized();
+AutoIt:
+    $oFieldDescriptorProto.CheckInitialized() -> None
+```
+
 ### mediapipe::FieldDescriptorProto::Clear
 
 ```cpp
@@ -18029,6 +20754,54 @@ AutoIt:
 void mediapipe::FieldDescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oFieldDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::FieldDescriptorProto::DiscardUnknownFields
+
+```cpp
+void mediapipe::FieldDescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oFieldDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### mediapipe::FieldDescriptorProto::FindInitializationErrors
+
+```cpp
+void mediapipe::FieldDescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFieldDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::FieldDescriptorProto::IsInitialized
+
+```cpp
+bool mediapipe::FieldDescriptorProto::IsInitialized();
+AutoIt:
+    $oFieldDescriptorProto.IsInitialized() -> retval
+```
+
+### mediapipe::FieldDescriptorProto::SerializeAsString
+
+```cpp
+std::string mediapipe::FieldDescriptorProto::SerializeAsString();
+AutoIt:
+    $oFieldDescriptorProto.SerializeAsString() -> retval
+```
+
+### mediapipe::FieldDescriptorProto::SerializeToString
+
+```cpp
+void mediapipe::FieldDescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oFieldDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::FieldDescriptorProto::SpaceUsedLong
+
+```cpp
+size_t mediapipe::FieldDescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oFieldDescriptorProto.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::FieldDescriptorProto::\_\_str\_\_
@@ -18267,6 +21040,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateExpression").create() -> <mediapipe.TemplateExpression object>
 ```
 
+### mediapipe::TemplateExpression::ByteSizeLong
+
+```cpp
+size_t mediapipe::TemplateExpression::ByteSizeLong();
+AutoIt:
+    $oTemplateExpression.ByteSizeLong() -> retval
+```
+
+### mediapipe::TemplateExpression::CheckInitialized
+
+```cpp
+void mediapipe::TemplateExpression::CheckInitialized();
+AutoIt:
+    $oTemplateExpression.CheckInitialized() -> None
+```
+
 ### mediapipe::TemplateExpression::Clear
 
 ```cpp
@@ -18289,6 +21078,54 @@ AutoIt:
 void mediapipe::TemplateExpression::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTemplateExpression.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TemplateExpression::DiscardUnknownFields
+
+```cpp
+void mediapipe::TemplateExpression::DiscardUnknownFields();
+AutoIt:
+    $oTemplateExpression.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TemplateExpression::FindInitializationErrors
+
+```cpp
+void mediapipe::TemplateExpression::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTemplateExpression.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TemplateExpression::IsInitialized
+
+```cpp
+bool mediapipe::TemplateExpression::IsInitialized();
+AutoIt:
+    $oTemplateExpression.IsInitialized() -> retval
+```
+
+### mediapipe::TemplateExpression::SerializeAsString
+
+```cpp
+std::string mediapipe::TemplateExpression::SerializeAsString();
+AutoIt:
+    $oTemplateExpression.SerializeAsString() -> retval
+```
+
+### mediapipe::TemplateExpression::SerializeToString
+
+```cpp
+void mediapipe::TemplateExpression::SerializeToString( std::string* output );
+AutoIt:
+    $oTemplateExpression.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TemplateExpression::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TemplateExpression::SpaceUsedLong();
+AutoIt:
+    $oTemplateExpression.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::TemplateExpression::\_\_str\_\_
@@ -18544,6 +21381,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.CalculatorGraphTemplate").create() -> <mediapipe.CalculatorGraphTemplate object>
 ```
 
+### mediapipe::CalculatorGraphTemplate::ByteSizeLong
+
+```cpp
+size_t mediapipe::CalculatorGraphTemplate::ByteSizeLong();
+AutoIt:
+    $oCalculatorGraphTemplate.ByteSizeLong() -> retval
+```
+
+### mediapipe::CalculatorGraphTemplate::CheckInitialized
+
+```cpp
+void mediapipe::CalculatorGraphTemplate::CheckInitialized();
+AutoIt:
+    $oCalculatorGraphTemplate.CheckInitialized() -> None
+```
+
 ### mediapipe::CalculatorGraphTemplate::Clear
 
 ```cpp
@@ -18566,6 +21419,54 @@ AutoIt:
 void mediapipe::CalculatorGraphTemplate::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oCalculatorGraphTemplate.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::CalculatorGraphTemplate::DiscardUnknownFields
+
+```cpp
+void mediapipe::CalculatorGraphTemplate::DiscardUnknownFields();
+AutoIt:
+    $oCalculatorGraphTemplate.DiscardUnknownFields() -> None
+```
+
+### mediapipe::CalculatorGraphTemplate::FindInitializationErrors
+
+```cpp
+void mediapipe::CalculatorGraphTemplate::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oCalculatorGraphTemplate.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::CalculatorGraphTemplate::IsInitialized
+
+```cpp
+bool mediapipe::CalculatorGraphTemplate::IsInitialized();
+AutoIt:
+    $oCalculatorGraphTemplate.IsInitialized() -> retval
+```
+
+### mediapipe::CalculatorGraphTemplate::SerializeAsString
+
+```cpp
+std::string mediapipe::CalculatorGraphTemplate::SerializeAsString();
+AutoIt:
+    $oCalculatorGraphTemplate.SerializeAsString() -> retval
+```
+
+### mediapipe::CalculatorGraphTemplate::SerializeToString
+
+```cpp
+void mediapipe::CalculatorGraphTemplate::SerializeToString( std::string* output );
+AutoIt:
+    $oCalculatorGraphTemplate.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::CalculatorGraphTemplate::SpaceUsedLong
+
+```cpp
+size_t mediapipe::CalculatorGraphTemplate::SpaceUsedLong();
+AutoIt:
+    $oCalculatorGraphTemplate.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::CalculatorGraphTemplate::\_\_str\_\_
@@ -18618,6 +21519,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateArgument").create() -> <mediapipe.TemplateArgument object>
 ```
 
+### mediapipe::TemplateArgument::ByteSizeLong
+
+```cpp
+size_t mediapipe::TemplateArgument::ByteSizeLong();
+AutoIt:
+    $oTemplateArgument.ByteSizeLong() -> retval
+```
+
+### mediapipe::TemplateArgument::CheckInitialized
+
+```cpp
+void mediapipe::TemplateArgument::CheckInitialized();
+AutoIt:
+    $oTemplateArgument.CheckInitialized() -> None
+```
+
 ### mediapipe::TemplateArgument::Clear
 
 ```cpp
@@ -18640,6 +21557,54 @@ AutoIt:
 void mediapipe::TemplateArgument::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTemplateArgument.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TemplateArgument::DiscardUnknownFields
+
+```cpp
+void mediapipe::TemplateArgument::DiscardUnknownFields();
+AutoIt:
+    $oTemplateArgument.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TemplateArgument::FindInitializationErrors
+
+```cpp
+void mediapipe::TemplateArgument::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTemplateArgument.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TemplateArgument::IsInitialized
+
+```cpp
+bool mediapipe::TemplateArgument::IsInitialized();
+AutoIt:
+    $oTemplateArgument.IsInitialized() -> retval
+```
+
+### mediapipe::TemplateArgument::SerializeAsString
+
+```cpp
+std::string mediapipe::TemplateArgument::SerializeAsString();
+AutoIt:
+    $oTemplateArgument.SerializeAsString() -> retval
+```
+
+### mediapipe::TemplateArgument::SerializeToString
+
+```cpp
+void mediapipe::TemplateArgument::SerializeToString( std::string* output );
+AutoIt:
+    $oTemplateArgument.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TemplateArgument::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TemplateArgument::SpaceUsedLong();
+AutoIt:
+    $oTemplateArgument.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::TemplateArgument::\_\_str\_\_
@@ -18887,6 +21852,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateDict").create() -> <mediapipe.TemplateDict object>
 ```
 
+### mediapipe::TemplateDict::ByteSizeLong
+
+```cpp
+size_t mediapipe::TemplateDict::ByteSizeLong();
+AutoIt:
+    $oTemplateDict.ByteSizeLong() -> retval
+```
+
+### mediapipe::TemplateDict::CheckInitialized
+
+```cpp
+void mediapipe::TemplateDict::CheckInitialized();
+AutoIt:
+    $oTemplateDict.CheckInitialized() -> None
+```
+
 ### mediapipe::TemplateDict::Clear
 
 ```cpp
@@ -18909,6 +21890,54 @@ AutoIt:
 void mediapipe::TemplateDict::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTemplateDict.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TemplateDict::DiscardUnknownFields
+
+```cpp
+void mediapipe::TemplateDict::DiscardUnknownFields();
+AutoIt:
+    $oTemplateDict.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TemplateDict::FindInitializationErrors
+
+```cpp
+void mediapipe::TemplateDict::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTemplateDict.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TemplateDict::IsInitialized
+
+```cpp
+bool mediapipe::TemplateDict::IsInitialized();
+AutoIt:
+    $oTemplateDict.IsInitialized() -> retval
+```
+
+### mediapipe::TemplateDict::SerializeAsString
+
+```cpp
+std::string mediapipe::TemplateDict::SerializeAsString();
+AutoIt:
+    $oTemplateDict.SerializeAsString() -> retval
+```
+
+### mediapipe::TemplateDict::SerializeToString
+
+```cpp
+void mediapipe::TemplateDict::SerializeToString( std::string* output );
+AutoIt:
+    $oTemplateDict.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TemplateDict::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TemplateDict::SpaceUsedLong();
+AutoIt:
+    $oTemplateDict.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::TemplateDict::\_\_str\_\_
@@ -19164,6 +22193,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateDict.Parameter").create() -> <mediapipe.TemplateDict.Parameter object>
 ```
 
+### mediapipe::TemplateDict::Parameter::ByteSizeLong
+
+```cpp
+size_t mediapipe::TemplateDict::Parameter::ByteSizeLong();
+AutoIt:
+    $oParameter.ByteSizeLong() -> retval
+```
+
+### mediapipe::TemplateDict::Parameter::CheckInitialized
+
+```cpp
+void mediapipe::TemplateDict::Parameter::CheckInitialized();
+AutoIt:
+    $oParameter.CheckInitialized() -> None
+```
+
 ### mediapipe::TemplateDict::Parameter::Clear
 
 ```cpp
@@ -19186,6 +22231,54 @@ AutoIt:
 void mediapipe::TemplateDict::Parameter::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oParameter.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TemplateDict::Parameter::DiscardUnknownFields
+
+```cpp
+void mediapipe::TemplateDict::Parameter::DiscardUnknownFields();
+AutoIt:
+    $oParameter.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TemplateDict::Parameter::FindInitializationErrors
+
+```cpp
+void mediapipe::TemplateDict::Parameter::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oParameter.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TemplateDict::Parameter::IsInitialized
+
+```cpp
+bool mediapipe::TemplateDict::Parameter::IsInitialized();
+AutoIt:
+    $oParameter.IsInitialized() -> retval
+```
+
+### mediapipe::TemplateDict::Parameter::SerializeAsString
+
+```cpp
+std::string mediapipe::TemplateDict::Parameter::SerializeAsString();
+AutoIt:
+    $oParameter.SerializeAsString() -> retval
+```
+
+### mediapipe::TemplateDict::Parameter::SerializeToString
+
+```cpp
+void mediapipe::TemplateDict::Parameter::SerializeToString( std::string* output );
+AutoIt:
+    $oParameter.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TemplateDict::Parameter::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TemplateDict::Parameter::SpaceUsedLong();
+AutoIt:
+    $oParameter.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::TemplateDict::Parameter::\_\_str\_\_
@@ -19222,6 +22315,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TemplateSubgraphOptions").create() -> <mediapipe.TemplateSubgraphOptions object>
 ```
 
+### mediapipe::TemplateSubgraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::TemplateSubgraphOptions::ByteSizeLong();
+AutoIt:
+    $oTemplateSubgraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::TemplateSubgraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::TemplateSubgraphOptions::CheckInitialized();
+AutoIt:
+    $oTemplateSubgraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::TemplateSubgraphOptions::Clear
 
 ```cpp
@@ -19244,6 +22353,54 @@ AutoIt:
 void mediapipe::TemplateSubgraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTemplateSubgraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TemplateSubgraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::TemplateSubgraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oTemplateSubgraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TemplateSubgraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::TemplateSubgraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTemplateSubgraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TemplateSubgraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::TemplateSubgraphOptions::IsInitialized();
+AutoIt:
+    $oTemplateSubgraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::TemplateSubgraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::TemplateSubgraphOptions::SerializeAsString();
+AutoIt:
+    $oTemplateSubgraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::TemplateSubgraphOptions::SerializeToString
+
+```cpp
+void mediapipe::TemplateSubgraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oTemplateSubgraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TemplateSubgraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TemplateSubgraphOptions::SpaceUsedLong();
+AutoIt:
+    $oTemplateSubgraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::TemplateSubgraphOptions::\_\_str\_\_
@@ -19324,6 +22481,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rasterization").create() -> <mediapipe.Rasterization object>
 ```
 
+### mediapipe::Rasterization::ByteSizeLong
+
+```cpp
+size_t mediapipe::Rasterization::ByteSizeLong();
+AutoIt:
+    $oRasterization.ByteSizeLong() -> retval
+```
+
+### mediapipe::Rasterization::CheckInitialized
+
+```cpp
+void mediapipe::Rasterization::CheckInitialized();
+AutoIt:
+    $oRasterization.CheckInitialized() -> None
+```
+
 ### mediapipe::Rasterization::Clear
 
 ```cpp
@@ -19346,6 +22519,54 @@ AutoIt:
 void mediapipe::Rasterization::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oRasterization.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Rasterization::DiscardUnknownFields
+
+```cpp
+void mediapipe::Rasterization::DiscardUnknownFields();
+AutoIt:
+    $oRasterization.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Rasterization::FindInitializationErrors
+
+```cpp
+void mediapipe::Rasterization::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRasterization.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Rasterization::IsInitialized
+
+```cpp
+bool mediapipe::Rasterization::IsInitialized();
+AutoIt:
+    $oRasterization.IsInitialized() -> retval
+```
+
+### mediapipe::Rasterization::SerializeAsString
+
+```cpp
+std::string mediapipe::Rasterization::SerializeAsString();
+AutoIt:
+    $oRasterization.SerializeAsString() -> retval
+```
+
+### mediapipe::Rasterization::SerializeToString
+
+```cpp
+void mediapipe::Rasterization::SerializeToString( std::string* output );
+AutoIt:
+    $oRasterization.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Rasterization::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Rasterization::SpaceUsedLong();
+AutoIt:
+    $oRasterization.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Rasterization::\_\_str\_\_
@@ -19609,6 +22830,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rasterization.Interval").create() -> <mediapipe.Rasterization.Interval object>
 ```
 
+### mediapipe::Rasterization::Interval::ByteSizeLong
+
+```cpp
+size_t mediapipe::Rasterization::Interval::ByteSizeLong();
+AutoIt:
+    $oInterval.ByteSizeLong() -> retval
+```
+
+### mediapipe::Rasterization::Interval::CheckInitialized
+
+```cpp
+void mediapipe::Rasterization::Interval::CheckInitialized();
+AutoIt:
+    $oInterval.CheckInitialized() -> None
+```
+
 ### mediapipe::Rasterization::Interval::Clear
 
 ```cpp
@@ -19631,6 +22868,54 @@ AutoIt:
 void mediapipe::Rasterization::Interval::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oInterval.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Rasterization::Interval::DiscardUnknownFields
+
+```cpp
+void mediapipe::Rasterization::Interval::DiscardUnknownFields();
+AutoIt:
+    $oInterval.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Rasterization::Interval::FindInitializationErrors
+
+```cpp
+void mediapipe::Rasterization::Interval::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oInterval.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Rasterization::Interval::IsInitialized
+
+```cpp
+bool mediapipe::Rasterization::Interval::IsInitialized();
+AutoIt:
+    $oInterval.IsInitialized() -> retval
+```
+
+### mediapipe::Rasterization::Interval::SerializeAsString
+
+```cpp
+std::string mediapipe::Rasterization::Interval::SerializeAsString();
+AutoIt:
+    $oInterval.SerializeAsString() -> retval
+```
+
+### mediapipe::Rasterization::Interval::SerializeToString
+
+```cpp
+void mediapipe::Rasterization::Interval::SerializeToString( std::string* output );
+AutoIt:
+    $oInterval.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Rasterization::Interval::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Rasterization::Interval::SpaceUsedLong();
+AutoIt:
+    $oInterval.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Rasterization::Interval::\_\_str\_\_
@@ -19711,6 +22996,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData").create() -> <mediapipe.LocationData object>
 ```
 
+### mediapipe::LocationData::ByteSizeLong
+
+```cpp
+size_t mediapipe::LocationData::ByteSizeLong();
+AutoIt:
+    $oLocationData.ByteSizeLong() -> retval
+```
+
+### mediapipe::LocationData::CheckInitialized
+
+```cpp
+void mediapipe::LocationData::CheckInitialized();
+AutoIt:
+    $oLocationData.CheckInitialized() -> None
+```
+
 ### mediapipe::LocationData::Clear
 
 ```cpp
@@ -19733,6 +23034,54 @@ AutoIt:
 void mediapipe::LocationData::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oLocationData.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LocationData::DiscardUnknownFields
+
+```cpp
+void mediapipe::LocationData::DiscardUnknownFields();
+AutoIt:
+    $oLocationData.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LocationData::FindInitializationErrors
+
+```cpp
+void mediapipe::LocationData::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLocationData.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LocationData::IsInitialized
+
+```cpp
+bool mediapipe::LocationData::IsInitialized();
+AutoIt:
+    $oLocationData.IsInitialized() -> retval
+```
+
+### mediapipe::LocationData::SerializeAsString
+
+```cpp
+std::string mediapipe::LocationData::SerializeAsString();
+AutoIt:
+    $oLocationData.SerializeAsString() -> retval
+```
+
+### mediapipe::LocationData::SerializeToString
+
+```cpp
+void mediapipe::LocationData::SerializeToString( std::string* output );
+AutoIt:
+    $oLocationData.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LocationData::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LocationData::SpaceUsedLong();
+AutoIt:
+    $oLocationData.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LocationData::\_\_str\_\_
@@ -20036,6 +23385,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.BoundingBox").create() -> <mediapipe.LocationData.BoundingBox object>
 ```
 
+### mediapipe::LocationData::BoundingBox::ByteSizeLong
+
+```cpp
+size_t mediapipe::LocationData::BoundingBox::ByteSizeLong();
+AutoIt:
+    $oBoundingBox.ByteSizeLong() -> retval
+```
+
+### mediapipe::LocationData::BoundingBox::CheckInitialized
+
+```cpp
+void mediapipe::LocationData::BoundingBox::CheckInitialized();
+AutoIt:
+    $oBoundingBox.CheckInitialized() -> None
+```
+
 ### mediapipe::LocationData::BoundingBox::Clear
 
 ```cpp
@@ -20058,6 +23423,54 @@ AutoIt:
 void mediapipe::LocationData::BoundingBox::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oBoundingBox.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LocationData::BoundingBox::DiscardUnknownFields
+
+```cpp
+void mediapipe::LocationData::BoundingBox::DiscardUnknownFields();
+AutoIt:
+    $oBoundingBox.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LocationData::BoundingBox::FindInitializationErrors
+
+```cpp
+void mediapipe::LocationData::BoundingBox::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oBoundingBox.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LocationData::BoundingBox::IsInitialized
+
+```cpp
+bool mediapipe::LocationData::BoundingBox::IsInitialized();
+AutoIt:
+    $oBoundingBox.IsInitialized() -> retval
+```
+
+### mediapipe::LocationData::BoundingBox::SerializeAsString
+
+```cpp
+std::string mediapipe::LocationData::BoundingBox::SerializeAsString();
+AutoIt:
+    $oBoundingBox.SerializeAsString() -> retval
+```
+
+### mediapipe::LocationData::BoundingBox::SerializeToString
+
+```cpp
+void mediapipe::LocationData::BoundingBox::SerializeToString( std::string* output );
+AutoIt:
+    $oBoundingBox.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LocationData::BoundingBox::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LocationData::BoundingBox::SpaceUsedLong();
+AutoIt:
+    $oBoundingBox.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LocationData::BoundingBox::\_\_str\_\_
@@ -20110,6 +23523,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeBoundingBox").create() -> <mediapipe.LocationData.RelativeBoundingBox object>
 ```
 
+### mediapipe::LocationData::RelativeBoundingBox::ByteSizeLong
+
+```cpp
+size_t mediapipe::LocationData::RelativeBoundingBox::ByteSizeLong();
+AutoIt:
+    $oRelativeBoundingBox.ByteSizeLong() -> retval
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::CheckInitialized
+
+```cpp
+void mediapipe::LocationData::RelativeBoundingBox::CheckInitialized();
+AutoIt:
+    $oRelativeBoundingBox.CheckInitialized() -> None
+```
+
 ### mediapipe::LocationData::RelativeBoundingBox::Clear
 
 ```cpp
@@ -20132,6 +23561,54 @@ AutoIt:
 void mediapipe::LocationData::RelativeBoundingBox::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oRelativeBoundingBox.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::DiscardUnknownFields
+
+```cpp
+void mediapipe::LocationData::RelativeBoundingBox::DiscardUnknownFields();
+AutoIt:
+    $oRelativeBoundingBox.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::FindInitializationErrors
+
+```cpp
+void mediapipe::LocationData::RelativeBoundingBox::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRelativeBoundingBox.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::IsInitialized
+
+```cpp
+bool mediapipe::LocationData::RelativeBoundingBox::IsInitialized();
+AutoIt:
+    $oRelativeBoundingBox.IsInitialized() -> retval
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::SerializeAsString
+
+```cpp
+std::string mediapipe::LocationData::RelativeBoundingBox::SerializeAsString();
+AutoIt:
+    $oRelativeBoundingBox.SerializeAsString() -> retval
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::SerializeToString
+
+```cpp
+void mediapipe::LocationData::RelativeBoundingBox::SerializeToString( std::string* output );
+AutoIt:
+    $oRelativeBoundingBox.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LocationData::RelativeBoundingBox::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LocationData::RelativeBoundingBox::SpaceUsedLong();
+AutoIt:
+    $oRelativeBoundingBox.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LocationData::RelativeBoundingBox::\_\_str\_\_
@@ -20176,6 +23653,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.BinaryMask").create() -> <mediapipe.LocationData.BinaryMask object>
 ```
 
+### mediapipe::LocationData::BinaryMask::ByteSizeLong
+
+```cpp
+size_t mediapipe::LocationData::BinaryMask::ByteSizeLong();
+AutoIt:
+    $oBinaryMask.ByteSizeLong() -> retval
+```
+
+### mediapipe::LocationData::BinaryMask::CheckInitialized
+
+```cpp
+void mediapipe::LocationData::BinaryMask::CheckInitialized();
+AutoIt:
+    $oBinaryMask.CheckInitialized() -> None
+```
+
 ### mediapipe::LocationData::BinaryMask::Clear
 
 ```cpp
@@ -20198,6 +23691,54 @@ AutoIt:
 void mediapipe::LocationData::BinaryMask::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oBinaryMask.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LocationData::BinaryMask::DiscardUnknownFields
+
+```cpp
+void mediapipe::LocationData::BinaryMask::DiscardUnknownFields();
+AutoIt:
+    $oBinaryMask.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LocationData::BinaryMask::FindInitializationErrors
+
+```cpp
+void mediapipe::LocationData::BinaryMask::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oBinaryMask.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LocationData::BinaryMask::IsInitialized
+
+```cpp
+bool mediapipe::LocationData::BinaryMask::IsInitialized();
+AutoIt:
+    $oBinaryMask.IsInitialized() -> retval
+```
+
+### mediapipe::LocationData::BinaryMask::SerializeAsString
+
+```cpp
+std::string mediapipe::LocationData::BinaryMask::SerializeAsString();
+AutoIt:
+    $oBinaryMask.SerializeAsString() -> retval
+```
+
+### mediapipe::LocationData::BinaryMask::SerializeToString
+
+```cpp
+void mediapipe::LocationData::BinaryMask::SerializeToString( std::string* output );
+AutoIt:
+    $oBinaryMask.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LocationData::BinaryMask::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LocationData::BinaryMask::SpaceUsedLong();
+AutoIt:
+    $oBinaryMask.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LocationData::BinaryMask::\_\_str\_\_
@@ -20250,6 +23791,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LocationData.RelativeKeypoint").create() -> <mediapipe.LocationData.RelativeKeypoint object>
 ```
 
+### mediapipe::LocationData::RelativeKeypoint::ByteSizeLong
+
+```cpp
+size_t mediapipe::LocationData::RelativeKeypoint::ByteSizeLong();
+AutoIt:
+    $oRelativeKeypoint.ByteSizeLong() -> retval
+```
+
+### mediapipe::LocationData::RelativeKeypoint::CheckInitialized
+
+```cpp
+void mediapipe::LocationData::RelativeKeypoint::CheckInitialized();
+AutoIt:
+    $oRelativeKeypoint.CheckInitialized() -> None
+```
+
 ### mediapipe::LocationData::RelativeKeypoint::Clear
 
 ```cpp
@@ -20272,6 +23829,54 @@ AutoIt:
 void mediapipe::LocationData::RelativeKeypoint::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oRelativeKeypoint.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LocationData::RelativeKeypoint::DiscardUnknownFields
+
+```cpp
+void mediapipe::LocationData::RelativeKeypoint::DiscardUnknownFields();
+AutoIt:
+    $oRelativeKeypoint.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LocationData::RelativeKeypoint::FindInitializationErrors
+
+```cpp
+void mediapipe::LocationData::RelativeKeypoint::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRelativeKeypoint.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LocationData::RelativeKeypoint::IsInitialized
+
+```cpp
+bool mediapipe::LocationData::RelativeKeypoint::IsInitialized();
+AutoIt:
+    $oRelativeKeypoint.IsInitialized() -> retval
+```
+
+### mediapipe::LocationData::RelativeKeypoint::SerializeAsString
+
+```cpp
+std::string mediapipe::LocationData::RelativeKeypoint::SerializeAsString();
+AutoIt:
+    $oRelativeKeypoint.SerializeAsString() -> retval
+```
+
+### mediapipe::LocationData::RelativeKeypoint::SerializeToString
+
+```cpp
+void mediapipe::LocationData::RelativeKeypoint::SerializeToString( std::string* output );
+AutoIt:
+    $oRelativeKeypoint.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LocationData::RelativeKeypoint::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LocationData::RelativeKeypoint::SpaceUsedLong();
+AutoIt:
+    $oRelativeKeypoint.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LocationData::RelativeKeypoint::\_\_str\_\_
@@ -20416,6 +24021,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection").create() -> <mediapipe.Detection object>
 ```
 
+### mediapipe::Detection::ByteSizeLong
+
+```cpp
+size_t mediapipe::Detection::ByteSizeLong();
+AutoIt:
+    $oDetection.ByteSizeLong() -> retval
+```
+
+### mediapipe::Detection::CheckInitialized
+
+```cpp
+void mediapipe::Detection::CheckInitialized();
+AutoIt:
+    $oDetection.CheckInitialized() -> None
+```
+
 ### mediapipe::Detection::Clear
 
 ```cpp
@@ -20438,6 +24059,54 @@ AutoIt:
 void mediapipe::Detection::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oDetection.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Detection::DiscardUnknownFields
+
+```cpp
+void mediapipe::Detection::DiscardUnknownFields();
+AutoIt:
+    $oDetection.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Detection::FindInitializationErrors
+
+```cpp
+void mediapipe::Detection::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oDetection.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Detection::IsInitialized
+
+```cpp
+bool mediapipe::Detection::IsInitialized();
+AutoIt:
+    $oDetection.IsInitialized() -> retval
+```
+
+### mediapipe::Detection::SerializeAsString
+
+```cpp
+std::string mediapipe::Detection::SerializeAsString();
+AutoIt:
+    $oDetection.SerializeAsString() -> retval
+```
+
+### mediapipe::Detection::SerializeToString
+
+```cpp
+void mediapipe::Detection::SerializeToString( std::string* output );
+AutoIt:
+    $oDetection.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Detection::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Detection::SpaceUsedLong();
+AutoIt:
+    $oDetection.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Detection::\_\_str\_\_
@@ -20895,6 +24564,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection.AssociatedDetection").create() -> <mediapipe.Detection.AssociatedDetection object>
 ```
 
+### mediapipe::Detection::AssociatedDetection::ByteSizeLong
+
+```cpp
+size_t mediapipe::Detection::AssociatedDetection::ByteSizeLong();
+AutoIt:
+    $oAssociatedDetection.ByteSizeLong() -> retval
+```
+
+### mediapipe::Detection::AssociatedDetection::CheckInitialized
+
+```cpp
+void mediapipe::Detection::AssociatedDetection::CheckInitialized();
+AutoIt:
+    $oAssociatedDetection.CheckInitialized() -> None
+```
+
 ### mediapipe::Detection::AssociatedDetection::Clear
 
 ```cpp
@@ -20917,6 +24602,54 @@ AutoIt:
 void mediapipe::Detection::AssociatedDetection::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oAssociatedDetection.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Detection::AssociatedDetection::DiscardUnknownFields
+
+```cpp
+void mediapipe::Detection::AssociatedDetection::DiscardUnknownFields();
+AutoIt:
+    $oAssociatedDetection.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Detection::AssociatedDetection::FindInitializationErrors
+
+```cpp
+void mediapipe::Detection::AssociatedDetection::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAssociatedDetection.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Detection::AssociatedDetection::IsInitialized
+
+```cpp
+bool mediapipe::Detection::AssociatedDetection::IsInitialized();
+AutoIt:
+    $oAssociatedDetection.IsInitialized() -> retval
+```
+
+### mediapipe::Detection::AssociatedDetection::SerializeAsString
+
+```cpp
+std::string mediapipe::Detection::AssociatedDetection::SerializeAsString();
+AutoIt:
+    $oAssociatedDetection.SerializeAsString() -> retval
+```
+
+### mediapipe::Detection::AssociatedDetection::SerializeToString
+
+```cpp
+void mediapipe::Detection::AssociatedDetection::SerializeToString( std::string* output );
+AutoIt:
+    $oAssociatedDetection.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Detection::AssociatedDetection::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Detection::AssociatedDetection::SpaceUsedLong();
+AutoIt:
+    $oAssociatedDetection.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Detection::AssociatedDetection::\_\_str\_\_
@@ -20945,6 +24678,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.DetectionList").create() -> <mediapipe.DetectionList object>
 ```
 
+### mediapipe::DetectionList::ByteSizeLong
+
+```cpp
+size_t mediapipe::DetectionList::ByteSizeLong();
+AutoIt:
+    $oDetectionList.ByteSizeLong() -> retval
+```
+
+### mediapipe::DetectionList::CheckInitialized
+
+```cpp
+void mediapipe::DetectionList::CheckInitialized();
+AutoIt:
+    $oDetectionList.CheckInitialized() -> None
+```
+
 ### mediapipe::DetectionList::Clear
 
 ```cpp
@@ -20967,6 +24716,54 @@ AutoIt:
 void mediapipe::DetectionList::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oDetectionList.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::DetectionList::DiscardUnknownFields
+
+```cpp
+void mediapipe::DetectionList::DiscardUnknownFields();
+AutoIt:
+    $oDetectionList.DiscardUnknownFields() -> None
+```
+
+### mediapipe::DetectionList::FindInitializationErrors
+
+```cpp
+void mediapipe::DetectionList::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oDetectionList.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::DetectionList::IsInitialized
+
+```cpp
+bool mediapipe::DetectionList::IsInitialized();
+AutoIt:
+    $oDetectionList.IsInitialized() -> retval
+```
+
+### mediapipe::DetectionList::SerializeAsString
+
+```cpp
+std::string mediapipe::DetectionList::SerializeAsString();
+AutoIt:
+    $oDetectionList.SerializeAsString() -> retval
+```
+
+### mediapipe::DetectionList::SerializeToString
+
+```cpp
+void mediapipe::DetectionList::SerializeToString( std::string* output );
+AutoIt:
+    $oDetectionList.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::DetectionList::SpaceUsedLong
+
+```cpp
+size_t mediapipe::DetectionList::SpaceUsedLong();
+AutoIt:
+    $oDetectionList.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::DetectionList::\_\_str\_\_
@@ -21234,6 +25031,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageFormat").create() -> <mediapipe.ImageFormat object>
 ```
 
+### mediapipe::ImageFormat::ByteSizeLong
+
+```cpp
+size_t mediapipe::ImageFormat::ByteSizeLong();
+AutoIt:
+    $oImageFormat.ByteSizeLong() -> retval
+```
+
+### mediapipe::ImageFormat::CheckInitialized
+
+```cpp
+void mediapipe::ImageFormat::CheckInitialized();
+AutoIt:
+    $oImageFormat.CheckInitialized() -> None
+```
+
 ### mediapipe::ImageFormat::Clear
 
 ```cpp
@@ -21256,6 +25069,54 @@ AutoIt:
 void mediapipe::ImageFormat::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oImageFormat.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ImageFormat::DiscardUnknownFields
+
+```cpp
+void mediapipe::ImageFormat::DiscardUnknownFields();
+AutoIt:
+    $oImageFormat.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ImageFormat::FindInitializationErrors
+
+```cpp
+void mediapipe::ImageFormat::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oImageFormat.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ImageFormat::IsInitialized
+
+```cpp
+bool mediapipe::ImageFormat::IsInitialized();
+AutoIt:
+    $oImageFormat.IsInitialized() -> retval
+```
+
+### mediapipe::ImageFormat::SerializeAsString
+
+```cpp
+std::string mediapipe::ImageFormat::SerializeAsString();
+AutoIt:
+    $oImageFormat.SerializeAsString() -> retval
+```
+
+### mediapipe::ImageFormat::SerializeToString
+
+```cpp
+void mediapipe::ImageFormat::SerializeToString( std::string* output );
+AutoIt:
+    $oImageFormat.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ImageFormat::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ImageFormat::SpaceUsedLong();
+AutoIt:
+    $oImageFormat.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ImageFormat::\_\_str\_\_
@@ -21430,6 +25291,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Landmark").create() -> <mediapipe.Landmark object>
 ```
 
+### mediapipe::Landmark::ByteSizeLong
+
+```cpp
+size_t mediapipe::Landmark::ByteSizeLong();
+AutoIt:
+    $oLandmark.ByteSizeLong() -> retval
+```
+
+### mediapipe::Landmark::CheckInitialized
+
+```cpp
+void mediapipe::Landmark::CheckInitialized();
+AutoIt:
+    $oLandmark.CheckInitialized() -> None
+```
+
 ### mediapipe::Landmark::Clear
 
 ```cpp
@@ -21452,6 +25329,54 @@ AutoIt:
 void mediapipe::Landmark::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oLandmark.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Landmark::DiscardUnknownFields
+
+```cpp
+void mediapipe::Landmark::DiscardUnknownFields();
+AutoIt:
+    $oLandmark.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Landmark::FindInitializationErrors
+
+```cpp
+void mediapipe::Landmark::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLandmark.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Landmark::IsInitialized
+
+```cpp
+bool mediapipe::Landmark::IsInitialized();
+AutoIt:
+    $oLandmark.IsInitialized() -> retval
+```
+
+### mediapipe::Landmark::SerializeAsString
+
+```cpp
+std::string mediapipe::Landmark::SerializeAsString();
+AutoIt:
+    $oLandmark.SerializeAsString() -> retval
+```
+
+### mediapipe::Landmark::SerializeToString
+
+```cpp
+void mediapipe::Landmark::SerializeToString( std::string* output );
+AutoIt:
+    $oLandmark.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Landmark::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Landmark::SpaceUsedLong();
+AutoIt:
+    $oLandmark.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Landmark::\_\_str\_\_
@@ -21480,6 +25405,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarkList").create() -> <mediapipe.LandmarkList object>
 ```
 
+### mediapipe::LandmarkList::ByteSizeLong
+
+```cpp
+size_t mediapipe::LandmarkList::ByteSizeLong();
+AutoIt:
+    $oLandmarkList.ByteSizeLong() -> retval
+```
+
+### mediapipe::LandmarkList::CheckInitialized
+
+```cpp
+void mediapipe::LandmarkList::CheckInitialized();
+AutoIt:
+    $oLandmarkList.CheckInitialized() -> None
+```
+
 ### mediapipe::LandmarkList::Clear
 
 ```cpp
@@ -21502,6 +25443,54 @@ AutoIt:
 void mediapipe::LandmarkList::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oLandmarkList.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LandmarkList::DiscardUnknownFields
+
+```cpp
+void mediapipe::LandmarkList::DiscardUnknownFields();
+AutoIt:
+    $oLandmarkList.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LandmarkList::FindInitializationErrors
+
+```cpp
+void mediapipe::LandmarkList::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLandmarkList.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LandmarkList::IsInitialized
+
+```cpp
+bool mediapipe::LandmarkList::IsInitialized();
+AutoIt:
+    $oLandmarkList.IsInitialized() -> retval
+```
+
+### mediapipe::LandmarkList::SerializeAsString
+
+```cpp
+std::string mediapipe::LandmarkList::SerializeAsString();
+AutoIt:
+    $oLandmarkList.SerializeAsString() -> retval
+```
+
+### mediapipe::LandmarkList::SerializeToString
+
+```cpp
+void mediapipe::LandmarkList::SerializeToString( std::string* output );
+AutoIt:
+    $oLandmarkList.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LandmarkList::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LandmarkList::SpaceUsedLong();
+AutoIt:
+    $oLandmarkList.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LandmarkList::\_\_str\_\_
@@ -21749,6 +25738,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarkListCollection").create() -> <mediapipe.LandmarkListCollection object>
 ```
 
+### mediapipe::LandmarkListCollection::ByteSizeLong
+
+```cpp
+size_t mediapipe::LandmarkListCollection::ByteSizeLong();
+AutoIt:
+    $oLandmarkListCollection.ByteSizeLong() -> retval
+```
+
+### mediapipe::LandmarkListCollection::CheckInitialized
+
+```cpp
+void mediapipe::LandmarkListCollection::CheckInitialized();
+AutoIt:
+    $oLandmarkListCollection.CheckInitialized() -> None
+```
+
 ### mediapipe::LandmarkListCollection::Clear
 
 ```cpp
@@ -21771,6 +25776,54 @@ AutoIt:
 void mediapipe::LandmarkListCollection::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oLandmarkListCollection.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LandmarkListCollection::DiscardUnknownFields
+
+```cpp
+void mediapipe::LandmarkListCollection::DiscardUnknownFields();
+AutoIt:
+    $oLandmarkListCollection.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LandmarkListCollection::FindInitializationErrors
+
+```cpp
+void mediapipe::LandmarkListCollection::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLandmarkListCollection.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LandmarkListCollection::IsInitialized
+
+```cpp
+bool mediapipe::LandmarkListCollection::IsInitialized();
+AutoIt:
+    $oLandmarkListCollection.IsInitialized() -> retval
+```
+
+### mediapipe::LandmarkListCollection::SerializeAsString
+
+```cpp
+std::string mediapipe::LandmarkListCollection::SerializeAsString();
+AutoIt:
+    $oLandmarkListCollection.SerializeAsString() -> retval
+```
+
+### mediapipe::LandmarkListCollection::SerializeToString
+
+```cpp
+void mediapipe::LandmarkListCollection::SerializeToString( std::string* output );
+AutoIt:
+    $oLandmarkListCollection.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LandmarkListCollection::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LandmarkListCollection::SpaceUsedLong();
+AutoIt:
+    $oLandmarkListCollection.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LandmarkListCollection::\_\_str\_\_
@@ -22050,6 +26103,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmark").create() -> <mediapipe.NormalizedLandmark object>
 ```
 
+### mediapipe::NormalizedLandmark::ByteSizeLong
+
+```cpp
+size_t mediapipe::NormalizedLandmark::ByteSizeLong();
+AutoIt:
+    $oNormalizedLandmark.ByteSizeLong() -> retval
+```
+
+### mediapipe::NormalizedLandmark::CheckInitialized
+
+```cpp
+void mediapipe::NormalizedLandmark::CheckInitialized();
+AutoIt:
+    $oNormalizedLandmark.CheckInitialized() -> None
+```
+
 ### mediapipe::NormalizedLandmark::Clear
 
 ```cpp
@@ -22072,6 +26141,54 @@ AutoIt:
 void mediapipe::NormalizedLandmark::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oNormalizedLandmark.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::NormalizedLandmark::DiscardUnknownFields
+
+```cpp
+void mediapipe::NormalizedLandmark::DiscardUnknownFields();
+AutoIt:
+    $oNormalizedLandmark.DiscardUnknownFields() -> None
+```
+
+### mediapipe::NormalizedLandmark::FindInitializationErrors
+
+```cpp
+void mediapipe::NormalizedLandmark::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNormalizedLandmark.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::NormalizedLandmark::IsInitialized
+
+```cpp
+bool mediapipe::NormalizedLandmark::IsInitialized();
+AutoIt:
+    $oNormalizedLandmark.IsInitialized() -> retval
+```
+
+### mediapipe::NormalizedLandmark::SerializeAsString
+
+```cpp
+std::string mediapipe::NormalizedLandmark::SerializeAsString();
+AutoIt:
+    $oNormalizedLandmark.SerializeAsString() -> retval
+```
+
+### mediapipe::NormalizedLandmark::SerializeToString
+
+```cpp
+void mediapipe::NormalizedLandmark::SerializeToString( std::string* output );
+AutoIt:
+    $oNormalizedLandmark.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::NormalizedLandmark::SpaceUsedLong
+
+```cpp
+size_t mediapipe::NormalizedLandmark::SpaceUsedLong();
+AutoIt:
+    $oNormalizedLandmark.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::NormalizedLandmark::\_\_str\_\_
@@ -22100,6 +26217,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkList").create() -> <mediapipe.NormalizedLandmarkList object>
 ```
 
+### mediapipe::NormalizedLandmarkList::ByteSizeLong
+
+```cpp
+size_t mediapipe::NormalizedLandmarkList::ByteSizeLong();
+AutoIt:
+    $oNormalizedLandmarkList.ByteSizeLong() -> retval
+```
+
+### mediapipe::NormalizedLandmarkList::CheckInitialized
+
+```cpp
+void mediapipe::NormalizedLandmarkList::CheckInitialized();
+AutoIt:
+    $oNormalizedLandmarkList.CheckInitialized() -> None
+```
+
 ### mediapipe::NormalizedLandmarkList::Clear
 
 ```cpp
@@ -22122,6 +26255,54 @@ AutoIt:
 void mediapipe::NormalizedLandmarkList::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oNormalizedLandmarkList.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::NormalizedLandmarkList::DiscardUnknownFields
+
+```cpp
+void mediapipe::NormalizedLandmarkList::DiscardUnknownFields();
+AutoIt:
+    $oNormalizedLandmarkList.DiscardUnknownFields() -> None
+```
+
+### mediapipe::NormalizedLandmarkList::FindInitializationErrors
+
+```cpp
+void mediapipe::NormalizedLandmarkList::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNormalizedLandmarkList.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::NormalizedLandmarkList::IsInitialized
+
+```cpp
+bool mediapipe::NormalizedLandmarkList::IsInitialized();
+AutoIt:
+    $oNormalizedLandmarkList.IsInitialized() -> retval
+```
+
+### mediapipe::NormalizedLandmarkList::SerializeAsString
+
+```cpp
+std::string mediapipe::NormalizedLandmarkList::SerializeAsString();
+AutoIt:
+    $oNormalizedLandmarkList.SerializeAsString() -> retval
+```
+
+### mediapipe::NormalizedLandmarkList::SerializeToString
+
+```cpp
+void mediapipe::NormalizedLandmarkList::SerializeToString( std::string* output );
+AutoIt:
+    $oNormalizedLandmarkList.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::NormalizedLandmarkList::SpaceUsedLong
+
+```cpp
+size_t mediapipe::NormalizedLandmarkList::SpaceUsedLong();
+AutoIt:
+    $oNormalizedLandmarkList.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::NormalizedLandmarkList::\_\_str\_\_
@@ -22369,6 +26550,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedLandmarkListCollection").create() -> <mediapipe.NormalizedLandmarkListCollection object>
 ```
 
+### mediapipe::NormalizedLandmarkListCollection::ByteSizeLong
+
+```cpp
+size_t mediapipe::NormalizedLandmarkListCollection::ByteSizeLong();
+AutoIt:
+    $oNormalizedLandmarkListCollection.ByteSizeLong() -> retval
+```
+
+### mediapipe::NormalizedLandmarkListCollection::CheckInitialized
+
+```cpp
+void mediapipe::NormalizedLandmarkListCollection::CheckInitialized();
+AutoIt:
+    $oNormalizedLandmarkListCollection.CheckInitialized() -> None
+```
+
 ### mediapipe::NormalizedLandmarkListCollection::Clear
 
 ```cpp
@@ -22391,6 +26588,54 @@ AutoIt:
 void mediapipe::NormalizedLandmarkListCollection::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oNormalizedLandmarkListCollection.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::NormalizedLandmarkListCollection::DiscardUnknownFields
+
+```cpp
+void mediapipe::NormalizedLandmarkListCollection::DiscardUnknownFields();
+AutoIt:
+    $oNormalizedLandmarkListCollection.DiscardUnknownFields() -> None
+```
+
+### mediapipe::NormalizedLandmarkListCollection::FindInitializationErrors
+
+```cpp
+void mediapipe::NormalizedLandmarkListCollection::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNormalizedLandmarkListCollection.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::NormalizedLandmarkListCollection::IsInitialized
+
+```cpp
+bool mediapipe::NormalizedLandmarkListCollection::IsInitialized();
+AutoIt:
+    $oNormalizedLandmarkListCollection.IsInitialized() -> retval
+```
+
+### mediapipe::NormalizedLandmarkListCollection::SerializeAsString
+
+```cpp
+std::string mediapipe::NormalizedLandmarkListCollection::SerializeAsString();
+AutoIt:
+    $oNormalizedLandmarkListCollection.SerializeAsString() -> retval
+```
+
+### mediapipe::NormalizedLandmarkListCollection::SerializeToString
+
+```cpp
+void mediapipe::NormalizedLandmarkListCollection::SerializeToString( std::string* output );
+AutoIt:
+    $oNormalizedLandmarkListCollection.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::NormalizedLandmarkListCollection::SpaceUsedLong
+
+```cpp
+size_t mediapipe::NormalizedLandmarkListCollection::SpaceUsedLong();
+AutoIt:
+    $oNormalizedLandmarkListCollection.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::NormalizedLandmarkListCollection::\_\_str\_\_
@@ -22728,6 +26973,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions").create() -> <mediapipe.InferenceCalculatorOptions object>
 ```
 
+### mediapipe::InferenceCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oInferenceCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oInferenceCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::InferenceCalculatorOptions::Clear
 
 ```cpp
@@ -22750,6 +27011,54 @@ AutoIt:
 void mediapipe::InferenceCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oInferenceCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oInferenceCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oInferenceCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InferenceCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::InferenceCalculatorOptions::IsInitialized();
+AutoIt:
+    $oInferenceCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::InferenceCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oInferenceCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oInferenceCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InferenceCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oInferenceCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InferenceCalculatorOptions::\_\_str\_\_
@@ -22802,6 +27111,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate").create() -> <mediapipe.InferenceCalculatorOptions.Delegate object>
 ```
 
+### mediapipe::InferenceCalculatorOptions::Delegate::ByteSizeLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::ByteSizeLong();
+AutoIt:
+    $oDelegate.ByteSizeLong() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::CheckInitialized
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::CheckInitialized();
+AutoIt:
+    $oDelegate.CheckInitialized() -> None
+```
+
 ### mediapipe::InferenceCalculatorOptions::Delegate::Clear
 
 ```cpp
@@ -22826,6 +27151,54 @@ AutoIt:
     $oDelegate.CopyFrom( $other_message ) -> None
 ```
 
+### mediapipe::InferenceCalculatorOptions::Delegate::DiscardUnknownFields
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::DiscardUnknownFields();
+AutoIt:
+    $oDelegate.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::FindInitializationErrors
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oDelegate.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::IsInitialized
+
+```cpp
+bool mediapipe::InferenceCalculatorOptions::Delegate::IsInitialized();
+AutoIt:
+    $oDelegate.IsInitialized() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::SerializeAsString
+
+```cpp
+std::string mediapipe::InferenceCalculatorOptions::Delegate::SerializeAsString();
+AutoIt:
+    $oDelegate.SerializeAsString() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::SerializeToString
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::SerializeToString( std::string* output );
+AutoIt:
+    $oDelegate.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::SpaceUsedLong();
+AutoIt:
+    $oDelegate.SpaceUsedLong() -> retval
+```
+
 ### mediapipe::InferenceCalculatorOptions::Delegate::\_\_str\_\_
 
 ```cpp
@@ -22842,6 +27215,22 @@ AutoIt:
 static mediapipe::InferenceCalculatorOptions::Delegate::TfLite mediapipe::InferenceCalculatorOptions::Delegate::TfLite::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.TfLite").create() -> <mediapipe.InferenceCalculatorOptions.Delegate.TfLite object>
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::ByteSizeLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::TfLite::ByteSizeLong();
+AutoIt:
+    $oTfLite.ByteSizeLong() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::CheckInitialized
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::TfLite::CheckInitialized();
+AutoIt:
+    $oTfLite.CheckInitialized() -> None
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::Clear
@@ -22866,6 +27255,54 @@ AutoIt:
 void mediapipe::InferenceCalculatorOptions::Delegate::TfLite::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTfLite.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::DiscardUnknownFields
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::TfLite::DiscardUnknownFields();
+AutoIt:
+    $oTfLite.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::FindInitializationErrors
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::TfLite::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTfLite.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::IsInitialized
+
+```cpp
+bool mediapipe::InferenceCalculatorOptions::Delegate::TfLite::IsInitialized();
+AutoIt:
+    $oTfLite.IsInitialized() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SerializeAsString
+
+```cpp
+std::string mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SerializeAsString();
+AutoIt:
+    $oTfLite.SerializeAsString() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SerializeToString
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SerializeToString( std::string* output );
+AutoIt:
+    $oTfLite.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::TfLite::SpaceUsedLong();
+AutoIt:
+    $oTfLite.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::TfLite::\_\_str\_\_
@@ -22942,6 +27379,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Gpu").create() -> <mediapipe.InferenceCalculatorOptions.Delegate.Gpu object>
 ```
 
+### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::ByteSizeLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::Gpu::ByteSizeLong();
+AutoIt:
+    $oGpu.ByteSizeLong() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::CheckInitialized
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Gpu::CheckInitialized();
+AutoIt:
+    $oGpu.CheckInitialized() -> None
+```
+
 ### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::Clear
 
 ```cpp
@@ -22964,6 +27417,54 @@ AutoIt:
 void mediapipe::InferenceCalculatorOptions::Delegate::Gpu::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oGpu.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::DiscardUnknownFields
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Gpu::DiscardUnknownFields();
+AutoIt:
+    $oGpu.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::FindInitializationErrors
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Gpu::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oGpu.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::IsInitialized
+
+```cpp
+bool mediapipe::InferenceCalculatorOptions::Delegate::Gpu::IsInitialized();
+AutoIt:
+    $oGpu.IsInitialized() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SerializeAsString
+
+```cpp
+std::string mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SerializeAsString();
+AutoIt:
+    $oGpu.SerializeAsString() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SerializeToString
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SerializeToString( std::string* output );
+AutoIt:
+    $oGpu.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::Gpu::SpaceUsedLong();
+AutoIt:
+    $oGpu.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Gpu::\_\_str\_\_
@@ -23056,6 +27557,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Nnapi").create() -> <mediapipe.InferenceCalculatorOptions.Delegate.Nnapi object>
 ```
 
+### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::ByteSizeLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::ByteSizeLong();
+AutoIt:
+    $oNnapi.ByteSizeLong() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::CheckInitialized
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::CheckInitialized();
+AutoIt:
+    $oNnapi.CheckInitialized() -> None
+```
+
 ### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::Clear
 
 ```cpp
@@ -23078,6 +27595,54 @@ AutoIt:
 void mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oNnapi.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::DiscardUnknownFields
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::DiscardUnknownFields();
+AutoIt:
+    $oNnapi.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::FindInitializationErrors
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNnapi.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::IsInitialized
+
+```cpp
+bool mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::IsInitialized();
+AutoIt:
+    $oNnapi.IsInitialized() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SerializeAsString
+
+```cpp
+std::string mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SerializeAsString();
+AutoIt:
+    $oNnapi.SerializeAsString() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SerializeToString
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SerializeToString( std::string* output );
+AutoIt:
+    $oNnapi.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::SpaceUsedLong();
+AutoIt:
+    $oNnapi.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Nnapi::\_\_str\_\_
@@ -23106,6 +27671,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.InferenceCalculatorOptions.Delegate.Xnnpack").create() -> <mediapipe.InferenceCalculatorOptions.Delegate.Xnnpack object>
 ```
 
+### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::ByteSizeLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::ByteSizeLong();
+AutoIt:
+    $oXnnpack.ByteSizeLong() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::CheckInitialized
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::CheckInitialized();
+AutoIt:
+    $oXnnpack.CheckInitialized() -> None
+```
+
 ### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::Clear
 
 ```cpp
@@ -23128,6 +27709,54 @@ AutoIt:
 void mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oXnnpack.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::DiscardUnknownFields
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::DiscardUnknownFields();
+AutoIt:
+    $oXnnpack.DiscardUnknownFields() -> None
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::FindInitializationErrors
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oXnnpack.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::IsInitialized
+
+```cpp
+bool mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::IsInitialized();
+AutoIt:
+    $oXnnpack.IsInitialized() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SerializeAsString
+
+```cpp
+std::string mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SerializeAsString();
+AutoIt:
+    $oXnnpack.SerializeAsString() -> retval
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SerializeToString
+
+```cpp
+void mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SerializeToString( std::string* output );
+AutoIt:
+    $oXnnpack.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SpaceUsedLong
+
+```cpp
+size_t mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::SpaceUsedLong();
+AutoIt:
+    $oXnnpack.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack::\_\_str\_\_
@@ -23202,6 +27831,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.GpuOrigin").create() -> <mediapipe.GpuOrigin object>
 ```
 
+### mediapipe::GpuOrigin::ByteSizeLong
+
+```cpp
+size_t mediapipe::GpuOrigin::ByteSizeLong();
+AutoIt:
+    $oGpuOrigin.ByteSizeLong() -> retval
+```
+
+### mediapipe::GpuOrigin::CheckInitialized
+
+```cpp
+void mediapipe::GpuOrigin::CheckInitialized();
+AutoIt:
+    $oGpuOrigin.CheckInitialized() -> None
+```
+
 ### mediapipe::GpuOrigin::Clear
 
 ```cpp
@@ -23224,6 +27869,54 @@ AutoIt:
 void mediapipe::GpuOrigin::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oGpuOrigin.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::GpuOrigin::DiscardUnknownFields
+
+```cpp
+void mediapipe::GpuOrigin::DiscardUnknownFields();
+AutoIt:
+    $oGpuOrigin.DiscardUnknownFields() -> None
+```
+
+### mediapipe::GpuOrigin::FindInitializationErrors
+
+```cpp
+void mediapipe::GpuOrigin::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oGpuOrigin.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::GpuOrigin::IsInitialized
+
+```cpp
+bool mediapipe::GpuOrigin::IsInitialized();
+AutoIt:
+    $oGpuOrigin.IsInitialized() -> retval
+```
+
+### mediapipe::GpuOrigin::SerializeAsString
+
+```cpp
+std::string mediapipe::GpuOrigin::SerializeAsString();
+AutoIt:
+    $oGpuOrigin.SerializeAsString() -> retval
+```
+
+### mediapipe::GpuOrigin::SerializeToString
+
+```cpp
+void mediapipe::GpuOrigin::SerializeToString( std::string* output );
+AutoIt:
+    $oGpuOrigin.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::GpuOrigin::SpaceUsedLong
+
+```cpp
+size_t mediapipe::GpuOrigin::SpaceUsedLong();
+AutoIt:
+    $oGpuOrigin.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::GpuOrigin::\_\_str\_\_
@@ -23398,6 +28091,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.FaceDetectionOptions").create() -> <mediapipe.FaceDetectionOptions object>
 ```
 
+### mediapipe::FaceDetectionOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::FaceDetectionOptions::ByteSizeLong();
+AutoIt:
+    $oFaceDetectionOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::FaceDetectionOptions::CheckInitialized
+
+```cpp
+void mediapipe::FaceDetectionOptions::CheckInitialized();
+AutoIt:
+    $oFaceDetectionOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::FaceDetectionOptions::Clear
 
 ```cpp
@@ -23420,6 +28129,54 @@ AutoIt:
 void mediapipe::FaceDetectionOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oFaceDetectionOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::FaceDetectionOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::FaceDetectionOptions::DiscardUnknownFields();
+AutoIt:
+    $oFaceDetectionOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::FaceDetectionOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::FaceDetectionOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFaceDetectionOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::FaceDetectionOptions::IsInitialized
+
+```cpp
+bool mediapipe::FaceDetectionOptions::IsInitialized();
+AutoIt:
+    $oFaceDetectionOptions.IsInitialized() -> retval
+```
+
+### mediapipe::FaceDetectionOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::FaceDetectionOptions::SerializeAsString();
+AutoIt:
+    $oFaceDetectionOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::FaceDetectionOptions::SerializeToString
+
+```cpp
+void mediapipe::FaceDetectionOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFaceDetectionOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::FaceDetectionOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::FaceDetectionOptions::SpaceUsedLong();
+AutoIt:
+    $oFaceDetectionOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::FaceDetectionOptions::\_\_str\_\_
@@ -23522,6 +28279,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.AVCameraCalibrationData").create() -> <mediapipe.AVCameraCalibrationData object>
 ```
 
+### mediapipe::AVCameraCalibrationData::ByteSizeLong
+
+```cpp
+size_t mediapipe::AVCameraCalibrationData::ByteSizeLong();
+AutoIt:
+    $oAVCameraCalibrationData.ByteSizeLong() -> retval
+```
+
+### mediapipe::AVCameraCalibrationData::CheckInitialized
+
+```cpp
+void mediapipe::AVCameraCalibrationData::CheckInitialized();
+AutoIt:
+    $oAVCameraCalibrationData.CheckInitialized() -> None
+```
+
 ### mediapipe::AVCameraCalibrationData::Clear
 
 ```cpp
@@ -23544,6 +28317,54 @@ AutoIt:
 void mediapipe::AVCameraCalibrationData::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oAVCameraCalibrationData.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::AVCameraCalibrationData::DiscardUnknownFields
+
+```cpp
+void mediapipe::AVCameraCalibrationData::DiscardUnknownFields();
+AutoIt:
+    $oAVCameraCalibrationData.DiscardUnknownFields() -> None
+```
+
+### mediapipe::AVCameraCalibrationData::FindInitializationErrors
+
+```cpp
+void mediapipe::AVCameraCalibrationData::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAVCameraCalibrationData.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::AVCameraCalibrationData::IsInitialized
+
+```cpp
+bool mediapipe::AVCameraCalibrationData::IsInitialized();
+AutoIt:
+    $oAVCameraCalibrationData.IsInitialized() -> retval
+```
+
+### mediapipe::AVCameraCalibrationData::SerializeAsString
+
+```cpp
+std::string mediapipe::AVCameraCalibrationData::SerializeAsString();
+AutoIt:
+    $oAVCameraCalibrationData.SerializeAsString() -> retval
+```
+
+### mediapipe::AVCameraCalibrationData::SerializeToString
+
+```cpp
+void mediapipe::AVCameraCalibrationData::SerializeToString( std::string* output );
+AutoIt:
+    $oAVCameraCalibrationData.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::AVCameraCalibrationData::SpaceUsedLong
+
+```cpp
+size_t mediapipe::AVCameraCalibrationData::SpaceUsedLong();
+AutoIt:
+    $oAVCameraCalibrationData.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::AVCameraCalibrationData::\_\_str\_\_
@@ -23652,6 +28473,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.AVDepthData").create() -> <mediapipe.AVDepthData object>
 ```
 
+### mediapipe::AVDepthData::ByteSizeLong
+
+```cpp
+size_t mediapipe::AVDepthData::ByteSizeLong();
+AutoIt:
+    $oAVDepthData.ByteSizeLong() -> retval
+```
+
+### mediapipe::AVDepthData::CheckInitialized
+
+```cpp
+void mediapipe::AVDepthData::CheckInitialized();
+AutoIt:
+    $oAVDepthData.CheckInitialized() -> None
+```
+
 ### mediapipe::AVDepthData::Clear
 
 ```cpp
@@ -23674,6 +28511,54 @@ AutoIt:
 void mediapipe::AVDepthData::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oAVDepthData.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::AVDepthData::DiscardUnknownFields
+
+```cpp
+void mediapipe::AVDepthData::DiscardUnknownFields();
+AutoIt:
+    $oAVDepthData.DiscardUnknownFields() -> None
+```
+
+### mediapipe::AVDepthData::FindInitializationErrors
+
+```cpp
+void mediapipe::AVDepthData::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAVDepthData.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::AVDepthData::IsInitialized
+
+```cpp
+bool mediapipe::AVDepthData::IsInitialized();
+AutoIt:
+    $oAVDepthData.IsInitialized() -> retval
+```
+
+### mediapipe::AVDepthData::SerializeAsString
+
+```cpp
+std::string mediapipe::AVDepthData::SerializeAsString();
+AutoIt:
+    $oAVDepthData.SerializeAsString() -> retval
+```
+
+### mediapipe::AVDepthData::SerializeToString
+
+```cpp
+void mediapipe::AVDepthData::SerializeToString( std::string* output );
+AutoIt:
+    $oAVDepthData.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::AVDepthData::SpaceUsedLong
+
+```cpp
+size_t mediapipe::AVDepthData::SpaceUsedLong();
+AutoIt:
+    $oAVDepthData.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::AVDepthData::\_\_str\_\_
@@ -23782,6 +28667,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARLightEstimate").create() -> <mediapipe.ARLightEstimate object>
 ```
 
+### mediapipe::ARLightEstimate::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARLightEstimate::ByteSizeLong();
+AutoIt:
+    $oARLightEstimate.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARLightEstimate::CheckInitialized
+
+```cpp
+void mediapipe::ARLightEstimate::CheckInitialized();
+AutoIt:
+    $oARLightEstimate.CheckInitialized() -> None
+```
+
 ### mediapipe::ARLightEstimate::Clear
 
 ```cpp
@@ -23804,6 +28705,54 @@ AutoIt:
 void mediapipe::ARLightEstimate::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARLightEstimate.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARLightEstimate::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARLightEstimate::DiscardUnknownFields();
+AutoIt:
+    $oARLightEstimate.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARLightEstimate::FindInitializationErrors
+
+```cpp
+void mediapipe::ARLightEstimate::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARLightEstimate.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARLightEstimate::IsInitialized
+
+```cpp
+bool mediapipe::ARLightEstimate::IsInitialized();
+AutoIt:
+    $oARLightEstimate.IsInitialized() -> retval
+```
+
+### mediapipe::ARLightEstimate::SerializeAsString
+
+```cpp
+std::string mediapipe::ARLightEstimate::SerializeAsString();
+AutoIt:
+    $oARLightEstimate.SerializeAsString() -> retval
+```
+
+### mediapipe::ARLightEstimate::SerializeToString
+
+```cpp
+void mediapipe::ARLightEstimate::SerializeToString( std::string* output );
+AutoIt:
+    $oARLightEstimate.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARLightEstimate::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARLightEstimate::SpaceUsedLong();
+AutoIt:
+    $oARLightEstimate.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARLightEstimate::\_\_str\_\_
@@ -23848,6 +28797,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARLightEstimate.DirectionVector").create() -> <mediapipe.ARLightEstimate.DirectionVector object>
 ```
 
+### mediapipe::ARLightEstimate::DirectionVector::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARLightEstimate::DirectionVector::ByteSizeLong();
+AutoIt:
+    $oDirectionVector.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARLightEstimate::DirectionVector::CheckInitialized
+
+```cpp
+void mediapipe::ARLightEstimate::DirectionVector::CheckInitialized();
+AutoIt:
+    $oDirectionVector.CheckInitialized() -> None
+```
+
 ### mediapipe::ARLightEstimate::DirectionVector::Clear
 
 ```cpp
@@ -23870,6 +28835,54 @@ AutoIt:
 void mediapipe::ARLightEstimate::DirectionVector::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oDirectionVector.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARLightEstimate::DirectionVector::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARLightEstimate::DirectionVector::DiscardUnknownFields();
+AutoIt:
+    $oDirectionVector.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARLightEstimate::DirectionVector::FindInitializationErrors
+
+```cpp
+void mediapipe::ARLightEstimate::DirectionVector::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oDirectionVector.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARLightEstimate::DirectionVector::IsInitialized
+
+```cpp
+bool mediapipe::ARLightEstimate::DirectionVector::IsInitialized();
+AutoIt:
+    $oDirectionVector.IsInitialized() -> retval
+```
+
+### mediapipe::ARLightEstimate::DirectionVector::SerializeAsString
+
+```cpp
+std::string mediapipe::ARLightEstimate::DirectionVector::SerializeAsString();
+AutoIt:
+    $oDirectionVector.SerializeAsString() -> retval
+```
+
+### mediapipe::ARLightEstimate::DirectionVector::SerializeToString
+
+```cpp
+void mediapipe::ARLightEstimate::DirectionVector::SerializeToString( std::string* output );
+AutoIt:
+    $oDirectionVector.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARLightEstimate::DirectionVector::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARLightEstimate::DirectionVector::SpaceUsedLong();
+AutoIt:
+    $oDirectionVector.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARLightEstimate::DirectionVector::\_\_str\_\_
@@ -23962,6 +28975,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARCamera").create() -> <mediapipe.ARCamera object>
 ```
 
+### mediapipe::ARCamera::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARCamera::ByteSizeLong();
+AutoIt:
+    $oARCamera.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARCamera::CheckInitialized
+
+```cpp
+void mediapipe::ARCamera::CheckInitialized();
+AutoIt:
+    $oARCamera.CheckInitialized() -> None
+```
+
 ### mediapipe::ARCamera::Clear
 
 ```cpp
@@ -23984,6 +29013,54 @@ AutoIt:
 void mediapipe::ARCamera::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARCamera.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARCamera::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARCamera::DiscardUnknownFields();
+AutoIt:
+    $oARCamera.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARCamera::FindInitializationErrors
+
+```cpp
+void mediapipe::ARCamera::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARCamera.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARCamera::IsInitialized
+
+```cpp
+bool mediapipe::ARCamera::IsInitialized();
+AutoIt:
+    $oARCamera.IsInitialized() -> retval
+```
+
+### mediapipe::ARCamera::SerializeAsString
+
+```cpp
+std::string mediapipe::ARCamera::SerializeAsString();
+AutoIt:
+    $oARCamera.SerializeAsString() -> retval
+```
+
+### mediapipe::ARCamera::SerializeToString
+
+```cpp
+void mediapipe::ARCamera::SerializeToString( std::string* output );
+AutoIt:
+    $oARCamera.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARCamera::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARCamera::SpaceUsedLong();
+AutoIt:
+    $oARCamera.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARCamera::\_\_str\_\_
@@ -24108,6 +29185,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARCamera.EulerAngles").create() -> <mediapipe.ARCamera.EulerAngles object>
 ```
 
+### mediapipe::ARCamera::EulerAngles::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARCamera::EulerAngles::ByteSizeLong();
+AutoIt:
+    $oEulerAngles.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARCamera::EulerAngles::CheckInitialized
+
+```cpp
+void mediapipe::ARCamera::EulerAngles::CheckInitialized();
+AutoIt:
+    $oEulerAngles.CheckInitialized() -> None
+```
+
 ### mediapipe::ARCamera::EulerAngles::Clear
 
 ```cpp
@@ -24130,6 +29223,54 @@ AutoIt:
 void mediapipe::ARCamera::EulerAngles::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oEulerAngles.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARCamera::EulerAngles::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARCamera::EulerAngles::DiscardUnknownFields();
+AutoIt:
+    $oEulerAngles.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARCamera::EulerAngles::FindInitializationErrors
+
+```cpp
+void mediapipe::ARCamera::EulerAngles::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEulerAngles.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARCamera::EulerAngles::IsInitialized
+
+```cpp
+bool mediapipe::ARCamera::EulerAngles::IsInitialized();
+AutoIt:
+    $oEulerAngles.IsInitialized() -> retval
+```
+
+### mediapipe::ARCamera::EulerAngles::SerializeAsString
+
+```cpp
+std::string mediapipe::ARCamera::EulerAngles::SerializeAsString();
+AutoIt:
+    $oEulerAngles.SerializeAsString() -> retval
+```
+
+### mediapipe::ARCamera::EulerAngles::SerializeToString
+
+```cpp
+void mediapipe::ARCamera::EulerAngles::SerializeToString( std::string* output );
+AutoIt:
+    $oEulerAngles.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARCamera::EulerAngles::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARCamera::EulerAngles::SpaceUsedLong();
+AutoIt:
+    $oEulerAngles.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARCamera::EulerAngles::\_\_str\_\_
@@ -24198,6 +29339,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry").create() -> <mediapipe.ARFaceGeometry object>
 ```
 
+### mediapipe::ARFaceGeometry::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARFaceGeometry::ByteSizeLong();
+AutoIt:
+    $oARFaceGeometry.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARFaceGeometry::CheckInitialized
+
+```cpp
+void mediapipe::ARFaceGeometry::CheckInitialized();
+AutoIt:
+    $oARFaceGeometry.CheckInitialized() -> None
+```
+
 ### mediapipe::ARFaceGeometry::Clear
 
 ```cpp
@@ -24220,6 +29377,54 @@ AutoIt:
 void mediapipe::ARFaceGeometry::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARFaceGeometry.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARFaceGeometry::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARFaceGeometry::DiscardUnknownFields();
+AutoIt:
+    $oARFaceGeometry.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARFaceGeometry::FindInitializationErrors
+
+```cpp
+void mediapipe::ARFaceGeometry::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARFaceGeometry.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARFaceGeometry::IsInitialized
+
+```cpp
+bool mediapipe::ARFaceGeometry::IsInitialized();
+AutoIt:
+    $oARFaceGeometry.IsInitialized() -> retval
+```
+
+### mediapipe::ARFaceGeometry::SerializeAsString
+
+```cpp
+std::string mediapipe::ARFaceGeometry::SerializeAsString();
+AutoIt:
+    $oARFaceGeometry.SerializeAsString() -> retval
+```
+
+### mediapipe::ARFaceGeometry::SerializeToString
+
+```cpp
+void mediapipe::ARFaceGeometry::SerializeToString( std::string* output );
+AutoIt:
+    $oARFaceGeometry.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARFaceGeometry::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARFaceGeometry::SpaceUsedLong();
+AutoIt:
+    $oARFaceGeometry.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARFaceGeometry::\_\_str\_\_
@@ -24702,6 +29907,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry.Vertex").create() -> <mediapipe.ARFaceGeometry.Vertex object>
 ```
 
+### mediapipe::ARFaceGeometry::Vertex::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARFaceGeometry::Vertex::ByteSizeLong();
+AutoIt:
+    $oVertex.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARFaceGeometry::Vertex::CheckInitialized
+
+```cpp
+void mediapipe::ARFaceGeometry::Vertex::CheckInitialized();
+AutoIt:
+    $oVertex.CheckInitialized() -> None
+```
+
 ### mediapipe::ARFaceGeometry::Vertex::Clear
 
 ```cpp
@@ -24724,6 +29945,54 @@ AutoIt:
 void mediapipe::ARFaceGeometry::Vertex::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oVertex.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARFaceGeometry::Vertex::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARFaceGeometry::Vertex::DiscardUnknownFields();
+AutoIt:
+    $oVertex.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARFaceGeometry::Vertex::FindInitializationErrors
+
+```cpp
+void mediapipe::ARFaceGeometry::Vertex::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oVertex.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARFaceGeometry::Vertex::IsInitialized
+
+```cpp
+bool mediapipe::ARFaceGeometry::Vertex::IsInitialized();
+AutoIt:
+    $oVertex.IsInitialized() -> retval
+```
+
+### mediapipe::ARFaceGeometry::Vertex::SerializeAsString
+
+```cpp
+std::string mediapipe::ARFaceGeometry::Vertex::SerializeAsString();
+AutoIt:
+    $oVertex.SerializeAsString() -> retval
+```
+
+### mediapipe::ARFaceGeometry::Vertex::SerializeToString
+
+```cpp
+void mediapipe::ARFaceGeometry::Vertex::SerializeToString( std::string* output );
+AutoIt:
+    $oVertex.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARFaceGeometry::Vertex::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARFaceGeometry::Vertex::SpaceUsedLong();
+AutoIt:
+    $oVertex.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARFaceGeometry::Vertex::\_\_str\_\_
@@ -24760,6 +30029,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFaceGeometry.TextureCoordinate").create() -> <mediapipe.ARFaceGeometry.TextureCoordinate object>
 ```
 
+### mediapipe::ARFaceGeometry::TextureCoordinate::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARFaceGeometry::TextureCoordinate::ByteSizeLong();
+AutoIt:
+    $oTextureCoordinate.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARFaceGeometry::TextureCoordinate::CheckInitialized
+
+```cpp
+void mediapipe::ARFaceGeometry::TextureCoordinate::CheckInitialized();
+AutoIt:
+    $oTextureCoordinate.CheckInitialized() -> None
+```
+
 ### mediapipe::ARFaceGeometry::TextureCoordinate::Clear
 
 ```cpp
@@ -24782,6 +30067,54 @@ AutoIt:
 void mediapipe::ARFaceGeometry::TextureCoordinate::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTextureCoordinate.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARFaceGeometry::TextureCoordinate::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARFaceGeometry::TextureCoordinate::DiscardUnknownFields();
+AutoIt:
+    $oTextureCoordinate.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARFaceGeometry::TextureCoordinate::FindInitializationErrors
+
+```cpp
+void mediapipe::ARFaceGeometry::TextureCoordinate::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTextureCoordinate.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARFaceGeometry::TextureCoordinate::IsInitialized
+
+```cpp
+bool mediapipe::ARFaceGeometry::TextureCoordinate::IsInitialized();
+AutoIt:
+    $oTextureCoordinate.IsInitialized() -> retval
+```
+
+### mediapipe::ARFaceGeometry::TextureCoordinate::SerializeAsString
+
+```cpp
+std::string mediapipe::ARFaceGeometry::TextureCoordinate::SerializeAsString();
+AutoIt:
+    $oTextureCoordinate.SerializeAsString() -> retval
+```
+
+### mediapipe::ARFaceGeometry::TextureCoordinate::SerializeToString
+
+```cpp
+void mediapipe::ARFaceGeometry::TextureCoordinate::SerializeToString( std::string* output );
+AutoIt:
+    $oTextureCoordinate.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARFaceGeometry::TextureCoordinate::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARFaceGeometry::TextureCoordinate::SpaceUsedLong();
+AutoIt:
+    $oTextureCoordinate.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARFaceGeometry::TextureCoordinate::\_\_str\_\_
@@ -24810,6 +30143,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARBlendShapeMap").create() -> <mediapipe.ARBlendShapeMap object>
 ```
 
+### mediapipe::ARBlendShapeMap::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARBlendShapeMap::ByteSizeLong();
+AutoIt:
+    $oARBlendShapeMap.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARBlendShapeMap::CheckInitialized
+
+```cpp
+void mediapipe::ARBlendShapeMap::CheckInitialized();
+AutoIt:
+    $oARBlendShapeMap.CheckInitialized() -> None
+```
+
 ### mediapipe::ARBlendShapeMap::Clear
 
 ```cpp
@@ -24832,6 +30181,54 @@ AutoIt:
 void mediapipe::ARBlendShapeMap::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARBlendShapeMap.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARBlendShapeMap::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARBlendShapeMap::DiscardUnknownFields();
+AutoIt:
+    $oARBlendShapeMap.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARBlendShapeMap::FindInitializationErrors
+
+```cpp
+void mediapipe::ARBlendShapeMap::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARBlendShapeMap.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARBlendShapeMap::IsInitialized
+
+```cpp
+bool mediapipe::ARBlendShapeMap::IsInitialized();
+AutoIt:
+    $oARBlendShapeMap.IsInitialized() -> retval
+```
+
+### mediapipe::ARBlendShapeMap::SerializeAsString
+
+```cpp
+std::string mediapipe::ARBlendShapeMap::SerializeAsString();
+AutoIt:
+    $oARBlendShapeMap.SerializeAsString() -> retval
+```
+
+### mediapipe::ARBlendShapeMap::SerializeToString
+
+```cpp
+void mediapipe::ARBlendShapeMap::SerializeToString( std::string* output );
+AutoIt:
+    $oARBlendShapeMap.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARBlendShapeMap::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARBlendShapeMap::SpaceUsedLong();
+AutoIt:
+    $oARBlendShapeMap.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARBlendShapeMap::\_\_str\_\_
@@ -25087,6 +30484,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARBlendShapeMap.MapEntry").create() -> <mediapipe.ARBlendShapeMap.MapEntry object>
 ```
 
+### mediapipe::ARBlendShapeMap::MapEntry::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARBlendShapeMap::MapEntry::ByteSizeLong();
+AutoIt:
+    $oMapEntry.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARBlendShapeMap::MapEntry::CheckInitialized
+
+```cpp
+void mediapipe::ARBlendShapeMap::MapEntry::CheckInitialized();
+AutoIt:
+    $oMapEntry.CheckInitialized() -> None
+```
+
 ### mediapipe::ARBlendShapeMap::MapEntry::Clear
 
 ```cpp
@@ -25109,6 +30522,54 @@ AutoIt:
 void mediapipe::ARBlendShapeMap::MapEntry::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oMapEntry.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARBlendShapeMap::MapEntry::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARBlendShapeMap::MapEntry::DiscardUnknownFields();
+AutoIt:
+    $oMapEntry.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARBlendShapeMap::MapEntry::FindInitializationErrors
+
+```cpp
+void mediapipe::ARBlendShapeMap::MapEntry::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMapEntry.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARBlendShapeMap::MapEntry::IsInitialized
+
+```cpp
+bool mediapipe::ARBlendShapeMap::MapEntry::IsInitialized();
+AutoIt:
+    $oMapEntry.IsInitialized() -> retval
+```
+
+### mediapipe::ARBlendShapeMap::MapEntry::SerializeAsString
+
+```cpp
+std::string mediapipe::ARBlendShapeMap::MapEntry::SerializeAsString();
+AutoIt:
+    $oMapEntry.SerializeAsString() -> retval
+```
+
+### mediapipe::ARBlendShapeMap::MapEntry::SerializeToString
+
+```cpp
+void mediapipe::ARBlendShapeMap::MapEntry::SerializeToString( std::string* output );
+AutoIt:
+    $oMapEntry.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARBlendShapeMap::MapEntry::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARBlendShapeMap::MapEntry::SpaceUsedLong();
+AutoIt:
+    $oMapEntry.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARBlendShapeMap::MapEntry::\_\_str\_\_
@@ -25161,6 +30622,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFaceAnchor").create() -> <mediapipe.ARFaceAnchor object>
 ```
 
+### mediapipe::ARFaceAnchor::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARFaceAnchor::ByteSizeLong();
+AutoIt:
+    $oARFaceAnchor.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARFaceAnchor::CheckInitialized
+
+```cpp
+void mediapipe::ARFaceAnchor::CheckInitialized();
+AutoIt:
+    $oARFaceAnchor.CheckInitialized() -> None
+```
+
 ### mediapipe::ARFaceAnchor::Clear
 
 ```cpp
@@ -25183,6 +30660,54 @@ AutoIt:
 void mediapipe::ARFaceAnchor::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARFaceAnchor.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARFaceAnchor::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARFaceAnchor::DiscardUnknownFields();
+AutoIt:
+    $oARFaceAnchor.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARFaceAnchor::FindInitializationErrors
+
+```cpp
+void mediapipe::ARFaceAnchor::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARFaceAnchor.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARFaceAnchor::IsInitialized
+
+```cpp
+bool mediapipe::ARFaceAnchor::IsInitialized();
+AutoIt:
+    $oARFaceAnchor.IsInitialized() -> retval
+```
+
+### mediapipe::ARFaceAnchor::SerializeAsString
+
+```cpp
+std::string mediapipe::ARFaceAnchor::SerializeAsString();
+AutoIt:
+    $oARFaceAnchor.SerializeAsString() -> retval
+```
+
+### mediapipe::ARFaceAnchor::SerializeToString
+
+```cpp
+void mediapipe::ARFaceAnchor::SerializeToString( std::string* output );
+AutoIt:
+    $oARFaceAnchor.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARFaceAnchor::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARFaceAnchor::SpaceUsedLong();
+AutoIt:
+    $oARFaceAnchor.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARFaceAnchor::\_\_str\_\_
@@ -25267,6 +30792,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry").create() -> <mediapipe.ARPlaneGeometry object>
 ```
 
+### mediapipe::ARPlaneGeometry::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARPlaneGeometry::ByteSizeLong();
+AutoIt:
+    $oARPlaneGeometry.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::CheckInitialized
+
+```cpp
+void mediapipe::ARPlaneGeometry::CheckInitialized();
+AutoIt:
+    $oARPlaneGeometry.CheckInitialized() -> None
+```
+
 ### mediapipe::ARPlaneGeometry::Clear
 
 ```cpp
@@ -25289,6 +30830,54 @@ AutoIt:
 void mediapipe::ARPlaneGeometry::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARPlaneGeometry.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARPlaneGeometry::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARPlaneGeometry::DiscardUnknownFields();
+AutoIt:
+    $oARPlaneGeometry.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARPlaneGeometry::FindInitializationErrors
+
+```cpp
+void mediapipe::ARPlaneGeometry::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARPlaneGeometry.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARPlaneGeometry::IsInitialized
+
+```cpp
+bool mediapipe::ARPlaneGeometry::IsInitialized();
+AutoIt:
+    $oARPlaneGeometry.IsInitialized() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::SerializeAsString
+
+```cpp
+std::string mediapipe::ARPlaneGeometry::SerializeAsString();
+AutoIt:
+    $oARPlaneGeometry.SerializeAsString() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::SerializeToString
+
+```cpp
+void mediapipe::ARPlaneGeometry::SerializeToString( std::string* output );
+AutoIt:
+    $oARPlaneGeometry.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARPlaneGeometry::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARPlaneGeometry::SpaceUsedLong();
+AutoIt:
+    $oARPlaneGeometry.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARPlaneGeometry::\_\_str\_\_
@@ -25771,6 +31360,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry.Vertex").create() -> <mediapipe.ARPlaneGeometry.Vertex object>
 ```
 
+### mediapipe::ARPlaneGeometry::Vertex::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARPlaneGeometry::Vertex::ByteSizeLong();
+AutoIt:
+    $oVertex.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::Vertex::CheckInitialized
+
+```cpp
+void mediapipe::ARPlaneGeometry::Vertex::CheckInitialized();
+AutoIt:
+    $oVertex.CheckInitialized() -> None
+```
+
 ### mediapipe::ARPlaneGeometry::Vertex::Clear
 
 ```cpp
@@ -25793,6 +31398,54 @@ AutoIt:
 void mediapipe::ARPlaneGeometry::Vertex::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oVertex.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARPlaneGeometry::Vertex::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARPlaneGeometry::Vertex::DiscardUnknownFields();
+AutoIt:
+    $oVertex.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARPlaneGeometry::Vertex::FindInitializationErrors
+
+```cpp
+void mediapipe::ARPlaneGeometry::Vertex::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oVertex.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARPlaneGeometry::Vertex::IsInitialized
+
+```cpp
+bool mediapipe::ARPlaneGeometry::Vertex::IsInitialized();
+AutoIt:
+    $oVertex.IsInitialized() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::Vertex::SerializeAsString
+
+```cpp
+std::string mediapipe::ARPlaneGeometry::Vertex::SerializeAsString();
+AutoIt:
+    $oVertex.SerializeAsString() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::Vertex::SerializeToString
+
+```cpp
+void mediapipe::ARPlaneGeometry::Vertex::SerializeToString( std::string* output );
+AutoIt:
+    $oVertex.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARPlaneGeometry::Vertex::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARPlaneGeometry::Vertex::SpaceUsedLong();
+AutoIt:
+    $oVertex.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARPlaneGeometry::Vertex::\_\_str\_\_
@@ -25829,6 +31482,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneGeometry.TextureCoordinate").create() -> <mediapipe.ARPlaneGeometry.TextureCoordinate object>
 ```
 
+### mediapipe::ARPlaneGeometry::TextureCoordinate::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARPlaneGeometry::TextureCoordinate::ByteSizeLong();
+AutoIt:
+    $oTextureCoordinate.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::TextureCoordinate::CheckInitialized
+
+```cpp
+void mediapipe::ARPlaneGeometry::TextureCoordinate::CheckInitialized();
+AutoIt:
+    $oTextureCoordinate.CheckInitialized() -> None
+```
+
 ### mediapipe::ARPlaneGeometry::TextureCoordinate::Clear
 
 ```cpp
@@ -25851,6 +31520,54 @@ AutoIt:
 void mediapipe::ARPlaneGeometry::TextureCoordinate::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTextureCoordinate.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARPlaneGeometry::TextureCoordinate::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARPlaneGeometry::TextureCoordinate::DiscardUnknownFields();
+AutoIt:
+    $oTextureCoordinate.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARPlaneGeometry::TextureCoordinate::FindInitializationErrors
+
+```cpp
+void mediapipe::ARPlaneGeometry::TextureCoordinate::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTextureCoordinate.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARPlaneGeometry::TextureCoordinate::IsInitialized
+
+```cpp
+bool mediapipe::ARPlaneGeometry::TextureCoordinate::IsInitialized();
+AutoIt:
+    $oTextureCoordinate.IsInitialized() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::TextureCoordinate::SerializeAsString
+
+```cpp
+std::string mediapipe::ARPlaneGeometry::TextureCoordinate::SerializeAsString();
+AutoIt:
+    $oTextureCoordinate.SerializeAsString() -> retval
+```
+
+### mediapipe::ARPlaneGeometry::TextureCoordinate::SerializeToString
+
+```cpp
+void mediapipe::ARPlaneGeometry::TextureCoordinate::SerializeToString( std::string* output );
+AutoIt:
+    $oTextureCoordinate.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARPlaneGeometry::TextureCoordinate::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARPlaneGeometry::TextureCoordinate::SpaceUsedLong();
+AutoIt:
+    $oTextureCoordinate.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARPlaneGeometry::TextureCoordinate::\_\_str\_\_
@@ -25943,6 +31660,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneAnchor").create() -> <mediapipe.ARPlaneAnchor object>
 ```
 
+### mediapipe::ARPlaneAnchor::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARPlaneAnchor::ByteSizeLong();
+AutoIt:
+    $oARPlaneAnchor.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARPlaneAnchor::CheckInitialized
+
+```cpp
+void mediapipe::ARPlaneAnchor::CheckInitialized();
+AutoIt:
+    $oARPlaneAnchor.CheckInitialized() -> None
+```
+
 ### mediapipe::ARPlaneAnchor::Clear
 
 ```cpp
@@ -25965,6 +31698,54 @@ AutoIt:
 void mediapipe::ARPlaneAnchor::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARPlaneAnchor.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARPlaneAnchor::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARPlaneAnchor::DiscardUnknownFields();
+AutoIt:
+    $oARPlaneAnchor.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARPlaneAnchor::FindInitializationErrors
+
+```cpp
+void mediapipe::ARPlaneAnchor::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARPlaneAnchor.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARPlaneAnchor::IsInitialized
+
+```cpp
+bool mediapipe::ARPlaneAnchor::IsInitialized();
+AutoIt:
+    $oARPlaneAnchor.IsInitialized() -> retval
+```
+
+### mediapipe::ARPlaneAnchor::SerializeAsString
+
+```cpp
+std::string mediapipe::ARPlaneAnchor::SerializeAsString();
+AutoIt:
+    $oARPlaneAnchor.SerializeAsString() -> retval
+```
+
+### mediapipe::ARPlaneAnchor::SerializeToString
+
+```cpp
+void mediapipe::ARPlaneAnchor::SerializeToString( std::string* output );
+AutoIt:
+    $oARPlaneAnchor.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARPlaneAnchor::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARPlaneAnchor::SpaceUsedLong();
+AutoIt:
+    $oARPlaneAnchor.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARPlaneAnchor::\_\_str\_\_
@@ -26113,6 +31894,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPlaneAnchor.PlaneVector").create() -> <mediapipe.ARPlaneAnchor.PlaneVector object>
 ```
 
+### mediapipe::ARPlaneAnchor::PlaneVector::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARPlaneAnchor::PlaneVector::ByteSizeLong();
+AutoIt:
+    $oPlaneVector.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARPlaneAnchor::PlaneVector::CheckInitialized
+
+```cpp
+void mediapipe::ARPlaneAnchor::PlaneVector::CheckInitialized();
+AutoIt:
+    $oPlaneVector.CheckInitialized() -> None
+```
+
 ### mediapipe::ARPlaneAnchor::PlaneVector::Clear
 
 ```cpp
@@ -26135,6 +31932,54 @@ AutoIt:
 void mediapipe::ARPlaneAnchor::PlaneVector::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oPlaneVector.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARPlaneAnchor::PlaneVector::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARPlaneAnchor::PlaneVector::DiscardUnknownFields();
+AutoIt:
+    $oPlaneVector.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARPlaneAnchor::PlaneVector::FindInitializationErrors
+
+```cpp
+void mediapipe::ARPlaneAnchor::PlaneVector::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPlaneVector.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARPlaneAnchor::PlaneVector::IsInitialized
+
+```cpp
+bool mediapipe::ARPlaneAnchor::PlaneVector::IsInitialized();
+AutoIt:
+    $oPlaneVector.IsInitialized() -> retval
+```
+
+### mediapipe::ARPlaneAnchor::PlaneVector::SerializeAsString
+
+```cpp
+std::string mediapipe::ARPlaneAnchor::PlaneVector::SerializeAsString();
+AutoIt:
+    $oPlaneVector.SerializeAsString() -> retval
+```
+
+### mediapipe::ARPlaneAnchor::PlaneVector::SerializeToString
+
+```cpp
+void mediapipe::ARPlaneAnchor::PlaneVector::SerializeToString( std::string* output );
+AutoIt:
+    $oPlaneVector.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARPlaneAnchor::PlaneVector::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARPlaneAnchor::PlaneVector::SpaceUsedLong();
+AutoIt:
+    $oPlaneVector.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARPlaneAnchor::PlaneVector::\_\_str\_\_
@@ -26179,6 +32024,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPointCloud").create() -> <mediapipe.ARPointCloud object>
 ```
 
+### mediapipe::ARPointCloud::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARPointCloud::ByteSizeLong();
+AutoIt:
+    $oARPointCloud.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARPointCloud::CheckInitialized
+
+```cpp
+void mediapipe::ARPointCloud::CheckInitialized();
+AutoIt:
+    $oARPointCloud.CheckInitialized() -> None
+```
+
 ### mediapipe::ARPointCloud::Clear
 
 ```cpp
@@ -26201,6 +32062,54 @@ AutoIt:
 void mediapipe::ARPointCloud::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARPointCloud.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARPointCloud::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARPointCloud::DiscardUnknownFields();
+AutoIt:
+    $oARPointCloud.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARPointCloud::FindInitializationErrors
+
+```cpp
+void mediapipe::ARPointCloud::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARPointCloud.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARPointCloud::IsInitialized
+
+```cpp
+bool mediapipe::ARPointCloud::IsInitialized();
+AutoIt:
+    $oARPointCloud.IsInitialized() -> retval
+```
+
+### mediapipe::ARPointCloud::SerializeAsString
+
+```cpp
+std::string mediapipe::ARPointCloud::SerializeAsString();
+AutoIt:
+    $oARPointCloud.SerializeAsString() -> retval
+```
+
+### mediapipe::ARPointCloud::SerializeToString
+
+```cpp
+void mediapipe::ARPointCloud::SerializeToString( std::string* output );
+AutoIt:
+    $oARPointCloud.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARPointCloud::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARPointCloud::SpaceUsedLong();
+AutoIt:
+    $oARPointCloud.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARPointCloud::\_\_str\_\_
@@ -26666,6 +32575,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARPointCloud.Point").create() -> <mediapipe.ARPointCloud.Point object>
 ```
 
+### mediapipe::ARPointCloud::Point::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARPointCloud::Point::ByteSizeLong();
+AutoIt:
+    $oPoint.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARPointCloud::Point::CheckInitialized
+
+```cpp
+void mediapipe::ARPointCloud::Point::CheckInitialized();
+AutoIt:
+    $oPoint.CheckInitialized() -> None
+```
+
 ### mediapipe::ARPointCloud::Point::Clear
 
 ```cpp
@@ -26688,6 +32613,54 @@ AutoIt:
 void mediapipe::ARPointCloud::Point::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oPoint.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARPointCloud::Point::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARPointCloud::Point::DiscardUnknownFields();
+AutoIt:
+    $oPoint.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARPointCloud::Point::FindInitializationErrors
+
+```cpp
+void mediapipe::ARPointCloud::Point::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPoint.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARPointCloud::Point::IsInitialized
+
+```cpp
+bool mediapipe::ARPointCloud::Point::IsInitialized();
+AutoIt:
+    $oPoint.IsInitialized() -> retval
+```
+
+### mediapipe::ARPointCloud::Point::SerializeAsString
+
+```cpp
+std::string mediapipe::ARPointCloud::Point::SerializeAsString();
+AutoIt:
+    $oPoint.SerializeAsString() -> retval
+```
+
+### mediapipe::ARPointCloud::Point::SerializeToString
+
+```cpp
+void mediapipe::ARPointCloud::Point::SerializeToString( std::string* output );
+AutoIt:
+    $oPoint.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARPointCloud::Point::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARPointCloud::Point::SpaceUsedLong();
+AutoIt:
+    $oPoint.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARPointCloud::Point::\_\_str\_\_
@@ -26772,6 +32745,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ARFrame").create() -> <mediapipe.ARFrame object>
 ```
 
+### mediapipe::ARFrame::ByteSizeLong
+
+```cpp
+size_t mediapipe::ARFrame::ByteSizeLong();
+AutoIt:
+    $oARFrame.ByteSizeLong() -> retval
+```
+
+### mediapipe::ARFrame::CheckInitialized
+
+```cpp
+void mediapipe::ARFrame::CheckInitialized();
+AutoIt:
+    $oARFrame.CheckInitialized() -> None
+```
+
 ### mediapipe::ARFrame::Clear
 
 ```cpp
@@ -26794,6 +32783,54 @@ AutoIt:
 void mediapipe::ARFrame::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oARFrame.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ARFrame::DiscardUnknownFields
+
+```cpp
+void mediapipe::ARFrame::DiscardUnknownFields();
+AutoIt:
+    $oARFrame.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ARFrame::FindInitializationErrors
+
+```cpp
+void mediapipe::ARFrame::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oARFrame.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ARFrame::IsInitialized
+
+```cpp
+bool mediapipe::ARFrame::IsInitialized();
+AutoIt:
+    $oARFrame.IsInitialized() -> retval
+```
+
+### mediapipe::ARFrame::SerializeAsString
+
+```cpp
+std::string mediapipe::ARFrame::SerializeAsString();
+AutoIt:
+    $oARFrame.SerializeAsString() -> retval
+```
+
+### mediapipe::ARFrame::SerializeToString
+
+```cpp
+void mediapipe::ARFrame::SerializeToString( std::string* output );
+AutoIt:
+    $oARFrame.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ARFrame::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ARFrame::SpaceUsedLong();
+AutoIt:
+    $oARFrame.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ARFrame::\_\_str\_\_
@@ -27257,6 +33294,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.KeyPoint").create() -> <mediapipe.KeyPoint object>
 ```
 
+### mediapipe::KeyPoint::ByteSizeLong
+
+```cpp
+size_t mediapipe::KeyPoint::ByteSizeLong();
+AutoIt:
+    $oKeyPoint.ByteSizeLong() -> retval
+```
+
+### mediapipe::KeyPoint::CheckInitialized
+
+```cpp
+void mediapipe::KeyPoint::CheckInitialized();
+AutoIt:
+    $oKeyPoint.CheckInitialized() -> None
+```
+
 ### mediapipe::KeyPoint::Clear
 
 ```cpp
@@ -27279,6 +33332,54 @@ AutoIt:
 void mediapipe::KeyPoint::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oKeyPoint.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::KeyPoint::DiscardUnknownFields
+
+```cpp
+void mediapipe::KeyPoint::DiscardUnknownFields();
+AutoIt:
+    $oKeyPoint.DiscardUnknownFields() -> None
+```
+
+### mediapipe::KeyPoint::FindInitializationErrors
+
+```cpp
+void mediapipe::KeyPoint::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oKeyPoint.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::KeyPoint::IsInitialized
+
+```cpp
+bool mediapipe::KeyPoint::IsInitialized();
+AutoIt:
+    $oKeyPoint.IsInitialized() -> retval
+```
+
+### mediapipe::KeyPoint::SerializeAsString
+
+```cpp
+std::string mediapipe::KeyPoint::SerializeAsString();
+AutoIt:
+    $oKeyPoint.SerializeAsString() -> retval
+```
+
+### mediapipe::KeyPoint::SerializeToString
+
+```cpp
+void mediapipe::KeyPoint::SerializeToString( std::string* output );
+AutoIt:
+    $oKeyPoint.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::KeyPoint::SpaceUsedLong
+
+```cpp
+size_t mediapipe::KeyPoint::SpaceUsedLong();
+AutoIt:
+    $oKeyPoint.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::KeyPoint::\_\_str\_\_
@@ -27363,6 +33464,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Object").create() -> <mediapipe.Object object>
 ```
 
+### mediapipe::Object::ByteSizeLong
+
+```cpp
+size_t mediapipe::Object::ByteSizeLong();
+AutoIt:
+    $oObject.ByteSizeLong() -> retval
+```
+
+### mediapipe::Object::CheckInitialized
+
+```cpp
+void mediapipe::Object::CheckInitialized();
+AutoIt:
+    $oObject.CheckInitialized() -> None
+```
+
 ### mediapipe::Object::Clear
 
 ```cpp
@@ -27385,6 +33502,54 @@ AutoIt:
 void mediapipe::Object::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oObject.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Object::DiscardUnknownFields
+
+```cpp
+void mediapipe::Object::DiscardUnknownFields();
+AutoIt:
+    $oObject.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Object::FindInitializationErrors
+
+```cpp
+void mediapipe::Object::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oObject.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Object::IsInitialized
+
+```cpp
+bool mediapipe::Object::IsInitialized();
+AutoIt:
+    $oObject.IsInitialized() -> retval
+```
+
+### mediapipe::Object::SerializeAsString
+
+```cpp
+std::string mediapipe::Object::SerializeAsString();
+AutoIt:
+    $oObject.SerializeAsString() -> retval
+```
+
+### mediapipe::Object::SerializeToString
+
+```cpp
+void mediapipe::Object::SerializeToString( std::string* output );
+AutoIt:
+    $oObject.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Object::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Object::SpaceUsedLong();
+AutoIt:
+    $oObject.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Object::\_\_str\_\_
@@ -27688,6 +33853,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Edge").create() -> <mediapipe.Edge object>
 ```
 
+### mediapipe::Edge::ByteSizeLong
+
+```cpp
+size_t mediapipe::Edge::ByteSizeLong();
+AutoIt:
+    $oEdge.ByteSizeLong() -> retval
+```
+
+### mediapipe::Edge::CheckInitialized
+
+```cpp
+void mediapipe::Edge::CheckInitialized();
+AutoIt:
+    $oEdge.CheckInitialized() -> None
+```
+
 ### mediapipe::Edge::Clear
 
 ```cpp
@@ -27710,6 +33891,54 @@ AutoIt:
 void mediapipe::Edge::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oEdge.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Edge::DiscardUnknownFields
+
+```cpp
+void mediapipe::Edge::DiscardUnknownFields();
+AutoIt:
+    $oEdge.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Edge::FindInitializationErrors
+
+```cpp
+void mediapipe::Edge::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEdge.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Edge::IsInitialized
+
+```cpp
+bool mediapipe::Edge::IsInitialized();
+AutoIt:
+    $oEdge.IsInitialized() -> retval
+```
+
+### mediapipe::Edge::SerializeAsString
+
+```cpp
+std::string mediapipe::Edge::SerializeAsString();
+AutoIt:
+    $oEdge.SerializeAsString() -> retval
+```
+
+### mediapipe::Edge::SerializeToString
+
+```cpp
+void mediapipe::Edge::SerializeToString( std::string* output );
+AutoIt:
+    $oEdge.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Edge::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Edge::SpaceUsedLong();
+AutoIt:
+    $oEdge.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Edge::\_\_str\_\_
@@ -27762,6 +33991,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Skeleton").create() -> <mediapipe.Skeleton object>
 ```
 
+### mediapipe::Skeleton::ByteSizeLong
+
+```cpp
+size_t mediapipe::Skeleton::ByteSizeLong();
+AutoIt:
+    $oSkeleton.ByteSizeLong() -> retval
+```
+
+### mediapipe::Skeleton::CheckInitialized
+
+```cpp
+void mediapipe::Skeleton::CheckInitialized();
+AutoIt:
+    $oSkeleton.CheckInitialized() -> None
+```
+
 ### mediapipe::Skeleton::Clear
 
 ```cpp
@@ -27784,6 +34029,54 @@ AutoIt:
 void mediapipe::Skeleton::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oSkeleton.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Skeleton::DiscardUnknownFields
+
+```cpp
+void mediapipe::Skeleton::DiscardUnknownFields();
+AutoIt:
+    $oSkeleton.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Skeleton::FindInitializationErrors
+
+```cpp
+void mediapipe::Skeleton::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oSkeleton.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Skeleton::IsInitialized
+
+```cpp
+bool mediapipe::Skeleton::IsInitialized();
+AutoIt:
+    $oSkeleton.IsInitialized() -> retval
+```
+
+### mediapipe::Skeleton::SerializeAsString
+
+```cpp
+std::string mediapipe::Skeleton::SerializeAsString();
+AutoIt:
+    $oSkeleton.SerializeAsString() -> retval
+```
+
+### mediapipe::Skeleton::SerializeToString
+
+```cpp
+void mediapipe::Skeleton::SerializeToString( std::string* output );
+AutoIt:
+    $oSkeleton.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Skeleton::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Skeleton::SpaceUsedLong();
+AutoIt:
+    $oSkeleton.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Skeleton::\_\_str\_\_
@@ -28031,6 +34324,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Skeletons").create() -> <mediapipe.Skeletons object>
 ```
 
+### mediapipe::Skeletons::ByteSizeLong
+
+```cpp
+size_t mediapipe::Skeletons::ByteSizeLong();
+AutoIt:
+    $oSkeletons.ByteSizeLong() -> retval
+```
+
+### mediapipe::Skeletons::CheckInitialized
+
+```cpp
+void mediapipe::Skeletons::CheckInitialized();
+AutoIt:
+    $oSkeletons.CheckInitialized() -> None
+```
+
 ### mediapipe::Skeletons::Clear
 
 ```cpp
@@ -28053,6 +34362,54 @@ AutoIt:
 void mediapipe::Skeletons::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oSkeletons.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Skeletons::DiscardUnknownFields
+
+```cpp
+void mediapipe::Skeletons::DiscardUnknownFields();
+AutoIt:
+    $oSkeletons.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Skeletons::FindInitializationErrors
+
+```cpp
+void mediapipe::Skeletons::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oSkeletons.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Skeletons::IsInitialized
+
+```cpp
+bool mediapipe::Skeletons::IsInitialized();
+AutoIt:
+    $oSkeletons.IsInitialized() -> retval
+```
+
+### mediapipe::Skeletons::SerializeAsString
+
+```cpp
+std::string mediapipe::Skeletons::SerializeAsString();
+AutoIt:
+    $oSkeletons.SerializeAsString() -> retval
+```
+
+### mediapipe::Skeletons::SerializeToString
+
+```cpp
+void mediapipe::Skeletons::SerializeToString( std::string* output );
+AutoIt:
+    $oSkeletons.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Skeletons::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Skeletons::SpaceUsedLong();
+AutoIt:
+    $oSkeletons.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Skeletons::\_\_str\_\_
@@ -28358,6 +34715,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedPoint2D").create() -> <mediapipe.NormalizedPoint2D object>
 ```
 
+### mediapipe::NormalizedPoint2D::ByteSizeLong
+
+```cpp
+size_t mediapipe::NormalizedPoint2D::ByteSizeLong();
+AutoIt:
+    $oNormalizedPoint2D.ByteSizeLong() -> retval
+```
+
+### mediapipe::NormalizedPoint2D::CheckInitialized
+
+```cpp
+void mediapipe::NormalizedPoint2D::CheckInitialized();
+AutoIt:
+    $oNormalizedPoint2D.CheckInitialized() -> None
+```
+
 ### mediapipe::NormalizedPoint2D::Clear
 
 ```cpp
@@ -28380,6 +34753,54 @@ AutoIt:
 void mediapipe::NormalizedPoint2D::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oNormalizedPoint2D.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::NormalizedPoint2D::DiscardUnknownFields
+
+```cpp
+void mediapipe::NormalizedPoint2D::DiscardUnknownFields();
+AutoIt:
+    $oNormalizedPoint2D.DiscardUnknownFields() -> None
+```
+
+### mediapipe::NormalizedPoint2D::FindInitializationErrors
+
+```cpp
+void mediapipe::NormalizedPoint2D::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNormalizedPoint2D.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::NormalizedPoint2D::IsInitialized
+
+```cpp
+bool mediapipe::NormalizedPoint2D::IsInitialized();
+AutoIt:
+    $oNormalizedPoint2D.IsInitialized() -> retval
+```
+
+### mediapipe::NormalizedPoint2D::SerializeAsString
+
+```cpp
+std::string mediapipe::NormalizedPoint2D::SerializeAsString();
+AutoIt:
+    $oNormalizedPoint2D.SerializeAsString() -> retval
+```
+
+### mediapipe::NormalizedPoint2D::SerializeToString
+
+```cpp
+void mediapipe::NormalizedPoint2D::SerializeToString( std::string* output );
+AutoIt:
+    $oNormalizedPoint2D.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::NormalizedPoint2D::SpaceUsedLong
+
+```cpp
+size_t mediapipe::NormalizedPoint2D::SpaceUsedLong();
+AutoIt:
+    $oNormalizedPoint2D.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::NormalizedPoint2D::\_\_str\_\_
@@ -28424,6 +34845,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Point3D").create() -> <mediapipe.Point3D object>
 ```
 
+### mediapipe::Point3D::ByteSizeLong
+
+```cpp
+size_t mediapipe::Point3D::ByteSizeLong();
+AutoIt:
+    $oPoint3D.ByteSizeLong() -> retval
+```
+
+### mediapipe::Point3D::CheckInitialized
+
+```cpp
+void mediapipe::Point3D::CheckInitialized();
+AutoIt:
+    $oPoint3D.CheckInitialized() -> None
+```
+
 ### mediapipe::Point3D::Clear
 
 ```cpp
@@ -28446,6 +34883,54 @@ AutoIt:
 void mediapipe::Point3D::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oPoint3D.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Point3D::DiscardUnknownFields
+
+```cpp
+void mediapipe::Point3D::DiscardUnknownFields();
+AutoIt:
+    $oPoint3D.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Point3D::FindInitializationErrors
+
+```cpp
+void mediapipe::Point3D::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPoint3D.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Point3D::IsInitialized
+
+```cpp
+bool mediapipe::Point3D::IsInitialized();
+AutoIt:
+    $oPoint3D.IsInitialized() -> retval
+```
+
+### mediapipe::Point3D::SerializeAsString
+
+```cpp
+std::string mediapipe::Point3D::SerializeAsString();
+AutoIt:
+    $oPoint3D.SerializeAsString() -> retval
+```
+
+### mediapipe::Point3D::SerializeToString
+
+```cpp
+void mediapipe::Point3D::SerializeToString( std::string* output );
+AutoIt:
+    $oPoint3D.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Point3D::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Point3D::SpaceUsedLong();
+AutoIt:
+    $oPoint3D.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Point3D::\_\_str\_\_
@@ -28498,6 +34983,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.AnnotatedKeyPoint").create() -> <mediapipe.AnnotatedKeyPoint object>
 ```
 
+### mediapipe::AnnotatedKeyPoint::ByteSizeLong
+
+```cpp
+size_t mediapipe::AnnotatedKeyPoint::ByteSizeLong();
+AutoIt:
+    $oAnnotatedKeyPoint.ByteSizeLong() -> retval
+```
+
+### mediapipe::AnnotatedKeyPoint::CheckInitialized
+
+```cpp
+void mediapipe::AnnotatedKeyPoint::CheckInitialized();
+AutoIt:
+    $oAnnotatedKeyPoint.CheckInitialized() -> None
+```
+
 ### mediapipe::AnnotatedKeyPoint::Clear
 
 ```cpp
@@ -28520,6 +35021,54 @@ AutoIt:
 void mediapipe::AnnotatedKeyPoint::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oAnnotatedKeyPoint.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::AnnotatedKeyPoint::DiscardUnknownFields
+
+```cpp
+void mediapipe::AnnotatedKeyPoint::DiscardUnknownFields();
+AutoIt:
+    $oAnnotatedKeyPoint.DiscardUnknownFields() -> None
+```
+
+### mediapipe::AnnotatedKeyPoint::FindInitializationErrors
+
+```cpp
+void mediapipe::AnnotatedKeyPoint::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAnnotatedKeyPoint.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::AnnotatedKeyPoint::IsInitialized
+
+```cpp
+bool mediapipe::AnnotatedKeyPoint::IsInitialized();
+AutoIt:
+    $oAnnotatedKeyPoint.IsInitialized() -> retval
+```
+
+### mediapipe::AnnotatedKeyPoint::SerializeAsString
+
+```cpp
+std::string mediapipe::AnnotatedKeyPoint::SerializeAsString();
+AutoIt:
+    $oAnnotatedKeyPoint.SerializeAsString() -> retval
+```
+
+### mediapipe::AnnotatedKeyPoint::SerializeToString
+
+```cpp
+void mediapipe::AnnotatedKeyPoint::SerializeToString( std::string* output );
+AutoIt:
+    $oAnnotatedKeyPoint.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::AnnotatedKeyPoint::SpaceUsedLong
+
+```cpp
+size_t mediapipe::AnnotatedKeyPoint::SpaceUsedLong();
+AutoIt:
+    $oAnnotatedKeyPoint.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::AnnotatedKeyPoint::\_\_str\_\_
@@ -28588,6 +35137,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ObjectAnnotation").create() -> <mediapipe.ObjectAnnotation object>
 ```
 
+### mediapipe::ObjectAnnotation::ByteSizeLong
+
+```cpp
+size_t mediapipe::ObjectAnnotation::ByteSizeLong();
+AutoIt:
+    $oObjectAnnotation.ByteSizeLong() -> retval
+```
+
+### mediapipe::ObjectAnnotation::CheckInitialized
+
+```cpp
+void mediapipe::ObjectAnnotation::CheckInitialized();
+AutoIt:
+    $oObjectAnnotation.CheckInitialized() -> None
+```
+
 ### mediapipe::ObjectAnnotation::Clear
 
 ```cpp
@@ -28610,6 +35175,54 @@ AutoIt:
 void mediapipe::ObjectAnnotation::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oObjectAnnotation.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ObjectAnnotation::DiscardUnknownFields
+
+```cpp
+void mediapipe::ObjectAnnotation::DiscardUnknownFields();
+AutoIt:
+    $oObjectAnnotation.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ObjectAnnotation::FindInitializationErrors
+
+```cpp
+void mediapipe::ObjectAnnotation::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oObjectAnnotation.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ObjectAnnotation::IsInitialized
+
+```cpp
+bool mediapipe::ObjectAnnotation::IsInitialized();
+AutoIt:
+    $oObjectAnnotation.IsInitialized() -> retval
+```
+
+### mediapipe::ObjectAnnotation::SerializeAsString
+
+```cpp
+std::string mediapipe::ObjectAnnotation::SerializeAsString();
+AutoIt:
+    $oObjectAnnotation.SerializeAsString() -> retval
+```
+
+### mediapipe::ObjectAnnotation::SerializeToString
+
+```cpp
+void mediapipe::ObjectAnnotation::SerializeToString( std::string* output );
+AutoIt:
+    $oObjectAnnotation.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ObjectAnnotation::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ObjectAnnotation::SpaceUsedLong();
+AutoIt:
+    $oObjectAnnotation.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ObjectAnnotation::\_\_str\_\_
@@ -28897,6 +35510,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.FrameAnnotation").create() -> <mediapipe.FrameAnnotation object>
 ```
 
+### mediapipe::FrameAnnotation::ByteSizeLong
+
+```cpp
+size_t mediapipe::FrameAnnotation::ByteSizeLong();
+AutoIt:
+    $oFrameAnnotation.ByteSizeLong() -> retval
+```
+
+### mediapipe::FrameAnnotation::CheckInitialized
+
+```cpp
+void mediapipe::FrameAnnotation::CheckInitialized();
+AutoIt:
+    $oFrameAnnotation.CheckInitialized() -> None
+```
+
 ### mediapipe::FrameAnnotation::Clear
 
 ```cpp
@@ -28919,6 +35548,54 @@ AutoIt:
 void mediapipe::FrameAnnotation::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oFrameAnnotation.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::FrameAnnotation::DiscardUnknownFields
+
+```cpp
+void mediapipe::FrameAnnotation::DiscardUnknownFields();
+AutoIt:
+    $oFrameAnnotation.DiscardUnknownFields() -> None
+```
+
+### mediapipe::FrameAnnotation::FindInitializationErrors
+
+```cpp
+void mediapipe::FrameAnnotation::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFrameAnnotation.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::FrameAnnotation::IsInitialized
+
+```cpp
+bool mediapipe::FrameAnnotation::IsInitialized();
+AutoIt:
+    $oFrameAnnotation.IsInitialized() -> retval
+```
+
+### mediapipe::FrameAnnotation::SerializeAsString
+
+```cpp
+std::string mediapipe::FrameAnnotation::SerializeAsString();
+AutoIt:
+    $oFrameAnnotation.SerializeAsString() -> retval
+```
+
+### mediapipe::FrameAnnotation::SerializeToString
+
+```cpp
+void mediapipe::FrameAnnotation::SerializeToString( std::string* output );
+AutoIt:
+    $oFrameAnnotation.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::FrameAnnotation::SpaceUsedLong
+
+```cpp
+size_t mediapipe::FrameAnnotation::SpaceUsedLong();
+AutoIt:
+    $oFrameAnnotation.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::FrameAnnotation::\_\_str\_\_
@@ -29174,6 +35851,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Sequence").create() -> <mediapipe.Sequence object>
 ```
 
+### mediapipe::Sequence::ByteSizeLong
+
+```cpp
+size_t mediapipe::Sequence::ByteSizeLong();
+AutoIt:
+    $oSequence.ByteSizeLong() -> retval
+```
+
+### mediapipe::Sequence::CheckInitialized
+
+```cpp
+void mediapipe::Sequence::CheckInitialized();
+AutoIt:
+    $oSequence.CheckInitialized() -> None
+```
+
 ### mediapipe::Sequence::Clear
 
 ```cpp
@@ -29196,6 +35889,54 @@ AutoIt:
 void mediapipe::Sequence::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oSequence.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Sequence::DiscardUnknownFields
+
+```cpp
+void mediapipe::Sequence::DiscardUnknownFields();
+AutoIt:
+    $oSequence.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Sequence::FindInitializationErrors
+
+```cpp
+void mediapipe::Sequence::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oSequence.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Sequence::IsInitialized
+
+```cpp
+bool mediapipe::Sequence::IsInitialized();
+AutoIt:
+    $oSequence.IsInitialized() -> retval
+```
+
+### mediapipe::Sequence::SerializeAsString
+
+```cpp
+std::string mediapipe::Sequence::SerializeAsString();
+AutoIt:
+    $oSequence.SerializeAsString() -> retval
+```
+
+### mediapipe::Sequence::SerializeToString
+
+```cpp
+void mediapipe::Sequence::SerializeToString( std::string* output );
+AutoIt:
+    $oSequence.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Sequence::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Sequence::SpaceUsedLong();
+AutoIt:
+    $oSequence.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Sequence::\_\_str\_\_
@@ -29736,6 +36477,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Classification").create() -> <mediapipe.Classification object>
 ```
 
+### mediapipe::Classification::ByteSizeLong
+
+```cpp
+size_t mediapipe::Classification::ByteSizeLong();
+AutoIt:
+    $oClassification.ByteSizeLong() -> retval
+```
+
+### mediapipe::Classification::CheckInitialized
+
+```cpp
+void mediapipe::Classification::CheckInitialized();
+AutoIt:
+    $oClassification.CheckInitialized() -> None
+```
+
 ### mediapipe::Classification::Clear
 
 ```cpp
@@ -29758,6 +36515,54 @@ AutoIt:
 void mediapipe::Classification::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oClassification.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Classification::DiscardUnknownFields
+
+```cpp
+void mediapipe::Classification::DiscardUnknownFields();
+AutoIt:
+    $oClassification.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Classification::FindInitializationErrors
+
+```cpp
+void mediapipe::Classification::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oClassification.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Classification::IsInitialized
+
+```cpp
+bool mediapipe::Classification::IsInitialized();
+AutoIt:
+    $oClassification.IsInitialized() -> retval
+```
+
+### mediapipe::Classification::SerializeAsString
+
+```cpp
+std::string mediapipe::Classification::SerializeAsString();
+AutoIt:
+    $oClassification.SerializeAsString() -> retval
+```
+
+### mediapipe::Classification::SerializeToString
+
+```cpp
+void mediapipe::Classification::SerializeToString( std::string* output );
+AutoIt:
+    $oClassification.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Classification::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Classification::SpaceUsedLong();
+AutoIt:
+    $oClassification.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Classification::\_\_str\_\_
@@ -29786,6 +36591,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ClassificationList").create() -> <mediapipe.ClassificationList object>
 ```
 
+### mediapipe::ClassificationList::ByteSizeLong
+
+```cpp
+size_t mediapipe::ClassificationList::ByteSizeLong();
+AutoIt:
+    $oClassificationList.ByteSizeLong() -> retval
+```
+
+### mediapipe::ClassificationList::CheckInitialized
+
+```cpp
+void mediapipe::ClassificationList::CheckInitialized();
+AutoIt:
+    $oClassificationList.CheckInitialized() -> None
+```
+
 ### mediapipe::ClassificationList::Clear
 
 ```cpp
@@ -29808,6 +36629,54 @@ AutoIt:
 void mediapipe::ClassificationList::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oClassificationList.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ClassificationList::DiscardUnknownFields
+
+```cpp
+void mediapipe::ClassificationList::DiscardUnknownFields();
+AutoIt:
+    $oClassificationList.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ClassificationList::FindInitializationErrors
+
+```cpp
+void mediapipe::ClassificationList::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oClassificationList.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ClassificationList::IsInitialized
+
+```cpp
+bool mediapipe::ClassificationList::IsInitialized();
+AutoIt:
+    $oClassificationList.IsInitialized() -> retval
+```
+
+### mediapipe::ClassificationList::SerializeAsString
+
+```cpp
+std::string mediapipe::ClassificationList::SerializeAsString();
+AutoIt:
+    $oClassificationList.SerializeAsString() -> retval
+```
+
+### mediapipe::ClassificationList::SerializeToString
+
+```cpp
+void mediapipe::ClassificationList::SerializeToString( std::string* output );
+AutoIt:
+    $oClassificationList.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ClassificationList::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ClassificationList::SpaceUsedLong();
+AutoIt:
+    $oClassificationList.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ClassificationList::\_\_str\_\_
@@ -30055,6 +36924,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ClassificationListCollection").create() -> <mediapipe.ClassificationListCollection object>
 ```
 
+### mediapipe::ClassificationListCollection::ByteSizeLong
+
+```cpp
+size_t mediapipe::ClassificationListCollection::ByteSizeLong();
+AutoIt:
+    $oClassificationListCollection.ByteSizeLong() -> retval
+```
+
+### mediapipe::ClassificationListCollection::CheckInitialized
+
+```cpp
+void mediapipe::ClassificationListCollection::CheckInitialized();
+AutoIt:
+    $oClassificationListCollection.CheckInitialized() -> None
+```
+
 ### mediapipe::ClassificationListCollection::Clear
 
 ```cpp
@@ -30077,6 +36962,54 @@ AutoIt:
 void mediapipe::ClassificationListCollection::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oClassificationListCollection.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ClassificationListCollection::DiscardUnknownFields
+
+```cpp
+void mediapipe::ClassificationListCollection::DiscardUnknownFields();
+AutoIt:
+    $oClassificationListCollection.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ClassificationListCollection::FindInitializationErrors
+
+```cpp
+void mediapipe::ClassificationListCollection::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oClassificationListCollection.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ClassificationListCollection::IsInitialized
+
+```cpp
+bool mediapipe::ClassificationListCollection::IsInitialized();
+AutoIt:
+    $oClassificationListCollection.IsInitialized() -> retval
+```
+
+### mediapipe::ClassificationListCollection::SerializeAsString
+
+```cpp
+std::string mediapipe::ClassificationListCollection::SerializeAsString();
+AutoIt:
+    $oClassificationListCollection.SerializeAsString() -> retval
+```
+
+### mediapipe::ClassificationListCollection::SerializeToString
+
+```cpp
+void mediapipe::ClassificationListCollection::SerializeToString( std::string* output );
+AutoIt:
+    $oClassificationListCollection.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ClassificationListCollection::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ClassificationListCollection::SpaceUsedLong();
+AutoIt:
+    $oClassificationListCollection.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ClassificationListCollection::\_\_str\_\_
@@ -30358,6 +37291,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions").create() -> <mediapipe.ConstantSidePacketCalculatorOptions object>
 ```
 
+### mediapipe::ConstantSidePacketCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::ConstantSidePacketCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::ConstantSidePacketCalculatorOptions::Clear
 
 ```cpp
@@ -30380,6 +37329,54 @@ AutoIt:
 void mediapipe::ConstantSidePacketCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oConstantSidePacketCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::ConstantSidePacketCalculatorOptions::IsInitialized();
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::ConstantSidePacketCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ConstantSidePacketCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oConstantSidePacketCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::\_\_str\_\_
@@ -30683,6 +37680,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket").create() -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
 ```
 
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ByteSizeLong
+
+```cpp
+size_t mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ByteSizeLong();
+AutoIt:
+    $oConstantSidePacket.ByteSizeLong() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CheckInitialized
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CheckInitialized();
+AutoIt:
+    $oConstantSidePacket.CheckInitialized() -> None
+```
+
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::Clear
 
 ```cpp
@@ -30705,6 +37718,54 @@ AutoIt:
 void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oConstantSidePacket.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::DiscardUnknownFields
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::DiscardUnknownFields();
+AutoIt:
+    $oConstantSidePacket.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::FindInitializationErrors
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oConstantSidePacket.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::IsInitialized
+
+```cpp
+bool mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::IsInitialized();
+AutoIt:
+    $oConstantSidePacket.IsInitialized() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SerializeAsString
+
+```cpp
+std::string mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SerializeAsString();
+AutoIt:
+    $oConstantSidePacket.SerializeAsString() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SerializeToString
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SerializeToString( std::string* output );
+AutoIt:
+    $oConstantSidePacket.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::SpaceUsedLong();
+AutoIt:
+    $oConstantSidePacket.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::\_\_str\_\_
@@ -30745,6 +37806,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.RotationMode").create() -> <mediapipe.RotationMode object>
 ```
 
+### mediapipe::RotationMode::ByteSizeLong
+
+```cpp
+size_t mediapipe::RotationMode::ByteSizeLong();
+AutoIt:
+    $oRotationMode.ByteSizeLong() -> retval
+```
+
+### mediapipe::RotationMode::CheckInitialized
+
+```cpp
+void mediapipe::RotationMode::CheckInitialized();
+AutoIt:
+    $oRotationMode.CheckInitialized() -> None
+```
+
 ### mediapipe::RotationMode::Clear
 
 ```cpp
@@ -30767,6 +37844,54 @@ AutoIt:
 void mediapipe::RotationMode::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oRotationMode.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RotationMode::DiscardUnknownFields
+
+```cpp
+void mediapipe::RotationMode::DiscardUnknownFields();
+AutoIt:
+    $oRotationMode.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RotationMode::FindInitializationErrors
+
+```cpp
+void mediapipe::RotationMode::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRotationMode.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RotationMode::IsInitialized
+
+```cpp
+bool mediapipe::RotationMode::IsInitialized();
+AutoIt:
+    $oRotationMode.IsInitialized() -> retval
+```
+
+### mediapipe::RotationMode::SerializeAsString
+
+```cpp
+std::string mediapipe::RotationMode::SerializeAsString();
+AutoIt:
+    $oRotationMode.SerializeAsString() -> retval
+```
+
+### mediapipe::RotationMode::SerializeToString
+
+```cpp
+void mediapipe::RotationMode::SerializeToString( std::string* output );
+AutoIt:
+    $oRotationMode.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RotationMode::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RotationMode::SpaceUsedLong();
+AutoIt:
+    $oRotationMode.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::RotationMode::\_\_str\_\_
@@ -30837,6 +37962,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ScaleMode").create() -> <mediapipe.ScaleMode object>
 ```
 
+### mediapipe::ScaleMode::ByteSizeLong
+
+```cpp
+size_t mediapipe::ScaleMode::ByteSizeLong();
+AutoIt:
+    $oScaleMode.ByteSizeLong() -> retval
+```
+
+### mediapipe::ScaleMode::CheckInitialized
+
+```cpp
+void mediapipe::ScaleMode::CheckInitialized();
+AutoIt:
+    $oScaleMode.CheckInitialized() -> None
+```
+
 ### mediapipe::ScaleMode::Clear
 
 ```cpp
@@ -30859,6 +38000,54 @@ AutoIt:
 void mediapipe::ScaleMode::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oScaleMode.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ScaleMode::DiscardUnknownFields
+
+```cpp
+void mediapipe::ScaleMode::DiscardUnknownFields();
+AutoIt:
+    $oScaleMode.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ScaleMode::FindInitializationErrors
+
+```cpp
+void mediapipe::ScaleMode::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oScaleMode.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ScaleMode::IsInitialized
+
+```cpp
+bool mediapipe::ScaleMode::IsInitialized();
+AutoIt:
+    $oScaleMode.IsInitialized() -> retval
+```
+
+### mediapipe::ScaleMode::SerializeAsString
+
+```cpp
+std::string mediapipe::ScaleMode::SerializeAsString();
+AutoIt:
+    $oScaleMode.SerializeAsString() -> retval
+```
+
+### mediapipe::ScaleMode::SerializeToString
+
+```cpp
+void mediapipe::ScaleMode::SerializeToString( std::string* output );
+AutoIt:
+    $oScaleMode.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ScaleMode::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ScaleMode::SpaceUsedLong();
+AutoIt:
+    $oScaleMode.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ScaleMode::\_\_str\_\_
@@ -30985,6 +38174,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ImageTransformationCalculatorOptions").create() -> <mediapipe.ImageTransformationCalculatorOptions object>
 ```
 
+### mediapipe::ImageTransformationCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::ImageTransformationCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oImageTransformationCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oImageTransformationCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::ImageTransformationCalculatorOptions::Clear
 
 ```cpp
@@ -31007,6 +38212,54 @@ AutoIt:
 void mediapipe::ImageTransformationCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oImageTransformationCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oImageTransformationCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oImageTransformationCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::ImageTransformationCalculatorOptions::IsInitialized();
+AutoIt:
+    $oImageTransformationCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::ImageTransformationCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oImageTransformationCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oImageTransformationCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ImageTransformationCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oImageTransformationCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ImageTransformationCalculatorOptions::\_\_str\_\_
@@ -31221,6 +38474,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions").create() -> <mediapipe.TensorsToDetectionsCalculatorOptions object>
 ```
 
+### mediapipe::TensorsToDetectionsCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::TensorsToDetectionsCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::TensorsToDetectionsCalculatorOptions::Clear
 
 ```cpp
@@ -31243,6 +38512,54 @@ AutoIt:
 void mediapipe::TensorsToDetectionsCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTensorsToDetectionsCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::TensorsToDetectionsCalculatorOptions::IsInitialized();
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::TensorsToDetectionsCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TensorsToDetectionsCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oTensorsToDetectionsCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::\_\_str\_\_
@@ -31303,6 +38620,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping").create() -> <mediapipe.TensorsToDetectionsCalculatorOptions.TensorMapping object>
 ```
 
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ByteSizeLong
+
+```cpp
+size_t mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::ByteSizeLong();
+AutoIt:
+    $oTensorMapping.ByteSizeLong() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::CheckInitialized
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::CheckInitialized();
+AutoIt:
+    $oTensorMapping.CheckInitialized() -> None
+```
+
 ### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::Clear
 
 ```cpp
@@ -31325,6 +38658,54 @@ AutoIt:
 void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTensorMapping.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::DiscardUnknownFields
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::DiscardUnknownFields();
+AutoIt:
+    $oTensorMapping.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::FindInitializationErrors
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTensorMapping.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::IsInitialized
+
+```cpp
+bool mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::IsInitialized();
+AutoIt:
+    $oTensorMapping.IsInitialized() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SerializeAsString
+
+```cpp
+std::string mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SerializeAsString();
+AutoIt:
+    $oTensorMapping.SerializeAsString() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SerializeToString
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SerializeToString( std::string* output );
+AutoIt:
+    $oTensorMapping.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::SpaceUsedLong();
+AutoIt:
+    $oTensorMapping.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping::\_\_str\_\_
@@ -31377,6 +38758,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices").create() -> <mediapipe.TensorsToDetectionsCalculatorOptions.BoxBoundariesIndices object>
 ```
 
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ByteSizeLong
+
+```cpp
+size_t mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::ByteSizeLong();
+AutoIt:
+    $oBoxBoundariesIndices.ByteSizeLong() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::CheckInitialized
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::CheckInitialized();
+AutoIt:
+    $oBoxBoundariesIndices.CheckInitialized() -> None
+```
+
 ### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::Clear
 
 ```cpp
@@ -31399,6 +38796,54 @@ AutoIt:
 void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oBoxBoundariesIndices.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::DiscardUnknownFields
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::DiscardUnknownFields();
+AutoIt:
+    $oBoxBoundariesIndices.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::FindInitializationErrors
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oBoxBoundariesIndices.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::IsInitialized
+
+```cpp
+bool mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::IsInitialized();
+AutoIt:
+    $oBoxBoundariesIndices.IsInitialized() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SerializeAsString
+
+```cpp
+std::string mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SerializeAsString();
+AutoIt:
+    $oBoxBoundariesIndices.SerializeAsString() -> retval
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SerializeToString
+
+```cpp
+void mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SerializeToString( std::string* output );
+AutoIt:
+    $oBoxBoundariesIndices.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::SpaceUsedLong();
+AutoIt:
+    $oBoxBoundariesIndices.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::TensorsToDetectionsCalculatorOptions::BoxBoundariesIndices::\_\_str\_\_
@@ -31479,6 +38924,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::LandmarksSmoothingCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::Clear
 
 ```cpp
@@ -31503,6 +38964,54 @@ AutoIt:
     $oLandmarksSmoothingCalculatorOptions.CopyFrom( $other_message ) -> None
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::LandmarksSmoothingCalculatorOptions::IsInitialized();
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::LandmarksSmoothingCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LandmarksSmoothingCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oLandmarksSmoothingCalculatorOptions.SpaceUsedLong() -> retval
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::\_\_str\_\_
 
 ```cpp
@@ -31519,6 +39028,22 @@ AutoIt:
 static mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::get_create();
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions.NoFilter object>
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ByteSizeLong
+
+```cpp
+size_t mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::ByteSizeLong();
+AutoIt:
+    $oNoFilter.ByteSizeLong() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::CheckInitialized
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::CheckInitialized();
+AutoIt:
+    $oNoFilter.CheckInitialized() -> None
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::Clear
@@ -31543,6 +39068,54 @@ AutoIt:
 void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oNoFilter.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::DiscardUnknownFields
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::DiscardUnknownFields();
+AutoIt:
+    $oNoFilter.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::FindInitializationErrors
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNoFilter.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::IsInitialized
+
+```cpp
+bool mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::IsInitialized();
+AutoIt:
+    $oNoFilter.IsInitialized() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SerializeAsString
+
+```cpp
+std::string mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SerializeAsString();
+AutoIt:
+    $oNoFilter.SerializeAsString() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SerializeToString
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SerializeToString( std::string* output );
+AutoIt:
+    $oNoFilter.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::SpaceUsedLong();
+AutoIt:
+    $oNoFilter.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::NoFilter::\_\_str\_\_
@@ -31595,6 +39168,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions.VelocityFilter object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ByteSizeLong
+
+```cpp
+size_t mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::ByteSizeLong();
+AutoIt:
+    $oVelocityFilter.ByteSizeLong() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::CheckInitialized
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::CheckInitialized();
+AutoIt:
+    $oVelocityFilter.CheckInitialized() -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::Clear
 
 ```cpp
@@ -31617,6 +39206,54 @@ AutoIt:
 void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oVelocityFilter.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::DiscardUnknownFields
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::DiscardUnknownFields();
+AutoIt:
+    $oVelocityFilter.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::FindInitializationErrors
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oVelocityFilter.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::IsInitialized
+
+```cpp
+bool mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::IsInitialized();
+AutoIt:
+    $oVelocityFilter.IsInitialized() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SerializeAsString
+
+```cpp
+std::string mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SerializeAsString();
+AutoIt:
+    $oVelocityFilter.SerializeAsString() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SerializeToString
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SerializeToString( std::string* output );
+AutoIt:
+    $oVelocityFilter.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::SpaceUsedLong();
+AutoIt:
+    $oVelocityFilter.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::VelocityFilter::\_\_str\_\_
@@ -31685,6 +39322,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter").create() -> <mediapipe.LandmarksSmoothingCalculatorOptions.OneEuroFilter object>
 ```
 
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ByteSizeLong
+
+```cpp
+size_t mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::ByteSizeLong();
+AutoIt:
+    $oOneEuroFilter.ByteSizeLong() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::CheckInitialized
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::CheckInitialized();
+AutoIt:
+    $oOneEuroFilter.CheckInitialized() -> None
+```
+
 ### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::Clear
 
 ```cpp
@@ -31707,6 +39360,54 @@ AutoIt:
 void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oOneEuroFilter.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::DiscardUnknownFields
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::DiscardUnknownFields();
+AutoIt:
+    $oOneEuroFilter.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::FindInitializationErrors
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oOneEuroFilter.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::IsInitialized
+
+```cpp
+bool mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::IsInitialized();
+AutoIt:
+    $oOneEuroFilter.IsInitialized() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SerializeAsString
+
+```cpp
+std::string mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SerializeAsString();
+AutoIt:
+    $oOneEuroFilter.SerializeAsString() -> retval
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SerializeToString
+
+```cpp
+void mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SerializeToString( std::string* output );
+AutoIt:
+    $oOneEuroFilter.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::SpaceUsedLong();
+AutoIt:
+    $oOneEuroFilter.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LandmarksSmoothingCalculatorOptions::OneEuroFilter::\_\_str\_\_
@@ -31795,6 +39496,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.LogicCalculatorOptions").create() -> <mediapipe.LogicCalculatorOptions object>
 ```
 
+### mediapipe::LogicCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::LogicCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oLogicCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::LogicCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::LogicCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oLogicCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::LogicCalculatorOptions::Clear
 
 ```cpp
@@ -31817,6 +39534,54 @@ AutoIt:
 void mediapipe::LogicCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oLogicCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::LogicCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::LogicCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oLogicCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::LogicCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::LogicCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLogicCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::LogicCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::LogicCalculatorOptions::IsInitialized();
+AutoIt:
+    $oLogicCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::LogicCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::LogicCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oLogicCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::LogicCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::LogicCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oLogicCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::LogicCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::LogicCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oLogicCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::LogicCalculatorOptions::\_\_str\_\_
@@ -32089,6 +39854,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ThresholdingCalculatorOptions").create() -> <mediapipe.ThresholdingCalculatorOptions object>
 ```
 
+### mediapipe::ThresholdingCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::ThresholdingCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oThresholdingCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::ThresholdingCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::ThresholdingCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oThresholdingCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::ThresholdingCalculatorOptions::Clear
 
 ```cpp
@@ -32111,6 +39892,54 @@ AutoIt:
 void mediapipe::ThresholdingCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oThresholdingCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ThresholdingCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::ThresholdingCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oThresholdingCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ThresholdingCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::ThresholdingCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oThresholdingCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ThresholdingCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::ThresholdingCalculatorOptions::IsInitialized();
+AutoIt:
+    $oThresholdingCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::ThresholdingCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::ThresholdingCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oThresholdingCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::ThresholdingCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::ThresholdingCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oThresholdingCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ThresholdingCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ThresholdingCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oThresholdingCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::ThresholdingCalculatorOptions::\_\_str\_\_
@@ -32189,6 +40018,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.BeliefDecoderConfig").create() -> <mediapipe.BeliefDecoderConfig object>
 ```
 
+### mediapipe::BeliefDecoderConfig::ByteSizeLong
+
+```cpp
+size_t mediapipe::BeliefDecoderConfig::ByteSizeLong();
+AutoIt:
+    $oBeliefDecoderConfig.ByteSizeLong() -> retval
+```
+
+### mediapipe::BeliefDecoderConfig::CheckInitialized
+
+```cpp
+void mediapipe::BeliefDecoderConfig::CheckInitialized();
+AutoIt:
+    $oBeliefDecoderConfig.CheckInitialized() -> None
+```
+
 ### mediapipe::BeliefDecoderConfig::Clear
 
 ```cpp
@@ -32211,6 +40056,54 @@ AutoIt:
 void mediapipe::BeliefDecoderConfig::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oBeliefDecoderConfig.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::BeliefDecoderConfig::DiscardUnknownFields
+
+```cpp
+void mediapipe::BeliefDecoderConfig::DiscardUnknownFields();
+AutoIt:
+    $oBeliefDecoderConfig.DiscardUnknownFields() -> None
+```
+
+### mediapipe::BeliefDecoderConfig::FindInitializationErrors
+
+```cpp
+void mediapipe::BeliefDecoderConfig::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oBeliefDecoderConfig.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::BeliefDecoderConfig::IsInitialized
+
+```cpp
+bool mediapipe::BeliefDecoderConfig::IsInitialized();
+AutoIt:
+    $oBeliefDecoderConfig.IsInitialized() -> retval
+```
+
+### mediapipe::BeliefDecoderConfig::SerializeAsString
+
+```cpp
+std::string mediapipe::BeliefDecoderConfig::SerializeAsString();
+AutoIt:
+    $oBeliefDecoderConfig.SerializeAsString() -> retval
+```
+
+### mediapipe::BeliefDecoderConfig::SerializeToString
+
+```cpp
+void mediapipe::BeliefDecoderConfig::SerializeToString( std::string* output );
+AutoIt:
+    $oBeliefDecoderConfig.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::BeliefDecoderConfig::SpaceUsedLong
+
+```cpp
+size_t mediapipe::BeliefDecoderConfig::SpaceUsedLong();
+AutoIt:
+    $oBeliefDecoderConfig.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::BeliefDecoderConfig::\_\_str\_\_
@@ -32289,6 +40182,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions").create() -> <mediapipe.Lift2DFrameAnnotationTo3DCalculatorOptions object>
 ```
 
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::Clear
 
 ```cpp
@@ -32311,6 +40220,54 @@ AutoIt:
 void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oLift2DFrameAnnotationTo3DCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::IsInitialized();
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oLift2DFrameAnnotationTo3DCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::\_\_str\_\_
@@ -32381,6 +40338,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.processors.proto.ClassifierOptions").create() -> <mediapipe.tasks.components.processors.proto.ClassifierOptions object>
 ```
 
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::components::processors::proto::ClassifierOptions::ByteSizeLong();
+AutoIt:
+    $oClassifierOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::components::processors::proto::ClassifierOptions::CheckInitialized();
+AutoIt:
+    $oClassifierOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::components::processors::proto::ClassifierOptions::Clear
 
 ```cpp
@@ -32403,6 +40376,54 @@ AutoIt:
 void mediapipe::tasks::components::processors::proto::ClassifierOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oClassifierOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::components::processors::proto::ClassifierOptions::DiscardUnknownFields();
+AutoIt:
+    $oClassifierOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::components::processors::proto::ClassifierOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oClassifierOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::components::processors::proto::ClassifierOptions::IsInitialized();
+AutoIt:
+    $oClassifierOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::components::processors::proto::ClassifierOptions::SerializeAsString();
+AutoIt:
+    $oClassifierOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::components::processors::proto::ClassifierOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oClassifierOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::components::processors::proto::ClassifierOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::components::processors::proto::ClassifierOptions::SpaceUsedLong();
+AutoIt:
+    $oClassifierOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::components::processors::proto::ClassifierOptions::\_\_str\_\_
@@ -32457,6 +40478,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.Acceleration").create() -> <mediapipe.tasks.core.proto.Acceleration object>
 ```
 
+### mediapipe::tasks::core::proto::Acceleration::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::Acceleration::ByteSizeLong();
+AutoIt:
+    $oAcceleration.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::core::proto::Acceleration::CheckInitialized
+
+```cpp
+void mediapipe::tasks::core::proto::Acceleration::CheckInitialized();
+AutoIt:
+    $oAcceleration.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::core::proto::Acceleration::Clear
 
 ```cpp
@@ -32479,6 +40516,54 @@ AutoIt:
 void mediapipe::tasks::core::proto::Acceleration::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oAcceleration.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::Acceleration::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::core::proto::Acceleration::DiscardUnknownFields();
+AutoIt:
+    $oAcceleration.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::core::proto::Acceleration::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::core::proto::Acceleration::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAcceleration.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::core::proto::Acceleration::IsInitialized
+
+```cpp
+bool mediapipe::tasks::core::proto::Acceleration::IsInitialized();
+AutoIt:
+    $oAcceleration.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::core::proto::Acceleration::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::core::proto::Acceleration::SerializeAsString();
+AutoIt:
+    $oAcceleration.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::core::proto::Acceleration::SerializeToString
+
+```cpp
+void mediapipe::tasks::core::proto::Acceleration::SerializeToString( std::string* output );
+AutoIt:
+    $oAcceleration.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::core::proto::Acceleration::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::Acceleration::SpaceUsedLong();
+AutoIt:
+    $oAcceleration.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::core::proto::Acceleration::\_\_str\_\_
@@ -32541,6 +40626,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.ExternalFile").create() -> <mediapipe.tasks.core.proto.ExternalFile object>
 ```
 
+### mediapipe::tasks::core::proto::ExternalFile::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::ExternalFile::ByteSizeLong();
+AutoIt:
+    $oExternalFile.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::CheckInitialized
+
+```cpp
+void mediapipe::tasks::core::proto::ExternalFile::CheckInitialized();
+AutoIt:
+    $oExternalFile.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::core::proto::ExternalFile::Clear
 
 ```cpp
@@ -32563,6 +40664,54 @@ AutoIt:
 void mediapipe::tasks::core::proto::ExternalFile::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oExternalFile.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::core::proto::ExternalFile::DiscardUnknownFields();
+AutoIt:
+    $oExternalFile.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::core::proto::ExternalFile::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oExternalFile.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::IsInitialized
+
+```cpp
+bool mediapipe::tasks::core::proto::ExternalFile::IsInitialized();
+AutoIt:
+    $oExternalFile.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::core::proto::ExternalFile::SerializeAsString();
+AutoIt:
+    $oExternalFile.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::SerializeToString
+
+```cpp
+void mediapipe::tasks::core::proto::ExternalFile::SerializeToString( std::string* output );
+AutoIt:
+    $oExternalFile.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::core::proto::ExternalFile::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::ExternalFile::SpaceUsedLong();
+AutoIt:
+    $oExternalFile.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::core::proto::ExternalFile::\_\_str\_\_
@@ -32607,6 +40756,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.FileDescriptorMeta").create() -> <mediapipe.tasks.core.proto.FileDescriptorMeta object>
 ```
 
+### mediapipe::tasks::core::proto::FileDescriptorMeta::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::FileDescriptorMeta::ByteSizeLong();
+AutoIt:
+    $oFileDescriptorMeta.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::CheckInitialized
+
+```cpp
+void mediapipe::tasks::core::proto::FileDescriptorMeta::CheckInitialized();
+AutoIt:
+    $oFileDescriptorMeta.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::core::proto::FileDescriptorMeta::Clear
 
 ```cpp
@@ -32629,6 +40794,54 @@ AutoIt:
 void mediapipe::tasks::core::proto::FileDescriptorMeta::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oFileDescriptorMeta.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::core::proto::FileDescriptorMeta::DiscardUnknownFields();
+AutoIt:
+    $oFileDescriptorMeta.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::core::proto::FileDescriptorMeta::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFileDescriptorMeta.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::IsInitialized
+
+```cpp
+bool mediapipe::tasks::core::proto::FileDescriptorMeta::IsInitialized();
+AutoIt:
+    $oFileDescriptorMeta.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::core::proto::FileDescriptorMeta::SerializeAsString();
+AutoIt:
+    $oFileDescriptorMeta.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::SerializeToString
+
+```cpp
+void mediapipe::tasks::core::proto::FileDescriptorMeta::SerializeToString( std::string* output );
+AutoIt:
+    $oFileDescriptorMeta.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::core::proto::FileDescriptorMeta::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::FileDescriptorMeta::SpaceUsedLong();
+AutoIt:
+    $oFileDescriptorMeta.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::core::proto::FileDescriptorMeta::\_\_str\_\_
@@ -32665,6 +40878,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.FilePointerMeta").create() -> <mediapipe.tasks.core.proto.FilePointerMeta object>
 ```
 
+### mediapipe::tasks::core::proto::FilePointerMeta::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::FilePointerMeta::ByteSizeLong();
+AutoIt:
+    $oFilePointerMeta.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::CheckInitialized
+
+```cpp
+void mediapipe::tasks::core::proto::FilePointerMeta::CheckInitialized();
+AutoIt:
+    $oFilePointerMeta.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::core::proto::FilePointerMeta::Clear
 
 ```cpp
@@ -32687,6 +40916,54 @@ AutoIt:
 void mediapipe::tasks::core::proto::FilePointerMeta::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oFilePointerMeta.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::core::proto::FilePointerMeta::DiscardUnknownFields();
+AutoIt:
+    $oFilePointerMeta.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::core::proto::FilePointerMeta::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFilePointerMeta.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::IsInitialized
+
+```cpp
+bool mediapipe::tasks::core::proto::FilePointerMeta::IsInitialized();
+AutoIt:
+    $oFilePointerMeta.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::core::proto::FilePointerMeta::SerializeAsString();
+AutoIt:
+    $oFilePointerMeta.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::SerializeToString
+
+```cpp
+void mediapipe::tasks::core::proto::FilePointerMeta::SerializeToString( std::string* output );
+AutoIt:
+    $oFilePointerMeta.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::core::proto::FilePointerMeta::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::FilePointerMeta::SpaceUsedLong();
+AutoIt:
+    $oFilePointerMeta.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::core::proto::FilePointerMeta::\_\_str\_\_
@@ -32757,6 +41034,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.BaseOptions").create() -> <mediapipe.tasks.core.proto.BaseOptions object>
 ```
 
+### mediapipe::tasks::core::proto::BaseOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::BaseOptions::ByteSizeLong();
+AutoIt:
+    $oBaseOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::core::proto::BaseOptions::CheckInitialized();
+AutoIt:
+    $oBaseOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::core::proto::BaseOptions::Clear
 
 ```cpp
@@ -32779,6 +41072,54 @@ AutoIt:
 void mediapipe::tasks::core::proto::BaseOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oBaseOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::core::proto::BaseOptions::DiscardUnknownFields();
+AutoIt:
+    $oBaseOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::core::proto::BaseOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oBaseOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::core::proto::BaseOptions::IsInitialized();
+AutoIt:
+    $oBaseOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::core::proto::BaseOptions::SerializeAsString();
+AutoIt:
+    $oBaseOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::core::proto::BaseOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oBaseOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::core::proto::BaseOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::core::proto::BaseOptions::SpaceUsedLong();
+AutoIt:
+    $oBaseOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::core::proto::BaseOptions::\_\_str\_\_
@@ -32841,6 +41182,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.audio.audio_classifier.proto.AudioClassifierGraphOptions").create() -> <mediapipe.tasks.audio.audio_classifier.proto.AudioClassifierGraphOptions object>
 ```
 
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::ByteSizeLong();
+AutoIt:
+    $oAudioClassifierGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::CheckInitialized();
+AutoIt:
+    $oAudioClassifierGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::Clear
 
 ```cpp
@@ -32863,6 +41220,54 @@ AutoIt:
 void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oAudioClassifierGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oAudioClassifierGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAudioClassifierGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::IsInitialized();
+AutoIt:
+    $oAudioClassifierGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::SerializeAsString();
+AutoIt:
+    $oAudioClassifierGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oAudioClassifierGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oAudioClassifierGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::audio::audio\_classifier::proto::AudioClassifierGraphOptions::\_\_str\_\_
@@ -32917,6 +41322,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.containers.proto.Classifications").create() -> <mediapipe.tasks.components.containers.proto.Classifications object>
 ```
 
+### mediapipe::tasks::components::containers::proto::Classifications::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::Classifications::ByteSizeLong();
+AutoIt:
+    $oClassifications.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::Classifications::CheckInitialized
+
+```cpp
+void mediapipe::tasks::components::containers::proto::Classifications::CheckInitialized();
+AutoIt:
+    $oClassifications.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::components::containers::proto::Classifications::Clear
 
 ```cpp
@@ -32939,6 +41360,54 @@ AutoIt:
 void mediapipe::tasks::components::containers::proto::Classifications::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oClassifications.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::containers::proto::Classifications::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::components::containers::proto::Classifications::DiscardUnknownFields();
+AutoIt:
+    $oClassifications.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::components::containers::proto::Classifications::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::components::containers::proto::Classifications::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oClassifications.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::components::containers::proto::Classifications::IsInitialized
+
+```cpp
+bool mediapipe::tasks::components::containers::proto::Classifications::IsInitialized();
+AutoIt:
+    $oClassifications.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::Classifications::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::components::containers::proto::Classifications::SerializeAsString();
+AutoIt:
+    $oClassifications.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::Classifications::SerializeToString
+
+```cpp
+void mediapipe::tasks::components::containers::proto::Classifications::SerializeToString( std::string* output );
+AutoIt:
+    $oClassifications.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::components::containers::proto::Classifications::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::Classifications::SpaceUsedLong();
+AutoIt:
+    $oClassifications.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::components::containers::proto::Classifications::\_\_str\_\_
@@ -32975,6 +41444,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.containers.proto.ClassificationResult").create() -> <mediapipe.tasks.components.containers.proto.ClassificationResult object>
 ```
 
+### mediapipe::tasks::components::containers::proto::ClassificationResult::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::ClassificationResult::ByteSizeLong();
+AutoIt:
+    $oClassificationResult.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::ClassificationResult::CheckInitialized
+
+```cpp
+void mediapipe::tasks::components::containers::proto::ClassificationResult::CheckInitialized();
+AutoIt:
+    $oClassificationResult.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::components::containers::proto::ClassificationResult::Clear
 
 ```cpp
@@ -32997,6 +41482,54 @@ AutoIt:
 void mediapipe::tasks::components::containers::proto::ClassificationResult::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oClassificationResult.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::containers::proto::ClassificationResult::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::components::containers::proto::ClassificationResult::DiscardUnknownFields();
+AutoIt:
+    $oClassificationResult.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::components::containers::proto::ClassificationResult::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::components::containers::proto::ClassificationResult::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oClassificationResult.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::components::containers::proto::ClassificationResult::IsInitialized
+
+```cpp
+bool mediapipe::tasks::components::containers::proto::ClassificationResult::IsInitialized();
+AutoIt:
+    $oClassificationResult.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::ClassificationResult::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::components::containers::proto::ClassificationResult::SerializeAsString();
+AutoIt:
+    $oClassificationResult.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::ClassificationResult::SerializeToString
+
+```cpp
+void mediapipe::tasks::components::containers::proto::ClassificationResult::SerializeToString( std::string* output );
+AutoIt:
+    $oClassificationResult.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::components::containers::proto::ClassificationResult::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::ClassificationResult::SpaceUsedLong();
+AutoIt:
+    $oClassificationResult.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::components::containers::proto::ClassificationResult::\_\_str\_\_
@@ -33270,6 +41803,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.processors.proto.EmbedderOptions").create() -> <mediapipe.tasks.components.processors.proto.EmbedderOptions object>
 ```
 
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::components::processors::proto::EmbedderOptions::ByteSizeLong();
+AutoIt:
+    $oEmbedderOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::components::processors::proto::EmbedderOptions::CheckInitialized();
+AutoIt:
+    $oEmbedderOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::components::processors::proto::EmbedderOptions::Clear
 
 ```cpp
@@ -33292,6 +41841,54 @@ AutoIt:
 void mediapipe::tasks::components::processors::proto::EmbedderOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oEmbedderOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::components::processors::proto::EmbedderOptions::DiscardUnknownFields();
+AutoIt:
+    $oEmbedderOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::components::processors::proto::EmbedderOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEmbedderOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::components::processors::proto::EmbedderOptions::IsInitialized();
+AutoIt:
+    $oEmbedderOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::components::processors::proto::EmbedderOptions::SerializeAsString();
+AutoIt:
+    $oEmbedderOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::components::processors::proto::EmbedderOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oEmbedderOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::components::processors::proto::EmbedderOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::components::processors::proto::EmbedderOptions::SpaceUsedLong();
+AutoIt:
+    $oEmbedderOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::components::processors::proto::EmbedderOptions::\_\_str\_\_
@@ -33346,6 +41943,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.audio.audio_embedder.proto.AudioEmbedderGraphOptions").create() -> <mediapipe.tasks.audio.audio_embedder.proto.AudioEmbedderGraphOptions object>
 ```
 
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::ByteSizeLong();
+AutoIt:
+    $oAudioEmbedderGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::CheckInitialized();
+AutoIt:
+    $oAudioEmbedderGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::Clear
 
 ```cpp
@@ -33368,6 +41981,54 @@ AutoIt:
 void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oAudioEmbedderGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oAudioEmbedderGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAudioEmbedderGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::IsInitialized();
+AutoIt:
+    $oAudioEmbedderGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::SerializeAsString();
+AutoIt:
+    $oAudioEmbedderGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oAudioEmbedderGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oAudioEmbedderGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::audio::audio\_embedder::proto::AudioEmbedderGraphOptions::\_\_str\_\_
@@ -33406,6 +42067,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.containers.proto.FloatEmbedding").create() -> <mediapipe.tasks.components.containers.proto.FloatEmbedding object>
 ```
 
+### mediapipe::tasks::components::containers::proto::FloatEmbedding::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::FloatEmbedding::ByteSizeLong();
+AutoIt:
+    $oFloatEmbedding.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::FloatEmbedding::CheckInitialized
+
+```cpp
+void mediapipe::tasks::components::containers::proto::FloatEmbedding::CheckInitialized();
+AutoIt:
+    $oFloatEmbedding.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::components::containers::proto::FloatEmbedding::Clear
 
 ```cpp
@@ -33428,6 +42105,54 @@ AutoIt:
 void mediapipe::tasks::components::containers::proto::FloatEmbedding::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oFloatEmbedding.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::containers::proto::FloatEmbedding::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::components::containers::proto::FloatEmbedding::DiscardUnknownFields();
+AutoIt:
+    $oFloatEmbedding.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::components::containers::proto::FloatEmbedding::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::components::containers::proto::FloatEmbedding::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFloatEmbedding.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::components::containers::proto::FloatEmbedding::IsInitialized
+
+```cpp
+bool mediapipe::tasks::components::containers::proto::FloatEmbedding::IsInitialized();
+AutoIt:
+    $oFloatEmbedding.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::FloatEmbedding::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::components::containers::proto::FloatEmbedding::SerializeAsString();
+AutoIt:
+    $oFloatEmbedding.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::FloatEmbedding::SerializeToString
+
+```cpp
+void mediapipe::tasks::components::containers::proto::FloatEmbedding::SerializeToString( std::string* output );
+AutoIt:
+    $oFloatEmbedding.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::components::containers::proto::FloatEmbedding::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::FloatEmbedding::SpaceUsedLong();
+AutoIt:
+    $oFloatEmbedding.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::components::containers::proto::FloatEmbedding::\_\_str\_\_
@@ -33456,6 +42181,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.containers.proto.QuantizedEmbedding").create() -> <mediapipe.tasks.components.containers.proto.QuantizedEmbedding object>
 ```
 
+### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::QuantizedEmbedding::ByteSizeLong();
+AutoIt:
+    $oQuantizedEmbedding.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::CheckInitialized
+
+```cpp
+void mediapipe::tasks::components::containers::proto::QuantizedEmbedding::CheckInitialized();
+AutoIt:
+    $oQuantizedEmbedding.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::Clear
 
 ```cpp
@@ -33478,6 +42219,54 @@ AutoIt:
 void mediapipe::tasks::components::containers::proto::QuantizedEmbedding::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oQuantizedEmbedding.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::components::containers::proto::QuantizedEmbedding::DiscardUnknownFields();
+AutoIt:
+    $oQuantizedEmbedding.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::components::containers::proto::QuantizedEmbedding::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oQuantizedEmbedding.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::IsInitialized
+
+```cpp
+bool mediapipe::tasks::components::containers::proto::QuantizedEmbedding::IsInitialized();
+AutoIt:
+    $oQuantizedEmbedding.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SerializeAsString();
+AutoIt:
+    $oQuantizedEmbedding.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SerializeToString
+
+```cpp
+void mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SerializeToString( std::string* output );
+AutoIt:
+    $oQuantizedEmbedding.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::QuantizedEmbedding::SpaceUsedLong();
+AutoIt:
+    $oQuantizedEmbedding.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::components::containers::proto::QuantizedEmbedding::\_\_str\_\_
@@ -33530,6 +42319,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.containers.proto.Embedding").create() -> <mediapipe.tasks.components.containers.proto.Embedding object>
 ```
 
+### mediapipe::tasks::components::containers::proto::Embedding::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::Embedding::ByteSizeLong();
+AutoIt:
+    $oEmbedding.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::Embedding::CheckInitialized
+
+```cpp
+void mediapipe::tasks::components::containers::proto::Embedding::CheckInitialized();
+AutoIt:
+    $oEmbedding.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::components::containers::proto::Embedding::Clear
 
 ```cpp
@@ -33552,6 +42357,54 @@ AutoIt:
 void mediapipe::tasks::components::containers::proto::Embedding::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oEmbedding.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::containers::proto::Embedding::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::components::containers::proto::Embedding::DiscardUnknownFields();
+AutoIt:
+    $oEmbedding.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::components::containers::proto::Embedding::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::components::containers::proto::Embedding::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEmbedding.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::components::containers::proto::Embedding::IsInitialized
+
+```cpp
+bool mediapipe::tasks::components::containers::proto::Embedding::IsInitialized();
+AutoIt:
+    $oEmbedding.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::Embedding::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::components::containers::proto::Embedding::SerializeAsString();
+AutoIt:
+    $oEmbedding.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::Embedding::SerializeToString
+
+```cpp
+void mediapipe::tasks::components::containers::proto::Embedding::SerializeToString( std::string* output );
+AutoIt:
+    $oEmbedding.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::components::containers::proto::Embedding::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::Embedding::SpaceUsedLong();
+AutoIt:
+    $oEmbedding.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::components::containers::proto::Embedding::\_\_str\_\_
@@ -33588,6 +42441,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.containers.proto.EmbeddingResult").create() -> <mediapipe.tasks.components.containers.proto.EmbeddingResult object>
 ```
 
+### mediapipe::tasks::components::containers::proto::EmbeddingResult::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::EmbeddingResult::ByteSizeLong();
+AutoIt:
+    $oEmbeddingResult.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::EmbeddingResult::CheckInitialized
+
+```cpp
+void mediapipe::tasks::components::containers::proto::EmbeddingResult::CheckInitialized();
+AutoIt:
+    $oEmbeddingResult.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::components::containers::proto::EmbeddingResult::Clear
 
 ```cpp
@@ -33610,6 +42479,54 @@ AutoIt:
 void mediapipe::tasks::components::containers::proto::EmbeddingResult::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oEmbeddingResult.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::components::containers::proto::EmbeddingResult::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::components::containers::proto::EmbeddingResult::DiscardUnknownFields();
+AutoIt:
+    $oEmbeddingResult.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::components::containers::proto::EmbeddingResult::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::components::containers::proto::EmbeddingResult::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEmbeddingResult.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::components::containers::proto::EmbeddingResult::IsInitialized
+
+```cpp
+bool mediapipe::tasks::components::containers::proto::EmbeddingResult::IsInitialized();
+AutoIt:
+    $oEmbeddingResult.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::EmbeddingResult::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::components::containers::proto::EmbeddingResult::SerializeAsString();
+AutoIt:
+    $oEmbeddingResult.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::components::containers::proto::EmbeddingResult::SerializeToString
+
+```cpp
+void mediapipe::tasks::components::containers::proto::EmbeddingResult::SerializeToString( std::string* output );
+AutoIt:
+    $oEmbeddingResult.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::components::containers::proto::EmbeddingResult::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::components::containers::proto::EmbeddingResult::SpaceUsedLong();
+AutoIt:
+    $oEmbeddingResult.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::components::containers::proto::EmbeddingResult::\_\_str\_\_
@@ -33931,6 +42848,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rect").create() -> <mediapipe.Rect object>
 ```
 
+### mediapipe::Rect::ByteSizeLong
+
+```cpp
+size_t mediapipe::Rect::ByteSizeLong();
+AutoIt:
+    $oRect.ByteSizeLong() -> retval
+```
+
+### mediapipe::Rect::CheckInitialized
+
+```cpp
+void mediapipe::Rect::CheckInitialized();
+AutoIt:
+    $oRect.CheckInitialized() -> None
+```
+
 ### mediapipe::Rect::Clear
 
 ```cpp
@@ -33953,6 +42886,54 @@ AutoIt:
 void mediapipe::Rect::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oRect.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Rect::DiscardUnknownFields
+
+```cpp
+void mediapipe::Rect::DiscardUnknownFields();
+AutoIt:
+    $oRect.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Rect::FindInitializationErrors
+
+```cpp
+void mediapipe::Rect::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRect.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Rect::IsInitialized
+
+```cpp
+bool mediapipe::Rect::IsInitialized();
+AutoIt:
+    $oRect.IsInitialized() -> retval
+```
+
+### mediapipe::Rect::SerializeAsString
+
+```cpp
+std::string mediapipe::Rect::SerializeAsString();
+AutoIt:
+    $oRect.SerializeAsString() -> retval
+```
+
+### mediapipe::Rect::SerializeToString
+
+```cpp
+void mediapipe::Rect::SerializeToString( std::string* output );
+AutoIt:
+    $oRect.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Rect::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Rect::SpaceUsedLong();
+AutoIt:
+    $oRect.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::Rect::\_\_str\_\_
@@ -34021,6 +43002,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedRect").create() -> <mediapipe.NormalizedRect object>
 ```
 
+### mediapipe::NormalizedRect::ByteSizeLong
+
+```cpp
+size_t mediapipe::NormalizedRect::ByteSizeLong();
+AutoIt:
+    $oNormalizedRect.ByteSizeLong() -> retval
+```
+
+### mediapipe::NormalizedRect::CheckInitialized
+
+```cpp
+void mediapipe::NormalizedRect::CheckInitialized();
+AutoIt:
+    $oNormalizedRect.CheckInitialized() -> None
+```
+
 ### mediapipe::NormalizedRect::Clear
 
 ```cpp
@@ -34043,6 +43040,54 @@ AutoIt:
 void mediapipe::NormalizedRect::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oNormalizedRect.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::NormalizedRect::DiscardUnknownFields
+
+```cpp
+void mediapipe::NormalizedRect::DiscardUnknownFields();
+AutoIt:
+    $oNormalizedRect.DiscardUnknownFields() -> None
+```
+
+### mediapipe::NormalizedRect::FindInitializationErrors
+
+```cpp
+void mediapipe::NormalizedRect::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNormalizedRect.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::NormalizedRect::IsInitialized
+
+```cpp
+bool mediapipe::NormalizedRect::IsInitialized();
+AutoIt:
+    $oNormalizedRect.IsInitialized() -> retval
+```
+
+### mediapipe::NormalizedRect::SerializeAsString
+
+```cpp
+std::string mediapipe::NormalizedRect::SerializeAsString();
+AutoIt:
+    $oNormalizedRect.SerializeAsString() -> retval
+```
+
+### mediapipe::NormalizedRect::SerializeToString
+
+```cpp
+void mediapipe::NormalizedRect::SerializeToString( std::string* output );
+AutoIt:
+    $oNormalizedRect.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::NormalizedRect::SpaceUsedLong
+
+```cpp
+size_t mediapipe::NormalizedRect::SpaceUsedLong();
+AutoIt:
+    $oNormalizedRect.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::NormalizedRect::\_\_str\_\_
@@ -34113,6 +43158,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.containers.proto.LandmarksDetectionResult").create() -> <mediapipe.tasks.containers.proto.LandmarksDetectionResult object>
 ```
 
+### mediapipe::tasks::containers::proto::LandmarksDetectionResult::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::containers::proto::LandmarksDetectionResult::ByteSizeLong();
+AutoIt:
+    $oLandmarksDetectionResult.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::containers::proto::LandmarksDetectionResult::CheckInitialized
+
+```cpp
+void mediapipe::tasks::containers::proto::LandmarksDetectionResult::CheckInitialized();
+AutoIt:
+    $oLandmarksDetectionResult.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::containers::proto::LandmarksDetectionResult::Clear
 
 ```cpp
@@ -34135,6 +43196,54 @@ AutoIt:
 void mediapipe::tasks::containers::proto::LandmarksDetectionResult::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oLandmarksDetectionResult.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::containers::proto::LandmarksDetectionResult::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::containers::proto::LandmarksDetectionResult::DiscardUnknownFields();
+AutoIt:
+    $oLandmarksDetectionResult.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::containers::proto::LandmarksDetectionResult::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::containers::proto::LandmarksDetectionResult::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLandmarksDetectionResult.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::containers::proto::LandmarksDetectionResult::IsInitialized
+
+```cpp
+bool mediapipe::tasks::containers::proto::LandmarksDetectionResult::IsInitialized();
+AutoIt:
+    $oLandmarksDetectionResult.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::containers::proto::LandmarksDetectionResult::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::containers::proto::LandmarksDetectionResult::SerializeAsString();
+AutoIt:
+    $oLandmarksDetectionResult.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::containers::proto::LandmarksDetectionResult::SerializeToString
+
+```cpp
+void mediapipe::tasks::containers::proto::LandmarksDetectionResult::SerializeToString( std::string* output );
+AutoIt:
+    $oLandmarksDetectionResult.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::containers::proto::LandmarksDetectionResult::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::containers::proto::LandmarksDetectionResult::SpaceUsedLong();
+AutoIt:
+    $oLandmarksDetectionResult.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::containers::proto::LandmarksDetectionResult::\_\_str\_\_
@@ -34187,6 +43296,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.containers.proto.MultiLandmarksDetectionResult").create() -> <mediapipe.tasks.containers.proto.MultiLandmarksDetectionResult object>
 ```
 
+### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::ByteSizeLong();
+AutoIt:
+    $oMultiLandmarksDetectionResult.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::CheckInitialized
+
+```cpp
+void mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::CheckInitialized();
+AutoIt:
+    $oMultiLandmarksDetectionResult.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::Clear
 
 ```cpp
@@ -34209,6 +43334,54 @@ AutoIt:
 void mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oMultiLandmarksDetectionResult.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::DiscardUnknownFields();
+AutoIt:
+    $oMultiLandmarksDetectionResult.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMultiLandmarksDetectionResult.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::IsInitialized
+
+```cpp
+bool mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::IsInitialized();
+AutoIt:
+    $oMultiLandmarksDetectionResult.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SerializeAsString();
+AutoIt:
+    $oMultiLandmarksDetectionResult.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SerializeToString
+
+```cpp
+void mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SerializeToString( std::string* output );
+AutoIt:
+    $oMultiLandmarksDetectionResult.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::SpaceUsedLong();
+AutoIt:
+    $oMultiLandmarksDetectionResult.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::\_\_str\_\_
@@ -34498,6 +43671,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.FlowLimiterCalculatorOptions").create() -> <mediapipe.FlowLimiterCalculatorOptions object>
 ```
 
+### mediapipe::FlowLimiterCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::FlowLimiterCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oFlowLimiterCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::FlowLimiterCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::FlowLimiterCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oFlowLimiterCalculatorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::FlowLimiterCalculatorOptions::Clear
 
 ```cpp
@@ -34520,6 +43709,54 @@ AutoIt:
 void mediapipe::FlowLimiterCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oFlowLimiterCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::FlowLimiterCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::FlowLimiterCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oFlowLimiterCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::FlowLimiterCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::FlowLimiterCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFlowLimiterCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::FlowLimiterCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::FlowLimiterCalculatorOptions::IsInitialized();
+AutoIt:
+    $oFlowLimiterCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::FlowLimiterCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::FlowLimiterCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oFlowLimiterCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::FlowLimiterCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::FlowLimiterCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFlowLimiterCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::FlowLimiterCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::FlowLimiterCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oFlowLimiterCalculatorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::FlowLimiterCalculatorOptions::\_\_str\_\_
@@ -34574,6 +43811,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.text.text_classifier.proto.TextClassifierGraphOptions").create() -> <mediapipe.tasks.text.text_classifier.proto.TextClassifierGraphOptions object>
 ```
 
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::ByteSizeLong();
+AutoIt:
+    $oTextClassifierGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::CheckInitialized();
+AutoIt:
+    $oTextClassifierGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::Clear
 
 ```cpp
@@ -34596,6 +43849,54 @@ AutoIt:
 void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTextClassifierGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oTextClassifierGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTextClassifierGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::IsInitialized();
+AutoIt:
+    $oTextClassifierGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::SerializeAsString();
+AutoIt:
+    $oTextClassifierGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oTextClassifierGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oTextClassifierGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::text::text\_classifier::proto::TextClassifierGraphOptions::\_\_str\_\_
@@ -34650,6 +43951,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.text.text_embedder.proto.TextEmbedderGraphOptions").create() -> <mediapipe.tasks.text.text_embedder.proto.TextEmbedderGraphOptions object>
 ```
 
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::ByteSizeLong();
+AutoIt:
+    $oTextEmbedderGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::CheckInitialized();
+AutoIt:
+    $oTextEmbedderGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::Clear
 
 ```cpp
@@ -34672,6 +43989,54 @@ AutoIt:
 void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oTextEmbedderGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oTextEmbedderGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTextEmbedderGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::IsInitialized();
+AutoIt:
+    $oTextEmbedderGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::SerializeAsString();
+AutoIt:
+    $oTextEmbedderGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oTextEmbedderGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oTextEmbedderGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::\_\_str\_\_
@@ -34726,6 +44091,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.gesture_recognizer.proto.GestureClassifierGraphOptions").create() -> <mediapipe.tasks.vision.gesture_recognizer.proto.GestureClassifierGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::ByteSizeLong();
+AutoIt:
+    $oGestureClassifierGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::CheckInitialized();
+AutoIt:
+    $oGestureClassifierGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::Clear
 
 ```cpp
@@ -34748,6 +44129,54 @@ AutoIt:
 void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oGestureClassifierGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oGestureClassifierGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oGestureClassifierGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::IsInitialized();
+AutoIt:
+    $oGestureClassifierGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::SerializeAsString();
+AutoIt:
+    $oGestureClassifierGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oGestureClassifierGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oGestureClassifierGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions::\_\_str\_\_
@@ -34794,6 +44223,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.gesture_recognizer.proto.GestureEmbedderGraphOptions").create() -> <mediapipe.tasks.vision.gesture_recognizer.proto.GestureEmbedderGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::ByteSizeLong();
+AutoIt:
+    $oGestureEmbedderGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::CheckInitialized();
+AutoIt:
+    $oGestureEmbedderGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::Clear
 
 ```cpp
@@ -34816,6 +44261,54 @@ AutoIt:
 void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oGestureEmbedderGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oGestureEmbedderGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oGestureEmbedderGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::IsInitialized();
+AutoIt:
+    $oGestureEmbedderGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::SerializeAsString();
+AutoIt:
+    $oGestureEmbedderGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oGestureEmbedderGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oGestureEmbedderGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureEmbedderGraphOptions::\_\_str\_\_
@@ -34886,6 +44379,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.gesture_recognizer.proto.HandGestureRecognizerGraphOptions").create() -> <mediapipe.tasks.vision.gesture_recognizer.proto.HandGestureRecognizerGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::ByteSizeLong();
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::CheckInitialized();
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::Clear
 
 ```cpp
@@ -34908,6 +44417,54 @@ AutoIt:
 void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oHandGestureRecognizerGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::IsInitialized();
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::SerializeAsString();
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oHandGestureRecognizerGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::gesture\_recognizer::proto::HandGestureRecognizerGraphOptions::\_\_str\_\_
@@ -34970,6 +44527,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.hand_detector.proto.HandDetectorGraphOptions").create() -> <mediapipe.tasks.vision.hand_detector.proto.HandDetectorGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::ByteSizeLong();
+AutoIt:
+    $oHandDetectorGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::CheckInitialized();
+AutoIt:
+    $oHandDetectorGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::Clear
 
 ```cpp
@@ -34992,6 +44565,54 @@ AutoIt:
 void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oHandDetectorGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oHandDetectorGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oHandDetectorGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::IsInitialized();
+AutoIt:
+    $oHandDetectorGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::SerializeAsString();
+AutoIt:
+    $oHandDetectorGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oHandDetectorGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oHandDetectorGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::hand\_detector::proto::HandDetectorGraphOptions::\_\_str\_\_
@@ -35046,6 +44667,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.hand_landmarker.proto.HandLandmarksDetectorGraphOptions").create() -> <mediapipe.tasks.vision.hand_landmarker.proto.HandLandmarksDetectorGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::ByteSizeLong();
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::CheckInitialized();
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::Clear
 
 ```cpp
@@ -35068,6 +44705,54 @@ AutoIt:
 void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oHandLandmarksDetectorGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::IsInitialized();
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::SerializeAsString();
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oHandLandmarksDetectorGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarksDetectorGraphOptions::\_\_str\_\_
@@ -35138,6 +44823,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.hand_landmarker.proto.HandLandmarkerGraphOptions").create() -> <mediapipe.tasks.vision.hand_landmarker.proto.HandLandmarkerGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::ByteSizeLong();
+AutoIt:
+    $oHandLandmarkerGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::CheckInitialized();
+AutoIt:
+    $oHandLandmarkerGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::Clear
 
 ```cpp
@@ -35160,6 +44861,54 @@ AutoIt:
 void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oHandLandmarkerGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oHandLandmarkerGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oHandLandmarkerGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::IsInitialized();
+AutoIt:
+    $oHandLandmarkerGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::SerializeAsString();
+AutoIt:
+    $oHandLandmarkerGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oHandLandmarkerGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oHandLandmarkerGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::hand\_landmarker::proto::HandLandmarkerGraphOptions::\_\_str\_\_
@@ -35222,6 +44971,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.gesture_recognizer.proto.GestureRecognizerGraphOptions").create() -> <mediapipe.tasks.vision.gesture_recognizer.proto.GestureRecognizerGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::ByteSizeLong();
+AutoIt:
+    $oGestureRecognizerGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::CheckInitialized();
+AutoIt:
+    $oGestureRecognizerGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::Clear
 
 ```cpp
@@ -35244,6 +45009,54 @@ AutoIt:
 void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oGestureRecognizerGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oGestureRecognizerGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oGestureRecognizerGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::IsInitialized();
+AutoIt:
+    $oGestureRecognizerGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::SerializeAsString();
+AutoIt:
+    $oGestureRecognizerGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oGestureRecognizerGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oGestureRecognizerGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::gesture\_recognizer::proto::GestureRecognizerGraphOptions::\_\_str\_\_
@@ -35298,6 +45111,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.image_classifier.proto.ImageClassifierGraphOptions").create() -> <mediapipe.tasks.vision.image_classifier.proto.ImageClassifierGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::ByteSizeLong();
+AutoIt:
+    $oImageClassifierGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::CheckInitialized();
+AutoIt:
+    $oImageClassifierGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::Clear
 
 ```cpp
@@ -35320,6 +45149,54 @@ AutoIt:
 void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oImageClassifierGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oImageClassifierGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oImageClassifierGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::IsInitialized();
+AutoIt:
+    $oImageClassifierGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::SerializeAsString();
+AutoIt:
+    $oImageClassifierGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oImageClassifierGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oImageClassifierGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::image\_classifier::proto::ImageClassifierGraphOptions::\_\_str\_\_
@@ -35374,6 +45251,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.image_embedder.proto.ImageEmbedderGraphOptions").create() -> <mediapipe.tasks.vision.image_embedder.proto.ImageEmbedderGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::ByteSizeLong();
+AutoIt:
+    $oImageEmbedderGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::CheckInitialized();
+AutoIt:
+    $oImageEmbedderGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::Clear
 
 ```cpp
@@ -35396,6 +45289,54 @@ AutoIt:
 void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oImageEmbedderGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oImageEmbedderGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oImageEmbedderGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::IsInitialized();
+AutoIt:
+    $oImageEmbedderGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::SerializeAsString();
+AutoIt:
+    $oImageEmbedderGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oImageEmbedderGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oImageEmbedderGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::image\_embedder::proto::ImageEmbedderGraphOptions::\_\_str\_\_
@@ -35442,6 +45383,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.image_segmenter.proto.SegmenterOptions").create() -> <mediapipe.tasks.vision.image_segmenter.proto.SegmenterOptions object>
 ```
 
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::ByteSizeLong();
+AutoIt:
+    $oSegmenterOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::CheckInitialized();
+AutoIt:
+    $oSegmenterOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Clear
 
 ```cpp
@@ -35464,6 +45421,54 @@ AutoIt:
 void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oSegmenterOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::DiscardUnknownFields();
+AutoIt:
+    $oSegmenterOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oSegmenterOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::IsInitialized();
+AutoIt:
+    $oSegmenterOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::SerializeAsString();
+AutoIt:
+    $oSegmenterOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oSegmenterOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::SpaceUsedLong();
+AutoIt:
+    $oSegmenterOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::\_\_str\_\_
@@ -35574,6 +45579,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.image_segmenter.proto.ImageSegmenterGraphOptions").create() -> <mediapipe.tasks.vision.image_segmenter.proto.ImageSegmenterGraphOptions object>
 ```
 
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::ByteSizeLong();
+AutoIt:
+    $oImageSegmenterGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::CheckInitialized();
+AutoIt:
+    $oImageSegmenterGraphOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::Clear
 
 ```cpp
@@ -35596,6 +45617,54 @@ AutoIt:
 void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oImageSegmenterGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oImageSegmenterGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oImageSegmenterGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::IsInitialized();
+AutoIt:
+    $oImageSegmenterGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::SerializeAsString();
+AutoIt:
+    $oImageSegmenterGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oImageSegmenterGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oImageSegmenterGraphOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::\_\_str\_\_
@@ -35682,6 +45751,22 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.vision.object_detector.proto.ObjectDetectorOptions").create() -> <mediapipe.tasks.vision.object_detector.proto.ObjectDetectorOptions object>
 ```
 
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::ByteSizeLong();
+AutoIt:
+    $oObjectDetectorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::CheckInitialized();
+AutoIt:
+    $oObjectDetectorOptions.CheckInitialized() -> None
+```
+
 ### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::Clear
 
 ```cpp
@@ -35704,6 +45789,54 @@ AutoIt:
 void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oObjectDetectorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::DiscardUnknownFields();
+AutoIt:
+    $oObjectDetectorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oObjectDetectorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::IsInitialized();
+AutoIt:
+    $oObjectDetectorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::SerializeAsString();
+AutoIt:
+    $oObjectDetectorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oObjectDetectorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::SpaceUsedLong();
+AutoIt:
+    $oObjectDetectorOptions.SpaceUsedLong() -> retval
 ```
 
 ### mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions::\_\_str\_\_
@@ -39777,6 +49910,22 @@ AutoIt:
 
 ## google::protobuf::Message
 
+### google::protobuf::Message::ByteSizeLong
+
+```cpp
+size_t google::protobuf::Message::ByteSizeLong();
+AutoIt:
+    $oMessage.ByteSizeLong() -> retval
+```
+
+### google::protobuf::Message::CheckInitialized
+
+```cpp
+void google::protobuf::Message::CheckInitialized();
+AutoIt:
+    $oMessage.CheckInitialized() -> None
+```
+
 ### google::protobuf::Message::Clear
 
 ```cpp
@@ -39799,6 +49948,54 @@ AutoIt:
 void google::protobuf::Message::CopyFrom( const google::protobuf::Message* other_message );
 AutoIt:
     $oMessage.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::Message::DiscardUnknownFields
+
+```cpp
+void google::protobuf::Message::DiscardUnknownFields();
+AutoIt:
+    $oMessage.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::Message::FindInitializationErrors
+
+```cpp
+void google::protobuf::Message::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMessage.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::Message::IsInitialized
+
+```cpp
+bool google::protobuf::Message::IsInitialized();
+AutoIt:
+    $oMessage.IsInitialized() -> retval
+```
+
+### google::protobuf::Message::SerializeAsString
+
+```cpp
+std::string google::protobuf::Message::SerializeAsString();
+AutoIt:
+    $oMessage.SerializeAsString() -> retval
+```
+
+### google::protobuf::Message::SerializeToString
+
+```cpp
+void google::protobuf::Message::SerializeToString( std::string* output );
+AutoIt:
+    $oMessage.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::Message::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::Message::SpaceUsedLong();
+AutoIt:
+    $oMessage.SpaceUsedLong() -> retval
 ```
 
 ### google::protobuf::Message::\_\_str\_\_
@@ -45385,6 +55582,414 @@ AutoIt:
 void* VectorOfPacketDataType::start();
 AutoIt:
     $oVectorOfPacketDataType.start() -> retval
+```
+
+## VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult.Count
+
+```cpp
+size_t VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.Count
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::create
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult").create() -> <VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult object>
+```
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult").create( $size ) -> <VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult object>
+```
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::create( VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult").create( $other ) -> <VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult object>
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Add
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::Add( std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Items
+
+```cpp
+VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::Items();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.Items() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::Keys();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.Keys() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Remove
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::append
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::append( std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::at
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::at( size_t                                                                                                         index,
+                                                                                                          std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::clear
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::clear();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.clear() -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::empty
+
+```cpp
+bool VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::empty();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.empty() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::end
+
+```cpp
+void* VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::end();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.end() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::get\_Item
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.Item( $index ) -> retval
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult( $index ) -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::push\_back
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::push_back( std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::push\_vector
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::push_vector( VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult other );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::push_vector( VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult other,
+                                                                                                                   size_t                                                                                          count,
+                                                                                                                   size_t                                                                                          start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::put\_Item
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::put_Item( size_t                                                                                                         index,
+                                                                                                                std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult> item );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::size
+
+```cpp
+size_t VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::size();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.size() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::slice
+
+```cpp
+VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::slice( size_t start = 0,
+                                                                                                                                                                                                        size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::sort
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::sort( void*  comparator,
+                                                                                                            size_t start = 0,
+                                                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::sort\_variant
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::sort_variant( void*  comparator,
+                                                                                                                    size_t start = 0,
+                                                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::start
+
+```cpp
+void* VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult::start();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult.start() -> retval
+```
+
+## VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult.Count
+
+```cpp
+size_t VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.Count
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::create
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult").create() -> <VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult object>
+```
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult").create( $size ) -> <VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult object>
+```
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::create( VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult").create( $other ) -> <VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult object>
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Add
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::Add( std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Items
+
+```cpp
+VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::Items();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.Items() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::Keys();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.Keys() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Remove
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::append
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::append( std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::at
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::at( size_t                                                                                               index,
+                                                                                                std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::clear
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::clear();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.clear() -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::empty
+
+```cpp
+bool VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::empty();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.empty() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::end
+
+```cpp
+void* VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::end();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.end() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::get\_Item
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.Item( $index ) -> retval
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult( $index ) -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::push\_back
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::push_back( std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::push\_vector
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::push_vector( VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult other );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::push_vector( VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult other,
+                                                                                                         size_t                                                                                count,
+                                                                                                         size_t                                                                                start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::put\_Item
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::put_Item( size_t                                                                                               index,
+                                                                                                      std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> item );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::size
+
+```cpp
+size_t VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::size();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.size() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::slice
+
+```cpp
+VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::slice( size_t start = 0,
+                                                                                                                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::sort
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::sort( void*  comparator,
+                                                                                                  size_t start = 0,
+                                                                                                  size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::sort\_variant
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::sort_variant( void*  comparator,
+                                                                                                          size_t start = 0,
+                                                                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::start
+
+```cpp
+void* VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult::start();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult.start() -> retval
 ```
 
 ## VectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category

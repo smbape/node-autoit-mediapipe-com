@@ -51,6 +51,7 @@ namespace mediapipe {
 					};
 
 					class CV_EXPORTS_W AudioEmbedder : core::base_audio_task_api::BaseAudioTaskApi {
+					public:
 						using core::base_audio_task_api::BaseAudioTaskApi::BaseAudioTaskApi;
 
 						CV_WRAP static std::shared_ptr<AudioEmbedder> create_from_model_path(const std::string& model_path);

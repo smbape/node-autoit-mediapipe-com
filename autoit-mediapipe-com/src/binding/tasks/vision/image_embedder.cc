@@ -166,6 +166,10 @@ namespace mediapipe {
 							)) },
 							});
 					}
+
+					float ImageEmbedder::cosine_similarity(const Embedding& u, const Embedding& v) {
+						return cosine_similarity::cosine_similarity(u, v);
+					}
 				}
 			}
 		}

@@ -86,6 +86,7 @@ namespace mediapipe {
 					};
 
 					class CV_EXPORTS_W GestureRecognizer : core::base_vision_task_api::BaseVisionTaskApi {
+					public:
 						using core::base_vision_task_api::BaseVisionTaskApi::BaseVisionTaskApi;
 
 						CV_WRAP static std::shared_ptr<GestureRecognizer> create_from_model_path(const std::string& model_path);

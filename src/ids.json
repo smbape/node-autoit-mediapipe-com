@@ -2431,6 +2431,14 @@
         "iid": "83997a40-af0f-41d4-96e0-b6a8266cc6b9",
         "clsid": "868a5ccb-d463-406e-903e-1340591f2c47"
     },
+    "VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult": {
+        "iid": "d482822b-7443-4667-b4c5-f21170efbef8",
+        "clsid": "11591476-dcf2-4ebc-b7bd-9bef85ec743f"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult": {
+        "iid": "98657ccc-52dc-4c9e-ad60-6b5a6957b7f9",
+        "clsid": "dcbe4aa0-c1bb-4557-990c-147a6b7de38b"
+    },
     "VectorOfShared_ptrTasks_autoit_components_containers_category_Category": {
         "iid": "f4cefe01-8c5d-48d3-bc36-d25b5ee63b84",
         "clsid": "ca1e742c-9b7e-45ae-b7da-3d7336c08a70"

@@ -39,6 +39,7 @@ namespace mediapipe {
 					};
 
 					class CV_EXPORTS_W TextEmbedder : core::base_text_task_api::BaseTextTaskApi {
+					public:
 						using core::base_text_task_api::BaseTextTaskApi::BaseTextTaskApi;
 
 						CV_WRAP static std::shared_ptr<TextEmbedder> create_from_model_path(const std::string& model_path);
