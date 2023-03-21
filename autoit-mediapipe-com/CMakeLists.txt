@@ -26,9 +26,10 @@ include(cmake/RequireOpenCV.cmake)
 include(cmake/vcpkg_regex_replace_string.cmake)
 
 set(MEDIAPIPE_VERSION 0.9.1 CACHE STRING "Choose the dlib version.")
-set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.9.1" "0.8.11" "0.8.10.2")
+set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.9.2.1" "0.9.1" "0.8.11" "0.8.10.2")
 string(REPLACE "." "" MEDIAPIPE_DLLVERSION ${MEDIAPIPE_VERSION})
 
+set(MEDIAPIPE_URL_HASH_SHA256_0921 39da28504f4977bff52ee186eb76f7982e006a42a853a8b0cdd5b756cb5f8c6e)
 set(MEDIAPIPE_URL_HASH_SHA256_091 437de7632f37b95424106d689f9722c280a571fa452675a22c708cb851395ea7)
 set(MEDIAPIPE_URL_HASH_SHA256_0811 5b331a46b459900d0789967f9e26e4a64d1466bc1e74dd0712eb3077358c5473)
 set(MEDIAPIPE_URL_HASH_SHA256_08102 a312bf8e69dbe34d3b5c7ea226dcc122aa9e640cbfbf35e1be65d0150b35f1e5)
@@ -54,11 +55,11 @@ FetchContent_Declare(mediapipe
 FetchContent_Populate(mediapipe)
 
 # Tell cmake that we will need autoit-opencv-com.
-set(OPENCV_COM_VERSION 2.3.1)
+set(OPENCV_COM_VERSION 2.4.0)
 include(ExternalProject)
 ExternalProject_Add(autoit_opencv_com
   URL               https://github.com/smbape/node-autoit-opencv-com/releases/download/v${OPENCV_COM_VERSION}/autoit-opencv-${OpenCV_VERSION}-com-v${OPENCV_COM_VERSION}.7z
-  URL_HASH          SHA256=950b02da3c7c0a5f8691b11d904039bbb2170bf8525cf7f861207e07732fd277
+  URL_HASH          SHA256=94ef0c9e4105c808595f4fae135c912ca6776618c8734b2742bda76658bfc7be
   DOWNLOAD_NO_EXTRACT TRUE
   DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
   SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
@@ -76,11 +77,11 @@ find_package(Python COMPONENTS Interpreter REQUIRED)
 
 # update version in files
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "OPENCV_VERSION = \"[0-9]+\"  # [0-9]+\\.[0-9]+\\.[0-9]+" "OPENCV_VERSION = \"${OpenCV_DLLVERSION}\"  # ${OpenCV_VERSION}")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "MEDIAPIPE_VERSION = \"[0-9]+\\.[0-9]+\\.[0-9]+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "MEDIAPIPE_VERSION = \"[0-9]+(\\.[0-9]+)+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/install.bat" "\\\\x64\\\\vc[^\\\\]+\\\\bin" "\\\\${OpenCV_VC_PATH_ESC}\\\\bin")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/src/autoit_def.h" "[0-9]+\\.[0-9]+\\.[0-9]+" "${MEDIAPIPE_VERSION}")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/src/autoit_def.h" "#define AUTOIT_LIB_VERSION [0-9]+(\\.[0-9]+)+" "#define AUTOIT_LIB_VERSION ${MEDIAPIPE_VERSION}")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/udf/mediapipe_udf.au3" "opencv_world[0-9]+" "opencv_world${OpenCV_DLLVERSION}")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../src/gen.js" "MEDIAPIPE_VERSION = \"[0-9]+\\.[0-9]+\\.[0-9]+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../src/gen.js" "MEDIAPIPE_VERSION = \"[0-9]+(\\.[0-9]+)+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../src/gen.js" "OPENCV_COM_VERSION = \"[0-9]+\\.[0-9]+\\.[0-9]+\"" "OPENCV_COM_VERSION = \"${OPENCV_COM_VERSION}\"")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)\\.(exe|zip)" "${OpenCV_DOWNLOAD_NAME}")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)" "${OpenCV_OUTPUT_DIR}")
@@ -112,9 +113,9 @@ file(GLOB_RECURSE files_to_change
   ../README.md
 )
 foreach(item ${files_to_change})
-  vcpkg_regex_replace_string("${item}" "autoit_mediapipe_com-[0-9]+\\.[0-9]+\\.[0-9]+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
+  vcpkg_regex_replace_string("${item}" "autoit_mediapipe_com-[0-9]+(\\.[0-9]+)+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
   vcpkg_regex_replace_string("${item}" "(opencv_world|autoit_opencv_com|opencv_videoio_ffmpeg)[0-9]+" "\\1${OpenCV_DLLVERSION}")
-  vcpkg_regex_replace_string("${item}" "mediapipe-[0-9]+\\.[0-9]+\\.[0-9]+" "mediapipe-${MEDIAPIPE_VERSION}")
+  vcpkg_regex_replace_string("${item}" "mediapipe-[0-9]+(\\.[0-9]+)+" "mediapipe-${MEDIAPIPE_VERSION}")
   vcpkg_regex_replace_string("${item}" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+" "opencv-${OpenCV_VERSION}")
 endforeach()
 
@@ -194,6 +195,10 @@ add_library(${PROJECT_NAME}_res OBJECT ${SRC_FILES})
 target_include_directories(${PROJECT_NAME}_res PUBLIC "src")
 target_include_directories(${PROJECT_NAME}_res PUBLIC "generated")
 
+file(GLOB_RECURSE project_build_files
+  "rules_impl/*"
+)
+
 file(GLOB_RECURSE project_source_headers
   "src/*.h*"
   "generated/*.h*"
@@ -221,7 +226,7 @@ add_custom_command(OUTPUT "${PROJECT_PCH}"
   COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib_pch
   COMMAND           cmake -E touch "${PROJECT_PCH}"
   WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
-  DEPENDS           ${project_source_headers}
+  DEPENDS           ${project_source_headers} ${project_build_files}
   VERBATIM
 )
 add_custom_target(${PROJECT_NAME}_lib_pch DEPENDS "${PROJECT_PCH}")
@@ -231,7 +236,7 @@ add_custom_command(OUTPUT "${PROJECT_LIBRARY}"
   COMMAND           ${BAZEL_BUILD} mediapipe/autoit:lib
   COMMAND           cmake -E touch "${PROJECT_LIBRARY}"
   WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
-  DEPENDS           ${PROJECT_NAME}_res ${PROJECT_NAME}_lib_pch "${PROJECT_PCH}" ${project_source_files}
+  DEPENDS           ${PROJECT_NAME}_res ${PROJECT_NAME}_lib_pch "${PROJECT_PCH}" ${project_source_files} ${project_build_files}
   VERBATIM
 )
 add_custom_target(${PROJECT_NAME}_lib DEPENDS "${PROJECT_LIBRARY}")

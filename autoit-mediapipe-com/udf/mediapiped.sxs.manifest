@@ -4,13 +4,13 @@
 
     <dependency>
         <dependentAssembly>
-            <assemblyIdentity type="win32" name="autoit_opencv_com470d.sxs" version="2.3.1.0" />
+            <assemblyIdentity type="win32" name="autoit_opencv_com470d.sxs" version="2.4.0.0" />
         </dependentAssembly>
     </dependency>
 
     <dependency>
         <dependentAssembly>
-            <assemblyIdentity type="win32" name="autoit_mediapipe_com-0.9.1-470d.sxs" version="0.3.0.0" />
+            <assemblyIdentity type="win32" name="autoit_mediapipe_com-0.9.2.1-470d.sxs" version="0.3.0.0" />
         </dependentAssembly>
     </dependency>
 </assembly>

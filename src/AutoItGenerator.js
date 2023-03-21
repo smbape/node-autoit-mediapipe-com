@@ -120,11 +120,16 @@ class AutoItGenerator {
         const resources = [];
 
         for (const fqn of this.classes.keys()) {
+            const coclass = this.classes.get(fqn);
+            if (coclass.empty()) {
+                this.classes.delete(fqn);
+                continue;
+            }
+
             const docid = this.docs.length;
 
             const is_test = options.test && !options.notest.has(fqn);
 
-            const coclass = this.classes.get(fqn);
             const cotype = coclass.getClassName();
             const is_idl_class = !coclass.noidl && (coclass.is_class || coclass.is_struct);
 
@@ -1702,10 +1707,16 @@ class AutoItGenerator {
         const result = [];
 
         for (const fqn of ordered) {
+            if (!this.classes.has(fqn)) {
+                continue;
+            }
+
+            const coclass = this.classes.get(fqn);
+
             if (dependencies !== null) {
-                result.push(this.classes.get(fqn));
-            } else if (!this.classes.get(fqn).noidl) {
-                result.push(this.classes.get(fqn).iface);
+                result.push(coclass);
+            } else if (!coclass.noidl) {
+                result.push(coclass.iface);
             }
         }
 

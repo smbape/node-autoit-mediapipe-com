@@ -13,7 +13,7 @@ const vector_conversion = require("./vector_conversion");
 
 const OpenCV_VERSION = "opencv-4.7.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
-const MEDIAPIPE_VERSION = "0.9.1";
+const MEDIAPIPE_VERSION = "0.9.2.1";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
@@ -352,7 +352,7 @@ waterfall([
             print(json.dumps({"decls": all_decls, "namespaces": sorted(parser.namespaces)}, indent=4))
         `.trim().replace(/^ {12}/mg, "");
 
-        fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
+        // fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
 
         child.stdin.write(code);
         child.stdin.end();

@@ -12,25 +12,23 @@
 #include "binding/util.h"
 #include <functional>
 
-namespace mediapipe {
-	namespace autoit {
-		using PacketRawCallback = void(*)(const std::string&, const Packet&);
-		using PacketCallback = std::function<void(const std::string&, const Packet&)>;
+namespace mediapipe::autoit {
+	using PacketRawCallback = void(*)(const std::string&, const Packet&);
+	using PacketCallback = std::function<void(const std::string&, const Packet&)>;
 
-		namespace calculator_graph {
-			std::shared_ptr<CalculatorGraph> create(CalculatorGraphConfig& graph_config);
-			std::shared_ptr<CalculatorGraph> create(ValidatedGraphConfig& validated_graph_config);
-			std::shared_ptr<CalculatorGraph> create(const std::string& binary_graph_path, const std::string& graph_config_proto);
-			void add_packet_to_input_stream(CalculatorGraph* self, const std::string& stream, Packet& packet, Timestamp& timestamp);
-			const std::string get_combined_error_message(CalculatorGraph* self);
-			void observe_output_stream(
-				CalculatorGraph* self,
-				const std::string& stream_name,
-				PacketCallback callback_fn,
-				bool observe_timestamp_bounds
-			);
-			void close(CalculatorGraph* self);
-		}
+	namespace calculator_graph {
+		std::shared_ptr<CalculatorGraph> create(CalculatorGraphConfig& graph_config);
+		std::shared_ptr<CalculatorGraph> create(ValidatedGraphConfig& validated_graph_config);
+		std::shared_ptr<CalculatorGraph> create(const std::string& binary_graph_path, const std::string& graph_config_proto);
+		void add_packet_to_input_stream(CalculatorGraph* self, const std::string& stream, Packet& packet, Timestamp& timestamp);
+		const std::string get_combined_error_message(CalculatorGraph* self);
+		void observe_output_stream(
+			CalculatorGraph* self,
+			const std::string& stream_name,
+			PacketCallback callback_fn,
+			bool observe_timestamp_bounds
+		);
+		void close(CalculatorGraph* self);
 	}
 }
 

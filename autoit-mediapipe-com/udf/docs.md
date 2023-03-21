@@ -3045,6 +3045,44 @@
   - [classification\_pb2.Classification](#classification%5C_pb2classification)
   - [classification\_pb2.ClassificationList](#classification%5C_pb2classificationlist)
   - [classification\_pb2.ClassificationListCollection](#classification%5C_pb2classificationlistcollection)
+- [mediapipe::TimeSeriesHeader](#mediapipetimeseriesheader)
+  - [TimeSeriesHeader.sample\_rate](#timeseriesheadersample%5C_rate)
+  - [TimeSeriesHeader.num\_channels](#timeseriesheadernum%5C_channels)
+  - [TimeSeriesHeader.num\_samples](#timeseriesheadernum%5C_samples)
+  - [TimeSeriesHeader.packet\_rate](#timeseriesheaderpacket%5C_rate)
+  - [TimeSeriesHeader.audio\_sample\_rate](#timeseriesheaderaudio%5C_sample%5C_rate)
+  - [mediapipe::TimeSeriesHeader::get\_create](#mediapipetimeseriesheaderget%5C_create)
+  - [mediapipe::TimeSeriesHeader::ByteSizeLong](#mediapipetimeseriesheaderbytesizelong)
+  - [mediapipe::TimeSeriesHeader::CheckInitialized](#mediapipetimeseriesheadercheckinitialized)
+  - [mediapipe::TimeSeriesHeader::Clear](#mediapipetimeseriesheaderclear)
+  - [mediapipe::TimeSeriesHeader::ClearField](#mediapipetimeseriesheaderclearfield)
+  - [mediapipe::TimeSeriesHeader::CopyFrom](#mediapipetimeseriesheadercopyfrom)
+  - [mediapipe::TimeSeriesHeader::DiscardUnknownFields](#mediapipetimeseriesheaderdiscardunknownfields)
+  - [mediapipe::TimeSeriesHeader::FindInitializationErrors](#mediapipetimeseriesheaderfindinitializationerrors)
+  - [mediapipe::TimeSeriesHeader::IsInitialized](#mediapipetimeseriesheaderisinitialized)
+  - [mediapipe::TimeSeriesHeader::SerializeAsString](#mediapipetimeseriesheaderserializeasstring)
+  - [mediapipe::TimeSeriesHeader::SerializeToString](#mediapipetimeseriesheaderserializetostring)
+  - [mediapipe::TimeSeriesHeader::SpaceUsedLong](#mediapipetimeseriesheaderspaceusedlong)
+  - [mediapipe::TimeSeriesHeader::\_\_str\_\_](#mediapipetimeseriesheader%5C_%5C_str%5C_%5C_)
+- [mediapipe::MultiStreamTimeSeriesHeader](#mediapipemultistreamtimeseriesheader)
+  - [MultiStreamTimeSeriesHeader.time\_series\_header](#multistreamtimeseriesheadertime%5C_series%5C_header)
+  - [MultiStreamTimeSeriesHeader.num\_streams](#multistreamtimeseriesheadernum%5C_streams)
+  - [mediapipe::MultiStreamTimeSeriesHeader::get\_create](#mediapipemultistreamtimeseriesheaderget%5C_create)
+  - [mediapipe::MultiStreamTimeSeriesHeader::ByteSizeLong](#mediapipemultistreamtimeseriesheaderbytesizelong)
+  - [mediapipe::MultiStreamTimeSeriesHeader::CheckInitialized](#mediapipemultistreamtimeseriesheadercheckinitialized)
+  - [mediapipe::MultiStreamTimeSeriesHeader::Clear](#mediapipemultistreamtimeseriesheaderclear)
+  - [mediapipe::MultiStreamTimeSeriesHeader::ClearField](#mediapipemultistreamtimeseriesheaderclearfield)
+  - [mediapipe::MultiStreamTimeSeriesHeader::CopyFrom](#mediapipemultistreamtimeseriesheadercopyfrom)
+  - [mediapipe::MultiStreamTimeSeriesHeader::DiscardUnknownFields](#mediapipemultistreamtimeseriesheaderdiscardunknownfields)
+  - [mediapipe::MultiStreamTimeSeriesHeader::FindInitializationErrors](#mediapipemultistreamtimeseriesheaderfindinitializationerrors)
+  - [mediapipe::MultiStreamTimeSeriesHeader::IsInitialized](#mediapipemultistreamtimeseriesheaderisinitialized)
+  - [mediapipe::MultiStreamTimeSeriesHeader::SerializeAsString](#mediapipemultistreamtimeseriesheaderserializeasstring)
+  - [mediapipe::MultiStreamTimeSeriesHeader::SerializeToString](#mediapipemultistreamtimeseriesheaderserializetostring)
+  - [mediapipe::MultiStreamTimeSeriesHeader::SpaceUsedLong](#mediapipemultistreamtimeseriesheaderspaceusedlong)
+  - [mediapipe::MultiStreamTimeSeriesHeader::\_\_str\_\_](#mediapipemultistreamtimeseriesheader%5C_%5C_str%5C_%5C_)
+- [mediapipe::framework::formats::time\_series\_header\_pb2](#mediapipeframeworkformatstime%5C_series%5C_header%5C_pb2)
+  - [time\_series\_header\_pb2.TimeSeriesHeader](#time%5C_series%5C_header%5C_pb2timeseriesheader)
+  - [time\_series\_header\_pb2.MultiStreamTimeSeriesHeader](#time%5C_series%5C_header%5C_pb2multistreamtimeseriesheader)
 - [mediapipe::ConstantSidePacketCalculatorOptions](#mediapipeconstantsidepacketcalculatoroptions)
   - [ConstantSidePacketCalculatorOptions.packet](#constantsidepacketcalculatoroptionspacket)
   - [ConstantSidePacketCalculatorOptions.ext](#constantsidepacketcalculatoroptionsext)
@@ -3092,6 +3130,7 @@
   - [ConstantSidePacket.classification\_list\_value](#constantsidepacketclassification%5C_list%5C_value)
   - [ConstantSidePacket.landmark\_list\_value](#constantsidepacketlandmark%5C_list%5C_value)
   - [ConstantSidePacket.double\_value](#constantsidepacketdouble%5C_value)
+  - [ConstantSidePacket.time\_series\_header\_value](#constantsidepackettime%5C_series%5C_header%5C_value)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get\_create](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketget%5C_create)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ByteSizeLong](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketbytesizelong)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CheckInitialized](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketcheckinitialized)
@@ -3158,6 +3197,7 @@
   - [ImageTransformationCalculatorOptions.flip\_horizontally](#imagetransformationcalculatoroptionsflip%5C_horizontally)
   - [ImageTransformationCalculatorOptions.scale\_mode](#imagetransformationcalculatoroptionsscale%5C_mode)
   - [ImageTransformationCalculatorOptions.constant\_padding](#imagetransformationcalculatoroptionsconstant%5C_padding)
+  - [ImageTransformationCalculatorOptions.padding\_color](#imagetransformationcalculatoroptionspadding%5C_color)
   - [ImageTransformationCalculatorOptions.ext](#imagetransformationcalculatoroptionsext)
   - [mediapipe::ImageTransformationCalculatorOptions::get\_create](#mediapipeimagetransformationcalculatoroptionsget%5C_create)
   - [mediapipe::ImageTransformationCalculatorOptions::ByteSizeLong](#mediapipeimagetransformationcalculatoroptionsbytesizelong)
@@ -3172,8 +3212,27 @@
   - [mediapipe::ImageTransformationCalculatorOptions::SerializeToString](#mediapipeimagetransformationcalculatoroptionsserializetostring)
   - [mediapipe::ImageTransformationCalculatorOptions::SpaceUsedLong](#mediapipeimagetransformationcalculatoroptionsspaceusedlong)
   - [mediapipe::ImageTransformationCalculatorOptions::\_\_str\_\_](#mediapipeimagetransformationcalculatoroptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::ImageTransformationCalculatorOptions::Color](#mediapipeimagetransformationcalculatoroptionscolor)
+  - [Color.red](#colorred)
+  - [Color.green](#colorgreen)
+  - [Color.blue](#colorblue)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::get\_create](#mediapipeimagetransformationcalculatoroptionscolorget%5C_create)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::ByteSizeLong](#mediapipeimagetransformationcalculatoroptionscolorbytesizelong)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::CheckInitialized](#mediapipeimagetransformationcalculatoroptionscolorcheckinitialized)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::Clear](#mediapipeimagetransformationcalculatoroptionscolorclear)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::ClearField](#mediapipeimagetransformationcalculatoroptionscolorclearfield)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::CopyFrom](#mediapipeimagetransformationcalculatoroptionscolorcopyfrom)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::DiscardUnknownFields](#mediapipeimagetransformationcalculatoroptionscolordiscardunknownfields)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::FindInitializationErrors](#mediapipeimagetransformationcalculatoroptionscolorfindinitializationerrors)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::IsInitialized](#mediapipeimagetransformationcalculatoroptionscolorisinitialized)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::SerializeAsString](#mediapipeimagetransformationcalculatoroptionscolorserializeasstring)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::SerializeToString](#mediapipeimagetransformationcalculatoroptionscolorserializetostring)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::SpaceUsedLong](#mediapipeimagetransformationcalculatoroptionscolorspaceusedlong)
+  - [mediapipe::ImageTransformationCalculatorOptions::Color::\_\_str\_\_](#mediapipeimagetransformationcalculatoroptionscolor%5C_%5C_str%5C_%5C_)
 - [mediapipe::calculators::image::image\_transformation\_calculator\_pb2](#mediapipecalculatorsimageimage%5C_transformation%5C_calculator%5C_pb2)
   - [image\_transformation\_calculator\_pb2.ImageTransformationCalculatorOptions](#image%5C_transformation%5C_calculator%5C_pb2imagetransformationcalculatoroptions)
+- [mediapipe::calculators::image::image\_transformation\_calculator\_pb2::ImageTransformationCalculatorOptions](#mediapipecalculatorsimageimage%5C_transformation%5C_calculator%5C_pb2imagetransformationcalculatoroptions)
+  - [ImageTransformationCalculatorOptions.Color](#imagetransformationcalculatoroptionscolor)
 - [mediapipe::TensorsToDetectionsCalculatorOptions](#mediapipetensorstodetectionscalculatoroptions)
   - [TensorsToDetectionsCalculatorOptions.num\_classes](#tensorstodetectionscalculatoroptionsnum%5C_classes)
   - [TensorsToDetectionsCalculatorOptions.num\_boxes](#tensorstodetectionscalculatoroptionsnum%5C_boxes)
@@ -3197,6 +3256,7 @@
   - [TensorsToDetectionsCalculatorOptions.max\_results](#tensorstodetectionscalculatoroptionsmax%5C_results)
   - [TensorsToDetectionsCalculatorOptions.tensor\_mapping](#tensorstodetectionscalculatoroptionstensor%5C_mapping)
   - [TensorsToDetectionsCalculatorOptions.box\_boundaries\_indices](#tensorstodetectionscalculatoroptionsbox%5C_boundaries%5C_indices)
+  - [TensorsToDetectionsCalculatorOptions.box\_format](#tensorstodetectionscalculatoroptionsbox%5C_format)
   - [TensorsToDetectionsCalculatorOptions.ext](#tensorstodetectionscalculatoroptionsext)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::get\_create](#mediapipetensorstodetectionscalculatoroptionsget%5C_create)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::ByteSizeLong](#mediapipetensorstodetectionscalculatoroptionsbytesizelong)
@@ -3211,6 +3271,10 @@
   - [mediapipe::TensorsToDetectionsCalculatorOptions::SerializeToString](#mediapipetensorstodetectionscalculatoroptionsserializetostring)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::SpaceUsedLong](#mediapipetensorstodetectionscalculatoroptionsspaceusedlong)
   - [mediapipe::TensorsToDetectionsCalculatorOptions::\_\_str\_\_](#mediapipetensorstodetectionscalculatoroptions%5C_%5C_str%5C_%5C_)
+  - [TensorsToDetectionsCalculatorOptions.UNSPECIFIED\_](#tensorstodetectionscalculatoroptionsunspecified%5C_)
+  - [TensorsToDetectionsCalculatorOptions.YXHW\_](#tensorstodetectionscalculatoroptionsyxhw%5C_)
+  - [TensorsToDetectionsCalculatorOptions.XYWH\_](#tensorstodetectionscalculatoroptionsxywh%5C_)
+  - [TensorsToDetectionsCalculatorOptions.XYXY\_](#tensorstodetectionscalculatoroptionsxyxy%5C_)
 - [mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping](#mediapipetensorstodetectionscalculatoroptionstensormapping)
   - [TensorMapping.detections\_tensor\_index](#tensormappingdetections%5C_tensor%5C_index)
   - [TensorMapping.classes\_tensor\_index](#tensormappingclasses%5C_tensor%5C_index)
@@ -30899,6 +30963,292 @@ AutoIt:
     [propget] $oclassification_pb2.ClassificationListCollection
 ```
 
+## mediapipe::TimeSeriesHeader
+
+### TimeSeriesHeader.sample\_rate
+
+```cpp
+double mediapipe::TimeSeriesHeader::sample_rate
+AutoIt:
+    [propget, propput] $oTimeSeriesHeader.sample_rate
+```
+
+### TimeSeriesHeader.num\_channels
+
+```cpp
+int mediapipe::TimeSeriesHeader::num_channels
+AutoIt:
+    [propget, propput] $oTimeSeriesHeader.num_channels
+```
+
+### TimeSeriesHeader.num\_samples
+
+```cpp
+int mediapipe::TimeSeriesHeader::num_samples
+AutoIt:
+    [propget, propput] $oTimeSeriesHeader.num_samples
+```
+
+### TimeSeriesHeader.packet\_rate
+
+```cpp
+double mediapipe::TimeSeriesHeader::packet_rate
+AutoIt:
+    [propget, propput] $oTimeSeriesHeader.packet_rate
+```
+
+### TimeSeriesHeader.audio\_sample\_rate
+
+```cpp
+double mediapipe::TimeSeriesHeader::audio_sample_rate
+AutoIt:
+    [propget, propput] $oTimeSeriesHeader.audio_sample_rate
+```
+
+### mediapipe::TimeSeriesHeader::get\_create
+
+```cpp
+static mediapipe::TimeSeriesHeader mediapipe::TimeSeriesHeader::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.TimeSeriesHeader").create() -> <mediapipe.TimeSeriesHeader object>
+```
+
+### mediapipe::TimeSeriesHeader::ByteSizeLong
+
+```cpp
+size_t mediapipe::TimeSeriesHeader::ByteSizeLong();
+AutoIt:
+    $oTimeSeriesHeader.ByteSizeLong() -> retval
+```
+
+### mediapipe::TimeSeriesHeader::CheckInitialized
+
+```cpp
+void mediapipe::TimeSeriesHeader::CheckInitialized();
+AutoIt:
+    $oTimeSeriesHeader.CheckInitialized() -> None
+```
+
+### mediapipe::TimeSeriesHeader::Clear
+
+```cpp
+void mediapipe::TimeSeriesHeader::Clear();
+AutoIt:
+    $oTimeSeriesHeader.Clear() -> None
+```
+
+### mediapipe::TimeSeriesHeader::ClearField
+
+```cpp
+void mediapipe::TimeSeriesHeader::ClearField( const std::string& field_name );
+AutoIt:
+    $oTimeSeriesHeader.ClearField( $field_name ) -> None
+```
+
+### mediapipe::TimeSeriesHeader::CopyFrom
+
+```cpp
+void mediapipe::TimeSeriesHeader::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oTimeSeriesHeader.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::TimeSeriesHeader::DiscardUnknownFields
+
+```cpp
+void mediapipe::TimeSeriesHeader::DiscardUnknownFields();
+AutoIt:
+    $oTimeSeriesHeader.DiscardUnknownFields() -> None
+```
+
+### mediapipe::TimeSeriesHeader::FindInitializationErrors
+
+```cpp
+void mediapipe::TimeSeriesHeader::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oTimeSeriesHeader.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::TimeSeriesHeader::IsInitialized
+
+```cpp
+bool mediapipe::TimeSeriesHeader::IsInitialized();
+AutoIt:
+    $oTimeSeriesHeader.IsInitialized() -> retval
+```
+
+### mediapipe::TimeSeriesHeader::SerializeAsString
+
+```cpp
+std::string mediapipe::TimeSeriesHeader::SerializeAsString();
+AutoIt:
+    $oTimeSeriesHeader.SerializeAsString() -> retval
+```
+
+### mediapipe::TimeSeriesHeader::SerializeToString
+
+```cpp
+void mediapipe::TimeSeriesHeader::SerializeToString( std::string* output );
+AutoIt:
+    $oTimeSeriesHeader.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::TimeSeriesHeader::SpaceUsedLong
+
+```cpp
+size_t mediapipe::TimeSeriesHeader::SpaceUsedLong();
+AutoIt:
+    $oTimeSeriesHeader.SpaceUsedLong() -> retval
+```
+
+### mediapipe::TimeSeriesHeader::\_\_str\_\_
+
+```cpp
+void mediapipe::TimeSeriesHeader::__str__( std::string* output );
+AutoIt:
+    $oTimeSeriesHeader.__str__( [$output] ) -> $output
+```
+
+## mediapipe::MultiStreamTimeSeriesHeader
+
+### MultiStreamTimeSeriesHeader.time\_series\_header
+
+```cpp
+mediapipe::TimeSeriesHeader* mediapipe::MultiStreamTimeSeriesHeader::time_series_header
+AutoIt:
+    [propget] $oMultiStreamTimeSeriesHeader.time_series_header
+```
+
+### MultiStreamTimeSeriesHeader.num\_streams
+
+```cpp
+int mediapipe::MultiStreamTimeSeriesHeader::num_streams
+AutoIt:
+    [propget, propput] $oMultiStreamTimeSeriesHeader.num_streams
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::get\_create
+
+```cpp
+static mediapipe::MultiStreamTimeSeriesHeader mediapipe::MultiStreamTimeSeriesHeader::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.MultiStreamTimeSeriesHeader").create() -> <mediapipe.MultiStreamTimeSeriesHeader object>
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::ByteSizeLong
+
+```cpp
+size_t mediapipe::MultiStreamTimeSeriesHeader::ByteSizeLong();
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.ByteSizeLong() -> retval
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::CheckInitialized
+
+```cpp
+void mediapipe::MultiStreamTimeSeriesHeader::CheckInitialized();
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.CheckInitialized() -> None
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::Clear
+
+```cpp
+void mediapipe::MultiStreamTimeSeriesHeader::Clear();
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.Clear() -> None
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::ClearField
+
+```cpp
+void mediapipe::MultiStreamTimeSeriesHeader::ClearField( const std::string& field_name );
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.ClearField( $field_name ) -> None
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::CopyFrom
+
+```cpp
+void mediapipe::MultiStreamTimeSeriesHeader::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::DiscardUnknownFields
+
+```cpp
+void mediapipe::MultiStreamTimeSeriesHeader::DiscardUnknownFields();
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.DiscardUnknownFields() -> None
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::FindInitializationErrors
+
+```cpp
+void mediapipe::MultiStreamTimeSeriesHeader::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::IsInitialized
+
+```cpp
+bool mediapipe::MultiStreamTimeSeriesHeader::IsInitialized();
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.IsInitialized() -> retval
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::SerializeAsString
+
+```cpp
+std::string mediapipe::MultiStreamTimeSeriesHeader::SerializeAsString();
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.SerializeAsString() -> retval
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::SerializeToString
+
+```cpp
+void mediapipe::MultiStreamTimeSeriesHeader::SerializeToString( std::string* output );
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::SpaceUsedLong
+
+```cpp
+size_t mediapipe::MultiStreamTimeSeriesHeader::SpaceUsedLong();
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.SpaceUsedLong() -> retval
+```
+
+### mediapipe::MultiStreamTimeSeriesHeader::\_\_str\_\_
+
+```cpp
+void mediapipe::MultiStreamTimeSeriesHeader::__str__( std::string* output );
+AutoIt:
+    $oMultiStreamTimeSeriesHeader.__str__( [$output] ) -> $output
+```
+
+## mediapipe::framework::formats::time\_series\_header\_pb2
+
+### time\_series\_header\_pb2.TimeSeriesHeader
+
+```cpp
+static mediapipe::TimeSeriesHeader
+AutoIt:
+    [propget] $otime_series_header_pb2.TimeSeriesHeader
+```
+
+### time\_series\_header\_pb2.MultiStreamTimeSeriesHeader
+
+```cpp
+static mediapipe::MultiStreamTimeSeriesHeader
+AutoIt:
+    [propget] $otime_series_header_pb2.MultiStreamTimeSeriesHeader
+```
+
 ## mediapipe::ConstantSidePacketCalculatorOptions
 
 ### ConstantSidePacketCalculatorOptions.packet
@@ -31304,6 +31654,14 @@ AutoIt:
 double mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::double_value
 AutoIt:
     [propget, propput] $oConstantSidePacket.double_value
+```
+
+### ConstantSidePacket.time\_series\_header\_value
+
+```cpp
+mediapipe::TimeSeriesHeader* mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::time_series_header_value
+AutoIt:
+    [propget] $oConstantSidePacket.time_series_header_value
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get\_create
@@ -31792,6 +32150,14 @@ AutoIt:
     [propget, propput] $oImageTransformationCalculatorOptions.constant_padding
 ```
 
+### ImageTransformationCalculatorOptions.padding\_color
+
+```cpp
+mediapipe::ImageTransformationCalculatorOptions::Color* mediapipe::ImageTransformationCalculatorOptions::padding_color
+AutoIt:
+    [propget] $oImageTransformationCalculatorOptions.padding_color
+```
+
 ### ImageTransformationCalculatorOptions.ext
 
 ```cpp
@@ -31904,6 +32270,136 @@ AutoIt:
     $oImageTransformationCalculatorOptions.__str__( [$output] ) -> $output
 ```
 
+## mediapipe::ImageTransformationCalculatorOptions::Color
+
+### Color.red
+
+```cpp
+int mediapipe::ImageTransformationCalculatorOptions::Color::red
+AutoIt:
+    [propget, propput] $oColor.red
+```
+
+### Color.green
+
+```cpp
+int mediapipe::ImageTransformationCalculatorOptions::Color::green
+AutoIt:
+    [propget, propput] $oColor.green
+```
+
+### Color.blue
+
+```cpp
+int mediapipe::ImageTransformationCalculatorOptions::Color::blue
+AutoIt:
+    [propget, propput] $oColor.blue
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::get\_create
+
+```cpp
+static mediapipe::ImageTransformationCalculatorOptions::Color mediapipe::ImageTransformationCalculatorOptions::Color::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ImageTransformationCalculatorOptions.Color").create() -> <mediapipe.ImageTransformationCalculatorOptions.Color object>
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::ByteSizeLong
+
+```cpp
+size_t mediapipe::ImageTransformationCalculatorOptions::Color::ByteSizeLong();
+AutoIt:
+    $oColor.ByteSizeLong() -> retval
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::CheckInitialized
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Color::CheckInitialized();
+AutoIt:
+    $oColor.CheckInitialized() -> None
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::Clear
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Color::Clear();
+AutoIt:
+    $oColor.Clear() -> None
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::ClearField
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Color::ClearField( const std::string& field_name );
+AutoIt:
+    $oColor.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::CopyFrom
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Color::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oColor.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::DiscardUnknownFields
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Color::DiscardUnknownFields();
+AutoIt:
+    $oColor.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::FindInitializationErrors
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Color::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oColor.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::IsInitialized
+
+```cpp
+bool mediapipe::ImageTransformationCalculatorOptions::Color::IsInitialized();
+AutoIt:
+    $oColor.IsInitialized() -> retval
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::SerializeAsString
+
+```cpp
+std::string mediapipe::ImageTransformationCalculatorOptions::Color::SerializeAsString();
+AutoIt:
+    $oColor.SerializeAsString() -> retval
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::SerializeToString
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Color::SerializeToString( std::string* output );
+AutoIt:
+    $oColor.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ImageTransformationCalculatorOptions::Color::SpaceUsedLong();
+AutoIt:
+    $oColor.SpaceUsedLong() -> retval
+```
+
+### mediapipe::ImageTransformationCalculatorOptions::Color::\_\_str\_\_
+
+```cpp
+void mediapipe::ImageTransformationCalculatorOptions::Color::__str__( std::string* output );
+AutoIt:
+    $oColor.__str__( [$output] ) -> $output
+```
+
 ## mediapipe::calculators::image::image\_transformation\_calculator\_pb2
 
 ### image\_transformation\_calculator\_pb2.ImageTransformationCalculatorOptions
@@ -31912,6 +32408,16 @@ AutoIt:
 static mediapipe::ImageTransformationCalculatorOptions
 AutoIt:
     [propget] $oimage_transformation_calculator_pb2.ImageTransformationCalculatorOptions
+```
+
+## mediapipe::calculators::image::image\_transformation\_calculator\_pb2::ImageTransformationCalculatorOptions
+
+### ImageTransformationCalculatorOptions.Color
+
+```cpp
+static mediapipe::ImageTransformationCalculatorOptions::Color
+AutoIt:
+    [propget] $oImageTransformationCalculatorOptions.Color
 ```
 
 ## mediapipe::TensorsToDetectionsCalculatorOptions
@@ -32092,6 +32598,14 @@ AutoIt:
     [propget] $oTensorsToDetectionsCalculatorOptions.box_boundaries_indices
 ```
 
+### TensorsToDetectionsCalculatorOptions.box\_format
+
+```cpp
+mediapipe::TensorsToDetectionsCalculatorOptions::BoxFormat mediapipe::TensorsToDetectionsCalculatorOptions::box_format
+AutoIt:
+    [propget, propput] $oTensorsToDetectionsCalculatorOptions.box_format
+```
+
 ### TensorsToDetectionsCalculatorOptions.ext
 
 ```cpp
@@ -32202,6 +32716,38 @@ AutoIt:
 void mediapipe::TensorsToDetectionsCalculatorOptions::__str__( std::string* output );
 AutoIt:
     $oTensorsToDetectionsCalculatorOptions.__str__( [$output] ) -> $output
+```
+
+### TensorsToDetectionsCalculatorOptions.UNSPECIFIED\_
+
+```cpp
+static int mediapipe::TensorsToDetectionsCalculatorOptions::UNSPECIFIED
+AutoIt:
+    [propget] $oTensorsToDetectionsCalculatorOptions.UNSPECIFIED_
+```
+
+### TensorsToDetectionsCalculatorOptions.YXHW\_
+
+```cpp
+static int mediapipe::TensorsToDetectionsCalculatorOptions::YXHW
+AutoIt:
+    [propget] $oTensorsToDetectionsCalculatorOptions.YXHW_
+```
+
+### TensorsToDetectionsCalculatorOptions.XYWH\_
+
+```cpp
+static int mediapipe::TensorsToDetectionsCalculatorOptions::XYWH
+AutoIt:
+    [propget] $oTensorsToDetectionsCalculatorOptions.XYWH_
+```
+
+### TensorsToDetectionsCalculatorOptions.XYXY\_
+
+```cpp
+static int mediapipe::TensorsToDetectionsCalculatorOptions::XYXY
+AutoIt:
+    [propget] $oTensorsToDetectionsCalculatorOptions.XYXY_
 ```
 
 ## mediapipe::TensorsToDetectionsCalculatorOptions::TensorMapping

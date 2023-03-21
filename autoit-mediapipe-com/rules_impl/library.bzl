@@ -304,6 +304,12 @@ def add_com_library(name, intdir, compilation_mode):
             ],
             "//conditions:default": [],
         }),
+        data = [
+            "//mediapipe/tasks/testdata/text:bert_text_classifier_models",
+            "//mediapipe/tasks/testdata/text:text_classifier_models",
+            "//mediapipe/tasks/testdata/text:mobilebert_embedding_model",
+            "//mediapipe/tasks/testdata/text:regex_embedding_with_metadata",
+        ],
         deps = [
             "@windows_opencv//:opencv",
 
@@ -375,8 +381,8 @@ def add_com_library(name, intdir, compilation_mode):
             "//mediapipe/framework/formats:detection_cc_proto",
 
             # _framework_bindings
-            ":builtin_calculators",
-            ":builtin_task_graphs",
+            "//mediapipe/python:builtin_calculators",
+            "//mediapipe/python:builtin_task_graphs",
 
             # Type registration.
             "//mediapipe/framework:basic_types_registration",
@@ -389,45 +395,25 @@ def add_com_library(name, intdir, compilation_mode):
             # solution_base
             "//mediapipe/calculators/util:logic_calculator_cc_proto",
 
-            # task_runner
-            # "//mediapipe/framework:calculator_cc_proto",
-            "//mediapipe/framework/api2:builder",
-            # "//mediapipe/framework/port:parse_text_proto",
-            "//mediapipe/tasks/cc/core:mediapipe_builtin_op_resolver",
-            "//mediapipe/tasks/cc/core:task_runner",
-            "@org_tensorflow//tensorflow/lite/core/api:op_resolver",
-
-            # rect
-            "//mediapipe/framework/formats:rect_cc_proto",
-
-            # landmark
-            "//mediapipe/framework/formats:landmark_cc_proto",
-
-            # landmark_detection_result
-            # ":landmark",
-            # ":rect",
-            "//mediapipe/framework/formats:classification_cc_proto",
-            # "//mediapipe/framework/formats:landmark_cc_proto",
+            # tasks/components/containers
             "//mediapipe/tasks/cc/components/containers/proto:landmarks_detection_result_cc_proto",
 
-            # category
-            # "//mediapipe/framework/formats:classification_cc_proto",
+            # tasks/audio
+            "//mediapipe/tasks/cc/audio/audio_classifier:audio_classifier",
+            "//mediapipe/tasks/cc/audio/audio_embedder:audio_embedder",
 
-            # detections
-            # ":bounding_box",
-            # ":category",
-            # "//mediapipe/framework/formats:detection_cc_proto",
-            "//mediapipe/framework/formats:location_data_cc_proto",
+            # tasks/text
+            "//mediapipe/tasks/cc/text/text_classifier:text_classifier",
+            "//mediapipe/tasks/cc/text/text_embedder:text_embedder",
 
-            # classification_result
-            # ":category",
-            # "//mediapipe/framework/formats:classification_cc_proto",
-            "//mediapipe/tasks/cc/components/containers/proto:classifications_cc_proto",
-
-            # embedding_result
-            "//mediapipe/tasks/cc/components/containers/proto:embeddings_cc_proto",
-
-            # classifier_options
-            "//mediapipe/tasks/cc/components/processors/proto:classifier_options_cc_proto",
+            # tasks/vision
+            "//mediapipe/tasks/cc/vision/face_detector:face_detector_graph",
+            "//mediapipe/tasks/cc/vision/gesture_recognizer:gesture_recognizer",
+            "//mediapipe/tasks/cc/vision/hand_detector:hand_detector_graph",
+            "//mediapipe/tasks/cc/vision/hand_landmarker:hand_landmarker",
+            "//mediapipe/tasks/cc/vision/image_classifier:image_classifier",
+            "//mediapipe/tasks/cc/vision/image_embedder:image_embedder",
+            "//mediapipe/tasks/cc/vision/image_segmenter:image_segmenter",
+            "//mediapipe/tasks/cc/vision/object_detector:object_detector",
         ],
     )

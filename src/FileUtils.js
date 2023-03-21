@@ -232,6 +232,8 @@ const deleteFiles = (directory, files, options, cb) => {
                     return;
                 }
 
+                console.log("delete file", filename);
+
                 fs.unlink(filename, next);
             }, next);
         }

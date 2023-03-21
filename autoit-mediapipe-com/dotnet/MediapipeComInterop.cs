@@ -138,8 +138,8 @@ public static class MediapipeComInterop
     public static void DllClose()
     {
         FreeLibrary(hMediapipeCom);
-        FreeLibrary(hOpenCvWorld);
         FreeLibrary(hOpenCvFfmpeg);
+        FreeLibrary(hOpenCvWorld);
     }
 
     public static bool DllActivateManifest(string manifest = null)
