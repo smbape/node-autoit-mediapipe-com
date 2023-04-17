@@ -22,16 +22,16 @@ _Mediapipe_SetResourceDir()
 Global $cv = _OpenCV_get()
 
 Global $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
-_AssertTrue(IsObj($text_format), "Failed to load google.protobuf.text_format")
+_AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
 Global $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
-_AssertTrue(IsObj($detection_pb2), "Failed to load mediapipe.framework.formats.detection_pb2")
+_AssertIsObj($detection_pb2, "Failed to load mediapipe.framework.formats.detection_pb2")
 
 Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertTrue(IsObj($landmark_pb2), "Failed to load mediapipe.framework.formats.landmark_pb2")
+_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
 
 Global $drawing_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
-_AssertTrue(IsObj($drawing_utils), "Failed to load mediapipe.autoit.solutions.drawing_utils")
+_AssertIsObj($drawing_utils, "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
 Global $DEFAULT_BBOX_DRAWING_SPEC = $drawing_utils.DrawingSpec()
 Global $DEFAULT_CONNECTION_DRAWING_SPEC = $drawing_utils.DrawingSpec()

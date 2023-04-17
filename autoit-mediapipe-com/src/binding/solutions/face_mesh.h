@@ -8,7 +8,7 @@ namespace mediapipe::autoit::solutions::face_mesh {
 	static const int FACEMESH_NUM_LANDMARKS = 468;
 	static const int FACEMESH_NUM_LANDMARKS_WITH_IRISES = 478;
 
-	class CV_EXPORTS_W FaceMesh : public SolutionBase {
+	class CV_EXPORTS_W FaceMesh : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
 		CV_WRAP FaceMesh(
 			bool static_image_mode = false,

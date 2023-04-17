@@ -20,37 +20,37 @@ OnAutoItExitRegister("_OnAutoItExit")
 _Mediapipe_SetResourceDir()
 
 Global $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
-_AssertTrue(IsObj($text_format), "Failed to load google.protobuf.text_format")
+_AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
 Global $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
-_AssertTrue(IsObj($detection_pb2), "Failed to load mediapipe.framework.formats.detection_pb2")
+_AssertIsObj($detection_pb2, "Failed to load mediapipe.framework.formats.detection_pb2")
 
 Global $packet_creator = _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator")
-_AssertTrue(IsObj($packet_creator), "Failed to load mediapipe.autoit")
+_AssertIsObj($packet_creator, "Failed to load mediapipe.autoit")
 
 Global $packet_getter = _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter")
-_AssertTrue(IsObj($packet_getter), "Failed to load mediapipe.autoit")
+_AssertIsObj($packet_getter, "Failed to load mediapipe.autoit")
 
 Global $calculator_graph = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.calculator_graph")
-_AssertTrue(IsObj($calculator_graph), "Failed to load mediapipe.autoit._framework_bindings")
+_AssertIsObj($calculator_graph, "Failed to load mediapipe.autoit._framework_bindings")
 
 Global $image_ = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
-_AssertTrue(IsObj($image_), "Failed to load mediapipe.autoit._framework_bindings")
+_AssertIsObj($image_, "Failed to load mediapipe.autoit._framework_bindings")
 
 Global $image_frame = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image_frame")
-_AssertTrue(IsObj($image_frame), "Failed to load mediapipe.autoit._framework_bindings")
+_AssertIsObj($image_frame, "Failed to load mediapipe.autoit._framework_bindings")
 
 Global $packet = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.packet")
-_AssertTrue(IsObj($packet), "Failed to load mediapipe.autoit._framework_bindings")
+_AssertIsObj($packet, "Failed to load mediapipe.autoit._framework_bindings")
 
 Global $CalculatorGraph = $calculator_graph.CalculatorGraph
-_AssertTrue(IsObj($CalculatorGraph), "Failed to load calculator_graph.CalculatorGraph")
+_AssertIsObj($CalculatorGraph, "Failed to load calculator_graph.CalculatorGraph")
 
 Global $Image = $image_.Image
-_AssertTrue(IsObj($Image), "Failed to load image.Image")
+_AssertIsObj($Image, "Failed to load image.Image")
 
 Global $ImageFrame = $image_frame.ImageFrame
-_AssertTrue(IsObj($ImageFrame), "Failed to load image_frame.ImageFrame")
+_AssertIsObj($ImageFrame, "Failed to load image_frame.ImageFrame")
 
 Test()
 
@@ -227,7 +227,7 @@ Func test_detection_proto_packet()
 	Local $p = $packet_creator.create_proto($detection).at(100)
 
 	Local $cmessage = _Mediapipe_ObjCreate("google.protobuf.autoit.cmessage")
-	_AssertTrue(IsObj($cmessage), "Failed to load google.protobuf.autoit.cmessage")
+	_AssertIsObj($cmessage, "Failed to load google.protobuf.autoit.cmessage")
 
 	Local $scores = $cmessage.GetFieldValue($detection, "score")
 	_AssertEqual($scores.size(), 2)

@@ -102,15 +102,15 @@ const writeFiles = (files, options, cb) => {
         next => {
             // write files
             eachOfLimit(files.keys(), cpus, (filename, i, next) => {
-                if (options.save === false) {
-                    next();
-                    return;
-                }
-
                 const has_doc_toc = options.toc !== false && filename.endsWith(".md");
 
                 waterfall([
                     next => {
+                        if (options.save === false) {
+                            next();
+                            return;
+                        }
+
                         mkdirp(sysPath.dirname(filename)).then(performed => {
                             next();
                         }, next);
@@ -136,6 +136,10 @@ const writeFiles = (files, options, cb) => {
                         }
 
                         console.log("write file", options.output, sysPath.relative(options.output, filename));
+                        if (options.save === false) {
+                            next(null, false);
+                            return;
+                        }
 
                         fs.writeFile(filename, content, err => {
                             next(err, true);
@@ -183,6 +187,11 @@ const writeFiles = (files, options, cb) => {
         },
 
         next => {
+            if (options.save === false) {
+                next();
+                return;
+            }
+
             // generate doctoc
             doctoc.transformAndSave(doctoc_to_generate, next);
         },
@@ -233,6 +242,10 @@ const deleteFiles = (directory, files, options, cb) => {
                 }
 
                 console.log("delete file", filename);
+                if (options.save === false) {
+                    next();
+                    return;
+                }
 
                 fs.unlink(filename, next);
             }, next);

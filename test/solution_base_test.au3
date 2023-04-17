@@ -20,16 +20,16 @@ OnAutoItExitRegister("_OnAutoItExit")
 _Mediapipe_SetResourceDir()
 
 Global $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
-_AssertTrue(IsObj($text_format), "Failed to load google.protobuf.text_format")
+_AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
 Global $calculator_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.calculator_pb2")
-_AssertTrue(IsObj($calculator_pb2), "Failed to load mediapipe.framework.calculator_pb2")
+_AssertIsObj($calculator_pb2, "Failed to load mediapipe.framework.calculator_pb2")
 
 Global $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
-_AssertTrue(IsObj($detection_pb2), "Failed to load mediapipe.framework.formats.detection_pb2")
+_AssertIsObj($detection_pb2, "Failed to load mediapipe.framework.formats.detection_pb2")
 
 Global $solution_base = _Mediapipe_ObjCreate("mediapipe.autoit.solution_base")
-_AssertTrue(IsObj($solution_base), "Failed to load mediapipe.autoit.solution_base")
+_AssertIsObj($solution_base, "Failed to load mediapipe.autoit.solution_base")
 
 Global Const $CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG = "" & @CRLF & _
 		"  input_stream: 'image_in'" & @CRLF & _

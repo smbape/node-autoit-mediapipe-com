@@ -20,16 +20,16 @@ OnAutoItExitRegister("_OnAutoItExit")
 _Mediapipe_SetResourceDir()
 
 Global Const $image_frame = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image_frame")
-_AssertTrue(IsObj($image_frame), "Failed to load mediapipe.autoit._framework_bindings.image_frame")
+_AssertIsObj($image_frame, "Failed to load mediapipe.autoit._framework_bindings.image_frame")
 
 Global Const $ImageFrame = $image_frame.ImageFrame
-_AssertTrue(IsObj($ImageFrame), "Failed to load image_frame.ImageFrame")
+_AssertIsObj($ImageFrame, "Failed to load image_frame.ImageFrame")
 
 Test()
 
 Func Test()
 	Local Const $cv = _OpenCV_get()
-	_AssertTrue(IsObj($cv), "Failed to load opencv")
+	_AssertIsObj($cv, "Failed to load opencv")
 
 	test_create_image_frame_from_gray_cv_mat()
 	test_create_image_frame_from_rgb_cv_mat()

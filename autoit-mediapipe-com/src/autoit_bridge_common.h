@@ -272,7 +272,7 @@ const HRESULT autoit_to(VARIANT const* const& in_val, std::optional<_Ty1>& out_v
 	}
 
 	_Ty1 value;
-	HRESULT hr = autoit_to(in_val, out_val);
+	HRESULT hr = autoit_to(in_val, value);
 	out_val.emplace(std::move(value));
 	return hr;
 }

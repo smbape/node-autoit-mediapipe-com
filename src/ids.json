@@ -227,6 +227,518 @@
         "iid": "e07404f8-424b-4698-ae00-a85514cc9502",
         "clsid": "d383e98e-656c-4164-845a-bcfd578f90ce"
     },
+    "mediapipe::tasks": {
+        "iid": "18af576f-c7e8-4f46-b4b0-00e16c827e2c",
+        "clsid": "0a454e48-b181-463f-b106-89698a20c09e"
+    },
+    "mediapipe::tasks::autoit": {
+        "iid": "19853ffa-abf4-4ca6-8bce-ab5914c39f7b",
+        "clsid": "66a3f43b-570f-4088-bd3a-30c3d7a1ff2a"
+    },
+    "mediapipe::tasks::autoit::audio": {
+        "iid": "9df1918a-b56e-4db4-8e0c-056d3170057d",
+        "clsid": "e4af84df-38e1-46b4-8b04-a329fc0893c1"
+    },
+    "mediapipe::tasks::autoit::audio::audio_classifier": {
+        "iid": "235638f0-436e-436f-992b-6dcb5c4e65fd",
+        "clsid": "d45389d0-1277-4ed4-a801-498aa53ac616"
+    },
+    "mediapipe::autoit::audio": {
+        "iid": "94983e07-a783-4dcd-b747-a7457be21bf8",
+        "clsid": "2ab477e2-5bc1-4497-8866-05d36468e0fb"
+    },
+    "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions": {
+        "iid": "337f3952-dc61-48b7-8461-60cca7296d2c",
+        "clsid": "ba964dee-d883-47c1-92f7-424925864033"
+    },
+    "mediapipe::autoit::audio::audio_classifier": {
+        "iid": "3263d74b-fe67-46c7-abcc-5b7d6dbfce23",
+        "clsid": "e4cce824-8a5d-4acc-bfd4-32b89f4d5ba8"
+    },
+    "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier": {
+        "iid": "2fe3ce26-766d-4c18-96a7-54cb45780c0f",
+        "clsid": "627664ae-6388-4542-af06-7515e800b763"
+    },
+    "mediapipe::tasks::autoit::audio::audio_embedder": {
+        "iid": "b4eb2ad5-9971-4a3d-9fba-84e0849039c9",
+        "clsid": "ebcd53cc-c1a3-47cd-b362-f4910793e74b"
+    },
+    "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions": {
+        "iid": "f8f134c2-721c-4a5b-ac4b-0f4fb17a4044",
+        "clsid": "2109ad11-d210-405a-a454-7797a332703f"
+    },
+    "mediapipe::autoit::audio::audio_embedder": {
+        "iid": "d50f6f06-0473-42f5-9b5d-b65ef00afc8d",
+        "clsid": "2a9826de-accb-4173-af61-a392718be23c"
+    },
+    "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder": {
+        "iid": "c3b37f16-3f9e-401a-b15c-e78435ecda2a",
+        "clsid": "807c55db-6d66-4bb2-b0cb-6ab5d3e8a1c8"
+    },
+    "mediapipe::tasks::autoit::audio::core": {
+        "iid": "2bb84306-9f30-484a-b7a1-d5f4a618a90e",
+        "clsid": "ac6cc423-4c1d-43f0-8099-c88a7e34d8e5"
+    },
+    "mediapipe::tasks::autoit::audio::core::audio_task_running_mode": {
+        "iid": "9a0586ce-52cf-4b5e-8073-517ca49c52a9",
+        "clsid": "8b22625c-5e67-40c2-9ae1-6805a7f3116b"
+    },
+    "mediapipe::autoit::audio::core": {
+        "iid": "8017857f-0c83-4a88-a9e5-fb6065c85f0f",
+        "clsid": "bf5de45d-4326-47bc-8217-736b722f1a2a"
+    },
+    "mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode": {
+        "iid": "415b6488-b7bc-4054-b739-40da3801d31c",
+        "clsid": "bdaf3f72-5561-4e92-bb97-c667f2933ff9"
+    },
+    "mediapipe::autoit::audio::core::audio_task_running_mode": {
+        "iid": "41f2317f-39a8-47e9-9a8e-7a03f97e2595",
+        "clsid": "1a5dbd97-8a26-4cdc-9827-c6b3dd942e1a"
+    },
+    "mediapipe::tasks::autoit::audio::core::base_audio_task_api": {
+        "iid": "e5c8c9e1-a177-4efb-87ed-3b2067026838",
+        "clsid": "21b73d7c-3037-40a4-95b8-7e553f277fdb"
+    },
+    "mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi": {
+        "iid": "121de162-f811-4c0d-8cd2-e765f0b04682",
+        "clsid": "67a155ac-861e-4893-b973-d7a981a69cc0"
+    },
+    "mediapipe::autoit::audio::core::base_audio_task_api": {
+        "iid": "3b2674c5-66e9-4af7-a6a5-5848173cae9c",
+        "clsid": "ac1d7805-78bf-4174-bca0-157d2264905d"
+    },
+    "mediapipe::tasks::autoit::components": {
+        "iid": "cd7e2257-f6f8-4811-baa4-d863b059d4ef",
+        "clsid": "d5141606-9084-4d4b-b618-cac43aaa9f98"
+    },
+    "mediapipe::tasks::autoit::components::containers": {
+        "iid": "37dca59e-63ec-460e-a076-087421abc664",
+        "clsid": "9b20df9c-a74f-4fc1-806b-86fad74fee41"
+    },
+    "mediapipe::autoit::components": {
+        "iid": "999f40e8-5c83-446d-9d20-ce3cea18819c",
+        "clsid": "2c15c788-9377-4ab5-805f-f8790943363b"
+    },
+    "mediapipe::tasks::autoit::components::containers::audio_data": {
+        "iid": "8f8d62af-80d1-4622-b7d5-b6ed001cef35",
+        "clsid": "e5201d40-55e6-4c0a-a548-7a7ff4fb0e65"
+    },
+    "mediapipe::autoit::components::containers": {
+        "iid": "bc076759-f98d-4d87-bd3d-2b0b551fe25a",
+        "clsid": "5645269a-f954-4c8e-931f-db7b818d108c"
+    },
+    "mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat": {
+        "iid": "f297a97a-329f-4bf6-8655-7d3e0df5b55e",
+        "clsid": "e398e9e2-e90d-4d65-831e-befffd06baef"
+    },
+    "mediapipe::autoit::components::containers::audio_data": {
+        "iid": "6605e6f9-435a-4cbc-95dd-b56d5d9e82de",
+        "clsid": "7466a7f9-e2b2-4c6a-9d8f-eaaf0dd1f593"
+    },
+    "mediapipe::tasks::autoit::components::containers::audio_data::AudioData": {
+        "iid": "23d3a952-33a3-43fb-849d-7f3d44667aa7",
+        "clsid": "63a795d1-22ab-4c06-8023-03b3caf6d24b"
+    },
+    "mediapipe::tasks::autoit::components::containers::bounding_box": {
+        "iid": "dd77f3a1-5172-4455-8788-451afd5108a5",
+        "clsid": "c4811ef3-ba71-4f7e-96b2-e7bb24f6fb38"
+    },
+    "mediapipe::tasks::autoit::components::containers::bounding_box::BoundingBox": {
+        "iid": "a9c18fdc-7b72-4301-a50a-366b11ecf58b",
+        "clsid": "614e0845-02b3-4bb4-a7ba-550fe172c96c"
+    },
+    "mediapipe::autoit::components::containers::bounding_box": {
+        "iid": "52945dbd-d854-4fe5-b244-319f6cdb122f",
+        "clsid": "9d04f79c-27b9-4ec3-8113-08766f36b7ba"
+    },
+    "mediapipe::tasks::autoit::components::containers::category": {
+        "iid": "6f7def6c-382d-4416-9281-ebc4d7f8c467",
+        "clsid": "75a496d9-de8b-4724-b79b-6aab789533b3"
+    },
+    "mediapipe::tasks::autoit::components::containers::category::Category": {
+        "iid": "0c1d46a0-8bd9-4a13-b3ed-66005c593060",
+        "clsid": "bb0485e5-3fdc-430b-b4e7-0312ab093e1b"
+    },
+    "mediapipe::autoit::components::containers::category": {
+        "iid": "b1e6c51e-a654-42ae-b3f1-198f13653ce3",
+        "clsid": "0f716d90-c4b8-4a87-8d1b-ac00ca753389"
+    },
+    "mediapipe::tasks::autoit::components::containers::classification_result": {
+        "iid": "bd2d25da-d842-4940-9af9-24f1582e23e5",
+        "clsid": "870d5956-abc1-4cfd-aa2f-b76ac7c6c2b3"
+    },
+    "mediapipe::tasks::autoit::components::containers::classification_result::Classifications": {
+        "iid": "578d62af-2516-4a3b-8550-a220c07d7f18",
+        "clsid": "9411dfe8-bcd2-4095-b874-3ecf1d0b6258"
+    },
+    "mediapipe::autoit::components::containers::classification_result": {
+        "iid": "3b3458b5-6594-45e8-9520-8424cb4b9abc",
+        "clsid": "7ecf7dfd-53f8-4b3b-acf6-30cf03c317f1"
+    },
+    "mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult": {
+        "iid": "f6aa78da-a183-4548-8424-18262b462270",
+        "clsid": "1de581b0-6788-44f2-9a23-d435049f4fc4"
+    },
+    "mediapipe::tasks::autoit::components::containers::detections": {
+        "iid": "a36744ce-c208-4ff3-94db-4092467d3a00",
+        "clsid": "d4576fc0-a81a-4059-b871-77ca2772b7c0"
+    },
+    "mediapipe::tasks::autoit::components::containers::detections::Detection": {
+        "iid": "9e041b0d-066c-42ae-a053-593c46b3091c",
+        "clsid": "9f7b6ba6-692a-4927-a361-dc5329facd4a"
+    },
+    "mediapipe::autoit::components::containers::detections": {
+        "iid": "1c2f7928-6447-4b0f-b375-6c1967231316",
+        "clsid": "280526e1-6020-4209-8ad7-8e9a946c5d64"
+    },
+    "mediapipe::tasks::autoit::components::containers::detections::DetectionResult": {
+        "iid": "c831b0ff-9a91-42b1-89ba-62fbaa3b585f",
+        "clsid": "a2c17f88-81e6-4873-bd92-4b50fa6c757b"
+    },
+    "mediapipe::tasks::autoit::components::containers::embedding_result": {
+        "iid": "b39b21d8-3cce-4e96-80a5-53e97717d167",
+        "clsid": "cf84ea67-6828-4d83-90c9-4f821fdf9dd5"
+    },
+    "mediapipe::tasks::autoit::components::containers::embedding_result::Embedding": {
+        "iid": "38f457fa-66b8-4cfc-9011-6b07eacafc0d",
+        "clsid": "da1edf54-4c20-4bdb-b5b3-a90ea7ca50b3"
+    },
+    "mediapipe::autoit::components::containers::embedding_result": {
+        "iid": "d35359ea-562c-4eee-908c-c151742383b8",
+        "clsid": "7db6ac66-973d-4362-adf9-909b5f52baa0"
+    },
+    "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult": {
+        "iid": "717ef6e8-652a-45a8-9d89-f493f60afd1e",
+        "clsid": "cfae2461-638e-4d93-b55a-931917c29f3e"
+    },
+    "mediapipe::tasks::autoit::components::containers::landmark": {
+        "iid": "2f077165-3d66-4655-b682-128c9bf5f32c",
+        "clsid": "81c05edf-751a-41d5-9123-a4a3b379e3b2"
+    },
+    "mediapipe::tasks::autoit::components::containers::landmark::Landmark": {
+        "iid": "e4bb5427-6a56-453f-81ec-4a87e486bc92",
+        "clsid": "59e68a17-a2c9-4920-8488-c45486d54653"
+    },
+    "mediapipe::autoit::components::containers::landmark": {
+        "iid": "0366bd2f-4bdd-4d1e-a4f8-9277bfdad184",
+        "clsid": "0a700154-d2b1-41d5-aa2c-f45cfe8ba8f8"
+    },
+    "mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark": {
+        "iid": "0ecf218e-fcef-4228-ac5a-90ae357ffed9",
+        "clsid": "3194bf60-d753-4381-a15d-5e3fb4ddf078"
+    },
+    "mediapipe::tasks::autoit::components::containers::landmark_detection_result": {
+        "iid": "15fed4ca-3b4b-412f-8037-2a50761b33bf",
+        "clsid": "fd89d44f-b988-4c3a-a873-d23d2e94df72"
+    },
+    "mediapipe::tasks::autoit::components::containers::landmark_detection_result::LandmarksDetectionResult": {
+        "iid": "ea13838b-5e1d-4d2d-9ca7-9e29ec0436f2",
+        "clsid": "6bc478b4-6b5b-4a5d-b99f-0b339f36f8f2"
+    },
+    "mediapipe::autoit::components::containers::landmark_detection_result": {
+        "iid": "163ab924-e8a6-4e0d-b196-10e2b2a7481b",
+        "clsid": "3efdaddb-ee16-4f22-b903-35c025211cb6"
+    },
+    "mediapipe::tasks::autoit::components::containers::rect": {
+        "iid": "ce500147-aaf9-45be-ab15-1652cab2a14c",
+        "clsid": "e0aff2db-4231-40c3-9331-75b4505bf5d3"
+    },
+    "mediapipe::tasks::autoit::components::containers::rect::Rect": {
+        "iid": "b6a5457e-f9c1-4cbb-b58c-466027a763d1",
+        "clsid": "4d045f1e-a35f-4153-b6d2-93e40cf1b05a"
+    },
+    "mediapipe::autoit::components::containers::rect": {
+        "iid": "86250c31-56ec-41f0-a6cc-1aef80b96518",
+        "clsid": "6ec45ef9-a35b-44e7-90a4-3d7c4ffe497f"
+    },
+    "mediapipe::tasks::autoit::components::containers::rect::NormalizedRect": {
+        "iid": "042dd364-dbb1-4a3c-b893-55fa47482295",
+        "clsid": "13d2cb53-a550-4e59-a0b9-75a4803c715c"
+    },
+    "mediapipe::tasks::autoit::components::processors": {
+        "iid": "a609a680-2cc1-4e52-b046-0c51fed0424d",
+        "clsid": "6b779c30-2fce-4799-abca-a4b08794ef84"
+    },
+    "mediapipe::tasks::autoit::components::processors::classifier_options": {
+        "iid": "0ca090f5-cbbe-4e5a-9c69-e52d2120f04e",
+        "clsid": "aea6b04f-d829-47f7-9df5-a87539693d30"
+    },
+    "mediapipe::autoit::components::processors": {
+        "iid": "af5545a8-d314-4037-a214-217a7ebdaabd",
+        "clsid": "a490aa6f-306a-4c3e-ac4f-047a0653d54c"
+    },
+    "mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions": {
+        "iid": "05ef137f-7edf-464a-9dfa-28cc00340a1b",
+        "clsid": "364eed5c-16d2-4719-8bca-6c1ac25d75af"
+    },
+    "mediapipe::autoit::components::processors::classifier_options": {
+        "iid": "2cfcc094-519a-4d23-84f2-3adfe9c640e8",
+        "clsid": "17b655ee-90d6-447d-a73b-833736f84309"
+    },
+    "mediapipe::tasks::autoit::components::utils": {
+        "iid": "9813e4b0-65ac-4442-97fc-e6c2c6495056",
+        "clsid": "87274607-bfce-40b7-93bf-1e49afd9742e"
+    },
+    "mediapipe::tasks::autoit::components::utils::cosine_similarity": {
+        "iid": "d9aaa1bb-6b31-4d9e-a710-d40daac8d349",
+        "clsid": "153e631f-cc7f-4b85-a092-9b6e5821e8d6"
+    },
+    "mediapipe::autoit::components::utils": {
+        "iid": "4704bea0-8676-4b44-99cd-bb96e33c1254",
+        "clsid": "4735b8e6-f086-4d2d-a59f-37cfdceac2b1"
+    },
+    "mediapipe::tasks::autoit::core": {
+        "iid": "ba85d898-3087-46c5-adcd-0b353e3e4ee5",
+        "clsid": "5e115a4b-8de4-4556-a660-108b5529836f"
+    },
+    "mediapipe::tasks::autoit::core::base_options": {
+        "iid": "b185e586-8ce1-4d0c-b388-fc72cce427d0",
+        "clsid": "a39121ff-fe31-4f53-9a17-46279616ebb9"
+    },
+    "mediapipe::autoit::core": {
+        "iid": "eedbe2d7-72b9-4e3a-9423-a8d825919230",
+        "clsid": "2e4b79ba-7da6-488b-8169-bf6e7ea7d520"
+    },
+    "mediapipe::tasks::autoit::core::base_options::BaseOptions": {
+        "iid": "af14677a-6aa6-4f23-ac10-473c9ddfd48e",
+        "clsid": "2b8b1a1e-8cba-434d-8b87-1779576cd1aa"
+    },
+    "mediapipe::autoit::core::base_options": {
+        "iid": "75e24a26-c501-40d8-b8b9-c6f45c03aaa3",
+        "clsid": "d0f922cb-11e4-4b57-9e26-e5379bb52886"
+    },
+    "mediapipe::tasks::autoit::core::task_info": {
+        "iid": "e21ad787-ead8-4734-ac46-21439d90f3da",
+        "clsid": "903b80bd-c125-4c1c-b69a-fcfe3b3e1080"
+    },
+    "mediapipe::tasks::autoit::core::task_info::TaskInfo": {
+        "iid": "7d19df7c-c8fb-4b10-bacf-88c348b4d058",
+        "clsid": "d9b82887-bf94-4ebb-a29a-24d94baf5475"
+    },
+    "mediapipe::autoit::core::task_info": {
+        "iid": "608262a5-4e95-476d-898d-30cf2115f063",
+        "clsid": "75a738d6-9cad-43dc-b740-23e93a80b9f6"
+    },
+    "mediapipe::tasks::autoit::text": {
+        "iid": "c04c4af2-f745-4aab-9270-1991b4d04bc5",
+        "clsid": "2101b383-83a1-4b92-b154-931bd3b6501c"
+    },
+    "mediapipe::tasks::autoit::text::core": {
+        "iid": "9ac69a56-084e-4ca2-8313-589f7c5dbd0c",
+        "clsid": "d26f5200-e07f-437d-8ba2-2092145723d9"
+    },
+    "mediapipe::autoit::text": {
+        "iid": "d24272fc-2b69-4353-bcb0-659e32735b70",
+        "clsid": "89a5910a-e3e5-4d68-952b-594a0b03bd45"
+    },
+    "mediapipe::tasks::autoit::text::core::base_text_task_api": {
+        "iid": "bbf960c8-1805-4107-89c2-b0e436984dfd",
+        "clsid": "063626d3-b854-4bb1-bb7a-e6febbfb7cba"
+    },
+    "mediapipe::autoit::text::core": {
+        "iid": "a1bff055-69d9-44e6-b000-22cee43c33de",
+        "clsid": "98cabfc1-ea13-4cdd-84d8-222a6c193d8a"
+    },
+    "mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi": {
+        "iid": "112cb3bf-9e17-4bb4-80b0-6f23b9ae7ce0",
+        "clsid": "c9d88c56-907f-4609-b516-ba722b7f8e17"
+    },
+    "mediapipe::autoit::text::core::base_text_task_api": {
+        "iid": "50fc65be-1f15-47c2-b3f2-8eff55c579f2",
+        "clsid": "04a3725c-7162-4d9d-b0a0-f6fc820cf027"
+    },
+    "mediapipe::tasks::autoit::text::text_classifier": {
+        "iid": "80b8f3da-2865-4025-acb3-d9b32743e355",
+        "clsid": "5009618a-2353-47e3-b978-18bd5eb187b4"
+    },
+    "mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions": {
+        "iid": "7c225c54-05b4-43ac-b34c-61ce420a8f1d",
+        "clsid": "9ac46f23-6853-4e81-922d-453638a7fcf2"
+    },
+    "mediapipe::autoit::text::text_classifier": {
+        "iid": "a24e7ed9-4e9e-47c6-baa2-2b6b85cba498",
+        "clsid": "1c4c6f7b-9432-4262-b9a3-2e472a75a195"
+    },
+    "mediapipe::tasks::autoit::text::text_classifier::TextClassifier": {
+        "iid": "bb0643ff-d391-41cc-b3ba-2f303b86bcb0",
+        "clsid": "82fe61b1-f263-44e7-8410-17da75572bb8"
+    },
+    "mediapipe::tasks::autoit::text::text_embedder": {
+        "iid": "e9f6f722-a6a4-4dcc-8c66-556aae92f4ac",
+        "clsid": "a9706cf4-4379-4f8c-b582-dd9a5ffca5e9"
+    },
+    "mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions": {
+        "iid": "a242d806-02ae-467b-a81b-630c01e2076d",
+        "clsid": "b1eb73a7-a22a-49ef-b25c-74ea79100147"
+    },
+    "mediapipe::autoit::text::text_embedder": {
+        "iid": "8ae0902e-eef4-4806-9971-81fe803685ad",
+        "clsid": "c999626a-0bf7-4057-b1c5-70587deedd61"
+    },
+    "mediapipe::tasks::autoit::text::text_embedder::TextEmbedder": {
+        "iid": "cd4969ab-2a93-4dfb-be1c-a15244888e81",
+        "clsid": "dc7677ce-6863-440b-a825-4454619fc31b"
+    },
+    "mediapipe::tasks::autoit::vision": {
+        "iid": "9cae2274-f616-4f61-a2c3-9d428bc3f13b",
+        "clsid": "87d4813f-aca4-4175-bc20-0d50adc647ed"
+    },
+    "mediapipe::tasks::autoit::vision::core": {
+        "iid": "1c750653-caac-4f9a-9408-aa38efa7d70e",
+        "clsid": "df26062e-2a7d-4fad-9ff1-14afdf685545"
+    },
+    "mediapipe::autoit::vision": {
+        "iid": "69be4b45-92d5-4619-92d9-2aaf35c00a3a",
+        "clsid": "026b7429-682f-447f-b20d-1317343c82b5"
+    },
+    "mediapipe::tasks::autoit::vision::core::base_vision_task_api": {
+        "iid": "f1dd39da-6513-4f6f-b0d6-db330fa25386",
+        "clsid": "67aa88e3-5d67-4a6c-b6dd-7369f70f2707"
+    },
+    "mediapipe::autoit::vision::core": {
+        "iid": "e88312d0-eb8b-454a-a47b-22144b287379",
+        "clsid": "c3af4544-4afb-4dfd-b482-04ea0d8b56e1"
+    },
+    "mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi": {
+        "iid": "4adb0c5b-9461-4fab-80aa-c16ac5700a88",
+        "clsid": "d7ab7c83-a733-4822-ad0c-a22adb097260"
+    },
+    "mediapipe::autoit::vision::core::base_vision_task_api": {
+        "iid": "ae7c9d66-0105-4798-8f91-4d4da7aec65e",
+        "clsid": "57027fe1-dca1-4946-9a41-9a130e0b69ec"
+    },
+    "mediapipe::tasks::autoit::vision::core::image_processing_options": {
+        "iid": "0ae532d1-3932-40e8-a8df-8040e92ee361",
+        "clsid": "75e76908-feba-489b-959f-da72e36920e2"
+    },
+    "mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions": {
+        "iid": "1049a249-ba86-45ba-b17c-0b7c305f820b",
+        "clsid": "747b6b7a-4a00-46a2-83b8-a6b060036944"
+    },
+    "mediapipe::autoit::vision::core::image_processing_options": {
+        "iid": "9123d875-7a59-4a90-bf41-f32a8455205f",
+        "clsid": "e99c7d3f-3faa-4f15-acb5-48f3abbca52f"
+    },
+    "mediapipe::tasks::autoit::vision::core::vision_task_running_mode": {
+        "iid": "2b9ca9f5-c060-473c-8c64-d8efd9e9b81f",
+        "clsid": "59510dd9-5323-4996-91e4-ef563b4270f0"
+    },
+    "mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode": {
+        "iid": "5bca427a-506e-411f-9f66-1569ccff414f",
+        "clsid": "7ac16444-dd0c-48c5-903b-db0142cd7e86"
+    },
+    "mediapipe::autoit::vision::core::vision_task_running_mode": {
+        "iid": "97ae305c-5cce-4116-98cf-40323f5d1300",
+        "clsid": "1b0cdf77-758a-4bb3-9d0d-8cf761f5d4d3"
+    },
+    "mediapipe::tasks::autoit::vision::gesture_recognizer": {
+        "iid": "c7576820-20c7-44fb-9eb9-3b106eb447fa",
+        "clsid": "6ceb7419-8412-4bb4-ace8-8ac9481c3063"
+    },
+    "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult": {
+        "iid": "68f06d1b-394d-4920-87b7-f372b6a6a8d7",
+        "clsid": "22fc7bd3-3ccb-4058-99dd-b08fceecd189"
+    },
+    "mediapipe::autoit::vision::gesture_recognizer": {
+        "iid": "16351ce9-a735-4268-a1f1-3912e6f686ed",
+        "clsid": "99797557-1735-4c3d-988f-dec662b42314"
+    },
+    "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions": {
+        "iid": "e0fcac5d-044b-4363-bdaf-3857d108beca",
+        "clsid": "c84e38e0-542b-40cf-a94a-5a8090d58830"
+    },
+    "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer": {
+        "iid": "450703d9-2fcb-46d3-8e1b-26962c59434a",
+        "clsid": "c7bc6bfe-7a76-48c7-b67c-88764b14c694"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker": {
+        "iid": "99cb9c66-880d-41f5-970a-201496bb0b09",
+        "clsid": "f1dc616c-7729-43c7-a191-aa82846b3c53"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark": {
+        "iid": "233e3d08-a9b0-4458-98c1-df5a01539aba",
+        "clsid": "74f7dce7-d78d-4f29-a881-cfa3e8f3b30a"
+    },
+    "mediapipe::autoit::vision::hand_landmarker": {
+        "iid": "f61a52a6-2cc0-43b8-8310-ab915466cda0",
+        "clsid": "4d56a63b-c1ff-418c-8c54-7845f2e4551f"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult": {
+        "iid": "9ce100fd-437b-4364-8163-5dfbd0256188",
+        "clsid": "7efc98de-3c93-4ec5-a2f1-a687a5ab46d3"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions": {
+        "iid": "99f621ae-f837-4a4a-bf99-dbf03e28a21e",
+        "clsid": "5f9da36e-77a7-4f31-ab30-b8dff8defbdf"
+    },
+    "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker": {
+        "iid": "abe7e19c-46b8-4e3b-89b4-654e2e5ca6f7",
+        "clsid": "5d8131d4-72d7-47c7-8370-f4ec61642878"
+    },
+    "mediapipe::tasks::autoit::vision::image_classifier": {
+        "iid": "73aded08-6809-4806-8169-5648df9f58eb",
+        "clsid": "078e4984-0ab0-4a57-ae23-6f5f0ac5b248"
+    },
+    "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions": {
+        "iid": "810f40c9-6632-48aa-926a-d80a748c7672",
+        "clsid": "c7e857d3-5aac-47f0-8f66-4a3d4f03923f"
+    },
+    "mediapipe::autoit::vision::image_classifier": {
+        "iid": "215cd959-ac55-4647-b750-82cfa6ad8906",
+        "clsid": "0d1d61a2-751c-4cc4-b0e0-17dd77743e6c"
+    },
+    "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier": {
+        "iid": "9ab002ae-0624-4835-bf54-0fc5bcf110f5",
+        "clsid": "954bd3f3-312f-4600-9690-37af1d1768c4"
+    },
+    "mediapipe::tasks::autoit::vision::image_embedder": {
+        "iid": "8817ca90-42f7-41c8-8a25-96e60e5bba0c",
+        "clsid": "8c3f44bc-31d2-49f5-bd2b-4365cb3ba9b8"
+    },
+    "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions": {
+        "iid": "2cf8783c-816a-453c-8183-9f6abcdd39c0",
+        "clsid": "b46958da-96a7-4fdf-b9cc-479f3b1b41b8"
+    },
+    "mediapipe::autoit::vision::image_embedder": {
+        "iid": "7b0e47f9-432f-4ea4-a343-fe52a3106f14",
+        "clsid": "822d5e55-f7a4-489d-b079-afb70c98a51d"
+    },
+    "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder": {
+        "iid": "92e991db-995c-4800-a635-901a7d4c80d7",
+        "clsid": "ab8c6631-1113-4f1e-96c3-f0a00839a7b0"
+    },
+    "mediapipe::tasks::autoit::vision::image_segmenter": {
+        "iid": "b06957b2-496e-48b3-88fa-14e6e7072e4e",
+        "clsid": "d02c90e9-7fbe-43e7-be15-68914106d106"
+    },
+    "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions": {
+        "iid": "17b9524c-6ed5-4792-9934-fd1e8c6aee17",
+        "clsid": "7df72eda-9eaf-4fe6-b4b5-6f18c2844afe"
+    },
+    "mediapipe::autoit::vision::image_segmenter": {
+        "iid": "d456a868-9afd-4241-be11-65bda08b068a",
+        "clsid": "d27ae890-cb05-4712-9e6e-9527a05e0bb2"
+    },
+    "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter": {
+        "iid": "5fd7546d-f938-4544-961f-576c73fc284f",
+        "clsid": "6cce6231-3612-4037-81bc-794d330bc06b"
+    },
+    "mediapipe::tasks::autoit::vision::object_detector": {
+        "iid": "f99f0d45-6af6-4c81-8dfe-04be02b275a4",
+        "clsid": "be2ed6bc-e17c-4c3c-80f5-8992b719d54f"
+    },
+    "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions": {
+        "iid": "f1a1b420-c31a-48a1-b068-0089245f7b1f",
+        "clsid": "cad1b536-7b7b-4861-8ff5-c7527114c2ff"
+    },
+    "mediapipe::autoit::vision::object_detector": {
+        "iid": "d23cb00c-7cf4-4680-a2cc-0a4c05638d97",
+        "clsid": "40103f7d-8480-444b-81ea-061dcc98d2bc"
+    },
+    "mediapipe::tasks::autoit::vision::object_detector::ObjectDetector": {
+        "iid": "f7db496b-691c-49a6-b20d-3f98ffd99482",
+        "clsid": "f38f4380-1c71-4aa6-a992-4527ee317544"
+    },
     "cv": {
         "iid": "f4d16f5c-a74e-4873-a8ff-b65ab43d2598",
         "clsid": "bca8e816-7967-4bba-b313-3cb340291d0c"
@@ -1051,6 +1563,322 @@
         "iid": "fdb73584-171d-4de1-8d86-7b33485128d8",
         "clsid": "eac2cde1-1f3b-4fce-b807-01f84295c891"
     },
+    "mediapipe::tasks::components::processors::proto::ClassifierOptions": {
+        "iid": "515fc5f5-cb1c-427a-94d3-19f350614776",
+        "clsid": "661393b0-0ea9-4616-9a67-f4e10fbfd8d0"
+    },
+    "mediapipe::tasks::cc::components::processors::proto::classifier_options_pb2": {
+        "iid": "cd94a09c-9954-4ddf-bf40-9ef437d1ce00",
+        "clsid": "53e54980-ca3e-4cee-aa1b-f45913e892eb"
+    },
+    "mediapipe::tasks::core::proto::Acceleration": {
+        "iid": "276c7a0d-e1a6-4cdf-bc1a-13b13fcfec18",
+        "clsid": "d8c10f3a-15fd-42e5-a361-73134569702f"
+    },
+    "mediapipe::tasks::cc::core::proto::acceleration_pb2": {
+        "iid": "47d8f9ea-efb4-478b-8140-7bc4511efb9d",
+        "clsid": "6b9fa03d-5e44-4c7c-9a93-3866c201c63d"
+    },
+    "mediapipe::tasks::core::proto::ExternalFile": {
+        "iid": "b5c74e50-c1a4-420d-b7c9-7850535dbb2b",
+        "clsid": "583ad046-d9cc-499d-a4da-80e3bfe20e7c"
+    },
+    "mediapipe::tasks::core::proto::FileDescriptorMeta": {
+        "iid": "bc4c4a41-c81d-4ea7-b334-869f4c463ddb",
+        "clsid": "f68f96f8-eaa8-4d5d-ad01-409f361ff850"
+    },
+    "mediapipe::tasks::core::proto::FilePointerMeta": {
+        "iid": "66273143-fce3-44cc-924d-2619249cabc0",
+        "clsid": "503a0842-d58a-4b57-a97f-19b6574bff1e"
+    },
+    "mediapipe::tasks::cc::core::proto::external_file_pb2": {
+        "iid": "c8479be3-2a5a-4bd3-b30c-f98d863177f1",
+        "clsid": "26e0d6ad-2922-4659-b253-59c3e34a4a3f"
+    },
+    "mediapipe::tasks::core::proto::BaseOptions": {
+        "iid": "a57b5d66-94a1-437f-a745-70c2069a875e",
+        "clsid": "ee0d73a3-b73c-491e-ab79-b50d02867128"
+    },
+    "mediapipe::tasks::cc::core::proto::base_options_pb2": {
+        "iid": "deb49cc3-6d31-4db2-9fc3-74bb2987a029",
+        "clsid": "67a7a4fb-6d95-42ae-982f-d9d4e006b525"
+    },
+    "mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions": {
+        "iid": "98e24c43-3afb-4c5b-8d1f-b4e7e7c197f8",
+        "clsid": "4bc0113a-2ad5-4750-9cbc-7f707e3b73f2"
+    },
+    "mediapipe::tasks::cc::audio::audio_classifier::proto::audio_classifier_graph_options_pb2": {
+        "iid": "b552783d-c1c7-49c2-a722-ae9497da4c45",
+        "clsid": "ac8daf61-2b5b-407b-ad08-76fde3783da7"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions": {
+        "iid": "5355ca16-a57e-40ad-bf9a-7e9af7b21838",
+        "clsid": "76a870f1-ed82-4766-8f61-f12f665b2c02"
+    },
+    "mediapipe::tasks::components::containers::proto::Classifications": {
+        "iid": "afdf2b97-a12c-479b-8e29-db55007daa5b",
+        "clsid": "cca530de-7d32-4cef-aeec-8cce530ed1cb"
+    },
+    "mediapipe::tasks::components::containers::proto::ClassificationResult": {
+        "iid": "d78656e1-4f54-440c-ba7d-c4aaa1b6b447",
+        "clsid": "0c7dabed-6d69-42d7-9295-b1c4152dbdbe"
+    },
+    "google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications": {
+        "iid": "a92638e7-f4fc-4708-a378-29e0797b1ab2",
+        "clsid": "3b0ec208-2ba5-4dfb-8e06-885fdeb2c88b"
+    },
+    "mediapipe::tasks::cc::components::containers::proto::classifications_pb2": {
+        "iid": "2dffe504-07dd-4e64-a642-693675789d20",
+        "clsid": "5aeee1db-718d-4db0-b572-9673f2e9bb2e"
+    },
+    "mediapipe::tasks::components::processors::proto::EmbedderOptions": {
+        "iid": "e909549c-d4d0-49f3-9204-7b82d55c6431",
+        "clsid": "213e1fe4-af76-4eb9-a559-0e268b055f27"
+    },
+    "mediapipe::tasks::cc::components::processors::proto::embedder_options_pb2": {
+        "iid": "5ee176c4-7759-4be4-92c4-aa18a8751dab",
+        "clsid": "a7d84f1b-e768-4ae7-8110-d775265bdbc2"
+    },
+    "mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions": {
+        "iid": "2df91a82-72fa-42b3-887d-570ed4ecf1dd",
+        "clsid": "4b040053-1474-46fd-b90e-cb5bf4dca2b4"
+    },
+    "mediapipe::tasks::cc::audio::audio_embedder::proto::audio_embedder_graph_options_pb2": {
+        "iid": "d5ac0008-e664-43ae-bee2-2430fced339a",
+        "clsid": "1b8901c6-22c0-4ed6-9c79-6ad24558e0ee"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions": {
+        "iid": "d3aaa2ce-ac1b-4449-a345-3eaedd327570",
+        "clsid": "e240ebf4-2617-48e0-a977-af7188dd5363"
+    },
+    "mediapipe::tasks::components::containers::proto::FloatEmbedding": {
+        "iid": "321c2133-c628-4017-a55d-1990529c355f",
+        "clsid": "3f1f3cae-d721-47e1-b615-986b4a6b0c54"
+    },
+    "mediapipe::tasks::components::containers::proto::QuantizedEmbedding": {
+        "iid": "dffac5bd-4d60-4faa-b1a6-d1d80d88c598",
+        "clsid": "98a5b347-4e4b-4584-a863-655b34bb8fe6"
+    },
+    "mediapipe::tasks::components::containers::proto::Embedding": {
+        "iid": "d98dce9d-6efb-4e64-8ff6-e243ea843b90",
+        "clsid": "d54d98d2-0472-46f8-998d-4b4492460fb5"
+    },
+    "mediapipe::tasks::components::containers::proto::EmbeddingResult": {
+        "iid": "f8300728-d5cf-4767-b710-e11c041c8298",
+        "clsid": "34921b4c-82e5-4d3c-82f8-65db950fa51a"
+    },
+    "google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding": {
+        "iid": "e7cca5cd-385a-4a8e-adcf-db36c8aca90e",
+        "clsid": "322dd653-912c-4171-a546-c6e6e0082320"
+    },
+    "mediapipe::tasks::cc::components::containers::proto::embeddings_pb2": {
+        "iid": "4b418250-1ba6-4210-be6f-124fc570bde8",
+        "clsid": "a633c257-b018-49f6-a6fd-8d5893c339f6"
+    },
+    "mediapipe::Rect": {
+        "iid": "98dad6d2-92ea-40e1-b81c-d54e8571fedb",
+        "clsid": "554bb500-55e2-497b-812b-c17130bea05e"
+    },
+    "mediapipe::NormalizedRect": {
+        "iid": "b23967b3-9df3-41ce-93ad-b457ddb570c3",
+        "clsid": "91d3c7bb-0e83-424e-9a22-a6ee5278d9ad"
+    },
+    "mediapipe::framework::formats::rect_pb2": {
+        "iid": "c888b595-ff51-4581-aade-50f8cad0cca7",
+        "clsid": "e764bd55-3f35-4147-ae28-baf768187837"
+    },
+    "mediapipe::tasks::containers::proto::LandmarksDetectionResult": {
+        "iid": "d162030e-a799-4f75-a7ba-29088d46a63f",
+        "clsid": "5be786a6-d4d6-4e42-86a6-08676cbfef08"
+    },
+    "mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult": {
+        "iid": "2fa5bd82-c9b9-4823-a148-afa336191b81",
+        "clsid": "d23e827c-1cf8-49f7-854e-6254603595fd"
+    },
+    "google::protobuf::Repeated_mediapipe_NormalizedRect": {
+        "iid": "1607a94c-d0a0-4de4-88ac-924f60768005",
+        "clsid": "e4f3fb32-3a44-4de1-ac33-d21172c66bf4"
+    },
+    "mediapipe::tasks::cc::components::containers::proto::landmarks_detection_result_pb2": {
+        "iid": "e03a4e62-c023-47c6-82e2-5e02cf040a85",
+        "clsid": "5bb5389f-0fb3-47d0-a9ba-301af0401223"
+    },
+    "mediapipe::FlowLimiterCalculatorOptions": {
+        "iid": "c8f0e111-2cf4-4c71-8d49-83e21923f4b8",
+        "clsid": "ac7a3781-5274-4e3e-a46f-0a531a3ef431"
+    },
+    "mediapipe::calculators::core::flow_limiter_calculator_pb2": {
+        "iid": "7862ece8-b565-432a-9f24-a4adcd6dda39",
+        "clsid": "6655c7fa-d0fc-42a0-973a-f76ae007a317"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions": {
+        "iid": "9c9d0c8c-1fdd-420c-a434-e67896d9d0ba",
+        "clsid": "808dd4a2-1104-415a-ba78-86b72b92eeb0"
+    },
+    "mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions": {
+        "iid": "2373ee0c-6a77-4aba-aabd-9191a3c2f0f4",
+        "clsid": "d719b55c-11b7-4e34-83fa-2a4293f41761"
+    },
+    "mediapipe::tasks::cc::text::text_classifier::proto::text_classifier_graph_options_pb2": {
+        "iid": "fd2a0c27-2019-4808-82cd-7483563c89eb",
+        "clsid": "0d48b4f9-2491-4b1a-89f0-328c8bc42bb0"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions": {
+        "iid": "ec933377-56fb-4293-8a8c-806525e2a957",
+        "clsid": "b4b73120-5f97-4ced-80a2-662b57e29a40"
+    },
+    "mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions": {
+        "iid": "73205033-1540-4309-998b-a4fa0e4bc056",
+        "clsid": "908e0f2d-db28-40bd-8ee5-6bf7b6bcac7c"
+    },
+    "mediapipe::tasks::cc::text::text_embedder::proto::text_embedder_graph_options_pb2": {
+        "iid": "d85f7eea-0042-4615-9ce5-0209d6792900",
+        "clsid": "59c14a69-7422-49e4-9f3d-4cfad1cef46f"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions": {
+        "iid": "135ef3b2-8564-4f51-8431-e6e16021af41",
+        "clsid": "6e49120a-f3db-488d-81f1-615dc1eb69fd"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions": {
+        "iid": "51d96067-dce2-445d-a75c-b18588259c0f",
+        "clsid": "b40d4250-ef67-4658-bb84-e914d7b11020"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto::gesture_classifier_graph_options_pb2": {
+        "iid": "703783d8-ac92-4855-b2b4-b2749a631a23",
+        "clsid": "67227139-f7e0-403d-bc18-ee2529740c9f"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions": {
+        "iid": "6d68a565-a22d-46ac-a451-9455d613bd50",
+        "clsid": "c18c8162-3e33-4db5-912d-e12ab9db6f6e"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions": {
+        "iid": "1ec33d31-f0ca-4b27-b043-c9f7587255df",
+        "clsid": "b4ce96f4-5677-4e68-ac30-944f7c74cc79"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto::gesture_embedder_graph_options_pb2": {
+        "iid": "34cb1640-e377-4069-9595-29f9c0950425",
+        "clsid": "4d908048-40fb-445e-ad98-6f216905c9cd"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions": {
+        "iid": "353ba507-3b61-4db5-a9e5-7a5ff8a23e9e",
+        "clsid": "c490ea34-ca06-4c9f-a09d-1ef0e6dff9c9"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions": {
+        "iid": "e8acfeee-3055-4584-a4bf-c61fa1125646",
+        "clsid": "8f54dca4-69de-46c9-8374-a689dd2a7240"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto::hand_gesture_recognizer_graph_options_pb2": {
+        "iid": "f8f69909-1511-4f9f-a68d-07f2d9f7f5d2",
+        "clsid": "52dd8854-4018-4c57-85b9-968ef05e63ee"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions": {
+        "iid": "6a71a5c1-d97f-423f-8a2e-f2aa0fb794aa",
+        "clsid": "ccb7ee77-2ebd-4768-bee7-35068c45cfe8"
+    },
+    "mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions": {
+        "iid": "0d38be38-7203-417b-adc2-306c5297eef8",
+        "clsid": "1a35395f-03d3-4bf1-bfeb-b1f61d9bbed8"
+    },
+    "mediapipe::tasks::cc::vision::hand_detector::proto::hand_detector_graph_options_pb2": {
+        "iid": "ef2204b9-c325-4d92-9e05-d5ff0d209bee",
+        "clsid": "ec9aa5a7-c68c-40c7-84e1-07d89d556322"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions": {
+        "iid": "6c28dab3-ec0e-4b11-928f-53409d6e3058",
+        "clsid": "94ad61ff-ac39-4930-8609-8ee5069154e3"
+    },
+    "mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions": {
+        "iid": "42413bee-e027-45fa-a092-1dd9cb5351e9",
+        "clsid": "6e45aae9-88d1-407b-9ae0-9fc940f76650"
+    },
+    "mediapipe::tasks::cc::vision::hand_landmarker::proto::hand_landmarks_detector_graph_options_pb2": {
+        "iid": "745c8661-404c-4d23-a43e-203e5fc70fb7",
+        "clsid": "6a7542fe-7b9e-4fa9-94f1-401d5f6b5c99"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions": {
+        "iid": "e3aeb6a6-1f43-47da-a4df-a526d03d93e7",
+        "clsid": "a9caa24a-e19b-4f3f-9176-0ae1a65f31a4"
+    },
+    "mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions": {
+        "iid": "cbcd7f4f-18c7-48a0-910a-cf5930af0aae",
+        "clsid": "2c2ad390-c3be-435c-96be-7573f37a0030"
+    },
+    "mediapipe::tasks::cc::vision::hand_landmarker::proto::hand_landmarker_graph_options_pb2": {
+        "iid": "5652e3d5-d56b-40ac-a9e4-e15af69464e1",
+        "clsid": "e6aa69e2-48eb-4a70-a609-ccc766c73c6f"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions": {
+        "iid": "e98e0dd5-7c3c-4587-8418-5096e1f2a021",
+        "clsid": "72d0c91b-0770-4c3d-9279-648d6aea9801"
+    },
+    "mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions": {
+        "iid": "fe586eda-2981-43c5-8411-7ba553df838e",
+        "clsid": "29572fcd-6c37-45d2-883a-a8ec6608e1b3"
+    },
+    "mediapipe::tasks::cc::vision::gesture_recognizer::proto::gesture_recognizer_graph_options_pb2": {
+        "iid": "217c5cb3-063b-448b-85ab-ae874cddbbab",
+        "clsid": "4d0b64a4-9de4-4edc-9301-c6c8f71b1471"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions": {
+        "iid": "66c2ea98-c8f0-4e4f-b99b-d407da469d0a",
+        "clsid": "bbf059a3-b461-4052-b1a9-3993ca0ebe6a"
+    },
+    "mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions": {
+        "iid": "f8015491-5e08-4f90-892d-e3d7c3915959",
+        "clsid": "8de65f68-9f5b-47c6-b571-3c9ddbc7fd1a"
+    },
+    "mediapipe::tasks::cc::vision::image_classifier::proto::image_classifier_graph_options_pb2": {
+        "iid": "c4ef0ab2-d855-457f-bb8f-6eb1e429166f",
+        "clsid": "0affc5fc-c438-4593-a078-301aeff23e0d"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions": {
+        "iid": "adbe38a8-aa5a-4061-8ab5-19ce35bca037",
+        "clsid": "0f437e43-fa76-4230-b00c-737dd1b04bd9"
+    },
+    "mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions": {
+        "iid": "1a605c8b-63e5-48b4-9ffb-f4190638d39e",
+        "clsid": "7b78c3f6-c72e-47f3-a812-1259665bf2d1"
+    },
+    "mediapipe::tasks::cc::vision::image_embedder::proto::image_embedder_graph_options_pb2": {
+        "iid": "b2ac6ffd-9c21-4750-862a-4678d29aeb06",
+        "clsid": "74aa3629-d1a3-402d-87fc-00326fb2a63b"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions": {
+        "iid": "1110da1b-3ecf-4884-b69b-3d5a79041cee",
+        "clsid": "b776920d-8cfe-4c68-8fe7-8bf51f29d1c4"
+    },
+    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions": {
+        "iid": "aeab6690-4d2c-4a3d-a921-2541f24c6997",
+        "clsid": "1a9344ce-b915-447b-b3bd-c1e7ddf92147"
+    },
+    "mediapipe::tasks::cc::vision::image_segmenter::proto::segmenter_options_pb2": {
+        "iid": "ecd08a0f-92f4-4b00-821b-1eecd3a69f1d",
+        "clsid": "b383c5b3-e8c3-4777-9cfc-c274f463e34c"
+    },
+    "mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions": {
+        "iid": "0e8f6623-3591-453d-972e-c6c85f6c18c8",
+        "clsid": "c2284b27-189b-42ce-b542-76d41d7ca63f"
+    },
+    "mediapipe::tasks::cc::vision::image_segmenter::proto::image_segmenter_graph_options_pb2": {
+        "iid": "cb1b43f9-b746-4e0e-9c40-94d43568f10e",
+        "clsid": "d961ee8d-3597-4c32-b954-5deda587acb0"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions": {
+        "iid": "8f64b2a5-152c-41cc-83a5-705bc8d80a46",
+        "clsid": "b16fee19-43f5-45d3-8fcb-440c358bd2f8"
+    },
+    "mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions": {
+        "iid": "53ab8856-05b2-424f-8872-2da0bcf6f086",
+        "clsid": "796018db-1965-4711-a806-a3b35f10a47b"
+    },
+    "mediapipe::tasks::cc::vision::object_detector::proto::object_detector_options_pb2": {
+        "iid": "c4dd508f-c4c1-467b-b811-0eff3e0769bb",
+        "clsid": "12c1cc72-2df9-4d20-b129-ecd8ee96994e"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions": {
+        "iid": "b15c30fd-903f-4711-b935-a26307306f45",
+        "clsid": "2d7e709a-0ee2-4dd6-8f2e-b2b272e8af39"
+    },
     "mediapipe::CalculatorGraph": {
         "iid": "3637f144-8536-4c06-879b-0a2ea04b7f9e",
         "clsid": "71060863-e38b-4199-9aff-70f1fc4a1014"
@@ -1142,6 +1970,14 @@
     "cv::Range": {
         "iid": "9cc26786-3899-4021-b898-d74d84858456",
         "clsid": "45a9a3cb-1ea1-4957-8a09-b8386331bece"
+    },
+    "mediapipe::tasks::core::TaskRunner": {
+        "iid": "d72d8704-39c7-405a-bb01-224fed2ee706",
+        "clsid": "5470f4c6-a179-4550-a4d8-2f8ccb710723"
+    },
+    "mediapipe::autoit::_framework_bindings::task_runner": {
+        "iid": "df042812-3ff9-4c76-84a1-c38c121ecda3",
+        "clsid": "d7883b06-adcd-433b-a17d-10980d7af69d"
     },
     "mediapipe::Timestamp": {
         "iid": "d4ab78ee-eaf6-4471-82f6-748638884d83",
@@ -1262,6 +2098,50 @@
     "VectorOfPacketDataType": {
         "iid": "83997a40-af0f-41d4-96e0-b6a8266cc6b9",
         "clsid": "868a5ccb-d463-406e-903e-1340591f2c47"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_classification_result_ClassificationResult": {
+        "iid": "d482822b-7443-4667-b4c5-f21170efbef8",
+        "clsid": "11591476-dcf2-4ebc-b7bd-9bef85ec743f"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_EmbeddingResult": {
+        "iid": "98657ccc-52dc-4c9e-ad60-6b5a6957b7f9",
+        "clsid": "dcbe4aa0-c1bb-4557-990c-147a6b7de38b"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_category_Category": {
+        "iid": "f4cefe01-8c5d-48d3-bc36-d25b5ee63b84",
+        "clsid": "ca1e742c-9b7e-45ae-b7da-3d7336c08a70"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_classification_result_Classifications": {
+        "iid": "57bf2c14-83c5-40c5-a6ab-db9e3976e0b3",
+        "clsid": "18d0d748-4ef8-4a86-a487-6a7fa87315a6"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_detections_Detection": {
+        "iid": "990acb7b-58ca-48ba-a57f-612b2389496d",
+        "clsid": "cc01c9a6-f16f-4f82-87bf-9c398928040e"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_embedding_result_Embedding": {
+        "iid": "5b02e592-c9b9-4387-95c5-14a457ed2bbc",
+        "clsid": "ee2125cd-a580-4a1d-99e2-8b4413088af6"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark": {
+        "iid": "3a07b40e-5557-4677-aa06-c622e1a47ee9",
+        "clsid": "84565f6b-4d8f-4eb4-9ff7-03e8271154d0"
+    },
+    "VectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark": {
+        "iid": "f991ae8c-a707-4ab1-bc7c-58045e91b74f",
+        "clsid": "817a9567-07e4-4521-b84b-eda230da7cea"
+    },
+    "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category": {
+        "iid": "0669e9c6-1efb-4779-a906-269e75b211f4",
+        "clsid": "a93f14d9-2fcc-44ba-ac0c-fca0b01d9b4d"
+    },
+    "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark": {
+        "iid": "c07d9a91-6b6e-40f6-8dd6-573264b77912",
+        "clsid": "f0ac4b4c-9f22-404a-9c2b-3995485ba118"
+    },
+    "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark": {
+        "iid": "976a9bae-1a19-49ed-961f-c41e7fb7d04b",
+        "clsid": "3f113081-7819-4ce9-8fd6-e5bfc8513a11"
     },
     "VectorOfUchar": {
         "iid": "e4e3896c-ff7d-47bf-a44a-ffc2a76261b4",
@@ -1414,6 +2294,18 @@
     "VectorOfShared_ptrConstantSidePacketCalculatorOptions_ConstantSidePacket": {
         "iid": "9dc32b7a-21d0-4951-8e10-c9c63a730cf6",
         "clsid": "1248504d-2147-4e16-b629-378d537d4e67"
+    },
+    "VectorOfShared_ptrTasks_components_containers_proto_Classifications": {
+        "iid": "6191c9d6-723b-4061-b7ec-bce6cbd18994",
+        "clsid": "d2dca46c-1602-4e1c-b64b-e4867cddb1b8"
+    },
+    "VectorOfShared_ptrTasks_components_containers_proto_Embedding": {
+        "iid": "7d73a72c-9be1-4172-960a-d54afec70a20",
+        "clsid": "d15d8cc5-30d1-43c5-a775-d3f43ac3140d"
+    },
+    "VectorOfShared_ptrNormalizedRect": {
+        "iid": "04f3dd58-2049-43fc-889c-6323e666ca1c",
+        "clsid": "0f4c7a0b-1b04-4a69-bbe9-d93bb0344633"
     },
     "VectorOfSize_t": {
         "iid": "3400e937-ab5d-482c-8c27-2fee5eb561a0",

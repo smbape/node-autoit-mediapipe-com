@@ -1,7 +1,5 @@
 #include <iostream>
 #include <filesystem>
-#include "mediapipe/framework/port/file_helpers.h"
-#include "mediapipe/framework/port/status.h"
 #include "binding/resource_util.h"
 #include "binding/solutions/download_utils.h"
 #include "autoit_bridge_common.h"
@@ -24,8 +22,7 @@ namespace mediapipe::autoit::solutions::download_utils {
 	void download(const std::string& url, const std::string& file) {
 		auto file_abspath = fs::absolute(fs::path(file));
 
-		auto status = file::Exists(file_abspath.string());
-		if (status.ok()) {
+		if (fs::exists(file_abspath)) {
 			return;
 		}
 

@@ -22,13 +22,13 @@ _Mediapipe_SetResourceDir()
 Global $cv = _OpenCV_get()
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertTrue(IsObj($download_utils), "Failed to load mediapipe.autoit.solutions.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
 Global Const $_image = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
-_AssertTrue(IsObj($_image), "Failed to load mediapipe.autoit._framework_bindings.image")
+_AssertIsObj($_image, "Failed to load mediapipe.autoit._framework_bindings.image")
 
 Global Const $Image = $_image.Image
-_AssertTrue(IsObj($Image), "Failed to load image.Image")
+_AssertIsObj($Image, "Failed to load image.Image")
 
 Test()
 

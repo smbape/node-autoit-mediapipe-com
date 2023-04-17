@@ -6,7 +6,7 @@
 namespace mediapipe::autoit::solutions::holistic {
 	using namespace mediapipe::autoit::solution_base;
 
-	class CV_EXPORTS_W Holistic : public SolutionBase {
+	class CV_EXPORTS_W Holistic : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
 		CV_WRAP Holistic(
 			bool static_image_mode = false,

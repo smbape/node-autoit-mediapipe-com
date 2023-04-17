@@ -22,16 +22,16 @@ _Mediapipe_SetResourceDir()
 Global $cv = _OpenCV_get()
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertTrue(IsObj($download_utils), "Failed to load mediapipe.autoit.solutions.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
 Global $drawing_styles = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles")
-_AssertTrue(IsObj($drawing_styles), "Failed to load mediapipe.autoit.solutions.drawing_styles")
+_AssertIsObj($drawing_styles, "Failed to load mediapipe.autoit.solutions.drawing_styles")
 
 Global $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
-_AssertTrue(IsObj($mp_drawing), "Failed to load mediapipe.autoit.solutions.drawing_utils")
+_AssertIsObj($mp_drawing, "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
 Global $mp_holistic = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.holistic")
-_AssertTrue(IsObj($mp_holistic), "Failed to load mediapipe.autoit.solutions.holistic")
+_AssertIsObj($mp_holistic, "Failed to load mediapipe.autoit.solutions.holistic")
 
 Global $Mat = _OpenCV_ObjCreate("Mat")
 

@@ -22,13 +22,13 @@ _Mediapipe_SetResourceDir()
 Global $cv = _OpenCV_get()
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertTrue(IsObj($download_utils), "Failed to load mediapipe.autoit.solutions.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
 Global $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
-_AssertTrue(IsObj($mp_drawing), "Failed to load mediapipe.autoit.solutions.drawing_utils")
+_AssertIsObj($mp_drawing, "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
 Global $mp_objectron = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron")
-_AssertTrue(IsObj($mp_objectron), "Failed to load mediapipe.autoit.solutions.objectron")
+_AssertIsObj($mp_objectron, "Failed to load mediapipe.autoit.solutions.objectron")
 
 Global Const $DIFF_THRESHOLD = 30 ; pixels
 

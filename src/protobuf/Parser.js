@@ -228,6 +228,8 @@ class Parser {
             [top, []]
         ]);
 
+        const cmessage = "::google::protobuf::autoit::cmessage";
+
         for (const [proto, raw_fields] of this.exports.entries()) {
             if (this.imports.has(proto)) {
                 continue;
@@ -244,29 +246,69 @@ class Parser {
 
             const type_name = getTypeName(proto);
             const fields = [];
+            const ctor = [`${ proto }.${ type_name }`, "", [], [], "", ""];
+            const [, , func_modifiers, list_of_arguments] = ctor;
+            const body = [];
 
             this.outputs.decls.push(...[
                 [`class ${ proto }`, ": google::protobuf::Message", ["/Simple"], fields, "", ""],
-                [`${ proto }.${ type_name }`, "", [], [], "", ""],
+                ctor,
             ]);
 
             const {scopes} = raw_fields;
 
             for (const [field_type, field_name, field_rule] of raw_fields.fields) {
                 const is_map = field_type.startsWith("map<");
+                const is_scalar = isScalar(field_type) || this.isEnum(field_type, scopes);
+                const cpptype = this.getCppType(field_type, scopes);
+                const i = list_of_arguments.length;
 
-                if (field_rule === "repeated") {
-                    this.addRepeatedField(proto, fields, field_type, field_name, scopes);
-                } else if (is_map) {
+                if (is_map) {
                     // TODO handle map : return MapContainer
                     console.log("map is not currently supported", field_type, field_name);
-                } else if (isScalar(field_type) || this.isEnum(field_type, scopes)) {
-                    const cpptype = this.getCppType(field_type, scopes);
+                    continue;
+                }
+
+                let argtype = cpptype;
+
+                if (field_rule === "repeated") {
+                    argtype = "VARIANT*";
+                    this.addRepeatedField(proto, fields, field_type, field_name, scopes, body, i);
+                } else if (is_scalar) {
+                    argtype = `std::optional<${ cpptype }>`;
+                    body.push(`
+                        if (!PARAMETER_MISSING(pArg${ i })) {
+                            shared_message->set_${ field_name }(${ field_name }.value());
+                        }
+                    `.trim().replace(/^ {24}/mg, ""));
+
                     fields.push([cpptype, field_name, "", [`/R=${ field_name }`, `/W=set_${ field_name }`]]);
                 } else {
-                    const cpptype = this.getCppType(field_type, scopes);
-                    fields.push([`${ cpptype }*`, field_name, "", [`/R=mutable_${ field_name }`]]);
+                    argtype = `std::shared_ptr<${ cpptype }>`;
+                    body.push(`
+                        if (!PARAMETER_MISSING(pArg${ i })) {
+                            ${ cmessage }::CopyFrom(shared_message->mutable_${ field_name }(), ${ field_name }.get());
+                        }
+                    `.trim().replace(/^ {24}/mg, ""));
+
+                    fields.push([`${ cpptype }*`, field_name, "", [
+                        `/R=mutable_${ field_name }`,
+                        `/WExpr=${ cmessage }::CopyFrom(__self->get()->mutable_${ field_name }(), static_cast<C\${propcotype}*>($value)->__self->get())`,
+                    ]]);
                 }
+
+                list_of_arguments.push([argtype, field_name, `${ argtype }()`, []]);
+                body.push("");
+            }
+
+            if (body.length !== 0) {
+                func_modifiers.push(`/Body=
+                    auto shared_message = std::make_shared<${ proto.replaceAll(".", "::") }>();
+                    hr = autoit_from(shared_message, _retval);
+                    if (SUCCEEDED(hr)) {
+                        ${ body.join("\n").trim().split("\n").join(`\n${ " ".repeat(24) }`) }
+                    }
+                `.trim().replace(/^ {20}/mg, ""));
             }
 
             // TODO if has no options fields => google.protobuf.MessageOptions options /R=options
@@ -897,7 +939,7 @@ class Parser {
         return true;
     }
 
-    addRepeatedField(proto, fields, field_type, field_name, scopes) {
+    addRepeatedField(proto, fields, field_type, field_name, scopes, body, i) {
         const {decls, typedefs} = this.outputs;
 
         const isEnum = this.isEnum(field_type, scopes);
@@ -906,15 +948,38 @@ class Parser {
         const name = `Repeated_${ value_type.replaceAll("::", "_") }`;
         const fqn = `google.protobuf.${ name }`;
         const cpptype = fqn.replaceAll(".", "::");
+        const newVal = "$value";
+        const is_string = value_type === "std::string";
+        const ptr = is_string || byref ? "Ptr" : "";
+        const setter = `
+            hr = google::protobuf::autoit::cmessage::SetRepeatedField(
+                *shared_message.get(),
+                "${ field_name }",
+                ${ newVal },
+                shared_message->mutable_${ field_name }(),
+                Repeated${ ptr }FieldBackInserter(shared_message->mutable_${ field_name }())
+            )
+        `.replace(/^ {12}/mg, "").trim()
 
-        fields.push([`${ cpptype }*`, field_name, "", [`/R=mutable_${ field_name }`]]);
+        fields.push([`${ cpptype }*`, field_name, "", [
+            `/R=mutable_${ field_name }`,
+            "/WIDL=VARIANT*",
+            `/WExpr=
+                auto& shared_message = *__self;
+                ${ setter.split("\n").join("\n" + " ".repeat(16)) }
+            `.replace(/^ {16}/mg, "").trim()
+        ]]);
+
+        body.push(`
+            if (!PARAMETER_MISSING(pArg${ i })) {
+                ${ setter.split("\n").join("\n" + " ".repeat(16)) };
+            }
+        `.trim().replace(/^ {12}/mg, "").replaceAll(newVal, field_name));
 
         if (typedefs.has(cpptype)) {
             return;
         }
 
-        const is_string = value_type === "std::string";
-        const ptr = is_string || byref ? "Ptr" : "";
         typedefs.set(cpptype, `::google::protobuf::Repeated${ ptr }Field<${ value_type }>`);
 
         decls.push(...[

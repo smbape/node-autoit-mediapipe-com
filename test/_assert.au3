@@ -34,6 +34,11 @@ Func _AssertLessEqual($vA, $vB, $sMessage = Default, $bExit = True, $iCode = 0x7
 	Return _AssertTrue($vA <= $vB, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertLessEqual
 
+Func _AssertIsObj($oVal, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
+	If $sMessage == Default Then $sMessage = "expecting " & $oVal & " to be an object"
+	Return _AssertTrue(IsObj($oVal), $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+EndFunc   ;==>_AssertEqual
+
 Func _AssertAlmostEqual($vA, $vB, $fDelta = Default, $iPlaces = Default, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	If $iPlaces == Default Then $iPlaces = 7
 	If $sMessage == Default Then $sMessage = "expecting " & $vA & " to be almost equal to " & $vB & " with decimal places of " & $iPlaces & " with a delta of " & $fDelta
@@ -52,6 +57,11 @@ Func _AssertLen($aArr, $iLength, $sMessage = Default, $bExit = True, $iCode = 0x
 	If $sMessage == Default Then $sMessage = "expecting length " & $iALength & " to be equal to " & $iLength
 	Return _AssertEqual($iALength, $iLength, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertLen
+
+Func _AssertEmpty($aArr, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
+	If $sMessage == Default Then $sMessage = "expecting value to be empty"
+	Return _AssertLen($aArr, 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended);
+EndFunc
 
 Func _AssertIsNone($vVal, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	If $sMessage == Default Then $sMessage = "expecting value to be none"

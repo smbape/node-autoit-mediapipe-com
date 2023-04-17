@@ -30,7 +30,7 @@ namespace mediapipe::autoit::solutions::hands {
 		PINKY_TIP = 20,
 	};
 
-	class CV_EXPORTS_W Hands : public SolutionBase {
+	class CV_EXPORTS_W Hands : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
 		CV_WRAP Hands(
 			bool static_image_mode = false,

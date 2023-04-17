@@ -305,10 +305,21 @@ def add_com_library(name, intdir, compilation_mode):
             "//conditions:default": [],
         }),
         data = [
+            # audio
+            "//mediapipe/tasks/testdata/audio:test_audio_clips",
+            "//mediapipe/tasks/testdata/audio:test_models",
+
+            # text
             "//mediapipe/tasks/testdata/text:bert_text_classifier_models",
             "//mediapipe/tasks/testdata/text:text_classifier_models",
             "//mediapipe/tasks/testdata/text:mobilebert_embedding_model",
             "//mediapipe/tasks/testdata/text:regex_embedding_with_metadata",
+            "//mediapipe/tasks/testdata/text:universal_sentence_encoder_qa",
+
+            # vision
+            "//mediapipe/tasks/testdata/vision:test_images",
+            "//mediapipe/tasks/testdata/vision:test_models",
+            "//mediapipe/tasks/testdata/vision:test_protos",
         ],
         deps = [
             "@windows_opencv//:opencv",

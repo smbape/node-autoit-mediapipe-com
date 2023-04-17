@@ -20,7 +20,7 @@ namespace mediapipe::autoit::solutions::face_detection {
 		FaceKeyPoint key_point_enum
 	);
 
-	class CV_EXPORTS_W FaceDetection : public SolutionBase {
+	class CV_EXPORTS_W FaceDetection : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
 		CV_WRAP FaceDetection(
 			float min_detection_confidence = 0,

@@ -52,4 +52,34 @@ namespace google::protobuf::autoit::cmessage {
 
 	int ClearFieldByDescriptor(Message& message, const FieldDescriptor* field_descriptor);
 	void ClearField(Message& message, const std::string& field_name);
+
+	template<typename _Tr, typename _Ti>
+	HRESULT SetRepeatedField(Message& message, const std::string& field_name, VARIANT* newVal, _Tr* repeated_field, _Ti& repeated_iterator) {
+		const Descriptor* descriptor = message.GetDescriptor();
+		const auto field_descriptor = FindFieldWithOneofs(message, field_name, descriptor);
+		RepeatedContainer autoit_container;
+		autoit_container.message = ::autoit::reference_internal(&message);
+		autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+
+		HRESULT hr;
+
+		std::shared_ptr<_Tr> other;
+		hr = autoit_to(newVal, other);
+		if (SUCCEEDED(hr)) {
+			autoit_container.Clear();
+			repeated_field->Reserve(other->size());
+			std::copy(other->begin(), other->end(), repeated_iterator);
+			return hr;
+		}
+
+		std::vector<_variant_t> value_items;
+		hr = autoit_to(newVal, value_items);
+		if (SUCCEEDED(hr)) {
+			autoit_container.Clear();
+			autoit_container.MergeFrom(value_items);
+			return hr;
+		}
+
+		return E_INVALIDARG;
+	}
 }

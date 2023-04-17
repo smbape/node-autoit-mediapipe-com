@@ -43,7 +43,7 @@ namespace mediapipe::autoit::solutions::pose {
 		RIGHT_FOOT_INDEX = 32,
 	};
 
-	class CV_EXPORTS_W Pose : public SolutionBase {
+	class CV_EXPORTS_W Pose : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
 		CV_WRAP Pose(
 			bool static_image_mode = false,

@@ -111,7 +111,7 @@ namespace mediapipe::autoit::solutions::objectron {
 
 	std::tuple<int, int>& noSize();
 
-	class CV_EXPORTS_W Objectron : public SolutionBase {
+	class CV_EXPORTS_W Objectron : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
 		CV_WRAP Objectron(
 			bool static_image_mode = False,

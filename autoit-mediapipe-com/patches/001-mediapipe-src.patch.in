@@ -42,6 +42,51 @@ index 98ddd577..fdd6200e 100644
          "//mediapipe/python/...",
          "//mediapipe/tasks/...",
      ],
+diff --git a/mediapipe/tasks/cc/core/external_file_handler.cc b/mediapipe/tasks/cc/core/external_file_handler.cc
+index 907a19f8..5af964ad 100644
+--- a/mediapipe/tasks/cc/core/external_file_handler.cc
++++ b/mediapipe/tasks/cc/core/external_file_handler.cc
+@@ -31,6 +31,7 @@ limitations under the License.
+ #include <unistd.h>
+ #endif  // _WIN32
+ 
++#include <filesystem>
+ #include <memory>
+ #include <string>
+ 
+@@ -48,6 +49,8 @@ limitations under the License.
+ #include "tools/cpp/runfiles/runfiles.h"
+ #endif  // _WIN32
+ 
++namespace fs = std::filesystem;
++
+ namespace mediapipe {
+ namespace tasks {
+ namespace core {
+@@ -97,14 +100,18 @@ ExternalFileHandler::CreateFromExternalFile(
+ }
+ 
+ absl::StatusOr<std::string> PathToResourceAsFile(std::string path) {
++  if (fs::path(path).is_absolute()) {
++    return path;
++  }
++
++  if (fs::exists(path)) {
++    return fs::absolute(path).string();
++  }
++
+ #ifndef _WIN32
+   return path;
+ #else
+-  if (absl::StartsWith(path, "./")) {
+-    path = "mediapipe" + path.substr(1);
+-  } else if (path[0] != '/') {
+-    path = "mediapipe/" + path;
+-  }
++  path = (fs::path("mediapipe") / path).string();
+ 
+   std::string error;
+   // TODO: We should ideally use `CreateForTests` when this is
 diff --git a/mediapipe/tasks/python/test/test_utils.py b/mediapipe/tasks/python/test/test_utils.py
 index 23ee4abe..cace1fd0 100644
 --- a/mediapipe/tasks/python/test/test_utils.py
@@ -77,6 +122,42 @@ index 9813b654..289f2291 100644
          "//mediapipe/calculators/tensor:__subpackages__",
          "//mediapipe/tasks:__subpackages__",
      ],
+diff --git a/mediapipe/util/resource_util_default.cc b/mediapipe/util/resource_util_default.cc
+index 3ebbd1f3..0d7748ff 100644
+--- a/mediapipe/util/resource_util_default.cc
++++ b/mediapipe/util/resource_util_default.cc
+@@ -13,12 +13,15 @@
+ // limitations under the License.
+ 
+ #include <fstream>
++#include <filesystem>
+ 
+ #include "absl/flags/flag.h"
+ #include "mediapipe/framework/deps/file_path.h"
+ #include "mediapipe/framework/port/file_helpers.h"
+ #include "mediapipe/framework/port/statusor.h"
+ 
++namespace fs = std::filesystem;
++
+ ABSL_FLAG(
+     std::string, resource_root_dir, "",
+     "The absolute path to the resource directory."
+@@ -39,10 +42,14 @@ absl::Status DefaultGetResourceContents(const std::string& path,
+ }  // namespace internal
+ 
+ absl::StatusOr<std::string> PathToResourceAsFile(const std::string& path) {
+-  if (absl::StartsWith(path, "/")) {
++  if (fs::path(path).is_absolute()) {
+     return path;
+   }
+ 
++  if (fs::exists(path)) {
++    return fs::absolute(path).string();
++  }
++
+   // Try to load the file from bazel-bin. If it does not exist, fall back to the
+   // resource folder.
+   auto bazel_path = JoinPath("bazel-bin", path);
 diff --git a/third_party/opencv_windows.BUILD b/third_party/opencv_windows.BUILD
 index ecf788ee..ccf94a85 100644
 --- a/third_party/opencv_windows.BUILD

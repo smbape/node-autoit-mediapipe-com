@@ -19,10 +19,10 @@ _Mediapipe_SetResourceDir()
 ; AutoIt variable names are case insensitive
 ; Add an _ to differentiate timestamp and Timestamp
 Global Const $_timestamp = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.timestamp")
-_AssertTrue(IsObj($_timestamp), "Failed to load mediapipe.autoit._framework_bindings.timestamp")
+_AssertIsObj($_timestamp, "Failed to load mediapipe.autoit._framework_bindings.timestamp")
 
 Global Const $Timestamp = $_timestamp.Timestamp
-_AssertTrue(IsObj($Timestamp), "Failed to load timestamp.Timestamp")
+_AssertIsObj($Timestamp, "Failed to load timestamp.Timestamp")
 
 Test()
 
