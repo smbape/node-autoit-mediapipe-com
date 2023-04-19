@@ -18,8 +18,6 @@ namespace mediapipe::tasks::autoit::components::utils::cosine_similarity {
 		auto norm_v = cv::norm(v.embedding);
 		AUTOIT_ASSERT_THROW(norm_u > 0 && norm_v > 0, "Cannot compute cosine similarity on embedding with 0 norm.");
 
-		cv::Mat transposed;
-		cv::transpose(v.embedding, transposed);
-		return u.embedding.dot(transposed) / (norm_u * norm_v);
+		return u.embedding.dot(v.embedding) / (norm_u * norm_v);
 	}
 }

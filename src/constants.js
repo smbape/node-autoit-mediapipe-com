@@ -107,6 +107,7 @@ exports.ALIASES = new Map([
 
     ["AudioEmbedderResult", "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult"],
     ["TextEmbedderResult", "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult"],
+    ["ImageEmbedderResult", "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult"],
 
     ["tasks_containers_proto_LandmarksDetectionResult", "mediapipe::tasks::containers::proto::LandmarksDetectionResult"],
 

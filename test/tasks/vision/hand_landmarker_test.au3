@@ -144,6 +144,7 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $landmarker = $_HandLandmarker.create_from_model_path($model_path)
 	_AssertIsObj($landmarker)
+	$landmarker.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -152,6 +153,7 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_HandLandmarker.create_from_options($options)
 	_AssertIsObj($landmarker)
+	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -161,6 +163,7 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_HandLandmarker.create_from_options($options)
 	_AssertIsObj($landmarker)
+	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect($model_file_type, $expected_detection_result)

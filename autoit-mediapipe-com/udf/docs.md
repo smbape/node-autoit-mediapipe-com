@@ -1026,6 +1026,7 @@
 - [mediapipe::tasks::autoit::vision::image\_classifier](#mediapipetasksautoitvisionimage%5C_classifier)
   - [image\_classifier.ImageClassifierOptions](#image%5C_classifierimageclassifieroptions)
   - [image\_classifier.ImageClassifier](#image%5C_classifierimageclassifier)
+  - [image\_classifier.ImageClassifierResult](#image%5C_classifierimageclassifierresult)
 - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions](#mediapipetasksautoitvisionimage%5C_classifierimageclassifieroptions)
   - [ImageClassifierOptions.base\_options](#imageclassifieroptionsbase%5C_options)
   - [ImageClassifierOptions.running\_mode](#imageclassifieroptionsrunning%5C_mode)
@@ -1054,6 +1055,7 @@
 - [mediapipe::tasks::autoit::vision::image\_embedder](#mediapipetasksautoitvisionimage%5C_embedder)
   - [image\_embedder.ImageEmbedderOptions](#image%5C_embedderimageembedderoptions)
   - [image\_embedder.ImageEmbedder](#image%5C_embedderimageembedder)
+  - [image\_embedder.ImageEmbedderResult](#image%5C_embedderimageembedderresult)
 - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions](#mediapipetasksautoitvisionimage%5C_embedderimageembedderoptions)
   - [ImageEmbedderOptions.base\_options](#imageembedderoptionsbase%5C_options)
   - [ImageEmbedderOptions.running\_mode](#imageembedderoptionsrunning%5C_mode)
@@ -1105,6 +1107,7 @@
 - [mediapipe::tasks::autoit::vision::object\_detector](#mediapipetasksautoitvisionobject%5C_detector)
   - [object\_detector.ObjectDetectorOptions](#object%5C_detectorobjectdetectoroptions)
   - [object\_detector.ObjectDetector](#object%5C_detectorobjectdetector)
+  - [object\_detector.ObjectDetectorResult](#object%5C_detectorobjectdetectorresult)
 - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectoroptions)
   - [ObjectDetectorOptions.base\_options](#objectdetectoroptionsbase%5C_options)
   - [ObjectDetectorOptions.running\_mode](#objectdetectoroptionsrunning%5C_mode)
@@ -15407,7 +15410,7 @@ AutoIt:
 ### vision.ImageEmbedderResult
 
 ```cpp
-static mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult
+static mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult
 AutoIt:
     [propget] $ovision.ImageEmbedderResult
 ```
@@ -16512,6 +16515,14 @@ AutoIt:
     [propget] $oimage_classifier.ImageClassifier
 ```
 
+### image\_classifier.ImageClassifierResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult
+AutoIt:
+    [propget] $oimage_classifier.ImageClassifierResult
+```
+
 ## mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions
 
 ### ImageClassifierOptions.base\_options
@@ -16733,6 +16744,14 @@ AutoIt:
     [propget] $oimage_embedder.ImageEmbedder
 ```
 
+### image\_embedder.ImageEmbedderResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult
+AutoIt:
+    [propget] $oimage_embedder.ImageEmbedderResult
+```
+
 ## mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions
 
 ### ImageEmbedderOptions.base\_options
@@ -16892,8 +16911,8 @@ AutoIt:
 ### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed
 
 ```cpp
-std::shared_ptr<ImageEmbedderResult> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::embed( const mediapipe::Image&                                                                                   image,
-                                                                                                             std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::embed( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                             std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
     $oImageEmbedder.embed( $image[, $image_processing_options] ) -> retval
 ```
@@ -16911,9 +16930,9 @@ AutoIt:
 ### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed\_for\_video
 
 ```cpp
-std::shared_ptr<ImageEmbedderResult> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::embed_for_video( const mediapipe::Image&                                                                                   image,
-                                                                                                                       int64_t                                                                                                   timestamp_ms,
-                                                                                                                       std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::embed_for_video( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                                       int64_t                                                                                                   timestamp_ms,
+                                                                                                                                                                                       std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
     $oImageEmbedder.embed_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
 ```
@@ -17127,6 +17146,14 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::object_detector::ObjectDetector
 AutoIt:
     [propget] $oobject_detector.ObjectDetector
+```
+
+### object\_detector.ObjectDetectorResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::detections::DetectionResult
+AutoIt:
+    [propget] $oobject_detector.ObjectDetectorResult
 ```
 
 ## mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions
