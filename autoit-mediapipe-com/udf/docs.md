@@ -52,6 +52,7 @@
   - [google::protobuf::autoit::MapContainer::str](#googleprotobufautoitmapcontainerstr)
 - [google::protobuf::autoit::cmessage](#googleprotobufautoitcmessage)
   - [google::protobuf::autoit::cmessage::GetFieldValue](#googleprotobufautoitcmessagegetfieldvalue)
+  - [google::protobuf::autoit::cmessage::NomalizeNumberFields](#googleprotobufautoitcmessagenomalizenumberfields)
   - [google::protobuf::autoit::cmessage::SetFieldValue](#googleprotobufautoitcmessagesetfieldvalue)
 - [mediapipe](#mediapipe)
   - [mediapipe.autoit](#mediapipeautoit)
@@ -2294,6 +2295,905 @@
   - [ImageFormat.SBGRA\_](#imageformatsbgra%5C_)
 - [mediapipe::framework::formats::image\_format\_pb2](#mediapipeframeworkformatsimage%5C_format%5C_pb2)
   - [image\_format\_pb2.ImageFormat](#image%5C_format%5C_pb2imageformat)
+- [google::protobuf::FileDescriptorSet](#googleprotobuffiledescriptorset)
+  - [FileDescriptorSet.file](#filedescriptorsetfile)
+  - [google::protobuf::FileDescriptorSet::get\_create](#googleprotobuffiledescriptorsetget%5C_create)
+  - [google::protobuf::FileDescriptorSet::ByteSizeLong](#googleprotobuffiledescriptorsetbytesizelong)
+  - [google::protobuf::FileDescriptorSet::CheckInitialized](#googleprotobuffiledescriptorsetcheckinitialized)
+  - [google::protobuf::FileDescriptorSet::Clear](#googleprotobuffiledescriptorsetclear)
+  - [google::protobuf::FileDescriptorSet::ClearField](#googleprotobuffiledescriptorsetclearfield)
+  - [google::protobuf::FileDescriptorSet::CopyFrom](#googleprotobuffiledescriptorsetcopyfrom)
+  - [google::protobuf::FileDescriptorSet::DiscardUnknownFields](#googleprotobuffiledescriptorsetdiscardunknownfields)
+  - [google::protobuf::FileDescriptorSet::FindInitializationErrors](#googleprotobuffiledescriptorsetfindinitializationerrors)
+  - [google::protobuf::FileDescriptorSet::IsInitialized](#googleprotobuffiledescriptorsetisinitialized)
+  - [google::protobuf::FileDescriptorSet::SerializeAsString](#googleprotobuffiledescriptorsetserializeasstring)
+  - [google::protobuf::FileDescriptorSet::SerializeToString](#googleprotobuffiledescriptorsetserializetostring)
+  - [google::protobuf::FileDescriptorSet::SpaceUsedLong](#googleprotobuffiledescriptorsetspaceusedlong)
+  - [google::protobuf::FileDescriptorSet::\_\_str\_\_](#googleprotobuffiledescriptorset%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorproto)
+  - [Repeated\_google\_protobuf\_FileDescriptorProto.Count](#repeated%5C_google%5C_protobuf%5C_filedescriptorprotocount)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotocreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotocopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotomergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotopop)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotosize)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotoslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotosort)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotosort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_filedescriptorprotosplice)
+- [google::protobuf::FileDescriptorProto](#googleprotobuffiledescriptorproto)
+  - [FileDescriptorProto.name](#filedescriptorprotoname)
+  - [FileDescriptorProto.package](#filedescriptorprotopackage)
+  - [FileDescriptorProto.dependency](#filedescriptorprotodependency)
+  - [FileDescriptorProto.public\_dependency](#filedescriptorprotopublic%5C_dependency)
+  - [FileDescriptorProto.weak\_dependency](#filedescriptorprotoweak%5C_dependency)
+  - [FileDescriptorProto.message\_type](#filedescriptorprotomessage%5C_type)
+  - [FileDescriptorProto.enum\_type](#filedescriptorprotoenum%5C_type)
+  - [FileDescriptorProto.service](#filedescriptorprotoservice)
+  - [FileDescriptorProto.extension](#filedescriptorprotoextension)
+  - [FileDescriptorProto.options](#filedescriptorprotooptions)
+  - [FileDescriptorProto.source\_code\_info](#filedescriptorprotosource%5C_code%5C_info)
+  - [FileDescriptorProto.syntax](#filedescriptorprotosyntax)
+  - [google::protobuf::FileDescriptorProto::get\_create](#googleprotobuffiledescriptorprotoget%5C_create)
+  - [google::protobuf::FileDescriptorProto::ByteSizeLong](#googleprotobuffiledescriptorprotobytesizelong)
+  - [google::protobuf::FileDescriptorProto::CheckInitialized](#googleprotobuffiledescriptorprotocheckinitialized)
+  - [google::protobuf::FileDescriptorProto::Clear](#googleprotobuffiledescriptorprotoclear)
+  - [google::protobuf::FileDescriptorProto::ClearField](#googleprotobuffiledescriptorprotoclearfield)
+  - [google::protobuf::FileDescriptorProto::CopyFrom](#googleprotobuffiledescriptorprotocopyfrom)
+  - [google::protobuf::FileDescriptorProto::DiscardUnknownFields](#googleprotobuffiledescriptorprotodiscardunknownfields)
+  - [google::protobuf::FileDescriptorProto::FindInitializationErrors](#googleprotobuffiledescriptorprotofindinitializationerrors)
+  - [google::protobuf::FileDescriptorProto::IsInitialized](#googleprotobuffiledescriptorprotoisinitialized)
+  - [google::protobuf::FileDescriptorProto::SerializeAsString](#googleprotobuffiledescriptorprotoserializeasstring)
+  - [google::protobuf::FileDescriptorProto::SerializeToString](#googleprotobuffiledescriptorprotoserializetostring)
+  - [google::protobuf::FileDescriptorProto::SpaceUsedLong](#googleprotobuffiledescriptorprotospaceusedlong)
+  - [google::protobuf::FileDescriptorProto::\_\_str\_\_](#googleprotobuffiledescriptorproto%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto)
+  - [Repeated\_google\_protobuf\_DescriptorProto.Count](#repeated%5C_google%5C_protobuf%5C_descriptorprotocount)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotocreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotocopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotomergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotopop)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotosize)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotoslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotosort)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotosort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorprotosplice)
+- [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto)
+  - [Repeated\_google\_protobuf\_EnumDescriptorProto.Count](#repeated%5C_google%5C_protobuf%5C_enumdescriptorprotocount)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotocreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotocopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotomergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotopop)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotosize)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotoslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotosort)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotosort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorprotosplice)
+- [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorproto)
+  - [Repeated\_google\_protobuf\_ServiceDescriptorProto.Count](#repeated%5C_google%5C_protobuf%5C_servicedescriptorprotocount)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotocreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotocopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotomergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotopop)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotosize)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotoslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotosort)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotosort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_servicedescriptorprotosplice)
+- [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorproto)
+  - [Repeated\_google\_protobuf\_FieldDescriptorProto.Count](#repeated%5C_google%5C_protobuf%5C_fielddescriptorprotocount)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotocreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotocopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotomergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotopop)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotosize)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotoslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotosort)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotosort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_fielddescriptorprotosplice)
+- [google::protobuf::DescriptorProto](#googleprotobufdescriptorproto)
+  - [DescriptorProto.name](#descriptorprotoname)
+  - [DescriptorProto.field](#descriptorprotofield)
+  - [DescriptorProto.extension](#descriptorprotoextension)
+  - [DescriptorProto.nested\_type](#descriptorprotonested%5C_type)
+  - [DescriptorProto.enum\_type](#descriptorprotoenum%5C_type)
+  - [DescriptorProto.extension\_range](#descriptorprotoextension%5C_range)
+  - [DescriptorProto.oneof\_decl](#descriptorprotooneof%5C_decl)
+  - [DescriptorProto.options](#descriptorprotooptions)
+  - [DescriptorProto.reserved\_range](#descriptorprotoreserved%5C_range)
+  - [DescriptorProto.reserved\_name](#descriptorprotoreserved%5C_name)
+  - [google::protobuf::DescriptorProto::get\_create](#googleprotobufdescriptorprotoget%5C_create)
+  - [google::protobuf::DescriptorProto::ByteSizeLong](#googleprotobufdescriptorprotobytesizelong)
+  - [google::protobuf::DescriptorProto::CheckInitialized](#googleprotobufdescriptorprotocheckinitialized)
+  - [google::protobuf::DescriptorProto::Clear](#googleprotobufdescriptorprotoclear)
+  - [google::protobuf::DescriptorProto::ClearField](#googleprotobufdescriptorprotoclearfield)
+  - [google::protobuf::DescriptorProto::CopyFrom](#googleprotobufdescriptorprotocopyfrom)
+  - [google::protobuf::DescriptorProto::DiscardUnknownFields](#googleprotobufdescriptorprotodiscardunknownfields)
+  - [google::protobuf::DescriptorProto::FindInitializationErrors](#googleprotobufdescriptorprotofindinitializationerrors)
+  - [google::protobuf::DescriptorProto::IsInitialized](#googleprotobufdescriptorprotoisinitialized)
+  - [google::protobuf::DescriptorProto::SerializeAsString](#googleprotobufdescriptorprotoserializeasstring)
+  - [google::protobuf::DescriptorProto::SerializeToString](#googleprotobufdescriptorprotoserializetostring)
+  - [google::protobuf::DescriptorProto::SpaceUsedLong](#googleprotobufdescriptorprotospaceusedlong)
+  - [google::protobuf::DescriptorProto::\_\_str\_\_](#googleprotobufdescriptorproto%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrange)
+  - [Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange.Count](#repeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangecount)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangecreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangecopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangemergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangepop)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangereverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangesize)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangeslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangesort)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangesort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_extensionrangesplice)
+- [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorproto)
+  - [Repeated\_google\_protobuf\_OneofDescriptorProto.Count](#repeated%5C_google%5C_protobuf%5C_oneofdescriptorprotocount)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotocreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotocopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotomergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotopop)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotosize)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotoslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotosort)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotosort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_oneofdescriptorprotosplice)
+- [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrange)
+  - [Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange.Count](#repeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangecount)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangecreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangecopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangemergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangepop)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangereverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangesize)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangeslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangesort)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangesort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_descriptorproto%5C_reservedrangesplice)
+- [google::protobuf::DescriptorProto::ExtensionRange](#googleprotobufdescriptorprotoextensionrange)
+  - [ExtensionRange.start](#extensionrangestart)
+  - [ExtensionRange.end](#extensionrangeend)
+  - [ExtensionRange.options](#extensionrangeoptions)
+  - [google::protobuf::DescriptorProto::ExtensionRange::get\_create](#googleprotobufdescriptorprotoextensionrangeget%5C_create)
+  - [google::protobuf::DescriptorProto::ExtensionRange::ByteSizeLong](#googleprotobufdescriptorprotoextensionrangebytesizelong)
+  - [google::protobuf::DescriptorProto::ExtensionRange::CheckInitialized](#googleprotobufdescriptorprotoextensionrangecheckinitialized)
+  - [google::protobuf::DescriptorProto::ExtensionRange::Clear](#googleprotobufdescriptorprotoextensionrangeclear)
+  - [google::protobuf::DescriptorProto::ExtensionRange::ClearField](#googleprotobufdescriptorprotoextensionrangeclearfield)
+  - [google::protobuf::DescriptorProto::ExtensionRange::CopyFrom](#googleprotobufdescriptorprotoextensionrangecopyfrom)
+  - [google::protobuf::DescriptorProto::ExtensionRange::DiscardUnknownFields](#googleprotobufdescriptorprotoextensionrangediscardunknownfields)
+  - [google::protobuf::DescriptorProto::ExtensionRange::FindInitializationErrors](#googleprotobufdescriptorprotoextensionrangefindinitializationerrors)
+  - [google::protobuf::DescriptorProto::ExtensionRange::IsInitialized](#googleprotobufdescriptorprotoextensionrangeisinitialized)
+  - [google::protobuf::DescriptorProto::ExtensionRange::SerializeAsString](#googleprotobufdescriptorprotoextensionrangeserializeasstring)
+  - [google::protobuf::DescriptorProto::ExtensionRange::SerializeToString](#googleprotobufdescriptorprotoextensionrangeserializetostring)
+  - [google::protobuf::DescriptorProto::ExtensionRange::SpaceUsedLong](#googleprotobufdescriptorprotoextensionrangespaceusedlong)
+  - [google::protobuf::DescriptorProto::ExtensionRange::\_\_str\_\_](#googleprotobufdescriptorprotoextensionrange%5C_%5C_str%5C_%5C_)
+- [google::protobuf::DescriptorProto::ReservedRange](#googleprotobufdescriptorprotoreservedrange)
+  - [ReservedRange.start](#reservedrangestart)
+  - [ReservedRange.end](#reservedrangeend)
+  - [google::protobuf::DescriptorProto::ReservedRange::get\_create](#googleprotobufdescriptorprotoreservedrangeget%5C_create)
+  - [google::protobuf::DescriptorProto::ReservedRange::ByteSizeLong](#googleprotobufdescriptorprotoreservedrangebytesizelong)
+  - [google::protobuf::DescriptorProto::ReservedRange::CheckInitialized](#googleprotobufdescriptorprotoreservedrangecheckinitialized)
+  - [google::protobuf::DescriptorProto::ReservedRange::Clear](#googleprotobufdescriptorprotoreservedrangeclear)
+  - [google::protobuf::DescriptorProto::ReservedRange::ClearField](#googleprotobufdescriptorprotoreservedrangeclearfield)
+  - [google::protobuf::DescriptorProto::ReservedRange::CopyFrom](#googleprotobufdescriptorprotoreservedrangecopyfrom)
+  - [google::protobuf::DescriptorProto::ReservedRange::DiscardUnknownFields](#googleprotobufdescriptorprotoreservedrangediscardunknownfields)
+  - [google::protobuf::DescriptorProto::ReservedRange::FindInitializationErrors](#googleprotobufdescriptorprotoreservedrangefindinitializationerrors)
+  - [google::protobuf::DescriptorProto::ReservedRange::IsInitialized](#googleprotobufdescriptorprotoreservedrangeisinitialized)
+  - [google::protobuf::DescriptorProto::ReservedRange::SerializeAsString](#googleprotobufdescriptorprotoreservedrangeserializeasstring)
+  - [google::protobuf::DescriptorProto::ReservedRange::SerializeToString](#googleprotobufdescriptorprotoreservedrangeserializetostring)
+  - [google::protobuf::DescriptorProto::ReservedRange::SpaceUsedLong](#googleprotobufdescriptorprotoreservedrangespaceusedlong)
+  - [google::protobuf::DescriptorProto::ReservedRange::\_\_str\_\_](#googleprotobufdescriptorprotoreservedrange%5C_%5C_str%5C_%5C_)
+- [google::protobuf::ExtensionRangeOptions](#googleprotobufextensionrangeoptions)
+  - [ExtensionRangeOptions.uninterpreted\_option](#extensionrangeoptionsuninterpreted%5C_option)
+  - [google::protobuf::ExtensionRangeOptions::get\_create](#googleprotobufextensionrangeoptionsget%5C_create)
+  - [google::protobuf::ExtensionRangeOptions::ByteSizeLong](#googleprotobufextensionrangeoptionsbytesizelong)
+  - [google::protobuf::ExtensionRangeOptions::CheckInitialized](#googleprotobufextensionrangeoptionscheckinitialized)
+  - [google::protobuf::ExtensionRangeOptions::Clear](#googleprotobufextensionrangeoptionsclear)
+  - [google::protobuf::ExtensionRangeOptions::ClearField](#googleprotobufextensionrangeoptionsclearfield)
+  - [google::protobuf::ExtensionRangeOptions::CopyFrom](#googleprotobufextensionrangeoptionscopyfrom)
+  - [google::protobuf::ExtensionRangeOptions::DiscardUnknownFields](#googleprotobufextensionrangeoptionsdiscardunknownfields)
+  - [google::protobuf::ExtensionRangeOptions::FindInitializationErrors](#googleprotobufextensionrangeoptionsfindinitializationerrors)
+  - [google::protobuf::ExtensionRangeOptions::IsInitialized](#googleprotobufextensionrangeoptionsisinitialized)
+  - [google::protobuf::ExtensionRangeOptions::SerializeAsString](#googleprotobufextensionrangeoptionsserializeasstring)
+  - [google::protobuf::ExtensionRangeOptions::SerializeToString](#googleprotobufextensionrangeoptionsserializetostring)
+  - [google::protobuf::ExtensionRangeOptions::SpaceUsedLong](#googleprotobufextensionrangeoptionsspaceusedlong)
+  - [google::protobuf::ExtensionRangeOptions::\_\_str\_\_](#googleprotobufextensionrangeoptions%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption)
+  - [Repeated\_google\_protobuf\_UninterpretedOption.Count](#repeated%5C_google%5C_protobuf%5C_uninterpretedoptioncount)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptioncreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptioncopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionmergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptioninsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionpop)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionsize)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionsort)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionsort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoptionsplice)
+- [google::protobuf::FieldDescriptorProto](#googleprotobuffielddescriptorproto)
+  - [FieldDescriptorProto.name](#fielddescriptorprotoname)
+  - [FieldDescriptorProto.number](#fielddescriptorprotonumber)
+  - [FieldDescriptorProto.label](#fielddescriptorprotolabel)
+  - [FieldDescriptorProto.type](#fielddescriptorprototype)
+  - [FieldDescriptorProto.type\_name](#fielddescriptorprototype%5C_name)
+  - [FieldDescriptorProto.extendee](#fielddescriptorprotoextendee)
+  - [FieldDescriptorProto.default\_value](#fielddescriptorprotodefault%5C_value)
+  - [FieldDescriptorProto.oneof\_index](#fielddescriptorprotooneof%5C_index)
+  - [FieldDescriptorProto.json\_name](#fielddescriptorprotojson%5C_name)
+  - [FieldDescriptorProto.options](#fielddescriptorprotooptions)
+  - [FieldDescriptorProto.proto3\_optional](#fielddescriptorprotoproto3%5C_optional)
+  - [google::protobuf::FieldDescriptorProto::get\_create](#googleprotobuffielddescriptorprotoget%5C_create)
+  - [google::protobuf::FieldDescriptorProto::ByteSizeLong](#googleprotobuffielddescriptorprotobytesizelong)
+  - [google::protobuf::FieldDescriptorProto::CheckInitialized](#googleprotobuffielddescriptorprotocheckinitialized)
+  - [google::protobuf::FieldDescriptorProto::Clear](#googleprotobuffielddescriptorprotoclear)
+  - [google::protobuf::FieldDescriptorProto::ClearField](#googleprotobuffielddescriptorprotoclearfield)
+  - [google::protobuf::FieldDescriptorProto::CopyFrom](#googleprotobuffielddescriptorprotocopyfrom)
+  - [google::protobuf::FieldDescriptorProto::DiscardUnknownFields](#googleprotobuffielddescriptorprotodiscardunknownfields)
+  - [google::protobuf::FieldDescriptorProto::FindInitializationErrors](#googleprotobuffielddescriptorprotofindinitializationerrors)
+  - [google::protobuf::FieldDescriptorProto::IsInitialized](#googleprotobuffielddescriptorprotoisinitialized)
+  - [google::protobuf::FieldDescriptorProto::SerializeAsString](#googleprotobuffielddescriptorprotoserializeasstring)
+  - [google::protobuf::FieldDescriptorProto::SerializeToString](#googleprotobuffielddescriptorprotoserializetostring)
+  - [google::protobuf::FieldDescriptorProto::SpaceUsedLong](#googleprotobuffielddescriptorprotospaceusedlong)
+  - [google::protobuf::FieldDescriptorProto::\_\_str\_\_](#googleprotobuffielddescriptorproto%5C_%5C_str%5C_%5C_)
+  - [FieldDescriptorProto.TYPE\_DOUBLE\_](#fielddescriptorprototype%5C_double%5C_-1)
+  - [FieldDescriptorProto.TYPE\_FLOAT\_](#fielddescriptorprototype%5C_float%5C_-1)
+  - [FieldDescriptorProto.TYPE\_INT64\_](#fielddescriptorprototype%5C_int64%5C_-1)
+  - [FieldDescriptorProto.TYPE\_UINT64\_](#fielddescriptorprototype%5C_uint64%5C_-1)
+  - [FieldDescriptorProto.TYPE\_INT32\_](#fielddescriptorprototype%5C_int32%5C_-1)
+  - [FieldDescriptorProto.TYPE\_FIXED64\_](#fielddescriptorprototype%5C_fixed64%5C_-1)
+  - [FieldDescriptorProto.TYPE\_FIXED32\_](#fielddescriptorprototype%5C_fixed32%5C_-1)
+  - [FieldDescriptorProto.TYPE\_BOOL\_](#fielddescriptorprototype%5C_bool%5C_-1)
+  - [FieldDescriptorProto.TYPE\_STRING\_](#fielddescriptorprototype%5C_string%5C_-1)
+  - [FieldDescriptorProto.TYPE\_GROUP\_](#fielddescriptorprototype%5C_group%5C_-1)
+  - [FieldDescriptorProto.TYPE\_MESSAGE\_](#fielddescriptorprototype%5C_message%5C_-1)
+  - [FieldDescriptorProto.TYPE\_BYTES\_](#fielddescriptorprototype%5C_bytes%5C_-1)
+  - [FieldDescriptorProto.TYPE\_UINT32\_](#fielddescriptorprototype%5C_uint32%5C_-1)
+  - [FieldDescriptorProto.TYPE\_ENUM\_](#fielddescriptorprototype%5C_enum%5C_-1)
+  - [FieldDescriptorProto.TYPE\_SFIXED32\_](#fielddescriptorprototype%5C_sfixed32%5C_-1)
+  - [FieldDescriptorProto.TYPE\_SFIXED64\_](#fielddescriptorprototype%5C_sfixed64%5C_-1)
+  - [FieldDescriptorProto.TYPE\_SINT32\_](#fielddescriptorprototype%5C_sint32%5C_-1)
+  - [FieldDescriptorProto.TYPE\_SINT64\_](#fielddescriptorprototype%5C_sint64%5C_-1)
+  - [FieldDescriptorProto.LABEL\_OPTIONAL\_](#fielddescriptorprotolabel%5C_optional%5C_)
+  - [FieldDescriptorProto.LABEL\_REQUIRED\_](#fielddescriptorprotolabel%5C_required%5C_)
+  - [FieldDescriptorProto.LABEL\_REPEATED\_](#fielddescriptorprotolabel%5C_repeated%5C_)
+- [google::protobuf::OneofDescriptorProto](#googleprotobufoneofdescriptorproto)
+  - [OneofDescriptorProto.name](#oneofdescriptorprotoname)
+  - [OneofDescriptorProto.options](#oneofdescriptorprotooptions)
+  - [google::protobuf::OneofDescriptorProto::get\_create](#googleprotobufoneofdescriptorprotoget%5C_create)
+  - [google::protobuf::OneofDescriptorProto::ByteSizeLong](#googleprotobufoneofdescriptorprotobytesizelong)
+  - [google::protobuf::OneofDescriptorProto::CheckInitialized](#googleprotobufoneofdescriptorprotocheckinitialized)
+  - [google::protobuf::OneofDescriptorProto::Clear](#googleprotobufoneofdescriptorprotoclear)
+  - [google::protobuf::OneofDescriptorProto::ClearField](#googleprotobufoneofdescriptorprotoclearfield)
+  - [google::protobuf::OneofDescriptorProto::CopyFrom](#googleprotobufoneofdescriptorprotocopyfrom)
+  - [google::protobuf::OneofDescriptorProto::DiscardUnknownFields](#googleprotobufoneofdescriptorprotodiscardunknownfields)
+  - [google::protobuf::OneofDescriptorProto::FindInitializationErrors](#googleprotobufoneofdescriptorprotofindinitializationerrors)
+  - [google::protobuf::OneofDescriptorProto::IsInitialized](#googleprotobufoneofdescriptorprotoisinitialized)
+  - [google::protobuf::OneofDescriptorProto::SerializeAsString](#googleprotobufoneofdescriptorprotoserializeasstring)
+  - [google::protobuf::OneofDescriptorProto::SerializeToString](#googleprotobufoneofdescriptorprotoserializetostring)
+  - [google::protobuf::OneofDescriptorProto::SpaceUsedLong](#googleprotobufoneofdescriptorprotospaceusedlong)
+  - [google::protobuf::OneofDescriptorProto::\_\_str\_\_](#googleprotobufoneofdescriptorproto%5C_%5C_str%5C_%5C_)
+- [google::protobuf::EnumDescriptorProto](#googleprotobufenumdescriptorproto)
+  - [EnumDescriptorProto.name](#enumdescriptorprotoname)
+  - [EnumDescriptorProto.value](#enumdescriptorprotovalue)
+  - [EnumDescriptorProto.options](#enumdescriptorprotooptions)
+  - [EnumDescriptorProto.reserved\_range](#enumdescriptorprotoreserved%5C_range)
+  - [EnumDescriptorProto.reserved\_name](#enumdescriptorprotoreserved%5C_name)
+  - [google::protobuf::EnumDescriptorProto::get\_create](#googleprotobufenumdescriptorprotoget%5C_create)
+  - [google::protobuf::EnumDescriptorProto::ByteSizeLong](#googleprotobufenumdescriptorprotobytesizelong)
+  - [google::protobuf::EnumDescriptorProto::CheckInitialized](#googleprotobufenumdescriptorprotocheckinitialized)
+  - [google::protobuf::EnumDescriptorProto::Clear](#googleprotobufenumdescriptorprotoclear)
+  - [google::protobuf::EnumDescriptorProto::ClearField](#googleprotobufenumdescriptorprotoclearfield)
+  - [google::protobuf::EnumDescriptorProto::CopyFrom](#googleprotobufenumdescriptorprotocopyfrom)
+  - [google::protobuf::EnumDescriptorProto::DiscardUnknownFields](#googleprotobufenumdescriptorprotodiscardunknownfields)
+  - [google::protobuf::EnumDescriptorProto::FindInitializationErrors](#googleprotobufenumdescriptorprotofindinitializationerrors)
+  - [google::protobuf::EnumDescriptorProto::IsInitialized](#googleprotobufenumdescriptorprotoisinitialized)
+  - [google::protobuf::EnumDescriptorProto::SerializeAsString](#googleprotobufenumdescriptorprotoserializeasstring)
+  - [google::protobuf::EnumDescriptorProto::SerializeToString](#googleprotobufenumdescriptorprotoserializetostring)
+  - [google::protobuf::EnumDescriptorProto::SpaceUsedLong](#googleprotobufenumdescriptorprotospaceusedlong)
+  - [google::protobuf::EnumDescriptorProto::\_\_str\_\_](#googleprotobufenumdescriptorproto%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorproto)
+  - [Repeated\_google\_protobuf\_EnumValueDescriptorProto.Count](#repeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotocount)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotocreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotocopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotomergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotopop)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotosize)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotoslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotosort)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotosort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumvaluedescriptorprotosplice)
+- [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrange)
+  - [Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange.Count](#repeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangecount)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangecreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangecopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangemergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangepop)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangereverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangesize)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangeslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangesort)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangesort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_enumdescriptorproto%5C_enumreservedrangesplice)
+- [google::protobuf::EnumDescriptorProto::EnumReservedRange](#googleprotobufenumdescriptorprotoenumreservedrange)
+  - [EnumReservedRange.start](#enumreservedrangestart)
+  - [EnumReservedRange.end](#enumreservedrangeend)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::get\_create](#googleprotobufenumdescriptorprotoenumreservedrangeget%5C_create)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::ByteSizeLong](#googleprotobufenumdescriptorprotoenumreservedrangebytesizelong)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::CheckInitialized](#googleprotobufenumdescriptorprotoenumreservedrangecheckinitialized)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::Clear](#googleprotobufenumdescriptorprotoenumreservedrangeclear)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::ClearField](#googleprotobufenumdescriptorprotoenumreservedrangeclearfield)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::CopyFrom](#googleprotobufenumdescriptorprotoenumreservedrangecopyfrom)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::DiscardUnknownFields](#googleprotobufenumdescriptorprotoenumreservedrangediscardunknownfields)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::FindInitializationErrors](#googleprotobufenumdescriptorprotoenumreservedrangefindinitializationerrors)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::IsInitialized](#googleprotobufenumdescriptorprotoenumreservedrangeisinitialized)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::SerializeAsString](#googleprotobufenumdescriptorprotoenumreservedrangeserializeasstring)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::SerializeToString](#googleprotobufenumdescriptorprotoenumreservedrangeserializetostring)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::SpaceUsedLong](#googleprotobufenumdescriptorprotoenumreservedrangespaceusedlong)
+  - [google::protobuf::EnumDescriptorProto::EnumReservedRange::\_\_str\_\_](#googleprotobufenumdescriptorprotoenumreservedrange%5C_%5C_str%5C_%5C_)
+- [google::protobuf::EnumValueDescriptorProto](#googleprotobufenumvaluedescriptorproto)
+  - [EnumValueDescriptorProto.name](#enumvaluedescriptorprotoname)
+  - [EnumValueDescriptorProto.number](#enumvaluedescriptorprotonumber)
+  - [EnumValueDescriptorProto.options](#enumvaluedescriptorprotooptions)
+  - [google::protobuf::EnumValueDescriptorProto::get\_create](#googleprotobufenumvaluedescriptorprotoget%5C_create)
+  - [google::protobuf::EnumValueDescriptorProto::ByteSizeLong](#googleprotobufenumvaluedescriptorprotobytesizelong)
+  - [google::protobuf::EnumValueDescriptorProto::CheckInitialized](#googleprotobufenumvaluedescriptorprotocheckinitialized)
+  - [google::protobuf::EnumValueDescriptorProto::Clear](#googleprotobufenumvaluedescriptorprotoclear)
+  - [google::protobuf::EnumValueDescriptorProto::ClearField](#googleprotobufenumvaluedescriptorprotoclearfield)
+  - [google::protobuf::EnumValueDescriptorProto::CopyFrom](#googleprotobufenumvaluedescriptorprotocopyfrom)
+  - [google::protobuf::EnumValueDescriptorProto::DiscardUnknownFields](#googleprotobufenumvaluedescriptorprotodiscardunknownfields)
+  - [google::protobuf::EnumValueDescriptorProto::FindInitializationErrors](#googleprotobufenumvaluedescriptorprotofindinitializationerrors)
+  - [google::protobuf::EnumValueDescriptorProto::IsInitialized](#googleprotobufenumvaluedescriptorprotoisinitialized)
+  - [google::protobuf::EnumValueDescriptorProto::SerializeAsString](#googleprotobufenumvaluedescriptorprotoserializeasstring)
+  - [google::protobuf::EnumValueDescriptorProto::SerializeToString](#googleprotobufenumvaluedescriptorprotoserializetostring)
+  - [google::protobuf::EnumValueDescriptorProto::SpaceUsedLong](#googleprotobufenumvaluedescriptorprotospaceusedlong)
+  - [google::protobuf::EnumValueDescriptorProto::\_\_str\_\_](#googleprotobufenumvaluedescriptorproto%5C_%5C_str%5C_%5C_)
+- [google::protobuf::ServiceDescriptorProto](#googleprotobufservicedescriptorproto)
+  - [ServiceDescriptorProto.name](#servicedescriptorprotoname)
+  - [ServiceDescriptorProto.method](#servicedescriptorprotomethod)
+  - [ServiceDescriptorProto.options](#servicedescriptorprotooptions)
+  - [google::protobuf::ServiceDescriptorProto::get\_create](#googleprotobufservicedescriptorprotoget%5C_create)
+  - [google::protobuf::ServiceDescriptorProto::ByteSizeLong](#googleprotobufservicedescriptorprotobytesizelong)
+  - [google::protobuf::ServiceDescriptorProto::CheckInitialized](#googleprotobufservicedescriptorprotocheckinitialized)
+  - [google::protobuf::ServiceDescriptorProto::Clear](#googleprotobufservicedescriptorprotoclear)
+  - [google::protobuf::ServiceDescriptorProto::ClearField](#googleprotobufservicedescriptorprotoclearfield)
+  - [google::protobuf::ServiceDescriptorProto::CopyFrom](#googleprotobufservicedescriptorprotocopyfrom)
+  - [google::protobuf::ServiceDescriptorProto::DiscardUnknownFields](#googleprotobufservicedescriptorprotodiscardunknownfields)
+  - [google::protobuf::ServiceDescriptorProto::FindInitializationErrors](#googleprotobufservicedescriptorprotofindinitializationerrors)
+  - [google::protobuf::ServiceDescriptorProto::IsInitialized](#googleprotobufservicedescriptorprotoisinitialized)
+  - [google::protobuf::ServiceDescriptorProto::SerializeAsString](#googleprotobufservicedescriptorprotoserializeasstring)
+  - [google::protobuf::ServiceDescriptorProto::SerializeToString](#googleprotobufservicedescriptorprotoserializetostring)
+  - [google::protobuf::ServiceDescriptorProto::SpaceUsedLong](#googleprotobufservicedescriptorprotospaceusedlong)
+  - [google::protobuf::ServiceDescriptorProto::\_\_str\_\_](#googleprotobufservicedescriptorproto%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorproto)
+  - [Repeated\_google\_protobuf\_MethodDescriptorProto.Count](#repeated%5C_google%5C_protobuf%5C_methoddescriptorprotocount)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotocreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotocopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotomergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotopop)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotosize)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotoslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotosort)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotosort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_methoddescriptorprotosplice)
+- [google::protobuf::MethodDescriptorProto](#googleprotobufmethoddescriptorproto)
+  - [MethodDescriptorProto.name](#methoddescriptorprotoname)
+  - [MethodDescriptorProto.input\_type](#methoddescriptorprotoinput%5C_type)
+  - [MethodDescriptorProto.output\_type](#methoddescriptorprotooutput%5C_type)
+  - [MethodDescriptorProto.options](#methoddescriptorprotooptions)
+  - [MethodDescriptorProto.client\_streaming](#methoddescriptorprotoclient%5C_streaming)
+  - [MethodDescriptorProto.server\_streaming](#methoddescriptorprotoserver%5C_streaming)
+  - [google::protobuf::MethodDescriptorProto::get\_create](#googleprotobufmethoddescriptorprotoget%5C_create)
+  - [google::protobuf::MethodDescriptorProto::ByteSizeLong](#googleprotobufmethoddescriptorprotobytesizelong)
+  - [google::protobuf::MethodDescriptorProto::CheckInitialized](#googleprotobufmethoddescriptorprotocheckinitialized)
+  - [google::protobuf::MethodDescriptorProto::Clear](#googleprotobufmethoddescriptorprotoclear)
+  - [google::protobuf::MethodDescriptorProto::ClearField](#googleprotobufmethoddescriptorprotoclearfield)
+  - [google::protobuf::MethodDescriptorProto::CopyFrom](#googleprotobufmethoddescriptorprotocopyfrom)
+  - [google::protobuf::MethodDescriptorProto::DiscardUnknownFields](#googleprotobufmethoddescriptorprotodiscardunknownfields)
+  - [google::protobuf::MethodDescriptorProto::FindInitializationErrors](#googleprotobufmethoddescriptorprotofindinitializationerrors)
+  - [google::protobuf::MethodDescriptorProto::IsInitialized](#googleprotobufmethoddescriptorprotoisinitialized)
+  - [google::protobuf::MethodDescriptorProto::SerializeAsString](#googleprotobufmethoddescriptorprotoserializeasstring)
+  - [google::protobuf::MethodDescriptorProto::SerializeToString](#googleprotobufmethoddescriptorprotoserializetostring)
+  - [google::protobuf::MethodDescriptorProto::SpaceUsedLong](#googleprotobufmethoddescriptorprotospaceusedlong)
+  - [google::protobuf::MethodDescriptorProto::\_\_str\_\_](#googleprotobufmethoddescriptorproto%5C_%5C_str%5C_%5C_)
+- [google::protobuf::FileOptions](#googleprotobuffileoptions)
+  - [FileOptions.java\_package](#fileoptionsjava%5C_package)
+  - [FileOptions.java\_outer\_classname](#fileoptionsjava%5C_outer%5C_classname)
+  - [FileOptions.java\_multiple\_files](#fileoptionsjava%5C_multiple%5C_files)
+  - [FileOptions.java\_generate\_equals\_and\_hash](#fileoptionsjava%5C_generate%5C_equals%5C_and%5C_hash)
+  - [FileOptions.java\_string\_check\_utf8](#fileoptionsjava%5C_string%5C_check%5C_utf8)
+  - [FileOptions.optimize\_for](#fileoptionsoptimize%5C_for)
+  - [FileOptions.go\_package](#fileoptionsgo%5C_package)
+  - [FileOptions.cc\_generic\_services](#fileoptionscc%5C_generic%5C_services)
+  - [FileOptions.java\_generic\_services](#fileoptionsjava%5C_generic%5C_services)
+  - [FileOptions.py\_generic\_services](#fileoptionspy%5C_generic%5C_services)
+  - [FileOptions.php\_generic\_services](#fileoptionsphp%5C_generic%5C_services)
+  - [FileOptions.deprecated](#fileoptionsdeprecated)
+  - [FileOptions.cc\_enable\_arenas](#fileoptionscc%5C_enable%5C_arenas)
+  - [FileOptions.objc\_class\_prefix](#fileoptionsobjc%5C_class%5C_prefix)
+  - [FileOptions.csharp\_namespace](#fileoptionscsharp%5C_namespace)
+  - [FileOptions.swift\_prefix](#fileoptionsswift%5C_prefix)
+  - [FileOptions.php\_class\_prefix](#fileoptionsphp%5C_class%5C_prefix)
+  - [FileOptions.php\_namespace](#fileoptionsphp%5C_namespace)
+  - [FileOptions.php\_metadata\_namespace](#fileoptionsphp%5C_metadata%5C_namespace)
+  - [FileOptions.ruby\_package](#fileoptionsruby%5C_package)
+  - [FileOptions.uninterpreted\_option](#fileoptionsuninterpreted%5C_option)
+  - [google::protobuf::FileOptions::get\_create](#googleprotobuffileoptionsget%5C_create)
+  - [google::protobuf::FileOptions::ByteSizeLong](#googleprotobuffileoptionsbytesizelong)
+  - [google::protobuf::FileOptions::CheckInitialized](#googleprotobuffileoptionscheckinitialized)
+  - [google::protobuf::FileOptions::Clear](#googleprotobuffileoptionsclear)
+  - [google::protobuf::FileOptions::ClearField](#googleprotobuffileoptionsclearfield)
+  - [google::protobuf::FileOptions::CopyFrom](#googleprotobuffileoptionscopyfrom)
+  - [google::protobuf::FileOptions::DiscardUnknownFields](#googleprotobuffileoptionsdiscardunknownfields)
+  - [google::protobuf::FileOptions::FindInitializationErrors](#googleprotobuffileoptionsfindinitializationerrors)
+  - [google::protobuf::FileOptions::IsInitialized](#googleprotobuffileoptionsisinitialized)
+  - [google::protobuf::FileOptions::SerializeAsString](#googleprotobuffileoptionsserializeasstring)
+  - [google::protobuf::FileOptions::SerializeToString](#googleprotobuffileoptionsserializetostring)
+  - [google::protobuf::FileOptions::SpaceUsedLong](#googleprotobuffileoptionsspaceusedlong)
+  - [google::protobuf::FileOptions::\_\_str\_\_](#googleprotobuffileoptions%5C_%5C_str%5C_%5C_)
+  - [FileOptions.SPEED\_](#fileoptionsspeed%5C_)
+  - [FileOptions.CODE\_SIZE\_](#fileoptionscode%5C_size%5C_)
+  - [FileOptions.LITE\_RUNTIME\_](#fileoptionslite%5C_runtime%5C_)
+- [google::protobuf::MessageOptions](#googleprotobufmessageoptions)
+  - [MessageOptions.message\_set\_wire\_format](#messageoptionsmessage%5C_set%5C_wire%5C_format)
+  - [MessageOptions.no\_standard\_descriptor\_accessor](#messageoptionsno%5C_standard%5C_descriptor%5C_accessor)
+  - [MessageOptions.deprecated](#messageoptionsdeprecated)
+  - [MessageOptions.map\_entry](#messageoptionsmap%5C_entry)
+  - [MessageOptions.uninterpreted\_option](#messageoptionsuninterpreted%5C_option)
+  - [google::protobuf::MessageOptions::get\_create](#googleprotobufmessageoptionsget%5C_create)
+  - [google::protobuf::MessageOptions::ByteSizeLong](#googleprotobufmessageoptionsbytesizelong)
+  - [google::protobuf::MessageOptions::CheckInitialized](#googleprotobufmessageoptionscheckinitialized)
+  - [google::protobuf::MessageOptions::Clear](#googleprotobufmessageoptionsclear)
+  - [google::protobuf::MessageOptions::ClearField](#googleprotobufmessageoptionsclearfield)
+  - [google::protobuf::MessageOptions::CopyFrom](#googleprotobufmessageoptionscopyfrom)
+  - [google::protobuf::MessageOptions::DiscardUnknownFields](#googleprotobufmessageoptionsdiscardunknownfields)
+  - [google::protobuf::MessageOptions::FindInitializationErrors](#googleprotobufmessageoptionsfindinitializationerrors)
+  - [google::protobuf::MessageOptions::IsInitialized](#googleprotobufmessageoptionsisinitialized)
+  - [google::protobuf::MessageOptions::SerializeAsString](#googleprotobufmessageoptionsserializeasstring)
+  - [google::protobuf::MessageOptions::SerializeToString](#googleprotobufmessageoptionsserializetostring)
+  - [google::protobuf::MessageOptions::SpaceUsedLong](#googleprotobufmessageoptionsspaceusedlong)
+  - [google::protobuf::MessageOptions::\_\_str\_\_](#googleprotobufmessageoptions%5C_%5C_str%5C_%5C_)
+- [google::protobuf::FieldOptions](#googleprotobuffieldoptions)
+  - [FieldOptions.ctype](#fieldoptionsctype)
+  - [FieldOptions.packed](#fieldoptionspacked)
+  - [FieldOptions.jstype](#fieldoptionsjstype)
+  - [FieldOptions.lazy](#fieldoptionslazy)
+  - [FieldOptions.deprecated](#fieldoptionsdeprecated)
+  - [FieldOptions.weak](#fieldoptionsweak)
+  - [FieldOptions.uninterpreted\_option](#fieldoptionsuninterpreted%5C_option)
+  - [google::protobuf::FieldOptions::get\_create](#googleprotobuffieldoptionsget%5C_create)
+  - [google::protobuf::FieldOptions::ByteSizeLong](#googleprotobuffieldoptionsbytesizelong)
+  - [google::protobuf::FieldOptions::CheckInitialized](#googleprotobuffieldoptionscheckinitialized)
+  - [google::protobuf::FieldOptions::Clear](#googleprotobuffieldoptionsclear)
+  - [google::protobuf::FieldOptions::ClearField](#googleprotobuffieldoptionsclearfield)
+  - [google::protobuf::FieldOptions::CopyFrom](#googleprotobuffieldoptionscopyfrom)
+  - [google::protobuf::FieldOptions::DiscardUnknownFields](#googleprotobuffieldoptionsdiscardunknownfields)
+  - [google::protobuf::FieldOptions::FindInitializationErrors](#googleprotobuffieldoptionsfindinitializationerrors)
+  - [google::protobuf::FieldOptions::IsInitialized](#googleprotobuffieldoptionsisinitialized)
+  - [google::protobuf::FieldOptions::SerializeAsString](#googleprotobuffieldoptionsserializeasstring)
+  - [google::protobuf::FieldOptions::SerializeToString](#googleprotobuffieldoptionsserializetostring)
+  - [google::protobuf::FieldOptions::SpaceUsedLong](#googleprotobuffieldoptionsspaceusedlong)
+  - [google::protobuf::FieldOptions::\_\_str\_\_](#googleprotobuffieldoptions%5C_%5C_str%5C_%5C_)
+  - [FieldOptions.STRING\_](#fieldoptionsstring%5C_)
+  - [FieldOptions.CORD\_](#fieldoptionscord%5C_)
+  - [FieldOptions.STRING\_PIECE\_](#fieldoptionsstring%5C_piece%5C_)
+  - [FieldOptions.JS\_NORMAL\_](#fieldoptionsjs%5C_normal%5C_)
+  - [FieldOptions.JS\_STRING\_](#fieldoptionsjs%5C_string%5C_)
+  - [FieldOptions.JS\_NUMBER\_](#fieldoptionsjs%5C_number%5C_)
+- [google::protobuf::OneofOptions](#googleprotobufoneofoptions)
+  - [OneofOptions.uninterpreted\_option](#oneofoptionsuninterpreted%5C_option)
+  - [google::protobuf::OneofOptions::get\_create](#googleprotobufoneofoptionsget%5C_create)
+  - [google::protobuf::OneofOptions::ByteSizeLong](#googleprotobufoneofoptionsbytesizelong)
+  - [google::protobuf::OneofOptions::CheckInitialized](#googleprotobufoneofoptionscheckinitialized)
+  - [google::protobuf::OneofOptions::Clear](#googleprotobufoneofoptionsclear)
+  - [google::protobuf::OneofOptions::ClearField](#googleprotobufoneofoptionsclearfield)
+  - [google::protobuf::OneofOptions::CopyFrom](#googleprotobufoneofoptionscopyfrom)
+  - [google::protobuf::OneofOptions::DiscardUnknownFields](#googleprotobufoneofoptionsdiscardunknownfields)
+  - [google::protobuf::OneofOptions::FindInitializationErrors](#googleprotobufoneofoptionsfindinitializationerrors)
+  - [google::protobuf::OneofOptions::IsInitialized](#googleprotobufoneofoptionsisinitialized)
+  - [google::protobuf::OneofOptions::SerializeAsString](#googleprotobufoneofoptionsserializeasstring)
+  - [google::protobuf::OneofOptions::SerializeToString](#googleprotobufoneofoptionsserializetostring)
+  - [google::protobuf::OneofOptions::SpaceUsedLong](#googleprotobufoneofoptionsspaceusedlong)
+  - [google::protobuf::OneofOptions::\_\_str\_\_](#googleprotobufoneofoptions%5C_%5C_str%5C_%5C_)
+- [google::protobuf::EnumOptions](#googleprotobufenumoptions)
+  - [EnumOptions.allow\_alias](#enumoptionsallow%5C_alias)
+  - [EnumOptions.deprecated](#enumoptionsdeprecated)
+  - [EnumOptions.uninterpreted\_option](#enumoptionsuninterpreted%5C_option)
+  - [google::protobuf::EnumOptions::get\_create](#googleprotobufenumoptionsget%5C_create)
+  - [google::protobuf::EnumOptions::ByteSizeLong](#googleprotobufenumoptionsbytesizelong)
+  - [google::protobuf::EnumOptions::CheckInitialized](#googleprotobufenumoptionscheckinitialized)
+  - [google::protobuf::EnumOptions::Clear](#googleprotobufenumoptionsclear)
+  - [google::protobuf::EnumOptions::ClearField](#googleprotobufenumoptionsclearfield)
+  - [google::protobuf::EnumOptions::CopyFrom](#googleprotobufenumoptionscopyfrom)
+  - [google::protobuf::EnumOptions::DiscardUnknownFields](#googleprotobufenumoptionsdiscardunknownfields)
+  - [google::protobuf::EnumOptions::FindInitializationErrors](#googleprotobufenumoptionsfindinitializationerrors)
+  - [google::protobuf::EnumOptions::IsInitialized](#googleprotobufenumoptionsisinitialized)
+  - [google::protobuf::EnumOptions::SerializeAsString](#googleprotobufenumoptionsserializeasstring)
+  - [google::protobuf::EnumOptions::SerializeToString](#googleprotobufenumoptionsserializetostring)
+  - [google::protobuf::EnumOptions::SpaceUsedLong](#googleprotobufenumoptionsspaceusedlong)
+  - [google::protobuf::EnumOptions::\_\_str\_\_](#googleprotobufenumoptions%5C_%5C_str%5C_%5C_)
+- [google::protobuf::EnumValueOptions](#googleprotobufenumvalueoptions)
+  - [EnumValueOptions.deprecated](#enumvalueoptionsdeprecated)
+  - [EnumValueOptions.uninterpreted\_option](#enumvalueoptionsuninterpreted%5C_option)
+  - [google::protobuf::EnumValueOptions::get\_create](#googleprotobufenumvalueoptionsget%5C_create)
+  - [google::protobuf::EnumValueOptions::ByteSizeLong](#googleprotobufenumvalueoptionsbytesizelong)
+  - [google::protobuf::EnumValueOptions::CheckInitialized](#googleprotobufenumvalueoptionscheckinitialized)
+  - [google::protobuf::EnumValueOptions::Clear](#googleprotobufenumvalueoptionsclear)
+  - [google::protobuf::EnumValueOptions::ClearField](#googleprotobufenumvalueoptionsclearfield)
+  - [google::protobuf::EnumValueOptions::CopyFrom](#googleprotobufenumvalueoptionscopyfrom)
+  - [google::protobuf::EnumValueOptions::DiscardUnknownFields](#googleprotobufenumvalueoptionsdiscardunknownfields)
+  - [google::protobuf::EnumValueOptions::FindInitializationErrors](#googleprotobufenumvalueoptionsfindinitializationerrors)
+  - [google::protobuf::EnumValueOptions::IsInitialized](#googleprotobufenumvalueoptionsisinitialized)
+  - [google::protobuf::EnumValueOptions::SerializeAsString](#googleprotobufenumvalueoptionsserializeasstring)
+  - [google::protobuf::EnumValueOptions::SerializeToString](#googleprotobufenumvalueoptionsserializetostring)
+  - [google::protobuf::EnumValueOptions::SpaceUsedLong](#googleprotobufenumvalueoptionsspaceusedlong)
+  - [google::protobuf::EnumValueOptions::\_\_str\_\_](#googleprotobufenumvalueoptions%5C_%5C_str%5C_%5C_)
+- [google::protobuf::ServiceOptions](#googleprotobufserviceoptions)
+  - [ServiceOptions.deprecated](#serviceoptionsdeprecated)
+  - [ServiceOptions.uninterpreted\_option](#serviceoptionsuninterpreted%5C_option)
+  - [google::protobuf::ServiceOptions::get\_create](#googleprotobufserviceoptionsget%5C_create)
+  - [google::protobuf::ServiceOptions::ByteSizeLong](#googleprotobufserviceoptionsbytesizelong)
+  - [google::protobuf::ServiceOptions::CheckInitialized](#googleprotobufserviceoptionscheckinitialized)
+  - [google::protobuf::ServiceOptions::Clear](#googleprotobufserviceoptionsclear)
+  - [google::protobuf::ServiceOptions::ClearField](#googleprotobufserviceoptionsclearfield)
+  - [google::protobuf::ServiceOptions::CopyFrom](#googleprotobufserviceoptionscopyfrom)
+  - [google::protobuf::ServiceOptions::DiscardUnknownFields](#googleprotobufserviceoptionsdiscardunknownfields)
+  - [google::protobuf::ServiceOptions::FindInitializationErrors](#googleprotobufserviceoptionsfindinitializationerrors)
+  - [google::protobuf::ServiceOptions::IsInitialized](#googleprotobufserviceoptionsisinitialized)
+  - [google::protobuf::ServiceOptions::SerializeAsString](#googleprotobufserviceoptionsserializeasstring)
+  - [google::protobuf::ServiceOptions::SerializeToString](#googleprotobufserviceoptionsserializetostring)
+  - [google::protobuf::ServiceOptions::SpaceUsedLong](#googleprotobufserviceoptionsspaceusedlong)
+  - [google::protobuf::ServiceOptions::\_\_str\_\_](#googleprotobufserviceoptions%5C_%5C_str%5C_%5C_)
+- [google::protobuf::MethodOptions](#googleprotobufmethodoptions)
+  - [MethodOptions.deprecated](#methodoptionsdeprecated)
+  - [MethodOptions.idempotency\_level](#methodoptionsidempotency%5C_level)
+  - [MethodOptions.uninterpreted\_option](#methodoptionsuninterpreted%5C_option)
+  - [google::protobuf::MethodOptions::get\_create](#googleprotobufmethodoptionsget%5C_create)
+  - [google::protobuf::MethodOptions::ByteSizeLong](#googleprotobufmethodoptionsbytesizelong)
+  - [google::protobuf::MethodOptions::CheckInitialized](#googleprotobufmethodoptionscheckinitialized)
+  - [google::protobuf::MethodOptions::Clear](#googleprotobufmethodoptionsclear)
+  - [google::protobuf::MethodOptions::ClearField](#googleprotobufmethodoptionsclearfield)
+  - [google::protobuf::MethodOptions::CopyFrom](#googleprotobufmethodoptionscopyfrom)
+  - [google::protobuf::MethodOptions::DiscardUnknownFields](#googleprotobufmethodoptionsdiscardunknownfields)
+  - [google::protobuf::MethodOptions::FindInitializationErrors](#googleprotobufmethodoptionsfindinitializationerrors)
+  - [google::protobuf::MethodOptions::IsInitialized](#googleprotobufmethodoptionsisinitialized)
+  - [google::protobuf::MethodOptions::SerializeAsString](#googleprotobufmethodoptionsserializeasstring)
+  - [google::protobuf::MethodOptions::SerializeToString](#googleprotobufmethodoptionsserializetostring)
+  - [google::protobuf::MethodOptions::SpaceUsedLong](#googleprotobufmethodoptionsspaceusedlong)
+  - [google::protobuf::MethodOptions::\_\_str\_\_](#googleprotobufmethodoptions%5C_%5C_str%5C_%5C_)
+  - [MethodOptions.IDEMPOTENCY\_UNKNOWN\_](#methodoptionsidempotency%5C_unknown%5C_)
+  - [MethodOptions.NO\_SIDE\_EFFECTS\_](#methodoptionsno%5C_side%5C_effects%5C_)
+  - [MethodOptions.IDEMPOTENT\_](#methodoptionsidempotent%5C_)
+- [google::protobuf::UninterpretedOption](#googleprotobufuninterpretedoption)
+  - [UninterpretedOption.name](#uninterpretedoptionname)
+  - [UninterpretedOption.identifier\_value](#uninterpretedoptionidentifier%5C_value)
+  - [UninterpretedOption.positive\_int\_value](#uninterpretedoptionpositive%5C_int%5C_value)
+  - [UninterpretedOption.negative\_int\_value](#uninterpretedoptionnegative%5C_int%5C_value)
+  - [UninterpretedOption.double\_value](#uninterpretedoptiondouble%5C_value)
+  - [UninterpretedOption.string\_value](#uninterpretedoptionstring%5C_value)
+  - [UninterpretedOption.aggregate\_value](#uninterpretedoptionaggregate%5C_value)
+  - [google::protobuf::UninterpretedOption::get\_create](#googleprotobufuninterpretedoptionget%5C_create)
+  - [google::protobuf::UninterpretedOption::ByteSizeLong](#googleprotobufuninterpretedoptionbytesizelong)
+  - [google::protobuf::UninterpretedOption::CheckInitialized](#googleprotobufuninterpretedoptioncheckinitialized)
+  - [google::protobuf::UninterpretedOption::Clear](#googleprotobufuninterpretedoptionclear)
+  - [google::protobuf::UninterpretedOption::ClearField](#googleprotobufuninterpretedoptionclearfield)
+  - [google::protobuf::UninterpretedOption::CopyFrom](#googleprotobufuninterpretedoptioncopyfrom)
+  - [google::protobuf::UninterpretedOption::DiscardUnknownFields](#googleprotobufuninterpretedoptiondiscardunknownfields)
+  - [google::protobuf::UninterpretedOption::FindInitializationErrors](#googleprotobufuninterpretedoptionfindinitializationerrors)
+  - [google::protobuf::UninterpretedOption::IsInitialized](#googleprotobufuninterpretedoptionisinitialized)
+  - [google::protobuf::UninterpretedOption::SerializeAsString](#googleprotobufuninterpretedoptionserializeasstring)
+  - [google::protobuf::UninterpretedOption::SerializeToString](#googleprotobufuninterpretedoptionserializetostring)
+  - [google::protobuf::UninterpretedOption::SpaceUsedLong](#googleprotobufuninterpretedoptionspaceusedlong)
+  - [google::protobuf::UninterpretedOption::\_\_str\_\_](#googleprotobufuninterpretedoption%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepart)
+  - [Repeated\_google\_protobuf\_UninterpretedOption\_NamePart.Count](#repeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartcount)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartcreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartcopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartmergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartpop)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartsize)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartsort)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartsort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_uninterpretedoption%5C_namepartsplice)
+- [google::protobuf::UninterpretedOption::NamePart](#googleprotobufuninterpretedoptionnamepart)
+  - [NamePart.name\_part](#namepartname%5C_part)
+  - [NamePart.is\_extension](#namepartis%5C_extension)
+  - [google::protobuf::UninterpretedOption::NamePart::get\_create](#googleprotobufuninterpretedoptionnamepartget%5C_create)
+  - [google::protobuf::UninterpretedOption::NamePart::ByteSizeLong](#googleprotobufuninterpretedoptionnamepartbytesizelong)
+  - [google::protobuf::UninterpretedOption::NamePart::CheckInitialized](#googleprotobufuninterpretedoptionnamepartcheckinitialized)
+  - [google::protobuf::UninterpretedOption::NamePart::Clear](#googleprotobufuninterpretedoptionnamepartclear)
+  - [google::protobuf::UninterpretedOption::NamePart::ClearField](#googleprotobufuninterpretedoptionnamepartclearfield)
+  - [google::protobuf::UninterpretedOption::NamePart::CopyFrom](#googleprotobufuninterpretedoptionnamepartcopyfrom)
+  - [google::protobuf::UninterpretedOption::NamePart::DiscardUnknownFields](#googleprotobufuninterpretedoptionnamepartdiscardunknownfields)
+  - [google::protobuf::UninterpretedOption::NamePart::FindInitializationErrors](#googleprotobufuninterpretedoptionnamepartfindinitializationerrors)
+  - [google::protobuf::UninterpretedOption::NamePart::IsInitialized](#googleprotobufuninterpretedoptionnamepartisinitialized)
+  - [google::protobuf::UninterpretedOption::NamePart::SerializeAsString](#googleprotobufuninterpretedoptionnamepartserializeasstring)
+  - [google::protobuf::UninterpretedOption::NamePart::SerializeToString](#googleprotobufuninterpretedoptionnamepartserializetostring)
+  - [google::protobuf::UninterpretedOption::NamePart::SpaceUsedLong](#googleprotobufuninterpretedoptionnamepartspaceusedlong)
+  - [google::protobuf::UninterpretedOption::NamePart::\_\_str\_\_](#googleprotobufuninterpretedoptionnamepart%5C_%5C_str%5C_%5C_)
+- [google::protobuf::SourceCodeInfo](#googleprotobufsourcecodeinfo)
+  - [SourceCodeInfo.location](#sourcecodeinfolocation)
+  - [google::protobuf::SourceCodeInfo::get\_create](#googleprotobufsourcecodeinfoget%5C_create)
+  - [google::protobuf::SourceCodeInfo::ByteSizeLong](#googleprotobufsourcecodeinfobytesizelong)
+  - [google::protobuf::SourceCodeInfo::CheckInitialized](#googleprotobufsourcecodeinfocheckinitialized)
+  - [google::protobuf::SourceCodeInfo::Clear](#googleprotobufsourcecodeinfoclear)
+  - [google::protobuf::SourceCodeInfo::ClearField](#googleprotobufsourcecodeinfoclearfield)
+  - [google::protobuf::SourceCodeInfo::CopyFrom](#googleprotobufsourcecodeinfocopyfrom)
+  - [google::protobuf::SourceCodeInfo::DiscardUnknownFields](#googleprotobufsourcecodeinfodiscardunknownfields)
+  - [google::protobuf::SourceCodeInfo::FindInitializationErrors](#googleprotobufsourcecodeinfofindinitializationerrors)
+  - [google::protobuf::SourceCodeInfo::IsInitialized](#googleprotobufsourcecodeinfoisinitialized)
+  - [google::protobuf::SourceCodeInfo::SerializeAsString](#googleprotobufsourcecodeinfoserializeasstring)
+  - [google::protobuf::SourceCodeInfo::SerializeToString](#googleprotobufsourcecodeinfoserializetostring)
+  - [google::protobuf::SourceCodeInfo::SpaceUsedLong](#googleprotobufsourcecodeinfospaceusedlong)
+  - [google::protobuf::SourceCodeInfo::\_\_str\_\_](#googleprotobufsourcecodeinfo%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_location)
+  - [Repeated\_google\_protobuf\_SourceCodeInfo\_Location.Count](#repeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationcount)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationcreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationcopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationmergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationpop)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationsize)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationsort)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationsort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_sourcecodeinfo%5C_locationsplice)
+- [google::protobuf::SourceCodeInfo::Location](#googleprotobufsourcecodeinfolocation)
+  - [Location.path](#locationpath)
+  - [Location.span](#locationspan)
+  - [Location.leading\_comments](#locationleading%5C_comments)
+  - [Location.trailing\_comments](#locationtrailing%5C_comments)
+  - [Location.leading\_detached\_comments](#locationleading%5C_detached%5C_comments)
+  - [google::protobuf::SourceCodeInfo::Location::get\_create](#googleprotobufsourcecodeinfolocationget%5C_create)
+  - [google::protobuf::SourceCodeInfo::Location::ByteSizeLong](#googleprotobufsourcecodeinfolocationbytesizelong)
+  - [google::protobuf::SourceCodeInfo::Location::CheckInitialized](#googleprotobufsourcecodeinfolocationcheckinitialized)
+  - [google::protobuf::SourceCodeInfo::Location::Clear](#googleprotobufsourcecodeinfolocationclear)
+  - [google::protobuf::SourceCodeInfo::Location::ClearField](#googleprotobufsourcecodeinfolocationclearfield)
+  - [google::protobuf::SourceCodeInfo::Location::CopyFrom](#googleprotobufsourcecodeinfolocationcopyfrom)
+  - [google::protobuf::SourceCodeInfo::Location::DiscardUnknownFields](#googleprotobufsourcecodeinfolocationdiscardunknownfields)
+  - [google::protobuf::SourceCodeInfo::Location::FindInitializationErrors](#googleprotobufsourcecodeinfolocationfindinitializationerrors)
+  - [google::protobuf::SourceCodeInfo::Location::IsInitialized](#googleprotobufsourcecodeinfolocationisinitialized)
+  - [google::protobuf::SourceCodeInfo::Location::SerializeAsString](#googleprotobufsourcecodeinfolocationserializeasstring)
+  - [google::protobuf::SourceCodeInfo::Location::SerializeToString](#googleprotobufsourcecodeinfolocationserializetostring)
+  - [google::protobuf::SourceCodeInfo::Location::SpaceUsedLong](#googleprotobufsourcecodeinfolocationspaceusedlong)
+  - [google::protobuf::SourceCodeInfo::Location::\_\_str\_\_](#googleprotobufsourcecodeinfolocation%5C_%5C_str%5C_%5C_)
+- [google::protobuf::GeneratedCodeInfo](#googleprotobufgeneratedcodeinfo)
+  - [GeneratedCodeInfo.annotation](#generatedcodeinfoannotation)
+  - [google::protobuf::GeneratedCodeInfo::get\_create](#googleprotobufgeneratedcodeinfoget%5C_create)
+  - [google::protobuf::GeneratedCodeInfo::ByteSizeLong](#googleprotobufgeneratedcodeinfobytesizelong)
+  - [google::protobuf::GeneratedCodeInfo::CheckInitialized](#googleprotobufgeneratedcodeinfocheckinitialized)
+  - [google::protobuf::GeneratedCodeInfo::Clear](#googleprotobufgeneratedcodeinfoclear)
+  - [google::protobuf::GeneratedCodeInfo::ClearField](#googleprotobufgeneratedcodeinfoclearfield)
+  - [google::protobuf::GeneratedCodeInfo::CopyFrom](#googleprotobufgeneratedcodeinfocopyfrom)
+  - [google::protobuf::GeneratedCodeInfo::DiscardUnknownFields](#googleprotobufgeneratedcodeinfodiscardunknownfields)
+  - [google::protobuf::GeneratedCodeInfo::FindInitializationErrors](#googleprotobufgeneratedcodeinfofindinitializationerrors)
+  - [google::protobuf::GeneratedCodeInfo::IsInitialized](#googleprotobufgeneratedcodeinfoisinitialized)
+  - [google::protobuf::GeneratedCodeInfo::SerializeAsString](#googleprotobufgeneratedcodeinfoserializeasstring)
+  - [google::protobuf::GeneratedCodeInfo::SerializeToString](#googleprotobufgeneratedcodeinfoserializetostring)
+  - [google::protobuf::GeneratedCodeInfo::SpaceUsedLong](#googleprotobufgeneratedcodeinfospaceusedlong)
+  - [google::protobuf::GeneratedCodeInfo::\_\_str\_\_](#googleprotobufgeneratedcodeinfo%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotation)
+  - [Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation.Count](#repeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationcount)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::create](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationcreate)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::CopyFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationcopyfrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::MergeFrom](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationmergefrom)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::Swap](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationswap)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::SwapElements](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationswapelements)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::add](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationadd)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::append](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationappend)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::clear](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationclear)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::empty](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationempty)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::extend](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationextend)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::get\_Item](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationget%5C_item)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::get\_\_NewEnum](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::insert](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationinsert)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::pop](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationpop)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::reverse](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationreverse)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::size](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationsize)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::slice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationslice)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::sort](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationsort)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::sort\_variant](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationsort%5C_variant)
+  - [google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::splice](#googleprotobufrepeated%5C_google%5C_protobuf%5C_generatedcodeinfo%5C_annotationsplice)
+- [google::protobuf::GeneratedCodeInfo::Annotation](#googleprotobufgeneratedcodeinfoannotation)
+  - [Annotation.path](#annotationpath)
+  - [Annotation.source\_file](#annotationsource%5C_file)
+  - [Annotation.begin](#annotationbegin)
+  - [Annotation.end](#annotationend)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::get\_create](#googleprotobufgeneratedcodeinfoannotationget%5C_create)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::ByteSizeLong](#googleprotobufgeneratedcodeinfoannotationbytesizelong)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::CheckInitialized](#googleprotobufgeneratedcodeinfoannotationcheckinitialized)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::Clear](#googleprotobufgeneratedcodeinfoannotationclear)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::ClearField](#googleprotobufgeneratedcodeinfoannotationclearfield)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::CopyFrom](#googleprotobufgeneratedcodeinfoannotationcopyfrom)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::DiscardUnknownFields](#googleprotobufgeneratedcodeinfoannotationdiscardunknownfields)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::FindInitializationErrors](#googleprotobufgeneratedcodeinfoannotationfindinitializationerrors)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::IsInitialized](#googleprotobufgeneratedcodeinfoannotationisinitialized)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::SerializeAsString](#googleprotobufgeneratedcodeinfoannotationserializeasstring)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::SerializeToString](#googleprotobufgeneratedcodeinfoannotationserializetostring)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::SpaceUsedLong](#googleprotobufgeneratedcodeinfoannotationspaceusedlong)
+  - [google::protobuf::GeneratedCodeInfo::Annotation::\_\_str\_\_](#googleprotobufgeneratedcodeinfoannotation%5C_%5C_str%5C_%5C_)
+- [google::protobuf::descriptor\_pb2](#googleprotobufdescriptor%5C_pb2)
+  - [descriptor\_pb2.FileDescriptorSet](#descriptor%5C_pb2filedescriptorset)
+  - [descriptor\_pb2.FileDescriptorProto](#descriptor%5C_pb2filedescriptorproto)
+  - [descriptor\_pb2.DescriptorProto](#descriptor%5C_pb2descriptorproto)
+  - [descriptor\_pb2.ExtensionRangeOptions](#descriptor%5C_pb2extensionrangeoptions)
+  - [descriptor\_pb2.FieldDescriptorProto](#descriptor%5C_pb2fielddescriptorproto)
+  - [descriptor\_pb2.OneofDescriptorProto](#descriptor%5C_pb2oneofdescriptorproto)
+  - [descriptor\_pb2.EnumDescriptorProto](#descriptor%5C_pb2enumdescriptorproto)
+  - [descriptor\_pb2.EnumValueDescriptorProto](#descriptor%5C_pb2enumvaluedescriptorproto)
+  - [descriptor\_pb2.ServiceDescriptorProto](#descriptor%5C_pb2servicedescriptorproto)
+  - [descriptor\_pb2.MethodDescriptorProto](#descriptor%5C_pb2methoddescriptorproto)
+  - [descriptor\_pb2.FileOptions](#descriptor%5C_pb2fileoptions)
+  - [descriptor\_pb2.MessageOptions](#descriptor%5C_pb2messageoptions)
+  - [descriptor\_pb2.FieldOptions](#descriptor%5C_pb2fieldoptions)
+  - [descriptor\_pb2.OneofOptions](#descriptor%5C_pb2oneofoptions)
+  - [descriptor\_pb2.EnumOptions](#descriptor%5C_pb2enumoptions)
+  - [descriptor\_pb2.EnumValueOptions](#descriptor%5C_pb2enumvalueoptions)
+  - [descriptor\_pb2.ServiceOptions](#descriptor%5C_pb2serviceoptions)
+  - [descriptor\_pb2.MethodOptions](#descriptor%5C_pb2methodoptions)
+  - [descriptor\_pb2.UninterpretedOption](#descriptor%5C_pb2uninterpretedoption)
+  - [descriptor\_pb2.SourceCodeInfo](#descriptor%5C_pb2sourcecodeinfo)
+  - [descriptor\_pb2.GeneratedCodeInfo](#descriptor%5C_pb2generatedcodeinfo)
+- [google::protobuf::descriptor\_pb2::DescriptorProto](#googleprotobufdescriptor%5C_pb2descriptorproto)
+  - [DescriptorProto.ExtensionRange](#descriptorprotoextensionrange)
+  - [DescriptorProto.ReservedRange](#descriptorprotoreservedrange)
+- [google::protobuf::descriptor\_pb2::EnumDescriptorProto](#googleprotobufdescriptor%5C_pb2enumdescriptorproto)
+  - [EnumDescriptorProto.EnumReservedRange](#enumdescriptorprotoenumreservedrange)
+- [google::protobuf::descriptor\_pb2::UninterpretedOption](#googleprotobufdescriptor%5C_pb2uninterpretedoption)
+  - [UninterpretedOption.NamePart](#uninterpretedoptionnamepart)
+- [google::protobuf::descriptor\_pb2::SourceCodeInfo](#googleprotobufdescriptor%5C_pb2sourcecodeinfo)
+  - [SourceCodeInfo.Location](#sourcecodeinfolocation)
+- [google::protobuf::descriptor\_pb2::GeneratedCodeInfo](#googleprotobufdescriptor%5C_pb2generatedcodeinfo)
+  - [GeneratedCodeInfo.Annotation](#generatedcodeinfoannotation)
 - [mediapipe::Landmark](#mediapipelandmark)
   - [Landmark.x](#landmarkx-1)
   - [Landmark.y](#landmarky-1)
@@ -6393,6 +7293,336 @@
   - [VectorOfShared\_ptrDetection::sort](#vectorofshared%5C_ptrdetectionsort)
   - [VectorOfShared\_ptrDetection::sort\_variant](#vectorofshared%5C_ptrdetectionsort%5C_variant)
   - [VectorOfShared\_ptrDetection::start](#vectorofshared%5C_ptrdetectionstart)
+- [VectorOfShared\_ptrFileDescriptorProto](#vectorofshared%5C_ptrfiledescriptorproto)
+  - [VectorOfShared\_ptrFileDescriptorProto.Count](#vectorofshared%5C_ptrfiledescriptorprotocount)
+  - [VectorOfShared\_ptrFileDescriptorProto::create](#vectorofshared%5C_ptrfiledescriptorprotocreate)
+  - [VectorOfShared\_ptrFileDescriptorProto::Add](#vectorofshared%5C_ptrfiledescriptorprotoadd)
+  - [VectorOfShared\_ptrFileDescriptorProto::Items](#vectorofshared%5C_ptrfiledescriptorprotoitems)
+  - [VectorOfShared\_ptrFileDescriptorProto::Keys](#vectorofshared%5C_ptrfiledescriptorprotokeys)
+  - [VectorOfShared\_ptrFileDescriptorProto::Remove](#vectorofshared%5C_ptrfiledescriptorprotoremove)
+  - [VectorOfShared\_ptrFileDescriptorProto::append](#vectorofshared%5C_ptrfiledescriptorprotoappend)
+  - [VectorOfShared\_ptrFileDescriptorProto::at](#vectorofshared%5C_ptrfiledescriptorprotoat)
+  - [VectorOfShared\_ptrFileDescriptorProto::clear](#vectorofshared%5C_ptrfiledescriptorprotoclear)
+  - [VectorOfShared\_ptrFileDescriptorProto::empty](#vectorofshared%5C_ptrfiledescriptorprotoempty)
+  - [VectorOfShared\_ptrFileDescriptorProto::end](#vectorofshared%5C_ptrfiledescriptorprotoend)
+  - [VectorOfShared\_ptrFileDescriptorProto::get\_Item](#vectorofshared%5C_ptrfiledescriptorprotoget%5C_item)
+  - [VectorOfShared\_ptrFileDescriptorProto::get\_\_NewEnum](#vectorofshared%5C_ptrfiledescriptorprotoget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrFileDescriptorProto::push\_back](#vectorofshared%5C_ptrfiledescriptorprotopush%5C_back)
+  - [VectorOfShared\_ptrFileDescriptorProto::push\_vector](#vectorofshared%5C_ptrfiledescriptorprotopush%5C_vector)
+  - [VectorOfShared\_ptrFileDescriptorProto::put\_Item](#vectorofshared%5C_ptrfiledescriptorprotoput%5C_item)
+  - [VectorOfShared\_ptrFileDescriptorProto::size](#vectorofshared%5C_ptrfiledescriptorprotosize)
+  - [VectorOfShared\_ptrFileDescriptorProto::slice](#vectorofshared%5C_ptrfiledescriptorprotoslice)
+  - [VectorOfShared\_ptrFileDescriptorProto::sort](#vectorofshared%5C_ptrfiledescriptorprotosort)
+  - [VectorOfShared\_ptrFileDescriptorProto::sort\_variant](#vectorofshared%5C_ptrfiledescriptorprotosort%5C_variant)
+  - [VectorOfShared\_ptrFileDescriptorProto::start](#vectorofshared%5C_ptrfiledescriptorprotostart)
+- [VectorOfShared\_ptrDescriptorProto](#vectorofshared%5C_ptrdescriptorproto)
+  - [VectorOfShared\_ptrDescriptorProto.Count](#vectorofshared%5C_ptrdescriptorprotocount)
+  - [VectorOfShared\_ptrDescriptorProto::create](#vectorofshared%5C_ptrdescriptorprotocreate)
+  - [VectorOfShared\_ptrDescriptorProto::Add](#vectorofshared%5C_ptrdescriptorprotoadd)
+  - [VectorOfShared\_ptrDescriptorProto::Items](#vectorofshared%5C_ptrdescriptorprotoitems)
+  - [VectorOfShared\_ptrDescriptorProto::Keys](#vectorofshared%5C_ptrdescriptorprotokeys)
+  - [VectorOfShared\_ptrDescriptorProto::Remove](#vectorofshared%5C_ptrdescriptorprotoremove)
+  - [VectorOfShared\_ptrDescriptorProto::append](#vectorofshared%5C_ptrdescriptorprotoappend)
+  - [VectorOfShared\_ptrDescriptorProto::at](#vectorofshared%5C_ptrdescriptorprotoat)
+  - [VectorOfShared\_ptrDescriptorProto::clear](#vectorofshared%5C_ptrdescriptorprotoclear)
+  - [VectorOfShared\_ptrDescriptorProto::empty](#vectorofshared%5C_ptrdescriptorprotoempty)
+  - [VectorOfShared\_ptrDescriptorProto::end](#vectorofshared%5C_ptrdescriptorprotoend)
+  - [VectorOfShared\_ptrDescriptorProto::get\_Item](#vectorofshared%5C_ptrdescriptorprotoget%5C_item)
+  - [VectorOfShared\_ptrDescriptorProto::get\_\_NewEnum](#vectorofshared%5C_ptrdescriptorprotoget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrDescriptorProto::push\_back](#vectorofshared%5C_ptrdescriptorprotopush%5C_back)
+  - [VectorOfShared\_ptrDescriptorProto::push\_vector](#vectorofshared%5C_ptrdescriptorprotopush%5C_vector)
+  - [VectorOfShared\_ptrDescriptorProto::put\_Item](#vectorofshared%5C_ptrdescriptorprotoput%5C_item)
+  - [VectorOfShared\_ptrDescriptorProto::size](#vectorofshared%5C_ptrdescriptorprotosize)
+  - [VectorOfShared\_ptrDescriptorProto::slice](#vectorofshared%5C_ptrdescriptorprotoslice)
+  - [VectorOfShared\_ptrDescriptorProto::sort](#vectorofshared%5C_ptrdescriptorprotosort)
+  - [VectorOfShared\_ptrDescriptorProto::sort\_variant](#vectorofshared%5C_ptrdescriptorprotosort%5C_variant)
+  - [VectorOfShared\_ptrDescriptorProto::start](#vectorofshared%5C_ptrdescriptorprotostart)
+- [VectorOfShared\_ptrEnumDescriptorProto](#vectorofshared%5C_ptrenumdescriptorproto)
+  - [VectorOfShared\_ptrEnumDescriptorProto.Count](#vectorofshared%5C_ptrenumdescriptorprotocount)
+  - [VectorOfShared\_ptrEnumDescriptorProto::create](#vectorofshared%5C_ptrenumdescriptorprotocreate)
+  - [VectorOfShared\_ptrEnumDescriptorProto::Add](#vectorofshared%5C_ptrenumdescriptorprotoadd)
+  - [VectorOfShared\_ptrEnumDescriptorProto::Items](#vectorofshared%5C_ptrenumdescriptorprotoitems)
+  - [VectorOfShared\_ptrEnumDescriptorProto::Keys](#vectorofshared%5C_ptrenumdescriptorprotokeys)
+  - [VectorOfShared\_ptrEnumDescriptorProto::Remove](#vectorofshared%5C_ptrenumdescriptorprotoremove)
+  - [VectorOfShared\_ptrEnumDescriptorProto::append](#vectorofshared%5C_ptrenumdescriptorprotoappend)
+  - [VectorOfShared\_ptrEnumDescriptorProto::at](#vectorofshared%5C_ptrenumdescriptorprotoat)
+  - [VectorOfShared\_ptrEnumDescriptorProto::clear](#vectorofshared%5C_ptrenumdescriptorprotoclear)
+  - [VectorOfShared\_ptrEnumDescriptorProto::empty](#vectorofshared%5C_ptrenumdescriptorprotoempty)
+  - [VectorOfShared\_ptrEnumDescriptorProto::end](#vectorofshared%5C_ptrenumdescriptorprotoend)
+  - [VectorOfShared\_ptrEnumDescriptorProto::get\_Item](#vectorofshared%5C_ptrenumdescriptorprotoget%5C_item)
+  - [VectorOfShared\_ptrEnumDescriptorProto::get\_\_NewEnum](#vectorofshared%5C_ptrenumdescriptorprotoget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrEnumDescriptorProto::push\_back](#vectorofshared%5C_ptrenumdescriptorprotopush%5C_back)
+  - [VectorOfShared\_ptrEnumDescriptorProto::push\_vector](#vectorofshared%5C_ptrenumdescriptorprotopush%5C_vector)
+  - [VectorOfShared\_ptrEnumDescriptorProto::put\_Item](#vectorofshared%5C_ptrenumdescriptorprotoput%5C_item)
+  - [VectorOfShared\_ptrEnumDescriptorProto::size](#vectorofshared%5C_ptrenumdescriptorprotosize)
+  - [VectorOfShared\_ptrEnumDescriptorProto::slice](#vectorofshared%5C_ptrenumdescriptorprotoslice)
+  - [VectorOfShared\_ptrEnumDescriptorProto::sort](#vectorofshared%5C_ptrenumdescriptorprotosort)
+  - [VectorOfShared\_ptrEnumDescriptorProto::sort\_variant](#vectorofshared%5C_ptrenumdescriptorprotosort%5C_variant)
+  - [VectorOfShared\_ptrEnumDescriptorProto::start](#vectorofshared%5C_ptrenumdescriptorprotostart)
+- [VectorOfShared\_ptrServiceDescriptorProto](#vectorofshared%5C_ptrservicedescriptorproto)
+  - [VectorOfShared\_ptrServiceDescriptorProto.Count](#vectorofshared%5C_ptrservicedescriptorprotocount)
+  - [VectorOfShared\_ptrServiceDescriptorProto::create](#vectorofshared%5C_ptrservicedescriptorprotocreate)
+  - [VectorOfShared\_ptrServiceDescriptorProto::Add](#vectorofshared%5C_ptrservicedescriptorprotoadd)
+  - [VectorOfShared\_ptrServiceDescriptorProto::Items](#vectorofshared%5C_ptrservicedescriptorprotoitems)
+  - [VectorOfShared\_ptrServiceDescriptorProto::Keys](#vectorofshared%5C_ptrservicedescriptorprotokeys)
+  - [VectorOfShared\_ptrServiceDescriptorProto::Remove](#vectorofshared%5C_ptrservicedescriptorprotoremove)
+  - [VectorOfShared\_ptrServiceDescriptorProto::append](#vectorofshared%5C_ptrservicedescriptorprotoappend)
+  - [VectorOfShared\_ptrServiceDescriptorProto::at](#vectorofshared%5C_ptrservicedescriptorprotoat)
+  - [VectorOfShared\_ptrServiceDescriptorProto::clear](#vectorofshared%5C_ptrservicedescriptorprotoclear)
+  - [VectorOfShared\_ptrServiceDescriptorProto::empty](#vectorofshared%5C_ptrservicedescriptorprotoempty)
+  - [VectorOfShared\_ptrServiceDescriptorProto::end](#vectorofshared%5C_ptrservicedescriptorprotoend)
+  - [VectorOfShared\_ptrServiceDescriptorProto::get\_Item](#vectorofshared%5C_ptrservicedescriptorprotoget%5C_item)
+  - [VectorOfShared\_ptrServiceDescriptorProto::get\_\_NewEnum](#vectorofshared%5C_ptrservicedescriptorprotoget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrServiceDescriptorProto::push\_back](#vectorofshared%5C_ptrservicedescriptorprotopush%5C_back)
+  - [VectorOfShared\_ptrServiceDescriptorProto::push\_vector](#vectorofshared%5C_ptrservicedescriptorprotopush%5C_vector)
+  - [VectorOfShared\_ptrServiceDescriptorProto::put\_Item](#vectorofshared%5C_ptrservicedescriptorprotoput%5C_item)
+  - [VectorOfShared\_ptrServiceDescriptorProto::size](#vectorofshared%5C_ptrservicedescriptorprotosize)
+  - [VectorOfShared\_ptrServiceDescriptorProto::slice](#vectorofshared%5C_ptrservicedescriptorprotoslice)
+  - [VectorOfShared\_ptrServiceDescriptorProto::sort](#vectorofshared%5C_ptrservicedescriptorprotosort)
+  - [VectorOfShared\_ptrServiceDescriptorProto::sort\_variant](#vectorofshared%5C_ptrservicedescriptorprotosort%5C_variant)
+  - [VectorOfShared\_ptrServiceDescriptorProto::start](#vectorofshared%5C_ptrservicedescriptorprotostart)
+- [VectorOfShared\_ptrFieldDescriptorProto](#vectorofshared%5C_ptrfielddescriptorproto)
+  - [VectorOfShared\_ptrFieldDescriptorProto.Count](#vectorofshared%5C_ptrfielddescriptorprotocount)
+  - [VectorOfShared\_ptrFieldDescriptorProto::create](#vectorofshared%5C_ptrfielddescriptorprotocreate)
+  - [VectorOfShared\_ptrFieldDescriptorProto::Add](#vectorofshared%5C_ptrfielddescriptorprotoadd)
+  - [VectorOfShared\_ptrFieldDescriptorProto::Items](#vectorofshared%5C_ptrfielddescriptorprotoitems)
+  - [VectorOfShared\_ptrFieldDescriptorProto::Keys](#vectorofshared%5C_ptrfielddescriptorprotokeys)
+  - [VectorOfShared\_ptrFieldDescriptorProto::Remove](#vectorofshared%5C_ptrfielddescriptorprotoremove)
+  - [VectorOfShared\_ptrFieldDescriptorProto::append](#vectorofshared%5C_ptrfielddescriptorprotoappend)
+  - [VectorOfShared\_ptrFieldDescriptorProto::at](#vectorofshared%5C_ptrfielddescriptorprotoat)
+  - [VectorOfShared\_ptrFieldDescriptorProto::clear](#vectorofshared%5C_ptrfielddescriptorprotoclear)
+  - [VectorOfShared\_ptrFieldDescriptorProto::empty](#vectorofshared%5C_ptrfielddescriptorprotoempty)
+  - [VectorOfShared\_ptrFieldDescriptorProto::end](#vectorofshared%5C_ptrfielddescriptorprotoend)
+  - [VectorOfShared\_ptrFieldDescriptorProto::get\_Item](#vectorofshared%5C_ptrfielddescriptorprotoget%5C_item)
+  - [VectorOfShared\_ptrFieldDescriptorProto::get\_\_NewEnum](#vectorofshared%5C_ptrfielddescriptorprotoget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrFieldDescriptorProto::push\_back](#vectorofshared%5C_ptrfielddescriptorprotopush%5C_back)
+  - [VectorOfShared\_ptrFieldDescriptorProto::push\_vector](#vectorofshared%5C_ptrfielddescriptorprotopush%5C_vector)
+  - [VectorOfShared\_ptrFieldDescriptorProto::put\_Item](#vectorofshared%5C_ptrfielddescriptorprotoput%5C_item)
+  - [VectorOfShared\_ptrFieldDescriptorProto::size](#vectorofshared%5C_ptrfielddescriptorprotosize)
+  - [VectorOfShared\_ptrFieldDescriptorProto::slice](#vectorofshared%5C_ptrfielddescriptorprotoslice)
+  - [VectorOfShared\_ptrFieldDescriptorProto::sort](#vectorofshared%5C_ptrfielddescriptorprotosort)
+  - [VectorOfShared\_ptrFieldDescriptorProto::sort\_variant](#vectorofshared%5C_ptrfielddescriptorprotosort%5C_variant)
+  - [VectorOfShared\_ptrFieldDescriptorProto::start](#vectorofshared%5C_ptrfielddescriptorprotostart)
+- [VectorOfShared\_ptrDescriptorProto\_ExtensionRange](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrange)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange.Count](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangecount)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::create](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangecreate)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::Add](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeadd)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::Items](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeitems)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::Keys](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangekeys)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::Remove](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeremove)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::append](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeappend)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::at](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeat)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::clear](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeclear)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::empty](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeempty)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::end](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeend)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::get\_Item](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeget%5C_item)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::get\_\_NewEnum](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::push\_back](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangepush%5C_back)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::push\_vector](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangepush%5C_vector)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::put\_Item](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeput%5C_item)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::size](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangesize)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::slice](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangeslice)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::sort](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangesort)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::sort\_variant](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangesort%5C_variant)
+  - [VectorOfShared\_ptrDescriptorProto\_ExtensionRange::start](#vectorofshared%5C_ptrdescriptorproto%5C_extensionrangestart)
+- [VectorOfShared\_ptrOneofDescriptorProto](#vectorofshared%5C_ptroneofdescriptorproto)
+  - [VectorOfShared\_ptrOneofDescriptorProto.Count](#vectorofshared%5C_ptroneofdescriptorprotocount)
+  - [VectorOfShared\_ptrOneofDescriptorProto::create](#vectorofshared%5C_ptroneofdescriptorprotocreate)
+  - [VectorOfShared\_ptrOneofDescriptorProto::Add](#vectorofshared%5C_ptroneofdescriptorprotoadd)
+  - [VectorOfShared\_ptrOneofDescriptorProto::Items](#vectorofshared%5C_ptroneofdescriptorprotoitems)
+  - [VectorOfShared\_ptrOneofDescriptorProto::Keys](#vectorofshared%5C_ptroneofdescriptorprotokeys)
+  - [VectorOfShared\_ptrOneofDescriptorProto::Remove](#vectorofshared%5C_ptroneofdescriptorprotoremove)
+  - [VectorOfShared\_ptrOneofDescriptorProto::append](#vectorofshared%5C_ptroneofdescriptorprotoappend)
+  - [VectorOfShared\_ptrOneofDescriptorProto::at](#vectorofshared%5C_ptroneofdescriptorprotoat)
+  - [VectorOfShared\_ptrOneofDescriptorProto::clear](#vectorofshared%5C_ptroneofdescriptorprotoclear)
+  - [VectorOfShared\_ptrOneofDescriptorProto::empty](#vectorofshared%5C_ptroneofdescriptorprotoempty)
+  - [VectorOfShared\_ptrOneofDescriptorProto::end](#vectorofshared%5C_ptroneofdescriptorprotoend)
+  - [VectorOfShared\_ptrOneofDescriptorProto::get\_Item](#vectorofshared%5C_ptroneofdescriptorprotoget%5C_item)
+  - [VectorOfShared\_ptrOneofDescriptorProto::get\_\_NewEnum](#vectorofshared%5C_ptroneofdescriptorprotoget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrOneofDescriptorProto::push\_back](#vectorofshared%5C_ptroneofdescriptorprotopush%5C_back)
+  - [VectorOfShared\_ptrOneofDescriptorProto::push\_vector](#vectorofshared%5C_ptroneofdescriptorprotopush%5C_vector)
+  - [VectorOfShared\_ptrOneofDescriptorProto::put\_Item](#vectorofshared%5C_ptroneofdescriptorprotoput%5C_item)
+  - [VectorOfShared\_ptrOneofDescriptorProto::size](#vectorofshared%5C_ptroneofdescriptorprotosize)
+  - [VectorOfShared\_ptrOneofDescriptorProto::slice](#vectorofshared%5C_ptroneofdescriptorprotoslice)
+  - [VectorOfShared\_ptrOneofDescriptorProto::sort](#vectorofshared%5C_ptroneofdescriptorprotosort)
+  - [VectorOfShared\_ptrOneofDescriptorProto::sort\_variant](#vectorofshared%5C_ptroneofdescriptorprotosort%5C_variant)
+  - [VectorOfShared\_ptrOneofDescriptorProto::start](#vectorofshared%5C_ptroneofdescriptorprotostart)
+- [VectorOfShared\_ptrDescriptorProto\_ReservedRange](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrange)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange.Count](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangecount)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::create](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangecreate)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::Add](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeadd)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::Items](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeitems)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::Keys](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangekeys)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::Remove](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeremove)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::append](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeappend)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::at](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeat)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::clear](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeclear)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::empty](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeempty)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::end](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeend)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::get\_Item](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeget%5C_item)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::get\_\_NewEnum](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::push\_back](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangepush%5C_back)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::push\_vector](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangepush%5C_vector)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::put\_Item](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeput%5C_item)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::size](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangesize)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::slice](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangeslice)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::sort](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangesort)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::sort\_variant](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangesort%5C_variant)
+  - [VectorOfShared\_ptrDescriptorProto\_ReservedRange::start](#vectorofshared%5C_ptrdescriptorproto%5C_reservedrangestart)
+- [VectorOfShared\_ptrUninterpretedOption](#vectorofshared%5C_ptruninterpretedoption)
+  - [VectorOfShared\_ptrUninterpretedOption.Count](#vectorofshared%5C_ptruninterpretedoptioncount)
+  - [VectorOfShared\_ptrUninterpretedOption::create](#vectorofshared%5C_ptruninterpretedoptioncreate)
+  - [VectorOfShared\_ptrUninterpretedOption::Add](#vectorofshared%5C_ptruninterpretedoptionadd)
+  - [VectorOfShared\_ptrUninterpretedOption::Items](#vectorofshared%5C_ptruninterpretedoptionitems)
+  - [VectorOfShared\_ptrUninterpretedOption::Keys](#vectorofshared%5C_ptruninterpretedoptionkeys)
+  - [VectorOfShared\_ptrUninterpretedOption::Remove](#vectorofshared%5C_ptruninterpretedoptionremove)
+  - [VectorOfShared\_ptrUninterpretedOption::append](#vectorofshared%5C_ptruninterpretedoptionappend)
+  - [VectorOfShared\_ptrUninterpretedOption::at](#vectorofshared%5C_ptruninterpretedoptionat)
+  - [VectorOfShared\_ptrUninterpretedOption::clear](#vectorofshared%5C_ptruninterpretedoptionclear)
+  - [VectorOfShared\_ptrUninterpretedOption::empty](#vectorofshared%5C_ptruninterpretedoptionempty)
+  - [VectorOfShared\_ptrUninterpretedOption::end](#vectorofshared%5C_ptruninterpretedoptionend)
+  - [VectorOfShared\_ptrUninterpretedOption::get\_Item](#vectorofshared%5C_ptruninterpretedoptionget%5C_item)
+  - [VectorOfShared\_ptrUninterpretedOption::get\_\_NewEnum](#vectorofshared%5C_ptruninterpretedoptionget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrUninterpretedOption::push\_back](#vectorofshared%5C_ptruninterpretedoptionpush%5C_back)
+  - [VectorOfShared\_ptrUninterpretedOption::push\_vector](#vectorofshared%5C_ptruninterpretedoptionpush%5C_vector)
+  - [VectorOfShared\_ptrUninterpretedOption::put\_Item](#vectorofshared%5C_ptruninterpretedoptionput%5C_item)
+  - [VectorOfShared\_ptrUninterpretedOption::size](#vectorofshared%5C_ptruninterpretedoptionsize)
+  - [VectorOfShared\_ptrUninterpretedOption::slice](#vectorofshared%5C_ptruninterpretedoptionslice)
+  - [VectorOfShared\_ptrUninterpretedOption::sort](#vectorofshared%5C_ptruninterpretedoptionsort)
+  - [VectorOfShared\_ptrUninterpretedOption::sort\_variant](#vectorofshared%5C_ptruninterpretedoptionsort%5C_variant)
+  - [VectorOfShared\_ptrUninterpretedOption::start](#vectorofshared%5C_ptruninterpretedoptionstart)
+- [VectorOfShared\_ptrEnumValueDescriptorProto](#vectorofshared%5C_ptrenumvaluedescriptorproto)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto.Count](#vectorofshared%5C_ptrenumvaluedescriptorprotocount)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::create](#vectorofshared%5C_ptrenumvaluedescriptorprotocreate)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::Add](#vectorofshared%5C_ptrenumvaluedescriptorprotoadd)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::Items](#vectorofshared%5C_ptrenumvaluedescriptorprotoitems)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::Keys](#vectorofshared%5C_ptrenumvaluedescriptorprotokeys)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::Remove](#vectorofshared%5C_ptrenumvaluedescriptorprotoremove)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::append](#vectorofshared%5C_ptrenumvaluedescriptorprotoappend)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::at](#vectorofshared%5C_ptrenumvaluedescriptorprotoat)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::clear](#vectorofshared%5C_ptrenumvaluedescriptorprotoclear)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::empty](#vectorofshared%5C_ptrenumvaluedescriptorprotoempty)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::end](#vectorofshared%5C_ptrenumvaluedescriptorprotoend)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::get\_Item](#vectorofshared%5C_ptrenumvaluedescriptorprotoget%5C_item)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::get\_\_NewEnum](#vectorofshared%5C_ptrenumvaluedescriptorprotoget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::push\_back](#vectorofshared%5C_ptrenumvaluedescriptorprotopush%5C_back)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::push\_vector](#vectorofshared%5C_ptrenumvaluedescriptorprotopush%5C_vector)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::put\_Item](#vectorofshared%5C_ptrenumvaluedescriptorprotoput%5C_item)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::size](#vectorofshared%5C_ptrenumvaluedescriptorprotosize)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::slice](#vectorofshared%5C_ptrenumvaluedescriptorprotoslice)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::sort](#vectorofshared%5C_ptrenumvaluedescriptorprotosort)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::sort\_variant](#vectorofshared%5C_ptrenumvaluedescriptorprotosort%5C_variant)
+  - [VectorOfShared\_ptrEnumValueDescriptorProto::start](#vectorofshared%5C_ptrenumvaluedescriptorprotostart)
+- [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrange)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange.Count](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangecount)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::create](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangecreate)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::Add](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeadd)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::Items](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeitems)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::Keys](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangekeys)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::Remove](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeremove)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::append](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeappend)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::at](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeat)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::clear](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeclear)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::empty](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeempty)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::end](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeend)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::get\_Item](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeget%5C_item)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::get\_\_NewEnum](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::push\_back](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangepush%5C_back)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::push\_vector](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangepush%5C_vector)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::put\_Item](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeput%5C_item)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::size](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangesize)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::slice](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangeslice)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::sort](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangesort)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::sort\_variant](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangesort%5C_variant)
+  - [VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::start](#vectorofshared%5C_ptrenumdescriptorproto%5C_enumreservedrangestart)
+- [VectorOfShared\_ptrMethodDescriptorProto](#vectorofshared%5C_ptrmethoddescriptorproto)
+  - [VectorOfShared\_ptrMethodDescriptorProto.Count](#vectorofshared%5C_ptrmethoddescriptorprotocount)
+  - [VectorOfShared\_ptrMethodDescriptorProto::create](#vectorofshared%5C_ptrmethoddescriptorprotocreate)
+  - [VectorOfShared\_ptrMethodDescriptorProto::Add](#vectorofshared%5C_ptrmethoddescriptorprotoadd)
+  - [VectorOfShared\_ptrMethodDescriptorProto::Items](#vectorofshared%5C_ptrmethoddescriptorprotoitems)
+  - [VectorOfShared\_ptrMethodDescriptorProto::Keys](#vectorofshared%5C_ptrmethoddescriptorprotokeys)
+  - [VectorOfShared\_ptrMethodDescriptorProto::Remove](#vectorofshared%5C_ptrmethoddescriptorprotoremove)
+  - [VectorOfShared\_ptrMethodDescriptorProto::append](#vectorofshared%5C_ptrmethoddescriptorprotoappend)
+  - [VectorOfShared\_ptrMethodDescriptorProto::at](#vectorofshared%5C_ptrmethoddescriptorprotoat)
+  - [VectorOfShared\_ptrMethodDescriptorProto::clear](#vectorofshared%5C_ptrmethoddescriptorprotoclear)
+  - [VectorOfShared\_ptrMethodDescriptorProto::empty](#vectorofshared%5C_ptrmethoddescriptorprotoempty)
+  - [VectorOfShared\_ptrMethodDescriptorProto::end](#vectorofshared%5C_ptrmethoddescriptorprotoend)
+  - [VectorOfShared\_ptrMethodDescriptorProto::get\_Item](#vectorofshared%5C_ptrmethoddescriptorprotoget%5C_item)
+  - [VectorOfShared\_ptrMethodDescriptorProto::get\_\_NewEnum](#vectorofshared%5C_ptrmethoddescriptorprotoget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrMethodDescriptorProto::push\_back](#vectorofshared%5C_ptrmethoddescriptorprotopush%5C_back)
+  - [VectorOfShared\_ptrMethodDescriptorProto::push\_vector](#vectorofshared%5C_ptrmethoddescriptorprotopush%5C_vector)
+  - [VectorOfShared\_ptrMethodDescriptorProto::put\_Item](#vectorofshared%5C_ptrmethoddescriptorprotoput%5C_item)
+  - [VectorOfShared\_ptrMethodDescriptorProto::size](#vectorofshared%5C_ptrmethoddescriptorprotosize)
+  - [VectorOfShared\_ptrMethodDescriptorProto::slice](#vectorofshared%5C_ptrmethoddescriptorprotoslice)
+  - [VectorOfShared\_ptrMethodDescriptorProto::sort](#vectorofshared%5C_ptrmethoddescriptorprotosort)
+  - [VectorOfShared\_ptrMethodDescriptorProto::sort\_variant](#vectorofshared%5C_ptrmethoddescriptorprotosort%5C_variant)
+  - [VectorOfShared\_ptrMethodDescriptorProto::start](#vectorofshared%5C_ptrmethoddescriptorprotostart)
+- [VectorOfShared\_ptrUninterpretedOption\_NamePart](#vectorofshared%5C_ptruninterpretedoption%5C_namepart)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart.Count](#vectorofshared%5C_ptruninterpretedoption%5C_namepartcount)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::create](#vectorofshared%5C_ptruninterpretedoption%5C_namepartcreate)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::Add](#vectorofshared%5C_ptruninterpretedoption%5C_namepartadd)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::Items](#vectorofshared%5C_ptruninterpretedoption%5C_namepartitems)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::Keys](#vectorofshared%5C_ptruninterpretedoption%5C_namepartkeys)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::Remove](#vectorofshared%5C_ptruninterpretedoption%5C_namepartremove)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::append](#vectorofshared%5C_ptruninterpretedoption%5C_namepartappend)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::at](#vectorofshared%5C_ptruninterpretedoption%5C_namepartat)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::clear](#vectorofshared%5C_ptruninterpretedoption%5C_namepartclear)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::empty](#vectorofshared%5C_ptruninterpretedoption%5C_namepartempty)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::end](#vectorofshared%5C_ptruninterpretedoption%5C_namepartend)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::get\_Item](#vectorofshared%5C_ptruninterpretedoption%5C_namepartget%5C_item)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::get\_\_NewEnum](#vectorofshared%5C_ptruninterpretedoption%5C_namepartget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::push\_back](#vectorofshared%5C_ptruninterpretedoption%5C_namepartpush%5C_back)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::push\_vector](#vectorofshared%5C_ptruninterpretedoption%5C_namepartpush%5C_vector)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::put\_Item](#vectorofshared%5C_ptruninterpretedoption%5C_namepartput%5C_item)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::size](#vectorofshared%5C_ptruninterpretedoption%5C_namepartsize)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::slice](#vectorofshared%5C_ptruninterpretedoption%5C_namepartslice)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::sort](#vectorofshared%5C_ptruninterpretedoption%5C_namepartsort)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::sort\_variant](#vectorofshared%5C_ptruninterpretedoption%5C_namepartsort%5C_variant)
+  - [VectorOfShared\_ptrUninterpretedOption\_NamePart::start](#vectorofshared%5C_ptruninterpretedoption%5C_namepartstart)
+- [VectorOfShared\_ptrSourceCodeInfo\_Location](#vectorofshared%5C_ptrsourcecodeinfo%5C_location)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location.Count](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationcount)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::create](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationcreate)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::Add](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationadd)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::Items](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationitems)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::Keys](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationkeys)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::Remove](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationremove)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::append](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationappend)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::at](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationat)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::clear](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationclear)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::empty](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationempty)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::end](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationend)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::get\_Item](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationget%5C_item)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::get\_\_NewEnum](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::push\_back](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationpush%5C_back)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::push\_vector](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationpush%5C_vector)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::put\_Item](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationput%5C_item)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::size](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationsize)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::slice](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationslice)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::sort](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationsort)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::sort\_variant](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationsort%5C_variant)
+  - [VectorOfShared\_ptrSourceCodeInfo\_Location::start](#vectorofshared%5C_ptrsourcecodeinfo%5C_locationstart)
+- [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotation)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation.Count](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationcount)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::create](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationcreate)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::Add](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationadd)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::Items](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationitems)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::Keys](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationkeys)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::Remove](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationremove)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::append](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationappend)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::at](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationat)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::clear](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationclear)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::empty](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationempty)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::end](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationend)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::get\_Item](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationget%5C_item)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::get\_\_NewEnum](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::push\_back](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationpush%5C_back)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::push\_vector](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationpush%5C_vector)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::put\_Item](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationput%5C_item)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::size](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationsize)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::slice](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationslice)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::sort](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationsort)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::sort\_variant](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationsort%5C_variant)
+  - [VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::start](#vectorofshared%5C_ptrgeneratedcodeinfo%5C_annotationstart)
 - [VectorOfShared\_ptrLandmark](#vectorofshared%5C_ptrlandmark)
   - [VectorOfShared\_ptrLandmark.Count](#vectorofshared%5C_ptrlandmarkcount)
   - [VectorOfShared\_ptrLandmark::create](#vectorofshared%5C_ptrlandmarkcreate)
@@ -7845,6 +9075,14 @@ _variant_t google::protobuf::autoit::cmessage::GetFieldValue( google::protobuf::
                                                               const std::string&         field_name );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.cmessage").GetFieldValue( $message, $field_name ) -> retval
+```
+
+### google::protobuf::autoit::cmessage::NomalizeNumberFields
+
+```cpp
+void google::protobuf::autoit::cmessage::NomalizeNumberFields( google::protobuf::Message& message );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.autoit.cmessage").NomalizeNumberFields( $message ) -> None
 ```
 
 ### google::protobuf::autoit::cmessage::SetFieldValue
@@ -26113,6 +27351,7770 @@ AutoIt:
 static mediapipe::ImageFormat
 AutoIt:
     [propget] $oimage_format_pb2.ImageFormat
+```
+
+## google::protobuf::FileDescriptorSet
+
+### FileDescriptorSet.file
+
+```cpp
+google::protobuf::Repeated_google_protobuf_FileDescriptorProto* google::protobuf::FileDescriptorSet::file
+AutoIt:
+    [propget, propput] $oFileDescriptorSet.file
+```
+
+### google::protobuf::FileDescriptorSet::get\_create
+
+```cpp
+static google::protobuf::FileDescriptorSet google::protobuf::FileDescriptorSet::get_create( VARIANT* file = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FileDescriptorSet").create( [$file] ) -> <google.protobuf.FileDescriptorSet object>
+    $oFileDescriptorSet( [$file] ) -> <google.protobuf.FileDescriptorSet object>
+```
+
+### google::protobuf::FileDescriptorSet::ByteSizeLong
+
+```cpp
+size_t google::protobuf::FileDescriptorSet::ByteSizeLong();
+AutoIt:
+    $oFileDescriptorSet.ByteSizeLong() -> retval
+```
+
+### google::protobuf::FileDescriptorSet::CheckInitialized
+
+```cpp
+void google::protobuf::FileDescriptorSet::CheckInitialized();
+AutoIt:
+    $oFileDescriptorSet.CheckInitialized() -> None
+```
+
+### google::protobuf::FileDescriptorSet::Clear
+
+```cpp
+void google::protobuf::FileDescriptorSet::Clear();
+AutoIt:
+    $oFileDescriptorSet.Clear() -> None
+```
+
+### google::protobuf::FileDescriptorSet::ClearField
+
+```cpp
+void google::protobuf::FileDescriptorSet::ClearField( const std::string& field_name );
+AutoIt:
+    $oFileDescriptorSet.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::FileDescriptorSet::CopyFrom
+
+```cpp
+void google::protobuf::FileDescriptorSet::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFileDescriptorSet.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::FileDescriptorSet::DiscardUnknownFields
+
+```cpp
+void google::protobuf::FileDescriptorSet::DiscardUnknownFields();
+AutoIt:
+    $oFileDescriptorSet.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::FileDescriptorSet::FindInitializationErrors
+
+```cpp
+void google::protobuf::FileDescriptorSet::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFileDescriptorSet.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::FileDescriptorSet::IsInitialized
+
+```cpp
+bool google::protobuf::FileDescriptorSet::IsInitialized();
+AutoIt:
+    $oFileDescriptorSet.IsInitialized() -> retval
+```
+
+### google::protobuf::FileDescriptorSet::SerializeAsString
+
+```cpp
+std::string google::protobuf::FileDescriptorSet::SerializeAsString();
+AutoIt:
+    $oFileDescriptorSet.SerializeAsString() -> retval
+```
+
+### google::protobuf::FileDescriptorSet::SerializeToString
+
+```cpp
+void google::protobuf::FileDescriptorSet::SerializeToString( std::string* output );
+AutoIt:
+    $oFileDescriptorSet.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::FileDescriptorSet::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::FileDescriptorSet::SpaceUsedLong();
+AutoIt:
+    $oFileDescriptorSet.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::FileDescriptorSet::\_\_str\_\_
+
+```cpp
+void google::protobuf::FileDescriptorSet::__str__( std::string* output );
+AutoIt:
+    $oFileDescriptorSet.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto
+
+### Repeated\_google\_protobuf\_FileDescriptorProto.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_FileDescriptorProto::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_FileDescriptorProto.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_FileDescriptorProto google::protobuf::Repeated_google_protobuf_FileDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_FileDescriptorProto").create() -> <google.protobuf.Repeated_google_protobuf_FileDescriptorProto object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::CopyFrom( const google::protobuf::Repeated_google_protobuf_FileDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::MergeFrom( const google::protobuf::Repeated_google_protobuf_FileDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::Swap( google::protobuf::Repeated_google_protobuf_FileDescriptorProto* other );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::SwapElements( int index1,
+                                                                                   int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::add
+
+```cpp
+google::protobuf::FileDescriptorProto* google::protobuf::Repeated_google_protobuf_FileDescriptorProto::add();
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.add() -> retval
+```
+
+```cpp
+google::protobuf::FileDescriptorProto* google::protobuf::Repeated_google_protobuf_FileDescriptorProto::add( const google::protobuf::FileDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::append
+
+```cpp
+google::protobuf::FileDescriptorProto* google::protobuf::Repeated_google_protobuf_FileDescriptorProto::append( const google::protobuf::FileDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::FileDescriptorProto* google::protobuf::Repeated_google_protobuf_FileDescriptorProto::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::clear();
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_FileDescriptorProto::empty();
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::extend( const google::protobuf::Repeated_google_protobuf_FileDescriptorProto& items );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::extend( const std::vector<std::shared_ptr<google::protobuf::FileDescriptorProto>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::get\_Item
+
+```cpp
+google::protobuf::FileDescriptorProto* google::protobuf::Repeated_google_protobuf_FileDescriptorProto::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.Item( $index ) -> retval
+    $oRepeated_google_protobuf_FileDescriptorProto( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_FileDescriptorProto::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::insert( SSIZE_T                                       index,
+                                                                             const google::protobuf::FileDescriptorProto*& item );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::pop
+
+```cpp
+std::shared_ptr<google::protobuf::FileDescriptorProto> google::protobuf::Repeated_google_protobuf_FileDescriptorProto::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_FileDescriptorProto::size();
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::FileDescriptorProto>> list,
+                                                                            SSIZE_T                                                             start,
+                                                                            SSIZE_T                                                             count );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::FileDescriptorProto>> list,
+                                                                            SSIZE_T                                                             start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::sort( void*  comparator,
+                                                                           size_t start = 0,
+                                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::sort_variant( void*  comparator,
+                                                                                   size_t start = 0,
+                                                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FileDescriptorProto::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::FileDescriptorProto>> list,
+                                                                             SSIZE_T                                                             start,
+                                                                             SSIZE_T                                                             deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FileDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::FileDescriptorProto>> list,
+                                                                             SSIZE_T                                                             start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_FileDescriptorProto.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::FileDescriptorProto
+
+### FileDescriptorProto.name
+
+```cpp
+std::string google::protobuf::FileDescriptorProto::name
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.name
+```
+
+### FileDescriptorProto.package
+
+```cpp
+std::string google::protobuf::FileDescriptorProto::package
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.package
+```
+
+### FileDescriptorProto.dependency
+
+```cpp
+google::protobuf::Repeated_std_string* google::protobuf::FileDescriptorProto::dependency
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.dependency
+```
+
+### FileDescriptorProto.public\_dependency
+
+```cpp
+google::protobuf::Repeated_int* google::protobuf::FileDescriptorProto::public_dependency
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.public_dependency
+```
+
+### FileDescriptorProto.weak\_dependency
+
+```cpp
+google::protobuf::Repeated_int* google::protobuf::FileDescriptorProto::weak_dependency
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.weak_dependency
+```
+
+### FileDescriptorProto.message\_type
+
+```cpp
+google::protobuf::Repeated_google_protobuf_DescriptorProto* google::protobuf::FileDescriptorProto::message_type
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.message_type
+```
+
+### FileDescriptorProto.enum\_type
+
+```cpp
+google::protobuf::Repeated_google_protobuf_EnumDescriptorProto* google::protobuf::FileDescriptorProto::enum_type
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.enum_type
+```
+
+### FileDescriptorProto.service
+
+```cpp
+google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto* google::protobuf::FileDescriptorProto::service
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.service
+```
+
+### FileDescriptorProto.extension
+
+```cpp
+google::protobuf::Repeated_google_protobuf_FieldDescriptorProto* google::protobuf::FileDescriptorProto::extension
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.extension
+```
+
+### FileDescriptorProto.options
+
+```cpp
+google::protobuf::FileOptions* google::protobuf::FileDescriptorProto::options
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.options
+```
+
+### FileDescriptorProto.source\_code\_info
+
+```cpp
+google::protobuf::SourceCodeInfo* google::protobuf::FileDescriptorProto::source_code_info
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.source_code_info
+```
+
+### FileDescriptorProto.syntax
+
+```cpp
+std::string google::protobuf::FileDescriptorProto::syntax
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.syntax
+```
+
+### google::protobuf::FileDescriptorProto::get\_create
+
+```cpp
+static google::protobuf::FileDescriptorProto google::protobuf::FileDescriptorProto::get_create( std::optional<std::string>                        name = std::optional<std::string>(),
+                                                                                                std::optional<std::string>                        package = std::optional<std::string>(),
+                                                                                                VARIANT*                                          dependency = VARIANT*(),
+                                                                                                VARIANT*                                          public_dependency = VARIANT*(),
+                                                                                                VARIANT*                                          weak_dependency = VARIANT*(),
+                                                                                                VARIANT*                                          message_type = VARIANT*(),
+                                                                                                VARIANT*                                          enum_type = VARIANT*(),
+                                                                                                VARIANT*                                          service = VARIANT*(),
+                                                                                                VARIANT*                                          extension = VARIANT*(),
+                                                                                                std::shared_ptr<google::protobuf::FileOptions>    options = std::shared_ptr<google::protobuf::FileOptions>(),
+                                                                                                std::shared_ptr<google::protobuf::SourceCodeInfo> source_code_info = std::shared_ptr<google::protobuf::SourceCodeInfo>(),
+                                                                                                std::optional<std::string>                        syntax = std::optional<std::string>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FileDescriptorProto").create( [$name[, $package[, $dependency[, $public_dependency[, $weak_dependency[, $message_type[, $enum_type[, $service[, $extension[, $options[, $source_code_info[, $syntax]]]]]]]]]]]] ) -> <google.protobuf.FileDescriptorProto object>
+    $oFileDescriptorProto( [$name[, $package[, $dependency[, $public_dependency[, $weak_dependency[, $message_type[, $enum_type[, $service[, $extension[, $options[, $source_code_info[, $syntax]]]]]]]]]]]] ) -> <google.protobuf.FileDescriptorProto object>
+```
+
+### google::protobuf::FileDescriptorProto::ByteSizeLong
+
+```cpp
+size_t google::protobuf::FileDescriptorProto::ByteSizeLong();
+AutoIt:
+    $oFileDescriptorProto.ByteSizeLong() -> retval
+```
+
+### google::protobuf::FileDescriptorProto::CheckInitialized
+
+```cpp
+void google::protobuf::FileDescriptorProto::CheckInitialized();
+AutoIt:
+    $oFileDescriptorProto.CheckInitialized() -> None
+```
+
+### google::protobuf::FileDescriptorProto::Clear
+
+```cpp
+void google::protobuf::FileDescriptorProto::Clear();
+AutoIt:
+    $oFileDescriptorProto.Clear() -> None
+```
+
+### google::protobuf::FileDescriptorProto::ClearField
+
+```cpp
+void google::protobuf::FileDescriptorProto::ClearField( const std::string& field_name );
+AutoIt:
+    $oFileDescriptorProto.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::FileDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::FileDescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFileDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::FileDescriptorProto::DiscardUnknownFields
+
+```cpp
+void google::protobuf::FileDescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oFileDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::FileDescriptorProto::FindInitializationErrors
+
+```cpp
+void google::protobuf::FileDescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFileDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::FileDescriptorProto::IsInitialized
+
+```cpp
+bool google::protobuf::FileDescriptorProto::IsInitialized();
+AutoIt:
+    $oFileDescriptorProto.IsInitialized() -> retval
+```
+
+### google::protobuf::FileDescriptorProto::SerializeAsString
+
+```cpp
+std::string google::protobuf::FileDescriptorProto::SerializeAsString();
+AutoIt:
+    $oFileDescriptorProto.SerializeAsString() -> retval
+```
+
+### google::protobuf::FileDescriptorProto::SerializeToString
+
+```cpp
+void google::protobuf::FileDescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oFileDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::FileDescriptorProto::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::FileDescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oFileDescriptorProto.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::FileDescriptorProto::\_\_str\_\_
+
+```cpp
+void google::protobuf::FileDescriptorProto::__str__( std::string* output );
+AutoIt:
+    $oFileDescriptorProto.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_DescriptorProto
+
+### Repeated\_google\_protobuf\_DescriptorProto.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_DescriptorProto::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_DescriptorProto.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_DescriptorProto google::protobuf::Repeated_google_protobuf_DescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_DescriptorProto").create() -> <google.protobuf.Repeated_google_protobuf_DescriptorProto object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::CopyFrom( const google::protobuf::Repeated_google_protobuf_DescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::MergeFrom( const google::protobuf::Repeated_google_protobuf_DescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::Swap( google::protobuf::Repeated_google_protobuf_DescriptorProto* other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::SwapElements( int index1,
+                                                                               int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::add
+
+```cpp
+google::protobuf::DescriptorProto* google::protobuf::Repeated_google_protobuf_DescriptorProto::add();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.add() -> retval
+```
+
+```cpp
+google::protobuf::DescriptorProto* google::protobuf::Repeated_google_protobuf_DescriptorProto::add( const google::protobuf::DescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::append
+
+```cpp
+google::protobuf::DescriptorProto* google::protobuf::Repeated_google_protobuf_DescriptorProto::append( const google::protobuf::DescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::DescriptorProto* google::protobuf::Repeated_google_protobuf_DescriptorProto::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::clear();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_DescriptorProto::empty();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::extend( const google::protobuf::Repeated_google_protobuf_DescriptorProto& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::extend( const std::vector<std::shared_ptr<google::protobuf::DescriptorProto>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::get\_Item
+
+```cpp
+google::protobuf::DescriptorProto* google::protobuf::Repeated_google_protobuf_DescriptorProto::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.Item( $index ) -> retval
+    $oRepeated_google_protobuf_DescriptorProto( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_DescriptorProto::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::insert( SSIZE_T                                   index,
+                                                                         const google::protobuf::DescriptorProto*& item );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::pop
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto> google::protobuf::Repeated_google_protobuf_DescriptorProto::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_DescriptorProto::size();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto>> list,
+                                                                        SSIZE_T                                                         start,
+                                                                        SSIZE_T                                                         count );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto>> list,
+                                                                        SSIZE_T                                                         start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::sort( void*  comparator,
+                                                                       size_t start = 0,
+                                                                       size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::sort_variant( void*  comparator,
+                                                                               size_t start = 0,
+                                                                               size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto>> list,
+                                                                         SSIZE_T                                                         start,
+                                                                         SSIZE_T                                                         deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto>> list,
+                                                                         SSIZE_T                                                         start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto
+
+### Repeated\_google\_protobuf\_EnumDescriptorProto.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_EnumDescriptorProto.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_EnumDescriptorProto google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_EnumDescriptorProto").create() -> <google.protobuf.Repeated_google_protobuf_EnumDescriptorProto object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::CopyFrom( const google::protobuf::Repeated_google_protobuf_EnumDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::MergeFrom( const google::protobuf::Repeated_google_protobuf_EnumDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::Swap( google::protobuf::Repeated_google_protobuf_EnumDescriptorProto* other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::SwapElements( int index1,
+                                                                                   int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::add
+
+```cpp
+google::protobuf::EnumDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::add();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.add() -> retval
+```
+
+```cpp
+google::protobuf::EnumDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::add( const google::protobuf::EnumDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::append
+
+```cpp
+google::protobuf::EnumDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::append( const google::protobuf::EnumDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::EnumDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::clear();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::empty();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::extend( const google::protobuf::Repeated_google_protobuf_EnumDescriptorProto& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::extend( const std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::get\_Item
+
+```cpp
+google::protobuf::EnumDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.Item( $index ) -> retval
+    $oRepeated_google_protobuf_EnumDescriptorProto( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::insert( SSIZE_T                                       index,
+                                                                             const google::protobuf::EnumDescriptorProto*& item );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::pop
+
+```cpp
+std::shared_ptr<google::protobuf::EnumDescriptorProto> google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::size();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto>> list,
+                                                                            SSIZE_T                                                             start,
+                                                                            SSIZE_T                                                             count );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto>> list,
+                                                                            SSIZE_T                                                             start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::sort( void*  comparator,
+                                                                           size_t start = 0,
+                                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::sort_variant( void*  comparator,
+                                                                                   size_t start = 0,
+                                                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto>> list,
+                                                                             SSIZE_T                                                             start,
+                                                                             SSIZE_T                                                             deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto>> list,
+                                                                             SSIZE_T                                                             start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto
+
+### Repeated\_google\_protobuf\_ServiceDescriptorProto.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_ServiceDescriptorProto.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_ServiceDescriptorProto").create() -> <google.protobuf.Repeated_google_protobuf_ServiceDescriptorProto object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::CopyFrom( const google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::MergeFrom( const google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::Swap( google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto* other );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::SwapElements( int index1,
+                                                                                      int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::add
+
+```cpp
+google::protobuf::ServiceDescriptorProto* google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::add();
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.add() -> retval
+```
+
+```cpp
+google::protobuf::ServiceDescriptorProto* google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::add( const google::protobuf::ServiceDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::append
+
+```cpp
+google::protobuf::ServiceDescriptorProto* google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::append( const google::protobuf::ServiceDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::ServiceDescriptorProto* google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::clear();
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::empty();
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::extend( const google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto& items );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::extend( const std::vector<std::shared_ptr<google::protobuf::ServiceDescriptorProto>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::get\_Item
+
+```cpp
+google::protobuf::ServiceDescriptorProto* google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.Item( $index ) -> retval
+    $oRepeated_google_protobuf_ServiceDescriptorProto( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::insert( SSIZE_T                                          index,
+                                                                                const google::protobuf::ServiceDescriptorProto*& item );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::pop
+
+```cpp
+std::shared_ptr<google::protobuf::ServiceDescriptorProto> google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::size();
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::ServiceDescriptorProto>> list,
+                                                                               SSIZE_T                                                                start,
+                                                                               SSIZE_T                                                                count );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::ServiceDescriptorProto>> list,
+                                                                               SSIZE_T                                                                start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::sort( void*  comparator,
+                                                                              size_t start = 0,
+                                                                              size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::sort_variant( void*  comparator,
+                                                                                      size_t start = 0,
+                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_ServiceDescriptorProto::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::ServiceDescriptorProto>> list,
+                                                                                SSIZE_T                                                                start,
+                                                                                SSIZE_T                                                                deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::ServiceDescriptorProto>> list,
+                                                                                SSIZE_T                                                                start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_ServiceDescriptorProto.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto
+
+### Repeated\_google\_protobuf\_FieldDescriptorProto.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_FieldDescriptorProto.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_FieldDescriptorProto google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_FieldDescriptorProto").create() -> <google.protobuf.Repeated_google_protobuf_FieldDescriptorProto object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::CopyFrom( const google::protobuf::Repeated_google_protobuf_FieldDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::MergeFrom( const google::protobuf::Repeated_google_protobuf_FieldDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::Swap( google::protobuf::Repeated_google_protobuf_FieldDescriptorProto* other );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::SwapElements( int index1,
+                                                                                    int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::add
+
+```cpp
+google::protobuf::FieldDescriptorProto* google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::add();
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.add() -> retval
+```
+
+```cpp
+google::protobuf::FieldDescriptorProto* google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::add( const google::protobuf::FieldDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::append
+
+```cpp
+google::protobuf::FieldDescriptorProto* google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::append( const google::protobuf::FieldDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::FieldDescriptorProto* google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::clear();
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::empty();
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::extend( const google::protobuf::Repeated_google_protobuf_FieldDescriptorProto& items );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::extend( const std::vector<std::shared_ptr<google::protobuf::FieldDescriptorProto>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::get\_Item
+
+```cpp
+google::protobuf::FieldDescriptorProto* google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.Item( $index ) -> retval
+    $oRepeated_google_protobuf_FieldDescriptorProto( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::insert( SSIZE_T                                        index,
+                                                                              const google::protobuf::FieldDescriptorProto*& item );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::pop
+
+```cpp
+std::shared_ptr<google::protobuf::FieldDescriptorProto> google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::size();
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::FieldDescriptorProto>> list,
+                                                                             SSIZE_T                                                              start,
+                                                                             SSIZE_T                                                              count );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::FieldDescriptorProto>> list,
+                                                                             SSIZE_T                                                              start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::sort( void*  comparator,
+                                                                            size_t start = 0,
+                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::sort_variant( void*  comparator,
+                                                                                    size_t start = 0,
+                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_FieldDescriptorProto::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::FieldDescriptorProto>> list,
+                                                                              SSIZE_T                                                              start,
+                                                                              SSIZE_T                                                              deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_FieldDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::FieldDescriptorProto>> list,
+                                                                              SSIZE_T                                                              start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_FieldDescriptorProto.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::DescriptorProto
+
+### DescriptorProto.name
+
+```cpp
+std::string google::protobuf::DescriptorProto::name
+AutoIt:
+    [propget, propput] $oDescriptorProto.name
+```
+
+### DescriptorProto.field
+
+```cpp
+google::protobuf::Repeated_google_protobuf_FieldDescriptorProto* google::protobuf::DescriptorProto::field
+AutoIt:
+    [propget, propput] $oDescriptorProto.field
+```
+
+### DescriptorProto.extension
+
+```cpp
+google::protobuf::Repeated_google_protobuf_FieldDescriptorProto* google::protobuf::DescriptorProto::extension
+AutoIt:
+    [propget, propput] $oDescriptorProto.extension
+```
+
+### DescriptorProto.nested\_type
+
+```cpp
+google::protobuf::Repeated_google_protobuf_DescriptorProto* google::protobuf::DescriptorProto::nested_type
+AutoIt:
+    [propget, propput] $oDescriptorProto.nested_type
+```
+
+### DescriptorProto.enum\_type
+
+```cpp
+google::protobuf::Repeated_google_protobuf_EnumDescriptorProto* google::protobuf::DescriptorProto::enum_type
+AutoIt:
+    [propget, propput] $oDescriptorProto.enum_type
+```
+
+### DescriptorProto.extension\_range
+
+```cpp
+google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange* google::protobuf::DescriptorProto::extension_range
+AutoIt:
+    [propget, propput] $oDescriptorProto.extension_range
+```
+
+### DescriptorProto.oneof\_decl
+
+```cpp
+google::protobuf::Repeated_google_protobuf_OneofDescriptorProto* google::protobuf::DescriptorProto::oneof_decl
+AutoIt:
+    [propget, propput] $oDescriptorProto.oneof_decl
+```
+
+### DescriptorProto.options
+
+```cpp
+google::protobuf::MessageOptions* google::protobuf::DescriptorProto::options
+AutoIt:
+    [propget, propput] $oDescriptorProto.options
+```
+
+### DescriptorProto.reserved\_range
+
+```cpp
+google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange* google::protobuf::DescriptorProto::reserved_range
+AutoIt:
+    [propget, propput] $oDescriptorProto.reserved_range
+```
+
+### DescriptorProto.reserved\_name
+
+```cpp
+google::protobuf::Repeated_std_string* google::protobuf::DescriptorProto::reserved_name
+AutoIt:
+    [propget, propput] $oDescriptorProto.reserved_name
+```
+
+### google::protobuf::DescriptorProto::get\_create
+
+```cpp
+static google::protobuf::DescriptorProto google::protobuf::DescriptorProto::get_create( std::optional<std::string>                        name = std::optional<std::string>(),
+                                                                                        VARIANT*                                          field = VARIANT*(),
+                                                                                        VARIANT*                                          extension = VARIANT*(),
+                                                                                        VARIANT*                                          nested_type = VARIANT*(),
+                                                                                        VARIANT*                                          enum_type = VARIANT*(),
+                                                                                        VARIANT*                                          extension_range = VARIANT*(),
+                                                                                        VARIANT*                                          oneof_decl = VARIANT*(),
+                                                                                        std::shared_ptr<google::protobuf::MessageOptions> options = std::shared_ptr<google::protobuf::MessageOptions>(),
+                                                                                        VARIANT*                                          reserved_range = VARIANT*(),
+                                                                                        VARIANT*                                          reserved_name = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.DescriptorProto").create( [$name[, $field[, $extension[, $nested_type[, $enum_type[, $extension_range[, $oneof_decl[, $options[, $reserved_range[, $reserved_name]]]]]]]]]] ) -> <google.protobuf.DescriptorProto object>
+    $oDescriptorProto( [$name[, $field[, $extension[, $nested_type[, $enum_type[, $extension_range[, $oneof_decl[, $options[, $reserved_range[, $reserved_name]]]]]]]]]] ) -> <google.protobuf.DescriptorProto object>
+```
+
+### google::protobuf::DescriptorProto::ByteSizeLong
+
+```cpp
+size_t google::protobuf::DescriptorProto::ByteSizeLong();
+AutoIt:
+    $oDescriptorProto.ByteSizeLong() -> retval
+```
+
+### google::protobuf::DescriptorProto::CheckInitialized
+
+```cpp
+void google::protobuf::DescriptorProto::CheckInitialized();
+AutoIt:
+    $oDescriptorProto.CheckInitialized() -> None
+```
+
+### google::protobuf::DescriptorProto::Clear
+
+```cpp
+void google::protobuf::DescriptorProto::Clear();
+AutoIt:
+    $oDescriptorProto.Clear() -> None
+```
+
+### google::protobuf::DescriptorProto::ClearField
+
+```cpp
+void google::protobuf::DescriptorProto::ClearField( const std::string& field_name );
+AutoIt:
+    $oDescriptorProto.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::DescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::DescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::DescriptorProto::DiscardUnknownFields
+
+```cpp
+void google::protobuf::DescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::DescriptorProto::FindInitializationErrors
+
+```cpp
+void google::protobuf::DescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::DescriptorProto::IsInitialized
+
+```cpp
+bool google::protobuf::DescriptorProto::IsInitialized();
+AutoIt:
+    $oDescriptorProto.IsInitialized() -> retval
+```
+
+### google::protobuf::DescriptorProto::SerializeAsString
+
+```cpp
+std::string google::protobuf::DescriptorProto::SerializeAsString();
+AutoIt:
+    $oDescriptorProto.SerializeAsString() -> retval
+```
+
+### google::protobuf::DescriptorProto::SerializeToString
+
+```cpp
+void google::protobuf::DescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::DescriptorProto::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::DescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oDescriptorProto.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::DescriptorProto::\_\_str\_\_
+
+```cpp
+void google::protobuf::DescriptorProto::__str__( std::string* output );
+AutoIt:
+    $oDescriptorProto.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange
+
+### Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_DescriptorProto_ExtensionRange").create() -> <google.protobuf.Repeated_google_protobuf_DescriptorProto_ExtensionRange object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::CopyFrom( const google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::MergeFrom( const google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::Swap( google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange* other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::SwapElements( int index1,
+                                                                                              int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::add
+
+```cpp
+google::protobuf::DescriptorProto::ExtensionRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::add();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.add() -> retval
+```
+
+```cpp
+google::protobuf::DescriptorProto::ExtensionRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::add( const google::protobuf::DescriptorProto::ExtensionRange* value );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::append
+
+```cpp
+google::protobuf::DescriptorProto::ExtensionRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::append( const google::protobuf::DescriptorProto::ExtensionRange* value );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::DescriptorProto::ExtensionRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::clear();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::empty();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::extend( const google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::extend( const std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::get\_Item
+
+```cpp
+google::protobuf::DescriptorProto::ExtensionRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.Item( $index ) -> retval
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::insert( SSIZE_T                                                   index,
+                                                                                        const google::protobuf::DescriptorProto::ExtensionRange*& item );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::pop
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange> google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::size();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::slice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange>> list,
+                                                                                       SSIZE_T                                                                         start,
+                                                                                       SSIZE_T                                                                         count );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::slice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange>> list,
+                                                                                       SSIZE_T                                                                         start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::sort( void*  comparator,
+                                                                                      size_t start = 0,
+                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::sort_variant( void*  comparator,
+                                                                                              size_t start = 0,
+                                                                                              size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ExtensionRange::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::splice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange>> list,
+                                                                                        SSIZE_T                                                                         start,
+                                                                                        SSIZE_T                                                                         deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange::splice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange>> list,
+                                                                                        SSIZE_T                                                                         start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ExtensionRange.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto
+
+### Repeated\_google\_protobuf\_OneofDescriptorProto.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_OneofDescriptorProto.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_OneofDescriptorProto google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_OneofDescriptorProto").create() -> <google.protobuf.Repeated_google_protobuf_OneofDescriptorProto object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::CopyFrom( const google::protobuf::Repeated_google_protobuf_OneofDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::MergeFrom( const google::protobuf::Repeated_google_protobuf_OneofDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::Swap( google::protobuf::Repeated_google_protobuf_OneofDescriptorProto* other );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::SwapElements( int index1,
+                                                                                    int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::add
+
+```cpp
+google::protobuf::OneofDescriptorProto* google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::add();
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.add() -> retval
+```
+
+```cpp
+google::protobuf::OneofDescriptorProto* google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::add( const google::protobuf::OneofDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::append
+
+```cpp
+google::protobuf::OneofDescriptorProto* google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::append( const google::protobuf::OneofDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::OneofDescriptorProto* google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::clear();
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::empty();
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::extend( const google::protobuf::Repeated_google_protobuf_OneofDescriptorProto& items );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::extend( const std::vector<std::shared_ptr<google::protobuf::OneofDescriptorProto>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::get\_Item
+
+```cpp
+google::protobuf::OneofDescriptorProto* google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.Item( $index ) -> retval
+    $oRepeated_google_protobuf_OneofDescriptorProto( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::insert( SSIZE_T                                        index,
+                                                                              const google::protobuf::OneofDescriptorProto*& item );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::pop
+
+```cpp
+std::shared_ptr<google::protobuf::OneofDescriptorProto> google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::size();
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::OneofDescriptorProto>> list,
+                                                                             SSIZE_T                                                              start,
+                                                                             SSIZE_T                                                              count );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::OneofDescriptorProto>> list,
+                                                                             SSIZE_T                                                              start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::sort( void*  comparator,
+                                                                            size_t start = 0,
+                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::sort_variant( void*  comparator,
+                                                                                    size_t start = 0,
+                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_OneofDescriptorProto::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::OneofDescriptorProto>> list,
+                                                                              SSIZE_T                                                              start,
+                                                                              SSIZE_T                                                              deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_OneofDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::OneofDescriptorProto>> list,
+                                                                              SSIZE_T                                                              start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_OneofDescriptorProto.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange
+
+### Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_DescriptorProto_ReservedRange.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_DescriptorProto_ReservedRange").create() -> <google.protobuf.Repeated_google_protobuf_DescriptorProto_ReservedRange object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::CopyFrom( const google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::MergeFrom( const google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::Swap( google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange* other );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::SwapElements( int index1,
+                                                                                             int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::add
+
+```cpp
+google::protobuf::DescriptorProto::ReservedRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::add();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.add() -> retval
+```
+
+```cpp
+google::protobuf::DescriptorProto::ReservedRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::add( const google::protobuf::DescriptorProto::ReservedRange* value );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::append
+
+```cpp
+google::protobuf::DescriptorProto::ReservedRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::append( const google::protobuf::DescriptorProto::ReservedRange* value );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::DescriptorProto::ReservedRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::clear();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::empty();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::extend( const google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::extend( const std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::get\_Item
+
+```cpp
+google::protobuf::DescriptorProto::ReservedRange* google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.Item( $index ) -> retval
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::insert( SSIZE_T                                                  index,
+                                                                                       const google::protobuf::DescriptorProto::ReservedRange*& item );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::pop
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange> google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::size();
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::slice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange>> list,
+                                                                                      SSIZE_T                                                                        start,
+                                                                                      SSIZE_T                                                                        count );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::slice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange>> list,
+                                                                                      SSIZE_T                                                                        start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::sort( void*  comparator,
+                                                                                     size_t start = 0,
+                                                                                     size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::sort_variant( void*  comparator,
+                                                                                             size_t start = 0,
+                                                                                             size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_DescriptorProto\_ReservedRange::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::splice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange>> list,
+                                                                                       SSIZE_T                                                                        start,
+                                                                                       SSIZE_T                                                                        deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange::splice( std::vector<std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange>> list,
+                                                                                       SSIZE_T                                                                        start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_DescriptorProto_ReservedRange.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::DescriptorProto::ExtensionRange
+
+### ExtensionRange.start
+
+```cpp
+int google::protobuf::DescriptorProto::ExtensionRange::start
+AutoIt:
+    [propget, propput] $oExtensionRange.start
+```
+
+### ExtensionRange.end
+
+```cpp
+int google::protobuf::DescriptorProto::ExtensionRange::end
+AutoIt:
+    [propget, propput] $oExtensionRange.end
+```
+
+### ExtensionRange.options
+
+```cpp
+google::protobuf::ExtensionRangeOptions* google::protobuf::DescriptorProto::ExtensionRange::options
+AutoIt:
+    [propget, propput] $oExtensionRange.options
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::get\_create
+
+```cpp
+static google::protobuf::DescriptorProto::ExtensionRange google::protobuf::DescriptorProto::ExtensionRange::get_create( std::optional<int>                                       start = std::optional<int>(),
+                                                                                                                        std::optional<int>                                       end = std::optional<int>(),
+                                                                                                                        std::shared_ptr<google::protobuf::ExtensionRangeOptions> options = std::shared_ptr<google::protobuf::ExtensionRangeOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.DescriptorProto.ExtensionRange").create( [$start[, $end[, $options]]] ) -> <google.protobuf.DescriptorProto.ExtensionRange object>
+    $oExtensionRange( [$start[, $end[, $options]]] ) -> <google.protobuf.DescriptorProto.ExtensionRange object>
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::ByteSizeLong
+
+```cpp
+size_t google::protobuf::DescriptorProto::ExtensionRange::ByteSizeLong();
+AutoIt:
+    $oExtensionRange.ByteSizeLong() -> retval
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::CheckInitialized
+
+```cpp
+void google::protobuf::DescriptorProto::ExtensionRange::CheckInitialized();
+AutoIt:
+    $oExtensionRange.CheckInitialized() -> None
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::Clear
+
+```cpp
+void google::protobuf::DescriptorProto::ExtensionRange::Clear();
+AutoIt:
+    $oExtensionRange.Clear() -> None
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::ClearField
+
+```cpp
+void google::protobuf::DescriptorProto::ExtensionRange::ClearField( const std::string& field_name );
+AutoIt:
+    $oExtensionRange.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::CopyFrom
+
+```cpp
+void google::protobuf::DescriptorProto::ExtensionRange::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oExtensionRange.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::DiscardUnknownFields
+
+```cpp
+void google::protobuf::DescriptorProto::ExtensionRange::DiscardUnknownFields();
+AutoIt:
+    $oExtensionRange.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::FindInitializationErrors
+
+```cpp
+void google::protobuf::DescriptorProto::ExtensionRange::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oExtensionRange.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::IsInitialized
+
+```cpp
+bool google::protobuf::DescriptorProto::ExtensionRange::IsInitialized();
+AutoIt:
+    $oExtensionRange.IsInitialized() -> retval
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::SerializeAsString
+
+```cpp
+std::string google::protobuf::DescriptorProto::ExtensionRange::SerializeAsString();
+AutoIt:
+    $oExtensionRange.SerializeAsString() -> retval
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::SerializeToString
+
+```cpp
+void google::protobuf::DescriptorProto::ExtensionRange::SerializeToString( std::string* output );
+AutoIt:
+    $oExtensionRange.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::DescriptorProto::ExtensionRange::SpaceUsedLong();
+AutoIt:
+    $oExtensionRange.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::DescriptorProto::ExtensionRange::\_\_str\_\_
+
+```cpp
+void google::protobuf::DescriptorProto::ExtensionRange::__str__( std::string* output );
+AutoIt:
+    $oExtensionRange.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::DescriptorProto::ReservedRange
+
+### ReservedRange.start
+
+```cpp
+int google::protobuf::DescriptorProto::ReservedRange::start
+AutoIt:
+    [propget, propput] $oReservedRange.start
+```
+
+### ReservedRange.end
+
+```cpp
+int google::protobuf::DescriptorProto::ReservedRange::end
+AutoIt:
+    [propget, propput] $oReservedRange.end
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::get\_create
+
+```cpp
+static google::protobuf::DescriptorProto::ReservedRange google::protobuf::DescriptorProto::ReservedRange::get_create( std::optional<int> start = std::optional<int>(),
+                                                                                                                      std::optional<int> end = std::optional<int>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.DescriptorProto.ReservedRange").create( [$start[, $end]] ) -> <google.protobuf.DescriptorProto.ReservedRange object>
+    $oReservedRange( [$start[, $end]] ) -> <google.protobuf.DescriptorProto.ReservedRange object>
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::ByteSizeLong
+
+```cpp
+size_t google::protobuf::DescriptorProto::ReservedRange::ByteSizeLong();
+AutoIt:
+    $oReservedRange.ByteSizeLong() -> retval
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::CheckInitialized
+
+```cpp
+void google::protobuf::DescriptorProto::ReservedRange::CheckInitialized();
+AutoIt:
+    $oReservedRange.CheckInitialized() -> None
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::Clear
+
+```cpp
+void google::protobuf::DescriptorProto::ReservedRange::Clear();
+AutoIt:
+    $oReservedRange.Clear() -> None
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::ClearField
+
+```cpp
+void google::protobuf::DescriptorProto::ReservedRange::ClearField( const std::string& field_name );
+AutoIt:
+    $oReservedRange.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::CopyFrom
+
+```cpp
+void google::protobuf::DescriptorProto::ReservedRange::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oReservedRange.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::DiscardUnknownFields
+
+```cpp
+void google::protobuf::DescriptorProto::ReservedRange::DiscardUnknownFields();
+AutoIt:
+    $oReservedRange.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::FindInitializationErrors
+
+```cpp
+void google::protobuf::DescriptorProto::ReservedRange::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oReservedRange.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::IsInitialized
+
+```cpp
+bool google::protobuf::DescriptorProto::ReservedRange::IsInitialized();
+AutoIt:
+    $oReservedRange.IsInitialized() -> retval
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::SerializeAsString
+
+```cpp
+std::string google::protobuf::DescriptorProto::ReservedRange::SerializeAsString();
+AutoIt:
+    $oReservedRange.SerializeAsString() -> retval
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::SerializeToString
+
+```cpp
+void google::protobuf::DescriptorProto::ReservedRange::SerializeToString( std::string* output );
+AutoIt:
+    $oReservedRange.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::DescriptorProto::ReservedRange::SpaceUsedLong();
+AutoIt:
+    $oReservedRange.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::DescriptorProto::ReservedRange::\_\_str\_\_
+
+```cpp
+void google::protobuf::DescriptorProto::ReservedRange::__str__( std::string* output );
+AutoIt:
+    $oReservedRange.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::ExtensionRangeOptions
+
+### ExtensionRangeOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::ExtensionRangeOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oExtensionRangeOptions.uninterpreted_option
+```
+
+### google::protobuf::ExtensionRangeOptions::get\_create
+
+```cpp
+static google::protobuf::ExtensionRangeOptions google::protobuf::ExtensionRangeOptions::get_create( VARIANT* uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.ExtensionRangeOptions").create( [$uninterpreted_option] ) -> <google.protobuf.ExtensionRangeOptions object>
+    $oExtensionRangeOptions( [$uninterpreted_option] ) -> <google.protobuf.ExtensionRangeOptions object>
+```
+
+### google::protobuf::ExtensionRangeOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::ExtensionRangeOptions::ByteSizeLong();
+AutoIt:
+    $oExtensionRangeOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::ExtensionRangeOptions::CheckInitialized
+
+```cpp
+void google::protobuf::ExtensionRangeOptions::CheckInitialized();
+AutoIt:
+    $oExtensionRangeOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::ExtensionRangeOptions::Clear
+
+```cpp
+void google::protobuf::ExtensionRangeOptions::Clear();
+AutoIt:
+    $oExtensionRangeOptions.Clear() -> None
+```
+
+### google::protobuf::ExtensionRangeOptions::ClearField
+
+```cpp
+void google::protobuf::ExtensionRangeOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oExtensionRangeOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::ExtensionRangeOptions::CopyFrom
+
+```cpp
+void google::protobuf::ExtensionRangeOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oExtensionRangeOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::ExtensionRangeOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::ExtensionRangeOptions::DiscardUnknownFields();
+AutoIt:
+    $oExtensionRangeOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::ExtensionRangeOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::ExtensionRangeOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oExtensionRangeOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::ExtensionRangeOptions::IsInitialized
+
+```cpp
+bool google::protobuf::ExtensionRangeOptions::IsInitialized();
+AutoIt:
+    $oExtensionRangeOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::ExtensionRangeOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::ExtensionRangeOptions::SerializeAsString();
+AutoIt:
+    $oExtensionRangeOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::ExtensionRangeOptions::SerializeToString
+
+```cpp
+void google::protobuf::ExtensionRangeOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oExtensionRangeOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::ExtensionRangeOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::ExtensionRangeOptions::SpaceUsedLong();
+AutoIt:
+    $oExtensionRangeOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::ExtensionRangeOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::ExtensionRangeOptions::__str__( std::string* output );
+AutoIt:
+    $oExtensionRangeOptions.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption
+
+### Repeated\_google\_protobuf\_UninterpretedOption.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_UninterpretedOption::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_UninterpretedOption.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_UninterpretedOption google::protobuf::Repeated_google_protobuf_UninterpretedOption::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_UninterpretedOption").create() -> <google.protobuf.Repeated_google_protobuf_UninterpretedOption object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::CopyFrom( const google::protobuf::Repeated_google_protobuf_UninterpretedOption other );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::MergeFrom( const google::protobuf::Repeated_google_protobuf_UninterpretedOption other );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::Swap( google::protobuf::Repeated_google_protobuf_UninterpretedOption* other );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::SwapElements( int index1,
+                                                                                   int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::add
+
+```cpp
+google::protobuf::UninterpretedOption* google::protobuf::Repeated_google_protobuf_UninterpretedOption::add();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.add() -> retval
+```
+
+```cpp
+google::protobuf::UninterpretedOption* google::protobuf::Repeated_google_protobuf_UninterpretedOption::add( const google::protobuf::UninterpretedOption* value );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::append
+
+```cpp
+google::protobuf::UninterpretedOption* google::protobuf::Repeated_google_protobuf_UninterpretedOption::append( const google::protobuf::UninterpretedOption* value );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::UninterpretedOption* google::protobuf::Repeated_google_protobuf_UninterpretedOption::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::clear();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_UninterpretedOption::empty();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::extend( const google::protobuf::Repeated_google_protobuf_UninterpretedOption& items );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::extend( const std::vector<std::shared_ptr<google::protobuf::UninterpretedOption>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::get\_Item
+
+```cpp
+google::protobuf::UninterpretedOption* google::protobuf::Repeated_google_protobuf_UninterpretedOption::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.Item( $index ) -> retval
+    $oRepeated_google_protobuf_UninterpretedOption( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_UninterpretedOption::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::insert( SSIZE_T                                       index,
+                                                                             const google::protobuf::UninterpretedOption*& item );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::pop
+
+```cpp
+std::shared_ptr<google::protobuf::UninterpretedOption> google::protobuf::Repeated_google_protobuf_UninterpretedOption::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_UninterpretedOption::size();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::slice( std::vector<std::shared_ptr<google::protobuf::UninterpretedOption>> list,
+                                                                            SSIZE_T                                                             start,
+                                                                            SSIZE_T                                                             count );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::slice( std::vector<std::shared_ptr<google::protobuf::UninterpretedOption>> list,
+                                                                            SSIZE_T                                                             start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::sort( void*  comparator,
+                                                                           size_t start = 0,
+                                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::sort_variant( void*  comparator,
+                                                                                   size_t start = 0,
+                                                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::splice( std::vector<std::shared_ptr<google::protobuf::UninterpretedOption>> list,
+                                                                             SSIZE_T                                                             start,
+                                                                             SSIZE_T                                                             deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption::splice( std::vector<std::shared_ptr<google::protobuf::UninterpretedOption>> list,
+                                                                             SSIZE_T                                                             start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::FieldDescriptorProto
+
+### FieldDescriptorProto.name
+
+```cpp
+std::string google::protobuf::FieldDescriptorProto::name
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.name
+```
+
+### FieldDescriptorProto.number
+
+```cpp
+int google::protobuf::FieldDescriptorProto::number
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.number
+```
+
+### FieldDescriptorProto.label
+
+```cpp
+google::protobuf::FieldDescriptorProto::Label google::protobuf::FieldDescriptorProto::label
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.label
+```
+
+### FieldDescriptorProto.type
+
+```cpp
+google::protobuf::FieldDescriptorProto::Type google::protobuf::FieldDescriptorProto::type
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.type
+```
+
+### FieldDescriptorProto.type\_name
+
+```cpp
+std::string google::protobuf::FieldDescriptorProto::type_name
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.type_name
+```
+
+### FieldDescriptorProto.extendee
+
+```cpp
+std::string google::protobuf::FieldDescriptorProto::extendee
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.extendee
+```
+
+### FieldDescriptorProto.default\_value
+
+```cpp
+std::string google::protobuf::FieldDescriptorProto::default_value
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.default_value
+```
+
+### FieldDescriptorProto.oneof\_index
+
+```cpp
+int google::protobuf::FieldDescriptorProto::oneof_index
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.oneof_index
+```
+
+### FieldDescriptorProto.json\_name
+
+```cpp
+std::string google::protobuf::FieldDescriptorProto::json_name
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.json_name
+```
+
+### FieldDescriptorProto.options
+
+```cpp
+google::protobuf::FieldOptions* google::protobuf::FieldDescriptorProto::options
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.options
+```
+
+### FieldDescriptorProto.proto3\_optional
+
+```cpp
+bool google::protobuf::FieldDescriptorProto::proto3_optional
+AutoIt:
+    [propget, propput] $oFieldDescriptorProto.proto3_optional
+```
+
+### google::protobuf::FieldDescriptorProto::get\_create
+
+```cpp
+static google::protobuf::FieldDescriptorProto google::protobuf::FieldDescriptorProto::get_create( std::optional<std::string>                                   name = std::optional<std::string>(),
+                                                                                                  std::optional<int>                                           number = std::optional<int>(),
+                                                                                                  std::optional<google::protobuf::FieldDescriptorProto::Label> label = std::optional<google::protobuf::FieldDescriptorProto::Label>(),
+                                                                                                  std::optional<google::protobuf::FieldDescriptorProto::Type>  type = std::optional<google::protobuf::FieldDescriptorProto::Type>(),
+                                                                                                  std::optional<std::string>                                   type_name = std::optional<std::string>(),
+                                                                                                  std::optional<std::string>                                   extendee = std::optional<std::string>(),
+                                                                                                  std::optional<std::string>                                   default_value = std::optional<std::string>(),
+                                                                                                  std::optional<int>                                           oneof_index = std::optional<int>(),
+                                                                                                  std::optional<std::string>                                   json_name = std::optional<std::string>(),
+                                                                                                  std::shared_ptr<google::protobuf::FieldOptions>              options = std::shared_ptr<google::protobuf::FieldOptions>(),
+                                                                                                  std::optional<bool>                                          proto3_optional = std::optional<bool>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FieldDescriptorProto").create( [$name[, $number[, $label[, $type[, $type_name[, $extendee[, $default_value[, $oneof_index[, $json_name[, $options[, $proto3_optional]]]]]]]]]]] ) -> <google.protobuf.FieldDescriptorProto object>
+    $oFieldDescriptorProto( [$name[, $number[, $label[, $type[, $type_name[, $extendee[, $default_value[, $oneof_index[, $json_name[, $options[, $proto3_optional]]]]]]]]]]] ) -> <google.protobuf.FieldDescriptorProto object>
+```
+
+### google::protobuf::FieldDescriptorProto::ByteSizeLong
+
+```cpp
+size_t google::protobuf::FieldDescriptorProto::ByteSizeLong();
+AutoIt:
+    $oFieldDescriptorProto.ByteSizeLong() -> retval
+```
+
+### google::protobuf::FieldDescriptorProto::CheckInitialized
+
+```cpp
+void google::protobuf::FieldDescriptorProto::CheckInitialized();
+AutoIt:
+    $oFieldDescriptorProto.CheckInitialized() -> None
+```
+
+### google::protobuf::FieldDescriptorProto::Clear
+
+```cpp
+void google::protobuf::FieldDescriptorProto::Clear();
+AutoIt:
+    $oFieldDescriptorProto.Clear() -> None
+```
+
+### google::protobuf::FieldDescriptorProto::ClearField
+
+```cpp
+void google::protobuf::FieldDescriptorProto::ClearField( const std::string& field_name );
+AutoIt:
+    $oFieldDescriptorProto.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::FieldDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::FieldDescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFieldDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::FieldDescriptorProto::DiscardUnknownFields
+
+```cpp
+void google::protobuf::FieldDescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oFieldDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::FieldDescriptorProto::FindInitializationErrors
+
+```cpp
+void google::protobuf::FieldDescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFieldDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::FieldDescriptorProto::IsInitialized
+
+```cpp
+bool google::protobuf::FieldDescriptorProto::IsInitialized();
+AutoIt:
+    $oFieldDescriptorProto.IsInitialized() -> retval
+```
+
+### google::protobuf::FieldDescriptorProto::SerializeAsString
+
+```cpp
+std::string google::protobuf::FieldDescriptorProto::SerializeAsString();
+AutoIt:
+    $oFieldDescriptorProto.SerializeAsString() -> retval
+```
+
+### google::protobuf::FieldDescriptorProto::SerializeToString
+
+```cpp
+void google::protobuf::FieldDescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oFieldDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::FieldDescriptorProto::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::FieldDescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oFieldDescriptorProto.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::FieldDescriptorProto::\_\_str\_\_
+
+```cpp
+void google::protobuf::FieldDescriptorProto::__str__( std::string* output );
+AutoIt:
+    $oFieldDescriptorProto.__str__( [$output] ) -> $output
+```
+
+### FieldDescriptorProto.TYPE\_DOUBLE\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_DOUBLE
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_DOUBLE_
+```
+
+### FieldDescriptorProto.TYPE\_FLOAT\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_FLOAT
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_FLOAT_
+```
+
+### FieldDescriptorProto.TYPE\_INT64\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_INT64
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_INT64_
+```
+
+### FieldDescriptorProto.TYPE\_UINT64\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_UINT64
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_UINT64_
+```
+
+### FieldDescriptorProto.TYPE\_INT32\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_INT32
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_INT32_
+```
+
+### FieldDescriptorProto.TYPE\_FIXED64\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_FIXED64
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_FIXED64_
+```
+
+### FieldDescriptorProto.TYPE\_FIXED32\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_FIXED32
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_FIXED32_
+```
+
+### FieldDescriptorProto.TYPE\_BOOL\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_BOOL
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_BOOL_
+```
+
+### FieldDescriptorProto.TYPE\_STRING\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_STRING
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_STRING_
+```
+
+### FieldDescriptorProto.TYPE\_GROUP\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_GROUP
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_GROUP_
+```
+
+### FieldDescriptorProto.TYPE\_MESSAGE\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_MESSAGE
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_MESSAGE_
+```
+
+### FieldDescriptorProto.TYPE\_BYTES\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_BYTES
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_BYTES_
+```
+
+### FieldDescriptorProto.TYPE\_UINT32\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_UINT32
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_UINT32_
+```
+
+### FieldDescriptorProto.TYPE\_ENUM\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_ENUM
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_ENUM_
+```
+
+### FieldDescriptorProto.TYPE\_SFIXED32\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_SFIXED32
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_SFIXED32_
+```
+
+### FieldDescriptorProto.TYPE\_SFIXED64\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_SFIXED64
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_SFIXED64_
+```
+
+### FieldDescriptorProto.TYPE\_SINT32\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_SINT32
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_SINT32_
+```
+
+### FieldDescriptorProto.TYPE\_SINT64\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::TYPE_SINT64
+AutoIt:
+    [propget] $oFieldDescriptorProto.TYPE_SINT64_
+```
+
+### FieldDescriptorProto.LABEL\_OPTIONAL\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::LABEL_OPTIONAL
+AutoIt:
+    [propget] $oFieldDescriptorProto.LABEL_OPTIONAL_
+```
+
+### FieldDescriptorProto.LABEL\_REQUIRED\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::LABEL_REQUIRED
+AutoIt:
+    [propget] $oFieldDescriptorProto.LABEL_REQUIRED_
+```
+
+### FieldDescriptorProto.LABEL\_REPEATED\_
+
+```cpp
+static int google::protobuf::FieldDescriptorProto::LABEL_REPEATED
+AutoIt:
+    [propget] $oFieldDescriptorProto.LABEL_REPEATED_
+```
+
+## google::protobuf::OneofDescriptorProto
+
+### OneofDescriptorProto.name
+
+```cpp
+std::string google::protobuf::OneofDescriptorProto::name
+AutoIt:
+    [propget, propput] $oOneofDescriptorProto.name
+```
+
+### OneofDescriptorProto.options
+
+```cpp
+google::protobuf::OneofOptions* google::protobuf::OneofDescriptorProto::options
+AutoIt:
+    [propget, propput] $oOneofDescriptorProto.options
+```
+
+### google::protobuf::OneofDescriptorProto::get\_create
+
+```cpp
+static google::protobuf::OneofDescriptorProto google::protobuf::OneofDescriptorProto::get_create( std::optional<std::string>                      name = std::optional<std::string>(),
+                                                                                                  std::shared_ptr<google::protobuf::OneofOptions> options = std::shared_ptr<google::protobuf::OneofOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.OneofDescriptorProto").create( [$name[, $options]] ) -> <google.protobuf.OneofDescriptorProto object>
+    $oOneofDescriptorProto( [$name[, $options]] ) -> <google.protobuf.OneofDescriptorProto object>
+```
+
+### google::protobuf::OneofDescriptorProto::ByteSizeLong
+
+```cpp
+size_t google::protobuf::OneofDescriptorProto::ByteSizeLong();
+AutoIt:
+    $oOneofDescriptorProto.ByteSizeLong() -> retval
+```
+
+### google::protobuf::OneofDescriptorProto::CheckInitialized
+
+```cpp
+void google::protobuf::OneofDescriptorProto::CheckInitialized();
+AutoIt:
+    $oOneofDescriptorProto.CheckInitialized() -> None
+```
+
+### google::protobuf::OneofDescriptorProto::Clear
+
+```cpp
+void google::protobuf::OneofDescriptorProto::Clear();
+AutoIt:
+    $oOneofDescriptorProto.Clear() -> None
+```
+
+### google::protobuf::OneofDescriptorProto::ClearField
+
+```cpp
+void google::protobuf::OneofDescriptorProto::ClearField( const std::string& field_name );
+AutoIt:
+    $oOneofDescriptorProto.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::OneofDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::OneofDescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oOneofDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::OneofDescriptorProto::DiscardUnknownFields
+
+```cpp
+void google::protobuf::OneofDescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oOneofDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::OneofDescriptorProto::FindInitializationErrors
+
+```cpp
+void google::protobuf::OneofDescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oOneofDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::OneofDescriptorProto::IsInitialized
+
+```cpp
+bool google::protobuf::OneofDescriptorProto::IsInitialized();
+AutoIt:
+    $oOneofDescriptorProto.IsInitialized() -> retval
+```
+
+### google::protobuf::OneofDescriptorProto::SerializeAsString
+
+```cpp
+std::string google::protobuf::OneofDescriptorProto::SerializeAsString();
+AutoIt:
+    $oOneofDescriptorProto.SerializeAsString() -> retval
+```
+
+### google::protobuf::OneofDescriptorProto::SerializeToString
+
+```cpp
+void google::protobuf::OneofDescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oOneofDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::OneofDescriptorProto::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::OneofDescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oOneofDescriptorProto.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::OneofDescriptorProto::\_\_str\_\_
+
+```cpp
+void google::protobuf::OneofDescriptorProto::__str__( std::string* output );
+AutoIt:
+    $oOneofDescriptorProto.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::EnumDescriptorProto
+
+### EnumDescriptorProto.name
+
+```cpp
+std::string google::protobuf::EnumDescriptorProto::name
+AutoIt:
+    [propget, propput] $oEnumDescriptorProto.name
+```
+
+### EnumDescriptorProto.value
+
+```cpp
+google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto* google::protobuf::EnumDescriptorProto::value
+AutoIt:
+    [propget, propput] $oEnumDescriptorProto.value
+```
+
+### EnumDescriptorProto.options
+
+```cpp
+google::protobuf::EnumOptions* google::protobuf::EnumDescriptorProto::options
+AutoIt:
+    [propget, propput] $oEnumDescriptorProto.options
+```
+
+### EnumDescriptorProto.reserved\_range
+
+```cpp
+google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange* google::protobuf::EnumDescriptorProto::reserved_range
+AutoIt:
+    [propget, propput] $oEnumDescriptorProto.reserved_range
+```
+
+### EnumDescriptorProto.reserved\_name
+
+```cpp
+google::protobuf::Repeated_std_string* google::protobuf::EnumDescriptorProto::reserved_name
+AutoIt:
+    [propget, propput] $oEnumDescriptorProto.reserved_name
+```
+
+### google::protobuf::EnumDescriptorProto::get\_create
+
+```cpp
+static google::protobuf::EnumDescriptorProto google::protobuf::EnumDescriptorProto::get_create( std::optional<std::string>                     name = std::optional<std::string>(),
+                                                                                                VARIANT*                                       value = VARIANT*(),
+                                                                                                std::shared_ptr<google::protobuf::EnumOptions> options = std::shared_ptr<google::protobuf::EnumOptions>(),
+                                                                                                VARIANT*                                       reserved_range = VARIANT*(),
+                                                                                                VARIANT*                                       reserved_name = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.EnumDescriptorProto").create( [$name[, $value[, $options[, $reserved_range[, $reserved_name]]]]] ) -> <google.protobuf.EnumDescriptorProto object>
+    $oEnumDescriptorProto( [$name[, $value[, $options[, $reserved_range[, $reserved_name]]]]] ) -> <google.protobuf.EnumDescriptorProto object>
+```
+
+### google::protobuf::EnumDescriptorProto::ByteSizeLong
+
+```cpp
+size_t google::protobuf::EnumDescriptorProto::ByteSizeLong();
+AutoIt:
+    $oEnumDescriptorProto.ByteSizeLong() -> retval
+```
+
+### google::protobuf::EnumDescriptorProto::CheckInitialized
+
+```cpp
+void google::protobuf::EnumDescriptorProto::CheckInitialized();
+AutoIt:
+    $oEnumDescriptorProto.CheckInitialized() -> None
+```
+
+### google::protobuf::EnumDescriptorProto::Clear
+
+```cpp
+void google::protobuf::EnumDescriptorProto::Clear();
+AutoIt:
+    $oEnumDescriptorProto.Clear() -> None
+```
+
+### google::protobuf::EnumDescriptorProto::ClearField
+
+```cpp
+void google::protobuf::EnumDescriptorProto::ClearField( const std::string& field_name );
+AutoIt:
+    $oEnumDescriptorProto.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::EnumDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::EnumDescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oEnumDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::EnumDescriptorProto::DiscardUnknownFields
+
+```cpp
+void google::protobuf::EnumDescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oEnumDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::EnumDescriptorProto::FindInitializationErrors
+
+```cpp
+void google::protobuf::EnumDescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEnumDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::EnumDescriptorProto::IsInitialized
+
+```cpp
+bool google::protobuf::EnumDescriptorProto::IsInitialized();
+AutoIt:
+    $oEnumDescriptorProto.IsInitialized() -> retval
+```
+
+### google::protobuf::EnumDescriptorProto::SerializeAsString
+
+```cpp
+std::string google::protobuf::EnumDescriptorProto::SerializeAsString();
+AutoIt:
+    $oEnumDescriptorProto.SerializeAsString() -> retval
+```
+
+### google::protobuf::EnumDescriptorProto::SerializeToString
+
+```cpp
+void google::protobuf::EnumDescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oEnumDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::EnumDescriptorProto::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::EnumDescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oEnumDescriptorProto.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::EnumDescriptorProto::\_\_str\_\_
+
+```cpp
+void google::protobuf::EnumDescriptorProto::__str__( std::string* output );
+AutoIt:
+    $oEnumDescriptorProto.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto
+
+### Repeated\_google\_protobuf\_EnumValueDescriptorProto.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_EnumValueDescriptorProto.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_EnumValueDescriptorProto").create() -> <google.protobuf.Repeated_google_protobuf_EnumValueDescriptorProto object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::CopyFrom( const google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::MergeFrom( const google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::Swap( google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto* other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::SwapElements( int index1,
+                                                                                        int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::add
+
+```cpp
+google::protobuf::EnumValueDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::add();
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.add() -> retval
+```
+
+```cpp
+google::protobuf::EnumValueDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::add( const google::protobuf::EnumValueDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::append
+
+```cpp
+google::protobuf::EnumValueDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::append( const google::protobuf::EnumValueDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::EnumValueDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::clear();
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::empty();
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::extend( const google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::extend( const std::vector<std::shared_ptr<google::protobuf::EnumValueDescriptorProto>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::get\_Item
+
+```cpp
+google::protobuf::EnumValueDescriptorProto* google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.Item( $index ) -> retval
+    $oRepeated_google_protobuf_EnumValueDescriptorProto( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::insert( SSIZE_T                                            index,
+                                                                                  const google::protobuf::EnumValueDescriptorProto*& item );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::pop
+
+```cpp
+std::shared_ptr<google::protobuf::EnumValueDescriptorProto> google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::size();
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::EnumValueDescriptorProto>> list,
+                                                                                 SSIZE_T                                                                  start,
+                                                                                 SSIZE_T                                                                  count );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::EnumValueDescriptorProto>> list,
+                                                                                 SSIZE_T                                                                  start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::sort( void*  comparator,
+                                                                                size_t start = 0,
+                                                                                size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::sort_variant( void*  comparator,
+                                                                                        size_t start = 0,
+                                                                                        size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumValueDescriptorProto::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::EnumValueDescriptorProto>> list,
+                                                                                  SSIZE_T                                                                  start,
+                                                                                  SSIZE_T                                                                  deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::EnumValueDescriptorProto>> list,
+                                                                                  SSIZE_T                                                                  start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumValueDescriptorProto.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange
+
+### Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange").create() -> <google.protobuf.Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::CopyFrom( const google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::MergeFrom( const google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::Swap( google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange* other );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::SwapElements( int index1,
+                                                                                                     int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::add
+
+```cpp
+google::protobuf::EnumDescriptorProto::EnumReservedRange* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::add();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.add() -> retval
+```
+
+```cpp
+google::protobuf::EnumDescriptorProto::EnumReservedRange* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::add( const google::protobuf::EnumDescriptorProto::EnumReservedRange* value );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::append
+
+```cpp
+google::protobuf::EnumDescriptorProto::EnumReservedRange* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::append( const google::protobuf::EnumDescriptorProto::EnumReservedRange* value );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::EnumDescriptorProto::EnumReservedRange* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::clear();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::empty();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::extend( const google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::extend( const std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::get\_Item
+
+```cpp
+google::protobuf::EnumDescriptorProto::EnumReservedRange* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.Item( $index ) -> retval
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::insert( SSIZE_T                                                          index,
+                                                                                               const google::protobuf::EnumDescriptorProto::EnumReservedRange*& item );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::pop
+
+```cpp
+std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange> google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::size();
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::slice( std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange>> list,
+                                                                                              SSIZE_T                                                                                start,
+                                                                                              SSIZE_T                                                                                count );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::slice( std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange>> list,
+                                                                                              SSIZE_T                                                                                start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::sort( void*  comparator,
+                                                                                             size_t start = 0,
+                                                                                             size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::sort_variant( void*  comparator,
+                                                                                                     size_t start = 0,
+                                                                                                     size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_EnumDescriptorProto\_EnumReservedRange::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::splice( std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange>> list,
+                                                                                               SSIZE_T                                                                                start,
+                                                                                               SSIZE_T                                                                                deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange::splice( std::vector<std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange>> list,
+                                                                                               SSIZE_T                                                                                start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_EnumDescriptorProto_EnumReservedRange.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::EnumDescriptorProto::EnumReservedRange
+
+### EnumReservedRange.start
+
+```cpp
+int google::protobuf::EnumDescriptorProto::EnumReservedRange::start
+AutoIt:
+    [propget, propput] $oEnumReservedRange.start
+```
+
+### EnumReservedRange.end
+
+```cpp
+int google::protobuf::EnumDescriptorProto::EnumReservedRange::end
+AutoIt:
+    [propget, propput] $oEnumReservedRange.end
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::get\_create
+
+```cpp
+static google::protobuf::EnumDescriptorProto::EnumReservedRange google::protobuf::EnumDescriptorProto::EnumReservedRange::get_create( std::optional<int> start = std::optional<int>(),
+                                                                                                                                      std::optional<int> end = std::optional<int>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.EnumDescriptorProto.EnumReservedRange").create( [$start[, $end]] ) -> <google.protobuf.EnumDescriptorProto.EnumReservedRange object>
+    $oEnumReservedRange( [$start[, $end]] ) -> <google.protobuf.EnumDescriptorProto.EnumReservedRange object>
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::ByteSizeLong
+
+```cpp
+size_t google::protobuf::EnumDescriptorProto::EnumReservedRange::ByteSizeLong();
+AutoIt:
+    $oEnumReservedRange.ByteSizeLong() -> retval
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::CheckInitialized
+
+```cpp
+void google::protobuf::EnumDescriptorProto::EnumReservedRange::CheckInitialized();
+AutoIt:
+    $oEnumReservedRange.CheckInitialized() -> None
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::Clear
+
+```cpp
+void google::protobuf::EnumDescriptorProto::EnumReservedRange::Clear();
+AutoIt:
+    $oEnumReservedRange.Clear() -> None
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::ClearField
+
+```cpp
+void google::protobuf::EnumDescriptorProto::EnumReservedRange::ClearField( const std::string& field_name );
+AutoIt:
+    $oEnumReservedRange.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::CopyFrom
+
+```cpp
+void google::protobuf::EnumDescriptorProto::EnumReservedRange::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oEnumReservedRange.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::DiscardUnknownFields
+
+```cpp
+void google::protobuf::EnumDescriptorProto::EnumReservedRange::DiscardUnknownFields();
+AutoIt:
+    $oEnumReservedRange.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::FindInitializationErrors
+
+```cpp
+void google::protobuf::EnumDescriptorProto::EnumReservedRange::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEnumReservedRange.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::IsInitialized
+
+```cpp
+bool google::protobuf::EnumDescriptorProto::EnumReservedRange::IsInitialized();
+AutoIt:
+    $oEnumReservedRange.IsInitialized() -> retval
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::SerializeAsString
+
+```cpp
+std::string google::protobuf::EnumDescriptorProto::EnumReservedRange::SerializeAsString();
+AutoIt:
+    $oEnumReservedRange.SerializeAsString() -> retval
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::SerializeToString
+
+```cpp
+void google::protobuf::EnumDescriptorProto::EnumReservedRange::SerializeToString( std::string* output );
+AutoIt:
+    $oEnumReservedRange.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::EnumDescriptorProto::EnumReservedRange::SpaceUsedLong();
+AutoIt:
+    $oEnumReservedRange.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::EnumDescriptorProto::EnumReservedRange::\_\_str\_\_
+
+```cpp
+void google::protobuf::EnumDescriptorProto::EnumReservedRange::__str__( std::string* output );
+AutoIt:
+    $oEnumReservedRange.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::EnumValueDescriptorProto
+
+### EnumValueDescriptorProto.name
+
+```cpp
+std::string google::protobuf::EnumValueDescriptorProto::name
+AutoIt:
+    [propget, propput] $oEnumValueDescriptorProto.name
+```
+
+### EnumValueDescriptorProto.number
+
+```cpp
+int google::protobuf::EnumValueDescriptorProto::number
+AutoIt:
+    [propget, propput] $oEnumValueDescriptorProto.number
+```
+
+### EnumValueDescriptorProto.options
+
+```cpp
+google::protobuf::EnumValueOptions* google::protobuf::EnumValueDescriptorProto::options
+AutoIt:
+    [propget, propput] $oEnumValueDescriptorProto.options
+```
+
+### google::protobuf::EnumValueDescriptorProto::get\_create
+
+```cpp
+static google::protobuf::EnumValueDescriptorProto google::protobuf::EnumValueDescriptorProto::get_create( std::optional<std::string>                          name = std::optional<std::string>(),
+                                                                                                          std::optional<int>                                  number = std::optional<int>(),
+                                                                                                          std::shared_ptr<google::protobuf::EnumValueOptions> options = std::shared_ptr<google::protobuf::EnumValueOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.EnumValueDescriptorProto").create( [$name[, $number[, $options]]] ) -> <google.protobuf.EnumValueDescriptorProto object>
+    $oEnumValueDescriptorProto( [$name[, $number[, $options]]] ) -> <google.protobuf.EnumValueDescriptorProto object>
+```
+
+### google::protobuf::EnumValueDescriptorProto::ByteSizeLong
+
+```cpp
+size_t google::protobuf::EnumValueDescriptorProto::ByteSizeLong();
+AutoIt:
+    $oEnumValueDescriptorProto.ByteSizeLong() -> retval
+```
+
+### google::protobuf::EnumValueDescriptorProto::CheckInitialized
+
+```cpp
+void google::protobuf::EnumValueDescriptorProto::CheckInitialized();
+AutoIt:
+    $oEnumValueDescriptorProto.CheckInitialized() -> None
+```
+
+### google::protobuf::EnumValueDescriptorProto::Clear
+
+```cpp
+void google::protobuf::EnumValueDescriptorProto::Clear();
+AutoIt:
+    $oEnumValueDescriptorProto.Clear() -> None
+```
+
+### google::protobuf::EnumValueDescriptorProto::ClearField
+
+```cpp
+void google::protobuf::EnumValueDescriptorProto::ClearField( const std::string& field_name );
+AutoIt:
+    $oEnumValueDescriptorProto.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::EnumValueDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::EnumValueDescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oEnumValueDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::EnumValueDescriptorProto::DiscardUnknownFields
+
+```cpp
+void google::protobuf::EnumValueDescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oEnumValueDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::EnumValueDescriptorProto::FindInitializationErrors
+
+```cpp
+void google::protobuf::EnumValueDescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEnumValueDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::EnumValueDescriptorProto::IsInitialized
+
+```cpp
+bool google::protobuf::EnumValueDescriptorProto::IsInitialized();
+AutoIt:
+    $oEnumValueDescriptorProto.IsInitialized() -> retval
+```
+
+### google::protobuf::EnumValueDescriptorProto::SerializeAsString
+
+```cpp
+std::string google::protobuf::EnumValueDescriptorProto::SerializeAsString();
+AutoIt:
+    $oEnumValueDescriptorProto.SerializeAsString() -> retval
+```
+
+### google::protobuf::EnumValueDescriptorProto::SerializeToString
+
+```cpp
+void google::protobuf::EnumValueDescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oEnumValueDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::EnumValueDescriptorProto::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::EnumValueDescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oEnumValueDescriptorProto.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::EnumValueDescriptorProto::\_\_str\_\_
+
+```cpp
+void google::protobuf::EnumValueDescriptorProto::__str__( std::string* output );
+AutoIt:
+    $oEnumValueDescriptorProto.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::ServiceDescriptorProto
+
+### ServiceDescriptorProto.name
+
+```cpp
+std::string google::protobuf::ServiceDescriptorProto::name
+AutoIt:
+    [propget, propput] $oServiceDescriptorProto.name
+```
+
+### ServiceDescriptorProto.method
+
+```cpp
+google::protobuf::Repeated_google_protobuf_MethodDescriptorProto* google::protobuf::ServiceDescriptorProto::method
+AutoIt:
+    [propget, propput] $oServiceDescriptorProto.method
+```
+
+### ServiceDescriptorProto.options
+
+```cpp
+google::protobuf::ServiceOptions* google::protobuf::ServiceDescriptorProto::options
+AutoIt:
+    [propget, propput] $oServiceDescriptorProto.options
+```
+
+### google::protobuf::ServiceDescriptorProto::get\_create
+
+```cpp
+static google::protobuf::ServiceDescriptorProto google::protobuf::ServiceDescriptorProto::get_create( std::optional<std::string>                        name = std::optional<std::string>(),
+                                                                                                      VARIANT*                                          method = VARIANT*(),
+                                                                                                      std::shared_ptr<google::protobuf::ServiceOptions> options = std::shared_ptr<google::protobuf::ServiceOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.ServiceDescriptorProto").create( [$name[, $method[, $options]]] ) -> <google.protobuf.ServiceDescriptorProto object>
+    $oServiceDescriptorProto( [$name[, $method[, $options]]] ) -> <google.protobuf.ServiceDescriptorProto object>
+```
+
+### google::protobuf::ServiceDescriptorProto::ByteSizeLong
+
+```cpp
+size_t google::protobuf::ServiceDescriptorProto::ByteSizeLong();
+AutoIt:
+    $oServiceDescriptorProto.ByteSizeLong() -> retval
+```
+
+### google::protobuf::ServiceDescriptorProto::CheckInitialized
+
+```cpp
+void google::protobuf::ServiceDescriptorProto::CheckInitialized();
+AutoIt:
+    $oServiceDescriptorProto.CheckInitialized() -> None
+```
+
+### google::protobuf::ServiceDescriptorProto::Clear
+
+```cpp
+void google::protobuf::ServiceDescriptorProto::Clear();
+AutoIt:
+    $oServiceDescriptorProto.Clear() -> None
+```
+
+### google::protobuf::ServiceDescriptorProto::ClearField
+
+```cpp
+void google::protobuf::ServiceDescriptorProto::ClearField( const std::string& field_name );
+AutoIt:
+    $oServiceDescriptorProto.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::ServiceDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::ServiceDescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oServiceDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::ServiceDescriptorProto::DiscardUnknownFields
+
+```cpp
+void google::protobuf::ServiceDescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oServiceDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::ServiceDescriptorProto::FindInitializationErrors
+
+```cpp
+void google::protobuf::ServiceDescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oServiceDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::ServiceDescriptorProto::IsInitialized
+
+```cpp
+bool google::protobuf::ServiceDescriptorProto::IsInitialized();
+AutoIt:
+    $oServiceDescriptorProto.IsInitialized() -> retval
+```
+
+### google::protobuf::ServiceDescriptorProto::SerializeAsString
+
+```cpp
+std::string google::protobuf::ServiceDescriptorProto::SerializeAsString();
+AutoIt:
+    $oServiceDescriptorProto.SerializeAsString() -> retval
+```
+
+### google::protobuf::ServiceDescriptorProto::SerializeToString
+
+```cpp
+void google::protobuf::ServiceDescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oServiceDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::ServiceDescriptorProto::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::ServiceDescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oServiceDescriptorProto.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::ServiceDescriptorProto::\_\_str\_\_
+
+```cpp
+void google::protobuf::ServiceDescriptorProto::__str__( std::string* output );
+AutoIt:
+    $oServiceDescriptorProto.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto
+
+### Repeated\_google\_protobuf\_MethodDescriptorProto.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_MethodDescriptorProto.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_MethodDescriptorProto google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_MethodDescriptorProto").create() -> <google.protobuf.Repeated_google_protobuf_MethodDescriptorProto object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::CopyFrom( const google::protobuf::Repeated_google_protobuf_MethodDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::MergeFrom( const google::protobuf::Repeated_google_protobuf_MethodDescriptorProto other );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::Swap( google::protobuf::Repeated_google_protobuf_MethodDescriptorProto* other );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::SwapElements( int index1,
+                                                                                     int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::add
+
+```cpp
+google::protobuf::MethodDescriptorProto* google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::add();
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.add() -> retval
+```
+
+```cpp
+google::protobuf::MethodDescriptorProto* google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::add( const google::protobuf::MethodDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::append
+
+```cpp
+google::protobuf::MethodDescriptorProto* google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::append( const google::protobuf::MethodDescriptorProto* value );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::MethodDescriptorProto* google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::clear();
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::empty();
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::extend( const google::protobuf::Repeated_google_protobuf_MethodDescriptorProto& items );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::extend( const std::vector<std::shared_ptr<google::protobuf::MethodDescriptorProto>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::get\_Item
+
+```cpp
+google::protobuf::MethodDescriptorProto* google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.Item( $index ) -> retval
+    $oRepeated_google_protobuf_MethodDescriptorProto( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::insert( SSIZE_T                                         index,
+                                                                               const google::protobuf::MethodDescriptorProto*& item );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::pop
+
+```cpp
+std::shared_ptr<google::protobuf::MethodDescriptorProto> google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::size();
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::MethodDescriptorProto>> list,
+                                                                              SSIZE_T                                                               start,
+                                                                              SSIZE_T                                                               count );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::slice( std::vector<std::shared_ptr<google::protobuf::MethodDescriptorProto>> list,
+                                                                              SSIZE_T                                                               start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::sort( void*  comparator,
+                                                                             size_t start = 0,
+                                                                             size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::sort_variant( void*  comparator,
+                                                                                     size_t start = 0,
+                                                                                     size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_MethodDescriptorProto::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::MethodDescriptorProto>> list,
+                                                                               SSIZE_T                                                               start,
+                                                                               SSIZE_T                                                               deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_MethodDescriptorProto::splice( std::vector<std::shared_ptr<google::protobuf::MethodDescriptorProto>> list,
+                                                                               SSIZE_T                                                               start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_MethodDescriptorProto.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::MethodDescriptorProto
+
+### MethodDescriptorProto.name
+
+```cpp
+std::string google::protobuf::MethodDescriptorProto::name
+AutoIt:
+    [propget, propput] $oMethodDescriptorProto.name
+```
+
+### MethodDescriptorProto.input\_type
+
+```cpp
+std::string google::protobuf::MethodDescriptorProto::input_type
+AutoIt:
+    [propget, propput] $oMethodDescriptorProto.input_type
+```
+
+### MethodDescriptorProto.output\_type
+
+```cpp
+std::string google::protobuf::MethodDescriptorProto::output_type
+AutoIt:
+    [propget, propput] $oMethodDescriptorProto.output_type
+```
+
+### MethodDescriptorProto.options
+
+```cpp
+google::protobuf::MethodOptions* google::protobuf::MethodDescriptorProto::options
+AutoIt:
+    [propget, propput] $oMethodDescriptorProto.options
+```
+
+### MethodDescriptorProto.client\_streaming
+
+```cpp
+bool google::protobuf::MethodDescriptorProto::client_streaming
+AutoIt:
+    [propget, propput] $oMethodDescriptorProto.client_streaming
+```
+
+### MethodDescriptorProto.server\_streaming
+
+```cpp
+bool google::protobuf::MethodDescriptorProto::server_streaming
+AutoIt:
+    [propget, propput] $oMethodDescriptorProto.server_streaming
+```
+
+### google::protobuf::MethodDescriptorProto::get\_create
+
+```cpp
+static google::protobuf::MethodDescriptorProto google::protobuf::MethodDescriptorProto::get_create( std::optional<std::string>                       name = std::optional<std::string>(),
+                                                                                                    std::optional<std::string>                       input_type = std::optional<std::string>(),
+                                                                                                    std::optional<std::string>                       output_type = std::optional<std::string>(),
+                                                                                                    std::shared_ptr<google::protobuf::MethodOptions> options = std::shared_ptr<google::protobuf::MethodOptions>(),
+                                                                                                    std::optional<bool>                              client_streaming = std::optional<bool>(),
+                                                                                                    std::optional<bool>                              server_streaming = std::optional<bool>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.MethodDescriptorProto").create( [$name[, $input_type[, $output_type[, $options[, $client_streaming[, $server_streaming]]]]]] ) -> <google.protobuf.MethodDescriptorProto object>
+    $oMethodDescriptorProto( [$name[, $input_type[, $output_type[, $options[, $client_streaming[, $server_streaming]]]]]] ) -> <google.protobuf.MethodDescriptorProto object>
+```
+
+### google::protobuf::MethodDescriptorProto::ByteSizeLong
+
+```cpp
+size_t google::protobuf::MethodDescriptorProto::ByteSizeLong();
+AutoIt:
+    $oMethodDescriptorProto.ByteSizeLong() -> retval
+```
+
+### google::protobuf::MethodDescriptorProto::CheckInitialized
+
+```cpp
+void google::protobuf::MethodDescriptorProto::CheckInitialized();
+AutoIt:
+    $oMethodDescriptorProto.CheckInitialized() -> None
+```
+
+### google::protobuf::MethodDescriptorProto::Clear
+
+```cpp
+void google::protobuf::MethodDescriptorProto::Clear();
+AutoIt:
+    $oMethodDescriptorProto.Clear() -> None
+```
+
+### google::protobuf::MethodDescriptorProto::ClearField
+
+```cpp
+void google::protobuf::MethodDescriptorProto::ClearField( const std::string& field_name );
+AutoIt:
+    $oMethodDescriptorProto.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::MethodDescriptorProto::CopyFrom
+
+```cpp
+void google::protobuf::MethodDescriptorProto::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oMethodDescriptorProto.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::MethodDescriptorProto::DiscardUnknownFields
+
+```cpp
+void google::protobuf::MethodDescriptorProto::DiscardUnknownFields();
+AutoIt:
+    $oMethodDescriptorProto.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::MethodDescriptorProto::FindInitializationErrors
+
+```cpp
+void google::protobuf::MethodDescriptorProto::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMethodDescriptorProto.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::MethodDescriptorProto::IsInitialized
+
+```cpp
+bool google::protobuf::MethodDescriptorProto::IsInitialized();
+AutoIt:
+    $oMethodDescriptorProto.IsInitialized() -> retval
+```
+
+### google::protobuf::MethodDescriptorProto::SerializeAsString
+
+```cpp
+std::string google::protobuf::MethodDescriptorProto::SerializeAsString();
+AutoIt:
+    $oMethodDescriptorProto.SerializeAsString() -> retval
+```
+
+### google::protobuf::MethodDescriptorProto::SerializeToString
+
+```cpp
+void google::protobuf::MethodDescriptorProto::SerializeToString( std::string* output );
+AutoIt:
+    $oMethodDescriptorProto.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::MethodDescriptorProto::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::MethodDescriptorProto::SpaceUsedLong();
+AutoIt:
+    $oMethodDescriptorProto.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::MethodDescriptorProto::\_\_str\_\_
+
+```cpp
+void google::protobuf::MethodDescriptorProto::__str__( std::string* output );
+AutoIt:
+    $oMethodDescriptorProto.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::FileOptions
+
+### FileOptions.java\_package
+
+```cpp
+std::string google::protobuf::FileOptions::java_package
+AutoIt:
+    [propget, propput] $oFileOptions.java_package
+```
+
+### FileOptions.java\_outer\_classname
+
+```cpp
+std::string google::protobuf::FileOptions::java_outer_classname
+AutoIt:
+    [propget, propput] $oFileOptions.java_outer_classname
+```
+
+### FileOptions.java\_multiple\_files
+
+```cpp
+bool google::protobuf::FileOptions::java_multiple_files
+AutoIt:
+    [propget, propput] $oFileOptions.java_multiple_files
+```
+
+### FileOptions.java\_generate\_equals\_and\_hash
+
+```cpp
+bool google::protobuf::FileOptions::java_generate_equals_and_hash
+AutoIt:
+    [propget, propput] $oFileOptions.java_generate_equals_and_hash
+```
+
+### FileOptions.java\_string\_check\_utf8
+
+```cpp
+bool google::protobuf::FileOptions::java_string_check_utf8
+AutoIt:
+    [propget, propput] $oFileOptions.java_string_check_utf8
+```
+
+### FileOptions.optimize\_for
+
+```cpp
+google::protobuf::FileOptions::OptimizeMode google::protobuf::FileOptions::optimize_for
+AutoIt:
+    [propget, propput] $oFileOptions.optimize_for
+```
+
+### FileOptions.go\_package
+
+```cpp
+std::string google::protobuf::FileOptions::go_package
+AutoIt:
+    [propget, propput] $oFileOptions.go_package
+```
+
+### FileOptions.cc\_generic\_services
+
+```cpp
+bool google::protobuf::FileOptions::cc_generic_services
+AutoIt:
+    [propget, propput] $oFileOptions.cc_generic_services
+```
+
+### FileOptions.java\_generic\_services
+
+```cpp
+bool google::protobuf::FileOptions::java_generic_services
+AutoIt:
+    [propget, propput] $oFileOptions.java_generic_services
+```
+
+### FileOptions.py\_generic\_services
+
+```cpp
+bool google::protobuf::FileOptions::py_generic_services
+AutoIt:
+    [propget, propput] $oFileOptions.py_generic_services
+```
+
+### FileOptions.php\_generic\_services
+
+```cpp
+bool google::protobuf::FileOptions::php_generic_services
+AutoIt:
+    [propget, propput] $oFileOptions.php_generic_services
+```
+
+### FileOptions.deprecated
+
+```cpp
+bool google::protobuf::FileOptions::deprecated
+AutoIt:
+    [propget, propput] $oFileOptions.deprecated
+```
+
+### FileOptions.cc\_enable\_arenas
+
+```cpp
+bool google::protobuf::FileOptions::cc_enable_arenas
+AutoIt:
+    [propget, propput] $oFileOptions.cc_enable_arenas
+```
+
+### FileOptions.objc\_class\_prefix
+
+```cpp
+std::string google::protobuf::FileOptions::objc_class_prefix
+AutoIt:
+    [propget, propput] $oFileOptions.objc_class_prefix
+```
+
+### FileOptions.csharp\_namespace
+
+```cpp
+std::string google::protobuf::FileOptions::csharp_namespace
+AutoIt:
+    [propget, propput] $oFileOptions.csharp_namespace
+```
+
+### FileOptions.swift\_prefix
+
+```cpp
+std::string google::protobuf::FileOptions::swift_prefix
+AutoIt:
+    [propget, propput] $oFileOptions.swift_prefix
+```
+
+### FileOptions.php\_class\_prefix
+
+```cpp
+std::string google::protobuf::FileOptions::php_class_prefix
+AutoIt:
+    [propget, propput] $oFileOptions.php_class_prefix
+```
+
+### FileOptions.php\_namespace
+
+```cpp
+std::string google::protobuf::FileOptions::php_namespace
+AutoIt:
+    [propget, propput] $oFileOptions.php_namespace
+```
+
+### FileOptions.php\_metadata\_namespace
+
+```cpp
+std::string google::protobuf::FileOptions::php_metadata_namespace
+AutoIt:
+    [propget, propput] $oFileOptions.php_metadata_namespace
+```
+
+### FileOptions.ruby\_package
+
+```cpp
+std::string google::protobuf::FileOptions::ruby_package
+AutoIt:
+    [propget, propput] $oFileOptions.ruby_package
+```
+
+### FileOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::FileOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oFileOptions.uninterpreted_option
+```
+
+### google::protobuf::FileOptions::get\_create
+
+```cpp
+static google::protobuf::FileOptions google::protobuf::FileOptions::get_create( std::optional<std::string>                                 java_package = std::optional<std::string>(),
+                                                                                std::optional<std::string>                                 java_outer_classname = std::optional<std::string>(),
+                                                                                std::optional<bool>                                        java_multiple_files = std::optional<bool>(),
+                                                                                std::optional<bool>                                        java_generate_equals_and_hash = std::optional<bool>(),
+                                                                                std::optional<bool>                                        java_string_check_utf8 = std::optional<bool>(),
+                                                                                std::optional<google::protobuf::FileOptions::OptimizeMode> optimize_for = std::optional<google::protobuf::FileOptions::OptimizeMode>(),
+                                                                                std::optional<std::string>                                 go_package = std::optional<std::string>(),
+                                                                                std::optional<bool>                                        cc_generic_services = std::optional<bool>(),
+                                                                                std::optional<bool>                                        java_generic_services = std::optional<bool>(),
+                                                                                std::optional<bool>                                        py_generic_services = std::optional<bool>(),
+                                                                                std::optional<bool>                                        php_generic_services = std::optional<bool>(),
+                                                                                std::optional<bool>                                        deprecated = std::optional<bool>(),
+                                                                                std::optional<bool>                                        cc_enable_arenas = std::optional<bool>(),
+                                                                                std::optional<std::string>                                 objc_class_prefix = std::optional<std::string>(),
+                                                                                std::optional<std::string>                                 csharp_namespace = std::optional<std::string>(),
+                                                                                std::optional<std::string>                                 swift_prefix = std::optional<std::string>(),
+                                                                                std::optional<std::string>                                 php_class_prefix = std::optional<std::string>(),
+                                                                                std::optional<std::string>                                 php_namespace = std::optional<std::string>(),
+                                                                                std::optional<std::string>                                 php_metadata_namespace = std::optional<std::string>(),
+                                                                                std::optional<std::string>                                 ruby_package = std::optional<std::string>(),
+                                                                                VARIANT*                                                   uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FileOptions").create( [$java_package[, $java_outer_classname[, $java_multiple_files[, $java_generate_equals_and_hash[, $java_string_check_utf8[, $optimize_for[, $go_package[, $cc_generic_services[, $java_generic_services[, $py_generic_services[, $php_generic_services[, $deprecated[, $cc_enable_arenas[, $objc_class_prefix[, $csharp_namespace[, $swift_prefix[, $php_class_prefix[, $php_namespace[, $php_metadata_namespace[, $ruby_package[, $uninterpreted_option]]]]]]]]]]]]]]]]]]]]] ) -> <google.protobuf.FileOptions object>
+    $oFileOptions( [$java_package[, $java_outer_classname[, $java_multiple_files[, $java_generate_equals_and_hash[, $java_string_check_utf8[, $optimize_for[, $go_package[, $cc_generic_services[, $java_generic_services[, $py_generic_services[, $php_generic_services[, $deprecated[, $cc_enable_arenas[, $objc_class_prefix[, $csharp_namespace[, $swift_prefix[, $php_class_prefix[, $php_namespace[, $php_metadata_namespace[, $ruby_package[, $uninterpreted_option]]]]]]]]]]]]]]]]]]]]] ) -> <google.protobuf.FileOptions object>
+```
+
+### google::protobuf::FileOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::FileOptions::ByteSizeLong();
+AutoIt:
+    $oFileOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::FileOptions::CheckInitialized
+
+```cpp
+void google::protobuf::FileOptions::CheckInitialized();
+AutoIt:
+    $oFileOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::FileOptions::Clear
+
+```cpp
+void google::protobuf::FileOptions::Clear();
+AutoIt:
+    $oFileOptions.Clear() -> None
+```
+
+### google::protobuf::FileOptions::ClearField
+
+```cpp
+void google::protobuf::FileOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFileOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::FileOptions::CopyFrom
+
+```cpp
+void google::protobuf::FileOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFileOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::FileOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::FileOptions::DiscardUnknownFields();
+AutoIt:
+    $oFileOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::FileOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::FileOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFileOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::FileOptions::IsInitialized
+
+```cpp
+bool google::protobuf::FileOptions::IsInitialized();
+AutoIt:
+    $oFileOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::FileOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::FileOptions::SerializeAsString();
+AutoIt:
+    $oFileOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::FileOptions::SerializeToString
+
+```cpp
+void google::protobuf::FileOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFileOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::FileOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::FileOptions::SpaceUsedLong();
+AutoIt:
+    $oFileOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::FileOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::FileOptions::__str__( std::string* output );
+AutoIt:
+    $oFileOptions.__str__( [$output] ) -> $output
+```
+
+### FileOptions.SPEED\_
+
+```cpp
+static int google::protobuf::FileOptions::SPEED
+AutoIt:
+    [propget] $oFileOptions.SPEED_
+```
+
+### FileOptions.CODE\_SIZE\_
+
+```cpp
+static int google::protobuf::FileOptions::CODE_SIZE
+AutoIt:
+    [propget] $oFileOptions.CODE_SIZE_
+```
+
+### FileOptions.LITE\_RUNTIME\_
+
+```cpp
+static int google::protobuf::FileOptions::LITE_RUNTIME
+AutoIt:
+    [propget] $oFileOptions.LITE_RUNTIME_
+```
+
+## google::protobuf::MessageOptions
+
+### MessageOptions.message\_set\_wire\_format
+
+```cpp
+bool google::protobuf::MessageOptions::message_set_wire_format
+AutoIt:
+    [propget, propput] $oMessageOptions.message_set_wire_format
+```
+
+### MessageOptions.no\_standard\_descriptor\_accessor
+
+```cpp
+bool google::protobuf::MessageOptions::no_standard_descriptor_accessor
+AutoIt:
+    [propget, propput] $oMessageOptions.no_standard_descriptor_accessor
+```
+
+### MessageOptions.deprecated
+
+```cpp
+bool google::protobuf::MessageOptions::deprecated
+AutoIt:
+    [propget, propput] $oMessageOptions.deprecated
+```
+
+### MessageOptions.map\_entry
+
+```cpp
+bool google::protobuf::MessageOptions::map_entry
+AutoIt:
+    [propget, propput] $oMessageOptions.map_entry
+```
+
+### MessageOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::MessageOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oMessageOptions.uninterpreted_option
+```
+
+### google::protobuf::MessageOptions::get\_create
+
+```cpp
+static google::protobuf::MessageOptions google::protobuf::MessageOptions::get_create( std::optional<bool> message_set_wire_format = std::optional<bool>(),
+                                                                                      std::optional<bool> no_standard_descriptor_accessor = std::optional<bool>(),
+                                                                                      std::optional<bool> deprecated = std::optional<bool>(),
+                                                                                      std::optional<bool> map_entry = std::optional<bool>(),
+                                                                                      VARIANT*            uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.MessageOptions").create( [$message_set_wire_format[, $no_standard_descriptor_accessor[, $deprecated[, $map_entry[, $uninterpreted_option]]]]] ) -> <google.protobuf.MessageOptions object>
+    $oMessageOptions( [$message_set_wire_format[, $no_standard_descriptor_accessor[, $deprecated[, $map_entry[, $uninterpreted_option]]]]] ) -> <google.protobuf.MessageOptions object>
+```
+
+### google::protobuf::MessageOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::MessageOptions::ByteSizeLong();
+AutoIt:
+    $oMessageOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::MessageOptions::CheckInitialized
+
+```cpp
+void google::protobuf::MessageOptions::CheckInitialized();
+AutoIt:
+    $oMessageOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::MessageOptions::Clear
+
+```cpp
+void google::protobuf::MessageOptions::Clear();
+AutoIt:
+    $oMessageOptions.Clear() -> None
+```
+
+### google::protobuf::MessageOptions::ClearField
+
+```cpp
+void google::protobuf::MessageOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oMessageOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::MessageOptions::CopyFrom
+
+```cpp
+void google::protobuf::MessageOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oMessageOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::MessageOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::MessageOptions::DiscardUnknownFields();
+AutoIt:
+    $oMessageOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::MessageOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::MessageOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMessageOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::MessageOptions::IsInitialized
+
+```cpp
+bool google::protobuf::MessageOptions::IsInitialized();
+AutoIt:
+    $oMessageOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::MessageOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::MessageOptions::SerializeAsString();
+AutoIt:
+    $oMessageOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::MessageOptions::SerializeToString
+
+```cpp
+void google::protobuf::MessageOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oMessageOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::MessageOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::MessageOptions::SpaceUsedLong();
+AutoIt:
+    $oMessageOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::MessageOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::MessageOptions::__str__( std::string* output );
+AutoIt:
+    $oMessageOptions.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::FieldOptions
+
+### FieldOptions.ctype
+
+```cpp
+google::protobuf::FieldOptions::CType google::protobuf::FieldOptions::ctype
+AutoIt:
+    [propget, propput] $oFieldOptions.ctype
+```
+
+### FieldOptions.packed
+
+```cpp
+bool google::protobuf::FieldOptions::packed
+AutoIt:
+    [propget, propput] $oFieldOptions.packed
+```
+
+### FieldOptions.jstype
+
+```cpp
+google::protobuf::FieldOptions::JSType google::protobuf::FieldOptions::jstype
+AutoIt:
+    [propget, propput] $oFieldOptions.jstype
+```
+
+### FieldOptions.lazy
+
+```cpp
+bool google::protobuf::FieldOptions::lazy
+AutoIt:
+    [propget, propput] $oFieldOptions.lazy
+```
+
+### FieldOptions.deprecated
+
+```cpp
+bool google::protobuf::FieldOptions::deprecated
+AutoIt:
+    [propget, propput] $oFieldOptions.deprecated
+```
+
+### FieldOptions.weak
+
+```cpp
+bool google::protobuf::FieldOptions::weak
+AutoIt:
+    [propget, propput] $oFieldOptions.weak
+```
+
+### FieldOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::FieldOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oFieldOptions.uninterpreted_option
+```
+
+### google::protobuf::FieldOptions::get\_create
+
+```cpp
+static google::protobuf::FieldOptions google::protobuf::FieldOptions::get_create( std::optional<google::protobuf::FieldOptions::CType>  ctype = std::optional<google::protobuf::FieldOptions::CType>(),
+                                                                                  std::optional<bool>                                   packed = std::optional<bool>(),
+                                                                                  std::optional<google::protobuf::FieldOptions::JSType> jstype = std::optional<google::protobuf::FieldOptions::JSType>(),
+                                                                                  std::optional<bool>                                   lazy = std::optional<bool>(),
+                                                                                  std::optional<bool>                                   deprecated = std::optional<bool>(),
+                                                                                  std::optional<bool>                                   weak = std::optional<bool>(),
+                                                                                  VARIANT*                                              uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FieldOptions").create( [$ctype[, $packed[, $jstype[, $lazy[, $deprecated[, $weak[, $uninterpreted_option]]]]]]] ) -> <google.protobuf.FieldOptions object>
+    $oFieldOptions( [$ctype[, $packed[, $jstype[, $lazy[, $deprecated[, $weak[, $uninterpreted_option]]]]]]] ) -> <google.protobuf.FieldOptions object>
+```
+
+### google::protobuf::FieldOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::FieldOptions::ByteSizeLong();
+AutoIt:
+    $oFieldOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::FieldOptions::CheckInitialized
+
+```cpp
+void google::protobuf::FieldOptions::CheckInitialized();
+AutoIt:
+    $oFieldOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::FieldOptions::Clear
+
+```cpp
+void google::protobuf::FieldOptions::Clear();
+AutoIt:
+    $oFieldOptions.Clear() -> None
+```
+
+### google::protobuf::FieldOptions::ClearField
+
+```cpp
+void google::protobuf::FieldOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFieldOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::FieldOptions::CopyFrom
+
+```cpp
+void google::protobuf::FieldOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFieldOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::FieldOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::FieldOptions::DiscardUnknownFields();
+AutoIt:
+    $oFieldOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::FieldOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::FieldOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFieldOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::FieldOptions::IsInitialized
+
+```cpp
+bool google::protobuf::FieldOptions::IsInitialized();
+AutoIt:
+    $oFieldOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::FieldOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::FieldOptions::SerializeAsString();
+AutoIt:
+    $oFieldOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::FieldOptions::SerializeToString
+
+```cpp
+void google::protobuf::FieldOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFieldOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::FieldOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::FieldOptions::SpaceUsedLong();
+AutoIt:
+    $oFieldOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::FieldOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::FieldOptions::__str__( std::string* output );
+AutoIt:
+    $oFieldOptions.__str__( [$output] ) -> $output
+```
+
+### FieldOptions.STRING\_
+
+```cpp
+static int google::protobuf::FieldOptions::STRING
+AutoIt:
+    [propget] $oFieldOptions.STRING_
+```
+
+### FieldOptions.CORD\_
+
+```cpp
+static int google::protobuf::FieldOptions::CORD
+AutoIt:
+    [propget] $oFieldOptions.CORD_
+```
+
+### FieldOptions.STRING\_PIECE\_
+
+```cpp
+static int google::protobuf::FieldOptions::STRING_PIECE
+AutoIt:
+    [propget] $oFieldOptions.STRING_PIECE_
+```
+
+### FieldOptions.JS\_NORMAL\_
+
+```cpp
+static int google::protobuf::FieldOptions::JS_NORMAL
+AutoIt:
+    [propget] $oFieldOptions.JS_NORMAL_
+```
+
+### FieldOptions.JS\_STRING\_
+
+```cpp
+static int google::protobuf::FieldOptions::JS_STRING
+AutoIt:
+    [propget] $oFieldOptions.JS_STRING_
+```
+
+### FieldOptions.JS\_NUMBER\_
+
+```cpp
+static int google::protobuf::FieldOptions::JS_NUMBER
+AutoIt:
+    [propget] $oFieldOptions.JS_NUMBER_
+```
+
+## google::protobuf::OneofOptions
+
+### OneofOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::OneofOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oOneofOptions.uninterpreted_option
+```
+
+### google::protobuf::OneofOptions::get\_create
+
+```cpp
+static google::protobuf::OneofOptions google::protobuf::OneofOptions::get_create( VARIANT* uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.OneofOptions").create( [$uninterpreted_option] ) -> <google.protobuf.OneofOptions object>
+    $oOneofOptions( [$uninterpreted_option] ) -> <google.protobuf.OneofOptions object>
+```
+
+### google::protobuf::OneofOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::OneofOptions::ByteSizeLong();
+AutoIt:
+    $oOneofOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::OneofOptions::CheckInitialized
+
+```cpp
+void google::protobuf::OneofOptions::CheckInitialized();
+AutoIt:
+    $oOneofOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::OneofOptions::Clear
+
+```cpp
+void google::protobuf::OneofOptions::Clear();
+AutoIt:
+    $oOneofOptions.Clear() -> None
+```
+
+### google::protobuf::OneofOptions::ClearField
+
+```cpp
+void google::protobuf::OneofOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oOneofOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::OneofOptions::CopyFrom
+
+```cpp
+void google::protobuf::OneofOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oOneofOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::OneofOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::OneofOptions::DiscardUnknownFields();
+AutoIt:
+    $oOneofOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::OneofOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::OneofOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oOneofOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::OneofOptions::IsInitialized
+
+```cpp
+bool google::protobuf::OneofOptions::IsInitialized();
+AutoIt:
+    $oOneofOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::OneofOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::OneofOptions::SerializeAsString();
+AutoIt:
+    $oOneofOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::OneofOptions::SerializeToString
+
+```cpp
+void google::protobuf::OneofOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oOneofOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::OneofOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::OneofOptions::SpaceUsedLong();
+AutoIt:
+    $oOneofOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::OneofOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::OneofOptions::__str__( std::string* output );
+AutoIt:
+    $oOneofOptions.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::EnumOptions
+
+### EnumOptions.allow\_alias
+
+```cpp
+bool google::protobuf::EnumOptions::allow_alias
+AutoIt:
+    [propget, propput] $oEnumOptions.allow_alias
+```
+
+### EnumOptions.deprecated
+
+```cpp
+bool google::protobuf::EnumOptions::deprecated
+AutoIt:
+    [propget, propput] $oEnumOptions.deprecated
+```
+
+### EnumOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::EnumOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oEnumOptions.uninterpreted_option
+```
+
+### google::protobuf::EnumOptions::get\_create
+
+```cpp
+static google::protobuf::EnumOptions google::protobuf::EnumOptions::get_create( std::optional<bool> allow_alias = std::optional<bool>(),
+                                                                                std::optional<bool> deprecated = std::optional<bool>(),
+                                                                                VARIANT*            uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.EnumOptions").create( [$allow_alias[, $deprecated[, $uninterpreted_option]]] ) -> <google.protobuf.EnumOptions object>
+    $oEnumOptions( [$allow_alias[, $deprecated[, $uninterpreted_option]]] ) -> <google.protobuf.EnumOptions object>
+```
+
+### google::protobuf::EnumOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::EnumOptions::ByteSizeLong();
+AutoIt:
+    $oEnumOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::EnumOptions::CheckInitialized
+
+```cpp
+void google::protobuf::EnumOptions::CheckInitialized();
+AutoIt:
+    $oEnumOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::EnumOptions::Clear
+
+```cpp
+void google::protobuf::EnumOptions::Clear();
+AutoIt:
+    $oEnumOptions.Clear() -> None
+```
+
+### google::protobuf::EnumOptions::ClearField
+
+```cpp
+void google::protobuf::EnumOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oEnumOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::EnumOptions::CopyFrom
+
+```cpp
+void google::protobuf::EnumOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oEnumOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::EnumOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::EnumOptions::DiscardUnknownFields();
+AutoIt:
+    $oEnumOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::EnumOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::EnumOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEnumOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::EnumOptions::IsInitialized
+
+```cpp
+bool google::protobuf::EnumOptions::IsInitialized();
+AutoIt:
+    $oEnumOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::EnumOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::EnumOptions::SerializeAsString();
+AutoIt:
+    $oEnumOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::EnumOptions::SerializeToString
+
+```cpp
+void google::protobuf::EnumOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oEnumOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::EnumOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::EnumOptions::SpaceUsedLong();
+AutoIt:
+    $oEnumOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::EnumOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::EnumOptions::__str__( std::string* output );
+AutoIt:
+    $oEnumOptions.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::EnumValueOptions
+
+### EnumValueOptions.deprecated
+
+```cpp
+bool google::protobuf::EnumValueOptions::deprecated
+AutoIt:
+    [propget, propput] $oEnumValueOptions.deprecated
+```
+
+### EnumValueOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::EnumValueOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oEnumValueOptions.uninterpreted_option
+```
+
+### google::protobuf::EnumValueOptions::get\_create
+
+```cpp
+static google::protobuf::EnumValueOptions google::protobuf::EnumValueOptions::get_create( std::optional<bool> deprecated = std::optional<bool>(),
+                                                                                          VARIANT*            uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.EnumValueOptions").create( [$deprecated[, $uninterpreted_option]] ) -> <google.protobuf.EnumValueOptions object>
+    $oEnumValueOptions( [$deprecated[, $uninterpreted_option]] ) -> <google.protobuf.EnumValueOptions object>
+```
+
+### google::protobuf::EnumValueOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::EnumValueOptions::ByteSizeLong();
+AutoIt:
+    $oEnumValueOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::EnumValueOptions::CheckInitialized
+
+```cpp
+void google::protobuf::EnumValueOptions::CheckInitialized();
+AutoIt:
+    $oEnumValueOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::EnumValueOptions::Clear
+
+```cpp
+void google::protobuf::EnumValueOptions::Clear();
+AutoIt:
+    $oEnumValueOptions.Clear() -> None
+```
+
+### google::protobuf::EnumValueOptions::ClearField
+
+```cpp
+void google::protobuf::EnumValueOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oEnumValueOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::EnumValueOptions::CopyFrom
+
+```cpp
+void google::protobuf::EnumValueOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oEnumValueOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::EnumValueOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::EnumValueOptions::DiscardUnknownFields();
+AutoIt:
+    $oEnumValueOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::EnumValueOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::EnumValueOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oEnumValueOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::EnumValueOptions::IsInitialized
+
+```cpp
+bool google::protobuf::EnumValueOptions::IsInitialized();
+AutoIt:
+    $oEnumValueOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::EnumValueOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::EnumValueOptions::SerializeAsString();
+AutoIt:
+    $oEnumValueOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::EnumValueOptions::SerializeToString
+
+```cpp
+void google::protobuf::EnumValueOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oEnumValueOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::EnumValueOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::EnumValueOptions::SpaceUsedLong();
+AutoIt:
+    $oEnumValueOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::EnumValueOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::EnumValueOptions::__str__( std::string* output );
+AutoIt:
+    $oEnumValueOptions.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::ServiceOptions
+
+### ServiceOptions.deprecated
+
+```cpp
+bool google::protobuf::ServiceOptions::deprecated
+AutoIt:
+    [propget, propput] $oServiceOptions.deprecated
+```
+
+### ServiceOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::ServiceOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oServiceOptions.uninterpreted_option
+```
+
+### google::protobuf::ServiceOptions::get\_create
+
+```cpp
+static google::protobuf::ServiceOptions google::protobuf::ServiceOptions::get_create( std::optional<bool> deprecated = std::optional<bool>(),
+                                                                                      VARIANT*            uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.ServiceOptions").create( [$deprecated[, $uninterpreted_option]] ) -> <google.protobuf.ServiceOptions object>
+    $oServiceOptions( [$deprecated[, $uninterpreted_option]] ) -> <google.protobuf.ServiceOptions object>
+```
+
+### google::protobuf::ServiceOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::ServiceOptions::ByteSizeLong();
+AutoIt:
+    $oServiceOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::ServiceOptions::CheckInitialized
+
+```cpp
+void google::protobuf::ServiceOptions::CheckInitialized();
+AutoIt:
+    $oServiceOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::ServiceOptions::Clear
+
+```cpp
+void google::protobuf::ServiceOptions::Clear();
+AutoIt:
+    $oServiceOptions.Clear() -> None
+```
+
+### google::protobuf::ServiceOptions::ClearField
+
+```cpp
+void google::protobuf::ServiceOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oServiceOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::ServiceOptions::CopyFrom
+
+```cpp
+void google::protobuf::ServiceOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oServiceOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::ServiceOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::ServiceOptions::DiscardUnknownFields();
+AutoIt:
+    $oServiceOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::ServiceOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::ServiceOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oServiceOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::ServiceOptions::IsInitialized
+
+```cpp
+bool google::protobuf::ServiceOptions::IsInitialized();
+AutoIt:
+    $oServiceOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::ServiceOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::ServiceOptions::SerializeAsString();
+AutoIt:
+    $oServiceOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::ServiceOptions::SerializeToString
+
+```cpp
+void google::protobuf::ServiceOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oServiceOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::ServiceOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::ServiceOptions::SpaceUsedLong();
+AutoIt:
+    $oServiceOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::ServiceOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::ServiceOptions::__str__( std::string* output );
+AutoIt:
+    $oServiceOptions.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::MethodOptions
+
+### MethodOptions.deprecated
+
+```cpp
+bool google::protobuf::MethodOptions::deprecated
+AutoIt:
+    [propget, propput] $oMethodOptions.deprecated
+```
+
+### MethodOptions.idempotency\_level
+
+```cpp
+google::protobuf::MethodOptions::IdempotencyLevel google::protobuf::MethodOptions::idempotency_level
+AutoIt:
+    [propget, propput] $oMethodOptions.idempotency_level
+```
+
+### MethodOptions.uninterpreted\_option
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption* google::protobuf::MethodOptions::uninterpreted_option
+AutoIt:
+    [propget, propput] $oMethodOptions.uninterpreted_option
+```
+
+### google::protobuf::MethodOptions::get\_create
+
+```cpp
+static google::protobuf::MethodOptions google::protobuf::MethodOptions::get_create( std::optional<bool>                                              deprecated = std::optional<bool>(),
+                                                                                    std::optional<google::protobuf::MethodOptions::IdempotencyLevel> idempotency_level = std::optional<google::protobuf::MethodOptions::IdempotencyLevel>(),
+                                                                                    VARIANT*                                                         uninterpreted_option = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.MethodOptions").create( [$deprecated[, $idempotency_level[, $uninterpreted_option]]] ) -> <google.protobuf.MethodOptions object>
+    $oMethodOptions( [$deprecated[, $idempotency_level[, $uninterpreted_option]]] ) -> <google.protobuf.MethodOptions object>
+```
+
+### google::protobuf::MethodOptions::ByteSizeLong
+
+```cpp
+size_t google::protobuf::MethodOptions::ByteSizeLong();
+AutoIt:
+    $oMethodOptions.ByteSizeLong() -> retval
+```
+
+### google::protobuf::MethodOptions::CheckInitialized
+
+```cpp
+void google::protobuf::MethodOptions::CheckInitialized();
+AutoIt:
+    $oMethodOptions.CheckInitialized() -> None
+```
+
+### google::protobuf::MethodOptions::Clear
+
+```cpp
+void google::protobuf::MethodOptions::Clear();
+AutoIt:
+    $oMethodOptions.Clear() -> None
+```
+
+### google::protobuf::MethodOptions::ClearField
+
+```cpp
+void google::protobuf::MethodOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oMethodOptions.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::MethodOptions::CopyFrom
+
+```cpp
+void google::protobuf::MethodOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oMethodOptions.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::MethodOptions::DiscardUnknownFields
+
+```cpp
+void google::protobuf::MethodOptions::DiscardUnknownFields();
+AutoIt:
+    $oMethodOptions.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::MethodOptions::FindInitializationErrors
+
+```cpp
+void google::protobuf::MethodOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMethodOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::MethodOptions::IsInitialized
+
+```cpp
+bool google::protobuf::MethodOptions::IsInitialized();
+AutoIt:
+    $oMethodOptions.IsInitialized() -> retval
+```
+
+### google::protobuf::MethodOptions::SerializeAsString
+
+```cpp
+std::string google::protobuf::MethodOptions::SerializeAsString();
+AutoIt:
+    $oMethodOptions.SerializeAsString() -> retval
+```
+
+### google::protobuf::MethodOptions::SerializeToString
+
+```cpp
+void google::protobuf::MethodOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oMethodOptions.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::MethodOptions::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::MethodOptions::SpaceUsedLong();
+AutoIt:
+    $oMethodOptions.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::MethodOptions::\_\_str\_\_
+
+```cpp
+void google::protobuf::MethodOptions::__str__( std::string* output );
+AutoIt:
+    $oMethodOptions.__str__( [$output] ) -> $output
+```
+
+### MethodOptions.IDEMPOTENCY\_UNKNOWN\_
+
+```cpp
+static int google::protobuf::MethodOptions::IDEMPOTENCY_UNKNOWN
+AutoIt:
+    [propget] $oMethodOptions.IDEMPOTENCY_UNKNOWN_
+```
+
+### MethodOptions.NO\_SIDE\_EFFECTS\_
+
+```cpp
+static int google::protobuf::MethodOptions::NO_SIDE_EFFECTS
+AutoIt:
+    [propget] $oMethodOptions.NO_SIDE_EFFECTS_
+```
+
+### MethodOptions.IDEMPOTENT\_
+
+```cpp
+static int google::protobuf::MethodOptions::IDEMPOTENT
+AutoIt:
+    [propget] $oMethodOptions.IDEMPOTENT_
+```
+
+## google::protobuf::UninterpretedOption
+
+### UninterpretedOption.name
+
+```cpp
+google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart* google::protobuf::UninterpretedOption::name
+AutoIt:
+    [propget, propput] $oUninterpretedOption.name
+```
+
+### UninterpretedOption.identifier\_value
+
+```cpp
+std::string google::protobuf::UninterpretedOption::identifier_value
+AutoIt:
+    [propget, propput] $oUninterpretedOption.identifier_value
+```
+
+### UninterpretedOption.positive\_int\_value
+
+```cpp
+uint64 google::protobuf::UninterpretedOption::positive_int_value
+AutoIt:
+    [propget, propput] $oUninterpretedOption.positive_int_value
+```
+
+### UninterpretedOption.negative\_int\_value
+
+```cpp
+int64 google::protobuf::UninterpretedOption::negative_int_value
+AutoIt:
+    [propget, propput] $oUninterpretedOption.negative_int_value
+```
+
+### UninterpretedOption.double\_value
+
+```cpp
+double google::protobuf::UninterpretedOption::double_value
+AutoIt:
+    [propget, propput] $oUninterpretedOption.double_value
+```
+
+### UninterpretedOption.string\_value
+
+```cpp
+std::string google::protobuf::UninterpretedOption::string_value
+AutoIt:
+    [propget, propput] $oUninterpretedOption.string_value
+```
+
+### UninterpretedOption.aggregate\_value
+
+```cpp
+std::string google::protobuf::UninterpretedOption::aggregate_value
+AutoIt:
+    [propget, propput] $oUninterpretedOption.aggregate_value
+```
+
+### google::protobuf::UninterpretedOption::get\_create
+
+```cpp
+static google::protobuf::UninterpretedOption google::protobuf::UninterpretedOption::get_create( VARIANT*                   name = VARIANT*(),
+                                                                                                std::optional<std::string> identifier_value = std::optional<std::string>(),
+                                                                                                std::optional<uint64>      positive_int_value = std::optional<uint64>(),
+                                                                                                std::optional<int64>       negative_int_value = std::optional<int64>(),
+                                                                                                std::optional<double>      double_value = std::optional<double>(),
+                                                                                                std::optional<std::string> string_value = std::optional<std::string>(),
+                                                                                                std::optional<std::string> aggregate_value = std::optional<std::string>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.UninterpretedOption").create( [$name[, $identifier_value[, $positive_int_value[, $negative_int_value[, $double_value[, $string_value[, $aggregate_value]]]]]]] ) -> <google.protobuf.UninterpretedOption object>
+    $oUninterpretedOption( [$name[, $identifier_value[, $positive_int_value[, $negative_int_value[, $double_value[, $string_value[, $aggregate_value]]]]]]] ) -> <google.protobuf.UninterpretedOption object>
+```
+
+### google::protobuf::UninterpretedOption::ByteSizeLong
+
+```cpp
+size_t google::protobuf::UninterpretedOption::ByteSizeLong();
+AutoIt:
+    $oUninterpretedOption.ByteSizeLong() -> retval
+```
+
+### google::protobuf::UninterpretedOption::CheckInitialized
+
+```cpp
+void google::protobuf::UninterpretedOption::CheckInitialized();
+AutoIt:
+    $oUninterpretedOption.CheckInitialized() -> None
+```
+
+### google::protobuf::UninterpretedOption::Clear
+
+```cpp
+void google::protobuf::UninterpretedOption::Clear();
+AutoIt:
+    $oUninterpretedOption.Clear() -> None
+```
+
+### google::protobuf::UninterpretedOption::ClearField
+
+```cpp
+void google::protobuf::UninterpretedOption::ClearField( const std::string& field_name );
+AutoIt:
+    $oUninterpretedOption.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::UninterpretedOption::CopyFrom
+
+```cpp
+void google::protobuf::UninterpretedOption::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oUninterpretedOption.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::UninterpretedOption::DiscardUnknownFields
+
+```cpp
+void google::protobuf::UninterpretedOption::DiscardUnknownFields();
+AutoIt:
+    $oUninterpretedOption.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::UninterpretedOption::FindInitializationErrors
+
+```cpp
+void google::protobuf::UninterpretedOption::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oUninterpretedOption.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::UninterpretedOption::IsInitialized
+
+```cpp
+bool google::protobuf::UninterpretedOption::IsInitialized();
+AutoIt:
+    $oUninterpretedOption.IsInitialized() -> retval
+```
+
+### google::protobuf::UninterpretedOption::SerializeAsString
+
+```cpp
+std::string google::protobuf::UninterpretedOption::SerializeAsString();
+AutoIt:
+    $oUninterpretedOption.SerializeAsString() -> retval
+```
+
+### google::protobuf::UninterpretedOption::SerializeToString
+
+```cpp
+void google::protobuf::UninterpretedOption::SerializeToString( std::string* output );
+AutoIt:
+    $oUninterpretedOption.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::UninterpretedOption::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::UninterpretedOption::SpaceUsedLong();
+AutoIt:
+    $oUninterpretedOption.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::UninterpretedOption::\_\_str\_\_
+
+```cpp
+void google::protobuf::UninterpretedOption::__str__( std::string* output );
+AutoIt:
+    $oUninterpretedOption.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart
+
+### Repeated\_google\_protobuf\_UninterpretedOption\_NamePart.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_UninterpretedOption_NamePart.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_UninterpretedOption_NamePart").create() -> <google.protobuf.Repeated_google_protobuf_UninterpretedOption_NamePart object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::CopyFrom( const google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart other );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::MergeFrom( const google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart other );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::Swap( google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart* other );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::SwapElements( int index1,
+                                                                                            int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::add
+
+```cpp
+google::protobuf::UninterpretedOption::NamePart* google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::add();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.add() -> retval
+```
+
+```cpp
+google::protobuf::UninterpretedOption::NamePart* google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::add( const google::protobuf::UninterpretedOption::NamePart* value );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::append
+
+```cpp
+google::protobuf::UninterpretedOption::NamePart* google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::append( const google::protobuf::UninterpretedOption::NamePart* value );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::UninterpretedOption::NamePart* google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::clear();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::empty();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::extend( const google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart& items );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::extend( const std::vector<std::shared_ptr<google::protobuf::UninterpretedOption::NamePart>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::get\_Item
+
+```cpp
+google::protobuf::UninterpretedOption::NamePart* google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.Item( $index ) -> retval
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::insert( SSIZE_T                                                 index,
+                                                                                      const google::protobuf::UninterpretedOption::NamePart*& item );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::pop
+
+```cpp
+std::shared_ptr<google::protobuf::UninterpretedOption::NamePart> google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::size();
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::slice( std::vector<std::shared_ptr<google::protobuf::UninterpretedOption::NamePart>> list,
+                                                                                     SSIZE_T                                                                       start,
+                                                                                     SSIZE_T                                                                       count );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::slice( std::vector<std::shared_ptr<google::protobuf::UninterpretedOption::NamePart>> list,
+                                                                                     SSIZE_T                                                                       start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::sort( void*  comparator,
+                                                                                    size_t start = 0,
+                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::sort_variant( void*  comparator,
+                                                                                            size_t start = 0,
+                                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_UninterpretedOption\_NamePart::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::splice( std::vector<std::shared_ptr<google::protobuf::UninterpretedOption::NamePart>> list,
+                                                                                      SSIZE_T                                                                       start,
+                                                                                      SSIZE_T                                                                       deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart::splice( std::vector<std::shared_ptr<google::protobuf::UninterpretedOption::NamePart>> list,
+                                                                                      SSIZE_T                                                                       start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_UninterpretedOption_NamePart.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::UninterpretedOption::NamePart
+
+### NamePart.name\_part
+
+```cpp
+std::string google::protobuf::UninterpretedOption::NamePart::name_part
+AutoIt:
+    [propget, propput] $oNamePart.name_part
+```
+
+### NamePart.is\_extension
+
+```cpp
+bool google::protobuf::UninterpretedOption::NamePart::is_extension
+AutoIt:
+    [propget, propput] $oNamePart.is_extension
+```
+
+### google::protobuf::UninterpretedOption::NamePart::get\_create
+
+```cpp
+static google::protobuf::UninterpretedOption::NamePart google::protobuf::UninterpretedOption::NamePart::get_create( std::optional<std::string> name_part = std::optional<std::string>(),
+                                                                                                                    std::optional<bool>        is_extension = std::optional<bool>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.UninterpretedOption.NamePart").create( [$name_part[, $is_extension]] ) -> <google.protobuf.UninterpretedOption.NamePart object>
+    $oNamePart( [$name_part[, $is_extension]] ) -> <google.protobuf.UninterpretedOption.NamePart object>
+```
+
+### google::protobuf::UninterpretedOption::NamePart::ByteSizeLong
+
+```cpp
+size_t google::protobuf::UninterpretedOption::NamePart::ByteSizeLong();
+AutoIt:
+    $oNamePart.ByteSizeLong() -> retval
+```
+
+### google::protobuf::UninterpretedOption::NamePart::CheckInitialized
+
+```cpp
+void google::protobuf::UninterpretedOption::NamePart::CheckInitialized();
+AutoIt:
+    $oNamePart.CheckInitialized() -> None
+```
+
+### google::protobuf::UninterpretedOption::NamePart::Clear
+
+```cpp
+void google::protobuf::UninterpretedOption::NamePart::Clear();
+AutoIt:
+    $oNamePart.Clear() -> None
+```
+
+### google::protobuf::UninterpretedOption::NamePart::ClearField
+
+```cpp
+void google::protobuf::UninterpretedOption::NamePart::ClearField( const std::string& field_name );
+AutoIt:
+    $oNamePart.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::UninterpretedOption::NamePart::CopyFrom
+
+```cpp
+void google::protobuf::UninterpretedOption::NamePart::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oNamePart.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::UninterpretedOption::NamePart::DiscardUnknownFields
+
+```cpp
+void google::protobuf::UninterpretedOption::NamePart::DiscardUnknownFields();
+AutoIt:
+    $oNamePart.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::UninterpretedOption::NamePart::FindInitializationErrors
+
+```cpp
+void google::protobuf::UninterpretedOption::NamePart::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oNamePart.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::UninterpretedOption::NamePart::IsInitialized
+
+```cpp
+bool google::protobuf::UninterpretedOption::NamePart::IsInitialized();
+AutoIt:
+    $oNamePart.IsInitialized() -> retval
+```
+
+### google::protobuf::UninterpretedOption::NamePart::SerializeAsString
+
+```cpp
+std::string google::protobuf::UninterpretedOption::NamePart::SerializeAsString();
+AutoIt:
+    $oNamePart.SerializeAsString() -> retval
+```
+
+### google::protobuf::UninterpretedOption::NamePart::SerializeToString
+
+```cpp
+void google::protobuf::UninterpretedOption::NamePart::SerializeToString( std::string* output );
+AutoIt:
+    $oNamePart.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::UninterpretedOption::NamePart::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::UninterpretedOption::NamePart::SpaceUsedLong();
+AutoIt:
+    $oNamePart.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::UninterpretedOption::NamePart::\_\_str\_\_
+
+```cpp
+void google::protobuf::UninterpretedOption::NamePart::__str__( std::string* output );
+AutoIt:
+    $oNamePart.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::SourceCodeInfo
+
+### SourceCodeInfo.location
+
+```cpp
+google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location* google::protobuf::SourceCodeInfo::location
+AutoIt:
+    [propget, propput] $oSourceCodeInfo.location
+```
+
+### google::protobuf::SourceCodeInfo::get\_create
+
+```cpp
+static google::protobuf::SourceCodeInfo google::protobuf::SourceCodeInfo::get_create( VARIANT* location = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.SourceCodeInfo").create( [$location] ) -> <google.protobuf.SourceCodeInfo object>
+    $oSourceCodeInfo( [$location] ) -> <google.protobuf.SourceCodeInfo object>
+```
+
+### google::protobuf::SourceCodeInfo::ByteSizeLong
+
+```cpp
+size_t google::protobuf::SourceCodeInfo::ByteSizeLong();
+AutoIt:
+    $oSourceCodeInfo.ByteSizeLong() -> retval
+```
+
+### google::protobuf::SourceCodeInfo::CheckInitialized
+
+```cpp
+void google::protobuf::SourceCodeInfo::CheckInitialized();
+AutoIt:
+    $oSourceCodeInfo.CheckInitialized() -> None
+```
+
+### google::protobuf::SourceCodeInfo::Clear
+
+```cpp
+void google::protobuf::SourceCodeInfo::Clear();
+AutoIt:
+    $oSourceCodeInfo.Clear() -> None
+```
+
+### google::protobuf::SourceCodeInfo::ClearField
+
+```cpp
+void google::protobuf::SourceCodeInfo::ClearField( const std::string& field_name );
+AutoIt:
+    $oSourceCodeInfo.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::SourceCodeInfo::CopyFrom
+
+```cpp
+void google::protobuf::SourceCodeInfo::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oSourceCodeInfo.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::SourceCodeInfo::DiscardUnknownFields
+
+```cpp
+void google::protobuf::SourceCodeInfo::DiscardUnknownFields();
+AutoIt:
+    $oSourceCodeInfo.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::SourceCodeInfo::FindInitializationErrors
+
+```cpp
+void google::protobuf::SourceCodeInfo::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oSourceCodeInfo.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::SourceCodeInfo::IsInitialized
+
+```cpp
+bool google::protobuf::SourceCodeInfo::IsInitialized();
+AutoIt:
+    $oSourceCodeInfo.IsInitialized() -> retval
+```
+
+### google::protobuf::SourceCodeInfo::SerializeAsString
+
+```cpp
+std::string google::protobuf::SourceCodeInfo::SerializeAsString();
+AutoIt:
+    $oSourceCodeInfo.SerializeAsString() -> retval
+```
+
+### google::protobuf::SourceCodeInfo::SerializeToString
+
+```cpp
+void google::protobuf::SourceCodeInfo::SerializeToString( std::string* output );
+AutoIt:
+    $oSourceCodeInfo.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::SourceCodeInfo::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::SourceCodeInfo::SpaceUsedLong();
+AutoIt:
+    $oSourceCodeInfo.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::SourceCodeInfo::\_\_str\_\_
+
+```cpp
+void google::protobuf::SourceCodeInfo::__str__( std::string* output );
+AutoIt:
+    $oSourceCodeInfo.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location
+
+### Repeated\_google\_protobuf\_SourceCodeInfo\_Location.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_SourceCodeInfo_Location.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_SourceCodeInfo_Location").create() -> <google.protobuf.Repeated_google_protobuf_SourceCodeInfo_Location object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::CopyFrom( const google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location other );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::MergeFrom( const google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location other );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::Swap( google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location* other );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::SwapElements( int index1,
+                                                                                       int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::add
+
+```cpp
+google::protobuf::SourceCodeInfo::Location* google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::add();
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.add() -> retval
+```
+
+```cpp
+google::protobuf::SourceCodeInfo::Location* google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::add( const google::protobuf::SourceCodeInfo::Location* value );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::append
+
+```cpp
+google::protobuf::SourceCodeInfo::Location* google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::append( const google::protobuf::SourceCodeInfo::Location* value );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::SourceCodeInfo::Location* google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::clear();
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::empty();
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::extend( const google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location& items );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::extend( const std::vector<std::shared_ptr<google::protobuf::SourceCodeInfo::Location>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::get\_Item
+
+```cpp
+google::protobuf::SourceCodeInfo::Location* google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.Item( $index ) -> retval
+    $oRepeated_google_protobuf_SourceCodeInfo_Location( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::insert( SSIZE_T                                            index,
+                                                                                 const google::protobuf::SourceCodeInfo::Location*& item );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::pop
+
+```cpp
+std::shared_ptr<google::protobuf::SourceCodeInfo::Location> google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::size();
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::slice( std::vector<std::shared_ptr<google::protobuf::SourceCodeInfo::Location>> list,
+                                                                                SSIZE_T                                                                  start,
+                                                                                SSIZE_T                                                                  count );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::slice( std::vector<std::shared_ptr<google::protobuf::SourceCodeInfo::Location>> list,
+                                                                                SSIZE_T                                                                  start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::sort( void*  comparator,
+                                                                               size_t start = 0,
+                                                                               size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::sort_variant( void*  comparator,
+                                                                                       size_t start = 0,
+                                                                                       size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_SourceCodeInfo\_Location::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::splice( std::vector<std::shared_ptr<google::protobuf::SourceCodeInfo::Location>> list,
+                                                                                 SSIZE_T                                                                  start,
+                                                                                 SSIZE_T                                                                  deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location::splice( std::vector<std::shared_ptr<google::protobuf::SourceCodeInfo::Location>> list,
+                                                                                 SSIZE_T                                                                  start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_SourceCodeInfo_Location.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::SourceCodeInfo::Location
+
+### Location.path
+
+```cpp
+google::protobuf::Repeated_int* google::protobuf::SourceCodeInfo::Location::path
+AutoIt:
+    [propget, propput] $oLocation.path
+```
+
+### Location.span
+
+```cpp
+google::protobuf::Repeated_int* google::protobuf::SourceCodeInfo::Location::span
+AutoIt:
+    [propget, propput] $oLocation.span
+```
+
+### Location.leading\_comments
+
+```cpp
+std::string google::protobuf::SourceCodeInfo::Location::leading_comments
+AutoIt:
+    [propget, propput] $oLocation.leading_comments
+```
+
+### Location.trailing\_comments
+
+```cpp
+std::string google::protobuf::SourceCodeInfo::Location::trailing_comments
+AutoIt:
+    [propget, propput] $oLocation.trailing_comments
+```
+
+### Location.leading\_detached\_comments
+
+```cpp
+google::protobuf::Repeated_std_string* google::protobuf::SourceCodeInfo::Location::leading_detached_comments
+AutoIt:
+    [propget, propput] $oLocation.leading_detached_comments
+```
+
+### google::protobuf::SourceCodeInfo::Location::get\_create
+
+```cpp
+static google::protobuf::SourceCodeInfo::Location google::protobuf::SourceCodeInfo::Location::get_create( VARIANT*                   path = VARIANT*(),
+                                                                                                          VARIANT*                   span = VARIANT*(),
+                                                                                                          std::optional<std::string> leading_comments = std::optional<std::string>(),
+                                                                                                          std::optional<std::string> trailing_comments = std::optional<std::string>(),
+                                                                                                          VARIANT*                   leading_detached_comments = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.SourceCodeInfo.Location").create( [$path[, $span[, $leading_comments[, $trailing_comments[, $leading_detached_comments]]]]] ) -> <google.protobuf.SourceCodeInfo.Location object>
+    $oLocation( [$path[, $span[, $leading_comments[, $trailing_comments[, $leading_detached_comments]]]]] ) -> <google.protobuf.SourceCodeInfo.Location object>
+```
+
+### google::protobuf::SourceCodeInfo::Location::ByteSizeLong
+
+```cpp
+size_t google::protobuf::SourceCodeInfo::Location::ByteSizeLong();
+AutoIt:
+    $oLocation.ByteSizeLong() -> retval
+```
+
+### google::protobuf::SourceCodeInfo::Location::CheckInitialized
+
+```cpp
+void google::protobuf::SourceCodeInfo::Location::CheckInitialized();
+AutoIt:
+    $oLocation.CheckInitialized() -> None
+```
+
+### google::protobuf::SourceCodeInfo::Location::Clear
+
+```cpp
+void google::protobuf::SourceCodeInfo::Location::Clear();
+AutoIt:
+    $oLocation.Clear() -> None
+```
+
+### google::protobuf::SourceCodeInfo::Location::ClearField
+
+```cpp
+void google::protobuf::SourceCodeInfo::Location::ClearField( const std::string& field_name );
+AutoIt:
+    $oLocation.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::SourceCodeInfo::Location::CopyFrom
+
+```cpp
+void google::protobuf::SourceCodeInfo::Location::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLocation.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::SourceCodeInfo::Location::DiscardUnknownFields
+
+```cpp
+void google::protobuf::SourceCodeInfo::Location::DiscardUnknownFields();
+AutoIt:
+    $oLocation.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::SourceCodeInfo::Location::FindInitializationErrors
+
+```cpp
+void google::protobuf::SourceCodeInfo::Location::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLocation.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::SourceCodeInfo::Location::IsInitialized
+
+```cpp
+bool google::protobuf::SourceCodeInfo::Location::IsInitialized();
+AutoIt:
+    $oLocation.IsInitialized() -> retval
+```
+
+### google::protobuf::SourceCodeInfo::Location::SerializeAsString
+
+```cpp
+std::string google::protobuf::SourceCodeInfo::Location::SerializeAsString();
+AutoIt:
+    $oLocation.SerializeAsString() -> retval
+```
+
+### google::protobuf::SourceCodeInfo::Location::SerializeToString
+
+```cpp
+void google::protobuf::SourceCodeInfo::Location::SerializeToString( std::string* output );
+AutoIt:
+    $oLocation.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::SourceCodeInfo::Location::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::SourceCodeInfo::Location::SpaceUsedLong();
+AutoIt:
+    $oLocation.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::SourceCodeInfo::Location::\_\_str\_\_
+
+```cpp
+void google::protobuf::SourceCodeInfo::Location::__str__( std::string* output );
+AutoIt:
+    $oLocation.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::GeneratedCodeInfo
+
+### GeneratedCodeInfo.annotation
+
+```cpp
+google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation* google::protobuf::GeneratedCodeInfo::annotation
+AutoIt:
+    [propget, propput] $oGeneratedCodeInfo.annotation
+```
+
+### google::protobuf::GeneratedCodeInfo::get\_create
+
+```cpp
+static google::protobuf::GeneratedCodeInfo google::protobuf::GeneratedCodeInfo::get_create( VARIANT* annotation = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.GeneratedCodeInfo").create( [$annotation] ) -> <google.protobuf.GeneratedCodeInfo object>
+    $oGeneratedCodeInfo( [$annotation] ) -> <google.protobuf.GeneratedCodeInfo object>
+```
+
+### google::protobuf::GeneratedCodeInfo::ByteSizeLong
+
+```cpp
+size_t google::protobuf::GeneratedCodeInfo::ByteSizeLong();
+AutoIt:
+    $oGeneratedCodeInfo.ByteSizeLong() -> retval
+```
+
+### google::protobuf::GeneratedCodeInfo::CheckInitialized
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::CheckInitialized();
+AutoIt:
+    $oGeneratedCodeInfo.CheckInitialized() -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::Clear
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Clear();
+AutoIt:
+    $oGeneratedCodeInfo.Clear() -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::ClearField
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::ClearField( const std::string& field_name );
+AutoIt:
+    $oGeneratedCodeInfo.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::CopyFrom
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oGeneratedCodeInfo.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::DiscardUnknownFields
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::DiscardUnknownFields();
+AutoIt:
+    $oGeneratedCodeInfo.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::FindInitializationErrors
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oGeneratedCodeInfo.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::GeneratedCodeInfo::IsInitialized
+
+```cpp
+bool google::protobuf::GeneratedCodeInfo::IsInitialized();
+AutoIt:
+    $oGeneratedCodeInfo.IsInitialized() -> retval
+```
+
+### google::protobuf::GeneratedCodeInfo::SerializeAsString
+
+```cpp
+std::string google::protobuf::GeneratedCodeInfo::SerializeAsString();
+AutoIt:
+    $oGeneratedCodeInfo.SerializeAsString() -> retval
+```
+
+### google::protobuf::GeneratedCodeInfo::SerializeToString
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::SerializeToString( std::string* output );
+AutoIt:
+    $oGeneratedCodeInfo.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::GeneratedCodeInfo::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::GeneratedCodeInfo::SpaceUsedLong();
+AutoIt:
+    $oGeneratedCodeInfo.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::GeneratedCodeInfo::\_\_str\_\_
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::__str__( std::string* output );
+AutoIt:
+    $oGeneratedCodeInfo.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation
+
+### Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation.Count
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::Count
+AutoIt:
+    [propget] $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.Count
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::create
+
+```cpp
+static google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_GeneratedCodeInfo_Annotation").create() -> <google.protobuf.Repeated_google_protobuf_GeneratedCodeInfo_Annotation object>
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::CopyFrom( const google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation other );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::MergeFrom( const google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation other );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::Swap
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::Swap( google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation* other );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::SwapElements
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::SwapElements( int index1,
+                                                                                            int index2 );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::add
+
+```cpp
+google::protobuf::GeneratedCodeInfo::Annotation* google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::add();
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.add() -> retval
+```
+
+```cpp
+google::protobuf::GeneratedCodeInfo::Annotation* google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::add( const google::protobuf::GeneratedCodeInfo::Annotation* value );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::append
+
+```cpp
+google::protobuf::GeneratedCodeInfo::Annotation* google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::append( const google::protobuf::GeneratedCodeInfo::Annotation* value );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.append( $value ) -> retval
+```
+
+```cpp
+google::protobuf::GeneratedCodeInfo::Annotation* google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::clear
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::clear();
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.clear() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::empty
+
+```cpp
+bool google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::empty();
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.empty() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::extend
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::extend( const google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation& items );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::extend( const std::vector<std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation>>& items );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::get\_Item
+
+```cpp
+google::protobuf::GeneratedCodeInfo::Annotation* google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::get_Item( int index );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.Item( $index ) -> retval
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::get__NewEnum();
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::insert
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::insert( SSIZE_T                                                 index,
+                                                                                      const google::protobuf::GeneratedCodeInfo::Annotation*& item );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::pop
+
+```cpp
+std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation> google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::reverse
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::reverse();
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.reverse() -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::size
+
+```cpp
+int google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::size();
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.size() -> retval
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::slice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::slice( std::vector<std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation>> list,
+                                                                                     SSIZE_T                                                                       start,
+                                                                                     SSIZE_T                                                                       count );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::slice( std::vector<std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation>> list,
+                                                                                     SSIZE_T                                                                       start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::sort
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::sort( void*  comparator,
+                                                                                    size_t start = 0,
+                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::sort_variant( void*  comparator,
+                                                                                            size_t start = 0,
+                                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_google\_protobuf\_GeneratedCodeInfo\_Annotation::splice
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::splice( std::vector<std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation>> list,
+                                                                                      SSIZE_T                                                                       start,
+                                                                                      SSIZE_T                                                                       deleteCount );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation::splice( std::vector<std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation>> list,
+                                                                                      SSIZE_T                                                                       start = 0 );
+AutoIt:
+    $oRepeated_google_protobuf_GeneratedCodeInfo_Annotation.splice( [$start[, $list]] ) -> $list
+```
+
+## google::protobuf::GeneratedCodeInfo::Annotation
+
+### Annotation.path
+
+```cpp
+google::protobuf::Repeated_int* google::protobuf::GeneratedCodeInfo::Annotation::path
+AutoIt:
+    [propget, propput] $oAnnotation.path
+```
+
+### Annotation.source\_file
+
+```cpp
+std::string google::protobuf::GeneratedCodeInfo::Annotation::source_file
+AutoIt:
+    [propget, propput] $oAnnotation.source_file
+```
+
+### Annotation.begin
+
+```cpp
+int google::protobuf::GeneratedCodeInfo::Annotation::begin
+AutoIt:
+    [propget, propput] $oAnnotation.begin
+```
+
+### Annotation.end
+
+```cpp
+int google::protobuf::GeneratedCodeInfo::Annotation::end
+AutoIt:
+    [propget, propput] $oAnnotation.end
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::get\_create
+
+```cpp
+static google::protobuf::GeneratedCodeInfo::Annotation google::protobuf::GeneratedCodeInfo::Annotation::get_create( VARIANT*                   path = VARIANT*(),
+                                                                                                                    std::optional<std::string> source_file = std::optional<std::string>(),
+                                                                                                                    std::optional<int>         begin = std::optional<int>(),
+                                                                                                                    std::optional<int>         end = std::optional<int>() );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.GeneratedCodeInfo.Annotation").create( [$path[, $source_file[, $begin[, $end]]]] ) -> <google.protobuf.GeneratedCodeInfo.Annotation object>
+    $oAnnotation( [$path[, $source_file[, $begin[, $end]]]] ) -> <google.protobuf.GeneratedCodeInfo.Annotation object>
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::ByteSizeLong
+
+```cpp
+size_t google::protobuf::GeneratedCodeInfo::Annotation::ByteSizeLong();
+AutoIt:
+    $oAnnotation.ByteSizeLong() -> retval
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::CheckInitialized
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Annotation::CheckInitialized();
+AutoIt:
+    $oAnnotation.CheckInitialized() -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::Clear
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Annotation::Clear();
+AutoIt:
+    $oAnnotation.Clear() -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::ClearField
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Annotation::ClearField( const std::string& field_name );
+AutoIt:
+    $oAnnotation.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::CopyFrom
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Annotation::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oAnnotation.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::DiscardUnknownFields
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Annotation::DiscardUnknownFields();
+AutoIt:
+    $oAnnotation.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::FindInitializationErrors
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Annotation::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oAnnotation.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::IsInitialized
+
+```cpp
+bool google::protobuf::GeneratedCodeInfo::Annotation::IsInitialized();
+AutoIt:
+    $oAnnotation.IsInitialized() -> retval
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::SerializeAsString
+
+```cpp
+std::string google::protobuf::GeneratedCodeInfo::Annotation::SerializeAsString();
+AutoIt:
+    $oAnnotation.SerializeAsString() -> retval
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::SerializeToString
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Annotation::SerializeToString( std::string* output );
+AutoIt:
+    $oAnnotation.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::GeneratedCodeInfo::Annotation::SpaceUsedLong();
+AutoIt:
+    $oAnnotation.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::GeneratedCodeInfo::Annotation::\_\_str\_\_
+
+```cpp
+void google::protobuf::GeneratedCodeInfo::Annotation::__str__( std::string* output );
+AutoIt:
+    $oAnnotation.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::descriptor\_pb2
+
+### descriptor\_pb2.FileDescriptorSet
+
+```cpp
+static google::protobuf::FileDescriptorSet
+AutoIt:
+    [propget] $odescriptor_pb2.FileDescriptorSet
+```
+
+### descriptor\_pb2.FileDescriptorProto
+
+```cpp
+static google::protobuf::FileDescriptorProto
+AutoIt:
+    [propget] $odescriptor_pb2.FileDescriptorProto
+```
+
+### descriptor\_pb2.DescriptorProto
+
+```cpp
+static google::protobuf::DescriptorProto
+AutoIt:
+    [propget] $odescriptor_pb2.DescriptorProto
+```
+
+### descriptor\_pb2.ExtensionRangeOptions
+
+```cpp
+static google::protobuf::ExtensionRangeOptions
+AutoIt:
+    [propget] $odescriptor_pb2.ExtensionRangeOptions
+```
+
+### descriptor\_pb2.FieldDescriptorProto
+
+```cpp
+static google::protobuf::FieldDescriptorProto
+AutoIt:
+    [propget] $odescriptor_pb2.FieldDescriptorProto
+```
+
+### descriptor\_pb2.OneofDescriptorProto
+
+```cpp
+static google::protobuf::OneofDescriptorProto
+AutoIt:
+    [propget] $odescriptor_pb2.OneofDescriptorProto
+```
+
+### descriptor\_pb2.EnumDescriptorProto
+
+```cpp
+static google::protobuf::EnumDescriptorProto
+AutoIt:
+    [propget] $odescriptor_pb2.EnumDescriptorProto
+```
+
+### descriptor\_pb2.EnumValueDescriptorProto
+
+```cpp
+static google::protobuf::EnumValueDescriptorProto
+AutoIt:
+    [propget] $odescriptor_pb2.EnumValueDescriptorProto
+```
+
+### descriptor\_pb2.ServiceDescriptorProto
+
+```cpp
+static google::protobuf::ServiceDescriptorProto
+AutoIt:
+    [propget] $odescriptor_pb2.ServiceDescriptorProto
+```
+
+### descriptor\_pb2.MethodDescriptorProto
+
+```cpp
+static google::protobuf::MethodDescriptorProto
+AutoIt:
+    [propget] $odescriptor_pb2.MethodDescriptorProto
+```
+
+### descriptor\_pb2.FileOptions
+
+```cpp
+static google::protobuf::FileOptions
+AutoIt:
+    [propget] $odescriptor_pb2.FileOptions
+```
+
+### descriptor\_pb2.MessageOptions
+
+```cpp
+static google::protobuf::MessageOptions
+AutoIt:
+    [propget] $odescriptor_pb2.MessageOptions
+```
+
+### descriptor\_pb2.FieldOptions
+
+```cpp
+static google::protobuf::FieldOptions
+AutoIt:
+    [propget] $odescriptor_pb2.FieldOptions
+```
+
+### descriptor\_pb2.OneofOptions
+
+```cpp
+static google::protobuf::OneofOptions
+AutoIt:
+    [propget] $odescriptor_pb2.OneofOptions
+```
+
+### descriptor\_pb2.EnumOptions
+
+```cpp
+static google::protobuf::EnumOptions
+AutoIt:
+    [propget] $odescriptor_pb2.EnumOptions
+```
+
+### descriptor\_pb2.EnumValueOptions
+
+```cpp
+static google::protobuf::EnumValueOptions
+AutoIt:
+    [propget] $odescriptor_pb2.EnumValueOptions
+```
+
+### descriptor\_pb2.ServiceOptions
+
+```cpp
+static google::protobuf::ServiceOptions
+AutoIt:
+    [propget] $odescriptor_pb2.ServiceOptions
+```
+
+### descriptor\_pb2.MethodOptions
+
+```cpp
+static google::protobuf::MethodOptions
+AutoIt:
+    [propget] $odescriptor_pb2.MethodOptions
+```
+
+### descriptor\_pb2.UninterpretedOption
+
+```cpp
+static google::protobuf::UninterpretedOption
+AutoIt:
+    [propget] $odescriptor_pb2.UninterpretedOption
+```
+
+### descriptor\_pb2.SourceCodeInfo
+
+```cpp
+static google::protobuf::SourceCodeInfo
+AutoIt:
+    [propget] $odescriptor_pb2.SourceCodeInfo
+```
+
+### descriptor\_pb2.GeneratedCodeInfo
+
+```cpp
+static google::protobuf::GeneratedCodeInfo
+AutoIt:
+    [propget] $odescriptor_pb2.GeneratedCodeInfo
+```
+
+## google::protobuf::descriptor\_pb2::DescriptorProto
+
+### DescriptorProto.ExtensionRange
+
+```cpp
+static google::protobuf::DescriptorProto::ExtensionRange
+AutoIt:
+    [propget] $oDescriptorProto.ExtensionRange
+```
+
+### DescriptorProto.ReservedRange
+
+```cpp
+static google::protobuf::DescriptorProto::ReservedRange
+AutoIt:
+    [propget] $oDescriptorProto.ReservedRange
+```
+
+## google::protobuf::descriptor\_pb2::EnumDescriptorProto
+
+### EnumDescriptorProto.EnumReservedRange
+
+```cpp
+static google::protobuf::EnumDescriptorProto::EnumReservedRange
+AutoIt:
+    [propget] $oEnumDescriptorProto.EnumReservedRange
+```
+
+## google::protobuf::descriptor\_pb2::UninterpretedOption
+
+### UninterpretedOption.NamePart
+
+```cpp
+static google::protobuf::UninterpretedOption::NamePart
+AutoIt:
+    [propget] $oUninterpretedOption.NamePart
+```
+
+## google::protobuf::descriptor\_pb2::SourceCodeInfo
+
+### SourceCodeInfo.Location
+
+```cpp
+static google::protobuf::SourceCodeInfo::Location
+AutoIt:
+    [propget] $oSourceCodeInfo.Location
+```
+
+## google::protobuf::descriptor\_pb2::GeneratedCodeInfo
+
+### GeneratedCodeInfo.Annotation
+
+```cpp
+static google::protobuf::GeneratedCodeInfo::Annotation
+AutoIt:
+    [propget] $oGeneratedCodeInfo.Annotation
 ```
 
 ## mediapipe::Landmark
@@ -63035,6 +72037,3066 @@ AutoIt:
 void* VectorOfShared_ptrDetection::start();
 AutoIt:
     $oVectorOfShared_ptrDetection.start() -> retval
+```
+
+## VectorOfShared\_ptrFileDescriptorProto
+
+### VectorOfShared\_ptrFileDescriptorProto.Count
+
+```cpp
+size_t VectorOfShared_ptrFileDescriptorProto::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrFileDescriptorProto.Count
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::create
+
+```cpp
+static VectorOfShared_ptrFileDescriptorProto VectorOfShared_ptrFileDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrFileDescriptorProto").create() -> <VectorOfShared_ptrFileDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrFileDescriptorProto VectorOfShared_ptrFileDescriptorProto::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrFileDescriptorProto").create( $size ) -> <VectorOfShared_ptrFileDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrFileDescriptorProto VectorOfShared_ptrFileDescriptorProto::create( VectorOfShared_ptrFileDescriptorProto other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrFileDescriptorProto").create( $other ) -> <VectorOfShared_ptrFileDescriptorProto object>
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::Add
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::Add( std::shared_ptr<google::protobuf::FileDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::Items
+
+```cpp
+VectorOfShared_ptrFileDescriptorProto VectorOfShared_ptrFileDescriptorProto::Items();
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.Items() -> retval
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrFileDescriptorProto::Keys();
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.Keys() -> retval
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::Remove
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::append
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::append( std::shared_ptr<google::protobuf::FileDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::at
+
+```cpp
+std::shared_ptr<google::protobuf::FileDescriptorProto> VectorOfShared_ptrFileDescriptorProto::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::at( size_t                                                 index,
+                                                std::shared_ptr<google::protobuf::FileDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::clear
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::clear();
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.clear() -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::empty
+
+```cpp
+bool VectorOfShared_ptrFileDescriptorProto::empty();
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.empty() -> retval
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::end
+
+```cpp
+void* VectorOfShared_ptrFileDescriptorProto::end();
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.end() -> retval
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::FileDescriptorProto> VectorOfShared_ptrFileDescriptorProto::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.Item( $index ) -> retval
+    $oVectorOfShared_ptrFileDescriptorProto( $index ) -> retval
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrFileDescriptorProto::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::push\_back
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::push_back( std::shared_ptr<google::protobuf::FileDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::push\_vector
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::push_vector( VectorOfShared_ptrFileDescriptorProto other );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::push_vector( VectorOfShared_ptrFileDescriptorProto other,
+                                                         size_t                                count,
+                                                         size_t                                start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::put\_Item
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::put_Item( size_t                                                 index,
+                                                      std::shared_ptr<google::protobuf::FileDescriptorProto> item );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::size
+
+```cpp
+size_t VectorOfShared_ptrFileDescriptorProto::size();
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.size() -> retval
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::slice
+
+```cpp
+VectorOfShared_ptrFileDescriptorProto VectorOfShared_ptrFileDescriptorProto::slice( size_t start = 0,
+                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::sort
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::sort( void*  comparator,
+                                                  size_t start = 0,
+                                                  size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::sort\_variant
+
+```cpp
+void VectorOfShared_ptrFileDescriptorProto::sort_variant( void*  comparator,
+                                                          size_t start = 0,
+                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrFileDescriptorProto::start
+
+```cpp
+void* VectorOfShared_ptrFileDescriptorProto::start();
+AutoIt:
+    $oVectorOfShared_ptrFileDescriptorProto.start() -> retval
+```
+
+## VectorOfShared\_ptrDescriptorProto
+
+### VectorOfShared\_ptrDescriptorProto.Count
+
+```cpp
+size_t VectorOfShared_ptrDescriptorProto::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrDescriptorProto.Count
+```
+
+### VectorOfShared\_ptrDescriptorProto::create
+
+```cpp
+static VectorOfShared_ptrDescriptorProto VectorOfShared_ptrDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto").create() -> <VectorOfShared_ptrDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrDescriptorProto VectorOfShared_ptrDescriptorProto::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto").create( $size ) -> <VectorOfShared_ptrDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrDescriptorProto VectorOfShared_ptrDescriptorProto::create( VectorOfShared_ptrDescriptorProto other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto").create( $other ) -> <VectorOfShared_ptrDescriptorProto object>
+```
+
+### VectorOfShared\_ptrDescriptorProto::Add
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::Add( std::shared_ptr<google::protobuf::DescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::Items
+
+```cpp
+VectorOfShared_ptrDescriptorProto VectorOfShared_ptrDescriptorProto::Items();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.Items() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrDescriptorProto::Keys();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.Keys() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto::Remove
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::append
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::append( std::shared_ptr<google::protobuf::DescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::at
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto> VectorOfShared_ptrDescriptorProto::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::at( size_t                                             index,
+                                            std::shared_ptr<google::protobuf::DescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::clear
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::clear();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.clear() -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::empty
+
+```cpp
+bool VectorOfShared_ptrDescriptorProto::empty();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.empty() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto::end
+
+```cpp
+void* VectorOfShared_ptrDescriptorProto::end();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.end() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto> VectorOfShared_ptrDescriptorProto::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.Item( $index ) -> retval
+    $oVectorOfShared_ptrDescriptorProto( $index ) -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrDescriptorProto::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto::push\_back
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::push_back( std::shared_ptr<google::protobuf::DescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::push\_vector
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::push_vector( VectorOfShared_ptrDescriptorProto other );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::push_vector( VectorOfShared_ptrDescriptorProto other,
+                                                     size_t                            count,
+                                                     size_t                            start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::put\_Item
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::put_Item( size_t                                             index,
+                                                  std::shared_ptr<google::protobuf::DescriptorProto> item );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrDescriptorProto::size
+
+```cpp
+size_t VectorOfShared_ptrDescriptorProto::size();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.size() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto::slice
+
+```cpp
+VectorOfShared_ptrDescriptorProto VectorOfShared_ptrDescriptorProto::slice( size_t start = 0,
+                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto::sort
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::sort( void*  comparator,
+                                              size_t start = 0,
+                                              size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::sort\_variant
+
+```cpp
+void VectorOfShared_ptrDescriptorProto::sort_variant( void*  comparator,
+                                                      size_t start = 0,
+                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto::start
+
+```cpp
+void* VectorOfShared_ptrDescriptorProto::start();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto.start() -> retval
+```
+
+## VectorOfShared\_ptrEnumDescriptorProto
+
+### VectorOfShared\_ptrEnumDescriptorProto.Count
+
+```cpp
+size_t VectorOfShared_ptrEnumDescriptorProto::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrEnumDescriptorProto.Count
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::create
+
+```cpp
+static VectorOfShared_ptrEnumDescriptorProto VectorOfShared_ptrEnumDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumDescriptorProto").create() -> <VectorOfShared_ptrEnumDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrEnumDescriptorProto VectorOfShared_ptrEnumDescriptorProto::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumDescriptorProto").create( $size ) -> <VectorOfShared_ptrEnumDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrEnumDescriptorProto VectorOfShared_ptrEnumDescriptorProto::create( VectorOfShared_ptrEnumDescriptorProto other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumDescriptorProto").create( $other ) -> <VectorOfShared_ptrEnumDescriptorProto object>
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::Add
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::Add( std::shared_ptr<google::protobuf::EnumDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::Items
+
+```cpp
+VectorOfShared_ptrEnumDescriptorProto VectorOfShared_ptrEnumDescriptorProto::Items();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.Items() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrEnumDescriptorProto::Keys();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.Keys() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::Remove
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::append
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::append( std::shared_ptr<google::protobuf::EnumDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::at
+
+```cpp
+std::shared_ptr<google::protobuf::EnumDescriptorProto> VectorOfShared_ptrEnumDescriptorProto::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::at( size_t                                                 index,
+                                                std::shared_ptr<google::protobuf::EnumDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::clear
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::clear();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.clear() -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::empty
+
+```cpp
+bool VectorOfShared_ptrEnumDescriptorProto::empty();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.empty() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::end
+
+```cpp
+void* VectorOfShared_ptrEnumDescriptorProto::end();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.end() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::EnumDescriptorProto> VectorOfShared_ptrEnumDescriptorProto::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.Item( $index ) -> retval
+    $oVectorOfShared_ptrEnumDescriptorProto( $index ) -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrEnumDescriptorProto::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::push\_back
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::push_back( std::shared_ptr<google::protobuf::EnumDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::push\_vector
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::push_vector( VectorOfShared_ptrEnumDescriptorProto other );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::push_vector( VectorOfShared_ptrEnumDescriptorProto other,
+                                                         size_t                                count,
+                                                         size_t                                start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::put\_Item
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::put_Item( size_t                                                 index,
+                                                      std::shared_ptr<google::protobuf::EnumDescriptorProto> item );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::size
+
+```cpp
+size_t VectorOfShared_ptrEnumDescriptorProto::size();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.size() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::slice
+
+```cpp
+VectorOfShared_ptrEnumDescriptorProto VectorOfShared_ptrEnumDescriptorProto::slice( size_t start = 0,
+                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::sort
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::sort( void*  comparator,
+                                                  size_t start = 0,
+                                                  size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::sort\_variant
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto::sort_variant( void*  comparator,
+                                                          size_t start = 0,
+                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto::start
+
+```cpp
+void* VectorOfShared_ptrEnumDescriptorProto::start();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto.start() -> retval
+```
+
+## VectorOfShared\_ptrServiceDescriptorProto
+
+### VectorOfShared\_ptrServiceDescriptorProto.Count
+
+```cpp
+size_t VectorOfShared_ptrServiceDescriptorProto::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrServiceDescriptorProto.Count
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::create
+
+```cpp
+static VectorOfShared_ptrServiceDescriptorProto VectorOfShared_ptrServiceDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrServiceDescriptorProto").create() -> <VectorOfShared_ptrServiceDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrServiceDescriptorProto VectorOfShared_ptrServiceDescriptorProto::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrServiceDescriptorProto").create( $size ) -> <VectorOfShared_ptrServiceDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrServiceDescriptorProto VectorOfShared_ptrServiceDescriptorProto::create( VectorOfShared_ptrServiceDescriptorProto other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrServiceDescriptorProto").create( $other ) -> <VectorOfShared_ptrServiceDescriptorProto object>
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::Add
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::Add( std::shared_ptr<google::protobuf::ServiceDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::Items
+
+```cpp
+VectorOfShared_ptrServiceDescriptorProto VectorOfShared_ptrServiceDescriptorProto::Items();
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.Items() -> retval
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrServiceDescriptorProto::Keys();
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.Keys() -> retval
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::Remove
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::append
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::append( std::shared_ptr<google::protobuf::ServiceDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::at
+
+```cpp
+std::shared_ptr<google::protobuf::ServiceDescriptorProto> VectorOfShared_ptrServiceDescriptorProto::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::at( size_t                                                    index,
+                                                   std::shared_ptr<google::protobuf::ServiceDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::clear
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::clear();
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.clear() -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::empty
+
+```cpp
+bool VectorOfShared_ptrServiceDescriptorProto::empty();
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.empty() -> retval
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::end
+
+```cpp
+void* VectorOfShared_ptrServiceDescriptorProto::end();
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.end() -> retval
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::ServiceDescriptorProto> VectorOfShared_ptrServiceDescriptorProto::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.Item( $index ) -> retval
+    $oVectorOfShared_ptrServiceDescriptorProto( $index ) -> retval
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrServiceDescriptorProto::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::push\_back
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::push_back( std::shared_ptr<google::protobuf::ServiceDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::push\_vector
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::push_vector( VectorOfShared_ptrServiceDescriptorProto other );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::push_vector( VectorOfShared_ptrServiceDescriptorProto other,
+                                                            size_t                                   count,
+                                                            size_t                                   start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::put\_Item
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::put_Item( size_t                                                    index,
+                                                         std::shared_ptr<google::protobuf::ServiceDescriptorProto> item );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::size
+
+```cpp
+size_t VectorOfShared_ptrServiceDescriptorProto::size();
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.size() -> retval
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::slice
+
+```cpp
+VectorOfShared_ptrServiceDescriptorProto VectorOfShared_ptrServiceDescriptorProto::slice( size_t start = 0,
+                                                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::sort
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::sort( void*  comparator,
+                                                     size_t start = 0,
+                                                     size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::sort\_variant
+
+```cpp
+void VectorOfShared_ptrServiceDescriptorProto::sort_variant( void*  comparator,
+                                                             size_t start = 0,
+                                                             size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrServiceDescriptorProto::start
+
+```cpp
+void* VectorOfShared_ptrServiceDescriptorProto::start();
+AutoIt:
+    $oVectorOfShared_ptrServiceDescriptorProto.start() -> retval
+```
+
+## VectorOfShared\_ptrFieldDescriptorProto
+
+### VectorOfShared\_ptrFieldDescriptorProto.Count
+
+```cpp
+size_t VectorOfShared_ptrFieldDescriptorProto::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrFieldDescriptorProto.Count
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::create
+
+```cpp
+static VectorOfShared_ptrFieldDescriptorProto VectorOfShared_ptrFieldDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrFieldDescriptorProto").create() -> <VectorOfShared_ptrFieldDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrFieldDescriptorProto VectorOfShared_ptrFieldDescriptorProto::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrFieldDescriptorProto").create( $size ) -> <VectorOfShared_ptrFieldDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrFieldDescriptorProto VectorOfShared_ptrFieldDescriptorProto::create( VectorOfShared_ptrFieldDescriptorProto other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrFieldDescriptorProto").create( $other ) -> <VectorOfShared_ptrFieldDescriptorProto object>
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::Add
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::Add( std::shared_ptr<google::protobuf::FieldDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::Items
+
+```cpp
+VectorOfShared_ptrFieldDescriptorProto VectorOfShared_ptrFieldDescriptorProto::Items();
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.Items() -> retval
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrFieldDescriptorProto::Keys();
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.Keys() -> retval
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::Remove
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::append
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::append( std::shared_ptr<google::protobuf::FieldDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::at
+
+```cpp
+std::shared_ptr<google::protobuf::FieldDescriptorProto> VectorOfShared_ptrFieldDescriptorProto::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::at( size_t                                                  index,
+                                                 std::shared_ptr<google::protobuf::FieldDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::clear
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::clear();
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.clear() -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::empty
+
+```cpp
+bool VectorOfShared_ptrFieldDescriptorProto::empty();
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.empty() -> retval
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::end
+
+```cpp
+void* VectorOfShared_ptrFieldDescriptorProto::end();
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.end() -> retval
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::FieldDescriptorProto> VectorOfShared_ptrFieldDescriptorProto::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.Item( $index ) -> retval
+    $oVectorOfShared_ptrFieldDescriptorProto( $index ) -> retval
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrFieldDescriptorProto::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::push\_back
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::push_back( std::shared_ptr<google::protobuf::FieldDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::push\_vector
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::push_vector( VectorOfShared_ptrFieldDescriptorProto other );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::push_vector( VectorOfShared_ptrFieldDescriptorProto other,
+                                                          size_t                                 count,
+                                                          size_t                                 start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::put\_Item
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::put_Item( size_t                                                  index,
+                                                       std::shared_ptr<google::protobuf::FieldDescriptorProto> item );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::size
+
+```cpp
+size_t VectorOfShared_ptrFieldDescriptorProto::size();
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.size() -> retval
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::slice
+
+```cpp
+VectorOfShared_ptrFieldDescriptorProto VectorOfShared_ptrFieldDescriptorProto::slice( size_t start = 0,
+                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::sort
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::sort( void*  comparator,
+                                                   size_t start = 0,
+                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::sort\_variant
+
+```cpp
+void VectorOfShared_ptrFieldDescriptorProto::sort_variant( void*  comparator,
+                                                           size_t start = 0,
+                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrFieldDescriptorProto::start
+
+```cpp
+void* VectorOfShared_ptrFieldDescriptorProto::start();
+AutoIt:
+    $oVectorOfShared_ptrFieldDescriptorProto.start() -> retval
+```
+
+## VectorOfShared\_ptrDescriptorProto\_ExtensionRange
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange.Count
+
+```cpp
+size_t VectorOfShared_ptrDescriptorProto_ExtensionRange::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrDescriptorProto_ExtensionRange.Count
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::create
+
+```cpp
+static VectorOfShared_ptrDescriptorProto_ExtensionRange VectorOfShared_ptrDescriptorProto_ExtensionRange::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto_ExtensionRange").create() -> <VectorOfShared_ptrDescriptorProto_ExtensionRange object>
+```
+
+```cpp
+static VectorOfShared_ptrDescriptorProto_ExtensionRange VectorOfShared_ptrDescriptorProto_ExtensionRange::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto_ExtensionRange").create( $size ) -> <VectorOfShared_ptrDescriptorProto_ExtensionRange object>
+```
+
+```cpp
+static VectorOfShared_ptrDescriptorProto_ExtensionRange VectorOfShared_ptrDescriptorProto_ExtensionRange::create( VectorOfShared_ptrDescriptorProto_ExtensionRange other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto_ExtensionRange").create( $other ) -> <VectorOfShared_ptrDescriptorProto_ExtensionRange object>
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::Add
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::Add( std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::Items
+
+```cpp
+VectorOfShared_ptrDescriptorProto_ExtensionRange VectorOfShared_ptrDescriptorProto_ExtensionRange::Items();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.Items() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrDescriptorProto_ExtensionRange::Keys();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.Keys() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::Remove
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::append
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::append( std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::at
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange> VectorOfShared_ptrDescriptorProto_ExtensionRange::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::at( size_t                                                             index,
+                                                           std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::clear
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::clear();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.clear() -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::empty
+
+```cpp
+bool VectorOfShared_ptrDescriptorProto_ExtensionRange::empty();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.empty() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::end
+
+```cpp
+void* VectorOfShared_ptrDescriptorProto_ExtensionRange::end();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.end() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange> VectorOfShared_ptrDescriptorProto_ExtensionRange::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.Item( $index ) -> retval
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange( $index ) -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrDescriptorProto_ExtensionRange::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::push\_back
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::push_back( std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::push\_vector
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::push_vector( VectorOfShared_ptrDescriptorProto_ExtensionRange other );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::push_vector( VectorOfShared_ptrDescriptorProto_ExtensionRange other,
+                                                                    size_t                                           count,
+                                                                    size_t                                           start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::put\_Item
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::put_Item( size_t                                                             index,
+                                                                 std::shared_ptr<google::protobuf::DescriptorProto::ExtensionRange> item );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::size
+
+```cpp
+size_t VectorOfShared_ptrDescriptorProto_ExtensionRange::size();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.size() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::slice
+
+```cpp
+VectorOfShared_ptrDescriptorProto_ExtensionRange VectorOfShared_ptrDescriptorProto_ExtensionRange::slice( size_t start = 0,
+                                                                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::sort
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::sort( void*  comparator,
+                                                             size_t start = 0,
+                                                             size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::sort\_variant
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ExtensionRange::sort_variant( void*  comparator,
+                                                                     size_t start = 0,
+                                                                     size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ExtensionRange::start
+
+```cpp
+void* VectorOfShared_ptrDescriptorProto_ExtensionRange::start();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ExtensionRange.start() -> retval
+```
+
+## VectorOfShared\_ptrOneofDescriptorProto
+
+### VectorOfShared\_ptrOneofDescriptorProto.Count
+
+```cpp
+size_t VectorOfShared_ptrOneofDescriptorProto::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrOneofDescriptorProto.Count
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::create
+
+```cpp
+static VectorOfShared_ptrOneofDescriptorProto VectorOfShared_ptrOneofDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrOneofDescriptorProto").create() -> <VectorOfShared_ptrOneofDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrOneofDescriptorProto VectorOfShared_ptrOneofDescriptorProto::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrOneofDescriptorProto").create( $size ) -> <VectorOfShared_ptrOneofDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrOneofDescriptorProto VectorOfShared_ptrOneofDescriptorProto::create( VectorOfShared_ptrOneofDescriptorProto other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrOneofDescriptorProto").create( $other ) -> <VectorOfShared_ptrOneofDescriptorProto object>
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::Add
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::Add( std::shared_ptr<google::protobuf::OneofDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::Items
+
+```cpp
+VectorOfShared_ptrOneofDescriptorProto VectorOfShared_ptrOneofDescriptorProto::Items();
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.Items() -> retval
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrOneofDescriptorProto::Keys();
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.Keys() -> retval
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::Remove
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::append
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::append( std::shared_ptr<google::protobuf::OneofDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::at
+
+```cpp
+std::shared_ptr<google::protobuf::OneofDescriptorProto> VectorOfShared_ptrOneofDescriptorProto::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::at( size_t                                                  index,
+                                                 std::shared_ptr<google::protobuf::OneofDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::clear
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::clear();
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.clear() -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::empty
+
+```cpp
+bool VectorOfShared_ptrOneofDescriptorProto::empty();
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.empty() -> retval
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::end
+
+```cpp
+void* VectorOfShared_ptrOneofDescriptorProto::end();
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.end() -> retval
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::OneofDescriptorProto> VectorOfShared_ptrOneofDescriptorProto::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.Item( $index ) -> retval
+    $oVectorOfShared_ptrOneofDescriptorProto( $index ) -> retval
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrOneofDescriptorProto::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::push\_back
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::push_back( std::shared_ptr<google::protobuf::OneofDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::push\_vector
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::push_vector( VectorOfShared_ptrOneofDescriptorProto other );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::push_vector( VectorOfShared_ptrOneofDescriptorProto other,
+                                                          size_t                                 count,
+                                                          size_t                                 start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::put\_Item
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::put_Item( size_t                                                  index,
+                                                       std::shared_ptr<google::protobuf::OneofDescriptorProto> item );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::size
+
+```cpp
+size_t VectorOfShared_ptrOneofDescriptorProto::size();
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.size() -> retval
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::slice
+
+```cpp
+VectorOfShared_ptrOneofDescriptorProto VectorOfShared_ptrOneofDescriptorProto::slice( size_t start = 0,
+                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::sort
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::sort( void*  comparator,
+                                                   size_t start = 0,
+                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::sort\_variant
+
+```cpp
+void VectorOfShared_ptrOneofDescriptorProto::sort_variant( void*  comparator,
+                                                           size_t start = 0,
+                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrOneofDescriptorProto::start
+
+```cpp
+void* VectorOfShared_ptrOneofDescriptorProto::start();
+AutoIt:
+    $oVectorOfShared_ptrOneofDescriptorProto.start() -> retval
+```
+
+## VectorOfShared\_ptrDescriptorProto\_ReservedRange
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange.Count
+
+```cpp
+size_t VectorOfShared_ptrDescriptorProto_ReservedRange::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrDescriptorProto_ReservedRange.Count
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::create
+
+```cpp
+static VectorOfShared_ptrDescriptorProto_ReservedRange VectorOfShared_ptrDescriptorProto_ReservedRange::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto_ReservedRange").create() -> <VectorOfShared_ptrDescriptorProto_ReservedRange object>
+```
+
+```cpp
+static VectorOfShared_ptrDescriptorProto_ReservedRange VectorOfShared_ptrDescriptorProto_ReservedRange::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto_ReservedRange").create( $size ) -> <VectorOfShared_ptrDescriptorProto_ReservedRange object>
+```
+
+```cpp
+static VectorOfShared_ptrDescriptorProto_ReservedRange VectorOfShared_ptrDescriptorProto_ReservedRange::create( VectorOfShared_ptrDescriptorProto_ReservedRange other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrDescriptorProto_ReservedRange").create( $other ) -> <VectorOfShared_ptrDescriptorProto_ReservedRange object>
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::Add
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::Add( std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::Items
+
+```cpp
+VectorOfShared_ptrDescriptorProto_ReservedRange VectorOfShared_ptrDescriptorProto_ReservedRange::Items();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.Items() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrDescriptorProto_ReservedRange::Keys();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.Keys() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::Remove
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::append
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::append( std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::at
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange> VectorOfShared_ptrDescriptorProto_ReservedRange::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::at( size_t                                                            index,
+                                                          std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::clear
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::clear();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.clear() -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::empty
+
+```cpp
+bool VectorOfShared_ptrDescriptorProto_ReservedRange::empty();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.empty() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::end
+
+```cpp
+void* VectorOfShared_ptrDescriptorProto_ReservedRange::end();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.end() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange> VectorOfShared_ptrDescriptorProto_ReservedRange::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.Item( $index ) -> retval
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange( $index ) -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrDescriptorProto_ReservedRange::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::push\_back
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::push_back( std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange> value );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::push\_vector
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::push_vector( VectorOfShared_ptrDescriptorProto_ReservedRange other );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::push_vector( VectorOfShared_ptrDescriptorProto_ReservedRange other,
+                                                                   size_t                                          count,
+                                                                   size_t                                          start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::put\_Item
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::put_Item( size_t                                                            index,
+                                                                std::shared_ptr<google::protobuf::DescriptorProto::ReservedRange> item );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::size
+
+```cpp
+size_t VectorOfShared_ptrDescriptorProto_ReservedRange::size();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.size() -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::slice
+
+```cpp
+VectorOfShared_ptrDescriptorProto_ReservedRange VectorOfShared_ptrDescriptorProto_ReservedRange::slice( size_t start = 0,
+                                                                                                        size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::sort
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::sort( void*  comparator,
+                                                            size_t start = 0,
+                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::sort\_variant
+
+```cpp
+void VectorOfShared_ptrDescriptorProto_ReservedRange::sort_variant( void*  comparator,
+                                                                    size_t start = 0,
+                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrDescriptorProto\_ReservedRange::start
+
+```cpp
+void* VectorOfShared_ptrDescriptorProto_ReservedRange::start();
+AutoIt:
+    $oVectorOfShared_ptrDescriptorProto_ReservedRange.start() -> retval
+```
+
+## VectorOfShared\_ptrUninterpretedOption
+
+### VectorOfShared\_ptrUninterpretedOption.Count
+
+```cpp
+size_t VectorOfShared_ptrUninterpretedOption::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrUninterpretedOption.Count
+```
+
+### VectorOfShared\_ptrUninterpretedOption::create
+
+```cpp
+static VectorOfShared_ptrUninterpretedOption VectorOfShared_ptrUninterpretedOption::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrUninterpretedOption").create() -> <VectorOfShared_ptrUninterpretedOption object>
+```
+
+```cpp
+static VectorOfShared_ptrUninterpretedOption VectorOfShared_ptrUninterpretedOption::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrUninterpretedOption").create( $size ) -> <VectorOfShared_ptrUninterpretedOption object>
+```
+
+```cpp
+static VectorOfShared_ptrUninterpretedOption VectorOfShared_ptrUninterpretedOption::create( VectorOfShared_ptrUninterpretedOption other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrUninterpretedOption").create( $other ) -> <VectorOfShared_ptrUninterpretedOption object>
+```
+
+### VectorOfShared\_ptrUninterpretedOption::Add
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::Add( std::shared_ptr<google::protobuf::UninterpretedOption> value );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::Items
+
+```cpp
+VectorOfShared_ptrUninterpretedOption VectorOfShared_ptrUninterpretedOption::Items();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.Items() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrUninterpretedOption::Keys();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.Keys() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption::Remove
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::append
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::append( std::shared_ptr<google::protobuf::UninterpretedOption> value );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::at
+
+```cpp
+std::shared_ptr<google::protobuf::UninterpretedOption> VectorOfShared_ptrUninterpretedOption::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::at( size_t                                                 index,
+                                                std::shared_ptr<google::protobuf::UninterpretedOption> value );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::clear
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::clear();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.clear() -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::empty
+
+```cpp
+bool VectorOfShared_ptrUninterpretedOption::empty();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.empty() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption::end
+
+```cpp
+void* VectorOfShared_ptrUninterpretedOption::end();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.end() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::UninterpretedOption> VectorOfShared_ptrUninterpretedOption::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.Item( $index ) -> retval
+    $oVectorOfShared_ptrUninterpretedOption( $index ) -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrUninterpretedOption::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption::push\_back
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::push_back( std::shared_ptr<google::protobuf::UninterpretedOption> value );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::push\_vector
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::push_vector( VectorOfShared_ptrUninterpretedOption other );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::push_vector( VectorOfShared_ptrUninterpretedOption other,
+                                                         size_t                                count,
+                                                         size_t                                start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::put\_Item
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::put_Item( size_t                                                 index,
+                                                      std::shared_ptr<google::protobuf::UninterpretedOption> item );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrUninterpretedOption::size
+
+```cpp
+size_t VectorOfShared_ptrUninterpretedOption::size();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.size() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption::slice
+
+```cpp
+VectorOfShared_ptrUninterpretedOption VectorOfShared_ptrUninterpretedOption::slice( size_t start = 0,
+                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption::sort
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::sort( void*  comparator,
+                                                  size_t start = 0,
+                                                  size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::sort\_variant
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption::sort_variant( void*  comparator,
+                                                          size_t start = 0,
+                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption::start
+
+```cpp
+void* VectorOfShared_ptrUninterpretedOption::start();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption.start() -> retval
+```
+
+## VectorOfShared\_ptrEnumValueDescriptorProto
+
+### VectorOfShared\_ptrEnumValueDescriptorProto.Count
+
+```cpp
+size_t VectorOfShared_ptrEnumValueDescriptorProto::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrEnumValueDescriptorProto.Count
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::create
+
+```cpp
+static VectorOfShared_ptrEnumValueDescriptorProto VectorOfShared_ptrEnumValueDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumValueDescriptorProto").create() -> <VectorOfShared_ptrEnumValueDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrEnumValueDescriptorProto VectorOfShared_ptrEnumValueDescriptorProto::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumValueDescriptorProto").create( $size ) -> <VectorOfShared_ptrEnumValueDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrEnumValueDescriptorProto VectorOfShared_ptrEnumValueDescriptorProto::create( VectorOfShared_ptrEnumValueDescriptorProto other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumValueDescriptorProto").create( $other ) -> <VectorOfShared_ptrEnumValueDescriptorProto object>
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::Add
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::Add( std::shared_ptr<google::protobuf::EnumValueDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::Items
+
+```cpp
+VectorOfShared_ptrEnumValueDescriptorProto VectorOfShared_ptrEnumValueDescriptorProto::Items();
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.Items() -> retval
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrEnumValueDescriptorProto::Keys();
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.Keys() -> retval
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::Remove
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::append
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::append( std::shared_ptr<google::protobuf::EnumValueDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::at
+
+```cpp
+std::shared_ptr<google::protobuf::EnumValueDescriptorProto> VectorOfShared_ptrEnumValueDescriptorProto::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::at( size_t                                                      index,
+                                                     std::shared_ptr<google::protobuf::EnumValueDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::clear
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::clear();
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.clear() -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::empty
+
+```cpp
+bool VectorOfShared_ptrEnumValueDescriptorProto::empty();
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.empty() -> retval
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::end
+
+```cpp
+void* VectorOfShared_ptrEnumValueDescriptorProto::end();
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.end() -> retval
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::EnumValueDescriptorProto> VectorOfShared_ptrEnumValueDescriptorProto::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.Item( $index ) -> retval
+    $oVectorOfShared_ptrEnumValueDescriptorProto( $index ) -> retval
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrEnumValueDescriptorProto::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::push\_back
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::push_back( std::shared_ptr<google::protobuf::EnumValueDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::push\_vector
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::push_vector( VectorOfShared_ptrEnumValueDescriptorProto other );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::push_vector( VectorOfShared_ptrEnumValueDescriptorProto other,
+                                                              size_t                                     count,
+                                                              size_t                                     start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::put\_Item
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::put_Item( size_t                                                      index,
+                                                           std::shared_ptr<google::protobuf::EnumValueDescriptorProto> item );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::size
+
+```cpp
+size_t VectorOfShared_ptrEnumValueDescriptorProto::size();
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.size() -> retval
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::slice
+
+```cpp
+VectorOfShared_ptrEnumValueDescriptorProto VectorOfShared_ptrEnumValueDescriptorProto::slice( size_t start = 0,
+                                                                                              size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::sort
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::sort( void*  comparator,
+                                                       size_t start = 0,
+                                                       size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::sort\_variant
+
+```cpp
+void VectorOfShared_ptrEnumValueDescriptorProto::sort_variant( void*  comparator,
+                                                               size_t start = 0,
+                                                               size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrEnumValueDescriptorProto::start
+
+```cpp
+void* VectorOfShared_ptrEnumValueDescriptorProto::start();
+AutoIt:
+    $oVectorOfShared_ptrEnumValueDescriptorProto.start() -> retval
+```
+
+## VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange.Count
+
+```cpp
+size_t VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.Count
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::create
+
+```cpp
+static VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange").create() -> <VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange object>
+```
+
+```cpp
+static VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange").create( $size ) -> <VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange object>
+```
+
+```cpp
+static VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::create( VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange").create( $other ) -> <VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange object>
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::Add
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::Add( std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::Items
+
+```cpp
+VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::Items();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.Items() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::Keys();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.Keys() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::Remove
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::append
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::append( std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::at
+
+```cpp
+std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange> VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::at( size_t                                                                    index,
+                                                                  std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::clear
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::clear();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.clear() -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::empty
+
+```cpp
+bool VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::empty();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.empty() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::end
+
+```cpp
+void* VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::end();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.end() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange> VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.Item( $index ) -> retval
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange( $index ) -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::push\_back
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::push_back( std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange> value );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::push\_vector
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::push_vector( VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange other );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::push_vector( VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange other,
+                                                                           size_t                                                  count,
+                                                                           size_t                                                  start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::put\_Item
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::put_Item( size_t                                                                    index,
+                                                                        std::shared_ptr<google::protobuf::EnumDescriptorProto::EnumReservedRange> item );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::size
+
+```cpp
+size_t VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::size();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.size() -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::slice
+
+```cpp
+VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::slice( size_t start = 0,
+                                                                                                                        size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::sort
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::sort( void*  comparator,
+                                                                    size_t start = 0,
+                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::sort\_variant
+
+```cpp
+void VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::sort_variant( void*  comparator,
+                                                                            size_t start = 0,
+                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrEnumDescriptorProto\_EnumReservedRange::start
+
+```cpp
+void* VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange::start();
+AutoIt:
+    $oVectorOfShared_ptrEnumDescriptorProto_EnumReservedRange.start() -> retval
+```
+
+## VectorOfShared\_ptrMethodDescriptorProto
+
+### VectorOfShared\_ptrMethodDescriptorProto.Count
+
+```cpp
+size_t VectorOfShared_ptrMethodDescriptorProto::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrMethodDescriptorProto.Count
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::create
+
+```cpp
+static VectorOfShared_ptrMethodDescriptorProto VectorOfShared_ptrMethodDescriptorProto::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrMethodDescriptorProto").create() -> <VectorOfShared_ptrMethodDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrMethodDescriptorProto VectorOfShared_ptrMethodDescriptorProto::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrMethodDescriptorProto").create( $size ) -> <VectorOfShared_ptrMethodDescriptorProto object>
+```
+
+```cpp
+static VectorOfShared_ptrMethodDescriptorProto VectorOfShared_ptrMethodDescriptorProto::create( VectorOfShared_ptrMethodDescriptorProto other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrMethodDescriptorProto").create( $other ) -> <VectorOfShared_ptrMethodDescriptorProto object>
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::Add
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::Add( std::shared_ptr<google::protobuf::MethodDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::Items
+
+```cpp
+VectorOfShared_ptrMethodDescriptorProto VectorOfShared_ptrMethodDescriptorProto::Items();
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.Items() -> retval
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrMethodDescriptorProto::Keys();
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.Keys() -> retval
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::Remove
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::append
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::append( std::shared_ptr<google::protobuf::MethodDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::at
+
+```cpp
+std::shared_ptr<google::protobuf::MethodDescriptorProto> VectorOfShared_ptrMethodDescriptorProto::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::at( size_t                                                   index,
+                                                  std::shared_ptr<google::protobuf::MethodDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::clear
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::clear();
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.clear() -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::empty
+
+```cpp
+bool VectorOfShared_ptrMethodDescriptorProto::empty();
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.empty() -> retval
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::end
+
+```cpp
+void* VectorOfShared_ptrMethodDescriptorProto::end();
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.end() -> retval
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::MethodDescriptorProto> VectorOfShared_ptrMethodDescriptorProto::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.Item( $index ) -> retval
+    $oVectorOfShared_ptrMethodDescriptorProto( $index ) -> retval
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrMethodDescriptorProto::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::push\_back
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::push_back( std::shared_ptr<google::protobuf::MethodDescriptorProto> value );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::push\_vector
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::push_vector( VectorOfShared_ptrMethodDescriptorProto other );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::push_vector( VectorOfShared_ptrMethodDescriptorProto other,
+                                                           size_t                                  count,
+                                                           size_t                                  start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::put\_Item
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::put_Item( size_t                                                   index,
+                                                        std::shared_ptr<google::protobuf::MethodDescriptorProto> item );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::size
+
+```cpp
+size_t VectorOfShared_ptrMethodDescriptorProto::size();
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.size() -> retval
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::slice
+
+```cpp
+VectorOfShared_ptrMethodDescriptorProto VectorOfShared_ptrMethodDescriptorProto::slice( size_t start = 0,
+                                                                                        size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::sort
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::sort( void*  comparator,
+                                                    size_t start = 0,
+                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::sort\_variant
+
+```cpp
+void VectorOfShared_ptrMethodDescriptorProto::sort_variant( void*  comparator,
+                                                            size_t start = 0,
+                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrMethodDescriptorProto::start
+
+```cpp
+void* VectorOfShared_ptrMethodDescriptorProto::start();
+AutoIt:
+    $oVectorOfShared_ptrMethodDescriptorProto.start() -> retval
+```
+
+## VectorOfShared\_ptrUninterpretedOption\_NamePart
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart.Count
+
+```cpp
+size_t VectorOfShared_ptrUninterpretedOption_NamePart::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrUninterpretedOption_NamePart.Count
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::create
+
+```cpp
+static VectorOfShared_ptrUninterpretedOption_NamePart VectorOfShared_ptrUninterpretedOption_NamePart::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrUninterpretedOption_NamePart").create() -> <VectorOfShared_ptrUninterpretedOption_NamePart object>
+```
+
+```cpp
+static VectorOfShared_ptrUninterpretedOption_NamePart VectorOfShared_ptrUninterpretedOption_NamePart::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrUninterpretedOption_NamePart").create( $size ) -> <VectorOfShared_ptrUninterpretedOption_NamePart object>
+```
+
+```cpp
+static VectorOfShared_ptrUninterpretedOption_NamePart VectorOfShared_ptrUninterpretedOption_NamePart::create( VectorOfShared_ptrUninterpretedOption_NamePart other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrUninterpretedOption_NamePart").create( $other ) -> <VectorOfShared_ptrUninterpretedOption_NamePart object>
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::Add
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::Add( std::shared_ptr<google::protobuf::UninterpretedOption::NamePart> value );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::Items
+
+```cpp
+VectorOfShared_ptrUninterpretedOption_NamePart VectorOfShared_ptrUninterpretedOption_NamePart::Items();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.Items() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrUninterpretedOption_NamePart::Keys();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.Keys() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::Remove
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::append
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::append( std::shared_ptr<google::protobuf::UninterpretedOption::NamePart> value );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::at
+
+```cpp
+std::shared_ptr<google::protobuf::UninterpretedOption::NamePart> VectorOfShared_ptrUninterpretedOption_NamePart::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::at( size_t                                                           index,
+                                                         std::shared_ptr<google::protobuf::UninterpretedOption::NamePart> value );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::clear
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::clear();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.clear() -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::empty
+
+```cpp
+bool VectorOfShared_ptrUninterpretedOption_NamePart::empty();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.empty() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::end
+
+```cpp
+void* VectorOfShared_ptrUninterpretedOption_NamePart::end();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.end() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::UninterpretedOption::NamePart> VectorOfShared_ptrUninterpretedOption_NamePart::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.Item( $index ) -> retval
+    $oVectorOfShared_ptrUninterpretedOption_NamePart( $index ) -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrUninterpretedOption_NamePart::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::push\_back
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::push_back( std::shared_ptr<google::protobuf::UninterpretedOption::NamePart> value );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::push\_vector
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::push_vector( VectorOfShared_ptrUninterpretedOption_NamePart other );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::push_vector( VectorOfShared_ptrUninterpretedOption_NamePart other,
+                                                                  size_t                                         count,
+                                                                  size_t                                         start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::put\_Item
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::put_Item( size_t                                                           index,
+                                                               std::shared_ptr<google::protobuf::UninterpretedOption::NamePart> item );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::size
+
+```cpp
+size_t VectorOfShared_ptrUninterpretedOption_NamePart::size();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.size() -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::slice
+
+```cpp
+VectorOfShared_ptrUninterpretedOption_NamePart VectorOfShared_ptrUninterpretedOption_NamePart::slice( size_t start = 0,
+                                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::sort
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::sort( void*  comparator,
+                                                           size_t start = 0,
+                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::sort\_variant
+
+```cpp
+void VectorOfShared_ptrUninterpretedOption_NamePart::sort_variant( void*  comparator,
+                                                                   size_t start = 0,
+                                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrUninterpretedOption\_NamePart::start
+
+```cpp
+void* VectorOfShared_ptrUninterpretedOption_NamePart::start();
+AutoIt:
+    $oVectorOfShared_ptrUninterpretedOption_NamePart.start() -> retval
+```
+
+## VectorOfShared\_ptrSourceCodeInfo\_Location
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location.Count
+
+```cpp
+size_t VectorOfShared_ptrSourceCodeInfo_Location::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrSourceCodeInfo_Location.Count
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::create
+
+```cpp
+static VectorOfShared_ptrSourceCodeInfo_Location VectorOfShared_ptrSourceCodeInfo_Location::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrSourceCodeInfo_Location").create() -> <VectorOfShared_ptrSourceCodeInfo_Location object>
+```
+
+```cpp
+static VectorOfShared_ptrSourceCodeInfo_Location VectorOfShared_ptrSourceCodeInfo_Location::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrSourceCodeInfo_Location").create( $size ) -> <VectorOfShared_ptrSourceCodeInfo_Location object>
+```
+
+```cpp
+static VectorOfShared_ptrSourceCodeInfo_Location VectorOfShared_ptrSourceCodeInfo_Location::create( VectorOfShared_ptrSourceCodeInfo_Location other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrSourceCodeInfo_Location").create( $other ) -> <VectorOfShared_ptrSourceCodeInfo_Location object>
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::Add
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::Add( std::shared_ptr<google::protobuf::SourceCodeInfo::Location> value );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::Items
+
+```cpp
+VectorOfShared_ptrSourceCodeInfo_Location VectorOfShared_ptrSourceCodeInfo_Location::Items();
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.Items() -> retval
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrSourceCodeInfo_Location::Keys();
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.Keys() -> retval
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::Remove
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::append
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::append( std::shared_ptr<google::protobuf::SourceCodeInfo::Location> value );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::at
+
+```cpp
+std::shared_ptr<google::protobuf::SourceCodeInfo::Location> VectorOfShared_ptrSourceCodeInfo_Location::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::at( size_t                                                      index,
+                                                    std::shared_ptr<google::protobuf::SourceCodeInfo::Location> value );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::clear
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::clear();
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.clear() -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::empty
+
+```cpp
+bool VectorOfShared_ptrSourceCodeInfo_Location::empty();
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.empty() -> retval
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::end
+
+```cpp
+void* VectorOfShared_ptrSourceCodeInfo_Location::end();
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.end() -> retval
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::SourceCodeInfo::Location> VectorOfShared_ptrSourceCodeInfo_Location::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.Item( $index ) -> retval
+    $oVectorOfShared_ptrSourceCodeInfo_Location( $index ) -> retval
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrSourceCodeInfo_Location::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::push\_back
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::push_back( std::shared_ptr<google::protobuf::SourceCodeInfo::Location> value );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::push\_vector
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::push_vector( VectorOfShared_ptrSourceCodeInfo_Location other );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::push_vector( VectorOfShared_ptrSourceCodeInfo_Location other,
+                                                             size_t                                    count,
+                                                             size_t                                    start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::put\_Item
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::put_Item( size_t                                                      index,
+                                                          std::shared_ptr<google::protobuf::SourceCodeInfo::Location> item );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::size
+
+```cpp
+size_t VectorOfShared_ptrSourceCodeInfo_Location::size();
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.size() -> retval
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::slice
+
+```cpp
+VectorOfShared_ptrSourceCodeInfo_Location VectorOfShared_ptrSourceCodeInfo_Location::slice( size_t start = 0,
+                                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::sort
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::sort( void*  comparator,
+                                                      size_t start = 0,
+                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::sort\_variant
+
+```cpp
+void VectorOfShared_ptrSourceCodeInfo_Location::sort_variant( void*  comparator,
+                                                              size_t start = 0,
+                                                              size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrSourceCodeInfo\_Location::start
+
+```cpp
+void* VectorOfShared_ptrSourceCodeInfo_Location::start();
+AutoIt:
+    $oVectorOfShared_ptrSourceCodeInfo_Location.start() -> retval
+```
+
+## VectorOfShared\_ptrGeneratedCodeInfo\_Annotation
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation.Count
+
+```cpp
+size_t VectorOfShared_ptrGeneratedCodeInfo_Annotation::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.Count
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::create
+
+```cpp
+static VectorOfShared_ptrGeneratedCodeInfo_Annotation VectorOfShared_ptrGeneratedCodeInfo_Annotation::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrGeneratedCodeInfo_Annotation").create() -> <VectorOfShared_ptrGeneratedCodeInfo_Annotation object>
+```
+
+```cpp
+static VectorOfShared_ptrGeneratedCodeInfo_Annotation VectorOfShared_ptrGeneratedCodeInfo_Annotation::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrGeneratedCodeInfo_Annotation").create( $size ) -> <VectorOfShared_ptrGeneratedCodeInfo_Annotation object>
+```
+
+```cpp
+static VectorOfShared_ptrGeneratedCodeInfo_Annotation VectorOfShared_ptrGeneratedCodeInfo_Annotation::create( VectorOfShared_ptrGeneratedCodeInfo_Annotation other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrGeneratedCodeInfo_Annotation").create( $other ) -> <VectorOfShared_ptrGeneratedCodeInfo_Annotation object>
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::Add
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::Add( std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation> value );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::Items
+
+```cpp
+VectorOfShared_ptrGeneratedCodeInfo_Annotation VectorOfShared_ptrGeneratedCodeInfo_Annotation::Items();
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.Items() -> retval
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrGeneratedCodeInfo_Annotation::Keys();
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.Keys() -> retval
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::Remove
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::append
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::append( std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation> value );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::at
+
+```cpp
+std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation> VectorOfShared_ptrGeneratedCodeInfo_Annotation::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::at( size_t                                                           index,
+                                                         std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation> value );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::clear
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::clear();
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.clear() -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::empty
+
+```cpp
+bool VectorOfShared_ptrGeneratedCodeInfo_Annotation::empty();
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.empty() -> retval
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::end
+
+```cpp
+void* VectorOfShared_ptrGeneratedCodeInfo_Annotation::end();
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.end() -> retval
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::get\_Item
+
+```cpp
+std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation> VectorOfShared_ptrGeneratedCodeInfo_Annotation::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.Item( $index ) -> retval
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation( $index ) -> retval
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrGeneratedCodeInfo_Annotation::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::push\_back
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::push_back( std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation> value );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::push\_vector
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::push_vector( VectorOfShared_ptrGeneratedCodeInfo_Annotation other );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::push_vector( VectorOfShared_ptrGeneratedCodeInfo_Annotation other,
+                                                                  size_t                                         count,
+                                                                  size_t                                         start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::put\_Item
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::put_Item( size_t                                                           index,
+                                                               std::shared_ptr<google::protobuf::GeneratedCodeInfo::Annotation> item );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::size
+
+```cpp
+size_t VectorOfShared_ptrGeneratedCodeInfo_Annotation::size();
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.size() -> retval
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::slice
+
+```cpp
+VectorOfShared_ptrGeneratedCodeInfo_Annotation VectorOfShared_ptrGeneratedCodeInfo_Annotation::slice( size_t start = 0,
+                                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::sort
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::sort( void*  comparator,
+                                                           size_t start = 0,
+                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::sort\_variant
+
+```cpp
+void VectorOfShared_ptrGeneratedCodeInfo_Annotation::sort_variant( void*  comparator,
+                                                                   size_t start = 0,
+                                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrGeneratedCodeInfo\_Annotation::start
+
+```cpp
+void* VectorOfShared_ptrGeneratedCodeInfo_Annotation::start();
+AutoIt:
+    $oVectorOfShared_ptrGeneratedCodeInfo_Annotation.start() -> retval
 ```
 
 ## VectorOfShared\_ptrLandmark

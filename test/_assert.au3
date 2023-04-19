@@ -73,6 +73,30 @@ Func _AssertFalse($bCondition, $sMessage = Default, $bExit = True, $iCode = 0x7F
 	Return _AssertTrue(Not $bCondition, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertFalse
 
+Func _AssertIn($vA, $vColl, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
+	If $sMessage == Default Then $sMessage = "expecting " & $vA & " to be in collection"
+	Local $bFound = False
+	For $item In $vColl
+		If $item == $vA Then
+			$bFound = True
+			ExitLoop
+		EndIf
+	Next
+	Return _AssertTrue($bFound, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+EndFunc   ;==>_AssertIn
+
+Func _AssertNotIn($vA, $vColl, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
+	If $sMessage == Default Then $sMessage = "expecting " & $vA & " not to be in collection"
+	Local $bFound = False
+	For $item In $vColl
+		If $item == $vA Then
+			$bFound = True
+			ExitLoop
+		EndIf
+	Next
+	Return _AssertTrue(Not $bFound, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+EndFunc   ;==>_AssertNotIn
+
 Func _AssertTrue($bCondition, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	If $sMessage == Default Then $sMessage = "expecting " & $bCondition & " to be True"
 	If Not $bCondition Then

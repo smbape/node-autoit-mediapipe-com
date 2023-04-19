@@ -112,7 +112,7 @@ Func Test()
 	For $name In $test_files
 		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
 		$file_path = $_TEST_DATA_DIR & "\vision\" & $name
-		If Not FileExists(get_test_data_path($_HAND_LANDMARKER_BUNDLE_ASSET_FILE)) Then
+		If Not FileExists(get_test_data_path($name)) Then
 			$download_utils.download($url, $file_path)
 		EndIf
 	Next
@@ -123,6 +123,7 @@ Func Test()
 	test_create_from_file_succeeds_with_valid_model_path()
 	test_create_from_options_succeeds_with_valid_model_path()
 	test_create_from_options_succeeds_with_valid_model_content()
+
 	test_detect($FILE_NAME, _get_expected_hand_landmarker_result($_THUMB_UP_LANDMARKS))
 	test_detect($FILE_CONTENT, _get_expected_hand_landmarker_result($_THUMB_UP_LANDMARKS))
 	test_detect_succeeds_with_num_hands()

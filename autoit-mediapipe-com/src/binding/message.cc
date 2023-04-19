@@ -1,3 +1,6 @@
+#include <cmath>
+#include "google/protobuf/descriptor.pb.h"
+#include "google/protobuf/message.h"
 #include "binding/message.h"
 #include "binding/map_container.h"
 #include "binding/repeated_container.h"
@@ -13,26 +16,58 @@
 #undef GetMessage
 #endif
 
-using namespace google::protobuf;
-
 namespace google::protobuf {
 	// hack to access MapReflection private members
 	template<>
-	class MutableRepeatedFieldRef<Message, void> {
+	class MutableRepeatedFieldRef<void, void> {
 	public:
-		static void UnsafeShallowSwapFields(
-			Message* lhs, Message* rhs,
-			const std::vector<const FieldDescriptor*>& fields) {
-			lhs->GetReflection()->UnsafeShallowSwapFields(lhs, rhs, fields);
-		}
-		static bool IsLazyField(const Reflection* reflection, const Message& message,
-			const FieldDescriptor* field) {
-			return reflection->IsLazyField(field) ||
-				reflection->IsLazyExtension(message, field);
-		}
+		// static void UnsafeShallowSwapFields(
+		// 	Message* lhs, Message* rhs,
+		// 	const std::vector<const FieldDescriptor*>& fields);
+		// static bool IsLazyField(const Reflection* reflection, const Message& message,
+		// 	const FieldDescriptor* field);
+		static void MapNormalizeNumberFields(Message& message, const Reflection* reflection,
+			const FieldDescriptor* field);
 	};
 
-	using MessageReflectionFriend = MutableRepeatedFieldRef<Message, void>;
+	using MessageReflectionFriend = MutableRepeatedFieldRef<void, void>;
+
+	// void MessageReflectionFriend::UnsafeShallowSwapFields(
+	// 	Message* lhs, Message* rhs,
+	// 	const std::vector<const FieldDescriptor*>& fields) {
+	// 	lhs->GetReflection()->UnsafeShallowSwapFields(lhs, rhs, fields);
+	// }
+
+	// bool MessageReflectionFriend::IsLazyField(const Reflection* reflection, const Message& message,
+	// 	const FieldDescriptor* field) {
+	// 	return reflection->IsLazyField(field) ||
+	// 		reflection->IsLazyExtension(message, field);
+	// }
+
+	void MessageReflectionFriend::MapNormalizeNumberFields(Message& message, const Reflection* reflection,
+		const FieldDescriptor* field) {
+
+		const internal::MapFieldBase& base = *reflection->GetMapData(message, field);
+
+		if (base.IsRepeatedFieldValid()) {
+			RepeatedPtrField<Message>* map_field =
+				reflection->MutableRepeatedPtrFieldInternal<Message>(&message, field);
+			for (int i = 0; i < map_field->size(); ++i) {
+				Message* sub_message = map_field->Mutable(i);
+				autoit::cmessage::NomalizeNumberFields(*sub_message);
+			}
+		}
+		else {
+			for (MapIterator iter =
+				reflection->MapBegin(&message, field);
+				iter != reflection->MapEnd(&message, field);
+				++iter) {
+				MapValueRef* value = iter.MutableValueRef();
+				Message* sub_message = value->MutableMessageValue();
+				autoit::cmessage::NomalizeNumberFields(*sub_message);
+			}
+		}
+	}
 
 	namespace autoit::cmessage {
 		static _variant_t None = mediapipe::autoit::default_variant();
@@ -470,6 +505,127 @@ namespace google::protobuf {
 			}
 
 			ClearFieldByDescriptor(message, field_descriptor);
+		}
+
+		/**
+		 * @see https://stackoverflow.com/a/13094362
+		 * @param  value  [description]
+		 * @param  digits [description]
+		 * @return        [description]
+		 */
+		inline double round_to_digits(double value, int digits) {
+			// ln(0) = Infinity
+			if (value == 0.0) {
+				return value;
+			}
+
+			double factor = std::pow(10.0, digits - std::ceil(std::log10(std::fabs(value))));
+			return std::round(value * factor) / factor;
+		}
+
+		inline double round(double value, int digits) {
+			double factor = std::pow(10.0, digits);
+			return std::round(value * factor) / factor;
+		}
+
+		/**
+		 * @see https://github.com/protocolbuffers/protobuf/blob/v22.3/src/google/protobuf/text_format.cc#L2569
+		 * @param message    [description]
+		 * @param reflection [description]
+		 * @param field      [description]
+		 * @param index      [description]
+		 */
+		void NormalizeNumberFieldValue(Message& message,
+			const Reflection* reflection,
+			const FieldDescriptor* field,
+			int index) {
+
+			AUTOIT_ASSERT_THROW(field->is_repeated() || index == -1,
+				"Index must be -1 for non-repeated fields");
+
+			switch (field->cpp_type()) {
+			case FieldDescriptor::CPPTYPE_DOUBLE:
+				if (field->is_repeated()) {
+					reflection->SetRepeatedDouble(&message, field, index, round(reflection->GetRepeatedDouble(message, field, index), 6));
+				}
+				else {
+					reflection->SetDouble(&message, field, round(reflection->GetDouble(message, field), 6));
+				}
+				break;
+
+			case FieldDescriptor::CPPTYPE_FLOAT:
+				if (field->is_repeated()) {
+					reflection->SetRepeatedFloat(&message, field, index, round(reflection->GetRepeatedFloat(message, field, index), 4));
+				}
+				else {
+					reflection->SetFloat(&message, field, round(reflection->GetFloat(message, field), 4));
+				}
+				break;
+
+			case FieldDescriptor::CPPTYPE_MESSAGE:
+				NomalizeNumberFields(field->is_repeated()
+					? *reflection->MutableRepeatedMessage(&message, field, index)
+					: *reflection->MutableMessage(&message, field));
+				break;
+			}
+		}
+
+		/**
+		 * @see https://github.com/protocolbuffers/protobuf/blob/v22.3/src/google/protobuf/text_format.cc#L2464
+		 * @param message    [description]
+		 * @param reflection [description]
+		 * @param field      [description]
+		 */
+		void NomalizeNumberField(Message& message, const Reflection* reflection, const FieldDescriptor* field) {
+			if (field->is_map()) {
+				MessageReflectionFriend::MapNormalizeNumberFields(message, reflection, field);
+				return;
+			}
+
+			int count = 0;
+
+			if (field->is_repeated()) {
+				count = reflection->FieldSize(message, field);
+			}
+			else if (reflection->HasField(message, field) ||
+				field->containing_type()->options().map_entry()) {
+				count = 1;
+			}
+
+			for (int j = 0; j < count; ++j) {
+				if (field->cpp_type() == FieldDescriptor::CPPTYPE_MESSAGE) {
+					Message* sub_message = field->is_repeated() ?
+						reflection->MutableRepeatedMessage(&message, field, j)
+						: reflection->MutableMessage(&message, field);
+					NomalizeNumberFields(*sub_message);
+				}
+				else {
+					const int field_index = field->is_repeated() ? j : -1;
+					NormalizeNumberFieldValue(message, reflection, field, field_index);
+				}
+			}
+		}
+
+		/**
+		 *
+		 * @see https://github.com/protocolbuffers/protobuf/blob/v22.3/src/google/protobuf/text_format.cc#L2245
+		 * @param message [description]
+		 */
+		void NomalizeNumberFields(Message& message) {
+			const Descriptor* descriptor = message.GetDescriptor();
+			const Reflection* reflection = message.GetReflection();
+			std::vector<const FieldDescriptor*> fields;
+			if (descriptor->options().map_entry()) {
+				fields.push_back(descriptor->field(0));
+				fields.push_back(descriptor->field(1));
+			}
+			else {
+				reflection->ListFields(message, &fields);
+			}
+
+			for (const FieldDescriptor* field : fields) {
+				NomalizeNumberField(message, reflection, field);
+			}
 		}
 	}
 }

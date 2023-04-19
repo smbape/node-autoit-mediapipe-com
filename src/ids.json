@@ -1039,6 +1039,198 @@
         "iid": "97d6a0de-4215-430d-a500-bd05cb3da3ee",
         "clsid": "49e760b3-e247-4033-806a-523ed0a8b0e9"
     },
+    "google::protobuf::FileDescriptorSet": {
+        "iid": "204dd4ff-8c7a-46b1-88b5-480f85e45c39",
+        "clsid": "e21bafdd-16cf-4e69-88e4-e56c8666d80f"
+    },
+    "google::protobuf::Repeated_google_protobuf_FileDescriptorProto": {
+        "iid": "57275d40-e1f8-4635-8ac7-8352e14bc055",
+        "clsid": "e1543b7d-62b6-4aa3-b899-6784d02afc56"
+    },
+    "google::protobuf::FileDescriptorProto": {
+        "iid": "25a242b6-4912-4226-970d-ca32efda6879",
+        "clsid": "db61f891-b534-46ae-be8d-2cff5a92f2ce"
+    },
+    "google::protobuf::Repeated_google_protobuf_DescriptorProto": {
+        "iid": "5a87e52a-b3ca-4f64-9d57-84c589944c3f",
+        "clsid": "8c8cfb1d-36a9-4143-8c37-f55145d7301a"
+    },
+    "google::protobuf::Repeated_google_protobuf_EnumDescriptorProto": {
+        "iid": "24bd2928-a83b-4245-b2a6-7a562c511e62",
+        "clsid": "c8e87c0f-7ce0-45b5-8b51-822dba474674"
+    },
+    "google::protobuf::Repeated_google_protobuf_ServiceDescriptorProto": {
+        "iid": "cde18b86-5b37-4d12-a7c4-5ebf052072f6",
+        "clsid": "c66934fd-6878-47e0-bd0d-ab563d0782fc"
+    },
+    "google::protobuf::Repeated_google_protobuf_FieldDescriptorProto": {
+        "iid": "fe01cd76-30eb-4ad7-93eb-dc66d6179864",
+        "clsid": "c849c761-1a02-481a-befa-de05119dea16"
+    },
+    "google::protobuf::DescriptorProto": {
+        "iid": "eca03035-8130-4545-a5df-f5e7e6812efd",
+        "clsid": "4fb2e4aa-f913-4a43-a453-1367ddd17ea2"
+    },
+    "google::protobuf::Repeated_google_protobuf_DescriptorProto_ExtensionRange": {
+        "iid": "3cb3aa5d-911d-4ad1-9803-8f581453c486",
+        "clsid": "0c74057e-cd5c-4eb1-abb6-fe278344ffc6"
+    },
+    "google::protobuf::Repeated_google_protobuf_OneofDescriptorProto": {
+        "iid": "b00c4d82-b32e-4667-93ce-42ce8f8c01ff",
+        "clsid": "31d56c61-1a4c-4350-a6df-867f11b3ab9f"
+    },
+    "google::protobuf::Repeated_google_protobuf_DescriptorProto_ReservedRange": {
+        "iid": "5ea848be-5436-4e69-b976-d1ec27a01dbc",
+        "clsid": "1c0b288a-28a7-43fb-b7cf-1aa16d86e14d"
+    },
+    "google::protobuf::DescriptorProto::ExtensionRange": {
+        "iid": "e9410584-6e8f-4b1b-aa5f-45c0c807b53e",
+        "clsid": "d0b69e07-ba99-44bb-85cc-3347a2f01d83"
+    },
+    "google::protobuf::DescriptorProto::ReservedRange": {
+        "iid": "6d7a70e9-6372-427f-86cc-65b8de1f6fd6",
+        "clsid": "07c84bc2-e8c7-4a25-8408-284efe114002"
+    },
+    "google::protobuf::ExtensionRangeOptions": {
+        "iid": "040d2287-a475-4cb4-ba53-eb6f8cb48084",
+        "clsid": "9ad59f19-81eb-466e-8839-ad7907af113d"
+    },
+    "google::protobuf::Repeated_google_protobuf_UninterpretedOption": {
+        "iid": "dd1c2406-3853-4f9f-8b8f-f7c38ca288c1",
+        "clsid": "4366cff7-aff9-4b88-9c63-734882879851"
+    },
+    "google::protobuf::FieldDescriptorProto": {
+        "iid": "b9167411-dc35-4e42-a5f7-b26c6a1a2610",
+        "clsid": "6865327d-fc99-43e9-8145-6b115721b428"
+    },
+    "google::protobuf::OneofDescriptorProto": {
+        "iid": "583a4313-3f91-4b8e-a737-9399012995b7",
+        "clsid": "43b60a95-938d-4f4b-a22c-d4e314616fda"
+    },
+    "google::protobuf::EnumDescriptorProto": {
+        "iid": "d863979e-bfbe-4060-be23-a1ee7daa8b4f",
+        "clsid": "baab3ee5-7836-4371-8dd9-af27ebaccf40"
+    },
+    "google::protobuf::Repeated_google_protobuf_EnumValueDescriptorProto": {
+        "iid": "39deff9a-b0b0-4085-9ae3-002660c3e3da",
+        "clsid": "828f1c62-ce21-44bb-a8c2-5d4ac2a9843e"
+    },
+    "google::protobuf::Repeated_google_protobuf_EnumDescriptorProto_EnumReservedRange": {
+        "iid": "08348087-b3e8-4929-88fb-7a36ff169837",
+        "clsid": "95a82598-8691-4ce4-96ad-33227b9ac9cb"
+    },
+    "google::protobuf::EnumDescriptorProto::EnumReservedRange": {
+        "iid": "af2ddc15-d501-4d45-ad9c-5c6946e5d7c5",
+        "clsid": "f5488140-7d91-4060-8509-30a5356b403d"
+    },
+    "google::protobuf::EnumValueDescriptorProto": {
+        "iid": "836f9fca-511b-49e3-a84b-d45573a4b6c6",
+        "clsid": "880d649a-fc82-4ad7-b0ab-be0b4a802764"
+    },
+    "google::protobuf::ServiceDescriptorProto": {
+        "iid": "bd1352ef-a8a2-4a43-a7e8-99431d1578c0",
+        "clsid": "0add56d6-0fb8-4295-9ea5-675369c1687d"
+    },
+    "google::protobuf::Repeated_google_protobuf_MethodDescriptorProto": {
+        "iid": "9697e027-870d-4a4b-99f5-3807e94ecee6",
+        "clsid": "c9f9a0ca-c09e-4f5e-a938-a8046b230690"
+    },
+    "google::protobuf::MethodDescriptorProto": {
+        "iid": "9802fedf-dccc-4f5a-88a1-4d7203c863ef",
+        "clsid": "eb682cf7-07cc-4bb5-aa38-ddfc4ae5be7d"
+    },
+    "google::protobuf::FileOptions": {
+        "iid": "a9730ef9-ef2d-4a18-891b-c5f6f7e919b0",
+        "clsid": "a5cbc6ec-78aa-4453-b56d-1390da35be8e"
+    },
+    "google::protobuf::MessageOptions": {
+        "iid": "f3249ca2-6c95-4e26-8980-5ba0c9ab6d75",
+        "clsid": "75920443-3c9f-471d-9907-ddb4a3433b2f"
+    },
+    "google::protobuf::FieldOptions": {
+        "iid": "ab2df475-09d5-4ffd-89a8-16bab3dd60f3",
+        "clsid": "dc838ba5-9746-44c9-98e8-343fd74196f2"
+    },
+    "google::protobuf::OneofOptions": {
+        "iid": "3e58923f-07e5-4411-80f4-17941dc4a087",
+        "clsid": "467e2aab-ad10-495e-bf62-87199a73b350"
+    },
+    "google::protobuf::EnumOptions": {
+        "iid": "ee1fe18c-7db6-432d-b794-1c35dbc3a5da",
+        "clsid": "dfb475c5-ada7-44c4-a4f3-d715088cefcc"
+    },
+    "google::protobuf::EnumValueOptions": {
+        "iid": "51fa92bb-42e6-4d91-8da0-848dd5fa498c",
+        "clsid": "170856cf-38a7-441b-8b78-73e97505ff30"
+    },
+    "google::protobuf::ServiceOptions": {
+        "iid": "b9dc781f-ce0e-4ecb-89d3-f08276262886",
+        "clsid": "0aee9c12-6f9f-4137-bf3f-5b22c9fc286b"
+    },
+    "google::protobuf::MethodOptions": {
+        "iid": "768852f7-ee00-4cb9-b88a-df77cf47d3f2",
+        "clsid": "6fb04687-9b3f-49ea-a81c-bf09b434fe94"
+    },
+    "google::protobuf::UninterpretedOption": {
+        "iid": "c2cd1950-6170-44ad-91fd-c2bb2a0fb376",
+        "clsid": "69aba144-9b4a-4779-8c53-c69e6b3f60b1"
+    },
+    "google::protobuf::Repeated_google_protobuf_UninterpretedOption_NamePart": {
+        "iid": "efe2fe1f-c6c9-490c-9f59-ab56a5db7464",
+        "clsid": "b5e96f25-ee6d-4c0c-ac6a-0a38b05cd895"
+    },
+    "google::protobuf::UninterpretedOption::NamePart": {
+        "iid": "e5b5ef65-bdb1-4cd2-977d-27cf71c32b4e",
+        "clsid": "77dab500-a339-49a7-b80e-82055382b135"
+    },
+    "google::protobuf::SourceCodeInfo": {
+        "iid": "a70a2549-a6ab-41c2-b4bf-ae61da840eaf",
+        "clsid": "75cf55c4-2b0c-4217-95a4-27d340d4d4fd"
+    },
+    "google::protobuf::Repeated_google_protobuf_SourceCodeInfo_Location": {
+        "iid": "e42720d5-eae8-479b-afc5-72af96ee1265",
+        "clsid": "447289a4-5506-4e52-a6ce-29658cf86942"
+    },
+    "google::protobuf::SourceCodeInfo::Location": {
+        "iid": "e7735395-0e8d-4ee8-9852-82acd718dc53",
+        "clsid": "7e23bacf-58c1-48ec-90f7-181633735c7e"
+    },
+    "google::protobuf::GeneratedCodeInfo": {
+        "iid": "260e2c39-94b9-4de3-a06b-1303aa314840",
+        "clsid": "b8c1a32d-6744-41f7-9b7a-695999890c8a"
+    },
+    "google::protobuf::Repeated_google_protobuf_GeneratedCodeInfo_Annotation": {
+        "iid": "ffae0ac5-8c16-4693-b46c-d590453f9fa4",
+        "clsid": "de29875d-5e29-414d-b46b-31b4b95d2b54"
+    },
+    "google::protobuf::GeneratedCodeInfo::Annotation": {
+        "iid": "9b04d9a6-0e57-4943-b802-471359817d5a",
+        "clsid": "234e3b83-a3e3-4ec3-862f-c5b7b9ab8e32"
+    },
+    "google::protobuf::descriptor_pb2": {
+        "iid": "e2d8ec7b-5663-47fb-82ba-66509a812b88",
+        "clsid": "95d55f5f-12c2-44db-947f-9247bb2ef66b"
+    },
+    "google::protobuf::descriptor_pb2::DescriptorProto": {
+        "iid": "267cdc51-428b-44ef-8126-471d328e8901",
+        "clsid": "e8c39b20-435a-4d1f-a3cb-ddfd028f5c54"
+    },
+    "google::protobuf::descriptor_pb2::EnumDescriptorProto": {
+        "iid": "c8592de3-63b1-488d-ac02-8b633842942e",
+        "clsid": "e5e3ffe2-88bf-4d44-bf8e-c6cdedf84563"
+    },
+    "google::protobuf::descriptor_pb2::UninterpretedOption": {
+        "iid": "04b7fde9-d8c8-4ced-899e-a3b173a1e45d",
+        "clsid": "547b92c0-cba7-44d6-b25e-fb0460a56611"
+    },
+    "google::protobuf::descriptor_pb2::SourceCodeInfo": {
+        "iid": "cef89bf5-0e17-485a-ba68-c3d92993489c",
+        "clsid": "fb177ad2-2783-4924-9449-23bbc207439c"
+    },
+    "google::protobuf::descriptor_pb2::GeneratedCodeInfo": {
+        "iid": "411ea3cb-28a7-4bff-99bb-e63c1f915c3e",
+        "clsid": "4ece5a0c-08ca-44e2-8d57-479fc8f0b623"
+    },
     "mediapipe::Landmark": {
         "iid": "d0b33879-49ae-4b05-8a1f-52d6df8e7c6d",
         "clsid": "aaaf1493-58e1-4d64-847d-f7e2d2819b4d"
@@ -2210,6 +2402,66 @@
     "VectorOfShared_ptrDetection": {
         "iid": "99046f5d-5878-463f-8a3a-5a223ddc3bfd",
         "clsid": "bb27f464-4593-4325-bad5-6b2e553f07a6"
+    },
+    "VectorOfShared_ptrFileDescriptorProto": {
+        "iid": "1a223358-7d89-4f3f-a329-264046b898ed",
+        "clsid": "3c12cacb-f549-4660-869b-4398a5e7525f"
+    },
+    "VectorOfShared_ptrDescriptorProto": {
+        "iid": "1df98704-ec3b-4bab-b812-a593fbaa6e09",
+        "clsid": "5a519683-b100-4bcc-9713-1b02aaa53373"
+    },
+    "VectorOfShared_ptrEnumDescriptorProto": {
+        "iid": "e0d02c61-4399-4218-848f-71daff3000bc",
+        "clsid": "de51fefb-76d5-4a5a-bb4a-439523d90a69"
+    },
+    "VectorOfShared_ptrServiceDescriptorProto": {
+        "iid": "3ba0d600-21af-46c3-973b-6e6ff1a5111e",
+        "clsid": "fde64ef7-c3f6-44a3-89a8-32abbd4a1874"
+    },
+    "VectorOfShared_ptrFieldDescriptorProto": {
+        "iid": "0b56fadb-52f1-485e-9381-04ce9176c8ae",
+        "clsid": "6e77db47-7233-4924-a334-7f1ea211f5f7"
+    },
+    "VectorOfShared_ptrDescriptorProto_ExtensionRange": {
+        "iid": "977e8d76-2f9f-42ab-85fc-174e2833bbe8",
+        "clsid": "59fa3c7b-fecb-4548-b296-8759e85e032a"
+    },
+    "VectorOfShared_ptrOneofDescriptorProto": {
+        "iid": "fb569e3b-2f02-4418-a477-d6ade8343943",
+        "clsid": "57e9cbba-cb99-4ca2-ad75-4fb23bafe2a2"
+    },
+    "VectorOfShared_ptrDescriptorProto_ReservedRange": {
+        "iid": "a9131ab0-8537-44d9-9768-4b2a49a61de5",
+        "clsid": "f3701b03-49ad-45db-8e87-dcbcb818cf28"
+    },
+    "VectorOfShared_ptrUninterpretedOption": {
+        "iid": "1b6637cb-20b8-4286-a920-44c075b500af",
+        "clsid": "e045cd10-c8cc-47f8-a272-de28141da2a4"
+    },
+    "VectorOfShared_ptrEnumValueDescriptorProto": {
+        "iid": "cd862e6d-6f99-4ca3-95b1-e6d76a7f74f5",
+        "clsid": "ac30c558-bf2b-4609-bd7f-a058834308b0"
+    },
+    "VectorOfShared_ptrEnumDescriptorProto_EnumReservedRange": {
+        "iid": "8f12355d-ac80-449c-a092-296ae4fd6f7b",
+        "clsid": "090b3931-efda-471e-be4e-28d6ae25a1a9"
+    },
+    "VectorOfShared_ptrMethodDescriptorProto": {
+        "iid": "c4285f64-777f-437e-8166-6f910ed6afeb",
+        "clsid": "af8e4ea2-d0ce-4dd2-92bc-60cfedf32030"
+    },
+    "VectorOfShared_ptrUninterpretedOption_NamePart": {
+        "iid": "ac5855c0-022d-4975-8944-ac57348fa55b",
+        "clsid": "93b138d8-d1da-40cd-8958-e5c93d130448"
+    },
+    "VectorOfShared_ptrSourceCodeInfo_Location": {
+        "iid": "7f84985e-0437-4867-9463-270048bb6e69",
+        "clsid": "2cb82dad-0333-4541-bba2-06de351b1891"
+    },
+    "VectorOfShared_ptrGeneratedCodeInfo_Annotation": {
+        "iid": "44d08044-f7dd-4cdd-9309-194ebd0d9839",
+        "clsid": "19eddf5d-ff67-43a2-b131-fdc9ed05e5e5"
     },
     "VectorOfShared_ptrLandmark": {
         "iid": "c6b21381-6e1b-4289-9abf-e7a5cd2d70c6",

@@ -53,6 +53,8 @@ namespace google::protobuf::autoit::cmessage {
 	int ClearFieldByDescriptor(Message& message, const FieldDescriptor* field_descriptor);
 	void ClearField(Message& message, const std::string& field_name);
 
+	CV_WRAP void NomalizeNumberFields(Message& message);
+
 	template<typename _Tr, typename _Ti>
 	HRESULT SetRepeatedField(Message& message, const std::string& field_name, VARIANT* newVal, _Tr* repeated_field, _Ti& repeated_iterator) {
 		const Descriptor* descriptor = message.GetDescriptor();
