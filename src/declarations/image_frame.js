@@ -34,8 +34,9 @@ module.exports = [
         ["uint32", "alignment_boundary", "", []],
     ], "", ""],
 
-    // expose an ImageFrame property like in mediapipe python
+    // expose an image_frame property like in mediapipe python
     ["mediapipe.autoit._framework_bindings.image_frame.", "", ["/Properties"], [
         ["mediapipe::ImageFrame", "ImageFrame", "", ["/R", "=this"]],
+        ["mediapipe::ImageFormat::Format", "ImageFormat", "", ["/R", "=this"]],
     ], "", ""],
 ];

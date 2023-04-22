@@ -99,6 +99,7 @@ class AutoItGenerator {
 
         for (const fqn of this.classes.keys()) {
             const coclass = this.classes.get(fqn);
+
             for (const [, overrides] of coclass.methods.entries()) {
                 for (const decl of overrides) {
                     const [, return_value_type, func_modifiers, list_of_arguments] = decl;
@@ -111,6 +112,35 @@ class AutoItGenerator {
                             this.setAssignOperator(argtype, coclass, options);
                         }
                     }
+                }
+            }
+
+            // populate enums =this properties
+            for (const [idlname, property] of coclass.properties.entries()) {
+                const {type, modifiers} = property;
+                if (!modifiers.includes("/R") || !modifiers.includes("=this")) {
+                    continue;
+                }
+
+                const enum_type = this.getEnumType(type, coclass, options);
+                if (!enum_type) {
+                    continue;
+                }
+
+                let enum_class = this.classes.get(enum_type);
+                if (enum_class) {
+                    continue;
+                }
+
+                enum_class = this.getCoClass(enum_type, options);
+                const [,,, values] = this.enums.get(enum_type);
+                for (const [value] of values) {
+                    enum_class.addProperty([
+                        enum_type,
+                        value.slice(value.lastIndexOf(".") + ".".length),
+                        "",
+                        [`/RExpr=${ value.slice("const ".length).replaceAll(".", "::") }`]
+                    ]);
                 }
             }
         }

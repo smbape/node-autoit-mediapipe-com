@@ -107,7 +107,7 @@ const parseArguments = PROJECT_DIR => {
 
                 for (let i = 1; i < parts.length; i++) {
                     generator.add_func([`${ parts.slice(0, i).join(".") }.`, "", ["/Properties"], [
-                    [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "/S", "=this"]],
+                    [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
                     ], "", ""]);
                 }
 

@@ -14,8 +14,7 @@
 
 ;~ Sources:
 ;~     https://github.com/google/mediapipe/blob/v0.9.2.1/mediapipe/tasks/python/test/vision/image_embedder_test.py
-; EnvSet("MEDIAPIPE_BUILD_TYPE", "Debug")
-; EnvSet("OPENCV_BUILD_TYPE", "Debug")
+
 _Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
 _OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
 OnAutoItExitRegister("_OnAutoItExit")
@@ -133,6 +132,7 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_ImageEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $embedder = $_ImageEmbedder.create_from_options($options)
 	_AssertIsObj($embedder)
+	$embedder.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_embed($l2_normalize, $quantize, $with_roi, $model_file_type, $expected_similarity, $expected_size, $expected_first_values)

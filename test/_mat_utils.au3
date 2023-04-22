@@ -3,7 +3,7 @@
 ; https://stackoverflow.com/questions/35526127/generate-random-numbers-matrix-in-opencv
 Func _RandomImage($width, $height, $type, $low, $high)
 	Local Static $MatPtr = _OpenCV_ObjCreate("cv.Mat")
-	Local Const $cv = _OpenCV_get()
+	Local Static $cv = _OpenCV_get()
 	Local Const $mat = $MatPtr.create($height, $width, $type)
 	$cv.randu($mat, 0.0 + $low, 0.0 + $high)
 	Return $mat
@@ -29,14 +29,18 @@ Func _AssertMatEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode 
 	$bCondition = _AssertEqual($oMatA.channels(), $oMatB.channels(), "expecting both matrices to have the same number of channels", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
 	$bCondition = _AssertEqual($oMatA.depth(), $oMatB.depth(), "expecting both matrices to have the same number of depth", $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
 
-	Local Const $cv = _OpenCV_get()
+	If Not $bCondition Then Return $bCondition
+
+	Local Static $cv = _OpenCV_get()
 	Local $absdiff = $cv.absdiff(Ptr($oMatA.self), Ptr($oMatB.self)).reshape(1)
 	$bCondition = _AssertEqual($cv.countNonZero($absdiff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended) And $bCondition
 
 	Return $bCondition
 EndFunc   ;==>_AssertMatEqual
 
-Func _AssertMatAlmostEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
+Func _AssertMatAlmostEqual($oMatA, $oMatB, $fDelta = Default, $fSimilarity = Default, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
+	If $fDelta == Default Then $fDelta = 10 ^ -7
+	If $fSimilarity == Default Then $fSimilarity = 1
 	If $sMessage == Default Then $sMessage = "expecting both matrices to be almost equals"
 
 	Local $bCondition = True
@@ -48,11 +52,13 @@ Func _AssertMatAlmostEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, $
 
 	If Not $bCondition Then Return $bCondition
 
-	Local Const $cv = _OpenCV_get()
+	Local Static $cv = _OpenCV_get()
 	Local $absdiff = $cv.absdiff(Ptr($oMatA.self), Ptr($oMatB.self)).reshape(1)
-	$absdiff = $cv.compare($absdiff, 10 ^ - 7, $CV_CMP_GE)
+	$absdiff = $cv.compare($absdiff, $fDelta, $CV_CMP_GE)
 
-	Return _AssertEqual($cv.countNonZero($absdiff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	Local $num_pixels = $oMatA.total()
+	Local $consistent_pixels = $num_pixels - $cv.countNonZero($absdiff)
+	Return _AssertGreaterEqual($consistent_pixels / $num_pixels, $fSimilarity, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertMatAlmostEqual
 
 Func _AssertMatLess($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
@@ -84,7 +90,7 @@ Func _AssertMatLess($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode =
 
 	If Not $bCondition Then Return $bCondition
 
-	Local Const $cv = _OpenCV_get()
+	Local Static $cv = _OpenCV_get()
 	Local $diff = $cv.compare($oMatA, $oMatB, $CV_CMP_GE)
 	Return _AssertEqual($cv.countNonZero($diff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertMatLess
@@ -92,7 +98,7 @@ EndFunc   ;==>_AssertMatLess
 Func _AssertMatDiffLess($oMatA, $oMatB, $threshold, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_iCallerExtended = @extended)
 	If $sMessage == Default Then $sMessage = "Diff between matrices is not less than " & $threshold
 
-	Local Const $cv = _OpenCV_get()
+	Local Static $cv = _OpenCV_get()
 	Local Const $mat = _OpenCV_ObjCreate("Mat")
 
 	If IsArray($oMatA) Then $oMatA = $mat.createFromArray($oMatA, $CV_32F)
@@ -131,7 +137,7 @@ Func _AssertMatGreaterEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, 
 		$oMatA = $oMatA.reshape(1)
 	EndIf
 
-	Local Const $cv = _OpenCV_get()
+	Local Static $cv = _OpenCV_get()
 	Local $diff = $cv.compare($oMatA, $oMatB, $CV_CMP_LT)
 	Return _AssertEqual($cv.countNonZero($diff), 0, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertMatGreaterEqual

@@ -34,4 +34,10 @@ module.exports = [
     ["mediapipe.tasks.autoit.vision.object_detector.", "", ["/Properties"], [
         ["mediapipe::tasks::autoit::components::containers::detections::DetectionResult", "ObjectDetectorResult", "", ["/R", "=this"]],
     ], "", ""],
+
+    // expose a ImageSegmenterOptions property like in mediapipe python
+    ["mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenterOptionsEnums.", "", ["/Properties"], [
+        ["mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType", "OutputType", "", ["/R", "=this", "/S"]],
+        ["mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation", "Activation", "", ["/R", "=this", "/S"]],
+    ], "", ""],
 ];

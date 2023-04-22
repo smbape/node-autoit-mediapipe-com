@@ -2191,6 +2191,10 @@
         "iid": "593bffb3-c482-4b91-b3db-ad62d5283bdb",
         "clsid": "4f129eda-d8f0-496a-8fad-329b99a827f8"
     },
+    "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptionsEnums": {
+        "iid": "94af7d13-7e7a-4244-8d1e-46c75a227591",
+        "clsid": "939402ff-4b42-4582-9a8f-87a00bf687bb"
+    },
     "MapOfStringAndVariant": {
         "iid": "515c4b61-b396-4701-a2bd-3bd772c6c344",
         "clsid": "4e1e09c1-2188-4d31-8c2b-738be68f5d67"
@@ -2206,6 +2210,18 @@
     "VectorOfVariant": {
         "iid": "a4dd8496-bd68-43fb-9e5c-d62b74aa6523",
         "clsid": "02edcce5-cb64-4dfe-99e6-2d0b3db82034"
+    },
+    "mediapipe::ImageFormat::Format": {
+        "iid": "db5c4bc4-2ceb-43b9-a91d-6843dd211d9f",
+        "clsid": "c76ecdcf-f187-4921-b9df-b7a18d8253e8"
+    },
+    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType": {
+        "iid": "818184b4-d6bd-4f02-a2c4-f2ffdd442b31",
+        "clsid": "6784a27a-0e56-410e-b50c-6c1b99f85ee3"
+    },
+    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation": {
+        "iid": "04409ffe-3f5a-4d8a-a87f-030b36183b56",
+        "clsid": "326e754d-1087-41a9-9939-ab76e094a51b"
     },
     "VectorOfPairOfVariantAndVariant": {
         "iid": "e2e4c1e6-ad09-4447-9850-0903375ed02a",

@@ -1082,6 +1082,7 @@
 - [mediapipe::tasks::autoit::vision::image\_segmenter](#mediapipetasksautoitvisionimage%5C_segmenter)
   - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions)
   - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter)
+  - [image\_segmenter.ImageSegmenterOptionsEnums](#image%5C_segmenterimagesegmenteroptionsenums)
 - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptions)
   - [ImageSegmenterOptions.base\_options](#imagesegmenteroptionsbase%5C_options)
   - [ImageSegmenterOptions.running\_mode](#imagesegmenteroptionsrunning%5C_mode)
@@ -1093,6 +1094,7 @@
 - [mediapipe::autoit::vision::image\_segmenter](#mediapipeautoitvisionimage%5C_segmenter)
   - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions-1)
   - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter-1)
+  - [image\_segmenter.ImageSegmenterOptionsEnums](#image%5C_segmenterimagesegmenteroptionsenums-1)
 - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::\_process\_image\_data](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter%5C_process%5C_image%5C_data)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::\_process\_video\_data](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter%5C_process%5C_video%5C_data)
@@ -5892,6 +5894,7 @@
   - [mediapipe::ImageFrame::mat\_view](#mediapipeimageframemat%5C_view)
 - [mediapipe::autoit::\_framework\_bindings::image\_frame](#mediapipeautoit%5C_framework%5C_bindingsimage%5C_frame)
   - [image\_frame.ImageFrame](#image%5C_frameimageframe)
+  - [image\_frame.ImageFormat](#image%5C_frameimageformat)
 - [cv::Mat](#cvmat)
   - [Mat.cols](#matcols)
   - [Mat.data](#matdata)
@@ -5994,6 +5997,7 @@
   - [cv::Mat::createFromVectorOfDouble](#cvmatcreatefromvectorofdouble)
   - [cv::Mat::createFromVectorOfFloat](#cvmatcreatefromvectoroffloat)
   - [cv::Mat::createFromVectorOfInt](#cvmatcreatefromvectorofint)
+  - [cv::Mat::createFromVectorOfMat](#cvmatcreatefromvectorofmat)
   - [cv::Mat::createFromVectorOfVec2b](#cvmatcreatefromvectorofvec2b)
   - [cv::Mat::createFromVectorOfVec2d](#cvmatcreatefromvectorofvec2d)
   - [cv::Mat::createFromVectorOfVec2f](#cvmatcreatefromvectorofvec2f)
@@ -6208,6 +6212,9 @@
   - [mediapipe::ValidatedGraphConfig::registered\_stream\_type\_name](#mediapipevalidatedgraphconfigregistered%5C_stream%5C_type%5C_name)
 - [mediapipe::autoit::\_framework\_bindings::validated\_graph\_config](#mediapipeautoit%5C_framework%5C_bindingsvalidated%5C_graph%5C_config)
   - [validated\_graph\_config.ValidatedGraphConfig](#validated%5C_graph%5C_configvalidatedgraphconfig)
+- [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptionsEnums](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptionsenums)
+  - [ImageSegmenterOptionsEnums.OutputType](#imagesegmenteroptionsenumsoutputtype)
+  - [ImageSegmenterOptionsEnums.Activation](#imagesegmenteroptionsenumsactivation)
 - [VectorOfString](#vectorofstring)
   - [VectorOfString.Count](#vectorofstringcount)
   - [VectorOfString::create](#vectorofstringcreate)
@@ -6252,6 +6259,28 @@
   - [VectorOfVariant::sort](#vectorofvariantsort)
   - [VectorOfVariant::sort\_variant](#vectorofvariantsort%5C_variant)
   - [VectorOfVariant::start](#vectorofvariantstart)
+- [mediapipe::ImageFormat::Format](#mediapipeimageformatformat)
+  - [Format.UNKNOWN](#formatunknown)
+  - [Format.SRGB](#formatsrgb)
+  - [Format.SRGBA](#formatsrgba)
+  - [Format.GRAY8](#formatgray8)
+  - [Format.GRAY16](#formatgray16)
+  - [Format.YCBCR420P](#formatycbcr420p)
+  - [Format.YCBCR420P10](#formatycbcr420p10)
+  - [Format.SRGB48](#formatsrgb48)
+  - [Format.SRGBA64](#formatsrgba64)
+  - [Format.VEC32F1](#formatvec32f1)
+  - [Format.VEC32F2](#formatvec32f2)
+  - [Format.LAB8](#formatlab8)
+  - [Format.SBGRA](#formatsbgra)
+- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsoutputtype)
+  - [OutputType.UNSPECIFIED](#outputtypeunspecified)
+  - [OutputType.CATEGORY\_MASK](#outputtypecategory%5C_mask)
+  - [OutputType.CONFIDENCE\_MASK](#outputtypeconfidence%5C_mask)
+- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsactivation)
+  - [Activation.NONE](#activationnone)
+  - [Activation.SIGMOID](#activationsigmoid)
+  - [Activation.SOFTMAX](#activationsoftmax)
 - [VectorOfBool](#vectorofbool)
   - [VectorOfBool.Count](#vectorofboolcount)
   - [VectorOfBool::create](#vectorofboolcreate)
@@ -9103,7 +9132,7 @@ AutoIt:
 ### mediapipe.autoit
 
 ```cpp
-static mediapipe::autoit
+static mediapipe::tasks::autoit
 AutoIt:
     [propget] $omediapipe.autoit
 ```
@@ -16955,6 +16984,14 @@ AutoIt:
     [propget] $oimage_segmenter.ImageSegmenter
 ```
 
+### image\_segmenter.ImageSegmenterOptionsEnums
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptionsEnums
+AutoIt:
+    [propget] $oimage_segmenter.ImageSegmenterOptionsEnums
+```
+
 ## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions
 
 ### ImageSegmenterOptions.base\_options
@@ -17041,6 +17078,14 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter
 AutoIt:
     [propget] $oimage_segmenter.ImageSegmenter
+```
+
+### image\_segmenter.ImageSegmenterOptionsEnums
+
+```cpp
+static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptionsEnums
+AutoIt:
+    [propget] $oimage_segmenter.ImageSegmenterOptionsEnums
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter
@@ -57227,6 +57272,14 @@ AutoIt:
     [propget] $oimage_frame.ImageFrame
 ```
 
+### image\_frame.ImageFormat
+
+```cpp
+static mediapipe::ImageFormat::Format
+AutoIt:
+    [propget] $oimage_frame.ImageFormat
+```
+
 ## cv::Mat
 
 ### Mat.cols
@@ -59573,6 +59626,14 @@ AutoIt:
 static cv::Mat cv::Mat::createFromVectorOfInt( std::vector<int> vec );
 AutoIt:
     _Mediapipe_ObjCreate("cv.Mat").createFromVectorOfInt( $vec ) -> <cv.Mat object>
+```
+
+### cv::Mat::createFromVectorOfMat
+
+```cpp
+static std::shared_ptr<cv::Mat> cv::Mat::createFromVectorOfMat( std::vector<cv::Mat> vec );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").createFromVectorOfMat( $vec ) -> retval
 ```
 
 ### cv::Mat::createFromVectorOfVec2b
@@ -62062,6 +62123,24 @@ AutoIt:
     [propget] $ovalidated_graph_config.ValidatedGraphConfig
 ```
 
+## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptionsEnums
+
+### ImageSegmenterOptionsEnums.OutputType
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType
+AutoIt:
+    [propget] $oImageSegmenterOptionsEnums.OutputType
+```
+
+### ImageSegmenterOptionsEnums.Activation
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation
+AutoIt:
+    [propget] $oImageSegmenterOptionsEnums.Activation
+```
+
 ## VectorOfString
 
 ### VectorOfString.Count
@@ -62468,6 +62547,164 @@ AutoIt:
 void* VectorOfVariant::start();
 AutoIt:
     $oVectorOfVariant.start() -> retval
+```
+
+## mediapipe::ImageFormat::Format
+
+### Format.UNKNOWN
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::UNKNOWN
+AutoIt:
+    [propget] $oFormat.UNKNOWN
+```
+
+### Format.SRGB
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::SRGB
+AutoIt:
+    [propget] $oFormat.SRGB
+```
+
+### Format.SRGBA
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::SRGBA
+AutoIt:
+    [propget] $oFormat.SRGBA
+```
+
+### Format.GRAY8
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::GRAY8
+AutoIt:
+    [propget] $oFormat.GRAY8
+```
+
+### Format.GRAY16
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::GRAY16
+AutoIt:
+    [propget] $oFormat.GRAY16
+```
+
+### Format.YCBCR420P
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::YCBCR420P
+AutoIt:
+    [propget] $oFormat.YCBCR420P
+```
+
+### Format.YCBCR420P10
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::YCBCR420P10
+AutoIt:
+    [propget] $oFormat.YCBCR420P10
+```
+
+### Format.SRGB48
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::SRGB48
+AutoIt:
+    [propget] $oFormat.SRGB48
+```
+
+### Format.SRGBA64
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::SRGBA64
+AutoIt:
+    [propget] $oFormat.SRGBA64
+```
+
+### Format.VEC32F1
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::VEC32F1
+AutoIt:
+    [propget] $oFormat.VEC32F1
+```
+
+### Format.VEC32F2
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::VEC32F2
+AutoIt:
+    [propget] $oFormat.VEC32F2
+```
+
+### Format.LAB8
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::LAB8
+AutoIt:
+    [propget] $oFormat.LAB8
+```
+
+### Format.SBGRA
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::SBGRA
+AutoIt:
+    [propget] $oFormat.SBGRA
+```
+
+## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType
+
+### OutputType.UNSPECIFIED
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::UNSPECIFIED
+AutoIt:
+    [propget] $oOutputType.UNSPECIFIED
+```
+
+### OutputType.CATEGORY\_MASK
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CATEGORY_MASK
+AutoIt:
+    [propget] $oOutputType.CATEGORY_MASK
+```
+
+### OutputType.CONFIDENCE\_MASK
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CONFIDENCE_MASK
+AutoIt:
+    [propget] $oOutputType.CONFIDENCE_MASK
+```
+
+## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation
+
+### Activation.NONE
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::NONE
+AutoIt:
+    [propget] $oActivation.NONE
+```
+
+### Activation.SIGMOID
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SIGMOID
+AutoIt:
+    [propget] $oActivation.SIGMOID
+```
+
+### Activation.SOFTMAX
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SOFTMAX
+AutoIt:
+    [propget] $oActivation.SOFTMAX
 ```
 
 ## VectorOfBool

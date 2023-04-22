@@ -149,6 +149,7 @@ namespace autoit
 		void convertToShow(cv::InputArray src, cv::Mat& dst, bool toRGB = true);
 		const void* convertToBitmap(cv::InputArray src, bool copy);
 		void GdiplusResize(cv::InputArray src, cv::Mat& dst, float newWidth, float newHeight, int interpolation);
+		AUTOIT_PTR<cv::Mat> createFromVectorOfMat(const std::vector<cv::Mat>& vec);
 	}
 }
 
