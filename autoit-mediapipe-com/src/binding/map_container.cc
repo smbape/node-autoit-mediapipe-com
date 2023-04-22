@@ -155,7 +155,7 @@ namespace google::protobuf {
 					break;
 				}
 				case FieldDescriptor::CPPTYPE_INT64: {
-					auto value = ::autoit::cast<int64>(&arg);
+					auto value = ::autoit::cast<int64_t>(&arg);
 					key->SetInt64Value(value);
 					break;
 				}
@@ -165,7 +165,7 @@ namespace google::protobuf {
 					break;
 				}
 				case FieldDescriptor::CPPTYPE_UINT64: {
-					auto value = ::autoit::cast<uint64>(&arg);
+					auto value = ::autoit::cast<uint64_t>(&arg);
 					key->SetUInt64Value(value);
 					break;
 				}
@@ -198,7 +198,7 @@ namespace google::protobuf {
 					return true;
 				}
 				case FieldDescriptor::CPPTYPE_INT64: {
-					auto value = ::autoit::cast<int64>(&arg);
+					auto value = ::autoit::cast<int64_t>(&arg);
 					value_ref->SetInt64Value(value);
 					return true;
 				}
@@ -208,7 +208,7 @@ namespace google::protobuf {
 					return true;
 				}
 				case FieldDescriptor::CPPTYPE_UINT64: {
-					auto value = ::autoit::cast<uint64>(&arg);
+					auto value = ::autoit::cast<uint64_t>(&arg);
 					value_ref->SetUInt64Value(value);
 					return true;
 				}

@@ -1,8 +1,8 @@
 const declarations = [
     ["create_string", "std::string", "std::string", ["/Ref"], []],
     ["create_bool", "bool", "bool", [], []],
-    ["create_int64", "int64", "int64", [], []],
-    ["create_uint64", "uint64", "uint64", [], []],
+    ["create_int64", "int64_t", "int64_t", [], []],
+    ["create_uint64", "uint64_t", "uint64_t", [], []],
     ["create_float", "float", "float", [], []],
     ["create_double", "double", "double", [], []],
     ["create_int_vector", "std::vector<int>", "std::vector<int>", ["/C", "/Ref"], []],

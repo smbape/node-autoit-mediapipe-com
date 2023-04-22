@@ -154,7 +154,7 @@ namespace mediapipe::autoit::solution_base {
 		std::map<std::string, PacketDataType> m_side_input_type_info;
 
 		std::unique_ptr<CalculatorGraph> m_graph;
-		int64 m_simulated_timestamp = 0;
+		int64_t m_simulated_timestamp = 0;
 		std::map<std::string, Packet> m_graph_outputs;
 		std::map<std::string, Packet> m_input_side_packets;
 	};

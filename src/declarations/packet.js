@@ -9,13 +9,13 @@ module.exports = [
 
     ["mediapipe.Packet.Timestamp", "mediapipe::Timestamp", ["/attr=propget", "=get_timestamp", "/idlname=timestamp"], [], "", ""],
     ["mediapipe.Packet.Timestamp", "void", ["/attr=propput", "=put_timestamp", "/idlname=timestamp", "/Output=*__self->get() = std::move(__self->get()->At(Timestamp(ts_value)))"], [
-        ["int64", "ts_value", "", []],
+        ["int64_t", "ts_value", "", []],
     ], "", ""],
 
     ["mediapipe.Packet.IsEmpty", "bool", ["=is_empty"], [], "", ""],
 
     ["mediapipe.Packet.At", "mediapipe::Packet", ["=at"], [
-        ["int64", "ts_value", "", ["/Cast=Timestamp"]],
+        ["int64_t", "ts_value", "", ["/Cast=Timestamp"]],
     ], "", ""],
 
     ["mediapipe.Packet.At", "mediapipe::Packet", ["=at"], [

@@ -20,45 +20,45 @@ using namespace mediapipe;
 using namespace mediapipe::autoit;
 
 namespace mediapipe::autoit::packet_creator {
-	const std::shared_ptr<Packet> create_int(int64 data) {
+	const std::shared_ptr<Packet> create_int(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, INT_MIN, INT_MAX);
 		const auto& packet = MakePacket<int>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_int8(int64 data) {
+	const std::shared_ptr<Packet> create_int8(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, INT8_MIN, INT8_MAX);
-		const auto& packet = MakePacket<int8>(data);
+		const auto& packet = MakePacket<int8_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_int16(int64 data) {
+	const std::shared_ptr<Packet> create_int16(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, INT16_MIN, INT16_MAX);
-		const auto& packet = MakePacket<int16>(data);
+		const auto& packet = MakePacket<int16_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_int32(int64 data) {
+	const std::shared_ptr<Packet> create_int32(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, INT32_MIN, INT32_MAX);
-		const auto& packet = MakePacket<int32>(data);
+		const auto& packet = MakePacket<int32_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_uint8(int64 data) {
+	const std::shared_ptr<Packet> create_uint8(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, 0, UINT8_MAX);
-		const auto& packet = MakePacket<uint8>(data);
+		const auto& packet = MakePacket<uint8_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_uint16(int64 data) {
+	const std::shared_ptr<Packet> create_uint16(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, 0, UINT16_MAX);
-		const auto& packet = MakePacket<uint16>(data);
+		const auto& packet = MakePacket<uint16_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_uint32(int64 data) {
+	const std::shared_ptr<Packet> create_uint32(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, 0, UINT32_MAX);
-		const auto& packet = MakePacket<uint32>(data);
+		const auto& packet = MakePacket<uint32_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 

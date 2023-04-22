@@ -9412,7 +9412,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_int
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int( int64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int( int64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_int( $data ) -> retval
 ```
@@ -9420,7 +9420,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_int16
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int16( int64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int16( int64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_int16( $data ) -> retval
 ```
@@ -9428,7 +9428,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_int32
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int32( int64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int32( int64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_int32( $data ) -> retval
 ```
@@ -9436,7 +9436,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_int64
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int64( int64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int64( int64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_int64( $data ) -> retval
 ```
@@ -9444,7 +9444,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_int8
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int8( int64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_int8( int64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_int8( $data ) -> retval
 ```
@@ -9517,7 +9517,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_uint16
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_uint16( int64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_uint16( int64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_uint16( $data ) -> retval
 ```
@@ -9525,7 +9525,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_uint32
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_uint32( int64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_uint32( int64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_uint32( $data ) -> retval
 ```
@@ -9533,7 +9533,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_uint64
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_uint64( uint64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_uint64( uint64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_uint64( $data ) -> retval
 ```
@@ -9541,7 +9541,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_creator::create\_uint8
 
 ```cpp
-std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_uint8( int64 data );
+std::shared_ptr<mediapipe::Packet> mediapipe::autoit::packet_creator::create_uint8( int64_t data );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator").create_uint8( $data ) -> retval
 ```
@@ -9607,7 +9607,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_getter::get\_int
 
 ```cpp
-int64 mediapipe::autoit::packet_getter::get_int( const mediapipe::Packet& packet );
+int64_t mediapipe::autoit::packet_getter::get_int( const mediapipe::Packet& packet );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_int( $packet ) -> retval
 ```
@@ -9615,7 +9615,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_getter::get\_int\_list
 
 ```cpp
-std::vector<int64> mediapipe::autoit::packet_getter::get_int_list( const mediapipe::Packet& packet );
+std::vector<int64_t> mediapipe::autoit::packet_getter::get_int_list( const mediapipe::Packet& packet );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_int_list( $packet ) -> retval
 ```
@@ -9671,7 +9671,7 @@ AutoIt:
 ### mediapipe::autoit::packet\_getter::get\_uint
 
 ```cpp
-uint64 mediapipe::autoit::packet_getter::get_uint( const mediapipe::Packet& packet );
+uint64_t mediapipe::autoit::packet_getter::get_uint( const mediapipe::Packet& packet );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_uint( $packet ) -> retval
 ```
@@ -20456,7 +20456,7 @@ AutoIt:
 ### ProfilerConfig.histogram\_interval\_size\_usec
 
 ```cpp
-int64 mediapipe::ProfilerConfig::histogram_interval_size_usec
+int64_t mediapipe::ProfilerConfig::histogram_interval_size_usec
 AutoIt:
     [propget, propput] $oProfilerConfig.histogram_interval_size_usec
 ```
@@ -20464,7 +20464,7 @@ AutoIt:
 ### ProfilerConfig.num\_histogram\_intervals
 
 ```cpp
-int64 mediapipe::ProfilerConfig::num_histogram_intervals
+int64_t mediapipe::ProfilerConfig::num_histogram_intervals
 AutoIt:
     [propget, propput] $oProfilerConfig.num_histogram_intervals
 ```
@@ -20504,7 +20504,7 @@ AutoIt:
 ### ProfilerConfig.trace\_log\_capacity
 
 ```cpp
-int64 mediapipe::ProfilerConfig::trace_log_capacity
+int64_t mediapipe::ProfilerConfig::trace_log_capacity
 AutoIt:
     [propget, propput] $oProfilerConfig.trace_log_capacity
 ```
@@ -20536,7 +20536,7 @@ AutoIt:
 ### ProfilerConfig.trace\_log\_interval\_usec
 
 ```cpp
-int64 mediapipe::ProfilerConfig::trace_log_interval_usec
+int64_t mediapipe::ProfilerConfig::trace_log_interval_usec
 AutoIt:
     [propget, propput] $oProfilerConfig.trace_log_interval_usec
 ```
@@ -20544,7 +20544,7 @@ AutoIt:
 ### ProfilerConfig.trace\_log\_margin\_usec
 
 ```cpp
-int64 mediapipe::ProfilerConfig::trace_log_margin_usec
+int64_t mediapipe::ProfilerConfig::trace_log_margin_usec
 AutoIt:
     [propget, propput] $oProfilerConfig.trace_log_margin_usec
 ```
@@ -20600,18 +20600,18 @@ AutoIt:
 ### mediapipe::ProfilerConfig::get\_create
 
 ```cpp
-static mediapipe::ProfilerConfig mediapipe::ProfilerConfig::get_create( std::optional<int64>       histogram_interval_size_usec = std::optional<int64>(),
-                                                                        std::optional<int64>       num_histogram_intervals = std::optional<int64>(),
+static mediapipe::ProfilerConfig mediapipe::ProfilerConfig::get_create( std::optional<int64_t>     histogram_interval_size_usec = std::optional<int64_t>(),
+                                                                        std::optional<int64_t>     num_histogram_intervals = std::optional<int64_t>(),
                                                                         std::optional<bool>        enable_input_output_latency = std::optional<bool>(),
                                                                         std::optional<bool>        enable_profiler = std::optional<bool>(),
                                                                         std::optional<bool>        enable_stream_latency = std::optional<bool>(),
                                                                         std::optional<bool>        use_packet_timestamp_for_added_packet = std::optional<bool>(),
-                                                                        std::optional<int64>       trace_log_capacity = std::optional<int64>(),
+                                                                        std::optional<int64_t>     trace_log_capacity = std::optional<int64_t>(),
                                                                         VARIANT*                   trace_event_types_disabled = VARIANT*(),
                                                                         std::optional<std::string> trace_log_path = std::optional<std::string>(),
                                                                         std::optional<int>         trace_log_count = std::optional<int>(),
-                                                                        std::optional<int64>       trace_log_interval_usec = std::optional<int64>(),
-                                                                        std::optional<int64>       trace_log_margin_usec = std::optional<int64>(),
+                                                                        std::optional<int64_t>     trace_log_interval_usec = std::optional<int64_t>(),
+                                                                        std::optional<int64_t>     trace_log_margin_usec = std::optional<int64_t>(),
                                                                         std::optional<bool>        trace_log_duration_events = std::optional<bool>(),
                                                                         std::optional<int>         trace_log_interval_count = std::optional<int>(),
                                                                         std::optional<bool>        trace_log_disabled = std::optional<bool>(),
@@ -26159,7 +26159,7 @@ AutoIt:
 ### Detection.detection\_id
 
 ```cpp
-int64 mediapipe::Detection::detection_id
+int64_t mediapipe::Detection::detection_id
 AutoIt:
     [propget, propput] $oDetection.detection_id
 ```
@@ -26183,7 +26183,7 @@ AutoIt:
 ### Detection.timestamp\_usec
 
 ```cpp
-int64 mediapipe::Detection::timestamp_usec
+int64_t mediapipe::Detection::timestamp_usec
 AutoIt:
     [propget, propput] $oDetection.timestamp_usec
 ```
@@ -26197,10 +26197,10 @@ static mediapipe::Detection mediapipe::Detection::get_create( VARIANT*          
                                                               std::shared_ptr<mediapipe::LocationData> location_data = std::shared_ptr<mediapipe::LocationData>(),
                                                               std::optional<std::string>               feature_tag = std::optional<std::string>(),
                                                               std::optional<std::string>               track_id = std::optional<std::string>(),
-                                                              std::optional<int64>                     detection_id = std::optional<int64>(),
+                                                              std::optional<int64_t>                   detection_id = std::optional<int64_t>(),
                                                               VARIANT*                                 associated_detections = VARIANT*(),
                                                               VARIANT*                                 display_name = VARIANT*(),
-                                                              std::optional<int64>                     timestamp_usec = std::optional<int64>() );
+                                                              std::optional<int64_t>                   timestamp_usec = std::optional<int64_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Detection").create( [$label[, $label_id[, $score[, $location_data[, $feature_tag[, $track_id[, $detection_id[, $associated_detections[, $display_name[, $timestamp_usec]]]]]]]]]] ) -> <mediapipe.Detection object>
     $oDetection( [$label[, $label_id[, $score[, $location_data[, $feature_tag[, $track_id[, $detection_id[, $associated_detections[, $display_name[, $timestamp_usec]]]]]]]]]] ) -> <mediapipe.Detection object>
@@ -33521,7 +33521,7 @@ AutoIt:
 ### UninterpretedOption.positive\_int\_value
 
 ```cpp
-uint64 google::protobuf::UninterpretedOption::positive_int_value
+uint64_t google::protobuf::UninterpretedOption::positive_int_value
 AutoIt:
     [propget, propput] $oUninterpretedOption.positive_int_value
 ```
@@ -33529,7 +33529,7 @@ AutoIt:
 ### UninterpretedOption.negative\_int\_value
 
 ```cpp
-int64 google::protobuf::UninterpretedOption::negative_int_value
+int64_t google::protobuf::UninterpretedOption::negative_int_value
 AutoIt:
     [propget, propput] $oUninterpretedOption.negative_int_value
 ```
@@ -33563,8 +33563,8 @@ AutoIt:
 ```cpp
 static google::protobuf::UninterpretedOption google::protobuf::UninterpretedOption::get_create( VARIANT*                   name = VARIANT*(),
                                                                                                 std::optional<std::string> identifier_value = std::optional<std::string>(),
-                                                                                                std::optional<uint64>      positive_int_value = std::optional<uint64>(),
-                                                                                                std::optional<int64>       negative_int_value = std::optional<int64>(),
+                                                                                                std::optional<uint64_t>    positive_int_value = std::optional<uint64_t>(),
+                                                                                                std::optional<int64_t>     negative_int_value = std::optional<int64_t>(),
                                                                                                 std::optional<double>      double_value = std::optional<double>(),
                                                                                                 std::optional<std::string> string_value = std::optional<std::string>(),
                                                                                                 std::optional<std::string> aggregate_value = std::optional<std::string>() );
@@ -42487,7 +42487,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::append
 
 ```cpp
-void google::protobuf::Repeated_int64::append( const int64 value );
+void google::protobuf::Repeated_int64::append( const int64_t value );
 AutoIt:
     $oRepeated_int64.append( $value ) -> None
 ```
@@ -42517,7 +42517,7 @@ AutoIt:
 ```
 
 ```cpp
-void google::protobuf::Repeated_int64::extend( const std::vector<int64>& items );
+void google::protobuf::Repeated_int64::extend( const std::vector<int64_t>& items );
 AutoIt:
     $oRepeated_int64.extend( $items ) -> None
 ```
@@ -42525,7 +42525,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::get\_Item
 
 ```cpp
-int64 google::protobuf::Repeated_int64::get_Item( int index );
+int64_t google::protobuf::Repeated_int64::get_Item( int index );
 AutoIt:
     $oRepeated_int64.Item( $index ) -> retval
     $oRepeated_int64( $index ) -> retval
@@ -42542,8 +42542,8 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::insert
 
 ```cpp
-void google::protobuf::Repeated_int64::insert( SSIZE_T      index,
-                                               const int64& item );
+void google::protobuf::Repeated_int64::insert( SSIZE_T        index,
+                                               const int64_t& item );
 AutoIt:
     $oRepeated_int64.insert( $index, $item ) -> None
 ```
@@ -42551,7 +42551,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::pop
 
 ```cpp
-int64 google::protobuf::Repeated_int64::pop( SSIZE_T index = -1 );
+int64_t google::protobuf::Repeated_int64::pop( SSIZE_T index = -1 );
 AutoIt:
     $oRepeated_int64.pop( [$index] ) -> retval
 ```
@@ -42567,8 +42567,8 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::set
 
 ```cpp
-void google::protobuf::Repeated_int64::set( int          index,
-                                            const int64& value );
+void google::protobuf::Repeated_int64::set( int            index,
+                                            const int64_t& value );
 AutoIt:
     $oRepeated_int64.set( $index, $value ) -> None
 ```
@@ -42584,16 +42584,16 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::slice
 
 ```cpp
-void google::protobuf::Repeated_int64::slice( std::vector<int64> list,
-                                              SSIZE_T            start,
-                                              SSIZE_T            deleteCount );
+void google::protobuf::Repeated_int64::slice( std::vector<int64_t> list,
+                                              SSIZE_T              start,
+                                              SSIZE_T              deleteCount );
 AutoIt:
     $oRepeated_int64.slice( $start, $deleteCount[, $list] ) -> $list
 ```
 
 ```cpp
-void google::protobuf::Repeated_int64::slice( std::vector<int64> list,
-                                              SSIZE_T            start = 0 );
+void google::protobuf::Repeated_int64::slice( std::vector<int64_t> list,
+                                              SSIZE_T              start = 0 );
 AutoIt:
     $oRepeated_int64.slice( [$start[, $list]] ) -> $list
 ```
@@ -42621,16 +42621,16 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::splice
 
 ```cpp
-void google::protobuf::Repeated_int64::splice( std::vector<int64> list,
-                                               SSIZE_T            start,
-                                               SSIZE_T            deleteCount );
+void google::protobuf::Repeated_int64::splice( std::vector<int64_t> list,
+                                               SSIZE_T              start,
+                                               SSIZE_T              deleteCount );
 AutoIt:
     $oRepeated_int64.splice( $start, $deleteCount[, $list] ) -> $list
 ```
 
 ```cpp
-void google::protobuf::Repeated_int64::splice( std::vector<int64> list,
-                                               SSIZE_T            start = 0 );
+void google::protobuf::Repeated_int64::splice( std::vector<int64_t> list,
+                                               SSIZE_T              start = 0 );
 AutoIt:
     $oRepeated_int64.splice( [$start[, $list]] ) -> $list
 ```
@@ -48093,7 +48093,7 @@ AutoIt:
 ### ConstantSidePacket.uint64\_value
 
 ```cpp
-uint64 mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::uint64_value
+uint64_t mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::uint64_value
 AutoIt:
     [propget, propput] $oConstantSidePacket.uint64_value
 ```
@@ -48137,7 +48137,7 @@ static mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket mediap
                                                                                                                                                           std::optional<float>                           float_value = std::optional<float>(),
                                                                                                                                                           std::optional<bool>                            bool_value = std::optional<bool>(),
                                                                                                                                                           std::optional<std::string>                     string_value = std::optional<std::string>(),
-                                                                                                                                                          std::optional<uint64>                          uint64_value = std::optional<uint64>(),
+                                                                                                                                                          std::optional<uint64_t>                        uint64_value = std::optional<uint64_t>(),
                                                                                                                                                           std::shared_ptr<mediapipe::ClassificationList> classification_list_value = std::shared_ptr<mediapipe::ClassificationList>(),
                                                                                                                                                           std::shared_ptr<mediapipe::LandmarkList>       landmark_list_value = std::shared_ptr<mediapipe::LandmarkList>(),
                                                                                                                                                           std::optional<double>                          double_value = std::optional<double>(),
@@ -51482,7 +51482,7 @@ AutoIt:
 ### FileDescriptorMeta.length
 
 ```cpp
-int64 mediapipe::tasks::core::proto::FileDescriptorMeta::length
+int64_t mediapipe::tasks::core::proto::FileDescriptorMeta::length
 AutoIt:
     [propget, propput] $oFileDescriptorMeta.length
 ```
@@ -51490,7 +51490,7 @@ AutoIt:
 ### FileDescriptorMeta.offset
 
 ```cpp
-int64 mediapipe::tasks::core::proto::FileDescriptorMeta::offset
+int64_t mediapipe::tasks::core::proto::FileDescriptorMeta::offset
 AutoIt:
     [propget, propput] $oFileDescriptorMeta.offset
 ```
@@ -51498,9 +51498,9 @@ AutoIt:
 ### mediapipe::tasks::core::proto::FileDescriptorMeta::get\_create
 
 ```cpp
-static mediapipe::tasks::core::proto::FileDescriptorMeta mediapipe::tasks::core::proto::FileDescriptorMeta::get_create( std::optional<int>   fd = std::optional<int>(),
-                                                                                                                        std::optional<int64> length = std::optional<int64>(),
-                                                                                                                        std::optional<int64> offset = std::optional<int64>() );
+static mediapipe::tasks::core::proto::FileDescriptorMeta mediapipe::tasks::core::proto::FileDescriptorMeta::get_create( std::optional<int>     fd = std::optional<int>(),
+                                                                                                                        std::optional<int64_t> length = std::optional<int64_t>(),
+                                                                                                                        std::optional<int64_t> offset = std::optional<int64_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.FileDescriptorMeta").create( [$fd[, $length[, $offset]]] ) -> <mediapipe.tasks.core.proto.FileDescriptorMeta object>
     $oFileDescriptorMeta( [$fd[, $length[, $offset]]] ) -> <mediapipe.tasks.core.proto.FileDescriptorMeta object>
@@ -51607,7 +51607,7 @@ AutoIt:
 ### FilePointerMeta.pointer
 
 ```cpp
-uint64 mediapipe::tasks::core::proto::FilePointerMeta::pointer
+uint64_t mediapipe::tasks::core::proto::FilePointerMeta::pointer
 AutoIt:
     [propget, propput] $oFilePointerMeta.pointer
 ```
@@ -51615,7 +51615,7 @@ AutoIt:
 ### FilePointerMeta.length
 
 ```cpp
-int64 mediapipe::tasks::core::proto::FilePointerMeta::length
+int64_t mediapipe::tasks::core::proto::FilePointerMeta::length
 AutoIt:
     [propget, propput] $oFilePointerMeta.length
 ```
@@ -51623,8 +51623,8 @@ AutoIt:
 ### mediapipe::tasks::core::proto::FilePointerMeta::get\_create
 
 ```cpp
-static mediapipe::tasks::core::proto::FilePointerMeta mediapipe::tasks::core::proto::FilePointerMeta::get_create( std::optional<uint64> pointer = std::optional<uint64>(),
-                                                                                                                  std::optional<int64>  length = std::optional<int64>() );
+static mediapipe::tasks::core::proto::FilePointerMeta mediapipe::tasks::core::proto::FilePointerMeta::get_create( std::optional<uint64_t> pointer = std::optional<uint64_t>(),
+                                                                                                                  std::optional<int64_t>  length = std::optional<int64_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.FilePointerMeta").create( [$pointer[, $length]] ) -> <mediapipe.tasks.core.proto.FilePointerMeta object>
     $oFilePointerMeta( [$pointer[, $length]] ) -> <mediapipe.tasks.core.proto.FilePointerMeta object>
@@ -52192,7 +52192,7 @@ AutoIt:
 ### ClassificationResult.timestamp\_ms
 
 ```cpp
-int64 mediapipe::tasks::components::containers::proto::ClassificationResult::timestamp_ms
+int64_t mediapipe::tasks::components::containers::proto::ClassificationResult::timestamp_ms
 AutoIt:
     [propget, propput] $oClassificationResult.timestamp_ms
 ```
@@ -52200,8 +52200,8 @@ AutoIt:
 ### mediapipe::tasks::components::containers::proto::ClassificationResult::get\_create
 
 ```cpp
-static mediapipe::tasks::components::containers::proto::ClassificationResult mediapipe::tasks::components::containers::proto::ClassificationResult::get_create( VARIANT*             classifications = VARIANT*(),
-                                                                                                                                                                std::optional<int64> timestamp_ms = std::optional<int64>() );
+static mediapipe::tasks::components::containers::proto::ClassificationResult mediapipe::tasks::components::containers::proto::ClassificationResult::get_create( VARIANT*               classifications = VARIANT*(),
+                                                                                                                                                                std::optional<int64_t> timestamp_ms = std::optional<int64_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.containers.proto.ClassificationResult").create( [$classifications[, $timestamp_ms]] ) -> <mediapipe.tasks.components.containers.proto.ClassificationResult object>
     $oClassificationResult( [$classifications[, $timestamp_ms]] ) -> <mediapipe.tasks.components.containers.proto.ClassificationResult object>
@@ -53201,7 +53201,7 @@ AutoIt:
 ### EmbeddingResult.timestamp\_ms
 
 ```cpp
-int64 mediapipe::tasks::components::containers::proto::EmbeddingResult::timestamp_ms
+int64_t mediapipe::tasks::components::containers::proto::EmbeddingResult::timestamp_ms
 AutoIt:
     [propget, propput] $oEmbeddingResult.timestamp_ms
 ```
@@ -53209,8 +53209,8 @@ AutoIt:
 ### mediapipe::tasks::components::containers::proto::EmbeddingResult::get\_create
 
 ```cpp
-static mediapipe::tasks::components::containers::proto::EmbeddingResult mediapipe::tasks::components::containers::proto::EmbeddingResult::get_create( VARIANT*             embeddings = VARIANT*(),
-                                                                                                                                                      std::optional<int64> timestamp_ms = std::optional<int64>() );
+static mediapipe::tasks::components::containers::proto::EmbeddingResult mediapipe::tasks::components::containers::proto::EmbeddingResult::get_create( VARIANT*               embeddings = VARIANT*(),
+                                                                                                                                                      std::optional<int64_t> timestamp_ms = std::optional<int64_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.components.containers.proto.EmbeddingResult").create( [$embeddings[, $timestamp_ms]] ) -> <mediapipe.tasks.components.containers.proto.EmbeddingResult object>
     $oEmbeddingResult( [$embeddings[, $timestamp_ms]] ) -> <mediapipe.tasks.components.containers.proto.EmbeddingResult object>
@@ -53610,7 +53610,7 @@ AutoIt:
 ### Rect.rect\_id
 
 ```cpp
-int64 mediapipe::Rect::rect_id
+int64_t mediapipe::Rect::rect_id
 AutoIt:
     [propget, propput] $oRect.rect_id
 ```
@@ -53618,12 +53618,12 @@ AutoIt:
 ### mediapipe::Rect::get\_create
 
 ```cpp
-static mediapipe::Rect mediapipe::Rect::get_create( std::optional<int>   x_center = std::optional<int>(),
-                                                    std::optional<int>   y_center = std::optional<int>(),
-                                                    std::optional<int>   height = std::optional<int>(),
-                                                    std::optional<int>   width = std::optional<int>(),
-                                                    std::optional<float> rotation = std::optional<float>(),
-                                                    std::optional<int64> rect_id = std::optional<int64>() );
+static mediapipe::Rect mediapipe::Rect::get_create( std::optional<int>     x_center = std::optional<int>(),
+                                                    std::optional<int>     y_center = std::optional<int>(),
+                                                    std::optional<int>     height = std::optional<int>(),
+                                                    std::optional<int>     width = std::optional<int>(),
+                                                    std::optional<float>   rotation = std::optional<float>(),
+                                                    std::optional<int64_t> rect_id = std::optional<int64_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Rect").create( [$x_center[, $y_center[, $height[, $width[, $rotation[, $rect_id]]]]]] ) -> <mediapipe.Rect object>
     $oRect( [$x_center[, $y_center[, $height[, $width[, $rotation[, $rect_id]]]]]] ) -> <mediapipe.Rect object>
@@ -53770,7 +53770,7 @@ AutoIt:
 ### NormalizedRect.rect\_id
 
 ```cpp
-int64 mediapipe::NormalizedRect::rect_id
+int64_t mediapipe::NormalizedRect::rect_id
 AutoIt:
     [propget, propput] $oNormalizedRect.rect_id
 ```
@@ -53778,12 +53778,12 @@ AutoIt:
 ### mediapipe::NormalizedRect::get\_create
 
 ```cpp
-static mediapipe::NormalizedRect mediapipe::NormalizedRect::get_create( std::optional<float> x_center = std::optional<float>(),
-                                                                        std::optional<float> y_center = std::optional<float>(),
-                                                                        std::optional<float> height = std::optional<float>(),
-                                                                        std::optional<float> width = std::optional<float>(),
-                                                                        std::optional<float> rotation = std::optional<float>(),
-                                                                        std::optional<int64> rect_id = std::optional<int64>() );
+static mediapipe::NormalizedRect mediapipe::NormalizedRect::get_create( std::optional<float>   x_center = std::optional<float>(),
+                                                                        std::optional<float>   y_center = std::optional<float>(),
+                                                                        std::optional<float>   height = std::optional<float>(),
+                                                                        std::optional<float>   width = std::optional<float>(),
+                                                                        std::optional<float>   rotation = std::optional<float>(),
+                                                                        std::optional<int64_t> rect_id = std::optional<int64_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.NormalizedRect").create( [$x_center[, $y_center[, $height[, $width[, $rotation[, $rect_id]]]]]] ) -> <mediapipe.NormalizedRect object>
     $oNormalizedRect( [$x_center[, $y_center[, $height[, $width[, $rotation[, $rect_id]]]]]] ) -> <mediapipe.NormalizedRect object>
@@ -54445,7 +54445,7 @@ AutoIt:
 ### FlowLimiterCalculatorOptions.in\_flight\_timeout
 
 ```cpp
-int64 mediapipe::FlowLimiterCalculatorOptions::in_flight_timeout
+int64_t mediapipe::FlowLimiterCalculatorOptions::in_flight_timeout
 AutoIt:
     [propget, propput] $oFlowLimiterCalculatorOptions.in_flight_timeout
 ```
@@ -54461,9 +54461,9 @@ AutoIt:
 ### mediapipe::FlowLimiterCalculatorOptions::get\_create
 
 ```cpp
-static mediapipe::FlowLimiterCalculatorOptions mediapipe::FlowLimiterCalculatorOptions::get_create( std::optional<int>   max_in_flight = std::optional<int>(),
-                                                                                                    std::optional<int>   max_in_queue = std::optional<int>(),
-                                                                                                    std::optional<int64> in_flight_timeout = std::optional<int64>() );
+static mediapipe::FlowLimiterCalculatorOptions mediapipe::FlowLimiterCalculatorOptions::get_create( std::optional<int>     max_in_flight = std::optional<int>(),
+                                                                                                    std::optional<int>     max_in_queue = std::optional<int>(),
+                                                                                                    std::optional<int64_t> in_flight_timeout = std::optional<int64_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.FlowLimiterCalculatorOptions").create( [$max_in_flight[, $max_in_queue[, $in_flight_timeout]]] ) -> <mediapipe.FlowLimiterCalculatorOptions object>
     $oFlowLimiterCalculatorOptions( [$max_in_flight[, $max_in_queue[, $in_flight_timeout]]] ) -> <mediapipe.FlowLimiterCalculatorOptions object>
@@ -57120,7 +57120,7 @@ AutoIt:
 ### mediapipe::Image::is\_aligned
 
 ```cpp
-bool mediapipe::Image::is_aligned( uint32 alignment_boundary );
+bool mediapipe::Image::is_aligned( uint32_t alignment_boundary );
 AutoIt:
     $oImage.is_aligned( $alignment_boundary ) -> retval
 ```
@@ -57254,7 +57254,7 @@ AutoIt:
 ### mediapipe::ImageFrame::is\_aligned
 
 ```cpp
-bool mediapipe::ImageFrame::is_aligned( uint32 alignment_boundary );
+bool mediapipe::ImageFrame::is_aligned( uint32_t alignment_boundary );
 AutoIt:
     $oImageFrame.is_aligned( $alignment_boundary ) -> retval
 ```
@@ -60697,7 +60697,7 @@ AutoIt:
 ### mediapipe::Packet::at
 
 ```cpp
-mediapipe::Packet mediapipe::Packet::at( int64 ts_value );
+mediapipe::Packet mediapipe::Packet::at( int64_t ts_value );
 AutoIt:
     $oPacket.at( $ts_value ) -> retval
 ```
@@ -60727,7 +60727,7 @@ AutoIt:
 ### mediapipe::Packet::put\_timestamp
 
 ```cpp
-void mediapipe::Packet::put_timestamp( int64 ts_value );
+void mediapipe::Packet::put_timestamp( int64_t ts_value );
 AutoIt:
     $oPacket.timestamp( $ts_value ) -> None
 ```
@@ -61040,7 +61040,7 @@ AutoIt:
 ### Timestamp.value
 
 ```cpp
-int64 mediapipe::Timestamp::Value()
+int64_t mediapipe::Timestamp::Value()
 AutoIt:
     [propget] $oTimestamp.value
 ```
@@ -61111,7 +61111,7 @@ AutoIt:
 ```
 
 ```cpp
-static mediapipe::Timestamp mediapipe::Timestamp::get_create( int64 timestamp );
+static mediapipe::Timestamp mediapipe::Timestamp::get_create( int64_t timestamp );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.Timestamp").create( $timestamp ) -> <mediapipe.Timestamp object>
     $oTimestamp( $timestamp ) -> <mediapipe.Timestamp object>
@@ -61227,7 +61227,7 @@ AutoIt:
 ### mediapipe::Timestamp::microseconds
 
 ```cpp
-int64 mediapipe::Timestamp::microseconds();
+int64_t mediapipe::Timestamp::microseconds();
 AutoIt:
     $oTimestamp.microseconds() -> retval
 ```
@@ -64156,7 +64156,7 @@ AutoIt:
 ### VectorOfInt64::Add
 
 ```cpp
-void VectorOfInt64::Add( int64 value );
+void VectorOfInt64::Add( int64_t value );
 AutoIt:
     $oVectorOfInt64.Add( $value ) -> None
 ```
@@ -64188,7 +64188,7 @@ AutoIt:
 ### VectorOfInt64::append
 
 ```cpp
-void VectorOfInt64::append( int64 value );
+void VectorOfInt64::append( int64_t value );
 AutoIt:
     $oVectorOfInt64.append( $value ) -> None
 ```
@@ -64196,14 +64196,14 @@ AutoIt:
 ### VectorOfInt64::at
 
 ```cpp
-int64 VectorOfInt64::at( size_t index );
+int64_t VectorOfInt64::at( size_t index );
 AutoIt:
     $oVectorOfInt64.at( $index ) -> retval
 ```
 
 ```cpp
-void VectorOfInt64::at( size_t index,
-                        int64  value );
+void VectorOfInt64::at( size_t  index,
+                        int64_t value );
 AutoIt:
     $oVectorOfInt64.at( $index, $value ) -> None
 ```
@@ -64235,7 +64235,7 @@ AutoIt:
 ### VectorOfInt64::get\_Item
 
 ```cpp
-int64 VectorOfInt64::get_Item( size_t index );
+int64_t VectorOfInt64::get_Item( size_t index );
 AutoIt:
     $oVectorOfInt64.Item( $index ) -> retval
     $oVectorOfInt64( $index ) -> retval
@@ -64252,7 +64252,7 @@ AutoIt:
 ### VectorOfInt64::push\_back
 
 ```cpp
-void VectorOfInt64::push_back( int64 value );
+void VectorOfInt64::push_back( int64_t value );
 AutoIt:
     $oVectorOfInt64.push_back( $value ) -> None
 ```
@@ -64276,8 +64276,8 @@ AutoIt:
 ### VectorOfInt64::put\_Item
 
 ```cpp
-void VectorOfInt64::put_Item( size_t index,
-                              int64  item );
+void VectorOfInt64::put_Item( size_t  index,
+                              int64_t item );
 AutoIt:
     $oVectorOfInt64.Item( $index ) = $item
 ```

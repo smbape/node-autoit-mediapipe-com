@@ -10,13 +10,13 @@
 #include "binding/image_frame.h"
 
 namespace mediapipe::autoit::packet_creator {
-	CV_WRAP const std::shared_ptr<Packet> create_int(int64 data);
-	CV_WRAP const std::shared_ptr<Packet> create_int8(int64 data);
-	CV_WRAP const std::shared_ptr<Packet> create_int16(int64 data);
-	CV_WRAP const std::shared_ptr<Packet> create_int32(int64 data);
-	CV_WRAP const std::shared_ptr<Packet> create_uint8(int64 data);
-	CV_WRAP const std::shared_ptr<Packet> create_uint16(int64 data);
-	CV_WRAP const std::shared_ptr<Packet> create_uint32(int64 data);
+	CV_WRAP const std::shared_ptr<Packet> create_int(int64_t data);
+	CV_WRAP const std::shared_ptr<Packet> create_int8(int64_t data);
+	CV_WRAP const std::shared_ptr<Packet> create_int16(int64_t data);
+	CV_WRAP const std::shared_ptr<Packet> create_int32(int64_t data);
+	CV_WRAP const std::shared_ptr<Packet> create_uint8(int64_t data);
+	CV_WRAP const std::shared_ptr<Packet> create_uint16(int64_t data);
+	CV_WRAP const std::shared_ptr<Packet> create_uint32(int64_t data);
 	CV_WRAP const std::shared_ptr<Packet> create_int_array(const std::vector<int>& data);
 	CV_WRAP const std::shared_ptr<Packet> create_float_array(const std::vector<float>& data);
 	CV_WRAP const std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, bool copy = true);

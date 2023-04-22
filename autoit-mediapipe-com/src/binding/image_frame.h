@@ -41,15 +41,13 @@ namespace mediapipe::autoit {
 				break;
 		}
 
-		int rows = data.rows;
-		int cols = data.cols;
-		int channels = ImageFrame::NumberOfChannelsForFormat(format);
-		int depth = ImageFrame::ByteDepthForFormat(format);
+		int width = data.cols;
+		int height = data.rows;
 		int width_step = data.step;
 
 		auto image_frame = std::make_unique<ImageFrame>(
-			format, /*width=*/cols, /*height=*/rows, width_step,
-			const_cast<uint8*>(data.ptr()),
+			format, width, height, width_step,
+			const_cast<uint8_t*>(data.ptr()),
 			ImageFrame::PixelDataDeleter::kNone
 		);
 
@@ -157,10 +155,10 @@ namespace mediapipe::autoit {
 
 	inline cv::Mat GenerateContiguousDataArray(const ImageFrame& image_frame, cv::Mat& img) {
 		switch (image_frame.ChannelSize()) {
-			case sizeof(uint8) :
-				return GenerateContiguousDataArrayHelper<uint8>(image_frame, img);
-			case sizeof(uint16) :
-				return GenerateContiguousDataArrayHelper<uint16>(image_frame, img);
+			case sizeof(uint8_t) :
+				return GenerateContiguousDataArrayHelper<uint8_t>(image_frame, img);
+			case sizeof(uint16_t) :
+				return GenerateContiguousDataArrayHelper<uint16_t>(image_frame, img);
 			case sizeof(float) :
 				return GenerateContiguousDataArrayHelper<float>(image_frame, img);
 			default:

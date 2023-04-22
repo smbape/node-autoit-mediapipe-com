@@ -6,45 +6,45 @@ using namespace proto_ns;
 // RegisteredTypeName()
 
 namespace mediapipe::autoit::packet_getter {
-	const int64 get_int(const Packet& packet) {
+	const int64_t get_int(const Packet& packet) {
 		if (packet.ValidateAsType<int>().ok()) {
-			return static_cast<int64>(packet.Get<int>());
+			return static_cast<int64_t>(packet.Get<int>());
 		}
 
-		if (packet.ValidateAsType<int8>().ok()) {
-			return static_cast<int64>(packet.Get<int8>());
+		if (packet.ValidateAsType<int8_t>().ok()) {
+			return static_cast<int64_t>(packet.Get<int8_t>());
 		}
 
-		if (packet.ValidateAsType<int16>().ok()) {
-			return static_cast<int64>(packet.Get<int16>());
+		if (packet.ValidateAsType<int16_t>().ok()) {
+			return static_cast<int64_t>(packet.Get<int16_t>());
 		}
 
-		if (packet.ValidateAsType<int32>().ok()) {
-			return static_cast<int64>(packet.Get<int32>());
+		if (packet.ValidateAsType<int32_t>().ok()) {
+			return static_cast<int64_t>(packet.Get<int32_t>());
 		}
 
-		if (packet.ValidateAsType<int64>().ok()) {
-			return static_cast<int64>(packet.Get<int64>());
+		if (packet.ValidateAsType<int64_t>().ok()) {
+			return static_cast<int64_t>(packet.Get<int64_t>());
 		}
 
 		AUTOIT_THROW("Packet doesn't contain int, int8, int16, int32, or int64 data.");
 	}
 
-	const uint64 get_uint(const Packet& packet) {
-		if (packet.ValidateAsType<uint8>().ok()) {
-			return static_cast<std::uint64_t>(packet.Get<uint8>());
+	const uint64_t get_uint(const Packet& packet) {
+		if (packet.ValidateAsType<uint8_t>().ok()) {
+			return static_cast<std::uint64_t>(packet.Get<uint8_t>());
 		}
 
-		if (packet.ValidateAsType<uint16>().ok()) {
-			return static_cast<std::uint64_t>(packet.Get<uint16>());
+		if (packet.ValidateAsType<uint16_t>().ok()) {
+			return static_cast<std::uint64_t>(packet.Get<uint16_t>());
 		}
 
-		if (packet.ValidateAsType<uint32>().ok()) {
-			return static_cast<std::uint64_t>(packet.Get<uint32>());
+		if (packet.ValidateAsType<uint32_t>().ok()) {
+			return static_cast<std::uint64_t>(packet.Get<uint32_t>());
 		}
 
-		if (packet.ValidateAsType<uint64>().ok()) {
-			return static_cast<std::uint64_t>(packet.Get<uint64>());
+		if (packet.ValidateAsType<uint64_t>().ok()) {
+			return static_cast<std::uint64_t>(packet.Get<uint64_t>());
 		}
 
 		AUTOIT_THROW("Packet doesn't contain uint8, uint16, uint32, or uint64 data.");
@@ -62,30 +62,30 @@ namespace mediapipe::autoit::packet_getter {
 		AUTOIT_THROW("Packet doesn't contain float or double data.");
 	}
 
-	const std::vector<int64> get_int_list(const Packet& packet) {
+	const std::vector<int64_t> get_int_list(const Packet& packet) {
 		if (packet.ValidateAsType<std::vector<int>>().ok()) {
 			auto int_list = packet.Get<std::vector<int>>();
-			return std::vector<int64>(int_list.begin(), int_list.end());
+			return std::vector<int64_t>(int_list.begin(), int_list.end());
 		}
 
-		if (packet.ValidateAsType<std::vector<int8>>().ok()) {
-			auto int_list = packet.Get<std::vector<int8>>();
-			return std::vector<int64>(int_list.begin(), int_list.end());
+		if (packet.ValidateAsType<std::vector<int8_t>>().ok()) {
+			auto int_list = packet.Get<std::vector<int8_t>>();
+			return std::vector<int64_t>(int_list.begin(), int_list.end());
 		}
 
-		if (packet.ValidateAsType<std::vector<int16>>().ok()) {
-			auto int_list = packet.Get<std::vector<int16>>();
-			return std::vector<int64>(int_list.begin(), int_list.end());
+		if (packet.ValidateAsType<std::vector<int16_t>>().ok()) {
+			auto int_list = packet.Get<std::vector<int16_t>>();
+			return std::vector<int64_t>(int_list.begin(), int_list.end());
 		}
 
-		if (packet.ValidateAsType<std::vector<int32>>().ok()) {
-			auto int_list = packet.Get<std::vector<int32>>();
-			return std::vector<int64>(int_list.begin(), int_list.end());
+		if (packet.ValidateAsType<std::vector<int32_t>>().ok()) {
+			auto int_list = packet.Get<std::vector<int32_t>>();
+			return std::vector<int64_t>(int_list.begin(), int_list.end());
 		}
 
-		if (packet.ValidateAsType<std::vector<int64>>().ok()) {
-			auto int_list = packet.Get<std::vector<int64>>();
-			return std::vector<int64>(int_list.begin(), int_list.end());
+		if (packet.ValidateAsType<std::vector<int64_t>>().ok()) {
+			auto int_list = packet.Get<std::vector<int64_t>>();
+			return std::vector<int64_t>(int_list.begin(), int_list.end());
 		}
 
 		AUTOIT_THROW("Packet doesn't contain int, int8, int16, int32, or int64 containers.");

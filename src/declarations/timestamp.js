@@ -1,6 +1,6 @@
 module.exports = [
     ["class mediapipe.Timestamp", "", [], [
-        ["int64", "value", "", ["/R", "=Value()"]],
+        ["int64_t", "value", "", ["/R", "=Value()"]],
         ["Timestamp", "UNSET", "", ["/R", "=Unset()", "/S"]],
         ["Timestamp", "UNSTARTED", "", ["/R", "=Unstarted()", "/S"]],
         ["Timestamp", "PRESTREAM", "", ["/R", "=PreStream()", "/S"]],
@@ -15,7 +15,7 @@ module.exports = [
     ], "", ""],
 
     ["mediapipe.Timestamp.Timestamp", "mediapipe.Timestamp.Timestamp", [], [
-        ["int64", "timestamp", "", []],
+        ["int64_t", "timestamp", "", []],
     ], "", ""],
 
     ["mediapipe.Timestamp.eq", "bool", ["/Call=", "/Expr=a == b", "/S"], [
@@ -73,7 +73,7 @@ module.exports = [
     ], "", ""],
 
     ["mediapipe.Timestamp.Seconds", "double", ["=seconds"], [], "", ""],
-    ["mediapipe.Timestamp.Microseconds", "int64", ["=microseconds"], [], "", ""],
+    ["mediapipe.Timestamp.Microseconds", "int64_t", ["=microseconds"], [], "", ""],
     ["mediapipe.Timestamp.IsSpecialValue", "bool", ["=is_special_value"], [], "", ""],
     ["mediapipe.Timestamp.IsRangeValue", "bool", ["=is_range_value"], [], "", ""],
     ["mediapipe.Timestamp.IsAllowedInStream", "bool", ["=is_allowed_in_stream"], [], "", ""],

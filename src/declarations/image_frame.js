@@ -31,7 +31,7 @@ module.exports = [
     ["mediapipe.ImageFrame.IsContiguous", "bool", ["=is_contiguous"], [], "", ""],
     ["mediapipe.ImageFrame.IsEmpty", "bool", ["=is_empty"], [], "", ""],
     ["mediapipe.ImageFrame.IsAligned", "bool", ["=is_aligned"], [
-        ["uint32", "alignment_boundary", "", []],
+        ["uint32_t", "alignment_boundary", "", []],
     ], "", ""],
 
     // expose an image_frame property like in mediapipe python

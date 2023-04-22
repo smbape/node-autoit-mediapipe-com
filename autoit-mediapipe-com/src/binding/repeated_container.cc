@@ -153,7 +153,7 @@ namespace google::protobuf::autoit {
 			return;
 		}
 		case FieldDescriptor::CPPTYPE_INT64: {
-			auto value = ::autoit::cast<int64>(&arg);
+			auto value = ::autoit::cast<int64_t>(&arg);
 			reflection->SetRepeatedInt64(message, field_descriptor, index, value);
 			return;
 		}
@@ -163,7 +163,7 @@ namespace google::protobuf::autoit {
 			return;
 		}
 		case FieldDescriptor::CPPTYPE_UINT64: {
-			auto value = ::autoit::cast<uint64>(&arg);
+			auto value = ::autoit::cast<uint64_t>(&arg);
 			reflection->SetRepeatedUInt64(message, field_descriptor, index, value);
 			return;
 		}
@@ -334,7 +334,7 @@ namespace google::protobuf::autoit {
 			return;
 		}
 		case FieldDescriptor::CPPTYPE_INT64: {
-			auto value = ::autoit::cast<int64>(&item);
+			auto value = ::autoit::cast<int64_t>(&item);
 			reflection->AddInt64(message, field_descriptor, value);
 			return;
 		}
@@ -344,7 +344,7 @@ namespace google::protobuf::autoit {
 			return;
 		}
 		case FieldDescriptor::CPPTYPE_UINT64: {
-			auto value = ::autoit::cast<uint64>(&item);
+			auto value = ::autoit::cast<uint64_t>(&item);
 			reflection->AddUInt64(message, field_descriptor, value);
 			return;
 		}

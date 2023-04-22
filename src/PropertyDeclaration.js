@@ -124,11 +124,26 @@ Object.assign(exports, {
             case "FLOAT":
             case "double":
             case "DOUBLE":
-            case "int64":
             case "LONGLONG":
             case "SSIZE_T":
             case "size_t":
             case "ULONGLONG":
+            case "int8":
+            case "int8_t":
+            case "int16":
+            case "int16_t":
+            case "int32":
+            case "int32_t":
+            case "int64":
+            case "int64_t":
+            case "uint8":
+            case "uint8_t":
+            case "uint16":
+            case "uint16_t":
+            case "uint32":
+            case "uint32_t":
+            case "uint64":
+            case "uint64_t":
                 return true;
             default:
                 return false;

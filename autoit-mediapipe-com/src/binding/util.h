@@ -23,7 +23,7 @@ namespace mediapipe::autoit {
 		}
 	}
 
-	inline void RaiseAutoItErrorIfOverflow(int64 value, int64 min, int64 max) {
+	inline void RaiseAutoItErrorIfOverflow(int64_t value, int64_t min, int64_t max) {
 		if (value > max) {
 			AUTOIT_THROW(value << " execeeds the maximum value (" << max << ") the data type can have.");
 		}

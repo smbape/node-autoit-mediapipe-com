@@ -6,15 +6,15 @@ const SCALAR_TYPES = new Map([
     ["double", "double"],
     ["float", "float"],
     ["int32", "int"],
-    ["int64", "int64"],
-    ["uint32", "uint32"],
-    ["uint64", "uint64"],
+    ["int64", "int64_t"],
+    ["uint32", "uint32_t"],
+    ["uint64", "uint64_t"],
     ["sint32", "int"],
-    ["sint64", "int64"],
-    ["fixed32", "uint32"],
-    ["fixed64", "uint64"],
+    ["sint64", "int64_t"],
+    ["fixed32", "uint32_t"],
+    ["fixed64", "uint64_t"],
     ["sfixed32", "int"],
-    ["sfixed64", "int64"],
+    ["sfixed64", "int64_t"],
     ["bool", "bool"],
     ["string", "std::string"],
     ["bytes", "std::string"],
@@ -945,7 +945,7 @@ class Parser {
         const isEnum = this.isEnum(field_type, scopes);
         const value_type = isEnum ? "int" : this.getCppType(field_type, scopes);
         const byref = isScalar(field_type) || isEnum ? "" : "*";
-        const name = `Repeated_${ value_type.replaceAll("::", "_") }`;
+        const name = `Repeated_${ value_type.replace(/\b(u?int(?:8|16|32|64))_t\b/g, "$1").replaceAll("::", "_") }`;
         const fqn = `google.protobuf.${ name }`;
         const cpptype = fqn.replaceAll(".", "::");
         const newVal = "$value";
