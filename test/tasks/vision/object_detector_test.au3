@@ -14,15 +14,12 @@
 
 ;~ Sources:
 ;~     https://github.com/google/mediapipe/blob/v0.9.2.1/mediapipe/tasks/python/test/vision/object_detector_test.py
-; EnvSet("MEDIAPIPE_BUILD_TYPE", "Debug")
-; EnvSet("OPENCV_BUILD_TYPE", "Debug")
+
 _Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
 _OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 _Mediapipe_SetResourceDir()
-
-Global $cv = _OpenCV_get()
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
