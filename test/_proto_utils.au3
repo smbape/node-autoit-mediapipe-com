@@ -13,5 +13,13 @@ Func _AssertProtoEquals($oProtoA, $oProtoB, $sMessage = Default, $bExit = True, 
 	$cmessage.NomalizeNumberFields($oProtoA)
 	$cmessage.NomalizeNumberFields($oProtoB)
 
-	Return _AssertEqual($oProtoA.__str__(), $oProtoB.__str__(), $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
+	$oProtoA = $oProtoA.__str__()
+	$oProtoB = $oProtoB.__str__()
+
+	If $oProtoA <> $oProtoB Then
+		ConsoleWrite(@CRLF & $oProtoA & @CRLF)
+		ConsoleWrite(@CRLF & $oProtoB & @CRLF)
+	EndIf
+
+	Return _AssertEqual($oProtoA, $oProtoB, $sMessage, $bExit, $iCode, $sLine, $_iCallerError, $_iCallerExtended)
 EndFunc   ;==>_AssertProtoEquals

@@ -33,9 +33,7 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 		for (const auto& score : pb2_obj.score()) {
 			auto category = std::make_shared<category::Category>();
 
-			if (idx < pb2_obj.label_id_size()) {
-				category->index = pb2_obj.label_id(idx);
-			}
+			category->score = score;
 
 			if (idx < pb2_obj.label_id_size()) {
 				category->index = pb2_obj.label_id(idx);

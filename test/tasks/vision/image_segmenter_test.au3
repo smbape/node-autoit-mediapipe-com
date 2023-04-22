@@ -55,7 +55,6 @@ Global $_IMAGE_FILE = 'segmentation_input_rotation0.jpg'
 Global $_SEGMENTATION_FILE = 'segmentation_golden_rotation0.png'
 Global $_MASK_MAGNIFICATION_FACTOR = 10
 Global $_MASK_SIMILARITY_THRESHOLD = 0.98
-Global $_TEST_DATA_DIR = 'mediapipe/tasks/testdata/vision'
 
 Global $FILE_CONTENT = 1
 Global $FILE_NAME = 2
@@ -68,7 +67,7 @@ Global $model_path
 Test()
 
 Func Test()
-	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata"
+	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata\vision"
 	Local $url, $file_path
 
 	Local $test_files[] = [ _
@@ -78,7 +77,7 @@ Func Test()
 			]
 	For $name In $test_files
 		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
-		$file_path = $_TEST_DATA_DIR & "\vision\" & $name
+		$file_path = $_TEST_DATA_DIR & "\" & $name
 		If Not FileExists(get_test_data_path($name)) Then
 			$download_utils.download($url, $file_path)
 		EndIf

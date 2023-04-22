@@ -58,7 +58,7 @@ Global $_ImageProcessingOptions = $image_processing_options_module.ImageProcessi
 Global $_MODEL_FILE = 'mobilenet_v3_small_100_224_embedder.tflite'
 Global $_BURGER_IMAGE_FILE = 'burger.jpg'
 Global $_BURGER_CROPPED_IMAGE_FILE = 'burger_crop.jpg'
-Global $_TEST_DATA_DIR = 'mediapipe/tasks/testdata/vision'
+
 ; Tolerance for embedding vector coordinate values.
 Global $_EPSILON = 1E-4
 ; Tolerance for cosine similarity evaluation.
@@ -74,7 +74,7 @@ Global $model_path
 Test()
 
 Func Test()
-	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata"
+	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata\vision"
 	Local $url, $file_path
 
 	Local $test_files[] = [ _
@@ -84,7 +84,7 @@ Func Test()
 			]
 	For $name In $test_files
 		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
-		$file_path = $_TEST_DATA_DIR & "\vision\" & $name
+		$file_path = $_TEST_DATA_DIR & "\" & $name
 		If Not FileExists(get_test_data_path($name)) Then
 			$download_utils.download($url, $file_path)
 		EndIf
