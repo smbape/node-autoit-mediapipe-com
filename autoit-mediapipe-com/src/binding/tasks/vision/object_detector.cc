@@ -105,9 +105,11 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 	}
 
 	std::shared_ptr<ObjectDetectorResult> ObjectDetector::detect(const Image& image) {
+		AUTOIT_INFO("processing image");
 		auto output_packets = _process_image_data({
 			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_image(image))) }
 			});
+		AUTOIT_INFO("processed image");
 
 		auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
 		auto detection_result = std::make_shared<ObjectDetectorResult>();

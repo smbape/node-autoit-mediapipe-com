@@ -45,7 +45,6 @@ _AssertIsObj($object_detector, "Failed to load mediapipe.tasks.autoit.vision.obj
 Global $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 _AssertIsObj($running_mode_module, "Failed to load mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 
-
 Global $_BaseOptions = $base_options_module.BaseOptions
 Global $_Category = $category_module.Category
 Global $_BoundingBox = $bounding_box_module.BoundingBox
@@ -62,9 +61,9 @@ Global $_EXPECTED_DETECTION_RESULT = $_DetectionResult(_Mediapipe_Params("detect
 		$_Detection(_Mediapipe_Params( _
 				"bounding_box", $_BoundingBox(_Mediapipe_Params( _
 						"origin_x", 608, _
-						"origin_y", 161, _
+						"origin_y", 164, _
 						"width", 381, _
-						"height", 439)), _
+						"height", 432)), _
 				"categories", _Mediapipe_Tuple( _
 						$_Category(_Mediapipe_Params( _
 								"index", Default, _
@@ -81,20 +80,20 @@ Global $_EXPECTED_DETECTION_RESULT = $_DetectionResult(_Mediapipe_Params("detect
 				"categories", _Mediapipe_Tuple( _
 						$_Category(_Mediapipe_Params( _
 								"index", Default, _
-								"score", 0.64453125, _
+								"score", 0.65625, _
 								"display_name", Default, _
 								"category_name", 'cat')) _
 				))), _
 		$_Detection(_Mediapipe_Params( _
 				"bounding_box", $_BoundingBox(_Mediapipe_Params( _
-						"origin_x", 257, _
+						"origin_x", 256, _
 						"origin_y", 394, _
 						"width", 173, _
 						"height", 202)), _
 				"categories", _Mediapipe_Tuple( _
 						$_Category(_Mediapipe_Params( _
 								"index", Default, _
-								"score", 0.5234375, _
+								"score", 0.51171875, _
 								"display_name", Default, _
 								"category_name", 'cat')) _
 				))), _

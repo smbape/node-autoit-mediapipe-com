@@ -16,6 +16,7 @@ module.exports = [
 
     ["mediapipe.tasks.core.TaskRunner.Close", "void", ["=close", "/WrapAs=RaiseAutoItErrorIfNotOk"], [], "", ""],
     ["mediapipe.tasks.core.TaskRunner.Restart", "void", ["=restart", "/WrapAs=RaiseAutoItErrorIfNotOk"], [], "", ""],
+    ["mediapipe.tasks.core.TaskRunner.GetGraphConfig", "std::shared_ptr<mediapipe::CalculatorGraphConfig>", ["=get_graph_config", "/WrapAs=::autoit::reference_internal"], [], "", ""],
 
     // expose a task_runner property like in mediapipe python
     ["mediapipe.autoit._framework_bindings.task_runner.", "", ["/Properties"], [

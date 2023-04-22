@@ -93,7 +93,7 @@ def _cc_object_impl(ctx):
 
     output_files = depset(
         compilation_outputs.pic_objects + compilation_outputs.objects,
-        transitive = [dep[DefaultInfo].files for dep in ctx.attr.deps],
+        # transitive = [dep[DefaultInfo].files for dep in ctx.attr.deps],
     )
 
     file_set_produced = DefaultInfo(files = output_files)
@@ -137,7 +137,7 @@ def _pch_library_impl(ctx):
         DefaultInfo(
             files = depset(
                 ctx.files.srcs + compilation_outputs.pic_objects + compilation_outputs.objects,
-                transitive = [depset([hdr_file])] + [dep[DefaultInfo].files for dep in ctx.attr.deps],
+                # transitive = [depset([hdr_file])] + [dep[DefaultInfo].files for dep in ctx.attr.deps],
             ),
         ),
         OutputGroupInfo(

@@ -13,7 +13,7 @@ const vector_conversion = require("./vector_conversion");
 
 const OpenCV_VERSION = "opencv-4.7.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
-const MEDIAPIPE_VERSION = "0.9.2.1";
+const MEDIAPIPE_VERSION = "0.9.3.0";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],

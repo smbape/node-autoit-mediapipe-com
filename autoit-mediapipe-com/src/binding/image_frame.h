@@ -32,8 +32,9 @@ namespace mediapipe::autoit {
 				break;
 			case ImageFormat::VEC32F1:
 			case ImageFormat::VEC32F2:
-				AUTOIT_ASSERT_THROW(data.depth() == CV_32F, "float image data should be either VEC32F1 or VEC32F2 "
-					"MediaPipe image formats.");
+			case ImageFormat::VEC32F4:
+				AUTOIT_ASSERT_THROW(data.depth() == CV_32F, "float image data should be either VEC32F1, VEC32F2, or "
+                	"VEC32F4 MediaPipe image formats.");
 				break;
 			default:
 				AUTOIT_THROW("Unsupported MediaPipe image format");
@@ -93,11 +94,13 @@ namespace mediapipe::autoit {
 				return CreateImageFrame(ImageFormat::VEC32F1, data, copy);
 			case 2:
 				return CreateImageFrame(ImageFormat::VEC32F2, data, copy);
+			case 4:
+				return CreateImageFrame(ImageFormat::VEC32F4, data, copy);
 			}
 		}
 
 		AUTOIT_THROW("Unsupported image format. Supported formats are "
-			"CV_8U, CV_8UC3, CV_8UC4, CV_16U, CV_16UC3, CV_16UC4, CV_32F, CV_32FC2");
+			"CV_8U, CV_8UC3, CV_8UC4, CV_16U, CV_16UC3, CV_16UC4, CV_32F, CV_32FC2, CV_32FC4");
 	}
 
 	inline std::unique_ptr<ImageFrame> CreateImageFrame(const std::string& file_name) {

@@ -29,7 +29,7 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 
   - Download and extract [opencv-4.7.0-windows.exe](https://opencv.org/releases/) into a folder
   - Download and extract [autoit-opencv-4.7.0-com-v2.4.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.4.0/autoit-opencv-4.7.0-com-v2.4.0.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.3.0/autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.3.0/autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0.7z) into a folder
 
 ## Usage
 
@@ -46,7 +46,7 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.7.0-windows\opencv\build\x64\vc16\bin\opencv_world470.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.9.2.1-470.dll")
+_Mediapipe_Open("opencv-4.7.0-windows\opencv\build\x64\vc16\bin\opencv_world470.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.9.3.0-470.dll")
 _OpenCV_Open("opencv-4.7.0-windows\opencv\build\x64\vc16\bin\opencv_world470.dll", "autoit-opencv-com\autoit_opencv_com470.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -250,7 +250,7 @@ function Example() {
     $cv.destroyAllWindows()
 }
 
-[MediapipeComInterop]::DllOpen("opencv-4.7.0-windows\opencv\build\x64\vc16\bin\opencv_world470.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.9.2.1-470.dll")
+[MediapipeComInterop]::DllOpen("opencv-4.7.0-windows\opencv\build\x64\vc16\bin\opencv_world470.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.9.3.0-470.dll")
 [OpenCvComInterop]::DllOpen("opencv-4.7.0-windows\opencv\build\x64\vc16\bin\opencv_world470.dll", "autoit-opencv-com\autoit_opencv_com470.dll")
 
 $resource_util = [MediapipeComInterop]::ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
@@ -375,7 +375,7 @@ public static class Test
 
         MediapipeComInterop.DllOpen(
             "opencv-4.7.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world470.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.9.2.1-470.dll"
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.9.3.0-470.dll"
         );
 
         var resourceDir = MediapipeComInterop.FindResourceDir();
@@ -496,7 +496,7 @@ public static class Test
 
         MediapipeComInterop.DllOpen(
             "opencv-4.7.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world470.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.9.2.1-470.dll"
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.9.3.0-470.dll"
         );
 
         // To make registration free works with compile time COM classes
@@ -536,11 +536,11 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.3.0/autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0.7z' -o autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0.7z
+# download autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.3.0/autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0.7z' -o autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0.7z
 
-# extract the content of autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0.7z -aoa -oautoit-mediapipe-com
 
 # download autoit-opencv-4.7.0-com-v2.4.0.7z
 curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.4.0/autoit-opencv-4.7.0-com-v2.4.0.7z' -o autoit-opencv-4.7.0-com-v2.4.0.7z
@@ -554,21 +554,21 @@ curl -L 'https://github.com/opencv/opencv/releases/download/4.7.0/opencv-4.7.0-w
 # extract the content of opencv-4.7.0-windows.exe into a folder named opencv-4.7.0-windows
 ./opencv-4.7.0-windows.exe -oopencv-4.7.0-windows -y
 
-# download autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.3.0.zip' -o autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0-src.zip
+# download autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.3.0.zip' -o autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0-src.zip
-7z x autoit-mediapipe-0.9.2.1-opencv-4.7.0-com-v0.3.0-src.zip -aoa 'node-autoit-mediapipe-com-0.3.0\examples'
+# extract the examples folder of autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0-src.zip
+7z x autoit-mediapipe-0.9.3.0-opencv-4.7.0-com-v0.3.0-src.zip -aoa 'node-autoit-mediapipe-com-0.3.0\examples'
 cp -rf node-autoit-mediapipe-com-0.3.0/* ./
 rm -rf node-autoit-mediapipe-com-0.3.0
 
-# download mediapipe-0.9.2.1-src.zip
-curl -L 'https://github.com/google/mediapipe/archive/refs/tags/v0.9.1.zip' -o mediapipe-0.9.2.1-src.zip
+# download mediapipe-0.9.3.0-src.zip
+curl -L 'https://github.com/google/mediapipe/archive/refs/tags/v0.9.1.zip' -o mediapipe-0.9.3.0-src.zip
 
-# extract the mediapipe\tasks\testdata folder of mediapipe-0.9.2.1-src.zip
-7z x mediapipe-0.9.2.1-src.zip -aoa 'mediapipe-0.9.2.1\mediapipe\tasks\testdata'
-cp -rf mediapipe-0.9.2.1/* ./
-rm -rf mediapipe-0.9.2.1
+# extract the mediapipe\tasks\testdata folder of mediapipe-0.9.3.0-src.zip
+7z x mediapipe-0.9.3.0-src.zip -aoa 'mediapipe-0.9.3.0\mediapipe\tasks\testdata'
+cp -rf mediapipe-0.9.3.0/* ./
+rm -rf mediapipe-0.9.3.0
 
 ```
 

@@ -1,8 +1,17 @@
+diff --git a/.gitignore b/.gitignore
+index 525f0878..1b9d4aff 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,3 +5,4 @@ mediapipe/provisioning_profile.mobileprovision
+ node_modules/
+ .configure.bazelrc
+ .user.bazelrc
++/mediapipe/autoit
 diff --git a/WORKSPACE b/WORKSPACE
-index 8cb2b9d0..18844d07 100644
+index 76089818..1159f01a 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -282,7 +282,7 @@ new_local_repository(
+@@ -352,7 +352,7 @@ new_local_repository(
  new_local_repository(
      name = "windows_opencv",
      build_file = "@//third_party:opencv_windows.BUILD",
@@ -43,7 +52,7 @@ index 98ddd577..fdd6200e 100644
          "//mediapipe/tasks/...",
      ],
 diff --git a/mediapipe/tasks/cc/core/external_file_handler.cc b/mediapipe/tasks/cc/core/external_file_handler.cc
-index 907a19f8..5af964ad 100644
+index a56f03d5..44b25c95 100644
 --- a/mediapipe/tasks/cc/core/external_file_handler.cc
 +++ b/mediapipe/tasks/cc/core/external_file_handler.cc
 @@ -31,6 +31,7 @@ limitations under the License.
@@ -63,7 +72,7 @@ index 907a19f8..5af964ad 100644
  namespace mediapipe {
  namespace tasks {
  namespace core {
-@@ -97,14 +100,18 @@ ExternalFileHandler::CreateFromExternalFile(
+@@ -97,15 +100,18 @@ ExternalFileHandler::CreateFromExternalFile(
  }
  
  absl::StatusOr<std::string> PathToResourceAsFile(std::string path) {
@@ -78,38 +87,56 @@ index 907a19f8..5af964ad 100644
  #ifndef _WIN32
    return path;
  #else
--  if (absl::StartsWith(path, "./")) {
--    path = "mediapipe" + path.substr(1);
+-  std::string qualified_path = path;
+-  if (absl::StartsWith(qualified_path, "./")) {
+-    qualified_path = "mediapipe" + qualified_path.substr(1);
 -  } else if (path[0] != '/') {
--    path = "mediapipe/" + path;
+-    qualified_path = "mediapipe/" + qualified_path;
 -  }
-+  path = (fs::path("mediapipe") / path).string();
++  std::string qualified_path = (fs::path("mediapipe") / path).string();
  
    std::string error;
    // TODO: We should ideally use `CreateForTests` when this is
 diff --git a/mediapipe/tasks/python/test/test_utils.py b/mediapipe/tasks/python/test/test_utils.py
-index 23ee4abe..cace1fd0 100644
+index 23ee4abe..eaaaa9ff 100644
 --- a/mediapipe/tasks/python/test/test_utils.py
 +++ b/mediapipe/tasks/python/test/test_utils.py
-@@ -44,10 +44,17 @@ def test_srcdir():
+@@ -35,20 +35,28 @@ _RGB_CHANNELS = 3
+ def test_srcdir():
+   """Returns the path where to look for test data files."""
+   if "test_srcdir" in flags.FLAGS:
+-    return flags.FLAGS["test_srcdir"].value
++    return flags.FLAGS["test_srcdir"].value.split(";")
+   elif "TEST_SRCDIR" in os.environ:
+-    return os.environ["TEST_SRCDIR"]
++    return os.environ["TEST_SRCDIR"].split(";")
+   else:
+     raise RuntimeError("Missing TEST_SRCDIR environment.")
+ 
  
  def get_test_data_path(file_or_dirname_path: str) -> str:
    """Returns full test data path."""
+-  for (directory, subdirs, files) in os.walk(test_srcdir()):
+-    for f in subdirs + files:
+-      path = os.path.join(directory, f)
+-      if path.endswith(file_or_dirname_path):
+-        return path
 +  if os.path.exists(file_or_dirname_path):
 +    return os.path.abspath(file_or_dirname_path)
 +
-   for (directory, subdirs, files) in os.walk(test_srcdir()):
-     for f in subdirs + files:
-       path = os.path.join(directory, f)
--      if path.endswith(file_or_dirname_path):
++  for dirname in test_srcdir():
++    for (directory, subdirs, files) in os.walk(dirname):
++      for f in subdirs + files:
++        path = os.path.join(directory, f)
 +
-+      if os.path.exists(os.path.join(path, file_or_dirname_path)):
-+        return os.path.abspath(os.path.join(path, file_or_dirname_path))
++        if os.path.exists(os.path.join(path, file_or_dirname_path)):
++          return os.path.abspath(os.path.join(path, file_or_dirname_path))
 +
-+      if path.endswith(os.path.normpath(file_or_dirname_path)):
-         return path
++        if path.endswith(os.path.normpath(file_or_dirname_path)):
++          return path
    raise ValueError("No %s in test directory: %s." %
                     (file_or_dirname_path, test_srcdir()))
+ 
 diff --git a/mediapipe/tasks/testdata/text/BUILD b/mediapipe/tasks/testdata/text/BUILD
 index 9813b654..289f2291 100644
 --- a/mediapipe/tasks/testdata/text/BUILD

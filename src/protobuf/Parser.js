@@ -959,20 +959,20 @@ class Parser {
                 shared_message->mutable_${ field_name }(),
                 Repeated${ ptr }FieldBackInserter(shared_message->mutable_${ field_name }())
             )
-        `.replace(/^ {12}/mg, "").trim()
+        `.replace(/^ {12}/mg, "").trim();
 
         fields.push([`${ cpptype }*`, field_name, "", [
             `/R=mutable_${ field_name }`,
             "/WIDL=VARIANT*",
             `/WExpr=
                 auto& shared_message = *__self;
-                ${ setter.split("\n").join("\n" + " ".repeat(16)) }
+                ${ setter.split("\n").join(`\n${ " ".repeat(16) }`) }
             `.replace(/^ {16}/mg, "").trim()
         ]]);
 
         body.push(`
             if (!PARAMETER_MISSING(pArg${ i })) {
-                ${ setter.split("\n").join("\n" + " ".repeat(16)) };
+                ${ setter.split("\n").join(`\n${ " ".repeat(16) }`) };
             }
         `.trim().replace(/^ {12}/mg, "").replaceAll(newVal, field_name));
 

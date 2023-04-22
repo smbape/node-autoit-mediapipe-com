@@ -2296,6 +2296,7 @@
   - [ImageFormat.SRGBA64\_](#imageformatsrgba64%5C_)
   - [ImageFormat.VEC32F1\_](#imageformatvec32f1%5C_)
   - [ImageFormat.VEC32F2\_](#imageformatvec32f2%5C_)
+  - [ImageFormat.VEC32F4\_](#imageformatvec32f4%5C_)
   - [ImageFormat.LAB8\_](#imageformatlab8%5C_)
   - [ImageFormat.SBGRA\_](#imageformatsbgra%5C_)
 - [mediapipe::framework::formats::image\_format\_pb2](#mediapipeframeworkformatsimage%5C_format%5C_pb2)
@@ -5120,6 +5121,7 @@
   - [Acceleration.xnnpack](#accelerationxnnpack)
   - [Acceleration.gpu](#accelerationgpu)
   - [Acceleration.tflite](#accelerationtflite)
+  - [Acceleration.nnapi](#accelerationnnapi)
   - [mediapipe::tasks::core::proto::Acceleration::get\_create](#mediapipetaskscoreprotoaccelerationget%5C_create)
   - [mediapipe::tasks::core::proto::Acceleration::ByteSizeLong](#mediapipetaskscoreprotoaccelerationbytesizelong)
   - [mediapipe::tasks::core::proto::Acceleration::CheckInitialized](#mediapipetaskscoreprotoaccelerationcheckinitialized)
@@ -6117,6 +6119,7 @@
 - [mediapipe::tasks::core::TaskRunner](#mediapipetaskscoretaskrunner)
   - [mediapipe::tasks::core::TaskRunner::get\_create](#mediapipetaskscoretaskrunnerget%5C_create)
   - [mediapipe::tasks::core::TaskRunner::close](#mediapipetaskscoretaskrunnerclose)
+  - [mediapipe::tasks::core::TaskRunner::get\_graph\_config](#mediapipetaskscoretaskrunnerget%5C_graph%5C_config)
   - [mediapipe::tasks::core::TaskRunner::process](#mediapipetaskscoretaskrunnerprocess)
   - [mediapipe::tasks::core::TaskRunner::restart](#mediapipetaskscoretaskrunnerrestart)
   - [mediapipe::tasks::core::TaskRunner::send](#mediapipetaskscoretaskrunnersend)
@@ -6271,6 +6274,7 @@
   - [Format.SRGBA64](#formatsrgba64)
   - [Format.VEC32F1](#formatvec32f1)
   - [Format.VEC32F2](#formatvec32f2)
+  - [Format.VEC32F4](#formatvec32f4)
   - [Format.LAB8](#formatlab8)
   - [Format.SBGRA](#formatsbgra)
 - [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsoutputtype)
@@ -27397,6 +27401,14 @@ AutoIt:
 static int mediapipe::ImageFormat::VEC32F2
 AutoIt:
     [propget] $oImageFormat.VEC32F2_
+```
+
+### ImageFormat.VEC32F4\_
+
+```cpp
+static int mediapipe::ImageFormat::VEC32F4
+AutoIt:
+    [propget] $oImageFormat.VEC32F4_
 ```
 
 ### ImageFormat.LAB8\_
@@ -51189,15 +51201,24 @@ AutoIt:
     [propget, propput] $oAcceleration.tflite
 ```
 
+### Acceleration.nnapi
+
+```cpp
+mediapipe::InferenceCalculatorOptions::Delegate::Nnapi* mediapipe::tasks::core::proto::Acceleration::nnapi
+AutoIt:
+    [propget, propput] $oAcceleration.nnapi
+```
+
 ### mediapipe::tasks::core::proto::Acceleration::get\_create
 
 ```cpp
 static mediapipe::tasks::core::proto::Acceleration mediapipe::tasks::core::proto::Acceleration::get_create( std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack> xnnpack = std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::Xnnpack>(),
                                                                                                             std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::Gpu>     gpu = std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::Gpu>(),
-                                                                                                            std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::TfLite>  tflite = std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::TfLite>() );
+                                                                                                            std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::TfLite>  tflite = std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::TfLite>(),
+                                                                                                            std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::Nnapi>   nnapi = std::shared_ptr<mediapipe::InferenceCalculatorOptions::Delegate::Nnapi>() );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.Acceleration").create( [$xnnpack[, $gpu[, $tflite]]] ) -> <mediapipe.tasks.core.proto.Acceleration object>
-    $oAcceleration( [$xnnpack[, $gpu[, $tflite]]] ) -> <mediapipe.tasks.core.proto.Acceleration object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.core.proto.Acceleration").create( [$xnnpack[, $gpu[, $tflite[, $nnapi]]]] ) -> <mediapipe.tasks.core.proto.Acceleration object>
+    $oAcceleration( [$xnnpack[, $gpu[, $tflite[, $nnapi]]]] ) -> <mediapipe.tasks.core.proto.Acceleration object>
 ```
 
 ### mediapipe::tasks::core::proto::Acceleration::ByteSizeLong
@@ -60972,6 +60993,14 @@ AutoIt:
     $oTaskRunner.close() -> None
 ```
 
+### mediapipe::tasks::core::TaskRunner::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::core::TaskRunner::get_graph_config();
+AutoIt:
+    $oTaskRunner.get_graph_config() -> retval
+```
+
 ### mediapipe::tasks::core::TaskRunner::process
 
 ```cpp
@@ -62637,6 +62666,14 @@ AutoIt:
 static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::VEC32F2
 AutoIt:
     [propget] $oFormat.VEC32F2
+```
+
+### Format.VEC32F4
+
+```cpp
+static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::VEC32F4
+AutoIt:
+    [propget] $oFormat.VEC32F4
 ```
 
 ### Format.LAB8
