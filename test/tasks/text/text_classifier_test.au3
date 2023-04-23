@@ -77,12 +77,12 @@ Global $_BERT_POSITIVE_RESULTS = $TextClassifierResult( _Mediapipe_Params( _
 			"categories", _Mediapipe_Tuple( _
 				$_Category(_Mediapipe_Params( _
 					"index", 1, _
-					"score", 0.999466, _
+					"score", 0.999655962, _
 					"display_name", "", _
 					"category_name", "positive")), _
 				$_Category(_Mediapipe_Params( _
 					"index", 0, _
-					"score", 0.000533596, _
+					"score", 0.000344068656, _
 					"display_name", "", _
 					"category_name", "negative")) _
 			), _
