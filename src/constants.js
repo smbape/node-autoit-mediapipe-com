@@ -116,6 +116,7 @@ exports.ALIASES = new Map([
     ["components_containers_audio_data_AudioData", "mediapipe::tasks::autoit::components::containers::audio_data::AudioData"],
     ["bounding_box_BoundingBox", "mediapipe::tasks::autoit::components::containers::bounding_box::BoundingBox"],
     ["keypoint_NormalizedKeypoint", "mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint"],
+    ["components_containers_keypoint_NormalizedKeypoint", "mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint"],
     ["category_Category", "mediapipe::tasks::autoit::components::containers::category::Category"],
     ["category::Category", "mediapipe::tasks::autoit::components::containers::category::Category"],
     ["detections_Detection", "mediapipe::tasks::autoit::components::containers::detections::Detection"],
@@ -140,6 +141,7 @@ exports.ALIASES = new Map([
     ["AudioEmbedderResult", "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult"],
     ["TextEmbedderResult", "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult"],
     ["ImageEmbedderResult", "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult"],
+    ["ImageSegmenterResult", "std::vector<mediapipe::Image>"],
 
     ["tasks_containers_proto_LandmarksDetectionResult", "mediapipe::tasks::containers::proto::LandmarksDetectionResult"],
 

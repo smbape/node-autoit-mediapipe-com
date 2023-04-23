@@ -885,6 +885,7 @@
   - [vision.image\_classifier](#visionimage%5C_classifier)
   - [vision.image\_embedder](#visionimage%5C_embedder)
   - [vision.image\_segmenter](#visionimage%5C_segmenter)
+  - [vision.interactive\_segmenter](#visioninteractive%5C_segmenter)
   - [vision.object\_detector](#visionobject%5C_detector)
   - [vision.GestureRecognizer](#visiongesturerecognizer)
   - [vision.GestureRecognizerOptions](#visiongesturerecognizeroptions)
@@ -917,6 +918,7 @@
   - [vision.image\_classifier](#visionimage%5C_classifier-1)
   - [vision.image\_embedder](#visionimage%5C_embedder-1)
   - [vision.image\_segmenter](#visionimage%5C_segmenter-1)
+  - [vision.interactive\_segmenter](#visioninteractive%5C_segmenter-1)
   - [vision.object\_detector](#visionobject%5C_detector-1)
 - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_api)
   - [base\_vision\_task\_api.BaseVisionTaskApi](#base%5C_vision%5C_task%5C_apibasevisiontaskapi)
@@ -1296,6 +1298,38 @@
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_async](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment%5C_async)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_for\_video](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment%5C_for%5C_video)
+- [mediapipe::tasks::autoit::vision::interactive\_segmenter](#mediapipetasksautoitvisioninteractive%5C_segmenter)
+  - [interactive\_segmenter.InteractiveSegmenterOptions](#interactive%5C_segmenterinteractivesegmenteroptions)
+  - [interactive\_segmenter.RegionOfInterest\_Format](#interactive%5C_segmenterregionofinterest%5C_format)
+  - [interactive\_segmenter.RegionOfInterest](#interactive%5C_segmenterregionofinterest)
+  - [interactive\_segmenter.InteractiveSegmenter](#interactive%5C_segmenterinteractivesegmenter)
+- [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenteroptions)
+  - [InteractiveSegmenterOptions.base\_options](#interactivesegmenteroptionsbase%5C_options)
+  - [InteractiveSegmenterOptions.output\_type](#interactivesegmenteroptionsoutput%5C_type)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions::get\_create](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenteroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions::to\_pb2](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenteroptionsto%5C_pb2)
+- [mediapipe::autoit::vision::interactive\_segmenter](#mediapipeautoitvisioninteractive%5C_segmenter)
+  - [interactive\_segmenter.InteractiveSegmenterOptions](#interactive%5C_segmenterinteractivesegmenteroptions-1)
+  - [interactive\_segmenter.RegionOfInterest\_Format](#interactive%5C_segmenterregionofinterest%5C_format-1)
+  - [interactive\_segmenter.RegionOfInterest](#interactive%5C_segmenterregionofinterest-1)
+  - [interactive\_segmenter.InteractiveSegmenter](#interactive%5C_segmenterinteractivesegmenter-1)
+- [mediapipe::tasks::autoit::vision::interactive\_segmenter::RegionOfInterest\_Format](#mediapipetasksautoitvisioninteractive%5C_segmenterregionofinterest%5C_format)
+  - [RegionOfInterest\_Format.UNSPECIFIED](#regionofinterest%5C_formatunspecified)
+  - [RegionOfInterest\_Format.KEYPOINT](#regionofinterest%5C_formatkeypoint)
+- [mediapipe::tasks::autoit::vision::interactive\_segmenter::RegionOfInterest](#mediapipetasksautoitvisioninteractive%5C_segmenterregionofinterest)
+  - [RegionOfInterest.format](#regionofinterestformat)
+  - [RegionOfInterest.keypoint](#regionofinterestkeypoint)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::RegionOfInterest::get\_create](#mediapipetasksautoitvisioninteractive%5C_segmenterregionofinterestget%5C_create)
+- [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenter)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::\_process\_image\_data](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenter%5C_process%5C_image%5C_data)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::\_process\_video\_data](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenter%5C_process%5C_video%5C_data)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::\_send\_live\_stream\_data](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenter%5C_send%5C_live%5C_stream%5C_data)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::close](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenterclose)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::convert\_to\_normalized\_rect](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenterconvert%5C_to%5C_normalized%5C_rect)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::create\_from\_model\_path](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmentercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::create\_from\_options](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmentercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::get\_graph\_config](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenterget%5C_graph%5C_config)
+  - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::segment](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmentersegment)
 - [mediapipe::tasks::autoit::vision::object\_detector](#mediapipetasksautoitvisionobject%5C_detector)
   - [object\_detector.ObjectDetectorOptions](#object%5C_detectorobjectdetectoroptions)
   - [object\_detector.ObjectDetector](#object%5C_detectorobjectdetector)
@@ -6148,6 +6182,346 @@
   - [mediapipe::tasks::vision::image\_segmenter::proto::ImageSegmenterGraphOptions::\_\_str\_\_](#mediapipetasksvisionimage%5C_segmenterprotoimagesegmentergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::image\_segmenter::proto::image\_segmenter\_graph\_options\_pb2](#mediapipetasksccvisionimage%5C_segmenterprotoimage%5C_segmenter%5C_graph%5C_options%5C_pb2)
   - [image\_segmenter\_graph\_options\_pb2.ImageSegmenterGraphOptions](#image%5C_segmenter%5C_graph%5C_options%5C_pb2imagesegmentergraphoptions)
+- [mediapipe::Color](#mediapipecolor)
+  - [Color.r](#colorr)
+  - [Color.g](#colorg)
+  - [Color.b](#colorb)
+  - [mediapipe::Color::get\_create](#mediapipecolorget%5C_create)
+  - [mediapipe::Color::ByteSizeLong](#mediapipecolorbytesizelong)
+  - [mediapipe::Color::CheckInitialized](#mediapipecolorcheckinitialized)
+  - [mediapipe::Color::Clear](#mediapipecolorclear)
+  - [mediapipe::Color::ClearField](#mediapipecolorclearfield)
+  - [mediapipe::Color::CopyFrom](#mediapipecolorcopyfrom)
+  - [mediapipe::Color::DiscardUnknownFields](#mediapipecolordiscardunknownfields)
+  - [mediapipe::Color::FindInitializationErrors](#mediapipecolorfindinitializationerrors)
+  - [mediapipe::Color::IsInitialized](#mediapipecolorisinitialized)
+  - [mediapipe::Color::SerializeAsString](#mediapipecolorserializeasstring)
+  - [mediapipe::Color::SerializeToString](#mediapipecolorserializetostring)
+  - [mediapipe::Color::SpaceUsedLong](#mediapipecolorspaceusedlong)
+  - [mediapipe::Color::\_\_str\_\_](#mediapipecolor%5C_%5C_str%5C_%5C_)
+- [mediapipe::ColorMap](#mediapipecolormap)
+  - [mediapipe::ColorMap::get\_create](#mediapipecolormapget%5C_create)
+  - [mediapipe::ColorMap::ByteSizeLong](#mediapipecolormapbytesizelong)
+  - [mediapipe::ColorMap::CheckInitialized](#mediapipecolormapcheckinitialized)
+  - [mediapipe::ColorMap::Clear](#mediapipecolormapclear)
+  - [mediapipe::ColorMap::ClearField](#mediapipecolormapclearfield)
+  - [mediapipe::ColorMap::CopyFrom](#mediapipecolormapcopyfrom)
+  - [mediapipe::ColorMap::DiscardUnknownFields](#mediapipecolormapdiscardunknownfields)
+  - [mediapipe::ColorMap::FindInitializationErrors](#mediapipecolormapfindinitializationerrors)
+  - [mediapipe::ColorMap::IsInitialized](#mediapipecolormapisinitialized)
+  - [mediapipe::ColorMap::SerializeAsString](#mediapipecolormapserializeasstring)
+  - [mediapipe::ColorMap::SerializeToString](#mediapipecolormapserializetostring)
+  - [mediapipe::ColorMap::SpaceUsedLong](#mediapipecolormapspaceusedlong)
+  - [mediapipe::ColorMap::\_\_str\_\_](#mediapipecolormap%5C_%5C_str%5C_%5C_)
+- [mediapipe::util::color\_pb2](#mediapipeutilcolor%5C_pb2)
+  - [color\_pb2.Color](#color%5C_pb2color)
+  - [color\_pb2.ColorMap](#color%5C_pb2colormap)
+- [mediapipe::RenderData](#mediapiperenderdata)
+  - [RenderData.render\_annotations](#renderdatarender%5C_annotations)
+  - [RenderData.scene\_class](#renderdatascene%5C_class)
+  - [RenderData.scene\_viewport](#renderdatascene%5C_viewport)
+  - [mediapipe::RenderData::get\_create](#mediapiperenderdataget%5C_create)
+  - [mediapipe::RenderData::ByteSizeLong](#mediapiperenderdatabytesizelong)
+  - [mediapipe::RenderData::CheckInitialized](#mediapiperenderdatacheckinitialized)
+  - [mediapipe::RenderData::Clear](#mediapiperenderdataclear)
+  - [mediapipe::RenderData::ClearField](#mediapiperenderdataclearfield)
+  - [mediapipe::RenderData::CopyFrom](#mediapiperenderdatacopyfrom)
+  - [mediapipe::RenderData::DiscardUnknownFields](#mediapiperenderdatadiscardunknownfields)
+  - [mediapipe::RenderData::FindInitializationErrors](#mediapiperenderdatafindinitializationerrors)
+  - [mediapipe::RenderData::IsInitialized](#mediapiperenderdataisinitialized)
+  - [mediapipe::RenderData::SerializeAsString](#mediapiperenderdataserializeasstring)
+  - [mediapipe::RenderData::SerializeToString](#mediapiperenderdataserializetostring)
+  - [mediapipe::RenderData::SpaceUsedLong](#mediapiperenderdataspaceusedlong)
+  - [mediapipe::RenderData::\_\_str\_\_](#mediapiperenderdata%5C_%5C_str%5C_%5C_)
+- [google::protobuf::Repeated\_mediapipe\_RenderAnnotation](#googleprotobufrepeated%5C_mediapipe%5C_renderannotation)
+  - [Repeated\_mediapipe\_RenderAnnotation.Count](#repeated%5C_mediapipe%5C_renderannotationcount)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::create](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationcreate)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::CopyFrom](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationcopyfrom)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::MergeFrom](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationmergefrom)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::Swap](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationswap)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::SwapElements](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationswapelements)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::add](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationadd)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::append](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationappend)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::clear](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationclear)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::empty](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationempty)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::extend](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationextend)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::get\_Item](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationget%5C_item)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::get\_\_NewEnum](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationget%5C_%5C_newenum)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::insert](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationinsert)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::pop](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationpop)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::reverse](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationreverse)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::size](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationsize)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::slice](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationslice)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::sort](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationsort)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::sort\_variant](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationsort%5C_variant)
+  - [google::protobuf::Repeated\_mediapipe\_RenderAnnotation::splice](#googleprotobufrepeated%5C_mediapipe%5C_renderannotationsplice)
+- [mediapipe::RenderAnnotation](#mediapiperenderannotation)
+  - [RenderAnnotation.rectangle](#renderannotationrectangle)
+  - [RenderAnnotation.filled\_rectangle](#renderannotationfilled%5C_rectangle)
+  - [RenderAnnotation.oval](#renderannotationoval)
+  - [RenderAnnotation.filled\_oval](#renderannotationfilled%5C_oval)
+  - [RenderAnnotation.point](#renderannotationpoint)
+  - [RenderAnnotation.line](#renderannotationline)
+  - [RenderAnnotation.arrow](#renderannotationarrow)
+  - [RenderAnnotation.text](#renderannotationtext)
+  - [RenderAnnotation.rounded\_rectangle](#renderannotationrounded%5C_rectangle)
+  - [RenderAnnotation.filled\_rounded\_rectangle](#renderannotationfilled%5C_rounded%5C_rectangle)
+  - [RenderAnnotation.gradient\_line](#renderannotationgradient%5C_line)
+  - [RenderAnnotation.thickness](#renderannotationthickness)
+  - [RenderAnnotation.color](#renderannotationcolor)
+  - [RenderAnnotation.scene\_tag](#renderannotationscene%5C_tag)
+  - [mediapipe::RenderAnnotation::get\_create](#mediapiperenderannotationget%5C_create)
+  - [mediapipe::RenderAnnotation::ByteSizeLong](#mediapiperenderannotationbytesizelong)
+  - [mediapipe::RenderAnnotation::CheckInitialized](#mediapiperenderannotationcheckinitialized)
+  - [mediapipe::RenderAnnotation::Clear](#mediapiperenderannotationclear)
+  - [mediapipe::RenderAnnotation::ClearField](#mediapiperenderannotationclearfield)
+  - [mediapipe::RenderAnnotation::CopyFrom](#mediapiperenderannotationcopyfrom)
+  - [mediapipe::RenderAnnotation::DiscardUnknownFields](#mediapiperenderannotationdiscardunknownfields)
+  - [mediapipe::RenderAnnotation::FindInitializationErrors](#mediapiperenderannotationfindinitializationerrors)
+  - [mediapipe::RenderAnnotation::IsInitialized](#mediapiperenderannotationisinitialized)
+  - [mediapipe::RenderAnnotation::SerializeAsString](#mediapiperenderannotationserializeasstring)
+  - [mediapipe::RenderAnnotation::SerializeToString](#mediapiperenderannotationserializetostring)
+  - [mediapipe::RenderAnnotation::SpaceUsedLong](#mediapiperenderannotationspaceusedlong)
+  - [mediapipe::RenderAnnotation::\_\_str\_\_](#mediapiperenderannotation%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::Rectangle](#mediapiperenderannotationrectangle)
+  - [Rectangle.left](#rectangleleft)
+  - [Rectangle.top](#rectangletop)
+  - [Rectangle.right](#rectangleright)
+  - [Rectangle.bottom](#rectanglebottom)
+  - [Rectangle.normalized](#rectanglenormalized)
+  - [Rectangle.rotation](#rectanglerotation)
+  - [Rectangle.top\_left\_thickness](#rectangletop%5C_left%5C_thickness)
+  - [mediapipe::RenderAnnotation::Rectangle::get\_create](#mediapiperenderannotationrectangleget%5C_create)
+  - [mediapipe::RenderAnnotation::Rectangle::ByteSizeLong](#mediapiperenderannotationrectanglebytesizelong)
+  - [mediapipe::RenderAnnotation::Rectangle::CheckInitialized](#mediapiperenderannotationrectanglecheckinitialized)
+  - [mediapipe::RenderAnnotation::Rectangle::Clear](#mediapiperenderannotationrectangleclear)
+  - [mediapipe::RenderAnnotation::Rectangle::ClearField](#mediapiperenderannotationrectangleclearfield)
+  - [mediapipe::RenderAnnotation::Rectangle::CopyFrom](#mediapiperenderannotationrectanglecopyfrom)
+  - [mediapipe::RenderAnnotation::Rectangle::DiscardUnknownFields](#mediapiperenderannotationrectanglediscardunknownfields)
+  - [mediapipe::RenderAnnotation::Rectangle::FindInitializationErrors](#mediapiperenderannotationrectanglefindinitializationerrors)
+  - [mediapipe::RenderAnnotation::Rectangle::IsInitialized](#mediapiperenderannotationrectangleisinitialized)
+  - [mediapipe::RenderAnnotation::Rectangle::SerializeAsString](#mediapiperenderannotationrectangleserializeasstring)
+  - [mediapipe::RenderAnnotation::Rectangle::SerializeToString](#mediapiperenderannotationrectangleserializetostring)
+  - [mediapipe::RenderAnnotation::Rectangle::SpaceUsedLong](#mediapiperenderannotationrectanglespaceusedlong)
+  - [mediapipe::RenderAnnotation::Rectangle::\_\_str\_\_](#mediapiperenderannotationrectangle%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::FilledRectangle](#mediapiperenderannotationfilledrectangle)
+  - [FilledRectangle.rectangle](#filledrectanglerectangle)
+  - [FilledRectangle.fill\_color](#filledrectanglefill%5C_color)
+  - [mediapipe::RenderAnnotation::FilledRectangle::get\_create](#mediapiperenderannotationfilledrectangleget%5C_create)
+  - [mediapipe::RenderAnnotation::FilledRectangle::ByteSizeLong](#mediapiperenderannotationfilledrectanglebytesizelong)
+  - [mediapipe::RenderAnnotation::FilledRectangle::CheckInitialized](#mediapiperenderannotationfilledrectanglecheckinitialized)
+  - [mediapipe::RenderAnnotation::FilledRectangle::Clear](#mediapiperenderannotationfilledrectangleclear)
+  - [mediapipe::RenderAnnotation::FilledRectangle::ClearField](#mediapiperenderannotationfilledrectangleclearfield)
+  - [mediapipe::RenderAnnotation::FilledRectangle::CopyFrom](#mediapiperenderannotationfilledrectanglecopyfrom)
+  - [mediapipe::RenderAnnotation::FilledRectangle::DiscardUnknownFields](#mediapiperenderannotationfilledrectanglediscardunknownfields)
+  - [mediapipe::RenderAnnotation::FilledRectangle::FindInitializationErrors](#mediapiperenderannotationfilledrectanglefindinitializationerrors)
+  - [mediapipe::RenderAnnotation::FilledRectangle::IsInitialized](#mediapiperenderannotationfilledrectangleisinitialized)
+  - [mediapipe::RenderAnnotation::FilledRectangle::SerializeAsString](#mediapiperenderannotationfilledrectangleserializeasstring)
+  - [mediapipe::RenderAnnotation::FilledRectangle::SerializeToString](#mediapiperenderannotationfilledrectangleserializetostring)
+  - [mediapipe::RenderAnnotation::FilledRectangle::SpaceUsedLong](#mediapiperenderannotationfilledrectanglespaceusedlong)
+  - [mediapipe::RenderAnnotation::FilledRectangle::\_\_str\_\_](#mediapiperenderannotationfilledrectangle%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::RoundedRectangle](#mediapiperenderannotationroundedrectangle)
+  - [RoundedRectangle.rectangle](#roundedrectanglerectangle)
+  - [RoundedRectangle.corner\_radius](#roundedrectanglecorner%5C_radius)
+  - [RoundedRectangle.line\_type](#roundedrectangleline%5C_type)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::get\_create](#mediapiperenderannotationroundedrectangleget%5C_create)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::ByteSizeLong](#mediapiperenderannotationroundedrectanglebytesizelong)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::CheckInitialized](#mediapiperenderannotationroundedrectanglecheckinitialized)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::Clear](#mediapiperenderannotationroundedrectangleclear)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::ClearField](#mediapiperenderannotationroundedrectangleclearfield)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::CopyFrom](#mediapiperenderannotationroundedrectanglecopyfrom)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::DiscardUnknownFields](#mediapiperenderannotationroundedrectanglediscardunknownfields)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::FindInitializationErrors](#mediapiperenderannotationroundedrectanglefindinitializationerrors)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::IsInitialized](#mediapiperenderannotationroundedrectangleisinitialized)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::SerializeAsString](#mediapiperenderannotationroundedrectangleserializeasstring)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::SerializeToString](#mediapiperenderannotationroundedrectangleserializetostring)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::SpaceUsedLong](#mediapiperenderannotationroundedrectanglespaceusedlong)
+  - [mediapipe::RenderAnnotation::RoundedRectangle::\_\_str\_\_](#mediapiperenderannotationroundedrectangle%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::FilledRoundedRectangle](#mediapiperenderannotationfilledroundedrectangle)
+  - [FilledRoundedRectangle.rounded\_rectangle](#filledroundedrectanglerounded%5C_rectangle)
+  - [FilledRoundedRectangle.fill\_color](#filledroundedrectanglefill%5C_color)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::get\_create](#mediapiperenderannotationfilledroundedrectangleget%5C_create)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::ByteSizeLong](#mediapiperenderannotationfilledroundedrectanglebytesizelong)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::CheckInitialized](#mediapiperenderannotationfilledroundedrectanglecheckinitialized)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::Clear](#mediapiperenderannotationfilledroundedrectangleclear)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::ClearField](#mediapiperenderannotationfilledroundedrectangleclearfield)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::CopyFrom](#mediapiperenderannotationfilledroundedrectanglecopyfrom)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::DiscardUnknownFields](#mediapiperenderannotationfilledroundedrectanglediscardunknownfields)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::FindInitializationErrors](#mediapiperenderannotationfilledroundedrectanglefindinitializationerrors)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::IsInitialized](#mediapiperenderannotationfilledroundedrectangleisinitialized)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::SerializeAsString](#mediapiperenderannotationfilledroundedrectangleserializeasstring)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::SerializeToString](#mediapiperenderannotationfilledroundedrectangleserializetostring)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::SpaceUsedLong](#mediapiperenderannotationfilledroundedrectanglespaceusedlong)
+  - [mediapipe::RenderAnnotation::FilledRoundedRectangle::\_\_str\_\_](#mediapiperenderannotationfilledroundedrectangle%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::Oval](#mediapiperenderannotationoval)
+  - [Oval.rectangle](#ovalrectangle)
+  - [mediapipe::RenderAnnotation::Oval::get\_create](#mediapiperenderannotationovalget%5C_create)
+  - [mediapipe::RenderAnnotation::Oval::ByteSizeLong](#mediapiperenderannotationovalbytesizelong)
+  - [mediapipe::RenderAnnotation::Oval::CheckInitialized](#mediapiperenderannotationovalcheckinitialized)
+  - [mediapipe::RenderAnnotation::Oval::Clear](#mediapiperenderannotationovalclear)
+  - [mediapipe::RenderAnnotation::Oval::ClearField](#mediapiperenderannotationovalclearfield)
+  - [mediapipe::RenderAnnotation::Oval::CopyFrom](#mediapiperenderannotationovalcopyfrom)
+  - [mediapipe::RenderAnnotation::Oval::DiscardUnknownFields](#mediapiperenderannotationovaldiscardunknownfields)
+  - [mediapipe::RenderAnnotation::Oval::FindInitializationErrors](#mediapiperenderannotationovalfindinitializationerrors)
+  - [mediapipe::RenderAnnotation::Oval::IsInitialized](#mediapiperenderannotationovalisinitialized)
+  - [mediapipe::RenderAnnotation::Oval::SerializeAsString](#mediapiperenderannotationovalserializeasstring)
+  - [mediapipe::RenderAnnotation::Oval::SerializeToString](#mediapiperenderannotationovalserializetostring)
+  - [mediapipe::RenderAnnotation::Oval::SpaceUsedLong](#mediapiperenderannotationovalspaceusedlong)
+  - [mediapipe::RenderAnnotation::Oval::\_\_str\_\_](#mediapiperenderannotationoval%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::FilledOval](#mediapiperenderannotationfilledoval)
+  - [FilledOval.oval](#filledovaloval)
+  - [FilledOval.fill\_color](#filledovalfill%5C_color)
+  - [mediapipe::RenderAnnotation::FilledOval::get\_create](#mediapiperenderannotationfilledovalget%5C_create)
+  - [mediapipe::RenderAnnotation::FilledOval::ByteSizeLong](#mediapiperenderannotationfilledovalbytesizelong)
+  - [mediapipe::RenderAnnotation::FilledOval::CheckInitialized](#mediapiperenderannotationfilledovalcheckinitialized)
+  - [mediapipe::RenderAnnotation::FilledOval::Clear](#mediapiperenderannotationfilledovalclear)
+  - [mediapipe::RenderAnnotation::FilledOval::ClearField](#mediapiperenderannotationfilledovalclearfield)
+  - [mediapipe::RenderAnnotation::FilledOval::CopyFrom](#mediapiperenderannotationfilledovalcopyfrom)
+  - [mediapipe::RenderAnnotation::FilledOval::DiscardUnknownFields](#mediapiperenderannotationfilledovaldiscardunknownfields)
+  - [mediapipe::RenderAnnotation::FilledOval::FindInitializationErrors](#mediapiperenderannotationfilledovalfindinitializationerrors)
+  - [mediapipe::RenderAnnotation::FilledOval::IsInitialized](#mediapiperenderannotationfilledovalisinitialized)
+  - [mediapipe::RenderAnnotation::FilledOval::SerializeAsString](#mediapiperenderannotationfilledovalserializeasstring)
+  - [mediapipe::RenderAnnotation::FilledOval::SerializeToString](#mediapiperenderannotationfilledovalserializetostring)
+  - [mediapipe::RenderAnnotation::FilledOval::SpaceUsedLong](#mediapiperenderannotationfilledovalspaceusedlong)
+  - [mediapipe::RenderAnnotation::FilledOval::\_\_str\_\_](#mediapiperenderannotationfilledoval%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::Point](#mediapiperenderannotationpoint)
+  - [Point.x](#pointx-1)
+  - [Point.y](#pointy-1)
+  - [Point.normalized](#pointnormalized)
+  - [mediapipe::RenderAnnotation::Point::get\_create](#mediapiperenderannotationpointget%5C_create)
+  - [mediapipe::RenderAnnotation::Point::ByteSizeLong](#mediapiperenderannotationpointbytesizelong)
+  - [mediapipe::RenderAnnotation::Point::CheckInitialized](#mediapiperenderannotationpointcheckinitialized)
+  - [mediapipe::RenderAnnotation::Point::Clear](#mediapiperenderannotationpointclear)
+  - [mediapipe::RenderAnnotation::Point::ClearField](#mediapiperenderannotationpointclearfield)
+  - [mediapipe::RenderAnnotation::Point::CopyFrom](#mediapiperenderannotationpointcopyfrom)
+  - [mediapipe::RenderAnnotation::Point::DiscardUnknownFields](#mediapiperenderannotationpointdiscardunknownfields)
+  - [mediapipe::RenderAnnotation::Point::FindInitializationErrors](#mediapiperenderannotationpointfindinitializationerrors)
+  - [mediapipe::RenderAnnotation::Point::IsInitialized](#mediapiperenderannotationpointisinitialized)
+  - [mediapipe::RenderAnnotation::Point::SerializeAsString](#mediapiperenderannotationpointserializeasstring)
+  - [mediapipe::RenderAnnotation::Point::SerializeToString](#mediapiperenderannotationpointserializetostring)
+  - [mediapipe::RenderAnnotation::Point::SpaceUsedLong](#mediapiperenderannotationpointspaceusedlong)
+  - [mediapipe::RenderAnnotation::Point::\_\_str\_\_](#mediapiperenderannotationpoint%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::Line](#mediapiperenderannotationline)
+  - [Line.x\_start](#linex%5C_start)
+  - [Line.y\_start](#liney%5C_start)
+  - [Line.x\_end](#linex%5C_end)
+  - [Line.y\_end](#liney%5C_end)
+  - [Line.normalized](#linenormalized)
+  - [Line.line\_type](#lineline%5C_type)
+  - [mediapipe::RenderAnnotation::Line::get\_create](#mediapiperenderannotationlineget%5C_create)
+  - [mediapipe::RenderAnnotation::Line::ByteSizeLong](#mediapiperenderannotationlinebytesizelong)
+  - [mediapipe::RenderAnnotation::Line::CheckInitialized](#mediapiperenderannotationlinecheckinitialized)
+  - [mediapipe::RenderAnnotation::Line::Clear](#mediapiperenderannotationlineclear)
+  - [mediapipe::RenderAnnotation::Line::ClearField](#mediapiperenderannotationlineclearfield)
+  - [mediapipe::RenderAnnotation::Line::CopyFrom](#mediapiperenderannotationlinecopyfrom)
+  - [mediapipe::RenderAnnotation::Line::DiscardUnknownFields](#mediapiperenderannotationlinediscardunknownfields)
+  - [mediapipe::RenderAnnotation::Line::FindInitializationErrors](#mediapiperenderannotationlinefindinitializationerrors)
+  - [mediapipe::RenderAnnotation::Line::IsInitialized](#mediapiperenderannotationlineisinitialized)
+  - [mediapipe::RenderAnnotation::Line::SerializeAsString](#mediapiperenderannotationlineserializeasstring)
+  - [mediapipe::RenderAnnotation::Line::SerializeToString](#mediapiperenderannotationlineserializetostring)
+  - [mediapipe::RenderAnnotation::Line::SpaceUsedLong](#mediapiperenderannotationlinespaceusedlong)
+  - [mediapipe::RenderAnnotation::Line::\_\_str\_\_](#mediapiperenderannotationline%5C_%5C_str%5C_%5C_)
+  - [Line.UNKNOWN\_](#lineunknown%5C_)
+  - [Line.SOLID\_](#linesolid%5C_)
+  - [Line.DASHED\_](#linedashed%5C_)
+- [mediapipe::RenderAnnotation::GradientLine](#mediapiperenderannotationgradientline)
+  - [GradientLine.x\_start](#gradientlinex%5C_start)
+  - [GradientLine.y\_start](#gradientliney%5C_start)
+  - [GradientLine.x\_end](#gradientlinex%5C_end)
+  - [GradientLine.y\_end](#gradientliney%5C_end)
+  - [GradientLine.normalized](#gradientlinenormalized)
+  - [GradientLine.color1](#gradientlinecolor1)
+  - [GradientLine.color2](#gradientlinecolor2)
+  - [mediapipe::RenderAnnotation::GradientLine::get\_create](#mediapiperenderannotationgradientlineget%5C_create)
+  - [mediapipe::RenderAnnotation::GradientLine::ByteSizeLong](#mediapiperenderannotationgradientlinebytesizelong)
+  - [mediapipe::RenderAnnotation::GradientLine::CheckInitialized](#mediapiperenderannotationgradientlinecheckinitialized)
+  - [mediapipe::RenderAnnotation::GradientLine::Clear](#mediapiperenderannotationgradientlineclear)
+  - [mediapipe::RenderAnnotation::GradientLine::ClearField](#mediapiperenderannotationgradientlineclearfield)
+  - [mediapipe::RenderAnnotation::GradientLine::CopyFrom](#mediapiperenderannotationgradientlinecopyfrom)
+  - [mediapipe::RenderAnnotation::GradientLine::DiscardUnknownFields](#mediapiperenderannotationgradientlinediscardunknownfields)
+  - [mediapipe::RenderAnnotation::GradientLine::FindInitializationErrors](#mediapiperenderannotationgradientlinefindinitializationerrors)
+  - [mediapipe::RenderAnnotation::GradientLine::IsInitialized](#mediapiperenderannotationgradientlineisinitialized)
+  - [mediapipe::RenderAnnotation::GradientLine::SerializeAsString](#mediapiperenderannotationgradientlineserializeasstring)
+  - [mediapipe::RenderAnnotation::GradientLine::SerializeToString](#mediapiperenderannotationgradientlineserializetostring)
+  - [mediapipe::RenderAnnotation::GradientLine::SpaceUsedLong](#mediapiperenderannotationgradientlinespaceusedlong)
+  - [mediapipe::RenderAnnotation::GradientLine::\_\_str\_\_](#mediapiperenderannotationgradientline%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::Arrow](#mediapiperenderannotationarrow)
+  - [Arrow.x\_start](#arrowx%5C_start)
+  - [Arrow.y\_start](#arrowy%5C_start)
+  - [Arrow.x\_end](#arrowx%5C_end)
+  - [Arrow.y\_end](#arrowy%5C_end)
+  - [Arrow.normalized](#arrownormalized)
+  - [mediapipe::RenderAnnotation::Arrow::get\_create](#mediapiperenderannotationarrowget%5C_create)
+  - [mediapipe::RenderAnnotation::Arrow::ByteSizeLong](#mediapiperenderannotationarrowbytesizelong)
+  - [mediapipe::RenderAnnotation::Arrow::CheckInitialized](#mediapiperenderannotationarrowcheckinitialized)
+  - [mediapipe::RenderAnnotation::Arrow::Clear](#mediapiperenderannotationarrowclear)
+  - [mediapipe::RenderAnnotation::Arrow::ClearField](#mediapiperenderannotationarrowclearfield)
+  - [mediapipe::RenderAnnotation::Arrow::CopyFrom](#mediapiperenderannotationarrowcopyfrom)
+  - [mediapipe::RenderAnnotation::Arrow::DiscardUnknownFields](#mediapiperenderannotationarrowdiscardunknownfields)
+  - [mediapipe::RenderAnnotation::Arrow::FindInitializationErrors](#mediapiperenderannotationarrowfindinitializationerrors)
+  - [mediapipe::RenderAnnotation::Arrow::IsInitialized](#mediapiperenderannotationarrowisinitialized)
+  - [mediapipe::RenderAnnotation::Arrow::SerializeAsString](#mediapiperenderannotationarrowserializeasstring)
+  - [mediapipe::RenderAnnotation::Arrow::SerializeToString](#mediapiperenderannotationarrowserializetostring)
+  - [mediapipe::RenderAnnotation::Arrow::SpaceUsedLong](#mediapiperenderannotationarrowspaceusedlong)
+  - [mediapipe::RenderAnnotation::Arrow::\_\_str\_\_](#mediapiperenderannotationarrow%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderAnnotation::Text](#mediapiperenderannotationtext)
+  - [Text.display\_text](#textdisplay%5C_text)
+  - [Text.left](#textleft)
+  - [Text.baseline](#textbaseline)
+  - [Text.font\_height](#textfont%5C_height)
+  - [Text.normalized](#textnormalized)
+  - [Text.font\_face](#textfont%5C_face)
+  - [Text.center\_horizontally](#textcenter%5C_horizontally)
+  - [Text.center\_vertically](#textcenter%5C_vertically)
+  - [Text.outline\_thickness](#textoutline%5C_thickness)
+  - [Text.outline\_color](#textoutline%5C_color)
+  - [mediapipe::RenderAnnotation::Text::get\_create](#mediapiperenderannotationtextget%5C_create)
+  - [mediapipe::RenderAnnotation::Text::ByteSizeLong](#mediapiperenderannotationtextbytesizelong)
+  - [mediapipe::RenderAnnotation::Text::CheckInitialized](#mediapiperenderannotationtextcheckinitialized)
+  - [mediapipe::RenderAnnotation::Text::Clear](#mediapiperenderannotationtextclear)
+  - [mediapipe::RenderAnnotation::Text::ClearField](#mediapiperenderannotationtextclearfield)
+  - [mediapipe::RenderAnnotation::Text::CopyFrom](#mediapiperenderannotationtextcopyfrom)
+  - [mediapipe::RenderAnnotation::Text::DiscardUnknownFields](#mediapiperenderannotationtextdiscardunknownfields)
+  - [mediapipe::RenderAnnotation::Text::FindInitializationErrors](#mediapiperenderannotationtextfindinitializationerrors)
+  - [mediapipe::RenderAnnotation::Text::IsInitialized](#mediapiperenderannotationtextisinitialized)
+  - [mediapipe::RenderAnnotation::Text::SerializeAsString](#mediapiperenderannotationtextserializeasstring)
+  - [mediapipe::RenderAnnotation::Text::SerializeToString](#mediapiperenderannotationtextserializetostring)
+  - [mediapipe::RenderAnnotation::Text::SpaceUsedLong](#mediapiperenderannotationtextspaceusedlong)
+  - [mediapipe::RenderAnnotation::Text::\_\_str\_\_](#mediapiperenderannotationtext%5C_%5C_str%5C_%5C_)
+- [mediapipe::RenderViewport](#mediapiperenderviewport)
+  - [RenderViewport.id](#renderviewportid)
+  - [RenderViewport.width\_px](#renderviewportwidth%5C_px)
+  - [RenderViewport.height\_px](#renderviewportheight%5C_px)
+  - [RenderViewport.compose\_on\_video](#renderviewportcompose%5C_on%5C_video)
+  - [mediapipe::RenderViewport::get\_create](#mediapiperenderviewportget%5C_create)
+  - [mediapipe::RenderViewport::ByteSizeLong](#mediapiperenderviewportbytesizelong)
+  - [mediapipe::RenderViewport::CheckInitialized](#mediapiperenderviewportcheckinitialized)
+  - [mediapipe::RenderViewport::Clear](#mediapiperenderviewportclear)
+  - [mediapipe::RenderViewport::ClearField](#mediapiperenderviewportclearfield)
+  - [mediapipe::RenderViewport::CopyFrom](#mediapiperenderviewportcopyfrom)
+  - [mediapipe::RenderViewport::DiscardUnknownFields](#mediapiperenderviewportdiscardunknownfields)
+  - [mediapipe::RenderViewport::FindInitializationErrors](#mediapiperenderviewportfindinitializationerrors)
+  - [mediapipe::RenderViewport::IsInitialized](#mediapiperenderviewportisinitialized)
+  - [mediapipe::RenderViewport::SerializeAsString](#mediapiperenderviewportserializeasstring)
+  - [mediapipe::RenderViewport::SerializeToString](#mediapiperenderviewportserializetostring)
+  - [mediapipe::RenderViewport::SpaceUsedLong](#mediapiperenderviewportspaceusedlong)
+  - [mediapipe::RenderViewport::\_\_str\_\_](#mediapiperenderviewport%5C_%5C_str%5C_%5C_)
+- [mediapipe::util::render\_data\_pb2](#mediapipeutilrender%5C_data%5C_pb2)
+  - [render\_data\_pb2.RenderData](#render%5C_data%5C_pb2renderdata)
+  - [render\_data\_pb2.RenderAnnotation](#render%5C_data%5C_pb2renderannotation)
+  - [render\_data\_pb2.RenderViewport](#render%5C_data%5C_pb2renderviewport)
+- [mediapipe::util::render\_data\_pb2::RenderAnnotation](#mediapipeutilrender%5C_data%5C_pb2renderannotation)
+  - [RenderAnnotation.Rectangle](#renderannotationrectangle)
+  - [RenderAnnotation.FilledRectangle](#renderannotationfilledrectangle)
+  - [RenderAnnotation.RoundedRectangle](#renderannotationroundedrectangle)
+  - [RenderAnnotation.FilledRoundedRectangle](#renderannotationfilledroundedrectangle)
+  - [RenderAnnotation.Oval](#renderannotationoval)
+  - [RenderAnnotation.FilledOval](#renderannotationfilledoval)
+  - [RenderAnnotation.Point](#renderannotationpoint)
+  - [RenderAnnotation.Line](#renderannotationline)
+  - [RenderAnnotation.GradientLine](#renderannotationgradientline)
+  - [RenderAnnotation.Arrow](#renderannotationarrow)
+  - [RenderAnnotation.Text](#renderannotationtext)
 - [mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions](#mediapipetasksvisionobject%5C_detectorprotoobjectdetectoroptions)
   - [ObjectDetectorOptions.base\_options](#objectdetectoroptionsbase%5C_options-1)
   - [ObjectDetectorOptions.display\_names\_locale](#objectdetectoroptionsdisplay%5C_names%5C_locale-1)
@@ -8580,6 +8954,28 @@
   - [VectorOfShared\_ptrNormalizedRect::sort](#vectorofshared%5C_ptrnormalizedrectsort)
   - [VectorOfShared\_ptrNormalizedRect::sort\_variant](#vectorofshared%5C_ptrnormalizedrectsort%5C_variant)
   - [VectorOfShared\_ptrNormalizedRect::start](#vectorofshared%5C_ptrnormalizedrectstart)
+- [VectorOfShared\_ptrRenderAnnotation](#vectorofshared%5C_ptrrenderannotation)
+  - [VectorOfShared\_ptrRenderAnnotation.Count](#vectorofshared%5C_ptrrenderannotationcount)
+  - [VectorOfShared\_ptrRenderAnnotation::create](#vectorofshared%5C_ptrrenderannotationcreate)
+  - [VectorOfShared\_ptrRenderAnnotation::Add](#vectorofshared%5C_ptrrenderannotationadd)
+  - [VectorOfShared\_ptrRenderAnnotation::Items](#vectorofshared%5C_ptrrenderannotationitems)
+  - [VectorOfShared\_ptrRenderAnnotation::Keys](#vectorofshared%5C_ptrrenderannotationkeys)
+  - [VectorOfShared\_ptrRenderAnnotation::Remove](#vectorofshared%5C_ptrrenderannotationremove)
+  - [VectorOfShared\_ptrRenderAnnotation::append](#vectorofshared%5C_ptrrenderannotationappend)
+  - [VectorOfShared\_ptrRenderAnnotation::at](#vectorofshared%5C_ptrrenderannotationat)
+  - [VectorOfShared\_ptrRenderAnnotation::clear](#vectorofshared%5C_ptrrenderannotationclear)
+  - [VectorOfShared\_ptrRenderAnnotation::empty](#vectorofshared%5C_ptrrenderannotationempty)
+  - [VectorOfShared\_ptrRenderAnnotation::end](#vectorofshared%5C_ptrrenderannotationend)
+  - [VectorOfShared\_ptrRenderAnnotation::get\_Item](#vectorofshared%5C_ptrrenderannotationget%5C_item)
+  - [VectorOfShared\_ptrRenderAnnotation::get\_\_NewEnum](#vectorofshared%5C_ptrrenderannotationget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrRenderAnnotation::push\_back](#vectorofshared%5C_ptrrenderannotationpush%5C_back)
+  - [VectorOfShared\_ptrRenderAnnotation::push\_vector](#vectorofshared%5C_ptrrenderannotationpush%5C_vector)
+  - [VectorOfShared\_ptrRenderAnnotation::put\_Item](#vectorofshared%5C_ptrrenderannotationput%5C_item)
+  - [VectorOfShared\_ptrRenderAnnotation::size](#vectorofshared%5C_ptrrenderannotationsize)
+  - [VectorOfShared\_ptrRenderAnnotation::slice](#vectorofshared%5C_ptrrenderannotationslice)
+  - [VectorOfShared\_ptrRenderAnnotation::sort](#vectorofshared%5C_ptrrenderannotationsort)
+  - [VectorOfShared\_ptrRenderAnnotation::sort\_variant](#vectorofshared%5C_ptrrenderannotationsort%5C_variant)
+  - [VectorOfShared\_ptrRenderAnnotation::start](#vectorofshared%5C_ptrrenderannotationstart)
 - [VectorOfSize\_t](#vectorofsize%5C_t)
   - [VectorOfSize\_t.Count](#vectorofsize%5C_tcount)
   - [VectorOfSize\_t::create](#vectorofsize%5C_tcreate)
@@ -15876,6 +16272,14 @@ AutoIt:
     [propget] $ovision.image_segmenter
 ```
 
+### vision.interactive\_segmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter
+AutoIt:
+    [propget] $ovision.interactive_segmenter
+```
+
 ### vision.object\_detector
 
 ```cpp
@@ -16118,6 +16522,14 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::image_segmenter
 AutoIt:
     [propget] $ovision.image_segmenter
+```
+
+### vision.interactive\_segmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter
+AutoIt:
+    [propget] $ovision.interactive_segmenter
 ```
 
 ### vision.object\_detector
@@ -19044,29 +19456,275 @@ AutoIt:
 ### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment
 
 ```cpp
-void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment( std::vector<mediapipe::Image>& segmentation_result,
-                                                                                 const mediapipe::Image&        image );
+void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment( std::vector<mediapipe::Image>&                                                                            segmentation_result,
+                                                                                 const mediapipe::Image&                                                                                   image,
+                                                                                 std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
-    $oImageSegmenter.segment( $image[, $segmentation_result] ) -> $segmentation_result
+    $oImageSegmenter.segment( $image[, $image_processing_options[, $segmentation_result]] ) -> $segmentation_result
 ```
 
 ### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_async
 
 ```cpp
-void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment_async( const mediapipe::Image& image,
-                                                                                       int64_t                 timestamp_ms );
+void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment_async( const mediapipe::Image&                                                                                   image,
+                                                                                       int64_t                                                                                                   timestamp_ms,
+                                                                                       std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
-    $oImageSegmenter.segment_async( $image, $timestamp_ms ) -> None
+    $oImageSegmenter.segment_async( $image, $timestamp_ms[, $image_processing_options] ) -> None
 ```
 
 ### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_for\_video
 
 ```cpp
-void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment_for_video( std::vector<mediapipe::Image>& segmentation_result,
-                                                                                           const mediapipe::Image&        image,
-                                                                                           int64_t                        timestamp_ms );
+void mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::segment_for_video( std::vector<mediapipe::Image>&                                                                            segmentation_result,
+                                                                                           const mediapipe::Image&                                                                                   image,
+                                                                                           int64_t                                                                                                   timestamp_ms,
+                                                                                           std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
-    $oImageSegmenter.segment_for_video( $image, $timestamp_ms[, $segmentation_result] ) -> $segmentation_result
+    $oImageSegmenter.segment_for_video( $image, $timestamp_ms[, $image_processing_options[, $segmentation_result]] ) -> $segmentation_result
+```
+
+## mediapipe::tasks::autoit::vision::interactive\_segmenter
+
+### interactive\_segmenter.InteractiveSegmenterOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions
+AutoIt:
+    [propget] $ointeractive_segmenter.InteractiveSegmenterOptions
+```
+
+### interactive\_segmenter.RegionOfInterest\_Format
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format
+AutoIt:
+    [propget] $ointeractive_segmenter.RegionOfInterest_Format
+```
+
+### interactive\_segmenter.RegionOfInterest
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest
+AutoIt:
+    [propget] $ointeractive_segmenter.RegionOfInterest
+```
+
+### interactive\_segmenter.InteractiveSegmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter
+AutoIt:
+    [propget] $ointeractive_segmenter.InteractiveSegmenter
+```
+
+## mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions
+
+### InteractiveSegmenterOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions::base_options
+AutoIt:
+    [propget, propput] $oInteractiveSegmenterOptions.base_options
+```
+
+### InteractiveSegmenterOptions.output\_type
+
+```cpp
+mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions::output_type
+AutoIt:
+    [propget, propput] $oInteractiveSegmenterOptions.output_type
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions::get_create( const mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions object>
+    $oInteractiveSegmenterOptions( $other ) -> <mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>     base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                                              mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType output_type = mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::CATEGORY_MASK );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions").create( [$base_options[, $output_type]] ) -> <mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions object>
+    $oInteractiveSegmenterOptions( [$base_options[, $output_type]] ) -> <mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions::to\_pb2
+
+```cpp
+std::shared_ptr<tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions> mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions::to_pb2();
+AutoIt:
+    $oInteractiveSegmenterOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::vision::interactive\_segmenter
+
+### interactive\_segmenter.InteractiveSegmenterOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions
+AutoIt:
+    [propget] $ointeractive_segmenter.InteractiveSegmenterOptions
+```
+
+### interactive\_segmenter.RegionOfInterest\_Format
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format
+AutoIt:
+    [propget] $ointeractive_segmenter.RegionOfInterest_Format
+```
+
+### interactive\_segmenter.RegionOfInterest
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest
+AutoIt:
+    [propget] $ointeractive_segmenter.RegionOfInterest
+```
+
+### interactive\_segmenter.InteractiveSegmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter
+AutoIt:
+    [propget] $ointeractive_segmenter.InteractiveSegmenter
+```
+
+## mediapipe::tasks::autoit::vision::interactive\_segmenter::RegionOfInterest\_Format
+
+### RegionOfInterest\_Format.UNSPECIFIED
+
+```cpp
+static int mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format::UNSPECIFIED
+AutoIt:
+    [propget] $oRegionOfInterest_Format.UNSPECIFIED
+```
+
+### RegionOfInterest\_Format.KEYPOINT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format::KEYPOINT
+AutoIt:
+    [propget] $oRegionOfInterest_Format.KEYPOINT
+```
+
+## mediapipe::tasks::autoit::vision::interactive\_segmenter::RegionOfInterest
+
+### RegionOfInterest.format
+
+```cpp
+mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest::format
+AutoIt:
+    [propget, propput] $oRegionOfInterest.format
+```
+
+### RegionOfInterest.keypoint
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest::keypoint
+AutoIt:
+    [propget, propput] $oRegionOfInterest.keypoint
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::RegionOfInterest::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest::get_create( const mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest").create( $other ) -> <mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest object>
+    $oRegionOfInterest( $other ) -> <mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest::get_create( mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format                format = RegionOfInterest_Format::UNSPECIFIED,
+                                                                                                                                                                        std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> keypoint = std::shared_ptr<components::containers::keypoint::NormalizedKeypoint>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest").create( [$format[, $keypoint]] ) -> <mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest object>
+    $oRegionOfInterest( [$format[, $keypoint]] ) -> <mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest object>
+```
+
+## mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::\_process\_image\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::_process_image_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oInteractiveSegmenter._process_image_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::\_process\_video\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::_process_video_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oInteractiveSegmenter._process_video_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::\_send\_live\_stream\_data
+
+```cpp
+void mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::_send_live_stream_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oInteractiveSegmenter._send_live_stream_data( $inputs ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::close
+
+```cpp
+void mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::close();
+AutoIt:
+    $oInteractiveSegmenter.close() -> None
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::convert\_to\_normalized\_rect
+
+```cpp
+mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                                  const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                                  bool                                                                                                      roi_allowed = true );
+AutoIt:
+    $oInteractiveSegmenter.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter> mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenter").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter> mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenter").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::get_graph_config();
+AutoIt:
+    $oInteractiveSegmenter.get_graph_config() -> retval
+```
+
+### mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenter::segment
+
+```cpp
+void mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter::segment( std::vector<mediapipe::Image>&                                                                            segmentation_result,
+                                                                                             const mediapipe::Image&                                                                                   image,
+                                                                                             const mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest&                          roi,
+                                                                                             std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oInteractiveSegmenter.segment( $image, $roi[, $image_processing_options[, $segmentation_result]] ) -> $segmentation_result
 ```
 
 ## mediapipe::tasks::autoit::vision::object\_detector
@@ -19273,27 +19931,30 @@ AutoIt:
 ### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect
 
 ```cpp
-std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::DetectionResult> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect( const mediapipe::Image& image );
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::DetectionResult> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                          std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
-    $oObjectDetector.detect( $image ) -> retval
+    $oObjectDetector.detect( $image[, $image_processing_options] ) -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect\_async
 
 ```cpp
-void mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect_async( const mediapipe::Image& image,
-                                                                                      int64_t                 timestamp_ms );
+void mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect_async( const mediapipe::Image&                                                                                   image,
+                                                                                      int64_t                                                                                                   timestamp_ms,
+                                                                                      std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
-    $oObjectDetector.detect_async( $image, $timestamp_ms ) -> None
+    $oObjectDetector.detect_async( $image, $timestamp_ms[, $image_processing_options] ) -> None
 ```
 
 ### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect\_for\_video
 
 ```cpp
-std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::DetectionResult> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect_for_video( const mediapipe::Image& image,
-                                                                                                                                                                                    int64_t                 timestamp_ms );
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::DetectionResult> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::detect_for_video( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                                    int64_t                                                                                                   timestamp_ms,
+                                                                                                                                                                                    std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
-    $oObjectDetector.detect_for_video( $image, $timestamp_ms ) -> retval
+    $oObjectDetector.detect_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::get\_graph\_config
@@ -59645,6 +60306,2727 @@ AutoIt:
     [propget] $oimage_segmenter_graph_options_pb2.ImageSegmenterGraphOptions
 ```
 
+## mediapipe::Color
+
+### Color.r
+
+```cpp
+int mediapipe::Color::r
+AutoIt:
+    [propget, propput] $oColor.r
+```
+
+### Color.g
+
+```cpp
+int mediapipe::Color::g
+AutoIt:
+    [propget, propput] $oColor.g
+```
+
+### Color.b
+
+```cpp
+int mediapipe::Color::b
+AutoIt:
+    [propget, propput] $oColor.b
+```
+
+### mediapipe::Color::get\_create
+
+```cpp
+static mediapipe::Color mediapipe::Color::get_create( std::optional<int> r = std::optional<int>(),
+                                                      std::optional<int> g = std::optional<int>(),
+                                                      std::optional<int> b = std::optional<int>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.Color").create( [$r[, $g[, $b]]] ) -> <mediapipe.Color object>
+    $oColor( [$r[, $g[, $b]]] ) -> <mediapipe.Color object>
+```
+
+### mediapipe::Color::ByteSizeLong
+
+```cpp
+size_t mediapipe::Color::ByteSizeLong();
+AutoIt:
+    $oColor.ByteSizeLong() -> retval
+```
+
+### mediapipe::Color::CheckInitialized
+
+```cpp
+void mediapipe::Color::CheckInitialized();
+AutoIt:
+    $oColor.CheckInitialized() -> None
+```
+
+### mediapipe::Color::Clear
+
+```cpp
+void mediapipe::Color::Clear();
+AutoIt:
+    $oColor.Clear() -> None
+```
+
+### mediapipe::Color::ClearField
+
+```cpp
+void mediapipe::Color::ClearField( const std::string& field_name );
+AutoIt:
+    $oColor.ClearField( $field_name ) -> None
+```
+
+### mediapipe::Color::CopyFrom
+
+```cpp
+void mediapipe::Color::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oColor.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::Color::DiscardUnknownFields
+
+```cpp
+void mediapipe::Color::DiscardUnknownFields();
+AutoIt:
+    $oColor.DiscardUnknownFields() -> None
+```
+
+### mediapipe::Color::FindInitializationErrors
+
+```cpp
+void mediapipe::Color::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oColor.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::Color::IsInitialized
+
+```cpp
+bool mediapipe::Color::IsInitialized();
+AutoIt:
+    $oColor.IsInitialized() -> retval
+```
+
+### mediapipe::Color::SerializeAsString
+
+```cpp
+std::string mediapipe::Color::SerializeAsString();
+AutoIt:
+    $oColor.SerializeAsString() -> retval
+```
+
+### mediapipe::Color::SerializeToString
+
+```cpp
+void mediapipe::Color::SerializeToString( std::string* output );
+AutoIt:
+    $oColor.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::Color::SpaceUsedLong
+
+```cpp
+size_t mediapipe::Color::SpaceUsedLong();
+AutoIt:
+    $oColor.SpaceUsedLong() -> retval
+```
+
+### mediapipe::Color::\_\_str\_\_
+
+```cpp
+void mediapipe::Color::__str__( std::string* output );
+AutoIt:
+    $oColor.__str__( [$output] ) -> $output
+```
+
+## mediapipe::ColorMap
+
+### mediapipe::ColorMap::get\_create
+
+```cpp
+static mediapipe::ColorMap mediapipe::ColorMap::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ColorMap").create() -> <mediapipe.ColorMap object>
+```
+
+### mediapipe::ColorMap::ByteSizeLong
+
+```cpp
+size_t mediapipe::ColorMap::ByteSizeLong();
+AutoIt:
+    $oColorMap.ByteSizeLong() -> retval
+```
+
+### mediapipe::ColorMap::CheckInitialized
+
+```cpp
+void mediapipe::ColorMap::CheckInitialized();
+AutoIt:
+    $oColorMap.CheckInitialized() -> None
+```
+
+### mediapipe::ColorMap::Clear
+
+```cpp
+void mediapipe::ColorMap::Clear();
+AutoIt:
+    $oColorMap.Clear() -> None
+```
+
+### mediapipe::ColorMap::ClearField
+
+```cpp
+void mediapipe::ColorMap::ClearField( const std::string& field_name );
+AutoIt:
+    $oColorMap.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ColorMap::CopyFrom
+
+```cpp
+void mediapipe::ColorMap::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oColorMap.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ColorMap::DiscardUnknownFields
+
+```cpp
+void mediapipe::ColorMap::DiscardUnknownFields();
+AutoIt:
+    $oColorMap.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ColorMap::FindInitializationErrors
+
+```cpp
+void mediapipe::ColorMap::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oColorMap.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ColorMap::IsInitialized
+
+```cpp
+bool mediapipe::ColorMap::IsInitialized();
+AutoIt:
+    $oColorMap.IsInitialized() -> retval
+```
+
+### mediapipe::ColorMap::SerializeAsString
+
+```cpp
+std::string mediapipe::ColorMap::SerializeAsString();
+AutoIt:
+    $oColorMap.SerializeAsString() -> retval
+```
+
+### mediapipe::ColorMap::SerializeToString
+
+```cpp
+void mediapipe::ColorMap::SerializeToString( std::string* output );
+AutoIt:
+    $oColorMap.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ColorMap::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ColorMap::SpaceUsedLong();
+AutoIt:
+    $oColorMap.SpaceUsedLong() -> retval
+```
+
+### mediapipe::ColorMap::\_\_str\_\_
+
+```cpp
+void mediapipe::ColorMap::__str__( std::string* output );
+AutoIt:
+    $oColorMap.__str__( [$output] ) -> $output
+```
+
+## mediapipe::util::color\_pb2
+
+### color\_pb2.Color
+
+```cpp
+static mediapipe::Color
+AutoIt:
+    [propget] $ocolor_pb2.Color
+```
+
+### color\_pb2.ColorMap
+
+```cpp
+static mediapipe::ColorMap
+AutoIt:
+    [propget] $ocolor_pb2.ColorMap
+```
+
+## mediapipe::RenderData
+
+### RenderData.render\_annotations
+
+```cpp
+google::protobuf::Repeated_mediapipe_RenderAnnotation* mediapipe::RenderData::render_annotations
+AutoIt:
+    [propget, propput] $oRenderData.render_annotations
+```
+
+### RenderData.scene\_class
+
+```cpp
+std::string mediapipe::RenderData::scene_class
+AutoIt:
+    [propget, propput] $oRenderData.scene_class
+```
+
+### RenderData.scene\_viewport
+
+```cpp
+mediapipe::RenderViewport* mediapipe::RenderData::scene_viewport
+AutoIt:
+    [propget, propput] $oRenderData.scene_viewport
+```
+
+### mediapipe::RenderData::get\_create
+
+```cpp
+static mediapipe::RenderData mediapipe::RenderData::get_create( VARIANT*                                   render_annotations = VARIANT*(),
+                                                                std::optional<std::string>                 scene_class = std::optional<std::string>(),
+                                                                std::shared_ptr<mediapipe::RenderViewport> scene_viewport = std::shared_ptr<mediapipe::RenderViewport>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderData").create( [$render_annotations[, $scene_class[, $scene_viewport]]] ) -> <mediapipe.RenderData object>
+    $oRenderData( [$render_annotations[, $scene_class[, $scene_viewport]]] ) -> <mediapipe.RenderData object>
+```
+
+### mediapipe::RenderData::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderData::ByteSizeLong();
+AutoIt:
+    $oRenderData.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderData::CheckInitialized
+
+```cpp
+void mediapipe::RenderData::CheckInitialized();
+AutoIt:
+    $oRenderData.CheckInitialized() -> None
+```
+
+### mediapipe::RenderData::Clear
+
+```cpp
+void mediapipe::RenderData::Clear();
+AutoIt:
+    $oRenderData.Clear() -> None
+```
+
+### mediapipe::RenderData::ClearField
+
+```cpp
+void mediapipe::RenderData::ClearField( const std::string& field_name );
+AutoIt:
+    $oRenderData.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderData::CopyFrom
+
+```cpp
+void mediapipe::RenderData::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRenderData.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderData::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderData::DiscardUnknownFields();
+AutoIt:
+    $oRenderData.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderData::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderData::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRenderData.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderData::IsInitialized
+
+```cpp
+bool mediapipe::RenderData::IsInitialized();
+AutoIt:
+    $oRenderData.IsInitialized() -> retval
+```
+
+### mediapipe::RenderData::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderData::SerializeAsString();
+AutoIt:
+    $oRenderData.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderData::SerializeToString
+
+```cpp
+void mediapipe::RenderData::SerializeToString( std::string* output );
+AutoIt:
+    $oRenderData.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderData::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderData::SpaceUsedLong();
+AutoIt:
+    $oRenderData.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderData::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderData::__str__( std::string* output );
+AutoIt:
+    $oRenderData.__str__( [$output] ) -> $output
+```
+
+## google::protobuf::Repeated\_mediapipe\_RenderAnnotation
+
+### Repeated\_mediapipe\_RenderAnnotation.Count
+
+```cpp
+int google::protobuf::Repeated_mediapipe_RenderAnnotation::Count
+AutoIt:
+    [propget] $oRepeated_mediapipe_RenderAnnotation.Count
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::create
+
+```cpp
+static google::protobuf::Repeated_mediapipe_RenderAnnotation google::protobuf::Repeated_mediapipe_RenderAnnotation::create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_RenderAnnotation").create() -> <google.protobuf.Repeated_mediapipe_RenderAnnotation object>
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::CopyFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::CopyFrom( const google::protobuf::Repeated_mediapipe_RenderAnnotation other );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.CopyFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::MergeFrom
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::MergeFrom( const google::protobuf::Repeated_mediapipe_RenderAnnotation other );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.MergeFrom( $other ) -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::Swap
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::Swap( google::protobuf::Repeated_mediapipe_RenderAnnotation* other );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.Swap( $other ) -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::SwapElements
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::SwapElements( int index1,
+                                                                          int index2 );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.SwapElements( $index1, $index2 ) -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::add
+
+```cpp
+mediapipe::RenderAnnotation* google::protobuf::Repeated_mediapipe_RenderAnnotation::add();
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.add() -> retval
+```
+
+```cpp
+mediapipe::RenderAnnotation* google::protobuf::Repeated_mediapipe_RenderAnnotation::add( const mediapipe::RenderAnnotation* value );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.add( $value ) -> retval
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::append
+
+```cpp
+mediapipe::RenderAnnotation* google::protobuf::Repeated_mediapipe_RenderAnnotation::append( const mediapipe::RenderAnnotation* value );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.append( $value ) -> retval
+```
+
+```cpp
+mediapipe::RenderAnnotation* google::protobuf::Repeated_mediapipe_RenderAnnotation::append( std::map<std::string, _variant_t> attrs );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.append( $attrs ) -> retval
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::clear
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::clear();
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.clear() -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::empty
+
+```cpp
+bool google::protobuf::Repeated_mediapipe_RenderAnnotation::empty();
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.empty() -> retval
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::extend
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::extend( const google::protobuf::Repeated_mediapipe_RenderAnnotation& items );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::extend( const std::vector<std::shared_ptr<mediapipe::RenderAnnotation>>& items );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.extend( $items ) -> None
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::extend( const std::vector<_variant_t>& items );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.extend( $items ) -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::get\_Item
+
+```cpp
+mediapipe::RenderAnnotation* google::protobuf::Repeated_mediapipe_RenderAnnotation::get_Item( int index );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.Item( $index ) -> retval
+    $oRepeated_mediapipe_RenderAnnotation( $index ) -> retval
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::get\_\_NewEnum
+
+```cpp
+IUnknown* google::protobuf::Repeated_mediapipe_RenderAnnotation::get__NewEnum();
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation._NewEnum() -> retval
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::insert
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::insert( SSIZE_T                             index,
+                                                                    const mediapipe::RenderAnnotation*& item );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.insert( $index, $item ) -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::pop
+
+```cpp
+std::shared_ptr<mediapipe::RenderAnnotation> google::protobuf::Repeated_mediapipe_RenderAnnotation::pop( SSIZE_T index = -1 );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.pop( [$index] ) -> retval
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::reverse
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::reverse();
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.reverse() -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::size
+
+```cpp
+int google::protobuf::Repeated_mediapipe_RenderAnnotation::size();
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.size() -> retval
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::slice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::slice( std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> list,
+                                                                   SSIZE_T                                                   start,
+                                                                   SSIZE_T                                                   count );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.slice( $start, $count[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::slice( std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> list,
+                                                                   SSIZE_T                                                   start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.slice( [$start[, $list]] ) -> $list
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::sort
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::sort( void*  comparator,
+                                                                  size_t start = 0,
+                                                                  size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::sort\_variant
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::sort_variant( void*  comparator,
+                                                                          size_t start = 0,
+                                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::splice
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::splice( std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> list,
+                                                                    SSIZE_T                                                   start,
+                                                                    SSIZE_T                                                   deleteCount );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.splice( $start, $deleteCount[, $list] ) -> $list
+```
+
+```cpp
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::splice( std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> list,
+                                                                    SSIZE_T                                                   start = 0 );
+AutoIt:
+    $oRepeated_mediapipe_RenderAnnotation.splice( [$start[, $list]] ) -> $list
+```
+
+## mediapipe::RenderAnnotation
+
+### RenderAnnotation.rectangle
+
+```cpp
+mediapipe::RenderAnnotation::Rectangle* mediapipe::RenderAnnotation::rectangle
+AutoIt:
+    [propget, propput] $oRenderAnnotation.rectangle
+```
+
+### RenderAnnotation.filled\_rectangle
+
+```cpp
+mediapipe::RenderAnnotation::FilledRectangle* mediapipe::RenderAnnotation::filled_rectangle
+AutoIt:
+    [propget, propput] $oRenderAnnotation.filled_rectangle
+```
+
+### RenderAnnotation.oval
+
+```cpp
+mediapipe::RenderAnnotation::Oval* mediapipe::RenderAnnotation::oval
+AutoIt:
+    [propget, propput] $oRenderAnnotation.oval
+```
+
+### RenderAnnotation.filled\_oval
+
+```cpp
+mediapipe::RenderAnnotation::FilledOval* mediapipe::RenderAnnotation::filled_oval
+AutoIt:
+    [propget, propput] $oRenderAnnotation.filled_oval
+```
+
+### RenderAnnotation.point
+
+```cpp
+mediapipe::RenderAnnotation::Point* mediapipe::RenderAnnotation::point
+AutoIt:
+    [propget, propput] $oRenderAnnotation.point
+```
+
+### RenderAnnotation.line
+
+```cpp
+mediapipe::RenderAnnotation::Line* mediapipe::RenderAnnotation::line
+AutoIt:
+    [propget, propput] $oRenderAnnotation.line
+```
+
+### RenderAnnotation.arrow
+
+```cpp
+mediapipe::RenderAnnotation::Arrow* mediapipe::RenderAnnotation::arrow
+AutoIt:
+    [propget, propput] $oRenderAnnotation.arrow
+```
+
+### RenderAnnotation.text
+
+```cpp
+mediapipe::RenderAnnotation::Text* mediapipe::RenderAnnotation::text
+AutoIt:
+    [propget, propput] $oRenderAnnotation.text
+```
+
+### RenderAnnotation.rounded\_rectangle
+
+```cpp
+mediapipe::RenderAnnotation::RoundedRectangle* mediapipe::RenderAnnotation::rounded_rectangle
+AutoIt:
+    [propget, propput] $oRenderAnnotation.rounded_rectangle
+```
+
+### RenderAnnotation.filled\_rounded\_rectangle
+
+```cpp
+mediapipe::RenderAnnotation::FilledRoundedRectangle* mediapipe::RenderAnnotation::filled_rounded_rectangle
+AutoIt:
+    [propget, propput] $oRenderAnnotation.filled_rounded_rectangle
+```
+
+### RenderAnnotation.gradient\_line
+
+```cpp
+mediapipe::RenderAnnotation::GradientLine* mediapipe::RenderAnnotation::gradient_line
+AutoIt:
+    [propget, propput] $oRenderAnnotation.gradient_line
+```
+
+### RenderAnnotation.thickness
+
+```cpp
+double mediapipe::RenderAnnotation::thickness
+AutoIt:
+    [propget, propput] $oRenderAnnotation.thickness
+```
+
+### RenderAnnotation.color
+
+```cpp
+mediapipe::Color* mediapipe::RenderAnnotation::color
+AutoIt:
+    [propget, propput] $oRenderAnnotation.color
+```
+
+### RenderAnnotation.scene\_tag
+
+```cpp
+std::string mediapipe::RenderAnnotation::scene_tag
+AutoIt:
+    [propget, propput] $oRenderAnnotation.scene_tag
+```
+
+### mediapipe::RenderAnnotation::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation mediapipe::RenderAnnotation::get_create( std::shared_ptr<mediapipe::RenderAnnotation::Rectangle>              rectangle = std::shared_ptr<mediapipe::RenderAnnotation::Rectangle>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::FilledRectangle>        filled_rectangle = std::shared_ptr<mediapipe::RenderAnnotation::FilledRectangle>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::Oval>                   oval = std::shared_ptr<mediapipe::RenderAnnotation::Oval>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::FilledOval>             filled_oval = std::shared_ptr<mediapipe::RenderAnnotation::FilledOval>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::Point>                  point = std::shared_ptr<mediapipe::RenderAnnotation::Point>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::Line>                   line = std::shared_ptr<mediapipe::RenderAnnotation::Line>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::Arrow>                  arrow = std::shared_ptr<mediapipe::RenderAnnotation::Arrow>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::Text>                   text = std::shared_ptr<mediapipe::RenderAnnotation::Text>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::RoundedRectangle>       rounded_rectangle = std::shared_ptr<mediapipe::RenderAnnotation::RoundedRectangle>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::FilledRoundedRectangle> filled_rounded_rectangle = std::shared_ptr<mediapipe::RenderAnnotation::FilledRoundedRectangle>(),
+                                                                            std::shared_ptr<mediapipe::RenderAnnotation::GradientLine>           gradient_line = std::shared_ptr<mediapipe::RenderAnnotation::GradientLine>(),
+                                                                            std::optional<double>                                                thickness = std::optional<double>(),
+                                                                            std::shared_ptr<mediapipe::Color>                                    color = std::shared_ptr<mediapipe::Color>(),
+                                                                            std::optional<std::string>                                           scene_tag = std::optional<std::string>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation").create( [$rectangle[, $filled_rectangle[, $oval[, $filled_oval[, $point[, $line[, $arrow[, $text[, $rounded_rectangle[, $filled_rounded_rectangle[, $gradient_line[, $thickness[, $color[, $scene_tag]]]]]]]]]]]]]] ) -> <mediapipe.RenderAnnotation object>
+    $oRenderAnnotation( [$rectangle[, $filled_rectangle[, $oval[, $filled_oval[, $point[, $line[, $arrow[, $text[, $rounded_rectangle[, $filled_rounded_rectangle[, $gradient_line[, $thickness[, $color[, $scene_tag]]]]]]]]]]]]]] ) -> <mediapipe.RenderAnnotation object>
+```
+
+### mediapipe::RenderAnnotation::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::ByteSizeLong();
+AutoIt:
+    $oRenderAnnotation.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::CheckInitialized();
+AutoIt:
+    $oRenderAnnotation.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::Clear();
+AutoIt:
+    $oRenderAnnotation.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::ClearField( const std::string& field_name );
+AutoIt:
+    $oRenderAnnotation.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRenderAnnotation.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::DiscardUnknownFields();
+AutoIt:
+    $oRenderAnnotation.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRenderAnnotation.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::IsInitialized();
+AutoIt:
+    $oRenderAnnotation.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::SerializeAsString();
+AutoIt:
+    $oRenderAnnotation.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::SerializeToString( std::string* output );
+AutoIt:
+    $oRenderAnnotation.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::SpaceUsedLong();
+AutoIt:
+    $oRenderAnnotation.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::__str__( std::string* output );
+AutoIt:
+    $oRenderAnnotation.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::Rectangle
+
+### Rectangle.left
+
+```cpp
+double mediapipe::RenderAnnotation::Rectangle::left
+AutoIt:
+    [propget, propput] $oRectangle.left
+```
+
+### Rectangle.top
+
+```cpp
+double mediapipe::RenderAnnotation::Rectangle::top
+AutoIt:
+    [propget, propput] $oRectangle.top
+```
+
+### Rectangle.right
+
+```cpp
+double mediapipe::RenderAnnotation::Rectangle::right
+AutoIt:
+    [propget, propput] $oRectangle.right
+```
+
+### Rectangle.bottom
+
+```cpp
+double mediapipe::RenderAnnotation::Rectangle::bottom
+AutoIt:
+    [propget, propput] $oRectangle.bottom
+```
+
+### Rectangle.normalized
+
+```cpp
+bool mediapipe::RenderAnnotation::Rectangle::normalized
+AutoIt:
+    [propget, propput] $oRectangle.normalized
+```
+
+### Rectangle.rotation
+
+```cpp
+double mediapipe::RenderAnnotation::Rectangle::rotation
+AutoIt:
+    [propget, propput] $oRectangle.rotation
+```
+
+### Rectangle.top\_left\_thickness
+
+```cpp
+double mediapipe::RenderAnnotation::Rectangle::top_left_thickness
+AutoIt:
+    [propget, propput] $oRectangle.top_left_thickness
+```
+
+### mediapipe::RenderAnnotation::Rectangle::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::Rectangle mediapipe::RenderAnnotation::Rectangle::get_create( std::optional<double> left = std::optional<double>(),
+                                                                                                  std::optional<double> top = std::optional<double>(),
+                                                                                                  std::optional<double> right = std::optional<double>(),
+                                                                                                  std::optional<double> bottom = std::optional<double>(),
+                                                                                                  std::optional<bool>   normalized = std::optional<bool>(),
+                                                                                                  std::optional<double> rotation = std::optional<double>(),
+                                                                                                  std::optional<double> top_left_thickness = std::optional<double>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.Rectangle").create( [$left[, $top[, $right[, $bottom[, $normalized[, $rotation[, $top_left_thickness]]]]]]] ) -> <mediapipe.RenderAnnotation.Rectangle object>
+    $oRectangle( [$left[, $top[, $right[, $bottom[, $normalized[, $rotation[, $top_left_thickness]]]]]]] ) -> <mediapipe.RenderAnnotation.Rectangle object>
+```
+
+### mediapipe::RenderAnnotation::Rectangle::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Rectangle::ByteSizeLong();
+AutoIt:
+    $oRectangle.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Rectangle::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::Rectangle::CheckInitialized();
+AutoIt:
+    $oRectangle.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::Rectangle::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::Rectangle::Clear();
+AutoIt:
+    $oRectangle.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::Rectangle::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::Rectangle::ClearField( const std::string& field_name );
+AutoIt:
+    $oRectangle.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::Rectangle::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::Rectangle::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRectangle.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::Rectangle::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::Rectangle::DiscardUnknownFields();
+AutoIt:
+    $oRectangle.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::Rectangle::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::Rectangle::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRectangle.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::Rectangle::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::Rectangle::IsInitialized();
+AutoIt:
+    $oRectangle.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::Rectangle::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::Rectangle::SerializeAsString();
+AutoIt:
+    $oRectangle.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::Rectangle::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::Rectangle::SerializeToString( std::string* output );
+AutoIt:
+    $oRectangle.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::Rectangle::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Rectangle::SpaceUsedLong();
+AutoIt:
+    $oRectangle.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Rectangle::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::Rectangle::__str__( std::string* output );
+AutoIt:
+    $oRectangle.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::FilledRectangle
+
+### FilledRectangle.rectangle
+
+```cpp
+mediapipe::RenderAnnotation::Rectangle* mediapipe::RenderAnnotation::FilledRectangle::rectangle
+AutoIt:
+    [propget, propput] $oFilledRectangle.rectangle
+```
+
+### FilledRectangle.fill\_color
+
+```cpp
+mediapipe::Color* mediapipe::RenderAnnotation::FilledRectangle::fill_color
+AutoIt:
+    [propget, propput] $oFilledRectangle.fill_color
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::FilledRectangle mediapipe::RenderAnnotation::FilledRectangle::get_create( std::shared_ptr<mediapipe::RenderAnnotation::Rectangle> rectangle = std::shared_ptr<mediapipe::RenderAnnotation::Rectangle>(),
+                                                                                                              std::shared_ptr<mediapipe::Color>                       fill_color = std::shared_ptr<mediapipe::Color>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.FilledRectangle").create( [$rectangle[, $fill_color]] ) -> <mediapipe.RenderAnnotation.FilledRectangle object>
+    $oFilledRectangle( [$rectangle[, $fill_color]] ) -> <mediapipe.RenderAnnotation.FilledRectangle object>
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::FilledRectangle::ByteSizeLong();
+AutoIt:
+    $oFilledRectangle.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRectangle::CheckInitialized();
+AutoIt:
+    $oFilledRectangle.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRectangle::Clear();
+AutoIt:
+    $oFilledRectangle.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRectangle::ClearField( const std::string& field_name );
+AutoIt:
+    $oFilledRectangle.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRectangle::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFilledRectangle.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRectangle::DiscardUnknownFields();
+AutoIt:
+    $oFilledRectangle.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRectangle::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFilledRectangle.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::FilledRectangle::IsInitialized();
+AutoIt:
+    $oFilledRectangle.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::FilledRectangle::SerializeAsString();
+AutoIt:
+    $oFilledRectangle.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRectangle::SerializeToString( std::string* output );
+AutoIt:
+    $oFilledRectangle.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::FilledRectangle::SpaceUsedLong();
+AutoIt:
+    $oFilledRectangle.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledRectangle::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRectangle::__str__( std::string* output );
+AutoIt:
+    $oFilledRectangle.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::RoundedRectangle
+
+### RoundedRectangle.rectangle
+
+```cpp
+mediapipe::RenderAnnotation::Rectangle* mediapipe::RenderAnnotation::RoundedRectangle::rectangle
+AutoIt:
+    [propget, propput] $oRoundedRectangle.rectangle
+```
+
+### RoundedRectangle.corner\_radius
+
+```cpp
+int mediapipe::RenderAnnotation::RoundedRectangle::corner_radius
+AutoIt:
+    [propget, propput] $oRoundedRectangle.corner_radius
+```
+
+### RoundedRectangle.line\_type
+
+```cpp
+int mediapipe::RenderAnnotation::RoundedRectangle::line_type
+AutoIt:
+    [propget, propput] $oRoundedRectangle.line_type
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::RoundedRectangle mediapipe::RenderAnnotation::RoundedRectangle::get_create( std::shared_ptr<mediapipe::RenderAnnotation::Rectangle> rectangle = std::shared_ptr<mediapipe::RenderAnnotation::Rectangle>(),
+                                                                                                                std::optional<int>                                      corner_radius = std::optional<int>(),
+                                                                                                                std::optional<int>                                      line_type = std::optional<int>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.RoundedRectangle").create( [$rectangle[, $corner_radius[, $line_type]]] ) -> <mediapipe.RenderAnnotation.RoundedRectangle object>
+    $oRoundedRectangle( [$rectangle[, $corner_radius[, $line_type]]] ) -> <mediapipe.RenderAnnotation.RoundedRectangle object>
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::RoundedRectangle::ByteSizeLong();
+AutoIt:
+    $oRoundedRectangle.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::RoundedRectangle::CheckInitialized();
+AutoIt:
+    $oRoundedRectangle.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::RoundedRectangle::Clear();
+AutoIt:
+    $oRoundedRectangle.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::RoundedRectangle::ClearField( const std::string& field_name );
+AutoIt:
+    $oRoundedRectangle.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::RoundedRectangle::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRoundedRectangle.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::RoundedRectangle::DiscardUnknownFields();
+AutoIt:
+    $oRoundedRectangle.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::RoundedRectangle::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRoundedRectangle.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::RoundedRectangle::IsInitialized();
+AutoIt:
+    $oRoundedRectangle.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::RoundedRectangle::SerializeAsString();
+AutoIt:
+    $oRoundedRectangle.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::RoundedRectangle::SerializeToString( std::string* output );
+AutoIt:
+    $oRoundedRectangle.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::RoundedRectangle::SpaceUsedLong();
+AutoIt:
+    $oRoundedRectangle.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::RoundedRectangle::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::RoundedRectangle::__str__( std::string* output );
+AutoIt:
+    $oRoundedRectangle.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::FilledRoundedRectangle
+
+### FilledRoundedRectangle.rounded\_rectangle
+
+```cpp
+mediapipe::RenderAnnotation::RoundedRectangle* mediapipe::RenderAnnotation::FilledRoundedRectangle::rounded_rectangle
+AutoIt:
+    [propget, propput] $oFilledRoundedRectangle.rounded_rectangle
+```
+
+### FilledRoundedRectangle.fill\_color
+
+```cpp
+mediapipe::Color* mediapipe::RenderAnnotation::FilledRoundedRectangle::fill_color
+AutoIt:
+    [propget, propput] $oFilledRoundedRectangle.fill_color
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::FilledRoundedRectangle mediapipe::RenderAnnotation::FilledRoundedRectangle::get_create( std::shared_ptr<mediapipe::RenderAnnotation::RoundedRectangle> rounded_rectangle = std::shared_ptr<mediapipe::RenderAnnotation::RoundedRectangle>(),
+                                                                                                                            std::shared_ptr<mediapipe::Color>                              fill_color = std::shared_ptr<mediapipe::Color>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.FilledRoundedRectangle").create( [$rounded_rectangle[, $fill_color]] ) -> <mediapipe.RenderAnnotation.FilledRoundedRectangle object>
+    $oFilledRoundedRectangle( [$rounded_rectangle[, $fill_color]] ) -> <mediapipe.RenderAnnotation.FilledRoundedRectangle object>
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::FilledRoundedRectangle::ByteSizeLong();
+AutoIt:
+    $oFilledRoundedRectangle.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRoundedRectangle::CheckInitialized();
+AutoIt:
+    $oFilledRoundedRectangle.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRoundedRectangle::Clear();
+AutoIt:
+    $oFilledRoundedRectangle.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRoundedRectangle::ClearField( const std::string& field_name );
+AutoIt:
+    $oFilledRoundedRectangle.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRoundedRectangle::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFilledRoundedRectangle.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRoundedRectangle::DiscardUnknownFields();
+AutoIt:
+    $oFilledRoundedRectangle.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRoundedRectangle::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFilledRoundedRectangle.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::FilledRoundedRectangle::IsInitialized();
+AutoIt:
+    $oFilledRoundedRectangle.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::FilledRoundedRectangle::SerializeAsString();
+AutoIt:
+    $oFilledRoundedRectangle.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRoundedRectangle::SerializeToString( std::string* output );
+AutoIt:
+    $oFilledRoundedRectangle.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::FilledRoundedRectangle::SpaceUsedLong();
+AutoIt:
+    $oFilledRoundedRectangle.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledRoundedRectangle::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::FilledRoundedRectangle::__str__( std::string* output );
+AutoIt:
+    $oFilledRoundedRectangle.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::Oval
+
+### Oval.rectangle
+
+```cpp
+mediapipe::RenderAnnotation::Rectangle* mediapipe::RenderAnnotation::Oval::rectangle
+AutoIt:
+    [propget, propput] $oOval.rectangle
+```
+
+### mediapipe::RenderAnnotation::Oval::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::Oval mediapipe::RenderAnnotation::Oval::get_create( std::shared_ptr<mediapipe::RenderAnnotation::Rectangle> rectangle = std::shared_ptr<mediapipe::RenderAnnotation::Rectangle>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.Oval").create( [$rectangle] ) -> <mediapipe.RenderAnnotation.Oval object>
+    $oOval( [$rectangle] ) -> <mediapipe.RenderAnnotation.Oval object>
+```
+
+### mediapipe::RenderAnnotation::Oval::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Oval::ByteSizeLong();
+AutoIt:
+    $oOval.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Oval::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::Oval::CheckInitialized();
+AutoIt:
+    $oOval.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::Oval::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::Oval::Clear();
+AutoIt:
+    $oOval.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::Oval::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::Oval::ClearField( const std::string& field_name );
+AutoIt:
+    $oOval.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::Oval::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::Oval::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oOval.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::Oval::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::Oval::DiscardUnknownFields();
+AutoIt:
+    $oOval.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::Oval::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::Oval::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oOval.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::Oval::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::Oval::IsInitialized();
+AutoIt:
+    $oOval.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::Oval::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::Oval::SerializeAsString();
+AutoIt:
+    $oOval.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::Oval::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::Oval::SerializeToString( std::string* output );
+AutoIt:
+    $oOval.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::Oval::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Oval::SpaceUsedLong();
+AutoIt:
+    $oOval.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Oval::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::Oval::__str__( std::string* output );
+AutoIt:
+    $oOval.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::FilledOval
+
+### FilledOval.oval
+
+```cpp
+mediapipe::RenderAnnotation::Oval* mediapipe::RenderAnnotation::FilledOval::oval
+AutoIt:
+    [propget, propput] $oFilledOval.oval
+```
+
+### FilledOval.fill\_color
+
+```cpp
+mediapipe::Color* mediapipe::RenderAnnotation::FilledOval::fill_color
+AutoIt:
+    [propget, propput] $oFilledOval.fill_color
+```
+
+### mediapipe::RenderAnnotation::FilledOval::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::FilledOval mediapipe::RenderAnnotation::FilledOval::get_create( std::shared_ptr<mediapipe::RenderAnnotation::Oval> oval = std::shared_ptr<mediapipe::RenderAnnotation::Oval>(),
+                                                                                                    std::shared_ptr<mediapipe::Color>                  fill_color = std::shared_ptr<mediapipe::Color>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.FilledOval").create( [$oval[, $fill_color]] ) -> <mediapipe.RenderAnnotation.FilledOval object>
+    $oFilledOval( [$oval[, $fill_color]] ) -> <mediapipe.RenderAnnotation.FilledOval object>
+```
+
+### mediapipe::RenderAnnotation::FilledOval::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::FilledOval::ByteSizeLong();
+AutoIt:
+    $oFilledOval.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledOval::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::FilledOval::CheckInitialized();
+AutoIt:
+    $oFilledOval.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledOval::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::FilledOval::Clear();
+AutoIt:
+    $oFilledOval.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledOval::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::FilledOval::ClearField( const std::string& field_name );
+AutoIt:
+    $oFilledOval.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::FilledOval::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::FilledOval::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFilledOval.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::FilledOval::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::FilledOval::DiscardUnknownFields();
+AutoIt:
+    $oFilledOval.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::FilledOval::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::FilledOval::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFilledOval.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::FilledOval::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::FilledOval::IsInitialized();
+AutoIt:
+    $oFilledOval.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledOval::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::FilledOval::SerializeAsString();
+AutoIt:
+    $oFilledOval.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledOval::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::FilledOval::SerializeToString( std::string* output );
+AutoIt:
+    $oFilledOval.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::FilledOval::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::FilledOval::SpaceUsedLong();
+AutoIt:
+    $oFilledOval.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::FilledOval::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::FilledOval::__str__( std::string* output );
+AutoIt:
+    $oFilledOval.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::Point
+
+### Point.x
+
+```cpp
+double mediapipe::RenderAnnotation::Point::x
+AutoIt:
+    [propget, propput] $oPoint.x
+```
+
+### Point.y
+
+```cpp
+double mediapipe::RenderAnnotation::Point::y
+AutoIt:
+    [propget, propput] $oPoint.y
+```
+
+### Point.normalized
+
+```cpp
+bool mediapipe::RenderAnnotation::Point::normalized
+AutoIt:
+    [propget, propput] $oPoint.normalized
+```
+
+### mediapipe::RenderAnnotation::Point::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::Point mediapipe::RenderAnnotation::Point::get_create( std::optional<double> x = std::optional<double>(),
+                                                                                          std::optional<double> y = std::optional<double>(),
+                                                                                          std::optional<bool>   normalized = std::optional<bool>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.Point").create( [$x[, $y[, $normalized]]] ) -> <mediapipe.RenderAnnotation.Point object>
+    $oPoint( [$x[, $y[, $normalized]]] ) -> <mediapipe.RenderAnnotation.Point object>
+```
+
+### mediapipe::RenderAnnotation::Point::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Point::ByteSizeLong();
+AutoIt:
+    $oPoint.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Point::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::Point::CheckInitialized();
+AutoIt:
+    $oPoint.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::Point::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::Point::Clear();
+AutoIt:
+    $oPoint.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::Point::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::Point::ClearField( const std::string& field_name );
+AutoIt:
+    $oPoint.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::Point::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::Point::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oPoint.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::Point::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::Point::DiscardUnknownFields();
+AutoIt:
+    $oPoint.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::Point::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::Point::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oPoint.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::Point::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::Point::IsInitialized();
+AutoIt:
+    $oPoint.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::Point::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::Point::SerializeAsString();
+AutoIt:
+    $oPoint.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::Point::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::Point::SerializeToString( std::string* output );
+AutoIt:
+    $oPoint.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::Point::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Point::SpaceUsedLong();
+AutoIt:
+    $oPoint.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Point::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::Point::__str__( std::string* output );
+AutoIt:
+    $oPoint.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::Line
+
+### Line.x\_start
+
+```cpp
+double mediapipe::RenderAnnotation::Line::x_start
+AutoIt:
+    [propget, propput] $oLine.x_start
+```
+
+### Line.y\_start
+
+```cpp
+double mediapipe::RenderAnnotation::Line::y_start
+AutoIt:
+    [propget, propput] $oLine.y_start
+```
+
+### Line.x\_end
+
+```cpp
+double mediapipe::RenderAnnotation::Line::x_end
+AutoIt:
+    [propget, propput] $oLine.x_end
+```
+
+### Line.y\_end
+
+```cpp
+double mediapipe::RenderAnnotation::Line::y_end
+AutoIt:
+    [propget, propput] $oLine.y_end
+```
+
+### Line.normalized
+
+```cpp
+bool mediapipe::RenderAnnotation::Line::normalized
+AutoIt:
+    [propget, propput] $oLine.normalized
+```
+
+### Line.line\_type
+
+```cpp
+mediapipe::RenderAnnotation::Line::LineType mediapipe::RenderAnnotation::Line::line_type
+AutoIt:
+    [propget, propput] $oLine.line_type
+```
+
+### mediapipe::RenderAnnotation::Line::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::Line mediapipe::RenderAnnotation::Line::get_create( std::optional<double>                                      x_start = std::optional<double>(),
+                                                                                        std::optional<double>                                      y_start = std::optional<double>(),
+                                                                                        std::optional<double>                                      x_end = std::optional<double>(),
+                                                                                        std::optional<double>                                      y_end = std::optional<double>(),
+                                                                                        std::optional<bool>                                        normalized = std::optional<bool>(),
+                                                                                        std::optional<mediapipe::RenderAnnotation::Line::LineType> line_type = std::optional<mediapipe::RenderAnnotation::Line::LineType>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.Line").create( [$x_start[, $y_start[, $x_end[, $y_end[, $normalized[, $line_type]]]]]] ) -> <mediapipe.RenderAnnotation.Line object>
+    $oLine( [$x_start[, $y_start[, $x_end[, $y_end[, $normalized[, $line_type]]]]]] ) -> <mediapipe.RenderAnnotation.Line object>
+```
+
+### mediapipe::RenderAnnotation::Line::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Line::ByteSizeLong();
+AutoIt:
+    $oLine.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Line::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::Line::CheckInitialized();
+AutoIt:
+    $oLine.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::Line::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::Line::Clear();
+AutoIt:
+    $oLine.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::Line::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::Line::ClearField( const std::string& field_name );
+AutoIt:
+    $oLine.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::Line::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::Line::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oLine.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::Line::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::Line::DiscardUnknownFields();
+AutoIt:
+    $oLine.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::Line::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::Line::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oLine.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::Line::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::Line::IsInitialized();
+AutoIt:
+    $oLine.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::Line::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::Line::SerializeAsString();
+AutoIt:
+    $oLine.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::Line::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::Line::SerializeToString( std::string* output );
+AutoIt:
+    $oLine.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::Line::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Line::SpaceUsedLong();
+AutoIt:
+    $oLine.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Line::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::Line::__str__( std::string* output );
+AutoIt:
+    $oLine.__str__( [$output] ) -> $output
+```
+
+### Line.UNKNOWN\_
+
+```cpp
+static int mediapipe::RenderAnnotation::Line::UNKNOWN
+AutoIt:
+    [propget] $oLine.UNKNOWN_
+```
+
+### Line.SOLID\_
+
+```cpp
+static int mediapipe::RenderAnnotation::Line::SOLID
+AutoIt:
+    [propget] $oLine.SOLID_
+```
+
+### Line.DASHED\_
+
+```cpp
+static int mediapipe::RenderAnnotation::Line::DASHED
+AutoIt:
+    [propget] $oLine.DASHED_
+```
+
+## mediapipe::RenderAnnotation::GradientLine
+
+### GradientLine.x\_start
+
+```cpp
+double mediapipe::RenderAnnotation::GradientLine::x_start
+AutoIt:
+    [propget, propput] $oGradientLine.x_start
+```
+
+### GradientLine.y\_start
+
+```cpp
+double mediapipe::RenderAnnotation::GradientLine::y_start
+AutoIt:
+    [propget, propput] $oGradientLine.y_start
+```
+
+### GradientLine.x\_end
+
+```cpp
+double mediapipe::RenderAnnotation::GradientLine::x_end
+AutoIt:
+    [propget, propput] $oGradientLine.x_end
+```
+
+### GradientLine.y\_end
+
+```cpp
+double mediapipe::RenderAnnotation::GradientLine::y_end
+AutoIt:
+    [propget, propput] $oGradientLine.y_end
+```
+
+### GradientLine.normalized
+
+```cpp
+bool mediapipe::RenderAnnotation::GradientLine::normalized
+AutoIt:
+    [propget, propput] $oGradientLine.normalized
+```
+
+### GradientLine.color1
+
+```cpp
+mediapipe::Color* mediapipe::RenderAnnotation::GradientLine::color1
+AutoIt:
+    [propget, propput] $oGradientLine.color1
+```
+
+### GradientLine.color2
+
+```cpp
+mediapipe::Color* mediapipe::RenderAnnotation::GradientLine::color2
+AutoIt:
+    [propget, propput] $oGradientLine.color2
+```
+
+### mediapipe::RenderAnnotation::GradientLine::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::GradientLine mediapipe::RenderAnnotation::GradientLine::get_create( std::optional<double>             x_start = std::optional<double>(),
+                                                                                                        std::optional<double>             y_start = std::optional<double>(),
+                                                                                                        std::optional<double>             x_end = std::optional<double>(),
+                                                                                                        std::optional<double>             y_end = std::optional<double>(),
+                                                                                                        std::optional<bool>               normalized = std::optional<bool>(),
+                                                                                                        std::shared_ptr<mediapipe::Color> color1 = std::shared_ptr<mediapipe::Color>(),
+                                                                                                        std::shared_ptr<mediapipe::Color> color2 = std::shared_ptr<mediapipe::Color>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.GradientLine").create( [$x_start[, $y_start[, $x_end[, $y_end[, $normalized[, $color1[, $color2]]]]]]] ) -> <mediapipe.RenderAnnotation.GradientLine object>
+    $oGradientLine( [$x_start[, $y_start[, $x_end[, $y_end[, $normalized[, $color1[, $color2]]]]]]] ) -> <mediapipe.RenderAnnotation.GradientLine object>
+```
+
+### mediapipe::RenderAnnotation::GradientLine::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::GradientLine::ByteSizeLong();
+AutoIt:
+    $oGradientLine.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::GradientLine::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::GradientLine::CheckInitialized();
+AutoIt:
+    $oGradientLine.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::GradientLine::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::GradientLine::Clear();
+AutoIt:
+    $oGradientLine.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::GradientLine::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::GradientLine::ClearField( const std::string& field_name );
+AutoIt:
+    $oGradientLine.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::GradientLine::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::GradientLine::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oGradientLine.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::GradientLine::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::GradientLine::DiscardUnknownFields();
+AutoIt:
+    $oGradientLine.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::GradientLine::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::GradientLine::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oGradientLine.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::GradientLine::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::GradientLine::IsInitialized();
+AutoIt:
+    $oGradientLine.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::GradientLine::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::GradientLine::SerializeAsString();
+AutoIt:
+    $oGradientLine.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::GradientLine::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::GradientLine::SerializeToString( std::string* output );
+AutoIt:
+    $oGradientLine.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::GradientLine::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::GradientLine::SpaceUsedLong();
+AutoIt:
+    $oGradientLine.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::GradientLine::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::GradientLine::__str__( std::string* output );
+AutoIt:
+    $oGradientLine.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::Arrow
+
+### Arrow.x\_start
+
+```cpp
+double mediapipe::RenderAnnotation::Arrow::x_start
+AutoIt:
+    [propget, propput] $oArrow.x_start
+```
+
+### Arrow.y\_start
+
+```cpp
+double mediapipe::RenderAnnotation::Arrow::y_start
+AutoIt:
+    [propget, propput] $oArrow.y_start
+```
+
+### Arrow.x\_end
+
+```cpp
+double mediapipe::RenderAnnotation::Arrow::x_end
+AutoIt:
+    [propget, propput] $oArrow.x_end
+```
+
+### Arrow.y\_end
+
+```cpp
+double mediapipe::RenderAnnotation::Arrow::y_end
+AutoIt:
+    [propget, propput] $oArrow.y_end
+```
+
+### Arrow.normalized
+
+```cpp
+bool mediapipe::RenderAnnotation::Arrow::normalized
+AutoIt:
+    [propget, propput] $oArrow.normalized
+```
+
+### mediapipe::RenderAnnotation::Arrow::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::Arrow mediapipe::RenderAnnotation::Arrow::get_create( std::optional<double> x_start = std::optional<double>(),
+                                                                                          std::optional<double> y_start = std::optional<double>(),
+                                                                                          std::optional<double> x_end = std::optional<double>(),
+                                                                                          std::optional<double> y_end = std::optional<double>(),
+                                                                                          std::optional<bool>   normalized = std::optional<bool>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.Arrow").create( [$x_start[, $y_start[, $x_end[, $y_end[, $normalized]]]]] ) -> <mediapipe.RenderAnnotation.Arrow object>
+    $oArrow( [$x_start[, $y_start[, $x_end[, $y_end[, $normalized]]]]] ) -> <mediapipe.RenderAnnotation.Arrow object>
+```
+
+### mediapipe::RenderAnnotation::Arrow::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Arrow::ByteSizeLong();
+AutoIt:
+    $oArrow.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Arrow::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::Arrow::CheckInitialized();
+AutoIt:
+    $oArrow.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::Arrow::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::Arrow::Clear();
+AutoIt:
+    $oArrow.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::Arrow::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::Arrow::ClearField( const std::string& field_name );
+AutoIt:
+    $oArrow.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::Arrow::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::Arrow::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oArrow.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::Arrow::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::Arrow::DiscardUnknownFields();
+AutoIt:
+    $oArrow.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::Arrow::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::Arrow::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oArrow.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::Arrow::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::Arrow::IsInitialized();
+AutoIt:
+    $oArrow.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::Arrow::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::Arrow::SerializeAsString();
+AutoIt:
+    $oArrow.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::Arrow::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::Arrow::SerializeToString( std::string* output );
+AutoIt:
+    $oArrow.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::Arrow::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Arrow::SpaceUsedLong();
+AutoIt:
+    $oArrow.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Arrow::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::Arrow::__str__( std::string* output );
+AutoIt:
+    $oArrow.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderAnnotation::Text
+
+### Text.display\_text
+
+```cpp
+std::string mediapipe::RenderAnnotation::Text::display_text
+AutoIt:
+    [propget, propput] $oText.display_text
+```
+
+### Text.left
+
+```cpp
+double mediapipe::RenderAnnotation::Text::left
+AutoIt:
+    [propget, propput] $oText.left
+```
+
+### Text.baseline
+
+```cpp
+double mediapipe::RenderAnnotation::Text::baseline
+AutoIt:
+    [propget, propput] $oText.baseline
+```
+
+### Text.font\_height
+
+```cpp
+double mediapipe::RenderAnnotation::Text::font_height
+AutoIt:
+    [propget, propput] $oText.font_height
+```
+
+### Text.normalized
+
+```cpp
+bool mediapipe::RenderAnnotation::Text::normalized
+AutoIt:
+    [propget, propput] $oText.normalized
+```
+
+### Text.font\_face
+
+```cpp
+int mediapipe::RenderAnnotation::Text::font_face
+AutoIt:
+    [propget, propput] $oText.font_face
+```
+
+### Text.center\_horizontally
+
+```cpp
+bool mediapipe::RenderAnnotation::Text::center_horizontally
+AutoIt:
+    [propget, propput] $oText.center_horizontally
+```
+
+### Text.center\_vertically
+
+```cpp
+bool mediapipe::RenderAnnotation::Text::center_vertically
+AutoIt:
+    [propget, propput] $oText.center_vertically
+```
+
+### Text.outline\_thickness
+
+```cpp
+double mediapipe::RenderAnnotation::Text::outline_thickness
+AutoIt:
+    [propget, propput] $oText.outline_thickness
+```
+
+### Text.outline\_color
+
+```cpp
+mediapipe::Color* mediapipe::RenderAnnotation::Text::outline_color
+AutoIt:
+    [propget, propput] $oText.outline_color
+```
+
+### mediapipe::RenderAnnotation::Text::get\_create
+
+```cpp
+static mediapipe::RenderAnnotation::Text mediapipe::RenderAnnotation::Text::get_create( std::optional<std::string>        display_text = std::optional<std::string>(),
+                                                                                        std::optional<double>             left = std::optional<double>(),
+                                                                                        std::optional<double>             baseline = std::optional<double>(),
+                                                                                        std::optional<double>             font_height = std::optional<double>(),
+                                                                                        std::optional<bool>               normalized = std::optional<bool>(),
+                                                                                        std::optional<int>                font_face = std::optional<int>(),
+                                                                                        std::optional<bool>               center_horizontally = std::optional<bool>(),
+                                                                                        std::optional<bool>               center_vertically = std::optional<bool>(),
+                                                                                        std::optional<double>             outline_thickness = std::optional<double>(),
+                                                                                        std::shared_ptr<mediapipe::Color> outline_color = std::shared_ptr<mediapipe::Color>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderAnnotation.Text").create( [$display_text[, $left[, $baseline[, $font_height[, $normalized[, $font_face[, $center_horizontally[, $center_vertically[, $outline_thickness[, $outline_color]]]]]]]]]] ) -> <mediapipe.RenderAnnotation.Text object>
+    $oText( [$display_text[, $left[, $baseline[, $font_height[, $normalized[, $font_face[, $center_horizontally[, $center_vertically[, $outline_thickness[, $outline_color]]]]]]]]]] ) -> <mediapipe.RenderAnnotation.Text object>
+```
+
+### mediapipe::RenderAnnotation::Text::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Text::ByteSizeLong();
+AutoIt:
+    $oText.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Text::CheckInitialized
+
+```cpp
+void mediapipe::RenderAnnotation::Text::CheckInitialized();
+AutoIt:
+    $oText.CheckInitialized() -> None
+```
+
+### mediapipe::RenderAnnotation::Text::Clear
+
+```cpp
+void mediapipe::RenderAnnotation::Text::Clear();
+AutoIt:
+    $oText.Clear() -> None
+```
+
+### mediapipe::RenderAnnotation::Text::ClearField
+
+```cpp
+void mediapipe::RenderAnnotation::Text::ClearField( const std::string& field_name );
+AutoIt:
+    $oText.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderAnnotation::Text::CopyFrom
+
+```cpp
+void mediapipe::RenderAnnotation::Text::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oText.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderAnnotation::Text::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderAnnotation::Text::DiscardUnknownFields();
+AutoIt:
+    $oText.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderAnnotation::Text::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderAnnotation::Text::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oText.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderAnnotation::Text::IsInitialized
+
+```cpp
+bool mediapipe::RenderAnnotation::Text::IsInitialized();
+AutoIt:
+    $oText.IsInitialized() -> retval
+```
+
+### mediapipe::RenderAnnotation::Text::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderAnnotation::Text::SerializeAsString();
+AutoIt:
+    $oText.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderAnnotation::Text::SerializeToString
+
+```cpp
+void mediapipe::RenderAnnotation::Text::SerializeToString( std::string* output );
+AutoIt:
+    $oText.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderAnnotation::Text::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderAnnotation::Text::SpaceUsedLong();
+AutoIt:
+    $oText.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderAnnotation::Text::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderAnnotation::Text::__str__( std::string* output );
+AutoIt:
+    $oText.__str__( [$output] ) -> $output
+```
+
+## mediapipe::RenderViewport
+
+### RenderViewport.id
+
+```cpp
+std::string mediapipe::RenderViewport::id
+AutoIt:
+    [propget, propput] $oRenderViewport.id
+```
+
+### RenderViewport.width\_px
+
+```cpp
+int mediapipe::RenderViewport::width_px
+AutoIt:
+    [propget, propput] $oRenderViewport.width_px
+```
+
+### RenderViewport.height\_px
+
+```cpp
+int mediapipe::RenderViewport::height_px
+AutoIt:
+    [propget, propput] $oRenderViewport.height_px
+```
+
+### RenderViewport.compose\_on\_video
+
+```cpp
+bool mediapipe::RenderViewport::compose_on_video
+AutoIt:
+    [propget, propput] $oRenderViewport.compose_on_video
+```
+
+### mediapipe::RenderViewport::get\_create
+
+```cpp
+static mediapipe::RenderViewport mediapipe::RenderViewport::get_create( std::optional<std::string> id = std::optional<std::string>(),
+                                                                        std::optional<int>         width_px = std::optional<int>(),
+                                                                        std::optional<int>         height_px = std::optional<int>(),
+                                                                        std::optional<bool>        compose_on_video = std::optional<bool>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.RenderViewport").create( [$id[, $width_px[, $height_px[, $compose_on_video]]]] ) -> <mediapipe.RenderViewport object>
+    $oRenderViewport( [$id[, $width_px[, $height_px[, $compose_on_video]]]] ) -> <mediapipe.RenderViewport object>
+```
+
+### mediapipe::RenderViewport::ByteSizeLong
+
+```cpp
+size_t mediapipe::RenderViewport::ByteSizeLong();
+AutoIt:
+    $oRenderViewport.ByteSizeLong() -> retval
+```
+
+### mediapipe::RenderViewport::CheckInitialized
+
+```cpp
+void mediapipe::RenderViewport::CheckInitialized();
+AutoIt:
+    $oRenderViewport.CheckInitialized() -> None
+```
+
+### mediapipe::RenderViewport::Clear
+
+```cpp
+void mediapipe::RenderViewport::Clear();
+AutoIt:
+    $oRenderViewport.Clear() -> None
+```
+
+### mediapipe::RenderViewport::ClearField
+
+```cpp
+void mediapipe::RenderViewport::ClearField( const std::string& field_name );
+AutoIt:
+    $oRenderViewport.ClearField( $field_name ) -> None
+```
+
+### mediapipe::RenderViewport::CopyFrom
+
+```cpp
+void mediapipe::RenderViewport::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oRenderViewport.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::RenderViewport::DiscardUnknownFields
+
+```cpp
+void mediapipe::RenderViewport::DiscardUnknownFields();
+AutoIt:
+    $oRenderViewport.DiscardUnknownFields() -> None
+```
+
+### mediapipe::RenderViewport::FindInitializationErrors
+
+```cpp
+void mediapipe::RenderViewport::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oRenderViewport.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::RenderViewport::IsInitialized
+
+```cpp
+bool mediapipe::RenderViewport::IsInitialized();
+AutoIt:
+    $oRenderViewport.IsInitialized() -> retval
+```
+
+### mediapipe::RenderViewport::SerializeAsString
+
+```cpp
+std::string mediapipe::RenderViewport::SerializeAsString();
+AutoIt:
+    $oRenderViewport.SerializeAsString() -> retval
+```
+
+### mediapipe::RenderViewport::SerializeToString
+
+```cpp
+void mediapipe::RenderViewport::SerializeToString( std::string* output );
+AutoIt:
+    $oRenderViewport.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::RenderViewport::SpaceUsedLong
+
+```cpp
+size_t mediapipe::RenderViewport::SpaceUsedLong();
+AutoIt:
+    $oRenderViewport.SpaceUsedLong() -> retval
+```
+
+### mediapipe::RenderViewport::\_\_str\_\_
+
+```cpp
+void mediapipe::RenderViewport::__str__( std::string* output );
+AutoIt:
+    $oRenderViewport.__str__( [$output] ) -> $output
+```
+
+## mediapipe::util::render\_data\_pb2
+
+### render\_data\_pb2.RenderData
+
+```cpp
+static mediapipe::RenderData
+AutoIt:
+    [propget] $orender_data_pb2.RenderData
+```
+
+### render\_data\_pb2.RenderAnnotation
+
+```cpp
+static mediapipe::RenderAnnotation
+AutoIt:
+    [propget] $orender_data_pb2.RenderAnnotation
+```
+
+### render\_data\_pb2.RenderViewport
+
+```cpp
+static mediapipe::RenderViewport
+AutoIt:
+    [propget] $orender_data_pb2.RenderViewport
+```
+
+## mediapipe::util::render\_data\_pb2::RenderAnnotation
+
+### RenderAnnotation.Rectangle
+
+```cpp
+static mediapipe::RenderAnnotation::Rectangle
+AutoIt:
+    [propget] $oRenderAnnotation.Rectangle
+```
+
+### RenderAnnotation.FilledRectangle
+
+```cpp
+static mediapipe::RenderAnnotation::FilledRectangle
+AutoIt:
+    [propget] $oRenderAnnotation.FilledRectangle
+```
+
+### RenderAnnotation.RoundedRectangle
+
+```cpp
+static mediapipe::RenderAnnotation::RoundedRectangle
+AutoIt:
+    [propget] $oRenderAnnotation.RoundedRectangle
+```
+
+### RenderAnnotation.FilledRoundedRectangle
+
+```cpp
+static mediapipe::RenderAnnotation::FilledRoundedRectangle
+AutoIt:
+    [propget] $oRenderAnnotation.FilledRoundedRectangle
+```
+
+### RenderAnnotation.Oval
+
+```cpp
+static mediapipe::RenderAnnotation::Oval
+AutoIt:
+    [propget] $oRenderAnnotation.Oval
+```
+
+### RenderAnnotation.FilledOval
+
+```cpp
+static mediapipe::RenderAnnotation::FilledOval
+AutoIt:
+    [propget] $oRenderAnnotation.FilledOval
+```
+
+### RenderAnnotation.Point
+
+```cpp
+static mediapipe::RenderAnnotation::Point
+AutoIt:
+    [propget] $oRenderAnnotation.Point
+```
+
+### RenderAnnotation.Line
+
+```cpp
+static mediapipe::RenderAnnotation::Line
+AutoIt:
+    [propget] $oRenderAnnotation.Line
+```
+
+### RenderAnnotation.GradientLine
+
+```cpp
+static mediapipe::RenderAnnotation::GradientLine
+AutoIt:
+    [propget] $oRenderAnnotation.GradientLine
+```
+
+### RenderAnnotation.Arrow
+
+```cpp
+static mediapipe::RenderAnnotation::Arrow
+AutoIt:
+    [propget] $oRenderAnnotation.Arrow
+```
+
+### RenderAnnotation.Text
+
+```cpp
+static mediapipe::RenderAnnotation::Text
+AutoIt:
+    [propget] $oRenderAnnotation.Text
+```
+
 ## mediapipe::tasks::vision::object\_detector::proto::ObjectDetectorOptions
 
 ### ObjectDetectorOptions.base\_options
@@ -83832,6 +87214,210 @@ AutoIt:
 void* VectorOfShared_ptrNormalizedRect::start();
 AutoIt:
     $oVectorOfShared_ptrNormalizedRect.start() -> retval
+```
+
+## VectorOfShared\_ptrRenderAnnotation
+
+### VectorOfShared\_ptrRenderAnnotation.Count
+
+```cpp
+size_t VectorOfShared_ptrRenderAnnotation::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrRenderAnnotation.Count
+```
+
+### VectorOfShared\_ptrRenderAnnotation::create
+
+```cpp
+static VectorOfShared_ptrRenderAnnotation VectorOfShared_ptrRenderAnnotation::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrRenderAnnotation").create() -> <VectorOfShared_ptrRenderAnnotation object>
+```
+
+```cpp
+static VectorOfShared_ptrRenderAnnotation VectorOfShared_ptrRenderAnnotation::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrRenderAnnotation").create( $size ) -> <VectorOfShared_ptrRenderAnnotation object>
+```
+
+```cpp
+static VectorOfShared_ptrRenderAnnotation VectorOfShared_ptrRenderAnnotation::create( VectorOfShared_ptrRenderAnnotation other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrRenderAnnotation").create( $other ) -> <VectorOfShared_ptrRenderAnnotation object>
+```
+
+### VectorOfShared\_ptrRenderAnnotation::Add
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::Add( std::shared_ptr<mediapipe::RenderAnnotation> value );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::Items
+
+```cpp
+VectorOfShared_ptrRenderAnnotation VectorOfShared_ptrRenderAnnotation::Items();
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.Items() -> retval
+```
+
+### VectorOfShared\_ptrRenderAnnotation::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrRenderAnnotation::Keys();
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.Keys() -> retval
+```
+
+### VectorOfShared\_ptrRenderAnnotation::Remove
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::append
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::append( std::shared_ptr<mediapipe::RenderAnnotation> value );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::at
+
+```cpp
+std::shared_ptr<mediapipe::RenderAnnotation> VectorOfShared_ptrRenderAnnotation::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::at( size_t                                       index,
+                                             std::shared_ptr<mediapipe::RenderAnnotation> value );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::clear
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::clear();
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.clear() -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::empty
+
+```cpp
+bool VectorOfShared_ptrRenderAnnotation::empty();
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.empty() -> retval
+```
+
+### VectorOfShared\_ptrRenderAnnotation::end
+
+```cpp
+void* VectorOfShared_ptrRenderAnnotation::end();
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.end() -> retval
+```
+
+### VectorOfShared\_ptrRenderAnnotation::get\_Item
+
+```cpp
+std::shared_ptr<mediapipe::RenderAnnotation> VectorOfShared_ptrRenderAnnotation::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.Item( $index ) -> retval
+    $oVectorOfShared_ptrRenderAnnotation( $index ) -> retval
+```
+
+### VectorOfShared\_ptrRenderAnnotation::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrRenderAnnotation::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrRenderAnnotation::push\_back
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::push_back( std::shared_ptr<mediapipe::RenderAnnotation> value );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::push\_vector
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::push_vector( VectorOfShared_ptrRenderAnnotation other );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::push_vector( VectorOfShared_ptrRenderAnnotation other,
+                                                      size_t                             count,
+                                                      size_t                             start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::put\_Item
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::put_Item( size_t                                       index,
+                                                   std::shared_ptr<mediapipe::RenderAnnotation> item );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrRenderAnnotation::size
+
+```cpp
+size_t VectorOfShared_ptrRenderAnnotation::size();
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.size() -> retval
+```
+
+### VectorOfShared\_ptrRenderAnnotation::slice
+
+```cpp
+VectorOfShared_ptrRenderAnnotation VectorOfShared_ptrRenderAnnotation::slice( size_t start = 0,
+                                                                              size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrRenderAnnotation::sort
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::sort( void*  comparator,
+                                               size_t start = 0,
+                                               size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::sort\_variant
+
+```cpp
+void VectorOfShared_ptrRenderAnnotation::sort_variant( void*  comparator,
+                                                       size_t start = 0,
+                                                       size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrRenderAnnotation::start
+
+```cpp
+void* VectorOfShared_ptrRenderAnnotation::start();
+AutoIt:
+    $oVectorOfShared_ptrRenderAnnotation.start() -> retval
 ```
 
 ## VectorOfSize\_t

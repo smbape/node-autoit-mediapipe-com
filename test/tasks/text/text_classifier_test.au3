@@ -13,7 +13,7 @@
 #include "..\..\_test_utils.au3"
 
 ;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.2.1/mediapipe/tasks/python/test/text/text_classifier_test.py
+;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/tasks/python/test/text/text_classifier_test.py
 
 _Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
 _OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
@@ -77,12 +77,12 @@ Global $_BERT_POSITIVE_RESULTS = $TextClassifierResult( _Mediapipe_Params( _
 			"categories", _Mediapipe_Tuple( _
 				$_Category(_Mediapipe_Params( _
 					"index", 1, _
-					"score", 0.999655962, _
+					"score", 0.999466, _
 					"display_name", "", _
 					"category_name", "positive")), _
 				$_Category(_Mediapipe_Params( _
 					"index", 0, _
-					"score", 0.000344068656, _
+					"score", 0.000533596, _
 					"display_name", "", _
 					"category_name", "negative")) _
 			), _

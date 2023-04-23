@@ -9,7 +9,7 @@
 #include "_assert.au3"
 
 ;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.2.1/mediapipe/python/timestamp_test.py
+;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/timestamp_test.py
 
 _Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
 OnAutoItExitRegister("_OnAutoItExit")

@@ -11,7 +11,7 @@
 #include "..\_mat_utils.au3"
 
 ;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.2.1/mediapipe/python/solutions/objectron_test.py
+;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/solutions/objectron_test.py
 
 _Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
 _OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))

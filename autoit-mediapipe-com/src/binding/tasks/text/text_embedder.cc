@@ -3,17 +3,18 @@
 #include "binding/packet_creator.h"
 
 namespace {
-using namespace mediapipe::tasks::text::text_embedder::proto;
-using namespace mediapipe::tasks::autoit::components::containers::embedding_result;
-using namespace mediapipe::tasks::autoit::core::base_options;
-using namespace mediapipe::tasks::autoit::core::task_info;
-using namespace mediapipe::tasks::autoit::components::utils;
+	using namespace mediapipe::tasks::text::text_embedder::proto;
+	using namespace mediapipe::tasks::autoit::components::containers::embedding_result;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::autoit::components::utils;
+	using namespace mediapipe::autoit::packet_getter;
 
-const std::string _EMBEDDINGS_OUT_STREAM_NAME = "embeddings_out";
-const std::string _EMBEDDINGS_TAG = "EMBEDDINGS";
-const std::string _TEXT_IN_STREAM_NAME = "text_in";
-const std::string _TEXT_TAG = "TEXT";
-const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.text.text_embedder.TextEmbedderGraph";
+	const std::string _EMBEDDINGS_OUT_STREAM_NAME = "embeddings_out";
+	const std::string _EMBEDDINGS_TAG = "EMBEDDINGS";
+	const std::string _TEXT_IN_STREAM_NAME = "text_in";
+	const std::string _TEXT_TAG = "TEXT";
+	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.text.text_embedder.TextEmbedderGraph";
 }
 
 namespace mediapipe::tasks::autoit::text::text_embedder {
@@ -51,7 +52,7 @@ namespace mediapipe::tasks::autoit::text::text_embedder {
 
 		mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
 		embedding_result_proto.CopyFrom(
-			*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
+			*get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
 		);
 
 		return TextEmbedderResult::create_from_pb2(embedding_result_proto);

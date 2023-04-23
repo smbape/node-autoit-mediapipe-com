@@ -2723,8 +2723,8 @@ namespace {
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
 	using namespace mediapipe::tasks::autoit::vision::face_landmarker;
-	using namespace mediapipe::autoit::packet_getter;
 	using namespace mediapipe::autoit::packet_creator;
+	using namespace mediapipe::autoit::packet_getter;
 	using namespace mediapipe;
 	using namespace google::protobuf::autoit::cmessage;
 	using namespace google::protobuf;
@@ -2887,7 +2887,7 @@ namespace mediapipe::tasks::autoit::vision::face_landmarker {
 				}
 
 				const auto& face_landmarks_packet = output_packets.at(_NORM_LANDMARKS_STREAM_NAME);
-				auto image = mediapipe::autoit::packet_getter::GetContent<Image>(image_out_packet);
+				auto image = GetContent<Image>(image_out_packet);
 				auto timestamp_ms = face_landmarks_packet.Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 				auto face_landmarker_result = _build_landmarker_result(output_packets);
 

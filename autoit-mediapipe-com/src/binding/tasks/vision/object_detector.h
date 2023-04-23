@@ -2,9 +2,11 @@
 
 #include "mediapipe/tasks/cc/vision/object_detector/proto/object_detector_options.pb.h"
 #include "binding/tasks/components/containers/detections.h"
+#include "binding/tasks/components/containers/rect.h"
 #include "binding/tasks/core/base_options.h"
 #include "binding/tasks/core/task_info.h"
 #include "binding/tasks/vision/core/base_vision_task_api.h"
+#include "binding/tasks/vision/core/image_processing_options.h"
 #include "binding/tasks/vision/core/vision_task_running_mode.h"
 #include "binding/packet_getter.h"
 #include "binding/packet_creator.h"
@@ -58,9 +60,23 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 
 		CV_WRAP static std::shared_ptr<ObjectDetector> create_from_model_path(const std::string& model_path);
 		CV_WRAP static std::shared_ptr<ObjectDetector> create_from_options(std::shared_ptr<ObjectDetectorOptions> options);
-		CV_WRAP std::shared_ptr<ObjectDetectorResult> detect(const Image& image);
-		CV_WRAP std::shared_ptr<ObjectDetectorResult> detect_for_video(const Image& image, int64_t timestamp_ms);
-		CV_WRAP void detect_async(const Image& image, int64_t timestamp_ms);
+		CV_WRAP std::shared_ptr<ObjectDetectorResult> detect(
+			const Image& image,
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
+		);
+		CV_WRAP std::shared_ptr<ObjectDetectorResult> detect_for_video(
+			const Image& image,
+			int64_t timestamp_ms,
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
+		);
+		CV_WRAP void detect_async(
+			const Image& image,
+			int64_t timestamp_ms,
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
+		);
 	};
 }
 

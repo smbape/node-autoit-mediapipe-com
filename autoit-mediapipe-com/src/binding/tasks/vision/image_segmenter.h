@@ -1,18 +1,20 @@
 #pragma once
 
-#include "mediapipe/tasks/cc/components/containers/proto/embeddings.pb.h"
 #include "mediapipe/tasks/cc/vision/image_segmenter/proto/image_segmenter_graph_options.pb.h"
 #include "mediapipe/tasks/cc/vision/image_segmenter/proto/segmenter_options.pb.h"
+#include "binding/tasks/components/containers/rect.h"
 #include "binding/tasks/core/base_options.h"
 #include "binding/tasks/core/task_info.h"
 #include "binding/tasks/vision/core/base_vision_task_api.h"
+#include "binding/tasks/vision/core/image_processing_options.h"
 #include "binding/tasks/vision/core/vision_task_running_mode.h"
 #include "binding/packet_getter.h"
 #include "binding/packet_creator.h"
 
 namespace mediapipe::tasks::autoit::vision::image_segmenter {
-	using ImageSegmenterResultRawCallback = void(*)(const std::vector<Image>&, const Image&, int64_t);
-	using ImageSegmenterResultCallback = std::function<void(const std::vector<Image>&, const Image&, int64_t)>;
+	using ImageSegmenterResult = std::vector<Image>;
+	using ImageSegmenterResultRawCallback = void(*)(const ImageSegmenterResult&, const Image&, int64_t);
+	using ImageSegmenterResultCallback = std::function<void(const ImageSegmenterResult&, const Image&, int64_t)>;
 
 	struct CV_EXPORTS_W_SIMPLE ImageSegmenterOptions {
 		CV_WRAP ImageSegmenterOptions(const ImageSegmenterOptions& other) = default;
@@ -48,9 +50,25 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 
 		CV_WRAP static std::shared_ptr<ImageSegmenter> create_from_model_path(const std::string& model_path);
 		CV_WRAP static std::shared_ptr<ImageSegmenter> create_from_options(std::shared_ptr<ImageSegmenterOptions> options);
-		CV_WRAP void segment(CV_OUT std::vector<Image>& segmentation_result, const Image& image);
-		CV_WRAP void segment_for_video(CV_OUT std::vector<Image>& segmentation_result, const Image& image, int64_t timestamp_ms);
-		CV_WRAP void segment_async(const Image& image, int64_t timestamp_ms);
+		CV_WRAP void segment(
+			CV_OUT ImageSegmenterResult& segmentation_result,
+			const Image& image,
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
+		);
+		CV_WRAP void segment_for_video(
+			CV_OUT ImageSegmenterResult& segmentation_result,
+			const Image& image,
+			int64_t timestamp_ms,
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
+		);
+		CV_WRAP void segment_async(
+			const Image& image,
+			int64_t timestamp_ms,
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
+			std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
+		);
 	};
 }
 

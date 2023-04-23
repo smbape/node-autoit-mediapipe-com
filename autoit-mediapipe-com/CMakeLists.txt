@@ -122,7 +122,7 @@ endforeach()
 
 file(GLOB_RECURSE files_to_change "../test/*.au3" "../examples/*.au3" "../examples/*.cs" "../examples/*.ps1")
 foreach(item ${files_to_change})
-  vcpkg_regex_replace_string("${item}" "/v[0-9]+\\.[0-9]+\\.[0-9]+/mediapipe/" "/v${MEDIAPIPE_VERSION}/mediapipe/")
+  vcpkg_regex_replace_string("${item}" "/v[0-9]+(\\.[0-9]+)+/mediapipe/" "/v${MEDIAPIPE_VERSION}/mediapipe/")
 endforeach()
 
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE PATH "Output directory for applications")

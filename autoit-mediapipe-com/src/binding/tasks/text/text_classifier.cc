@@ -2,16 +2,17 @@
 #include "binding/packet_getter.h"
 
 namespace {
-using namespace mediapipe::tasks::text::text_classifier::proto;
-using namespace mediapipe::tasks::autoit::components::containers::classification_result;
-using namespace mediapipe::tasks::autoit::core::base_options;
-using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::text::text_classifier::proto;
+	using namespace mediapipe::tasks::autoit::components::containers::classification_result;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::autoit::packet_getter;
 
-const std::string _CLASSIFICATIONS_STREAM_NAME = "classifications_out";
-const std::string _CLASSIFICATIONS_TAG = "CLASSIFICATIONS";
-const std::string _TEXT_IN_STREAM_NAME = "text_in";
-const std::string _TEXT_TAG = "TEXT";
-const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.text.text_classifier.TextClassifierGraph";
+	const std::string _CLASSIFICATIONS_STREAM_NAME = "classifications_out";
+	const std::string _CLASSIFICATIONS_TAG = "CLASSIFICATIONS";
+	const std::string _TEXT_IN_STREAM_NAME = "text_in";
+	const std::string _TEXT_TAG = "TEXT";
+	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.text.text_classifier.TextClassifierGraph";
 }
 
 namespace mediapipe::tasks::autoit::text::text_classifier {
@@ -53,7 +54,7 @@ namespace mediapipe::tasks::autoit::text::text_classifier {
 
 		mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 		classification_result_proto.CopyFrom(
-			*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
+			*get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 		);
 
 		return TextClassifierResult::create_from_pb2(classification_result_proto);
