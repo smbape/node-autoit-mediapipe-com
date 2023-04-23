@@ -879,6 +879,7 @@
   - [vision.core](#visioncore)
   - [vision.face\_detector](#visionface%5C_detector)
   - [vision.face\_landmarker](#visionface%5C_landmarker)
+  - [vision.face\_stylizer](#visionface%5C_stylizer)
   - [vision.gesture\_recognizer](#visiongesture%5C_recognizer)
   - [vision.hand\_landmarker](#visionhand%5C_landmarker)
   - [vision.image\_classifier](#visionimage%5C_classifier)
@@ -910,6 +911,7 @@
   - [vision.core](#visioncore-1)
   - [vision.face\_detector](#visionface%5C_detector-1)
   - [vision.face\_landmarker](#visionface%5C_landmarker-1)
+  - [vision.face\_stylizer](#visionface%5C_stylizer-1)
   - [vision.gesture\_recognizer](#visiongesture%5C_recognizer-1)
   - [vision.hand\_landmarker](#visionhand%5C_landmarker-1)
   - [vision.image\_classifier](#visionimage%5C_classifier-1)
@@ -1087,6 +1089,30 @@
   - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::detect\_async](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerdetect%5C_async)
   - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::detect\_for\_video](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerdetect%5C_for%5C_video)
   - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::get\_graph\_config](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerget%5C_graph%5C_config)
+- [mediapipe::tasks::autoit::vision::face\_stylizer](#mediapipetasksautoitvisionface%5C_stylizer)
+  - [face\_stylizer.FaceStylizerOptions](#face%5C_stylizerfacestylizeroptions)
+  - [face\_stylizer.FaceStylizer](#face%5C_stylizerfacestylizer)
+- [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizerOptions](#mediapipetasksautoitvisionface%5C_stylizerfacestylizeroptions)
+  - [FaceStylizerOptions.base\_options](#facestylizeroptionsbase%5C_options)
+  - [FaceStylizerOptions.running\_mode](#facestylizeroptionsrunning%5C_mode)
+  - [FaceStylizerOptions.result\_callback](#facestylizeroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizerOptions::get\_create](#mediapipetasksautoitvisionface%5C_stylizerfacestylizeroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizerOptions::to\_pb2](#mediapipetasksautoitvisionface%5C_stylizerfacestylizeroptionsto%5C_pb2)
+- [mediapipe::autoit::vision::face\_stylizer](#mediapipeautoitvisionface%5C_stylizer)
+  - [face\_stylizer.FaceStylizerOptions](#face%5C_stylizerfacestylizeroptions-1)
+  - [face\_stylizer.FaceStylizer](#face%5C_stylizerfacestylizer-1)
+- [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer](#mediapipetasksautoitvisionface%5C_stylizerfacestylizer)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_process\_image\_data](#mediapipetasksautoitvisionface%5C_stylizerfacestylizer%5C_process%5C_image%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_process\_video\_data](#mediapipetasksautoitvisionface%5C_stylizerfacestylizer%5C_process%5C_video%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_send\_live\_stream\_data](#mediapipetasksautoitvisionface%5C_stylizerfacestylizer%5C_send%5C_live%5C_stream%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::close](#mediapipetasksautoitvisionface%5C_stylizerfacestylizerclose)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::convert\_to\_normalized\_rect](#mediapipetasksautoitvisionface%5C_stylizerfacestylizerconvert%5C_to%5C_normalized%5C_rect)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::create\_from\_model\_path](#mediapipetasksautoitvisionface%5C_stylizerfacestylizercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::create\_from\_options](#mediapipetasksautoitvisionface%5C_stylizerfacestylizercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::get\_graph\_config](#mediapipetasksautoitvisionface%5C_stylizerfacestylizerget%5C_graph%5C_config)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::stylize](#mediapipetasksautoitvisionface%5C_stylizerfacestylizerstylize)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::stylize\_async](#mediapipetasksautoitvisionface%5C_stylizerfacestylizerstylize%5C_async)
+  - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::stylize\_for\_video](#mediapipetasksautoitvisionface%5C_stylizerfacestylizerstylize%5C_for%5C_video)
 - [mediapipe::tasks::autoit::vision::gesture\_recognizer](#mediapipetasksautoitvisiongesture%5C_recognizer)
   - [gesture\_recognizer.GestureRecognizerResult](#gesture%5C_recognizergesturerecognizerresult)
   - [gesture\_recognizer.GestureRecognizerOptions](#gesture%5C_recognizergesturerecognizeroptions)
@@ -5883,6 +5909,25 @@
   - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::\_\_str\_\_](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::vision::face\_landmarker::proto::face\_landmarker\_graph\_options\_pb2](#mediapipetasksccvisionface%5C_landmarkerprotoface%5C_landmarker%5C_graph%5C_options%5C_pb2)
   - [face\_landmarker\_graph\_options\_pb2.FaceLandmarkerGraphOptions](#face%5C_landmarker%5C_graph%5C_options%5C_pb2facelandmarkergraphoptions)
+- [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptions)
+  - [FaceStylizerGraphOptions.base\_options](#facestylizergraphoptionsbase%5C_options)
+  - [FaceStylizerGraphOptions.face\_landmarker\_graph\_options](#facestylizergraphoptionsface%5C_landmarker%5C_graph%5C_options)
+  - [FaceStylizerGraphOptions.ext](#facestylizergraphoptionsext)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::get\_create](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::ByteSizeLong](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::CheckInitialized](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionscheckinitialized)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::Clear](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsclear)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::ClearField](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::CopyFrom](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::DiscardUnknownFields](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::FindInitializationErrors](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::IsInitialized](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::SerializeAsString](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::SerializeToString](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::SpaceUsedLong](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptionsspaceusedlong)
+  - [mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::\_\_str\_\_](#mediapipetasksvisionface%5C_stylizerprotofacestylizergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::face\_stylizer::proto::face\_stylizer\_graph\_options\_pb2](#mediapipetasksccvisionface%5C_stylizerprotoface%5C_stylizer%5C_graph%5C_options%5C_pb2)
+  - [face\_stylizer\_graph\_options\_pb2.FaceStylizerGraphOptions](#face%5C_stylizer%5C_graph%5C_options%5C_pb2facestylizergraphoptions)
 - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptions)
   - [GestureClassifierGraphOptions.base\_options](#gestureclassifiergraphoptionsbase%5C_options)
   - [GestureClassifierGraphOptions.classifier\_options](#gestureclassifiergraphoptionsclassifier%5C_options)
@@ -15783,6 +15828,14 @@ AutoIt:
     [propget] $ovision.face_landmarker
 ```
 
+### vision.face\_stylizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer
+AutoIt:
+    [propget] $ovision.face_stylizer
+```
+
 ### vision.gesture\_recognizer
 
 ```cpp
@@ -16017,6 +16070,14 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::face_landmarker
 AutoIt:
     [propget] $ovision.face_landmarker
+```
+
+### vision.face\_stylizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer
+AutoIt:
+    [propget] $ovision.face_stylizer
 ```
 
 ### vision.gesture\_recognizer
@@ -17370,6 +17431,191 @@ AutoIt:
 std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::get_graph_config();
 AutoIt:
     $oFaceLandmarker.get_graph_config() -> retval
+```
+
+## mediapipe::tasks::autoit::vision::face\_stylizer
+
+### face\_stylizer.FaceStylizerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions
+AutoIt:
+    [propget] $oface_stylizer.FaceStylizerOptions
+```
+
+### face\_stylizer.FaceStylizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer
+AutoIt:
+    [propget] $oface_stylizer.FaceStylizer
+```
+
+## mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizerOptions
+
+### FaceStylizerOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions::base_options
+AutoIt:
+    [propget, propput] $oFaceStylizerOptions.base_options
+```
+
+### FaceStylizerOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions::running_mode
+AutoIt:
+    [propget, propput] $oFaceStylizerOptions.running_mode
+```
+
+### FaceStylizerOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::face_stylizer::ImageRawCallback mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions::result_callback
+AutoIt:
+    [propput] $oFaceStylizerOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizerOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions::get_create( const mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_stylizer.FaceStylizerOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.face_stylizer.FaceStylizerOptions object>
+    $oFaceStylizerOptions( $other ) -> <mediapipe.tasks.autoit.vision.face_stylizer.FaceStylizerOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                              mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                              mediapipe::tasks::autoit::vision::face_stylizer::ImageRawCallback                       result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_stylizer.FaceStylizerOptions").create( [$base_options[, $running_mode[, $result_callback]]] ) -> <mediapipe.tasks.autoit.vision.face_stylizer.FaceStylizerOptions object>
+    $oFaceStylizerOptions( [$base_options[, $running_mode[, $result_callback]]] ) -> <mediapipe.tasks.autoit.vision.face_stylizer.FaceStylizerOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizerOptions::to\_pb2
+
+```cpp
+std::shared_ptr<tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions::to_pb2();
+AutoIt:
+    $oFaceStylizerOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::vision::face\_stylizer
+
+### face\_stylizer.FaceStylizerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions
+AutoIt:
+    [propget] $oface_stylizer.FaceStylizerOptions
+```
+
+### face\_stylizer.FaceStylizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer
+AutoIt:
+    [propget] $oface_stylizer.FaceStylizer
+```
+
+## mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_process\_image\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::_process_image_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceStylizer._process_image_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_process\_video\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::_process_video_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceStylizer._process_video_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_send\_live\_stream\_data
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::_send_live_stream_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceStylizer._send_live_stream_data( $inputs ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::close
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::close();
+AutoIt:
+    $oFaceStylizer.close() -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::convert\_to\_normalized\_rect
+
+```cpp
+mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                  const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                  bool                                                                                                      roi_allowed = true );
+AutoIt:
+    $oFaceStylizer.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_stylizer.FaceStylizer").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_stylizer.FaceStylizer").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::get_graph_config();
+AutoIt:
+    $oFaceStylizer.get_graph_config() -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::stylize
+
+```cpp
+std::shared_ptr<mediapipe::Image> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::stylize( const mediapipe::Image&                                                                                   image,
+                                                                                                          std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceStylizer.stylize( $image[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::stylize\_async
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::stylize_async( const mediapipe::Image&                                                                                   image,
+                                                                                   int64_t                                                                                                   timestamp_ms,
+                                                                                   std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceStylizer.stylize_async( $image, $timestamp_ms[, $image_processing_options] ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::stylize\_for\_video
+
+```cpp
+std::shared_ptr<mediapipe::Image> mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer::stylize_for_video( const mediapipe::Image&                                                                                   image,
+                                                                                                                    int64_t                                                                                                   timestamp_ms,
+                                                                                                                    std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceStylizer.stylize_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision::gesture\_recognizer
@@ -19482,6 +19728,12 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
@@ -57593,6 +57845,148 @@ AutoIt:
 static mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions
 AutoIt:
     [propget] $oface_landmarker_graph_options_pb2.FaceLandmarkerGraphOptions
+```
+
+## mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions
+
+### FaceStylizerGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::base_options
+AutoIt:
+    [propget, propput] $oFaceStylizerGraphOptions.base_options
+```
+
+### FaceStylizerGraphOptions.face\_landmarker\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions* mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::face_landmarker_graph_options
+AutoIt:
+    [propget, propput] $oFaceStylizerGraphOptions.face_landmarker_graph_options
+```
+
+### FaceStylizerGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions* mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::ext
+AutoIt:
+    [propget] $oFaceStylizerGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::get_create( std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>                                   base_options = std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>(),
+                                                                                                                                                                      std::shared_ptr<mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions> face_landmarker_graph_options = std::shared_ptr<mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.face_stylizer.proto.FaceStylizerGraphOptions").create( [$base_options[, $face_landmarker_graph_options]] ) -> <mediapipe.tasks.vision.face_stylizer.proto.FaceStylizerGraphOptions object>
+    $oFaceStylizerGraphOptions( [$base_options[, $face_landmarker_graph_options]] ) -> <mediapipe.tasks.vision.face_stylizer.proto.FaceStylizerGraphOptions object>
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::ByteSizeLong();
+AutoIt:
+    $oFaceStylizerGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::CheckInitialized();
+AutoIt:
+    $oFaceStylizerGraphOptions.CheckInitialized() -> None
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::Clear();
+AutoIt:
+    $oFaceStylizerGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFaceStylizerGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFaceStylizerGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oFaceStylizerGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFaceStylizerGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::IsInitialized();
+AutoIt:
+    $oFaceStylizerGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::SerializeAsString();
+AutoIt:
+    $oFaceStylizerGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFaceStylizerGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oFaceStylizerGraphOptions.SpaceUsedLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_stylizer::proto::FaceStylizerGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oFaceStylizerGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::face\_stylizer::proto::face\_stylizer\_graph\_options\_pb2
+
+### face\_stylizer\_graph\_options\_pb2.FaceStylizerGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions
+AutoIt:
+    [propget] $oface_stylizer_graph_options_pb2.FaceStylizerGraphOptions
 ```
 
 ## mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions

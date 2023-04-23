@@ -2849,7 +2849,6 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::vision::face_landmarker {
-	using mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions;
 	using core::image_processing_options::ImageProcessingOptions;
 
 	std::shared_ptr<FaceLandmarkerGraphOptions> FaceLandmarkerOptions::to_pb2() {

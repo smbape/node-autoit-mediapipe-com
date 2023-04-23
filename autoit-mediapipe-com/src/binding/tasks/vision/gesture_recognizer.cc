@@ -143,7 +143,6 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
-	using mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions;
 	using core::image_processing_options::ImageProcessingOptions;
 
 	std::shared_ptr<GestureRecognizerGraphOptions> GestureRecognizerOptions::to_pb2() {

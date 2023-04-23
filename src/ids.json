@@ -695,6 +695,22 @@
         "iid": "4e0614a9-227c-4ea2-bcc8-33c484653452",
         "clsid": "c38f5d2b-11bf-40ac-a0a7-98f147c0d176"
     },
+    "mediapipe::tasks::autoit::vision::face_stylizer": {
+        "iid": "d5f14036-8dee-4e6d-bdf2-f217ab1c5721",
+        "clsid": "8889ff21-a1c4-4b38-906b-18b0d87f503f"
+    },
+    "mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions": {
+        "iid": "826c3a4d-f7af-4d76-959a-7aa7ac020852",
+        "clsid": "8ac7b3f0-30e9-4549-8799-7161cc378892"
+    },
+    "mediapipe::autoit::vision::face_stylizer": {
+        "iid": "0633772c-73d2-4ff0-9a6e-073dc4b408a2",
+        "clsid": "e4018db1-6e69-4c0e-8fa9-50550ccc164c"
+    },
+    "mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer": {
+        "iid": "fe340c39-df5d-4a94-8e91-c4da2d765c00",
+        "clsid": "99c6b38b-93de-4800-a51d-06a4ebb97bb5"
+    },
     "mediapipe::tasks::autoit::vision::gesture_recognizer": {
         "iid": "c7576820-20c7-44fb-9eb9-3b106eb447fa",
         "clsid": "6ceb7419-8412-4bb4-ace8-8ac9481c3063"
@@ -2074,6 +2090,18 @@
     "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions": {
         "iid": "ab869519-d9b5-4a84-ab82-20de4169793f",
         "clsid": "b3717c43-d08d-4bef-8ec7-88b0146e9eba"
+    },
+    "mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions": {
+        "iid": "6fa9f940-7ad2-4402-89fe-2b16c429c70f",
+        "clsid": "34be66af-5798-44e7-b82e-82c7cdecc4cc"
+    },
+    "mediapipe::tasks::cc::vision::face_stylizer::proto::face_stylizer_graph_options_pb2": {
+        "iid": "3d7f2dc9-3406-4a90-81a3-47cdde1d79e3",
+        "clsid": "863689f4-cb87-4a89-8e79-73af6f121113"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions": {
+        "iid": "9343cf60-a821-4d88-a45e-7666d35702cd",
+        "clsid": "8345885c-cb06-4c90-bfc1-17f74db71a16"
     },
     "mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions": {
         "iid": "51d96067-dce2-445d-a75c-b18588259c0f",

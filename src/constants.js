@@ -186,6 +186,7 @@ exports.ALIASES = new Map([
     ["GestureRecognizerResultCallback", "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback"],
     ["HandLandmarkerResultCallback", "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback"],
     ["FaceLandmarkerResultCallback", "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResultRawCallback"],
+    ["ImageCallback", "mediapipe::tasks::autoit::vision::face_stylizer::ImageRawCallback"],
 ]);
 
 exports.CLASS_PTR = new Set([
@@ -202,6 +203,7 @@ exports.PTR = new Set([
     "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback",
     "mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultRawCallback",
     "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResultRawCallback",
+    "mediapipe::tasks::autoit::vision::face_stylizer::ImageRawCallback",
     "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback",
     "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback",
     "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback",

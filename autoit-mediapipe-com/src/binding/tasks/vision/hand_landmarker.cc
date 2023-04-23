@@ -117,7 +117,6 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::vision::hand_landmarker {
-	using mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions;
 	using core::image_processing_options::ImageProcessingOptions;
 
 	std::shared_ptr<HandLandmarkerGraphOptions> HandLandmarkerOptions::to_pb2() {

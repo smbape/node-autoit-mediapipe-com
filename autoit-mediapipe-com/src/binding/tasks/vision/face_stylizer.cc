@@ -1,6 +1,6 @@
-#include "binding/tasks/vision/face_detector.h"
+#include "binding/tasks/vision/face_stylizer.h"
 
-PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultRawCallback);
+PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::face_stylizer::ImageRawCallback);
 
 template<typename _Ty1, typename _Ty2>
 inline const HRESULT autoit_to_callback(VARIANT const* const& in_val, _Ty1& out_val) {
@@ -12,15 +12,15 @@ inline const HRESULT autoit_to_callback(VARIANT const* const& in_val, _Ty1& out_
 	return hr;
 }
 
-const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultCallback& out_val) {
+const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::vision::face_stylizer::ImageCallback& out_val) {
 	return autoit_to_callback<
-		mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultCallback,
-		mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultRawCallback
+		mediapipe::tasks::autoit::vision::face_stylizer::ImageCallback,
+		mediapipe::tasks::autoit::vision::face_stylizer::ImageRawCallback
 	>(in_val, out_val);
 }
 
 namespace {
-	using namespace mediapipe::tasks::vision::face_detector::proto;
+	using namespace mediapipe::tasks::vision::face_stylizer::proto;
 	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
@@ -33,40 +33,35 @@ namespace {
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
 
-	const std::string _DETECTIONS_OUT_STREAM_NAME = "detections";
-	const std::string _DETECTIONS_TAG = "DETECTIONS";
+	const std::string _STYLIZED_IMAGE_NAME = "stylized_image";
+	const std::string _STYLIZED_IMAGE_TAG = "STYLIZED_IMAGE";
 	const std::string _NORM_RECT_STREAM_NAME = "norm_rect_in";
 	const std::string _NORM_RECT_TAG = "NORM_RECT";
 	const std::string _IMAGE_IN_STREAM_NAME = "image_in";
 	const std::string _IMAGE_OUT_STREAM_NAME = "image_out";
 	const std::string _IMAGE_TAG = "IMAGE";
-	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.face_detector.FaceDetectorGraph";
+	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.face_stylizer.FaceStylizerGraph";
 	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
 }
 
-namespace mediapipe::tasks::autoit::vision::face_detector {
-	using Detection = components::containers::detections::Detection;
-
-	std::shared_ptr<FaceDetectorGraphOptions> FaceDetectorOptions::to_pb2() {
-		auto pb2_obj = std::make_shared<FaceDetectorGraphOptions>();
+namespace mediapipe::tasks::autoit::vision::face_stylizer {
+	std::shared_ptr<FaceStylizerGraphOptions> FaceStylizerOptions::to_pb2() {
+		auto pb2_obj = std::make_shared<FaceStylizerGraphOptions>();
 
 		if (base_options) {
 			pb2_obj->mutable_base_options()->CopyFrom(*base_options->to_pb2());
 		}
 		pb2_obj->mutable_base_options()->set_use_stream_mode(running_mode != VisionTaskRunningMode::IMAGE);
 
-		if (min_detection_confidence) pb2_obj->set_min_detection_confidence(*min_detection_confidence);
-		if (min_suppression_threshold) pb2_obj->set_min_suppression_threshold(*min_suppression_threshold);
-
 		return pb2_obj;
 	}
 
-	std::shared_ptr<FaceDetector> FaceDetector::create_from_model_path(const std::string& model_path) {
+	std::shared_ptr<FaceStylizer> FaceStylizer::create_from_model_path(const std::string& model_path) {
 		auto base_options = std::make_shared<BaseOptions>(model_path);
-		return create_from_options(std::make_shared<FaceDetectorOptions>(base_options, VisionTaskRunningMode::IMAGE));
+		return create_from_options(std::make_shared<FaceStylizerOptions>(base_options, VisionTaskRunningMode::IMAGE));
 	}
 
-	std::shared_ptr<FaceDetector> FaceDetector::create_from_options(std::shared_ptr<FaceDetectorOptions> options) {
+	std::shared_ptr<FaceStylizer> FaceStylizer::create_from_options(std::shared_ptr<FaceStylizerOptions> options) {
 		PacketsCallback packets_callback = nullptr;
 
 		if (options->result_callback) {
@@ -76,21 +71,18 @@ namespace mediapipe::tasks::autoit::vision::face_detector {
 					return;
 				}
 
-				const auto& detections_out_packet = output_packets.at(_DETECTIONS_OUT_STREAM_NAME);
-
-				FaceDetectorResult detection_result;
-
-				std::vector<std::shared_ptr<Message>> detection_proto_list;
-				get_proto_list(detections_out_packet, detection_proto_list);
-				for (const auto& result : detection_proto_list) {
-					detection_result.detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
-				}
-
 				auto image = GetContent<Image>(image_out_packet);
-				auto timestamp = detections_out_packet.IsEmpty() ? detections_out_packet.Timestamp().Value() : image_out_packet.Timestamp().Value();
+				const auto& stylized_image_packet = output_packets.at(_STYLIZED_IMAGE_NAME);
+				auto timestamp = stylized_image_packet.Timestamp().Value();
 				auto timestamp_ms = timestamp / _MICRO_SECONDS_PER_MILLISECOND;
 
-				options->result_callback(detection_result, image, timestamp_ms);
+				if (stylized_image_packet.IsEmpty()) {
+					options->result_callback(nullptr, image, timestamp_ms);
+					return;
+				}
+
+				auto stylized_image = GetContent<Image>(stylized_image_packet);
+				options->result_callback(&stylized_image, image, timestamp_ms);
 			};
 		}
 
@@ -101,19 +93,19 @@ namespace mediapipe::tasks::autoit::vision::face_detector {
 			_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME
 		};
 		task_info.output_streams = {
-			_DETECTIONS_TAG + ":" + _DETECTIONS_OUT_STREAM_NAME,
+			_STYLIZED_IMAGE_TAG + ":" + _STYLIZED_IMAGE_NAME,
 			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME
 		};
 		task_info.task_options = options->to_pb2();
 
-		return std::make_shared<FaceDetector>(
+		return std::make_shared<FaceStylizer>(
 			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
 			options->running_mode,
 			std::move(packets_callback)
 			);
 	}
 
-	std::shared_ptr<FaceDetectorResult> FaceDetector::detect(
+	std::shared_ptr<Image> FaceStylizer::stylize(
 		const Image& image,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
@@ -124,17 +116,16 @@ namespace mediapipe::tasks::autoit::vision::face_detector {
 			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
 			});
 
-		std::vector<std::shared_ptr<Message>> detection_proto_list;
-		get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME), detection_proto_list);
-		auto detection_result = std::make_shared<FaceDetectorResult>();
-		for (const auto& result : detection_proto_list) {
-			detection_result->detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
+		const auto& stylized_image_packet = output_packets.at(_STYLIZED_IMAGE_NAME);
+		if (stylized_image_packet.IsEmpty()) {
+			return std::shared_ptr<Image>();
 		}
 
-		return detection_result;
+		auto stylized_image = GetContent<Image>(stylized_image_packet);
+		return ::autoit::reference_internal(&stylized_image);
 	}
 
-	std::shared_ptr<FaceDetectorResult> FaceDetector::detect_for_video(
+	std::shared_ptr<Image> FaceStylizer::stylize_for_video(
 		const Image& image,
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
@@ -150,17 +141,16 @@ namespace mediapipe::tasks::autoit::vision::face_detector {
 			)) },
 			});
 
-		std::vector<std::shared_ptr<Message>> detection_proto_list;
-		get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME), detection_proto_list);
-		auto detection_result = std::make_shared<FaceDetectorResult>();
-		for (const auto& result : detection_proto_list) {
-			detection_result->detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
+		const auto& stylized_image_packet = output_packets.at(_STYLIZED_IMAGE_NAME);
+		if (stylized_image_packet.IsEmpty()) {
+			return std::shared_ptr<Image>();
 		}
 
-		return detection_result;
+		auto stylized_image = GetContent<Image>(stylized_image_packet);
+		return ::autoit::reference_internal(&stylized_image);
 	}
 
-	void FaceDetector::detect_async(
+	void FaceStylizer::stylize_async(
 		const Image& image,
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
