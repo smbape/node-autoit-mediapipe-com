@@ -25,8 +25,8 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 			std::shared_ptr<autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
 			core::audio_task_running_mode::AudioTaskRunningMode running_mode = tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_CLIPS,
 			const std::optional<std::string>& display_names_locale = std::optional<std::string>(),
-			std::optional<int> max_results = std::optional<int>(),
-			std::optional<float> score_threshold = std::optional<float>(),
+			const std::optional<int>& max_results = std::optional<int>(),
+			const std::optional<float>& score_threshold = std::optional<float>(),
 			const std::vector<std::string>& category_allowlist = std::vector<std::string>(),
 			const std::vector<std::string>& category_denylist = std::vector<std::string>(),
 			AudioClassifierResultCallback result_callback = nullptr

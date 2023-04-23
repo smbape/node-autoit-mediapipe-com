@@ -25,6 +25,9 @@ namespace {
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
 	using namespace mediapipe::tasks::autoit::vision::gesture_recognizer;
+	using namespace mediapipe::autoit::packet_creator;
+	using namespace mediapipe::autoit::packet_getter;
+	using namespace google::protobuf;
 	using namespace mediapipe;
 
 	using mediapipe::autoit::PacketsCallback;
@@ -52,14 +55,17 @@ namespace {
 			return std::make_shared<GestureRecognizerResult>();
 		}
 
-		auto gestures_proto_list = mediapipe::autoit::packet_getter::get_proto_list(
-			output_packets.at(_HAND_GESTURE_STREAM_NAME));
-		auto handedness_proto_list = mediapipe::autoit::packet_getter::get_proto_list(
-			output_packets.at(_HANDEDNESS_STREAM_NAME));
-		auto hand_landmarks_proto_list = mediapipe::autoit::packet_getter::get_proto_list(
-			output_packets.at(_HAND_LANDMARKS_STREAM_NAME));
-		auto hand_world_landmarks_proto_list = mediapipe::autoit::packet_getter::get_proto_list(
-			output_packets.at(_HAND_WORLD_LANDMARKS_STREAM_NAME));
+		std::vector<std::shared_ptr<Message>> gestures_proto_list;
+		get_proto_list(output_packets.at(_HAND_GESTURE_STREAM_NAME), gestures_proto_list);
+
+		std::vector<std::shared_ptr<Message>> handedness_proto_list;
+		get_proto_list(output_packets.at(_HANDEDNESS_STREAM_NAME), handedness_proto_list);
+
+		std::vector<std::shared_ptr<Message>> hand_landmarks_proto_list;
+		get_proto_list(output_packets.at(_HAND_LANDMARKS_STREAM_NAME), hand_landmarks_proto_list);
+
+		std::vector<std::shared_ptr<Message>> hand_world_landmarks_proto_list;
+		get_proto_list(output_packets.at(_HAND_WORLD_LANDMARKS_STREAM_NAME), hand_world_landmarks_proto_list);
 
 		std::vector<std::vector<std::shared_ptr<category::Category>>> gesture_results;
 		for (const auto& proto : gestures_proto_list) {
@@ -176,12 +182,13 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 
 		if (options->result_callback) {
 			packets_callback = [options](const PacketMap& output_packets) {
-				if (output_packets.at(_IMAGE_OUT_STREAM_NAME).IsEmpty()) {
+				const auto& image_out_packet = output_packets.at(_IMAGE_OUT_STREAM_NAME);
+				if (image_out_packet.IsEmpty()) {
 					return;
 				}
 
 				auto timestamp_ms = output_packets.at(_HAND_GESTURE_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
-				auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets.at(_IMAGE_OUT_STREAM_NAME));
+				auto image = GetContent<Image>(image_out_packet);
 				auto gesture_recognizer_result = _build_recognition_result(output_packets);
 				options->result_callback(*gesture_recognizer_result, image, timestamp_ms);
 			};
@@ -213,10 +220,10 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 		const Image& image,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options, false);
+		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image, false);
 		auto output_packets = _process_image_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_image(image))) },
-			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_proto(*normalized_rect.to_pb2()))) },
+			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(create_image(image))) },
+			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
 			});
 		return _build_recognition_result(output_packets);
 	}
@@ -226,12 +233,12 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options, false);
+		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image, false);
 		auto output_packets = _process_video_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(
+			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
-			{ _NORM_RECT_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_proto(*normalized_rect.to_pb2()))->At(
+			{ _NORM_RECT_STREAM_NAME, std::move(std::move(create_proto(*normalized_rect.to_pb2()))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
 			});
@@ -243,12 +250,12 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options, false);
+		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image, false);
 		_send_live_stream_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(
+			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
-			{ _NORM_RECT_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_proto(*normalized_rect.to_pb2()))->At(
+			{ _NORM_RECT_STREAM_NAME, std::move(std::move(create_proto(*normalized_rect.to_pb2()))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
 			});

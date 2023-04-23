@@ -411,6 +411,18 @@
         "iid": "717ef6e8-652a-45a8-9d89-f493f60afd1e",
         "clsid": "cfae2461-638e-4d93-b55a-931917c29f3e"
     },
+    "mediapipe::tasks::autoit::components::containers::keypoint": {
+        "iid": "8a4ac32f-c9d9-443d-a869-ae91ed5443a4",
+        "clsid": "85a654f7-13c0-43e5-a215-745b9cf75870"
+    },
+    "mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint": {
+        "iid": "30a29033-ff3a-4ec5-900f-3999587978f2",
+        "clsid": "e9cf30af-fbe0-49e4-b75f-75c6494b8466"
+    },
+    "mediapipe::autoit::components::containers::keypoint": {
+        "iid": "53021300-b233-4e51-b1f7-384e9e818f74",
+        "clsid": "3eab3a0c-8185-42e1-9412-d5e7be2f5bba"
+    },
     "mediapipe::tasks::autoit::components::containers::landmark": {
         "iid": "2f077165-3d66-4655-b682-128c9bf5f32c",
         "clsid": "81c05edf-751a-41d5-9123-a4a3b379e3b2"
@@ -630,6 +642,58 @@
     "mediapipe::autoit::vision::core::vision_task_running_mode": {
         "iid": "97ae305c-5cce-4116-98cf-40323f5d1300",
         "clsid": "1b0cdf77-758a-4bb3-9d0d-8cf761f5d4d3"
+    },
+    "mediapipe::tasks::autoit::vision::face_detector": {
+        "iid": "d285a174-2782-4967-8850-a7df8bbcf1f6",
+        "clsid": "153ae954-7edf-45ef-a6c4-1944ba1c24d7"
+    },
+    "mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions": {
+        "iid": "f49b7980-fe6e-4586-a730-305557449415",
+        "clsid": "8cf070cc-7efa-406c-bc7b-d192c5d6ec41"
+    },
+    "mediapipe::autoit::vision::face_detector": {
+        "iid": "879b9542-dbda-45e3-8163-aaca2342698c",
+        "clsid": "50ab5d64-2f1a-45be-b371-5b581bdb7f5b"
+    },
+    "mediapipe::tasks::autoit::vision::face_detector::FaceDetector": {
+        "iid": "fb905e77-64a9-44dc-a1ea-33758b601094",
+        "clsid": "940c49f9-3ab6-4840-907a-026ed8cc1cf2"
+    },
+    "mediapipe::tasks::autoit::vision::face_landmarker": {
+        "iid": "f07e79c9-aae3-45eb-bc87-af3c23d058c1",
+        "clsid": "b7d1632f-e1ed-4539-8c6b-56acb810aa5f"
+    },
+    "mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes": {
+        "iid": "9f011d6a-1554-4006-9cf5-101c476f07cb",
+        "clsid": "b28855ad-0ab5-441e-bd99-031568e3d461"
+    },
+    "mediapipe::autoit::vision::face_landmarker": {
+        "iid": "9f0cb640-0496-48d0-bd7b-e584cdbe57b0",
+        "clsid": "a644f1b0-56b4-41ea-98ac-472cc6e41a0c"
+    },
+    "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections": {
+        "iid": "a57fcb19-c142-4541-b6ff-10532c5d4bdf",
+        "clsid": "e202d58c-a74e-4de4-acc6-f99b418cd7a3"
+    },
+    "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection": {
+        "iid": "4ccb2e26-d1df-4ad3-bed2-51ef1999d403",
+        "clsid": "8d82fe7c-78f2-452d-8a9b-c4aaf360681e"
+    },
+    "mediapipe::autoit::vision::face_landmarker::FaceLandmarksConnections": {
+        "iid": "4ca8445b-09f5-4949-b2c2-c9ee1db629ce",
+        "clsid": "253d61db-718d-4490-a560-605c15e23755"
+    },
+    "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult": {
+        "iid": "3788d24f-e43c-4d07-8f70-22c2b76c60ba",
+        "clsid": "cc255e25-366c-4086-837d-c70d537030ba"
+    },
+    "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions": {
+        "iid": "b529beb5-3055-492c-99ba-efa5cd1fdc93",
+        "clsid": "b6e8eb34-701c-4a56-8305-3fc833a8cec8"
+    },
+    "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker": {
+        "iid": "4e0614a9-227c-4ea2-bcc8-33c484653452",
+        "clsid": "c38f5d2b-11bf-40ac-a0a7-98f147c0d176"
     },
     "mediapipe::tasks::autoit::vision::gesture_recognizer": {
         "iid": "c7576820-20c7-44fb-9eb9-3b106eb447fa",
@@ -1931,6 +1995,86 @@
         "iid": "135ef3b2-8564-4f51-8431-e6e16021af41",
         "clsid": "6e49120a-f3db-488d-81f1-615dc1eb69fd"
     },
+    "mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions": {
+        "iid": "285dd306-8450-4f7d-89fa-583eef54db6a",
+        "clsid": "d086cd9a-9463-4b50-9ca7-45881bcb4057"
+    },
+    "mediapipe::tasks::cc::vision::face_detector::proto::face_detector_graph_options_pb2": {
+        "iid": "766d0b6f-f1c9-4e29-9dd2-a67fecd0fe6f",
+        "clsid": "10ac854a-20e4-4673-ba77-4886f2228893"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions": {
+        "iid": "629bb6c0-2d5c-4338-8855-72e203925dfd",
+        "clsid": "6d8b85bb-eb25-45ba-8815-c7955a44254b"
+    },
+    "mediapipe::MatrixData": {
+        "iid": "706f3777-f182-430d-9ecb-fdd855e89093",
+        "clsid": "48976660-07df-4f81-a5c3-844d4b96e634"
+    },
+    "mediapipe::framework::formats::matrix_data_pb2": {
+        "iid": "d5177af4-29f4-43a8-a1cb-7feb0f433a79",
+        "clsid": "0002ec14-4317-4d12-b487-9af5db04bbca"
+    },
+    "mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions": {
+        "iid": "247417dd-ba43-470a-8813-90216fc1a8bd",
+        "clsid": "d595cec3-528b-48b1-a892-a01a44ffc3e8"
+    },
+    "mediapipe::tasks::cc::vision::face_geometry::calculators::geometry_pipeline_calculator_pb2": {
+        "iid": "8295f332-20ff-42c4-b9b4-18c2093a5d57",
+        "clsid": "6c1874ec-f942-4bf3-a641-72de88af3e24"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions": {
+        "iid": "f99badc4-558c-44f0-97a6-0a0ac785a0d5",
+        "clsid": "94afa1b9-66db-41ec-896e-ea8847411768"
+    },
+    "mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions": {
+        "iid": "f04e2263-cf98-4e0a-9332-19d2cc7c93de",
+        "clsid": "99b68869-3e6b-46cc-8a40-a45154ef3237"
+    },
+    "mediapipe::tasks::cc::vision::face_geometry::proto::face_geometry_graph_options_pb2": {
+        "iid": "5a6a0033-e29c-4a02-92e6-f26adacba6f8",
+        "clsid": "64637b23-dd1d-42d7-87fd-463b3d785303"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions": {
+        "iid": "3fa8d29a-68bc-48c9-8e94-fb2e2249cf8b",
+        "clsid": "343126c0-76a6-41b5-be71-168c34ed2d28"
+    },
+    "mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions": {
+        "iid": "f8781252-b171-458f-a256-efd9293b2ea1",
+        "clsid": "aa1e44a2-1b79-4b41-8299-bf766f1ada5b"
+    },
+    "mediapipe::tasks::cc::vision::face_landmarker::proto::face_blendshapes_graph_options_pb2": {
+        "iid": "0701e985-29b4-4254-b04d-021dc039218b",
+        "clsid": "be9d6b48-6b63-4c4a-89c2-c52cd81e607f"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions": {
+        "iid": "f0155525-b51c-4cf4-b467-3105537c80f2",
+        "clsid": "99e55aca-66fc-490a-95ec-4cea5ba72715"
+    },
+    "mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions": {
+        "iid": "9e91ad52-6a38-4aac-8c76-04ede10da0b5",
+        "clsid": "4b7e333b-ce81-4f91-bcf6-54915acff951"
+    },
+    "mediapipe::tasks::cc::vision::face_landmarker::proto::face_landmarks_detector_graph_options_pb2": {
+        "iid": "e4c287ce-375e-4b8d-ae3a-cbb7893a4e1c",
+        "clsid": "412475dd-fbcc-4269-af91-536c773c93cd"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions": {
+        "iid": "d362271a-b9ab-4ef4-84cf-83d4fc1aedfc",
+        "clsid": "f8283b70-de00-4d4b-ac78-d2b7795dcbd6"
+    },
+    "mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions": {
+        "iid": "52b5f75b-f333-4678-8d8e-ff3c55501160",
+        "clsid": "e9d9489e-591d-4969-af7e-222311859af0"
+    },
+    "mediapipe::tasks::cc::vision::face_landmarker::proto::face_landmarker_graph_options_pb2": {
+        "iid": "59614db7-cbed-4fa7-b0d8-85311f861a21",
+        "clsid": "3817393a-06fc-485e-83dc-1b2e46ad7529"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions": {
+        "iid": "ab869519-d9b5-4a84-ab82-20de4169793f",
+        "clsid": "b3717c43-d08d-4bef-8ec7-88b0146e9eba"
+    },
     "mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions": {
         "iid": "51d96067-dce2-445d-a75c-b18588259c0f",
         "clsid": "b40d4250-ef67-4658-bb84-e914d7b11020"
@@ -2323,6 +2467,10 @@
         "iid": "57bf2c14-83c5-40c5-a6ab-db9e3976e0b3",
         "clsid": "18d0d748-4ef8-4a86-a487-6a7fa87315a6"
     },
+    "VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint": {
+        "iid": "cadae060-ab6c-4484-afab-801167627b27",
+        "clsid": "46fdcc06-fc5a-4258-ae7f-3a8fb99f0313"
+    },
     "VectorOfShared_ptrTasks_autoit_components_containers_detections_Detection": {
         "iid": "990acb7b-58ca-48ba-a57f-612b2389496d",
         "clsid": "cc01c9a6-f16f-4f82-87bf-9c398928040e"
@@ -2339,13 +2487,21 @@
         "iid": "f991ae8c-a707-4ab1-bc7c-58045e91b74f",
         "clsid": "817a9567-07e4-4521-b84b-eda230da7cea"
     },
-    "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category": {
-        "iid": "0669e9c6-1efb-4779-a906-269e75b211f4",
-        "clsid": "a93f14d9-2fcc-44ba-ac0c-fca0b01d9b4d"
+    "VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection": {
+        "iid": "0ba94273-3fd7-40f2-9e4e-cd9c8180dd16",
+        "clsid": "8511bdff-cbca-4741-993f-dd0145699360"
     },
     "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark": {
         "iid": "c07d9a91-6b6e-40f6-8dd6-573264b77912",
         "clsid": "f0ac4b4c-9f22-404a-9c2b-3995485ba118"
+    },
+    "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category": {
+        "iid": "0669e9c6-1efb-4779-a906-269e75b211f4",
+        "clsid": "a93f14d9-2fcc-44ba-ac0c-fca0b01d9b4d"
+    },
+    "VectorOfMat": {
+        "iid": "ea03173f-483e-4e81-b070-42de4f481444",
+        "clsid": "10f9fc54-d8f3-4b02-b85e-9b85b73f2da8"
     },
     "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark": {
         "iid": "976a9bae-1a19-49ed-961f-c41e7fb7d04b",
@@ -2354,10 +2510,6 @@
     "VectorOfUchar": {
         "iid": "e4e3896c-ff7d-47bf-a44a-ffc2a76261b4",
         "clsid": "a4e1b6f2-3f03-4208-b6a0-9658e8a3640d"
-    },
-    "VectorOfMat": {
-        "iid": "ea03173f-483e-4e81-b070-42de4f481444",
-        "clsid": "10f9fc54-d8f3-4b02-b85e-9b85b73f2da8"
     },
     "VectorOfShared_ptrPacketFactoryConfig": {
         "iid": "f20f7e5a-880a-47fd-b01a-ac0117d749cd",

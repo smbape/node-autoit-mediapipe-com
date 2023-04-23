@@ -48,7 +48,7 @@ namespace mediapipe::tasks::autoit::components::containers::audio_data {
 		}
 	}
 
-	std::shared_ptr<AudioData> AudioData::create_from_mat(cv::Mat src, std::optional<float> sample_rate) {
+	std::shared_ptr<AudioData> AudioData::create_from_mat(cv::Mat src, const std::optional<float>& sample_rate) {
 		auto obj = std::make_shared<AudioData>(src.rows, AudioDataFormat(src.cols * src.channels(), sample_rate));
 		obj->load_from_mat(src);
 		return obj;

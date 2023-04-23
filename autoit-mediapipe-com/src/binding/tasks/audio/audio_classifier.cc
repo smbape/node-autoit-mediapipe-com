@@ -29,6 +29,9 @@ namespace {
 	using namespace mediapipe::tasks::autoit::components::containers::classification_result;
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::autoit::packet_creator;
+	using namespace mediapipe::autoit::packet_getter;
+	using namespace google::protobuf;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -44,7 +47,7 @@ namespace {
 	const std::string _TIMESTAMPED_CLASSIFICATIONS_TAG = "TIMESTAMPED_CLASSIFICATIONS";
 	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
 
-	const std::string optional_to_string(std::optional<float> v) {
+	const std::string optional_to_string(const std::optional<float>& v) {
 		std::ostringstream ss;
 		if (v.has_value()) {
 			ss << *v;
@@ -93,7 +96,7 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 
 				mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 				classification_result_proto.CopyFrom(
-					*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
+					*get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 				);
 				options->result_callback(
 					*AudioClassifierResult::create_from_pb2(classification_result_proto),
@@ -123,14 +126,15 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 
 	void AudioClassifier::classify(std::vector<std::shared_ptr<AudioClassifierResult>>& output_list, const AudioData& audio_clip) {
 		AUTOIT_ASSERT_THROW(audio_clip.audio_format().sample_rate, "Must provide the audio sample rate in audio data.");
-		auto packet = mediapipe::autoit::packet_creator::create_matrix(audio_clip.buffer(), true);
+		auto packet = create_matrix(audio_clip.buffer(), true);
 
 		auto output_packets = _process_audio_clip({
 			{ _AUDIO_IN_STREAM_NAME, std::move(*std::move(packet)) },
 			{ _SAMPLE_RATE_IN_STREAM_NAME, std::move(MakePacket<double>(*audio_clip.audio_format().sample_rate)) },
 			});
 
-		auto classification_result_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_TIMESTAMPED_CLASSIFICATIONS_STREAM_NAME));
+		std::vector<std::shared_ptr<Message>> classification_result_proto_list;
+		get_proto_list(output_packets.at(_TIMESTAMPED_CLASSIFICATIONS_STREAM_NAME), classification_result_proto_list);
 		for (const auto& proto : classification_result_proto_list) {
 			mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 			classification_result_proto.CopyFrom(*proto);
@@ -152,7 +156,7 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 			);
 		}
 
-		auto packet = mediapipe::autoit::packet_creator::create_matrix(audio_block.buffer(), true);
+		auto packet = create_matrix(audio_block.buffer(), true);
 
 		_send_audio_stream_data({
 			{ _AUDIO_IN_STREAM_NAME, std::move(std::move(packet)->At(Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND))) }

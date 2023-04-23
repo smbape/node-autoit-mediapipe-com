@@ -7,7 +7,8 @@
 #include "binding/tasks/core/task_info.h"
 #include "binding/tasks/vision/core/base_vision_task_api.h"
 #include "binding/tasks/vision/core/vision_task_running_mode.h"
-#include <functional>
+#include "binding/packet_getter.h"
+#include "binding/packet_creator.h"
 
 namespace mediapipe::tasks::autoit::vision::image_segmenter {
 	using ImageSegmenterResultRawCallback = void(*)(const std::vector<Image>&, const Image&, int64_t);

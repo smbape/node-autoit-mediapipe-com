@@ -18,8 +18,8 @@ namespace mediapipe::tasks::autoit::text::text_embedder {
 
 		CV_WRAP TextEmbedderOptions(
 			std::shared_ptr<autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
-			std::optional<bool> l2_normalize = std::optional<bool>(),
-			std::optional<bool> quantize = std::optional<bool>()
+			const std::optional<bool>& l2_normalize = std::optional<bool>(),
+			const std::optional<bool>& quantize = std::optional<bool>()
 		)
 			:
 			base_options(base_options),

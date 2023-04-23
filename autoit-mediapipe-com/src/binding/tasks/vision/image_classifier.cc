@@ -1,6 +1,4 @@
 #include "binding/tasks/vision/image_classifier.h"
-#include "binding/packet_getter.h"
-#include "binding/packet_creator.h"
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback);
 
@@ -27,6 +25,8 @@ namespace {
 	using namespace mediapipe::tasks::autoit::components::containers::classification_result;
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::autoit::packet_creator;
+	using namespace mediapipe::autoit::packet_getter;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -71,16 +71,17 @@ namespace mediapipe::tasks::autoit::vision::image_classifier {
 
 		if (options->result_callback) {
 			packets_callback = [options](const PacketMap& output_packets) {
-				if (output_packets.at(_IMAGE_OUT_STREAM_NAME).IsEmpty()) {
+				const auto& image_out_packet = output_packets.at(_IMAGE_OUT_STREAM_NAME);
+				if (image_out_packet.IsEmpty()) {
 					return;
 				}
 
-				auto timestamp_ms = output_packets.at(_IMAGE_OUT_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
-				auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets.at(_IMAGE_OUT_STREAM_NAME));
+				auto timestamp_ms = image_out_packet.Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
+				auto image = GetContent<Image>(image_out_packet);
 
 				mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 				classification_result_proto.CopyFrom(
-					*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
+					*get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 				);
 				options->result_callback(
 					*ImageClassifierResult::create_from_pb2(classification_result_proto),
@@ -113,15 +114,15 @@ namespace mediapipe::tasks::autoit::vision::image_classifier {
 		const Image& image,
 		std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options);
+		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image);
 		auto output_packets = _process_image_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_image(image))) },
-			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_proto(*normalized_rect.to_pb2()))) },
+			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(create_image(image))) },
+			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
 			});
 
 		mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 		classification_result_proto.CopyFrom(
-			*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
+			*get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 		);
 
 		return ImageClassifierResult::create_from_pb2(classification_result_proto);
@@ -132,20 +133,20 @@ namespace mediapipe::tasks::autoit::vision::image_classifier {
 		int64_t timestamp_ms,
 		std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options);
+		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image);
 
 		auto output_packets = _process_video_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(
+			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
-			{ _NORM_RECT_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_proto(*normalized_rect.to_pb2()))->At(
+			{ _NORM_RECT_STREAM_NAME, std::move(std::move(create_proto(*normalized_rect.to_pb2()))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
 			});
 
 		mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
 		classification_result_proto.CopyFrom(
-			*mediapipe::autoit::packet_getter::get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
+			*get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
 		);
 
 		return ImageClassifierResult::create_from_pb2(classification_result_proto);
@@ -156,13 +157,13 @@ namespace mediapipe::tasks::autoit::vision::image_classifier {
 		int64_t timestamp_ms,
 		std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options);
+		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image);
 
 		_send_live_stream_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(
+			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
-			{ _NORM_RECT_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_proto(*normalized_rect.to_pb2()))->At(
+			{ _NORM_RECT_STREAM_NAME, std::move(std::move(create_proto(*normalized_rect.to_pb2()))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
 			});

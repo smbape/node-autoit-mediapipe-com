@@ -11,6 +11,8 @@
 #include "binding/tasks/vision/core/base_vision_task_api.h"
 #include "binding/tasks/vision/core/image_processing_options.h"
 #include "binding/tasks/vision/core/vision_task_running_mode.h"
+#include "binding/packet_getter.h"
+#include "binding/packet_creator.h"
 #include <functional>
 
 namespace mediapipe::tasks::autoit::vision::image_classifier {
@@ -26,8 +28,8 @@ namespace mediapipe::tasks::autoit::vision::image_classifier {
 			std::shared_ptr<autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
 			core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
 			const std::optional<std::string>& display_names_locale = std::optional<std::string>(),
-			std::optional<int> max_results = std::optional<int>(),
-			std::optional<float> score_threshold = std::optional<float>(),
+			const std::optional<int>& max_results = std::optional<int>(),
+			const std::optional<float>& score_threshold = std::optional<float>(),
 			const std::vector<std::string>& category_allowlist = std::vector<std::string>(),
 			const std::vector<std::string>& category_denylist = std::vector<std::string>(),
 			ImageClassifierResultCallback result_callback = nullptr

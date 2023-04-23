@@ -20,8 +20,13 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 		}
 
 		pb2_obj->mutable_location_data()->set_format(LocationData::BOUNDING_BOX);
+
 		if (bounding_box) {
 			pb2_obj->mutable_location_data()->mutable_bounding_box()->CopyFrom(*bounding_box->to_pb2());
+		}
+
+		for (const auto& keypoint : keypoints) {
+			pb2_obj->mutable_location_data()->add_relative_keypoints()->CopyFrom(*keypoint->to_pb2());
 		}
 
 		return pb2_obj;
@@ -52,9 +57,15 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 			idx++;
 		}
 
+		std::vector<std::shared_ptr<keypoint::NormalizedKeypoint>> keypoints;
+		for (const auto& keypoint : pb2_obj.location_data().relative_keypoints()) {
+			keypoints.push_back(keypoint::NormalizedKeypoint::create_from_pb2(keypoint));
+		}
+
 		return std::make_shared<Detection>(
 			bounding_box::BoundingBox::create_from_pb2(pb2_obj.location_data().bounding_box()),
-			categories
+			categories,
+			keypoints
 			);
 	}
 

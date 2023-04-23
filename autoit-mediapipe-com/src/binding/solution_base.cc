@@ -29,6 +29,7 @@ namespace fs = std::filesystem;
 using namespace google::protobuf;
 using namespace google::protobuf::autoit::cmessage;
 using namespace mediapipe::autoit::packet_getter;
+using namespace google::protobuf;
 
 // A mutex to guard the output stream observer autoit callback function.
 // Only one autoit callback can run at once.
@@ -559,9 +560,12 @@ namespace mediapipe::autoit::solution_base {
 		case PacketDataType::PROTO:
 			hr = autoit_from(get_proto(output_packet), _retval);
 			break;
-		case PacketDataType::PROTO_LIST:
-			hr = autoit_from(get_proto_list(output_packet), _retval);
+		case PacketDataType::PROTO_LIST: {
+			std::vector<std::shared_ptr<Message>> proto_list;
+			get_proto_list(output_packet, proto_list);
+			hr = autoit_from(proto_list, _retval);
 			break;
+		}
 		default:
 			AUTOIT_THROW("get packet content of data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
 		}

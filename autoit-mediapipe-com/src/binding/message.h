@@ -32,6 +32,12 @@ namespace google::protobuf::autoit::cmessage {
 	void InitAttributes(Message& message,
 		std::map<std::string, _variant_t>& attrs);
 
+	const FieldDescriptor* GetFieldDescriptor(
+		const Message& message,
+		const std::string& field_name,
+		bool& is_in_oneof
+	);
+
 	CV_WRAP _variant_t GetFieldValue(
 		Message& message,
 		const std::string& field_name

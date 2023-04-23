@@ -1,8 +1,5 @@
 #include "binding/tasks/vision/core/base_vision_task_api.h"
 
-#define _USE_MATH_DEFINES // for C++
-#include <cmath>
-
 namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api {
 	using vision_task_running_mode::VisionTaskRunningMode;
 	using components::containers::rect::NormalizedRect;
@@ -47,7 +44,11 @@ namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api {
 		_runner->Send(inputs);
 	}
 
-	NormalizedRect BaseVisionTaskApi::convert_to_normalized_rect(std::shared_ptr<ImageProcessingOptions> options, bool roi_allowed) {
+	NormalizedRect BaseVisionTaskApi::convert_to_normalized_rect(
+		std::shared_ptr<image_processing_options::ImageProcessingOptions> options,
+		const mediapipe::Image& image,
+		bool roi_allowed
+	) {
 		NormalizedRect normalized_rect;
 		normalized_rect.rotation = 0;
 		normalized_rect.x_center = 0.5;
@@ -75,10 +76,28 @@ namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api {
 			normalized_rect.height = roi.bottom - roi.top;
 		}
 
+		// For 90° and 270° rotations, we need to swap width and height.
+		// This is due to the internal behavior of ImageToTensorCalculator, which:
+		// - first denormalizes the provided rect by multiplying the rect width or
+		//   height by the image width or height, repectively.
+		// - then rotates this by denormalized rect by the provided rotation, and
+		//   uses this for cropping,
+		// - then finally rotates this back.
+		if (std::abs(options->rotation_degrees % 180) != 0) {
+			auto w = normalized_rect.height * image.height() / image.width();
+			auto h = normalized_rect.width * image.width() / image.height();
+			normalized_rect.width = w;
+			normalized_rect.height = h;
+		}
+
 		return normalized_rect;
 	}
 
 	void BaseVisionTaskApi::close() {
 		_runner->Close();
+	}
+
+	std::shared_ptr<mediapipe::CalculatorGraphConfig> BaseVisionTaskApi::get_graph_config() {
+		return ::autoit::reference_internal(_runner->GetGraphConfig());
 	}
 }

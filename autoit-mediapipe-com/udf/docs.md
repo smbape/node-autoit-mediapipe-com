@@ -576,6 +576,7 @@
   - [containers.classification\_result](#containersclassification%5C_result)
   - [containers.detections](#containersdetections)
   - [containers.embedding\_result](#containersembedding%5C_result)
+  - [containers.keypoint](#containerskeypoint)
   - [containers.landmark](#containerslandmark)
   - [containers.landmark\_detection\_result](#containerslandmark%5C_detection%5C_result)
   - [containers.rect](#containersrect)
@@ -604,6 +605,7 @@
   - [containers.classification\_result](#containersclassification%5C_result-1)
   - [containers.detections](#containersdetections-1)
   - [containers.embedding\_result](#containersembedding%5C_result-1)
+  - [containers.keypoint](#containerskeypoint-1)
   - [containers.landmark](#containerslandmark-1)
   - [containers.landmark\_detection\_result](#containerslandmark%5C_detection%5C_result-1)
   - [containers.rect](#containersrect-1)
@@ -671,6 +673,7 @@
 - [mediapipe::tasks::autoit::components::containers::detections::Detection](#mediapipetasksautoitcomponentscontainersdetectionsdetection)
   - [Detection.bounding\_box](#detectionbounding%5C_box)
   - [Detection.categories](#detectioncategories)
+  - [Detection.keypoints](#detectionkeypoints)
   - [mediapipe::tasks::autoit::components::containers::detections::Detection::get\_create](#mediapipetasksautoitcomponentscontainersdetectionsdetectionget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::detections::Detection::create\_from\_pb2](#mediapipetasksautoitcomponentscontainersdetectionsdetectioncreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::detections::Detection::to\_pb2](#mediapipetasksautoitcomponentscontainersdetectionsdetectionto%5C_pb2)
@@ -699,6 +702,18 @@
   - [EmbeddingResult.timestamp\_ms](#embeddingresulttimestamp%5C_ms)
   - [mediapipe::tasks::autoit::components::containers::embedding\_result::EmbeddingResult::get\_create](#mediapipetasksautoitcomponentscontainersembedding%5C_resultembeddingresultget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::embedding\_result::EmbeddingResult::create\_from\_pb2](#mediapipetasksautoitcomponentscontainersembedding%5C_resultembeddingresultcreate%5C_from%5C_pb2)
+- [mediapipe::tasks::autoit::components::containers::keypoint](#mediapipetasksautoitcomponentscontainerskeypoint)
+  - [keypoint.NormalizedKeypoint](#keypointnormalizedkeypoint)
+- [mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint](#mediapipetasksautoitcomponentscontainerskeypointnormalizedkeypoint)
+  - [NormalizedKeypoint.x](#normalizedkeypointx)
+  - [NormalizedKeypoint.y](#normalizedkeypointy)
+  - [NormalizedKeypoint.label](#normalizedkeypointlabel)
+  - [NormalizedKeypoint.score](#normalizedkeypointscore)
+  - [mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::get\_create](#mediapipetasksautoitcomponentscontainerskeypointnormalizedkeypointget%5C_create)
+  - [mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::create\_from\_pb2](#mediapipetasksautoitcomponentscontainerskeypointnormalizedkeypointcreate%5C_from%5C_pb2)
+  - [mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::to\_pb2](#mediapipetasksautoitcomponentscontainerskeypointnormalizedkeypointto%5C_pb2)
+- [mediapipe::autoit::components::containers::keypoint](#mediapipeautoitcomponentscontainerskeypoint)
+  - [keypoint.NormalizedKeypoint](#keypointnormalizedkeypoint-1)
 - [mediapipe::tasks::autoit::components::containers::landmark](#mediapipetasksautoitcomponentscontainerslandmark)
   - [landmark.Landmark](#landmarklandmark)
   - [landmark.NormalizedLandmark](#landmarknormalizedlandmark)
@@ -862,6 +877,8 @@
   - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::embed](#mediapipetasksautoittexttext%5C_embeddertextembedderembed)
 - [mediapipe::tasks::autoit::vision](#mediapipetasksautoitvision)
   - [vision.core](#visioncore)
+  - [vision.face\_detector](#visionface%5C_detector)
+  - [vision.face\_landmarker](#visionface%5C_landmarker)
   - [vision.gesture\_recognizer](#visiongesture%5C_recognizer)
   - [vision.hand\_landmarker](#visionhand%5C_landmarker)
   - [vision.image\_classifier](#visionimage%5C_classifier)
@@ -891,6 +908,8 @@
   - [core.vision\_task\_running\_mode](#corevision%5C_task%5C_running%5C_mode)
 - [mediapipe::autoit::vision](#mediapipeautoitvision)
   - [vision.core](#visioncore-1)
+  - [vision.face\_detector](#visionface%5C_detector-1)
+  - [vision.face\_landmarker](#visionface%5C_landmarker-1)
   - [vision.gesture\_recognizer](#visiongesture%5C_recognizer-1)
   - [vision.hand\_landmarker](#visionhand%5C_landmarker-1)
   - [vision.image\_classifier](#visionimage%5C_classifier-1)
@@ -910,6 +929,7 @@
   - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::\_send\_live\_stream\_data](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapi%5C_send%5C_live%5C_stream%5C_data)
   - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::close](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiclose)
   - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::convert\_to\_normalized\_rect](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiconvert%5C_to%5C_normalized%5C_rect)
+  - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::get\_graph\_config](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiget%5C_graph%5C_config)
 - [mediapipe::autoit::vision::core::base\_vision\_task\_api](#mediapipeautoitvisioncorebase%5C_vision%5C_task%5C_api)
   - [base\_vision\_task\_api.BaseVisionTaskApi](#base%5C_vision%5C_task%5C_apibasevisiontaskapi-1)
 - [mediapipe::tasks::autoit::vision::core::image\_processing\_options](#mediapipetasksautoitvisioncoreimage%5C_processing%5C_options)
@@ -928,6 +948,145 @@
   - [VisionTaskRunningMode.LIVE\_STREAM](#visiontaskrunningmodelive%5C_stream)
 - [mediapipe::autoit::vision::core::vision\_task\_running\_mode](#mediapipeautoitvisioncorevision%5C_task%5C_running%5C_mode)
   - [vision\_task\_running\_mode.VisionTaskRunningMode](#vision%5C_task%5C_running%5C_modevisiontaskrunningmode-1)
+- [mediapipe::tasks::autoit::vision::face\_detector](#mediapipetasksautoitvisionface%5C_detector)
+  - [face\_detector.FaceDetectorOptions](#face%5C_detectorfacedetectoroptions)
+  - [face\_detector.FaceDetector](#face%5C_detectorfacedetector)
+- [mediapipe::tasks::autoit::vision::face\_detector::FaceDetectorOptions](#mediapipetasksautoitvisionface%5C_detectorfacedetectoroptions)
+  - [FaceDetectorOptions.base\_options](#facedetectoroptionsbase%5C_options)
+  - [FaceDetectorOptions.running\_mode](#facedetectoroptionsrunning%5C_mode)
+  - [FaceDetectorOptions.min\_detection\_confidence](#facedetectoroptionsmin%5C_detection%5C_confidence)
+  - [FaceDetectorOptions.min\_suppression\_threshold](#facedetectoroptionsmin%5C_suppression%5C_threshold)
+  - [FaceDetectorOptions.result\_callback](#facedetectoroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetectorOptions::get\_create](#mediapipetasksautoitvisionface%5C_detectorfacedetectoroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetectorOptions::to\_pb2](#mediapipetasksautoitvisionface%5C_detectorfacedetectoroptionsto%5C_pb2)
+- [mediapipe::autoit::vision::face\_detector](#mediapipeautoitvisionface%5C_detector)
+  - [face\_detector.FaceDetectorOptions](#face%5C_detectorfacedetectoroptions-1)
+  - [face\_detector.FaceDetector](#face%5C_detectorfacedetector-1)
+- [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector](#mediapipetasksautoitvisionface%5C_detectorfacedetector)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::\_process\_image\_data](#mediapipetasksautoitvisionface%5C_detectorfacedetector%5C_process%5C_image%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::\_process\_video\_data](#mediapipetasksautoitvisionface%5C_detectorfacedetector%5C_process%5C_video%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::\_send\_live\_stream\_data](#mediapipetasksautoitvisionface%5C_detectorfacedetector%5C_send%5C_live%5C_stream%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::close](#mediapipetasksautoitvisionface%5C_detectorfacedetectorclose)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::convert\_to\_normalized\_rect](#mediapipetasksautoitvisionface%5C_detectorfacedetectorconvert%5C_to%5C_normalized%5C_rect)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::create\_from\_model\_path](#mediapipetasksautoitvisionface%5C_detectorfacedetectorcreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::create\_from\_options](#mediapipetasksautoitvisionface%5C_detectorfacedetectorcreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::detect](#mediapipetasksautoitvisionface%5C_detectorfacedetectordetect)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::detect\_async](#mediapipetasksautoitvisionface%5C_detectorfacedetectordetect%5C_async)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::detect\_for\_video](#mediapipetasksautoitvisionface%5C_detectorfacedetectordetect%5C_for%5C_video)
+  - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::get\_graph\_config](#mediapipetasksautoitvisionface%5C_detectorfacedetectorget%5C_graph%5C_config)
+- [mediapipe::tasks::autoit::vision::face\_landmarker](#mediapipetasksautoitvisionface%5C_landmarker)
+  - [face\_landmarker.Blendshapes](#face%5C_landmarkerblendshapes)
+  - [face\_landmarker.FaceLandmarksConnections](#face%5C_landmarkerfacelandmarksconnections)
+  - [face\_landmarker.FaceLandmarkerResult](#face%5C_landmarkerfacelandmarkerresult)
+  - [face\_landmarker.FaceLandmarkerOptions](#face%5C_landmarkerfacelandmarkeroptions)
+  - [face\_landmarker.FaceLandmarker](#face%5C_landmarkerfacelandmarker)
+- [mediapipe::tasks::autoit::vision::face\_landmarker::Blendshapes](#mediapipetasksautoitvisionface%5C_landmarkerblendshapes)
+  - [Blendshapes.NEUTRAL](#blendshapesneutral)
+  - [Blendshapes.BROW\_DOWN\_LEFT](#blendshapesbrow%5C_down%5C_left)
+  - [Blendshapes.BROW\_DOWN\_RIGHT](#blendshapesbrow%5C_down%5C_right)
+  - [Blendshapes.BROW\_INNER\_UP](#blendshapesbrow%5C_inner%5C_up)
+  - [Blendshapes.BROW\_OUTER\_UP\_LEFT](#blendshapesbrow%5C_outer%5C_up%5C_left)
+  - [Blendshapes.BROW\_OUTER\_UP\_RIGHT](#blendshapesbrow%5C_outer%5C_up%5C_right)
+  - [Blendshapes.CHEEK\_PUFF](#blendshapescheek%5C_puff)
+  - [Blendshapes.CHEEK\_SQUINT\_LEFT](#blendshapescheek%5C_squint%5C_left)
+  - [Blendshapes.CHEEK\_SQUINT\_RIGHT](#blendshapescheek%5C_squint%5C_right)
+  - [Blendshapes.EYE\_BLINK\_LEFT](#blendshapeseye%5C_blink%5C_left)
+  - [Blendshapes.EYE\_BLINK\_RIGHT](#blendshapeseye%5C_blink%5C_right)
+  - [Blendshapes.EYE\_LOOK\_DOWN\_LEFT](#blendshapeseye%5C_look%5C_down%5C_left)
+  - [Blendshapes.EYE\_LOOK\_DOWN\_RIGHT](#blendshapeseye%5C_look%5C_down%5C_right)
+  - [Blendshapes.EYE\_LOOK\_IN\_LEFT](#blendshapeseye%5C_look%5C_in%5C_left)
+  - [Blendshapes.EYE\_LOOK\_IN\_RIGHT](#blendshapeseye%5C_look%5C_in%5C_right)
+  - [Blendshapes.EYE\_LOOK\_OUT\_LEFT](#blendshapeseye%5C_look%5C_out%5C_left)
+  - [Blendshapes.EYE\_LOOK\_OUT\_RIGHT](#blendshapeseye%5C_look%5C_out%5C_right)
+  - [Blendshapes.EYE\_LOOK\_UP\_LEFT](#blendshapeseye%5C_look%5C_up%5C_left)
+  - [Blendshapes.EYE\_LOOK\_UP\_RIGHT](#blendshapeseye%5C_look%5C_up%5C_right)
+  - [Blendshapes.EYE\_SQUINT\_LEFT](#blendshapeseye%5C_squint%5C_left)
+  - [Blendshapes.EYE\_SQUINT\_RIGHT](#blendshapeseye%5C_squint%5C_right)
+  - [Blendshapes.EYE\_WIDE\_LEFT](#blendshapeseye%5C_wide%5C_left)
+  - [Blendshapes.EYE\_WIDE\_RIGHT](#blendshapeseye%5C_wide%5C_right)
+  - [Blendshapes.JAW\_FORWARD](#blendshapesjaw%5C_forward)
+  - [Blendshapes.JAW\_LEFT](#blendshapesjaw%5C_left)
+  - [Blendshapes.JAW\_OPEN](#blendshapesjaw%5C_open)
+  - [Blendshapes.JAW\_RIGHT](#blendshapesjaw%5C_right)
+  - [Blendshapes.MOUTH\_CLOSE](#blendshapesmouth%5C_close)
+  - [Blendshapes.MOUTH\_DIMPLE\_LEFT](#blendshapesmouth%5C_dimple%5C_left)
+  - [Blendshapes.MOUTH\_DIMPLE\_RIGHT](#blendshapesmouth%5C_dimple%5C_right)
+  - [Blendshapes.MOUTH\_FROWN\_LEFT](#blendshapesmouth%5C_frown%5C_left)
+  - [Blendshapes.MOUTH\_FROWN\_RIGHT](#blendshapesmouth%5C_frown%5C_right)
+  - [Blendshapes.MOUTH\_FUNNEL](#blendshapesmouth%5C_funnel)
+  - [Blendshapes.MOUTH\_LEFT](#blendshapesmouth%5C_left)
+  - [Blendshapes.MOUTH\_LOWER\_DOWN\_LEFT](#blendshapesmouth%5C_lower%5C_down%5C_left)
+  - [Blendshapes.MOUTH\_LOWER\_DOWN\_RIGHT](#blendshapesmouth%5C_lower%5C_down%5C_right)
+  - [Blendshapes.MOUTH\_PRESS\_LEFT](#blendshapesmouth%5C_press%5C_left)
+  - [Blendshapes.MOUTH\_PRESS\_RIGHT](#blendshapesmouth%5C_press%5C_right)
+  - [Blendshapes.MOUTH\_PUCKER](#blendshapesmouth%5C_pucker)
+  - [Blendshapes.MOUTH\_RIGHT](#blendshapesmouth%5C_right)
+  - [Blendshapes.MOUTH\_ROLL\_LOWER](#blendshapesmouth%5C_roll%5C_lower)
+  - [Blendshapes.MOUTH\_ROLL\_UPPER](#blendshapesmouth%5C_roll%5C_upper)
+  - [Blendshapes.MOUTH\_SHRUG\_LOWER](#blendshapesmouth%5C_shrug%5C_lower)
+  - [Blendshapes.MOUTH\_SHRUG\_UPPER](#blendshapesmouth%5C_shrug%5C_upper)
+  - [Blendshapes.MOUTH\_SMILE\_LEFT](#blendshapesmouth%5C_smile%5C_left)
+  - [Blendshapes.MOUTH\_SMILE\_RIGHT](#blendshapesmouth%5C_smile%5C_right)
+  - [Blendshapes.MOUTH\_STRETCH\_LEFT](#blendshapesmouth%5C_stretch%5C_left)
+  - [Blendshapes.MOUTH\_STRETCH\_RIGHT](#blendshapesmouth%5C_stretch%5C_right)
+  - [Blendshapes.MOUTH\_UPPER\_UP\_LEFT](#blendshapesmouth%5C_upper%5C_up%5C_left)
+  - [Blendshapes.MOUTH\_UPPER\_UP\_RIGHT](#blendshapesmouth%5C_upper%5C_up%5C_right)
+  - [Blendshapes.NOSE\_SNEER\_LEFT](#blendshapesnose%5C_sneer%5C_left)
+  - [Blendshapes.NOSE\_SNEER\_RIGHT](#blendshapesnose%5C_sneer%5C_right)
+- [mediapipe::autoit::vision::face\_landmarker](#mediapipeautoitvisionface%5C_landmarker)
+  - [face\_landmarker.Blendshapes](#face%5C_landmarkerblendshapes-1)
+  - [face\_landmarker.FaceLandmarksConnections](#face%5C_landmarkerfacelandmarksconnections-1)
+  - [face\_landmarker.FaceLandmarkerResult](#face%5C_landmarkerfacelandmarkerresult-1)
+  - [face\_landmarker.FaceLandmarkerOptions](#face%5C_landmarkerfacelandmarkeroptions-1)
+  - [face\_landmarker.FaceLandmarker](#face%5C_landmarkerfacelandmarker-1)
+- [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarksconnections)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_LIPS](#facelandmarksconnectionsface%5C_landmarks%5C_lips)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_LEFT\_EYE](#facelandmarksconnectionsface%5C_landmarks%5C_left%5C_eye)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_LEFT\_EYEBROW](#facelandmarksconnectionsface%5C_landmarks%5C_left%5C_eyebrow)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_LEFT\_IRIS](#facelandmarksconnectionsface%5C_landmarks%5C_left%5C_iris)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_RIGHT\_EYE](#facelandmarksconnectionsface%5C_landmarks%5C_right%5C_eye)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_RIGHT\_EYEBROW](#facelandmarksconnectionsface%5C_landmarks%5C_right%5C_eyebrow)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_RIGHT\_IRIS](#facelandmarksconnectionsface%5C_landmarks%5C_right%5C_iris)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_FACE\_OVAL](#facelandmarksconnectionsface%5C_landmarks%5C_face%5C_oval)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_CONTOURS](#facelandmarksconnectionsface%5C_landmarks%5C_contours)
+  - [FaceLandmarksConnections.FACE\_LANDMARKS\_TESSELATION](#facelandmarksconnectionsface%5C_landmarks%5C_tesselation)
+  - [FaceLandmarksConnections.Connection](#facelandmarksconnectionsconnection)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections::get\_create](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarksconnectionsget%5C_create)
+- [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections::Connection](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarksconnectionsconnection)
+  - [Connection.start](#connectionstart)
+  - [Connection.end](#connectionend)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections::Connection::get\_create](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarksconnectionsconnectionget%5C_create)
+- [mediapipe::autoit::vision::face\_landmarker::FaceLandmarksConnections](#mediapipeautoitvisionface%5C_landmarkerfacelandmarksconnections)
+  - [FaceLandmarksConnections.Connection](#facelandmarksconnectionsconnection-1)
+- [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerResult](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerresult)
+  - [FaceLandmarkerResult.face\_landmarks](#facelandmarkerresultface%5C_landmarks)
+  - [FaceLandmarkerResult.face\_blendshapes](#facelandmarkerresultface%5C_blendshapes)
+  - [FaceLandmarkerResult.facial\_transformation\_matrixes](#facelandmarkerresultfacial%5C_transformation%5C_matrixes)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerResult::get\_create](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerresultget%5C_create)
+- [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerOptions](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkeroptions)
+  - [FaceLandmarkerOptions.base\_options](#facelandmarkeroptionsbase%5C_options)
+  - [FaceLandmarkerOptions.running\_mode](#facelandmarkeroptionsrunning%5C_mode)
+  - [FaceLandmarkerOptions.num\_faces](#facelandmarkeroptionsnum%5C_faces)
+  - [FaceLandmarkerOptions.min\_face\_detection\_confidence](#facelandmarkeroptionsmin%5C_face%5C_detection%5C_confidence)
+  - [FaceLandmarkerOptions.min\_face\_presence\_confidence](#facelandmarkeroptionsmin%5C_face%5C_presence%5C_confidence)
+  - [FaceLandmarkerOptions.min\_tracking\_confidence](#facelandmarkeroptionsmin%5C_tracking%5C_confidence)
+  - [FaceLandmarkerOptions.output\_face\_blendshapes](#facelandmarkeroptionsoutput%5C_face%5C_blendshapes)
+  - [FaceLandmarkerOptions.output\_facial\_transformation\_matrixes](#facelandmarkeroptionsoutput%5C_facial%5C_transformation%5C_matrixes)
+  - [FaceLandmarkerOptions.result\_callback](#facelandmarkeroptionsresult%5C_callback)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerOptions::get\_create](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkeroptionsget%5C_create)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerOptions::to\_pb2](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkeroptionsto%5C_pb2)
+- [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarker)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::\_process\_image\_data](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarker%5C_process%5C_image%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::\_process\_video\_data](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarker%5C_process%5C_video%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::\_send\_live\_stream\_data](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarker%5C_send%5C_live%5C_stream%5C_data)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::close](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerclose)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::convert\_to\_normalized\_rect](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerconvert%5C_to%5C_normalized%5C_rect)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::create\_from\_model\_path](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkercreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::create\_from\_options](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::detect](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerdetect)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::detect\_async](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerdetect%5C_async)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::detect\_for\_video](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerdetect%5C_for%5C_video)
+  - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::get\_graph\_config](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerget%5C_graph%5C_config)
 - [mediapipe::tasks::autoit::vision::gesture\_recognizer](#mediapipetasksautoitvisiongesture%5C_recognizer)
   - [gesture\_recognizer.GestureRecognizerResult](#gesture%5C_recognizergesturerecognizerresult)
   - [gesture\_recognizer.GestureRecognizerOptions](#gesture%5C_recognizergesturerecognizeroptions)
@@ -962,6 +1121,7 @@
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::convert\_to\_normalized\_rect](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerconvert%5C_to%5C_normalized%5C_rect)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::create\_from\_model\_path](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizercreate%5C_from%5C_model%5C_path)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::create\_from\_options](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::get\_graph\_config](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerget%5C_graph%5C_config)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerrecognize)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize\_async](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerrecognize%5C_async)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize\_for\_video](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerrecognize%5C_for%5C_video)
@@ -1023,6 +1183,7 @@
   - [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarker::detect](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkerdetect)
   - [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarker::detect\_async](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkerdetect%5C_async)
   - [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarker::detect\_for\_video](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkerdetect%5C_for%5C_video)
+  - [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarker::get\_graph\_config](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkerget%5C_graph%5C_config)
 - [mediapipe::tasks::autoit::vision::image\_classifier](#mediapipetasksautoitvisionimage%5C_classifier)
   - [image\_classifier.ImageClassifierOptions](#image%5C_classifierimageclassifieroptions)
   - [image\_classifier.ImageClassifier](#image%5C_classifierimageclassifier)
@@ -1052,6 +1213,7 @@
   - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::convert\_to\_normalized\_rect](#mediapipetasksautoitvisionimage%5C_classifierimageclassifierconvert%5C_to%5C_normalized%5C_rect)
   - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::create\_from\_model\_path](#mediapipetasksautoitvisionimage%5C_classifierimageclassifiercreate%5C_from%5C_model%5C_path)
   - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::create\_from\_options](#mediapipetasksautoitvisionimage%5C_classifierimageclassifiercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::get\_graph\_config](#mediapipetasksautoitvisionimage%5C_classifierimageclassifierget%5C_graph%5C_config)
 - [mediapipe::tasks::autoit::vision::image\_embedder](#mediapipetasksautoitvisionimage%5C_embedder)
   - [image\_embedder.ImageEmbedderOptions](#image%5C_embedderimageembedderoptions)
   - [image\_embedder.ImageEmbedder](#image%5C_embedderimageembedder)
@@ -1079,6 +1241,7 @@
   - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed](#mediapipetasksautoitvisionimage%5C_embedderimageembedderembed)
   - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed\_async](#mediapipetasksautoitvisionimage%5C_embedderimageembedderembed%5C_async)
   - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::embed\_for\_video](#mediapipetasksautoitvisionimage%5C_embedderimageembedderembed%5C_for%5C_video)
+  - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::get\_graph\_config](#mediapipetasksautoitvisionimage%5C_embedderimageembedderget%5C_graph%5C_config)
 - [mediapipe::tasks::autoit::vision::image\_segmenter](#mediapipetasksautoitvisionimage%5C_segmenter)
   - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions)
   - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter)
@@ -1103,6 +1266,7 @@
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::convert\_to\_normalized\_rect](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenterconvert%5C_to%5C_normalized%5C_rect)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::create\_from\_model\_path](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentercreate%5C_from%5C_model%5C_path)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::create\_from\_options](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentercreate%5C_from%5C_options)
+  - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::get\_graph\_config](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenterget%5C_graph%5C_config)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_async](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment%5C_async)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment\_for\_video](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmentersegment%5C_for%5C_video)
@@ -1135,6 +1299,7 @@
   - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectordetect)
   - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect\_async](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectordetect%5C_async)
   - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::detect\_for\_video](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectordetect%5C_for%5C_video)
+  - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::get\_graph\_config](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectorget%5C_graph%5C_config)
 - [cv](#cv)
   - [cv::createMatFromBitmap](#cvcreatematfrombitmap)
   - [cv::haveImageReader](#cvhaveimagereader)
@@ -5579,6 +5744,145 @@
   - [mediapipe::tasks::text::text\_embedder::proto::TextEmbedderGraphOptions::\_\_str\_\_](#mediapipetaskstexttext%5C_embedderprototextembeddergraphoptions%5C_%5C_str%5C_%5C_)
 - [mediapipe::tasks::cc::text::text\_embedder::proto::text\_embedder\_graph\_options\_pb2](#mediapipetaskscctexttext%5C_embedderprototext%5C_embedder%5C_graph%5C_options%5C_pb2)
   - [text\_embedder\_graph\_options\_pb2.TextEmbedderGraphOptions](#text%5C_embedder%5C_graph%5C_options%5C_pb2textembeddergraphoptions)
+- [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptions)
+  - [FaceDetectorGraphOptions.base\_options](#facedetectorgraphoptionsbase%5C_options)
+  - [FaceDetectorGraphOptions.min\_detection\_confidence](#facedetectorgraphoptionsmin%5C_detection%5C_confidence)
+  - [FaceDetectorGraphOptions.min\_suppression\_threshold](#facedetectorgraphoptionsmin%5C_suppression%5C_threshold)
+  - [FaceDetectorGraphOptions.num\_faces](#facedetectorgraphoptionsnum%5C_faces)
+  - [FaceDetectorGraphOptions.ext](#facedetectorgraphoptionsext)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::get\_create](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::ByteSizeLong](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::CheckInitialized](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionscheckinitialized)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::Clear](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsclear)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::ClearField](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsclearfield)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::CopyFrom](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::DiscardUnknownFields](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::FindInitializationErrors](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::IsInitialized](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::SerializeAsString](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::SerializeToString](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::SpaceUsedLong](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptionsspaceusedlong)
+  - [mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::\_\_str\_\_](#mediapipetasksvisionface%5C_detectorprotofacedetectorgraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::face\_detector::proto::face\_detector\_graph\_options\_pb2](#mediapipetasksccvisionface%5C_detectorprotoface%5C_detector%5C_graph%5C_options%5C_pb2)
+  - [face\_detector\_graph\_options\_pb2.FaceDetectorGraphOptions](#face%5C_detector%5C_graph%5C_options%5C_pb2facedetectorgraphoptions)
+- [mediapipe::MatrixData](#mediapipematrixdata)
+  - [MatrixData.rows](#matrixdatarows)
+  - [MatrixData.cols](#matrixdatacols)
+  - [MatrixData.packed\_data](#matrixdatapacked%5C_data)
+  - [MatrixData.layout](#matrixdatalayout)
+  - [mediapipe::MatrixData::get\_create](#mediapipematrixdataget%5C_create)
+  - [mediapipe::MatrixData::ByteSizeLong](#mediapipematrixdatabytesizelong)
+  - [mediapipe::MatrixData::CheckInitialized](#mediapipematrixdatacheckinitialized)
+  - [mediapipe::MatrixData::Clear](#mediapipematrixdataclear)
+  - [mediapipe::MatrixData::ClearField](#mediapipematrixdataclearfield)
+  - [mediapipe::MatrixData::CopyFrom](#mediapipematrixdatacopyfrom)
+  - [mediapipe::MatrixData::DiscardUnknownFields](#mediapipematrixdatadiscardunknownfields)
+  - [mediapipe::MatrixData::FindInitializationErrors](#mediapipematrixdatafindinitializationerrors)
+  - [mediapipe::MatrixData::IsInitialized](#mediapipematrixdataisinitialized)
+  - [mediapipe::MatrixData::SerializeAsString](#mediapipematrixdataserializeasstring)
+  - [mediapipe::MatrixData::SerializeToString](#mediapipematrixdataserializetostring)
+  - [mediapipe::MatrixData::SpaceUsedLong](#mediapipematrixdataspaceusedlong)
+  - [mediapipe::MatrixData::\_\_str\_\_](#mediapipematrixdata%5C_%5C_str%5C_%5C_)
+  - [MatrixData.COLUMN\_MAJOR\_](#matrixdatacolumn%5C_major%5C_)
+  - [MatrixData.ROW\_MAJOR\_](#matrixdatarow%5C_major%5C_)
+- [mediapipe::framework::formats::matrix\_data\_pb2](#mediapipeframeworkformatsmatrix%5C_data%5C_pb2)
+  - [matrix\_data\_pb2.MatrixData](#matrix%5C_data%5C_pb2matrixdata)
+- [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptions)
+  - [FaceGeometryPipelineCalculatorOptions.metadata\_file](#facegeometrypipelinecalculatoroptionsmetadata%5C_file)
+  - [FaceGeometryPipelineCalculatorOptions.ext](#facegeometrypipelinecalculatoroptionsext)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::get\_create](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsget%5C_create)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::ByteSizeLong](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsbytesizelong)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::CheckInitialized](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionscheckinitialized)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::Clear](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsclear)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::ClearField](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsclearfield)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::CopyFrom](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionscopyfrom)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::DiscardUnknownFields](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::FindInitializationErrors](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::IsInitialized](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsisinitialized)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::SerializeAsString](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsserializeasstring)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::SerializeToString](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsserializetostring)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::SpaceUsedLong](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptionsspaceusedlong)
+  - [mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::\_\_str\_\_](#mediapipetasksvisionface%5C_geometryfacegeometrypipelinecalculatoroptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::face\_geometry::calculators::geometry\_pipeline\_calculator\_pb2](#mediapipetasksccvisionface%5C_geometrycalculatorsgeometry%5C_pipeline%5C_calculator%5C_pb2)
+  - [geometry\_pipeline\_calculator\_pb2.FaceGeometryPipelineCalculatorOptions](#geometry%5C_pipeline%5C_calculator%5C_pb2facegeometrypipelinecalculatoroptions)
+- [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptions)
+  - [FaceGeometryGraphOptions.geometry\_pipeline\_options](#facegeometrygraphoptionsgeometry%5C_pipeline%5C_options)
+  - [FaceGeometryGraphOptions.ext](#facegeometrygraphoptionsext)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::get\_create](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::ByteSizeLong](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::CheckInitialized](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionscheckinitialized)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::Clear](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsclear)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::ClearField](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsclearfield)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::CopyFrom](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::DiscardUnknownFields](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::FindInitializationErrors](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::IsInitialized](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::SerializeAsString](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::SerializeToString](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::SpaceUsedLong](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptionsspaceusedlong)
+  - [mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::\_\_str\_\_](#mediapipetasksvisionface%5C_geometryprotofacegeometrygraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::face\_geometry::proto::face\_geometry\_graph\_options\_pb2](#mediapipetasksccvisionface%5C_geometryprotoface%5C_geometry%5C_graph%5C_options%5C_pb2)
+  - [face\_geometry\_graph\_options\_pb2.FaceGeometryGraphOptions](#face%5C_geometry%5C_graph%5C_options%5C_pb2facegeometrygraphoptions)
+- [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptions)
+  - [FaceBlendshapesGraphOptions.base\_options](#faceblendshapesgraphoptionsbase%5C_options)
+  - [FaceBlendshapesGraphOptions.ext](#faceblendshapesgraphoptionsext)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::get\_create](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::ByteSizeLong](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::CheckInitialized](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionscheckinitialized)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::Clear](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsclear)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::ClearField](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsclearfield)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::CopyFrom](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::DiscardUnknownFields](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::FindInitializationErrors](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::IsInitialized](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::SerializeAsString](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::SerializeToString](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::SpaceUsedLong](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptionsspaceusedlong)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::\_\_str\_\_](#mediapipetasksvisionface%5C_landmarkerprotofaceblendshapesgraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::face\_landmarker::proto::face\_blendshapes\_graph\_options\_pb2](#mediapipetasksccvisionface%5C_landmarkerprotoface%5C_blendshapes%5C_graph%5C_options%5C_pb2)
+  - [face\_blendshapes\_graph\_options\_pb2.FaceBlendshapesGraphOptions](#face%5C_blendshapes%5C_graph%5C_options%5C_pb2faceblendshapesgraphoptions)
+- [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptions)
+  - [FaceLandmarksDetectorGraphOptions.base\_options](#facelandmarksdetectorgraphoptionsbase%5C_options)
+  - [FaceLandmarksDetectorGraphOptions.min\_detection\_confidence](#facelandmarksdetectorgraphoptionsmin%5C_detection%5C_confidence)
+  - [FaceLandmarksDetectorGraphOptions.face\_blendshapes\_graph\_options](#facelandmarksdetectorgraphoptionsface%5C_blendshapes%5C_graph%5C_options)
+  - [FaceLandmarksDetectorGraphOptions.ext](#facelandmarksdetectorgraphoptionsext)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::get\_create](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::ByteSizeLong](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::CheckInitialized](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionscheckinitialized)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::Clear](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsclear)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::ClearField](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsclearfield)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::CopyFrom](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::DiscardUnknownFields](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::FindInitializationErrors](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::IsInitialized](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::SerializeAsString](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::SerializeToString](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::SpaceUsedLong](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptionsspaceusedlong)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::\_\_str\_\_](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarksdetectorgraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::face\_landmarker::proto::face\_landmarks\_detector\_graph\_options\_pb2](#mediapipetasksccvisionface%5C_landmarkerprotoface%5C_landmarks%5C_detector%5C_graph%5C_options%5C_pb2)
+  - [face\_landmarks\_detector\_graph\_options\_pb2.FaceLandmarksDetectorGraphOptions](#face%5C_landmarks%5C_detector%5C_graph%5C_options%5C_pb2facelandmarksdetectorgraphoptions)
+- [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptions)
+  - [FaceLandmarkerGraphOptions.base\_options](#facelandmarkergraphoptionsbase%5C_options)
+  - [FaceLandmarkerGraphOptions.face\_detector\_graph\_options](#facelandmarkergraphoptionsface%5C_detector%5C_graph%5C_options)
+  - [FaceLandmarkerGraphOptions.face\_landmarks\_detector\_graph\_options](#facelandmarkergraphoptionsface%5C_landmarks%5C_detector%5C_graph%5C_options)
+  - [FaceLandmarkerGraphOptions.min\_tracking\_confidence](#facelandmarkergraphoptionsmin%5C_tracking%5C_confidence)
+  - [FaceLandmarkerGraphOptions.face\_geometry\_graph\_options](#facelandmarkergraphoptionsface%5C_geometry%5C_graph%5C_options)
+  - [FaceLandmarkerGraphOptions.ext](#facelandmarkergraphoptionsext)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::get\_create](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsget%5C_create)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::ByteSizeLong](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsbytesizelong)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::CheckInitialized](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionscheckinitialized)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::Clear](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsclear)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::ClearField](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsclearfield)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::CopyFrom](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionscopyfrom)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::DiscardUnknownFields](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsdiscardunknownfields)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::FindInitializationErrors](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsfindinitializationerrors)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::IsInitialized](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsisinitialized)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::SerializeAsString](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsserializeasstring)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::SerializeToString](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsserializetostring)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::SpaceUsedLong](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptionsspaceusedlong)
+  - [mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::\_\_str\_\_](#mediapipetasksvisionface%5C_landmarkerprotofacelandmarkergraphoptions%5C_%5C_str%5C_%5C_)
+- [mediapipe::tasks::cc::vision::face\_landmarker::proto::face\_landmarker\_graph\_options\_pb2](#mediapipetasksccvisionface%5C_landmarkerprotoface%5C_landmarker%5C_graph%5C_options%5C_pb2)
+  - [face\_landmarker\_graph\_options\_pb2.FaceLandmarkerGraphOptions](#face%5C_landmarker%5C_graph%5C_options%5C_pb2facelandmarkergraphoptions)
 - [mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions](#mediapipetasksvisiongesture%5C_recognizerprotogestureclassifiergraphoptions)
   - [GestureClassifierGraphOptions.base\_options](#gestureclassifiergraphoptionsbase%5C_options)
   - [GestureClassifierGraphOptions.classifier\_options](#gestureclassifiergraphoptionsclassifier%5C_options)
@@ -6801,6 +7105,28 @@
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_Classifications::sort](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationssort)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_Classifications::sort\_variant](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationssort%5C_variant)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_classification\_result\_Classifications::start](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_classification%5C_result%5C_classificationsstart)
+- [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypoint)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint.Count](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointcount)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::create](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointcreate)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Add](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointadd)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Items](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointitems)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Keys](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointkeys)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Remove](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointremove)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::append](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointappend)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::at](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointat)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::clear](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointclear)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::empty](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointempty)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::end](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointend)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::get\_Item](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointget%5C_item)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::get\_\_NewEnum](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointget%5C_%5C_newenum)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::push\_back](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointpush%5C_back)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::push\_vector](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointpush%5C_vector)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::put\_Item](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointput%5C_item)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::size](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointsize)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::slice](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointslice)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::sort](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointsort)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::sort\_variant](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointsort%5C_variant)
+  - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::start](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_keypoint%5C_normalizedkeypointstart)
 - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_detections\_Detection](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_detections%5C_detection)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_detections\_Detection.Count](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_detections%5C_detectioncount)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_detections\_Detection::create](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_detections%5C_detectioncreate)
@@ -6889,28 +7215,28 @@
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort\_variant](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort%5C_variant)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::start](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkstart)
-- [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_category)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category.Count](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorycount)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::create](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorycreate)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Add](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryadd)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Items](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryitems)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Keys](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorykeys)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Remove](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryremove)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::append](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryappend)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::at](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryat)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::clear](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryclear)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::empty](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryempty)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::end](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryend)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryget%5C_item)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_\_NewEnum](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryget%5C_%5C_newenum)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_back](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorypush%5C_back)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_vector](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorypush%5C_vector)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::put\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryput%5C_item)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::size](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysize)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::slice](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryslice)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysort)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort\_variant](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysort%5C_variant)
-  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::start](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorystart)
+- [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connection)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection.Count](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectioncount)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::create](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectioncreate)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Add](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionadd)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Items](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionitems)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Keys](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionkeys)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Remove](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionremove)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::append](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionappend)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::at](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionat)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::clear](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionclear)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::empty](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionempty)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::end](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionend)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::get\_Item](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionget%5C_item)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::get\_\_NewEnum](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionget%5C_%5C_newenum)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::push\_back](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionpush%5C_back)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::push\_vector](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionpush%5C_vector)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::put\_Item](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionput%5C_item)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::size](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionsize)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::slice](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionslice)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::sort](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionsort)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::sort\_variant](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionsort%5C_variant)
+  - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::start](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectionstart)
 - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmark)
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark.Count](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkcount)
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::create](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkcreate)
@@ -6933,6 +7259,50 @@
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::sort](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarksort)
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::sort\_variant](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarksort%5C_variant)
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::start](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_normalizedlandmarkstart)
+- [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_category)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category.Count](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorycount)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::create](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorycreate)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Add](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryadd)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Items](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryitems)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Keys](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorykeys)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Remove](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryremove)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::append](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryappend)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::at](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryat)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::clear](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryclear)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::empty](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryempty)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::end](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryend)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryget%5C_item)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_\_NewEnum](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryget%5C_%5C_newenum)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_back](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorypush%5C_back)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_vector](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorypush%5C_vector)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::put\_Item](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryput%5C_item)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::size](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysize)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::slice](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categoryslice)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysort)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort\_variant](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorysort%5C_variant)
+  - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::start](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_category%5C_categorystart)
+- [VectorOfMat](#vectorofmat)
+  - [VectorOfMat.Count](#vectorofmatcount)
+  - [VectorOfMat::create](#vectorofmatcreate)
+  - [VectorOfMat::Add](#vectorofmatadd)
+  - [VectorOfMat::Items](#vectorofmatitems)
+  - [VectorOfMat::Keys](#vectorofmatkeys)
+  - [VectorOfMat::Remove](#vectorofmatremove)
+  - [VectorOfMat::append](#vectorofmatappend)
+  - [VectorOfMat::at](#vectorofmatat)
+  - [VectorOfMat::clear](#vectorofmatclear)
+  - [VectorOfMat::empty](#vectorofmatempty)
+  - [VectorOfMat::end](#vectorofmatend)
+  - [VectorOfMat::get\_Item](#vectorofmatget%5C_item)
+  - [VectorOfMat::get\_\_NewEnum](#vectorofmatget%5C_%5C_newenum)
+  - [VectorOfMat::push\_back](#vectorofmatpush%5C_back)
+  - [VectorOfMat::push\_vector](#vectorofmatpush%5C_vector)
+  - [VectorOfMat::put\_Item](#vectorofmatput%5C_item)
+  - [VectorOfMat::size](#vectorofmatsize)
+  - [VectorOfMat::slice](#vectorofmatslice)
+  - [VectorOfMat::sort](#vectorofmatsort)
+  - [VectorOfMat::sort\_variant](#vectorofmatsort%5C_variant)
+  - [VectorOfMat::start](#vectorofmatstart)
 - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmark)
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark.Count](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkcount)
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::create](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkcreate)
@@ -6977,28 +7347,6 @@
   - [VectorOfUchar::sort](#vectorofucharsort)
   - [VectorOfUchar::sort\_variant](#vectorofucharsort%5C_variant)
   - [VectorOfUchar::start](#vectorofucharstart)
-- [VectorOfMat](#vectorofmat)
-  - [VectorOfMat.Count](#vectorofmatcount)
-  - [VectorOfMat::create](#vectorofmatcreate)
-  - [VectorOfMat::Add](#vectorofmatadd)
-  - [VectorOfMat::Items](#vectorofmatitems)
-  - [VectorOfMat::Keys](#vectorofmatkeys)
-  - [VectorOfMat::Remove](#vectorofmatremove)
-  - [VectorOfMat::append](#vectorofmatappend)
-  - [VectorOfMat::at](#vectorofmatat)
-  - [VectorOfMat::clear](#vectorofmatclear)
-  - [VectorOfMat::empty](#vectorofmatempty)
-  - [VectorOfMat::end](#vectorofmatend)
-  - [VectorOfMat::get\_Item](#vectorofmatget%5C_item)
-  - [VectorOfMat::get\_\_NewEnum](#vectorofmatget%5C_%5C_newenum)
-  - [VectorOfMat::push\_back](#vectorofmatpush%5C_back)
-  - [VectorOfMat::push\_vector](#vectorofmatpush%5C_vector)
-  - [VectorOfMat::put\_Item](#vectorofmatput%5C_item)
-  - [VectorOfMat::size](#vectorofmatsize)
-  - [VectorOfMat::slice](#vectorofmatslice)
-  - [VectorOfMat::sort](#vectorofmatsort)
-  - [VectorOfMat::sort\_variant](#vectorofmatsort%5C_variant)
-  - [VectorOfMat::start](#vectorofmatstart)
 - [VectorOfShared\_ptrPacketFactoryConfig](#vectorofshared%5C_ptrpacketfactoryconfig)
   - [VectorOfShared\_ptrPacketFactoryConfig.Count](#vectorofshared%5C_ptrpacketfactoryconfigcount)
   - [VectorOfShared\_ptrPacketFactoryConfig::create](#vectorofshared%5C_ptrpacketfactoryconfigcreate)
@@ -9639,9 +9987,10 @@ AutoIt:
 ### mediapipe::autoit::packet\_getter::get\_proto\_list
 
 ```cpp
-std::vector<std::shared_ptr<google::protobuf::Message>> mediapipe::autoit::packet_getter::get_proto_list( const mediapipe::Packet& packet );
+void mediapipe::autoit::packet_getter::get_proto_list( const mediapipe::Packet&                                 packet,
+                                                       std::vector<std::shared_ptr<google::protobuf::Message>>& proto_list );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_proto_list( $packet ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter").get_proto_list( $packet[, $proto_list] ) -> $proto_list
 ```
 
 ### mediapipe::autoit::packet\_getter::get\_str
@@ -12705,8 +13054,8 @@ AutoIt:
 static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>           base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
                                                                                                                                                                         mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode running_mode = tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_CLIPS,
                                                                                                                                                                         const std::optional<std::string>&                                                    display_names_locale = std::optional<std::string>(),
-                                                                                                                                                                        std::optional<int>                                                                   max_results = std::optional<int>(),
-                                                                                                                                                                        std::optional<float>                                                                 score_threshold = std::optional<float>(),
+                                                                                                                                                                        const std::optional<int>&                                                            max_results = std::optional<int>(),
+                                                                                                                                                                        const std::optional<float>&                                                          score_threshold = std::optional<float>(),
                                                                                                                                                                         const std::vector<std::string>&                                                      category_allowlist = std::vector<std::string>(),
                                                                                                                                                                         const std::vector<std::string>&                                                      category_denylist = std::vector<std::string>(),
                                                                                                                                                                         mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback  result_callback = nullptr );
@@ -12882,8 +13231,8 @@ AutoIt:
 ```cpp
 static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>           base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
                                                                                                                                                                 mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode running_mode = tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_CLIPS,
-                                                                                                                                                                std::optional<bool>                                                                  l2_normalize = std::optional<bool>(),
-                                                                                                                                                                std::optional<bool>                                                                  quantize = std::optional<bool>(),
+                                                                                                                                                                const std::optional<bool>&                                                           l2_normalize = std::optional<bool>(),
+                                                                                                                                                                const std::optional<bool>&                                                           quantize = std::optional<bool>(),
                                                                                                                                                                 mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback      result_callback = nullptr );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedderOptions").create( [$base_options[, $running_mode[, $l2_normalize[, $quantize[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.audio.audio_embedder.AudioEmbedderOptions object>
@@ -13210,6 +13559,14 @@ AutoIt:
     [propget] $ocontainers.embedding_result
 ```
 
+### containers.keypoint
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::keypoint
+AutoIt:
+    [propget] $ocontainers.keypoint
+```
+
 ### containers.landmark
 
 ```cpp
@@ -13416,6 +13773,14 @@ AutoIt:
     [propget] $ocontainers.embedding_result
 ```
 
+### containers.keypoint
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::keypoint
+AutoIt:
+    [propget] $ocontainers.keypoint
+```
+
 ### containers.landmark
 
 ```cpp
@@ -13468,8 +13833,8 @@ AutoIt:
 ```
 
 ```cpp
-static mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat::get_create( int                  num_channels = 1,
-                                                                                                                                                                                std::optional<float> sample_rate = std::optional<float>() );
+static mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat::get_create( int                         num_channels = 1,
+                                                                                                                                                                                const std::optional<float>& sample_rate = std::optional<float>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat").create( [$num_channels[, $sample_rate]] ) -> <mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat object>
     $oAudioDataFormat( [$num_channels[, $sample_rate]] ) -> <mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat object>
@@ -13516,8 +13881,8 @@ AutoIt:
 ### mediapipe::tasks::autoit::components::containers::audio\_data::AudioData::create\_from\_mat
 
 ```cpp
-static std::shared_ptr<mediapipe::tasks::autoit::components::containers::audio_data::AudioData> mediapipe::tasks::autoit::components::containers::audio_data::AudioData::create_from_mat( cv::Mat              src,
-                                                                                                                                                                                          std::optional<float> sample_rate = std::optional<float>() );
+static std::shared_ptr<mediapipe::tasks::autoit::components::containers::audio_data::AudioData> mediapipe::tasks::autoit::components::containers::audio_data::AudioData::create_from_mat( cv::Mat                     src,
+                                                                                                                                                                                          const std::optional<float>& sample_rate = std::optional<float>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.audio_data.AudioData").create_from_mat( $src[, $sample_rate] ) -> retval
 ```
@@ -13917,6 +14282,14 @@ AutoIt:
     [propget, propput] $oDetection.categories
 ```
 
+### Detection.keypoints
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> mediapipe::tasks::autoit::components::containers::detections::Detection::keypoints
+AutoIt:
+    [propget, propput] $oDetection.keypoints
+```
+
 ### mediapipe::tasks::autoit::components::containers::detections::Detection::get\_create
 
 ```cpp
@@ -13927,11 +14300,12 @@ AutoIt:
 ```
 
 ```cpp
-static mediapipe::tasks::autoit::components::containers::detections::Detection mediapipe::tasks::autoit::components::containers::detections::Detection::get_create( std::shared_ptr<mediapipe::tasks::autoit::components::containers::bounding_box::BoundingBox>              bounding_box = std::shared_ptr<bounding_box::BoundingBox>(),
-                                                                                                                                                                    const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>& categories = std::vector<std::shared_ptr<category::Category>>() );
+static mediapipe::tasks::autoit::components::containers::detections::Detection mediapipe::tasks::autoit::components::containers::detections::Detection::get_create( std::shared_ptr<mediapipe::tasks::autoit::components::containers::bounding_box::BoundingBox>                        bounding_box = std::shared_ptr<bounding_box::BoundingBox>(),
+                                                                                                                                                                    const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>&           categories = std::vector<std::shared_ptr<category::Category>>(),
+                                                                                                                                                                    const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>>& keypoints = std::vector<std::shared_ptr<keypoint::NormalizedKeypoint>>() );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.detections.Detection").create( [$bounding_box[, $categories]] ) -> <mediapipe.tasks.autoit.components.containers.detections.Detection object>
-    $oDetection( [$bounding_box[, $categories]] ) -> <mediapipe.tasks.autoit.components.containers.detections.Detection object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.detections.Detection").create( [$bounding_box[, $categories[, $keypoints]]] ) -> <mediapipe.tasks.autoit.components.containers.detections.Detection object>
+    $oDetection( [$bounding_box[, $categories[, $keypoints]]] ) -> <mediapipe.tasks.autoit.components.containers.detections.Detection object>
 ```
 
 ### mediapipe::tasks::autoit::components::containers::detections::Detection::create\_from\_pb2
@@ -14139,6 +14513,95 @@ AutoIt:
 static std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult> mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult::create_from_pb2( const mediapipe::tasks::components::containers::proto::EmbeddingResult& pb2_obj );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.embedding_result.EmbeddingResult").create_from_pb2( $pb2_obj ) -> retval
+```
+
+## mediapipe::tasks::autoit::components::containers::keypoint
+
+### keypoint.NormalizedKeypoint
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint
+AutoIt:
+    [propget] $okeypoint.NormalizedKeypoint
+```
+
+## mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint
+
+### NormalizedKeypoint.x
+
+```cpp
+std::optional<float> mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::x
+AutoIt:
+    [propget, propput] $oNormalizedKeypoint.x
+```
+
+### NormalizedKeypoint.y
+
+```cpp
+std::optional<float> mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::y
+AutoIt:
+    [propget, propput] $oNormalizedKeypoint.y
+```
+
+### NormalizedKeypoint.label
+
+```cpp
+std::optional<std::string> mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::label
+AutoIt:
+    [propget, propput] $oNormalizedKeypoint.label
+```
+
+### NormalizedKeypoint.score
+
+```cpp
+std::optional<float> mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::score
+AutoIt:
+    [propget, propput] $oNormalizedKeypoint.score
+```
+
+### mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::get_create( const mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.keypoint.NormalizedKeypoint").create( $other ) -> <mediapipe.tasks.autoit.components.containers.keypoint.NormalizedKeypoint object>
+    $oNormalizedKeypoint( $other ) -> <mediapipe.tasks.autoit.components.containers.keypoint.NormalizedKeypoint object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::get_create( const std::optional<float>&       x = std::optional<float>(),
+                                                                                                                                                                                  const std::optional<float>&       y = std::optional<float>(),
+                                                                                                                                                                                  const std::optional<std::string>& label = std::optional<std::string>(),
+                                                                                                                                                                                  const std::optional<float>&       score = std::optional<float>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.keypoint.NormalizedKeypoint").create( [$x[, $y[, $label[, $score]]]] ) -> <mediapipe.tasks.autoit.components.containers.keypoint.NormalizedKeypoint object>
+    $oNormalizedKeypoint( [$x[, $y[, $label[, $score]]]] ) -> <mediapipe.tasks.autoit.components.containers.keypoint.NormalizedKeypoint object>
+```
+
+### mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::create\_from\_pb2
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::create_from_pb2( const LocationData_RelativeKeypoint& pb2_obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.keypoint.NormalizedKeypoint").create_from_pb2( $pb2_obj ) -> retval
+```
+
+### mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::to\_pb2
+
+```cpp
+std::shared_ptr<LocationData_RelativeKeypoint> mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::to_pb2();
+AutoIt:
+    $oNormalizedKeypoint.to_pb2() -> retval
+```
+
+## mediapipe::autoit::components::containers::keypoint
+
+### keypoint.NormalizedKeypoint
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint
+AutoIt:
+    [propget] $okeypoint.NormalizedKeypoint
 ```
 
 ## mediapipe::tasks::autoit::components::containers::landmark
@@ -14601,8 +15064,8 @@ AutoIt:
 
 ```cpp
 static mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions::get_create( const std::optional<std::string>& display_names_locale = std::optional<std::string>(),
-                                                                                                                                                                                                    std::optional<int>                max_results = std::optional<int>(),
-                                                                                                                                                                                                    std::optional<float>              score_threshold = std::optional<float>(),
+                                                                                                                                                                                                    const std::optional<int>&         max_results = std::optional<int>(),
+                                                                                                                                                                                                    const std::optional<float>&       score_threshold = std::optional<float>(),
                                                                                                                                                                                                     const std::vector<std::string>&   category_allowlist = std::vector<std::string>(),
                                                                                                                                                                                                     const std::vector<std::string>&   category_denylist = std::vector<std::string>() );
 AutoIt:
@@ -15094,8 +15557,8 @@ AutoIt:
 ```cpp
 static mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
                                                                                                                                                                   const std::optional<std::string>&                                          display_names_locale = std::optional<std::string>(),
-                                                                                                                                                                  std::optional<int>                                                         max_results = std::optional<int>(),
-                                                                                                                                                                  std::optional<float>                                                       score_threshold = std::optional<float>(),
+                                                                                                                                                                  const std::optional<int>&                                                  max_results = std::optional<int>(),
+                                                                                                                                                                  const std::optional<float>&                                                score_threshold = std::optional<float>(),
                                                                                                                                                                   const std::vector<std::string>&                                            category_allowlist = std::vector<std::string>(),
                                                                                                                                                                   const std::vector<std::string>&                                            category_denylist = std::vector<std::string>() );
 AutoIt:
@@ -15218,8 +15681,8 @@ AutoIt:
 
 ```cpp
 static mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
-                                                                                                                                                          std::optional<bool>                                                        l2_normalize = std::optional<bool>(),
-                                                                                                                                                          std::optional<bool>                                                        quantize = std::optional<bool>() );
+                                                                                                                                                          const std::optional<bool>&                                                 l2_normalize = std::optional<bool>(),
+                                                                                                                                                          const std::optional<bool>&                                                 quantize = std::optional<bool>() );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions").create( [$base_options[, $l2_normalize[, $quantize]]] ) -> <mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions object>
     $oTextEmbedderOptions( [$base_options[, $l2_normalize[, $quantize]]] ) -> <mediapipe.tasks.autoit.text.text_embedder.TextEmbedderOptions object>
@@ -15302,6 +15765,22 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::core
 AutoIt:
     [propget] $ovision.core
+```
+
+### vision.face\_detector
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector
+AutoIt:
+    [propget] $ovision.face_detector
+```
+
+### vision.face\_landmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker
+AutoIt:
+    [propget] $ovision.face_landmarker
 ```
 
 ### vision.gesture\_recognizer
@@ -15524,6 +16003,22 @@ AutoIt:
     [propget] $ovision.core
 ```
 
+### vision.face\_detector
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector
+AutoIt:
+    [propget] $ovision.face_detector
+```
+
+### vision.face\_landmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker
+AutoIt:
+    [propget] $ovision.face_landmarker
+```
+
 ### vision.gesture\_recognizer
 
 ```cpp
@@ -15657,9 +16152,18 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                                    const mediapipe::Image&                                                                                   image,
                                                                                                                                                                                     bool                                                                                                      roi_allowed = true );
 AutoIt:
-    $oBaseVisionTaskApi.convert_to_normalized_rect( $options[, $roi_allowed] ) -> retval
+    $oBaseVisionTaskApi.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi::get_graph_config();
+AutoIt:
+    $oBaseVisionTaskApi.get_graph_config() -> retval
 ```
 
 ## mediapipe::autoit::vision::core::base\_vision\_task\_api
@@ -15771,6 +16275,1101 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode
 AutoIt:
     [propget] $ovision_task_running_mode.VisionTaskRunningMode
+```
+
+## mediapipe::tasks::autoit::vision::face\_detector
+
+### face\_detector.FaceDetectorOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions
+AutoIt:
+    [propget] $oface_detector.FaceDetectorOptions
+```
+
+### face\_detector.FaceDetector
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector::FaceDetector
+AutoIt:
+    [propget] $oface_detector.FaceDetector
+```
+
+## mediapipe::tasks::autoit::vision::face\_detector::FaceDetectorOptions
+
+### FaceDetectorOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::base_options
+AutoIt:
+    [propget, propput] $oFaceDetectorOptions.base_options
+```
+
+### FaceDetectorOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::running_mode
+AutoIt:
+    [propget, propput] $oFaceDetectorOptions.running_mode
+```
+
+### FaceDetectorOptions.min\_detection\_confidence
+
+```cpp
+std::optional<float> mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::min_detection_confidence
+AutoIt:
+    [propget, propput] $oFaceDetectorOptions.min_detection_confidence
+```
+
+### FaceDetectorOptions.min\_suppression\_threshold
+
+```cpp
+std::optional<float> mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::min_suppression_threshold
+AutoIt:
+    [propget, propput] $oFaceDetectorOptions.min_suppression_threshold
+```
+
+### FaceDetectorOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultRawCallback mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::result_callback
+AutoIt:
+    [propput] $oFaceDetectorOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetectorOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::get_create( const mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_detector.FaceDetectorOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.face_detector.FaceDetectorOptions object>
+    $oFaceDetectorOptions( $other ) -> <mediapipe.tasks.autoit.vision.face_detector.FaceDetectorOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                              mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                              const std::optional<float>&                                                             min_detection_confidence = std::optional<float>(),
+                                                                                                                                                              const std::optional<float>&                                                             min_suppression_threshold = std::optional<float>(),
+                                                                                                                                                              mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultRawCallback          result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_detector.FaceDetectorOptions").create( [$base_options[, $running_mode[, $min_detection_confidence[, $min_suppression_threshold[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.vision.face_detector.FaceDetectorOptions object>
+    $oFaceDetectorOptions( [$base_options[, $running_mode[, $min_detection_confidence[, $min_suppression_threshold[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.vision.face_detector.FaceDetectorOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetectorOptions::to\_pb2
+
+```cpp
+std::shared_ptr<tasks_vision_face_detector_proto_FaceDetectorGraphOptions> mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::to_pb2();
+AutoIt:
+    $oFaceDetectorOptions.to_pb2() -> retval
+```
+
+## mediapipe::autoit::vision::face\_detector
+
+### face\_detector.FaceDetectorOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions
+AutoIt:
+    [propget] $oface_detector.FaceDetectorOptions
+```
+
+### face\_detector.FaceDetector
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector::FaceDetector
+AutoIt:
+    [propget] $oface_detector.FaceDetector
+```
+
+## mediapipe::tasks::autoit::vision::face\_detector::FaceDetector
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::\_process\_image\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::face_detector::FaceDetector::_process_image_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceDetector._process_image_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::\_process\_video\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::face_detector::FaceDetector::_process_video_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceDetector._process_video_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::\_send\_live\_stream\_data
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_detector::FaceDetector::_send_live_stream_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceDetector._send_live_stream_data( $inputs ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::close
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_detector::FaceDetector::close();
+AutoIt:
+    $oFaceDetector.close() -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::convert\_to\_normalized\_rect
+
+```cpp
+mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::face_detector::FaceDetector::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                  const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                  bool                                                                                                      roi_allowed = true );
+AutoIt:
+    $oFaceDetector.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::face_detector::FaceDetector> mediapipe::tasks::autoit::vision::face_detector::FaceDetector::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_detector.FaceDetector").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::face_detector::FaceDetector> mediapipe::tasks::autoit::vision::face_detector::FaceDetector::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_detector.FaceDetector").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::detect
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::DetectionResult> mediapipe::tasks::autoit::vision::face_detector::FaceDetector::detect( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                      std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceDetector.detect( $image[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::detect\_async
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_detector::FaceDetector::detect_async( const mediapipe::Image&                                                                                   image,
+                                                                                  int64_t                                                                                                   timestamp_ms,
+                                                                                  std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceDetector.detect_async( $image, $timestamp_ms[, $image_processing_options] ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::detect\_for\_video
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::DetectionResult> mediapipe::tasks::autoit::vision::face_detector::FaceDetector::detect_for_video( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                                int64_t                                                                                                   timestamp_ms,
+                                                                                                                                                                                std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceDetector.detect_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::face_detector::FaceDetector::get_graph_config();
+AutoIt:
+    $oFaceDetector.get_graph_config() -> retval
+```
+
+## mediapipe::tasks::autoit::vision::face\_landmarker
+
+### face\_landmarker.Blendshapes
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes
+AutoIt:
+    [propget] $oface_landmarker.Blendshapes
+```
+
+### face\_landmarker.FaceLandmarksConnections
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections
+AutoIt:
+    [propget] $oface_landmarker.FaceLandmarksConnections
+```
+
+### face\_landmarker.FaceLandmarkerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult
+AutoIt:
+    [propget] $oface_landmarker.FaceLandmarkerResult
+```
+
+### face\_landmarker.FaceLandmarkerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions
+AutoIt:
+    [propget] $oface_landmarker.FaceLandmarkerOptions
+```
+
+### face\_landmarker.FaceLandmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker
+AutoIt:
+    [propget] $oface_landmarker.FaceLandmarker
+```
+
+## mediapipe::tasks::autoit::vision::face\_landmarker::Blendshapes
+
+### Blendshapes.NEUTRAL
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::NEUTRAL
+AutoIt:
+    [propget] $oBlendshapes.NEUTRAL
+```
+
+### Blendshapes.BROW\_DOWN\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::BROW_DOWN_LEFT
+AutoIt:
+    [propget] $oBlendshapes.BROW_DOWN_LEFT
+```
+
+### Blendshapes.BROW\_DOWN\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::BROW_DOWN_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.BROW_DOWN_RIGHT
+```
+
+### Blendshapes.BROW\_INNER\_UP
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::BROW_INNER_UP
+AutoIt:
+    [propget] $oBlendshapes.BROW_INNER_UP
+```
+
+### Blendshapes.BROW\_OUTER\_UP\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::BROW_OUTER_UP_LEFT
+AutoIt:
+    [propget] $oBlendshapes.BROW_OUTER_UP_LEFT
+```
+
+### Blendshapes.BROW\_OUTER\_UP\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::BROW_OUTER_UP_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.BROW_OUTER_UP_RIGHT
+```
+
+### Blendshapes.CHEEK\_PUFF
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::CHEEK_PUFF
+AutoIt:
+    [propget] $oBlendshapes.CHEEK_PUFF
+```
+
+### Blendshapes.CHEEK\_SQUINT\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::CHEEK_SQUINT_LEFT
+AutoIt:
+    [propget] $oBlendshapes.CHEEK_SQUINT_LEFT
+```
+
+### Blendshapes.CHEEK\_SQUINT\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::CHEEK_SQUINT_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.CHEEK_SQUINT_RIGHT
+```
+
+### Blendshapes.EYE\_BLINK\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_BLINK_LEFT
+AutoIt:
+    [propget] $oBlendshapes.EYE_BLINK_LEFT
+```
+
+### Blendshapes.EYE\_BLINK\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_BLINK_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.EYE_BLINK_RIGHT
+```
+
+### Blendshapes.EYE\_LOOK\_DOWN\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_LOOK_DOWN_LEFT
+AutoIt:
+    [propget] $oBlendshapes.EYE_LOOK_DOWN_LEFT
+```
+
+### Blendshapes.EYE\_LOOK\_DOWN\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_LOOK_DOWN_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.EYE_LOOK_DOWN_RIGHT
+```
+
+### Blendshapes.EYE\_LOOK\_IN\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_LOOK_IN_LEFT
+AutoIt:
+    [propget] $oBlendshapes.EYE_LOOK_IN_LEFT
+```
+
+### Blendshapes.EYE\_LOOK\_IN\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_LOOK_IN_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.EYE_LOOK_IN_RIGHT
+```
+
+### Blendshapes.EYE\_LOOK\_OUT\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_LOOK_OUT_LEFT
+AutoIt:
+    [propget] $oBlendshapes.EYE_LOOK_OUT_LEFT
+```
+
+### Blendshapes.EYE\_LOOK\_OUT\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_LOOK_OUT_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.EYE_LOOK_OUT_RIGHT
+```
+
+### Blendshapes.EYE\_LOOK\_UP\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_LOOK_UP_LEFT
+AutoIt:
+    [propget] $oBlendshapes.EYE_LOOK_UP_LEFT
+```
+
+### Blendshapes.EYE\_LOOK\_UP\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_LOOK_UP_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.EYE_LOOK_UP_RIGHT
+```
+
+### Blendshapes.EYE\_SQUINT\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_SQUINT_LEFT
+AutoIt:
+    [propget] $oBlendshapes.EYE_SQUINT_LEFT
+```
+
+### Blendshapes.EYE\_SQUINT\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_SQUINT_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.EYE_SQUINT_RIGHT
+```
+
+### Blendshapes.EYE\_WIDE\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_WIDE_LEFT
+AutoIt:
+    [propget] $oBlendshapes.EYE_WIDE_LEFT
+```
+
+### Blendshapes.EYE\_WIDE\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::EYE_WIDE_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.EYE_WIDE_RIGHT
+```
+
+### Blendshapes.JAW\_FORWARD
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::JAW_FORWARD
+AutoIt:
+    [propget] $oBlendshapes.JAW_FORWARD
+```
+
+### Blendshapes.JAW\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::JAW_LEFT
+AutoIt:
+    [propget] $oBlendshapes.JAW_LEFT
+```
+
+### Blendshapes.JAW\_OPEN
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::JAW_OPEN
+AutoIt:
+    [propget] $oBlendshapes.JAW_OPEN
+```
+
+### Blendshapes.JAW\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::JAW_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.JAW_RIGHT
+```
+
+### Blendshapes.MOUTH\_CLOSE
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_CLOSE
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_CLOSE
+```
+
+### Blendshapes.MOUTH\_DIMPLE\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_DIMPLE_LEFT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_DIMPLE_LEFT
+```
+
+### Blendshapes.MOUTH\_DIMPLE\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_DIMPLE_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_DIMPLE_RIGHT
+```
+
+### Blendshapes.MOUTH\_FROWN\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_FROWN_LEFT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_FROWN_LEFT
+```
+
+### Blendshapes.MOUTH\_FROWN\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_FROWN_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_FROWN_RIGHT
+```
+
+### Blendshapes.MOUTH\_FUNNEL
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_FUNNEL
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_FUNNEL
+```
+
+### Blendshapes.MOUTH\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_LEFT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_LEFT
+```
+
+### Blendshapes.MOUTH\_LOWER\_DOWN\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_LOWER_DOWN_LEFT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_LOWER_DOWN_LEFT
+```
+
+### Blendshapes.MOUTH\_LOWER\_DOWN\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_LOWER_DOWN_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_LOWER_DOWN_RIGHT
+```
+
+### Blendshapes.MOUTH\_PRESS\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_PRESS_LEFT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_PRESS_LEFT
+```
+
+### Blendshapes.MOUTH\_PRESS\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_PRESS_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_PRESS_RIGHT
+```
+
+### Blendshapes.MOUTH\_PUCKER
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_PUCKER
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_PUCKER
+```
+
+### Blendshapes.MOUTH\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_RIGHT
+```
+
+### Blendshapes.MOUTH\_ROLL\_LOWER
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_ROLL_LOWER
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_ROLL_LOWER
+```
+
+### Blendshapes.MOUTH\_ROLL\_UPPER
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_ROLL_UPPER
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_ROLL_UPPER
+```
+
+### Blendshapes.MOUTH\_SHRUG\_LOWER
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_SHRUG_LOWER
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_SHRUG_LOWER
+```
+
+### Blendshapes.MOUTH\_SHRUG\_UPPER
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_SHRUG_UPPER
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_SHRUG_UPPER
+```
+
+### Blendshapes.MOUTH\_SMILE\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_SMILE_LEFT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_SMILE_LEFT
+```
+
+### Blendshapes.MOUTH\_SMILE\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_SMILE_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_SMILE_RIGHT
+```
+
+### Blendshapes.MOUTH\_STRETCH\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_STRETCH_LEFT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_STRETCH_LEFT
+```
+
+### Blendshapes.MOUTH\_STRETCH\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_STRETCH_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_STRETCH_RIGHT
+```
+
+### Blendshapes.MOUTH\_UPPER\_UP\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_UPPER_UP_LEFT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_UPPER_UP_LEFT
+```
+
+### Blendshapes.MOUTH\_UPPER\_UP\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::MOUTH_UPPER_UP_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.MOUTH_UPPER_UP_RIGHT
+```
+
+### Blendshapes.NOSE\_SNEER\_LEFT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::NOSE_SNEER_LEFT
+AutoIt:
+    [propget] $oBlendshapes.NOSE_SNEER_LEFT
+```
+
+### Blendshapes.NOSE\_SNEER\_RIGHT
+
+```cpp
+static int mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes::NOSE_SNEER_RIGHT
+AutoIt:
+    [propget] $oBlendshapes.NOSE_SNEER_RIGHT
+```
+
+## mediapipe::autoit::vision::face\_landmarker
+
+### face\_landmarker.Blendshapes
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes
+AutoIt:
+    [propget] $oface_landmarker.Blendshapes
+```
+
+### face\_landmarker.FaceLandmarksConnections
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections
+AutoIt:
+    [propget] $oface_landmarker.FaceLandmarksConnections
+```
+
+### face\_landmarker.FaceLandmarkerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult
+AutoIt:
+    [propget] $oface_landmarker.FaceLandmarkerResult
+```
+
+### face\_landmarker.FaceLandmarkerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions
+AutoIt:
+    [propget] $oface_landmarker.FaceLandmarkerOptions
+```
+
+### face\_landmarker.FaceLandmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker
+AutoIt:
+    [propget] $oface_landmarker.FaceLandmarker
+```
+
+## mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_LIPS
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_LIPS
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_LIPS
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_LEFT\_EYE
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_LEFT_EYE
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_LEFT_EYE
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_LEFT\_EYEBROW
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_LEFT_EYEBROW
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_LEFT_EYEBROW
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_LEFT\_IRIS
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_LEFT_IRIS
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_LEFT_IRIS
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_RIGHT\_EYE
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_RIGHT_EYE
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_RIGHT_EYE
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_RIGHT\_EYEBROW
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_RIGHT_EYEBROW
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_RIGHT_EYEBROW
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_RIGHT\_IRIS
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_RIGHT_IRIS
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_RIGHT_IRIS
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_FACE\_OVAL
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_FACE_OVAL
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_FACE_OVAL
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_CONTOURS
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_CONTOURS
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_CONTOURS
+```
+
+### FaceLandmarksConnections.FACE\_LANDMARKS\_TESSELATION
+
+```cpp
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::FACE_LANDMARKS_TESSELATION
+AutoIt:
+    [propget] $oFaceLandmarksConnections.FACE_LANDMARKS_TESSELATION
+```
+
+### FaceLandmarksConnections.Connection
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection
+AutoIt:
+    [propget] $oFaceLandmarksConnections.Connection
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections").create() -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections object>
+```
+
+## mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections::Connection
+
+### Connection.start
+
+```cpp
+int mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection::start
+AutoIt:
+    [propget, propput] $oConnection.start
+```
+
+### Connection.end
+
+```cpp
+int mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection::end
+AutoIt:
+    [propget, propput] $oConnection.end
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections::Connection::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection::get_create( const mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection").create( $other ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection object>
+    $oConnection( $other ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection::get_create( int start = 0,
+                                                                                                                                                                                                    int end = 0 );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection").create( [$start[, $end]] ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection object>
+    $oConnection( [$start[, $end]] ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection object>
+```
+
+## mediapipe::autoit::vision::face\_landmarker::FaceLandmarksConnections
+
+### FaceLandmarksConnections.Connection
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection
+AutoIt:
+    [propget] $oFaceLandmarksConnections.Connection
+```
+
+## mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerResult
+
+### FaceLandmarkerResult.face\_landmarks
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult::face_landmarks
+AutoIt:
+    [propget, propput] $oFaceLandmarkerResult.face_landmarks
+```
+
+### FaceLandmarkerResult.face\_blendshapes
+
+```cpp
+std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult::face_blendshapes
+AutoIt:
+    [propget, propput] $oFaceLandmarkerResult.face_blendshapes
+```
+
+### FaceLandmarkerResult.facial\_transformation\_matrixes
+
+```cpp
+std::vector<cv::Mat> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult::facial_transformation_matrixes
+AutoIt:
+    [propget, propput] $oFaceLandmarkerResult.facial_transformation_matrixes
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerResult::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult::get_create( const mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerResult").create( $other ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerResult object>
+    $oFaceLandmarkerResult( $other ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerResult object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult::get_create( std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>> face_landmarks = std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>(),
+                                                                                                                                                                    std::vector<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>           face_blendshapes = std::vector<std::vector<std::shared_ptr<category::Category>>>(),
+                                                                                                                                                                    std::vector<cv::Mat>                                                                                                      facial_transformation_matrixes = std::vector<cv::Mat>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerResult").create( [$face_landmarks[, $face_blendshapes[, $facial_transformation_matrixes]]] ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerResult object>
+    $oFaceLandmarkerResult( [$face_landmarks[, $face_blendshapes[, $facial_transformation_matrixes]]] ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerResult object>
+```
+
+## mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerOptions
+
+### FaceLandmarkerOptions.base\_options
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::base_options
+AutoIt:
+    [propget, propput] $oFaceLandmarkerOptions.base_options
+```
+
+### FaceLandmarkerOptions.running\_mode
+
+```cpp
+mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::running_mode
+AutoIt:
+    [propget, propput] $oFaceLandmarkerOptions.running_mode
+```
+
+### FaceLandmarkerOptions.num\_faces
+
+```cpp
+int mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::num_faces
+AutoIt:
+    [propget, propput] $oFaceLandmarkerOptions.num_faces
+```
+
+### FaceLandmarkerOptions.min\_face\_detection\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::min_face_detection_confidence
+AutoIt:
+    [propget, propput] $oFaceLandmarkerOptions.min_face_detection_confidence
+```
+
+### FaceLandmarkerOptions.min\_face\_presence\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::min_face_presence_confidence
+AutoIt:
+    [propget, propput] $oFaceLandmarkerOptions.min_face_presence_confidence
+```
+
+### FaceLandmarkerOptions.min\_tracking\_confidence
+
+```cpp
+float mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::min_tracking_confidence
+AutoIt:
+    [propget, propput] $oFaceLandmarkerOptions.min_tracking_confidence
+```
+
+### FaceLandmarkerOptions.output\_face\_blendshapes
+
+```cpp
+bool mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::output_face_blendshapes
+AutoIt:
+    [propget, propput] $oFaceLandmarkerOptions.output_face_blendshapes
+```
+
+### FaceLandmarkerOptions.output\_facial\_transformation\_matrixes
+
+```cpp
+bool mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::output_facial_transformation_matrixes
+AutoIt:
+    [propget, propput] $oFaceLandmarkerOptions.output_facial_transformation_matrixes
+```
+
+### FaceLandmarkerOptions.result\_callback
+
+```cpp
+mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResultRawCallback mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::result_callback
+AutoIt:
+    [propput] $oFaceLandmarkerOptions.result_callback
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerOptions::get\_create
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::get_create( const mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions& other );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerOptions").create( $other ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerOptions object>
+    $oFaceLandmarkerOptions( $other ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerOptions object>
+```
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
+                                                                                                                                                                      mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
+                                                                                                                                                                      int                                                                                     num_faces = 1,
+                                                                                                                                                                      float                                                                                   min_face_detection_confidence = 0.5f,
+                                                                                                                                                                      float                                                                                   min_face_presence_confidence = 0.5f,
+                                                                                                                                                                      float                                                                                   min_tracking_confidence = 0.5f,
+                                                                                                                                                                      bool                                                                                    output_face_blendshapes = false,
+                                                                                                                                                                      bool                                                                                    output_facial_transformation_matrixes = false,
+                                                                                                                                                                      mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResultRawCallback      result_callback = nullptr );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerOptions").create( [$base_options[, $running_mode[, $num_faces[, $min_face_detection_confidence[, $min_face_presence_confidence[, $min_tracking_confidence[, $output_face_blendshapes[, $output_facial_transformation_matrixes[, $result_callback]]]]]]]]] ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerOptions object>
+    $oFaceLandmarkerOptions( [$base_options[, $running_mode[, $num_faces[, $min_face_detection_confidence[, $min_face_presence_confidence[, $min_tracking_confidence[, $output_face_blendshapes[, $output_facial_transformation_matrixes[, $result_callback]]]]]]]]] ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarkerOptions object>
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerOptions::to\_pb2
+
+```cpp
+std::shared_ptr<tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions::to_pb2();
+AutoIt:
+    $oFaceLandmarkerOptions.to_pb2() -> retval
+```
+
+## mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::\_process\_image\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::_process_image_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceLandmarker._process_image_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::\_process\_video\_data
+
+```cpp
+std::map<std::string, mediapipe::Packet> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::_process_video_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceLandmarker._process_video_data( $inputs ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::\_send\_live\_stream\_data
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::_send_live_stream_data( const std::map<std::string, mediapipe::Packet>& inputs );
+AutoIt:
+    $oFaceLandmarker._send_live_stream_data( $inputs ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::close
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::close();
+AutoIt:
+    $oFaceLandmarker.close() -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::convert\_to\_normalized\_rect
+
+```cpp
+mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                      const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                      bool                                                                                                      roi_allowed = true );
+AutoIt:
+    $oFaceLandmarker.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::create\_from\_model\_path
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::create_from_model_path( const std::string& model_path );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarker").create_from_model_path( $model_path ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::create\_from\_options
+
+```cpp
+static std::shared_ptr<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions> options );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarker").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::detect
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::detect( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                    std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_option = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceLandmarker.detect( $image[, $image_processing_option] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::detect\_async
+
+```cpp
+void mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::detect_async( const mediapipe::Image&                                                                                   image,
+                                                                                      int64_t                                                                                                   timestamp_ms,
+                                                                                      std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceLandmarker.detect_async( $image, $timestamp_ms[, $image_processing_options] ) -> None
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::detect\_for\_video
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::detect_for_video( const mediapipe::Image&                                                                                   image,
+                                                                                                                                                                              int64_t                                                                                                   timestamp_ms,
+                                                                                                                                                                              std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
+AutoIt:
+    $oFaceLandmarker.detect_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarker::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker::get_graph_config();
+AutoIt:
+    $oFaceLandmarker.get_graph_config() -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision::gesture\_recognizer
@@ -16022,9 +17621,10 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                            const mediapipe::Image&                                                                                   image,
                                                                                                                                                                             bool                                                                                                      roi_allowed = true );
 AutoIt:
-    $oGestureRecognizer.convert_to_normalized_rect( $options[, $roi_allowed] ) -> retval
+    $oGestureRecognizer.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::create\_from\_model\_path
@@ -16041,6 +17641,14 @@ AutoIt:
 static std::shared_ptr<mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions> options );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizer").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer::get_graph_config();
+AutoIt:
+    $oGestureRecognizer.get_graph_config() -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizer::recognize
@@ -16480,9 +18088,10 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                      const mediapipe::Image&                                                                                   image,
                                                                                                                                                                       bool                                                                                                      roi_allowed = true );
 AutoIt:
-    $oHandLandmarker.convert_to_normalized_rect( $options[, $roi_allowed] ) -> retval
+    $oHandLandmarker.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarker::create\_from\_model\_path
@@ -16528,6 +18137,14 @@ std::shared_ptr<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarke
                                                                                                                                                                               std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
     $oHandLandmarker.detect_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarker::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker::get_graph_config();
+AutoIt:
+    $oHandLandmarker.get_graph_config() -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_classifier
@@ -16635,8 +18252,8 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
                                                                                                                                                                           mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
                                                                                                                                                                           const std::optional<std::string>&                                                       display_names_locale = std::optional<std::string>(),
-                                                                                                                                                                          std::optional<int>                                                                      max_results = std::optional<int>(),
-                                                                                                                                                                          std::optional<float>                                                                    score_threshold = std::optional<float>(),
+                                                                                                                                                                          const std::optional<int>&                                                               max_results = std::optional<int>(),
+                                                                                                                                                                          const std::optional<float>&                                                             score_threshold = std::optional<float>(),
                                                                                                                                                                           const std::vector<std::string>&                                                         category_allowlist = std::vector<std::string>(),
                                                                                                                                                                           const std::vector<std::string>&                                                         category_denylist = std::vector<std::string>(),
                                                                                                                                                                           mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback    result_callback = nullptr );
@@ -16738,9 +18355,10 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                        const mediapipe::Image&                                                                                   image,
                                                                                                                                                                         bool                                                                                                      roi_allowed = true );
 AutoIt:
-    $oImageClassifier.convert_to_normalized_rect( $options[, $roi_allowed] ) -> retval
+    $oImageClassifier.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::create\_from\_model\_path
@@ -16757,6 +18375,14 @@ AutoIt:
 static std::shared_ptr<mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions> options );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_classifier.ImageClassifier").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier::get_graph_config();
+AutoIt:
+    $oImageClassifier.get_graph_config() -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_embedder
@@ -16839,8 +18465,8 @@ AutoIt:
 ```cpp
 static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
                                                                                                                                                                   mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
-                                                                                                                                                                  std::optional<bool>                                                                     l2_normalize = std::optional<bool>(),
-                                                                                                                                                                  std::optional<bool>                                                                     quantize = std::optional<bool>(),
+                                                                                                                                                                  const std::optional<bool>&                                                              l2_normalize = std::optional<bool>(),
+                                                                                                                                                                  const std::optional<bool>&                                                              quantize = std::optional<bool>(),
                                                                                                                                                                   mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback        result_callback = nullptr );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedderOptions").create( [$base_options[, $running_mode[, $l2_normalize[, $quantize[, $result_callback]]]]] ) -> <mediapipe.tasks.autoit.vision.image_embedder.ImageEmbedderOptions object>
@@ -16911,9 +18537,10 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                    const mediapipe::Image&                                                                                   image,
                                                                                                                                                                     bool                                                                                                      roi_allowed = true );
 AutoIt:
-    $oImageEmbedder.convert_to_normalized_rect( $options[, $roi_allowed] ) -> retval
+    $oImageEmbedder.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::cosine\_similarity
@@ -16968,6 +18595,14 @@ std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_resu
                                                                                                                                                                                        std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>() );
 AutoIt:
     $oImageEmbedder.embed_for_video( $image, $timestamp_ms[, $image_processing_options] ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder::get_graph_config();
+AutoIt:
+    $oImageEmbedder.get_graph_config() -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_segmenter
@@ -17130,9 +18765,10 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                      const mediapipe::Image&                                                                                   image,
                                                                                                                                                                       bool                                                                                                      roi_allowed = true );
 AutoIt:
-    $oImageSegmenter.convert_to_normalized_rect( $options[, $roi_allowed] ) -> retval
+    $oImageSegmenter.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::create\_from\_model\_path
@@ -17149,6 +18785,14 @@ AutoIt:
 static std::shared_ptr<mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter> mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::create_from_options( std::shared_ptr<mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions> options );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenter").create_from_options( $options ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter::get_graph_config();
+AutoIt:
+    $oImageSegmenter.get_graph_config() -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::segment
@@ -17284,8 +18928,8 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::get_create( std::shared_ptr<mediapipe::tasks::autoit::core::base_options::BaseOptions>              base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
                                                                                                                                                                       mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
                                                                                                                                                                       const std::optional<std::string>&                                                       display_names_locale = std::optional<std::string>(),
-                                                                                                                                                                      std::optional<int>                                                                      max_results = std::optional<int>(),
-                                                                                                                                                                      std::optional<float>                                                                    score_threshold = std::optional<float>(),
+                                                                                                                                                                      const std::optional<int>&                                                               max_results = std::optional<int>(),
+                                                                                                                                                                      const std::optional<float>&                                                             score_threshold = std::optional<float>(),
                                                                                                                                                                       const std::vector<std::string>&                                                         category_allowlist = std::vector<std::string>(),
                                                                                                                                                                       const std::vector<std::string>&                                                         category_denylist = std::vector<std::string>(),
                                                                                                                                                                       mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback      result_callback = nullptr );
@@ -17358,9 +19002,10 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::autoit::components::containers::rect::NormalizedRect mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::convert_to_normalized_rect( std::shared_ptr<mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions> options,
+                                                                                                                                                                      const mediapipe::Image&                                                                                   image,
                                                                                                                                                                       bool                                                                                                      roi_allowed = true );
 AutoIt:
-    $oObjectDetector.convert_to_normalized_rect( $options[, $roi_allowed] ) -> retval
+    $oObjectDetector.convert_to_normalized_rect( $options, $image[, $roi_allowed] ) -> retval
 ```
 
 ### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::create\_from\_model\_path
@@ -17403,6 +19048,14 @@ std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::De
                                                                                                                                                                                     int64_t                 timestamp_ms );
 AutoIt:
     $oObjectDetector.detect_for_video( $image, $timestamp_ms ) -> retval
+```
+
+### mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::get\_graph\_config
+
+```cpp
+std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::vision::object_detector::ObjectDetector::get_graph_config();
+AutoIt:
+    $oObjectDetector.get_graph_config() -> retval
 ```
 
 ## cv
@@ -17793,6 +19446,42 @@ AutoIt:
 
 ```cpp
 mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions& vKey );
+AutoIt:
+    $oCalculatorOptions.Extensions( $vKey ) -> retval
+```
+
+```cpp
+mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
@@ -54859,6 +56548,1053 @@ AutoIt:
     [propget] $otext_embedder_graph_options_pb2.TextEmbedderGraphOptions
 ```
 
+## mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions
+
+### FaceDetectorGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::base_options
+AutoIt:
+    [propget, propput] $oFaceDetectorGraphOptions.base_options
+```
+
+### FaceDetectorGraphOptions.min\_detection\_confidence
+
+```cpp
+float mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::min_detection_confidence
+AutoIt:
+    [propget, propput] $oFaceDetectorGraphOptions.min_detection_confidence
+```
+
+### FaceDetectorGraphOptions.min\_suppression\_threshold
+
+```cpp
+float mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::min_suppression_threshold
+AutoIt:
+    [propget, propput] $oFaceDetectorGraphOptions.min_suppression_threshold
+```
+
+### FaceDetectorGraphOptions.num\_faces
+
+```cpp
+int mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::num_faces
+AutoIt:
+    [propget, propput] $oFaceDetectorGraphOptions.num_faces
+```
+
+### FaceDetectorGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions* mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::ext
+AutoIt:
+    [propget] $oFaceDetectorGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::get_create( std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions> base_options = std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>(),
+                                                                                                                                                                      std::optional<float>                                        min_detection_confidence = std::optional<float>(),
+                                                                                                                                                                      std::optional<float>                                        min_suppression_threshold = std::optional<float>(),
+                                                                                                                                                                      std::optional<int>                                          num_faces = std::optional<int>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.face_detector.proto.FaceDetectorGraphOptions").create( [$base_options[, $min_detection_confidence[, $min_suppression_threshold[, $num_faces]]]] ) -> <mediapipe.tasks.vision.face_detector.proto.FaceDetectorGraphOptions object>
+    $oFaceDetectorGraphOptions( [$base_options[, $min_detection_confidence[, $min_suppression_threshold[, $num_faces]]]] ) -> <mediapipe.tasks.vision.face_detector.proto.FaceDetectorGraphOptions object>
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::ByteSizeLong();
+AutoIt:
+    $oFaceDetectorGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::CheckInitialized();
+AutoIt:
+    $oFaceDetectorGraphOptions.CheckInitialized() -> None
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::Clear();
+AutoIt:
+    $oFaceDetectorGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFaceDetectorGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFaceDetectorGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oFaceDetectorGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFaceDetectorGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::IsInitialized();
+AutoIt:
+    $oFaceDetectorGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::SerializeAsString();
+AutoIt:
+    $oFaceDetectorGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFaceDetectorGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oFaceDetectorGraphOptions.SpaceUsedLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_detector::proto::FaceDetectorGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oFaceDetectorGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::face\_detector::proto::face\_detector\_graph\_options\_pb2
+
+### face\_detector\_graph\_options\_pb2.FaceDetectorGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions
+AutoIt:
+    [propget] $oface_detector_graph_options_pb2.FaceDetectorGraphOptions
+```
+
+## mediapipe::MatrixData
+
+### MatrixData.rows
+
+```cpp
+int mediapipe::MatrixData::rows
+AutoIt:
+    [propget, propput] $oMatrixData.rows
+```
+
+### MatrixData.cols
+
+```cpp
+int mediapipe::MatrixData::cols
+AutoIt:
+    [propget, propput] $oMatrixData.cols
+```
+
+### MatrixData.packed\_data
+
+```cpp
+google::protobuf::Repeated_float* mediapipe::MatrixData::packed_data
+AutoIt:
+    [propget, propput] $oMatrixData.packed_data
+```
+
+### MatrixData.layout
+
+```cpp
+mediapipe::MatrixData::Layout mediapipe::MatrixData::layout
+AutoIt:
+    [propget, propput] $oMatrixData.layout
+```
+
+### mediapipe::MatrixData::get\_create
+
+```cpp
+static mediapipe::MatrixData mediapipe::MatrixData::get_create( std::optional<int>                           rows = std::optional<int>(),
+                                                                std::optional<int>                           cols = std::optional<int>(),
+                                                                VARIANT*                                     packed_data = VARIANT*(),
+                                                                std::optional<mediapipe::MatrixData::Layout> layout = std::optional<mediapipe::MatrixData::Layout>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.MatrixData").create( [$rows[, $cols[, $packed_data[, $layout]]]] ) -> <mediapipe.MatrixData object>
+    $oMatrixData( [$rows[, $cols[, $packed_data[, $layout]]]] ) -> <mediapipe.MatrixData object>
+```
+
+### mediapipe::MatrixData::ByteSizeLong
+
+```cpp
+size_t mediapipe::MatrixData::ByteSizeLong();
+AutoIt:
+    $oMatrixData.ByteSizeLong() -> retval
+```
+
+### mediapipe::MatrixData::CheckInitialized
+
+```cpp
+void mediapipe::MatrixData::CheckInitialized();
+AutoIt:
+    $oMatrixData.CheckInitialized() -> None
+```
+
+### mediapipe::MatrixData::Clear
+
+```cpp
+void mediapipe::MatrixData::Clear();
+AutoIt:
+    $oMatrixData.Clear() -> None
+```
+
+### mediapipe::MatrixData::ClearField
+
+```cpp
+void mediapipe::MatrixData::ClearField( const std::string& field_name );
+AutoIt:
+    $oMatrixData.ClearField( $field_name ) -> None
+```
+
+### mediapipe::MatrixData::CopyFrom
+
+```cpp
+void mediapipe::MatrixData::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oMatrixData.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::MatrixData::DiscardUnknownFields
+
+```cpp
+void mediapipe::MatrixData::DiscardUnknownFields();
+AutoIt:
+    $oMatrixData.DiscardUnknownFields() -> None
+```
+
+### mediapipe::MatrixData::FindInitializationErrors
+
+```cpp
+void mediapipe::MatrixData::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oMatrixData.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::MatrixData::IsInitialized
+
+```cpp
+bool mediapipe::MatrixData::IsInitialized();
+AutoIt:
+    $oMatrixData.IsInitialized() -> retval
+```
+
+### mediapipe::MatrixData::SerializeAsString
+
+```cpp
+std::string mediapipe::MatrixData::SerializeAsString();
+AutoIt:
+    $oMatrixData.SerializeAsString() -> retval
+```
+
+### mediapipe::MatrixData::SerializeToString
+
+```cpp
+void mediapipe::MatrixData::SerializeToString( std::string* output );
+AutoIt:
+    $oMatrixData.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::MatrixData::SpaceUsedLong
+
+```cpp
+size_t mediapipe::MatrixData::SpaceUsedLong();
+AutoIt:
+    $oMatrixData.SpaceUsedLong() -> retval
+```
+
+### mediapipe::MatrixData::\_\_str\_\_
+
+```cpp
+void mediapipe::MatrixData::__str__( std::string* output );
+AutoIt:
+    $oMatrixData.__str__( [$output] ) -> $output
+```
+
+### MatrixData.COLUMN\_MAJOR\_
+
+```cpp
+static int mediapipe::MatrixData::COLUMN_MAJOR
+AutoIt:
+    [propget] $oMatrixData.COLUMN_MAJOR_
+```
+
+### MatrixData.ROW\_MAJOR\_
+
+```cpp
+static int mediapipe::MatrixData::ROW_MAJOR
+AutoIt:
+    [propget] $oMatrixData.ROW_MAJOR_
+```
+
+## mediapipe::framework::formats::matrix\_data\_pb2
+
+### matrix\_data\_pb2.MatrixData
+
+```cpp
+static mediapipe::MatrixData
+AutoIt:
+    [propget] $omatrix_data_pb2.MatrixData
+```
+
+## mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions
+
+### FaceGeometryPipelineCalculatorOptions.metadata\_file
+
+```cpp
+mediapipe::tasks::core::proto::ExternalFile* mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::metadata_file
+AutoIt:
+    [propget, propput] $oFaceGeometryPipelineCalculatorOptions.metadata_file
+```
+
+### FaceGeometryPipelineCalculatorOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions* mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::ext
+AutoIt:
+    [propget] $oFaceGeometryPipelineCalculatorOptions.ext
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::get_create( std::shared_ptr<mediapipe::tasks::core::proto::ExternalFile> metadata_file = std::shared_ptr<mediapipe::tasks::core::proto::ExternalFile>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.face_geometry.FaceGeometryPipelineCalculatorOptions").create( [$metadata_file] ) -> <mediapipe.tasks.vision.face_geometry.FaceGeometryPipelineCalculatorOptions object>
+    $oFaceGeometryPipelineCalculatorOptions( [$metadata_file] ) -> <mediapipe.tasks.vision.face_geometry.FaceGeometryPipelineCalculatorOptions object>
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::ByteSizeLong();
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::CheckInitialized();
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.CheckInitialized() -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::Clear();
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::DiscardUnknownFields();
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::IsInitialized();
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::SerializeAsString();
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::SpaceUsedLong();
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.SpaceUsedLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_geometry::FaceGeometryPipelineCalculatorOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::__str__( std::string* output );
+AutoIt:
+    $oFaceGeometryPipelineCalculatorOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::face\_geometry::calculators::geometry\_pipeline\_calculator\_pb2
+
+### geometry\_pipeline\_calculator\_pb2.FaceGeometryPipelineCalculatorOptions
+
+```cpp
+static mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions
+AutoIt:
+    [propget] $ogeometry_pipeline_calculator_pb2.FaceGeometryPipelineCalculatorOptions
+```
+
+## mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions
+
+### FaceGeometryGraphOptions.geometry\_pipeline\_options
+
+```cpp
+mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions* mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::geometry_pipeline_options
+AutoIt:
+    [propget, propput] $oFaceGeometryGraphOptions.geometry_pipeline_options
+```
+
+### FaceGeometryGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions* mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::ext
+AutoIt:
+    [propget] $oFaceGeometryGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::get_create( std::shared_ptr<mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions> geometry_pipeline_options = std::shared_ptr<mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.face_geometry.proto.FaceGeometryGraphOptions").create( [$geometry_pipeline_options] ) -> <mediapipe.tasks.vision.face_geometry.proto.FaceGeometryGraphOptions object>
+    $oFaceGeometryGraphOptions( [$geometry_pipeline_options] ) -> <mediapipe.tasks.vision.face_geometry.proto.FaceGeometryGraphOptions object>
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::ByteSizeLong();
+AutoIt:
+    $oFaceGeometryGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::CheckInitialized();
+AutoIt:
+    $oFaceGeometryGraphOptions.CheckInitialized() -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::Clear();
+AutoIt:
+    $oFaceGeometryGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFaceGeometryGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFaceGeometryGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oFaceGeometryGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFaceGeometryGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::IsInitialized();
+AutoIt:
+    $oFaceGeometryGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::SerializeAsString();
+AutoIt:
+    $oFaceGeometryGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFaceGeometryGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oFaceGeometryGraphOptions.SpaceUsedLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_geometry::proto::FaceGeometryGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oFaceGeometryGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::face\_geometry::proto::face\_geometry\_graph\_options\_pb2
+
+### face\_geometry\_graph\_options\_pb2.FaceGeometryGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions
+AutoIt:
+    [propget] $oface_geometry_graph_options_pb2.FaceGeometryGraphOptions
+```
+
+## mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions
+
+### FaceBlendshapesGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::base_options
+AutoIt:
+    [propget, propput] $oFaceBlendshapesGraphOptions.base_options
+```
+
+### FaceBlendshapesGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::ext
+AutoIt:
+    [propget] $oFaceBlendshapesGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::get_create( std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions> base_options = std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.face_landmarker.proto.FaceBlendshapesGraphOptions").create( [$base_options] ) -> <mediapipe.tasks.vision.face_landmarker.proto.FaceBlendshapesGraphOptions object>
+    $oFaceBlendshapesGraphOptions( [$base_options] ) -> <mediapipe.tasks.vision.face_landmarker.proto.FaceBlendshapesGraphOptions object>
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::ByteSizeLong();
+AutoIt:
+    $oFaceBlendshapesGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::CheckInitialized();
+AutoIt:
+    $oFaceBlendshapesGraphOptions.CheckInitialized() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::Clear();
+AutoIt:
+    $oFaceBlendshapesGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFaceBlendshapesGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFaceBlendshapesGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oFaceBlendshapesGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFaceBlendshapesGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::IsInitialized();
+AutoIt:
+    $oFaceBlendshapesGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::SerializeAsString();
+AutoIt:
+    $oFaceBlendshapesGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFaceBlendshapesGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oFaceBlendshapesGraphOptions.SpaceUsedLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceBlendshapesGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oFaceBlendshapesGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::face\_landmarker::proto::face\_blendshapes\_graph\_options\_pb2
+
+### face\_blendshapes\_graph\_options\_pb2.FaceBlendshapesGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions
+AutoIt:
+    [propget] $oface_blendshapes_graph_options_pb2.FaceBlendshapesGraphOptions
+```
+
+## mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions
+
+### FaceLandmarksDetectorGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::base_options
+AutoIt:
+    [propget, propput] $oFaceLandmarksDetectorGraphOptions.base_options
+```
+
+### FaceLandmarksDetectorGraphOptions.min\_detection\_confidence
+
+```cpp
+float mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::min_detection_confidence
+AutoIt:
+    [propget, propput] $oFaceLandmarksDetectorGraphOptions.min_detection_confidence
+```
+
+### FaceLandmarksDetectorGraphOptions.face\_blendshapes\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::face_blendshapes_graph_options
+AutoIt:
+    [propget, propput] $oFaceLandmarksDetectorGraphOptions.face_blendshapes_graph_options
+```
+
+### FaceLandmarksDetectorGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::ext
+AutoIt:
+    [propget] $oFaceLandmarksDetectorGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::get_create( std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>                                    base_options = std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>(),
+                                                                                                                                                                                            std::optional<float>                                                                           min_detection_confidence = std::optional<float>(),
+                                                                                                                                                                                            std::shared_ptr<mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions> face_blendshapes_graph_options = std::shared_ptr<mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.face_landmarker.proto.FaceLandmarksDetectorGraphOptions").create( [$base_options[, $min_detection_confidence[, $face_blendshapes_graph_options]]] ) -> <mediapipe.tasks.vision.face_landmarker.proto.FaceLandmarksDetectorGraphOptions object>
+    $oFaceLandmarksDetectorGraphOptions( [$base_options[, $min_detection_confidence[, $face_blendshapes_graph_options]]] ) -> <mediapipe.tasks.vision.face_landmarker.proto.FaceLandmarksDetectorGraphOptions object>
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::ByteSizeLong();
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::CheckInitialized();
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.CheckInitialized() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::Clear();
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::IsInitialized();
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::SerializeAsString();
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.SpaceUsedLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarksDetectorGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oFaceLandmarksDetectorGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::face\_landmarker::proto::face\_landmarks\_detector\_graph\_options\_pb2
+
+### face\_landmarks\_detector\_graph\_options\_pb2.FaceLandmarksDetectorGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions
+AutoIt:
+    [propget] $oface_landmarks_detector_graph_options_pb2.FaceLandmarksDetectorGraphOptions
+```
+
+## mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions
+
+### FaceLandmarkerGraphOptions.base\_options
+
+```cpp
+mediapipe::tasks::core::proto::BaseOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::base_options
+AutoIt:
+    [propget, propput] $oFaceLandmarkerGraphOptions.base_options
+```
+
+### FaceLandmarkerGraphOptions.face\_detector\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::face_detector_graph_options
+AutoIt:
+    [propget, propput] $oFaceLandmarkerGraphOptions.face_detector_graph_options
+```
+
+### FaceLandmarkerGraphOptions.face\_landmarks\_detector\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::face_landmarks_detector_graph_options
+AutoIt:
+    [propget, propput] $oFaceLandmarkerGraphOptions.face_landmarks_detector_graph_options
+```
+
+### FaceLandmarkerGraphOptions.min\_tracking\_confidence
+
+```cpp
+float mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::min_tracking_confidence
+AutoIt:
+    [propget, propput] $oFaceLandmarkerGraphOptions.min_tracking_confidence
+```
+
+### FaceLandmarkerGraphOptions.face\_geometry\_graph\_options
+
+```cpp
+mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::face_geometry_graph_options
+AutoIt:
+    [propget, propput] $oFaceLandmarkerGraphOptions.face_geometry_graph_options
+```
+
+### FaceLandmarkerGraphOptions.ext
+
+```cpp
+static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::ext
+AutoIt:
+    [propget] $oFaceLandmarkerGraphOptions.ext
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::get\_create
+
+```cpp
+static mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::get_create( std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>                                          base_options = std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>(),
+                                                                                                                                                                              std::shared_ptr<mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions>            face_detector_graph_options = std::shared_ptr<mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions>(),
+                                                                                                                                                                              std::shared_ptr<mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions> face_landmarks_detector_graph_options = std::shared_ptr<mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions>(),
+                                                                                                                                                                              std::optional<float>                                                                                 min_tracking_confidence = std::optional<float>(),
+                                                                                                                                                                              std::shared_ptr<mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions>            face_geometry_graph_options = std::shared_ptr<mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions>() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.vision.face_landmarker.proto.FaceLandmarkerGraphOptions").create( [$base_options[, $face_detector_graph_options[, $face_landmarks_detector_graph_options[, $min_tracking_confidence[, $face_geometry_graph_options]]]]] ) -> <mediapipe.tasks.vision.face_landmarker.proto.FaceLandmarkerGraphOptions object>
+    $oFaceLandmarkerGraphOptions( [$base_options[, $face_detector_graph_options[, $face_landmarks_detector_graph_options[, $min_tracking_confidence[, $face_geometry_graph_options]]]]] ) -> <mediapipe.tasks.vision.face_landmarker.proto.FaceLandmarkerGraphOptions object>
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::ByteSizeLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::ByteSizeLong();
+AutoIt:
+    $oFaceLandmarkerGraphOptions.ByteSizeLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::CheckInitialized
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::CheckInitialized();
+AutoIt:
+    $oFaceLandmarkerGraphOptions.CheckInitialized() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::Clear
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::Clear();
+AutoIt:
+    $oFaceLandmarkerGraphOptions.Clear() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::ClearField
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::ClearField( const std::string& field_name );
+AutoIt:
+    $oFaceLandmarkerGraphOptions.ClearField( $field_name ) -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::CopyFrom
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oFaceLandmarkerGraphOptions.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::DiscardUnknownFields
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::DiscardUnknownFields();
+AutoIt:
+    $oFaceLandmarkerGraphOptions.DiscardUnknownFields() -> None
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::FindInitializationErrors
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::FindInitializationErrors( std::vector<std::string>> errors );
+AutoIt:
+    $oFaceLandmarkerGraphOptions.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::IsInitialized
+
+```cpp
+bool mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::IsInitialized();
+AutoIt:
+    $oFaceLandmarkerGraphOptions.IsInitialized() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::SerializeAsString
+
+```cpp
+std::string mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::SerializeAsString();
+AutoIt:
+    $oFaceLandmarkerGraphOptions.SerializeAsString() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::SerializeToString
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::SerializeToString( std::string* output );
+AutoIt:
+    $oFaceLandmarkerGraphOptions.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::SpaceUsedLong
+
+```cpp
+size_t mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::SpaceUsedLong();
+AutoIt:
+    $oFaceLandmarkerGraphOptions.SpaceUsedLong() -> retval
+```
+
+### mediapipe::tasks::vision::face\_landmarker::proto::FaceLandmarkerGraphOptions::\_\_str\_\_
+
+```cpp
+void mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::__str__( std::string* output );
+AutoIt:
+    $oFaceLandmarkerGraphOptions.__str__( [$output] ) -> $output
+```
+
+## mediapipe::tasks::cc::vision::face\_landmarker::proto::face\_landmarker\_graph\_options\_pb2
+
+### face\_landmarker\_graph\_options\_pb2.FaceLandmarkerGraphOptions
+
+```cpp
+static mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions
+AutoIt:
+    [propget] $oface_landmarker_graph_options_pb2.FaceLandmarkerGraphOptions
+```
+
 ## mediapipe::tasks::vision::gesture\_recognizer::proto::GestureClassifierGraphOptions
 
 ### GestureClassifierGraphOptions.base\_options
@@ -67444,6 +70180,210 @@ AutoIt:
     $oVectorOfShared_ptrTasks_autoit_components_containers_classification_result_Classifications.start() -> retval
 ```
 
+## VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint.Count
+
+```cpp
+size_t VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::size()
+AutoIt:
+    [propget] $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.Count
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::create
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint").create() -> <VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint object>
+```
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint").create( $size ) -> <VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint object>
+```
+
+```cpp
+static VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create( VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint").create( $other ) -> <VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint object>
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Add
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::Add( std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.Add( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Items
+
+```cpp
+VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::Items();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.Items() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Keys
+
+```cpp
+std::vector<int> VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::Keys();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.Keys() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Remove
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::Remove( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.Remove( $index ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::append
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::append( std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.append( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::at
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::at( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::at( size_t                                                                                          index,
+                                                                                           std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.at( $index, $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::clear
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::clear();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.clear() -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::empty
+
+```cpp
+bool VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::empty();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.empty() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::end
+
+```cpp
+void* VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::end();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.end() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::get\_Item
+
+```cpp
+std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::get_Item( size_t index );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.Item( $index ) -> retval
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint( $index ) -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::get__NewEnum();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint._NewEnum() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::push\_back
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::push_back( std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> value );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.push_back( $value ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::push\_vector
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::push_vector( VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint other );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::push_vector( VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint other,
+                                                                                                    size_t                                                                           count,
+                                                                                                    size_t                                                                           start = 0 );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::put\_Item
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::put_Item( size_t                                                                                          index,
+                                                                                                 std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint> item );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.Item( $index ) = $item
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::size
+
+```cpp
+size_t VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::size();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.size() -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::slice
+
+```cpp
+VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::slice( size_t start = 0,
+                                                                                                                                                                          size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::sort
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::sort( void*  comparator,
+                                                                                             size_t start = 0,
+                                                                                             size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::sort\_variant
+
+```cpp
+void VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::sort_variant( void*  comparator,
+                                                                                                     size_t start = 0,
+                                                                                                     size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::start
+
+```cpp
+void* VectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint::start();
+AutoIt:
+    $oVectorOfShared_ptrTasks_autoit_components_containers_keypoint_NormalizedKeypoint.start() -> retval
+```
+
 ## VectorOfShared\_ptrTasks\_autoit\_components\_containers\_detections\_Detection
 
 ### VectorOfShared\_ptrTasks\_autoit\_components\_containers\_detections\_Detection.Count
@@ -68260,208 +71200,208 @@ AutoIt:
     $oVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.start() -> retval
 ```
 
-## VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category
+## VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category.Count
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection.Count
 
 ```cpp
-size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::size()
+size_t VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::size()
 AutoIt:
-    [propget] $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Count
+    [propget] $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.Count
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::create
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::create
 
 ```cpp
-static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create();
+static VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create();
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create() -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
-```
-
-```cpp
-static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create( size_t size );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create( $size ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
+    _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection").create() -> <VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection object>
 ```
 
 ```cpp
-static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other );
+static VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create( size_t size );
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create( $other ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
-```
-
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Add
-
-```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Add( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
-AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Add( $value ) -> None
-```
-
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Items
-
-```cpp
-VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Items();
-AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Items() -> retval
-```
-
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Keys
-
-```cpp
-std::vector<int> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Keys();
-AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Keys() -> retval
-```
-
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Remove
-
-```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Remove( size_t index );
-AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Remove( $index ) -> None
-```
-
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::append
-
-```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::append( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
-AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.append( $value ) -> None
-```
-
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::at
-
-```cpp
-std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::at( size_t index );
-AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.at( $index ) -> retval
+    _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection").create( $size ) -> <VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection object>
 ```
 
 ```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::at( size_t                                                                                             index,
-                                                                                         std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+static VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create( VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection other );
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.at( $index, $value ) -> None
+    _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection").create( $other ) -> <VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection object>
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::clear
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Add
 
 ```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::clear();
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::Add( mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection value );
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.clear() -> None
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.Add( $value ) -> None
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::empty
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Items
 
 ```cpp
-bool VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::empty();
+VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::Items();
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.empty() -> retval
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.Items() -> retval
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::end
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Keys
 
 ```cpp
-void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::end();
+std::vector<int> VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::Keys();
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.end() -> retval
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.Keys() -> retval
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_Item
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Remove
 
 ```cpp
-std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::get_Item( size_t index );
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::Remove( size_t index );
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Item( $index ) -> retval
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category( $index ) -> retval
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.Remove( $index ) -> None
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_\_NewEnum
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::append
 
 ```cpp
-IUnknown* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::get__NewEnum();
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::append( mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection value );
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category._NewEnum() -> retval
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.append( $value ) -> None
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_back
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::at
 
 ```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_back( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::at( size_t index );
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_back( $value ) -> None
-```
-
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_vector
-
-```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other );
-AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_vector( $other ) -> None
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.at( $index ) -> retval
 ```
 
 ```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other,
-                                                                                                  size_t                                                                         count,
-                                                                                                  size_t                                                                         start = 0 );
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::at( size_t                                                                                  index,
+                                                                                          mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection value );
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_vector( $other, $count[, $start] ) -> None
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.at( $index, $value ) -> None
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::put\_Item
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::clear
 
 ```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::put_Item( size_t                                                                                             index,
-                                                                                               std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> item );
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::clear();
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Item( $index ) = $item
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.clear() -> None
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::size
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::empty
 
 ```cpp
-size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::size();
+bool VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::empty();
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.size() -> retval
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.empty() -> retval
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::slice
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::end
 
 ```cpp
-VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::slice( size_t start = 0,
-                                                                                                                                                                      size_t count = __self->get()->size() );
+void* VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::end();
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.slice( [$start[, $count]] ) -> retval
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.end() -> retval
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::get\_Item
 
 ```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::sort( void*  comparator,
-                                                                                           size_t start = 0,
-                                                                                           size_t count = __self->get()->size() );
+mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::get_Item( size_t index );
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.sort( $comparator[, $start[, $count]] ) -> None
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.Item( $index ) -> retval
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection( $index ) -> retval
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort\_variant
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::get\_\_NewEnum
 
 ```cpp
-void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::sort_variant( void*  comparator,
-                                                                                                   size_t start = 0,
-                                                                                                   size_t count = __self->get()->size() );
+IUnknown* VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::get__NewEnum();
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.sort_variant( $comparator[, $start[, $count]] ) -> None
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection._NewEnum() -> retval
 ```
 
-### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::start
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::push\_back
 
 ```cpp
-void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::start();
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::push_back( mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection value );
 AutoIt:
-    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.start() -> retval
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.push_back( $value ) -> None
+```
+
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::push\_vector
+
+```cpp
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::push_vector( VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection other );
+AutoIt:
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::push_vector( VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection other,
+                                                                                                   size_t                                                                          count,
+                                                                                                   size_t                                                                          start = 0 );
+AutoIt:
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::put\_Item
+
+```cpp
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::put_Item( size_t                                                                                  index,
+                                                                                                mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection item );
+AutoIt:
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.Item( $index ) = $item
+```
+
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::size
+
+```cpp
+size_t VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::size();
+AutoIt:
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.size() -> retval
+```
+
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::slice
+
+```cpp
+VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::slice( size_t start = 0,
+                                                                                                                                                                        size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::sort
+
+```cpp
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::sort( void*  comparator,
+                                                                                            size_t start = 0,
+                                                                                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::sort\_variant
+
+```cpp
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::sort_variant( void*  comparator,
+                                                                                                    size_t start = 0,
+                                                                                                    size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::start
+
+```cpp
+void* VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::start();
+AutoIt:
+    $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.start() -> retval
 ```
 
 ## VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark
@@ -68666,6 +71606,414 @@ AutoIt:
 void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark::start();
 AutoIt:
     $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_NormalizedLandmark.start() -> retval
+```
+
+## VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category.Count
+
+```cpp
+size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::size()
+AutoIt:
+    [propget] $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Count
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::create
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create() -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
+```
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create( $size ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
+```
+
+```cpp
+static VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::create( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category").create( $other ) -> <VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category object>
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Add
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Add( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Add( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Items
+
+```cpp
+VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Items();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Items() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Keys
+
+```cpp
+std::vector<int> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Keys();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Keys() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::Remove
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::Remove( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Remove( $index ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::append
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::append( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.append( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::at
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::at( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::at( size_t                                                                                             index,
+                                                                                         std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.at( $index, $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::clear
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::clear();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.clear() -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::empty
+
+```cpp
+bool VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::empty();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.empty() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::end
+
+```cpp
+void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::end();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.end() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_Item
+
+```cpp
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::get_Item( size_t index );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Item( $index ) -> retval
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category( $index ) -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::get__NewEnum();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category._NewEnum() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_back
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_back( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> value );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_back( $value ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::push\_vector
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::push_vector( VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category other,
+                                                                                                  size_t                                                                         count,
+                                                                                                  size_t                                                                         start = 0 );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::put\_Item
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::put_Item( size_t                                                                                             index,
+                                                                                               std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> item );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.Item( $index ) = $item
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::size
+
+```cpp
+size_t VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::size();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.size() -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::slice
+
+```cpp
+VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::slice( size_t start = 0,
+                                                                                                                                                                      size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::sort( void*  comparator,
+                                                                                           size_t start = 0,
+                                                                                           size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::sort\_variant
+
+```cpp
+void VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::sort_variant( void*  comparator,
+                                                                                                   size_t start = 0,
+                                                                                                   size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_category\_Category::start
+
+```cpp
+void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category::start();
+AutoIt:
+    $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_category_Category.start() -> retval
+```
+
+## VectorOfMat
+
+### VectorOfMat.Count
+
+```cpp
+size_t VectorOfMat::size()
+AutoIt:
+    [propget] $oVectorOfMat.Count
+```
+
+### VectorOfMat::create
+
+```cpp
+static VectorOfMat VectorOfMat::create();
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfMat").create() -> <VectorOfMat object>
+```
+
+```cpp
+static VectorOfMat VectorOfMat::create( size_t size );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfMat").create( $size ) -> <VectorOfMat object>
+```
+
+```cpp
+static VectorOfMat VectorOfMat::create( VectorOfMat other );
+AutoIt:
+    _Mediapipe_ObjCreate("VectorOfMat").create( $other ) -> <VectorOfMat object>
+```
+
+### VectorOfMat::Add
+
+```cpp
+void VectorOfMat::Add( cv::Mat value );
+AutoIt:
+    $oVectorOfMat.Add( $value ) -> None
+```
+
+### VectorOfMat::Items
+
+```cpp
+VectorOfMat VectorOfMat::Items();
+AutoIt:
+    $oVectorOfMat.Items() -> retval
+```
+
+### VectorOfMat::Keys
+
+```cpp
+std::vector<int> VectorOfMat::Keys();
+AutoIt:
+    $oVectorOfMat.Keys() -> retval
+```
+
+### VectorOfMat::Remove
+
+```cpp
+void VectorOfMat::Remove( size_t index );
+AutoIt:
+    $oVectorOfMat.Remove( $index ) -> None
+```
+
+### VectorOfMat::append
+
+```cpp
+void VectorOfMat::append( cv::Mat value );
+AutoIt:
+    $oVectorOfMat.append( $value ) -> None
+```
+
+### VectorOfMat::at
+
+```cpp
+cv::Mat VectorOfMat::at( size_t index );
+AutoIt:
+    $oVectorOfMat.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfMat::at( size_t  index,
+                      cv::Mat value );
+AutoIt:
+    $oVectorOfMat.at( $index, $value ) -> None
+```
+
+### VectorOfMat::clear
+
+```cpp
+void VectorOfMat::clear();
+AutoIt:
+    $oVectorOfMat.clear() -> None
+```
+
+### VectorOfMat::empty
+
+```cpp
+bool VectorOfMat::empty();
+AutoIt:
+    $oVectorOfMat.empty() -> retval
+```
+
+### VectorOfMat::end
+
+```cpp
+void* VectorOfMat::end();
+AutoIt:
+    $oVectorOfMat.end() -> retval
+```
+
+### VectorOfMat::get\_Item
+
+```cpp
+cv::Mat VectorOfMat::get_Item( size_t index );
+AutoIt:
+    $oVectorOfMat.Item( $index ) -> retval
+    $oVectorOfMat( $index ) -> retval
+```
+
+### VectorOfMat::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfMat::get__NewEnum();
+AutoIt:
+    $oVectorOfMat._NewEnum() -> retval
+```
+
+### VectorOfMat::push\_back
+
+```cpp
+void VectorOfMat::push_back( cv::Mat value );
+AutoIt:
+    $oVectorOfMat.push_back( $value ) -> None
+```
+
+### VectorOfMat::push\_vector
+
+```cpp
+void VectorOfMat::push_vector( VectorOfMat other );
+AutoIt:
+    $oVectorOfMat.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfMat::push_vector( VectorOfMat other,
+                               size_t      count,
+                               size_t      start = 0 );
+AutoIt:
+    $oVectorOfMat.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfMat::put\_Item
+
+```cpp
+void VectorOfMat::put_Item( size_t  index,
+                            cv::Mat item );
+AutoIt:
+    $oVectorOfMat.Item( $index ) = $item
+```
+
+### VectorOfMat::size
+
+```cpp
+size_t VectorOfMat::size();
+AutoIt:
+    $oVectorOfMat.size() -> retval
+```
+
+### VectorOfMat::slice
+
+```cpp
+VectorOfMat VectorOfMat::slice( size_t start = 0,
+                                size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfMat.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfMat::sort
+
+```cpp
+void VectorOfMat::sort( void*  comparator,
+                        size_t start = 0,
+                        size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfMat.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfMat::sort\_variant
+
+```cpp
+void VectorOfMat::sort_variant( void*  comparator,
+                                size_t start = 0,
+                                size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfMat.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfMat::start
+
+```cpp
+void* VectorOfMat::start();
+AutoIt:
+    $oVectorOfMat.start() -> retval
 ```
 
 ## VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark
@@ -69074,210 +72422,6 @@ AutoIt:
 void* VectorOfUchar::start();
 AutoIt:
     $oVectorOfUchar.start() -> retval
-```
-
-## VectorOfMat
-
-### VectorOfMat.Count
-
-```cpp
-size_t VectorOfMat::size()
-AutoIt:
-    [propget] $oVectorOfMat.Count
-```
-
-### VectorOfMat::create
-
-```cpp
-static VectorOfMat VectorOfMat::create();
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfMat").create() -> <VectorOfMat object>
-```
-
-```cpp
-static VectorOfMat VectorOfMat::create( size_t size );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfMat").create( $size ) -> <VectorOfMat object>
-```
-
-```cpp
-static VectorOfMat VectorOfMat::create( VectorOfMat other );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfMat").create( $other ) -> <VectorOfMat object>
-```
-
-### VectorOfMat::Add
-
-```cpp
-void VectorOfMat::Add( cv::Mat value );
-AutoIt:
-    $oVectorOfMat.Add( $value ) -> None
-```
-
-### VectorOfMat::Items
-
-```cpp
-VectorOfMat VectorOfMat::Items();
-AutoIt:
-    $oVectorOfMat.Items() -> retval
-```
-
-### VectorOfMat::Keys
-
-```cpp
-std::vector<int> VectorOfMat::Keys();
-AutoIt:
-    $oVectorOfMat.Keys() -> retval
-```
-
-### VectorOfMat::Remove
-
-```cpp
-void VectorOfMat::Remove( size_t index );
-AutoIt:
-    $oVectorOfMat.Remove( $index ) -> None
-```
-
-### VectorOfMat::append
-
-```cpp
-void VectorOfMat::append( cv::Mat value );
-AutoIt:
-    $oVectorOfMat.append( $value ) -> None
-```
-
-### VectorOfMat::at
-
-```cpp
-cv::Mat VectorOfMat::at( size_t index );
-AutoIt:
-    $oVectorOfMat.at( $index ) -> retval
-```
-
-```cpp
-void VectorOfMat::at( size_t  index,
-                      cv::Mat value );
-AutoIt:
-    $oVectorOfMat.at( $index, $value ) -> None
-```
-
-### VectorOfMat::clear
-
-```cpp
-void VectorOfMat::clear();
-AutoIt:
-    $oVectorOfMat.clear() -> None
-```
-
-### VectorOfMat::empty
-
-```cpp
-bool VectorOfMat::empty();
-AutoIt:
-    $oVectorOfMat.empty() -> retval
-```
-
-### VectorOfMat::end
-
-```cpp
-void* VectorOfMat::end();
-AutoIt:
-    $oVectorOfMat.end() -> retval
-```
-
-### VectorOfMat::get\_Item
-
-```cpp
-cv::Mat VectorOfMat::get_Item( size_t index );
-AutoIt:
-    $oVectorOfMat.Item( $index ) -> retval
-    $oVectorOfMat( $index ) -> retval
-```
-
-### VectorOfMat::get\_\_NewEnum
-
-```cpp
-IUnknown* VectorOfMat::get__NewEnum();
-AutoIt:
-    $oVectorOfMat._NewEnum() -> retval
-```
-
-### VectorOfMat::push\_back
-
-```cpp
-void VectorOfMat::push_back( cv::Mat value );
-AutoIt:
-    $oVectorOfMat.push_back( $value ) -> None
-```
-
-### VectorOfMat::push\_vector
-
-```cpp
-void VectorOfMat::push_vector( VectorOfMat other );
-AutoIt:
-    $oVectorOfMat.push_vector( $other ) -> None
-```
-
-```cpp
-void VectorOfMat::push_vector( VectorOfMat other,
-                               size_t      count,
-                               size_t      start = 0 );
-AutoIt:
-    $oVectorOfMat.push_vector( $other, $count[, $start] ) -> None
-```
-
-### VectorOfMat::put\_Item
-
-```cpp
-void VectorOfMat::put_Item( size_t  index,
-                            cv::Mat item );
-AutoIt:
-    $oVectorOfMat.Item( $index ) = $item
-```
-
-### VectorOfMat::size
-
-```cpp
-size_t VectorOfMat::size();
-AutoIt:
-    $oVectorOfMat.size() -> retval
-```
-
-### VectorOfMat::slice
-
-```cpp
-VectorOfMat VectorOfMat::slice( size_t start = 0,
-                                size_t count = __self->get()->size() );
-AutoIt:
-    $oVectorOfMat.slice( [$start[, $count]] ) -> retval
-```
-
-### VectorOfMat::sort
-
-```cpp
-void VectorOfMat::sort( void*  comparator,
-                        size_t start = 0,
-                        size_t count = __self->get()->size() );
-AutoIt:
-    $oVectorOfMat.sort( $comparator[, $start[, $count]] ) -> None
-```
-
-### VectorOfMat::sort\_variant
-
-```cpp
-void VectorOfMat::sort_variant( void*  comparator,
-                                size_t start = 0,
-                                size_t count = __self->get()->size() );
-AutoIt:
-    $oVectorOfMat.sort_variant( $comparator[, $start[, $count]] ) -> None
-```
-
-### VectorOfMat::start
-
-```cpp
-void* VectorOfMat::start();
-AutoIt:
-    $oVectorOfMat.start() -> retval
 ```
 
 ## VectorOfShared\_ptrPacketFactoryConfig

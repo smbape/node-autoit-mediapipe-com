@@ -115,6 +115,7 @@ exports.ALIASES = new Map([
 
     ["components_containers_audio_data_AudioData", "mediapipe::tasks::autoit::components::containers::audio_data::AudioData"],
     ["bounding_box_BoundingBox", "mediapipe::tasks::autoit::components::containers::bounding_box::BoundingBox"],
+    ["keypoint_NormalizedKeypoint", "mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint"],
     ["category_Category", "mediapipe::tasks::autoit::components::containers::category::Category"],
     ["category::Category", "mediapipe::tasks::autoit::components::containers::category::Category"],
     ["detections_Detection", "mediapipe::tasks::autoit::components::containers::detections::Detection"],
@@ -179,8 +180,12 @@ exports.ALIASES = new Map([
     ["ObjectDetectorResult", "mediapipe::tasks::autoit::components::containers::detections::DetectionResult"],
     ["ObjectDetectorResultCallback", "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback"],
 
+    ["FaceDetectorResult", "mediapipe::tasks::autoit::components::containers::detections::DetectionResult"],
+    ["FaceDetectorResultCallback", "mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultRawCallback"],
+
     ["GestureRecognizerResultCallback", "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback"],
     ["HandLandmarkerResultCallback", "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback"],
+    ["FaceLandmarkerResultCallback", "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResultRawCallback"],
 ]);
 
 exports.CLASS_PTR = new Set([
@@ -195,15 +200,14 @@ exports.PTR = new Set([
 
     "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierResultRawCallback",
     "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderResultRawCallback",
-
-    "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback",
-    "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback",
-
-    "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback",
-    "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback",
-
+    "mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultRawCallback",
+    "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResultRawCallback",
     "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback",
     "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback",
+    "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback",
+    "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback",
+    "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback",
+    "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback",
 ]);
 
 exports.CUSTOM_CLASSES = [

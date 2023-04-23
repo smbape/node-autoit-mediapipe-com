@@ -4,6 +4,7 @@
 #include "mediapipe/framework/formats/location_data.pb.h"
 #include "binding/tasks/components/containers/bounding_box.h"
 #include "binding/tasks/components/containers/category.h"
+#include "binding/tasks/components/containers/keypoint.h"
 
 namespace mediapipe::tasks::autoit::components::containers::detections {
 	struct CV_EXPORTS_W_SIMPLE Detection {
@@ -12,11 +13,13 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 
 		CV_WRAP Detection(
 			std::shared_ptr<bounding_box::BoundingBox> bounding_box = std::shared_ptr<bounding_box::BoundingBox>(),
-			const std::vector<std::shared_ptr<category::Category>>& categories = std::vector<std::shared_ptr<category::Category>>()
+			const std::vector<std::shared_ptr<category::Category>>& categories = std::vector<std::shared_ptr<category::Category>>(),
+			const std::vector<std::shared_ptr<keypoint::NormalizedKeypoint>>& keypoints = std::vector<std::shared_ptr<keypoint::NormalizedKeypoint>>()
 		)
 			:
 			bounding_box(bounding_box),
-			categories(categories)
+			categories(categories),
+			keypoints(keypoints)
 		{}
 
 		CV_WRAP std::shared_ptr<mediapipe::Detection> to_pb2();
@@ -24,6 +27,7 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 
 		CV_PROP_RW std::shared_ptr<bounding_box::BoundingBox> bounding_box;
 		CV_PROP_RW std::vector<std::shared_ptr<category::Category>> categories;
+		CV_PROP_RW std::vector<std::shared_ptr<keypoint::NormalizedKeypoint>> keypoints;
 	};
 
 	struct CV_EXPORTS_W_SIMPLE DetectionResult {

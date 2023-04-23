@@ -134,17 +134,18 @@ namespace mediapipe::autoit::packet_getter {
 		return MessageFromDynamicProto(type_name, serialized);
 	}
 
-	const std::vector<std::shared_ptr<Message>> get_proto_list(const Packet& packet) {
+	void get_proto_list(const Packet& packet, std::vector<std::shared_ptr<Message>>& proto_list) {
+		if (packet.IsEmpty()) {
+			return;
+		}
+
 		absl::StatusOr<std::vector<const MessageLite*>> proto_vector_ = packet.GetVectorOfProtoMessageLitePtrs();
 		RaiseAutoItErrorIfNotOk(proto_vector_.status());
 
 		std::vector<const MessageLite*> proto_vector = std::move(proto_vector_).value();
 		auto size = proto_vector.size();
-
-		std::vector<std::shared_ptr<Message>> proto_list;
-
 		if (size == 0) {
-			return proto_list;
+			return;
 		}
 
 		proto_list.resize(size);
@@ -156,6 +157,6 @@ namespace mediapipe::autoit::packet_getter {
 			proto_list[i++] = MessageFromDynamicProto(type_name, serialized);
 		}
 
-		return proto_list;
+		return;
 	}
 }

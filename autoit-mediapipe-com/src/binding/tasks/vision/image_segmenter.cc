@@ -1,6 +1,4 @@
 #include "binding/tasks/vision/image_segmenter.h"
-#include "binding/packet_getter.h"
-#include "binding/packet_creator.h"
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback);
 
@@ -28,6 +26,7 @@ namespace {
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
 	using namespace mediapipe::tasks::autoit::components::utils;
+	using namespace mediapipe::autoit::packet_creator;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -65,12 +64,13 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 
 		if (options->result_callback) {
 			packets_callback = [options](const PacketMap& output_packets) {
-				if (output_packets.at(_IMAGE_OUT_STREAM_NAME).IsEmpty()) {
+				const auto& image_out_packet = output_packets.at(_IMAGE_OUT_STREAM_NAME);
+				if (image_out_packet.IsEmpty()) {
 					return;
 				}
 
 				auto segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
-				auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets.at(_IMAGE_OUT_STREAM_NAME));
+				auto image = mediapipe::autoit::packet_getter::GetContent<Image>(image_out_packet);
 				auto timestamp_ms = output_packets.at(_SEGMENTATION_OUT_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
 				options->result_callback(segmentation_result, image, timestamp_ms);
@@ -97,7 +97,7 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 
 	void ImageSegmenter::segment(std::vector<Image>& segmentation_result, const Image& image) {
 		auto output_packets = _process_image_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_image(image))) },
+			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(create_image(image))) },
 			});
 
 		segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
@@ -105,7 +105,7 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 
 	void ImageSegmenter::segment_for_video(std::vector<Image>& segmentation_result, const Image& image, int64_t timestamp_ms) {
 		auto output_packets = _process_video_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND))) }
+			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND))) }
 			});
 
 		segmentation_result = mediapipe::autoit::packet_getter::GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
@@ -113,7 +113,7 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 
 	void ImageSegmenter::segment_async(const Image& image, int64_t timestamp_ms) {
 		_send_live_stream_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND))) }
+			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND))) }
 			});
 
 	}

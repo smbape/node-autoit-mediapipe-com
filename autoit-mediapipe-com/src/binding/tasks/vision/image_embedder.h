@@ -10,6 +10,8 @@
 #include "binding/tasks/vision/core/base_vision_task_api.h"
 #include "binding/tasks/vision/core/image_processing_options.h"
 #include "binding/tasks/vision/core/vision_task_running_mode.h"
+#include "binding/packet_getter.h"
+#include "binding/packet_creator.h"
 #include <functional>
 
 namespace mediapipe::tasks::autoit::vision::image_embedder {
@@ -24,8 +26,8 @@ namespace mediapipe::tasks::autoit::vision::image_embedder {
 		CV_WRAP ImageEmbedderOptions(
 			std::shared_ptr<autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
 			core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
-			std::optional<bool> l2_normalize = std::optional<bool>(),
-			std::optional<bool> quantize = std::optional<bool>(),
+			const std::optional<bool>& l2_normalize = std::optional<bool>(),
+			const std::optional<bool>& quantize = std::optional<bool>(),
 			ImageEmbedderResultCallback result_callback = nullptr
 		)
 			:

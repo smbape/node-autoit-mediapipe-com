@@ -1,25 +1,23 @@
 #include "binding/tasks/vision/object_detector.h"
-#include "binding/packet_getter.h"
-#include "binding/packet_creator.h"
 
-PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback);
+// PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback);
 
-template<typename _Ty1, typename _Ty2>
-inline const HRESULT autoit_to_callback(VARIANT const* const& in_val, _Ty1& out_val) {
-	_Ty2 result_callback;
-	HRESULT hr = autoit_to(in_val, result_callback);
-	if (SUCCEEDED(hr)) {
-		out_val = result_callback;
-	}
-	return hr;
-}
+// template<typename _Ty1, typename _Ty2>
+// inline const HRESULT autoit_to_callback(VARIANT const* const& in_val, _Ty1& out_val) {
+// 	_Ty2 result_callback;
+// 	HRESULT hr = autoit_to(in_val, result_callback);
+// 	if (SUCCEEDED(hr)) {
+// 		out_val = result_callback;
+// 	}
+// 	return hr;
+// }
 
-const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultCallback& out_val) {
-	return autoit_to_callback<
-		mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultCallback,
-		mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback
-	>(in_val, out_val);
-}
+// const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultCallback& out_val) {
+// 	return autoit_to_callback<
+// 		mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultCallback,
+// 		mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback
+// 	>(in_val, out_val);
+// }
 
 namespace {
 	using namespace mediapipe::tasks::vision::object_detector::proto;
@@ -27,6 +25,9 @@ namespace {
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
 	using namespace mediapipe::tasks::autoit::components::utils;
+	using namespace mediapipe::autoit::packet_creator;
+	using namespace mediapipe::autoit::packet_getter;
+	using namespace google::protobuf;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -37,6 +38,7 @@ namespace {
 	const std::string _IMAGE_OUT_STREAM_NAME = "image_out";
 	const std::string _IMAGE_TAG = "IMAGE";
 	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.ObjectDetectorGraph";
+	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
 }
 
 namespace mediapipe::tasks::autoit::vision::object_detector {
@@ -69,20 +71,23 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 
 		if (options->result_callback) {
 			packets_callback = [options](const PacketMap& output_packets) {
-				if (output_packets.at(_IMAGE_OUT_STREAM_NAME).IsEmpty()) {
+				const auto& image_out_packet = output_packets.at(_IMAGE_OUT_STREAM_NAME);
+				if (image_out_packet.IsEmpty()) {
 					return;
 				}
 
-				auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
-				auto detection_result = ObjectDetectorResult();
+				std::vector<std::shared_ptr<Message>> detection_proto_list;
+				get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME), detection_proto_list);
+
+				ObjectDetectorResult detection_result;
 				for (const auto& result : detection_proto_list) {
 					detection_result.detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
 				}
 
-				auto image = mediapipe::autoit::packet_getter::GetContent<Image>(output_packets.at(_IMAGE_OUT_STREAM_NAME));
-				auto timestamp = output_packets.at(_IMAGE_OUT_STREAM_NAME).Timestamp().Value();
+				auto image = GetContent<Image>(image_out_packet);
+				auto timestamp_ms = image_out_packet.Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
-				options->result_callback(detection_result, image, timestamp);
+				options->result_callback(detection_result, image, timestamp_ms);
 			};
 		}
 
@@ -105,13 +110,13 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 	}
 
 	std::shared_ptr<ObjectDetectorResult> ObjectDetector::detect(const Image& image) {
-		AUTOIT_INFO("processing image");
 		auto output_packets = _process_image_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(mediapipe::autoit::packet_creator::create_image(image))) }
+			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(create_image(image))) }
 			});
-		AUTOIT_INFO("processed image");
 
-		auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
+		std::vector<std::shared_ptr<Message>> detection_proto_list;
+		get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME), detection_proto_list);
+
 		auto detection_result = std::make_shared<ObjectDetectorResult>();
 		for (const auto& result : detection_proto_list) {
 			detection_result->detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
@@ -122,12 +127,14 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 
 	std::shared_ptr<ObjectDetectorResult> ObjectDetector::detect_for_video(const Image& image, int64_t timestamp_ms) {
 		auto output_packets = _process_video_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(
-				Timestamp(timestamp_ms)
+			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
+				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
 			});
 
-		auto detection_proto_list = mediapipe::autoit::packet_getter::get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
+		std::vector<std::shared_ptr<Message>> detection_proto_list;
+		get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME), detection_proto_list);
+
 		auto detection_result = std::make_shared<ObjectDetectorResult>();
 		for (const auto& result : detection_proto_list) {
 			detection_result->detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
@@ -138,8 +145,8 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 
 	void ObjectDetector::detect_async(const Image& image, int64_t timestamp_ms) {
 		_send_live_stream_data({
-			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(mediapipe::autoit::packet_creator::create_image(image))->At(
-				Timestamp(timestamp_ms)
+			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
+				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
 			});
 	}

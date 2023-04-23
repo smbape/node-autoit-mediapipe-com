@@ -6,6 +6,8 @@
 #include "binding/tasks/core/task_info.h"
 #include "binding/tasks/vision/core/base_vision_task_api.h"
 #include "binding/tasks/vision/core/vision_task_running_mode.h"
+#include "binding/packet_getter.h"
+#include "binding/packet_creator.h"
 #include <functional>
 
 namespace mediapipe::tasks::autoit::vision::object_detector {
@@ -21,8 +23,8 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 			std::shared_ptr<autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
 			core::vision_task_running_mode::VisionTaskRunningMode running_mode = tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::IMAGE,
 			const std::optional<std::string>& display_names_locale = std::optional<std::string>(),
-			std::optional<int> max_results = std::optional<int>(),
-			std::optional<float> score_threshold = std::optional<float>(),
+			const std::optional<int>& max_results = std::optional<int>(),
+			const std::optional<float>& score_threshold = std::optional<float>(),
 			const std::vector<std::string>& category_allowlist = std::vector<std::string>(),
 			const std::vector<std::string>& category_denylist = std::vector<std::string>(),
 			ObjectDetectorResultCallback result_callback = nullptr
@@ -62,5 +64,5 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 	};
 }
 
-PTR_BRIDGE_DECL(mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultCallback& out_val);
+// PTR_BRIDGE_DECL(mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultRawCallback);
+// extern const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorResultCallback& out_val);
