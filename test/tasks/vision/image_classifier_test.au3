@@ -48,7 +48,7 @@ _AssertIsObj($image_processing_options_module, "Failed to load mediapipe.tasks.a
 Global $vision_task_running_mode = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 _AssertIsObj($vision_task_running_mode, "Failed to load mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 
-Global $ImageClassifierResult = $classification_result_module.ClassificationResult
+Global $_ImageClassifierResult = $classification_result_module.ClassificationResult
 Global $_Rect = $rect.Rect
 Global $_BaseOptions = $base_options_module.BaseOptions
 Global $_Category = $category_module.Category
@@ -61,10 +61,60 @@ Global $_ImageProcessingOptions = $image_processing_options_module.ImageProcessi
 
 Global $_MODEL_FILE = 'mobilenet_v2_1.0_224.tflite'
 Global $_IMAGE_FILE = 'burger.jpg'
+Global $_IMAGE_ROTATED_FILE = 'burger_rotated.jpg'
+Global $_IMAGE_ROI_ROTATED_FILE = 'multi_objects_rotated.jpg'
 Global $_ALLOW_LIST[] = ['cheeseburger', 'guacamole']
 Global $_DENY_LIST[] = ['cheeseburger']
 Global $_SCORE_THRESHOLD = 0.5
 Global $_MAX_RESULTS = 3
+
+Global $_EXPECTED_ROTATED_CLASSIFICATION_RESULT = $_ImageClassifierResult(_Mediapipe_Params( _
+	"classifications", _Mediapipe_Tuple( _
+		$_Classifications(_Mediapipe_Params( _
+			"categories", _Mediapipe_Tuple( _
+				$_Category(_Mediapipe_Params( _
+					"index", 934, _
+					"score", 0.754467, _
+					"display_name", '', _
+					"category_name", 'cheeseburger' _
+				)), _
+				$_Category(_Mediapipe_Params( _
+					"index", 925, _
+					"score", 0.0288028, _
+					"display_name", '', _
+					"category_name", 'guacamole' _
+				)), _
+				$_Category(_Mediapipe_Params( _
+					"index", 932, _
+					"score", 0.0286119, _
+					"display_name", '', _
+					"category_name", 'bagel' _
+				)) _
+			), _
+			"head_index", 0, _
+			"head_name", 'probability' _
+		)) _
+	), _
+	"timestamp_ms", 0 _
+))
+
+Global $_EXPECTED_ROI_ROTATED__CLASSIFICATION_RESULT = $_ImageClassifierResult(_Mediapipe_Params( _
+	"classifications", _Mediapipe_Tuple( _
+		$_Classifications(_Mediapipe_Params( _
+			"categories", _Mediapipe_Tuple( _
+				$_Category(_Mediapipe_Params( _
+					"index", 806, _
+					"score", 0.997684, _
+					"display_name", '', _
+					"category_name", 'soccer ball' _
+				)) _
+			), _
+			"head_index", 0, _
+			"head_name", 'probability' _
+		)) _
+	), _
+	"timestamp_ms", 0 _
+))
 
 Global $FILE_CONTENT = 1
 Global $FILE_NAME = 2
@@ -80,7 +130,9 @@ Func Test()
 
 	Local $test_files[] = [ _
 			$_MODEL_FILE, _
-			$_IMAGE_FILE _
+			$_IMAGE_FILE, _
+			$_IMAGE_ROTATED_FILE, _
+			$_IMAGE_ROI_ROTATED_FILE _
 			]
 	For $name In $test_files
 		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
@@ -99,6 +151,8 @@ Func Test()
 	test_classify($FILE_NAME, 4, _generate_burger_results())
 	test_classify($FILE_CONTENT, 4, _generate_burger_results())
 	test_classify_succeeds_with_region_of_interest()
+	test_classify_succeeds_with_rotation()
+	test_classify_succeeds_with_region_of_interest_and_rotation()
 	test_score_threshold_option()
 	test_max_results_option()
 	test_allow_list_option()
@@ -179,6 +233,50 @@ Func test_classify_succeeds_with_region_of_interest()
 	; Closes the classifier explicitly when the classifier is not used in a context.
 	$classifier.close()
 EndFunc   ;==>test_classify_succeeds_with_region_of_interest
+
+Func test_classify_succeeds_with_rotation()
+	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
+	Local $options = $_ImageClassifierOptions(_Mediapipe_Params("base_options", $base_options, "max_results", 3))
+	Local $classifier = $_ImageClassifier.create_from_options($options)
+
+	; Load the test image.
+	Local $test_image = $_Image.create_from_file(get_test_data_path($_IMAGE_ROTATED_FILE))
+
+	; Specify a 90° anti-clockwise rotation.
+	Local $image_processing_options = $_ImageProcessingOptions(_Mediapipe_Params("rotation_degrees", -90))
+
+	; Performs image classification on the input.
+	Local $image_result = $classifier.classify($test_image, $image_processing_options)
+
+	; Comparing results.
+	_AssertProtoEquals($image_result.to_pb2(), $_EXPECTED_ROTATED_CLASSIFICATION_RESULT.to_pb2())
+
+	; Closes the classifier explicitly when the classifier is not used in a context.
+	$classifier.close()
+EndFunc   ;==>test_classify_succeeds_with_rotation
+
+Func test_classify_succeeds_with_region_of_interest_and_rotation()
+	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
+	Local $options = $_ImageClassifierOptions(_Mediapipe_Params("base_options", $base_options, "max_results", 1))
+	Local $classifier = $_ImageClassifier.create_from_options($options)
+
+	; Load the test image.
+	Local $test_image = $_Image.create_from_file(get_test_data_path($_IMAGE_ROI_ROTATED_FILE))
+
+	; Region-of-interest around the soccer ball, with 90° anti-clockwise
+	; rotation.
+	Local $roi = $_Rect(_Mediapipe_Params("left", 0.2655, "top", 0.45, "right", 0.6925, "bottom", 0.614))
+	Local $image_processing_options = $_ImageProcessingOptions($roi, -90)
+
+	; Performs image classification on the input.
+	Local $image_result = $classifier.classify($test_image, $image_processing_options)
+
+	; Comparing results.
+	_AssertProtoEquals($image_result.to_pb2(), $_EXPECTED_ROI_ROTATED__CLASSIFICATION_RESULT.to_pb2())
+
+	; Closes the classifier explicitly when the classifier is not used in a context.
+	$classifier.close()
+EndFunc   ;==>test_classify_succeeds_with_region_of_interest_and_rotation
 
 Func test_score_threshold_option()
 	; Creates classifier.
@@ -341,7 +439,7 @@ Func test_classify_for_video_succeeds_with_region_of_interest()
 EndFunc   ;==>test_classify_for_video_succeeds_with_region_of_interest
 
 Func _generate_empty_results()
-	Return $ImageClassifierResult(_Mediapipe_Params( _
+	Return $_ImageClassifierResult(_Mediapipe_Params( _
 			"classifications", _Mediapipe_Tuple( _
 				$_Classifications(_Mediapipe_Params( _
 					"categories", _Mediapipe_Tuple(), "head_index", 0, "head_name", 'probability')) _
@@ -350,7 +448,7 @@ Func _generate_empty_results()
 EndFunc   ;==>_generate_empty_results
 
 Func _generate_burger_results($timestamp_ms = 0)
-	Return $ImageClassifierResult(_Mediapipe_Params( _
+	Return $_ImageClassifierResult(_Mediapipe_Params( _
 		"classifications", _Mediapipe_Tuple( _
 			$_Classifications(_Mediapipe_Params( _
 				"categories", _Mediapipe_Tuple( _
@@ -388,7 +486,7 @@ Func _generate_burger_results($timestamp_ms = 0)
 EndFunc   ;==>_generate_burger_results
 
 Func _generate_soccer_ball_results($timestamp_ms = 0)
-	Return $ImageClassifierResult(_Mediapipe_Params( _
+	Return $_ImageClassifierResult(_Mediapipe_Params( _
 		"classifications", _Mediapipe_Tuple( _
 			$_Classifications(_Mediapipe_Params( _
 				"categories", _Mediapipe_Tuple( _
