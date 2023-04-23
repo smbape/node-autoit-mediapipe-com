@@ -44,8 +44,8 @@ _AssertIsObj($vision_task_running_mode, "Failed to load mediapipe.tasks.autoit.v
 Global $_BaseOptions = $base_options_module.BaseOptions
 Global $_Image = $image_module.Image
 Global $_ImageFormat = $image_frame.ImageFormat
-Global $_OutputType = $image_segmenter.ImageSegmenterOptionsEnums.OutputType
-Global $_Activation = $image_segmenter.ImageSegmenterOptionsEnums.Activation
+Global $_OutputType = $image_segmenter.ImageSegmenterOptions_OutputType
+Global $_Activation = $image_segmenter.ImageSegmenterOptions_Activation
 Global $_ImageSegmenter = $image_segmenter.ImageSegmenter
 Global $_ImageSegmenterOptions = $image_segmenter.ImageSegmenterOptions
 Global $_RUNNING_MODE = $vision_task_running_mode.VisionTaskRunningMode

@@ -887,6 +887,15 @@
   - [vision.image\_segmenter](#visionimage%5C_segmenter)
   - [vision.interactive\_segmenter](#visioninteractive%5C_segmenter)
   - [vision.object\_detector](#visionobject%5C_detector)
+  - [vision.FaceDetector](#visionfacedetector)
+  - [vision.FaceDetectorOptions](#visionfacedetectoroptions)
+  - [vision.FaceDetectorResult](#visionfacedetectorresult)
+  - [vision.FaceLandmarker](#visionfacelandmarker)
+  - [vision.FaceLandmarkerOptions](#visionfacelandmarkeroptions)
+  - [vision.FaceLandmarkerResult](#visionfacelandmarkerresult)
+  - [vision.FaceLandmarksConnections](#visionfacelandmarksconnections)
+  - [vision.FaceStylizer](#visionfacestylizer)
+  - [vision.FaceStylizerOptions](#visionfacestylizeroptions)
   - [vision.GestureRecognizer](#visiongesturerecognizer)
   - [vision.GestureRecognizerOptions](#visiongesturerecognizeroptions)
   - [vision.GestureRecognizerResult](#visiongesturerecognizerresult)
@@ -901,6 +910,9 @@
   - [vision.ImageEmbedderResult](#visionimageembedderresult)
   - [vision.ImageSegmenter](#visionimagesegmenter)
   - [vision.ImageSegmenterOptions](#visionimagesegmenteroptions)
+  - [vision.InteractiveSegmenter](#visioninteractivesegmenter)
+  - [vision.InteractiveSegmenterOptions](#visioninteractivesegmenteroptions)
+  - [vision.InteractiveSegmenterRegionOfInterest](#visioninteractivesegmenterregionofinterest)
   - [vision.ObjectDetector](#visionobjectdetector)
   - [vision.ObjectDetectorOptions](#visionobjectdetectoroptions)
   - [vision.RunningMode](#visionrunningmode)
@@ -1273,7 +1285,8 @@
 - [mediapipe::tasks::autoit::vision::image\_segmenter](#mediapipetasksautoitvisionimage%5C_segmenter)
   - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions)
   - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter)
-  - [image\_segmenter.ImageSegmenterOptionsEnums](#image%5C_segmenterimagesegmenteroptionsenums)
+  - [image\_segmenter.ImageSegmenterOptions\_OutputType](#image%5C_segmenterimagesegmenteroptions%5C_outputtype)
+  - [image\_segmenter.ImageSegmenterOptions\_Activation](#image%5C_segmenterimagesegmenteroptions%5C_activation)
 - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptions)
   - [ImageSegmenterOptions.base\_options](#imagesegmenteroptionsbase%5C_options)
   - [ImageSegmenterOptions.running\_mode](#imagesegmenteroptionsrunning%5C_mode)
@@ -1285,7 +1298,6 @@
 - [mediapipe::autoit::vision::image\_segmenter](#mediapipeautoitvisionimage%5C_segmenter)
   - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions-1)
   - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter-1)
-  - [image\_segmenter.ImageSegmenterOptionsEnums](#image%5C_segmenterimagesegmenteroptionsenums-1)
 - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::\_process\_image\_data](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter%5C_process%5C_image%5C_data)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::\_process\_video\_data](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter%5C_process%5C_video%5C_data)
@@ -1303,6 +1315,8 @@
   - [interactive\_segmenter.RegionOfInterest\_Format](#interactive%5C_segmenterregionofinterest%5C_format)
   - [interactive\_segmenter.RegionOfInterest](#interactive%5C_segmenterregionofinterest)
   - [interactive\_segmenter.InteractiveSegmenter](#interactive%5C_segmenterinteractivesegmenter)
+  - [interactive\_segmenter.InteractiveSegmenterOptions\_OutputType](#interactive%5C_segmenterinteractivesegmenteroptions%5C_outputtype)
+  - [interactive\_segmenter.InteractiveSegmenterOptions\_Activation](#interactive%5C_segmenterinteractivesegmenteroptions%5C_activation)
 - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenteroptions)
   - [InteractiveSegmenterOptions.base\_options](#interactivesegmenteroptionsbase%5C_options)
   - [InteractiveSegmenterOptions.output\_type](#interactivesegmenteroptionsoutput%5C_type)
@@ -6938,9 +6952,6 @@
   - [mediapipe::ValidatedGraphConfig::registered\_stream\_type\_name](#mediapipevalidatedgraphconfigregistered%5C_stream%5C_type%5C_name)
 - [mediapipe::autoit::\_framework\_bindings::validated\_graph\_config](#mediapipeautoit%5C_framework%5C_bindingsvalidated%5C_graph%5C_config)
   - [validated\_graph\_config.ValidatedGraphConfig](#validated%5C_graph%5C_configvalidatedgraphconfig)
-- [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptionsEnums](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptionsenums)
-  - [ImageSegmenterOptionsEnums.OutputType](#imagesegmenteroptionsenumsoutputtype)
-  - [ImageSegmenterOptionsEnums.Activation](#imagesegmenteroptionsenumsactivation)
 - [VectorOfString](#vectorofstring)
   - [VectorOfString.Count](#vectorofstringcount)
   - [VectorOfString::create](#vectorofstringcreate)
@@ -6985,6 +6996,14 @@
   - [VectorOfVariant::sort](#vectorofvariantsort)
   - [VectorOfVariant::sort\_variant](#vectorofvariantsort%5C_variant)
   - [VectorOfVariant::start](#vectorofvariantstart)
+- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsoutputtype)
+  - [OutputType.UNSPECIFIED](#outputtypeunspecified)
+  - [OutputType.CATEGORY\_MASK](#outputtypecategory%5C_mask)
+  - [OutputType.CONFIDENCE\_MASK](#outputtypeconfidence%5C_mask)
+- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsactivation)
+  - [Activation.NONE](#activationnone)
+  - [Activation.SIGMOID](#activationsigmoid)
+  - [Activation.SOFTMAX](#activationsoftmax)
 - [mediapipe::ImageFormat::Format](#mediapipeimageformatformat)
   - [Format.UNKNOWN](#formatunknown)
   - [Format.SRGB](#formatsrgb)
@@ -7000,14 +7019,6 @@
   - [Format.VEC32F4](#formatvec32f4)
   - [Format.LAB8](#formatlab8)
   - [Format.SBGRA](#formatsbgra)
-- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsoutputtype)
-  - [OutputType.UNSPECIFIED](#outputtypeunspecified)
-  - [OutputType.CATEGORY\_MASK](#outputtypecategory%5C_mask)
-  - [OutputType.CONFIDENCE\_MASK](#outputtypeconfidence%5C_mask)
-- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsactivation)
-  - [Activation.NONE](#activationnone)
-  - [Activation.SIGMOID](#activationsigmoid)
-  - [Activation.SOFTMAX](#activationsoftmax)
 - [VectorOfBool](#vectorofbool)
   - [VectorOfBool.Count](#vectorofboolcount)
   - [VectorOfBool::create](#vectorofboolcreate)
@@ -9925,7 +9936,7 @@ AutoIt:
 ### mediapipe.autoit
 
 ```cpp
-static mediapipe::tasks::autoit
+static mediapipe::autoit
 AutoIt:
     [propget] $omediapipe.autoit
 ```
@@ -16288,6 +16299,78 @@ AutoIt:
     [propget] $ovision.object_detector
 ```
 
+### vision.FaceDetector
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector::FaceDetector
+AutoIt:
+    [propget] $ovision.FaceDetector
+```
+
+### vision.FaceDetectorOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions
+AutoIt:
+    [propget] $ovision.FaceDetectorOptions
+```
+
+### vision.FaceDetectorResult
+
+```cpp
+static mediapipe::tasks::autoit::components::containers::detections::DetectionResult
+AutoIt:
+    [propget] $ovision.FaceDetectorResult
+```
+
+### vision.FaceLandmarker
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker
+AutoIt:
+    [propget] $ovision.FaceLandmarker
+```
+
+### vision.FaceLandmarkerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions
+AutoIt:
+    [propget] $ovision.FaceLandmarkerOptions
+```
+
+### vision.FaceLandmarkerResult
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult
+AutoIt:
+    [propget] $ovision.FaceLandmarkerResult
+```
+
+### vision.FaceLandmarksConnections
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections
+AutoIt:
+    [propget] $ovision.FaceLandmarksConnections
+```
+
+### vision.FaceStylizer
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer
+AutoIt:
+    [propget] $ovision.FaceStylizer
+```
+
+### vision.FaceStylizerOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions
+AutoIt:
+    [propget] $ovision.FaceStylizerOptions
+```
+
 ### vision.GestureRecognizer
 
 ```cpp
@@ -16398,6 +16481,30 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions
 AutoIt:
     [propget] $ovision.ImageSegmenterOptions
+```
+
+### vision.InteractiveSegmenter
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter
+AutoIt:
+    [propget] $ovision.InteractiveSegmenter
+```
+
+### vision.InteractiveSegmenterOptions
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions
+AutoIt:
+    [propget] $ovision.InteractiveSegmenterOptions
+```
+
+### vision.InteractiveSegmenterRegionOfInterest
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest
+AutoIt:
+    [propget] $ovision.InteractiveSegmenterRegionOfInterest
 ```
 
 ### vision.ObjectDetector
@@ -19281,12 +19388,20 @@ AutoIt:
     [propget] $oimage_segmenter.ImageSegmenter
 ```
 
-### image\_segmenter.ImageSegmenterOptionsEnums
+### image\_segmenter.ImageSegmenterOptions\_OutputType
 
 ```cpp
-static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptionsEnums
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType
 AutoIt:
-    [propget] $oimage_segmenter.ImageSegmenterOptionsEnums
+    [propget] $oimage_segmenter.ImageSegmenterOptions_OutputType
+```
+
+### image\_segmenter.ImageSegmenterOptions\_Activation
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation
+AutoIt:
+    [propget] $oimage_segmenter.ImageSegmenterOptions_Activation
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions
@@ -19375,14 +19490,6 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter
 AutoIt:
     [propget] $oimage_segmenter.ImageSegmenter
-```
-
-### image\_segmenter.ImageSegmenterOptionsEnums
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptionsEnums
-AutoIt:
-    [propget] $oimage_segmenter.ImageSegmenterOptionsEnums
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter
@@ -19516,6 +19623,22 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter
 AutoIt:
     [propget] $ointeractive_segmenter.InteractiveSegmenter
+```
+
+### interactive\_segmenter.InteractiveSegmenterOptions\_OutputType
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType
+AutoIt:
+    [propget] $ointeractive_segmenter.InteractiveSegmenterOptions_OutputType
+```
+
+### interactive\_segmenter.InteractiveSegmenterOptions\_Activation
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation
+AutoIt:
+    [propget] $ointeractive_segmenter.InteractiveSegmenterOptions_Activation
 ```
 
 ## mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions
@@ -68664,24 +68787,6 @@ AutoIt:
     [propget] $ovalidated_graph_config.ValidatedGraphConfig
 ```
 
-## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptionsEnums
-
-### ImageSegmenterOptionsEnums.OutputType
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType
-AutoIt:
-    [propget] $oImageSegmenterOptionsEnums.OutputType
-```
-
-### ImageSegmenterOptionsEnums.Activation
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation
-AutoIt:
-    [propget] $oImageSegmenterOptionsEnums.Activation
-```
-
 ## VectorOfString
 
 ### VectorOfString.Count
@@ -69090,6 +69195,58 @@ AutoIt:
     $oVectorOfVariant.start() -> retval
 ```
 
+## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType
+
+### OutputType.UNSPECIFIED
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::UNSPECIFIED
+AutoIt:
+    [propget] $oOutputType.UNSPECIFIED
+```
+
+### OutputType.CATEGORY\_MASK
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CATEGORY_MASK
+AutoIt:
+    [propget] $oOutputType.CATEGORY_MASK
+```
+
+### OutputType.CONFIDENCE\_MASK
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CONFIDENCE_MASK
+AutoIt:
+    [propget] $oOutputType.CONFIDENCE_MASK
+```
+
+## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation
+
+### Activation.NONE
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::NONE
+AutoIt:
+    [propget] $oActivation.NONE
+```
+
+### Activation.SIGMOID
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SIGMOID
+AutoIt:
+    [propget] $oActivation.SIGMOID
+```
+
+### Activation.SOFTMAX
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SOFTMAX
+AutoIt:
+    [propget] $oActivation.SOFTMAX
+```
+
 ## mediapipe::ImageFormat::Format
 
 ### Format.UNKNOWN
@@ -69202,58 +69359,6 @@ AutoIt:
 static mediapipe::ImageFormat::Format mediapipe::ImageFormat::Format::SBGRA
 AutoIt:
     [propget] $oFormat.SBGRA
-```
-
-## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType
-
-### OutputType.UNSPECIFIED
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::UNSPECIFIED
-AutoIt:
-    [propget] $oOutputType.UNSPECIFIED
-```
-
-### OutputType.CATEGORY\_MASK
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CATEGORY_MASK
-AutoIt:
-    [propget] $oOutputType.CATEGORY_MASK
-```
-
-### OutputType.CONFIDENCE\_MASK
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CONFIDENCE_MASK
-AutoIt:
-    [propget] $oOutputType.CONFIDENCE_MASK
-```
-
-## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation
-
-### Activation.NONE
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::NONE
-AutoIt:
-    [propget] $oActivation.NONE
-```
-
-### Activation.SIGMOID
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SIGMOID
-AutoIt:
-    [propget] $oActivation.SIGMOID
-```
-
-### Activation.SOFTMAX
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SOFTMAX
-AutoIt:
-    [propget] $oActivation.SOFTMAX
 ```
 
 ## VectorOfBool
