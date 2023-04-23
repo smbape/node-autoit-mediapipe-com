@@ -282,8 +282,8 @@ Func _expect_face_detector_results_correct($actual_results, $expected_results)
 	Next
 EndFunc   ;==>_expect_face_detector_results_correct
 
-Func _get_expected_face_detector_result($FILE_NAME)
-	Local $face_detection_result_file_path = get_test_data_path($FILE_NAME)
+Func _get_expected_face_detector_result($file_path)
+	Local $face_detection_result_file_path = get_test_data_path($file_path)
 	Local $face_detection_proto = $detection_pb2.Detection.create()
 	$text_format.Parse(FileRead($face_detection_result_file_path), $face_detection_proto)
 	Local $face_detection = $detections_module.Detection.create_from_pb2($face_detection_proto)
