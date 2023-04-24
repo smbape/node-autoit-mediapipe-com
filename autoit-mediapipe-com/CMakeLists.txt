@@ -74,8 +74,6 @@ unset(SOURCE_DIR)
 set(OpenCVCOM_ASSEMBLY_DLL "${autoit_opencv_com_SOURCE_DIR}/dotnet/OpenCV.InteropServices.dll")
 file(TO_NATIVE_PATH "${OpenCVCOM_ASSEMBLY_DLL}" OpenCVCOM_ASSEMBLY_DLL)
 
-find_package(Python COMPONENTS Interpreter REQUIRED)
-
 # update version in files
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "OPENCV_VERSION = \"[0-9]+\"  # [0-9]+\\.[0-9]+\\.[0-9]+" "OPENCV_VERSION = \"${OpenCV_DLLVERSION}\"  # ${OpenCV_VERSION}")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "MEDIAPIPE_VERSION = \"[0-9]+(\\.[0-9]+)+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
@@ -136,7 +134,8 @@ endif()
 
 set(mediapipe_BINARY_DIR "${mediapipe_SOURCE_DIR}/bazel-out/x64_windows-${CMODE}/bin")
 
-string(REPLACE / // PYTHON_BIN_PATH "${Python_EXECUTABLE}")
+include(cmake/UsePython3Venv.cmake)
+
 set(BAZEL_BUILD bazel
   --output_user_root=C:/_bazel_
   build -c ${CMODE}
@@ -153,7 +152,7 @@ if(
   (NOT EXISTS "${mediapipe_SOURCE_DIR}/bazel-mediapipe-src/external/com_google_protobuf/src")
 )
   execute_process(
-    COMMAND "${Python_EXECUTABLE}" -m pip install numpy
+    COMMAND "${Python3_EXECUTABLE}" -m pip install numpy
     WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
     COMMAND_ECHO STDERR
     COMMAND_ERROR_IS_FATAL ANY
