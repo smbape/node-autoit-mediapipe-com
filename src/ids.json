@@ -2423,6 +2423,14 @@
         "iid": "f991ae8c-a707-4ab1-bc7c-58045e91b74f",
         "clsid": "817a9567-07e4-4521-b84b-eda230da7cea"
     },
+    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType": {
+        "iid": "818184b4-d6bd-4f02-a2c4-f2ffdd442b31",
+        "clsid": "6784a27a-0e56-410e-b50c-6c1b99f85ee3"
+    },
+    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation": {
+        "iid": "04409ffe-3f5a-4d8a-a87f-030b36183b56",
+        "clsid": "326e754d-1087-41a9-9939-ab76e094a51b"
+    },
     "VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection": {
         "iid": "0ba94273-3fd7-40f2-9e4e-cd9c8180dd16",
         "clsid": "8511bdff-cbca-4741-993f-dd0145699360"
@@ -2442,14 +2450,6 @@
     "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark": {
         "iid": "976a9bae-1a19-49ed-961f-c41e7fb7d04b",
         "clsid": "3f113081-7819-4ce9-8fd6-e5bfc8513a11"
-    },
-    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType": {
-        "iid": "818184b4-d6bd-4f02-a2c4-f2ffdd442b31",
-        "clsid": "6784a27a-0e56-410e-b50c-6c1b99f85ee3"
-    },
-    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation": {
-        "iid": "04409ffe-3f5a-4d8a-a87f-030b36183b56",
-        "clsid": "326e754d-1087-41a9-9939-ab76e094a51b"
     },
     "VectorOfUchar": {
         "iid": "e4e3896c-ff7d-47bf-a44a-ffc2a76261b4",

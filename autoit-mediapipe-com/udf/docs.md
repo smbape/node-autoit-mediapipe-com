@@ -911,6 +911,8 @@
   - [vision.ImageEmbedderResult](#visionimageembedderresult)
   - [vision.ImageSegmenter](#visionimagesegmenter)
   - [vision.ImageSegmenterOptions](#visionimagesegmenteroptions)
+  - [vision.ImageSegmenterOptions\_OutputType](#visionimagesegmenteroptions%5C_outputtype)
+  - [vision.ImageSegmenterOptions\_Activation](#visionimagesegmenteroptions%5C_activation)
   - [vision.InteractiveSegmenter](#visioninteractivesegmenter)
   - [vision.InteractiveSegmenterOptions](#visioninteractivesegmenteroptions)
   - [vision.InteractiveSegmenterRegionOfInterest](#visioninteractivesegmenterregionofinterest)
@@ -7561,6 +7563,14 @@
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort\_variant](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort%5C_variant)
   - [VectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::start](#vectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkstart)
+- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsoutputtype)
+  - [OutputType.UNSPECIFIED](#outputtypeunspecified)
+  - [OutputType.CATEGORY\_MASK](#outputtypecategory%5C_mask)
+  - [OutputType.CONFIDENCE\_MASK](#outputtypeconfidence%5C_mask)
+- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsactivation)
+  - [Activation.NONE](#activationnone)
+  - [Activation.SIGMOID](#activationsigmoid)
+  - [Activation.SOFTMAX](#activationsoftmax)
 - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connection)
   - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection.Count](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectioncount)
   - [VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::create](#vectoroftasks%5C_autoit%5C_vision%5C_face%5C_landmarker%5C_facelandmarksconnections%5C_connectioncreate)
@@ -7671,14 +7681,6 @@
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort)
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::sort\_variant](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarksort%5C_variant)
   - [VectorOfVectorOfShared\_ptrTasks\_autoit\_components\_containers\_landmark\_Landmark::start](#vectorofvectorofshared%5C_ptrtasks%5C_autoit%5C_components%5C_containers%5C_landmark%5C_landmarkstart)
-- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsoutputtype)
-  - [OutputType.UNSPECIFIED](#outputtypeunspecified)
-  - [OutputType.CATEGORY\_MASK](#outputtypecategory%5C_mask)
-  - [OutputType.CONFIDENCE\_MASK](#outputtypeconfidence%5C_mask)
-- [mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation](#mediapipetasksvisionimage%5C_segmenterprotosegmenteroptionsactivation)
-  - [Activation.NONE](#activationnone)
-  - [Activation.SIGMOID](#activationsigmoid)
-  - [Activation.SOFTMAX](#activationsoftmax)
 - [VectorOfUchar](#vectorofuchar)
   - [VectorOfUchar.Count](#vectorofucharcount)
   - [VectorOfUchar::create](#vectorofucharcreate)
@@ -16602,6 +16604,22 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions
 AutoIt:
     [propget] $ovision.ImageSegmenterOptions
+```
+
+### vision.ImageSegmenterOptions\_OutputType
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType
+AutoIt:
+    [propget] $ovision.ImageSegmenterOptions_OutputType
+```
+
+### vision.ImageSegmenterOptions\_Activation
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation
+AutoIt:
+    [propget] $ovision.ImageSegmenterOptions_Activation
 ```
 
 ### vision.InteractiveSegmenter
@@ -74636,6 +74654,58 @@ AutoIt:
     $oVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.start() -> retval
 ```
 
+## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType
+
+### OutputType.UNSPECIFIED
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::UNSPECIFIED
+AutoIt:
+    [propget] $oOutputType.UNSPECIFIED
+```
+
+### OutputType.CATEGORY\_MASK
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CATEGORY_MASK
+AutoIt:
+    [propget] $oOutputType.CATEGORY_MASK
+```
+
+### OutputType.CONFIDENCE\_MASK
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CONFIDENCE_MASK
+AutoIt:
+    [propget] $oOutputType.CONFIDENCE_MASK
+```
+
+## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation
+
+### Activation.NONE
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::NONE
+AutoIt:
+    [propget] $oActivation.NONE
+```
+
+### Activation.SIGMOID
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SIGMOID
+AutoIt:
+    [propget] $oActivation.SIGMOID
+```
+
+### Activation.SOFTMAX
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SOFTMAX
+AutoIt:
+    [propget] $oActivation.SOFTMAX
+```
+
 ## VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection
 
 ### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection.Count
@@ -75654,58 +75724,6 @@ AutoIt:
 void* VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark::start();
 AutoIt:
     $oVectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark.start() -> retval
-```
-
-## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::OutputType
-
-### OutputType.UNSPECIFIED
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::UNSPECIFIED
-AutoIt:
-    [propget] $oOutputType.UNSPECIFIED
-```
-
-### OutputType.CATEGORY\_MASK
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CATEGORY_MASK
-AutoIt:
-    [propget] $oOutputType.CATEGORY_MASK
-```
-
-### OutputType.CONFIDENCE\_MASK
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType::CONFIDENCE_MASK
-AutoIt:
-    [propget] $oOutputType.CONFIDENCE_MASK
-```
-
-## mediapipe::tasks::vision::image\_segmenter::proto::SegmenterOptions::Activation
-
-### Activation.NONE
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::NONE
-AutoIt:
-    [propget] $oActivation.NONE
-```
-
-### Activation.SIGMOID
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SIGMOID
-AutoIt:
-    [propget] $oActivation.SIGMOID
-```
-
-### Activation.SOFTMAX
-
-```cpp
-static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation::SOFTMAX
-AutoIt:
-    [propget] $oActivation.SOFTMAX
 ```
 
 ## VectorOfUchar

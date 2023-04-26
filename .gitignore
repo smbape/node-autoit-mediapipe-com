@@ -29,3 +29,5 @@ generated
 /examples/data/efficientnet_lite0_fp32.tflite
 /examples/data/burger_crop.jpg
 /examples/data/mobilenet_v3_small_100_224_embedder.tflite
+/examples/data/deeplabv3.tflite
+/examples/data/segmentation_input_rotation0.jpg
