@@ -40,16 +40,16 @@ _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 Main()
 
 Func Main()
-	Local $IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\brother-sister-girl-family-boy-977170.jpg"
-	Local $IMAGE_URL = "https://i.imgur.com/Vu2Nqwb.jpg"
-	Local $MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\face_detection_short_range.tflite"
-	Local $MODEL_URL = "https://storage.googleapis.com/mediapipe-assets/face_detection_short_range.tflite?generation=1677044301978921"
+	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\brother-sister-girl-family-boy-977170.jpg"
+	Local $_IMAGE_URL = "https://i.imgur.com/Vu2Nqwb.jpg"
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\face_detection_short_range.tflite"
+	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-assets/face_detection_short_range.tflite?generation=1677044301978921"
 
 	Local $url, $file_path
 
 	Local $sample_files[] = [ _
-			_Mediapipe_Tuple($IMAGE_FILE, $IMAGE_URL), _
-			_Mediapipe_Tuple($MODEL_FILE, $MODEL_URL) _
+			_Mediapipe_Tuple($_IMAGE_FILE, $_IMAGE_URL), _
+			_Mediapipe_Tuple($_MODEL_FILE, $_MODEL_URL) _
 			]
 	For $config In $sample_files
 		$file_path = $config[0]
@@ -59,15 +59,15 @@ Func Main()
 		EndIf
 	Next
 
-	Local $scale = 1 / resize_and_show($cv.imread($IMAGE_FILE), Default, False)
+	Local $scale = 1 / resize_and_show($cv.imread($_IMAGE_FILE), Default, False)
 
 	; STEP 2: Create an FaceDetector object.
-	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $MODEL_FILE))
+	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $vision.FaceDetector.create_from_options($options)
 
 	; STEP 3: Load the input image.
-	Local $image = $mp.Image.create_from_file($IMAGE_FILE)
+	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
 
 	; STEP 4: Detect faces in the input image.
 	Local $detection_result = $detector.detect($image)

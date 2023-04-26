@@ -59,13 +59,13 @@ Func Main()
 		EndIf
 	Next
 
-	Local $MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\gesture_recognizer.task"
-	If Not FileExists($MODEL_FILE) Then
-		$download_utils.download("https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task", $MODEL_FILE)
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\gesture_recognizer.task"
+	If Not FileExists($_MODEL_FILE) Then
+		$download_utils.download("https://storage.googleapis.com/mediapipe-tasks/gesture_recognizer/gesture_recognizer.task", $_MODEL_FILE)
 	EndIf
 
 	; STEP 2: Create an GestureRecognizer object.
-	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $MODEL_FILE))
+	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.GestureRecognizerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $recognizer = $vision.GestureRecognizer.create_from_options($options)
 

@@ -158,11 +158,6 @@
   - [autoit.\_framework\_bindings](#autoit%5C_framework%5C_bindings)
   - [autoit.solutions](#autoitsolutions)
   - [autoit.solution\_base](#autoitsolution%5C_base)
-  - [autoit.audio](#autoitaudio)
-  - [autoit.components](#autoitcomponents)
-  - [autoit.core](#autoitcore)
-  - [autoit.text](#autoittext)
-  - [autoit.vision](#autoitvision)
 - [mediapipe::autoit::packet\_creator](#mediapipeautoitpacket%5C_creator)
   - [mediapipe::autoit::packet\_creator::create\_bool](#mediapipeautoitpacket%5C_creatorcreate%5C_bool)
   - [mediapipe::autoit::packet\_creator::create\_bool\_vector](#mediapipeautoitpacket%5C_creatorcreate%5C_bool%5C_vector)
@@ -560,11 +555,11 @@
 - [mediapipe::tasks](#mediapipetasks)
   - [tasks.autoit](#tasksautoit)
 - [mediapipe::tasks::autoit](#mediapipetasksautoit)
-  - [autoit.audio](#autoitaudio-1)
-  - [autoit.components](#autoitcomponents-1)
-  - [autoit.core](#autoitcore-1)
-  - [autoit.text](#autoittext-1)
-  - [autoit.vision](#autoitvision-1)
+  - [autoit.audio](#autoitaudio)
+  - [autoit.components](#autoitcomponents)
+  - [autoit.core](#autoitcore)
+  - [autoit.text](#autoittext)
+  - [autoit.vision](#autoitvision)
   - [autoit.BaseOptions](#autoitbaseoptions)
 - [mediapipe::tasks::autoit::audio](#mediapipetasksautoitaudio)
   - [audio.audio\_classifier](#audioaudio%5C_classifier)
@@ -580,10 +575,6 @@
 - [mediapipe::tasks::autoit::audio::audio\_classifier](#mediapipetasksautoitaudioaudio%5C_classifier)
   - [audio\_classifier.AudioClassifierOptions](#audio%5C_classifieraudioclassifieroptions)
   - [audio\_classifier.AudioClassifier](#audio%5C_classifieraudioclassifier)
-- [mediapipe::autoit::audio](#mediapipeautoitaudio)
-  - [audio.audio\_classifier](#audioaudio%5C_classifier-1)
-  - [audio.audio\_embedder](#audioaudio%5C_embedder-1)
-  - [audio.core](#audiocore-1)
 - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifieroptions)
   - [AudioClassifierOptions.base\_options](#audioclassifieroptionsbase%5C_options)
   - [AudioClassifierOptions.running\_mode](#audioclassifieroptionsrunning%5C_mode)
@@ -595,9 +586,6 @@
   - [AudioClassifierOptions.result\_callback](#audioclassifieroptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions::get\_create](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifieroptionsget%5C_create)
   - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions::to\_pb2](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifieroptionsto%5C_pb2)
-- [mediapipe::autoit::audio::audio\_classifier](#mediapipeautoitaudioaudio%5C_classifier)
-  - [audio\_classifier.AudioClassifierOptions](#audio%5C_classifieraudioclassifieroptions-1)
-  - [audio\_classifier.AudioClassifier](#audio%5C_classifieraudioclassifier-1)
 - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifier)
   - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::\_process\_audio\_clip](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifier%5C_process%5C_audio%5C_clip)
   - [mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier::\_send\_audio\_stream\_data](#mediapipetasksautoitaudioaudio%5C_classifieraudioclassifier%5C_send%5C_audio%5C_stream%5C_data)
@@ -618,9 +606,6 @@
   - [AudioEmbedderOptions.result\_callback](#audioembedderoptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedderOptions::get\_create](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedderoptionsget%5C_create)
   - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedderOptions::to\_pb2](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedderoptionsto%5C_pb2)
-- [mediapipe::autoit::audio::audio\_embedder](#mediapipeautoitaudioaudio%5C_embedder)
-  - [audio\_embedder.AudioEmbedderOptions](#audio%5C_embedderaudioembedderoptions-1)
-  - [audio\_embedder.AudioEmbedder](#audio%5C_embedderaudioembedder-1)
 - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedder)
   - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::\_process\_audio\_clip](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedder%5C_process%5C_audio%5C_clip)
   - [mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::\_send\_audio\_stream\_data](#mediapipetasksautoitaudioaudio%5C_embedderaudioembedder%5C_send%5C_audio%5C_stream%5C_data)
@@ -636,14 +621,9 @@
   - [core.base\_audio\_task\_api](#corebase%5C_audio%5C_task%5C_api)
 - [mediapipe::tasks::autoit::audio::core::audio\_task\_running\_mode](#mediapipetasksautoitaudiocoreaudio%5C_task%5C_running%5C_mode)
   - [audio\_task\_running\_mode.AudioTaskRunningMode](#audio%5C_task%5C_running%5C_modeaudiotaskrunningmode)
-- [mediapipe::autoit::audio::core](#mediapipeautoitaudiocore)
-  - [core.audio\_task\_running\_mode](#coreaudio%5C_task%5C_running%5C_mode-1)
-  - [core.base\_audio\_task\_api](#corebase%5C_audio%5C_task%5C_api-1)
 - [mediapipe::tasks::autoit::audio::core::audio\_task\_running\_mode::AudioTaskRunningMode](#mediapipetasksautoitaudiocoreaudio%5C_task%5C_running%5C_modeaudiotaskrunningmode)
   - [AudioTaskRunningMode.AUDIO\_CLIPS](#audiotaskrunningmodeaudio%5C_clips)
   - [AudioTaskRunningMode.AUDIO\_STREAM](#audiotaskrunningmodeaudio%5C_stream)
-- [mediapipe::autoit::audio::core::audio\_task\_running\_mode](#mediapipeautoitaudiocoreaudio%5C_task%5C_running%5C_mode)
-  - [audio\_task\_running\_mode.AudioTaskRunningMode](#audio%5C_task%5C_running%5C_modeaudiotaskrunningmode-1)
 - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_api)
   - [base\_audio\_task\_api.BaseAudioTaskApi](#base%5C_audio%5C_task%5C_apibaseaudiotaskapi)
 - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi)
@@ -652,8 +632,6 @@
   - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_send\_audio\_stream\_data](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi%5C_send%5C_audio%5C_stream%5C_data)
   - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::\_set\_sample\_rate](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapi%5C_set%5C_sample%5C_rate)
   - [mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api::BaseAudioTaskApi::close](#mediapipetasksautoitaudiocorebase%5C_audio%5C_task%5C_apibaseaudiotaskapiclose)
-- [mediapipe::autoit::audio::core::base\_audio\_task\_api](#mediapipeautoitaudiocorebase%5C_audio%5C_task%5C_api)
-  - [base\_audio\_task\_api.BaseAudioTaskApi](#base%5C_audio%5C_task%5C_apibaseaudiotaskapi-1)
 - [mediapipe::tasks::autoit::components](#mediapipetasksautoitcomponents)
   - [components.containers](#componentscontainers)
   - [components.processors](#componentsprocessors)
@@ -680,31 +658,13 @@
   - [containers.EmbeddingResult](#containersembeddingresult)
   - [containers.NormalizedLandmark](#containersnormalizedlandmark)
   - [containers.NormalizedRect](#containersnormalizedrect)
-- [mediapipe::autoit::components](#mediapipeautoitcomponents)
-  - [components.containers](#componentscontainers-1)
-  - [components.processors](#componentsprocessors-1)
-  - [components.utils](#componentsutils-1)
 - [mediapipe::tasks::autoit::components::containers::audio\_data](#mediapipetasksautoitcomponentscontainersaudio%5C_data)
   - [audio\_data.AudioDataFormat](#audio%5C_dataaudiodataformat)
   - [audio\_data.AudioData](#audio%5C_dataaudiodata)
-- [mediapipe::autoit::components::containers](#mediapipeautoitcomponentscontainers)
-  - [containers.audio\_data](#containersaudio%5C_data-1)
-  - [containers.bounding\_box](#containersbounding%5C_box-1)
-  - [containers.category](#containerscategory-1)
-  - [containers.classification\_result](#containersclassification%5C_result-1)
-  - [containers.detections](#containersdetections-1)
-  - [containers.embedding\_result](#containersembedding%5C_result-1)
-  - [containers.keypoint](#containerskeypoint-1)
-  - [containers.landmark](#containerslandmark-1)
-  - [containers.landmark\_detection\_result](#containerslandmark%5C_detection%5C_result-1)
-  - [containers.rect](#containersrect-1)
 - [mediapipe::tasks::autoit::components::containers::audio\_data::AudioDataFormat](#mediapipetasksautoitcomponentscontainersaudio%5C_dataaudiodataformat)
   - [AudioDataFormat.num\_channels](#audiodataformatnum%5C_channels)
   - [AudioDataFormat.sample\_rate](#audiodataformatsample%5C_rate)
   - [mediapipe::tasks::autoit::components::containers::audio\_data::AudioDataFormat::get\_create](#mediapipetasksautoitcomponentscontainersaudio%5C_dataaudiodataformatget%5C_create)
-- [mediapipe::autoit::components::containers::audio\_data](#mediapipeautoitcomponentscontainersaudio%5C_data)
-  - [audio\_data.AudioDataFormat](#audio%5C_dataaudiodataformat-1)
-  - [audio\_data.AudioData](#audio%5C_dataaudiodata-1)
 - [mediapipe::tasks::autoit::components::containers::audio\_data::AudioData](#mediapipetasksautoitcomponentscontainersaudio%5C_dataaudiodata)
   - [mediapipe::tasks::autoit::components::containers::audio\_data::AudioData::get\_create](#mediapipetasksautoitcomponentscontainersaudio%5C_dataaudiodataget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::audio\_data::AudioData::clear](#mediapipetasksautoitcomponentscontainersaudio%5C_dataaudiodataclear)
@@ -723,8 +683,6 @@
   - [mediapipe::tasks::autoit::components::containers::bounding\_box::BoundingBox::get\_create](#mediapipetasksautoitcomponentscontainersbounding%5C_boxboundingboxget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::bounding\_box::BoundingBox::create\_from\_pb2](#mediapipetasksautoitcomponentscontainersbounding%5C_boxboundingboxcreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::bounding\_box::BoundingBox::to\_pb2](#mediapipetasksautoitcomponentscontainersbounding%5C_boxboundingboxto%5C_pb2)
-- [mediapipe::autoit::components::containers::bounding\_box](#mediapipeautoitcomponentscontainersbounding%5C_box)
-  - [bounding\_box.BoundingBox](#bounding%5C_boxboundingbox-1)
 - [mediapipe::tasks::autoit::components::containers::category](#mediapipetasksautoitcomponentscontainerscategory)
   - [category.Category](#categorycategory)
 - [mediapipe::tasks::autoit::components::containers::category::Category](#mediapipetasksautoitcomponentscontainerscategorycategory)
@@ -735,8 +693,6 @@
   - [mediapipe::tasks::autoit::components::containers::category::Category::get\_create](#mediapipetasksautoitcomponentscontainerscategorycategoryget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::category::Category::create\_from\_pb2](#mediapipetasksautoitcomponentscontainerscategorycategorycreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::category::Category::to\_pb2](#mediapipetasksautoitcomponentscontainerscategorycategoryto%5C_pb2)
-- [mediapipe::autoit::components::containers::category](#mediapipeautoitcomponentscontainerscategory)
-  - [category.Category](#categorycategory-1)
 - [mediapipe::tasks::autoit::components::containers::classification\_result](#mediapipetasksautoitcomponentscontainersclassification%5C_result)
   - [classification\_result.Classifications](#classification%5C_resultclassifications)
   - [classification\_result.ClassificationResult](#classification%5C_resultclassificationresult)
@@ -747,9 +703,6 @@
   - [mediapipe::tasks::autoit::components::containers::classification\_result::Classifications::get\_create](#mediapipetasksautoitcomponentscontainersclassification%5C_resultclassificationsget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::classification\_result::Classifications::create\_from\_pb2](#mediapipetasksautoitcomponentscontainersclassification%5C_resultclassificationscreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::classification\_result::Classifications::to\_pb2](#mediapipetasksautoitcomponentscontainersclassification%5C_resultclassificationsto%5C_pb2)
-- [mediapipe::autoit::components::containers::classification\_result](#mediapipeautoitcomponentscontainersclassification%5C_result)
-  - [classification\_result.Classifications](#classification%5C_resultclassifications-1)
-  - [classification\_result.ClassificationResult](#classification%5C_resultclassificationresult-1)
 - [mediapipe::tasks::autoit::components::containers::classification\_result::ClassificationResult](#mediapipetasksautoitcomponentscontainersclassification%5C_resultclassificationresult)
   - [ClassificationResult.classifications](#classificationresultclassifications)
   - [ClassificationResult.timestamp\_ms](#classificationresulttimestamp%5C_ms)
@@ -766,9 +719,6 @@
   - [mediapipe::tasks::autoit::components::containers::detections::Detection::get\_create](#mediapipetasksautoitcomponentscontainersdetectionsdetectionget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::detections::Detection::create\_from\_pb2](#mediapipetasksautoitcomponentscontainersdetectionsdetectioncreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::detections::Detection::to\_pb2](#mediapipetasksautoitcomponentscontainersdetectionsdetectionto%5C_pb2)
-- [mediapipe::autoit::components::containers::detections](#mediapipeautoitcomponentscontainersdetections)
-  - [detections.Detection](#detectionsdetection-1)
-  - [detections.DetectionResult](#detectionsdetectionresult-1)
 - [mediapipe::tasks::autoit::components::containers::detections::DetectionResult](#mediapipetasksautoitcomponentscontainersdetectionsdetectionresult)
   - [DetectionResult.detections](#detectionresultdetections)
   - [mediapipe::tasks::autoit::components::containers::detections::DetectionResult::get\_create](#mediapipetasksautoitcomponentscontainersdetectionsdetectionresultget%5C_create)
@@ -783,9 +733,6 @@
   - [Embedding.head\_name](#embeddinghead%5C_name)
   - [mediapipe::tasks::autoit::components::containers::embedding\_result::Embedding::get\_create](#mediapipetasksautoitcomponentscontainersembedding%5C_resultembeddingget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::embedding\_result::Embedding::create\_from\_pb2](#mediapipetasksautoitcomponentscontainersembedding%5C_resultembeddingcreate%5C_from%5C_pb2)
-- [mediapipe::autoit::components::containers::embedding\_result](#mediapipeautoitcomponentscontainersembedding%5C_result)
-  - [embedding\_result.Embedding](#embedding%5C_resultembedding-1)
-  - [embedding\_result.EmbeddingResult](#embedding%5C_resultembeddingresult-1)
 - [mediapipe::tasks::autoit::components::containers::embedding\_result::EmbeddingResult](#mediapipetasksautoitcomponentscontainersembedding%5C_resultembeddingresult)
   - [EmbeddingResult.embeddings](#embeddingresultembeddings)
   - [EmbeddingResult.timestamp\_ms](#embeddingresulttimestamp%5C_ms)
@@ -801,8 +748,6 @@
   - [mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::get\_create](#mediapipetasksautoitcomponentscontainerskeypointnormalizedkeypointget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::create\_from\_pb2](#mediapipetasksautoitcomponentscontainerskeypointnormalizedkeypointcreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint::to\_pb2](#mediapipetasksautoitcomponentscontainerskeypointnormalizedkeypointto%5C_pb2)
-- [mediapipe::autoit::components::containers::keypoint](#mediapipeautoitcomponentscontainerskeypoint)
-  - [keypoint.NormalizedKeypoint](#keypointnormalizedkeypoint-1)
 - [mediapipe::tasks::autoit::components::containers::landmark](#mediapipetasksautoitcomponentscontainerslandmark)
   - [landmark.Landmark](#landmarklandmark)
   - [landmark.NormalizedLandmark](#landmarknormalizedlandmark)
@@ -815,9 +760,6 @@
   - [mediapipe::tasks::autoit::components::containers::landmark::Landmark::get\_create](#mediapipetasksautoitcomponentscontainerslandmarklandmarkget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::landmark::Landmark::create\_from\_pb2](#mediapipetasksautoitcomponentscontainerslandmarklandmarkcreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::landmark::Landmark::to\_pb2](#mediapipetasksautoitcomponentscontainerslandmarklandmarkto%5C_pb2)
-- [mediapipe::autoit::components::containers::landmark](#mediapipeautoitcomponentscontainerslandmark)
-  - [landmark.Landmark](#landmarklandmark-1)
-  - [landmark.NormalizedLandmark](#landmarknormalizedlandmark-1)
 - [mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark](#mediapipetasksautoitcomponentscontainerslandmarknormalizedlandmark)
   - [NormalizedLandmark.x](#normalizedlandmarkx)
   - [NormalizedLandmark.y](#normalizedlandmarky)
@@ -837,26 +779,21 @@
   - [mediapipe::tasks::autoit::components::containers::landmark\_detection\_result::LandmarksDetectionResult::get\_create](#mediapipetasksautoitcomponentscontainerslandmark%5C_detection%5C_resultlandmarksdetectionresultget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::landmark\_detection\_result::LandmarksDetectionResult::create\_from\_pb2](#mediapipetasksautoitcomponentscontainerslandmark%5C_detection%5C_resultlandmarksdetectionresultcreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::landmark\_detection\_result::LandmarksDetectionResult::to\_pb2](#mediapipetasksautoitcomponentscontainerslandmark%5C_detection%5C_resultlandmarksdetectionresultto%5C_pb2)
-- [mediapipe::autoit::components::containers::landmark\_detection\_result](#mediapipeautoitcomponentscontainerslandmark%5C_detection%5C_result)
-  - [landmark\_detection\_result.LandmarksDetectionResult](#landmark%5C_detection%5C_resultlandmarksdetectionresult-1)
 - [mediapipe::tasks::autoit::components::containers::rect](#mediapipetasksautoitcomponentscontainersrect)
   - [rect.Rect](#rectrect)
   - [rect.NormalizedRect](#rectnormalizedrect)
 - [mediapipe::tasks::autoit::components::containers::rect::Rect](#mediapipetasksautoitcomponentscontainersrectrect)
   - [mediapipe::tasks::autoit::components::containers::rect::Rect::get\_create](#mediapipetasksautoitcomponentscontainersrectrectget%5C_create)
-- [mediapipe::autoit::components::containers::rect](#mediapipeautoitcomponentscontainersrect)
-  - [rect.Rect](#rectrect-1)
-  - [rect.NormalizedRect](#rectnormalizedrect-1)
 - [mediapipe::tasks::autoit::components::containers::rect::NormalizedRect](#mediapipetasksautoitcomponentscontainersrectnormalizedrect)
   - [mediapipe::tasks::autoit::components::containers::rect::NormalizedRect::get\_create](#mediapipetasksautoitcomponentscontainersrectnormalizedrectget%5C_create)
   - [mediapipe::tasks::autoit::components::containers::rect::NormalizedRect::create\_from\_pb2](#mediapipetasksautoitcomponentscontainersrectnormalizedrectcreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::containers::rect::NormalizedRect::to\_pb2](#mediapipetasksautoitcomponentscontainersrectnormalizedrectto%5C_pb2)
 - [mediapipe::tasks::autoit::components::processors](#mediapipetasksautoitcomponentsprocessors)
   - [processors.classifier\_options](#processorsclassifier%5C_options)
+  - [processors.ClassifierOptions](#processorsclassifieroptions)
+  - [processors.EmbedderOptions](#processorsembedderoptions)
 - [mediapipe::tasks::autoit::components::processors::classifier\_options](#mediapipetasksautoitcomponentsprocessorsclassifier%5C_options)
   - [classifier\_options.ClassifierOptions](#classifier%5C_optionsclassifieroptions)
-- [mediapipe::autoit::components::processors](#mediapipeautoitcomponentsprocessors)
-  - [processors.classifier\_options](#processorsclassifier%5C_options-1)
 - [mediapipe::tasks::autoit::components::processors::classifier\_options::ClassifierOptions](#mediapipetasksautoitcomponentsprocessorsclassifier%5C_optionsclassifieroptions)
   - [ClassifierOptions.display\_names\_locale](#classifieroptionsdisplay%5C_names%5C_locale)
   - [ClassifierOptions.max\_results](#classifieroptionsmax%5C_results)
@@ -866,30 +803,21 @@
   - [mediapipe::tasks::autoit::components::processors::classifier\_options::ClassifierOptions::get\_create](#mediapipetasksautoitcomponentsprocessorsclassifier%5C_optionsclassifieroptionsget%5C_create)
   - [mediapipe::tasks::autoit::components::processors::classifier\_options::ClassifierOptions::create\_from\_pb2](#mediapipetasksautoitcomponentsprocessorsclassifier%5C_optionsclassifieroptionscreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::components::processors::classifier\_options::ClassifierOptions::to\_pb2](#mediapipetasksautoitcomponentsprocessorsclassifier%5C_optionsclassifieroptionsto%5C_pb2)
-- [mediapipe::autoit::components::processors::classifier\_options](#mediapipeautoitcomponentsprocessorsclassifier%5C_options)
-  - [classifier\_options.ClassifierOptions](#classifier%5C_optionsclassifieroptions-1)
 - [mediapipe::tasks::autoit::components::utils](#mediapipetasksautoitcomponentsutils)
   - [utils.cosine\_similarity](#utilscosine%5C_similarity)
 - [mediapipe::tasks::autoit::components::utils::cosine\_similarity](#mediapipetasksautoitcomponentsutilscosine%5C_similarity)
   - [mediapipe::tasks::autoit::components::utils::cosine\_similarity::cosine\_similarity](#mediapipetasksautoitcomponentsutilscosine%5C_similaritycosine%5C_similarity)
-- [mediapipe::autoit::components::utils](#mediapipeautoitcomponentsutils)
-  - [utils.cosine\_similarity](#utilscosine%5C_similarity-1)
 - [mediapipe::tasks::autoit::core](#mediapipetasksautoitcore)
   - [core.base\_options](#corebase%5C_options)
   - [core.task\_info](#coretask%5C_info)
 - [mediapipe::tasks::autoit::core::base\_options](#mediapipetasksautoitcorebase%5C_options)
   - [base\_options.BaseOptions](#base%5C_optionsbaseoptions)
-- [mediapipe::autoit::core](#mediapipeautoitcore)
-  - [core.base\_options](#corebase%5C_options-1)
-  - [core.task\_info](#coretask%5C_info-1)
 - [mediapipe::tasks::autoit::core::base\_options::BaseOptions](#mediapipetasksautoitcorebase%5C_optionsbaseoptions)
   - [BaseOptions.model\_asset\_path](#baseoptionsmodel%5C_asset%5C_path)
   - [BaseOptions.model\_asset\_buffer](#baseoptionsmodel%5C_asset%5C_buffer)
   - [mediapipe::tasks::autoit::core::base\_options::BaseOptions::get\_create](#mediapipetasksautoitcorebase%5C_optionsbaseoptionsget%5C_create)
   - [mediapipe::tasks::autoit::core::base\_options::BaseOptions::create\_from\_pb2](#mediapipetasksautoitcorebase%5C_optionsbaseoptionscreate%5C_from%5C_pb2)
   - [mediapipe::tasks::autoit::core::base\_options::BaseOptions::to\_pb2](#mediapipetasksautoitcorebase%5C_optionsbaseoptionsto%5C_pb2)
-- [mediapipe::autoit::core::base\_options](#mediapipeautoitcorebase%5C_options)
-  - [base\_options.BaseOptions](#base%5C_optionsbaseoptions-1)
 - [mediapipe::tasks::autoit::core::task\_info](#mediapipetasksautoitcoretask%5C_info)
   - [task\_info.TaskInfo](#task%5C_infotaskinfo)
 - [mediapipe::tasks::autoit::core::task\_info::TaskInfo](#mediapipetasksautoitcoretask%5C_infotaskinfo)
@@ -899,8 +827,6 @@
   - [TaskInfo.task\_options](#taskinfotask%5C_options)
   - [mediapipe::tasks::autoit::core::task\_info::TaskInfo::get\_create](#mediapipetasksautoitcoretask%5C_infotaskinfoget%5C_create)
   - [mediapipe::tasks::autoit::core::task\_info::TaskInfo::generate\_graph\_config](#mediapipetasksautoitcoretask%5C_infotaskinfogenerate%5C_graph%5C_config)
-- [mediapipe::autoit::core::task\_info](#mediapipeautoitcoretask%5C_info)
-  - [task\_info.TaskInfo](#task%5C_infotaskinfo-1)
 - [mediapipe::tasks::autoit::text](#mediapipetasksautoittext)
   - [text.core](#textcore)
   - [text.text\_classifier](#texttext%5C_classifier)
@@ -913,19 +839,11 @@
   - [text.TextEmbedderResult](#texttextembedderresult)
 - [mediapipe::tasks::autoit::text::core](#mediapipetasksautoittextcore)
   - [core.base\_text\_task\_api](#corebase%5C_text%5C_task%5C_api)
-- [mediapipe::autoit::text](#mediapipeautoittext)
-  - [text.core](#textcore-1)
-  - [text.text\_classifier](#texttext%5C_classifier-1)
-  - [text.text\_embedder](#texttext%5C_embedder-1)
 - [mediapipe::tasks::autoit::text::core::base\_text\_task\_api](#mediapipetasksautoittextcorebase%5C_text%5C_task%5C_api)
   - [base\_text\_task\_api.BaseTextTaskApi](#base%5C_text%5C_task%5C_apibasetexttaskapi)
-- [mediapipe::autoit::text::core](#mediapipeautoittextcore)
-  - [core.base\_text\_task\_api](#corebase%5C_text%5C_task%5C_api-1)
 - [mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi](#mediapipetasksautoittextcorebase%5C_text%5C_task%5C_apibasetexttaskapi)
   - [mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi::get\_create](#mediapipetasksautoittextcorebase%5C_text%5C_task%5C_apibasetexttaskapiget%5C_create)
   - [mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi::close](#mediapipetasksautoittextcorebase%5C_text%5C_task%5C_apibasetexttaskapiclose)
-- [mediapipe::autoit::text::core::base\_text\_task\_api](#mediapipeautoittextcorebase%5C_text%5C_task%5C_api)
-  - [base\_text\_task\_api.BaseTextTaskApi](#base%5C_text%5C_task%5C_apibasetexttaskapi-1)
 - [mediapipe::tasks::autoit::text::text\_classifier](#mediapipetasksautoittexttext%5C_classifier)
   - [text\_classifier.TextClassifierOptions](#text%5C_classifiertextclassifieroptions)
   - [text\_classifier.TextClassifier](#text%5C_classifiertextclassifier)
@@ -938,9 +856,6 @@
   - [TextClassifierOptions.category\_denylist](#textclassifieroptionscategory%5C_denylist)
   - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifierOptions::get\_create](#mediapipetasksautoittexttext%5C_classifiertextclassifieroptionsget%5C_create)
   - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifierOptions::to\_pb2](#mediapipetasksautoittexttext%5C_classifiertextclassifieroptionsto%5C_pb2)
-- [mediapipe::autoit::text::text\_classifier](#mediapipeautoittexttext%5C_classifier)
-  - [text\_classifier.TextClassifierOptions](#text%5C_classifiertextclassifieroptions-1)
-  - [text\_classifier.TextClassifier](#text%5C_classifiertextclassifier-1)
 - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifier](#mediapipetasksautoittexttext%5C_classifiertextclassifier)
   - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifier::classify](#mediapipetasksautoittexttext%5C_classifiertextclassifierclassify)
   - [mediapipe::tasks::autoit::text::text\_classifier::TextClassifier::close](#mediapipetasksautoittexttext%5C_classifiertextclassifierclose)
@@ -955,9 +870,6 @@
   - [TextEmbedderOptions.quantize](#textembedderoptionsquantize)
   - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedderOptions::get\_create](#mediapipetasksautoittexttext%5C_embeddertextembedderoptionsget%5C_create)
   - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedderOptions::to\_pb2](#mediapipetasksautoittexttext%5C_embeddertextembedderoptionsto%5C_pb2)
-- [mediapipe::autoit::text::text\_embedder](#mediapipeautoittexttext%5C_embedder)
-  - [text\_embedder.TextEmbedderOptions](#text%5C_embeddertextembedderoptions-1)
-  - [text\_embedder.TextEmbedder](#text%5C_embeddertextembedder-1)
 - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder](#mediapipetasksautoittexttext%5C_embeddertextembedder)
   - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::close](#mediapipetasksautoittexttext%5C_embeddertextembedderclose)
   - [mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder::cosine\_similarity](#mediapipetasksautoittexttext%5C_embeddertextembeddercosine%5C_similarity)
@@ -1009,24 +921,8 @@
   - [core.base\_vision\_task\_api](#corebase%5C_vision%5C_task%5C_api)
   - [core.image\_processing\_options](#coreimage%5C_processing%5C_options)
   - [core.vision\_task\_running\_mode](#corevision%5C_task%5C_running%5C_mode)
-- [mediapipe::autoit::vision](#mediapipeautoitvision)
-  - [vision.core](#visioncore-1)
-  - [vision.face\_detector](#visionface%5C_detector-1)
-  - [vision.face\_landmarker](#visionface%5C_landmarker-1)
-  - [vision.face\_stylizer](#visionface%5C_stylizer-1)
-  - [vision.gesture\_recognizer](#visiongesture%5C_recognizer-1)
-  - [vision.hand\_landmarker](#visionhand%5C_landmarker-1)
-  - [vision.image\_classifier](#visionimage%5C_classifier-1)
-  - [vision.image\_embedder](#visionimage%5C_embedder-1)
-  - [vision.image\_segmenter](#visionimage%5C_segmenter-1)
-  - [vision.interactive\_segmenter](#visioninteractive%5C_segmenter-1)
-  - [vision.object\_detector](#visionobject%5C_detector-1)
 - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_api)
   - [base\_vision\_task\_api.BaseVisionTaskApi](#base%5C_vision%5C_task%5C_apibasevisiontaskapi)
-- [mediapipe::autoit::vision::core](#mediapipeautoitvisioncore)
-  - [core.base\_vision\_task\_api](#corebase%5C_vision%5C_task%5C_api-1)
-  - [core.image\_processing\_options](#coreimage%5C_processing%5C_options-1)
-  - [core.vision\_task\_running\_mode](#corevision%5C_task%5C_running%5C_mode-1)
 - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapi)
   - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::get\_create](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiget%5C_create)
   - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::\_process\_image\_data](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapi%5C_process%5C_image%5C_data)
@@ -1035,24 +931,18 @@
   - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::close](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiclose)
   - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::convert\_to\_normalized\_rect](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiconvert%5C_to%5C_normalized%5C_rect)
   - [mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi::get\_graph\_config](#mediapipetasksautoitvisioncorebase%5C_vision%5C_task%5C_apibasevisiontaskapiget%5C_graph%5C_config)
-- [mediapipe::autoit::vision::core::base\_vision\_task\_api](#mediapipeautoitvisioncorebase%5C_vision%5C_task%5C_api)
-  - [base\_vision\_task\_api.BaseVisionTaskApi](#base%5C_vision%5C_task%5C_apibasevisiontaskapi-1)
 - [mediapipe::tasks::autoit::vision::core::image\_processing\_options](#mediapipetasksautoitvisioncoreimage%5C_processing%5C_options)
   - [image\_processing\_options.ImageProcessingOptions](#image%5C_processing%5C_optionsimageprocessingoptions)
 - [mediapipe::tasks::autoit::vision::core::image\_processing\_options::ImageProcessingOptions](#mediapipetasksautoitvisioncoreimage%5C_processing%5C_optionsimageprocessingoptions)
   - [ImageProcessingOptions.region\_of\_interest](#imageprocessingoptionsregion%5C_of%5C_interest)
   - [ImageProcessingOptions.rotation\_degrees](#imageprocessingoptionsrotation%5C_degrees)
   - [mediapipe::tasks::autoit::vision::core::image\_processing\_options::ImageProcessingOptions::get\_create](#mediapipetasksautoitvisioncoreimage%5C_processing%5C_optionsimageprocessingoptionsget%5C_create)
-- [mediapipe::autoit::vision::core::image\_processing\_options](#mediapipeautoitvisioncoreimage%5C_processing%5C_options)
-  - [image\_processing\_options.ImageProcessingOptions](#image%5C_processing%5C_optionsimageprocessingoptions-1)
 - [mediapipe::tasks::autoit::vision::core::vision\_task\_running\_mode](#mediapipetasksautoitvisioncorevision%5C_task%5C_running%5C_mode)
   - [vision\_task\_running\_mode.VisionTaskRunningMode](#vision%5C_task%5C_running%5C_modevisiontaskrunningmode)
 - [mediapipe::tasks::autoit::vision::core::vision\_task\_running\_mode::VisionTaskRunningMode](#mediapipetasksautoitvisioncorevision%5C_task%5C_running%5C_modevisiontaskrunningmode)
   - [VisionTaskRunningMode.IMAGE](#visiontaskrunningmodeimage)
   - [VisionTaskRunningMode.VIDEO](#visiontaskrunningmodevideo)
   - [VisionTaskRunningMode.LIVE\_STREAM](#visiontaskrunningmodelive%5C_stream)
-- [mediapipe::autoit::vision::core::vision\_task\_running\_mode](#mediapipeautoitvisioncorevision%5C_task%5C_running%5C_mode)
-  - [vision\_task\_running\_mode.VisionTaskRunningMode](#vision%5C_task%5C_running%5C_modevisiontaskrunningmode-1)
 - [mediapipe::tasks::autoit::vision::face\_detector](#mediapipetasksautoitvisionface%5C_detector)
   - [face\_detector.FaceDetectorOptions](#face%5C_detectorfacedetectoroptions)
   - [face\_detector.FaceDetector](#face%5C_detectorfacedetector)
@@ -1064,9 +954,6 @@
   - [FaceDetectorOptions.result\_callback](#facedetectoroptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetectorOptions::get\_create](#mediapipetasksautoitvisionface%5C_detectorfacedetectoroptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetectorOptions::to\_pb2](#mediapipetasksautoitvisionface%5C_detectorfacedetectoroptionsto%5C_pb2)
-- [mediapipe::autoit::vision::face\_detector](#mediapipeautoitvisionface%5C_detector)
-  - [face\_detector.FaceDetectorOptions](#face%5C_detectorfacedetectoroptions-1)
-  - [face\_detector.FaceDetector](#face%5C_detectorfacedetector-1)
 - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector](#mediapipetasksautoitvisionface%5C_detectorfacedetector)
   - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::\_process\_image\_data](#mediapipetasksautoitvisionface%5C_detectorfacedetector%5C_process%5C_image%5C_data)
   - [mediapipe::tasks::autoit::vision::face\_detector::FaceDetector::\_process\_video\_data](#mediapipetasksautoitvisionface%5C_detectorfacedetector%5C_process%5C_video%5C_data)
@@ -1138,12 +1025,6 @@
   - [Blendshapes.MOUTH\_UPPER\_UP\_RIGHT](#blendshapesmouth%5C_upper%5C_up%5C_right)
   - [Blendshapes.NOSE\_SNEER\_LEFT](#blendshapesnose%5C_sneer%5C_left)
   - [Blendshapes.NOSE\_SNEER\_RIGHT](#blendshapesnose%5C_sneer%5C_right)
-- [mediapipe::autoit::vision::face\_landmarker](#mediapipeautoitvisionface%5C_landmarker)
-  - [face\_landmarker.Blendshapes](#face%5C_landmarkerblendshapes-1)
-  - [face\_landmarker.FaceLandmarksConnections](#face%5C_landmarkerfacelandmarksconnections-1)
-  - [face\_landmarker.FaceLandmarkerResult](#face%5C_landmarkerfacelandmarkerresult-1)
-  - [face\_landmarker.FaceLandmarkerOptions](#face%5C_landmarkerfacelandmarkeroptions-1)
-  - [face\_landmarker.FaceLandmarker](#face%5C_landmarkerfacelandmarker-1)
 - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarksconnections)
   - [FaceLandmarksConnections.FACE\_LANDMARKS\_LIPS](#facelandmarksconnectionsface%5C_landmarks%5C_lips)
   - [FaceLandmarksConnections.FACE\_LANDMARKS\_LEFT\_EYE](#facelandmarksconnectionsface%5C_landmarks%5C_left%5C_eye)
@@ -1161,8 +1042,6 @@
   - [Connection.start](#connectionstart)
   - [Connection.end](#connectionend)
   - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections::Connection::get\_create](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarksconnectionsconnectionget%5C_create)
-- [mediapipe::autoit::vision::face\_landmarker::FaceLandmarksConnections](#mediapipeautoitvisionface%5C_landmarkerfacelandmarksconnections)
-  - [FaceLandmarksConnections.Connection](#facelandmarksconnectionsconnection-1)
 - [mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerResult](#mediapipetasksautoitvisionface%5C_landmarkerfacelandmarkerresult)
   - [FaceLandmarkerResult.face\_landmarks](#facelandmarkerresultface%5C_landmarks)
   - [FaceLandmarkerResult.face\_blendshapes](#facelandmarkerresultface%5C_blendshapes)
@@ -1201,9 +1080,6 @@
   - [FaceStylizerOptions.result\_callback](#facestylizeroptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizerOptions::get\_create](#mediapipetasksautoitvisionface%5C_stylizerfacestylizeroptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizerOptions::to\_pb2](#mediapipetasksautoitvisionface%5C_stylizerfacestylizeroptionsto%5C_pb2)
-- [mediapipe::autoit::vision::face\_stylizer](#mediapipeautoitvisionface%5C_stylizer)
-  - [face\_stylizer.FaceStylizerOptions](#face%5C_stylizerfacestylizeroptions-1)
-  - [face\_stylizer.FaceStylizer](#face%5C_stylizerfacestylizer-1)
 - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer](#mediapipetasksautoitvisionface%5C_stylizerfacestylizer)
   - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_process\_image\_data](#mediapipetasksautoitvisionface%5C_stylizerfacestylizer%5C_process%5C_image%5C_data)
   - [mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_process\_video\_data](#mediapipetasksautoitvisionface%5C_stylizerfacestylizer%5C_process%5C_video%5C_data)
@@ -1226,10 +1102,6 @@
   - [GestureRecognizerResult.hand\_landmarks](#gesturerecognizerresulthand%5C_landmarks)
   - [GestureRecognizerResult.hand\_world\_landmarks](#gesturerecognizerresulthand%5C_world%5C_landmarks)
   - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerResult::get\_create](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizerresultget%5C_create)
-- [mediapipe::autoit::vision::gesture\_recognizer](#mediapipeautoitvisiongesture%5C_recognizer)
-  - [gesture\_recognizer.GestureRecognizerResult](#gesture%5C_recognizergesturerecognizerresult-1)
-  - [gesture\_recognizer.GestureRecognizerOptions](#gesture%5C_recognizergesturerecognizeroptions-1)
-  - [gesture\_recognizer.GestureRecognizer](#gesture%5C_recognizergesturerecognizer-1)
 - [mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions](#mediapipetasksautoitvisiongesture%5C_recognizergesturerecognizeroptions)
   - [GestureRecognizerOptions.base\_options](#gesturerecognizeroptionsbase%5C_options)
   - [GestureRecognizerOptions.running\_mode](#gesturerecognizeroptionsrunning%5C_mode)
@@ -1281,11 +1153,6 @@
   - [HandLandmark.PINKY\_PIP](#handlandmarkpinky%5C_pip-1)
   - [HandLandmark.PINKY\_DIP](#handlandmarkpinky%5C_dip-1)
   - [HandLandmark.PINKY\_TIP](#handlandmarkpinky%5C_tip-1)
-- [mediapipe::autoit::vision::hand\_landmarker](#mediapipeautoitvisionhand%5C_landmarker)
-  - [hand\_landmarker.HandLandmark](#hand%5C_landmarkerhandlandmark-1)
-  - [hand\_landmarker.HandLandmarkerResult](#hand%5C_landmarkerhandlandmarkerresult-1)
-  - [hand\_landmarker.HandLandmarkerOptions](#hand%5C_landmarkerhandlandmarkeroptions-1)
-  - [hand\_landmarker.HandLandmarker](#hand%5C_landmarkerhandlandmarker-1)
 - [mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerResult](#mediapipetasksautoitvisionhand%5C_landmarkerhandlandmarkerresult)
   - [HandLandmarkerResult.handedness](#handlandmarkerresulthandedness)
   - [HandLandmarkerResult.hand\_landmarks](#handlandmarkerresulthand%5C_landmarks)
@@ -1328,9 +1195,6 @@
   - [ImageClassifierOptions.result\_callback](#imageclassifieroptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions::get\_create](#mediapipetasksautoitvisionimage%5C_classifierimageclassifieroptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifierOptions::to\_pb2](#mediapipetasksautoitvisionimage%5C_classifierimageclassifieroptionsto%5C_pb2)
-- [mediapipe::autoit::vision::image\_classifier](#mediapipeautoitvisionimage%5C_classifier)
-  - [image\_classifier.ImageClassifierOptions](#image%5C_classifierimageclassifieroptions-1)
-  - [image\_classifier.ImageClassifier](#image%5C_classifierimageclassifier-1)
 - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier](#mediapipetasksautoitvisionimage%5C_classifierimageclassifier)
   - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::\_process\_image\_data](#mediapipetasksautoitvisionimage%5C_classifierimageclassifier%5C_process%5C_image%5C_data)
   - [mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::\_process\_video\_data](#mediapipetasksautoitvisionimage%5C_classifierimageclassifier%5C_process%5C_video%5C_data)
@@ -1355,9 +1219,6 @@
   - [ImageEmbedderOptions.result\_callback](#imageembedderoptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions::get\_create](#mediapipetasksautoitvisionimage%5C_embedderimageembedderoptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedderOptions::to\_pb2](#mediapipetasksautoitvisionimage%5C_embedderimageembedderoptionsto%5C_pb2)
-- [mediapipe::autoit::vision::image\_embedder](#mediapipeautoitvisionimage%5C_embedder)
-  - [image\_embedder.ImageEmbedderOptions](#image%5C_embedderimageembedderoptions-1)
-  - [image\_embedder.ImageEmbedder](#image%5C_embedderimageembedder-1)
 - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder](#mediapipetasksautoitvisionimage%5C_embedderimageembedder)
   - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::\_process\_image\_data](#mediapipetasksautoitvisionimage%5C_embedderimageembedder%5C_process%5C_image%5C_data)
   - [mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder::\_process\_video\_data](#mediapipetasksautoitvisionimage%5C_embedderimageembedder%5C_process%5C_video%5C_data)
@@ -1384,9 +1245,6 @@
   - [ImageSegmenterOptions.result\_callback](#imagesegmenteroptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions::get\_create](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenterOptions::to\_pb2](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenteroptionsto%5C_pb2)
-- [mediapipe::autoit::vision::image\_segmenter](#mediapipeautoitvisionimage%5C_segmenter)
-  - [image\_segmenter.ImageSegmenterOptions](#image%5C_segmenterimagesegmenteroptions-1)
-  - [image\_segmenter.ImageSegmenter](#image%5C_segmenterimagesegmenter-1)
 - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::\_process\_image\_data](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter%5C_process%5C_image%5C_data)
   - [mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::\_process\_video\_data](#mediapipetasksautoitvisionimage%5C_segmenterimagesegmenter%5C_process%5C_video%5C_data)
@@ -1411,11 +1269,6 @@
   - [InteractiveSegmenterOptions.output\_type](#interactivesegmenteroptionsoutput%5C_type)
   - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions::get\_create](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenteroptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::interactive\_segmenter::InteractiveSegmenterOptions::to\_pb2](#mediapipetasksautoitvisioninteractive%5C_segmenterinteractivesegmenteroptionsto%5C_pb2)
-- [mediapipe::autoit::vision::interactive\_segmenter](#mediapipeautoitvisioninteractive%5C_segmenter)
-  - [interactive\_segmenter.InteractiveSegmenterOptions](#interactive%5C_segmenterinteractivesegmenteroptions-1)
-  - [interactive\_segmenter.RegionOfInterest\_Format](#interactive%5C_segmenterregionofinterest%5C_format-1)
-  - [interactive\_segmenter.RegionOfInterest](#interactive%5C_segmenterregionofinterest-1)
-  - [interactive\_segmenter.InteractiveSegmenter](#interactive%5C_segmenterinteractivesegmenter-1)
 - [mediapipe::tasks::autoit::vision::interactive\_segmenter::RegionOfInterest\_Format](#mediapipetasksautoitvisioninteractive%5C_segmenterregionofinterest%5C_format)
   - [RegionOfInterest\_Format.UNSPECIFIED](#regionofinterest%5C_formatunspecified)
   - [RegionOfInterest\_Format.KEYPOINT](#regionofinterest%5C_formatkeypoint)
@@ -1448,9 +1301,6 @@
   - [ObjectDetectorOptions.result\_callback](#objectdetectoroptionsresult%5C_callback)
   - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions::get\_create](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectoroptionsget%5C_create)
   - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetectorOptions::to\_pb2](#mediapipetasksautoitvisionobject%5C_detectorobjectdetectoroptionsto%5C_pb2)
-- [mediapipe::autoit::vision::object\_detector](#mediapipeautoitvisionobject%5C_detector)
-  - [object\_detector.ObjectDetectorOptions](#object%5C_detectorobjectdetectoroptions-1)
-  - [object\_detector.ObjectDetector](#object%5C_detectorobjectdetector-1)
 - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector](#mediapipetasksautoitvisionobject%5C_detectorobjectdetector)
   - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::\_process\_image\_data](#mediapipetasksautoitvisionobject%5C_detectorobjectdetector%5C_process%5C_image%5C_data)
   - [mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector::\_process\_video\_data](#mediapipetasksautoitvisionobject%5C_detectorobjectdetector%5C_process%5C_video%5C_data)
@@ -10840,46 +10690,6 @@ AutoIt:
     [propget] $oautoit.solution_base
 ```
 
-### autoit.audio
-
-```cpp
-static mediapipe::tasks::autoit::audio
-AutoIt:
-    [propget] $oautoit.audio
-```
-
-### autoit.components
-
-```cpp
-static mediapipe::tasks::autoit::components
-AutoIt:
-    [propget] $oautoit.components
-```
-
-### autoit.core
-
-```cpp
-static mediapipe::tasks::autoit::core
-AutoIt:
-    [propget] $oautoit.core
-```
-
-### autoit.text
-
-```cpp
-static mediapipe::tasks::autoit::text
-AutoIt:
-    [propget] $oautoit.text
-```
-
-### autoit.vision
-
-```cpp
-static mediapipe::tasks::autoit::vision
-AutoIt:
-    [propget] $oautoit.vision
-```
-
 ## mediapipe::autoit::packet\_creator
 
 ### mediapipe::autoit::packet\_creator::create\_bool
@@ -14202,32 +14012,6 @@ AutoIt:
     [propget] $oaudio_classifier.AudioClassifier
 ```
 
-## mediapipe::autoit::audio
-
-### audio.audio\_classifier
-
-```cpp
-static mediapipe::tasks::autoit::audio::audio_classifier
-AutoIt:
-    [propget] $oaudio.audio_classifier
-```
-
-### audio.audio\_embedder
-
-```cpp
-static mediapipe::tasks::autoit::audio::audio_embedder
-AutoIt:
-    [propget] $oaudio.audio_embedder
-```
-
-### audio.core
-
-```cpp
-static mediapipe::tasks::autoit::audio::core
-AutoIt:
-    [propget] $oaudio.core
-```
-
 ## mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifierOptions
 
 ### AudioClassifierOptions.base\_options
@@ -14323,24 +14107,6 @@ AutoIt:
 std::shared_ptr<mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions> mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions::to_pb2();
 AutoIt:
     $oAudioClassifierOptions.to_pb2() -> retval
-```
-
-## mediapipe::autoit::audio::audio\_classifier
-
-### audio\_classifier.AudioClassifierOptions
-
-```cpp
-static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions
-AutoIt:
-    [propget] $oaudio_classifier.AudioClassifierOptions
-```
-
-### audio\_classifier.AudioClassifier
-
-```cpp
-static mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier
-AutoIt:
-    [propget] $oaudio_classifier.AudioClassifier
 ```
 
 ## mediapipe::tasks::autoit::audio::audio\_classifier::AudioClassifier
@@ -14500,24 +14266,6 @@ AutoIt:
     $oAudioEmbedderOptions.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::audio::audio\_embedder
-
-### audio\_embedder.AudioEmbedderOptions
-
-```cpp
-static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedderOptions
-AutoIt:
-    [propget] $oaudio_embedder.AudioEmbedderOptions
-```
-
-### audio\_embedder.AudioEmbedder
-
-```cpp
-static mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder
-AutoIt:
-    [propget] $oaudio_embedder.AudioEmbedder
-```
-
 ## mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder
 
 ### mediapipe::tasks::autoit::audio::audio\_embedder::AudioEmbedder::\_process\_audio\_clip
@@ -14624,24 +14372,6 @@ AutoIt:
     [propget] $oaudio_task_running_mode.AudioTaskRunningMode
 ```
 
-## mediapipe::autoit::audio::core
-
-### core.audio\_task\_running\_mode
-
-```cpp
-static mediapipe::tasks::autoit::audio::core::audio_task_running_mode
-AutoIt:
-    [propget] $ocore.audio_task_running_mode
-```
-
-### core.base\_audio\_task\_api
-
-```cpp
-static mediapipe::tasks::autoit::audio::core::base_audio_task_api
-AutoIt:
-    [propget] $ocore.base_audio_task_api
-```
-
 ## mediapipe::tasks::autoit::audio::core::audio\_task\_running\_mode::AudioTaskRunningMode
 
 ### AudioTaskRunningMode.AUDIO\_CLIPS
@@ -14658,16 +14388,6 @@ AutoIt:
 static int mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode::AUDIO_STREAM
 AutoIt:
     [propget] $oAudioTaskRunningMode.AUDIO_STREAM
-```
-
-## mediapipe::autoit::audio::core::audio\_task\_running\_mode
-
-### audio\_task\_running\_mode.AudioTaskRunningMode
-
-```cpp
-static mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode
-AutoIt:
-    [propget] $oaudio_task_running_mode.AudioTaskRunningMode
 ```
 
 ## mediapipe::tasks::autoit::audio::core::base\_audio\_task\_api
@@ -14724,16 +14444,6 @@ AutoIt:
 void mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi::close();
 AutoIt:
     $oBaseAudioTaskApi.close() -> None
-```
-
-## mediapipe::autoit::audio::core::base\_audio\_task\_api
-
-### base\_audio\_task\_api.BaseAudioTaskApi
-
-```cpp
-static mediapipe::tasks::autoit::audio::core::base_audio_task_api::BaseAudioTaskApi
-AutoIt:
-    [propget] $obase_audio_task_api.BaseAudioTaskApi
 ```
 
 ## mediapipe::tasks::autoit::components
@@ -14932,32 +14642,6 @@ AutoIt:
     [propget] $ocontainers.NormalizedRect
 ```
 
-## mediapipe::autoit::components
-
-### components.containers
-
-```cpp
-static mediapipe::tasks::autoit::components::containers
-AutoIt:
-    [propget] $ocomponents.containers
-```
-
-### components.processors
-
-```cpp
-static mediapipe::tasks::autoit::components::processors
-AutoIt:
-    [propget] $ocomponents.processors
-```
-
-### components.utils
-
-```cpp
-static mediapipe::tasks::autoit::components::utils
-AutoIt:
-    [propget] $ocomponents.utils
-```
-
 ## mediapipe::tasks::autoit::components::containers::audio\_data
 
 ### audio\_data.AudioDataFormat
@@ -14974,88 +14658,6 @@ AutoIt:
 static mediapipe::tasks::autoit::components::containers::audio_data::AudioData
 AutoIt:
     [propget] $oaudio_data.AudioData
-```
-
-## mediapipe::autoit::components::containers
-
-### containers.audio\_data
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::audio_data
-AutoIt:
-    [propget] $ocontainers.audio_data
-```
-
-### containers.bounding\_box
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::bounding_box
-AutoIt:
-    [propget] $ocontainers.bounding_box
-```
-
-### containers.category
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::category
-AutoIt:
-    [propget] $ocontainers.category
-```
-
-### containers.classification\_result
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::classification_result
-AutoIt:
-    [propget] $ocontainers.classification_result
-```
-
-### containers.detections
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::detections
-AutoIt:
-    [propget] $ocontainers.detections
-```
-
-### containers.embedding\_result
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::embedding_result
-AutoIt:
-    [propget] $ocontainers.embedding_result
-```
-
-### containers.keypoint
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::keypoint
-AutoIt:
-    [propget] $ocontainers.keypoint
-```
-
-### containers.landmark
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::landmark
-AutoIt:
-    [propget] $ocontainers.landmark
-```
-
-### containers.landmark\_detection\_result
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::landmark_detection_result
-AutoIt:
-    [propget] $ocontainers.landmark_detection_result
-```
-
-### containers.rect
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::rect
-AutoIt:
-    [propget] $ocontainers.rect
 ```
 
 ## mediapipe::tasks::autoit::components::containers::audio\_data::AudioDataFormat
@@ -15091,24 +14693,6 @@ static mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFo
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat").create( [$num_channels[, $sample_rate]] ) -> <mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat object>
     $oAudioDataFormat( [$num_channels[, $sample_rate]] ) -> <mediapipe.tasks.autoit.components.containers.audio_data.AudioDataFormat object>
-```
-
-## mediapipe::autoit::components::containers::audio\_data
-
-### audio\_data.AudioDataFormat
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat
-AutoIt:
-    [propget] $oaudio_data.AudioDataFormat
-```
-
-### audio\_data.AudioData
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::audio_data::AudioData
-AutoIt:
-    [propget] $oaudio_data.AudioData
 ```
 
 ## mediapipe::tasks::autoit::components::containers::audio\_data::AudioData
@@ -15253,16 +14837,6 @@ AutoIt:
     $oBoundingBox.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::components::containers::bounding\_box
-
-### bounding\_box.BoundingBox
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::bounding_box::BoundingBox
-AutoIt:
-    [propget] $obounding_box.BoundingBox
-```
-
 ## mediapipe::tasks::autoit::components::containers::category
 
 ### category.Category
@@ -15342,16 +14916,6 @@ AutoIt:
     $oCategory.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::components::containers::category
-
-### category.Category
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::category::Category
-AutoIt:
-    [propget] $ocategory.Category
-```
-
 ## mediapipe::tasks::autoit::components::containers::classification\_result
 
 ### classification\_result.Classifications
@@ -15428,24 +14992,6 @@ AutoIt:
 std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications> mediapipe::tasks::autoit::components::containers::classification_result::Classifications::to_pb2();
 AutoIt:
     $oClassifications.to_pb2() -> retval
-```
-
-## mediapipe::autoit::components::containers::classification\_result
-
-### classification\_result.Classifications
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::classification_result::Classifications
-AutoIt:
-    [propget] $oclassification_result.Classifications
-```
-
-### classification\_result.ClassificationResult
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult
-AutoIt:
-    [propget] $oclassification_result.ClassificationResult
 ```
 
 ## mediapipe::tasks::autoit::components::containers::classification\_result::ClassificationResult
@@ -15577,24 +15123,6 @@ AutoIt:
     $oDetection.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::components::containers::detections
-
-### detections.Detection
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::detections::Detection
-AutoIt:
-    [propget] $odetections.Detection
-```
-
-### detections.DetectionResult
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::detections::DetectionResult
-AutoIt:
-    [propget] $odetections.DetectionResult
-```
-
 ## mediapipe::tasks::autoit::components::containers::detections::DetectionResult
 
 ### DetectionResult.detections
@@ -15705,24 +15233,6 @@ AutoIt:
 static std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding> mediapipe::tasks::autoit::components::containers::embedding_result::Embedding::create_from_pb2( const mediapipe::tasks::components::containers::proto::Embedding& pb2_obj );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.embedding_result.Embedding").create_from_pb2( $pb2_obj ) -> retval
-```
-
-## mediapipe::autoit::components::containers::embedding\_result
-
-### embedding\_result.Embedding
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::embedding_result::Embedding
-AutoIt:
-    [propget] $oembedding_result.Embedding
-```
-
-### embedding\_result.EmbeddingResult
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult
-AutoIt:
-    [propget] $oembedding_result.EmbeddingResult
 ```
 
 ## mediapipe::tasks::autoit::components::containers::embedding\_result::EmbeddingResult
@@ -15847,16 +15357,6 @@ AutoIt:
     $oNormalizedKeypoint.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::components::containers::keypoint
-
-### keypoint.NormalizedKeypoint
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint
-AutoIt:
-    [propget] $okeypoint.NormalizedKeypoint
-```
-
 ## mediapipe::tasks::autoit::components::containers::landmark
 
 ### landmark.Landmark
@@ -15951,24 +15451,6 @@ AutoIt:
 std::shared_ptr<mediapipe::Landmark> mediapipe::tasks::autoit::components::containers::landmark::Landmark::to_pb2();
 AutoIt:
     $oLandmark.to_pb2() -> retval
-```
-
-## mediapipe::autoit::components::containers::landmark
-
-### landmark.Landmark
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::landmark::Landmark
-AutoIt:
-    [propget] $olandmark.Landmark
-```
-
-### landmark.NormalizedLandmark
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark
-AutoIt:
-    [propget] $olandmark.NormalizedLandmark
 ```
 
 ## mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark
@@ -16128,16 +15610,6 @@ AutoIt:
     $oLandmarksDetectionResult.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::components::containers::landmark\_detection\_result
-
-### landmark\_detection\_result.LandmarksDetectionResult
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::landmark_detection_result::LandmarksDetectionResult
-AutoIt:
-    [propget] $olandmark_detection_result.LandmarksDetectionResult
-```
-
 ## mediapipe::tasks::autoit::components::containers::rect
 
 ### rect.Rect
@@ -16175,24 +15647,6 @@ static mediapipe::tasks::autoit::components::containers::rect::Rect mediapipe::t
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.rect.Rect").create( [$left[, $top[, $right[, $bottom]]]] ) -> <mediapipe.tasks.autoit.components.containers.rect.Rect object>
     $oRect( [$left[, $top[, $right[, $bottom]]]] ) -> <mediapipe.tasks.autoit.components.containers.rect.Rect object>
-```
-
-## mediapipe::autoit::components::containers::rect
-
-### rect.Rect
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::rect::Rect
-AutoIt:
-    [propget] $orect.Rect
-```
-
-### rect.NormalizedRect
-
-```cpp
-static mediapipe::tasks::autoit::components::containers::rect::NormalizedRect
-AutoIt:
-    [propget] $orect.NormalizedRect
 ```
 
 ## mediapipe::tasks::autoit::components::containers::rect::NormalizedRect
@@ -16244,6 +15698,22 @@ AutoIt:
     [propget] $oprocessors.classifier_options
 ```
 
+### processors.ClassifierOptions
+
+```cpp
+static mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions
+AutoIt:
+    [propget] $oprocessors.ClassifierOptions
+```
+
+### processors.EmbedderOptions
+
+```cpp
+static mediapipe::tasks::components::processors::proto::EmbedderOptions
+AutoIt:
+    [propget] $oprocessors.EmbedderOptions
+```
+
 ## mediapipe::tasks::autoit::components::processors::classifier\_options
 
 ### classifier\_options.ClassifierOptions
@@ -16252,16 +15722,6 @@ AutoIt:
 static mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions
 AutoIt:
     [propget] $oclassifier_options.ClassifierOptions
-```
-
-## mediapipe::autoit::components::processors
-
-### processors.classifier\_options
-
-```cpp
-static mediapipe::tasks::autoit::components::processors::classifier_options
-AutoIt:
-    [propget] $oprocessors.classifier_options
 ```
 
 ## mediapipe::tasks::autoit::components::processors::classifier\_options::ClassifierOptions
@@ -16342,16 +15802,6 @@ AutoIt:
     $oClassifierOptions.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::components::processors::classifier\_options
-
-### classifier\_options.ClassifierOptions
-
-```cpp
-static mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions
-AutoIt:
-    [propget] $oclassifier_options.ClassifierOptions
-```
-
 ## mediapipe::tasks::autoit::components::utils
 
 ### utils.cosine\_similarity
@@ -16371,16 +15821,6 @@ float mediapipe::tasks::autoit::components::utils::cosine_similarity::cosine_sim
                                                                                          const mediapipe::tasks::autoit::components::containers::embedding_result::Embedding& v );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.utils.cosine_similarity").cosine_similarity( $u, $v ) -> retval
-```
-
-## mediapipe::autoit::components::utils
-
-### utils.cosine\_similarity
-
-```cpp
-static mediapipe::tasks::autoit::components::utils::cosine_similarity
-AutoIt:
-    [propget] $outils.cosine_similarity
 ```
 
 ## mediapipe::tasks::autoit::core
@@ -16409,24 +15849,6 @@ AutoIt:
 static mediapipe::tasks::autoit::core::base_options::BaseOptions
 AutoIt:
     [propget] $obase_options.BaseOptions
-```
-
-## mediapipe::autoit::core
-
-### core.base\_options
-
-```cpp
-static mediapipe::tasks::autoit::core::base_options
-AutoIt:
-    [propget] $ocore.base_options
-```
-
-### core.task\_info
-
-```cpp
-static mediapipe::tasks::autoit::core::task_info
-AutoIt:
-    [propget] $ocore.task_info
 ```
 
 ## mediapipe::tasks::autoit::core::base\_options::BaseOptions
@@ -16478,16 +15900,6 @@ AutoIt:
 std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions> mediapipe::tasks::autoit::core::base_options::BaseOptions::to_pb2();
 AutoIt:
     $oBaseOptions.to_pb2() -> retval
-```
-
-## mediapipe::autoit::core::base\_options
-
-### base\_options.BaseOptions
-
-```cpp
-static mediapipe::tasks::autoit::core::base_options::BaseOptions
-AutoIt:
-    [propget] $obase_options.BaseOptions
 ```
 
 ## mediapipe::tasks::autoit::core::task\_info
@@ -16559,16 +15971,6 @@ AutoIt:
 std::shared_ptr<mediapipe::CalculatorGraphConfig> mediapipe::tasks::autoit::core::task_info::TaskInfo::generate_graph_config( bool enable_flow_limiting = true );
 AutoIt:
     $oTaskInfo.generate_graph_config( [$enable_flow_limiting] ) -> retval
-```
-
-## mediapipe::autoit::core::task\_info
-
-### task\_info.TaskInfo
-
-```cpp
-static mediapipe::tasks::autoit::core::task_info::TaskInfo
-AutoIt:
-    [propget] $otask_info.TaskInfo
 ```
 
 ## mediapipe::tasks::autoit::text
@@ -16655,32 +16057,6 @@ AutoIt:
     [propget] $ocore.base_text_task_api
 ```
 
-## mediapipe::autoit::text
-
-### text.core
-
-```cpp
-static mediapipe::tasks::autoit::text::core
-AutoIt:
-    [propget] $otext.core
-```
-
-### text.text\_classifier
-
-```cpp
-static mediapipe::tasks::autoit::text::text_classifier
-AutoIt:
-    [propget] $otext.text_classifier
-```
-
-### text.text\_embedder
-
-```cpp
-static mediapipe::tasks::autoit::text::text_embedder
-AutoIt:
-    [propget] $otext.text_embedder
-```
-
 ## mediapipe::tasks::autoit::text::core::base\_text\_task\_api
 
 ### base\_text\_task\_api.BaseTextTaskApi
@@ -16689,16 +16065,6 @@ AutoIt:
 static mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi
 AutoIt:
     [propget] $obase_text_task_api.BaseTextTaskApi
-```
-
-## mediapipe::autoit::text::core
-
-### core.base\_text\_task\_api
-
-```cpp
-static mediapipe::tasks::autoit::text::core::base_text_task_api
-AutoIt:
-    [propget] $ocore.base_text_task_api
 ```
 
 ## mediapipe::tasks::autoit::text::core::base\_text\_task\_api::BaseTextTaskApi
@@ -16718,16 +16084,6 @@ AutoIt:
 void mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi::close();
 AutoIt:
     $oBaseTextTaskApi.close() -> None
-```
-
-## mediapipe::autoit::text::core::base\_text\_task\_api
-
-### base\_text\_task\_api.BaseTextTaskApi
-
-```cpp
-static mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi
-AutoIt:
-    [propget] $obase_text_task_api.BaseTextTaskApi
 ```
 
 ## mediapipe::tasks::autoit::text::text\_classifier
@@ -16825,24 +16181,6 @@ AutoIt:
 std::shared_ptr<mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions> mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions::to_pb2();
 AutoIt:
     $oTextClassifierOptions.to_pb2() -> retval
-```
-
-## mediapipe::autoit::text::text\_classifier
-
-### text\_classifier.TextClassifierOptions
-
-```cpp
-static mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions
-AutoIt:
-    [propget] $otext_classifier.TextClassifierOptions
-```
-
-### text\_classifier.TextClassifier
-
-```cpp
-static mediapipe::tasks::autoit::text::text_classifier::TextClassifier
-AutoIt:
-    [propget] $otext_classifier.TextClassifier
 ```
 
 ## mediapipe::tasks::autoit::text::text\_classifier::TextClassifier
@@ -16947,24 +16285,6 @@ AutoIt:
 std::shared_ptr<mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions> mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions::to_pb2();
 AutoIt:
     $oTextEmbedderOptions.to_pb2() -> retval
-```
-
-## mediapipe::autoit::text::text\_embedder
-
-### text\_embedder.TextEmbedderOptions
-
-```cpp
-static mediapipe::tasks::autoit::text::text_embedder::TextEmbedderOptions
-AutoIt:
-    [propget] $otext_embedder.TextEmbedderOptions
-```
-
-### text\_embedder.TextEmbedder
-
-```cpp
-static mediapipe::tasks::autoit::text::text_embedder::TextEmbedder
-AutoIt:
-    [propget] $otext_embedder.TextEmbedder
 ```
 
 ## mediapipe::tasks::autoit::text::text\_embedder::TextEmbedder
@@ -17358,96 +16678,6 @@ AutoIt:
     [propget] $ocore.vision_task_running_mode
 ```
 
-## mediapipe::autoit::vision
-
-### vision.core
-
-```cpp
-static mediapipe::tasks::autoit::vision::core
-AutoIt:
-    [propget] $ovision.core
-```
-
-### vision.face\_detector
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_detector
-AutoIt:
-    [propget] $ovision.face_detector
-```
-
-### vision.face\_landmarker
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_landmarker
-AutoIt:
-    [propget] $ovision.face_landmarker
-```
-
-### vision.face\_stylizer
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_stylizer
-AutoIt:
-    [propget] $ovision.face_stylizer
-```
-
-### vision.gesture\_recognizer
-
-```cpp
-static mediapipe::tasks::autoit::vision::gesture_recognizer
-AutoIt:
-    [propget] $ovision.gesture_recognizer
-```
-
-### vision.hand\_landmarker
-
-```cpp
-static mediapipe::tasks::autoit::vision::hand_landmarker
-AutoIt:
-    [propget] $ovision.hand_landmarker
-```
-
-### vision.image\_classifier
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_classifier
-AutoIt:
-    [propget] $ovision.image_classifier
-```
-
-### vision.image\_embedder
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_embedder
-AutoIt:
-    [propget] $ovision.image_embedder
-```
-
-### vision.image\_segmenter
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_segmenter
-AutoIt:
-    [propget] $ovision.image_segmenter
-```
-
-### vision.interactive\_segmenter
-
-```cpp
-static mediapipe::tasks::autoit::vision::interactive_segmenter
-AutoIt:
-    [propget] $ovision.interactive_segmenter
-```
-
-### vision.object\_detector
-
-```cpp
-static mediapipe::tasks::autoit::vision::object_detector
-AutoIt:
-    [propget] $ovision.object_detector
-```
-
 ## mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api
 
 ### base\_vision\_task\_api.BaseVisionTaskApi
@@ -17456,32 +16686,6 @@ AutoIt:
 static mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi
 AutoIt:
     [propget] $obase_vision_task_api.BaseVisionTaskApi
-```
-
-## mediapipe::autoit::vision::core
-
-### core.base\_vision\_task\_api
-
-```cpp
-static mediapipe::tasks::autoit::vision::core::base_vision_task_api
-AutoIt:
-    [propget] $ocore.base_vision_task_api
-```
-
-### core.image\_processing\_options
-
-```cpp
-static mediapipe::tasks::autoit::vision::core::image_processing_options
-AutoIt:
-    [propget] $ocore.image_processing_options
-```
-
-### core.vision\_task\_running\_mode
-
-```cpp
-static mediapipe::tasks::autoit::vision::core::vision_task_running_mode
-AutoIt:
-    [propget] $ocore.vision_task_running_mode
 ```
 
 ## mediapipe::tasks::autoit::vision::core::base\_vision\_task\_api::BaseVisionTaskApi
@@ -17547,16 +16751,6 @@ AutoIt:
     $oBaseVisionTaskApi.get_graph_config() -> retval
 ```
 
-## mediapipe::autoit::vision::core::base\_vision\_task\_api
-
-### base\_vision\_task\_api.BaseVisionTaskApi
-
-```cpp
-static mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi
-AutoIt:
-    [propget] $obase_vision_task_api.BaseVisionTaskApi
-```
-
 ## mediapipe::tasks::autoit::vision::core::image\_processing\_options
 
 ### image\_processing\_options.ImageProcessingOptions
@@ -17602,16 +16796,6 @@ AutoIt:
     $oImageProcessingOptions( [$region_of_interest[, $rotation_degrees]] ) -> <mediapipe.tasks.autoit.vision.core.image_processing_options.ImageProcessingOptions object>
 ```
 
-## mediapipe::autoit::vision::core::image\_processing\_options
-
-### image\_processing\_options.ImageProcessingOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions
-AutoIt:
-    [propget] $oimage_processing_options.ImageProcessingOptions
-```
-
 ## mediapipe::tasks::autoit::vision::core::vision\_task\_running\_mode
 
 ### vision\_task\_running\_mode.VisionTaskRunningMode
@@ -17646,16 +16830,6 @@ AutoIt:
 static int mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode::LIVE_STREAM
 AutoIt:
     [propget] $oVisionTaskRunningMode.LIVE_STREAM
-```
-
-## mediapipe::autoit::vision::core::vision\_task\_running\_mode
-
-### vision\_task\_running\_mode.VisionTaskRunningMode
-
-```cpp
-static mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode
-AutoIt:
-    [propget] $ovision_task_running_mode.VisionTaskRunningMode
 ```
 
 ## mediapipe::tasks::autoit::vision::face\_detector
@@ -17744,24 +16918,6 @@ AutoIt:
 std::shared_ptr<tasks_vision_face_detector_proto_FaceDetectorGraphOptions> mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions::to_pb2();
 AutoIt:
     $oFaceDetectorOptions.to_pb2() -> retval
-```
-
-## mediapipe::autoit::vision::face\_detector
-
-### face\_detector.FaceDetectorOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions
-AutoIt:
-    [propget] $oface_detector.FaceDetectorOptions
-```
-
-### face\_detector.FaceDetector
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_detector::FaceDetector
-AutoIt:
-    [propget] $oface_detector.FaceDetector
 ```
 
 ## mediapipe::tasks::autoit::vision::face\_detector::FaceDetector
@@ -18321,48 +17477,6 @@ AutoIt:
     [propget] $oBlendshapes.NOSE_SNEER_RIGHT
 ```
 
-## mediapipe::autoit::vision::face\_landmarker
-
-### face\_landmarker.Blendshapes
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_landmarker::Blendshapes
-AutoIt:
-    [propget] $oface_landmarker.Blendshapes
-```
-
-### face\_landmarker.FaceLandmarksConnections
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections
-AutoIt:
-    [propget] $oface_landmarker.FaceLandmarksConnections
-```
-
-### face\_landmarker.FaceLandmarkerResult
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult
-AutoIt:
-    [propget] $oface_landmarker.FaceLandmarkerResult
-```
-
-### face\_landmarker.FaceLandmarkerOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerOptions
-AutoIt:
-    [propget] $oface_landmarker.FaceLandmarkerOptions
-```
-
-### face\_landmarker.FaceLandmarker
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarker
-AutoIt:
-    [propget] $oface_landmarker.FaceLandmarker
-```
-
 ## mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarksConnections
 
 ### FaceLandmarksConnections.FACE\_LANDMARKS\_LIPS
@@ -18494,16 +17608,6 @@ static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnectio
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection").create( [$start[, $end]] ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection object>
     $oConnection( [$start[, $end]] ) -> <mediapipe.tasks.autoit.vision.face_landmarker.FaceLandmarksConnections.Connection object>
-```
-
-## mediapipe::autoit::vision::face\_landmarker::FaceLandmarksConnections
-
-### FaceLandmarksConnections.Connection
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection
-AutoIt:
-    [propget] $oFaceLandmarksConnections.Connection
 ```
 
 ## mediapipe::tasks::autoit::vision::face\_landmarker::FaceLandmarkerResult
@@ -18823,24 +17927,6 @@ AutoIt:
     $oFaceStylizerOptions.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::vision::face\_stylizer
-
-### face\_stylizer.FaceStylizerOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizerOptions
-AutoIt:
-    [propget] $oface_stylizer.FaceStylizerOptions
-```
-
-### face\_stylizer.FaceStylizer
-
-```cpp
-static mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer
-AutoIt:
-    [propget] $oface_stylizer.FaceStylizer
-```
-
 ## mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer
 
 ### mediapipe::tasks::autoit::vision::face\_stylizer::FaceStylizer::\_process\_image\_data
@@ -19015,32 +18101,6 @@ static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerRe
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult").create( [$gestures[, $handedness[, $hand_landmarks[, $hand_world_landmarks]]]] ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult object>
     $oGestureRecognizerResult( [$gestures[, $handedness[, $hand_landmarks[, $hand_world_landmarks]]]] ) -> <mediapipe.tasks.autoit.vision.gesture_recognizer.GestureRecognizerResult object>
-```
-
-## mediapipe::autoit::vision::gesture\_recognizer
-
-### gesture\_recognizer.GestureRecognizerResult
-
-```cpp
-static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult
-AutoIt:
-    [propget] $ogesture_recognizer.GestureRecognizerResult
-```
-
-### gesture\_recognizer.GestureRecognizerOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions
-AutoIt:
-    [propget] $ogesture_recognizer.GestureRecognizerOptions
-```
-
-### gesture\_recognizer.GestureRecognizer
-
-```cpp
-static mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizer
-AutoIt:
-    [propget] $ogesture_recognizer.GestureRecognizer
 ```
 
 ## mediapipe::tasks::autoit::vision::gesture\_recognizer::GestureRecognizerOptions
@@ -19450,40 +18510,6 @@ AutoIt:
     [propget] $oHandLandmark.PINKY_TIP
 ```
 
-## mediapipe::autoit::vision::hand\_landmarker
-
-### hand\_landmarker.HandLandmark
-
-```cpp
-static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark
-AutoIt:
-    [propget] $ohand_landmarker.HandLandmark
-```
-
-### hand\_landmarker.HandLandmarkerResult
-
-```cpp
-static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult
-AutoIt:
-    [propget] $ohand_landmarker.HandLandmarkerResult
-```
-
-### hand\_landmarker.HandLandmarkerOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions
-AutoIt:
-    [propget] $ohand_landmarker.HandLandmarkerOptions
-```
-
-### hand\_landmarker.HandLandmarker
-
-```cpp
-static mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker
-AutoIt:
-    [propget] $ohand_landmarker.HandLandmarker
-```
-
 ## mediapipe::tasks::autoit::vision::hand\_landmarker::HandLandmarkerResult
 
 ### HandLandmarkerResult.handedness
@@ -19836,24 +18862,6 @@ AutoIt:
     $oImageClassifierOptions.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::vision::image\_classifier
-
-### image\_classifier.ImageClassifierOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions
-AutoIt:
-    [propget] $oimage_classifier.ImageClassifierOptions
-```
-
-### image\_classifier.ImageClassifier
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier
-AutoIt:
-    [propget] $oimage_classifier.ImageClassifier
-```
-
 ## mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier
 
 ### mediapipe::tasks::autoit::vision::image\_classifier::ImageClassifier::\_process\_image\_data
@@ -20045,24 +19053,6 @@ AutoIt:
 std::shared_ptr<mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions> mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions::to_pb2();
 AutoIt:
     $oImageEmbedderOptions.to_pb2() -> retval
-```
-
-## mediapipe::autoit::vision::image\_embedder
-
-### image\_embedder.ImageEmbedderOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions
-AutoIt:
-    [propget] $oimage_embedder.ImageEmbedderOptions
-```
-
-### image\_embedder.ImageEmbedder
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder
-AutoIt:
-    [propget] $oimage_embedder.ImageEmbedder
 ```
 
 ## mediapipe::tasks::autoit::vision::image\_embedder::ImageEmbedder
@@ -20275,24 +19265,6 @@ AutoIt:
     $oImageSegmenterOptions.to_pb2() -> retval
 ```
 
-## mediapipe::autoit::vision::image\_segmenter
-
-### image\_segmenter.ImageSegmenterOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions
-AutoIt:
-    [propget] $oimage_segmenter.ImageSegmenterOptions
-```
-
-### image\_segmenter.ImageSegmenter
-
-```cpp
-static mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter
-AutoIt:
-    [propget] $oimage_segmenter.ImageSegmenter
-```
-
 ## mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter
 
 ### mediapipe::tasks::autoit::vision::image\_segmenter::ImageSegmenter::\_process\_image\_data
@@ -20483,40 +19455,6 @@ AutoIt:
 std::shared_ptr<tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions> mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions::to_pb2();
 AutoIt:
     $oInteractiveSegmenterOptions.to_pb2() -> retval
-```
-
-## mediapipe::autoit::vision::interactive\_segmenter
-
-### interactive\_segmenter.InteractiveSegmenterOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions
-AutoIt:
-    [propget] $ointeractive_segmenter.InteractiveSegmenterOptions
-```
-
-### interactive\_segmenter.RegionOfInterest\_Format
-
-```cpp
-static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format
-AutoIt:
-    [propget] $ointeractive_segmenter.RegionOfInterest_Format
-```
-
-### interactive\_segmenter.RegionOfInterest
-
-```cpp
-static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest
-AutoIt:
-    [propget] $ointeractive_segmenter.RegionOfInterest
-```
-
-### interactive\_segmenter.InteractiveSegmenter
-
-```cpp
-static mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter
-AutoIt:
-    [propget] $ointeractive_segmenter.InteractiveSegmenter
 ```
 
 ## mediapipe::tasks::autoit::vision::interactive\_segmenter::RegionOfInterest\_Format
@@ -20772,24 +19710,6 @@ AutoIt:
 std::shared_ptr<tasks_vision_object_detector_proto_ObjectDetectorOptions> mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions::to_pb2();
 AutoIt:
     $oObjectDetectorOptions.to_pb2() -> retval
-```
-
-## mediapipe::autoit::vision::object\_detector
-
-### object\_detector.ObjectDetectorOptions
-
-```cpp
-static mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions
-AutoIt:
-    [propget] $oobject_detector.ObjectDetectorOptions
-```
-
-### object\_detector.ObjectDetector
-
-```cpp
-static mediapipe::tasks::autoit::vision::object_detector::ObjectDetector
-AutoIt:
-    [propget] $oobject_detector.ObjectDetector
 ```
 
 ## mediapipe::tasks::autoit::vision::object\_detector::ObjectDetector

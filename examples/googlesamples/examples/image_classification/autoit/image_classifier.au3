@@ -10,8 +10,8 @@
 #include "..\..\..\..\..\test\_assert.au3"
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/image_classifier/python/image_classifier.ipynb
-;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/image_classifier/python/image_classifier.ipynb
+;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/image_classification/python/image_classifier.ipynb
+;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/image_classification/python/image_classifier.ipynb
 
 _Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
 _OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
@@ -52,13 +52,13 @@ Func Main()
 		EndIf
 	Next
 
-	Local $MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\efficientnet_lite0_fp32.tflite"
-	If Not FileExists($MODEL_FILE) Then
-		$download_utils.download("https://storage.googleapis.com/mediapipe-tasks/image_classifier/efficientnet_lite0_fp32.tflite", $MODEL_FILE)
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\efficientnet_lite0_fp32.tflite"
+	If Not FileExists($_MODEL_FILE) Then
+		$download_utils.download("https://storage.googleapis.com/mediapipe-tasks/image_classifier/efficientnet_lite0_fp32.tflite", $_MODEL_FILE)
 	EndIf
 
 	; STEP 2: Create an ImageClassifier object.
-	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $MODEL_FILE))
+	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.ImageClassifierOptions(_Mediapipe_Params("base_options", $base_options, "max_results", 4))
 	Local $classifier = $vision.ImageClassifier.create_from_options($options)
 	Local $image, $classification_result, $top_category, $title

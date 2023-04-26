@@ -243,17 +243,9 @@
         "iid": "235638f0-436e-436f-992b-6dcb5c4e65fd",
         "clsid": "d45389d0-1277-4ed4-a801-498aa53ac616"
     },
-    "mediapipe::autoit::audio": {
-        "iid": "94983e07-a783-4dcd-b747-a7457be21bf8",
-        "clsid": "2ab477e2-5bc1-4497-8866-05d36468e0fb"
-    },
     "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions": {
         "iid": "337f3952-dc61-48b7-8461-60cca7296d2c",
         "clsid": "ba964dee-d883-47c1-92f7-424925864033"
-    },
-    "mediapipe::autoit::audio::audio_classifier": {
-        "iid": "3263d74b-fe67-46c7-abcc-5b7d6dbfce23",
-        "clsid": "e4cce824-8a5d-4acc-bfd4-32b89f4d5ba8"
     },
     "mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier": {
         "iid": "2fe3ce26-766d-4c18-96a7-54cb45780c0f",
@@ -267,10 +259,6 @@
         "iid": "f8f134c2-721c-4a5b-ac4b-0f4fb17a4044",
         "clsid": "2109ad11-d210-405a-a454-7797a332703f"
     },
-    "mediapipe::autoit::audio::audio_embedder": {
-        "iid": "d50f6f06-0473-42f5-9b5d-b65ef00afc8d",
-        "clsid": "2a9826de-accb-4173-af61-a392718be23c"
-    },
     "mediapipe::tasks::autoit::audio::audio_embedder::AudioEmbedder": {
         "iid": "c3b37f16-3f9e-401a-b15c-e78435ecda2a",
         "clsid": "807c55db-6d66-4bb2-b0cb-6ab5d3e8a1c8"
@@ -283,17 +271,9 @@
         "iid": "75e088a9-3cf5-4a14-a051-54cc1de0f3e1",
         "clsid": "b8c51b69-a63f-4952-8424-72b30c912c38"
     },
-    "mediapipe::autoit::audio::core": {
-        "iid": "8017857f-0c83-4a88-a9e5-fb6065c85f0f",
-        "clsid": "bf5de45d-4326-47bc-8217-736b722f1a2a"
-    },
     "mediapipe::tasks::autoit::audio::core::audio_task_running_mode::AudioTaskRunningMode": {
         "iid": "415b6488-b7bc-4054-b739-40da3801d31c",
         "clsid": "bdaf3f72-5561-4e92-bb97-c667f2933ff9"
-    },
-    "mediapipe::autoit::audio::core::audio_task_running_mode": {
-        "iid": "9eecbe7a-f8f2-46a7-a3c7-47c9d1df1c45",
-        "clsid": "387c8fe3-fb87-4c0f-948f-cfa675b608df"
     },
     "mediapipe::tasks::autoit::audio::core::base_audio_task_api": {
         "iid": "e5c8c9e1-a177-4efb-87ed-3b2067026838",
@@ -303,10 +283,6 @@
         "iid": "121de162-f811-4c0d-8cd2-e765f0b04682",
         "clsid": "67a155ac-861e-4893-b973-d7a981a69cc0"
     },
-    "mediapipe::autoit::audio::core::base_audio_task_api": {
-        "iid": "3b2674c5-66e9-4af7-a6a5-5848173cae9c",
-        "clsid": "ac1d7805-78bf-4174-bca0-157d2264905d"
-    },
     "mediapipe::tasks::autoit::components": {
         "iid": "cd7e2257-f6f8-4811-baa4-d863b059d4ef",
         "clsid": "d5141606-9084-4d4b-b618-cac43aaa9f98"
@@ -315,25 +291,13 @@
         "iid": "37dca59e-63ec-460e-a076-087421abc664",
         "clsid": "9b20df9c-a74f-4fc1-806b-86fad74fee41"
     },
-    "mediapipe::autoit::components": {
-        "iid": "999f40e8-5c83-446d-9d20-ce3cea18819c",
-        "clsid": "2c15c788-9377-4ab5-805f-f8790943363b"
-    },
     "mediapipe::tasks::autoit::components::containers::audio_data": {
         "iid": "8f8d62af-80d1-4622-b7d5-b6ed001cef35",
         "clsid": "e5201d40-55e6-4c0a-a548-7a7ff4fb0e65"
     },
-    "mediapipe::autoit::components::containers": {
-        "iid": "bc076759-f98d-4d87-bd3d-2b0b551fe25a",
-        "clsid": "5645269a-f954-4c8e-931f-db7b818d108c"
-    },
     "mediapipe::tasks::autoit::components::containers::audio_data::AudioDataFormat": {
         "iid": "f297a97a-329f-4bf6-8655-7d3e0df5b55e",
         "clsid": "e398e9e2-e90d-4d65-831e-befffd06baef"
-    },
-    "mediapipe::autoit::components::containers::audio_data": {
-        "iid": "6605e6f9-435a-4cbc-95dd-b56d5d9e82de",
-        "clsid": "7466a7f9-e2b2-4c6a-9d8f-eaaf0dd1f593"
     },
     "mediapipe::tasks::autoit::components::containers::audio_data::AudioData": {
         "iid": "23d3a952-33a3-43fb-849d-7f3d44667aa7",
@@ -347,10 +311,6 @@
         "iid": "a9c18fdc-7b72-4301-a50a-366b11ecf58b",
         "clsid": "614e0845-02b3-4bb4-a7ba-550fe172c96c"
     },
-    "mediapipe::autoit::components::containers::bounding_box": {
-        "iid": "52945dbd-d854-4fe5-b244-319f6cdb122f",
-        "clsid": "9d04f79c-27b9-4ec3-8113-08766f36b7ba"
-    },
     "mediapipe::tasks::autoit::components::containers::category": {
         "iid": "6f7def6c-382d-4416-9281-ebc4d7f8c467",
         "clsid": "75a496d9-de8b-4724-b79b-6aab789533b3"
@@ -359,10 +319,6 @@
         "iid": "0c1d46a0-8bd9-4a13-b3ed-66005c593060",
         "clsid": "bb0485e5-3fdc-430b-b4e7-0312ab093e1b"
     },
-    "mediapipe::autoit::components::containers::category": {
-        "iid": "b1e6c51e-a654-42ae-b3f1-198f13653ce3",
-        "clsid": "0f716d90-c4b8-4a87-8d1b-ac00ca753389"
-    },
     "mediapipe::tasks::autoit::components::containers::classification_result": {
         "iid": "bd2d25da-d842-4940-9af9-24f1582e23e5",
         "clsid": "870d5956-abc1-4cfd-aa2f-b76ac7c6c2b3"
@@ -370,10 +326,6 @@
     "mediapipe::tasks::autoit::components::containers::classification_result::Classifications": {
         "iid": "578d62af-2516-4a3b-8550-a220c07d7f18",
         "clsid": "9411dfe8-bcd2-4095-b874-3ecf1d0b6258"
-    },
-    "mediapipe::autoit::components::containers::classification_result": {
-        "iid": "3b3458b5-6594-45e8-9520-8424cb4b9abc",
-        "clsid": "7ecf7dfd-53f8-4b3b-acf6-30cf03c317f1"
     },
     "mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult": {
         "iid": "f6aa78da-a183-4548-8424-18262b462270",
@@ -387,10 +339,6 @@
         "iid": "9e041b0d-066c-42ae-a053-593c46b3091c",
         "clsid": "9f7b6ba6-692a-4927-a361-dc5329facd4a"
     },
-    "mediapipe::autoit::components::containers::detections": {
-        "iid": "1c2f7928-6447-4b0f-b375-6c1967231316",
-        "clsid": "280526e1-6020-4209-8ad7-8e9a946c5d64"
-    },
     "mediapipe::tasks::autoit::components::containers::detections::DetectionResult": {
         "iid": "c831b0ff-9a91-42b1-89ba-62fbaa3b585f",
         "clsid": "a2c17f88-81e6-4873-bd92-4b50fa6c757b"
@@ -402,10 +350,6 @@
     "mediapipe::tasks::autoit::components::containers::embedding_result::Embedding": {
         "iid": "38f457fa-66b8-4cfc-9011-6b07eacafc0d",
         "clsid": "da1edf54-4c20-4bdb-b5b3-a90ea7ca50b3"
-    },
-    "mediapipe::autoit::components::containers::embedding_result": {
-        "iid": "d35359ea-562c-4eee-908c-c151742383b8",
-        "clsid": "7db6ac66-973d-4362-adf9-909b5f52baa0"
     },
     "mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult": {
         "iid": "717ef6e8-652a-45a8-9d89-f493f60afd1e",
@@ -419,10 +363,6 @@
         "iid": "30a29033-ff3a-4ec5-900f-3999587978f2",
         "clsid": "e9cf30af-fbe0-49e4-b75f-75c6494b8466"
     },
-    "mediapipe::autoit::components::containers::keypoint": {
-        "iid": "53021300-b233-4e51-b1f7-384e9e818f74",
-        "clsid": "3eab3a0c-8185-42e1-9412-d5e7be2f5bba"
-    },
     "mediapipe::tasks::autoit::components::containers::landmark": {
         "iid": "2f077165-3d66-4655-b682-128c9bf5f32c",
         "clsid": "81c05edf-751a-41d5-9123-a4a3b379e3b2"
@@ -430,10 +370,6 @@
     "mediapipe::tasks::autoit::components::containers::landmark::Landmark": {
         "iid": "e4bb5427-6a56-453f-81ec-4a87e486bc92",
         "clsid": "59e68a17-a2c9-4920-8488-c45486d54653"
-    },
-    "mediapipe::autoit::components::containers::landmark": {
-        "iid": "0366bd2f-4bdd-4d1e-a4f8-9277bfdad184",
-        "clsid": "0a700154-d2b1-41d5-aa2c-f45cfe8ba8f8"
     },
     "mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark": {
         "iid": "0ecf218e-fcef-4228-ac5a-90ae357ffed9",
@@ -447,10 +383,6 @@
         "iid": "ea13838b-5e1d-4d2d-9ca7-9e29ec0436f2",
         "clsid": "6bc478b4-6b5b-4a5d-b99f-0b339f36f8f2"
     },
-    "mediapipe::autoit::components::containers::landmark_detection_result": {
-        "iid": "163ab924-e8a6-4e0d-b196-10e2b2a7481b",
-        "clsid": "3efdaddb-ee16-4f22-b903-35c025211cb6"
-    },
     "mediapipe::tasks::autoit::components::containers::rect": {
         "iid": "ce500147-aaf9-45be-ab15-1652cab2a14c",
         "clsid": "e0aff2db-4231-40c3-9331-75b4505bf5d3"
@@ -458,10 +390,6 @@
     "mediapipe::tasks::autoit::components::containers::rect::Rect": {
         "iid": "b6a5457e-f9c1-4cbb-b58c-466027a763d1",
         "clsid": "4d045f1e-a35f-4153-b6d2-93e40cf1b05a"
-    },
-    "mediapipe::autoit::components::containers::rect": {
-        "iid": "86250c31-56ec-41f0-a6cc-1aef80b96518",
-        "clsid": "6ec45ef9-a35b-44e7-90a4-3d7c4ffe497f"
     },
     "mediapipe::tasks::autoit::components::containers::rect::NormalizedRect": {
         "iid": "042dd364-dbb1-4a3c-b893-55fa47482295",
@@ -475,17 +403,9 @@
         "iid": "0ca090f5-cbbe-4e5a-9c69-e52d2120f04e",
         "clsid": "aea6b04f-d829-47f7-9df5-a87539693d30"
     },
-    "mediapipe::autoit::components::processors": {
-        "iid": "af5545a8-d314-4037-a214-217a7ebdaabd",
-        "clsid": "a490aa6f-306a-4c3e-ac4f-047a0653d54c"
-    },
     "mediapipe::tasks::autoit::components::processors::classifier_options::ClassifierOptions": {
         "iid": "05ef137f-7edf-464a-9dfa-28cc00340a1b",
         "clsid": "364eed5c-16d2-4719-8bca-6c1ac25d75af"
-    },
-    "mediapipe::autoit::components::processors::classifier_options": {
-        "iid": "2cfcc094-519a-4d23-84f2-3adfe9c640e8",
-        "clsid": "17b655ee-90d6-447d-a73b-833736f84309"
     },
     "mediapipe::tasks::autoit::components::utils": {
         "iid": "9428aca4-c727-4f98-8c04-eecc2912003f",
@@ -495,10 +415,6 @@
         "iid": "d9aaa1bb-6b31-4d9e-a710-d40daac8d349",
         "clsid": "153e631f-cc7f-4b85-a092-9b6e5821e8d6"
     },
-    "mediapipe::autoit::components::utils": {
-        "iid": "9c1efcd6-e7b7-4edc-bc24-29c64cd0ebd7",
-        "clsid": "77523f38-e75f-4da2-9c4f-08ebc454f5a0"
-    },
     "mediapipe::tasks::autoit::core": {
         "iid": "ba85d898-3087-46c5-adcd-0b353e3e4ee5",
         "clsid": "5e115a4b-8de4-4556-a660-108b5529836f"
@@ -507,17 +423,9 @@
         "iid": "b185e586-8ce1-4d0c-b388-fc72cce427d0",
         "clsid": "a39121ff-fe31-4f53-9a17-46279616ebb9"
     },
-    "mediapipe::autoit::core": {
-        "iid": "eedbe2d7-72b9-4e3a-9423-a8d825919230",
-        "clsid": "2e4b79ba-7da6-488b-8169-bf6e7ea7d520"
-    },
     "mediapipe::tasks::autoit::core::base_options::BaseOptions": {
         "iid": "af14677a-6aa6-4f23-ac10-473c9ddfd48e",
         "clsid": "2b8b1a1e-8cba-434d-8b87-1779576cd1aa"
-    },
-    "mediapipe::autoit::core::base_options": {
-        "iid": "75e24a26-c501-40d8-b8b9-c6f45c03aaa3",
-        "clsid": "d0f922cb-11e4-4b57-9e26-e5379bb52886"
     },
     "mediapipe::tasks::autoit::core::task_info": {
         "iid": "e21ad787-ead8-4734-ac46-21439d90f3da",
@@ -527,10 +435,6 @@
         "iid": "7d19df7c-c8fb-4b10-bacf-88c348b4d058",
         "clsid": "d9b82887-bf94-4ebb-a29a-24d94baf5475"
     },
-    "mediapipe::autoit::core::task_info": {
-        "iid": "608262a5-4e95-476d-898d-30cf2115f063",
-        "clsid": "75a738d6-9cad-43dc-b740-23e93a80b9f6"
-    },
     "mediapipe::tasks::autoit::text": {
         "iid": "c04c4af2-f745-4aab-9270-1991b4d04bc5",
         "clsid": "2101b383-83a1-4b92-b154-931bd3b6501c"
@@ -539,25 +443,13 @@
         "iid": "9ac69a56-084e-4ca2-8313-589f7c5dbd0c",
         "clsid": "d26f5200-e07f-437d-8ba2-2092145723d9"
     },
-    "mediapipe::autoit::text": {
-        "iid": "d24272fc-2b69-4353-bcb0-659e32735b70",
-        "clsid": "89a5910a-e3e5-4d68-952b-594a0b03bd45"
-    },
     "mediapipe::tasks::autoit::text::core::base_text_task_api": {
         "iid": "bbf960c8-1805-4107-89c2-b0e436984dfd",
         "clsid": "063626d3-b854-4bb1-bb7a-e6febbfb7cba"
     },
-    "mediapipe::autoit::text::core": {
-        "iid": "a1bff055-69d9-44e6-b000-22cee43c33de",
-        "clsid": "98cabfc1-ea13-4cdd-84d8-222a6c193d8a"
-    },
     "mediapipe::tasks::autoit::text::core::base_text_task_api::BaseTextTaskApi": {
         "iid": "112cb3bf-9e17-4bb4-80b0-6f23b9ae7ce0",
         "clsid": "c9d88c56-907f-4609-b516-ba722b7f8e17"
-    },
-    "mediapipe::autoit::text::core::base_text_task_api": {
-        "iid": "50fc65be-1f15-47c2-b3f2-8eff55c579f2",
-        "clsid": "04a3725c-7162-4d9d-b0a0-f6fc820cf027"
     },
     "mediapipe::tasks::autoit::text::text_classifier": {
         "iid": "80b8f3da-2865-4025-acb3-d9b32743e355",
@@ -566,10 +458,6 @@
     "mediapipe::tasks::autoit::text::text_classifier::TextClassifierOptions": {
         "iid": "7c225c54-05b4-43ac-b34c-61ce420a8f1d",
         "clsid": "9ac46f23-6853-4e81-922d-453638a7fcf2"
-    },
-    "mediapipe::autoit::text::text_classifier": {
-        "iid": "a24e7ed9-4e9e-47c6-baa2-2b6b85cba498",
-        "clsid": "1c4c6f7b-9432-4262-b9a3-2e472a75a195"
     },
     "mediapipe::tasks::autoit::text::text_classifier::TextClassifier": {
         "iid": "bb0643ff-d391-41cc-b3ba-2f303b86bcb0",
@@ -583,10 +471,6 @@
         "iid": "a242d806-02ae-467b-a81b-630c01e2076d",
         "clsid": "b1eb73a7-a22a-49ef-b25c-74ea79100147"
     },
-    "mediapipe::autoit::text::text_embedder": {
-        "iid": "8ae0902e-eef4-4806-9971-81fe803685ad",
-        "clsid": "c999626a-0bf7-4057-b1c5-70587deedd61"
-    },
     "mediapipe::tasks::autoit::text::text_embedder::TextEmbedder": {
         "iid": "cd4969ab-2a93-4dfb-be1c-a15244888e81",
         "clsid": "dc7677ce-6863-440b-a825-4454619fc31b"
@@ -599,25 +483,13 @@
         "iid": "1c750653-caac-4f9a-9408-aa38efa7d70e",
         "clsid": "df26062e-2a7d-4fad-9ff1-14afdf685545"
     },
-    "mediapipe::autoit::vision": {
-        "iid": "69be4b45-92d5-4619-92d9-2aaf35c00a3a",
-        "clsid": "026b7429-682f-447f-b20d-1317343c82b5"
-    },
     "mediapipe::tasks::autoit::vision::core::base_vision_task_api": {
         "iid": "f1dd39da-6513-4f6f-b0d6-db330fa25386",
         "clsid": "67aa88e3-5d67-4a6c-b6dd-7369f70f2707"
     },
-    "mediapipe::autoit::vision::core": {
-        "iid": "e88312d0-eb8b-454a-a47b-22144b287379",
-        "clsid": "c3af4544-4afb-4dfd-b482-04ea0d8b56e1"
-    },
     "mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi": {
         "iid": "4adb0c5b-9461-4fab-80aa-c16ac5700a88",
         "clsid": "d7ab7c83-a733-4822-ad0c-a22adb097260"
-    },
-    "mediapipe::autoit::vision::core::base_vision_task_api": {
-        "iid": "ae7c9d66-0105-4798-8f91-4d4da7aec65e",
-        "clsid": "57027fe1-dca1-4946-9a41-9a130e0b69ec"
     },
     "mediapipe::tasks::autoit::vision::core::image_processing_options": {
         "iid": "0ae532d1-3932-40e8-a8df-8040e92ee361",
@@ -627,10 +499,6 @@
         "iid": "1049a249-ba86-45ba-b17c-0b7c305f820b",
         "clsid": "747b6b7a-4a00-46a2-83b8-a6b060036944"
     },
-    "mediapipe::autoit::vision::core::image_processing_options": {
-        "iid": "9123d875-7a59-4a90-bf41-f32a8455205f",
-        "clsid": "e99c7d3f-3faa-4f15-acb5-48f3abbca52f"
-    },
     "mediapipe::tasks::autoit::vision::core::vision_task_running_mode": {
         "iid": "f5b233af-7a52-44e0-80b7-31cf9fc3dfbe",
         "clsid": "94c844fc-a4ad-4520-8a99-036e5b2e0c26"
@@ -639,10 +507,6 @@
         "iid": "5bca427a-506e-411f-9f66-1569ccff414f",
         "clsid": "7ac16444-dd0c-48c5-903b-db0142cd7e86"
     },
-    "mediapipe::autoit::vision::core::vision_task_running_mode": {
-        "iid": "f7eaca5a-799a-42dc-8a46-14d141890e4d",
-        "clsid": "cd902b76-96f1-4db0-89be-5b2359479165"
-    },
     "mediapipe::tasks::autoit::vision::face_detector": {
         "iid": "d285a174-2782-4967-8850-a7df8bbcf1f6",
         "clsid": "153ae954-7edf-45ef-a6c4-1944ba1c24d7"
@@ -650,10 +514,6 @@
     "mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions": {
         "iid": "f49b7980-fe6e-4586-a730-305557449415",
         "clsid": "8cf070cc-7efa-406c-bc7b-d192c5d6ec41"
-    },
-    "mediapipe::autoit::vision::face_detector": {
-        "iid": "879b9542-dbda-45e3-8163-aaca2342698c",
-        "clsid": "50ab5d64-2f1a-45be-b371-5b581bdb7f5b"
     },
     "mediapipe::tasks::autoit::vision::face_detector::FaceDetector": {
         "iid": "fb905e77-64a9-44dc-a1ea-33758b601094",
@@ -667,10 +527,6 @@
         "iid": "9f011d6a-1554-4006-9cf5-101c476f07cb",
         "clsid": "b28855ad-0ab5-441e-bd99-031568e3d461"
     },
-    "mediapipe::autoit::vision::face_landmarker": {
-        "iid": "9f0cb640-0496-48d0-bd7b-e584cdbe57b0",
-        "clsid": "a644f1b0-56b4-41ea-98ac-472cc6e41a0c"
-    },
     "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections": {
         "iid": "a57fcb19-c142-4541-b6ff-10532c5d4bdf",
         "clsid": "e202d58c-a74e-4de4-acc6-f99b418cd7a3"
@@ -678,10 +534,6 @@
     "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection": {
         "iid": "4ccb2e26-d1df-4ad3-bed2-51ef1999d403",
         "clsid": "8d82fe7c-78f2-452d-8a9b-c4aaf360681e"
-    },
-    "mediapipe::autoit::vision::face_landmarker::FaceLandmarksConnections": {
-        "iid": "4ca8445b-09f5-4949-b2c2-c9ee1db629ce",
-        "clsid": "253d61db-718d-4490-a560-605c15e23755"
     },
     "mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarkerResult": {
         "iid": "3788d24f-e43c-4d07-8f70-22c2b76c60ba",
@@ -703,10 +555,6 @@
         "iid": "826c3a4d-f7af-4d76-959a-7aa7ac020852",
         "clsid": "8ac7b3f0-30e9-4549-8799-7161cc378892"
     },
-    "mediapipe::autoit::vision::face_stylizer": {
-        "iid": "0633772c-73d2-4ff0-9a6e-073dc4b408a2",
-        "clsid": "e4018db1-6e69-4c0e-8fa9-50550ccc164c"
-    },
     "mediapipe::tasks::autoit::vision::face_stylizer::FaceStylizer": {
         "iid": "fe340c39-df5d-4a94-8e91-c4da2d765c00",
         "clsid": "99c6b38b-93de-4800-a51d-06a4ebb97bb5"
@@ -718,10 +566,6 @@
     "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResult": {
         "iid": "68f06d1b-394d-4920-87b7-f372b6a6a8d7",
         "clsid": "22fc7bd3-3ccb-4058-99dd-b08fceecd189"
-    },
-    "mediapipe::autoit::vision::gesture_recognizer": {
-        "iid": "16351ce9-a735-4268-a1f1-3912e6f686ed",
-        "clsid": "99797557-1735-4c3d-988f-dec662b42314"
     },
     "mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerOptions": {
         "iid": "e0fcac5d-044b-4363-bdaf-3857d108beca",
@@ -738,10 +582,6 @@
     "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmark": {
         "iid": "233e3d08-a9b0-4458-98c1-df5a01539aba",
         "clsid": "74f7dce7-d78d-4f29-a881-cfa3e8f3b30a"
-    },
-    "mediapipe::autoit::vision::hand_landmarker": {
-        "iid": "f61a52a6-2cc0-43b8-8310-ab915466cda0",
-        "clsid": "4d56a63b-c1ff-418c-8c54-7845f2e4551f"
     },
     "mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult": {
         "iid": "9ce100fd-437b-4364-8163-5dfbd0256188",
@@ -763,10 +603,6 @@
         "iid": "810f40c9-6632-48aa-926a-d80a748c7672",
         "clsid": "c7e857d3-5aac-47f0-8f66-4a3d4f03923f"
     },
-    "mediapipe::autoit::vision::image_classifier": {
-        "iid": "215cd959-ac55-4647-b750-82cfa6ad8906",
-        "clsid": "0d1d61a2-751c-4cc4-b0e0-17dd77743e6c"
-    },
     "mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier": {
         "iid": "9ab002ae-0624-4835-bf54-0fc5bcf110f5",
         "clsid": "954bd3f3-312f-4600-9690-37af1d1768c4"
@@ -778,10 +614,6 @@
     "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderOptions": {
         "iid": "2cf8783c-816a-453c-8183-9f6abcdd39c0",
         "clsid": "b46958da-96a7-4fdf-b9cc-479f3b1b41b8"
-    },
-    "mediapipe::autoit::vision::image_embedder": {
-        "iid": "7b0e47f9-432f-4ea4-a343-fe52a3106f14",
-        "clsid": "822d5e55-f7a4-489d-b079-afb70c98a51d"
     },
     "mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedder": {
         "iid": "92e991db-995c-4800-a635-901a7d4c80d7",
@@ -795,10 +627,6 @@
         "iid": "17b9524c-6ed5-4792-9934-fd1e8c6aee17",
         "clsid": "7df72eda-9eaf-4fe6-b4b5-6f18c2844afe"
     },
-    "mediapipe::autoit::vision::image_segmenter": {
-        "iid": "d456a868-9afd-4241-be11-65bda08b068a",
-        "clsid": "d27ae890-cb05-4712-9e6e-9527a05e0bb2"
-    },
     "mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter": {
         "iid": "5fd7546d-f938-4544-961f-576c73fc284f",
         "clsid": "6cce6231-3612-4037-81bc-794d330bc06b"
@@ -810,10 +638,6 @@
     "mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenterOptions": {
         "iid": "0458b687-b7a2-4c66-9a49-8135fbcc971b",
         "clsid": "9272e693-273d-4b89-9d92-cf566e4d3c19"
-    },
-    "mediapipe::autoit::vision::interactive_segmenter": {
-        "iid": "d720ffc3-925f-4dfb-a998-dd3e8c8dd7c2",
-        "clsid": "19bb99bd-fc78-410d-acd7-098d2fb7e8c8"
     },
     "mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format": {
         "iid": "24dd3fbb-72f6-4c60-aa2b-7839e5417879",
@@ -834,10 +658,6 @@
     "mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions": {
         "iid": "f1a1b420-c31a-48a1-b068-0089245f7b1f",
         "clsid": "cad1b536-7b7b-4861-8ff5-c7527114c2ff"
-    },
-    "mediapipe::autoit::vision::object_detector": {
-        "iid": "d23cb00c-7cf4-4680-a2cc-0a4c05638d97",
-        "clsid": "40103f7d-8480-444b-81ea-061dcc98d2bc"
     },
     "mediapipe::tasks::autoit::vision::object_detector::ObjectDetector": {
         "iid": "f7db496b-691c-49a6-b20d-3f98ffd99482",

@@ -50,16 +50,16 @@ Global $mp_drawing_styles = $mp.solutions.drawing_styles
 Main()
 
 Func Main()
-	Local $IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\woman_hands.jpg"
-	Local $IMAGE_URL = "https://storage.googleapis.com/mediapipe-tasks/hand_landmarker/woman_hands.jpg"
-	Local $MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\hand_landmarker.task"
-	Local $MODEL_URL = "https://storage.googleapis.com/mediapipe-tasks/hand_landmarker/hand_landmarker.task"
+	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\woman_hands.jpg"
+	Local $_IMAGE_URL = "https://storage.googleapis.com/mediapipe-tasks/hand_landmarker/woman_hands.jpg"
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\hand_landmarker.task"
+	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-tasks/hand_landmarker/hand_landmarker.task"
 
 	Local $url, $file_path
 
 	Local $sample_files[] = [ _
-			_Mediapipe_Tuple($IMAGE_FILE, $IMAGE_URL), _
-			_Mediapipe_Tuple($MODEL_FILE, $MODEL_URL) _
+			_Mediapipe_Tuple($_IMAGE_FILE, $_IMAGE_URL), _
+			_Mediapipe_Tuple($_MODEL_FILE, $_MODEL_URL) _
 			]
 	For $config In $sample_files
 		$file_path = $config[0]
@@ -70,13 +70,13 @@ Func Main()
 	Next
 
 	; STEP 2: Create an ImageClassifier object.
-	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $MODEL_FILE))
+	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options, _
 		                                       "num_hands", 2))
 	Local $detector = $vision.HandLandmarker.create_from_options($options)
 
 	; STEP 3: Load the input image.
-	Local $image = $mp.Image.create_from_file($IMAGE_FILE)
+	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
 
 	; STEP 4: Detect hand landmarks from the input image.
 	Local $detection_result = $detector.detect($image)

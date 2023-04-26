@@ -125,16 +125,8 @@ const parseArguments = PROJECT_DIR => {
             } else if (fqn === "mediapipe::autoit::solutions::objectron::ObjectronOutputs") {
                 generator.add_vector(`vector<${ fqn }>`, coclass, opts);
             }
-        // },
-        // onClass: (generator, coclass, opts) => {
-        //     const {fqn} = coclass;
-
-        //     if (fqn.includes("drawing_styles")) {
-        //         console.log("onClass", fqn);
-        //     }
 
             // from mediapipe.python import *
-            // import mediapipe.python.solutions as solutions
             if (fqn.startsWith("mediapipe::autoit::") || fqn.startsWith("mediapipe::tasks::autoit::") || fqn.startsWith("mediapipe::") && occurrences(fqn, "::") === 1) {
                 const parts = fqn.split("::");
 
@@ -143,10 +135,15 @@ const parseArguments = PROJECT_DIR => {
                         [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
                     ], "", ""]);
                 }
+            }
+
+            // import mediapipe.python.solutions as solutions
+            if (fqn.startsWith("mediapipe::autoit::")) {
+                const parts = fqn.split("::");
 
                 for (let i = 2; i < parts.length; i++) {
                     generator.add_func([`${ [parts[0]].concat(parts.slice(2, i)).join(".") }.`, "", ["/Properties"], [
-                        [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this"]],
+                        [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
                     ], "", ""]);
                 }
             }

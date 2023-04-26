@@ -5,6 +5,11 @@ namespace mediapipe::tasks::autoit::components::utils::cosine_similarity {
 	float cosine_similarity(const containers::embedding_result::Embedding& u, const containers::embedding_result::Embedding& v) {
 		AUTOIT_ASSERT_THROW(!u.embedding.empty(), "Cannot compute cosing similarity on empty embeddings.");
 
+		AUTOIT_ASSERT_THROW(u.embedding.channels() == v.embedding.channels(),
+			"Cannot compute cosine similarity between embeddings "
+			"of different channels "
+			"(" << u.embedding.channels() << " vs. " << v.embedding.channels() << ").");
+
 		AUTOIT_ASSERT_THROW(u.embedding.total() == v.embedding.total(),
 			"Cannot compute cosine similarity between embeddings "
 			"of different sizes "
