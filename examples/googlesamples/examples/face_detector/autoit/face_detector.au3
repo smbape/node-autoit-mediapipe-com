@@ -75,7 +75,7 @@ Func Main()
 	; STEP 5: Process the detection result. In this case, visualize it.
 	Local $image_copy = $image.mat_view()
 	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
-	Local $rgb_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_BGR2RGB)
+	Local $rgb_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
 	resize_and_show($rgb_annotated_image, "face_detector")
 	$cv.waitKey()
 EndFunc   ;==>Main

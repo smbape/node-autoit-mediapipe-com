@@ -92,7 +92,7 @@ Displays an image with the gesture category and its score along with the hand la
 #ce
 Func display_image_with_gestures_and_hand_landmarks($image, $gesture, $hands_landmarks)
 	; Display gestures and hand landmarks.
-	Local $annotated_image = $cv.cvtColor($image.mat_view(), $CV_COLOR_BGR2RGB)
+	Local $annotated_image = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
 	Local $title = StringFormat("%s (%.2f)", $gesture.category_name, $gesture.score)
 	Local $scale = 1 / resize_and_show($annotated_image, Default, False)
 
