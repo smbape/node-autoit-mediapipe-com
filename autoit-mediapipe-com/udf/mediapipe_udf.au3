@@ -73,7 +73,7 @@ Func _Mediapipe_Install($s_mediapipe_world_dll = Default, $s_autoit_mediapipe_co
 	; ffmpeg is looked on PATH when loaded in debug mode, not relatively to opencv_world470d.dll
 	; this is a work around to load ffmpeg relatively to opencv_world470d.dll
 	If $bClose And $h_mediapipe_ffmpeg_dll <> -1 Then DllClose($h_mediapipe_ffmpeg_dll)
-	If $bOpen And EnvGet("OPENCV_BUILD_TYPE") == "Debug" Then
+	If $bOpen And EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" Then
 		$h_mediapipe_ffmpeg_dll = _Mediapipe_LoadDLL(StringReplace($s_mediapipe_world_dll, "opencv_world470d.dll", "opencv_videoio_ffmpeg470_64.dll"))
 		If $h_mediapipe_ffmpeg_dll == -1 Then Return SetError(@error, 0, False)
 	EndIf

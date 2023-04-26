@@ -1,6 +1,10 @@
 # https://discourse.cmake.org/t/possible-to-create-a-python-virtual-env-from-cmake-and-then-find-it-with-findpython3/1132
 set(VIRTUAL_ENV "${CMAKE_CURRENT_BINARY_DIR}/.venv")
-
+if (NOT EXISTS "${VIRTUAL_ENV}")
+    set(VIRTUAL_ENV_created TRUE)
+else()
+    set(VIRTUAL_ENV_created FALSE)
+endif()
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 execute_process (COMMAND "${Python3_EXECUTABLE}" -m venv "${VIRTUAL_ENV}")
 

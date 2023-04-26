@@ -15,3 +15,10 @@ BackUp
 generated
 *build_x64
 /test/solutions/testdata
+/examples/data/brother-sister-girl-family-boy-977170.jpg
+/examples/data/face_detection_short_range.tflite
+/examples/data/gesture_recognizer.task
+/examples/data/pointing_up.jpg
+/examples/data/thumbs_down.jpg
+/examples/data/thumbs_up.jpg
+/examples/data/victory.jpg

@@ -19,6 +19,32 @@ const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
 ]);
 
+/** Function that count occurrences of a substring in a string;
+ * @param {String} str               The string
+ * @param {String} substr            The sub string to search for
+ * @param {Boolean} [allowOverlapping]  Optional. (Default:false)
+ *
+ * @author Vitim.us https://gist.github.com/victornpb/7736865
+ * @see Unit Test https://jsfiddle.net/Victornpb/5axuh96u/
+ * @see https://stackoverflow.com/a/7924240/938822
+ */
+const occurrences = (str, substr, allowOverlapping = false) => {
+    if (substr.length === 0) {
+        return str.length + 1;
+    }
+
+    let n = 0;
+    let pos = 0;
+    const step = allowOverlapping ? 1 : substr.length;
+
+    while ((pos = str.indexOf(substr, pos)) !== -1) {
+        n++;
+        pos += step;
+    }
+
+    return n;
+};
+
 const parseArguments = PROJECT_DIR => {
     const options = {
         APP_NAME: "Mediapipe",
@@ -99,15 +125,22 @@ const parseArguments = PROJECT_DIR => {
             } else if (fqn === "mediapipe::autoit::solutions::objectron::ObjectronOutputs") {
                 generator.add_vector(`vector<${ fqn }>`, coclass, opts);
             }
+        // },
+        // onClass: (generator, coclass, opts) => {
+        //     const {fqn} = coclass;
+
+        //     if (fqn.includes("drawing_styles")) {
+        //         console.log("onClass", fqn);
+        //     }
 
             // from mediapipe.python import *
             // import mediapipe.python.solutions as solutions
-            if (fqn.startsWith("mediapipe::autoit::") || fqn.startsWith("mediapipe::tasks::autoit::")) {
+            if (fqn.startsWith("mediapipe::autoit::") || fqn.startsWith("mediapipe::tasks::autoit::") || fqn.startsWith("mediapipe::") && occurrences(fqn, "::") === 1) {
                 const parts = fqn.split("::");
 
                 for (let i = 1; i < parts.length; i++) {
                     generator.add_func([`${ parts.slice(0, i).join(".") }.`, "", ["/Properties"], [
-                    [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
+                        [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
                     ], "", ""]);
                 }
 
@@ -276,7 +309,7 @@ waterfall([
             opts.filename = filename;
             const abspath = opts.proto_path
                 .map(dirname => sysPath.join(dirname, filename))
-                .filter(abspath => fs.existsSync(abspath))[0];
+                .filter(candidate => fs.existsSync(candidate))[0];
             const parser = new Parser();
             parser.parseFile(fs.realpathSync(abspath), opts, outputs, cache);
         }

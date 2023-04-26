@@ -197,10 +197,17 @@ const writeFiles = (files, options, cb) => {
         },
 
         next => {
+            const {size} = idls_to_generate;
+
+            if (size !== 0) {
+                console.log(`midl files to compile = ${ size }`);
+            }
+
             // compile idls
             // manual compilation is necessary because
-            // vs will loop indefinetely due to circular dependencies
+            // vs will loop indefinitely due to circular dependencies
             eachOfLimit(idls_to_generate, cpus, (filename, i, next) => {
+                console.log(`compiling file ${ i + 1 } / ${ size }`);
                 MidlCompiler.compile(filename, options, next);
             }, next);
         },

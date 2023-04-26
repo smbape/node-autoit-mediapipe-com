@@ -148,6 +148,7 @@ set(BAZEL_BUILD bazel
 
 # generate source files
 if(
+  ${VIRTUAL_ENV_created} OR
   (NOT EXISTS "${mediapipe_BINARY_DIR}/external/com_google_protobuf/any_proto-descriptor-set.proto.bin") OR
   (NOT EXISTS "${mediapipe_SOURCE_DIR}/bazel-mediapipe-src/external/com_google_protobuf/src")
 )

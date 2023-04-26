@@ -163,10 +163,14 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 
 		// Configure hand gesture recognizer options.
 		auto hand_gesture_recognizer_options_proto = gesture_recognizer_options_proto->mutable_hand_gesture_recognizer_graph_options();
-		hand_gesture_recognizer_options_proto->mutable_canned_gesture_classifier_graph_options()->mutable_classifier_options()->CopyFrom(
-			*canned_gesture_classifier_options->to_pb2());
-		hand_gesture_recognizer_options_proto->mutable_custom_gesture_classifier_graph_options()->mutable_classifier_options()->CopyFrom(
-			*custom_gesture_classifier_options->to_pb2());
+		if (canned_gesture_classifier_options) {
+			hand_gesture_recognizer_options_proto->mutable_canned_gesture_classifier_graph_options()->mutable_classifier_options()->CopyFrom(
+				*canned_gesture_classifier_options->to_pb2());
+		}
+		if (custom_gesture_classifier_options) {
+			hand_gesture_recognizer_options_proto->mutable_custom_gesture_classifier_graph_options()->mutable_classifier_options()->CopyFrom(
+				*custom_gesture_classifier_options->to_pb2());
+		}
 
 		return gesture_recognizer_options_proto;
 	}

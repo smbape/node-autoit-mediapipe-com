@@ -44,16 +44,16 @@
         "clsid": "4f721198-e946-4b71-844b-6069e2f1a82e"
     },
     "mediapipe::autoit::_framework_bindings": {
-        "iid": "b50dde3f-b556-4b1d-b514-01763559479e",
-        "clsid": "6f6efefc-9d13-4cd3-8c77-e328e2469019"
+        "iid": "f2ff8454-a1f6-4da6-ac24-35b12ce80eda",
+        "clsid": "9c06e7f6-41e4-46f2-8ca2-a7a74ad8f3e7"
     },
     "mediapipe::autoit::_framework_bindings::resource_util": {
         "iid": "747f893b-144b-4ccb-93ff-70311c33c702",
         "clsid": "74345131-2a6c-403d-9ab7-63b2f267c688"
     },
     "mediapipe::_framework_bindings": {
-        "iid": "afe0d439-b4b0-4b46-8f6d-72f49983270f",
-        "clsid": "a5ba78b6-1da3-4af8-8f96-4444cba01d36"
+        "iid": "19f86cb2-ccbb-435b-bf0a-b7bce56c075d",
+        "clsid": "c045bd12-a945-4a36-8f41-e7a7a8c86609"
     },
     "mediapipe::autoit::solutions": {
         "iid": "5b720861-2603-4f1e-bbc4-6788cfc2fa0d",
@@ -280,8 +280,8 @@
         "clsid": "ac6cc423-4c1d-43f0-8099-c88a7e34d8e5"
     },
     "mediapipe::tasks::autoit::audio::core::audio_task_running_mode": {
-        "iid": "9a0586ce-52cf-4b5e-8073-517ca49c52a9",
-        "clsid": "8b22625c-5e67-40c2-9ae1-6805a7f3116b"
+        "iid": "75e088a9-3cf5-4a14-a051-54cc1de0f3e1",
+        "clsid": "b8c51b69-a63f-4952-8424-72b30c912c38"
     },
     "mediapipe::autoit::audio::core": {
         "iid": "8017857f-0c83-4a88-a9e5-fb6065c85f0f",
@@ -292,8 +292,8 @@
         "clsid": "bdaf3f72-5561-4e92-bb97-c667f2933ff9"
     },
     "mediapipe::autoit::audio::core::audio_task_running_mode": {
-        "iid": "41f2317f-39a8-47e9-9a8e-7a03f97e2595",
-        "clsid": "1a5dbd97-8a26-4cdc-9827-c6b3dd942e1a"
+        "iid": "9eecbe7a-f8f2-46a7-a3c7-47c9d1df1c45",
+        "clsid": "387c8fe3-fb87-4c0f-948f-cfa675b608df"
     },
     "mediapipe::tasks::autoit::audio::core::base_audio_task_api": {
         "iid": "e5c8c9e1-a177-4efb-87ed-3b2067026838",
@@ -488,16 +488,16 @@
         "clsid": "17b655ee-90d6-447d-a73b-833736f84309"
     },
     "mediapipe::tasks::autoit::components::utils": {
-        "iid": "9813e4b0-65ac-4442-97fc-e6c2c6495056",
-        "clsid": "87274607-bfce-40b7-93bf-1e49afd9742e"
+        "iid": "9428aca4-c727-4f98-8c04-eecc2912003f",
+        "clsid": "a0e17bf3-a8ad-4a47-ab6a-1fc1542e46b8"
     },
     "mediapipe::tasks::autoit::components::utils::cosine_similarity": {
         "iid": "d9aaa1bb-6b31-4d9e-a710-d40daac8d349",
         "clsid": "153e631f-cc7f-4b85-a092-9b6e5821e8d6"
     },
     "mediapipe::autoit::components::utils": {
-        "iid": "4704bea0-8676-4b44-99cd-bb96e33c1254",
-        "clsid": "4735b8e6-f086-4d2d-a59f-37cfdceac2b1"
+        "iid": "9c1efcd6-e7b7-4edc-bc24-29c64cd0ebd7",
+        "clsid": "77523f38-e75f-4da2-9c4f-08ebc454f5a0"
     },
     "mediapipe::tasks::autoit::core": {
         "iid": "ba85d898-3087-46c5-adcd-0b353e3e4ee5",
@@ -632,16 +632,16 @@
         "clsid": "e99c7d3f-3faa-4f15-acb5-48f3abbca52f"
     },
     "mediapipe::tasks::autoit::vision::core::vision_task_running_mode": {
-        "iid": "2b9ca9f5-c060-473c-8c64-d8efd9e9b81f",
-        "clsid": "59510dd9-5323-4996-91e4-ef563b4270f0"
+        "iid": "f5b233af-7a52-44e0-80b7-31cf9fc3dfbe",
+        "clsid": "94c844fc-a4ad-4520-8a99-036e5b2e0c26"
     },
     "mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode": {
         "iid": "5bca427a-506e-411f-9f66-1569ccff414f",
         "clsid": "7ac16444-dd0c-48c5-903b-db0142cd7e86"
     },
     "mediapipe::autoit::vision::core::vision_task_running_mode": {
-        "iid": "97ae305c-5cce-4116-98cf-40323f5d1300",
-        "clsid": "1b0cdf77-758a-4bb3-9d0d-8cf761f5d4d3"
+        "iid": "f7eaca5a-799a-42dc-8a46-14d141890e4d",
+        "clsid": "cd902b76-96f1-4db0-89be-5b2359479165"
     },
     "mediapipe::tasks::autoit::vision::face_detector": {
         "iid": "d285a174-2782-4967-8850-a7df8bbcf1f6",
@@ -2483,37 +2483,25 @@
         "iid": "a4dd8496-bd68-43fb-9e5c-d62b74aa6523",
         "clsid": "02edcce5-cb64-4dfe-99e6-2d0b3db82034"
     },
-    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType": {
-        "iid": "818184b4-d6bd-4f02-a2c4-f2ffdd442b31",
-        "clsid": "6784a27a-0e56-410e-b50c-6c1b99f85ee3"
-    },
-    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation": {
-        "iid": "04409ffe-3f5a-4d8a-a87f-030b36183b56",
-        "clsid": "326e754d-1087-41a9-9939-ab76e094a51b"
-    },
-    "mediapipe::ImageFormat::Format": {
-        "iid": "db5c4bc4-2ceb-43b9-a91d-6843dd211d9f",
-        "clsid": "c76ecdcf-f187-4921-b9df-b7a18d8253e8"
-    },
     "VectorOfPairOfVariantAndVariant": {
         "iid": "e2e4c1e6-ad09-4447-9850-0903375ed02a",
         "clsid": "b444e827-91f6-4a46-bfd2-1fb7b1ad0677"
     },
-    "VectorOfBool": {
-        "iid": "6b7b11b6-5433-46d3-9dd4-02272c444058",
-        "clsid": "70b23e8f-2121-4ca8-8720-b02fd747bb48"
+    "VectorOfInt": {
+        "iid": "558d6542-a68e-4199-9972-d1754f33db41",
+        "clsid": "7b9d8766-9403-4200-a081-c39ac4823549"
     },
     "VectorOfFloat": {
         "iid": "d449e397-ad0d-4626-ad12-37b7a8cad2cc",
         "clsid": "295825c2-91ae-47f2-96ba-02e6ea9c3a23"
     },
+    "VectorOfBool": {
+        "iid": "6b7b11b6-5433-46d3-9dd4-02272c444058",
+        "clsid": "70b23e8f-2121-4ca8-8720-b02fd747bb48"
+    },
     "VectorOfImage": {
         "iid": "3532dd31-0059-42fe-90a5-6f5235ca7321",
         "clsid": "11b36c43-da9a-4aac-b5b2-7de052eef85d"
-    },
-    "VectorOfInt": {
-        "iid": "558d6542-a68e-4199-9972-d1754f33db41",
-        "clsid": "7b9d8766-9403-4200-a081-c39ac4823549"
     },
     "VectorOfPacket": {
         "iid": "fbdc193d-4dca-4c3b-b8de-6bf100fa06c8",
@@ -2634,6 +2622,14 @@
     "VectorOfVectorOfShared_ptrTasks_autoit_components_containers_landmark_Landmark": {
         "iid": "976a9bae-1a19-49ed-961f-c41e7fb7d04b",
         "clsid": "3f113081-7819-4ce9-8fd6-e5bfc8513a11"
+    },
+    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType": {
+        "iid": "818184b4-d6bd-4f02-a2c4-f2ffdd442b31",
+        "clsid": "6784a27a-0e56-410e-b50c-6c1b99f85ee3"
+    },
+    "mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation": {
+        "iid": "04409ffe-3f5a-4d8a-a87f-030b36183b56",
+        "clsid": "326e754d-1087-41a9-9939-ab76e094a51b"
     },
     "VectorOfUchar": {
         "iid": "e4e3896c-ff7d-47bf-a44a-ffc2a76261b4",
@@ -2859,6 +2855,10 @@
         "iid": "1c8eeddf-bca1-4e83-984d-803c46b17f5c",
         "clsid": "5bd3348d-df6d-4077-8bc6-c72e0db312f8"
     },
+    "mediapipe::ImageFormat::Format": {
+        "iid": "db5c4bc4-2ceb-43b9-a91d-6843dd211d9f",
+        "clsid": "c76ecdcf-f187-4921-b9df-b7a18d8253e8"
+    },
     "VectorOfSize_t": {
         "iid": "3400e937-ab5d-482c-8c27-2fee5eb561a0",
         "clsid": "ae7e9d0a-8d2a-413d-8de7-7259799c1836"
@@ -2875,81 +2875,49 @@
         "iid": "652070e3-e3bb-438d-addd-d0a176b786a9",
         "clsid": "83da3e6d-f5bc-4ef6-b42e-401604acef36"
     },
-    "VectorOfVec2d": {
-        "iid": "0bd69e0c-50c0-4def-aca6-69ec43b80508",
-        "clsid": "eeca61e0-841c-4aaf-9b88-d5bb62cd21bc"
-    },
-    "VectorOfVec2f": {
-        "iid": "6d1250cb-ca7b-43ba-8113-1e1374b73ab7",
-        "clsid": "8045e83f-4635-4090-bcf8-2820cc4b79f7"
-    },
-    "VectorOfVec2i": {
-        "iid": "6288ea41-9d33-476e-a46f-fe881e82af16",
-        "clsid": "efbb6a38-3d9e-4301-ad71-86c565c55c04"
-    },
-    "VectorOfVec2s": {
-        "iid": "ba690e35-4551-4d36-840d-92dc6d019f11",
-        "clsid": "b145c89c-efd0-44af-ad65-76b2b8358ae7"
-    },
-    "VectorOfVec2w": {
-        "iid": "44bbfc01-6e1c-44da-9b99-b0471cf8a12a",
-        "clsid": "cb746529-3e96-4484-8061-fe8a08cb4526"
-    },
     "VectorOfVec3b": {
         "iid": "733cdc34-4831-44ec-9050-c2e0a54cd0ae",
         "clsid": "b4bd0eb0-d872-4975-857c-178e46f8549b"
-    },
-    "VectorOfVec3d": {
-        "iid": "52e04e62-a6fc-48ac-9b55-a9877555a366",
-        "clsid": "dd6aa166-c719-4f69-aa1d-cf0f45d39380"
-    },
-    "VectorOfVec3f": {
-        "iid": "0dae13aa-4cad-41cd-9133-ee52f96e5bb1",
-        "clsid": "573ede7c-21a6-4e71-bff1-da73d33a894d"
-    },
-    "VectorOfVec3i": {
-        "iid": "528e72de-886f-411c-b508-9cc74314994d",
-        "clsid": "516fe0fa-5fa3-4759-8c47-92ea564ca71e"
-    },
-    "VectorOfVec3s": {
-        "iid": "da078d07-475d-4b92-ab29-3ee96f896ee3",
-        "clsid": "68a52fd4-d859-43ce-bcc9-5c42b53e2aa7"
-    },
-    "VectorOfVec3w": {
-        "iid": "10c069c9-f1a2-4c7a-b66e-3a57e109444e",
-        "clsid": "eadd81ae-caff-4642-b29a-b35fca18d069"
     },
     "VectorOfVec4b": {
         "iid": "0aa88d5e-4623-4444-8fd0-404c556d4e2a",
         "clsid": "2ad7848c-ab92-4038-ad98-6dcba4f58fa7"
     },
-    "VectorOfVec4d": {
-        "iid": "528d543d-f9f2-4642-89a4-0b5c6be62cb1",
-        "clsid": "8cf453f7-cc3e-4241-bcf2-e2d0a6d2a13f"
+    "VectorOfVec2s": {
+        "iid": "ba690e35-4551-4d36-840d-92dc6d019f11",
+        "clsid": "b145c89c-efd0-44af-ad65-76b2b8358ae7"
     },
-    "VectorOfVec4f": {
-        "iid": "b0d7215f-ad66-4f65-980d-7829625595f3",
-        "clsid": "37322a0d-5016-452d-940b-b0c4daca221e"
-    },
-    "VectorOfVec4i": {
-        "iid": "a0cbe1db-0327-4918-9514-1fc150e28e4e",
-        "clsid": "d1489f49-a585-403b-a9d7-23e30468c606"
+    "VectorOfVec3s": {
+        "iid": "da078d07-475d-4b92-ab29-3ee96f896ee3",
+        "clsid": "68a52fd4-d859-43ce-bcc9-5c42b53e2aa7"
     },
     "VectorOfVec4s": {
         "iid": "058c6e4e-532b-4604-8466-1305727b7921",
         "clsid": "b5d542a4-95b3-49dd-9844-c7f48b98b0eb"
     },
+    "VectorOfVec2w": {
+        "iid": "44bbfc01-6e1c-44da-9b99-b0471cf8a12a",
+        "clsid": "cb746529-3e96-4484-8061-fe8a08cb4526"
+    },
+    "VectorOfVec3w": {
+        "iid": "10c069c9-f1a2-4c7a-b66e-3a57e109444e",
+        "clsid": "eadd81ae-caff-4642-b29a-b35fca18d069"
+    },
     "VectorOfVec4w": {
         "iid": "2f0db639-8495-48d8-a6b5-dadacb872a20",
         "clsid": "a6e0ed30-8ab7-48f1-aafc-ce9c63107055"
     },
-    "VectorOfVec6d": {
-        "iid": "7d75ec0c-741e-47ba-a43a-7b9e8cf95d60",
-        "clsid": "00454715-70b9-4e87-81dc-22d0ba70a005"
+    "VectorOfVec2i": {
+        "iid": "6288ea41-9d33-476e-a46f-fe881e82af16",
+        "clsid": "efbb6a38-3d9e-4301-ad71-86c565c55c04"
     },
-    "VectorOfVec6f": {
-        "iid": "0e4f0a69-c050-4054-af23-9bc1a04ce9a1",
-        "clsid": "f8f6fe9b-7af1-46b6-833c-2b6245d07894"
+    "VectorOfVec3i": {
+        "iid": "528e72de-886f-411c-b508-9cc74314994d",
+        "clsid": "516fe0fa-5fa3-4759-8c47-92ea564ca71e"
+    },
+    "VectorOfVec4i": {
+        "iid": "a0cbe1db-0327-4918-9514-1fc150e28e4e",
+        "clsid": "d1489f49-a585-403b-a9d7-23e30468c606"
     },
     "VectorOfVec6i": {
         "iid": "585a6f87-e97b-4e90-91ba-cdfd3c5e3594",
@@ -2958,5 +2926,37 @@
     "VectorOfVec8i": {
         "iid": "da8e1241-425b-49b4-9c63-e2e424bd3a8f",
         "clsid": "301d439c-5d65-4404-a751-25903bcfc897"
+    },
+    "VectorOfVec2f": {
+        "iid": "6d1250cb-ca7b-43ba-8113-1e1374b73ab7",
+        "clsid": "8045e83f-4635-4090-bcf8-2820cc4b79f7"
+    },
+    "VectorOfVec3f": {
+        "iid": "0dae13aa-4cad-41cd-9133-ee52f96e5bb1",
+        "clsid": "573ede7c-21a6-4e71-bff1-da73d33a894d"
+    },
+    "VectorOfVec4f": {
+        "iid": "b0d7215f-ad66-4f65-980d-7829625595f3",
+        "clsid": "37322a0d-5016-452d-940b-b0c4daca221e"
+    },
+    "VectorOfVec6f": {
+        "iid": "0e4f0a69-c050-4054-af23-9bc1a04ce9a1",
+        "clsid": "f8f6fe9b-7af1-46b6-833c-2b6245d07894"
+    },
+    "VectorOfVec2d": {
+        "iid": "0bd69e0c-50c0-4def-aca6-69ec43b80508",
+        "clsid": "eeca61e0-841c-4aaf-9b88-d5bb62cd21bc"
+    },
+    "VectorOfVec3d": {
+        "iid": "52e04e62-a6fc-48ac-9b55-a9877555a366",
+        "clsid": "dd6aa166-c719-4f69-aa1d-cf0f45d39380"
+    },
+    "VectorOfVec4d": {
+        "iid": "528d543d-f9f2-4642-89a4-0b5c6be62cb1",
+        "clsid": "8cf453f7-cc3e-4241-bcf2-e2d0a6d2a13f"
+    },
+    "VectorOfVec6d": {
+        "iid": "7d75ec0c-741e-47ba-a43a-7b9e8cf95d60",
+        "clsid": "00454715-70b9-4e87-81dc-22d0ba70a005"
     }
 }

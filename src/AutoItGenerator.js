@@ -93,13 +93,14 @@ class AutoItGenerator {
 
         for (const fqn of IGNORED_CLASSES) {
             if (this.classes.has(fqn)) {
-                this.classes.delete(fqn);
+                this.removeClass(fqn);
             }
         }
 
         for (const fqn of this.classes.keys()) {
             const coclass = this.classes.get(fqn);
 
+            // set assign operator for types that are assigned as default params or return type
             for (const [, overrides] of coclass.methods.entries()) {
                 for (const decl of overrides) {
                     const [, return_value_type, func_modifiers, list_of_arguments] = decl;
@@ -116,7 +117,7 @@ class AutoItGenerator {
             }
 
             // populate enums =this properties
-            for (const [idlname, property] of coclass.properties.entries()) {
+            for (const [, property] of coclass.properties.entries()) {
                 const {type, modifiers} = property;
                 if (!modifiers.includes("/R") || !modifiers.includes("=this")) {
                     continue;
@@ -143,6 +144,17 @@ class AutoItGenerator {
                     ]);
                 }
             }
+
+            this.inherit(coclass, options);
+            this.setDependencies(coclass, options);
+        }
+
+        // remove empty classes
+        for (const fqn of this.classes.keys()) {
+            const coclass = this.classes.get(fqn);
+            if (coclass.empty()) {
+                this.removeClass(fqn);
+            }
         }
 
         const files = new Map();
@@ -151,10 +163,6 @@ class AutoItGenerator {
 
         for (const fqn of this.classes.keys()) {
             const coclass = this.classes.get(fqn);
-            if (coclass.empty()) {
-                this.classes.delete(fqn);
-                continue;
-            }
 
             const docid = this.docs.length;
 
@@ -162,73 +170,6 @@ class AutoItGenerator {
 
             const cotype = coclass.getClassName();
             const is_idl_class = !coclass.noidl && (coclass.is_class || coclass.is_struct);
-
-            const signatures = this.getSignatures(coclass, options);
-
-            // Add a default constructor
-            if (coclass.has_default_constructor === 0) {
-                coclass.addMethod([
-                    `${ coclass.fqn }.${ coclass.name }`,
-                    "",
-                    [],
-                    []
-                ]);
-            }
-
-            const parents = [fqn];
-
-            for (const parent of parents) {
-                if (!this.derives.has(parent)) {
-                    continue;
-                }
-                for (const child of this.derives.get(parent)) {
-                    if (this.classes.has(child)) {
-                        coclass.children.add(this.classes.get(child));
-                        this.addDependency(parent, child);
-                    }
-                    parents.push(child);
-                }
-            }
-
-            // inherit methods
-            for (const pfqn of coclass.parents) {
-                if (!this.classes.has(pfqn)) {
-                    continue;
-                }
-
-                const parent = this.classes.get(pfqn);
-
-                for (const fname of parent.methods.keys()) {
-                    if (fname === "create") {
-                        // ignore create method because it creates a base type instance
-                        // and not a derived type instance
-                        continue;
-                    }
-
-                    const overrides = parent.methods.get(fname);
-
-                    for (const decl of overrides) {
-                        const [name, return_value_type, func_modifiers, list_of_arguments] = decl;
-
-                        const signature = this.getSignature(coclass, fname, decl, options);
-
-                        if (signatures.has(signature)) {
-                            // console.log("duplicated", signature);
-                            continue;
-                        }
-
-                        const modifiers = func_modifiers.slice();
-
-                        if (!func_modifiers.some(modifier => modifier.startsWith("/Cast="))) {
-                            modifiers.push(`/Cast=static_cast<${ parent.fqn }*>`);
-                        }
-
-                        coclass.addMethod([`${ fqn }.${ name.split(".").pop() }`, return_value_type, modifiers, list_of_arguments]);
-
-                        signatures.add(signature);
-                    }
-                }
-            }
 
             const iidl = [];
             const iprivate = [];
@@ -1010,6 +951,35 @@ class AutoItGenerator {
         ], cb);
     }
 
+    removeClass(fqn) {
+        const stack = [fqn];
+
+        while (stack.length !== 0) {
+            fqn = stack.shift();
+            this.classes.delete(fqn);
+
+            if (!this.dependents.has(fqn)) {
+                continue;
+            }
+
+            for (const dependent of this.dependents.get(fqn)) {
+                this.dependencies.get(dependent).delete(fqn);
+
+                const coclass = this.classes.get(dependent);
+                const {properties} = coclass;
+                for (const [name, {type}] of properties.entries()) {
+                    if (type === fqn) {
+                        properties.delete(name);
+                    }
+                }
+
+                if (coclass.empty()) {
+                    stack.push(dependent);
+                }
+            }
+        }
+    }
+
     add_class(decl, options = {}) {
         const [name, base, list_of_modifiers, properties] = decl;
         const parents = base ? base.slice(": ".length).split(", ") : [];
@@ -1075,6 +1045,7 @@ class AutoItGenerator {
     add_enum(decl, options = {}) {
         const [name, , , enums] = decl;
 
+        let is_enum_class = false;
         let start = 0;
 
         while (true) { // eslint-disable-line no-constant-condition
@@ -1090,6 +1061,7 @@ class AutoItGenerator {
 
             if (name.startsWith("class ", start)) {
                 start += "class ".length;
+                is_enum_class = true;
                 continue;
             }
 
@@ -1105,7 +1077,8 @@ class AutoItGenerator {
             this.enums.set(fqn, decl);
         }
 
-        this.getCoClass(path.slice(0, -1).join("::"), options).addEnum(fqn);
+        const enum_class = is_enum_class ? fqn : path.slice(0, -1).join("::");
+        this.getCoClass(enum_class, options).addEnum(fqn);
 
         for (const edecl of enums) {
             const [ename] = edecl;
@@ -1139,7 +1112,7 @@ class AutoItGenerator {
 
             // There is no name conflict with enum class properties
             const basename = epath[epath.length - 1];
-            const propname = epath.slice(0, -1).join("::") === fqn ? basename : `${ basename }_`;
+            const propname = is_enum_class ? basename : `${ basename }_`;
             let added = false;
 
             if (options.addEnum) {
@@ -1330,8 +1303,11 @@ class AutoItGenerator {
         for (const fqn of this.getTypes(type_, include)) {
             if (this.enums.has(fqn)) {
                 const pos = fqn.lastIndexOf("::");
-                this.addDependency(coclass.fqn, fqn.slice(0, pos));
-                this.addDependency(include.fqn, fqn.slice(0, pos));
+
+                const enum_class = this.classes.has(fqn) ? this.classes.get(fqn) : this.classes.get(fqn.slice(0, pos));
+                this.addDependency(coclass.fqn, enum_class.fqn);
+                this.addDependency(include.fqn, enum_class.fqn);
+
                 return "LONG";
             }
 
@@ -1571,6 +1547,98 @@ class AutoItGenerator {
 
         this.dependents.get(dependency).add(dependent);
         this.dependencies.get(dependent).add(dependency);
+    }
+
+    inherit(coclass, options) {
+        const {fqn} = coclass;
+
+        // Add a default constructor
+        if (coclass.has_default_constructor === 0) {
+            coclass.addMethod([
+                `${ fqn }.${ coclass.name }`,
+                "",
+                [],
+                []
+            ]);
+        }
+
+        const signatures = this.getSignatures(coclass, options);
+
+        const parents = [fqn];
+
+        for (const parent of parents) {
+            if (!this.derives.has(parent)) {
+                continue;
+            }
+            for (const child of this.derives.get(parent)) {
+                if (this.classes.has(child)) {
+                    coclass.children.add(this.classes.get(child));
+                    this.addDependency(parent, child);
+                }
+                parents.push(child);
+            }
+        }
+
+        // inherit methods
+        for (const pfqn of coclass.parents) {
+            if (!this.classes.has(pfqn)) {
+                continue;
+            }
+
+            const parent = this.classes.get(pfqn);
+
+            for (const fname of parent.methods.keys()) {
+                if (fname === "create") {
+                    // ignore create method because it creates a base type instance
+                    // and not a derived type instance
+                    continue;
+                }
+
+                const overrides = parent.methods.get(fname);
+
+                for (const decl of overrides) {
+                    const [name, return_value_type, func_modifiers, list_of_arguments] = decl;
+
+                    const signature = this.getSignature(coclass, fname, decl, options);
+
+                    if (signatures.has(signature)) {
+                        // console.log("duplicated", signature);
+                        continue;
+                    }
+
+                    const modifiers = func_modifiers.slice();
+
+                    if (!func_modifiers.some(modifier => modifier.startsWith("/Cast="))) {
+                        modifiers.push(`/Cast=static_cast<${ parent.fqn }*>`);
+                    }
+
+                    coclass.addMethod([`${ fqn }.${ name.split(".").pop() }`, return_value_type, modifiers, list_of_arguments]);
+
+                    signatures.add(signature);
+                }
+            }
+        }
+    }
+
+    setDependencies(coclass, options) {
+        for (const [, {type}] of coclass.properties.entries()) {
+            this.getIDLType(type, coclass, options);
+            this.getCppType(type, coclass, options);
+        }
+
+        for (const [, overrides] of coclass.methods.entries()) {
+            for (const decl of overrides) {
+                const [, return_value_type, , list_of_arguments] = decl;
+
+                this.getIDLType(return_value_type, coclass, options);
+                this.getCppType(return_value_type, coclass, options);
+
+                for (const [argtype] of list_of_arguments) {
+                    this.getIDLType(argtype, coclass, options);
+                    this.getCppType(argtype, coclass, options);
+                }
+            }
+        }
     }
 
     defineNamedParameters(options) {
