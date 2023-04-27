@@ -11,6 +11,7 @@
 /opencv/opencv_contrib
 /opencv-*
 /test/solutions/testdata
+/examples/data/bert_text_classifier.tflite
 /examples/data/brother-sister-girl-family-boy-977170.jpg
 /examples/data/burger.jpg
 /examples/data/burger_crop.jpg
