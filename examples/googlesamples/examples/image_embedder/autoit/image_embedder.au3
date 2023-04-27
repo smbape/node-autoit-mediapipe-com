@@ -19,7 +19,7 @@ OnAutoItExitRegister("_OnAutoItExit")
 
 _Mediapipe_SetResourceDir()
 
-Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _OpenCV_FindFile("examples\data")
+Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
@@ -78,7 +78,7 @@ Func Main()
 	Local $first_embedding_result = $embedder.embed($first_image)
 	Local $second_embedding_result = $embedder.embed($second_image)
 
-	Local $similarity = 1 - $cosine_similarity.cosine_similarity($first_embedding_result.embeddings(0), $second_embedding_result.embeddings(0))
+	Local $similarity = $cosine_similarity.cosine_similarity($first_embedding_result.embeddings(0), $second_embedding_result.embeddings(0))
 	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $similarity = ' & $similarity & @CRLF) ;### Debug Console
 
 	resize_and_show($cv.cvtColor($first_image.mat_view(), $CV_COLOR_RGB2BGR), $IMAGE_FILENAMES[0])

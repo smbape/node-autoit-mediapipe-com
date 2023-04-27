@@ -24,6 +24,7 @@
 /examples/data/face_detection_short_range.tflite
 /examples/data/gesture_recognizer.task
 /examples/data/hand_landmarker.task
+/examples/data/mobilebert_embedding_with_metadata.tflite
 /examples/data/mobilenet_v3_small_100_224_embedder.tflite
 /examples/data/pointing_up.jpg
 /examples/data/ptm_512_hdt_ptm_woid.tflite
