@@ -100,7 +100,7 @@ Func _normalized_to_pixel_coordinates($normalized_x, $normalized_y, $image_width
 
 	Local $x_px = _Min(Floor($normalized_x * $image_width), $image_width - 1)
 	Local $y_px = _Min(Floor($normalized_y * $image_height), $image_height - 1)
-	Return _OpenCV_Tuple($x_px, $y_px)
+	Return _OpenCV_Point($x_px, $y_px)
 EndFunc   ;==>_normalized_to_pixel_coordinates
 
 #cs

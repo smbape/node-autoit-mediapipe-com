@@ -915,7 +915,9 @@
   - [vision.ImageSegmenterOptions\_Activation](#visionimagesegmenteroptions%5C_activation)
   - [vision.InteractiveSegmenter](#visioninteractivesegmenter)
   - [vision.InteractiveSegmenterOptions](#visioninteractivesegmenteroptions)
+  - [vision.InteractiveSegmenterOptions\_OutputType](#visioninteractivesegmenteroptions%5C_outputtype)
   - [vision.InteractiveSegmenterRegionOfInterest](#visioninteractivesegmenterregionofinterest)
+  - [vision.InteractiveSegmenterRegionOfInterest\_Format](#visioninteractivesegmenterregionofinterest%5C_format)
   - [vision.ObjectDetector](#visionobjectdetector)
   - [vision.ObjectDetectorOptions](#visionobjectdetectoroptions)
   - [vision.RunningMode](#visionrunningmode)
@@ -16638,12 +16640,28 @@ AutoIt:
     [propget] $ovision.InteractiveSegmenterOptions
 ```
 
+### vision.InteractiveSegmenterOptions\_OutputType
+
+```cpp
+static mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType
+AutoIt:
+    [propget] $ovision.InteractiveSegmenterOptions_OutputType
+```
+
 ### vision.InteractiveSegmenterRegionOfInterest
 
 ```cpp
 static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest
 AutoIt:
     [propget] $ovision.InteractiveSegmenterRegionOfInterest
+```
+
+### vision.InteractiveSegmenterRegionOfInterest\_Format
+
+```cpp
+static mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format
+AutoIt:
+    [propget] $ovision.InteractiveSegmenterRegionOfInterest_Format
 ```
 
 ### vision.ObjectDetector
