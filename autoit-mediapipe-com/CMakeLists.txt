@@ -56,11 +56,11 @@ FetchContent_Declare(mediapipe
 FetchContent_Populate(mediapipe)
 
 # Tell cmake that we will need autoit-opencv-com.
-set(OPENCV_COM_VERSION 2.4.0)
+set(OPENCV_COM_VERSION 2.4.1)
 include(ExternalProject)
 ExternalProject_Add(autoit_opencv_com
   URL               https://github.com/smbape/node-autoit-opencv-com/releases/download/v${OPENCV_COM_VERSION}/autoit-opencv-${OpenCV_VERSION}-com-v${OPENCV_COM_VERSION}.7z
-  URL_HASH          SHA256=94ef0c9e4105c808595f4fae135c912ca6776618c8734b2742bda76658bfc7be
+  URL_HASH          SHA256=85996412d527fd8a161b56feaa1ba9fd673133f582dfa38d21304f440f194d2b
   DOWNLOAD_NO_EXTRACT TRUE
   DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
   SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
