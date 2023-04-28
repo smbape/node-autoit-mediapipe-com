@@ -29,7 +29,7 @@ Global $mp = _Mediapipe_get()
 _AssertIsObj($mp, "Failed to load mediapipe")
 
 Global $cv = _OpenCV_get()
-_AssertIsObj($mp, "Failed to load opencv")
+_AssertIsObj($cv, "Failed to load opencv")
 
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")

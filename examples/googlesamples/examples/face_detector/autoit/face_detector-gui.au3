@@ -5,6 +5,8 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+#include <GDIPlus.au3>
+#include <GUIConstantsEx.au3>
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\..\..\..\test\_assert.au3"
@@ -13,16 +15,15 @@
 ;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/face_detector/python/face_detector.ipynb
 ;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/face_detector/python/face_detector.ipynb
 
+_GDIPlus_Startup()
 _Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
 _OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
-_Mediapipe_SetResourceDir()
-
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
+Global Const $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\face_detection_short_range.tflite"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Setup()
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -37,12 +38,79 @@ _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 
+#Region ### START Koda GUI section ### Form=
+Global $FormGUI = GUICreate("face_detector", 1000, 647, 192, 95)
+
+Global $InputImage = GUICtrlCreateInput($cv.samples.findFile("brother-sister-girl-family-boy-977170.jpg"), 230, 16, 449, 21)
+Global $BtnImage = GUICtrlCreateButton("Image", 689, 14, 75, 25)
+
+Global $BtnExec = GUICtrlCreateButton("Execute", 768, 14, 75, 25)
+
+Global $LabelResult = GUICtrlCreateLabel("Face detection", 377, 60, 245, 20)
+GUICtrlSetFont(-1, 10, 800, 0, "MS Sans Serif")
+Global $GroupResult = GUICtrlCreateGroup("", 20, 82, 958, 532)
+Global $PicResult = GUICtrlCreatePic("", 25, 93, 948, 516)
+GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+GUISetState(@SW_SHOW)
+#EndRegion ### END Koda GUI section ###
+
+Global $nMsg
+Global $sImage
+
 Main()
 
+While 1
+	$nMsg = GUIGetMsg()
+	Switch $nMsg
+		Case $GUI_EVENT_CLOSE
+			ExitLoop
+		Case $BtnImage
+			$sImage = ControlGetText($FormGUI, "", $InputImage)
+			$sImage = FileOpenDialog("Select an image", $MEDIAPIPE_SAMPLES_DATA_PATH, "Image files (*.bmp;*.dlib;*.jpg;*.jpeg;*.png;*.pbm;*.pgm;*.ppm;*.pxm;*.pnm;*.pfm;*.sr;*.ras;*.tiff;*.tif;*.exr;*.hdr;.pic)", $FD_FILEMUSTEXIST, $sImage)
+			If @error Then
+				$sImage = ""
+			Else
+				ControlSetText($FormGUI, "", $InputImage, $sImage)
+				Main()
+			EndIf
+		Case $BtnExec
+			Main()
+	EndSwitch
+WEnd
+
 Func Main()
+	$sImage = ControlGetText($FormGUI, "", $InputImage)
+	If $sImage == "" Then Return
+
+	; STEP 2: Create an FaceDetector object.
+	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
+	Local $options = $vision.FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
+	Local $detector = $vision.FaceDetector.create_from_options($options)
+
+	; STEP 3: Load the input image.
+	Local $image = $mp.Image.create_from_file($sImage)
+
+	; STEP 4: Detect faces in the input image.
+	Local $detection_result = $detector.detect($image)
+
+	; STEP 5: Process the detection result. In this case, visualize it.
+	Local $image_copy = $image.mat_view()
+	Local $scale = 1 / _OpenCV_resizeRatio_ControlPic($image_copy, $FormGUI, $PicResult) ; keep drawings visible after resize
+	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
+	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
+
+	_OpenCV_imshow_ControlPic($bgr_annotated_image, $FormGUI, $PicResult)
+EndFunc   ;==>Main
+
+Func Setup()
+	_Mediapipe_SetResourceDir()
+
+	Local $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+	_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+
 	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\brother-sister-girl-family-boy-977170.jpg"
 	Local $_IMAGE_URL = "https://i.imgur.com/Vu2Nqwb.jpg"
-	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\face_detection_short_range.tflite"
 	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-assets/face_detection_short_range.tflite?generation=1677044301978921"
 
 	Local $url, $file_path
@@ -59,26 +127,13 @@ Func Main()
 		EndIf
 	Next
 
-	Local $scale = 1 / resize_and_show($cv.imread($_IMAGE_FILE), Default, False)
+	Local $cv = _OpenCV_get()
+	_AssertIsObj($cv, "Failed to load opencv")
 
-	; STEP 2: Create an FaceDetector object.
-	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
-	Local $options = $vision.FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
-	Local $detector = $vision.FaceDetector.create_from_options($options)
-
-	; STEP 3: Load the input image.
-	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
-
-	; STEP 4: Detect faces in the input image.
-	Local $detection_result = $detector.detect($image)
-
-	; STEP 5: Process the detection result. In this case, visualize it.
-	Local $image_copy = $image.mat_view()
-	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
-	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
-	resize_and_show($bgr_annotated_image, "face_detector")
-	$cv.waitKey()
-EndFunc   ;==>Main
+	If FileExists($MEDIAPIPE_SAMPLES_DATA_PATH) Then
+		$cv.samples.addSamplesDataSearchPath($MEDIAPIPE_SAMPLES_DATA_PATH)
+	EndIf
+EndFunc   ;==>Setup
 
 Func isclose($a, $b)
 	Return Abs($a - $b) <= 1E-6
@@ -112,7 +167,7 @@ Returns:
 	Image with bounding boxes.
 #ce
 Func visualize($image, $detection_result, $scale = 1.0)
-	Local $MARGIN = 10 * $scale; pixels
+	Local $MARGIN = 10 * $scale ; pixels
 	Local $ROW_SIZE = 10 ; pixels
 	Local $FONT_SIZE = $scale
 	Local $FONT_THICKNESS = 2 * $scale
@@ -187,4 +242,5 @@ EndFunc   ;==>resize_and_show
 Func _OnAutoItExit()
 	_OpenCV_Close()
 	_Mediapipe_Close()
+	_GDIPlus_Shutdown()
 EndFunc   ;==>_OnAutoItExit

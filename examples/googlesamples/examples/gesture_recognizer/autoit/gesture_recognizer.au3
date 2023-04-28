@@ -29,7 +29,7 @@ Global $mp = _Mediapipe_get()
 _AssertIsObj($mp, "Failed to load mediapipe")
 
 Global $cv = _OpenCV_get()
-_AssertIsObj($mp, "Failed to load opencv")
+_AssertIsObj($cv, "Failed to load opencv")
 
 Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
 _AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")

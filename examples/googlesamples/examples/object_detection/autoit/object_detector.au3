@@ -29,7 +29,7 @@ Global $mp = _Mediapipe_get()
 _AssertIsObj($mp, "Failed to load mediapipe")
 
 Global $cv = _OpenCV_get()
-_AssertIsObj($mp, "Failed to load opencv")
+_AssertIsObj($cv, "Failed to load opencv")
 
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
@@ -76,8 +76,8 @@ Func Main()
 	; STEP 5: Process the detection result. In this case, visualize it.
 	Local $image_copy = $image.mat_view()
 	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
-	Local $rgb_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
-	resize_and_show($rgb_annotated_image, "object_detection")
+	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
+	resize_and_show($bgr_annotated_image, "object_detection")
 	$cv.waitKey()
 EndFunc   ;==>Main
 

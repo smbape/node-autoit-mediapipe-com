@@ -29,7 +29,7 @@ Global $mp = _Mediapipe_get()
 _AssertIsObj($mp, "Failed to load mediapipe")
 
 Global $cv = _OpenCV_get()
-_AssertIsObj($mp, "Failed to load opencv")
+_AssertIsObj($cv, "Failed to load opencv")
 
 Global $solutions = _Mediapipe_ObjCreate("mediapipe.solutions")
 _AssertIsObj($solutions, "Failed to load mediapipe.solutions")
@@ -91,8 +91,8 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 	Local $scale = 1 / resize_and_show($rgb_image, Default, False)
 
 	Local $MARGIN = 10 * $scale  ; pixels
-	Local $FONT_SIZE = 1 * $scale
-	Local $FONT_THICKNESS = 1 * $scale
+	Local $FONT_SIZE = $scale
+	Local $FONT_THICKNESS = 2 * $scale
 	Local $HANDEDNESS_TEXT_COLOR = _OpenCV_Scalar(88, 205, 54) ; vibrant green
 
 	Local $hand_landmarks_list = $detection_result.hand_landmarks
