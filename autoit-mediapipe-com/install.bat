@@ -55,7 +55,7 @@
 @TITLE AutoIt Mediapipe COM
 @ECHO. AutoIt Mediapipe COM
 @ECHO.
-@ECHO. VERSION: 0.3.0
+@ECHO. VERSION: 0.4.0
 @ECHO. DLLNAME: %DLLNAME%
 @ECHO.
 @ECHO.
