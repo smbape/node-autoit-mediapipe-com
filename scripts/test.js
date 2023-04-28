@@ -52,7 +52,7 @@ const INCLUDED_EXT = [".au3", ".cs", ".ps1"];
 const EXCLUDED_FILES = ["csrun.ps1"];
 const INCLUDED_FILES = argv.slice(1);
 
-eachOfLimit(["test", "examples/autoit", "examples/dotnet"], 1, (folder, i, next) => {
+eachOfLimit(["test", "examples/autoit", "examples/dotnet", "examples/googlesamples"], 1, (folder, i, next) => {
     explore(sysPath.join(cwd, folder), (path, stats, next) => {
         const file = sysPath.relative(cwd, path);
         const basename = sysPath.basename(file);

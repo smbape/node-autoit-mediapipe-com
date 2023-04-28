@@ -64,7 +64,7 @@ Func Main()
 	; STEP 2: Create an ObjectDetector object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options, _
-		                                       "score_threshold", 0.5))
+			"score_threshold", 0.5))
 	Local $detector = $vision.ObjectDetector.create_from_options($options)
 
 	; STEP 3: Load the input image.
@@ -90,7 +90,7 @@ Returns:
 	Image with bounding boxes.
 #ce
 Func visualize($image, $detection_result, $scale = 1.0)
-	Local $MARGIN = 10 * $scale; pixels
+	Local $MARGIN = 10 * $scale ; pixels
 	Local $ROW_SIZE = 10 ; pixels
 	Local $FONT_SIZE = $scale
 	Local $FONT_THICKNESS = $scale

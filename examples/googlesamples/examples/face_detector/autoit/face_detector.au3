@@ -112,7 +112,7 @@ Returns:
 	Image with bounding boxes.
 #ce
 Func visualize($image, $detection_result, $scale = 1.0)
-	Local $MARGIN = 10 * $scale; pixels
+	Local $MARGIN = 10 * $scale ; pixels
 	Local $ROW_SIZE = 10 ; pixels
 	Local $FONT_SIZE = $scale
 	Local $FONT_THICKNESS = 2 * $scale

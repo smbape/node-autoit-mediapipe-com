@@ -72,7 +72,7 @@ Func Main()
 	; STEP 2: Create an ImageClassifier object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options, _
-		                                       "num_hands", 2))
+			"num_hands", 2))
 	Local $detector = $vision.HandLandmarker.create_from_options($options)
 
 	; STEP 3: Load the input image.

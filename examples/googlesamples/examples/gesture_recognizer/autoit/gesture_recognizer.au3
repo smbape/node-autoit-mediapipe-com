@@ -71,17 +71,17 @@ Func Main()
 
 	Local $image, $recognition_result, $top_gesture, $hands_landmarks
 
-	for $image_file_name in $IMAGE_FILENAMES
-	  ; STEP 3: Load the input image.
-	  $image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
+	For $image_file_name In $IMAGE_FILENAMES
+		; STEP 3: Load the input image.
+		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
 
-	  ; STEP 4: Recognize gestures in the input image.
-	  $recognition_result = $recognizer.recognize($image)
+		; STEP 4: Recognize gestures in the input image.
+		$recognition_result = $recognizer.recognize($image)
 
-	  ; STEP 5: Process the result. In this case, visualize it.
-	  $top_gesture = $recognition_result.gestures(0)[0]
-	  $hands_landmarks = $recognition_result.hand_landmarks
-	  display_image_with_gestures_and_hand_landmarks($image, $top_gesture, $hands_landmarks)
+		; STEP 5: Process the result. In this case, visualize it.
+		$top_gesture = $recognition_result.gestures(0)[0]
+		$hands_landmarks = $recognition_result.hand_landmarks
+		display_image_with_gestures_and_hand_landmarks($image, $top_gesture, $hands_landmarks)
 	Next
 
 	$cv.waitKey()
