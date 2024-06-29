@@ -26,6 +26,8 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 	static const DrawingColor _PURPLE = { 128, 64, 128 };
 	static const DrawingColor _PEACH = { 180, 229, 255 };
 	static const DrawingColor _WHITE = { 224, 224, 224 };
+	static const DrawingColor _CYAN = { 192, 255, 48 };
+	static const DrawingColor _MAGENTA = { 192, 48, 255 };
 
 	// Hands
 	static const int _THICKNESS_WRIST_MCP = 3;
@@ -34,8 +36,9 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 
 	// Hand landmarks
 	static const std::vector<HandLandmark> _PALM_LANDMARKS = { HandLandmark::WRIST, HandLandmark::THUMB_CMC,
-					  HandLandmark::INDEX_FINGER_MCP, HandLandmark::MIDDLE_FINGER_MCP,
-					  HandLandmark::RING_FINGER_MCP, HandLandmark::PINKY_MCP };
+				   HandLandmark::INDEX_FINGER_MCP,
+				   HandLandmark::MIDDLE_FINGER_MCP, HandLandmark::RING_FINGER_MCP,
+				   HandLandmark::PINKY_MCP };
 	static const std::vector<HandLandmark> _THUMB_LANDMARKS = { HandLandmark::THUMB_MCP, HandLandmark::THUMB_IP,
 						HandLandmark::THUMB_TIP };
 	static const std::vector<HandLandmark> _INDEX_FINGER_LANDMARKS = { HandLandmark::INDEX_FINGER_PIP,
@@ -79,6 +82,16 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 		{FACEMESH_RIGHT_EYE, DrawingSpec(_RED, _THICKNESS_CONTOURS)},
 		{FACEMESH_RIGHT_EYEBROW, DrawingSpec(_RED, _THICKNESS_CONTOURS)},
 		{FACEMESH_FACE_OVAL, DrawingSpec(_WHITE, _THICKNESS_CONTOURS)},
+	};
+
+	static const std::vector<std::tuple<std::vector<std::tuple<int, int>>, DrawingSpec>> _FACEMESH_CONTOURS_CONNECTION_STYLE_1 = {
+		{FACEMESH_LIPS, DrawingSpec(_BLUE, _THICKNESS_CONTOURS)},
+		{FACEMESH_LEFT_EYE, DrawingSpec(_CYAN, _THICKNESS_CONTOURS)},
+		{FACEMESH_LEFT_EYEBROW, DrawingSpec(_GREEN, _THICKNESS_CONTOURS)},
+		{FACEMESH_RIGHT_EYE, DrawingSpec(_MAGENTA, _THICKNESS_CONTOURS)},
+		{FACEMESH_RIGHT_EYEBROW, DrawingSpec(_RED, _THICKNESS_CONTOURS)},
+		{FACEMESH_FACE_OVAL, DrawingSpec(_WHITE, _THICKNESS_CONTOURS)},
+		{FACEMESH_NOSE, DrawingSpec(_YELLOW, _THICKNESS_CONTOURS)},
 	};
 
 	// Pose
@@ -130,9 +143,9 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 		return hand_connection_style;
 	}
 
-	std::map<int, std::map<int, DrawingSpec>> get_default_face_mesh_contours_style(float scale) {
+	std::map<int, std::map<int, DrawingSpec>> get_default_face_mesh_contours_style(int i, float scale) {
 		std::map<int, std::map<int, DrawingSpec>> face_mesh_contours_connection_style;
-		for (const auto& [k, v] : _FACEMESH_CONTOURS_CONNECTION_STYLE) {
+		for (const auto& [k, v] : (i == 1 ? _FACEMESH_CONTOURS_CONNECTION_STYLE_1 : _FACEMESH_CONTOURS_CONNECTION_STYLE)) {
 			DrawingSpec drawing_spec = GetDrawingSpectWithScale(v, scale);
 			for (const auto& [start, end] : k) {
 				if (!face_mesh_contours_connection_style.count(start)) {

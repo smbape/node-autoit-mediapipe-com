@@ -13,23 +13,47 @@
 #include "binding/packet_creator.h"
 
 namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
+	struct CV_EXPORTS_W_SIMPLE InteractiveSegmenterResult {
+		CV_WRAP InteractiveSegmenterResult(const InteractiveSegmenterResult& other) = default;
+		InteractiveSegmenterResult& operator=(const InteractiveSegmenterResult& other) = default;
+
+		CV_WRAP InteractiveSegmenterResult(
+			const std::shared_ptr<std::vector<std::shared_ptr<Image>>>& confidence_masks = std::make_shared<std::vector<std::shared_ptr<Image>>>(),
+			const std::shared_ptr<Image>& category_mask = std::shared_ptr<Image>()
+		) :
+			confidence_masks(confidence_masks),
+			category_mask(category_mask)
+		{}
+
+		bool operator== (const InteractiveSegmenterResult& other) const {
+			return ::autoit::__eq__(confidence_masks, other.confidence_masks) &&
+				::autoit::__eq__(category_mask, other.category_mask);
+		}
+
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<Image>>> confidence_masks;
+		CV_PROP_RW std::shared_ptr<Image> category_mask;
+	};
+
 	struct CV_EXPORTS_W_SIMPLE InteractiveSegmenterOptions {
 		CV_WRAP InteractiveSegmenterOptions(const InteractiveSegmenterOptions& other) = default;
 		InteractiveSegmenterOptions& operator=(const InteractiveSegmenterOptions& other) = default;
 
 		CV_WRAP InteractiveSegmenterOptions(
 			std::shared_ptr<autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
-			mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType output_type = mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::CATEGORY_MASK
+			bool output_confidence_masks = true,
+			bool output_category_mask = false
 		)
 			:
 			base_options(base_options),
-			output_type(output_type)
+			output_confidence_masks(output_confidence_masks),
+			output_category_mask(output_category_mask)
 		{}
 
 		CV_WRAP std::shared_ptr<mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions> to_pb2();
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
-		CV_PROP_RW mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType output_type;
+		CV_PROP_RW bool output_confidence_masks;
+		CV_PROP_RW bool output_category_mask;
 	};
 
 	enum class RegionOfInterest_Format {
@@ -60,8 +84,7 @@ namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
 
 		CV_WRAP static std::shared_ptr<InteractiveSegmenter> create_from_model_path(const std::string& model_path);
 		CV_WRAP static std::shared_ptr<InteractiveSegmenter> create_from_options(std::shared_ptr<InteractiveSegmenterOptions> options);
-		CV_WRAP void segment(
-			CV_OUT std::vector<Image>& segmentation_result,
+		CV_WRAP std::shared_ptr<InteractiveSegmenterResult> segment(
 			const Image& image,
 			const RegionOfInterest& roi,
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =

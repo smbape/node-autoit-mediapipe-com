@@ -1,5 +1,4 @@
 #include "binding/repeated_container.h"
-#include "binding/message.h"
 #include "Google_Protobuf_Message_Object.h"
 
 namespace google::protobuf::autoit {
@@ -308,7 +307,7 @@ namespace google::protobuf::autoit {
 		return cmessage::DeepCopy(message.get(), field_descriptor.get());
 	}
 
-	Message* RepeatedContainer::Add(std::map<std::string, _variant_t>& attrs) {
+	Message* RepeatedContainer::Add(const std::map<std::string, _variant_t>& attrs) {
 		Message* message = this->message.get();
 		const FieldDescriptor* field_descriptor = this->field_descriptor.get();
 		const Reflection* reflection = message->GetReflection();
@@ -398,7 +397,7 @@ namespace google::protobuf::autoit {
 		}
 	}
 
-	void RepeatedContainer::Extend(std::vector<_variant_t>& items) {
+	void RepeatedContainer::Extend(const std::vector<_variant_t>& items) {
 		for (auto& item : items) {
 			Append(item);
 		}

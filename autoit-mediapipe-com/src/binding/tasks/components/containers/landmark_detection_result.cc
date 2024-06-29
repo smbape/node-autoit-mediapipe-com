@@ -6,20 +6,26 @@ namespace mediapipe::tasks::autoit::components::containers::landmark_detection_r
 	std::shared_ptr<proto::LandmarksDetectionResult> LandmarksDetectionResult::to_pb2() {
 		auto pb2_obj = std::make_shared<proto::LandmarksDetectionResult>();
 
-		for (const auto& landmark : landmarks) {
-			pb2_obj->mutable_landmarks()->add_landmark()->CopyFrom(*landmark->to_pb2());
+		if (landmarks) {
+			for (const auto& landmark : *landmarks) {
+				pb2_obj->mutable_landmarks()->add_landmark()->CopyFrom(*landmark->to_pb2());
+			}
 		}
 
-		for (const auto& world_landmark : world_landmarks) {
-			pb2_obj->mutable_world_landmarks()->add_landmark()->CopyFrom(*world_landmark->to_pb2());
+		if (world_landmarks) {
+			for (const auto& world_landmark : *world_landmarks) {
+				pb2_obj->mutable_world_landmarks()->add_landmark()->CopyFrom(*world_landmark->to_pb2());
+			}
 		}
 
-		for (const auto& category : categories) {
-			auto classification = pb2_obj->mutable_classifications()->add_classification();
-			classification->set_index(category->index);
-			classification->set_score(category->score);
-			classification->set_label(category->category_name);
-			classification->set_display_name(category->display_name);
+		if (categories) {
+			for (const auto& category : *categories) {
+				auto classification = pb2_obj->mutable_classifications()->add_classification();
+				classification->set_index(category->index);
+				classification->set_score(category->score);
+				classification->set_label(category->category_name);
+				classification->set_display_name(category->display_name);
+			}
 		}
 
 		if (rect) {
@@ -33,20 +39,20 @@ namespace mediapipe::tasks::autoit::components::containers::landmark_detection_r
 		auto landmarks_dectection_result = std::make_shared<LandmarksDetectionResult>();
 
 		for (const auto& classification : pb2_obj.classifications().classification()) {
-			landmarks_dectection_result->categories.push_back(std::make_shared<category::Category>(
+			landmarks_dectection_result->categories->push_back(std::make_shared<category::Category>(
 				classification.index(),
 				classification.score(),
 				classification.display_name(),
 				classification.label()
-				));
+			));
 		}
 
 		for (const auto& landmark : pb2_obj.landmarks().landmark()) {
-			landmarks_dectection_result->landmarks.push_back(landmark::NormalizedLandmark::create_from_pb2(landmark));
+			landmarks_dectection_result->landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(landmark));
 		}
 
 		for (const auto& landmark : pb2_obj.world_landmarks().landmark()) {
-			landmarks_dectection_result->world_landmarks.push_back(landmark::Landmark::create_from_pb2(landmark));
+			landmarks_dectection_result->world_landmarks->push_back(landmark::Landmark::create_from_pb2(landmark));
 		}
 
 		landmarks_dectection_result->rect = rect::NormalizedRect::create_from_pb2(pb2_obj.rect());

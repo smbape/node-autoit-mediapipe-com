@@ -117,14 +117,11 @@ namespace mediapipe::autoit::packet_getter {
 
 		RaiseAutoItErrorIfNotOk(maybe_holder.status());
 
-		std::unique_ptr<HolderBase> holder_ = std::move(maybe_holder).value();
-		absl::StatusOr<std::unique_ptr<Message>> release_result = static_cast<Holder<Message>*>(holder_.get())->Release();
-		RaiseAutoItErrorIfNotOk(release_result.status());
+		std::unique_ptr<HolderBase> message_holder = std::move(maybe_holder).value();
+		auto* copy = const_cast<proto_ns::MessageLite*>(message_holder->GetProtoMessageLite());
+		AUTOIT_ASSERT_THROW(copy->ParseFromString(serialized), "Failed to get proto message from packet " << type_name);
 
-		std::unique_ptr<Message> new_message = std::move(release_result).value();
-		AUTOIT_ASSERT_THROW(new_message->ParseFromString(serialized), "Failed to get proto message from packet " << type_name);
-
-		return std::shared_ptr<Message>(new_message.release());
+		return std::shared_ptr<Message>(static_cast<Message*>(std::move(message_holder->ReleaseProtoMessageLite()).value().release()));
 	}
 
 	const std::shared_ptr<Message> get_proto(const Packet& packet) {

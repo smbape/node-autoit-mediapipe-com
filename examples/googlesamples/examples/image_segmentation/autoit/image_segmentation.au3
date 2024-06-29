@@ -5,20 +5,23 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_segmentation/python/image_segmentation.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_segmentation/python/image_segmentation.ipynb
+
+;~ Title: Image Segmenter
+
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
-#include "..\..\..\..\..\test\_assert.au3"
 
-;~ Sources:
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/image_segmentation/python/image_segmentation.ipynb
-;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/image_segmentation/python/image_segmentation.ipynb
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
+; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
@@ -52,47 +55,47 @@ Func Main()
 		EndIf
 	Next
 
-	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\deeplabv3.tflite"
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\deeplab_v3.tflite"
 	If Not FileExists($_MODEL_FILE) Then
-		$download_utils.download("https://storage.googleapis.com/mediapipe-assets/deeplabv3.tflite", $_MODEL_FILE)
+		$download_utils.download("https://storage.googleapis.com/mediapipe-models/image_segmenter/deeplab_v3/float32/1/deeplab_v3.tflite", $_MODEL_FILE)
 	EndIf
 
 	Local $BG_COLOR = _OpenCV_Scalar(192, 192, 192) ; gray
-	Local $FG_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
-
-	Local $OutputType = $vision.ImageSegmenterOptions_OutputType
-	; Local $Activation = $vision.ImageSegmenterOptions_Activation
+	Local $MASK_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 
 	; Create the options that will be used for ImageSegmenter
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.ImageSegmenterOptions(_Mediapipe_Params("base_options", $base_options, _
-			"output_type", $OutputType.CATEGORY_MASK))
+			"output_category_mask", True))
 
 	; Create the image segmenter
 	Local $segmenter = $vision.ImageSegmenter.create_from_options($options)
 
-	Local $image, $category_masks, $image_data
+	Local $image, $segmentation_result, $category_mask, $image_data
 	Local $fg_image, $bg_image, $fg_mask
-	Local $blurred_image, $output_image
+	Local $output_image, $blurred_image
 
 	; Loop through demo image(s)
 	For $image_file_name In $IMAGE_FILENAMES
 		; Create the MediaPipe image file that will be segmented
 		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
 
-		; Retrieve the masks for the segmented image
-		$category_masks = $segmenter.segment($image)
-
-		; Foreground mask corresponds to all i pixels where category_masks[0][i] > 0.2
-		$fg_mask = $cv.compare($category_masks[0].mat_view(), 0.2, $CV_CMP_GT)
-
-		; mediapipe deals with RGB images while opencv deals with BGR images
-		; covert mediapipe RGB image to opencv BGR image
+		; mediapipe uses RGB images while opencv uses BGR images
+		; Convert the BGR image to RGB
 		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
 
+		; Retrieve the masks for the segmented image
+		$segmentation_result = $segmenter.segment($image)
+		$category_mask = $segmentation_result.category_mask
+
 		; Generate solid color images for showing the output segmentation mask.
-		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $FG_COLOR)
+		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $MASK_COLOR)
 		$bg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $BG_COLOR)
+
+		; Foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.2
+		$fg_mask = $cv.compare($category_mask.mat_view(), 0.2, $CV_CMP_GT)
+
+		; Draw fg_image on bg_image based on the segmentation mask.
 		$output_image = $bg_image.copy()
 		$fg_image.copyTo($fg_mask, $output_image)
 		resize_and_show($output_image, 'Segmentation mask of ' & $image_file_name)
@@ -104,6 +107,9 @@ Func Main()
 	Next
 
 	$cv.waitKey()
+
+	; Closes the segmenter explicitly when the segmenter is not used ina context.
+	$segmenter.close()
 EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)
@@ -137,3 +143,10 @@ Func _OnAutoItExit()
 	_OpenCV_Close()
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit
+
+Func _AssertIsObj($vVal, $sMsg)
+	If Not IsObj($vVal) Then
+		ConsoleWriteError($sMsg & @CRLF)
+		Exit 0x7FFFFFFF
+	EndIf
+EndFunc   ;==>_AssertIsObj

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <opencv2/core/mat.hpp>
+#include "autoit_bridge_common.h"
 
 namespace mediapipe::tasks::autoit::components::containers::audio_data {
 	struct CV_EXPORTS_W_SIMPLE AudioDataFormat {
@@ -14,6 +15,11 @@ namespace mediapipe::tasks::autoit::components::containers::audio_data {
 			num_channels(num_channels),
 			sample_rate(sample_rate)
 		{}
+
+		bool operator== (const AudioDataFormat& other) const {
+			return ::autoit::__eq__(num_channels, other.num_channels) &&
+				::autoit::__eq__(sample_rate, other.sample_rate);
+		}
 
 		CV_PROP_RW int num_channels;
 		CV_PROP_RW std::optional<float> sample_rate;

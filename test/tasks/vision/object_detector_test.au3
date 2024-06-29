@@ -5,6 +5,9 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/tasks/python/test/vision/object_detector_test.py
+
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
@@ -12,52 +15,51 @@
 #include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/tasks/python/test/vision/object_detector_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
+Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
 _AssertIsObj($image_module, "Failed to load mediapipe.autoit._framework_bindings.image")
 
-Global $bounding_box_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.bounding_box")
+Global Const $bounding_box_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.bounding_box")
 _AssertIsObj($bounding_box_module, "Failed to load mediapipe.tasks.autoit.components.containers.bounding_box")
 
-Global $category_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.category")
+Global Const $category_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.category")
 _AssertIsObj($category_module, "Failed to load mediapipe.tasks.autoit.components.containers.category")
 
-Global $detections_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.detections")
+Global Const $detections_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.detections")
 _AssertIsObj($detections_module, "Failed to load mediapipe.tasks.autoit.components.containers.detections")
 
-Global $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
+Global Const $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
 _AssertIsObj($base_options_module, "Failed to load mediapipe.tasks.autoit.core.base_options")
 
-Global $object_detector = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.object_detector")
+Global Const $object_detector = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.object_detector")
 _AssertIsObj($object_detector, "Failed to load mediapipe.tasks.autoit.vision.object_detector")
 
-Global $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
+Global Const $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 _AssertIsObj($running_mode_module, "Failed to load mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 
-Global $_BaseOptions = $base_options_module.BaseOptions
-Global $_Category = $category_module.Category
-Global $_BoundingBox = $bounding_box_module.BoundingBox
-Global $_Detection = $detections_module.Detection
-Global $_DetectionResult = $detections_module.DetectionResult
-Global $_Image = $image_module.Image
-Global $_ObjectDetector = $object_detector.ObjectDetector
-Global $_ObjectDetectorOptions = $object_detector.ObjectDetectorOptions
-Global $_RUNNING_MODE = $running_mode_module.VisionTaskRunningMode
+Global Const $_BaseOptions = $base_options_module.BaseOptions
+Global Const $_Category = $category_module.Category
+Global Const $_BoundingBox = $bounding_box_module.BoundingBox
+Global Const $_Detection = $detections_module.Detection
+Global Const $_DetectionResult = $detections_module.DetectionResult
+Global Const $_Image = $image_module.Image
+Global Const $_ObjectDetector = $object_detector.ObjectDetector
+Global Const $_ObjectDetectorOptions = $object_detector.ObjectDetectorOptions
+Global Const $_RUNNING_MODE = $running_mode_module.VisionTaskRunningMode
 
-Global $_MODEL_FILE = 'coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.tflite'
-Global $_IMAGE_FILE = 'cats_and_dogs.jpg'
-Global $_EXPECTED_DETECTION_RESULT = $_DetectionResult(_Mediapipe_Params("detections", _Mediapipe_Tuple( _
+Global Const $_MODEL_FILE = 'coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.tflite'
+Global Const $_NO_NMS_MODEL_FILE = 'efficientdet_lite0_fp16_no_nms.tflite'
+Global Const $_IMAGE_FILE = 'cats_and_dogs.jpg'
+Global Const $_EXPECTED_DETECTION_RESULT = $_DetectionResult(_Mediapipe_Params("detections", _Mediapipe_Tuple( _
 		$_Detection(_Mediapipe_Params( _
 				"bounding_box", $_BoundingBox(_Mediapipe_Params( _
 						"origin_x", 608, _
@@ -111,13 +113,13 @@ Global $_EXPECTED_DETECTION_RESULT = $_DetectionResult(_Mediapipe_Params("detect
 								"category_name", 'cat')) _
 				))) _
 )))
-Global $_ALLOW_LIST[] = ['cat', 'dog']
-Global $_DENY_LIST[] = ['cat']
-Global $_SCORE_THRESHOLD = 0.3
-Global $_MAX_RESULTS = 3
+Global Const $_ALLOW_LIST[] = ['cat', 'dog']
+Global Const $_DENY_LIST[] = ['cat']
+Global Const $_SCORE_THRESHOLD = 0.3
+Global Const $_MAX_RESULTS = 3
 
-Global $FILE_CONTENT = 1
-Global $FILE_NAME = 2
+Global Const $FILE_CONTENT = 1
+Global Const $FILE_NAME = 2
 
 Global $test_image
 Global $model_path
@@ -130,12 +132,18 @@ Func Test()
 
 	Local $test_files[] = [ _
 			$_MODEL_FILE, _
+			$_NO_NMS_MODEL_FILE, _
 			$_IMAGE_FILE _
 			]
 	For $name In $test_files
-		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
-		$file_path = $_TEST_DATA_DIR & "\" & $name
+		If IsArray($name) Then
+			$url = $name[1]
+			$name = $name[0]
+		Else
+			$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
+		EndIf
 		If Not FileExists(get_test_data_path($name)) Then
+			$file_path = $_TEST_DATA_DIR & "\" & $name
 			$download_utils.download($url, $file_path)
 		EndIf
 	Next
@@ -153,14 +161,15 @@ Func Test()
 	test_max_results_option()
 	test_allow_list_option()
 	test_deny_list_option()
-	test_empty_detection_outputs()
+	test_empty_detection_outputs_with_in_model_nms()
+	test_empty_detection_outputs_without_in_model_nms()
 	test_detect_for_video()
 EndFunc   ;==>Test
 
 Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $detector = $_ObjectDetector.create_from_model_path($model_path)
-	_AssertIsObj($detector)
+	_AssertIsInstance($detector, $_ObjectDetector)
 	$detector.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
@@ -169,17 +178,17 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_ObjectDetector.create_from_options($options)
-	_AssertIsObj($detector)
+	_AssertIsInstance($detector, $_ObjectDetector)
 	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
 	; Creates with options containing model content successfully.
-	Local $model_content = read_binary_to_mat($model_path)
+	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_ObjectDetector.create_from_options($options)
-	_AssertIsObj($detector)
+	_AssertIsInstance($detector, $_ObjectDetector)
 	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
@@ -190,7 +199,7 @@ Func test_detect($model_file_type, $max_results, $expected_detection_result)
 	If $model_file_type == $FILE_NAME Then
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	ElseIf $model_file_type == $FILE_CONTENT Then
-		$model_content = read_binary_to_mat($model_path)
+		$model_content = read_file_into_buffer($model_path)
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	EndIf
 
@@ -304,7 +313,7 @@ Func test_deny_list_option()
 	$detector.close()
 EndFunc   ;==>test_deny_list_option
 
-Func test_empty_detection_outputs()
+Func test_empty_detection_outputs_with_in_model_nms()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"score_threshold", 1 _
@@ -318,7 +327,24 @@ Func test_empty_detection_outputs()
 
 	; Closes the detector explicitly when the detector is not used in a context.
 	$detector.close()
-EndFunc   ;==>test_empty_detection_outputs
+EndFunc   ;==>test_empty_detection_outputs_with_in_model_nms
+
+Func test_empty_detection_outputs_without_in_model_nms()
+	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : get_test_data_path($_NO_NMS_MODEL_FILE) = ' & get_test_data_path($_NO_NMS_MODEL_FILE) & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
+	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
+			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", get_test_data_path($_NO_NMS_MODEL_FILE))), _
+			"score_threshold", 1 _
+	))
+
+	Local $detector = $_ObjectDetector.create_from_options($options)
+
+	; Performs object detection on the input.
+	Local $detection_result = $detector.detect($test_image)
+	_AssertEmpty($detection_result.detections)
+
+	; Closes the detector explicitly when the detector is not used in a context.
+	$detector.close()
+EndFunc   ;==>test_empty_detection_outputs_without_in_model_nms
 
 ; TODO: Tests how `detect_for_video` handles the temporal data
 ; with a real video.

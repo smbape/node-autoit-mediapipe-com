@@ -1,5 +1,238 @@
 #include "binding/tasks/vision/hand_landmarker.h"
 
+namespace mediapipe::tasks::autoit::vision::hand_landmarker {
+	using Connection = HandLandmarksConnections::Connection;
+
+	const std::vector<Connection> HandLandmarksConnections::HAND_PALM_CONNECTIONS = {
+		{ 0, 1 },
+		{ 1, 5 },
+		{ 9, 13 },
+		{ 13, 17 },
+		{ 5, 9 },
+		{ 0, 17 },
+
+
+		{ 1, 2 },
+		{ 2, 3 },
+		{ 3, 4 },
+
+
+		{ 5, 6 },
+		{ 6, 7 },
+		{ 7, 8 },
+
+
+		{ 9, 10 },
+		{ 10, 11 },
+		{ 11, 12 },
+
+
+		{ 13, 14 },
+		{ 14, 15 },
+		{ 15, 16 },
+
+
+		{ 17, 18 },
+		{ 18, 19 },
+		{ 19, 20 },
+	};
+
+	const std::vector<Connection> HandLandmarksConnections::HAND_THUMB_CONNECTIONS = {
+		{ 0, 1 },
+		{ 1, 5 },
+		{ 9, 13 },
+		{ 13, 17 },
+		{ 5, 9 },
+		{ 0, 17 },
+
+
+		{ 1, 2 },
+		{ 2, 3 },
+		{ 3, 4 },
+
+
+		{ 5, 6 },
+		{ 6, 7 },
+		{ 7, 8 },
+
+
+		{ 9, 10 },
+		{ 10, 11 },
+		{ 11, 12 },
+
+
+		{ 13, 14 },
+		{ 14, 15 },
+		{ 15, 16 },
+
+
+		{ 17, 18 },
+		{ 18, 19 },
+		{ 19, 20 },
+	};
+
+	const std::vector<Connection> HandLandmarksConnections::HAND_INDEX_FINGER_CONNECTIONS = {
+		{ 0, 1 },
+		{ 1, 5 },
+		{ 9, 13 },
+		{ 13, 17 },
+		{ 5, 9 },
+		{ 0, 17 },
+
+
+		{ 1, 2 },
+		{ 2, 3 },
+		{ 3, 4 },
+
+
+		{ 5, 6 },
+		{ 6, 7 },
+		{ 7, 8 },
+
+
+		{ 9, 10 },
+		{ 10, 11 },
+		{ 11, 12 },
+
+
+		{ 13, 14 },
+		{ 14, 15 },
+		{ 15, 16 },
+
+
+		{ 17, 18 },
+		{ 18, 19 },
+		{ 19, 20 },
+	};
+
+	const std::vector<Connection> HandLandmarksConnections::HAND_MIDDLE_FINGER_CONNECTIONS = {
+		{ 0, 1 },
+		{ 1, 5 },
+		{ 9, 13 },
+		{ 13, 17 },
+		{ 5, 9 },
+		{ 0, 17 },
+
+
+		{ 1, 2 },
+		{ 2, 3 },
+		{ 3, 4 },
+
+
+		{ 5, 6 },
+		{ 6, 7 },
+		{ 7, 8 },
+
+
+		{ 9, 10 },
+		{ 10, 11 },
+		{ 11, 12 },
+
+
+		{ 13, 14 },
+		{ 14, 15 },
+		{ 15, 16 },
+
+
+		{ 17, 18 },
+		{ 18, 19 },
+		{ 19, 20 },
+	};
+
+	const std::vector<Connection> HandLandmarksConnections::HAND_RING_FINGER_CONNECTIONS = {
+		{ 0, 1 },
+		{ 1, 5 },
+		{ 9, 13 },
+		{ 13, 17 },
+		{ 5, 9 },
+		{ 0, 17 },
+
+
+		{ 1, 2 },
+		{ 2, 3 },
+		{ 3, 4 },
+
+
+		{ 5, 6 },
+		{ 6, 7 },
+		{ 7, 8 },
+
+
+		{ 9, 10 },
+		{ 10, 11 },
+		{ 11, 12 },
+
+
+		{ 13, 14 },
+		{ 14, 15 },
+		{ 15, 16 },
+
+
+		{ 17, 18 },
+		{ 18, 19 },
+		{ 19, 20 },
+	};
+
+	const std::vector<Connection> HandLandmarksConnections::HAND_PINKY_FINGER_CONNECTIONS = {
+		{ 0, 1 },
+		{ 1, 5 },
+		{ 9, 13 },
+		{ 13, 17 },
+		{ 5, 9 },
+		{ 0, 17 },
+
+
+		{ 1, 2 },
+		{ 2, 3 },
+		{ 3, 4 },
+
+
+		{ 5, 6 },
+		{ 6, 7 },
+		{ 7, 8 },
+
+
+		{ 9, 10 },
+		{ 10, 11 },
+		{ 11, 12 },
+
+
+		{ 13, 14 },
+		{ 14, 15 },
+		{ 15, 16 },
+
+
+		{ 17, 18 },
+		{ 18, 19 },
+		{ 19, 20 },
+	};
+
+	static std::vector<Connection> get_HAND_CONNECTIONS() {
+		std::vector<Connection> connections;
+
+		// preallocate memory
+		connections.reserve(
+			HandLandmarksConnections::HAND_PALM_CONNECTIONS.size() +
+			HandLandmarksConnections::HAND_THUMB_CONNECTIONS.size() +
+			HandLandmarksConnections::HAND_INDEX_FINGER_CONNECTIONS.size() +
+			HandLandmarksConnections::HAND_MIDDLE_FINGER_CONNECTIONS.size() +
+			HandLandmarksConnections::HAND_RING_FINGER_CONNECTIONS.size() +
+			HandLandmarksConnections::HAND_PINKY_FINGER_CONNECTIONS.size()
+		);
+
+		connections.insert(connections.end(), HandLandmarksConnections::HAND_PALM_CONNECTIONS.begin(), HandLandmarksConnections::HAND_PALM_CONNECTIONS.end());
+		connections.insert(connections.end(), HandLandmarksConnections::HAND_THUMB_CONNECTIONS.begin(), HandLandmarksConnections::HAND_THUMB_CONNECTIONS.end());
+		connections.insert(connections.end(), HandLandmarksConnections::HAND_INDEX_FINGER_CONNECTIONS.begin(), HandLandmarksConnections::HAND_INDEX_FINGER_CONNECTIONS.end());
+		connections.insert(connections.end(), HandLandmarksConnections::HAND_MIDDLE_FINGER_CONNECTIONS.begin(), HandLandmarksConnections::HAND_MIDDLE_FINGER_CONNECTIONS.end());
+		connections.insert(connections.end(), HandLandmarksConnections::HAND_RING_FINGER_CONNECTIONS.begin(), HandLandmarksConnections::HAND_RING_FINGER_CONNECTIONS.end());
+		connections.insert(connections.end(), HandLandmarksConnections::HAND_PINKY_FINGER_CONNECTIONS.begin(), HandLandmarksConnections::HAND_PINKY_FINGER_CONNECTIONS.end());
+
+		return connections;
+	}
+
+	const std::vector<Connection> HandLandmarksConnections::HAND_CONNECTIONS = get_HAND_CONNECTIONS();
+}
+
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResultRawCallback);
 
 template<typename _Ty1, typename _Ty2>
@@ -20,15 +253,17 @@ const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::
 }
 
 namespace {
-	using namespace mediapipe::tasks::vision::hand_landmarker::proto;
-	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
-	using namespace mediapipe::tasks::autoit::core::base_options;
-	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::tasks::autoit::vision::hand_landmarker;
+	using namespace google::protobuf;
 	using namespace mediapipe::autoit::packet_creator;
 	using namespace mediapipe::autoit::packet_getter;
+	using namespace mediapipe::tasks::autoit::components::containers;
+	using namespace mediapipe::tasks::autoit::components::processors;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
+	using namespace mediapipe::tasks::autoit::vision::hand_landmarker;
+	using namespace mediapipe::tasks::vision::hand_landmarker::proto;
 	using namespace mediapipe;
-	using namespace google::protobuf;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -52,67 +287,47 @@ namespace {
 			return std::make_shared<HandLandmarkerResult>();
 		}
 
-		std::vector<std::shared_ptr<Message>> handedness_proto_list;
-		get_proto_list(output_packets.at(_HANDEDNESS_STREAM_NAME), handedness_proto_list);
+		auto hand_landmarker_result = std::make_shared<HandLandmarkerResult>();
 
-		std::vector<std::shared_ptr<Message>> hand_landmarks_proto_list;
-		get_proto_list(output_packets.at(_HAND_LANDMARKS_STREAM_NAME), hand_landmarks_proto_list);
+		const auto& handedness_proto_list = GetContent<std::vector<ClassificationList>>(output_packets.at(_HANDEDNESS_STREAM_NAME));
+		for (const auto& handedness_classifications : handedness_proto_list) {
+			std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> handedness_categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 
-		std::vector<std::shared_ptr<Message>> hand_world_landmarks_proto_list;
-		get_proto_list(output_packets.at(_HAND_WORLD_LANDMARKS_STREAM_NAME), hand_world_landmarks_proto_list);
-
-		std::vector<std::vector<std::shared_ptr<category::Category>>> handedness_results;
-		for (const auto& proto : handedness_proto_list) {
-			std::vector<std::shared_ptr<category::Category>> handedness_categories;
-
-			// ClassificationList handedness_classifications;
-			// handedness_classifications.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-			const auto& handedness_classifications = *static_cast<ClassificationList const*>(proto.get());
 			for (const auto& handedness : handedness_classifications.classification()) {
-				handedness_categories.push_back(std::make_shared<category::Category>(
+				handedness_categories->push_back(std::make_shared<category::Category>(
 					handedness.index(),
 					handedness.score(),
 					handedness.display_name(),
 					handedness.label()
-					));
+				));
 			}
 
-			handedness_results.push_back(std::move(handedness_categories));
+			hand_landmarker_result->handedness->push_back(std::move(handedness_categories));
 		}
 
-		std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks_results;
-		for (const auto& proto : hand_landmarks_proto_list) {
-			std::vector<std::shared_ptr<landmark::NormalizedLandmark>> hand_landmarks_list;
+		const auto& hand_landmarks_proto_list = GetContent<std::vector<NormalizedLandmarkList>>(output_packets.at(_HAND_LANDMARKS_STREAM_NAME));
+		for (const auto& hand_landmarks : hand_landmarks_proto_list) {
+			std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>();
 
-			// NormalizedLandmarkList hand_landmarks;
-			// hand_landmarks.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-			const auto& hand_landmarks = *static_cast<NormalizedLandmarkList const*>(proto.get());
 			for (const auto& hand_landmark : hand_landmarks.landmark()) {
-				hand_landmarks_list.push_back(landmark::NormalizedLandmark::create_from_pb2(hand_landmark));
+				hand_landmarks_list->push_back(landmark::NormalizedLandmark::create_from_pb2(hand_landmark));
 			}
 
-			hand_landmarks_results.push_back(std::move(hand_landmarks_list));
+			hand_landmarker_result->hand_landmarks->push_back(std::move(hand_landmarks_list));
 		}
 
-		std::vector<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks_results;
-		for (const auto& proto : hand_world_landmarks_proto_list) {
-			std::vector<std::shared_ptr<landmark::Landmark>> hand_world_landmarks_list;
+		const auto& hand_world_landmarks_proto_list = GetContent<std::vector<LandmarkList>>(output_packets.at(_HAND_WORLD_LANDMARKS_STREAM_NAME));
+		for (const auto& hand_world_landmarks : hand_world_landmarks_proto_list) {
+			std::shared_ptr<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::Landmark>>>();
 
-			// LandmarkList hand_world_landmarks;
-			// hand_world_landmarks.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-			const auto& hand_world_landmarks = *static_cast<LandmarkList const*>(proto.get());
 			for (const auto& hand_world_landmark : hand_world_landmarks.landmark()) {
-				hand_world_landmarks_list.push_back(landmark::Landmark::create_from_pb2(hand_world_landmark));
+				hand_world_landmarks_list->push_back(landmark::Landmark::create_from_pb2(hand_world_landmark));
 			}
 
-			hand_world_landmarks_results.push_back(std::move(hand_world_landmarks_list));
+			hand_landmarker_result->hand_world_landmarks->push_back(std::move(hand_world_landmarks_list));
 		}
 
-		return std::make_shared<HandLandmarkerResult>(
-			std::move(handedness_results),
-			std::move(hand_landmarks_results),
-			std::move(hand_world_landmarks_results)
-			);
+		return hand_landmarker_result;
 	}
 }
 
@@ -152,20 +367,21 @@ namespace mediapipe::tasks::autoit::vision::hand_landmarker {
 					return;
 				}
 
-				auto timestamp_ms = output_packets.at(_HAND_LANDMARKS_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
-				auto image = GetContent<Image>(image_out_packet);
 				auto hand_landmarker_result = _build_landmarker_result(output_packets);
+				const auto& image = GetContent<Image>(image_out_packet);
+				auto timestamp_ms = output_packets.at(_HAND_LANDMARKS_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
+
 				options->result_callback(*hand_landmarker_result, image, timestamp_ms);
 			};
 		}
 
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
 			_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME
 		};
-		task_info.output_streams = {
+		*task_info.output_streams = {
 			_HANDEDNESS_TAG + ":" + _HANDEDNESS_STREAM_NAME,
 			_HAND_LANDMARKS_TAG + ":" + _HAND_LANDMARKS_STREAM_NAME,
 			_HAND_WORLD_LANDMARKS_TAG + ":" + _HAND_WORLD_LANDMARKS_STREAM_NAME,
@@ -177,7 +393,7 @@ namespace mediapipe::tasks::autoit::vision::hand_landmarker {
 			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
 			options->running_mode,
 			std::move(packets_callback)
-			);
+		);
 	}
 
 	std::shared_ptr<HandLandmarkerResult> HandLandmarker::detect(

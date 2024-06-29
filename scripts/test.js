@@ -7,22 +7,43 @@ const { explore } = require("fs-explorer");
 
 const AUTOIT_EXE = "C:\\Program Files (x86)\\AutoIt3\\AutoIt3.exe";
 const AUTOIT_WRAPPER = "C:\\Program Files (x86)\\AutoIt3\\SciTE\\AutoIt3Wrapper\\AutoIt3Wrapper.au3";
-const CS_RUN = sysPath.join("samples", "dotnet", "csrun.bat");
+const AUTOIT_WRAPPER_ARGV = ["/run", "/prod", "/ErrorStdOut", "/in"];
+const CS_RUN = sysPath.join("examples", "dotnet", "csrun.bat");
 
-const run = (file, cwd, env, next) => {
-    const { BUILD_TYPE, OPENCV_BUILD_TYPE } = process.env;
-    if (BUILD_TYPE && BUILD_TYPE !== env.BUILD_TYPE || OPENCV_BUILD_TYPE && OPENCV_BUILD_TYPE !== env.OPENCV_BUILD_TYPE) {
-        next(null, 0, null);
+const unixCmd = argv => {
+    return argv.map(arg => {
+        if (arg.includes(" ") || arg.includes("\\")) {
+            return `'${ arg }'`;
+        }
+
+        if (arg[0] === "/" && arg[1] !== "/") {
+            return `/${ arg }`;
+        }
+
+        return arg;
+    }).join(" ");
+};
+
+const run = (file, env, options, next) => {
+    const { BUILD_TYPE, MEDIAPIPE_BUILD_TYPE } = options.env;
+    if (BUILD_TYPE && BUILD_TYPE !== env.BUILD_TYPE || MEDIAPIPE_BUILD_TYPE && MEDIAPIPE_BUILD_TYPE !== env.MEDIAPIPE_BUILD_TYPE) {
+        next(null, 0);
         return;
     }
 
-    console.log("\nRunning", file, env);
+    const keys = Object.keys(env);
+    env = Object.assign({}, options.env, env);
+
     const extname = sysPath.extname(file);
 
     const args = [];
 
     if (extname === ".au3") {
-        args.push(AUTOIT_EXE, [AUTOIT_WRAPPER, "/run", "/prod", "/ErrorStdOut", "/in", file]);
+        if (options.bash) {
+            args.push("autoit", [file, "/UserParams"]);
+        } else {
+            args.push(AUTOIT_EXE, [AUTOIT_WRAPPER, ...AUTOIT_WRAPPER_ARGV, file, "/UserParams"]);
+        }
     } else if (extname === ".cs") {
         args.push("cmd.exe", ["/c", CS_RUN, file]);
     } else if (extname === ".ps1") {
@@ -31,70 +52,163 @@ const run = (file, cwd, env, next) => {
         throw new Error(`Unsupported extenstion ${ extname }`);
     }
 
-    console.log(args.flat().map(arg => (arg.includes(" ") ? `"${ arg }"` : arg)).join(" "));
+    const cmd = [keys.map(key => `${ key }=${ env[key] }`).join(" "), unixCmd(args.flat())].join(" ");
+
+    if (options.bash) {
+        console.log(cmd, "||", "exit $?");
+        next(null, 0);
+        return;
+    }
+
+    console.log(cmd);
 
     args.push({
-        stdio: "inherit",
-        env: Object.assign({}, process.env, env),
-        cwd,
+        stdio: options.stdio,
+        env,
+        cwd: options.cwd,
     });
 
     const child = spawn(...args);
+    child.on("error", err => {
+        if (next !== null) {
+            next(err);
+            next = null;
+        }
+    });
 
-    child.on("error", next);
-    child.on("close", next);
+    child.on("close", (code, signal) => {
+        if (next !== null) {
+            next(code, signal);
+            next = null;
+        }
+    });
+
+    if (typeof options.run === "function") {
+        options.run(child);
+    }
 };
 
-const argv = process.argv.slice(2);
-const cwd = argv.length !== 0 ? sysPath.resolve(argv[0]) : sysPath.resolve(__dirname, "..");
+const unixPath = path => {
+    return `/${ path.replace(":", "").replaceAll("\\", "/") }`;
+};
 
-const INCLUDED_EXT = [".au3", ".cs", ".ps1"];
-const EXCLUDED_FILES = ["csrun.ps1"];
-const INCLUDED_FILES = argv.slice(1);
+const bash_init = `#!/usr/bin/env bash
 
-eachOfLimit(["test", "examples/autoit", "examples/dotnet", "examples/googlesamples"], 1, (folder, i, next) => {
-    explore(sysPath.join(cwd, folder), (path, stats, next) => {
-        const file = sysPath.relative(cwd, path);
-        const basename = sysPath.basename(file);
-        const extname = sysPath.extname(file);
-        const skip = folder === "test" && !file.endsWith("_test.au3")
-            || (basename[0] === "_" && extname === ".au3")
-            || !INCLUDED_EXT.includes(extname)
-            || EXCLUDED_FILES.includes(basename)
-            || INCLUDED_FILES.length !== 0 && !INCLUDED_FILES.some(include => basename.startsWith(include));
+set -o pipefail
 
-        if (skip) {
-            next();
-            return;
-        }
+function autoit() {
+    '${ unixPath(AUTOIT_EXE) }' '${ unixPath(AUTOIT_WRAPPER) }' ${ unixCmd(AUTOIT_WRAPPER_ARGV) } "$@"
+}
+`;
 
-        waterfall([
-            next => {
-                run(file, cwd, {
-                    BUILD_TYPE: "Release",
-                    MEDIAPIPE_BUILD_TYPE: "Release",
-                    OPENCV_BUILD_TYPE: "Release",
-                }, next);
-            },
+const main = (options, next) => {
+    options = Object.assign({
+        cwd: sysPath.resolve(__dirname, ".."),
+        includes: [],
+        includes_ext: [".au3", ".cs", ".ps1"],
+        excludes: [],
+        argv: [],
+        stdio: "inherit",
+    }, options);
 
-            (signal, next) => {
-                run(file, cwd, {
-                    BUILD_TYPE: "Debug",
-                    MEDIAPIPE_BUILD_TYPE: "Debug",
-                    OPENCV_BUILD_TYPE: "Debug",
-                }, next);
-            },
-        ], (code, signal) => {
-            next(code);
-        });
-    }, (path, stats, files, state, next) => {
-        const basename = sysPath.basename(path);
-        const skip = state === "begin" && (basename[0] === "." || basename === "BackUp");
-        next(null, skip);
-    }, next);
-}, err => {
-    if (err) {
-        const code = err.flat(Infinity)[0];
-        process.exitCode = code;
+    const { cwd, includes, includes_ext, excludes } = options;
+
+    excludes.push(...["csrun.ps1"]);
+
+    if (options.bash) {
+        console.log([
+            bash_init,
+            `cd ${ cwd.includes(" ") ? `'${ unixPath(cwd) }'` : unixPath(cwd) }`,
+            "",
+        ].join("\n"));
     }
-});
+
+    eachOfLimit(["test", "examples/autoit", "examples/dotnet", "examples/googlesamples"], 1, (folder, i, next) => {
+        explore(sysPath.join(cwd, folder), (path, stats, next) => {
+            const file = sysPath.relative(cwd, path);
+            const basename = sysPath.basename(file);
+            const extname = sysPath.extname(file);
+
+            if (
+                folder === "test" && !file.endsWith("_test.au3") ||
+                basename[0] === "_" && extname === ".au3" ||
+                !includes_ext.includes(extname) ||
+                excludes.some(exclude => basename.startsWith(exclude)) ||
+                includes.length !== 0 && !includes.some(include => basename.startsWith(include))
+            ) {
+                next();
+                return;
+            }
+
+            waterfall([
+                next => {
+                    run(file, {
+                        BUILD_TYPE: "Release",
+                        MEDIAPIPE_BUILD_TYPE: "Release",
+                        OPENCV_BUILD_TYPE: "Release",
+                    }, options, next);
+                },
+
+                (signal, next) => {
+                    run(file, {
+                        BUILD_TYPE: "Debug",
+                        MEDIAPIPE_BUILD_TYPE: "Debug",
+                        OPENCV_BUILD_TYPE: "Debug",
+                    }, options, next);
+                },
+            ], (code, signal) => {
+                next(code);
+            });
+        }, (path, stats, files, state, next) => {
+            const basename = sysPath.basename(path);
+            const skip = state === "begin" && (basename[0] === "." || basename === "BackUp");
+            next(null, skip);
+        }, next);
+    }, next);
+};
+
+exports.main = main;
+
+if (typeof require !== "undefined" && require.main === module) {
+    const options = {
+        includes: [],
+        excludes: [],
+        argv: [],
+        env: Object.assign({}, process.env),
+        "--": 0,
+    };
+
+    for (const arg of process.argv.slice(2)) {
+        if (arg === "--") {
+            options[arg]++;
+        } else if (arg[0] === "!") {
+            options.excludes.push(arg.slice(1));
+        } else if (options["--"] === 1 && arg[0] !== "-") {
+            options.includes.push(arg);
+        } else if (options["--"] > 1 || options["--"] === 1 && arg[0] === "-") {
+            options.argv.push(arg);
+        } else if (["--Debug", "--Release"].includes(arg)) {
+            options.env.BUILD_TYPE = arg.slice(2);
+        } else if (arg === "--bash") {
+            options[arg.slice(2)] = true;
+        } else {
+            options.cwd = sysPath.resolve(arg);
+            options["--"] = 1;
+        }
+    }
+
+    main(options, err => {
+        if (err) {
+            if (!Array.isArray(err)) {
+                throw err;
+            }
+
+            const code = err.flat(Infinity)[0];
+            if (typeof code !== "number") {
+                throw code;
+            }
+
+            process.exitCode = code;
+        }
+    });
+}

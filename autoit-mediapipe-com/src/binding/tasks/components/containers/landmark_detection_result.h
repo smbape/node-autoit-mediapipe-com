@@ -13,9 +13,9 @@ namespace mediapipe::tasks::autoit::components::containers::landmark_detection_r
 		LandmarksDetectionResult& operator=(const LandmarksDetectionResult& other) = default;
 
 		CV_WRAP LandmarksDetectionResult(
-			const std::vector<std::shared_ptr<landmark::NormalizedLandmark>>& landmarks = std::vector<std::shared_ptr<landmark::NormalizedLandmark>>(),
-			const std::vector<std::shared_ptr<category::Category>>& categories = std::vector<std::shared_ptr<category::Category>>(),
-			const std::vector<std::shared_ptr<landmark::Landmark>>& world_landmarks = std::vector<std::shared_ptr<landmark::Landmark>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>& landmarks = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<category::Category>>>& categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<landmark::Landmark>>>& world_landmarks = std::make_shared<std::vector<std::shared_ptr<landmark::Landmark>>>(),
 			std::shared_ptr<rect::NormalizedRect> rect = std::shared_ptr<rect::NormalizedRect>()
 		)
 			:
@@ -28,9 +28,16 @@ namespace mediapipe::tasks::autoit::components::containers::landmark_detection_r
 		CV_WRAP std::shared_ptr<mediapipe::tasks::containers::proto::LandmarksDetectionResult> to_pb2();
 		CV_WRAP static std::shared_ptr<LandmarksDetectionResult> create_from_pb2(const mediapipe::tasks::containers::proto::LandmarksDetectionResult& pb2_obj);
 
-		CV_PROP_RW std::vector<std::shared_ptr<landmark::NormalizedLandmark>> landmarks;
-		CV_PROP_RW std::vector<std::shared_ptr<category::Category>> categories;
-		CV_PROP_RW std::vector<std::shared_ptr<landmark::Landmark>> world_landmarks;
+		bool operator== (const LandmarksDetectionResult& other) const {
+			return ::autoit::__eq__(landmarks, other.landmarks) &&
+				::autoit::__eq__(categories, other.categories) &&
+				::autoit::__eq__(world_landmarks, other.world_landmarks) &&
+				::autoit::__eq__(rect, other.rect);
+		}
+
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> landmarks;
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> categories;
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<landmark::Landmark>>> world_landmarks;
 		CV_PROP_RW std::shared_ptr<rect::NormalizedRect> rect;
 	};
 }

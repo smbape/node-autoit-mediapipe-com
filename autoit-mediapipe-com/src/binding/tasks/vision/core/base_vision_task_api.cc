@@ -68,7 +68,7 @@ namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api {
 		if (options->region_of_interest) {
 			AUTOIT_ASSERT_THROW(roi_allowed, "This task doesn't support region-of-interest.");
 			const auto& roi = *options->region_of_interest;
-			AUTOIT_ASSERT_THROW(roi.left < roi.right&& roi.top < roi.bottom, "Expected Rect with left < right and top < bottom.");
+			AUTOIT_ASSERT_THROW(roi.left < roi.right && roi.top < roi.bottom, "Expected Rect with left < right and top < bottom.");
 			AUTOIT_ASSERT_THROW(roi.left >= 0 && roi.top >= 0 && roi.right <= 1 && roi.bottom <= 1, "Expected Rect values to be in [0,1].");
 			normalized_rect.x_center = (roi.left + roi.right) / 2.0;
 			normalized_rect.y_center = (roi.top + roi.bottom) / 2.0;

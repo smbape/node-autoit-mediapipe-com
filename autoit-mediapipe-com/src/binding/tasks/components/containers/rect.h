@@ -1,6 +1,7 @@
 #pragma once
 
 #include "mediapipe/framework/formats/rect.pb.h"
+#include "autoit_bridge_common.h"
 
 namespace mediapipe::tasks::autoit::components::containers::rect {
 	struct CV_EXPORTS_W_SIMPLE Rect {
@@ -19,6 +20,13 @@ namespace mediapipe::tasks::autoit::components::containers::rect {
 			right(right),
 			bottom(bottom)
 		{}
+
+		bool operator== (const Rect& other) const {
+			return ::autoit::__eq__(left, other.left) &&
+				::autoit::__eq__(top, other.top) &&
+				::autoit::__eq__(right, other.right) &&
+				::autoit::__eq__(bottom, other.bottom);
+		}
 
 		float left;
 		float top;
@@ -49,6 +57,14 @@ namespace mediapipe::tasks::autoit::components::containers::rect {
 
 		CV_WRAP std::shared_ptr<mediapipe::NormalizedRect> to_pb2();
 		CV_WRAP static std::shared_ptr<rect::NormalizedRect> create_from_pb2(const mediapipe::NormalizedRect& pb2_obj);
+
+		bool operator== (const NormalizedRect& other) const {
+			return ::autoit::__eq__(x_center, other.x_center) &&
+				::autoit::__eq__(y_center, other.y_center) &&
+				::autoit::__eq__(width, other.width) &&
+				::autoit::__eq__(height, other.height) &&
+				::autoit::__eq__(rotation, other.rotation);
+		}
 
 		float x_center;
 		float y_center;

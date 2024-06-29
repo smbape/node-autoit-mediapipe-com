@@ -42,7 +42,8 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
 		const std::shared_ptr<DrawingSpec>& landmark_drawing_spec = std::make_shared<DrawingSpec>(RED_COLOR),
-		const DrawingSpec& connection_drawing_spec = DrawingSpec()
+		const DrawingSpec& connection_drawing_spec = DrawingSpec(),
+		const bool is_drawing_landmarks = true
 	);
 
 	CV_WRAP void draw_landmarks(
@@ -50,7 +51,8 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
 		const std::map<int, DrawingSpec>& landmark_drawing_spec = std::map<int, DrawingSpec>(),
-		const DrawingSpec& connection_drawing_spec = DrawingSpec()
+		const DrawingSpec& connection_drawing_spec = DrawingSpec(),
+		const bool is_drawing_landmarks = true
 	);
 
 	CV_WRAP void draw_landmarks(
@@ -58,7 +60,8 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
 		const std::shared_ptr<DrawingSpec>& landmark_drawing_spec = std::make_shared<DrawingSpec>(RED_COLOR),
-		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec = std::map<int, std::map<int, DrawingSpec>>()
+		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec = std::map<int, std::map<int, DrawingSpec>>(),
+		const bool is_drawing_landmarks = true
 	);
 
 	CV_WRAP void draw_landmarks(
@@ -66,7 +69,8 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
 		const std::map<int, DrawingSpec>& landmark_drawing_spec = std::map<int, DrawingSpec>(),
-		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec = std::map<int, std::map<int, DrawingSpec>>()
+		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec = std::map<int, std::map<int, DrawingSpec>>(),
+		const bool is_drawing_landmarks = true
 	);
 
 	CV_WRAP void draw_axis(

@@ -1,5 +1,5 @@
 module.exports = [
-    // expose a containers property like in mediapipe python
+    // expose audio properties like in mediapipe python
     ["mediapipe.tasks.autoit.audio.", "", ["/Properties"], [
         ["mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifier", "AudioClassifier", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::audio::audio_classifier::AudioClassifierOptions", "AudioClassifierOptions", "", ["/R", "=this"]],

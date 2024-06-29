@@ -1,6 +1,7 @@
 #pragma once
 
 #include "mediapipe/framework/formats/classification.pb.h"
+#include "autoit_bridge_common.h"
 
 namespace mediapipe::tasks::autoit::components::containers::category {
 	struct CV_EXPORTS_W_SIMPLE Category {
@@ -22,6 +23,13 @@ namespace mediapipe::tasks::autoit::components::containers::category {
 
 		CV_WRAP std::shared_ptr<Classification> to_pb2();
 		CV_WRAP static std::shared_ptr<Category> create_from_pb2(const Classification& pb2_obj);
+
+		bool operator== (const Category& other) const {
+			return ::autoit::__eq__(index, other.index) &&
+				::autoit::__eq__(score, other.score) &&
+				::autoit::__eq__(display_name, other.display_name) &&
+				::autoit::__eq__(category_name, other.category_name);
+		}
 
 		CV_PROP_RW int index;
 		CV_PROP_RW float score;

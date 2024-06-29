@@ -5,11 +5,6 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
-#include <GDIPlus.au3>
-#include <GUIConstantsEx.au3>
-#include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
-#include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
-
 ;~ Sources:
 ;~     https://mediapipe.page.link/pose_py_colab
 
@@ -17,11 +12,17 @@
 ;~     https://unsplash.com/photos/v4zceVZ5HK8
 ;~     https://unsplash.com/photos/e_rhazQLaSs
 
+#include <GDIPlus.au3>
+#include <GUIConstantsEx.au3>
+#include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
+#include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
+
 _GDIPlus_Startup()
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
 Global $mp = _Mediapipe_get()
@@ -122,8 +123,10 @@ Func Main()
 		Return
 	EndIf
 
-	; keep drawings visible after resize
+	; Display the image
 	Local $ratio = _OpenCV_resizeRatio_ControlPic($image, $FormGUI, $PicResult)
+
+	; Compute the scale to make drawn elements visible when the image is resized for display
 	Local $scale = 1 / $ratio
 
 	; enlarge/shrink drawings to keep them visible after resize

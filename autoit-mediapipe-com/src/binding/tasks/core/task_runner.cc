@@ -25,10 +25,26 @@ namespace mediapipe::autoit::task_runner {
 			};
 		}
 
+#if !MEDIAPIPE_DISABLE_GPU
+		auto gpu_resources_ = mediapipe::GpuResources::Create();
+		if (!gpu_resources_.ok()) {
+		  ABSL_LOG(INFO) << "GPU suport is not available: "
+						 << gpu_resources_.status();
+		  gpu_resources_ = nullptr;
+		}
+		auto task_runner = TaskRunner::Create(
+			std::move(graph_config),
+			absl::make_unique<MediaPipeBuiltinOpResolver>(),
+			std::move(callback),
+			/* default_executor= */ nullptr,
+			/* input_side_packes= */ std::nullopt, std::move(*gpu_resources_));
+#else
 		auto task_runner = TaskRunner::Create(
 			std::move(graph_config),
 			absl::make_unique<MediaPipeBuiltinOpResolver>(),
 			std::move(callback));
+#endif  // !MEDIAPIPE_DISABLE_GPU
+
 		RaiseAutoItErrorIfNotOk(task_runner.status());
 
 		return std::shared_ptr<TaskRunner>(task_runner.value().release());

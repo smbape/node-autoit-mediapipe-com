@@ -5,36 +5,38 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/solutions/face_detection_test.py
+
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\_assert.au3"
 #include "..\_mat_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/solutions/face_detection_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $cv = _OpenCV_get()
+Global Const $cv = _OpenCV_get()
+_AssertIsObj($cv, "Failed to load opencv")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
+Global Const $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
 _AssertIsObj($mp_drawing, "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
-Global $mp_faces = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection")
+Global Const $mp_faces = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.face_detection")
 _AssertIsObj($mp_faces, "Failed to load mediapipe.autoit.solutions.face_detection")
 
-Global $Mat = _OpenCV_ObjCreate("Mat")
+Global Const $Mat = _OpenCV_ObjCreate("Mat")
 
-Global $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS[][] = [[363, 182], [460, 186], [420, 241], _
+Global Const $SHORT_RANGE_EXPECTED_FACE_KEY_POINTS[][] = [[363, 182], [460, 186], [420, 241], _
 		[417, 284], [295, 199], [502, 198]]
-Global $FULL_RANGE_EXPECTED_FACE_KEY_POINTS[][] = [[363, 181], [455, 181], [413, 233], _
+Global Const $FULL_RANGE_EXPECTED_FACE_KEY_POINTS[][] = [[363, 181], [455, 181], [413, 233], _
 		[411, 278], [306, 204], [499, 207]]
 
 Global Const $DIFF_THRESHOLD = 5 ; pixels
@@ -81,7 +83,7 @@ Func test_face($id, $model_selection)
 		For $keypoint In $location_data.relative_keypoints
 			$face_keypoints[$i][0] = $keypoint.x * $cols
 			$face_keypoints[$i][1] = $keypoint.y * $rows
-			$i = $i + 1
+			$i += 1
 		Next
 
 		Local $prediction_error = $cv.absdiff($Mat.createFromArray($face_keypoints, $CV_32S), _

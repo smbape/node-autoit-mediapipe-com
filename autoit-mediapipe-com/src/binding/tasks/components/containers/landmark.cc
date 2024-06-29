@@ -20,7 +20,7 @@ namespace mediapipe::tasks::autoit::components::containers::landmark {
 			pb2_obj.z(),
 			pb2_obj.visibility(),
 			pb2_obj.presence()
-			);
+		);
 	}
 
 	std::shared_ptr<mediapipe::NormalizedLandmark> NormalizedLandmark::to_pb2() {
@@ -40,7 +40,7 @@ namespace mediapipe::tasks::autoit::components::containers::landmark {
 			pb2_obj.z(),
 			pb2_obj.visibility(),
 			pb2_obj.presence()
-			);
+		);
 	}
 }
 

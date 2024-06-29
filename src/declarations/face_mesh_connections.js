@@ -8,6 +8,7 @@ module.exports = [
         ["std::vector<std::tuple<int, int>>", "FACEMESH_RIGHT_EYEBROW", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "FACEMESH_RIGHT_IRIS", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "FACEMESH_FACE_OVAL", "", ["/R"]],
+        ["std::vector<std::tuple<int, int>>", "FACEMESH_NOSE", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "FACEMESH_CONTOURS", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "FACEMESH_IRISES", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "FACEMESH_TESSELATION", "", ["/R"]],

@@ -5,15 +5,16 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/timestamp_test.py
+
 #include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "_assert.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/timestamp_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
 ; AutoIt variable names are case insensitive

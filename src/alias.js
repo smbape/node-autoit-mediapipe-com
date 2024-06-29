@@ -1,10 +1,3 @@
-const {ALIASES} = require("./constants");
-
-exports.getAlias = str => {
-    str = str.trim();
-    return ALIASES.has(str) ? ALIASES.get(str) : str;
-};
-
 exports.removeNamespaces = (str, options = {}) => {
     if (!options.remove_namespaces || options.remove_namespaces.size === 0) {
         return str;
@@ -26,30 +19,66 @@ exports.makeExpansion = (str, ...args) => {
     return str;
 };
 
-exports.useNamespaces = (body, method, coclass, generator) => {
+const useNamspace = (namespaces, namespace) => {
+    const parts = namespace.split("::");
+    for (let i = 0; i < parts.length; i++) {
+        namespaces.add(`using namespace ${ parts.slice(0, parts.length - i).join("::") };`);
+    }
+};
+
+exports.useNamespaces = (body, method, processor, coclass) => {
     const namespaces = new Set();
 
-    if (generator.namespace) {
-        namespaces.add(`using namespace ${ generator.namespace };`);
-    }
-
     if (coclass.namespace) {
+        // useNamspace(namespaces, coclass.namespace);
         namespaces.add(`using namespace ${ coclass.namespace };`);
     }
 
-    if (coclass.include && coclass.include.namespace && coclass.include.namespace !== coclass.namespace) {
+    if (coclass.include && coclass.include.namespace) {
         namespaces.add(`using namespace ${ coclass.include.namespace };`);
     }
 
-    body[method](...namespaces);
+    if (processor.namespace) {
+        namespaces.add(`using namespace ${ processor.namespace };`);
+    }
+
+    if (namespaces.size !== 0) {
+        namespaces.add("");
+    }
+
+    body[method](...Array.from(namespaces).sort((a, b) => {
+        if (a.length === 0) {
+            return 1;
+        }
+
+        if (b.length === 0) {
+            return -1;
+        }
+
+        const aLen = a.split("::").length;
+        const bLen = b.split("::").length;
+
+        if (aLen > bLen) {
+            return -1;
+        }
+
+        if (aLen < bLen) {
+            return 1;
+        }
+
+        return a < b ? -1 : a > b ? 1 : 0;
+    }));
 };
 
 exports.getTypeDef = (type, options) => {
     let type_def = type
         .replace(/\b(u?int(?:8|16|32|64))_t\b/g, "$1")
-        .replace(/std::map/g, "MapOf")
-        .replace(/std::pair/g, "PairOf")
-        .replace(/std::vector/g, "VectorOf");
+        .replaceAll("std::map", "MapOf")
+        .replaceAll("std::pair", "PairOf")
+        .replaceAll("std::vector", "VectorOf")
+        .replaceAll("std::shared_ptr", "SharedPtrOf")
+        .replaceAll(options.shared_ptr, "SharedPtrOf")
+        .replaceAll("std::variant", "VariantOf");
 
     type_def = exports.removeNamespaces(type_def, options)
         .replace(/\b_variant_t\b/g, "Variant")
@@ -59,4 +88,11 @@ exports.getTypeDef = (type, options) => {
         .replace(/[<>]/g, "");
 
     return type_def;
+};
+
+const {ALIASES} = require("./constants");
+
+exports.getAlias = str => {
+    str = str.trim();
+    return ALIASES.has(str) ? ALIASES.get(str) : str;
 };

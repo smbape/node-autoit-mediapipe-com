@@ -20,14 +20,15 @@ const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::
 }
 
 namespace {
-	using namespace mediapipe::tasks::vision::image_embedder::proto;
-	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
-	using namespace mediapipe::tasks::autoit::components::containers::embedding_result;
-	using namespace mediapipe::tasks::autoit::core::base_options;
-	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::tasks::autoit::components::utils;
 	using namespace mediapipe::autoit::packet_creator;
 	using namespace mediapipe::autoit::packet_getter;
+	using namespace mediapipe::tasks::autoit::components::containers::embedding_result;
+	using namespace mediapipe::tasks::autoit::components::utils;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
+	using namespace mediapipe::tasks::autoit::vision::image_embedder;
+	using namespace mediapipe::tasks::vision::image_embedder::proto;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -41,6 +42,16 @@ namespace {
 	const std::string _NORM_RECT_TAG = "NORM_RECT";
 	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.image_embedder.ImageEmbedderGraph";
 	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
+
+	std::shared_ptr<ImageEmbedderResult> _build_embedding_result(const PacketMap& output_packets) {
+		const auto& detector_out_packet = output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME);
+		if (detector_out_packet.IsEmpty()) {
+			return std::make_shared<ImageEmbedderResult>();
+		}
+
+		const auto& embedding_result_proto = GetContent<mediapipe::tasks::components::containers::proto::EmbeddingResult>(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME));
+		return ImageEmbedderResult::create_from_pb2(embedding_result_proto);
+	}
 }
 
 namespace mediapipe::tasks::autoit::vision::image_embedder {
@@ -72,29 +83,21 @@ namespace mediapipe::tasks::autoit::vision::image_embedder {
 					return;
 				}
 
-				mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
-				embedding_result_proto.CopyFrom(
-					*get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
-				);
+				auto embedder_result = _build_embedding_result(output_packets);
+				const auto& image = GetContent<Image>(image_out_packet);
+				auto timestamp_ms = output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
-				auto image = GetContent<Image>(image_out_packet);
-				auto timestamp_ms = image_out_packet.Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
-
-				options->result_callback(
-					*ImageEmbedderResult::create_from_pb2(embedding_result_proto),
-					image,
-					timestamp_ms
-				);
+				options->result_callback(*embedder_result, image, timestamp_ms);
 			};
 		}
 
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
 			_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME
 		};
-		task_info.output_streams = {
+		*task_info.output_streams = {
 			_EMBEDDINGS_TAG + ":" + _EMBEDDINGS_OUT_STREAM_NAME,
 			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME
 		};
@@ -104,7 +107,7 @@ namespace mediapipe::tasks::autoit::vision::image_embedder {
 			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
 			options->running_mode,
 			std::move(packets_callback)
-			);
+		);
 	}
 
 	std::shared_ptr<ImageEmbedderResult> ImageEmbedder::embed(
@@ -117,12 +120,7 @@ namespace mediapipe::tasks::autoit::vision::image_embedder {
 			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
 			});
 
-		mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
-		embedding_result_proto.CopyFrom(
-			*get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
-		);
-
-		return ImageEmbedderResult::create_from_pb2(embedding_result_proto);
+		return _build_embedding_result(output_packets);
 	}
 
 	std::shared_ptr<ImageEmbedderResult> ImageEmbedder::embed_for_video(
@@ -141,12 +139,7 @@ namespace mediapipe::tasks::autoit::vision::image_embedder {
 			)) },
 			});
 
-		mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
-		embedding_result_proto.CopyFrom(
-			*get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
-		);
-
-		return ImageEmbedderResult::create_from_pb2(embedding_result_proto);
+		return _build_embedding_result(output_packets);
 	}
 
 	void ImageEmbedder::embed_async(

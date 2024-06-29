@@ -14,18 +14,15 @@
 #include <functional>
 
 namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
-	using namespace mediapipe::tasks::autoit::components::containers;
-	using namespace mediapipe::tasks::autoit::components::processors;
-
 	struct CV_EXPORTS_W_SIMPLE GestureRecognizerResult {
 		CV_WRAP GestureRecognizerResult(const GestureRecognizerResult& other) = default;
 		GestureRecognizerResult& operator=(const GestureRecognizerResult& other) = default;
 
 		CV_WRAP GestureRecognizerResult(
-			std::vector<std::vector<std::shared_ptr<category::Category>>> gestures = std::vector<std::vector<std::shared_ptr<category::Category>>>(),
-			std::vector<std::vector<std::shared_ptr<category::Category>>> handedness = std::vector<std::vector<std::shared_ptr<category::Category>>>(),
-			std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks = std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>(),
-			std::vector<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks = std::vector<std::vector<std::shared_ptr<landmark::Landmark>>>()
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>>& gestures = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>>& handedness = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>>& hand_landmarks = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::Landmark>>>>>& hand_world_landmarks = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::Landmark>>>>>()
 		) :
 			gestures(gestures),
 			handedness(handedness),
@@ -33,10 +30,17 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 			hand_world_landmarks(hand_world_landmarks)
 		{}
 
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<category::Category>>> gestures;
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<category::Category>>> handedness;
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks;
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks;
+		bool operator== (const GestureRecognizerResult& other) const {
+			return ::autoit::__eq__(gestures, other.gestures) &&
+				::autoit::__eq__(handedness, other.handedness) &&
+				::autoit::__eq__(hand_landmarks, other.hand_landmarks) &&
+				::autoit::__eq__(hand_world_landmarks, other.hand_world_landmarks);
+		}
+
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>> gestures;
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>> handedness;
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>> hand_landmarks;
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::Landmark>>>>> hand_world_landmarks;
 	};
 
 	using GestureRecognizerResultRawCallback = void(*)(const GestureRecognizerResult&, const Image&, int64_t);
@@ -53,8 +57,8 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 			float min_hand_detection_confidence = 0.5f,
 			float min_hand_presence_confidence = 0.5f,
 			float min_tracking_confidence = 0.5f,
-			std::shared_ptr<classifier_options::ClassifierOptions> canned_gesture_classifier_options = std::shared_ptr<classifier_options::ClassifierOptions>(),
-			std::shared_ptr<classifier_options::ClassifierOptions> custom_gesture_classifier_options = std::shared_ptr<classifier_options::ClassifierOptions>(),
+			std::shared_ptr<components::processors::classifier_options::ClassifierOptions> canned_gesture_classifier_options = std::shared_ptr<components::processors::classifier_options::ClassifierOptions>(),
+			std::shared_ptr<components::processors::classifier_options::ClassifierOptions> custom_gesture_classifier_options = std::shared_ptr<components::processors::classifier_options::ClassifierOptions>(),
 			GestureRecognizerResultCallback result_callback = nullptr
 		) :
 			base_options(base_options),
@@ -76,8 +80,8 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 		CV_PROP_RW float min_hand_detection_confidence;
 		CV_PROP_RW float min_hand_presence_confidence;
 		CV_PROP_RW float min_tracking_confidence;
-		CV_PROP_RW std::shared_ptr<classifier_options::ClassifierOptions> canned_gesture_classifier_options;
-		CV_PROP_RW std::shared_ptr<classifier_options::ClassifierOptions> custom_gesture_classifier_options;
+		CV_PROP_RW std::shared_ptr<components::processors::classifier_options::ClassifierOptions> canned_gesture_classifier_options;
+		CV_PROP_RW std::shared_ptr<components::processors::classifier_options::ClassifierOptions> custom_gesture_classifier_options;
 		CV_PROP_W  GestureRecognizerResultCallback result_callback;
 	};
 

@@ -20,18 +20,21 @@
 // }
 
 namespace {
-	using namespace mediapipe::tasks::vision::object_detector::proto;
-	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
-	using namespace mediapipe::tasks::autoit::core::base_options;
-	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::tasks::autoit::components::utils;
-	using namespace mediapipe::tasks::autoit::vision::core::image_processing_options;
+	using namespace google::protobuf;
 	using namespace mediapipe::autoit::packet_creator;
 	using namespace mediapipe::autoit::packet_getter;
-	using namespace google::protobuf;
+	using namespace mediapipe::tasks::autoit::components::utils;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::autoit::vision::core::image_processing_options;
+	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
+	using namespace mediapipe::tasks::autoit::vision::object_detector;
+	using namespace mediapipe::tasks::vision::object_detector::proto;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
+
+	using Detection = mediapipe::tasks::autoit::components::containers::detections::Detection;
 
 	const std::string _DETECTIONS_OUT_STREAM_NAME = "detections_out";
 	const std::string _DETECTIONS_TAG = "DETECTIONS";
@@ -42,11 +45,25 @@ namespace {
 	const std::string _NORM_RECT_TAG = "NORM_RECT";
 	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.ObjectDetectorGraph";
 	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
+
+	std::shared_ptr<ObjectDetectorResult> _build_detection_result(const PacketMap& output_packets) {
+		const auto& detector_out_packet = output_packets.at(_DETECTIONS_OUT_STREAM_NAME);
+		if (detector_out_packet.IsEmpty()) {
+			return std::make_shared<ObjectDetectorResult>();
+		}
+
+		auto detection_result = std::make_shared<ObjectDetectorResult>();
+
+		const auto& detection_proto_list = GetContent<std::vector<mediapipe::Detection>>(output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
+		for (const auto& detection : detection_proto_list) {
+			detection_result->detections->push_back(Detection::create_from_pb2(detection));
+		}
+
+		return detection_result;
+	}
 }
 
 namespace mediapipe::tasks::autoit::vision::object_detector {
-	using Detection = components::containers::detections::Detection;
-
 	std::shared_ptr<mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions> ObjectDetectorOptions::to_pb2() {
 		auto pb2_obj = std::make_shared<mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions>();
 
@@ -56,8 +73,8 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 		pb2_obj->mutable_base_options()->set_use_stream_mode(running_mode != VisionTaskRunningMode::IMAGE);
 
 		if (score_threshold) pb2_obj->set_score_threshold(*score_threshold);
-		pb2_obj->mutable_category_allowlist()->Add(category_allowlist.begin(), category_allowlist.end());
-		pb2_obj->mutable_category_denylist()->Add(category_denylist.begin(), category_denylist.end());
+		if (category_allowlist) pb2_obj->mutable_category_allowlist()->Add(category_allowlist->begin(), category_allowlist->end());
+		if (category_denylist) pb2_obj->mutable_category_denylist()->Add(category_denylist->begin(), category_denylist->end());
 		if (display_names_locale) pb2_obj->set_display_names_locale(*display_names_locale);
 		if (max_results) pb2_obj->set_max_results(*max_results);
 
@@ -79,28 +96,21 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 					return;
 				}
 
-				std::vector<std::shared_ptr<Message>> detection_proto_list;
-				get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME), detection_proto_list);
+				auto detection_result = _build_detection_result(output_packets);
+				const auto& image = GetContent<Image>(image_out_packet);
+				auto timestamp_ms = output_packets.at(_DETECTIONS_OUT_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
-				ObjectDetectorResult detection_result;
-				for (const auto& result : detection_proto_list) {
-					detection_result.detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
-				}
-
-				auto image = GetContent<Image>(image_out_packet);
-				auto timestamp_ms = image_out_packet.Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
-
-				options->result_callback(detection_result, image, timestamp_ms);
+				options->result_callback(*detection_result, image, timestamp_ms);
 			};
 		}
 
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
 			_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME,
 		};
-		task_info.output_streams = {
+		*task_info.output_streams = {
 			_DETECTIONS_TAG + ":" + _DETECTIONS_OUT_STREAM_NAME,
 			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME
 		};
@@ -110,7 +120,7 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
 			options->running_mode,
 			std::move(packets_callback)
-			);
+		);
 	}
 
 	std::shared_ptr<ObjectDetectorResult> ObjectDetector::detect(
@@ -124,15 +134,7 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
 			});
 
-		std::vector<std::shared_ptr<Message>> detection_proto_list;
-		get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME), detection_proto_list);
-
-		auto detection_result = std::make_shared<ObjectDetectorResult>();
-		for (const auto& result : detection_proto_list) {
-			detection_result->detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
-		}
-
-		return detection_result;
+		return _build_detection_result(output_packets);
 	}
 
 	std::shared_ptr<ObjectDetectorResult> ObjectDetector::detect_for_video(
@@ -151,15 +153,7 @@ namespace mediapipe::tasks::autoit::vision::object_detector {
 			)) },
 			});
 
-		std::vector<std::shared_ptr<Message>> detection_proto_list;
-		get_proto_list(output_packets.at(_DETECTIONS_OUT_STREAM_NAME), detection_proto_list);
-
-		auto detection_result = std::make_shared<ObjectDetectorResult>();
-		for (const auto& result : detection_proto_list) {
-			detection_result->detections.push_back(Detection::create_from_pb2(*static_cast<mediapipe::Detection const*>(result.get())));
-		}
-
-		return detection_result;
+		return _build_detection_result(output_packets);
 	}
 
 	void ObjectDetector::detect_async(

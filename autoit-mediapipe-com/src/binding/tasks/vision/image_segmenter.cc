@@ -20,27 +20,51 @@ const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::
 }
 
 namespace {
-	using namespace mediapipe::tasks::vision::image_segmenter::proto;
-	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
-	using namespace mediapipe::tasks::autoit::core::base_options;
-	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::tasks::autoit::components::utils;
-	using namespace mediapipe::tasks::autoit::vision::core::image_processing_options;
 	using namespace mediapipe::autoit::packet_creator;
 	using namespace mediapipe::autoit::packet_getter;
+	using namespace mediapipe::tasks::autoit::components::utils;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api;
+	using namespace mediapipe::tasks::autoit::vision::core::image_processing_options;
+	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
+	using namespace mediapipe::tasks::autoit::vision::image_segmenter;
+	using namespace mediapipe::tasks::vision::image_segmenter::proto;
+	using namespace mediapipe;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
 
-	const std::string _SEGMENTATION_OUT_STREAM_NAME = "segmented_mask_out";
-	const std::string _SEGMENTATION_TAG = "GROUPED_SEGMENTATION";
+	const std::string _CONFIDENCE_MASKS_STREAM_NAME = "confidence_masks";
+	const std::string _CONFIDENCE_MASKS_TAG = "CONFIDENCE_MASKS";
+	const std::string _CATEGORY_MASK_STREAM_NAME = "category_mask";
+	const std::string _CATEGORY_MASK_TAG = "CATEGORY_MASK";
 	const std::string _IMAGE_IN_STREAM_NAME = "image_in";
 	const std::string _IMAGE_OUT_STREAM_NAME = "image_out";
 	const std::string _IMAGE_TAG = "IMAGE";
 	const std::string _NORM_RECT_STREAM_NAME = "norm_rect_in";
 	const std::string _NORM_RECT_TAG = "NORM_RECT";
+	const std::string _TENSORS_TO_SEGMENTATION_CALCULATOR_NAME = "mediapipe.tasks.TensorsToSegmentationCalculator";
 	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.image_segmenter.ImageSegmenterGraph";
 	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
+
+	std::shared_ptr<ImageSegmenterResult> _build_segmenter_result(const PacketMap& output_packets) {
+		auto segmentation_result = std::make_shared<ImageSegmenterResult>();
+
+		if (output_packets.count(_CONFIDENCE_MASKS_STREAM_NAME)) {
+			for (const auto& image : GetContent<std::vector<Image>>(output_packets.at(_CONFIDENCE_MASKS_STREAM_NAME))) {
+				segmentation_result->confidence_masks->push_back(std::make_shared<Image>(image));
+			}
+		}
+
+		if (output_packets.count(_CATEGORY_MASK_STREAM_NAME)) {
+			segmentation_result->category_mask = std::make_shared<Image>(
+				GetContent<Image>(output_packets.at(_CATEGORY_MASK_STREAM_NAME))
+			);
+		}
+
+		return segmentation_result;
+	}
 }
 
 namespace mediapipe::tasks::autoit::vision::image_segmenter {
@@ -51,10 +75,38 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 			pb2_obj->mutable_base_options()->CopyFrom(*base_options->to_pb2());
 		}
 		pb2_obj->mutable_base_options()->set_use_stream_mode(running_mode != VisionTaskRunningMode::IMAGE);
-		pb2_obj->mutable_segmenter_options()->set_output_type(output_type);
-		pb2_obj->mutable_segmenter_options()->set_activation(activation);
+		pb2_obj->mutable_segmenter_options();
 
 		return pb2_obj;
+	}
+
+	ImageSegmenter::ImageSegmenter(
+		const CalculatorGraphConfig& graph_config,
+		VisionTaskRunningMode running_mode,
+		mediapipe::autoit::PacketsCallback packet_callback
+	) : BaseVisionTaskApi(graph_config, running_mode, packet_callback) {
+		_populate_labels();
+	}
+
+	void ImageSegmenter::_populate_labels() {
+		const auto& graph_config = _runner->GetGraphConfig();
+		bool found_tensors_to_segmentation = false;
+		for (const auto& node : graph_config.node()) {
+			if (node.name().find(_TENSORS_TO_SEGMENTATION_CALCULATOR_NAME) == std::string::npos) {
+				continue;
+			}
+
+			AUTOIT_ASSERT_THROW(!found_tensors_to_segmentation, "The graph has more than one " << _TENSORS_TO_SEGMENTATION_CALCULATOR_NAME);
+			found_tensors_to_segmentation = true;
+
+			const auto& options = node.options().GetExtension(TensorsToSegmentationCalculatorOptions::ext);
+			const auto& label_items = options.label_items();
+			const auto label_items_size = options.label_items_size();
+			for (int64_t i = 0; i < label_items_size; i++) {
+				AUTOIT_ASSERT_THROW(label_items.count(i), "The labelmap has no expected key: " << i);
+				_labels.push_back(label_items.at(i).name());
+			}
+		}
 	}
 
 	std::shared_ptr<ImageSegmenter> ImageSegmenter::create_from_model_path(const std::string& model_path) {
@@ -72,35 +124,41 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 					return;
 				}
 
-				auto segmentation_result = GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
-				auto image = GetContent<Image>(image_out_packet);
-				auto timestamp_ms = output_packets.at(_SEGMENTATION_OUT_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
+				auto segmentation_result = _build_segmenter_result(output_packets);
+				const auto& image = GetContent<Image>(image_out_packet);
+				auto timestamp_ms = image_out_packet.Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
-				options->result_callback(segmentation_result, image, timestamp_ms);
-			};
+				options->result_callback(*segmentation_result, image, timestamp_ms);
+				};
 		}
 
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
 			_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME,
 		};
-		task_info.output_streams = {
-			_SEGMENTATION_TAG + ":" + _SEGMENTATION_OUT_STREAM_NAME,
-			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME
+		*task_info.output_streams = {
+			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME,
 		};
 		task_info.task_options = options->to_pb2();
+
+		if (options->output_confidence_masks) {
+			task_info.output_streams->push_back(_CONFIDENCE_MASKS_TAG + ":" + _CONFIDENCE_MASKS_STREAM_NAME);
+		}
+
+		if (options->output_category_mask) {
+			task_info.output_streams->push_back(_CATEGORY_MASK_TAG + ":" + _CATEGORY_MASK_STREAM_NAME);
+		}
 
 		return std::make_shared<ImageSegmenter>(
 			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
 			options->running_mode,
 			std::move(packets_callback)
-			);
+		);
 	}
 
-	void ImageSegmenter::segment(
-		std::vector<Image>& segmentation_result,
+	std::shared_ptr<ImageSegmenterResult> ImageSegmenter::segment(
 		const Image& image,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
@@ -111,11 +169,10 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
 			});
 
-		segmentation_result = GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
+		return _build_segmenter_result(output_packets);
 	}
 
-	void ImageSegmenter::segment_for_video(
-		std::vector<Image>& segmentation_result,
+	std::shared_ptr<ImageSegmenterResult> ImageSegmenter::segment_for_video(
 		const Image& image,
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
@@ -131,7 +188,7 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 			)) },
 			});
 
-		segmentation_result = GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
+		return _build_segmenter_result(output_packets);
 	}
 
 	void ImageSegmenter::segment_async(
@@ -149,5 +206,9 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
 			});
+	}
+
+	void ImageSegmenter::get_labels(std::vector<std::string>& labels) {
+		labels = _labels;
 	}
 }

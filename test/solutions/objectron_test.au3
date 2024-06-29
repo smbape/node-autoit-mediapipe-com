@@ -5,29 +5,31 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/solutions/objectron_test.py
+
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\_assert.au3"
 #include "..\_mat_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/solutions/objectron_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $cv = _OpenCV_get()
+Global Const $cv = _OpenCV_get()
+_AssertIsObj($cv, "Failed to load opencv")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
+Global Const $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
 _AssertIsObj($mp_drawing, "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
-Global $mp_objectron = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron")
+Global Const $mp_objectron = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.objectron")
 _AssertIsObj($mp_objectron, "Failed to load mediapipe.autoit.solutions.objectron")
 
 Global Const $DIFF_THRESHOLD = 30 ; pixels

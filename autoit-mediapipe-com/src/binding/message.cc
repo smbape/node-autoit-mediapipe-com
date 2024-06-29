@@ -337,13 +337,13 @@ namespace google::protobuf {
 		}
 
 		void InitAttributes(Message& message,
-			std::map<std::string, _variant_t>& attrs) {
+			const std::map<std::string, _variant_t>& attrs) {
 			const Descriptor* descriptor = message.GetDescriptor();
 
-			for (auto& [field_name, value] : attrs) {
+			for (const auto& [field_name, value] : attrs) {
 				const auto field_descriptor = FindFieldWithOneofs(message, field_name, descriptor);
 				AUTOIT_ASSERT_THROW(field_descriptor, "Field '" << field_name << "' does not belong to message '" << descriptor->full_name() << "'");
-				VARIANT* in_val = &value;
+				const VARIANT* in_val = &value;
 
 				if (field_descriptor->is_map()) {
 					MapContainer autoit_container;

@@ -5,39 +5,41 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/solutions/drawing_utils_test.py
+
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\_assert.au3"
 #include "..\_mat_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/solutions/drawing_utils_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $cv = _OpenCV_get()
+Global Const $cv = _OpenCV_get()
+_AssertIsObj($cv, "Failed to load opencv")
 
-Global $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
+Global Const $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
 _AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
-Global $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
+Global Const $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
 _AssertIsObj($detection_pb2, "Failed to load mediapipe.framework.formats.detection_pb2")
 
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
+Global Const $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
 _AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
 
-Global $drawing_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
+Global Const $drawing_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
 _AssertIsObj($drawing_utils, "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
-Global $DEFAULT_BBOX_DRAWING_SPEC = $drawing_utils.DrawingSpec()
-Global $DEFAULT_CONNECTION_DRAWING_SPEC = $drawing_utils.DrawingSpec()
-Global $DEFAULT_CIRCLE_DRAWING_SPEC = $drawing_utils.DrawingSpec($drawing_utils.RED_COLOR)
-Global $DEFAULT_AXIS_DRAWING_SPEC = $drawing_utils.DrawingSpec()
-Global $DEFAULT_CYCLE_BORDER_COLOR[] = [224, 224, 224]
+Global Const $DEFAULT_BBOX_DRAWING_SPEC = $drawing_utils.DrawingSpec()
+Global Const $DEFAULT_CONNECTION_DRAWING_SPEC = $drawing_utils.DrawingSpec()
+Global Const $DEFAULT_CIRCLE_DRAWING_SPEC = $drawing_utils.DrawingSpec($drawing_utils.RED_COLOR)
+Global Const $DEFAULT_AXIS_DRAWING_SPEC = $drawing_utils.DrawingSpec()
+Global Const $DEFAULT_CYCLE_BORDER_COLOR[] = [224, 224, 224]
 
 Test()
 

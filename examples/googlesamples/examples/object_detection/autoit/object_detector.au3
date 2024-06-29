@@ -5,20 +5,23 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/object_detection/python/object_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/object_detection/python/object_detector.ipynb
+
+;~ Title: Object Detection with MediaPipe Tasks
+
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
-#include "..\..\..\..\..\test\_assert.au3"
 
-;~ Sources:
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/object_detection/python/object_detector.ipynb
-;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/object_detection/python/object_detector.ipynb
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
+; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
@@ -42,8 +45,8 @@ Main()
 Func Main()
 	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\cat_and_dog.jpg"
 	Local $_IMAGE_URL = "https://storage.googleapis.com/mediapipe-tasks/object_detector/cat_and_dog.jpg"
-	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\efficientdet_lite2_uint8.tflite"
-	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-tasks/object_detector/efficientdet_lite2_uint8.tflite"
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\efficientdet_lite0.tflite"
+	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-models/object_detector/efficientdet_lite0/int8/1/efficientdet_lite0.tflite"
 
 	Local $url, $file_path
 
@@ -59,6 +62,7 @@ Func Main()
 		EndIf
 	Next
 
+	; Compute the scale to make drawn elements visible when the image is resized for display
 	Local $scale = 1 / resize_and_show($cv.imread($_IMAGE_FILE), Default, False)
 
 	; STEP 2: Create an ObjectDetector object.
@@ -79,6 +83,9 @@ Func Main()
 	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
 	resize_and_show($bgr_annotated_image, "object_detection")
 	$cv.waitKey()
+
+	; STEP 6: Closes the detector explicitly when the detector is not used ina context.
+	$detector.close()
 EndFunc   ;==>Main
 
 #cs
@@ -86,6 +93,7 @@ Draws bounding boxes and keypoints on the input image and return it.
 Args:
 	image: The input RGB image.
 	detection_result: The list of all "Detection" entities to be visualize.
+	scale: Scale to keep drawing visible after resize
 Returns:
 	Image with bounding boxes.
 #ce
@@ -150,3 +158,10 @@ Func _OnAutoItExit()
 	_OpenCV_Close()
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit
+
+Func _AssertIsObj($vVal, $sMsg)
+	If Not IsObj($vVal) Then
+		ConsoleWriteError($sMsg & @CRLF)
+		Exit 0x7FFFFFFF
+	EndIf
+EndFunc   ;==>_AssertIsObj

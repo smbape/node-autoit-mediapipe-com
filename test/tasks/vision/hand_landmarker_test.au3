@@ -5,6 +5,9 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/tasks/python/test/vision/hand_landmarker_test.py
+
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
@@ -12,20 +15,17 @@
 #include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/tasks/python/test/vision/hand_landmarker_test.py
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/main/examples/hand_landmarker/python/hand_landmarker.ipynb#scrollTo=s3E6NFV-00Qt&uniqifier=1
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
+Global Const $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
 _AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
 Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
@@ -83,7 +83,7 @@ Global Const $_POINTING_UP_IMAGE = 'pointing_up.jpg'
 Global Const $_POINTING_UP_LANDMARKS = 'pointing_up_landmarks.pbtxt'
 Global Const $_POINTING_UP_ROTATED_IMAGE = 'pointing_up_rotated.jpg'
 Global Const $_POINTING_UP_ROTATED_LANDMARKS = 'pointing_up_rotated_landmarks.pbtxt'
-Global Const $_LANDMARKS_ERROR_TOLERANCE = 0.03
+Global Const $_LANDMARKS_MARGIN = 0.03
 Global Const $_HANDEDNESS_MARGIN = 0.05
 
 Global Const $FILE_CONTENT = 1
@@ -99,7 +99,7 @@ Func Test()
 	Local $url, $file_path
 
 	Local $test_files[] = [ _
-			$_HAND_LANDMARKER_BUNDLE_ASSET_FILE, _
+			_Mediapipe_Tuple($_HAND_LANDMARKER_BUNDLE_ASSET_FILE, "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task"), _
 			$_NO_HANDS_IMAGE, _
 			$_TWO_HANDS_IMAGE, _
 			$_THUMB_UP_IMAGE, _
@@ -110,9 +110,14 @@ Func Test()
 			$_POINTING_UP_ROTATED_LANDMARKS _
 			]
 	For $name In $test_files
-		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
-		$file_path = $_TEST_DATA_DIR & "\" & $name
+		If IsArray($name) Then
+			$url = $name[1]
+			$name = $name[0]
+		Else
+			$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
+		EndIf
 		If Not FileExists(get_test_data_path($name)) Then
+			$file_path = $_TEST_DATA_DIR & "\" & $name
 			$download_utils.download($url, $file_path)
 		EndIf
 	Next
@@ -143,7 +148,7 @@ EndFunc   ;==>Test
 Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $landmarker = $_HandLandmarker.create_from_model_path($model_path)
-	_AssertIsObj($landmarker)
+	_AssertIsInstance($landmarker, $_HandLandmarker)
 	$landmarker.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
@@ -152,17 +157,17 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_HandLandmarker.create_from_options($options)
-	_AssertIsObj($landmarker)
+	_AssertIsInstance($landmarker, $_HandLandmarker)
 	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
 	; Creates with options containing model content successfully.
-	Local $model_content = read_binary_to_mat($model_path)
+	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	Local $options = $_HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_HandLandmarker.create_from_options($options)
-	_AssertIsObj($landmarker)
+	_AssertIsInstance($landmarker, $_HandLandmarker)
 	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
@@ -173,7 +178,7 @@ Func test_detect($model_file_type, $expected_detection_result)
 	If $model_file_type == $FILE_NAME Then
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	ElseIf $model_file_type == $FILE_CONTENT Then
-		$model_content = read_binary_to_mat($model_path)
+		$model_content = read_file_into_buffer($model_path)
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	EndIf
 
@@ -184,7 +189,7 @@ Func test_detect($model_file_type, $expected_detection_result)
 	Local $detection_result = $landmarker.detect($test_image)
 
 	; Comparing results.
-	_assert_actual_result_approximately_matches_expected_result($detection_result, $expected_detection_result)
+	_expect_hand_landmarker_results_correct($detection_result, $expected_detection_result)
 
 	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
 	$landmarker.close()
@@ -226,7 +231,7 @@ Func test_detect_succeeds_with_rotation()
 	Local $expected_detection_result = _get_expected_hand_landmarker_result($_POINTING_UP_ROTATED_LANDMARKS)
 
 	; Comparing results.
-	_assert_actual_result_approximately_matches_expected_result($detection_result, $expected_detection_result)
+	_expect_hand_landmarker_results_correct($detection_result, $expected_detection_result)
 
 	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
 	$landmarker.close()
@@ -258,11 +263,6 @@ Func test_detect_for_video($image_path, $rotation, $expected_result)
 			"running_mode", $_RUNNING_MODE.VIDEO))
 	Local $landmarker = $_HandLandmarker.create_from_options($options)
 
-	; Local $cv = _OpenCV_get()
-	; Local $rgb_image = $cv.imread(get_test_data_path($image_path))
-	; $cv.imshow("expected", draw_landmarks_on_image($rgb_image, $expected_result))
-	; $cv.waitKey(0)
-
 	; Load the image.
 	Local $test_image = $_Image.create_from_file(get_test_data_path($image_path))
 
@@ -278,57 +278,51 @@ Func test_detect_for_video($image_path, $rotation, $expected_result)
 		; $cv.waitKey(0)
 
 		If $result.hand_landmarks.size() > 0 And $result.hand_world_landmarks.size() > 0 And $result.handedness.size() > 0 Then
-			_assert_actual_result_approximately_matches_expected_result($result, $expected_result)
+			_expect_hand_landmarker_results_correct($result, $expected_result)
 		Else
-			_AssertEqual($result.hand_landmarks.size(), $expected_result.hand_landmarks.size())
-			_AssertEqual($result.hand_world_landmarks.size(), $expected_result.hand_world_landmarks.size())
-			_AssertEqual($result.handedness.size(), $expected_result.handedness.size())
+			_AssertEqual($result, $expected_result)
 		EndIf
-
-		; $result = _hand_landmarker_result_to_pb2($result)
-		; ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $result = ' & $result.__str__() & @CRLF) ;### Debug Console
-		; ExitLoop
 	Next
 
 	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
 	$landmarker.close()
 EndFunc   ;==>test_detect_for_video
 
-; Func check_result($result, $output_image, $timestamp_ms)
-; 	If $result.hand_landmarks.size() > 0 And $result.hand_world_landmarks.size() > 0 And $result.handedness.size() > 0 Then
-; 		_assert_actual_result_approximately_matches_expected_result($result, $expected_result)
-; 	Else
-; 		_AssertEqual($result.hand_landmarks.size(), $expected_result.hand_landmarks.size())
-; 		_AssertEqual($result.hand_world_landmarks.size(), $expected_result.hand_world_landmarks.size())
-; 		_AssertEqual($result.handedness.size(), $expected_result.handedness.size())
-; 	EndIf
+Func _expect_hand_landmarks_correct($actual_landmarks, $expected_landmarks, $margin)
+	; Expects to have the same number of hands detected.
+	_AssertLen($actual_landmarks, $expected_landmarks.size())
 
-; 	_AssertMatEqual($output_image.mat_view(), $test_image.mat_view())
-; 	_AssertLess($observed_timestamp_ms, $timestamp_ms)
-; 	$observed_timestamp_ms = $timestamp_ms
-; EndFunc   ;==>check_result
+	Local $i, $j
 
-; Func test_detect_async_calls($image_path, $rotation, $expected_result)
-; 	; Creates hand landmarker.
-; 	Local $options = $_HandLandmarkerOptions(_Mediapipe_Params( _
-; 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
-; 			"running_mode", $_RUNNING_MODE.LIVE_STREAM, _
-; 			"result_callback", check_result))
-; 	Local $landmarker = $_HandLandmarker.create_from_options($options)
+	$i = 0
+	For $actual_landmark In $actual_landmarks
+		$j = 0
+		For $elem In $actual_landmark
+			_AssertAlmostEqual($elem.x, $expected_landmarks($i)($j).x, $margin)
+			_AssertAlmostEqual($elem.y, $expected_landmarks($i)($j).y, $margin)
+			$j = $j + 1
+		Next
+		$i = $i + 1
+	Next
+EndFunc   ;==>_expect_hand_landmarks_correct
 
-; 	$test_image = $_Image.create_from_file(get_test_data_path($image_path))
-; 	$observed_timestamp_ms = -1
+Func _expect_handedness_correct($actual_handedness, $expected_handedness, $margin)
+	; Actual top handedness matches expected top handedness.
+	Local $actual_top_handedness = $actual_handedness(0)(0)
+	Local $expected_top_handedness = $expected_handedness(0)(0)
+	_AssertEqual($actual_top_handedness.index, $expected_top_handedness.index)
+	_AssertEqual($actual_top_handedness.category_name, $expected_top_handedness.category_name)
+	_AssertAlmostEqual($actual_top_handedness.score, $expected_top_handedness.score, $margin)
+EndFunc   ;==>_expect_handedness_correct
 
-; 	; Set rotation parameters using ImageProcessingOptions.
-; 	Local $image_processing_options = $_ImageProcessingOptions(_Mediapipe_Params("rotation_degrees", $rotation))
-
-; 	For $timestamp = 0 To (300 - 30) Step 30
-; 		$landmarker.detect_async($test_image, $timestamp, $image_processing_options)
-; 	Next
-
-; 	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
-; 	$landmarker.close()
-; EndFunc   ;==>test_detect_async_calls
+Func _expect_hand_landmarker_results_correct($actual_result, $expected_result)
+	_expect_hand_landmarks_correct( _
+			$actual_result.hand_landmarks, _
+			$expected_result.hand_landmarks, _
+			$_LANDMARKS_MARGIN _
+			)
+	_expect_handedness_correct($actual_result.handedness, $expected_result.handedness, $_HANDEDNESS_MARGIN)
+EndFunc   ;==>_expect_hand_landmarker_results_correct
 
 Func _get_expected_hand_landmarker_result($file_path)
 	Local Const $landmarks_detection_result_file_path = get_test_data_path($file_path)
@@ -345,61 +339,10 @@ Func _get_expected_hand_landmarker_result($file_path)
 			"hand_world_landmarks", _Mediapipe_Tuple($landmarks_detection_result.world_landmarks)))
 EndFunc   ;==>_get_expected_hand_landmarker_result
 
-Func _hand_landmarker_result_to_pb2($detection_result)
-	Local $landmarks_detection_result = $_LandmarksDetectionResult(_Mediapipe_Params( _
-			"categories", $detection_result.handedness(0), _
-			"landmarks", $detection_result.hand_landmarks(0), _
-			"world_landmarks", $detection_result.hand_world_landmarks(0)))
-	Return $landmarks_detection_result.to_pb2()
-EndFunc   ;==>_hand_landmarker_result_to_pb2
-
-Func _assert_actual_result_approximately_matches_expected_result($actual_result, $expected_result, $sMessage = Default, $bExit = True, $iCode = 0x7FFFFFFF, $sLine = @ScriptLineNumber)
-	; Expects to have the same number of hands detected.
-	_AssertLen($actual_result.hand_landmarks, _
-			$expected_result.hand_landmarks.size(), $sMessage, $bExit, $iCode, $sLine)
-	_AssertLen($actual_result.hand_world_landmarks, _
-			$expected_result.hand_world_landmarks.size(), $sMessage, $bExit, $iCode, $sLine)
-	_AssertLen($actual_result.handedness, $expected_result.handedness.size(), $sMessage, $bExit, $iCode, $sLine)
-
-	; Actual landmarks match expected landmarks.
-	Local $actual_landmarks = $actual_result.hand_landmarks(0)
-	Local $expected_landmarks = $expected_result.hand_landmarks(0)
-	_AssertLen($actual_landmarks, UBound($expected_landmarks), $sMessage, $bExit, $iCode, $sLine)
-
-	Local $i = 0
-	Local $expected_landmark
-
-	For $actual_landmark In $actual_landmarks
-		$expected_landmark = $expected_landmarks[$i]
-
-		_AssertAlmostEqual( _
-				$actual_landmark.x, _
-				$expected_landmark.x, _
-				$_LANDMARKS_ERROR_TOLERANCE, Default, $sMessage, $bExit, $iCode, $sLine)
-
-		_AssertAlmostEqual( _
-				$actual_landmark.y, _
-				$expected_landmark.y, _
-				$_LANDMARKS_ERROR_TOLERANCE, Default, $sMessage, $bExit, $iCode, $sLine)
-
-		$i += 1
-	Next
-
-	; Actual handedness matches expected handedness.
-	Local $actual_top_handedness = $actual_result.handedness(0)[0]
-	Local $expected_top_handedness = $expected_result.handedness(0)[0]
-	_AssertEqual($actual_top_handedness.index, $expected_top_handedness.index, $sMessage, $bExit, $iCode, $sLine)
-	_AssertEqual($actual_top_handedness.category_name, $expected_top_handedness.category_name, $sMessage, $bExit, $iCode, $sLine)
-	_AssertAlmostEqual( _
-			$actual_top_handedness.score, _
-			$expected_top_handedness.score, _
-			$_HANDEDNESS_MARGIN, Default, $sMessage, $bExit, $iCode, $sLine)
-EndFunc   ;==>_assert_actual_result_approximately_matches_expected_result
-
 Func draw_landmarks_on_image($rgb_image, $detection_result, $scale = 1.0)
 	Local $cv = _OpenCV_get()
 
-	Local $MARGIN = 10  ; pixels
+	Local $margin = 10  ; pixels
 	Local $FONT_SIZE = 1
 	Local $FONT_THICKNESS = 1
 	Local $HANDEDNESS_TEXT_COLOR = _OpenCV_Scalar(88, 205, 54) ; vibrant green
@@ -443,7 +386,7 @@ Func draw_landmarks_on_image($rgb_image, $detection_result, $scale = 1.0)
 		Next
 
 		$text_x *= $width
-		$text_y = $text_y * $height - $MARGIN
+		$text_y = $text_y * $height - $margin
 
 		; Draw handedness (left or right hand) on the image.
 		$cv.putText($annotated_image, $handedness[0].category_name, _

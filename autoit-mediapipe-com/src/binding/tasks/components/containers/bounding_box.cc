@@ -16,6 +16,6 @@ namespace mediapipe::tasks::autoit::components::containers::bounding_box {
 			pb2_obj.ymin(),
 			pb2_obj.width(),
 			pb2_obj.height()
-			);
+		);
 	}
 }

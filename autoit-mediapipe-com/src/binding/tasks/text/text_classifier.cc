@@ -24,8 +24,8 @@ namespace mediapipe::tasks::autoit::text::text_classifier {
 		}
 
 		if (score_threshold) pb2_obj->mutable_classifier_options()->set_score_threshold(*score_threshold);
-		pb2_obj->mutable_classifier_options()->mutable_category_allowlist()->Add(category_allowlist.begin(), category_allowlist.end());
-		pb2_obj->mutable_classifier_options()->mutable_category_denylist()->Add(category_denylist.begin(), category_denylist.end());
+		if (category_allowlist) pb2_obj->mutable_classifier_options()->mutable_category_allowlist()->Add(category_allowlist->begin(), category_allowlist->end());
+		if (category_denylist) pb2_obj->mutable_classifier_options()->mutable_category_denylist()->Add(category_denylist->begin(), category_denylist->end());
 		if (display_names_locale) pb2_obj->mutable_classifier_options()->set_display_names_locale(*display_names_locale);
 		if (max_results) pb2_obj->mutable_classifier_options()->set_max_results(*max_results);
 
@@ -40,8 +40,8 @@ namespace mediapipe::tasks::autoit::text::text_classifier {
 	std::shared_ptr<TextClassifier> TextClassifier::create_from_options(std::shared_ptr<TextClassifierOptions> options) {
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = { _TEXT_TAG + ":" + _TEXT_IN_STREAM_NAME };
-		task_info.output_streams = { _CLASSIFICATIONS_TAG + ":" + _CLASSIFICATIONS_STREAM_NAME };
+		*task_info.input_streams = { _TEXT_TAG + ":" + _TEXT_IN_STREAM_NAME };
+		*task_info.output_streams = { _CLASSIFICATIONS_TAG + ":" + _CLASSIFICATIONS_STREAM_NAME };
 		task_info.task_options = options->to_pb2();
 
 		return std::make_shared<TextClassifier>(*task_info.generate_graph_config());
@@ -52,11 +52,7 @@ namespace mediapipe::tasks::autoit::text::text_classifier {
 			{ _TEXT_IN_STREAM_NAME, std::move(MakePacket<std::string>(text)) }
 			}));
 
-		mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
-		classification_result_proto.CopyFrom(
-			*get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
-		);
-
+		const auto& classification_result_proto = GetContent<mediapipe::tasks::components::containers::proto::ClassificationResult>(output_packets.at(_CLASSIFICATIONS_STREAM_NAME));
 		return TextClassifierResult::create_from_pb2(classification_result_proto);
 	}
 }

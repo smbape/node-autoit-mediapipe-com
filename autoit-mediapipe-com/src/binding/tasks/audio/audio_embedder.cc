@@ -23,16 +23,16 @@ const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::
 }
 
 namespace {
+	using namespace google::protobuf;
+	using namespace mediapipe::autoit::packet_creator;
+	using namespace mediapipe::autoit::packet_getter;
 	using namespace mediapipe::tasks::audio::audio_embedder::proto;
 	using namespace mediapipe::tasks::autoit::audio::core::audio_task_running_mode;
 	using namespace mediapipe::tasks::autoit::components::containers::audio_data;
 	using namespace mediapipe::tasks::autoit::components::containers::embedding_result;
+	using namespace mediapipe::tasks::autoit::components::utils;
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::tasks::autoit::components::utils;
-	using namespace mediapipe::autoit::packet_creator;
-	using namespace mediapipe::autoit::packet_getter;
-	using namespace google::protobuf;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -91,10 +91,7 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 					return;
 				}
 
-				mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
-				embedding_result_proto.CopyFrom(
-					*get_proto(output_packets.at(_EMBEDDINGS_STREAM_NAME))
-				);
+				const auto& embedding_result_proto = GetContent<mediapipe::tasks::components::containers::proto::EmbeddingResult>(output_packets.at(_EMBEDDINGS_STREAM_NAME));
 				options->result_callback(
 					*AudioEmbedderResult::create_from_pb2(embedding_result_proto),
 					timestamp_ms
@@ -104,11 +101,11 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_AUDIO_TAG + ":" + _AUDIO_IN_STREAM_NAME,
 			_SAMPLE_RATE_TAG + ":" + _SAMPLE_RATE_IN_STREAM_NAME
 		};
-		task_info.output_streams = {
+		*task_info.output_streams = {
 			_EMBEDDINGS_TAG + ":" + _EMBEDDINGS_STREAM_NAME,
 			_TIMESTAMPED_EMBEDDINGS_TAG + ":" + _TIMESTAMPED_EMBEDDINGS_STREAM_NAME
 		};
@@ -130,11 +127,8 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 			{ _SAMPLE_RATE_IN_STREAM_NAME, std::move(MakePacket<double>(*audio_clip.audio_format().sample_rate)) },
 			});
 
-		std::vector<std::shared_ptr<Message>> embedding_result_proto_list;
-		get_proto_list(output_packets.at(_TIMESTAMPED_EMBEDDINGS_STREAM_NAME), embedding_result_proto_list);
-		for (const auto& proto : embedding_result_proto_list) {
-			mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
-			embedding_result_proto.CopyFrom(*proto);
+		const auto& embedding_result_proto_list = GetContent<std::vector<mediapipe::tasks::components::containers::proto::EmbeddingResult>>(output_packets.at(_TIMESTAMPED_EMBEDDINGS_STREAM_NAME));
+		for (const auto& embedding_result_proto : embedding_result_proto_list) {
 			output_list.push_back(AudioEmbedderResult::create_from_pb2(embedding_result_proto));
 		}
 	}

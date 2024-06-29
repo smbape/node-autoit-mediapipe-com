@@ -38,8 +38,8 @@ namespace mediapipe::tasks::autoit::text::text_embedder {
 	std::shared_ptr<TextEmbedder> TextEmbedder::create_from_options(std::shared_ptr<TextEmbedderOptions> options) {
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = { _TEXT_TAG + ":" + _TEXT_IN_STREAM_NAME };
-		task_info.output_streams = { _EMBEDDINGS_TAG + ":" + _EMBEDDINGS_OUT_STREAM_NAME };
+		*task_info.input_streams = { _TEXT_TAG + ":" + _TEXT_IN_STREAM_NAME };
+		*task_info.output_streams = { _EMBEDDINGS_TAG + ":" + _EMBEDDINGS_OUT_STREAM_NAME };
 		task_info.task_options = options->to_pb2();
 
 		return std::make_shared<TextEmbedder>(*task_info.generate_graph_config());
@@ -50,11 +50,7 @@ namespace mediapipe::tasks::autoit::text::text_embedder {
 			{ _TEXT_IN_STREAM_NAME, std::move(MakePacket<std::string>(text)) }
 			}));
 
-		mediapipe::tasks::components::containers::proto::EmbeddingResult embedding_result_proto;
-		embedding_result_proto.CopyFrom(
-			*get_proto(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME))
-		);
-
+		const auto& embedding_result_proto = GetContent<mediapipe::tasks::components::containers::proto::EmbeddingResult>(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME));
 		return TextEmbedderResult::create_from_pb2(embedding_result_proto);
 	}
 

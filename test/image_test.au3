@@ -5,23 +5,25 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/image_test.py
+
 #include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "_assert.au3"
 #include "_mat_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/image_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $cv = _OpenCV_get()
+Global Const $cv = _OpenCV_get()
+_AssertIsObj($cv, "Failed to load opencv")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
 Global Const $_image = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
@@ -39,6 +41,7 @@ Func Test()
 	test_image_mat_view_with_contiguous_data()
 	test_image_mat_view_with_non_contiguous_data()
 	test_image_create_from_cvmat()
+	test_image_create_from_file()
 EndFunc   ;==>Test
 
 Func test_create_image_from_gray_cv_mat()
@@ -203,6 +206,21 @@ Func test_image_create_from_cvmat()
 	_AssertEqual($rgb_image.image_format, $MEDIAPIPE_IMAGE_FORMAT_SRGB)
 	_AssertMatEqual($mat, $rgb_image.mat_view())
 EndFunc   ;==>test_image_create_from_cvmat
+
+Func test_image_create_from_file()
+	$download_utils.download( _
+			"https://github.com/tensorflow/tfjs-models/raw/master/hand-pose-detection/test_data/hands.jpg", _
+			@ScriptDir & "/solutions/testdata/hands.jpg" _
+			)
+
+	Local $image_path = @ScriptDir & "/solutions/testdata/hands.jpg"
+
+	Local $loaded_image = $Image.create_from_file($image_path)
+	_AssertEqual($loaded_image.width, 720)
+	_AssertEqual($loaded_image.height, 382)
+	_AssertEqual($loaded_image.channels, 3)
+	_AssertEqual($loaded_image.image_format, $MEDIAPIPE_IMAGE_FORMAT_SRGB)
+EndFunc   ;==>test_image_create_from_file
 
 Func _OnAutoItExit()
 	_OpenCV_Close()

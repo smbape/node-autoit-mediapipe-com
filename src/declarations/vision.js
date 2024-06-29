@@ -1,6 +1,8 @@
 module.exports = [
     // expose a vision property like in mediapipe python
     ["mediapipe.tasks.autoit.vision.", "", ["/Properties"], [
+        ["mediapipe::tasks::autoit::vision::face_aligner::FaceAligner", "FaceAligner", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::face_aligner::FaceAlignerOptions", "FaceAlignerOptions", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::face_detector::FaceDetector", "FaceDetector", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::face_detector::FaceDetectorOptions", "FaceDetectorOptions", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::components::containers::detections::DetectionResult", "FaceDetectorResult", "", ["/R", "=this"]],
@@ -16,6 +18,7 @@ module.exports = [
         ["mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarker", "HandLandmarker", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerOptions", "HandLandmarkerOptions", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarkerResult", "HandLandmarkerResult", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections", "HandLandmarksConnections", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::image_classifier::ImageClassifier", "ImageClassifier", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierOptions", "ImageClassifierOptions", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult", "ImageClassifierResult", "", ["/R", "=this"]],
@@ -24,6 +27,7 @@ module.exports = [
         ["mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult", "ImageEmbedderResult", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenter", "ImageSegmenter", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterOptions", "ImageSegmenterOptions", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::core::image_processing_options::ImageProcessingOptions", "ImageProcessingOptions", "", ["/R", "=this"]],
         ["mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::OutputType", "ImageSegmenterOptions_OutputType", "", ["/R", "=this", "/S"]],
         ["mediapipe::tasks::vision::image_segmenter::proto::SegmenterOptions::Activation", "ImageSegmenterOptions_Activation", "", ["/R", "=this", "/S"]],
         ["mediapipe::tasks::autoit::vision::interactive_segmenter::InteractiveSegmenter", "InteractiveSegmenter", "", ["/R", "=this"]],
@@ -33,7 +37,14 @@ module.exports = [
         ["mediapipe::tasks::autoit::vision::interactive_segmenter::RegionOfInterest_Format", "InteractiveSegmenterRegionOfInterest_Format", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::object_detector::ObjectDetector", "ObjectDetector", "", ["/R", "=this"]],
         ["mediapipe::tasks::autoit::vision::object_detector::ObjectDetectorOptions", "ObjectDetectorOptions", "", ["/R", "=this"]],
-        ["mediapipe::tasks::autoit::vision::core::vision_task_running_mode::VisionTaskRunningMode", "RunningMode", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::components::containers::detections::DetectionResult", "ObjectDetectorResult", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarker", "PoseLandmarker", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarkerOptions", "PoseLandmarkerOptions", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarkerResult", "PoseLandmarkerResult", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections", "PoseLandmarksConnections", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::holistic_landmarker::HolisticLandmarker", "HolisticLandmarker", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::holistic_landmarker::HolisticLandmarkerOptions", "HolisticLandmarkerOptions", "", ["/R", "=this"]],
+        ["mediapipe::tasks::autoit::vision::holistic_landmarker::HolisticLandmarkerResult", "HolisticLandmarkerResult", "", ["/R", "=this"]],
     ], "", ""],
 
     // expose a image_classifier property like in mediapipe python

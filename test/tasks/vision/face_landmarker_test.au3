@@ -5,6 +5,9 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/tasks/python/test/vision/face_landmarker_test.py
+
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
@@ -12,74 +15,72 @@
 #include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/tasks/python/test/vision/face_landmarker_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
+Global Const $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
 _AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
-Global $classification_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.classification_pb2")
+Global Const $classification_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.classification_pb2")
 _AssertIsObj($classification_pb2, "Failed to load mediapipe.framework.formats.classification_pb2")
 
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
+Global Const $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
 _AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
 
-Global $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
+Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
 _AssertIsObj($image_module, "Failed to load mediapipe.autoit._framework_bindings.image")
 
-Global $category_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.category")
+Global Const $category_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.category")
 _AssertIsObj($category_module, "Failed to load mediapipe.tasks.autoit.components.containers.category")
 
-Global $landmark_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.landmark")
+Global Const $landmark_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.landmark")
 _AssertIsObj($landmark_module, "Failed to load mediapipe.tasks.autoit.components.containers.landmark")
 
-Global $rect_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.rect")
+Global Const $rect_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.rect")
 _AssertIsObj($rect_module, "Failed to load mediapipe.tasks.autoit.components.containers.rect")
 
-Global $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
+Global Const $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
 _AssertIsObj($base_options_module, "Failed to load mediapipe.tasks.autoit.core.base_options")
 
-Global $face_landmarker = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker")
+Global Const $face_landmarker = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_landmarker")
 _AssertIsObj($face_landmarker, "Failed to load mediapipe.tasks.autoit.vision.face_landmarker")
 
-Global $image_processing_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options")
+Global Const $image_processing_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options")
 _AssertIsObj($image_processing_options_module, "Failed to load mediapipe.tasks.autoit.vision.core.image_processing_options")
 
-Global $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
+Global Const $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 _AssertIsObj($running_mode_module, "Failed to load mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 
-Global $FaceLandmarkerResult = $face_landmarker.FaceLandmarkerResult
-Global $_BaseOptions = $base_options_module.BaseOptions
-Global $_Category = $category_module.Category
-Global $_Rect = $rect_module.Rect
-Global $_Landmark = $landmark_module.Landmark
-Global $_NormalizedLandmark = $landmark_module.NormalizedLandmark
-Global $_Image = $image_module.Image
-Global $_FaceLandmarker = $face_landmarker.FaceLandmarker
-Global $_FaceLandmarkerOptions = $face_landmarker.FaceLandmarkerOptions
-Global $_RUNNING_MODE = $running_mode_module.VisionTaskRunningMode
-Global $_ImageProcessingOptions = $image_processing_options_module.ImageProcessingOptions
+Global Const $FaceLandmarkerResult = $face_landmarker.FaceLandmarkerResult
+Global Const $_BaseOptions = $base_options_module.BaseOptions
+Global Const $_Category = $category_module.Category
+Global Const $_Rect = $rect_module.Rect
+Global Const $_Landmark = $landmark_module.Landmark
+Global Const $_NormalizedLandmark = $landmark_module.NormalizedLandmark
+Global Const $_Image = $image_module.Image
+Global Const $_FaceLandmarker = $face_landmarker.FaceLandmarker
+Global Const $_FaceLandmarkerOptions = $face_landmarker.FaceLandmarkerOptions
+Global Const $_RUNNING_MODE = $running_mode_module.VisionTaskRunningMode
+Global Const $_ImageProcessingOptions = $image_processing_options_module.ImageProcessingOptions
 
-Global $_FACE_LANDMARKER_BUNDLE_ASSET_FILE = 'face_landmarker_v2.task'
-Global $_PORTRAIT_IMAGE = 'portrait.jpg'
-Global $_CAT_IMAGE = 'cat.jpg'
-Global $_PORTRAIT_EXPECTED_FACE_LANDMARKS = 'portrait_expected_face_landmarks.pbtxt'
-Global $_PORTRAIT_EXPECTED_BLENDSHAPES = 'portrait_expected_blendshapes.pbtxt'
-Global $_LANDMARKS_DIFF_MARGIN = 0.03
-Global $_BLENDSHAPES_DIFF_MARGIN = 0.13
-Global $_FACIAL_TRANSFORMATION_MATRIX_DIFF_MARGIN = 0.02
+Global Const $_FACE_LANDMARKER_BUNDLE_ASSET_FILE = 'face_landmarker_v2.task'
+Global Const $_PORTRAIT_IMAGE = 'portrait.jpg'
+Global Const $_CAT_IMAGE = 'cat.jpg'
+Global Const $_PORTRAIT_EXPECTED_FACE_LANDMARKS = 'portrait_expected_face_landmarks.pbtxt'
+Global Const $_PORTRAIT_EXPECTED_BLENDSHAPES = 'portrait_expected_blendshapes.pbtxt'
+Global Const $_LANDMARKS_MARGIN = 0.03
+Global Const $_BLENDSHAPES_MARGIN = 0.13
+Global Const $_FACIAL_TRANSFORMATION_MATRIX_MARGIN = 0.02
 
-Global $FILE_CONTENT = 1
-Global $FILE_NAME = 2
+Global Const $FILE_CONTENT = 1
+Global Const $FILE_NAME = 2
 
 Global $test_image
 Global $model_path
@@ -98,9 +99,14 @@ Func Test()
 			$_PORTRAIT_EXPECTED_BLENDSHAPES _
 			]
 	For $name In $test_files
-		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
-		$file_path = $_TEST_DATA_DIR & "\" & $name
+		If IsArray($name) Then
+			$url = $name[1]
+			$name = $name[0]
+		Else
+			$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
+		EndIf
 		If Not FileExists(get_test_data_path($name)) Then
+			$file_path = $_TEST_DATA_DIR & "\" & $name
 			$download_utils.download($url, $file_path)
 		EndIf
 	Next
@@ -141,7 +147,7 @@ EndFunc   ;==>Test
 Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $landmarker = $_FaceLandmarker.create_from_model_path($model_path)
-	_AssertIsObj($landmarker)
+	_AssertIsInstance($landmarker, $_FaceLandmarker)
 	$landmarker.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
@@ -150,17 +156,17 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_FaceLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_FaceLandmarker.create_from_options($options)
-	_AssertIsObj($landmarker)
+	_AssertIsInstance($landmarker, $_FaceLandmarker)
 	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
 	; Creates with options containing model content successfully.
-	Local $model_content = read_binary_to_mat($model_path)
+	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	Local $options = $_FaceLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_FaceLandmarker.create_from_options($options)
-	_AssertIsObj($landmarker)
+	_AssertIsInstance($landmarker, $_FaceLandmarker)
 	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
@@ -178,7 +184,7 @@ Func test_detect( _
 	If $model_file_type == $FILE_NAME Then
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	ElseIf $model_file_type == $FILE_CONTENT Then
-		$model_content = read_binary_to_mat($model_path)
+		$model_content = read_file_into_buffer($model_path)
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	EndIf
 
@@ -194,11 +200,11 @@ Func test_detect( _
 
 	; Comparing results.
 	If $expected_face_landmarks <> Default Then
-		_expect_landmarks_correct($detection_result.face_landmarks(0), $expected_face_landmarks)
+		_expect_landmarks_correct($detection_result.face_landmarks, $expected_face_landmarks)
 	EndIf
 
 	If $expected_face_blendshapes <> Default Then
-		_expect_blendshapes_correct($detection_result.face_blendshapes(0), $expected_face_blendshapes)
+		_expect_blendshapes_correct($detection_result.face_blendshapes, $expected_face_blendshapes)
 	EndIf
 
 	If $expected_facial_transformation_matrixes <> Default Then
@@ -257,11 +263,11 @@ Func test_detect_for_video( _
 
 		; Comparing results.
 		If $expected_face_landmarks <> Default Then
-			_expect_landmarks_correct($detection_result.face_landmarks(0), $expected_face_landmarks)
+			_expect_landmarks_correct($detection_result.face_landmarks, $expected_face_landmarks)
 		EndIf
 
 		If $expected_face_blendshapes <> Default Then
-			_expect_blendshapes_correct($detection_result.face_blendshapes(0), $expected_face_blendshapes)
+			_expect_blendshapes_correct($detection_result.face_blendshapes, $expected_face_blendshapes)
 		EndIf
 
 		If $expected_facial_transformation_matrixes <> Default Then
@@ -278,15 +284,15 @@ Func _get_expected_face_landmarks($file_path)
 	Local $proto = $landmark_pb2.NormalizedLandmarkList.create()
 	$text_format.Parse(FileRead($proto_file_path), $proto)
 
-	Local $face_landmarks[$proto.landmark.size()]
+	Local $face_landmarks_results[1][$proto.landmark.size()]
 
 	Local $i = 0
 	For $landmark In $proto.landmark
-		$face_landmarks[$i] = $_NormalizedLandmark.create_from_pb2($landmark)
+		$face_landmarks_results[0][$i] = $_NormalizedLandmark.create_from_pb2($landmark)
 		$i += 1
 	Next
 
-	Return $face_landmarks
+	Return $face_landmarks_results
 EndFunc   ;==>_get_expected_face_landmarks
 
 Func _get_expected_face_blendshapes($file_path)
@@ -294,15 +300,15 @@ Func _get_expected_face_blendshapes($file_path)
 	Local $proto = $classification_pb2.ClassificationList.create()
 	$text_format.Parse(FileRead($proto_file_path), $proto)
 
-	Local $face_blendshapes_categories[$proto.classification.size()]
+	Local $face_blendshapes_results[1][$proto.classification.size()]
 
 	Local $i = 0
 	For $face_blendshapes In $proto.classification
-		$face_blendshapes_categories[$i] = $_Category.create_from_pb2($face_blendshapes)
+		$face_blendshapes_results[0][$i] = $_Category.create_from_pb2($face_blendshapes)
 		$i += 1
 	Next
 
-	Return $face_blendshapes_categories
+	Return $face_blendshapes_results
 EndFunc   ;==>_get_expected_face_blendshapes
 
 Func _get_expected_facial_transformation_matrixes()
@@ -325,10 +331,16 @@ Func _expect_landmarks_correct($actual_landmarks, $expected_landmarks)
 	; Expects to have the same number of faces detected.
 	_AssertLen($actual_landmarks, UBound($expected_landmarks))
 
-	Local $i = 0
-	For $elem In $actual_landmarks
-		_AssertAlmostEqual($elem.x, $expected_landmarks[$i].x, $_LANDMARKS_DIFF_MARGIN)
-		_AssertAlmostEqual($elem.y, $expected_landmarks[$i].y, $_LANDMARKS_DIFF_MARGIN)
+	Local $i, $j
+
+	$i = 0
+	For $actual_landmark In $actual_landmarks
+		$j = 0
+		For $elem In $actual_landmark
+			_AssertAlmostEqual($elem.x, $expected_landmarks[$i][$j].x, $_LANDMARKS_MARGIN)
+			_AssertAlmostEqual($elem.y, $expected_landmarks[$i][$j].y, $_LANDMARKS_MARGIN)
+			$j = $j + 1
+		Next
 		$i += 1
 	Next
 EndFunc   ;==>_expect_landmarks_correct
@@ -337,14 +349,21 @@ Func _expect_blendshapes_correct($actual_blendshapes, $expected_blendshapes)
 	; Expects to have the same number of blendshapes.
 	_AssertLen($actual_blendshapes, UBound($expected_blendshapes))
 
-	Local $i = 0
-	For $elem In $actual_blendshapes
-		_AssertEqual($elem.index, $expected_blendshapes[$i].index)
-		_AssertAlmostEqual( _
-				$elem.score, _
-				$expected_blendshapes[$i].score, _
-				$_BLENDSHAPES_DIFF_MARGIN _
-				)
+	Local $i, $j
+
+	$i = 0
+	For $actual_blendshape In $actual_blendshapes
+		$j = 0
+		For $elem In $actual_blendshape
+			_AssertEqual($elem.index, $expected_blendshapes[$i][$j].index)
+			_AssertEqual($elem.category_name, $expected_blendshapes[$i][$j].category_name)
+			_AssertAlmostEqual( _
+					$elem.score, _
+					$expected_blendshapes[$i][$j].score, _
+					$_BLENDSHAPES_MARGIN _
+					)
+			$j += 1
+		Next
 		$i += 1
 	Next
 EndFunc   ;==>_expect_blendshapes_correct
@@ -354,7 +373,7 @@ Func _expect_facial_transformation_matrixes_correct($actual_matrix_list, $expect
 
 	Local $i = 0
 	For $elem In $actual_matrix_list
-		_AssertMatAlmostEqual($elem, $expected_matrix_list[$i], $_FACIAL_TRANSFORMATION_MATRIX_DIFF_MARGIN)
+		_AssertMatAlmostEqual($elem, $expected_matrix_list[$i], $_FACIAL_TRANSFORMATION_MATRIX_MARGIN)
 		$i += 1
 	Next
 EndFunc   ;==>_expect_facial_transformation_matrixes_correct

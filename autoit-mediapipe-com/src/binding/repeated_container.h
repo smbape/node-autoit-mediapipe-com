@@ -1,6 +1,6 @@
 #pragma once
 
-#include "autoit_bridge.h"
+#include "binding/message.h"
 
 namespace google::protobuf::autoit {
 	struct RepeatedContainer;
@@ -34,9 +34,9 @@ namespace google::protobuf::autoit {
 		CV_WRAP_AS(slice) void Slice(CV_OUT std::vector<_variant_t>& list, SSIZE_T start = 0) const;
 		CV_WRAP_AS(slice) void Slice(CV_OUT std::vector<_variant_t>& list, SSIZE_T start, SSIZE_T count) const;
 		CV_WRAP_AS(deepcopy) _variant_t DeepCopy();
-		CV_WRAP_AS(add) Message* Add(std::map<std::string, _variant_t>& attrs = std::map<std::string, _variant_t>());
+		CV_WRAP_AS(add) Message* Add(const std::map<std::string, _variant_t>& attrs = std::map<std::string, _variant_t>());
 		CV_WRAP_AS(append) void Append(_variant_t item);
-		CV_WRAP_AS(extend) void Extend(std::vector<_variant_t>& items);
+		CV_WRAP_AS(extend) void Extend(const std::vector<_variant_t>& items);
 		CV_WRAP_AS(insert) void Insert(SSIZE_T index, _variant_t item);
 		CV_WRAP_AS(insert) void Insert(std::tuple<SSIZE_T, _variant_t>& args);
 		CV_WRAP_AS(pop) _variant_t Pop(SSIZE_T index = -1);
@@ -64,70 +64,19 @@ namespace google::protobuf::autoit {
 		std::vector<Element>& list,
 		SSIZE_T start,
 		SSIZE_T& deleteCount
-	) {
-		list.clear();
-
-		if (deleteCount <= 0) {
-			return false;
-		}
-
-		int field_size = repeatedField->size();
-
-		if (start < 0) {
-			start += field_size;
-		}
-
-		AUTOIT_ASSERT_THROW(start >= 0 && start < field_size, "splice index out of range");
-
-		if (deleteCount > (field_size - start)) {
-			deleteCount = field_size - start;
-		}
-
-		int end = start + deleteCount;
-
-		for (int i = start; i < end && i + deleteCount < field_size; i++) {
-			repeatedField->SwapElements(i, i + deleteCount);
-		}
-
-		list.resize(deleteCount);
-		return true;
-	}
+	);
 
 	template<typename Element>
-	Element* RepeatedField_AddMessage(RepeatedPtrField<Element>* repeatedField, const Element* message) {
-		Element* sub_message = repeatedField->Add();
-		sub_message->MergeFrom(*message);
-		return sub_message;
-	}
+	Element* RepeatedField_AddMessage(RepeatedPtrField<Element>* repeatedField, const Element* message);
 
 	template<typename Element>
-	Element* RepeatedField_AddMessage(RepeatedPtrField<Element>* repeatedField, std::map<std::string, _variant_t>& attrs) {
-		Element* sub_message = repeatedField->Add();
-		cmessage::InitAttributes(*sub_message, attrs);
-		return sub_message;
-	}
+	Element* RepeatedField_AddMessage(RepeatedPtrField<Element>* repeatedField, std::map<std::string, _variant_t>& attrs);
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start, SSIZE_T deleteCount) {
-		if (!RepeatedField_PrepareSplice(repeatedField, list, start, deleteCount)) {
-			return;
-		}
-
-		auto field_size = repeatedField->size();
-		for (int i = 0; deleteCount > 0; i++, deleteCount--) {
-			list[deleteCount - 1 - i] = repeatedField->Get(field_size - 1 - i);
-			repeatedField->RemoveLast();
-		}
-	}
+	void RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start, SSIZE_T deleteCount);
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start = 0) {
-		auto field_size = repeatedField->size();
-		if (start < 0) {
-			start += field_size;
-		}
-		RepeatedField_SpliceScalar(repeatedField, list, start, field_size - start);
-	}
+	void RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start = 0);
 
 	template<typename Element>
 	void RepeatedField_SpliceMessage(
@@ -135,31 +84,14 @@ namespace google::protobuf::autoit {
 		std::vector<std::shared_ptr<Element>>& list,
 		SSIZE_T start,
 		SSIZE_T deleteCount
-	) {
-		if (!RepeatedField_PrepareSplice(repeatedField, list, start, deleteCount)) {
-			return;
-		}
-
-		for (int i = 0; deleteCount > 0; i++, deleteCount--) {
-			// It seems that RemoveLast() is less efficient for sub-messages, and
-			// the memory is not completely released. Prefer ReleaseLast().
-			Element* sub_message = repeatedField->ReleaseLast();
-			list[deleteCount - 1 - i] = std::shared_ptr<Element>(sub_message);
-		}
-	}
+	);
 
 	template<typename Element>
 	void RepeatedField_SpliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
 		SSIZE_T start = 0
-	) {
-		auto field_size = repeatedField->size();
-		if (start < 0) {
-			start += field_size;
-		}
-		RepeatedField_SpliceMessage(repeatedField, list, start, field_size - start);
-	}
+	);
 
 	template<typename Element, typename _Tp>
 	void RepeatedField_SliceScalar(
@@ -167,29 +99,14 @@ namespace google::protobuf::autoit {
 		std::vector<Element>& list,
 		SSIZE_T start,
 		SSIZE_T count
-	) {
-		list.clear();
-		if (count <= 0) {
-			return;
-		}
-		list.resize(count);
-		for (size_t i = 0; i < count; i++) {
-			list[i] = repeatedField->Get(start + i);
-		}
-	}
+	);
 
 	template<typename Element, typename _Tp>
 	void RepeatedField_SliceScalar(
 		_Tp* repeatedField,
 		std::vector<Element>& list,
 		SSIZE_T start = 0
-	) {
-		auto field_size = repeatedField->size();
-		if (start < 0) {
-			start += field_size;
-		}
-		RepeatedField_SliceScalar(repeatedField, list, start, field_size - start);
-	}
+	);
 
 	template<typename Element>
 	void RepeatedField_SliceMessage(
@@ -197,139 +114,60 @@ namespace google::protobuf::autoit {
 		std::vector<std::shared_ptr<Element>>& list,
 		SSIZE_T start,
 		SSIZE_T count
-	) {
-		list.clear();
-		if (count <= 0) {
-			return;
-		}
-		list.resize(count);
-		for (size_t i = 0; i < count; i++) {
-			list[i] = ::autoit::reference_internal(repeatedField->Mutable(start + i));
-		}
-	}
+	);
 
 	template<typename Element>
 	void RepeatedField_SliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
 		SSIZE_T start = 0
-	) {
-		auto field_size = repeatedField->size();
-		if (start < 0) {
-			start += field_size;
-		}
-		RepeatedField_SliceMessage(repeatedField, list, start, field_size - start);
-	}
+	);
 
 	template<typename _Tp>
 	void RepeatedField_ExtendScalar(
 		_Tp* repeatedField,
 		const _Tp& items
-	) {
-		for (const auto& item : items) {
-			*repeatedField->Add() = item;
-		}
-	}
+	);
 
 	template<typename Element, typename _Tp>
 	void RepeatedField_ExtendScalar(
 		_Tp* repeatedField,
 		const std::vector<Element>& items
-	) {
-		for (const auto& item : items) {
-			*repeatedField->Add() = item;
-		}
-	}
+	);
 
 	template<typename Element>
 	void RepeatedField_ExtendMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		const std::vector<std::shared_ptr<Element>>& items
-	) {
-		for (const auto& item : items) {
-			RepeatedField_AddMessage(repeatedField, item.get());
-		}
-	}
+	);
 
 	template<typename Element>
 	void RepeatedField_ExtendMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		const RepeatedPtrField<Element>& items
-	) {
-		for (const auto& item : items) {
-			RepeatedField_AddMessage(repeatedField, &item);
-		}
-	}
+	);
 
 	template<typename Element>
 	void RepeatedField_ExtendMessage(
 		RepeatedPtrField<Element>* repeatedField,
-		std::vector<_variant_t>& items
-	) {
-		for (const auto& item : items) {
-			std::map<std::string, _variant_t> attrs;
-			HRESULT hr = autoit_to(&item, attrs);
-			if (SUCCEEDED(hr)) {
-				RepeatedField_AddMessage(repeatedField, attrs);
-			}
-			else {
-				auto value = ::autoit::cast<std::shared_ptr<Element>>(&item);
-				RepeatedField_AddMessage(repeatedField, value.get());
-			}
-		}
-	}
+		const std::vector<_variant_t>& items
+	);
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_InsertScalar(_Tp* repeatedField, SSIZE_T index, const Element& item) {
-		int field_size = repeatedField->size();
-		if (index < 0) {
-			index += field_size;
-		}
-
-		AUTOIT_ASSERT_THROW(index >= 0 && index <= field_size, "list index (" << index << ") out of range");
-
-		*repeatedField->Add() = item;
-
-		for (int i = index; i < field_size; i++) {
-			repeatedField->SwapElements(i, field_size);
-		}
-	}
+	void RepeatedField_InsertScalar(_Tp* repeatedField, SSIZE_T index, const Element& item);
 
 	template<typename Element>
-	void RepeatedField_InsertMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index, const Element* item) {
-		int field_size = repeatedField->size();
-		if (index < 0) {
-			index += field_size;
-		}
-
-		AUTOIT_ASSERT_THROW(index >= 0 && index <= field_size, "list index (" << index << ") out of range");
-
-		RepeatedField_AddMessage(repeatedField, item);
-
-		for (int i = index; i < field_size; i++) {
-			repeatedField->SwapElements(i, field_size);
-		}
-	}
+	void RepeatedField_InsertMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index, const Element* item);
 
 	template<typename Element, typename _Tp>
-	Element RepeatedField_PopScalar(_Tp* repeatedField, SSIZE_T index = -1) {
-		std::vector<Element> list;
-		RepeatedField_SpliceScalar(repeatedField, list, index, 1);
-		return list[0];
-	}
+	Element RepeatedField_PopScalar(_Tp* repeatedField, SSIZE_T index = -1);
 
 	template<typename Element>
-	std::shared_ptr<Element> RepeatedField_PopMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index = -1) {
-		std::vector<std::shared_ptr<Element>> list;
-		RepeatedField_SpliceMessage(repeatedField, list, index, 1);
-		return list[0];
-	}
+	std::shared_ptr<Element> RepeatedField_PopMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index = -1);
 
 	template<typename _Tp>
-	void RepeatedField_Reverse(_Tp* repeatedField) {
-		int field_size = repeatedField->size();
-		for (int i = 0; i < field_size / 2; i++) {
-			repeatedField->SwapElements(i, field_size - 1 - i);
-		}
-	}
+	void RepeatedField_Reverse(_Tp* repeatedField);
+
+	template<typename _Tr, typename _Ti>
+	HRESULT RepeatedField_Set(Message& message, const std::string& field_name, VARIANT* newVal, _Tr* repeated_field, _Ti& repeated_iterator);
 }

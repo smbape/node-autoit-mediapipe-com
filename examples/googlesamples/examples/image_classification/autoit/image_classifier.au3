@@ -5,20 +5,23 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_classification/python/image_classifier.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_classification/python/image_classifier.ipynb
+
+;~ Title: Image Classifier with MediaPipe Tasks
+
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
-#include "..\..\..\..\..\test\_assert.au3"
 
-;~ Sources:
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/image_classification/python/image_classifier.ipynb
-;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/image_classification/python/image_classifier.ipynb
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
+; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
@@ -52,9 +55,9 @@ Func Main()
 		EndIf
 	Next
 
-	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\efficientnet_lite0_fp32.tflite"
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\efficientnet_lite0.tflite"
 	If Not FileExists($_MODEL_FILE) Then
-		$download_utils.download("https://storage.googleapis.com/mediapipe-tasks/image_classifier/efficientnet_lite0_fp32.tflite", $_MODEL_FILE)
+		$download_utils.download("https://storage.googleapis.com/mediapipe-models/image_classifier/efficientnet_lite0/float32/1/efficientnet_lite0.tflite", $_MODEL_FILE)
 	EndIf
 
 	; STEP 2: Create an ImageClassifier object.
@@ -77,6 +80,9 @@ Func Main()
 	Next
 
 	$cv.waitKey()
+
+	; STEP 5: Closes the classifier explicitly when the classifier is not used in a context.
+	$classifier.close()
 EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)
@@ -110,3 +116,10 @@ Func _OnAutoItExit()
 	_OpenCV_Close()
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit
+
+Func _AssertIsObj($vVal, $sMsg)
+	If Not IsObj($vVal) Then
+		ConsoleWriteError($sMsg & @CRLF)
+		Exit 0x7FFFFFFF
+	EndIf
+EndFunc   ;==>_AssertIsObj

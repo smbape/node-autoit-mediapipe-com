@@ -67,11 +67,11 @@ namespace mediapipe::autoit::calculator_graph {
 	) {
 		RaiseAutoItErrorIfNotOk(self->ObserveOutputStream(
 			stream_name,
-			[callback_fn, stream_name](const Packet& packet) {
+			std::move([callback_fn, stream_name](const Packet& packet) {
 				absl::MutexLock lock(&callback_mutex);
 				callback_fn(stream_name, packet);
 				return absl::OkStatus();
-			},
+			}),
 			observe_timestamp_bounds
 		));
 	}

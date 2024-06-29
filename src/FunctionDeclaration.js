@@ -1,13 +1,14 @@
 const {
-    SIMPLE_ARGTYPE_DEFAULTS,
+    BROKEN_MAKE_SHARED,
     PTR,
+    SIMPLE_ARGTYPE_DEFAULTS,
 } = require("./constants");
 
 const {makeExpansion, useNamespaces} = require("./alias");
 
 Object.assign(exports, {
-    declare: (generator, coclass, overrides, fname, idlname, iidl, ipublic, impl, is_test, options = {}) => {
-        const {shared_ptr, APP_NAME} = options;
+    declare: (processor, coclass, overrides, fname, idlname, iidl, ipublic, impl, is_test, options = {}) => {
+        const {shared_ptr, make_shared, APP_NAME} = options;
         const {fqn} = coclass;
         const cotype = coclass.getClassName();
         const has_override = overrides.length !== 1;
@@ -21,11 +22,11 @@ Object.assign(exports, {
         let minopt = Number.POSITIVE_INFINITY;
         let idl_only = false;
         const entries = [];
-        const indent = " ".repeat(has_override ? 4 : 0);
+        const indent = has_override ? " ".repeat(4) : "";
 
         if (has_docs) {
             // generate docs header
-            generator.docs.push(`### ${ fqn }::${ fname }\n`.replaceAll("_", "\\_"));
+            processor.docs.push(`### ${ fqn }::${ fname }\n`.replaceAll("_", "\\_"));
         }
 
         for (const decl of overrides) {
@@ -64,28 +65,6 @@ Object.assign(exports, {
             const out_args = new Array(argc).fill(false);
             const out_array_args = new Array(argc).fill(false);
 
-            const getArgWeight = j => {
-                if (!in_args[j]) {
-                    // is OutputArray
-                    if (out_array_args[j]) {
-                        return 2;
-                    }
-
-                    // out arg which is not an output array
-                    if (out_args[j]) {
-                        return 3;
-                    }
-                }
-
-                // has a default value
-                if (list_of_arguments[j][2] !== "") {
-                    return 2;
-                }
-
-                // is non optional value
-                return 1;
-            };
-
             const outlist = [];
 
             if (return_value_type !== "" && return_value_type !== "void") {
@@ -109,6 +88,30 @@ Object.assign(exports, {
                 }
             }
 
+            // the python api expects parameters in this order:
+            // mandatory, OutputArray or optional parameter, /O parameter
+            const getArgWeight = j => {
+                if (!in_args[j]) {
+                    // is OutputArray
+                    if (out_array_args[j]) {
+                        return 2;
+                    }
+
+                    // out arg which is not an output array
+                    if (out_args[j]) {
+                        return 3;
+                    }
+                }
+
+                // has a default value
+                if (list_of_arguments[j][2] !== "") {
+                    return 2;
+                }
+
+                // is non optional value
+                return 1;
+            };
+
             const indexes = Array.from(new Array(argc).keys()).sort((a, b) => {
                 const diff = getArgWeight(a) - getArgWeight(b);
                 return diff === 0 ? a - b : diff;
@@ -120,22 +123,19 @@ Object.assign(exports, {
 
             for (let i = 0, is_first_optional = true; i < argc; i++) {
                 const j = indexes[i];
-
                 const [, argname, , arg_modifiers] = list_of_arguments[j];
-
                 let [argtype, , defval] = list_of_arguments[j];
 
                 const in_val = `${ varprefix }${ i }`;
                 const is_ptr = argtype.endsWith("*");
-                const is_out = out_args[j];
-                const is_optional = defval !== "" || is_out && !in_args[j];
+                const is_out_arg = out_args[j];
+                const is_optional = defval !== "" || is_out_arg && !in_args[j];
                 const is_input_array = argtype === "InputArray";
 
                 optionals[j] = is_optional;
 
                 let is_array = false;
                 let arrtype = "";
-                let parg = "";
 
                 if (argtype === "InputArray") {
                     is_array = true;
@@ -152,15 +152,15 @@ Object.assign(exports, {
                 } else if (argtype === "InputArrayOfArrays") {
                     is_array = true;
                     arrtype = "InputArray";
-                    argtype = "vector_Mat";
+                    argtype = "std::vector<Mat>";
                 } else if (argtype === "InputOutputArrayOfArrays") {
                     is_array = true;
                     arrtype = "InputOutputArray";
-                    argtype = "vector_Mat";
+                    argtype = "std::vector<Mat>";
                 } else if (argtype === "OutputArrayOfArrays") {
                     is_array = true;
                     arrtype = "OutputArray";
-                    argtype = "vector_Mat";
+                    argtype = "std::vector<Mat>";
                 }
 
                 if (is_array) {
@@ -172,22 +172,42 @@ Object.assign(exports, {
                         .replace("InputOutputArray", "Mat")
                         .replace("OutputArray", "Mat")
                         .replace("noArray", argtype);
+                } else {
+                    defval = processor.fqnIndentifier(defval, coclass, options);
                 }
 
-                if (defval === "" && SIMPLE_ARGTYPE_DEFAULTS.has(argtype)) {
-                    defval = SIMPLE_ARGTYPE_DEFAULTS.get(argtype);
-                } else if (defval.endsWith("()") && generator.getIDLType(defval.slice(0, -"()".length), coclass, options) === generator.getIDLType(argtype, coclass, options)) {
-                    defval = "";
-                } else if (is_ptr && is_out) {
-                    parg = "&";
+                let callarg = argname;
+                let cpptype = processor.getCppType(argtype, coclass, options);
+
+                if (is_out_arg && is_ptr && !PTR.has(argtype) && argtype !== "VARIANT*") {
+                    callarg = `&${ callarg }`;
                     argtype = argtype.slice(0, -1);
                     defval = SIMPLE_ARGTYPE_DEFAULTS.has(argtype) ? SIMPLE_ARGTYPE_DEFAULTS.get(argtype) : "";
+                } else if (is_out_arg && cpptype.startsWith(`${ shared_ptr }<`)) {
+                    callarg = `::autoit::reference_internal(${ callarg })`;
+                    argtype = cpptype.slice(`${ shared_ptr }<`.length, -">".length);
+                    defval = SIMPLE_ARGTYPE_DEFAULTS.has(argtype) ? SIMPLE_ARGTYPE_DEFAULTS.get(argtype) : "";
+                } else if (defval === "" && SIMPLE_ARGTYPE_DEFAULTS.has(argtype)) {
+                    defval = SIMPLE_ARGTYPE_DEFAULTS.get(argtype);
+                } else if (defval.endsWith("()") && processor.getCppType(defval.slice(0, -"()".length), coclass, options) === cpptype) {
+                    defval = "";
                 }
 
-                const idltype = generator.getIDLType(argtype, coclass, options);
-                const cpptype = generator.getCppType(argtype, coclass, options);
+                cpptype = processor.getCppType(argtype, coclass, options);
 
-                let callarg = parg + argname;
+                if (cpptype === "char*") {
+                    if (arg_modifiers.includes("/C")) {
+                        cpptype = "std::string";
+                        callarg = `${ callarg }.c_str()`;
+                    } else {
+                        console.log(`Warning: ${ name } - 'char* ${ argname }' will be treatead as a 'void* ${ argname }' pointer`);
+                        cpptype = "void*";
+                        callarg = `static_cast<char*>(${ callarg })`;
+                    }
+                }
+
+                const nsType = processor.getNonAmbiguousType(cpptype);
+                const idltype = processor.getIDLType(argtype, coclass, options);
                 let other_default;
 
                 for (const modifier of arg_modifiers) {
@@ -206,7 +226,7 @@ Object.assign(exports, {
 
                 callargs[j] = callarg;
 
-                const is_vector = argtype.startsWith("vector_") || argtype.startsWith("vector<") || argtype.startsWith("VectorOf");
+                const is_vector = cpptype.startsWith("std::vector<") || cpptype.startsWith("VectorOf");
                 const has_ptr = is_ptr || cpptype.startsWith(`${ shared_ptr }<`);
                 const is_by_ref = idltype[0] === "I" && idltype !== "IDispatch*" && !has_ptr;
                 const placeholder_name = is_array || is_by_ref || is_vector && !has_ptr ? `${ argname }_placeholder` : argname;
@@ -287,7 +307,7 @@ Object.assign(exports, {
                                 double ${ argname_double } = 0.0;
                                 hr = get_variant_number(${ in_val }, ${ argname_double });
                                 if (FAILED(hr)) {
-                                    printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
+                                    printf("unable to read argument ${ j } of type %hu into double\\n", V_VT(${ in_val }));
                                     return hr;
                                 }
                                 ${ pointer }.reset(new cv::_${ arrtype }(${ argname_double }));
@@ -318,7 +338,7 @@ Object.assign(exports, {
                     cvt.push(...cvt_body.trim().split("\n"));
                 } else if (is_vector && !has_ptr) {
                     const dispatchConditions = [`V_VT(${ in_val }) == VT_DISPATCH`];
-                    const dynamicCast = `dynamic_cast<TypeToImplType<${ cpptype }>::type*>(getRealIDispatch(${ in_val }))`;
+                    const dynamicCast = `dynamic_cast<TypeToImplType<${ nsType }>::type*>(getRealIDispatch(${ in_val }))`;
 
                     if (is_optional) {
                         dispatchConditions.push(`${ dynamicCast } != NULL`);
@@ -351,7 +371,7 @@ Object.assign(exports, {
                 } else if (is_by_ref) {
                     if (is_optional) {
                         cvt.push(...`
-                            ${ shared_ptr }<${ cpptype }> ${ pointer };
+                            ${ shared_ptr }<${ nsType }> ${ pointer };
                             hr = autoit_to(${ in_val }, ${ pointer });
                             if (FAILED(hr) && !PARAMETER_MISSING(${ in_val })) {
                                 printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
@@ -365,10 +385,10 @@ Object.assign(exports, {
                         is_shared_ptr = true;
 
                         cvt.push(...`
-                            ${ shared_ptr }<${ cpptype }> ${ pointer };
+                            ${ shared_ptr }<${ nsType }> ${ pointer };
 
                             if (V_VT(${ in_val }) == VT_DISPATCH) {
-                                ${ pointer } = ::autoit::cast<${ cpptype }>(getRealIDispatch(${ in_val }));
+                                ${ pointer } = ::autoit::cast<${ nsType }>(getRealIDispatch(${ in_val }));
                                 if (!${ pointer }) {
                                     printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
                                     return E_INVALIDARG;
@@ -377,7 +397,7 @@ Object.assign(exports, {
                                 ${ set_from_pointer } = true;
                             } else if (V_VT(${ in_val }) == VT_UI8) {
                                 const auto& ptr = V_UI8(${ in_val });
-                                ${ pointer } = ::autoit::reference_internal(reinterpret_cast<${ cpptype }*>(ptr));
+                                ${ pointer } = ::autoit::reference_internal(reinterpret_cast<${ nsType }*>(ptr));
                                 ${ set_from_pointer } = true;
                             } else {
                                 hr = autoit_to(${ in_val }, ${ placeholder_name });
@@ -424,9 +444,9 @@ Object.assign(exports, {
                 }
 
                 if (is_shared_ptr) {
-                    declarations[j] = `${ indent }${ shared_ptr }<${ cpptype }> ${ placeholder_name };`;
+                    declarations[j] = `${ indent }${ shared_ptr }<${ nsType }> ${ placeholder_name };`;
                 } else {
-                    declarations[j] = `${ indent }${ cpptype } ${ placeholder_name }`;
+                    declarations[j] = `${ indent }${ nsType } ${ placeholder_name }`;
                     if (defval !== "") {
                         declarations[j] += ` = ${ defval }`;
                     }
@@ -439,7 +459,7 @@ Object.assign(exports, {
                     conversions[j] = `\n${ cindent }${ is_method_test ? "// " : "" }${ placeholder_name } = ${ other_default };${ conversions[j] }`;
                 }
 
-                if (is_out) {
+                if (is_out_arg) {
                     retval.push([idltype, argname, is_array ? arrtype + (is_vector ? "OfArrays" : "") : argtype, in_val, j]);
 
                     if (!outputs.has(argname)) {
@@ -521,7 +541,7 @@ Object.assign(exports, {
                 autoit_description += `\n    $o${ coclass.name }( ${ argstr } ) -> ${ outstr }`;
             }
 
-            let cppsignature = `${ generator.getCppType(return_value_type, coclass, options) } ${ fqn }::${ fname }`;
+            let cppsignature = `${ processor.getCppType(return_value_type, coclass, options) } ${ fqn }::${ fname }`;
 
             if (is_static) {
                 cppsignature = `static ${ cppsignature }`;
@@ -538,7 +558,7 @@ Object.assign(exports, {
 
                 const is_in_array = /^Input(?:Output)?Array(?:OfArrays)?$/.test(argtype);
                 const is_out_array = /^(?:Input)?OutputArray(?:OfArrays)?$/.test(argtype);
-                str += is_in_array || is_out_array ? argtype : generator.getCppType(argtype, coclass, options);
+                str += is_in_array || is_out_array ? argtype : processor.getCppType(argtype, coclass, options);
 
                 if (arg_modifiers.includes("/Ref")) {
                     str += "&";
@@ -563,7 +583,7 @@ Object.assign(exports, {
 
             cppsignature += ";";
 
-            generator.docs.push([
+            processor.docs.push([
                 "```cpp",
                 cppsignature,
                 // "",
@@ -600,10 +620,10 @@ Object.assign(exports, {
             body.push("");
         }
 
-        useNamespaces(body, "push", generator, coclass);
+        useNamespaces(body, "push", processor, coclass);
 
         const hr = maxargc !== 0 ? "E_INVALIDARG" : "S_OK";
-        const enableNamedParameters = maxargc !== 0 && coclass !== generator.namedParameters && !coclass.is_vector && !coclass.is_stdmap;
+        const enableNamedParameters = maxargc !== 0 && coclass !== processor.namedParameters && !coclass.is_vector && !coclass.is_stdmap;
 
         body.push(`HRESULT hr = ${ hr };`);
 
@@ -652,7 +672,7 @@ Object.assign(exports, {
             const [name, return_value_type, func_modifiers, list_of_arguments] = decl;
 
             // Add dependency to return_value_type
-            generator.getIDLType(return_value_type, coclass, options);
+            processor.getIDLType(return_value_type, coclass, options);
 
             const is_constructor = func_modifiers.includes("/CO");
             const no_external_decl = func_modifiers.includes("/ExternalNoDecl");
@@ -819,6 +839,11 @@ Object.assign(exports, {
 
             if (is_constructor && !is_external) {
                 callee = `${ shared_ptr }<${ fqn }>(new ${ callee })`;
+
+                const start = `${ shared_ptr }<${ fqn }>(new ::${ fqn }(`;
+                if (callee.startsWith(start) && callee.endsWith("))") && (!BROKEN_MAKE_SHARED || !BROKEN_MAKE_SHARED.has(fqn))) {
+                    callee = `${ make_shared }<::${ fqn }>(${ callee.slice(start.length, -"))".length) })`;
+                }
             }
 
             for (const modifier of func_modifiers) {
@@ -842,7 +867,7 @@ Object.assign(exports, {
             }
 
             if (is_external && !no_external_decl) {
-                let ext_type = generator.getCppType(return_value_type === "" ? "void" : return_value_type, coclass, options);
+                let ext_type = processor.getCppType(return_value_type === "" ? "void" : return_value_type, coclass, options);
 
                 if (is_constructor) {
                     ext_type = `${ shared_ptr }<${ ext_type }>`;
@@ -854,9 +879,9 @@ Object.assign(exports, {
                     ext_type,
                     path[path.length - 1]
                 ].filter(text => text !== null).join(" ") }(${ list_of_arguments.map(([argtype, argname, , arg_modifiers]) => {
-                    const idltype = generator.getIDLType(argtype, coclass, options);
-                    const cpptype = generator.getCppType(argtype, coclass, options);
-                    const enumtype = generator.getEnumType(argtype, coclass, options);
+                    const idltype = processor.getIDLType(argtype, coclass, options);
+                    const cpptype = processor.getCppType(argtype, coclass, options);
+                    const enumtype = processor.getEnumType(argtype, coclass, options);
 
                     let str = "";
 
@@ -885,35 +910,51 @@ Object.assign(exports, {
                 }).concat(["HRESULT& hr"]).join(", ") });`);
             }
 
+            const exception = typeof options.exception === "string" ? options.exception : "std::exception";
+
             if (!has_body && return_value_type !== "void") {
-                if (PTR.has(generator.getCppType(return_value_type, coclass, options))) {
+                if (PTR.has(processor.getCppType(return_value_type, coclass, options))) {
                     callee = `reinterpret_cast<ULONGLONG>(${ callee })`;
                 }
 
-                const autoit_from = `autoit_from(${ generator.castFromEnumIfNeeded(return_value_type, "$1", coclass, options) }, $2)`;
+                const autoit_from = `autoit_from(${ processor.castFromEnumIfNeeded(return_value_type, "$1", coclass, options) }, $2)`;
 
                 if (is_external) {
-                    const idltype = generator.getIDLType(return_value_type, coclass, options);
-                    const cpptype = generator.getCppType(return_value_type, coclass, options);
+                    const idltype = processor.getIDLType(return_value_type, coclass, options);
+                    const cpptype = processor.getCppType(return_value_type, coclass, options);
                     const byref = !PTR.has(cpptype) && (idltype === "VARIANT" || idltype[0] === "I");
 
-                    const ebody = cindent + `
-                        {
+                    body.push(cindent + `
+                        try {
                             const auto${ byref ? "&" : "" } tmp = ${ callee.trim().split("\n").join(`\n${ " ".repeat(28) }`) };
                             if (FAILED(hr)) {
                                 return hr;
                             }
-                            hr = ${ makeExpansion(autoit_from, "tmp", "_retval") };
+                            hr = ${ makeExpansion(autoit_from, "tmp", "_retval").split("\n").join(`\n${ " ".repeat(28) }`) };
+                        } catch( ${ exception }& e ) {
+                            fprintf(stderr, "%s: in %s, file %s, line %d\\n", e.what(), AutoIt_Func, __FILE__, __LINE__); fflush(stdout); fflush(stderr);
+                            hr = E_FAIL;
                         }
-                    `.replace(/^ {24}/mg, "").trim().split("\n").map(line => `${ is_entry_test ? "// " : "" }${ line }`).join(`\n${ cindent }`);
-                    body.push(ebody);
+                    `.replace(/^ {24}/mg, "").trim().split("\n").map(line => `${ is_entry_test ? "// " : "" }${ line }`).join(`\n${ cindent }`));
                 } else {
-                    body.push(`${ cindent }${ is_entry_test ? "// " : "" }hr = ${
-                        makeExpansion(autoit_from, callee.trim().split("\n").join(`\n${ cindent }`), "_retval")
-                    };`);
+                    body.push(cindent + `
+                        try {
+                            hr = ${ makeExpansion(autoit_from, callee.trim(), "_retval").split("\n").join(`\n${ " ".repeat(28) }`) };
+                        } catch( ${ exception }& e ) {
+                            fprintf(stderr, "%s: in %s, file %s, line %d\\n", e.what(), AutoIt_Func, __FILE__, __LINE__); fflush(stdout); fflush(stderr);
+                            hr = E_FAIL;
+                        }
+                    `.replace(/^ {24}/mg, "").trim().split("\n").map(line => `${ is_entry_test ? "// " : "" }${ line }`).join(`\n${ cindent }`));
                 }
             } else {
-                body.push(`${ cindent }${ is_entry_test ? "// " : "" }${ callee.trim().split("\n").join(`\n${ cindent }`) };`);
+                body.push(cindent + `
+                    try {
+                        ${ callee.trim().split("\n").join(`\n${ " ".repeat(24) }`) };
+                    } catch( ${ exception }& e ) {
+                        fprintf(stderr, "%s: in %s, file %s, line %d\\n", e.what(), AutoIt_Func, __FILE__, __LINE__); fflush(stdout); fflush(stderr);
+                        hr = E_FAIL;
+                    }
+                `.replace(/^ {20}/mg, "").trim().split("\n").map(line => `${ is_entry_test ? "// " : "" }${ line }`).join(`\n${ cindent }`));
             }
 
             body.push(cindent + `
@@ -923,13 +964,13 @@ Object.assign(exports, {
             `.replace(/^ {16}/mg, "").trim().split("\n").join(`\n${ cindent }`));
 
             if (return_value_type !== "void") {
-                const idltype = is_constructor ? coclass.idl : generator.getIDLType(return_value_type, coclass, options);
-                generator.setReturn(returns, idltype, "_retval");
+                const idltype = is_constructor ? coclass.idl : processor.getIDLType(return_value_type, coclass, options);
+                processor.setReturn(returns, idltype, "_retval");
                 retval.unshift([returns[0], "_retval", returns[0], false]);
             } else if (retval.length !== 0) {
                 const [, argname, argtype] = retval[0];
-                const idltype = generator.getIDLType(argtype, coclass, options);
-                generator.setReturn(returns, idltype, "_retval");
+                const idltype = processor.getIDLType(argtype, coclass, options);
+                processor.setReturn(returns, idltype, "_retval");
                 outputs.get(argname).push("_retval"); // mark _retval as an output of argname
             }
 
@@ -943,9 +984,11 @@ Object.assign(exports, {
                     b = b[4] === undefined ? -1 : b[4];
                     return a - b;
                 }).map(([idltype, argname, argtype, in_val], i) => {
+                    const cpptype = processor.getCppType(argtype, coclass, options);
+
                     const lines = [];
                     const is_array = argtype.endsWith("Array") || argtype.endsWith("ArrayOfArrays");
-                    const is_vector = argtype.startsWith("vector_") || argtype.startsWith("vector<") || argtype.endsWith("OfArrays");
+                    const is_vector = cpptype.startsWith("std::vector<") || argtype.endsWith("OfArrays");
                     const placeholder_name = `${ argname }_placeholder`;
                     const pointer = `p_${ placeholder_name }`;
                     const scalar_pointer = `${ pointer }_s`;
@@ -954,7 +997,7 @@ Object.assign(exports, {
 
                     let out_val;
 
-                    if (argtype === "VARIANT") {
+                    if (cpptype === "VARIANT") {
                         out_val = argname;
                     } else {
                         let cvt;
@@ -977,7 +1020,7 @@ Object.assign(exports, {
                             VariantInit(p_retarr_el);
                             ${ is_entry_test ? "// " : "" }hr = ${ cvt };
                             if (FAILED(hr)) {
-                                printf("unable to write extended ${ i } of type ${ generator.getCppType(argtype, coclass, options) }\\n");
+                                printf("unable to write extended ${ i } of type ${ cpptype }\\n");
                                 return hr;
                             }
                         `.replace(/^ {28}/mg, "").trim().split("\n"));
@@ -1059,8 +1102,9 @@ Object.assign(exports, {
 
         if (returns.length !== 0) {
             const [idltype, argname] = returns;
-            idlargs.push(`[out, retval] ${ idltype }* ${ argname }`);
-            implargs.push(`${ idltype }* ${ argname }`);
+            const ptr = idltype === "VARIANT*" ? "" : "*";
+            idlargs.push(`[out, retval] ${ idltype }${ ptr } ${ argname }`);
+            implargs.push(`${ idltype }${ ptr } ${ argname }`);
         }
 
         const id = coclass.getIDLNameId(idlname);

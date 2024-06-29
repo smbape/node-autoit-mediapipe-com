@@ -4,18 +4,18 @@
 #include "binding/validated_graph_config.h"
 
 namespace mediapipe::autoit::solution_base {
-	#pragma push_macro("BOOL")
-	#pragma push_macro("INT")
-	#pragma push_macro("FLOAT")
-	#ifdef BOOL
-	#undef BOOL
-	#endif
-	#ifdef INT
-	#undef INT
-	#endif
-	#ifdef FLOAT
-	#undef FLOAT
-	#endif
+#pragma push_macro("BOOL")
+#pragma push_macro("INT")
+#pragma push_macro("FLOAT")
+#ifdef BOOL
+#undef BOOL
+#endif
+#ifdef INT
+#undef INT
+#endif
+#ifdef FLOAT
+#undef FLOAT
+#endif
 
 	enum class PacketDataType {
 		STRING,
@@ -50,9 +50,9 @@ namespace mediapipe::autoit::solution_base {
 		"PROTO_LIST"
 	};
 
-	#pragma pop_macro("FLOAT")
-	#pragma pop_macro("INT")
-	#pragma pop_macro("BOOL")
+#pragma pop_macro("FLOAT")
+#pragma pop_macro("INT")
+#pragma pop_macro("BOOL")
 
 	const std::map<std::string, _variant_t>& noMap();
 	const std::map<std::string, PacketDataType>& noTypeMap();

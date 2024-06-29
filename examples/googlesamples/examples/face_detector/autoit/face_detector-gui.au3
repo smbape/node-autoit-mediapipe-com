@@ -5,23 +5,23 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_detector/python/face_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_detector/python/face_detector.ipynb
+
 #include <GDIPlus.au3>
 #include <GUIConstantsEx.au3>
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
-#include "..\..\..\..\..\test\_assert.au3"
-
-;~ Sources:
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/face_detector/python/face_detector.ipynb
-;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/face_detector/python/face_detector.ipynb
 
 _GDIPlus_Startup()
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
-Global Const $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\face_detection_short_range.tflite"
+Global Const $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\blaze_face_short_range.tflite"
 
 Setup()
 
@@ -96,14 +96,21 @@ Func Main()
 
 	; STEP 5: Process the detection result. In this case, visualize it.
 	Local $image_copy = $image.mat_view()
-	Local $scale = 1 / _OpenCV_resizeRatio_ControlPic($image_copy, $FormGUI, $PicResult) ; keep drawings visible after resize
+
+	; Compute the scale to make drawn elements visible when the image is resized for display
+	Local $scale = 1 / _OpenCV_resizeRatio_ControlPic($image_copy, $FormGUI, $PicResult)
+
 	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
 	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
 
 	_OpenCV_imshow_ControlPic($bgr_annotated_image, $FormGUI, $PicResult)
+
+	; STEP 6: Closes the detector explicitly when the detector is not used in a context.
+	$detector.close()
 EndFunc   ;==>Main
 
 Func Setup()
+	; Tell mediapipe where to look its resource files
 	_Mediapipe_SetResourceDir()
 
 	Local $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
@@ -111,7 +118,7 @@ Func Setup()
 
 	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\brother-sister-girl-family-boy-977170.jpg"
 	Local $_IMAGE_URL = "https://i.imgur.com/Vu2Nqwb.jpg"
-	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-assets/face_detection_short_range.tflite?generation=1677044301978921"
+	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite"
 
 	Local $url, $file_path
 
@@ -244,3 +251,10 @@ Func _OnAutoItExit()
 	_Mediapipe_Close()
 	_GDIPlus_Shutdown()
 EndFunc   ;==>_OnAutoItExit
+
+Func _AssertIsObj($vVal, $sMsg)
+	If Not IsObj($vVal) Then
+		ConsoleWriteError($sMsg & @CRLF)
+		Exit 0x7FFFFFFF
+	EndIf
+EndFunc   ;==>_AssertIsObj

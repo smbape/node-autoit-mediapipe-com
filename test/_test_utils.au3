@@ -46,17 +46,15 @@ Func get_test_data_path($file_or_dirname_path)
 	Return SetError(1, 0, $file_or_dirname_path)
 EndFunc   ;==>get_test_data_path
 
-Func read_binary_to_mat($file_path)
+Func read_file_into_buffer($file_path)
 	Local $f = FileOpen($file_path, $FO_BINARY)
 	Local $data = FileRead($f)
 	Local $nread = @extended
-	; Local $nread = BinaryLen($buffer)
 	FileClose($f)
 
 	Local $sStruct = "byte data[" & $nread & "]"
-	Local $buffer = DllStructCreate($sStruct)
-	$buffer.data = $data
-	Local $binary = _Mediapipe_ObjCreate("cv.Mat").create(1, $nread, $CV_8U, DllStructGetPtr($buffer)).clone()
+	Local $bytes = DllStructCreate($sStruct)
+	$bytes.data = $data
 
-	Return $binary
-EndFunc   ;==>read_binary_to_mat
+	Return _Mediapipe_ObjCreate("autoit.Buffer").create(DllStructGetPtr($bytes), $nread)
+EndFunc   ;==>read_file_into_buffer

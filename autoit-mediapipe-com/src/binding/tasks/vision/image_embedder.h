@@ -16,8 +16,8 @@
 
 namespace mediapipe::tasks::autoit::vision::image_embedder {
 	using ImageEmbedderResult = components::containers::embedding_result::EmbeddingResult;
-	using ImageEmbedderResultRawCallback = void(*)(const ImageEmbedderResult&, Image&, int64_t);
-	using ImageEmbedderResultCallback = std::function<void(const ImageEmbedderResult&, Image&, int64_t)>;
+	using ImageEmbedderResultRawCallback = void(*)(const ImageEmbedderResult&, const Image&, int64_t);
+	using ImageEmbedderResultCallback = std::function<void(const ImageEmbedderResult&, const Image&, int64_t)>;
 
 	struct CV_EXPORTS_W_SIMPLE ImageEmbedderOptions {
 		CV_WRAP ImageEmbedderOptions(const ImageEmbedderOptions& other) = default;

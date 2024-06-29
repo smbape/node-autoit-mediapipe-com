@@ -5,41 +5,41 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/solutions/hands_test.py
+
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\_assert.au3"
 #include "..\_mat_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/solutions/hands_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $cv = _OpenCV_get()
+Global Const $cv = _OpenCV_get()
+_AssertIsObj($cv, "Failed to load opencv")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $drawing_styles = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles")
+Global Const $drawing_styles = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles")
 _AssertIsObj($drawing_styles, "Failed to load mediapipe.autoit.solutions.drawing_styles")
 
-Global $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
+Global Const $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
 _AssertIsObj($mp_drawing, "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
-Global $mp_hands = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.hands")
+Global Const $mp_hands = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.hands")
 _AssertIsObj($mp_hands, "Failed to load mediapipe.autoit.solutions.hands")
 
-Global $Mat = _OpenCV_ObjCreate("Mat")
-
-#include ".\test_on_video_fullasl_hand.full.au3"
+Global Const $Mat = _OpenCV_ObjCreate("Mat")
 
 Global Const $LITE_MODEL_DIFF_THRESHOLD = 25  ; pixels
 Global Const $FULL_MODEL_DIFF_THRESHOLD = 20  ; pixels
-Global $EXPECTED_HAND_COORDINATES_PREDICTION[][][] = [[[580, 34], [504, 50], [459, 94], _
+Global Const $EXPECTED_HAND_COORDINATES_PREDICTION[][][] = [[[580, 34], [504, 50], [459, 94], _
 		[429, 146], [397, 182], [507, 167], _
 		[479, 245], [469, 292], [464, 330], _
 		[545, 180], [534, 265], [533, 319], _
@@ -62,7 +62,7 @@ Func Test()
 	test_multi_hands("video_mode_with_lite_model", False, 0, 10)
 	test_multi_hands("static_image_mode_with_full_model", True, 1, 5)
 	test_multi_hands("video_mode_with_full_model", False, 1, 10)
-	test_on_video("full", 1, "asl_hand.full.npz")
+	test_on_video("full", 1, "asl_hand.full.yml")
 EndFunc   ;==>Test
 
 Func test_blank_image()
@@ -125,17 +125,17 @@ Func test_multi_hands($id, $static_image_mode, $model_complexity, $num_frames)
 		_AssertLen($handedness, 2)
 		_AssertLen($multi_hand_coordinates, 2)
 
-		$prediction_error = $cv.absdiff($Mat.createFromArray($multi_hand_coordinates, $CV_32F), _
-				$Mat.createFromArray($EXPECTED_HAND_COORDINATES_PREDICTION, $CV_32F))
+		$prediction_error = $cv.absdiff($Mat.createFromArray($multi_hand_coordinates, $CV_64F), _
+				$Mat.createFromArray($EXPECTED_HAND_COORDINATES_PREDICTION, $CV_64F))
 
 		$diff_threshold = $model_complexity == 0 ? $LITE_MODEL_DIFF_THRESHOLD : $FULL_MODEL_DIFF_THRESHOLD
 
 		If Not _AssertMatLess($prediction_error, $diff_threshold) Then
-			$prediction_error = $Mat.createFromArray($multi_hand_coordinates, $CV_32F)
+			$prediction_error = $Mat.createFromArray($multi_hand_coordinates, $CV_64F)
 			ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $idx = ' & $idx & @CRLF) ;### Debug Console
 			ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $prediction_error = ' & $cv.format($prediction_error) & @CRLF) ;### Debug Console
 			ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $EXPECTED_HAND_COORDINATES_PREDICTION = ' & _
-					$cv.format($Mat.createFromArray($EXPECTED_HAND_COORDINATES_PREDICTION, $CV_32F)) & @CRLF) ;### Debug Console
+					$cv.format($Mat.createFromArray($EXPECTED_HAND_COORDINATES_PREDICTION, $CV_64F)) & @CRLF) ;### Debug Console
 		EndIf
 	Next
 EndFunc   ;==>test_multi_hands
@@ -147,6 +147,11 @@ Func test_on_video($id, $model_complexity, $expected_name)
 			@ScriptDir & "/testdata/asl_hand.25fps.mp4" _
 			)
 
+	Local $data_path = @ScriptDir & "/testdata/test_on_video_full" & $expected_name
+	Local $storage = $cv.FileStorage($data_path, $CV_FILE_STORAGE_READ)
+	Local $expected = $storage.getNode("predictions").mat()
+	Local $expected_world = $storage.getNode("w_predictions").mat()
+
 	; Set threshold for comparing actual and expected predictions in pixels.
 	Local Const $diff_threshold = 18
 	Local Const $world_diff_threshold = 0.05
@@ -157,8 +162,15 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	Local $actual = $aTuple[0]
 	Local $actual_world = $aTuple[1]
 
-	_AssertMatDiffLess($actual, $EXPECTED_PREDICTIONS_HANDS_LANDMARKS_PER_FRAME, $diff_threshold)
-	_AssertMatDiffLess($actual_world, $EXPECTED_PREDICTIONS_WORLD_HANDS_LANDMARKS_PER_FRAME, $world_diff_threshold)
+	; Dump actual .yml.
+	$data_path = @ScriptDir & "/testdata/_test_on_video_full" & $expected_name
+	$storage = $cv.FileStorage($data_path, $CV_FILE_STORAGE_WRITE)
+	$storage.write("predictions", $actual)
+	$storage.write("w_predictions", $actual_world)
+	$storage.release()
+
+	_AssertMatDiffLess(_MatSliceLastDim($actual, 0, 2), _MatSliceLastDim($expected, 0, 2), $diff_threshold)
+	_AssertMatDiffLess($actual_world, $expected_world, $world_diff_threshold)
 EndFunc   ;==>test_on_video
 
 Func _get_output_path($id, $name)
@@ -178,7 +190,7 @@ Func _landmarks_list_to_array($landmark_list, $image_shape)
 		$i += 1
 	Next
 
-	Return $Mat.createFromArray($aArray, $CV_32F)
+	Return $Mat.createFromArray($aArray, $CV_64F)
 EndFunc   ;==>_landmarks_list_to_array
 
 Func _world_landmarks_list_to_array($landmark_list)
@@ -192,7 +204,7 @@ Func _world_landmarks_list_to_array($landmark_list)
 		$i += 1
 	Next
 
-	Return $Mat.createFromArray($aArray, $CV_32F)
+	Return $Mat.createFromArray($aArray, $CV_64F)
 EndFunc   ;==>_world_landmarks_list_to_array
 
 Func _annotate($id, $frame, $results, $idx)
@@ -207,7 +219,7 @@ Func _annotate($id, $frame, $results, $idx)
 	$cv.imwrite($path, $frame)
 EndFunc   ;==>_annotate
 
-Func _process_video($model_complexity, $video_path, $max_num_hands = 1)
+Func _process_video($model_complexity, $video_path, $max_num_hands = 1, $num_landmarks = 21, $num_dimensions = 3)
 	; Predict pose landmarks for each frame.
 	Local $video_cap = _OpenCV_ObjCreate("cv.VideoCapture").create($video_path)
 	If Not _AssertTrue($video_cap.isOpened(), "cannot open the video file " & $video_path & ".") Then
@@ -226,8 +238,11 @@ Func _process_video($model_complexity, $video_path, $max_num_hands = 1)
 
 	Local $input_frame = $Mat.create()
 	Local $frame_shape, $results, $frame_landmarks, $frame_w_landmarks
+	Local $sizes[] = [0, $max_num_hands, $num_landmarks, $num_dimensions]
 
+	; Get next frame of the video.
 	While $video_cap.read($input_frame)
+		; Run pose tracker.
 		$frame_shape = $input_frame.shape
 		$results = $hands.process($cv.cvtColor($input_frame, $CV_COLOR_BGR2RGB))
 
@@ -245,9 +260,11 @@ Func _process_video($model_complexity, $video_path, $max_num_hands = 1)
 
 		$landmarks_per_frame.append($cv.vconcat($frame_landmarks))
 		$w_landmarks_per_frame.append($cv.vconcat($frame_w_landmarks))
+
+		$sizes[0] += 1
 	WEnd
 
-	Return _Mediapipe_Tuple($cv.vconcat($landmarks_per_frame), $cv.vconcat($w_landmarks_per_frame))
+	Return _Mediapipe_Tuple($cv.vconcat($landmarks_per_frame).reshape(1, $sizes), $cv.vconcat($w_landmarks_per_frame).reshape(1, $sizes))
 EndFunc   ;==>_process_video
 
 Func _OnAutoItExit()

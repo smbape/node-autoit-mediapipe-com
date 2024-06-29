@@ -35,7 +35,7 @@ const numbers = new Map([
     ["UINT", "UINT"],
 ]);
 
-const _dynamicCast = (generator, coclass, const_cast, options) => {
+const _dynamicCast = (processor, coclass, const_cast, options) => {
     const {children} = coclass;
 
     if (children.size === 0) {
@@ -53,7 +53,7 @@ const _dynamicCast = (generator, coclass, const_cast, options) => {
     }`.replace(/^ {4}/mg, "");
 };
 
-const _dynamicPointerCast = (generator, coclass, options) => {
+const _dynamicPointerCast = (processor, coclass, options) => {
     return "";
 };
 
@@ -150,7 +150,7 @@ Object.assign(exports, {
         }
     },
 
-    convert: (generator, coclass, header, impl, options = {}) => {
+    convert: (processor, coclass, header, impl, options = {}) => {
         for (const ename of coclass.enums) {
             if (ename.endsWith("<unnamed>")) {
                 continue;
@@ -300,7 +300,7 @@ Object.assign(exports, {
                             return *obj->__self;
                         }
                     }
-                    ${ dynamicCast(generator, coclass, "", options).split("\n").join(`\n${ " ".repeat(20) }`) }
+                    ${ dynamicCast(processor, coclass, "", options).split("\n").join(`\n${ " ".repeat(20) }`) }
                     return ${ shared_ptr }<${ coclass.fqn }>();
                 }
 
@@ -312,7 +312,7 @@ Object.assign(exports, {
                             return *obj->__self;
                         }
                     }
-                    ${ dynamicCast(generator, coclass, "const ", options).split("\n").join(`\n${ " ".repeat(20) }`) }
+                    ${ dynamicCast(processor, coclass, "const ", options).split("\n").join(`\n${ " ".repeat(20) }`) }
                     return ${ shared_ptr }<${ coclass.fqn }>();
                 }
             }
@@ -320,55 +320,65 @@ Object.assign(exports, {
             `.replace(/^ {12}/mg, "")
         );
 
+        if (!coclass.is_vector) {
+            header.push(`
+                extern const bool is_assignable_from(${ shared_ptr }<${ coclass.fqn }>& out_val, VARIANT const* const& in_val, bool is_optional);
+                extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ shared_ptr }<${ coclass.fqn }>& out_val);
+            `.replace(/^ {16}/mg, ""));
+        }
+
         header.push(`
-            extern const bool is_assignable_from(${ shared_ptr }<${ coclass.fqn }>& out_val, VARIANT const* const& in_val, bool is_optional);
-            extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ shared_ptr }<${ coclass.fqn }>& out_val);
             extern const bool is_assignable_from(${ coclass.fqn }*& out_val, VARIANT const* const& in_val, bool is_optional);
             extern const HRESULT autoit_to(VARIANT const* const& in_val, ${ coclass.fqn }*& out_val);
             extern const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, I${ cotype }**& out_val);
             extern const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, ${ iface }**& out_val);
+            extern const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, VARIANT*& out_val);
             extern const HRESULT autoit_from(const ${ coclass.fqn }* in_val, I${ cotype }**& out_val);
             extern const HRESULT autoit_from(const ${ coclass.fqn }* in_val, ${ iface }**& out_val);
             extern const HRESULT autoit_from(const ${ coclass.fqn }* in_val, VARIANT*& out_val);
         `.replace(/^ {12}/mg, ""));
 
+        if (!coclass.is_vector) {
+            impl.push(`
+                const bool is_assignable_from(${ shared_ptr }<${ coclass.fqn }>& out_val, VARIANT const* const& in_val, bool is_optional) {
+                    ${ optional.check.join(`\n${ " ".repeat(20) }`) }
+
+                    if (V_VT(in_val) == VT_NULL || V_VT(in_val) == VT_UI8) {
+                        return true;
+                    }
+
+                    if (V_VT(in_val) != VT_${ wtype }) {
+                        return false;
+                    }
+
+                    return ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val)) != NULL;
+                }
+
+                const HRESULT autoit_to(VARIANT const* const& in_val, ${ shared_ptr }<${ coclass.fqn }>& out_val) {
+                    ${ optional.assign.join(`\n${ " ".repeat(20) }`) }
+
+                    if (V_VT(in_val) == VT_NULL) {
+                        out_val.reset();
+                        return S_OK;
+                    }
+
+                    if (V_VT(in_val) == VT_UI8) {
+                        const auto& ptr = V_UI8(in_val);
+                        out_val = ::autoit::reference_internal(reinterpret_cast<${ coclass.fqn }*>(ptr));
+                        return S_OK;
+                    }
+
+                    if (V_VT(in_val) == VT_${ wtype }) {
+                        out_val = ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val));
+                        return out_val.get() ? S_OK : E_INVALIDARG;
+                    }
+
+                    return E_INVALIDARG;
+                }
+            `.replace(/^ {16}/mg, ""));
+        }
+
         impl.push(`
-            const bool is_assignable_from(${ shared_ptr }<${ coclass.fqn }>& out_val, VARIANT const* const& in_val, bool is_optional) {
-                ${ optional.check.join(`\n${ " ".repeat(16) }`) }
-
-                if (V_VT(in_val) == VT_NULL || V_VT(in_val) == VT_UI8) {
-                    return true;
-                }
-
-                if (V_VT(in_val) != VT_${ wtype }) {
-                    return false;
-                }
-
-                return ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val)) != NULL;
-            }
-
-            const HRESULT autoit_to(VARIANT const* const& in_val, ${ shared_ptr }<${ coclass.fqn }>& out_val) {
-                ${ optional.assign.join(`\n${ " ".repeat(16) }`) }
-
-                if (V_VT(in_val) == VT_NULL) {
-                    out_val.reset();
-                    return S_OK;
-                }
-
-                if (V_VT(in_val) == VT_UI8) {
-                    const auto& ptr = V_UI8(in_val);
-                    out_val = ::autoit::reference_internal(reinterpret_cast<${ coclass.fqn }*>(ptr));
-                    return S_OK;
-                }
-
-                if (V_VT(in_val) == VT_${ wtype }) {
-                    out_val = ::autoit::cast<${ coclass.fqn }>(getRealIDispatch(in_val));
-                    return out_val.get() ? S_OK : E_INVALIDARG;
-                }
-
-                return E_INVALIDARG;
-            }
-
             const bool is_assignable_from(${ coclass.fqn }*& out_val, VARIANT const* const& in_val, bool is_optional) {
                 ${ shared_ptr }<${ coclass.fqn }> out_val_shared;
                 return is_assignable_from(out_val_shared, in_val, is_optional);
@@ -402,6 +412,24 @@ Object.assign(exports, {
                 return autoit_from(in_val, reinterpret_cast<I${ cotype }**&>(out_val));
             }
 
+            const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, VARIANT*& out_val) {
+                if (!in_val) {
+                    V_VT(out_val) = VT_NULL;
+                    return S_OK;
+                }
+
+                ${ dynamicPointerCast(processor, coclass, options).split("\n").join(`\n${ " ".repeat(16) }`) }
+                I${ cotype }* pdispVal = nullptr;
+                I${ cotype }** ppdispVal = &pdispVal;
+                HRESULT hr = autoit_from(in_val, ppdispVal);
+                if (SUCCEEDED(hr)) {
+                    VariantClear(out_val);
+                    V_VT(out_val) = VT_${ wtype };
+                    V_${ wtype }(out_val) = static_cast<${ iface }*>(*ppdispVal);
+                }
+                return hr;
+            }
+
             const HRESULT autoit_from(const ${ coclass.fqn }* in_val, I${ cotype }**& out_val) {
                 return autoit_from(::autoit::reference_internal(in_val), out_val);
             }
@@ -420,31 +448,6 @@ Object.assign(exports, {
             }
             `.replace(/^ {12}/mg, "")
         );
-
-        if (!coclass.is_vector) {
-            header.push(`
-                extern const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, VARIANT*& out_val);
-            `.replace(/^ {16}/mg, ""));
-            impl.push(`
-                const HRESULT autoit_from(const ${ shared_ptr }<${ coclass.fqn }>& in_val, VARIANT*& out_val) {
-                    if (!in_val) {
-                        V_VT(out_val) = VT_NULL;
-                        return S_OK;
-                    }
-
-                    ${ dynamicPointerCast(generator, coclass, options).split("\n").join(`\n${ " ".repeat(20) }`) }
-                    I${ cotype }* pdispVal = nullptr;
-                    I${ cotype }** ppdispVal = &pdispVal;
-                    HRESULT hr = autoit_from(in_val, ppdispVal);
-                    if (SUCCEEDED(hr)) {
-                        VariantClear(out_val);
-                        V_VT(out_val) = VT_${ wtype };
-                        V_${ wtype }(out_val) = static_cast<${ iface }*>(*ppdispVal);
-                    }
-                    return hr;
-                }
-            `.replace(/^ {16}(?:[^\S\n]*\n)?/mg, "").trim());
-        }
 
         if (coclass.is_struct || coclass.is_simple || coclass.is_map || coclass.has_copy_constructor || coclass.has_assign_operator) {
             if (!coclass.is_vector) {
@@ -580,12 +583,12 @@ Object.assign(exports, {
             vector_conversion.convert(coclass, header, impl, options);
         }
 
-        if (coclass.is_stdmap || generator.namedParameters === coclass) {
+        if (coclass.is_stdmap || processor.namedParameters === coclass) {
             map_conversion.convert(coclass, header, impl, options);
         }
 
         if (typeof options.convert === "function") {
-            options.convert(generator, coclass, header, impl, options);
+            options.convert(processor, coclass, header, impl, options);
         }
     },
 

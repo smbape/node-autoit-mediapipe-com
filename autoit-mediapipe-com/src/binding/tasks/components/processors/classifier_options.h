@@ -11,8 +11,8 @@ namespace mediapipe::tasks::autoit::components::processors::classifier_options {
 			const std::optional<std::string>& display_names_locale = std::optional<std::string>(),
 			const std::optional<int>& max_results = std::optional<int>(),
 			const std::optional<float>& score_threshold = std::optional<float>(),
-			const std::vector<std::string>& category_allowlist = std::vector<std::string>(),
-			const std::vector<std::string>& category_denylist = std::vector<std::string>()
+			const std::shared_ptr<std::vector<std::string>>& category_allowlist = std::make_shared<std::vector<std::string>>(),
+			const std::shared_ptr<std::vector<std::string>>& category_denylist = std::make_shared<std::vector<std::string>>()
 		)
 			:
 			display_names_locale(display_names_locale),
@@ -28,7 +28,7 @@ namespace mediapipe::tasks::autoit::components::processors::classifier_options {
 		CV_PROP_RW std::optional<std::string> display_names_locale;
 		CV_PROP_RW std::optional<int> max_results;
 		CV_PROP_RW std::optional<float> score_threshold;
-		CV_PROP_RW std::vector<std::string> category_allowlist;
-		CV_PROP_RW std::vector<std::string> category_denylist;
+		CV_PROP_RW std::shared_ptr<std::vector<std::string>> category_allowlist;
+		CV_PROP_RW std::shared_ptr<std::vector<std::string>> category_denylist;
 	};
 }

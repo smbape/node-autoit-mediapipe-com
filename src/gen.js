@@ -11,9 +11,9 @@ const {explore} = require("fs-explorer");
 const Parser = require("./protobuf/Parser");
 const vector_conversion = require("./vector_conversion");
 
-const OpenCV_VERSION = "opencv-4.7.0";
+const OpenCV_VERSION = "opencv-4.10.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
-const MEDIAPIPE_VERSION = "0.9.3.0";
+const MEDIAPIPE_VERSION = "0.10.14";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
@@ -45,7 +45,7 @@ const occurrences = (str, substr, allowOverlapping = false) => {
     return n;
 };
 
-const parseArguments = PROJECT_DIR => {
+const getOptions = PROJECT_DIR => {
     const options = {
         APP_NAME: "Mediapipe",
         LIB_UID: "29090432-104c-c6cd-cd2b-9f2a43abd5b6",
@@ -57,7 +57,18 @@ const parseArguments = PROJECT_DIR => {
         shared_ptr: "std::shared_ptr",
         make_shared: "std::make_shared",
         assert: "AUTOIT_ASSERT",
+        Any: "VARIANT*",
         maxFilenameLength: 120,
+        meta_methods: new Map([
+            ["__str__", "::autoit::__str__"],
+            ["__eq__", "::autoit::__eq__"],
+        ]),
+
+        self: "*__self->get()",
+        self_get: (name = null) => {
+            return name ? `__self->get()->${ name }` : "__self->get()";
+        },
+
         progid: progid => {
             if (progids.has(progid)) {
                 return progids.get(progid);
@@ -65,15 +76,7 @@ const parseArguments = PROJECT_DIR => {
 
             return progid;
         },
-        namespaces: new Set([
-            "cv",
-            "google::protobuf",
-            "mediapipe",
-            "mediapipe::autoit",
-            "mediapipe::autoit::solution_base",
-            "mediapipe::autoit::solutions",
-            "std",
-        ]),
+        namespaces: new Set([]),
         other_namespaces: new Set([]),
         remove_namespaces: new Set([
             "cv",
@@ -91,6 +94,7 @@ const parseArguments = PROJECT_DIR => {
         output: sysPath.join(PROJECT_DIR, "generated"),
         toc: true,
         globals: [
+            // cv::AccessFlag
             "$CV_ACCESS_READ",
             "$CV_ACCESS_WRITE",
             "$CV_ACCESS_RW",
@@ -101,29 +105,37 @@ const parseArguments = PROJECT_DIR => {
             "$CV_USAGE_ALLOCATE_DEVICE_MEMORY",
             "$CV_USAGE_ALLOCATE_SHARED_MEMORY",
             "$CV___UMAT_USAGE_FLAGS_32BIT",
+
+            // cv::Formatter::FormatType
+            "$CV_FORMATTER_FMT_DEFAULT",
+            "$CV_FORMATTER_FMT_MATLAB",
+            "$CV_FORMATTER_FMT_CSV",
+            "$CV_FORMATTER_FMT_PYTHON",
+            "$CV_FORMATTER_FMT_NUMPY",
+            "$CV_FORMATTER_FMT_C",
         ],
         constReplacer: new Map([
             ["std::numeric_limits<int32_t>::min()", "-0x80000000"],
             ["std::numeric_limits<int32_t>::max()", "0x7FFFFFFF"],
         ]),
-        onCoClass: (generator, coclass, opts) => {
+        onCoClass: (processor, coclass, opts) => {
             const {fqn} = coclass;
 
             if (fqn.endsWith("MapContainer")) {
                 // make MapContainer to be recognized as a collection
-                generator.as_stl_enum(coclass, "std::pair<_variant_t, _variant_t>");
+                processor.as_stl_enum(coclass, "std::pair<_variant_t, _variant_t>");
             } else if (fqn.endsWith("RepeatedContainer")) {
                 // make RepeatedContainer to be recognized as a collection
-                generator.as_stl_enum(coclass, "_variant_t");
+                processor.as_stl_enum(coclass, "_variant_t");
                 coclass.addProperty(["size_t", "Count", "", ["/R", "=size()"]]);
             } else if (fqn.startsWith("google::protobuf::Repeated_")) {
                 // make RepeatedField to be recognized as a collection
                 const vtype = fqn.slice("google::protobuf::Repeated_".length).replaceAll("_", "::");
-                generator.as_stl_enum(coclass, vtype);
+                processor.as_stl_enum(coclass, vtype);
                 coclass.cpptype = vtype;
-                coclass.idltype = generator.getIDLType(vtype, coclass, opts);
+                coclass.idltype = processor.getIDLType(vtype, coclass, opts);
             } else if (fqn === "mediapipe::autoit::solutions::objectron::ObjectronOutputs") {
-                generator.add_vector(`vector<${ fqn }>`, coclass, opts);
+                processor.add_vector(`std::vector<${ fqn }>`, coclass, opts);
             }
 
             // from mediapipe.python import *
@@ -131,7 +143,7 @@ const parseArguments = PROJECT_DIR => {
                 const parts = fqn.split("::");
 
                 for (let i = 1; i < parts.length; i++) {
-                    generator.add_func([`${ parts.slice(0, i).join(".") }.`, "", ["/Properties"], [
+                    processor.add_func([`${ parts.slice(0, i).join(".") }.`, "", ["/Properties"], [
                         [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
                     ], "", ""]);
                 }
@@ -142,13 +154,13 @@ const parseArguments = PROJECT_DIR => {
                 const parts = fqn.split("::");
 
                 for (let i = 2; i < parts.length; i++) {
-                    generator.add_func([`${ [parts[0]].concat(parts.slice(2, i)).join(".") }.`, "", ["/Properties"], [
+                    processor.add_func([`${ [parts[0]].concat(parts.slice(2, i)).join(".") }.`, "", ["/Properties"], [
                         [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
                     ], "", ""]);
                 }
             }
         },
-        convert: (generator, coclass, header, impl, opts) => {
+        convert: (processor, coclass, header, impl, opts) => {
             const {fqn} = coclass;
 
             if (fqn === "google::protobuf::Message") {
@@ -179,7 +191,7 @@ const parseArguments = PROJECT_DIR => {
                 vector_conversion.convert_sort(coclass, header, impl, opts);
             }
         },
-        dynamicPointerCast: (generator, coclass, opts) => {
+        dynamicPointerCast: (processor, coclass, opts) => {
             const {fqn, children} = coclass;
 
             if (fqn !== "google::protobuf::Message") {
@@ -198,32 +210,57 @@ const parseArguments = PROJECT_DIR => {
         },
     };
 
-    for (const opt of ["iface", "hdr", "impl", "idl", "manifest", "rgs", "res", "save"]) {
-        options[opt] = !process.argv.includes(`--no-${ opt }`);
+    const argv = process.argv.slice(2);
+    const flags_true = ["iface", "hdr", "impl", "idl", "manifest", "rgs", "res", "save"];
+    const flags_false = ["test"];
+
+    for (const opt of flags_true) {
+        options[opt] = !argv.includes(`--no-${ opt }`);
     }
 
-    for (const opt of ["test"]) {
-        options[opt] = process.argv.includes(`--${ opt }`);
+    for (const opt of flags_false) {
+        options[opt] = argv.includes(`--${ opt }`);
     }
 
-    for (const opt of process.argv) {
+    for (let i = 0; i < argv.length; i++) {
+        const opt = argv[i];
+
+        if (opt.startsWith("--no-") && flags_true.includes(opt.slice("--no-".length))) {
+            continue;
+        }
+
+        if (opt.startsWith("--") && flags_false.includes(opt.slice("--".length))) {
+            continue;
+        }
+
         if (opt.startsWith("--no-test=")) {
             for (const fqn of opt.slice("--no-test=".length).split(/[ ,]/)) {
                 options.notest.add(fqn);
             }
+            continue;
         }
 
         if (opt.startsWith("--build=")) {
             for (const fqn of opt.slice("--build=".length).split(/[ ,]/)) {
                 options.build.add(fqn);
             }
+            continue;
         }
 
         if (opt.startsWith("--skip=")) {
             for (const fqn of opt.slice("--skip=".length).split(/[ ,]/)) {
                 options.skip.add(fqn);
             }
+            continue;
         }
+
+        if (opt.startsWith("-D")) {
+            const [key, value] = opt.slice("-D".length).split("=");
+            options[key] = typeof value === "undefined" ? true : value;
+            continue;
+        }
+
+        throw new Error(`Unknown option ${ opt }`);
     }
 
     return options;
@@ -235,7 +272,8 @@ const {
 
 const {findFile} = require("./FileUtils");
 const custom_declarations = require("./custom_declarations");
-const AutoItGenerator = require("./AutoItGenerator");
+const DeclProcessor = require("./DeclProcessor");
+const COMGenerator = require("./COMGenerator");
 
 const PROJECT_DIR = sysPath.resolve(__dirname, "../autoit-mediapipe-com");
 const SRC_DIR = sysPath.join(PROJECT_DIR, "src");
@@ -247,7 +285,8 @@ const hdr_parser = fs.readFileSync(sysPath.join(src2, "hdr_parser.py")).toString
 const hdr_parser_start = hdr_parser.indexOf("class CppHeaderParser");
 const hdr_parser_end = hdr_parser.indexOf("if __name__ == '__main__':");
 
-const options = parseArguments(PROJECT_DIR);
+const options = getOptions(PROJECT_DIR);
+options.proto = COMGenerator.proto;
 
 waterfall([
     next => {
@@ -262,15 +301,13 @@ waterfall([
         const matcher = /#include "([^"]+)\.pb\.h"/g;
 
         explore(SRC_DIR, async (path, stats, next) => {
-            const extname = sysPath.extname(path);
-            const isheader = extname.startsWith(".h");
-            let include = isheader && path.slice(SRC_DIR.length + 1).replace("\\", "/").startsWith("binding/");
+            const relpath = path.slice(SRC_DIR.length + 1);
+            const parts = relpath.split(".");
+            const extname = parts.length === 0 ? "" : `.${ parts[parts.length - 1] }`;
+            const extnames = parts.length === 0 ? "" : `.${ parts.slice(-2).join(".") }`;
+            const isheader = [".h", ".hpp", ".hxx"].includes(extname);
 
             const content = await fsPromises.readFile(path);
-
-            if (!include && isheader) {
-                include = content.includes("CV_EXPORTS");
-            }
 
             let match;
             matcher.lastIndex = 0;
@@ -278,7 +315,7 @@ waterfall([
                 protofiles.add(`${ match[1] }.proto`);
             }
 
-            if (include) {
+            if (isheader && ![".impl.h", ".impl.hpp", ".impl.hxx"].includes(extnames) && (content.includes("CV_EXPORTS") || relpath.replace("\\", "/").startsWith("binding/"))) {
                 srcfiles.push(path);
             }
 
@@ -299,7 +336,9 @@ waterfall([
             proto_path: [
                 mediapipe_SOURCE_DIR,
                 protobuf_SOURCE_DIR,
-            ]
+            ],
+            self: options.self,
+            self_get: options.self_get,
         };
 
         for (const filename of protofiles) {
@@ -346,8 +385,10 @@ waterfall([
             configuration.namespaces.push(...options.namespaces);
             configuration.namespaces.push(...options.other_namespaces);
 
-            const generator = new AutoItGenerator();
-            generator.generate(configuration, options, next);
+            const processor = new DeclProcessor(options);
+            processor.process(configuration, options);
+
+            next(null, processor, configuration);
         });
 
         child.stderr.on("data", chunk => {
@@ -364,8 +405,8 @@ waterfall([
 
             ${ hdr_parser
                 .slice(hdr_parser_start, hdr_parser_end)
-                .replace(`${ " ".repeat(20) }if self.wrap_mode:`, `${ " ".repeat(20) }if False:`)
-                .replace(/\("std::", ""\), \("cv::", ""\)/g, Array.from(options.namespaces).map(namespace => `("${ namespace }::", "")`).join(", "))
+                // .replace(`${ " ".repeat(20) }if self.wrap_mode:`, `${ " ".repeat(20) }if False:`)
+                // .replace(/\("std::", ""\), \("cv::", ""\)/g, Array.from(options.namespaces).map(namespace => `("${ namespace }::", "")`).join(", "))
                 .split("\n")
                 .join(`\n${ " ".repeat(12) }`) }
 
@@ -390,7 +431,12 @@ waterfall([
 
         child.stdin.write(code);
         child.stdin.end();
-    }
+    },
+
+    (processor, configuration, next) => {
+        const comGenerator = new COMGenerator();
+        comGenerator.generate(processor, configuration, options, next);
+    },
 ], err => {
     if (err) {
         throw err;

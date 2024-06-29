@@ -1,9 +1,13 @@
 #pragma once
 
+#include "absl/log/absl_log.h"
 #include "mediapipe/framework/calculator.pb.h"
 #include "mediapipe/tasks/cc/core/mediapipe_builtin_op_resolver.h"
 #include "mediapipe/tasks/cc/core/task_runner.h"
 #include "tensorflow/lite/core/api/op_resolver.h"
+#if !MEDIAPIPE_DISABLE_GPU
+#include "mediapipe/gpu/gpu_shared_data_internal.h"
+#endif  // MEDIAPIPE_DISABLE_GPU
 #include <functional>
 
 namespace mediapipe::autoit {

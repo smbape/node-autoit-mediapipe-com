@@ -20,14 +20,16 @@ const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::
 }
 
 namespace {
-	using namespace mediapipe::tasks::vision::gesture_recognizer::proto;
-	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
-	using namespace mediapipe::tasks::autoit::core::base_options;
-	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::tasks::autoit::vision::gesture_recognizer;
+	using namespace google::protobuf;
 	using namespace mediapipe::autoit::packet_creator;
 	using namespace mediapipe::autoit::packet_getter;
-	using namespace google::protobuf;
+	using namespace mediapipe::tasks::autoit::components::containers;
+	using namespace mediapipe::tasks::autoit::components::processors;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
+	using namespace mediapipe::tasks::autoit::vision::gesture_recognizer;
+	using namespace mediapipe::tasks::vision::gesture_recognizer::proto;
 	using namespace mediapipe;
 
 	using mediapipe::autoit::PacketsCallback;
@@ -55,90 +57,63 @@ namespace {
 			return std::make_shared<GestureRecognizerResult>();
 		}
 
-		std::vector<std::shared_ptr<Message>> gestures_proto_list;
-		get_proto_list(output_packets.at(_HAND_GESTURE_STREAM_NAME), gestures_proto_list);
+		auto gesture_recognizer_result = std::make_shared<GestureRecognizerResult>();
 
-		std::vector<std::shared_ptr<Message>> handedness_proto_list;
-		get_proto_list(output_packets.at(_HANDEDNESS_STREAM_NAME), handedness_proto_list);
+		const auto& gestures_proto_list = GetContent<std::vector<ClassificationList>>(output_packets.at(_HAND_GESTURE_STREAM_NAME));
+		for (const auto& gesture_classifications : gestures_proto_list) {
+			std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> gesture_categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 
-		std::vector<std::shared_ptr<Message>> hand_landmarks_proto_list;
-		get_proto_list(output_packets.at(_HAND_LANDMARKS_STREAM_NAME), hand_landmarks_proto_list);
-
-		std::vector<std::shared_ptr<Message>> hand_world_landmarks_proto_list;
-		get_proto_list(output_packets.at(_HAND_WORLD_LANDMARKS_STREAM_NAME), hand_world_landmarks_proto_list);
-
-		std::vector<std::vector<std::shared_ptr<category::Category>>> gesture_results;
-		for (const auto& proto : gestures_proto_list) {
-			std::vector<std::shared_ptr<category::Category>> gesture_categories;
-
-			// ClassificationList gesture_classifications;
-			// gesture_classifications.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-			const auto& gesture_classifications = *static_cast<ClassificationList const*>(proto.get());
 			for (const auto& gesture : gesture_classifications.classification()) {
-				gesture_categories.push_back(std::make_shared<category::Category>(
+				gesture_categories->push_back(std::make_shared<category::Category>(
 					_GESTURE_DEFAULT_INDEX,
 					gesture.score(),
 					gesture.display_name(),
 					gesture.label()
-					));
+				));
 			}
 
-			gesture_results.push_back(std::move(gesture_categories));
+			gesture_recognizer_result->gestures->push_back(std::move(gesture_categories));
 		}
 
-		std::vector<std::vector<std::shared_ptr<category::Category>>> handedness_results;
-		for (const auto& proto : handedness_proto_list) {
-			std::vector<std::shared_ptr<category::Category>> handedness_categories;
+		const auto& handedness_proto_list = GetContent<std::vector<ClassificationList>>(output_packets.at(_HANDEDNESS_STREAM_NAME));
+		for (const auto& handedness_classifications : handedness_proto_list) {
+			std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> handedness_categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 
-			// ClassificationList handedness_classifications;
-			// handedness_classifications.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-			const auto& handedness_classifications = *static_cast<ClassificationList const*>(proto.get());
 			for (const auto& handedness : handedness_classifications.classification()) {
-				handedness_categories.push_back(std::make_shared<category::Category>(
+				handedness_categories->push_back(std::make_shared<category::Category>(
 					handedness.index(),
 					handedness.score(),
 					handedness.display_name(),
 					handedness.label()
-					));
+				));
 			}
 
-			handedness_results.push_back(std::move(handedness_categories));
+			gesture_recognizer_result->handedness->push_back(std::move(handedness_categories));
 		}
 
-		std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks_results;
-		for (const auto& proto : hand_landmarks_proto_list) {
-			std::vector<std::shared_ptr<landmark::NormalizedLandmark>> hand_landmarks_list;
+		const auto& hand_landmarks_proto_list = GetContent<std::vector<NormalizedLandmarkList>>(output_packets.at(_HAND_LANDMARKS_STREAM_NAME));
+		for (const auto& hand_landmarks : hand_landmarks_proto_list) {
+			std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>();
 
-			// NormalizedLandmarkList hand_landmarks;
-			// hand_landmarks.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-			const auto& hand_landmarks = *static_cast<NormalizedLandmarkList const*>(proto.get());
 			for (const auto& hand_landmark : hand_landmarks.landmark()) {
-				hand_landmarks_list.push_back(landmark::NormalizedLandmark::create_from_pb2(hand_landmark));
+				hand_landmarks_list->push_back(landmark::NormalizedLandmark::create_from_pb2(hand_landmark));
 			}
 
-			hand_landmarks_results.push_back(std::move(hand_landmarks_list));
+			gesture_recognizer_result->hand_landmarks->push_back(std::move(hand_landmarks_list));
 		}
 
-		std::vector<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks_results;
-		for (const auto& proto : hand_world_landmarks_proto_list) {
-			std::vector<std::shared_ptr<landmark::Landmark>> hand_world_landmarks_list;
+		const auto& hand_world_landmarks_proto_list = GetContent<std::vector<LandmarkList>>(output_packets.at(_HAND_WORLD_LANDMARKS_STREAM_NAME));
+		for (const auto& hand_world_landmarks : hand_world_landmarks_proto_list) {
+			std::shared_ptr<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::Landmark>>>();
 
-			// LandmarkList hand_world_landmarks;
-			// hand_world_landmarks.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-			const auto& hand_world_landmarks = *static_cast<LandmarkList const*>(proto.get());
 			for (const auto& hand_world_landmark : hand_world_landmarks.landmark()) {
-				hand_world_landmarks_list.push_back(landmark::Landmark::create_from_pb2(hand_world_landmark));
+				hand_world_landmarks_list->push_back(landmark::Landmark::create_from_pb2(hand_world_landmark));
 			}
 
-			hand_world_landmarks_results.push_back(std::move(hand_world_landmarks_list));
+			gesture_recognizer_result->hand_world_landmarks->push_back(std::move(hand_world_landmarks_list));
 		}
 
-		return std::make_shared<GestureRecognizerResult>(
-			std::move(gesture_results),
-			std::move(handedness_results),
-			std::move(hand_landmarks_results),
-			std::move(hand_world_landmarks_results)
-			);
+		return gesture_recognizer_result;
 	}
 }
 
@@ -190,20 +165,21 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 					return;
 				}
 
-				auto timestamp_ms = output_packets.at(_HAND_GESTURE_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
-				auto image = GetContent<Image>(image_out_packet);
 				auto gesture_recognizer_result = _build_recognition_result(output_packets);
+				const auto& image = GetContent<Image>(image_out_packet);
+				auto timestamp_ms = output_packets.at(_HAND_GESTURE_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
+
 				options->result_callback(*gesture_recognizer_result, image, timestamp_ms);
 			};
 		}
 
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
 			_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME
 		};
-		task_info.output_streams = {
+		*task_info.output_streams = {
 			_HAND_GESTURE_TAG + ":" + _HAND_GESTURE_STREAM_NAME,
 			_HANDEDNESS_TAG + ":" + _HANDEDNESS_STREAM_NAME,
 			_HAND_LANDMARKS_TAG + ":" + _HAND_LANDMARKS_STREAM_NAME,
@@ -216,7 +192,7 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
 			options->running_mode,
 			std::move(packets_callback)
-			);
+		);
 	}
 
 	std::shared_ptr<GestureRecognizerResult> GestureRecognizer::recognize(

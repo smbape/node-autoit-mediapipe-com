@@ -2,6 +2,7 @@
 
 #include "mediapipe/tasks/cc/core/proto/base_options.pb.h"
 #include "mediapipe/tasks/cc/core/proto/external_file.pb.h"
+#include "google/protobuf/any.pb.h"
 #include "mediapipe/calculators/core/flow_limiter_calculator.pb.h"
 #include "mediapipe/framework/calculator_options.pb.h"
 #include "mediapipe/framework/calculator.pb.h"
@@ -14,8 +15,8 @@ namespace mediapipe::tasks::autoit::core::task_info {
 
 		CV_WRAP TaskInfo(
 			const std::string& task_graph = "",
-			const std::vector<std::string>& input_streams = std::vector<std::string>(),
-			const std::vector<std::string>& output_streams = std::vector<std::string>(),
+			const std::shared_ptr<std::vector<std::string>>& input_streams = std::make_shared<std::vector<std::string>>(),
+			const std::shared_ptr<std::vector<std::string>>& output_streams = std::make_shared<std::vector<std::string>>(),
 			const std::shared_ptr<google::protobuf::Message>& task_options = std::shared_ptr<google::protobuf::Message>()
 		) :
 			task_graph(task_graph),
@@ -27,8 +28,8 @@ namespace mediapipe::tasks::autoit::core::task_info {
 		CV_WRAP std::shared_ptr<mediapipe::CalculatorGraphConfig> generate_graph_config(bool enable_flow_limiting = true);
 
 		CV_PROP_RW std::string task_graph;
-		CV_PROP_RW std::vector<std::string> input_streams;
-		CV_PROP_RW std::vector<std::string> output_streams;
+		CV_PROP_RW std::shared_ptr<std::vector<std::string>> input_streams;
+		CV_PROP_RW std::shared_ptr<std::vector<std::string>> output_streams;
 		CV_PROP_RW std::shared_ptr<google::protobuf::Message> task_options;
 	};
 }

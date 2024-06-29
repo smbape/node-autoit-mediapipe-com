@@ -2718,16 +2718,20 @@ const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::
 }
 
 namespace {
-	using namespace mediapipe::tasks::vision::face_landmarker::proto;
-	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
-	using namespace mediapipe::tasks::autoit::core::base_options;
-	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::tasks::autoit::vision::face_landmarker;
-	using namespace mediapipe::autoit::packet_creator;
-	using namespace mediapipe::autoit::packet_getter;
-	using namespace mediapipe;
 	using namespace google::protobuf::autoit::cmessage;
 	using namespace google::protobuf;
+	using namespace mediapipe::autoit::packet_creator;
+	using namespace mediapipe::autoit::packet_getter;
+	using namespace mediapipe::tasks::autoit::components::containers;
+	using namespace mediapipe::tasks::autoit::components::processors;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
+	using namespace mediapipe::tasks::autoit::vision::face_landmarker;
+	using namespace mediapipe::tasks::vision::face_geometry::proto;
+	using namespace mediapipe::tasks::vision::face_landmarker::proto;
+	using namespace mediapipe;
+
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -2762,70 +2766,41 @@ namespace {
 			return std::make_shared<FaceLandmarkerResult>();
 		}
 
-		std::vector<std::shared_ptr<Message>> face_landmarks_proto_list;
-		get_proto_list(output_packets.at(_NORM_LANDMARKS_STREAM_NAME), face_landmarks_proto_list);
+		auto face_landmarker_result = std::make_shared<FaceLandmarkerResult>();
 
-		std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> face_landmarks_results;
-		for (const auto& proto : face_landmarks_proto_list) {
-			std::vector<std::shared_ptr<landmark::NormalizedLandmark>> face_landmarks_list;
+		const auto& face_landmarks_proto_list = GetContent<std::vector<NormalizedLandmarkList>>(output_packets.at(_NORM_LANDMARKS_STREAM_NAME));
+		for (const auto& face_landmarks : face_landmarks_proto_list) {
+			std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> face_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>();
 
-			// NormalizedLandmarkList face_landmarks;
-			// face_landmarks.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-			const auto& face_landmarks = *static_cast<NormalizedLandmarkList const*>(proto.get());
 			for (const auto& face_landmark : face_landmarks.landmark()) {
-				face_landmarks_list.push_back(landmark::NormalizedLandmark::create_from_pb2(face_landmark));
+				face_landmarks_list->push_back(landmark::NormalizedLandmark::create_from_pb2(face_landmark));
 			}
 
-			face_landmarks_results.push_back(std::move(face_landmarks_list));
+			face_landmarker_result->face_landmarks->push_back(std::move(face_landmarks_list));
 		}
 
-		std::vector<std::vector<std::shared_ptr<category::Category>>> face_blendshapes_results;
 		if (output_packets.count(_BLENDSHAPES_STREAM_NAME)) {
-			std::vector<std::shared_ptr<Message>> face_blendshapes_proto_list;
-			get_proto_list(output_packets.at(_BLENDSHAPES_STREAM_NAME), face_blendshapes_proto_list);
+			const auto& face_blendshapes_proto_list = GetContent<std::vector<ClassificationList>>(output_packets.at(_BLENDSHAPES_STREAM_NAME));
+			for (const auto& face_blendshapes_classifications : face_blendshapes_proto_list) {
+				std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> face_blendshapes_categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 
-			for (const auto& proto : face_blendshapes_proto_list) {
-				std::vector<std::shared_ptr<category::Category>> face_blendshapes_categories;
-
-				// ClassificationList face_blendshapes_classifications;
-				// face_blendshapes_classifications.MergeFrom(*proto); // Is it necessary? Shouldn't reinterpret_cast(&proto) be enough?
-				const auto& face_blendshapes_classifications = *static_cast<ClassificationList const*>(proto.get());
 				for (const auto& face_blendshapes : face_blendshapes_classifications.classification()) {
-					face_blendshapes_categories.push_back(std::make_shared<category::Category>(
+					face_blendshapes_categories->push_back(std::make_shared<category::Category>(
 						face_blendshapes.index(),
 						face_blendshapes.score(),
 						face_blendshapes.display_name(),
 						face_blendshapes.label()
-						));
+					));
 				}
 
-				face_blendshapes_results.push_back(std::move(face_blendshapes_categories));
+				face_landmarker_result->face_blendshapes->push_back(std::move(face_blendshapes_categories));
 			}
 		}
 
-		std::vector<cv::Mat> facial_transformation_matrixes_results;
 		if (output_packets.count(_FACE_GEOMETRY_STREAM_NAME)) {
-			std::vector<std::shared_ptr<Message>> facial_transformation_matrixes_proto_list;
-			get_proto_list(output_packets.at(_FACE_GEOMETRY_STREAM_NAME), facial_transformation_matrixes_proto_list);
-
-			for (const auto& proto : facial_transformation_matrixes_proto_list) {
-				if (!HasField(*proto, "pose_transform_matrix")) {
-					continue;
-				}
-
-				bool is_in_oneof;
-				const FieldDescriptor* field_descriptor = GetFieldDescriptor(*proto, "pose_transform_matrix", is_in_oneof);
-
-				if (!CheckFieldBelongsToMessage(*proto, field_descriptor)) {
-					continue;
-				}
-
-				if (field_descriptor->is_repeated() || field_descriptor->cpp_type() != FieldDescriptor::CPPTYPE_MESSAGE) {
-					continue;
-				}
-
-				MatrixData matrix_data;
-				matrix_data.MergeFrom(proto->GetReflection()->GetMessage(*proto, field_descriptor));
+			const auto& facial_transformation_matrixes_proto_list = GetContent<std::vector<FaceGeometry>>(output_packets.at(_FACE_GEOMETRY_STREAM_NAME));
+			for (const auto& face_geometry : facial_transformation_matrixes_proto_list) {
+				MatrixData matrix_data = face_geometry.pose_transform_matrix();
 
 				cv::Mat matrix = cv::Mat::zeros(matrix_data.rows(), matrix_data.cols(), CV_32F);
 				std::copy(matrix_data.packed_data().begin(), matrix_data.packed_data().end(), matrix.ptr<float>());
@@ -2836,15 +2811,11 @@ namespace {
 					matrix = transposed;
 				}
 
-				facial_transformation_matrixes_results.push_back(matrix);
+				face_landmarker_result->facial_transformation_matrixes->push_back(matrix);
 			}
 		}
 
-		return std::make_shared<FaceLandmarkerResult>(
-			std::move(face_landmarks_results),
-			std::move(face_blendshapes_results),
-			std::move(facial_transformation_matrixes_results)
-			);
+		return face_landmarker_result;
 	}
 }
 
@@ -2886,10 +2857,9 @@ namespace mediapipe::tasks::autoit::vision::face_landmarker {
 					return;
 				}
 
-				const auto& face_landmarks_packet = output_packets.at(_NORM_LANDMARKS_STREAM_NAME);
-				auto image = GetContent<Image>(image_out_packet);
-				auto timestamp_ms = face_landmarks_packet.Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 				auto face_landmarker_result = _build_landmarker_result(output_packets);
+				const auto& image = GetContent<Image>(image_out_packet);
+				auto timestamp_ms = output_packets.at(_NORM_LANDMARKS_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
 				options->result_callback(*face_landmarker_result, image, timestamp_ms);
 			};
@@ -2897,21 +2867,21 @@ namespace mediapipe::tasks::autoit::vision::face_landmarker {
 
 		TaskInfo task_info;
 
-		task_info.output_streams = {
+		*task_info.output_streams = {
 			_NORM_LANDMARKS_TAG + ":" + _NORM_LANDMARKS_STREAM_NAME,
 			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME,
 		};
 
 		if (options->output_face_blendshapes) {
-			task_info.output_streams.push_back(_BLENDSHAPES_TAG + ":" + _BLENDSHAPES_STREAM_NAME);
+			task_info.output_streams->push_back(_BLENDSHAPES_TAG + ":" + _BLENDSHAPES_STREAM_NAME);
 		}
 
 		if (options->output_facial_transformation_matrixes) {
-			task_info.output_streams.push_back(_FACE_GEOMETRY_TAG + ":" + _FACE_GEOMETRY_STREAM_NAME);
+			task_info.output_streams->push_back(_FACE_GEOMETRY_TAG + ":" + _FACE_GEOMETRY_STREAM_NAME);
 		}
 
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
 			_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME
 		};
@@ -2921,7 +2891,7 @@ namespace mediapipe::tasks::autoit::vision::face_landmarker {
 			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
 			options->running_mode,
 			std::move(packets_callback)
-			);
+		);
 	}
 
 	std::shared_ptr<FaceLandmarkerResult> FaceLandmarker::detect(

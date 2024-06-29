@@ -10,7 +10,7 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 		Classifications& operator=(const Classifications& other) = default;
 
 		CV_WRAP Classifications(
-			const std::vector<std::shared_ptr<category::Category>>& categories = std::vector<std::shared_ptr<category::Category>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<category::Category>>>& categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>(),
 			int head_index = -1,
 			std::string head_name = std::string()
 		)
@@ -23,7 +23,13 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 		CV_WRAP std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications> to_pb2();
 		CV_WRAP static std::shared_ptr<Classifications> create_from_pb2(const mediapipe::tasks::components::containers::proto::Classifications& pb2_obj);
 
-		CV_PROP_RW std::vector<std::shared_ptr<category::Category>> categories;
+		bool operator== (const Classifications& other) const {
+			return ::autoit::__eq__(categories, other.categories) &&
+				::autoit::__eq__(head_index, other.head_index) &&
+				::autoit::__eq__(head_name, other.head_name);
+		}
+
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> categories;
 		CV_PROP_RW int head_index;
 		CV_PROP_RW std::string head_name;
 	};
@@ -33,7 +39,7 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 		ClassificationResult& operator=(const ClassificationResult& other) = default;
 
 		CV_WRAP ClassificationResult(
-			const std::vector<std::shared_ptr<Classifications>>& classifications = std::vector<std::shared_ptr<Classifications>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<Classifications>>>& classifications = std::make_shared<std::vector<std::shared_ptr<Classifications>>>(),
 			int64_t timestamp_ms = 0
 		)
 			:
@@ -44,7 +50,12 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 		CV_WRAP std::shared_ptr<mediapipe::tasks::components::containers::proto::ClassificationResult> to_pb2();
 		CV_WRAP static std::shared_ptr<ClassificationResult> create_from_pb2(const mediapipe::tasks::components::containers::proto::ClassificationResult& pb2_obj);
 
-		CV_PROP_RW std::vector<std::shared_ptr<Classifications>> classifications;
+		bool operator== (const ClassificationResult& other) const {
+			return ::autoit::__eq__(classifications, other.classifications) &&
+				::autoit::__eq__(timestamp_ms, other.timestamp_ms);
+		}
+
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<Classifications>>> classifications;
 		CV_PROP_RW int64_t timestamp_ms;
 	};
 }

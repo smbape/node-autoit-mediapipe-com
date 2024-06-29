@@ -20,6 +20,6 @@ namespace mediapipe::tasks::autoit::components::containers::rect {
 			pb2_obj.height(),
 			pb2_obj.rotation(),
 			pb2_obj.rect_id()
-			);
+		);
 	}
 }

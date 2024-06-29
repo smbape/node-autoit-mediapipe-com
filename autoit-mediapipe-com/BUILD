@@ -28,8 +28,14 @@ config_setting(
     values = {"compilation_mode": "dbg"},
 )
 
-OPENCV_VERSION = "470"  # 4.7.0
-MEDIAPIPE_VERSION = "0.9.3.0"
+config_setting(
+    name = "enable_odml_converter",
+    define_values = {"ENABLE_ODML_CONVERTER": "1"},
+    visibility = ["//visibility:public"],
+)
+
+OPENCV_VERSION = "4100"  # 4.10.0
+MEDIAPIPE_VERSION = "0.10.14"
 OUTPUT_NAME = "autoit_mediapipe_com-%s-%s" % (MEDIAPIPE_VERSION, OPENCV_VERSION)
 
 add_com_library(OUTPUT_NAME, "Release", "opt")

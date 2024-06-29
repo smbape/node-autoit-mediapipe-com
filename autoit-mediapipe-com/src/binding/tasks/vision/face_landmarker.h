@@ -4,6 +4,7 @@
 #include "mediapipe/framework/formats/landmark.pb.h"
 #include "mediapipe/framework/formats/matrix_data.pb.h"
 #include "mediapipe/tasks/cc/vision/face_landmarker/proto/face_landmarker_graph_options.pb.h"
+#include "mediapipe/tasks/cc/vision/face_geometry/proto/face_geometry.pb.h"
 #include "binding/tasks/components/containers/category.h"
 #include "binding/tasks/components/containers/landmark.h"
 #include "binding/tasks/core/base_options.h"
@@ -14,9 +15,6 @@
 #include <functional>
 
 namespace mediapipe::tasks::autoit::vision::face_landmarker {
-	using namespace mediapipe::tasks::autoit::components::containers;
-	using namespace mediapipe::tasks::autoit::components::processors;
-
 	enum class Blendshapes {
 		// The 52 blendshape coefficients.
 		NEUTRAL = 0,
@@ -101,18 +99,24 @@ namespace mediapipe::tasks::autoit::vision::face_landmarker {
 		FaceLandmarkerResult& operator=(const FaceLandmarkerResult& other) = default;
 
 		CV_WRAP FaceLandmarkerResult(
-			std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> face_landmarks = std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>(),
-			std::vector<std::vector<std::shared_ptr<category::Category>>> face_blendshapes = std::vector<std::vector<std::shared_ptr<category::Category>>>(),
-			std::vector<cv::Mat> facial_transformation_matrixes = std::vector<cv::Mat>()
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>>& face_landmarks = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>>& face_blendshapes = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>>(),
+			const std::shared_ptr<std::vector<cv::Mat>>& facial_transformation_matrixes = std::make_shared<std::vector<cv::Mat>>()
 		) :
 			face_landmarks(face_landmarks),
 			face_blendshapes(face_blendshapes),
 			facial_transformation_matrixes(facial_transformation_matrixes)
 		{}
 
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> face_landmarks;
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<category::Category>>> face_blendshapes;
-		CV_PROP_RW std::vector<cv::Mat> facial_transformation_matrixes;
+		bool operator== (const FaceLandmarkerResult& other) const {
+			return ::autoit::__eq__(face_landmarks, other.face_landmarks) &&
+				::autoit::__eq__(face_blendshapes, other.face_blendshapes) &&
+				::autoit::__eq__(facial_transformation_matrixes, other.facial_transformation_matrixes);
+		}
+
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>> face_landmarks;
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>> face_blendshapes;
+		CV_PROP_RW std::shared_ptr<std::vector<cv::Mat>> facial_transformation_matrixes;
 	};
 
 	using FaceLandmarkerResultRawCallback = void(*)(const FaceLandmarkerResult&, const Image&, int64_t);

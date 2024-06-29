@@ -23,15 +23,15 @@ const HRESULT autoit_to(VARIANT const* const& in_val, mediapipe::tasks::autoit::
 }
 
 namespace {
+	using namespace google::protobuf;
+	using namespace mediapipe::autoit::packet_creator;
+	using namespace mediapipe::autoit::packet_getter;
 	using namespace mediapipe::tasks::audio::audio_classifier::proto;
 	using namespace mediapipe::tasks::autoit::audio::core::audio_task_running_mode;
 	using namespace mediapipe::tasks::autoit::components::containers::audio_data;
 	using namespace mediapipe::tasks::autoit::components::containers::classification_result;
 	using namespace mediapipe::tasks::autoit::core::base_options;
 	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::autoit::packet_creator;
-	using namespace mediapipe::autoit::packet_getter;
-	using namespace google::protobuf;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
@@ -69,8 +69,8 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 		pb2_obj->mutable_base_options()->set_use_stream_mode(running_mode != AudioTaskRunningMode::AUDIO_CLIPS);
 
 		if (score_threshold) pb2_obj->mutable_classifier_options()->set_score_threshold(*score_threshold);
-		pb2_obj->mutable_classifier_options()->mutable_category_allowlist()->Add(category_allowlist.begin(), category_allowlist.end());
-		pb2_obj->mutable_classifier_options()->mutable_category_denylist()->Add(category_denylist.begin(), category_denylist.end());
+		if (category_allowlist) pb2_obj->mutable_classifier_options()->mutable_category_allowlist()->Add(category_allowlist->begin(), category_allowlist->end());
+		if (category_denylist) pb2_obj->mutable_classifier_options()->mutable_category_denylist()->Add(category_denylist->begin(), category_denylist->end());
 		if (display_names_locale) pb2_obj->mutable_classifier_options()->set_display_names_locale(*display_names_locale);
 		if (max_results) pb2_obj->mutable_classifier_options()->set_max_results(*max_results);
 
@@ -94,10 +94,7 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 					return;
 				}
 
-				mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
-				classification_result_proto.CopyFrom(
-					*get_proto(output_packets.at(_CLASSIFICATIONS_STREAM_NAME))
-				);
+				const auto& classification_result_proto = GetContent<mediapipe::tasks::components::containers::proto::ClassificationResult>(output_packets.at(_CLASSIFICATIONS_STREAM_NAME));
 				options->result_callback(
 					*AudioClassifierResult::create_from_pb2(classification_result_proto),
 					timestamp_ms
@@ -107,11 +104,11 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_AUDIO_TAG + ":" + _AUDIO_IN_STREAM_NAME,
 			_SAMPLE_RATE_TAG + ":" + _SAMPLE_RATE_IN_STREAM_NAME
 		};
-		task_info.output_streams = {
+		*task_info.output_streams = {
 			_CLASSIFICATIONS_TAG + ":" + _CLASSIFICATIONS_STREAM_NAME,
 			_TIMESTAMPED_CLASSIFICATIONS_TAG + ":" + _TIMESTAMPED_CLASSIFICATIONS_STREAM_NAME
 		};
@@ -133,11 +130,8 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 			{ _SAMPLE_RATE_IN_STREAM_NAME, std::move(MakePacket<double>(*audio_clip.audio_format().sample_rate)) },
 			});
 
-		std::vector<std::shared_ptr<Message>> classification_result_proto_list;
-		get_proto_list(output_packets.at(_TIMESTAMPED_CLASSIFICATIONS_STREAM_NAME), classification_result_proto_list);
-		for (const auto& proto : classification_result_proto_list) {
-			mediapipe::tasks::components::containers::proto::ClassificationResult classification_result_proto;
-			classification_result_proto.CopyFrom(*proto);
+		const auto& classification_result_proto_list = GetContent<std::vector<mediapipe::tasks::components::containers::proto::ClassificationResult>>(output_packets.at(_TIMESTAMPED_CLASSIFICATIONS_STREAM_NAME));
+		for (const auto& classification_result_proto : classification_result_proto_list) {
 			output_list.push_back(AudioClassifierResult::create_from_pb2(classification_result_proto));
 		}
 	}

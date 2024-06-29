@@ -297,6 +297,9 @@ def add_com_library(name, intdir, compilation_mode):
                 "/Z7",
             ],
             "//conditions:default": [],
+        }) + select({
+            "//conditions:default": [],
+            ":enable_odml_converter": ["-DENABLE_ODML_CONVERTER"],
         }),
         linkopts = select({
             ":windows-opt-dbg": [
@@ -410,8 +413,10 @@ def add_com_library(name, intdir, compilation_mode):
             # tasks/components/containers
             "//mediapipe/tasks/cc/components/containers/proto:landmarks_detection_result_cc_proto",
 
-            # tasks/audio
+            # tasks/audio:audio_classifier
             "//mediapipe/tasks/cc/audio/audio_classifier:audio_classifier",
+
+            # tasks/audio:audio_embedder
             "//mediapipe/tasks/cc/audio/audio_embedder:audio_embedder",
 
             # tasks/text
@@ -427,5 +432,16 @@ def add_com_library(name, intdir, compilation_mode):
             "//mediapipe/tasks/cc/vision/image_embedder:image_embedder",
             "//mediapipe/tasks/cc/vision/image_segmenter:image_segmenter",
             "//mediapipe/tasks/cc/vision/object_detector:object_detector",
-        ],
+
+            # tasks/vision:holistic_landmarker
+            "//mediapipe/tasks/cc/vision/holistic_landmarker/proto:holistic_result_cc_proto",
+        ] + select({
+            # model_ckpt_util
+            "//conditions:default": [],
+            ":enable_odml_converter": [
+                "//mediapipe/tasks/cc/text/utils:vocab_convert_utils",
+                "@odml//odml/infra/genai/inference/ml_drift/llm/tensor_loaders:model_ckpt_util",
+                "@odml//odml/infra/genai/inference/utils/xnn_utils:model_ckpt_util",
+            ],
+        }),
     )

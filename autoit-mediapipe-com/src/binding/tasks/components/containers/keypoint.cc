@@ -24,6 +24,6 @@ namespace mediapipe::tasks::autoit::components::containers::keypoint {
 			pb2_obj.y(),
 			pb2_obj.keypoint_label(),
 			pb2_obj.score()
-			);
+		);
 	}
 }

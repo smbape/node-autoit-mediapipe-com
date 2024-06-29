@@ -22,9 +22,9 @@ Import-Module ( _Mediapipe_FindFile -Path "opencv_utils.psm1" -SearchPaths @("."
 
 $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "Release" }
 
-$OpenCVWorldDll = if ([string]::IsNullOrEmpty($OpenCVWorldDll)) { _OpenCV_FindDLL "opencv_world470*" -BuildType $BuildType } else { $OpenCVWorldDll }
-$OpenCVComDll = if ([string]::IsNullOrEmpty($OpenCVComDll)) { _OpenCV_FindDLL "autoit_opencv_com470*" -BuildType $BuildType } else { $OpenCVComDll }
-$MediapipeComDll = if ([string]::IsNullOrEmpty($MediapipeComDll)) { _Mediapipe_FindDLL "autoit_mediapipe_com-*-470*" -BuildType $BuildType } else { $MediapipeComDll }
+$OpenCVWorldDll = if ([string]::IsNullOrEmpty($OpenCVWorldDll)) { _OpenCV_FindDLL "opencv_world4100*" -BuildType $BuildType } else { $OpenCVWorldDll }
+$OpenCVComDll = if ([string]::IsNullOrEmpty($OpenCVComDll)) { _OpenCV_FindDLL "autoit_opencv_com4100*" -BuildType $BuildType } else { $OpenCVComDll }
+$MediapipeComDll = if ([string]::IsNullOrEmpty($MediapipeComDll)) { _Mediapipe_FindDLL "autoit_mediapipe_com-*-4100*" -BuildType $BuildType } else { $MediapipeComDll }
 $ResourceDir = if ([string]::IsNullOrEmpty($ResourceDir)) { _Mediapipe_FindResourceDir -BuildType $BuildType } else { $ResourceDir }
 $Image = if ([string]::IsNullOrEmpty($Image)) { _Mediapipe_FindFile "examples\data\garrett-jackson-auTAb39ImXg-unsplash.jpg" } else { $Image }
 
@@ -93,7 +93,7 @@ function Example() {
                 landmark_list =  $face_landmarks;
                 connections =  $mp_face_mesh.FACEMESH_CONTOURS;
                 landmark_drawing_spec =  $null;
-                connection_drawing_spec = $mp_drawing_styles.get_default_face_mesh_contours_style($scale)}))
+                connection_drawing_spec = $mp_drawing_styles.get_default_face_mesh_contours_style(0, $scale)}))
         $mp_drawing.draw_landmarks([MediapipeComInterop]::Params([ref] @{
                 image =  $annotated_image;
                 landmark_list =  $face_landmarks;

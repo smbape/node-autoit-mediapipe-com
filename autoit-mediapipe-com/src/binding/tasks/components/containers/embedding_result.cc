@@ -25,7 +25,7 @@ namespace mediapipe::tasks::autoit::components::containers::embedding_result {
 	std::shared_ptr<EmbeddingResult> EmbeddingResult::create_from_pb2(const proto::EmbeddingResult& pb2_obj) {
 		auto embedding_result = std::make_shared<EmbeddingResult>();
 		for (const auto& embedding : pb2_obj.embeddings()) {
-			embedding_result->embeddings.push_back(Embedding::create_from_pb2(embedding));
+			embedding_result->embeddings->push_back(Embedding::create_from_pb2(embedding));
 		}
 		return embedding_result;
 	}

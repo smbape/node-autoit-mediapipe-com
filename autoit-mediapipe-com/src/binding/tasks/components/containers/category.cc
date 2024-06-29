@@ -16,6 +16,6 @@ namespace mediapipe::tasks::autoit::components::containers::category {
 			pb2_obj.score(),
 			pb2_obj.display_name(),
 			pb2_obj.label()
-			);
+		);
 	}
 }

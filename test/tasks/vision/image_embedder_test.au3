@@ -5,6 +5,9 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/tasks/python/test/vision/image_embedder_test.py
+
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
@@ -12,60 +15,58 @@
 #include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/tasks/python/test/vision/image_embedder_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
+Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
 _AssertIsObj($image_module, "Failed to load mediapipe.autoit._framework_bindings.image")
 
-Global $embedding_result_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.embedding_result")
+Global Const $embedding_result_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.embedding_result")
 _AssertIsObj($embedding_result_module, "Failed to load mediapipe.tasks.autoit.components.containers.embedding_result")
 
-Global $rect = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.rect")
+Global Const $rect = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.rect")
 _AssertIsObj($rect, "Failed to load mediapipe.tasks.autoit.components.containers.rect")
 
-Global $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
+Global Const $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
 _AssertIsObj($base_options_module, "Failed to load mediapipe.tasks.autoit.core.base_options")
 
-Global $image_embedder = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_embedder")
+Global Const $image_embedder = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_embedder")
 _AssertIsObj($image_embedder, "Failed to load mediapipe.tasks.autoit.vision.image_embedder")
 
-Global $image_processing_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options")
+Global Const $image_processing_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options")
 _AssertIsObj($image_processing_options_module, "Failed to load mediapipe.tasks.autoit.vision.core.image_processing_options")
 
-Global $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
+Global Const $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 _AssertIsObj($running_mode_module, "Failed to load mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 
 
-Global $_Rect = $rect.Rect
-Global $_BaseOptions = $base_options_module.BaseOptions
-Global $_Image = $image_module.Image
-Global $_ImageEmbedder = $image_embedder.ImageEmbedder
-Global $_ImageEmbedderOptions = $image_embedder.ImageEmbedderOptions
-Global $_ImageEmbedderResult = $image_embedder.ImageEmbedderResult
-Global $_RUNNING_MODE = $running_mode_module.VisionTaskRunningMode
-Global $_ImageProcessingOptions = $image_processing_options_module.ImageProcessingOptions
+Global Const $_Rect = $rect.Rect
+Global Const $_BaseOptions = $base_options_module.BaseOptions
+Global Const $_Image = $image_module.Image
+Global Const $_ImageEmbedder = $image_embedder.ImageEmbedder
+Global Const $_ImageEmbedderOptions = $image_embedder.ImageEmbedderOptions
+Global Const $_ImageEmbedderResult = $image_embedder.ImageEmbedderResult
+Global Const $_RUNNING_MODE = $running_mode_module.VisionTaskRunningMode
+Global Const $_ImageProcessingOptions = $image_processing_options_module.ImageProcessingOptions
 
-Global $_MODEL_FILE = 'mobilenet_v3_small_100_224_embedder.tflite'
-Global $_BURGER_IMAGE_FILE = 'burger.jpg'
-Global $_BURGER_CROPPED_IMAGE_FILE = 'burger_crop.jpg'
+Global Const $_MODEL_FILE = 'mobilenet_v3_small_100_224_embedder.tflite'
+Global Const $_BURGER_IMAGE_FILE = 'burger.jpg'
+Global Const $_BURGER_CROPPED_IMAGE_FILE = 'burger_crop.jpg'
 
 ; Tolerance for embedding vector coordinate values.
-Global $_EPSILON = 1E-4
+Global Const $_EPSILON = 1E-4
 ; Tolerance for cosine similarity evaluation.
-Global $_SIMILARITY_TOLERANCE = 1E-6
+Global Const $_SIMILARITY_TOLERANCE = 1E-6
 
-Global $FILE_CONTENT = 1
-Global $FILE_NAME = 2
+Global Const $FILE_CONTENT = 1
+Global Const $FILE_NAME = 2
 
 Global $test_image
 Global $test_cropped_image
@@ -83,9 +84,14 @@ Func Test()
 			$_BURGER_CROPPED_IMAGE_FILE _
 			]
 	For $name In $test_files
-		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
-		$file_path = $_TEST_DATA_DIR & "\" & $name
+		If IsArray($name) Then
+			$url = $name[1]
+			$name = $name[0]
+		Else
+			$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
+		EndIf
 		If Not FileExists(get_test_data_path($name)) Then
+			$file_path = $_TEST_DATA_DIR & "\" & $name
 			$download_utils.download($url, $file_path)
 		EndIf
 	Next
@@ -112,7 +118,7 @@ EndFunc   ;==>Test
 Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $embedder = $_ImageEmbedder.create_from_model_path($model_path)
-	_AssertIsObj($embedder)
+	_AssertIsInstance($embedder, $_ImageEmbedder)
 	$embedder.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
@@ -121,17 +127,17 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_ImageEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $embedder = $_ImageEmbedder.create_from_options($options)
-	_AssertIsObj($embedder)
+	_AssertIsInstance($embedder, $_ImageEmbedder)
 	$embedder.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
 	; Creates with options containing model content successfully.
-	Local $model_content = read_binary_to_mat($model_path)
+	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	Local $options = $_ImageEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $embedder = $_ImageEmbedder.create_from_options($options)
-	_AssertIsObj($embedder)
+	_AssertIsInstance($embedder, $_ImageEmbedder)
 	$embedder.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
@@ -142,7 +148,7 @@ Func test_embed($l2_normalize, $quantize, $with_roi, $model_file_type, $expected
 	If $model_file_type == $FILE_NAME Then
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	ElseIf $model_file_type == $FILE_CONTENT Then
-		$model_content = read_binary_to_mat($model_path)
+		$model_content = read_file_into_buffer($model_path)
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	EndIf
 

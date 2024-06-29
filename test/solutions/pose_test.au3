@@ -5,40 +5,40 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/solutions/pose_test.py
+
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\_assert.au3"
 #include "..\_mat_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/solutions/pose_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $cv = _OpenCV_get()
+Global Const $cv = _OpenCV_get()
+_AssertIsObj($cv, "Failed to load opencv")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $drawing_styles = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles")
+Global Const $drawing_styles = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_styles")
 _AssertIsObj($drawing_styles, "Failed to load mediapipe.autoit.solutions.drawing_styles")
 
-Global $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
+Global Const $mp_drawing = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.drawing_utils")
 _AssertIsObj($mp_drawing, "Failed to load mediapipe.autoit.solutions.drawing_utils")
 
-Global $mp_pose = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.pose")
+Global Const $mp_pose = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.pose")
 _AssertIsObj($mp_pose, "Failed to load mediapipe.autoit.solutions.pose")
 
-Global $Mat = _OpenCV_ObjCreate("Mat")
-
-#include ".\test_on_video_fullpose_squats.full.au3"
+Global Const $Mat = _OpenCV_ObjCreate("Mat")
 
 Global Const $DIFF_THRESHOLD = 15  ; pixels
-Global $EXPECTED_POSE_LANDMARKS[][] = [[460, 283], [467, 273], [471, 273], _
+Global Const $EXPECTED_POSE_LANDMARKS[][] = [[460, 283], [467, 273], [471, 273], _
 		[474, 273], [465, 273], [465, 273], _
 		[466, 273], [491, 277], [480, 277], _
 		[470, 294], [465, 294], [545, 319], _
@@ -51,7 +51,7 @@ Global $EXPECTED_POSE_LANDMARKS[][] = [[460, 283], [467, 273], [471, 273], _
 		[363, 630], [730, 633], [303, 628]]
 
 Global Const $WORLD_DIFF_THRESHOLD = 15  ; pixels
-Global $EXPECTED_POSE_WORLD_LANDMARKS[][] = [ _
+Global Const $EXPECTED_POSE_WORLD_LANDMARKS[][] = [ _
 		[-0.11, -0.59, -0.15], [-0.09, -0.64, -0.16], [-0.09, -0.64, -0.16], _
 		[-0.09, -0.64, -0.16], [-0.11, -0.64, -0.14], [-0.11, -0.64, -0.14], _
 		[-0.11, -0.64, -0.14], [0.01, -0.65, -0.15], [-0.06, -0.64, -0.05], _
@@ -77,7 +77,7 @@ Func Test()
 	test_on_image('video_lite', False, 0, 3)
 	test_on_image('video_full', False, 1, 3)
 	test_on_image('video_heavy', False, 2, 3)
-	test_on_video('full', 1, 'pose_squats.full.npz')
+	test_on_video('full', 1, 'pose_squats.full.yml')
 EndFunc   ;==>Test
 
 Func test_blank_image()
@@ -123,7 +123,7 @@ Func test_on_image($id, $static_image_mode, $model_complexity, $num_frames)
 		_annotate_segmentation("test_on_image_" & $id, $segmentation, $expected_segmentation, $idx)
 
 		_AssertMatDiffLess(_landmarks_list_to_array($results("pose_landmarks"), _
-				$image.shape), _
+				$image.shape).colRange(0, 2), _
 				$EXPECTED_POSE_LANDMARKS, $DIFF_THRESHOLD)
 		_AssertMatDiffLess( _
 				_world_landmarks_list_to_array($results("pose_world_landmarks")), _
@@ -135,20 +135,25 @@ Func test_on_image($id, $static_image_mode, $model_complexity, $num_frames)
 EndFunc   ;==>test_on_image
 
 Func test_on_video($id, $model_complexity, $expected_name)
-	#forceref $id, $expected_name
+	#forceref $id
 	$download_utils.download( _
 			"https://github.com/tensorflow/tfjs-models/raw/master/pose-detection/test_data/pose_squats.mp4", _
 			@ScriptDir & "/testdata/pose_squats.mp4" _
 			)
 
+	Local $data_path = @ScriptDir & "/testdata/test_on_video_full" & $expected_name
+	Local $storage = $cv.FileStorage($data_path, $CV_FILE_STORAGE_READ)
+	Local $expected = $storage.getNode("predictions").mat()
+	Local $expected_world = $storage.getNode("predictions_world").mat()
+
 	; Set threshold for comparing actual and expected predictions in pixels.
-	Local Const $DIFF_THRESHOLD = 15
-	Local Const $WORLD_DIFF_THRESHOLD = 0.1
+	Local Const $diff_threshold = 15 ; pixels
+	Local Const $world_diff_threshold = 0.1
 
 	Local $video_path = @ScriptDir & "/testdata/pose_squats.mp4"
 
 	; Predict pose landmarks for each frame.
-	Local $video_cap = _OpenCV_ObjCreate("cv.VideoCapture").create($video_path)
+	Local $video_cap = $cv.VideoCapture($video_path)
 	If Not _AssertTrue($video_cap.isOpened(), "cannot open the video file " & $video_path & ".") Then
 		Return _Mediapipe_Tuple(Default, Default)
 	EndIf
@@ -179,11 +184,18 @@ Func test_on_video($id, $model_complexity, $expected_name)
 		$frame_idx += 1
 	WEnd
 
-	Local $actual = $cv.vconcat($actual_per_frame)
-	Local $actual_world = $cv.vconcat($actual_world_per_frame)
+	Local $actual = $cv.vconcat($actual_per_frame).reshape(3, $frame_idx)
+	Local $actual_world = $cv.vconcat($actual_world_per_frame).reshape(3, $frame_idx)
 
-	_AssertMatDiffLess($actual, $EXPECTED_PREDICTIONS_POSE_LANDMARKS_PER_FRAME, $DIFF_THRESHOLD)
-	_AssertMatDiffLess($actual_world, $EXPECTED_PREDICTIONS_WORLD_POSE_LANDMARKS_PER_FRAME, $WORLD_DIFF_THRESHOLD)
+	; Dump actual .yml.
+	$data_path = @ScriptDir & "/testdata/_test_on_video_full" & $expected_name
+	$storage = $cv.FileStorage($data_path, $CV_FILE_STORAGE_WRITE)
+	$storage.write("predictions", $actual)
+	$storage.write("predictions_world", $actual_world)
+	$storage.release()
+
+	_AssertMatDiffLess(_MatSliceLastDim($actual, 0, 2), _MatSliceLastDim($expected, 0, 2), $diff_threshold)
+	_AssertMatDiffLess($actual_world, $expected_world, $world_diff_threshold)
 EndFunc   ;==>test_on_video
 
 Func _get_output_path($id, $name)
@@ -193,16 +205,17 @@ EndFunc   ;==>_get_output_path
 Func _landmarks_list_to_array($landmark_list, $image_shape)
 	Local $rows = $image_shape[0]
 	Local $cols = $image_shape[1]
-	Local $aArray[$landmark_list.landmark.size()][2]
+	Local $aArray[$landmark_list.landmark.size()][3]
 
 	Local $i = 0
 	For $lmk In $landmark_list.landmark
 		$aArray[$i][0] = $lmk.x * $cols
 		$aArray[$i][1] = $lmk.y * $rows
+		$aArray[$i][2] = $lmk.z * $cols
 		$i += 1
 	Next
 
-	Return $Mat.createFromArray($aArray, $CV_32F)
+	Return $Mat.createFromArray($aArray, $CV_64F)
 EndFunc   ;==>_landmarks_list_to_array
 
 Func _world_landmarks_list_to_array($landmark_list)
@@ -216,7 +229,7 @@ Func _world_landmarks_list_to_array($landmark_list)
 		$i += 1
 	Next
 
-	Return $Mat.createFromArray($aArray, $CV_32F)
+	Return $Mat.createFromArray($aArray, $CV_64F)
 EndFunc   ;==>_world_landmarks_list_to_array
 
 Func _annotate($id, $frame, $results, $idx)

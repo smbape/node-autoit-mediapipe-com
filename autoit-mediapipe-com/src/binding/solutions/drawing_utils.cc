@@ -209,7 +209,8 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
 		const _LandmarkType& landmark_drawing_spec,
-		const _ConnectionType& connection_drawing_spec
+		const _ConnectionType& connection_drawing_spec,
+		const bool is_drawing_landmarks
 	) {
 		auto image_rows = image.rows;
 		auto image_cols = image.cols;
@@ -261,7 +262,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 			}
 		}
 
-		if (OptionalDrawingSpec<_LandmarkType>::empty(landmark_drawing_spec)) {
+		if (!is_drawing_landmarks || OptionalDrawingSpec<_LandmarkType>::empty(landmark_drawing_spec)) {
 			return;
 		}
 
@@ -294,9 +295,10 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
 		const std::shared_ptr<DrawingSpec>& landmark_drawing_spec,
-		const DrawingSpec& connection_drawing_spec
+		const DrawingSpec& connection_drawing_spec,
+		const bool is_drawing_landmarks
 	) {
-		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec);
+		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
 	}
 
 	void draw_landmarks(
@@ -304,9 +306,10 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
 		const std::map<int, DrawingSpec>& landmark_drawing_spec,
-		const DrawingSpec& connection_drawing_spec
+		const DrawingSpec& connection_drawing_spec,
+		const bool is_drawing_landmarks
 	) {
-		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec);
+		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
 	}
 
 	void draw_landmarks(
@@ -314,9 +317,10 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
 		const std::shared_ptr<DrawingSpec>& landmark_drawing_spec,
-		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec
+		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec,
+		const bool is_drawing_landmarks
 	) {
-		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec);
+		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
 	}
 
 	void draw_landmarks(
@@ -324,9 +328,10 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
 		const std::map<int, DrawingSpec>& landmark_drawing_spec,
-		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec
+		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec,
+		const bool is_drawing_landmarks
 	) {
-		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec);
+		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
 	}
 
 	static cv::Mat clip(cv::Mat a, float a_min, float a_max) {

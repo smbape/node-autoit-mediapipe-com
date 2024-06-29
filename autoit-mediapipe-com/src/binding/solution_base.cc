@@ -26,10 +26,10 @@
 #endif
 
 namespace fs = std::filesystem;
-using namespace google::protobuf;
+
 using namespace google::protobuf::autoit::cmessage;
-using namespace mediapipe::autoit::packet_getter;
 using namespace google::protobuf;
+using namespace mediapipe::autoit::packet_getter;
 
 // A mutex to guard the output stream observer autoit callback function.
 // Only one autoit callback can run at once.
@@ -151,7 +151,10 @@ namespace mediapipe::autoit::solution_base {
 		{"::std::vector<::mediapipe::NormalizedLandmark>", PacketDataType::PROTO_LIST},
 		{"::std::vector<::mediapipe::NormalizedLandmarkList>", PacketDataType::PROTO_LIST},
 		{"::std::vector<::mediapipe::Rect>", PacketDataType::PROTO_LIST},
-		{"::std::vector<::mediapipe::NormalizedRect>", PacketDataType::PROTO_LIST}
+		{"::std::vector<::mediapipe::NormalizedRect>", PacketDataType::PROTO_LIST},
+		{"::mediapipe::Joint", PacketDataType::PROTO},
+		{"::mediapipe::JointList", PacketDataType::PROTO},
+		{"::std::vector<::mediapipe::JointList>", PacketDataType::PROTO_LIST},
 	};
 
 	inline static std::vector<std::string> TypeNamesFromOneOf(const std::string& oneof_type_name) {
@@ -290,10 +293,9 @@ namespace mediapipe::autoit::solution_base {
 			// field (array-element-option).
 			ClearField(calculator_options, field_name);
 
-			RepeatedContainer repeated_container = {
-				::autoit::reference_internal(&calculator_options),
-				::autoit::reference_internal(field_descriptor),
-			};
+			RepeatedContainer repeated_container;
+			repeated_container.message = ::autoit::reference_internal(&calculator_options);
+			repeated_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
 
 			for (auto& value : field_value_vector) {
 				repeated_container.Append(value);
@@ -537,7 +539,7 @@ namespace mediapipe::autoit::solution_base {
 			hr = autoit_from(get_float_list(output_packet), _retval);
 			break;
 		case PacketDataType::IMAGE: {
-			const Image& image = GetContent<Image>(output_packet);
+			const auto& image = GetContent<Image>(output_packet);
 			hr = autoit_from(mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get()).clone(), _retval);
 			break;
 		}
@@ -624,13 +626,13 @@ namespace mediapipe::autoit::solution_base {
 
 			RaiseAutoItErrorIfNotOk(m_graph->ObserveOutputStream(
 				stream_name,
-				[this, stream_name](const Packet& output_packet) {
+				std::move([this, stream_name](const Packet& output_packet) {
 					absl::MutexLock lock(&callback_mutex);
 					m_graph_outputs[stream_name] = output_packet;
 					return absl::OkStatus();
-				},
+				}),
 				true
-					));
+			));
 		}
 
 		for (auto const& [name, data] : side_inputs) {
@@ -677,6 +679,8 @@ namespace mediapipe::autoit::solution_base {
 	}
 
 	void SolutionBase::process(const cv::Mat& input_data, std::map<std::string, _variant_t>& solution_outputs) {
+		AUTOIT_ASSERT_THROW(m_input_stream_type_info.size() != 0,
+			"_input_stream_type_info is None in SolutionBase");
 		AUTOIT_ASSERT_THROW(m_input_stream_type_info.size() == 1,
 			"Can't process single image input since the graph has more than one input streams.");
 
@@ -698,6 +702,9 @@ namespace mediapipe::autoit::solution_base {
 		// input.
 		m_simulated_timestamp += 33333;
 		const auto simulated_timestamp = Timestamp(m_simulated_timestamp);
+
+		AUTOIT_ASSERT_THROW(static_cast<bool>(m_graph),
+			"_graph is None in SolutionBase");
 
 		for (auto const& [stream_name, data] : input_data) {
 			const auto& input_stream_type = m_input_stream_type_info[stream_name];
@@ -721,6 +728,11 @@ namespace mediapipe::autoit::solution_base {
 
 		RaiseAutoItErrorIfNotOk(m_graph->WaitUntilIdle());
 
+		// Create a NamedTuple object where the field names are mapping to the graph
+		// output stream names.
+		AUTOIT_ASSERT_THROW(m_output_stream_type_info.size() != 0,
+			"_output_stream_type_info is None in SolutionBase");
+
 		solution_outputs.clear();
 
 		for (auto const& [stream_name, packet_data_type] : m_output_stream_type_info) {
@@ -734,6 +746,9 @@ namespace mediapipe::autoit::solution_base {
 	}
 
 	void SolutionBase::close() {
+		AUTOIT_ASSERT_THROW(static_cast<bool>(m_graph),
+			"Closing SolutionBase._graph which is already None");
+
 		calculator_graph::close(m_graph.get());
 		m_graph.reset();
 		m_input_stream_type_info.clear();

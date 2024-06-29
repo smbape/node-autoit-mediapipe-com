@@ -5,18 +5,21 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
-#include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
-#include "..\..\..\..\..\test\_assert.au3"
-
 ;~ Sources:
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/text_classification/python/text_classifier.ipynb
-;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/text_classification/python/text_classifier.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/text_classification/python/text_classifier.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/text_classification/python/text_classifier.ipynb
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
+;~ Title: Text Classifier with MediaPipe Tasks
+
+#include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
+
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
+; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
@@ -35,9 +38,9 @@ _AssertIsObj($text, "Failed to load mediapipe.tasks.autoit.text")
 Main()
 
 Func Main()
-	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\bert_text_classifier.tflite"
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\bert_classifier.tflite"
 	If Not FileExists($_MODEL_FILE) Then
-		$download_utils.download("https://storage.googleapis.com/mediapipe-tasks/text_classifier/bert_text_classifier.tflite", $_MODEL_FILE)
+		$download_utils.download("https://storage.googleapis.com/mediapipe-models/text_classifier/bert_classifier/float32/1/bert_classifier.tflite", $_MODEL_FILE)
 	EndIf
 
 	; Define the input text that you want the model to classify.
@@ -54,8 +57,18 @@ Func Main()
 	; STEP 4: Process the classification result. In this case, print out the most likely category.
 	Local $top_category = $classification_result.classifications(0).categories(0)
 	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : ' & StringFormat('%s (%.2f)', $top_category.category_name, $top_category.score) & @CRLF) ;### Debug Console
+
+	; STEP 6: Closes the classifier explicitly when the classifier is not used ina context.
+	$classifier.close()
 EndFunc   ;==>Main
 
 Func _OnAutoItExit()
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit
+
+Func _AssertIsObj($vVal, $sMsg)
+	If Not IsObj($vVal) Then
+		ConsoleWriteError($sMsg & @CRLF)
+		Exit 0x7FFFFFFF
+	EndIf
+EndFunc   ;==>_AssertIsObj

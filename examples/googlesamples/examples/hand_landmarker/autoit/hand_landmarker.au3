@@ -5,20 +5,23 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/hand_landmarker/python/hand_landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/hand_landmarker/python/hand_landmarker.ipynb
+
+;~ Title: Hand Landmarks Detection with MediaPipe Tasks
+
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
-#include "..\..\..\..\..\test\_assert.au3"
 
-;~ Sources:
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/hand_landmarker/python/hand_landmarker.ipynb
-;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/hand_landmarker/python/hand_landmarker.ipynb
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
+; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
@@ -53,7 +56,7 @@ Func Main()
 	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\woman_hands.jpg"
 	Local $_IMAGE_URL = "https://storage.googleapis.com/mediapipe-tasks/hand_landmarker/woman_hands.jpg"
 	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\hand_landmarker.task"
-	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-tasks/hand_landmarker/hand_landmarker.task"
+	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task"
 
 	Local $url, $file_path
 
@@ -85,9 +88,13 @@ Func Main()
 	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
 	resize_and_show($cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR))
 	$cv.waitKey()
+
+	; STEP 6: Closes the hand detector explicitly when the hand detector is not used in a context.
+	$detector.close()
 EndFunc   ;==>Main
 
 Func draw_landmarks_on_image($rgb_image, $detection_result)
+	; Compute the scale to make drawn elements visible when the image is resized for display
 	Local $scale = 1 / resize_and_show($rgb_image, Default, False)
 
 	Local $MARGIN = 10 * $scale  ; pixels
@@ -131,7 +138,7 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 		$text_y = $min_y * $height - $MARGIN
 
 		; Draw handedness (left or right hand) on the image.
-		$cv.putText($annotated_image, $handedness[0].category_name, _
+		$cv.putText($annotated_image, $handedness(0).category_name, _
 				_OpenCV_Point($text_x, $text_y), $CV_FONT_HERSHEY_DUPLEX, _
 				$FONT_SIZE, $HANDEDNESS_TEXT_COLOR, $FONT_THICKNESS, $CV_LINE_AA)
 	Next
@@ -170,3 +177,10 @@ Func _OnAutoItExit()
 	_OpenCV_Close()
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit
+
+Func _AssertIsObj($vVal, $sMsg)
+	If Not IsObj($vVal) Then
+		ConsoleWriteError($sMsg & @CRLF)
+		Exit 0x7FFFFFFF
+	EndIf
+EndFunc   ;==>_AssertIsObj

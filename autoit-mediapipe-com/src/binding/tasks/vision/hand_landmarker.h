@@ -13,9 +13,6 @@
 #include <functional>
 
 namespace mediapipe::tasks::autoit::vision::hand_landmarker {
-	using namespace mediapipe::tasks::autoit::components::containers;
-	using namespace mediapipe::tasks::autoit::components::processors;
-
 	enum class HandLandmark {
 		// The 21 hand landmarks.
 		WRIST = 0,
@@ -41,23 +38,49 @@ namespace mediapipe::tasks::autoit::vision::hand_landmarker {
 		PINKY_TIP = 20,
 	};
 
+	struct CV_EXPORTS_W_SIMPLE HandLandmarksConnections {
+		struct CV_EXPORTS_W_SIMPLE Connection {
+			CV_WRAP Connection(const Connection& other) = default;
+			Connection& operator=(const Connection& other) = default;
+
+			CV_WRAP Connection(int start = 0, int end = 0) : start(start), end(end) {}
+
+			CV_PROP_RW int start;
+			CV_PROP_RW int end;
+		};
+
+		CV_PROP static const std::vector<Connection> HAND_PALM_CONNECTIONS;
+		CV_PROP static const std::vector<Connection> HAND_THUMB_CONNECTIONS;
+		CV_PROP static const std::vector<Connection> HAND_INDEX_FINGER_CONNECTIONS;
+		CV_PROP static const std::vector<Connection> HAND_MIDDLE_FINGER_CONNECTIONS;
+		CV_PROP static const std::vector<Connection> HAND_RING_FINGER_CONNECTIONS;
+		CV_PROP static const std::vector<Connection> HAND_PINKY_FINGER_CONNECTIONS;
+		CV_PROP static const std::vector<Connection> HAND_CONNECTIONS;
+	};
+
 	struct CV_EXPORTS_W_SIMPLE HandLandmarkerResult {
 		CV_WRAP HandLandmarkerResult(const HandLandmarkerResult& other) = default;
 		HandLandmarkerResult& operator=(const HandLandmarkerResult& other) = default;
 
 		CV_WRAP HandLandmarkerResult(
-			std::vector<std::vector<std::shared_ptr<category::Category>>> handedness = std::vector<std::vector<std::shared_ptr<category::Category>>>(),
-			std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks = std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>(),
-			std::vector<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks = std::vector<std::vector<std::shared_ptr<landmark::Landmark>>>()
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>>& handedness = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>>& hand_landmarks = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>>(),
+			const std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::Landmark>>>>>& hand_world_landmarks = std::make_shared<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::Landmark>>>>>()
 		) :
 			handedness(handedness),
 			hand_landmarks(hand_landmarks),
 			hand_world_landmarks(hand_world_landmarks)
 		{}
 
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<category::Category>>> handedness;
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks;
-		CV_PROP_RW std::vector<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks;
+		bool operator== (const HandLandmarkerResult& other) const {
+			return ::autoit::__eq__(handedness, other.handedness) &&
+				::autoit::__eq__(hand_landmarks, other.hand_landmarks) &&
+				::autoit::__eq__(hand_world_landmarks, other.hand_world_landmarks);
+		}
+
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::category::Category>>>>> handedness;
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::NormalizedLandmark>>>>> hand_landmarks;
+		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<std::vector<std::shared_ptr<components::containers::landmark::Landmark>>>>> hand_world_landmarks;
 	};
 
 	using HandLandmarkerResultRawCallback = void(*)(const HandLandmarkerResult&, const Image&, int64_t);

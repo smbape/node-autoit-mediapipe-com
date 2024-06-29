@@ -5,19 +5,22 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/text_embedder/python/text_embedder.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/text_embedder/python/text_embedder.ipynb
+
+;~ Title: Text Embedding with MediaPipe Tasks
+
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
-#include "..\..\..\..\..\test\_assert.au3"
 
-;~ Sources:
-;~     https://colab.research.google.com/github/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/text_embedder/python/text_embedder.ipynb
-;~     https://github.com/googlesamples/mediapipe/blob/7d956461efb88e7601de5a4ae55d5a954b093589/examples/text_embedder/python/text_embedder.ipynb
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
+; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
@@ -33,15 +36,12 @@ _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
 Global $text = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text")
 _AssertIsObj($text, "Failed to load mediapipe.tasks.autoit.text")
 
-Global $cosine_similarity = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.utils.cosine_similarity")
-_AssertIsObj($cosine_similarity, "Failed to load mediapipe.tasks.autoit.components.utils.cosine_similarity")
-
 Main()
 
 Func Main()
-	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\mobilebert_embedding_with_metadata.tflite"
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\bert_embedder.tflite"
 	If Not FileExists($_MODEL_FILE) Then
-		$download_utils.download("https://storage.googleapis.com/mediapipe-tasks/text_embedder/mobilebert_embedding_with_metadata.tflite", $_MODEL_FILE)
+		$download_utils.download("https://storage.googleapis.com/mediapipe-models/text_embedder/bert_embedder/float32/1/bert_embedder.tflite", $_MODEL_FILE)
 	EndIf
 
 	; Create your base options with the model that was downloaded earlier
@@ -67,7 +67,7 @@ Func Main()
 
 	; Retrieve the cosine similarity value from both sets of text, then take the
 	; cosine of that value to receie a decimal similarity value.
-	Local $similarity = $cosine_similarity.cosine_similarity($first_embedding_result.embeddings(0), _
+	Local $similarity = $text.TextEmbedder.cosine_similarity($first_embedding_result.embeddings(0), _
 			$second_embedding_result.embeddings(0))
 	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $similarity = ' & $similarity & @CRLF) ;### Debug Console
 EndFunc   ;==>Main
@@ -75,3 +75,10 @@ EndFunc   ;==>Main
 Func _OnAutoItExit()
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit
+
+Func _AssertIsObj($vVal, $sMsg)
+	If Not IsObj($vVal) Then
+		ConsoleWriteError($sMsg & @CRLF)
+		Exit 0x7FFFFFFF
+	EndIf
+EndFunc   ;==>_AssertIsObj

@@ -134,7 +134,7 @@ namespace mediapipe::autoit::packet_creator {
 
 	const std::shared_ptr<Packet> create_matrix(const cv::Mat& data, bool transpose) {
 		AUTOIT_ASSERT_THROW(data.type() == CV_32F, "The data should be a float matrix");
-		AUTOIT_ASSERT_THROW(data.dims == 2, "The data is expected to have at most 2 dimensions");
+		AUTOIT_ASSERT_THROW(data.dims <= 2, "The data is expected to have at most 2 dimensions");
 		AUTOIT_ASSERT_THROW(data.cols == 1 || data.channels() == 1, "The data is expected be a Nx1 matrix");
 
 		// Eigen Map class

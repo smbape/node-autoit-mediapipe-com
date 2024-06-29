@@ -8,21 +8,21 @@ static const std::string _BINARYPB_FILE_PATH = "mediapipe/modules/objectron/obje
 
 template<typename _Tp>
 cv::Mat repeated_to_mat(::google::protobuf::RepeatedField<_Tp> repeated) {
-const auto& rows = 1;
-auto cols = repeated.size();
-const auto& channels = 1;
+	const auto& rows = 1;
+	auto cols = repeated.size();
+	const auto& channels = 1;
 
-cv::Mat matrix(rows, cols, CV_MAKETYPE(
-cv::DataType<_Tp>::depth,
-channels
-));
+	cv::Mat matrix(rows, cols, CV_MAKETYPE(
+		cv::DataType<_Tp>::depth,
+		channels
+	));
 
-int idx = 0;
-for (const auto& value : repeated) {
-matrix.at<_Tp>(idx++) = value;
-}
+	int idx = 0;
+	for (const auto& value : repeated) {
+		matrix.at<_Tp>(idx++) = value;
+	}
 
-return matrix;
+	return matrix;
 }
 
 namespace mediapipe::autoit::solutions::objectron {
@@ -40,7 +40,7 @@ namespace mediapipe::autoit::solutions::objectron {
 		download_utils::download_oss_model(objectron_model);
 	}
 
-	static std::tuple<int, int> _noSize = {0, 0};
+	static std::tuple<int, int> _noSize = { 0, 0 };
 	std::tuple<int, int>& noSize() {
 		return _noSize;
 	}

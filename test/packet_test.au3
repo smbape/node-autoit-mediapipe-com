@@ -5,51 +5,52 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/packet_test.py
+
 #include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "_assert.au3"
 #include "_mat_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/python/packet_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
+Global Const $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
 _AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
-Global $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
+Global Const $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
 _AssertIsObj($detection_pb2, "Failed to load mediapipe.framework.formats.detection_pb2")
 
-Global $packet_creator = _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator")
+Global Const $packet_creator = _Mediapipe_ObjCreate("mediapipe.autoit.packet_creator")
 _AssertIsObj($packet_creator, "Failed to load mediapipe.autoit")
 
-Global $packet_getter = _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter")
+Global Const $packet_getter = _Mediapipe_ObjCreate("mediapipe.autoit.packet_getter")
 _AssertIsObj($packet_getter, "Failed to load mediapipe.autoit")
 
-Global $calculator_graph = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.calculator_graph")
+Global Const $calculator_graph = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.calculator_graph")
 _AssertIsObj($calculator_graph, "Failed to load mediapipe.autoit._framework_bindings")
 
-Global $image_ = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
+Global Const $image_ = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
 _AssertIsObj($image_, "Failed to load mediapipe.autoit._framework_bindings")
 
-Global $image_frame = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image_frame")
+Global Const $image_frame = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image_frame")
 _AssertIsObj($image_frame, "Failed to load mediapipe.autoit._framework_bindings")
 
-Global $packet = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.packet")
+Global Const $packet = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.packet")
 _AssertIsObj($packet, "Failed to load mediapipe.autoit._framework_bindings")
 
-Global $CalculatorGraph = $calculator_graph.CalculatorGraph
+Global Const $CalculatorGraph = $calculator_graph.CalculatorGraph
 _AssertIsObj($CalculatorGraph, "Failed to load calculator_graph.CalculatorGraph")
 
-Global $Image = $image_.Image
+Global Const $Image = $image_.Image
 _AssertIsObj($Image, "Failed to load image.Image")
 
-Global $ImageFrame = $image_frame.ImageFrame
+Global Const $ImageFrame = $image_frame.ImageFrame
 _AssertIsObj($ImageFrame, "Failed to load image_frame.ImageFrame")
 
 Test()

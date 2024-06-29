@@ -5,6 +5,9 @@
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+;~ Sources:
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/tasks/python/test/vision/face_detector_test.py
+
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
@@ -12,69 +15,67 @@
 #include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.9.3.0/mediapipe/tasks/python/test/vision/face_detector_test.py
-
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world470*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-470*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world470*"), _OpenCV_FindDLL("autoit_opencv_com470*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
+; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
 _AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
 
-Global $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
+Global Const $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
 _AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
-Global $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
+Global Const $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
 _AssertIsObj($detection_pb2, "Failed to load mediapipe.framework.formats.detection_pb2")
 
-Global $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
+Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
 _AssertIsObj($image_module, "Failed to load mediapipe.autoit._framework_bindings.image")
 
-Global $bounding_box_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.bounding_box")
+Global Const $bounding_box_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.bounding_box")
 _AssertIsObj($bounding_box_module, "Failed to load mediapipe.tasks.autoit.components.containers.bounding_box")
 
-Global $category_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.category")
+Global Const $category_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.category")
 _AssertIsObj($category_module, "Failed to load mediapipe.tasks.autoit.components.containers.category")
 
-Global $detections_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.detections")
+Global Const $detections_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.detections")
 _AssertIsObj($detections_module, "Failed to load mediapipe.tasks.autoit.components.containers.detections")
 
-Global $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
+Global Const $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
 _AssertIsObj($base_options_module, "Failed to load mediapipe.tasks.autoit.core.base_options")
 
-Global $face_detector = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_detector")
+Global Const $face_detector = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.face_detector")
 _AssertIsObj($face_detector, "Failed to load mediapipe.tasks.autoit.vision.face_detector")
 
-Global $image_processing_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options")
+Global Const $image_processing_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options")
 _AssertIsObj($image_processing_options_module, "Failed to load mediapipe.tasks.autoit.vision.core.image_processing_options")
 
-Global $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
+Global Const $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 _AssertIsObj($running_mode_module, "Failed to load mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 
-Global $FaceDetectorResult = $detections_module.DetectionResult
-Global $_BaseOptions = $base_options_module.BaseOptions
-Global $_Category = $category_module.Category
-Global $_BoundingBox = $bounding_box_module.BoundingBox
-Global $_Detection = $detections_module.Detection
-Global $_Image = $image_module.Image
-Global $_FaceDetector = $face_detector.FaceDetector
-Global $_FaceDetectorOptions = $face_detector.FaceDetectorOptions
-Global $_RUNNING_MODE = $running_mode_module.VisionTaskRunningMode
-Global $_ImageProcessingOptions = $image_processing_options_module.ImageProcessingOptions
+Global Const $FaceDetectorResult = $detections_module.DetectionResult
+Global Const $_BaseOptions = $base_options_module.BaseOptions
+Global Const $_Category = $category_module.Category
+Global Const $_BoundingBox = $bounding_box_module.BoundingBox
+Global Const $_Detection = $detections_module.Detection
+Global Const $_Image = $image_module.Image
+Global Const $_FaceDetector = $face_detector.FaceDetector
+Global Const $_FaceDetectorOptions = $face_detector.FaceDetectorOptions
+Global Const $_RUNNING_MODE = $running_mode_module.VisionTaskRunningMode
+Global Const $_ImageProcessingOptions = $image_processing_options_module.ImageProcessingOptions
 
-Global $_SHORT_RANGE_BLAZE_FACE_MODEL = 'face_detection_short_range.tflite'
-Global $_PORTRAIT_IMAGE = 'portrait.jpg'
-Global $_PORTRAIT_EXPECTED_DETECTION = 'portrait_expected_detection.pbtxt'
-Global $_PORTRAIT_ROTATED_IMAGE = 'portrait_rotated.jpg'
-Global $_PORTRAIT_ROTATED_EXPECTED_DETECTION = 'portrait_rotated_expected_detection.pbtxt'
-Global $_CAT_IMAGE = 'cat.jpg'
-Global $_KEYPOINT_ERROR_THRESHOLD = 1E-2
+Global Const $_SHORT_RANGE_BLAZE_FACE_MODEL = 'face_detection_short_range.tflite'
+Global Const $_PORTRAIT_IMAGE = 'portrait.jpg'
+Global Const $_PORTRAIT_EXPECTED_DETECTION = 'portrait_expected_detection.pbtxt'
+Global Const $_PORTRAIT_ROTATED_IMAGE = 'portrait_rotated.jpg'
+Global Const $_PORTRAIT_ROTATED_EXPECTED_DETECTION = 'portrait_rotated_expected_detection.pbtxt'
+Global Const $_CAT_IMAGE = 'cat.jpg'
+Global Const $_KEYPOINT_ERROR_THRESHOLD = 1E-2
 
-Global $FILE_CONTENT = 1
-Global $FILE_NAME = 2
+Global Const $FILE_CONTENT = 1
+Global Const $FILE_NAME = 2
 
 Global $test_image
 Global $model_path
@@ -86,7 +87,7 @@ Func Test()
 	Local $url, $file_path
 
 	Local $test_files[] = [ _
-			$_SHORT_RANGE_BLAZE_FACE_MODEL, _
+			_Mediapipe_Tuple($_SHORT_RANGE_BLAZE_FACE_MODEL, "https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite"), _
 			$_PORTRAIT_IMAGE, _
 			$_PORTRAIT_EXPECTED_DETECTION, _
 			$_PORTRAIT_ROTATED_IMAGE, _
@@ -94,9 +95,14 @@ Func Test()
 			$_CAT_IMAGE _
 			]
 	For $name In $test_files
-		$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
-		$file_path = $_TEST_DATA_DIR & "\" & $name
+		If IsArray($name) Then
+			$url = $name[1]
+			$name = $name[0]
+		Else
+			$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
+		EndIf
 		If Not FileExists(get_test_data_path($name)) Then
+			$file_path = $_TEST_DATA_DIR & "\" & $name
 			$download_utils.download($url, $file_path)
 		EndIf
 	Next
@@ -125,7 +131,7 @@ EndFunc   ;==>Test
 Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $detector = $_FaceDetector.create_from_model_path($model_path)
-	_AssertIsObj($detector)
+	_AssertIsInstance($detector, $_FaceDetector)
 	$detector.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
@@ -134,17 +140,17 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_FaceDetector.create_from_options($options)
-	_AssertIsObj($detector)
+	_AssertIsInstance($detector, $_FaceDetector)
 	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
 	; Creates with options containing model content successfully.
-	Local $model_content = read_binary_to_mat($model_path)
+	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	Local $options = $_FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_FaceDetector.create_from_options($options)
-	_AssertIsObj($detector)
+	_AssertIsInstance($detector, $_FaceDetector)
 	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
@@ -155,7 +161,7 @@ Func test_detect($model_file_type, $expected_detection_result_file)
 	If $model_file_type == $FILE_NAME Then
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	ElseIf $model_file_type == $FILE_CONTENT Then
-		$model_content = read_binary_to_mat($model_path)
+		$model_content = read_file_into_buffer($model_path)
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	EndIf
 
@@ -224,7 +230,7 @@ Func test_detect_for_video( _
 	If $model_file_type == $FILE_NAME Then
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	ElseIf $model_file_type == $FILE_CONTENT Then
-		$model_content = read_binary_to_mat($model_path)
+		$model_content = read_file_into_buffer($model_path)
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	EndIf
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "mediapipe/framework/formats/landmark.pb.h"
+#include "autoit_bridge_common.h"
 
 namespace mediapipe::tasks::autoit::components::containers::landmark {
 	struct CV_EXPORTS_W_SIMPLE Landmark {
@@ -24,6 +25,14 @@ namespace mediapipe::tasks::autoit::components::containers::landmark {
 
 		CV_WRAP std::shared_ptr<mediapipe::Landmark> to_pb2();
 		CV_WRAP static std::shared_ptr<landmark::Landmark> create_from_pb2(const mediapipe::Landmark& pb2_obj);
+
+		bool operator== (const Landmark& other) const {
+			return ::autoit::__eq__(x, other.x) &&
+				::autoit::__eq__(y, other.y) &&
+				::autoit::__eq__(z, other.z) &&
+				::autoit::__eq__(visibility, other.visibility) &&
+				::autoit::__eq__(presence, other.presence);
+		}
 
 		CV_PROP_RW float x;
 		CV_PROP_RW float y;
@@ -53,6 +62,14 @@ namespace mediapipe::tasks::autoit::components::containers::landmark {
 
 		CV_WRAP std::shared_ptr<mediapipe::NormalizedLandmark> to_pb2();
 		CV_WRAP static std::shared_ptr<landmark::NormalizedLandmark> create_from_pb2(const mediapipe::NormalizedLandmark& pb2_obj);
+
+		bool operator== (const NormalizedLandmark& other) const {
+			return ::autoit::__eq__(x, other.x) &&
+				::autoit::__eq__(y, other.y) &&
+				::autoit::__eq__(z, other.z) &&
+				::autoit::__eq__(visibility, other.visibility) &&
+				::autoit::__eq__(presence, other.presence);
+		}
 
 		CV_PROP_RW float x;
 		CV_PROP_RW float y;

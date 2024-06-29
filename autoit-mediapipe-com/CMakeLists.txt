@@ -14,7 +14,7 @@ endif()
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;MinSizeRel;RelWithDebInfo" CACHE STRING "Configs" FORCE)
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "${CMAKE_CONFIGURATION_TYPES}")
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -22,13 +22,18 @@ if(WIN32 AND MSVC)
   add_compile_options(/MP)
 endif()
 
+if (POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW) # set the timestamps of extracted contents to the time of extraction.
+endif()
+
 include(cmake/RequireOpenCV.cmake)
 include(cmake/vcpkg_regex_replace_string.cmake)
 
-set(MEDIAPIPE_VERSION 0.9.3.0 CACHE STRING "Choose the mediapipe version.")
-set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.9.3.0" "0.9.2.1" "0.9.1" "0.8.11" "0.8.10.2")
+set(MEDIAPIPE_VERSION 0.10.14 CACHE STRING "Choose the mediapipe version.")
+set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.14" "0.9.3.0" "0.9.2.1" "0.9.1" "0.8.11" "0.8.10.2")
 string(REPLACE "." "" MEDIAPIPE_DLLVERSION ${MEDIAPIPE_VERSION})
 
+set(MEDIAPIPE_URL_HASH_SHA256_01014 9d46fa5363f5c4e11c3d1faec71b0746f15c5aab7b5460d0e5655d7af93c6957)
 set(MEDIAPIPE_URL_HASH_SHA256_0930 7f2217a9d13bdd9056992dbdcbd29a290d8726f3f4b783c8eea34e4ce8421a35)
 set(MEDIAPIPE_URL_HASH_SHA256_0921 39da28504f4977bff52ee186eb76f7982e006a42a853a8b0cdd5b756cb5f8c6e)
 set(MEDIAPIPE_URL_HASH_SHA256_091 437de7632f37b95424106d689f9722c280a571fa452675a22c708cb851395ea7)
@@ -49,44 +54,33 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" 
 include(FetchContent)
 FetchContent_Declare(mediapipe
   URL               https://fossies.org/linux/misc/mediapipe-${MEDIAPIPE_VERSION}.tar.gz
-                    https://github.com/google/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
+                    https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
   URL_HASH          SHA256=${MEDIAPIPE_URL_HASH_SHA256_${MEDIAPIPE_DLLVERSION}}
   PATCH_COMMAND     "${PATCH}" -p 1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
 )
 FetchContent_Populate(mediapipe)
 
 # Tell cmake that we will need autoit-opencv-com.
-set(OPENCV_COM_VERSION 2.4.1)
-include(ExternalProject)
-ExternalProject_Add(autoit_opencv_com
+set(OPENCV_COM_VERSION 2.6.2)
+include(FetchContent)
+FetchContent_Declare(autoit_opencv_com
   URL               https://github.com/smbape/node-autoit-opencv-com/releases/download/v${OPENCV_COM_VERSION}/autoit-opencv-${OpenCV_VERSION}-com-v${OPENCV_COM_VERSION}.7z
-  URL_HASH          SHA256=85996412d527fd8a161b56feaa1ba9fd673133f582dfa38d21304f440f194d2b
+  URL_HASH          SHA256=0ec530059c93eca0011f5678f0f010529cd3fd67b4316407a5af6a3cd1ed7b4a
   DOWNLOAD_NO_EXTRACT TRUE
   DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
   SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND     ""
-  INSTALL_COMMAND   7z x "<DOWNLOAD_DIR>/autoit-opencv-${OpenCV_VERSION}-com-v${OPENCV_COM_VERSION}.7z" -aoa "-o<SOURCE_DIR>" -y
+  PATCH_COMMAND     7z x "<DOWNLOAD_DIR>/autoit-opencv-${OpenCV_VERSION}-com-v${OPENCV_COM_VERSION}.7z" -aoa "-o<SOURCE_DIR>" -y
 )
-ExternalProject_Get_property(autoit_opencv_com SOURCE_DIR)
-set(autoit_opencv_com_SOURCE_DIR ${SOURCE_DIR})
-unset(SOURCE_DIR)
+FetchContent_Populate(autoit_opencv_com)
 set(OpenCVCOM_ASSEMBLY_DLL "${autoit_opencv_com_SOURCE_DIR}/dotnet/OpenCV.InteropServices.dll")
 file(TO_NATIVE_PATH "${OpenCVCOM_ASSEMBLY_DLL}" OpenCVCOM_ASSEMBLY_DLL)
 
 # update version in files
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "OPENCV_VERSION = \"[0-9]+\"  # [0-9]+\\.[0-9]+\\.[0-9]+" "OPENCV_VERSION = \"${OpenCV_DLLVERSION}\"  # ${OpenCV_VERSION}")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/BUILD" "MEDIAPIPE_VERSION = \"[0-9]+(\\.[0-9]+)+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/install.bat" "\\\\x64\\\\vc[^\\\\]+\\\\bin" "\\\\${OpenCV_VC_PATH_ESC}\\\\bin")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/src/autoit_def.h" "#define AUTOIT_LIB_VERSION [0-9]+(\\.[0-9]+)+" "#define AUTOIT_LIB_VERSION ${MEDIAPIPE_VERSION}")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/udf/mediapipe_udf.au3" "opencv_world[0-9]+" "opencv_world${OpenCV_DLLVERSION}")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../src/gen.js" "MEDIAPIPE_VERSION = \"[0-9]+(\\.[0-9]+)+\"" "MEDIAPIPE_VERSION = \"${MEDIAPIPE_VERSION}\"")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../src/gen.js" "OPENCV_COM_VERSION = \"[0-9]+\\.[0-9]+\\.[0-9]+\"" "OPENCV_COM_VERSION = \"${OPENCV_COM_VERSION}\"")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)\\.(exe|zip)" "${OpenCV_DOWNLOAD_NAME}")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)" "${OpenCV_OUTPUT_DIR}")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "/opencv/releases/download/[0-9]+\\.[0-9]+\\.[0-9]+/" "/opencv/releases/download/${OpenCV_VERSION}/")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "\\\\x64\\\\vc[^\\\\]+\\\\bin" "\\\\${OpenCV_VC_PATH_ESC}\\\\bin")
-vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "\\\\\\\\x64\\\\\\\\vc[^\\\\]+\\\\\\\\bin" "\\\\\\\\${OpenCV_VC_PATH_ESC_ESC}\\\\\\\\bin")
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../README.md" "(autoit-opencv-com/releases/download/|autoit-opencv-[0-9]+\\.[0-9]+\\.[0-9]+-com-)v[0-9]+\\.[0-9]+\\.[0-9]+" "\\1v${OPENCV_COM_VERSION}")
 
 vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/udf/mediapiped.sxs.manifest"
@@ -99,28 +93,40 @@ vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/udf/mediapipe.sxs.manife
   "name=\"autoit_opencv_com${OpenCV_DLLVERSION}.sxs\" version=\"${OPENCV_COM_VERSION}.0\""
 )
 
+vcpkg_regex_replace_string("${CMAKE_CURRENT_SOURCE_DIR}/../scripts/manual.sh"
+  "echo '[a-z0-9]+ (mediapipe-[^']+)' \\| sha256sum"
+  "echo '${MEDIAPIPE_URL_HASH_SHA256_${MEDIAPIPE_DLLVERSION}} \\1' | sha256sum"
+)
+
 file(GLOB_RECURSE files_to_change
-  dotnet/MediapipeComInterop.cs
+  dotnet/*.cs
   src/mediapipeCOM.rc
-  udf/mediapipe_udf.au3
-  udf/mediapipe_udf_utils.au3
-  udf/mediapipe.sxs.manifest
-  udf/mediapiped.sxs.manifest
+  udf/*.au3
+  udf/*.sxs.manifest
   install.bat
   ../scripts/build.js
+  ../scripts/manual.sh
   ../src/gen.js
   ../README.md
+
+  ../test/*.au3
+  ../examples/*.au3
+  ../examples/*.cs
+  ../examples/*.ps1
 )
 foreach(item ${files_to_change})
   vcpkg_regex_replace_string("${item}" "autoit_mediapipe_com-[0-9]+(\\.[0-9]+)+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
-  vcpkg_regex_replace_string("${item}" "(opencv_world|autoit_opencv_com|opencv_videoio_ffmpeg)[0-9]+" "\\1${OpenCV_DLLVERSION}")
   vcpkg_regex_replace_string("${item}" "mediapipe-[0-9]+(\\.[0-9]+)+" "mediapipe-${MEDIAPIPE_VERSION}")
-  vcpkg_regex_replace_string("${item}" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+" "opencv-${OpenCV_VERSION}")
-endforeach()
-
-file(GLOB_RECURSE files_to_change "../test/*.au3" "../examples/*.au3" "../examples/*.cs" "../examples/*.ps1")
-foreach(item ${files_to_change})
   vcpkg_regex_replace_string("${item}" "/v[0-9]+(\\.[0-9]+)+/mediapipe/" "/v${MEDIAPIPE_VERSION}/mediapipe/")
+  vcpkg_regex_replace_string("${item}" "(/google-ai-edge/mediapipe/archive/refs/tags/v)[0-9]+(\\.[0-9]+)+" "\\1${MEDIAPIPE_VERSION}")
+  vcpkg_regex_replace_string("${item}" "autoit_mediapipe_com-\\*-[0-9]+\\*" "autoit_mediapipe_com-*-${OpenCV_DLLVERSION}*")
+
+  vcpkg_regex_replace_string("${item}" "(https://docs\\.opencv\\.org/|https://github\\.com/opencv/opencv/blob/|opencv-)[0-9]+\\.[0-9]+\\.[0-9]+/" "\\1${OpenCV_VERSION}/")
+  vcpkg_regex_replace_string("${item}" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)\\.(exe|zip)" "${OpenCV_DOWNLOAD_NAME}")
+  vcpkg_regex_replace_string("${item}" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)" "${OpenCV_OUTPUT_DIR}")
+  vcpkg_regex_replace_string("${item}" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+" "opencv-${OpenCV_VERSION}")
+  vcpkg_regex_replace_string("${item}" "(opencv_world|autoit_opencv_com|opencv_videoio_ffmpeg)[0-9]+" "\\1${OpenCV_DLLVERSION}")
+  vcpkg_regex_replace_string("${item}" "\\\\x64\\\\vc[^\\\\]+\\\\bin" "\\\\${OpenCV_VC_PATH_ESC}\\\\bin")
 endforeach()
 
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE PATH "Output directory for applications")
@@ -136,15 +142,39 @@ set(mediapipe_BINARY_DIR "${mediapipe_SOURCE_DIR}/bazel-out/x64_windows-${CMODE}
 
 include(cmake/UsePython3Venv.cmake)
 
+if (VIRTUAL_ENV_created)
+  execute_process(
+    COMMAND "${Python3_EXECUTABLE}" -m pip install --upgrade pip
+    COMMAND_ECHO STDERR
+    COMMAND_ERROR_IS_FATAL ANY
+  )
+  execute_process(
+    COMMAND "${Python3_EXECUTABLE}" -m pip install absl-py mediapipe opencv-python
+    COMMAND_ECHO STDERR
+    COMMAND_ERROR_IS_FATAL ANY
+  )
+endif()
+
+set(OUTPUT_USER_ROOT "C:/_bazel_" CACHE PATH "Bazel output user root")
+option(MEDIAPIPE_DISABLE_GPU "Disable GPU support" ON)
+
 set(BAZEL_BUILD bazel
-  --output_user_root=C:/_bazel_
+  "--output_user_root=${OUTPUT_USER_ROOT}"
   build -c ${CMODE}
   --strip=never
-  --define MEDIAPIPE_DISABLE_GPU=1
   --action_env "PYTHON_BIN_PATH=${PYTHON_BIN_PATH}"
   --verbose_failures
-  --keep_going
 )
+
+if (MEDIAPIPE_DISABLE_GPU)
+  list(APPEND BAZEL_BUILD --define MEDIAPIPE_DISABLE_GPU=1)
+endif()
+
+if (ENABLE_ODML_CONVERTER)
+  list(APPEND BAZEL_BUILD --define ENABLE_ODML_CONVERTER=1)
+endif()
+
+# list(APPEND BAZEL_BUILD --keep_going)
 
 # generate source files
 if(
@@ -167,8 +197,14 @@ if(
   )
 endif()
 
+set(src_gen_cmd node --unhandled-rejections=strict --trace-uncaught --trace-warnings src/gen.js)
+
+if (ENABLE_ODML_CONVERTER)
+  list(APPEND src_gen_cmd -DENABLE_ODML_CONVERTER)
+endif()
+
 execute_process(
-  COMMAND node --unhandled-rejections=strict --trace-uncaught --trace-warnings src/gen.js
+  COMMAND ${src_gen_cmd}
   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/.."
   COMMAND_ECHO STDERR
   COMMAND_ERROR_IS_FATAL ANY
@@ -269,19 +305,89 @@ foreach(item
   "mediapipe/modules/hand_landmark/handedness.txt"
 )
   get_filename_component(item_target "${item}" NAME_WLE)
+  set(item_output "${mediapipe_BINARY_DIR}/${item}")
 
   # copy ${mediapipe_SOURCE_DIR}/${item} to ${mediapipe_BINARY_DIR}/${item}
-  add_custom_command(OUTPUT "${mediapipe_BINARY_DIR}/${item}"
+  add_custom_command(OUTPUT "${item_output}"
     COMMAND "${CMAKE_COMMAND}" -E copy_if_different
       "${mediapipe_SOURCE_DIR}/${item}"
       "${mediapipe_BINARY_DIR}/${item}"
     DEPENDS ${PROJECT_NAME}_lib
     VERBATIM
   )
-  add_custom_target(${item_target} DEPENDS "${mediapipe_BINARY_DIR}/${item}")
+  add_custom_target(${item_target} DEPENDS "${item_output}")
 
   add_dependencies(${PROJECT_NAME} ${item_target})
+
+  unset(item_output)
+  unset(item_target)
 endforeach()
+
+include(cmake/get_temp_dir.cmake)
+get_temp_dir(TEMPDIR)
+
+if (TEMPDIR)
+  set(mediapipe_SOLUTIONS_DIR "${mediapipe_SOURCE_DIR}/mediapipe/python/solutions")
+
+  set(item_target test_on_video_fullasl_hand_full_npz)
+  set(item_test_data "${CMAKE_SOURCE_DIR}/../test/solutions/testdata")
+  set(item_output "${item_test_data}/test_on_video_fullasl_hand.full.yml")
+
+  include(ExternalProject)
+  ExternalProject_Add(
+      asl_hand_25fps_mp4
+      URL https://github.com/tensorflow/tfjs-models/raw/master/hand-pose-detection/test_data/asl_hand.25fps.mp4
+      URL_HASH SHA256=57c10fb1eb76639edf43e9675213dcc495c51851e32a3592cacaa9437be4f37e
+      DOWNLOAD_NO_EXTRACT TRUE
+      DOWNLOAD_DIR      "${mediapipe_SOLUTIONS_DIR}/testdata"
+      SOURCE_DIR        "${mediapipe_SOLUTIONS_DIR}/testdata"
+      CONFIGURE_COMMAND ""
+      BUILD_COMMAND     ""
+      INSTALL_COMMAND   "${CMAKE_COMMAND}" -E copy_if_different "<DOWNLOAD_DIR>/asl_hand.25fps.mp4" "${item_test_data}/asl_hand.25fps.mp4"
+  )
+
+  add_custom_command(OUTPUT "${item_output}"
+    COMMAND "${Python3_EXECUTABLE}" hands_test.py -- -k test_on_video 2> NUL || type NUL > NUL
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/../test/solutions/npz_convert.py" "${TEMPDIR}/test_on_video_fullasl_hand.full.npz" -o "${item_output}"
+    DEPENDS ${PROJECT_NAME}_lib asl_hand_25fps_mp4
+    WORKING_DIRECTORY "${mediapipe_SOLUTIONS_DIR}"
+    VERBATIM
+  )
+  add_custom_target(${item_target} DEPENDS "${item_output}")
+
+  add_dependencies(${PROJECT_NAME} ${item_target})
+
+  set(item_target test_on_video_fullpose_squats_npz)
+  set(item_test_data "${CMAKE_SOURCE_DIR}/../test/solutions/testdata")
+  set(item_output "${item_test_data}/test_on_video_fullpose_squats.full.yml")
+
+  include(ExternalProject)
+  ExternalProject_Add(
+      pose_squats_mp4
+      URL https://github.com/tensorflow/tfjs-models/raw/master/pose-detection/test_data/pose_squats.mp4
+      URL_HASH SHA256=ea9151e447b301985d5d65666551ef863b369a2e0f3a71ddd58abef2e722f96a
+      DOWNLOAD_NO_EXTRACT TRUE
+      DOWNLOAD_DIR      "${mediapipe_SOLUTIONS_DIR}/testdata"
+      SOURCE_DIR        "${mediapipe_SOLUTIONS_DIR}/testdata"
+      CONFIGURE_COMMAND ""
+      BUILD_COMMAND     ""
+      INSTALL_COMMAND   "${CMAKE_COMMAND}" -E copy_if_different "<DOWNLOAD_DIR>/pose_squats.mp4" "${item_test_data}/pose_squats.mp4"
+  )
+
+  add_custom_command(OUTPUT "${item_output}"
+    COMMAND "${Python3_EXECUTABLE}" pose_test.py -- -k test_on_video 2> NUL || type NUL > NUL
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/../test/solutions/npz_convert.py" "${TEMPDIR}/test_on_video_fullpose_squats.full.npz" -o "${item_output}"
+    DEPENDS ${PROJECT_NAME}_lib pose_squats_mp4
+    WORKING_DIRECTORY "${mediapipe_SOLUTIONS_DIR}"
+    VERBATIM
+  )
+  add_custom_target(${item_target} DEPENDS "${item_output}")
+
+  add_dependencies(${PROJECT_NAME} ${item_target})
+
+  unset(item_output)
+  unset(item_target)
+endif()
 
 if (CMAKE_GENERATOR MATCHES "Visual Studio")
 # ===============

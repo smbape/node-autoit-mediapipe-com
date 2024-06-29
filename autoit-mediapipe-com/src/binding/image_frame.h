@@ -16,29 +16,29 @@ namespace mediapipe::autoit {
 		bool copy = true
 	) {
 		switch (format) {
-			case ImageFormat::SRGB:
-			case ImageFormat::SRGBA:
-			case ImageFormat::GRAY8:
-			case ImageFormat::LAB8:
-			case ImageFormat::SBGRA:
-				AUTOIT_ASSERT_THROW(data.depth() == CV_8U, "uint8 image data should be one of the GRAY8, "
-					"SRGB, SRGBA, LAB8 and SBGRA MediaPipe image formats.");
-				break;
-			case ImageFormat::GRAY16:
-			case ImageFormat::SRGB48:
-			case ImageFormat::SRGBA64:
-				AUTOIT_ASSERT_THROW(data.depth() == CV_16U, "uint16 image data should be one of the GRAY16, "
-					"SRGB48, and SRGBA64 MediaPipe image formats.");
-				break;
-			case ImageFormat::VEC32F1:
-			case ImageFormat::VEC32F2:
-			case ImageFormat::VEC32F4:
-				AUTOIT_ASSERT_THROW(data.depth() == CV_32F, "float image data should be either VEC32F1, VEC32F2, or "
-                	"VEC32F4 MediaPipe image formats.");
-				break;
-			default:
-				AUTOIT_THROW("Unsupported MediaPipe image format");
-				break;
+		case ImageFormat::SRGB:
+		case ImageFormat::SRGBA:
+		case ImageFormat::GRAY8:
+		case ImageFormat::LAB8:
+		case ImageFormat::SBGRA:
+			AUTOIT_ASSERT_THROW(data.depth() == CV_8U, "uint8 image data should be one of the GRAY8, "
+				"SRGB, SRGBA, LAB8 and SBGRA MediaPipe image formats.");
+			break;
+		case ImageFormat::GRAY16:
+		case ImageFormat::SRGB48:
+		case ImageFormat::SRGBA64:
+			AUTOIT_ASSERT_THROW(data.depth() == CV_16U, "uint16 image data should be one of the GRAY16, "
+				"SRGB48, and SRGBA64 MediaPipe image formats.");
+			break;
+		case ImageFormat::VEC32F1:
+		case ImageFormat::VEC32F2:
+		case ImageFormat::VEC32F4:
+			AUTOIT_ASSERT_THROW(data.depth() == CV_32F, "float image data should be either VEC32F1, VEC32F2, or "
+				"VEC32F4 MediaPipe image formats.");
+			break;
+		default:
+			AUTOIT_THROW("Unsupported MediaPipe image format");
+			break;
 		}
 
 		int width = data.cols;
@@ -102,32 +102,49 @@ namespace mediapipe::autoit {
 	}
 
 	inline std::unique_ptr<ImageFrame> CreateImageFrame(const std::string& file_name) {
+		unsigned char* image_data = nullptr;
 		int width;
 		int height;
 		int channels;
-		auto* image_data =
-			stbi_load(file_name.c_str(), &width, &height, &channels,
-					  /*desired_channels=*/0);
+
+#if TARGET_OS_OSX && !MEDIAPIPE_DISABLE_GPU
+		// Our ObjC layer does not support 3-channel images, so we read the
+		// number of channels first and request RGBA if needed.
+		if (stbi_info(file_name.c_str(), &width, &height, &channels)) {
+			if (channels == 3) {
+				channels = 4;
+			}
+			int unused;
+			image_data =
+				stbi_load(file_name.c_str(), &width, &height, &unused, channels);
+		}
+#else
+		image_data = stbi_load(file_name.c_str(), &width, &height, &channels,
+			/*desired_channels=*/0);
+#endif  // TARGET_OS_OSX && !MEDIAPIPE_DISABLE_GPU
+
 		AUTOIT_ASSERT_THROW(image_data != nullptr, "Image decoding failed (" << stbi_failure_reason() << "): " << file_name);
 
 		std::unique_ptr<ImageFrame> image_frame;
 		switch (channels) {
-		  case 1:
+		case 1:
 			image_frame = std::make_unique<ImageFrame>(
 				ImageFormat::GRAY8, width, height, width, image_data,
 				stbi_image_free);
 			break;
-		  case 3:
+#if !TARGET_OS_OSX || MEDIAPIPE_DISABLE_GPU
+		case 3:
 			image_frame = std::make_unique<ImageFrame>(
 				ImageFormat::SRGB, width, height, 3 * width, image_data,
 				stbi_image_free);
 			break;
-		  case 4:
+#endif  // !TARGET_OS_OSX || MEDIAPIPE_DISABLE_GPU
+		case 4:
 			image_frame = std::make_unique<ImageFrame>(
 				ImageFormat::SRGBA, width, height, 4 * width, image_data,
 				stbi_image_free);
 			break;
-		  default:
+		default:
 			AUTOIT_THROW(
 				"Expected image with 1 (grayscale), 3 (RGB) or 4 "
 				"(RGBA) channels, found " << channels << " channels.");

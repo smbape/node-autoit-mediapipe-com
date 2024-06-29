@@ -1,22 +1,24 @@
 #include "binding/tasks/vision/image_segmenter.h"
 
 namespace {
-	using namespace mediapipe::tasks::vision::image_segmenter::proto;
-	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
-	using namespace mediapipe::tasks::autoit::core::base_options;
-	using namespace mediapipe::tasks::autoit::core::task_info;
-	using namespace mediapipe::tasks::autoit::components::utils;
-	using namespace mediapipe::tasks::autoit::vision::core::image_processing_options;
 	using namespace mediapipe::autoit::packet_creator;
 	using namespace mediapipe::autoit::packet_getter;
+	using namespace mediapipe::tasks::autoit::components::utils;
+	using namespace mediapipe::tasks::autoit::core::base_options;
+	using namespace mediapipe::tasks::autoit::core::task_info;
+	using namespace mediapipe::tasks::autoit::vision::core::image_processing_options;
+	using namespace mediapipe::tasks::autoit::vision::core::vision_task_running_mode;
 	using namespace mediapipe::tasks::autoit::vision::interactive_segmenter;
+	using namespace mediapipe::tasks::vision::image_segmenter::proto;
 	using namespace mediapipe;
 
 	using mediapipe::autoit::PacketsCallback;
 	using mediapipe::tasks::core::PacketMap;
 
-	const std::string _SEGMENTATION_OUT_STREAM_NAME = "segmented_mask_out";
-	const std::string _SEGMENTATION_TAG = "GROUPED_SEGMENTATION";
+	const std::string _CONFIDENCE_MASKS_STREAM_NAME = "confidence_masks";
+	const std::string _CONFIDENCE_MASKS_TAG = "CONFIDENCE_MASKS";
+	const std::string _CATEGORY_MASK_STREAM_NAME = "category_mask";
+	const std::string _CATEGORY_MASK_TAG = "CATEGORY_MASK";
 	const std::string _IMAGE_IN_STREAM_NAME = "image_in";
 	const std::string _IMAGE_OUT_STREAM_NAME = "image_out";
 	const std::string _ROI_STREAM_NAME = "roi_in";
@@ -53,7 +55,7 @@ namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
 			pb2_obj->mutable_base_options()->CopyFrom(*base_options->to_pb2());
 		}
 		pb2_obj->mutable_base_options()->set_use_stream_mode(false);
-		pb2_obj->mutable_segmenter_options()->set_output_type(output_type);
+		pb2_obj->mutable_segmenter_options();
 
 		return pb2_obj;
 	}
@@ -66,25 +68,31 @@ namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
 	std::shared_ptr<InteractiveSegmenter> InteractiveSegmenter::create_from_options(std::shared_ptr<InteractiveSegmenterOptions> options) {
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
-		task_info.input_streams = {
+		*task_info.input_streams = {
 			_IMAGE_TAG + ":" + _IMAGE_IN_STREAM_NAME,
 			_ROI_TAG + ":" + _ROI_STREAM_NAME,
 			_NORM_RECT_TAG + ":" + _NORM_RECT_STREAM_NAME,
 		};
-		task_info.output_streams = {
-			_SEGMENTATION_TAG + ":" + _SEGMENTATION_OUT_STREAM_NAME,
+		*task_info.output_streams = {
 			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME
 		};
 		task_info.task_options = options->to_pb2();
 
+		if (options->output_confidence_masks) {
+			task_info.output_streams->push_back(_CONFIDENCE_MASKS_TAG + ":" + _CONFIDENCE_MASKS_STREAM_NAME);
+		}
+
+		if (options->output_category_mask) {
+			task_info.output_streams->push_back(_CATEGORY_MASK_TAG + ":" + _CATEGORY_MASK_STREAM_NAME);
+		}
+
 		return std::make_shared<InteractiveSegmenter>(
 			*task_info.generate_graph_config(false),
 			VisionTaskRunningMode::IMAGE
-			);
+		);
 	}
 
-	void InteractiveSegmenter::segment(
-		std::vector<Image>& segmentation_result,
+	std::shared_ptr<InteractiveSegmenterResult> InteractiveSegmenter::segment(
 		const Image& image,
 		const RegionOfInterest& roi,
 		std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options
@@ -98,6 +106,20 @@ namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
 			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
 			});
 
-		segmentation_result = GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_OUT_STREAM_NAME));
+		auto segmentation_result = std::make_shared<InteractiveSegmenterResult>();
+
+		if (output_packets.count(_CONFIDENCE_MASKS_STREAM_NAME)) {
+			for (const auto& image : GetContent<std::vector<Image>>(output_packets.at(_CONFIDENCE_MASKS_STREAM_NAME))) {
+				segmentation_result->confidence_masks->push_back(std::make_shared<Image>(image));
+			}
+		}
+
+		if (output_packets.count(_CATEGORY_MASK_STREAM_NAME)) {
+			segmentation_result->category_mask = std::make_shared<Image>(
+				GetContent<Image>(output_packets.at(_CATEGORY_MASK_STREAM_NAME))
+			);
+		}
+
+		return segmentation_result;
 	}
 }
