@@ -330,7 +330,6 @@ Func test_empty_detection_outputs_with_in_model_nms()
 EndFunc   ;==>test_empty_detection_outputs_with_in_model_nms
 
 Func test_empty_detection_outputs_without_in_model_nms()
-	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : get_test_data_path($_NO_NMS_MODEL_FILE) = ' & get_test_data_path($_NO_NMS_MODEL_FILE) & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", get_test_data_path($_NO_NMS_MODEL_FILE))), _
 			"score_threshold", 1 _
