@@ -117,7 +117,9 @@
 
 #ifndef AUTOIT_ASSERT_SET_HR
 #define AUTOIT_ASSERT_SET_HR( expr ) do { if(!!(expr)) { hr = S_OK; } else { \
+fflush(stdout); fflush(stderr); \
 fprintf(stderr, AUTOIT_QUOTE_STRING(AUTOIT_LIB_NAME) "(%s) Error: (%s) in %s, file %s, line %d\n", AUTOIT_QUOTE_STRING(AUTOIT_LIB_VERSION), #expr, AutoIt_Func, __FILE__, __LINE__); \
+fflush(stdout); fflush(stderr); \
 hr = E_FAIL; } \
 } while(0)
 #endif

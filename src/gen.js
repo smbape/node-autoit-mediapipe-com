@@ -202,7 +202,12 @@ const getOptions = PROJECT_DIR => {
                 ${ [...children].map((child, index) => {
                     return `case ${ index + 1 }: {
                         auto derived = std::dynamic_pointer_cast<${ child.fqn }>(in_val);
-                        AUTOIT_ASSERT_THROW(derived.get(), "object cannot be cast to a ${ child.fqn }");
+
+                        if (!derived.get()) {
+                            AUTOIT_ERROR("object cannot be cast to a ${ child.fqn }");
+                            return E_FAIL;
+                        }
+
                         return autoit_from(derived, out_val);
                     }`.replace(/^ {4}/mg, "");
                 }).join(`\n${ " ".repeat(16) }`) }
