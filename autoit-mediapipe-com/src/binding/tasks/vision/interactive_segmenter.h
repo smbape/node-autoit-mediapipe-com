@@ -49,7 +49,7 @@ namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
 			output_category_mask(output_category_mask)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions>> to_pb2() const;
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
 		CV_PROP_RW bool output_confidence_masks;
@@ -82,9 +82,14 @@ namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
 	public:
 		using core::base_vision_task_api::BaseVisionTaskApi::BaseVisionTaskApi;
 
-		CV_WRAP static std::shared_ptr<InteractiveSegmenter> create_from_model_path(const std::string& model_path);
-		CV_WRAP static std::shared_ptr<InteractiveSegmenter> create_from_options(std::shared_ptr<InteractiveSegmenterOptions> options);
-		CV_WRAP std::shared_ptr<InteractiveSegmenterResult> segment(
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<InteractiveSegmenter>> create(
+			const CalculatorGraphConfig& graph_config,
+			core::vision_task_running_mode::VisionTaskRunningMode running_mode,
+			mediapipe::autoit::PacketsCallback packet_callback = nullptr
+		);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<InteractiveSegmenter>> create_from_model_path(const std::string& model_path);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<InteractiveSegmenter>> create_from_options(std::shared_ptr<InteractiveSegmenterOptions> options);
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<InteractiveSegmenterResult>> segment(
 			const Image& image,
 			const RegionOfInterest& roi,
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =

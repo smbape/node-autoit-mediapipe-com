@@ -1,7 +1,7 @@
 #include "binding/tasks/components/containers/category.h"
 
 namespace mediapipe::tasks::autoit::components::containers::category {
-	std::shared_ptr<Classification> Category::to_pb2() {
+	std::shared_ptr<Classification> Category::to_pb2() const {
 		auto pb2_obj = std::make_shared<Classification>();
 		pb2_obj->set_index(index);
 		pb2_obj->set_score(score);

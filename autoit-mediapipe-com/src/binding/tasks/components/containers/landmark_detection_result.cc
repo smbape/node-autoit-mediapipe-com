@@ -3,7 +3,7 @@
 using namespace mediapipe::tasks::containers;
 
 namespace mediapipe::tasks::autoit::components::containers::landmark_detection_result {
-	std::shared_ptr<proto::LandmarksDetectionResult> LandmarksDetectionResult::to_pb2() {
+	std::shared_ptr<proto::LandmarksDetectionResult> LandmarksDetectionResult::to_pb2() const {
 		auto pb2_obj = std::make_shared<proto::LandmarksDetectionResult>();
 
 		if (landmarks) {

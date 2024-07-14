@@ -21,7 +21,7 @@ namespace mediapipe::tasks::autoit::components::containers::keypoint {
 			score(score)
 		{}
 
-		CV_WRAP std::shared_ptr<LocationData::RelativeKeypoint> to_pb2();
+		CV_WRAP std::shared_ptr<LocationData::RelativeKeypoint> to_pb2() const;
 		CV_WRAP static std::shared_ptr<NormalizedKeypoint> create_from_pb2(const LocationData::RelativeKeypoint& pb2_obj);
 
 		bool operator== (const NormalizedKeypoint& other) const {

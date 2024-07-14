@@ -3,7 +3,7 @@
 using namespace mediapipe::tasks::components::containers;
 
 namespace mediapipe::tasks::autoit::components::containers::detections {
-	std::shared_ptr<mediapipe::Detection> Detection::to_pb2() {
+	std::shared_ptr<mediapipe::Detection> Detection::to_pb2() const {
 		auto pb2_obj = std::make_shared<mediapipe::Detection>();
 
 		if (categories) {
@@ -73,7 +73,7 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 		);
 	}
 
-	std::shared_ptr<mediapipe::DetectionList> DetectionResult::to_pb2() {
+	std::shared_ptr<mediapipe::DetectionList> DetectionResult::to_pb2() const {
 		auto pb2_obj = std::make_shared<mediapipe::DetectionList>();
 
 		if (detections) {

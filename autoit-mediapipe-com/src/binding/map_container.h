@@ -18,10 +18,10 @@ namespace google::protobuf {
 	public:
 		static autoit::MapIterator begin(autoit::MapContainer* self);
 		static autoit::MapIterator end(autoit::MapContainer* self);
-		static std::string ToStr(const autoit::MapContainer* self);
-		static bool Contains(const autoit::MapContainer* self, _variant_t key);
-		static _variant_t GetItem(const autoit::MapContainer* self, _variant_t key);
-		static void SetItem(autoit::MapContainer* self, _variant_t key, _variant_t arg);
+		[[nodiscard]] static absl::StatusOr<std::string> ToStr(const autoit::MapContainer* self);
+		[[nodiscard]] static absl::StatusOr<bool> Contains(const autoit::MapContainer* self, _variant_t key);
+		[[nodiscard]] static absl::StatusOr<_variant_t> GetItem(const autoit::MapContainer* self, _variant_t key);
+		[[nodiscard]] static absl::Status SetItem(autoit::MapContainer* self, _variant_t key, _variant_t arg);
 		static size_t Size(const autoit::MapContainer* self);
 	};
 
@@ -56,20 +56,20 @@ namespace google::protobuf {
 			CV_WRAP MapContainer(const MapContainer& other) = default;
 			MapContainer& operator=(const MapContainer& other) = default;
 
-			CV_WRAP_AS(contains) bool Contains(_variant_t key) const;
+			CV_WRAP_AS(contains) [[nodiscard]] absl::StatusOr<bool> Contains(_variant_t key) const;
 			CV_WRAP_AS(clear) void Clear();
 			CV_WRAP_AS(length) size_t Length() const;
 			CV_WRAP size_t size() const;
-			CV_WRAP_AS(get) _variant_t Get(_variant_t key, _variant_t default_value = mediapipe::autoit::default_variant()) const;
+			CV_WRAP_AS(get) [[nodiscard]] absl::StatusOr<_variant_t> Get(_variant_t key, _variant_t default_value = mediapipe::autoit::default_variant()) const;
 
-			CV_WRAP_AS(get_default Item) _variant_t GetItem(_variant_t key) const;
-			CV_WRAP_AS(put_default Item) void SetItem(_variant_t key, _variant_t arg);
+			CV_WRAP_AS(get_default Item) [[nodiscard]] absl::StatusOr<_variant_t> GetItem(_variant_t key) const;
+			CV_WRAP_AS(put_default Item) [[nodiscard]] absl::Status SetItem(_variant_t key, _variant_t arg);
 
-			CV_WRAP_AS(setFields) void SetFields(std::vector<std::pair<_variant_t, _variant_t>>& fields);
+			CV_WRAP_AS(setFields) [[nodiscard]] absl::Status SetFields(std::vector<std::pair<_variant_t, _variant_t>>& fields);
 
-			CV_WRAP_AS(str) std::string ToStr() const;
+			CV_WRAP_AS(str) [[nodiscard]] absl::StatusOr<std::string> ToStr() const;
 
-			CV_WRAP void MergeFrom(const MapContainer& other);
+			CV_WRAP [[nodiscard]] absl::Status MergeFrom(const MapContainer& other);
 
 			friend class MapRefectionFriend;
 
@@ -83,11 +83,11 @@ namespace google::protobuf {
 			std::shared_ptr<FieldDescriptor> field_descriptor;
 		};
 
-		bool AutoItToMapKey(const FieldDescriptor* parent_field_descriptor, _variant_t arg, MapKey* key);
-		bool AutoItToMapValueRef(const FieldDescriptor* parent_field_descriptor, _variant_t arg,
+		[[nodiscard]] absl::Status AutoItToMapKey(const FieldDescriptor* parent_field_descriptor, _variant_t arg, MapKey* key);
+		[[nodiscard]] absl::Status AutoItToMapValueRef(const FieldDescriptor* parent_field_descriptor, _variant_t arg,
 			bool allow_unknown_enum_values,
 			MapValueRef* value_ref);
-		_variant_t MapKeyToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapKey& key);
-		_variant_t MapValueRefToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapValueRef& value);
+		[[nodiscard]] absl::StatusOr<_variant_t> MapKeyToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapKey& key);
+		[[nodiscard]] absl::StatusOr<_variant_t> MapValueRefToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapValueRef& value);
 	}
 }

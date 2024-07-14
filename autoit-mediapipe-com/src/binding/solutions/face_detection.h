@@ -22,11 +22,13 @@ namespace mediapipe::autoit::solutions::face_detection {
 
 	class CV_EXPORTS_W FaceDetection : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
-		CV_WRAP FaceDetection(
+		using SolutionBase::SolutionBase;
+
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<FaceDetection>> create(
 			float min_detection_confidence = 0,
-			BYTE model_selection = 0
+			uchar model_selection = 0
 		);
 
-		CV_WRAP void process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
+		CV_WRAP [[nodiscard]] absl::Status process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 	};
 }

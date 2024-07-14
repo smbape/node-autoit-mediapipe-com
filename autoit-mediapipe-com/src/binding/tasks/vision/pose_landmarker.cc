@@ -91,7 +91,7 @@ namespace {
 	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.pose_landmarker.PoseLandmarkerGraph";
 	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
 
-	std::shared_ptr<PoseLandmarkerResult> _build_landmarker_result(const PacketMap& output_packets) {
+	[[nodiscard]] absl::StatusOr<std::shared_ptr<PoseLandmarkerResult>> _build_landmarker_result(const PacketMap& output_packets) {
 		if (output_packets.at(_NORM_LANDMARKS_STREAM_NAME).IsEmpty()) {
 			return std::make_shared<PoseLandmarkerResult>();
 		}
@@ -99,12 +99,13 @@ namespace {
 		auto pose_landmarker_result = std::make_shared<PoseLandmarkerResult>();
 
 		if (output_packets.count(_SEGMENTATION_MASK_STREAM_NAME)) {
-			for (const auto& image : GetContent<std::vector<Image>>(output_packets.at(_SEGMENTATION_MASK_STREAM_NAME))) {
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& segmentation_masks, std::vector<Image>, output_packets.at(_SEGMENTATION_MASK_STREAM_NAME));
+			for (const auto& image : segmentation_masks) {
 				pose_landmarker_result->segmentation_masks->push_back(std::make_shared<Image>(image));
 			}
 		}
 
-		const auto& pose_landmarks_proto_list = GetContent<std::vector<NormalizedLandmarkList>>(output_packets.at(_NORM_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& pose_landmarks_proto_list, std::vector<NormalizedLandmarkList>, output_packets.at(_NORM_LANDMARKS_STREAM_NAME));
 		for (const auto& pose_landmarks : pose_landmarks_proto_list) {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> pose_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>();
 
@@ -115,7 +116,7 @@ namespace {
 			pose_landmarker_result->pose_landmarks->push_back(std::move(pose_landmarks_list));
 		}
 
-		const auto& pose_world_landmarks_proto_list = GetContent<std::vector<LandmarkList>>(output_packets.at(_POSE_WORLD_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& pose_world_landmarks_proto_list, std::vector<LandmarkList>, output_packets.at(_POSE_WORLD_LANDMARKS_STREAM_NAME));
 		for (const auto& pose_world_landmarks : pose_world_landmarks_proto_list) {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::Landmark>>> pose_world_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::Landmark>>>();
 
@@ -133,12 +134,13 @@ namespace {
 namespace mediapipe::tasks::autoit::vision::pose_landmarker {
 	using core::image_processing_options::ImageProcessingOptions;
 
-	std::shared_ptr<PoseLandmarkerGraphOptions> PoseLandmarkerOptions::to_pb2() {
+	absl::StatusOr<std::shared_ptr<PoseLandmarkerGraphOptions>> PoseLandmarkerOptions::to_pb2() const {
 		auto pose_landmarker_options_proto = std::make_shared<PoseLandmarkerGraphOptions>();
 
 		// Initialize the pose landmarker options from base options.
 		if (base_options) {
-			pose_landmarker_options_proto->mutable_base_options()->CopyFrom(*base_options->to_pb2());
+			MP_ASSIGN_OR_RETURN(auto base_options_proto, base_options->to_pb2());
+			pose_landmarker_options_proto->mutable_base_options()->CopyFrom(*base_options_proto);
 		}
 		pose_landmarker_options_proto->mutable_base_options()->set_use_stream_mode(running_mode != VisionTaskRunningMode::IMAGE);
 
@@ -151,23 +153,32 @@ namespace mediapipe::tasks::autoit::vision::pose_landmarker {
 		return pose_landmarker_options_proto;
 	}
 
-	std::shared_ptr<PoseLandmarker> PoseLandmarker::create_from_model_path(const std::string& model_path) {
+	absl::StatusOr<std::shared_ptr<PoseLandmarker>> PoseLandmarker::create(
+		const CalculatorGraphConfig& graph_config,
+		VisionTaskRunningMode running_mode,
+		mediapipe::autoit::PacketsCallback packet_callback
+	) {
+		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
+		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<PoseLandmarker*>(nullptr));
+	}
+
+	absl::StatusOr<std::shared_ptr<PoseLandmarker>> PoseLandmarker::create_from_model_path(const std::string& model_path) {
 		auto base_options = std::make_shared<BaseOptions>(model_path);
 		return create_from_options(std::make_shared<PoseLandmarkerOptions>(base_options, VisionTaskRunningMode::IMAGE));
 	}
 
-	std::shared_ptr<PoseLandmarker> PoseLandmarker::create_from_options(std::shared_ptr<PoseLandmarkerOptions> options) {
-		PacketsCallback packets_callback = nullptr;
+	absl::StatusOr<std::shared_ptr<PoseLandmarker>> PoseLandmarker::create_from_options(std::shared_ptr<PoseLandmarkerOptions> options) {
+		PacketsCallback packet_callback = nullptr;
 
 		if (options->result_callback) {
-			packets_callback = [options](const PacketMap& output_packets) {
+			packet_callback = [options](const PacketMap& output_packets) {
 				const auto& image_out_packet = output_packets.at(_IMAGE_OUT_STREAM_NAME);
 				if (image_out_packet.IsEmpty()) {
 					return;
 				}
 
-				auto pose_landmarker_result = _build_landmarker_result(output_packets);
-				const auto& image = GetContent<Image>(image_out_packet);
+				MP_ASSIGN_OR_THROW(auto pose_landmarker_result, _build_landmarker_result(output_packets)); // There is no other choice than throw in a callback to stop the execution
+				MP_PACKET_ASSIGN_OR_THROW(const auto& image, Image, image_out_packet); // There is no other choice than throw in a callback to stop the execution
 				auto timestamp_ms = output_packets.at(_NORM_LANDMARKS_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
 				options->result_callback(*pose_landmarker_result, image, timestamp_ms);
@@ -185,55 +196,62 @@ namespace mediapipe::tasks::autoit::vision::pose_landmarker {
 			_POSE_WORLD_LANDMARKS_TAG + ":" + _POSE_WORLD_LANDMARKS_STREAM_NAME,
 			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME
 		};
-		task_info.task_options = options->to_pb2();
+		MP_ASSIGN_OR_RETURN(task_info.task_options, options->to_pb2());
 
 		if (options->output_segmentation_masks) {
 			task_info.output_streams->push_back(_SEGMENTATION_MASK_TAG + ":" + _SEGMENTATION_MASK_STREAM_NAME);
 		}
 
-		return std::make_shared<PoseLandmarker>(
-			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
+		MP_ASSIGN_OR_RETURN(auto config, task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM));
+
+		return create(
+			*config,
 			options->running_mode,
-			std::move(packets_callback)
+			std::move(packet_callback)
 		);
 	}
 
-	std::shared_ptr<PoseLandmarkerResult> PoseLandmarker::detect(
+	absl::StatusOr<std::shared_ptr<PoseLandmarkerResult>> PoseLandmarker::detect(
 		const Image& image,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image, false);
-		auto output_packets = _process_image_data({
+		MP_ASSIGN_OR_RETURN(auto normalized_rect, convert_to_normalized_rect(image_processing_options, image, false));
+
+		MP_ASSIGN_OR_RETURN(auto output_packets, _process_image_data({
 			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(create_image(image))) },
 			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
-			});
+			}));
+
 		return _build_landmarker_result(output_packets);
 	}
 
-	std::shared_ptr<PoseLandmarkerResult> PoseLandmarker::detect_for_video(
+	absl::StatusOr<std::shared_ptr<PoseLandmarkerResult>> PoseLandmarker::detect_for_video(
 		const Image& image,
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image, false);
-		auto output_packets = _process_video_data({
+		MP_ASSIGN_OR_RETURN(auto normalized_rect, convert_to_normalized_rect(image_processing_options, image, false));
+
+		MP_ASSIGN_OR_RETURN(auto output_packets, _process_video_data({
 			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
 			{ _NORM_RECT_STREAM_NAME, std::move(std::move(create_proto(*normalized_rect.to_pb2()))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
-			});
+			}));
+
 		return _build_landmarker_result(output_packets);
 	}
 
-	void PoseLandmarker::detect_async(
+	absl::Status PoseLandmarker::detect_async(
 		const Image& image,
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image, false);
-		_send_live_stream_data({
+		MP_ASSIGN_OR_RETURN(auto normalized_rect, convert_to_normalized_rect(image_processing_options, image, false));
+
+		return _send_live_stream_data({
 			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },

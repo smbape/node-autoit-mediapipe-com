@@ -1,7 +1,7 @@
 #include "binding/tasks/components/containers/keypoint.h"
 
 namespace mediapipe::tasks::autoit::components::containers::keypoint {
-	std::shared_ptr<LocationData::RelativeKeypoint> NormalizedKeypoint::to_pb2() {
+	std::shared_ptr<LocationData::RelativeKeypoint> NormalizedKeypoint::to_pb2() const {
 		auto pb2_obj = std::make_shared<LocationData::RelativeKeypoint>();
 		if (x) {
 			pb2_obj->set_x(x.value());

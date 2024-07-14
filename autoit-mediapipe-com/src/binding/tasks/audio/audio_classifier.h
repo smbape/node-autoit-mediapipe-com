@@ -42,7 +42,7 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 			result_callback(result_callback)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions>> to_pb2() const;
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
 		CV_PROP_RW core::audio_task_running_mode::AudioTaskRunningMode running_mode;
@@ -58,10 +58,15 @@ namespace mediapipe::tasks::autoit::audio::audio_classifier {
 	public:
 		using core::base_audio_task_api::BaseAudioTaskApi::BaseAudioTaskApi;
 
-		CV_WRAP static std::shared_ptr<AudioClassifier> create_from_model_path(const std::string& model_path);
-		CV_WRAP static std::shared_ptr<AudioClassifier> create_from_options(std::shared_ptr<AudioClassifierOptions> options);
-		CV_WRAP void classify(CV_OUT std::vector<std::shared_ptr<AudioClassifierResult>>& output_list, const components::containers::audio_data::AudioData& audio_clip);
-		CV_WRAP void classify_async(const components::containers::audio_data::AudioData& audio_block, int64_t timestamp_ms);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<AudioClassifier>> create(
+			const CalculatorGraphConfig& graph_config,
+			core::audio_task_running_mode::AudioTaskRunningMode running_mode,
+			mediapipe::autoit::PacketsCallback packet_callback = nullptr
+		);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<AudioClassifier>> create_from_model_path(const std::string& model_path);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<AudioClassifier>> create_from_options(std::shared_ptr<AudioClassifierOptions> options);
+		CV_WRAP [[nodiscard]] absl::Status classify(CV_OUT std::vector<std::shared_ptr<AudioClassifierResult>>& output_list, const components::containers::audio_data::AudioData& audio_clip);
+		CV_WRAP [[nodiscard]] absl::Status classify_async(const components::containers::audio_data::AudioData& audio_block, int64_t timestamp_ms);
 	};
 }
 

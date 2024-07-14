@@ -56,7 +56,7 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 			result_callback(result_callback)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions>> to_pb2() const;
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
 		CV_PROP_RW core::vision_task_running_mode::VisionTaskRunningMode running_mode;
@@ -67,26 +67,29 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 
 	class CV_EXPORTS_W ImageSegmenter : public ::mediapipe::tasks::autoit::vision::core::base_vision_task_api::BaseVisionTaskApi {
 	public:
-		CV_WRAP ImageSegmenter(
+		ImageSegmenter(
+			const std::shared_ptr<mediapipe::tasks::core::TaskRunner>& runner,
+			core::vision_task_running_mode::VisionTaskRunningMode running_mode
+		);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<ImageSegmenter>> create(
 			const CalculatorGraphConfig& graph_config,
 			core::vision_task_running_mode::VisionTaskRunningMode running_mode,
 			mediapipe::autoit::PacketsCallback packet_callback = nullptr
 		);
-
-		CV_WRAP static std::shared_ptr<ImageSegmenter> create_from_model_path(const std::string& model_path);
-		CV_WRAP static std::shared_ptr<ImageSegmenter> create_from_options(std::shared_ptr<ImageSegmenterOptions> options);
-		CV_WRAP std::shared_ptr<ImageSegmenterResult> segment(
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<ImageSegmenter>> create_from_model_path(const std::string& model_path);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<ImageSegmenter>> create_from_options(std::shared_ptr<ImageSegmenterOptions> options);
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<ImageSegmenterResult>> segment(
 			const Image& image,
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
 		);
-		CV_WRAP std::shared_ptr<ImageSegmenterResult> segment_for_video(
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<ImageSegmenterResult>> segment_for_video(
 			const Image& image,
 			int64_t timestamp_ms,
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
 		);
-		CV_WRAP void segment_async(
+		CV_WRAP [[nodiscard]] absl::Status segment_async(
 			const Image& image,
 			int64_t timestamp_ms,
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options =
@@ -96,8 +99,9 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 			CV_OUT std::vector<std::string>& labels
 		);
 	private:
-		void _populate_labels();
+		[[nodiscard]] absl::Status _populate_labels();
 		std::vector<std::string> _labels;
+		absl::Status labels_status;
 	};
 }
 

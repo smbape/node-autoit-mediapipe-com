@@ -6,19 +6,19 @@ module.exports = [
 
     ["mediapipe.ValidatedGraphConfig.ValidatedGraphConfig", "mediapipe.ValidatedGraphConfig.ValidatedGraphConfig", [], [], "", ""],
 
-    ["mediapipe.ValidatedGraphConfig.Initialize", "void", ["=initialize", "/WrapAs=RaiseAutoItErrorIfNotOk"], [
+    ["mediapipe.ValidatedGraphConfig.Initialize", "absl::Status", ["=initialize"], [
         ["std::string", "binary_graph_path", "", ["/Cast=mediapipe::autoit::ReadCalculatorGraphConfigFromFile"]],
     ], "", ""],
 
-    ["mediapipe.ValidatedGraphConfig.Initialize", "void", ["=initialize", "/WrapAs=RaiseAutoItErrorIfNotOk"], [
+    ["mediapipe.ValidatedGraphConfig.Initialize", "absl::Status", ["=initialize"], [
         ["mediapipe::CalculatorGraphConfig", "graph_config", "", ["/Ref"]],
     ], "", ""],
 
-    ["mediapipe.ValidatedGraphConfig.RegisteredStreamTypeName", "std::string", ["=registered_stream_type_name", "/WrapAs=mediapipe::autoit::AssertAutoItValue"], [
+    ["mediapipe.ValidatedGraphConfig.RegisteredStreamTypeName", "std::string", ["=registered_stream_type_name"], [
         ["std::string", "stream_name", "", []],
     ], "", ""],
 
-    ["mediapipe.ValidatedGraphConfig.RegisteredSidePacketTypeName", "std::string", ["=registered_side_packet_type_name", "/WrapAs=mediapipe::autoit::AssertAutoItValue"], [
+    ["mediapipe.ValidatedGraphConfig.RegisteredSidePacketTypeName", "std::string", ["=registered_side_packet_type_name"], [
         ["std::string", "side_packet_name", "", []],
     ], "", ""],
 

@@ -1,7 +1,7 @@
 #include "binding/tasks/components/containers/rect.h"
 
 namespace mediapipe::tasks::autoit::components::containers::rect {
-	std::shared_ptr<mediapipe::NormalizedRect> NormalizedRect::to_pb2() {
+	std::shared_ptr<mediapipe::NormalizedRect> NormalizedRect::to_pb2() const {
 		auto pb2_obj = std::make_shared<mediapipe::NormalizedRect>();
 		pb2_obj->set_x_center(x_center);
 		pb2_obj->set_y_center(y_center);

@@ -8,12 +8,12 @@ static const std::string _FULL_RANGE_GRAPH_FILE_PATH = "mediapipe/modules/face_d
 static const std::string _SHORT_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/face_detection/face_detection_short_range.tflite";
 static const std::string _FULL_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/face_detection/face_detection_full_range_sparse.tflite";
 
-namespace mediapipe::autoit::solutions::face_detection {
-	static const std::string& GetModelPath(BYTE model_selection) {
-		download_utils::download_oss_model(model_selection == 1 ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
-		return model_selection == 1 ? _FULL_RANGE_GRAPH_FILE_PATH : _SHORT_RANGE_GRAPH_FILE_PATH;
-	}
+namespace {
+	using namespace mediapipe::autoit::solutions::face_detection;
+	using namespace mediapipe::autoit::solutions;
+}
 
+namespace mediapipe::autoit::solutions::face_detection {
 	std::shared_ptr<LocationData::RelativeKeypoint> get_key_point(
 		const Detection& detection,
 		FaceKeyPoint key_point_enum
@@ -26,27 +26,33 @@ namespace mediapipe::autoit::solutions::face_detection {
 		return std::make_shared<LocationData::RelativeKeypoint>(detection.location_data().relative_keypoints(index));
 	}
 
-	FaceDetection::FaceDetection(
+	absl::StatusOr<std::shared_ptr<FaceDetection>> FaceDetection::create(
 		float min_detection_confidence,
-		BYTE model_selection
-	) : SolutionBase(
-		GetModelPath(model_selection),
-		noMap(),
-		SolutionBase::create_graph_options(std::make_shared<FaceDetectionOptions>(), { {"min_score_thresh", _variant_t(model_selection)} }),
-		noMap(),
-		{ "detections" },
-		noTypeMap()
+		uchar model_selection
 	) {
-		// Nothing to do
+		MP_RETURN_IF_ERROR(download_utils::download_oss_model(model_selection == 1 ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH));
+		const auto& model_path = model_selection == 1 ? _FULL_RANGE_GRAPH_FILE_PATH : _SHORT_RANGE_GRAPH_FILE_PATH;
+
+		MP_ASSIGN_OR_RETURN(auto graph_options, SolutionBase::create_graph_options(std::make_shared<FaceDetectionOptions>(), { {"min_score_thresh", _variant_t(model_selection)} }));
+
+		return SolutionBase::create(
+			model_path,
+			noMap(),
+			graph_options,
+			noMap(),
+			{ "detections" },
+			noTypeMap(),
+			static_cast<FaceDetection*>(nullptr)
+		);
 	}
 
-	void FaceDetection::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
+	absl::Status FaceDetection::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
 		_variant_t input_data_variant;
 		VARIANT* out_val = &input_data_variant;
 		autoit_from(::autoit::reference_internal(&image), out_val);
 		std::map<std::string, _variant_t> input_dict;
 		input_dict["image"] = input_data_variant;
 
-		SolutionBase::process(input_dict, solution_outputs);
+		return SolutionBase::process(input_dict, solution_outputs);
 	}
 }

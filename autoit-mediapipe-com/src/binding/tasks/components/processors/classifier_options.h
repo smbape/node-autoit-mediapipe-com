@@ -22,7 +22,7 @@ namespace mediapipe::tasks::autoit::components::processors::classifier_options {
 			category_denylist(category_denylist)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::components::processors::proto::ClassifierOptions> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::tasks::components::processors::proto::ClassifierOptions> to_pb2() const;
 		CV_WRAP static std::shared_ptr<ClassifierOptions> create_from_pb2(const mediapipe::tasks::components::processors::proto::ClassifierOptions& pb2_obj);
 
 		CV_PROP_RW std::optional<std::string> display_names_locale;

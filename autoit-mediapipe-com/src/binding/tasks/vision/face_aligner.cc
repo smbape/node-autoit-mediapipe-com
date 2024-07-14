@@ -22,23 +22,33 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::vision::face_aligner {
-	std::shared_ptr<FaceStylizerGraphOptions> FaceAlignerOptions::to_pb2() {
+	absl::StatusOr<std::shared_ptr<FaceStylizerGraphOptions>> FaceAlignerOptions::to_pb2() const {
 		auto pb2_obj = std::make_shared<FaceStylizerGraphOptions>();
 
 		if (base_options) {
-			pb2_obj->mutable_base_options()->CopyFrom(*base_options->to_pb2());
+			MP_ASSIGN_OR_RETURN(auto base_options_proto, base_options->to_pb2());
+			pb2_obj->mutable_base_options()->CopyFrom(*base_options_proto);
 		}
 		pb2_obj->mutable_base_options()->set_use_stream_mode(false);
 
 		return pb2_obj;
 	}
 
-	std::shared_ptr<FaceAligner> FaceAligner::create_from_model_path(const std::string& model_path) {
+	absl::StatusOr<std::shared_ptr<FaceAligner>> FaceAligner::create(
+		const CalculatorGraphConfig& graph_config,
+		VisionTaskRunningMode running_mode,
+		mediapipe::autoit::PacketsCallback packet_callback
+	) {
+		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
+		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<FaceAligner*>(nullptr));
+	}
+
+	absl::StatusOr<std::shared_ptr<FaceAligner>> FaceAligner::create_from_model_path(const std::string& model_path) {
 		auto base_options = std::make_shared<BaseOptions>(model_path);
 		return create_from_options(std::make_shared<FaceAlignerOptions>(base_options));
 	}
 
-	std::shared_ptr<FaceAligner> FaceAligner::create_from_options(std::shared_ptr<FaceAlignerOptions> options) {
+	absl::StatusOr<std::shared_ptr<FaceAligner>> FaceAligner::create_from_options(std::shared_ptr<FaceAlignerOptions> options) {
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
 		*task_info.input_streams = {
@@ -49,32 +59,34 @@ namespace mediapipe::tasks::autoit::vision::face_aligner {
 			_FACE_ALIGNMENT_IMAGE_TAG + ":" + _FACE_ALIGNMENT_IMAGE_NAME,
 			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME
 		};
-		task_info.task_options = options->to_pb2();
+		MP_ASSIGN_OR_RETURN(task_info.task_options, options->to_pb2());
 
-		return std::make_shared<FaceAligner>(
-			*task_info.generate_graph_config(false),
+		MP_ASSIGN_OR_RETURN(auto config, task_info.generate_graph_config(false));
+
+		return create(
+			*config,
 			VisionTaskRunningMode::IMAGE,
 			nullptr
 		);
 	}
 
-	std::shared_ptr<Image> FaceAligner::align(
+	absl::StatusOr<std::shared_ptr<Image>> FaceAligner::align(
 		const Image& image,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto normalized_rect = convert_to_normalized_rect(image_processing_options, image);
+		MP_ASSIGN_OR_RETURN(auto normalized_rect, convert_to_normalized_rect(image_processing_options, image));
 
-		auto output_packets = _process_image_data({
+		MP_ASSIGN_OR_RETURN(auto output_packets, _process_image_data({
 			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(create_image(image))) },
 			{ _NORM_RECT_STREAM_NAME, std::move(*std::move(create_proto(*normalized_rect.to_pb2()))) },
-			});
+			}));
 
 		const auto& aligned_image_packet = output_packets.at(_FACE_ALIGNMENT_IMAGE_NAME);
 		if (aligned_image_packet.IsEmpty()) {
 			return std::shared_ptr<Image>();
 		}
 
-		const auto& stylized_image = GetContent<Image>(aligned_image_packet);
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& stylized_image, Image, aligned_image_packet);
 		return ::autoit::reference_internal(&stylized_image);
 	}
 }

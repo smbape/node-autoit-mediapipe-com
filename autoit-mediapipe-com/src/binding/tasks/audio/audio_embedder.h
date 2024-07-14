@@ -37,7 +37,7 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 			result_callback(result_callback)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions>> to_pb2() const;
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
 		CV_PROP_RW core::audio_task_running_mode::AudioTaskRunningMode running_mode;
@@ -50,11 +50,16 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 	public:
 		using core::base_audio_task_api::BaseAudioTaskApi::BaseAudioTaskApi;
 
-		CV_WRAP static std::shared_ptr<AudioEmbedder> create_from_model_path(const std::string& model_path);
-		CV_WRAP static std::shared_ptr<AudioEmbedder> create_from_options(std::shared_ptr<AudioEmbedderOptions> options);
-		CV_WRAP void embed(CV_OUT std::vector<std::shared_ptr<AudioEmbedderResult>>& output_list, const components::containers::audio_data::AudioData& audio_clip);
-		CV_WRAP void embed_async(const components::containers::audio_data::AudioData& audio_block, int64_t timestamp_ms);
-		CV_WRAP static float cosine_similarity(const components::containers::embedding_result::Embedding& u, const components::containers::embedding_result::Embedding& v);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<AudioEmbedder>> create(
+			const CalculatorGraphConfig& graph_config,
+			core::audio_task_running_mode::AudioTaskRunningMode running_mode,
+			mediapipe::autoit::PacketsCallback packet_callback = nullptr
+		);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<AudioEmbedder>> create_from_model_path(const std::string& model_path);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<AudioEmbedder>> create_from_options(std::shared_ptr<AudioEmbedderOptions> options);
+		CV_WRAP [[nodiscard]] absl::Status embed(CV_OUT std::vector<std::shared_ptr<AudioEmbedderResult>>& output_list, const components::containers::audio_data::AudioData& audio_clip);
+		CV_WRAP [[nodiscard]] absl::Status embed_async(const components::containers::audio_data::AudioData& audio_block, int64_t timestamp_ms);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<float> cosine_similarity(const components::containers::embedding_result::Embedding& u, const components::containers::embedding_result::Embedding& v);
 	};
 }
 

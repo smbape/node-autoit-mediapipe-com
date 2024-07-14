@@ -10,23 +10,23 @@ using namespace mediapipe::autoit;
 static absl::Mutex callback_mutex;
 
 namespace mediapipe::autoit::calculator_graph {
-	std::shared_ptr<CalculatorGraph> create(CalculatorGraphConfig& graph_config) {
+	absl::StatusOr<std::shared_ptr<CalculatorGraph>> create(CalculatorGraphConfig& graph_config) {
 		auto calculator_graph = std::make_shared<CalculatorGraph>();
-		RaiseAutoItErrorIfNotOk(calculator_graph->Initialize(graph_config));
+		MP_RETURN_IF_ERROR(calculator_graph->Initialize(graph_config));
 		return calculator_graph;
 	}
 
-	std::shared_ptr<CalculatorGraph> create(ValidatedGraphConfig& validated_graph_config) {
+	absl::StatusOr<std::shared_ptr<CalculatorGraph>> create(ValidatedGraphConfig& validated_graph_config) {
 		auto graph_config = validated_graph_config.Config();
 		return create(graph_config);
 	}
 
-	std::shared_ptr<CalculatorGraph> create(const std::string& binary_graph_path, const std::string& graph_config_proto) {
+	absl::StatusOr<std::shared_ptr<CalculatorGraph>> create(const std::string& binary_graph_path, const std::string& graph_config_proto) {
 		CalculatorGraphConfig graph_config;
 		const auto& use_binary_path = !binary_graph_path.empty();
 		const auto& use_graph_config = !graph_config_proto.empty();
 
-		AUTOIT_ASSERT_THROW(use_binary_path && !use_graph_config || !use_binary_path && use_graph_config,
+		MP_ASSERT_RETURN_IF_ERROR(use_binary_path && !use_graph_config || !use_binary_path && use_graph_config,
 			"Please provide one of the following: "
 			"\'binary_graph_path\' to initialize the graph "
 			"with a binary graph file, or "
@@ -36,19 +36,20 @@ namespace mediapipe::autoit::calculator_graph {
 			"graph with a ValidatedGraphConfig object.");
 
 		if (use_binary_path) {
-			graph_config = ReadCalculatorGraphConfigFromFile(binary_graph_path);
+			MP_RETURN_IF_ERROR(ReadCalculatorGraphConfigFromFile(binary_graph_path, graph_config));
 		}
 		else if (use_graph_config) {
-			graph_config = ParseProto<CalculatorGraphConfig>(graph_config_proto);
+			MP_RETURN_IF_ERROR(ParseProto<CalculatorGraphConfig>(graph_config_proto, graph_config));
 		}
 
 		return create(graph_config);
 	}
 
-	void add_packet_to_input_stream(CalculatorGraph* self, const std::string& stream, Packet& packet, Timestamp& timestamp) {
+	absl::Status add_packet_to_input_stream(CalculatorGraph* self, const std::string& stream, Packet& packet, Timestamp& timestamp) {
 		auto packet_timestamp = timestamp == Timestamp::Unset() ? packet.Timestamp() : timestamp;
-		AUTOIT_ASSERT_THROW(packet_timestamp.IsAllowedInStream(), packet_timestamp.DebugString() << " can't be the timestamp of a Packet in a stream.");
-		RaiseAutoItErrorIfNotOk(self->AddPacketToInputStream(stream, packet.At(packet_timestamp)));
+		MP_ASSERT_RETURN_IF_ERROR(packet_timestamp.IsAllowedInStream(), packet_timestamp.DebugString() << " can't be the timestamp of a Packet in a stream.");
+		MP_RETURN_IF_ERROR(self->AddPacketToInputStream(stream, packet.At(packet_timestamp)));
+		return absl::OkStatus();
 	}
 
 	const std::string get_combined_error_message(CalculatorGraph* self) {
@@ -59,13 +60,13 @@ namespace mediapipe::autoit::calculator_graph {
 		return std::string();
 	}
 
-	void observe_output_stream(
+	absl::Status observe_output_stream(
 		CalculatorGraph* self,
 		const std::string& stream_name,
 		PacketCallback callback_fn,
 		bool observe_timestamp_bounds
 	) {
-		RaiseAutoItErrorIfNotOk(self->ObserveOutputStream(
+		return self->ObserveOutputStream(
 			stream_name,
 			std::move([callback_fn, stream_name](const Packet& packet) {
 				absl::MutexLock lock(&callback_mutex);
@@ -73,11 +74,12 @@ namespace mediapipe::autoit::calculator_graph {
 				return absl::OkStatus();
 			}),
 			observe_timestamp_bounds
-		));
+		);
 	}
 
-	void close(CalculatorGraph* self) {
-		RaiseAutoItErrorIfNotOk(self->CloseAllPacketSources());
-		RaiseAutoItErrorIfNotOk(self->WaitUntilDone());
+	absl::Status close(CalculatorGraph* self) {
+		MP_RETURN_IF_ERROR(self->CloseAllPacketSources());
+		MP_RETURN_IF_ERROR(self->WaitUntilDone());
+		return absl::OkStatus();
 	}
 }

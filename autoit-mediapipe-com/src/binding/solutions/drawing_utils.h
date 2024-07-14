@@ -30,14 +30,14 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		CV_PROP_RW int circle_radius;
 	};
 
-	CV_WRAP void draw_detection(
+	CV_WRAP [[nodiscard]] absl::Status draw_detection(
 		cv::Mat& image,
 		const Detection& detection,
 		const DrawingSpec& keypoint_drawing_spec = DrawingSpec(RED_COLOR),
 		const DrawingSpec& bbox_drawing_spec = DrawingSpec()
 	);
 
-	CV_WRAP void draw_landmarks(
+	CV_WRAP [[nodiscard]] absl::Status draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
@@ -46,7 +46,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const bool is_drawing_landmarks = true
 	);
 
-	CV_WRAP void draw_landmarks(
+	CV_WRAP [[nodiscard]] absl::Status draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
@@ -55,7 +55,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const bool is_drawing_landmarks = true
 	);
 
-	CV_WRAP void draw_landmarks(
+	CV_WRAP [[nodiscard]] absl::Status draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),
@@ -64,7 +64,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const bool is_drawing_landmarks = true
 	);
 
-	CV_WRAP void draw_landmarks(
+	CV_WRAP [[nodiscard]] absl::Status draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections = std::vector<std::tuple<int, int>>(),

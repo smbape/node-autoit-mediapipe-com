@@ -8,22 +8,22 @@ module.exports = [
         ["uchar*", "data", "", ["/R", "=PixelData()"]],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", "/Output=std::shared_ptr<ImageFrame>($0.release())"], [
+    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateSharedImageFrame"], [
         ["mediapipe::ImageFormat::Format", "image_format", "", []],
         ["cv::Mat", "image", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", "/Output=std::shared_ptr<ImageFrame>($0.release())"], [
+    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateSharedImageFrame"], [
         ["cv::Mat", "image", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", "/Output=std::shared_ptr<ImageFrame>($0.release())"], [
+    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateSharedImageFrame"], [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.create_from_file", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", "/Output=std::shared_ptr<ImageFrame>($0.release())"], [
+    ["mediapipe.ImageFrame.create_from_file", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateSharedImageFrame"], [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 

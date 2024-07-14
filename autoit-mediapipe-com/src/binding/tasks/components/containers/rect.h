@@ -55,7 +55,7 @@ namespace mediapipe::tasks::autoit::components::containers::rect {
 			rect_id(rect_id)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::NormalizedRect> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::NormalizedRect> to_pb2() const;
 		CV_WRAP static std::shared_ptr<rect::NormalizedRect> create_from_pb2(const mediapipe::NormalizedRect& pb2_obj);
 
 		bool operator== (const NormalizedRect& other) const {

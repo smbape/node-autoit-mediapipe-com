@@ -6,16 +6,16 @@ module.exports = [
         ["mediapipe::autoit::PacketsCallback", "packets_callback", "nullptr", [""]],
     ], "", ""],
 
-    ["mediapipe.tasks.core.TaskRunner.Process", "std::map<std::string, Packet>", ["=process", "/WrapAs=mediapipe::autoit::AssertAutoItValue"], [
+    ["mediapipe.tasks.core.TaskRunner.Process", "std::map<std::string, Packet>", ["=process"], [
         ["std::map<std::string, Packet>", "input_packets", "", ["/Ref"]],
     ], "", ""],
 
-    ["mediapipe.tasks.core.TaskRunner.Send", "void", ["=send", "/WrapAs=RaiseAutoItErrorIfNotOk"], [
+    ["mediapipe.tasks.core.TaskRunner.Send", "absl::Status", ["=send"], [
         ["std::map<std::string, Packet>", "input_packets", "", ["/Ref"]],
     ], "", ""],
 
-    ["mediapipe.tasks.core.TaskRunner.Close", "void", ["=close", "/WrapAs=RaiseAutoItErrorIfNotOk"], [], "", ""],
-    ["mediapipe.tasks.core.TaskRunner.Restart", "void", ["=restart", "/WrapAs=RaiseAutoItErrorIfNotOk"], [], "", ""],
+    ["mediapipe.tasks.core.TaskRunner.Close", "absl::Status", ["=close"], [], "", ""],
+    ["mediapipe.tasks.core.TaskRunner.Restart", "absl::Status", ["=restart"], [], "", ""],
     ["mediapipe.tasks.core.TaskRunner.GetGraphConfig", "std::shared_ptr<mediapipe::CalculatorGraphConfig>", ["=get_graph_config", "/WrapAs=::autoit::reference_internal"], [], "", ""],
 
     // expose a task_runner property like in mediapipe python

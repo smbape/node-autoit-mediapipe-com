@@ -21,7 +21,7 @@ namespace mediapipe::tasks::autoit::components::containers::bounding_box {
 			height(height)
 		{}
 
-		CV_WRAP std::shared_ptr<LocationData::BoundingBox> to_pb2();
+		CV_WRAP std::shared_ptr<LocationData::BoundingBox> to_pb2() const;
 		CV_WRAP static std::shared_ptr<BoundingBox> create_from_pb2(const LocationData::BoundingBox& pb2_obj);
 
 		bool operator== (const BoundingBox& other) const {

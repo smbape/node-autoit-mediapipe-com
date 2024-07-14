@@ -11,22 +11,22 @@ static const std::string _PALM_DETECTION_LITE_TFLITE_FILE_PATH = "mediapipe/modu
 static const std::string _PALM_DETECTION_FULL_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/palm_detection/palm_detection_full.tflite";
 
 namespace mediapipe::autoit::solutions::hands {
-	Hands::Hands(
+	absl::StatusOr<std::shared_ptr<Hands>> Hands::create(
 		bool static_image_mode,
 		int max_num_hands,
 		BYTE model_complexity,
 		float min_detection_confidence,
 		float min_tracking_confidence
 	) {
-		download_utils::download_oss_model(
+		MP_RETURN_IF_ERROR(download_utils::download_oss_model(
 			model_complexity == 0 ? _HAND_LANDMARK_LITE_TFLITE_FILE_PATH : _HAND_LANDMARK_FULL_RANGE_TFLITE_FILE_PATH
-		);
+		));
 
-		download_utils::download_oss_model(
+		MP_RETURN_IF_ERROR(download_utils::download_oss_model(
 			model_complexity == 0 ? _PALM_DETECTION_LITE_TFLITE_FILE_PATH : _PALM_DETECTION_FULL_RANGE_TFLITE_FILE_PATH
-		);
+		));
 
-		__init__(
+		return SolutionBase::create(
 			_BINARYPB_FILE_PATH,
 			{
 				{"palmdetectioncpu__TensorsToDetectionsCalculator.min_score_thresh", _variant_t(min_detection_confidence)},
@@ -39,17 +39,18 @@ namespace mediapipe::autoit::solutions::hands {
 				{"use_prev_landmarks", _variant_t(!static_image_mode)},
 			},
 			{ "multi_hand_landmarks", "multi_hand_world_landmarks", "multi_handedness" },
-			noTypeMap()
+			noTypeMap(),
+			static_cast<Hands*>(nullptr)
 		);
 	}
 
-	void Hands::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
+	absl::Status Hands::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
 		_variant_t input_data_variant;
 		VARIANT* out_val = &input_data_variant;
 		autoit_from(::autoit::reference_internal(&image), out_val);
 		std::map<std::string, _variant_t> input_dict;
 		input_dict["image"] = input_data_variant;
 
-		SolutionBase::process(input_dict, solution_outputs);
+		return SolutionBase::process(input_dict, solution_outputs);
 	}
 }

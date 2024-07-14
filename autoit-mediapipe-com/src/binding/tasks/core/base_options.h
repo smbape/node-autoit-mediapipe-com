@@ -21,7 +21,7 @@ namespace mediapipe::tasks::autoit::core::base_options {
 			const std::optional<BaseOptions_Delegate>& delegate = std::optional<BaseOptions_Delegate>()
 		) : model_asset_path(model_asset_path), model_asset_buffer(model_asset_buffer), delegate(delegate) {}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>> to_pb2() const;
 		CV_WRAP static std::shared_ptr<BaseOptions> create_from_pb2(const mediapipe::tasks::core::proto::BaseOptions& pb2_obj);
 
 		CV_PROP_RW std::string model_asset_path;

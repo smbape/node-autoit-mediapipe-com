@@ -21,7 +21,7 @@ namespace mediapipe::tasks::autoit::components::containers::category {
 			category_name(category_name)
 		{}
 
-		CV_WRAP std::shared_ptr<Classification> to_pb2();
+		CV_WRAP std::shared_ptr<Classification> to_pb2() const;
 		CV_WRAP static std::shared_ptr<Category> create_from_pb2(const Classification& pb2_obj);
 
 		bool operator== (const Category& other) const {

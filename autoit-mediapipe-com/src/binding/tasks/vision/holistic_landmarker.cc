@@ -63,26 +63,26 @@ namespace {
 	const std::string _TASK_GRAPH_NAME = "mediapipe.tasks.vision.holistic_landmarker.HolisticLandmarkerGraph";
 	const int64_t _MICRO_SECONDS_PER_MILLISECOND = 1000;
 
-	std::shared_ptr<HolisticLandmarkerResult> _build_landmarker_result(const PacketMap& output_packets) {
+	[[nodiscard]] absl::StatusOr<std::shared_ptr<HolisticLandmarkerResult>> _build_landmarker_result(const PacketMap& output_packets) {
 		if (output_packets.at(_FACE_LANDMARKS_STREAM_NAME).IsEmpty()) {
 			return std::make_shared<HolisticLandmarkerResult>();
 		}
 
 		auto holistic_landmarker_result = std::make_shared<HolisticLandmarkerResult>();
 
-		const auto& face_landmarks_proto_list = GetContent<NormalizedLandmarkList>(output_packets.at(_FACE_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& face_landmarks_proto_list, NormalizedLandmarkList, output_packets.at(_FACE_LANDMARKS_STREAM_NAME));
 
-		const auto& pose_landmarks_proto_list = GetContent<NormalizedLandmarkList>(output_packets.at(_POSE_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& pose_landmarks_proto_list, NormalizedLandmarkList, output_packets.at(_POSE_LANDMARKS_STREAM_NAME));
 
-		const auto& pose_world_landmarks_proto_list = GetContent<LandmarkList>(output_packets.at(_POSE_WORLD_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& pose_world_landmarks_proto_list, LandmarkList, output_packets.at(_POSE_WORLD_LANDMARKS_STREAM_NAME));
 
-		const auto& left_hand_landmarks_proto_list = GetContent<NormalizedLandmarkList>(output_packets.at(_LEFT_HAND_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& left_hand_landmarks_proto_list, NormalizedLandmarkList, output_packets.at(_LEFT_HAND_LANDMARKS_STREAM_NAME));
 
-		const auto& left_hand_world_landmarks_proto_list = GetContent<LandmarkList>(output_packets.at(_LEFT_HAND_WORLD_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& left_hand_world_landmarks_proto_list, LandmarkList, output_packets.at(_LEFT_HAND_WORLD_LANDMARKS_STREAM_NAME));
 
-		const auto& right_hand_landmarks_proto_list = GetContent<NormalizedLandmarkList>(output_packets.at(_RIGHT_HAND_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& right_hand_landmarks_proto_list, NormalizedLandmarkList, output_packets.at(_RIGHT_HAND_LANDMARKS_STREAM_NAME));
 
-		const auto& right_hand_world_landmarks_proto_list = GetContent<LandmarkList>(output_packets.at(_RIGHT_HAND_WORLD_LANDMARKS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& right_hand_world_landmarks_proto_list, LandmarkList, output_packets.at(_RIGHT_HAND_WORLD_LANDMARKS_STREAM_NAME));
 
 		for (const auto& face_landmark : face_landmarks_proto_list.landmark()) {
 			holistic_landmarker_result->face_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(face_landmark));
@@ -113,7 +113,7 @@ namespace {
 		}
 
 		if (output_packets.count(_FACE_BLENDSHAPES_STREAM_NAME)) {
-			const auto& face_blendshapes_proto_list = GetContent<ClassificationList>(output_packets.at(_FACE_BLENDSHAPES_STREAM_NAME));
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& face_blendshapes_proto_list, ClassificationList, output_packets.at(_FACE_BLENDSHAPES_STREAM_NAME));
 
 			for (const auto& face_blendshapes : face_blendshapes_proto_list.classification()) {
 				holistic_landmarker_result->face_blendshapes->push_back(std::make_shared<category::Category>(
@@ -126,7 +126,7 @@ namespace {
 		}
 
 		if (output_packets.count(_POSE_SEGMENTATION_MASK_STREAM_NAME)) {
-			const auto& image = GetContent<Image>(output_packets.at(_POSE_SEGMENTATION_MASK_STREAM_NAME));
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& image, Image, output_packets.at(_POSE_SEGMENTATION_MASK_STREAM_NAME));
 			holistic_landmarker_result->segmentation_mask = std::make_shared<Image>(image);
 		}
 
@@ -172,12 +172,13 @@ namespace mediapipe::tasks::autoit::vision::holistic_landmarker {
 		return holistic_landmarker_result;
 	}
 
-	std::shared_ptr<HolisticLandmarkerGraphOptions> HolisticLandmarkerOptions::to_pb2() {
+	absl::StatusOr<std::shared_ptr<HolisticLandmarkerGraphOptions>> HolisticLandmarkerOptions::to_pb2() const {
 		auto holistic_landmarker_options_proto = std::make_shared<HolisticLandmarkerGraphOptions>();
 
 		// Initialize the holistic landmarker options from base options.
 		if (base_options) {
-			holistic_landmarker_options_proto->mutable_base_options()->CopyFrom(*base_options->to_pb2());
+			MP_ASSIGN_OR_RETURN(auto base_options_proto, base_options->to_pb2());
+			holistic_landmarker_options_proto->mutable_base_options()->CopyFrom(*base_options_proto);
 		}
 		holistic_landmarker_options_proto->mutable_base_options()->set_use_stream_mode(running_mode != VisionTaskRunningMode::IMAGE);
 
@@ -197,23 +198,32 @@ namespace mediapipe::tasks::autoit::vision::holistic_landmarker {
 		return holistic_landmarker_options_proto;
 	}
 
-	std::shared_ptr<HolisticLandmarker> HolisticLandmarker::create_from_model_path(const std::string& model_path) {
+	absl::StatusOr<std::shared_ptr<HolisticLandmarker>> HolisticLandmarker::create(
+		const CalculatorGraphConfig& graph_config,
+		VisionTaskRunningMode running_mode,
+		mediapipe::autoit::PacketsCallback packet_callback
+	) {
+		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
+		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<HolisticLandmarker*>(nullptr));
+	}
+
+	absl::StatusOr<std::shared_ptr<HolisticLandmarker>> HolisticLandmarker::create_from_model_path(const std::string& model_path) {
 		auto base_options = std::make_shared<BaseOptions>(model_path);
 		return create_from_options(std::make_shared<HolisticLandmarkerOptions>(base_options, VisionTaskRunningMode::IMAGE));
 	}
 
-	std::shared_ptr<HolisticLandmarker> HolisticLandmarker::create_from_options(std::shared_ptr<HolisticLandmarkerOptions> options) {
-		PacketsCallback packets_callback = nullptr;
+	absl::StatusOr<std::shared_ptr<HolisticLandmarker>> HolisticLandmarker::create_from_options(std::shared_ptr<HolisticLandmarkerOptions> options) {
+		PacketsCallback packet_callback = nullptr;
 
 		if (options->result_callback) {
-			packets_callback = [options](const PacketMap& output_packets) {
+			packet_callback = [options](const PacketMap& output_packets) {
 				const auto& image_out_packet = output_packets.at(_IMAGE_OUT_STREAM_NAME);
 				if (image_out_packet.IsEmpty()) {
 					return;
 				}
 
-				auto holistic_landmarks_detection_result = _build_landmarker_result(output_packets);
-				const auto& image = GetContent<Image>(image_out_packet);
+				MP_ASSIGN_OR_THROW(auto holistic_landmarks_detection_result, _build_landmarker_result(output_packets)); // There is no other choice than throw in a callback to stop the execution
+				MP_PACKET_ASSIGN_OR_THROW(const auto& image, Image, image_out_packet); // There is no other choice than throw in a callback to stop the execution
 				auto timestamp_ms = output_packets.at(_FACE_LANDMARKS_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
 				options->result_callback(*holistic_landmarks_detection_result, image, timestamp_ms);
@@ -235,7 +245,7 @@ namespace mediapipe::tasks::autoit::vision::holistic_landmarker {
 			_RIGHT_HAND_WORLD_LANDMARKS_TAG + ":" + _RIGHT_HAND_WORLD_LANDMARKS_STREAM_NAME,
 			_IMAGE_TAG + ":" + _IMAGE_OUT_STREAM_NAME
 		};
-		task_info.task_options = options->to_pb2();
+		MP_ASSIGN_OR_RETURN(task_info.task_options, options->to_pb2());
 
 		if (options->output_segmentation_mask) {
 			task_info.output_streams->push_back(_POSE_SEGMENTATION_MASK_TAG + ":" + _POSE_SEGMENTATION_MASK_STREAM_NAME);
@@ -245,42 +255,46 @@ namespace mediapipe::tasks::autoit::vision::holistic_landmarker {
 			task_info.output_streams->push_back(_FACE_BLENDSHAPES_TAG + ":" + _FACE_BLENDSHAPES_STREAM_NAME);
 		}
 
-		return std::make_shared<HolisticLandmarker>(
-			*task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM),
+		MP_ASSIGN_OR_RETURN(auto config, task_info.generate_graph_config(options->running_mode == VisionTaskRunningMode::LIVE_STREAM));
+
+		return create(
+			*config,
 			options->running_mode,
-			std::move(packets_callback)
+			std::move(packet_callback)
 		);
 	}
 
-	std::shared_ptr<HolisticLandmarkerResult> HolisticLandmarker::detect(
+	absl::StatusOr<std::shared_ptr<HolisticLandmarkerResult>> HolisticLandmarker::detect(
 		const Image& image,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto output_packets = _process_image_data({
+		MP_ASSIGN_OR_RETURN(auto output_packets, _process_image_data({
 			{ _IMAGE_IN_STREAM_NAME, std::move(*std::move(create_image(image))) },
-			});
+			}));
+
 		return _build_landmarker_result(output_packets);
 	}
 
-	std::shared_ptr<HolisticLandmarkerResult> HolisticLandmarker::detect_for_video(
+	absl::StatusOr<std::shared_ptr<HolisticLandmarkerResult>> HolisticLandmarker::detect_for_video(
 		const Image& image,
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		auto output_packets = _process_video_data({
+		MP_ASSIGN_OR_RETURN(auto output_packets, _process_video_data({
 			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },
-			});
+			}));
+
 		return _build_landmarker_result(output_packets);
 	}
 
-	void HolisticLandmarker::detect_async(
+	absl::Status HolisticLandmarker::detect_async(
 		const Image& image,
 		int64_t timestamp_ms,
 		std::shared_ptr<ImageProcessingOptions> image_processing_options
 	) {
-		_send_live_stream_data({
+		return _send_live_stream_data({
 			{ _IMAGE_IN_STREAM_NAME, std::move(std::move(create_image(image))->At(
 				Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND)
 			)) },

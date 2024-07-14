@@ -1,7 +1,7 @@
 #include "binding/tasks/components/containers/bounding_box.h"
 
 namespace mediapipe::tasks::autoit::components::containers::bounding_box {
-	std::shared_ptr<LocationData::BoundingBox> BoundingBox::to_pb2() {
+	std::shared_ptr<LocationData::BoundingBox> BoundingBox::to_pb2() const {
 		auto pb2_obj = std::make_shared<LocationData::BoundingBox>();
 		pb2_obj->set_xmin(origin_x);
 		pb2_obj->set_ymin(origin_y);

@@ -6,7 +6,7 @@ using namespace proto_ns;
 // RegisteredTypeName()
 
 namespace mediapipe::autoit::packet_getter {
-	const int64_t get_int(const Packet& packet) {
+	absl::StatusOr<int64_t> get_int(const Packet& packet) {
 		if (packet.ValidateAsType<int>().ok()) {
 			return static_cast<int64_t>(packet.Get<int>());
 		}
@@ -27,10 +27,10 @@ namespace mediapipe::autoit::packet_getter {
 			return static_cast<int64_t>(packet.Get<int64_t>());
 		}
 
-		AUTOIT_THROW("Packet doesn't contain int, int8, int16, int32, or int64 data.");
+		MP_ASSERT_RETURN_IF_ERROR(false, "Packet doesn't contain int, int8, int16, int32, or int64 data.");
 	}
 
-	const uint64_t get_uint(const Packet& packet) {
+	absl::StatusOr<uint64_t> get_uint(const Packet& packet) {
 		if (packet.ValidateAsType<uint8_t>().ok()) {
 			return static_cast<std::uint64_t>(packet.Get<uint8_t>());
 		}
@@ -47,10 +47,10 @@ namespace mediapipe::autoit::packet_getter {
 			return static_cast<std::uint64_t>(packet.Get<uint64_t>());
 		}
 
-		AUTOIT_THROW("Packet doesn't contain uint8, uint16, uint32, or uint64 data.");
+		MP_ASSERT_RETURN_IF_ERROR(false, "Packet doesn't contain uint8, uint16, uint32, or uint64 data.");
 	}
 
-	const float get_float(const Packet& packet) {
+	absl::StatusOr<float> get_float(const Packet& packet) {
 		if (packet.ValidateAsType<float>().ok()) {
 			return packet.Get<float>();
 		}
@@ -59,10 +59,10 @@ namespace mediapipe::autoit::packet_getter {
 			return static_cast<float>(packet.Get<double>());
 		}
 
-		AUTOIT_THROW("Packet doesn't contain float or double data.");
+		MP_ASSERT_RETURN_IF_ERROR(false, "Packet doesn't contain float or double data.");
 	}
 
-	const std::vector<int64_t> get_int_list(const Packet& packet) {
+	absl::StatusOr<std::vector<int64_t>> get_int_list(const Packet& packet) {
 		if (packet.ValidateAsType<std::vector<int>>().ok()) {
 			auto int_list = packet.Get<std::vector<int>>();
 			return std::vector<int64_t>(int_list.begin(), int_list.end());
@@ -88,10 +88,10 @@ namespace mediapipe::autoit::packet_getter {
 			return std::vector<int64_t>(int_list.begin(), int_list.end());
 		}
 
-		AUTOIT_THROW("Packet doesn't contain int, int8, int16, int32, or int64 containers.");
+		MP_ASSERT_RETURN_IF_ERROR(false, "Packet doesn't contain int, int8, int16, int32, or int64 containers.");
 	}
 
-	const std::vector<float> get_float_list(const Packet& packet) {
+	absl::StatusOr<std::vector<float>> get_float_list(const Packet& packet) {
 		if (packet.ValidateAsType<std::vector<float>>().ok()) {
 			return packet.Get<std::vector<float>>();
 		}
@@ -106,43 +106,39 @@ namespace mediapipe::autoit::packet_getter {
 			return std::vector<float>(float_array.begin(), float_array.end());
 		}
 
-		AUTOIT_THROW("Packet doesn't contain std::vector<float> or std::array<float, 4 / 16> containers.");
+		MP_ASSERT_RETURN_IF_ERROR(false, "Packet doesn't contain std::vector<float> or std::array<float, 4 / 16> containers.");
 	}
 
-	std::shared_ptr<Message> MessageFromDynamicProto(const std::string& type_name, const std::string& serialized) {
+	absl::StatusOr<std::shared_ptr<Message>> MessageFromDynamicProto(const std::string& type_name, const std::string& serialized) {
 		using namespace packet_internal;
 
-		absl::StatusOr<std::unique_ptr<HolderBase>> maybe_holder =
-			MessageHolderRegistry::CreateByName(type_name);
+		MP_ASSIGN_OR_RETURN(auto message_holder, MessageHolderRegistry::CreateByName(type_name));
 
-		RaiseAutoItErrorIfNotOk(maybe_holder.status());
-
-		std::unique_ptr<HolderBase> message_holder = std::move(maybe_holder).value();
 		auto* copy = const_cast<proto_ns::MessageLite*>(message_holder->GetProtoMessageLite());
-		AUTOIT_ASSERT_THROW(copy->ParseFromString(serialized), "Failed to get proto message from packet " << type_name);
+		MP_ASSERT_RETURN_IF_ERROR(copy->ParseFromString(serialized), "Failed to get proto message from packet " << type_name);
 
-		return std::shared_ptr<Message>(static_cast<Message*>(std::move(message_holder->ReleaseProtoMessageLite()).value().release()));
+		MP_ASSIGN_OR_RETURN(auto message_ptr, message_holder->ReleaseProtoMessageLite());
+
+		return std::shared_ptr<Message>(static_cast<Message*>(message_ptr.release()));
 	}
 
-	const std::shared_ptr<Message> get_proto(const Packet& packet) {
+	absl::StatusOr<std::shared_ptr<Message>> get_proto(const Packet& packet) {
 		const auto& message = packet.GetProtoMessageLite();
 		const std::string& type_name = message.GetTypeName();
 		const std::string& serialized = message.SerializeAsString();
 		return MessageFromDynamicProto(type_name, serialized);
 	}
 
-	void get_proto_list(const Packet& packet, std::vector<std::shared_ptr<Message>>& proto_list) {
+	absl::Status get_proto_list(const Packet& packet, std::vector<std::shared_ptr<Message>>& proto_list) {
 		if (packet.IsEmpty()) {
-			return;
+			return absl::OkStatus();
 		}
 
-		absl::StatusOr<std::vector<const MessageLite*>> proto_vector_ = packet.GetVectorOfProtoMessageLitePtrs();
-		RaiseAutoItErrorIfNotOk(proto_vector_.status());
+		MP_ASSIGN_OR_RETURN(auto proto_vector, packet.GetVectorOfProtoMessageLitePtrs());
 
-		std::vector<const MessageLite*> proto_vector = std::move(proto_vector_).value();
 		auto size = proto_vector.size();
 		if (size == 0) {
-			return;
+			return absl::OkStatus();
 		}
 
 		proto_list.resize(size);
@@ -151,9 +147,9 @@ namespace mediapipe::autoit::packet_getter {
 		int i = 0;
 		for (const MessageLite* proto : proto_vector) {
 			const std::string& serialized = proto->SerializeAsString();
-			proto_list[i++] = MessageFromDynamicProto(type_name, serialized);
+			MP_ASSIGN_OR_RETURN(proto_list[i++], MessageFromDynamicProto(type_name, serialized));
 		}
 
-		return;
+		return absl::OkStatus();
 	}
 }

@@ -1,86 +1,93 @@
 #include "Mediapipe_Autoit_Packet_creator_Object.h"
 #include <opencv2/core/eigen.hpp>
 
-namespace mediapipe {
-	namespace autoit {
-		inline std::shared_ptr<Packet> CreateImageFramePacket(std::unique_ptr<ImageFrame>& image_frame) {
-			const auto& packet = Adopt(image_frame.release());
-			return std::make_shared<Packet>(std::move(packet));
-		}
+namespace {
+	using namespace mediapipe::autoit;
+	using namespace mediapipe;
 
-		inline std::shared_ptr<Packet> CreateImagePacket(std::unique_ptr<ImageFrame>& image_frame) {
-			std::shared_ptr<ImageFrame> shared_image_frame = std::move(image_frame);
-			const auto& packet = MakePacket<Image>(shared_image_frame);
-			return std::make_shared<Packet>(std::move(packet));
+	inline std::shared_ptr<Packet> CreateImageFramePacket(std::unique_ptr<ImageFrame>& image_frame) {
+		const auto& packet = Adopt(image_frame.release());
+		return std::make_shared<Packet>(std::move(packet));
+	}
+
+	inline std::shared_ptr<Packet> CreateImagePacket(std::unique_ptr<ImageFrame>& image_frame) {
+		std::shared_ptr<ImageFrame> shared_image_frame = std::move(image_frame);
+		const auto& packet = MakePacket<Image>(shared_image_frame);
+		return std::make_shared<Packet>(std::move(packet));
+	}
+
+	inline void RaiseAutoItErrorIfOverflow(int64_t value, int64_t min, int64_t max) {
+		if (value > max) {
+			AUTOIT_THROW(value << " execeeds the maximum value (" << max << ") the data type can have.");
+		}
+		else if (value < min) {
+			AUTOIT_THROW(value << " goes below the minimum value (" << min << ") the data type can have.");
 		}
 	}
 }
 
-using namespace mediapipe;
-using namespace mediapipe::autoit;
-
 namespace mediapipe::autoit::packet_creator {
-	const std::shared_ptr<Packet> create_int(int64_t data) {
+	std::shared_ptr<Packet> create_int(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, INT_MIN, INT_MAX);
 		const auto& packet = MakePacket<int>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_int8(int64_t data) {
+	std::shared_ptr<Packet> create_int8(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, INT8_MIN, INT8_MAX);
 		const auto& packet = MakePacket<int8_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_int16(int64_t data) {
+	std::shared_ptr<Packet> create_int16(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, INT16_MIN, INT16_MAX);
 		const auto& packet = MakePacket<int16_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_int32(int64_t data) {
+	std::shared_ptr<Packet> create_int32(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, INT32_MIN, INT32_MAX);
 		const auto& packet = MakePacket<int32_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_uint8(int64_t data) {
+	std::shared_ptr<Packet> create_uint8(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, 0, UINT8_MAX);
 		const auto& packet = MakePacket<uint8_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_uint16(int64_t data) {
+	std::shared_ptr<Packet> create_uint16(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, 0, UINT16_MAX);
 		const auto& packet = MakePacket<uint16_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_uint32(int64_t data) {
+	std::shared_ptr<Packet> create_uint32(int64_t data) {
 		RaiseAutoItErrorIfOverflow(data, 0, UINT32_MAX);
 		const auto& packet = MakePacket<uint32_t>(data);
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_int_array(const std::vector<int>& data) {
+	std::shared_ptr<Packet> create_int_array(const std::vector<int>& data) {
 		int* ints = new int[data.size()];
 		std::copy(data.begin(), data.end(), ints);
 		const auto& packet = Adopt(reinterpret_cast<int(*)[]>(ints));
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_float_array(const std::vector<float>& data) {
+	std::shared_ptr<Packet> create_float_array(const std::vector<float>& data) {
 		float* floats = new float[data.size()];
 		std::copy(data.begin(), data.end(), floats);
 		const auto& packet = Adopt(reinterpret_cast<float(*)[]>(floats));
 		return std::make_shared<Packet>(std::move(packet));
 	}
 
-	const std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, bool copy) {
+	std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, bool copy) {
 		return create_image_frame(data, data.Format(), copy);
 	}
 
-	const std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, ImageFormat::Format format, bool copy) {
+	std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, ImageFormat::Format format, bool copy) {
 		AUTOIT_ASSERT_THROW(data.Format() == format, "The provided image_format doesn't match the one from the data arg.");
 		AUTOIT_ASSERT_THROW(copy, "Creating ImageFrame packet by taking a reference of another ImageFrame object is not supported yet.");
 
@@ -91,21 +98,21 @@ namespace mediapipe::autoit::packet_creator {
 		return CreateImageFramePacket(image_frame);
 	}
 
-	const std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, bool copy) {
-		auto image_frame = CreateImageFrame(data, copy);
+	std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, bool copy) {
+		MP_ASSIGN_OR_THROW(auto image_frame, CreateImageFrame(data, copy));
 		return CreateImageFramePacket(image_frame);
 	}
 
-	const std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, ImageFormat::Format format, bool copy) {
-		auto image_frame = CreateImageFrame(format, data, copy);
+	std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, ImageFormat::Format format, bool copy) {
+		MP_ASSIGN_OR_THROW(auto image_frame, CreateImageFrame(format, data, copy));
 		return CreateImageFramePacket(image_frame);
 	}
 
-	const std::shared_ptr<Packet> create_image(const Image& data, bool copy) {
+	std::shared_ptr<Packet> create_image(const Image& data, bool copy) {
 		return create_image(data, data.image_format(), copy);
 	}
 
-	const std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format format, bool copy) {
+	std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format format, bool copy) {
 		AUTOIT_ASSERT_THROW(image.image_format() == format, "The provided image_format doesn't match the one from the data arg.");
 		AUTOIT_ASSERT_THROW(copy, "Creating Image packet by taking a reference of another Image object is not supported yet.");
 
@@ -116,23 +123,23 @@ namespace mediapipe::autoit::packet_creator {
 		return CreateImagePacket(image_frame);
 	}
 
-	const std::shared_ptr<Packet> create_image(const cv::Mat& data, bool copy) {
+	std::shared_ptr<Packet> create_image(const cv::Mat& data, bool copy) {
 		if (!copy) {
 			AUTOIT_WARN("'data' is still writeable. Taking a reference of the data to create Image packet is dangerous.");
 		}
-		auto image_frame = CreateImageFrame(data, copy);
+		MP_ASSIGN_OR_THROW(auto image_frame, CreateImageFrame(data, copy));
 		return CreateImagePacket(image_frame);
 	}
 
-	const std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format format, bool copy) {
+	std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format format, bool copy) {
 		if (!copy) {
 			AUTOIT_WARN("'data' is still writeable. Taking a reference of the data to create Image packet is dangerous.");
 		}
-		auto image_frame = CreateImageFrame(format, data, copy);
+		MP_ASSIGN_OR_THROW(auto image_frame, CreateImageFrame(format, data, copy));
 		return CreateImagePacket(image_frame);
 	}
 
-	const std::shared_ptr<Packet> create_matrix(const cv::Mat& data, bool transpose) {
+	std::shared_ptr<Packet> create_matrix(const cv::Mat& data, bool transpose) {
 		AUTOIT_ASSERT_THROW(data.type() == CV_32F, "The data should be a float matrix");
 		AUTOIT_ASSERT_THROW(data.dims <= 2, "The data is expected to have at most 2 dimensions");
 		AUTOIT_ASSERT_THROW(data.cols == 1 || data.channels() == 1, "The data is expected be a Nx1 matrix");
@@ -151,7 +158,7 @@ namespace mediapipe::autoit::packet_creator {
 		return std::make_shared<Packet>(std::move(MakePacket<Matrix>(transpose ? matrix.transpose() : matrix)));
 	}
 
-	const std::shared_ptr<Packet> create_proto(const google::protobuf::Message& message) {
+	std::shared_ptr<Packet> create_proto(const google::protobuf::Message& message) {
 		auto type_name = message.GetDescriptor()->full_name();
 
 		std::string serialized;

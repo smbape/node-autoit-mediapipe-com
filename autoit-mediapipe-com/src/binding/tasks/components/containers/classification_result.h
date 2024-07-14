@@ -20,7 +20,7 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 			head_name(head_name)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications> to_pb2() const;
 		CV_WRAP static std::shared_ptr<Classifications> create_from_pb2(const mediapipe::tasks::components::containers::proto::Classifications& pb2_obj);
 
 		bool operator== (const Classifications& other) const {
@@ -47,7 +47,7 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 			timestamp_ms(timestamp_ms)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::components::containers::proto::ClassificationResult> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::tasks::components::containers::proto::ClassificationResult> to_pb2() const;
 		CV_WRAP static std::shared_ptr<ClassificationResult> create_from_pb2(const mediapipe::tasks::components::containers::proto::ClassificationResult& pb2_obj);
 
 		bool operator== (const ClassificationResult& other) const {

@@ -10,7 +10,7 @@
 #include <opencv2/imgcodecs.hpp>
 
 namespace mediapipe::autoit {
-	inline std::unique_ptr<ImageFrame> CreateImageFrame(
+	[[nodiscard]] inline absl::StatusOr<std::unique_ptr<ImageFrame>> CreateImageFrame(
 		ImageFormat::Format format,
 		const cv::Mat& data,
 		bool copy = true
@@ -21,24 +21,23 @@ namespace mediapipe::autoit {
 		case ImageFormat::GRAY8:
 		case ImageFormat::LAB8:
 		case ImageFormat::SBGRA:
-			AUTOIT_ASSERT_THROW(data.depth() == CV_8U, "uint8 image data should be one of the GRAY8, "
+			MP_ASSERT_RETURN_IF_ERROR(data.depth() == CV_8U, "uint8 image data should be one of the GRAY8, "
 				"SRGB, SRGBA, LAB8 and SBGRA MediaPipe image formats.");
 			break;
 		case ImageFormat::GRAY16:
 		case ImageFormat::SRGB48:
 		case ImageFormat::SRGBA64:
-			AUTOIT_ASSERT_THROW(data.depth() == CV_16U, "uint16 image data should be one of the GRAY16, "
+			MP_ASSERT_RETURN_IF_ERROR(data.depth() == CV_16U, "uint16 image data should be one of the GRAY16, "
 				"SRGB48, and SRGBA64 MediaPipe image formats.");
 			break;
 		case ImageFormat::VEC32F1:
 		case ImageFormat::VEC32F2:
 		case ImageFormat::VEC32F4:
-			AUTOIT_ASSERT_THROW(data.depth() == CV_32F, "float image data should be either VEC32F1, VEC32F2, or "
+			MP_ASSERT_RETURN_IF_ERROR(data.depth() == CV_32F, "float image data should be either VEC32F1, VEC32F2, or "
 				"VEC32F4 MediaPipe image formats.");
 			break;
 		default:
-			AUTOIT_THROW("Unsupported MediaPipe image format");
-			break;
+			MP_ASSERT_RETURN_IF_ERROR(false, "Unsupported MediaPipe image format");
 		}
 
 		int width = data.cols;
@@ -62,7 +61,7 @@ namespace mediapipe::autoit {
 		return image_frame;
 	}
 
-	inline std::unique_ptr<ImageFrame> CreateImageFrame(const cv::Mat& data, bool copy = true) {
+	[[nodiscard]] inline absl::StatusOr<std::unique_ptr<ImageFrame>> CreateImageFrame(const cv::Mat& data, bool copy = true) {
 		const auto rows = data.rows;
 		const auto cols = data.cols;
 		const auto channels = data.channels();
@@ -97,11 +96,11 @@ namespace mediapipe::autoit {
 			}
 		}
 
-		AUTOIT_THROW("Unsupported image format. Supported formats are "
+		MP_ASSERT_RETURN_IF_ERROR(false, "Unsupported image format. Supported formats are "
 			"CV_8U, CV_8UC3, CV_8UC4, CV_16U, CV_16UC3, CV_16UC4, CV_32F, CV_32FC2, CV_32FC4");
 	}
 
-	inline std::unique_ptr<ImageFrame> CreateImageFrame(const std::string& file_name) {
+	[[nodiscard]] inline absl::StatusOr<std::unique_ptr<ImageFrame>> CreateImageFrame(const std::string& file_name) {
 		unsigned char* image_data = nullptr;
 		int width;
 		int height;
@@ -123,7 +122,7 @@ namespace mediapipe::autoit {
 			/*desired_channels=*/0);
 #endif  // TARGET_OS_OSX && !MEDIAPIPE_DISABLE_GPU
 
-		AUTOIT_ASSERT_THROW(image_data != nullptr, "Image decoding failed (" << stbi_failure_reason() << "): " << file_name);
+		MP_ASSERT_RETURN_IF_ERROR(image_data != nullptr, "Image decoding failed (" << stbi_failure_reason() << "): " << file_name);
 
 		std::unique_ptr<ImageFrame> image_frame;
 		switch (channels) {
@@ -145,7 +144,7 @@ namespace mediapipe::autoit {
 				stbi_image_free);
 			break;
 		default:
-			AUTOIT_THROW(
+			MP_ASSERT_RETURN_IF_ERROR(false,
 				"Expected image with 1 (grayscale), 3 (RGB) or 4 "
 				"(RGBA) channels, found " << channels << " channels.");
 		}
@@ -153,8 +152,8 @@ namespace mediapipe::autoit {
 		return image_frame;
 	}
 
-	template <typename T>
-	cv::Mat GenerateContiguousDataArrayHelper(const ImageFrame& image_frame, cv::Mat& img) {
+	template<typename T>
+	inline cv::Mat GenerateContiguousDataArrayHelper(const ImageFrame& image_frame, cv::Mat& img) {
 		cv::Mat contiguous_data = formats::MatView(&image_frame);
 
 		if (!image_frame.IsContiguous()) {
@@ -170,7 +169,7 @@ namespace mediapipe::autoit {
 		return contiguous_data;
 	}
 
-	inline cv::Mat GenerateContiguousDataArray(const ImageFrame& image_frame, cv::Mat& img) {
+	[[nodiscard]] inline absl::StatusOr<cv::Mat> GenerateContiguousDataArray(const ImageFrame& image_frame, cv::Mat& img) {
 		switch (image_frame.ChannelSize()) {
 			case sizeof(uint8_t) :
 				return GenerateContiguousDataArrayHelper<uint8_t>(image_frame, img);
@@ -179,7 +178,7 @@ namespace mediapipe::autoit {
 			case sizeof(float) :
 				return GenerateContiguousDataArrayHelper<float>(image_frame, img);
 			default:
-				AUTOIT_THROW("Unsupported image frame channel size. Data is not "
+				MP_ASSERT_RETURN_IF_ERROR(false, "Unsupported image frame channel size. Data is not "
 					"uint8, uint16, or float?");
 		}
 	}
@@ -188,8 +187,8 @@ namespace mediapipe::autoit {
 	// This function only accepts an image frame object that already stores
 	// contiguous data. The output cv::Mat points to the raw pixel data array of
 	// the image frame object directly.
-	inline cv::Mat GenerateMatOnDemand(const ImageFrame& image_frame, cv::Mat& img) {
-		AUTOIT_ASSERT_THROW(image_frame.IsContiguous(),
+	[[nodiscard]] inline absl::StatusOr<cv::Mat> GenerateMatOnDemand(const ImageFrame& image_frame, cv::Mat& img) {
+		MP_ASSERT_RETURN_IF_ERROR(image_frame.IsContiguous(),
 			"GenerateMatOnDemand must take an ImageFrame "
 			"object that stores contiguous data.");
 		return GenerateContiguousDataArray(image_frame, img);
@@ -202,12 +201,24 @@ namespace mediapipe::autoit {
 	// Then, the cv::Mat is cached in the "__contiguous_data" attribute.
 	// This function only accepts an image frame object that stores non-contiguous
 	// data.
-	inline cv::Mat GetCachedContiguousDataAttr(const ImageFrame& image_frame, cv::Mat& img) {
-		AUTOIT_ASSERT_THROW(!image_frame.IsContiguous(), "GetCachedContiguousDataAttr must take an ImageFrame "
+	[[nodiscard]] inline absl::StatusOr<cv::Mat> GetCachedContiguousDataAttr(const ImageFrame& image_frame, cv::Mat& img) {
+		MP_ASSERT_RETURN_IF_ERROR(!image_frame.IsContiguous(), "GetCachedContiguousDataAttr must take an ImageFrame "
 			"object that stores non-contiguous data.");
 
-		AUTOIT_ASSERT_THROW(!image_frame.IsEmpty(), "ImageFrame is unallocated.");
+		MP_ASSERT_RETURN_IF_ERROR(!image_frame.IsEmpty(), "ImageFrame is unallocated.");
 
 		return GenerateContiguousDataArray(image_frame, img);
+	}
+
+	template<typename... Args>
+	[[nodiscard]] inline absl::StatusOr<std::shared_ptr<Image>> CreateSharedImage(Args&&... args) {
+		MP_ASSIGN_OR_RETURN(auto unique_ptr, CreateImageFrame(std::forward<Args>(args)...));
+		return std::make_shared<Image>(std::shared_ptr<ImageFrame>(unique_ptr.release()));
+	}
+
+	template<typename... Args>
+	[[nodiscard]] inline absl::StatusOr<std::shared_ptr<ImageFrame>> CreateSharedImageFrame(Args&&... args) {
+		MP_ASSIGN_OR_RETURN(auto unique_ptr, CreateImageFrame(std::forward<Args>(args)...));
+		return std::shared_ptr<ImageFrame>(unique_ptr.release());
 	}
 }

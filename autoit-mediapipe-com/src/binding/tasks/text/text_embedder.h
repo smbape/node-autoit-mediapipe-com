@@ -27,7 +27,7 @@ namespace mediapipe::tasks::autoit::text::text_embedder {
 			quantize(quantize)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions>> to_pb2() const;
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
 		CV_PROP_RW std::optional<bool> l2_normalize;
@@ -38,9 +38,12 @@ namespace mediapipe::tasks::autoit::text::text_embedder {
 	public:
 		using core::base_text_task_api::BaseTextTaskApi::BaseTextTaskApi;
 
-		CV_WRAP static std::shared_ptr<TextEmbedder> create_from_model_path(const std::string& model_path);
-		CV_WRAP static std::shared_ptr<TextEmbedder> create_from_options(std::shared_ptr<TextEmbedderOptions> options);
-		CV_WRAP std::shared_ptr<TextEmbedderResult> embed(const std::string& text);
-		CV_WRAP static float cosine_similarity(const components::containers::embedding_result::Embedding& u, const components::containers::embedding_result::Embedding& v);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<TextEmbedder>> create(
+			const CalculatorGraphConfig& graph_config
+		);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<TextEmbedder>> create_from_model_path(const std::string& model_path);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<TextEmbedder>> create_from_options(std::shared_ptr<TextEmbedderOptions> options);
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<TextEmbedderResult>> embed(const std::string& text);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<float> cosine_similarity(const components::containers::embedding_result::Embedding& u, const components::containers::embedding_result::Embedding& v);
 	};
 }

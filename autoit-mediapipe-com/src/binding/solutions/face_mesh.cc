@@ -11,17 +11,17 @@ static const std::string _SHORT_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/face
 static const std::string _FULL_RANGE_TFLITE_FILE_PATH = "mediapipe/modules/face_detection/face_detection_full_range_sparse.tflite";
 
 namespace mediapipe::autoit::solutions::face_mesh {
-	FaceMesh::FaceMesh(
+	absl::StatusOr<std::shared_ptr<FaceMesh>> FaceMesh::create(
 		bool static_image_mode,
 		int max_num_faces,
 		bool refine_landmarks,
 		float min_detection_confidence,
 		float min_tracking_confidence
 	) {
-		download_utils::download_oss_model(refine_landmarks ? _FACE_LANDMARK_WITH_ATTENTION_TFLITE_FILE_PATH : _FACE_LANDMARK_TFLITE_FILE_PATH);
-		download_utils::download_oss_model(refine_landmarks ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH);
+		MP_RETURN_IF_ERROR(download_utils::download_oss_model(refine_landmarks ? _FACE_LANDMARK_WITH_ATTENTION_TFLITE_FILE_PATH : _FACE_LANDMARK_TFLITE_FILE_PATH));
+		MP_RETURN_IF_ERROR(download_utils::download_oss_model(refine_landmarks ? _FULL_RANGE_TFLITE_FILE_PATH : _SHORT_RANGE_TFLITE_FILE_PATH));
 
-		__init__(
+		return SolutionBase::create(
 			_BINARYPB_FILE_PATH,
 			{
 				{"facedetectionshortrangecpu__facedetectionshortrange__facedetection__TensorsToDetectionsCalculator.min_score_thresh", _variant_t(min_detection_confidence)},
@@ -34,17 +34,18 @@ namespace mediapipe::autoit::solutions::face_mesh {
 				{"use_prev_landmarks", _variant_t(!static_image_mode)},
 			},
 			{ "multi_face_landmarks" },
-			noTypeMap()
+			noTypeMap(),
+			static_cast<FaceMesh*>(nullptr)
 			);
 	}
 
-	void FaceMesh::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
+	absl::Status FaceMesh::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
 		_variant_t input_data_variant;
 		VARIANT* out_val = &input_data_variant;
 		autoit_from(::autoit::reference_internal(&image), out_val);
 		std::map<std::string, _variant_t> input_dict;
 		input_dict["image"] = input_data_variant;
 
-		SolutionBase::process(input_dict, solution_outputs);
+		return SolutionBase::process(input_dict, solution_outputs);
 	}
 }

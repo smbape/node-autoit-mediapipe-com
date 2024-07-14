@@ -21,7 +21,7 @@ set(Python3_FIND_VIRTUALENV FIRST)
 unset(Python3_EXECUTABLE)
 
 ## Launch a new search
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 if (VIRTUAL_ENV_created)
     execute_process(COMMAND "${Python3_EXECUTABLE}" -m pip install --upgrade pip)

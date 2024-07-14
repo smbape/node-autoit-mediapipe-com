@@ -2,7 +2,7 @@
 
 namespace google::protobuf::autoit {
 	template<typename Element, typename _Tp>
-	bool RepeatedField_PrepareSplice(
+	[[nodiscard]] absl::StatusOr<bool> RepeatedField_PrepareSplice(
 		_Tp* repeatedField,
 		std::vector<Element>& list,
 		SSIZE_T start,
@@ -20,7 +20,7 @@ namespace google::protobuf::autoit {
 			start += field_size;
 		}
 
-		AUTOIT_ASSERT_THROW(start >= 0 && start < field_size, "splice index out of range");
+		MP_ASSERT_RETURN_IF_ERROR(start >= 0 && start < field_size, "splice index out of range");
 
 		if (deleteCount > (field_size - start)) {
 			deleteCount = field_size - start;
@@ -37,23 +37,24 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element>
-	Element* RepeatedField_AddMessage(RepeatedPtrField<Element>* repeatedField, const Element* message) {
+	[[nodiscard]] inline absl::StatusOr<Element*> RepeatedField_AddMessage(RepeatedPtrField<Element>* repeatedField, const Element* message) {
 		Element* sub_message = repeatedField->Add();
 		sub_message->MergeFrom(*message);
 		return sub_message;
 	}
 
 	template<typename Element>
-	Element* RepeatedField_AddMessage(RepeatedPtrField<Element>* repeatedField, std::map<std::string, _variant_t>& attrs) {
+	[[nodiscard]] inline absl::StatusOr<Element*> RepeatedField_AddMessage(RepeatedPtrField<Element>* repeatedField, std::map<std::string, _variant_t>& attrs) {
 		Element* sub_message = repeatedField->Add();
-		cmessage::InitAttributes(*sub_message, attrs);
+		MP_RETURN_IF_ERROR(cmessage::InitAttributes(*sub_message, attrs));
 		return sub_message;
 	}
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start, SSIZE_T deleteCount) {
-		if (!RepeatedField_PrepareSplice(repeatedField, list, start, deleteCount)) {
-			return;
+	[[nodiscard]] inline absl::Status RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start, SSIZE_T deleteCount) {
+		MP_ASSIGN_OR_RETURN(auto prepared, RepeatedField_PrepareSplice(repeatedField, list, start, deleteCount));
+		if (!prepared) {
+			return absl::OkStatus();
 		}
 
 		auto field_size = repeatedField->size();
@@ -61,26 +62,29 @@ namespace google::protobuf::autoit {
 			list[deleteCount - 1 - i] = repeatedField->Get(field_size - 1 - i);
 			repeatedField->RemoveLast();
 		}
+
+		return absl::OkStatus();
 	}
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start) {
+	[[nodiscard]] inline absl::Status RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start) {
 		auto field_size = repeatedField->size();
 		if (start < 0) {
 			start += field_size;
 		}
-		RepeatedField_SpliceScalar(repeatedField, list, start, field_size - start);
+		return RepeatedField_SpliceScalar(repeatedField, list, start, field_size - start);
 	}
 
 	template<typename Element>
-	void RepeatedField_SpliceMessage(
+	[[nodiscard]] absl::Status RepeatedField_SpliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
 		SSIZE_T start,
 		SSIZE_T deleteCount
 	) {
-		if (!RepeatedField_PrepareSplice(repeatedField, list, start, deleteCount)) {
-			return;
+		MP_ASSIGN_OR_RETURN(auto prepared, RepeatedField_PrepareSplice(repeatedField, list, start, deleteCount));
+		if (!prepared) {
+			return absl::OkStatus();
 		}
 
 		for (int i = 0; deleteCount > 0; i++, deleteCount--) {
@@ -89,10 +93,12 @@ namespace google::protobuf::autoit {
 			Element* sub_message = repeatedField->ReleaseLast();
 			list[deleteCount - 1 - i] = std::shared_ptr<Element>(sub_message);
 		}
+
+		return absl::OkStatus();
 	}
 
 	template<typename Element>
-	void RepeatedField_SpliceMessage(
+	[[nodiscard]] inline absl::Status RepeatedField_SpliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
 		SSIZE_T start
@@ -101,11 +107,11 @@ namespace google::protobuf::autoit {
 		if (start < 0) {
 			start += field_size;
 		}
-		RepeatedField_SpliceMessage(repeatedField, list, start, field_size - start);
+		return RepeatedField_SpliceMessage(repeatedField, list, start, field_size - start);
 	}
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_SliceScalar(
+	inline void RepeatedField_SliceScalar(
 		_Tp* repeatedField,
 		std::vector<Element>& list,
 		SSIZE_T start,
@@ -122,7 +128,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_SliceScalar(
+	inline void RepeatedField_SliceScalar(
 		_Tp* repeatedField,
 		std::vector<Element>& list,
 		SSIZE_T start
@@ -135,7 +141,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element>
-	void RepeatedField_SliceMessage(
+	inline void RepeatedField_SliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
 		SSIZE_T start,
@@ -152,7 +158,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element>
-	void RepeatedField_SliceMessage(
+	inline void RepeatedField_SliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
 		SSIZE_T start
@@ -165,7 +171,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename _Tp>
-	void RepeatedField_ExtendScalar(
+	inline void RepeatedField_ExtendScalar(
 		_Tp* repeatedField,
 		const _Tp& items
 	) {
@@ -175,7 +181,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_ExtendScalar(
+	inline void RepeatedField_ExtendScalar(
 		_Tp* repeatedField,
 		const std::vector<Element>& items
 	) {
@@ -185,27 +191,27 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element>
-	void RepeatedField_ExtendMessage(
+	[[nodiscard]] inline absl::Status RepeatedField_ExtendMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		const std::vector<std::shared_ptr<Element>>& items
 	) {
 		for (const auto& item : items) {
-			RepeatedField_AddMessage(repeatedField, item.get());
+			MP_RETURN_IF_ERROR(RepeatedField_AddMessage(repeatedField, item.get()).status());
 		}
 	}
 
 	template<typename Element>
-	void RepeatedField_ExtendMessage(
+	[[nodiscard]] inline absl::Status RepeatedField_ExtendMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		const RepeatedPtrField<Element>& items
 	) {
 		for (const auto& item : items) {
-			RepeatedField_AddMessage(repeatedField, &item);
+			MP_RETURN_IF_ERROR(RepeatedField_AddMessage(repeatedField, &item).status());
 		}
 	}
 
 	template<typename Element>
-	void RepeatedField_ExtendMessage(
+	[[nodiscard]] inline absl::Status RepeatedField_ExtendMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		const std::vector<_variant_t>& items
 	) {
@@ -213,63 +219,67 @@ namespace google::protobuf::autoit {
 			std::map<std::string, _variant_t> attrs;
 			HRESULT hr = autoit_to(&item, attrs);
 			if (SUCCEEDED(hr)) {
-				RepeatedField_AddMessage(repeatedField, attrs);
+				MP_RETURN_IF_ERROR(RepeatedField_AddMessage(repeatedField, attrs).status());
 			}
 			else {
 				auto value = ::autoit::cast<std::shared_ptr<Element>>(&item);
-				RepeatedField_AddMessage(repeatedField, value.get());
+				MP_RETURN_IF_ERROR(RepeatedField_AddMessage(repeatedField, value.get()).status());
 			}
 		}
 	}
 
 	template<typename Element, typename _Tp>
-	void RepeatedField_InsertScalar(_Tp* repeatedField, SSIZE_T index, const Element& item) {
+	[[nodiscard]] inline absl::Status RepeatedField_InsertScalar(_Tp* repeatedField, SSIZE_T index, const Element& item) {
 		int field_size = repeatedField->size();
 		if (index < 0) {
 			index += field_size;
 		}
 
-		AUTOIT_ASSERT_THROW(index >= 0 && index <= field_size, "list index (" << index << ") out of range");
+		MP_ASSERT_RETURN_IF_ERROR(index >= 0 && index <= field_size, "list index (" << index << ") out of range");
 
 		*repeatedField->Add() = item;
 
 		for (int i = index; i < field_size; i++) {
 			repeatedField->SwapElements(i, field_size);
 		}
+
+		return absl::OkStatus();
 	}
 
 	template<typename Element>
-	void RepeatedField_InsertMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index, const Element* item) {
+	[[nodiscard]] inline absl::Status RepeatedField_InsertMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index, const Element* item) {
 		int field_size = repeatedField->size();
 		if (index < 0) {
 			index += field_size;
 		}
 
-		AUTOIT_ASSERT_THROW(index >= 0 && index <= field_size, "list index (" << index << ") out of range");
+		MP_ASSERT_RETURN_IF_ERROR(index >= 0 && index <= field_size, "list index (" << index << ") out of range");
 
-		RepeatedField_AddMessage(repeatedField, item);
+		MP_RETURN_IF_ERROR(RepeatedField_AddMessage(repeatedField, item).status());
 
 		for (int i = index; i < field_size; i++) {
 			repeatedField->SwapElements(i, field_size);
 		}
+
+		return absl::OkStatus();
 	}
 
 	template<typename Element, typename _Tp>
-	Element RepeatedField_PopScalar(_Tp* repeatedField, SSIZE_T index) {
+	[[nodiscard]] inline absl::StatusOr<Element> RepeatedField_PopScalar(_Tp* repeatedField, SSIZE_T index) {
 		std::vector<Element> list;
-		RepeatedField_SpliceScalar(repeatedField, list, index, 1);
+		MP_RETURN_IF_ERROR(RepeatedField_SpliceScalar(repeatedField, list, index, 1));
 		return list[0];
 	}
 
 	template<typename Element>
-	std::shared_ptr<Element> RepeatedField_PopMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index) {
+	[[nodiscard]] inline absl::StatusOr<std::shared_ptr<Element>> RepeatedField_PopMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index) {
 		std::vector<std::shared_ptr<Element>> list;
-		RepeatedField_SpliceMessage(repeatedField, list, index, 1);
+		MP_RETURN_IF_ERROR(RepeatedField_SpliceMessage(repeatedField, list, index, 1));
 		return list[0];
 	}
 
 	template<typename _Tp>
-	void RepeatedField_Reverse(_Tp* repeatedField) {
+	inline void RepeatedField_Reverse(_Tp* repeatedField) {
 		int field_size = repeatedField->size();
 		for (int i = 0; i < field_size / 2; i++) {
 			repeatedField->SwapElements(i, field_size - 1 - i);
@@ -299,7 +309,9 @@ namespace google::protobuf::autoit {
 		hr = autoit_to(newVal, value_items);
 		if (SUCCEEDED(hr)) {
 			autoit_container.Clear();
-			autoit_container.MergeFrom(value_items);
+			if (!autoit_container.MergeFrom(value_items).ok()) {
+				hr = E_FAIL;
+			}
 			return hr;
 		}
 

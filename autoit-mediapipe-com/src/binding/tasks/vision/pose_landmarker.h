@@ -79,7 +79,7 @@ namespace mediapipe::tasks::autoit::vision::pose_landmarker {
 			result_callback(result_callback)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions>> to_pb2() const;
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
 		CV_PROP_RW core::vision_task_running_mode::VisionTaskRunningMode running_mode;
@@ -95,18 +95,23 @@ namespace mediapipe::tasks::autoit::vision::pose_landmarker {
 	public:
 		using core::base_vision_task_api::BaseVisionTaskApi::BaseVisionTaskApi;
 
-		CV_WRAP static std::shared_ptr<PoseLandmarker> create_from_model_path(const std::string& model_path);
-		CV_WRAP static std::shared_ptr<PoseLandmarker> create_from_options(std::shared_ptr<PoseLandmarkerOptions> options);
-		CV_WRAP std::shared_ptr<PoseLandmarkerResult> detect(
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<PoseLandmarker>> create(
+			const CalculatorGraphConfig& graph_config,
+			core::vision_task_running_mode::VisionTaskRunningMode running_mode,
+			mediapipe::autoit::PacketsCallback packet_callback = nullptr
+		);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<PoseLandmarker>> create_from_model_path(const std::string& model_path);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<PoseLandmarker>> create_from_options(std::shared_ptr<PoseLandmarkerOptions> options);
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<PoseLandmarkerResult>> detect(
 			const Image& image,
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
 		);
-		CV_WRAP std::shared_ptr<PoseLandmarkerResult> detect_for_video(
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<PoseLandmarkerResult>> detect_for_video(
 			const Image& image,
 			int64_t timestamp_ms,
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()
 		);
-		CV_WRAP void detect_async(
+		CV_WRAP [[nodiscard]] absl::Status detect_async(
 			const Image& image,
 			int64_t timestamp_ms,
 			std::shared_ptr<core::image_processing_options::ImageProcessingOptions> image_processing_options = std::shared_ptr<core::image_processing_options::ImageProcessingOptions>()

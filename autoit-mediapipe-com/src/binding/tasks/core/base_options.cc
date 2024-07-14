@@ -8,7 +8,7 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::core::base_options {
-	std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions> BaseOptions::to_pb2() {
+	absl::StatusOr<std::shared_ptr<mediapipe::tasks::core::proto::BaseOptions>> BaseOptions::to_pb2() const {
 		const std::string& full_path = model_asset_path.empty() ? model_asset_path : fs::absolute(model_asset_path).string();
 
 		auto options = std::make_shared<mediapipe::tasks::core::proto::BaseOptions>();
@@ -19,7 +19,7 @@ namespace mediapipe::tasks::autoit::core::base_options {
 		if (delegate) {
 			if (*delegate == BaseOptions_Delegate::GPU) {
 #ifdef _MSC_VER
-				AUTOIT_THROW("GPU BaseOptions_Delegate is not yet supported for Windows");
+				MP_ASSERT_RETURN_IF_ERROR(false, "GPU BaseOptions_Delegate is not yet supported for Windows");
 #else
 				options->mutable_acceleration()->mutable_gpu();
 #endif

@@ -32,7 +32,9 @@ namespace mediapipe::autoit::solutions::hands {
 
 	class CV_EXPORTS_W Hands : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
-		CV_WRAP Hands(
+		using SolutionBase::SolutionBase;
+
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<Hands>> create(
 			bool static_image_mode = false,
 			int max_num_hands = 2,
 			BYTE model_complexity = 1,
@@ -40,6 +42,6 @@ namespace mediapipe::autoit::solutions::hands {
 			float min_tracking_confidence = 0.5f
 		);
 
-		CV_WRAP void process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
+		CV_WRAP [[nodiscard]] absl::Status process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 	};
 }

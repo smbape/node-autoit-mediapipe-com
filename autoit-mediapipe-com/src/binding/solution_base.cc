@@ -1,4 +1,3 @@
-#include <filesystem>
 #include "autoit_bridge.h"
 #include "binding/calculator_graph.h"
 #include "binding/message.h"
@@ -24,8 +23,6 @@
 #ifdef FLOAT
 #undef FLOAT
 #endif
-
-namespace fs = std::filesystem;
 
 using namespace google::protobuf::autoit::cmessage;
 using namespace google::protobuf;
@@ -89,27 +86,18 @@ using RepeatedContainer = google::protobuf::autoit::RepeatedContainer;
 
 #define StringifyPacketDataType(enum_value) PacketDataTypeToChar[static_cast<int>(enum_value)]
 
-namespace mediapipe::autoit::solution_base {
-	static const std::map<std::string, _variant_t> _noneMap;
-	static const std::map<std::string, PacketDataType> _noneTypeMap;
-	static const std::vector<std::string> _noneVector;
-
-	const std::map<std::string, _variant_t>& noMap() {
-		return _noneMap;
-	}
-
-	const std::map<std::string, PacketDataType>& noTypeMap() {
-		return _noneTypeMap;
-	}
-
-	const std::vector<std::string>& noVector() {
-		return _noneVector;
-	}
-
-	static _variant_t None = default_variant();
+namespace {
+	using namespace mediapipe::autoit::solution_base;
+	using namespace mediapipe::autoit;
+	using namespace mediapipe;
 
 	using OptionsFieldList = std::vector<std::pair<std::string, _variant_t>>;
 	using MapOfStringAndOptionsFieldList = std::map<std::string, OptionsFieldList>;
+
+	const _variant_t None = default_variant();
+	const std::map<std::string, _variant_t> _noneMap;
+	const std::map<std::string, PacketDataType> _noneTypeMap;
+	const std::vector<std::string> _noneVector;
 
 	const std::map<std::string, PacketDataType> NAME_TO_TYPE = {
 		{"string", PacketDataType::STRING},
@@ -157,14 +145,14 @@ namespace mediapipe::autoit::solution_base {
 		{"::std::vector<::mediapipe::JointList>", PacketDataType::PROTO_LIST},
 	};
 
-	inline static std::vector<std::string> TypeNamesFromOneOf(const std::string& oneof_type_name) {
+	inline std::vector<std::string> TypeNamesFromOneOf(const std::string& oneof_type_name) {
 		if (startsWith(oneof_type_name, "OneOf<") && endsWith(oneof_type_name, ">")) {
 			return split(oneof_type_name.substr(len("OneOf<"), oneof_type_name.length() - len(">")), ",");
 		}
 		return std::vector<std::string>();
 	}
 
-	inline static const PacketDataType FromRegisteredName(const std::string& registered_name) {
+	inline const [[nodiscard]] absl::StatusOr<PacketDataType> FromRegisteredName(const std::string& registered_name) {
 		if (NAME_TO_TYPE.count(registered_name)) {
 			return NAME_TO_TYPE.at(registered_name);
 		}
@@ -176,7 +164,7 @@ namespace mediapipe::autoit::solution_base {
 			}
 		}
 
-		AUTOIT_THROW("Unregistered stream packet type");
+		MP_ASSERT_RETURN_IF_ERROR(false, "Unregistered stream packet type");
 	}
 
 	/**
@@ -184,7 +172,7 @@ namespace mediapipe::autoit::solution_base {
 	 * @param  tag_index_name
 	 * @return
 	 */
-	inline static std::string GetName(const std::string& tag_index_name) {
+	inline std::string GetName(const std::string& tag_index_name) {
 		auto const pos = tag_index_name.find_last_of(':');
 		return std::string::npos == pos ? tag_index_name : tag_index_name.substr(pos + 1);
 	}
@@ -200,7 +188,7 @@ namespace mediapipe::autoit::solution_base {
 	 * @param  stream_type_hints
 	 * @return
 	 */
-	inline static const PacketDataType GetStreamPacketType(
+	inline const [[nodiscard]] absl::StatusOr<PacketDataType> GetStreamPacketType(
 		ValidatedGraphConfig& validated_graph,
 		const std::string& packet_tag_index_name,
 		const std::map<std::string, PacketDataType>& stream_type_hints
@@ -210,10 +198,7 @@ namespace mediapipe::autoit::solution_base {
 			return stream_type_hints.at(stream_name);
 		}
 
-		auto status_or_type_name = validated_graph.RegisteredStreamTypeName(stream_name);
-		RaiseAutoItErrorIfNotOk(status_or_type_name.status());
-		const auto& stream_type_name = status_or_type_name.value();
-
+		MP_ASSIGN_OR_RETURN(auto stream_type_name, validated_graph.RegisteredStreamTypeName(stream_name));
 		return FromRegisteredName(stream_type_name);
 	}
 
@@ -226,16 +211,13 @@ namespace mediapipe::autoit::solution_base {
 	 * @param  packet_tag_index_name
 	 * @return
 	 */
-	inline static PacketDataType GetSidePacketType(
+	inline absl::StatusOr<PacketDataType> GetSidePacketType(
 		ValidatedGraphConfig& validated_graph,
 		const std::string& packet_tag_index_name
 	) {
 		auto stream_name = GetName(packet_tag_index_name);
 
-		auto status_or_type_name = validated_graph.RegisteredSidePacketTypeName(stream_name);
-		RaiseAutoItErrorIfNotOk(status_or_type_name.status());
-		const auto& stream_type_name = status_or_type_name.value();
-
+		MP_ASSIGN_OR_RETURN(auto stream_type_name, validated_graph.RegisteredSidePacketTypeName(stream_name));
 		return FromRegisteredName(stream_type_name);
 	}
 
@@ -243,12 +225,12 @@ namespace mediapipe::autoit::solution_base {
 	 * Reorganizes the calculator options field data by calculator name and puts
 	 * all the field data of the same calculator in a list.
 	 */
-	inline static MapOfStringAndOptionsFieldList GenerateNestedCalculatorParams(const std::map<std::string, _variant_t>& flat_map) {
+	inline absl::StatusOr<MapOfStringAndOptionsFieldList> GenerateNestedCalculatorParams(const std::map<std::string, _variant_t>& flat_map) {
 		MapOfStringAndOptionsFieldList nested_map;
 
 		for (auto const& [compound_name, field_value] : flat_map) {
 			auto calculator_and_field_name = split(compound_name, ".", false);
-			AUTOIT_ASSERT_THROW(calculator_and_field_name.size() == 2, "The key '" << compound_name << "' in the calculator_params is invalid.");
+			MP_ASSERT_RETURN_IF_ERROR(calculator_and_field_name.size() == 2, "The key '" << compound_name << "' in the calculator_params is invalid.");
 
 			auto calculator_name = calculator_and_field_name[0];
 			auto field_name = calculator_and_field_name[1];
@@ -263,58 +245,57 @@ namespace mediapipe::autoit::solution_base {
 		return nested_map;
 	}
 
-	inline static void ModifyOptionsFields(Message& calculator_options, const OptionsFieldList& options_field_list) {
+	[[nodiscard]] absl::Status ModifyOptionsFields(Message& calculator_options, const OptionsFieldList& options_field_list) {
 		const auto descriptor = calculator_options.GetDescriptor();
 
 		for (auto const& [field_name, field_value] : options_field_list) {
 			if (PARAMETER_MISSING(&field_value)) {
-				ClearField(calculator_options, field_name);
+				MP_RETURN_IF_ERROR(ClearField(calculator_options, field_name));
 				continue;
 			}
 
 			const auto field_descriptor = FindFieldWithOneofs(calculator_options, field_name, descriptor);
-			AUTOIT_ASSERT_THROW(field_descriptor, "Field '" << field_name << "' does not belong to message '" << descriptor->full_name() << "'");
+			MP_ASSERT_RETURN_IF_ERROR(field_descriptor, "Field '" << field_name << "' does not belong to message '" << descriptor->full_name() << "'");
 
 			if (!field_descriptor->is_repeated()) {
-				SetFieldValue(calculator_options, field_descriptor, field_value);
-				return;
+				MP_RETURN_IF_ERROR(SetFieldValue(calculator_options, field_descriptor, field_value).status());
+				return absl::OkStatus();
 			}
 
 			std::vector<_variant_t> field_value_vector;
 			HRESULT hr = autoit_to(&field_value, field_value_vector);
 
-			if (FAILED(hr)) {
-				AUTOIT_THROW(field_name << " is a repeated proto field but the value "
-					"to be set is " << V_VT(&field_value) << ", which is not iterable.");
-			}
+			MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), field_name << " is a repeated proto field but the value "
+				"to be set is " << V_VT(&field_value) << ", which is not iterable.");
 
 			// TODO: Support resetting the entire repeated field
 			// (array-option) and changing the individual values in the repeated
 			// field (array-element-option).
-			ClearField(calculator_options, field_name);
+			MP_RETURN_IF_ERROR(ClearField(calculator_options, field_name));
 
 			RepeatedContainer repeated_container;
 			repeated_container.message = ::autoit::reference_internal(&calculator_options);
 			repeated_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
 
 			for (auto& value : field_value_vector) {
-				repeated_container.Append(value);
+				MP_RETURN_IF_ERROR(repeated_container.Append(value));
 			}
 		}
+
+		return absl::OkStatus();
 	}
 
 	template<typename OptionsType>
-	void ModifyCalculatorOption(
+	[[nodiscard]] absl::Status ModifyCalculatorOption(
 		const MapOfStringAndOptionsFieldList& nested_calculator_params,
 		CalculatorGraphConfig::Node& node
 	) {
 		const auto& options_field_list = nested_calculator_params.at(node.name());
+		MP_ASSIGN_OR_RETURN(auto node_has_options, HasField(node, "options"));
 
 		if (node.node_options_size() > 0) {
-			if (HasField(node, "options")) {
-				AUTOIT_THROW("Cannot modify the calculator options of " << node.name() << " because it "
-					"has both options and node_options fields.");
-			}
+			MP_ASSERT_RETURN_IF_ERROR(!node_has_options, "Cannot modify the calculator options of " << node.name() << " because it "
+				"has both options and node_options fields.");
 
 			// The "node_options" case for the proto3 syntax.
 			bool node_options_modified = false;
@@ -329,8 +310,8 @@ namespace mediapipe::autoit::solution_base {
 				}
 
 				OptionsType calculator_options;
-				MergeFromString(&calculator_options, elem.value());
-				ModifyOptionsFields(calculator_options, options_field_list);
+				MP_RETURN_IF_ERROR(MergeFromString(&calculator_options, elem.value()));
+				MP_RETURN_IF_ERROR(ModifyOptionsFields(calculator_options, options_field_list));
 				std::string serialized;
 				calculator_options.SerializeToString(&serialized);
 				elem.set_value(std::move(serialized));
@@ -342,16 +323,18 @@ namespace mediapipe::autoit::solution_base {
 			// node_options instead.
 			if (!node_options_modified) {
 				OptionsType calculator_options;
-				ModifyOptionsFields(calculator_options, options_field_list);
+				MP_RETURN_IF_ERROR(ModifyOptionsFields(calculator_options, options_field_list));
 				auto* new_node_options = node.add_node_options();
 				new_node_options->PackFrom(calculator_options);
 			}
 		}
-		else if (HasField(node, "options")) {
+		else if (node_has_options) {
 			// The "options" case for the proto2 syntax
 			OptionsType* calculator_options = node.mutable_options()->MutableExtension(OptionsType::ext);
-			ModifyOptionsFields(*calculator_options, options_field_list);
+			MP_RETURN_IF_ERROR(ModifyOptionsFields(*calculator_options, options_field_list));
 		}
+
+		return absl::OkStatus();
 	}
 
 	/**
@@ -359,11 +342,12 @@ namespace mediapipe::autoit::solution_base {
 	 * @param calculator_graph_config [description]
 	 * @param calculator_params       [description]
 	 */
-	inline static void ModifyCalculatorOptions(
+	[[nodiscard]] absl::Status ModifyCalculatorOptions(
 		CalculatorGraphConfig& calculator_graph_config,
 		const std::map<std::string, _variant_t>& calculator_params
 	) {
-		auto nested_calculator_params = GenerateNestedCalculatorParams(calculator_params);
+		MP_ASSIGN_OR_RETURN(auto nested_calculator_params, GenerateNestedCalculatorParams(calculator_params));
+
 		int num_calculator_params = nested_calculator_params.size();
 		for (CalculatorGraphConfig::Node& node : *calculator_graph_config.mutable_node()) {
 			if (!nested_calculator_params.count(node.name())) {
@@ -374,28 +358,28 @@ namespace mediapipe::autoit::solution_base {
 
 			// TODO: Enable calculator options modification for more calculators.
 			if (calculator == "ConstantSidePacketCalculator") {
-				ModifyCalculatorOption<ConstantSidePacketCalculatorOptions>(nested_calculator_params, node);
+				MP_RETURN_IF_ERROR(ModifyCalculatorOption<ConstantSidePacketCalculatorOptions>(nested_calculator_params, node));
 			}
 			else if (calculator == "ImageTransformationCalculator") {
-				ModifyCalculatorOption<ImageTransformationCalculatorOptions>(nested_calculator_params, node);
+				MP_RETURN_IF_ERROR(ModifyCalculatorOption<ImageTransformationCalculatorOptions>(nested_calculator_params, node));
 			}
 			else if (calculator == "LandmarksSmoothingCalculator") {
-				ModifyCalculatorOption<LandmarksSmoothingCalculatorOptions>(nested_calculator_params, node);
+				MP_RETURN_IF_ERROR(ModifyCalculatorOption<LandmarksSmoothingCalculatorOptions>(nested_calculator_params, node));
 			}
 			else if (calculator == "LogicCalculator") {
-				ModifyCalculatorOption<LogicCalculatorOptions>(nested_calculator_params, node);
+				MP_RETURN_IF_ERROR(ModifyCalculatorOption<LogicCalculatorOptions>(nested_calculator_params, node));
 			}
 			else if (calculator == "ThresholdingCalculator") {
-				ModifyCalculatorOption<ThresholdingCalculatorOptions>(nested_calculator_params, node);
+				MP_RETURN_IF_ERROR(ModifyCalculatorOption<ThresholdingCalculatorOptions>(nested_calculator_params, node));
 			}
 			else if (calculator == "TensorsToDetectionsCalculator") {
-				ModifyCalculatorOption<TensorsToDetectionsCalculatorOptions>(nested_calculator_params, node);
+				MP_RETURN_IF_ERROR(ModifyCalculatorOption<TensorsToDetectionsCalculatorOptions>(nested_calculator_params, node));
 			}
 			else if (calculator == "Lift2DFrameAnnotationTo3DCalculator") {
-				ModifyCalculatorOption<Lift2DFrameAnnotationTo3DCalculatorOptions>(nested_calculator_params, node);
+				MP_RETURN_IF_ERROR(ModifyCalculatorOption<Lift2DFrameAnnotationTo3DCalculatorOptions>(nested_calculator_params, node));
 			}
 			else {
-				AUTOIT_THROW("Modifying the calculator options of " << node.name() << " is not supported.");
+				MP_ASSERT_RETURN_IF_ERROR(false, "Modifying the calculator options of " << node.name() << " is not supported.");
 			}
 
 			if (--num_calculator_params == 0) {
@@ -403,10 +387,12 @@ namespace mediapipe::autoit::solution_base {
 			}
 		}
 
-		AUTOIT_ASSERT_THROW(num_calculator_params == 0, "Not all calculator params are valid.");
+		MP_ASSERT_RETURN_IF_ERROR(num_calculator_params == 0, "Not all calculator params are valid.");
+
+		return absl::OkStatus();
 	}
 
-	inline static bool InternalIs(const Any& self, const std::string_view type_name) {
+	inline bool InternalIs(const Any& self, const std::string_view type_name) {
 		const std::string_view type_url(self.type_url());
 		return type_url.size() >= type_name.size() + 1 &&
 			type_url[type_url.size() - type_name.size() - 1] == '/' &&
@@ -416,7 +402,7 @@ namespace mediapipe::autoit::solution_base {
 	/**
 	 * Sets one value in a repeated protobuf.Any extension field.
 	 */
-	inline static void SetExtension(RepeatedPtrField<Any>* extension_list,
+	inline void SetExtension(RepeatedPtrField<Any>* extension_list,
 		const std::shared_ptr<google::protobuf::Message>& extension_value) {
 		const std::string_view type_name(extension_value->GetDescriptor()->full_name());
 		for (auto& extension_any : *extension_list) {
@@ -434,7 +420,7 @@ namespace mediapipe::autoit::solution_base {
 		extension_list->Add()->PackFrom(*extension_value);
 	}
 
-	static std::shared_ptr<Packet> MakePacket(
+	[[nodiscard]] absl::StatusOr<std::shared_ptr<Packet>> MakePacket(
 		PacketDataType packet_data_type,
 		const _variant_t& data
 	) {
@@ -449,7 +435,7 @@ namespace mediapipe::autoit::solution_base {
 				reinterpret_cast<void**>(&pPacket_creator)
 			);
 
-			AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "Failed to create a packet_creator instance");
+			MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), "Failed to create a packet_creator instance");
 		}
 
 		static _variant_t image_format = None;
@@ -497,17 +483,17 @@ namespace mediapipe::autoit::solution_base {
 			hr = pPacket_creator->create_proto(in_val, _retval);
 			break;
 		default:
-			AUTOIT_THROW("create packet data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
+			MP_ASSERT_RETURN_IF_ERROR(false, "create packet data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
 		}
 
 		ExtendedHolder::SetLength(0); // clear reference to packet in extended holder
 
-		AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to create a " << StringifyPacketDataType(packet_data_type) << " packet");
+		MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), "failed to create a " << StringifyPacketDataType(packet_data_type) << " packet");
 		const auto& pPacket = static_cast<CMediapipe_Packet_Object*>(V_DISPATCH(_retval));
 		return *pPacket->__self; // copy the pointer
 	}
 
-	static _variant_t GetPacketContent(PacketDataType packet_data_type, const Packet& output_packet) {
+	[[nodiscard]] absl::StatusOr<_variant_t> GetPacketContent(PacketDataType packet_data_type, const Packet& output_packet) {
 		if (output_packet.IsEmpty()) {
 			return None;
 		}
@@ -517,15 +503,21 @@ namespace mediapipe::autoit::solution_base {
 		HRESULT hr;
 
 		switch (packet_data_type) {
-		case PacketDataType::STRING:
-			hr = autoit_from(GetContent<std::string>(output_packet), _retval);
+		case PacketDataType::STRING: {
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& string_value, std::string, output_packet);
+			hr = autoit_from(string_value, _retval);
 			break;
-		case PacketDataType::BOOL:
-			hr = autoit_from(GetContent<bool>(output_packet), _retval);
+		}
+		case PacketDataType::BOOL: {
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& bool_value, bool, output_packet);
+			hr = autoit_from(bool_value, _retval);
 			break;
-		case PacketDataType::BOOL_LIST:
-			hr = autoit_from(GetContent<std::vector<bool>>(output_packet), _retval);
+		}
+		case PacketDataType::BOOL_LIST: {
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& bool_list, std::vector<bool>, output_packet);
+			hr = autoit_from(bool_list, _retval);
 			break;
+		}
 		case PacketDataType::INT:
 			hr = autoit_from(get_int(output_packet), _retval);
 			break;
@@ -539,17 +531,17 @@ namespace mediapipe::autoit::solution_base {
 			hr = autoit_from(get_float_list(output_packet), _retval);
 			break;
 		case PacketDataType::IMAGE: {
-			const auto& image = GetContent<Image>(output_packet);
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& image, Image, output_packet);
 			hr = autoit_from(mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get()).clone(), _retval);
 			break;
 		}
 		case PacketDataType::IMAGE_FRAME: {
-			const ImageFrame& image_frame = GetContent<ImageFrame>(output_packet);
+			MP_PACKET_ASSIGN_OR_THROW(const auto& image_frame, ImageFrame, output_packet);
 			hr = autoit_from(mediapipe::formats::MatView(&image_frame).clone(), _retval);
 			break;
 		}
 		case PacketDataType::IMAGE_LIST: {
-			const auto& image_list = GetContent<std::vector<Image>>(output_packet);
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& image_list, std::vector<Image>, output_packet);
 			std::vector<cv::Mat> mat_list;
 			mat_list.resize(image_list.size());
 			int i = 0;
@@ -564,274 +556,44 @@ namespace mediapipe::autoit::solution_base {
 			break;
 		case PacketDataType::PROTO_LIST: {
 			std::vector<std::shared_ptr<Message>> proto_list;
-			get_proto_list(output_packet, proto_list);
+			MP_RETURN_IF_ERROR(get_proto_list(output_packet, proto_list));
 			hr = autoit_from(proto_list, _retval);
 			break;
 		}
 		default:
-			AUTOIT_THROW("get packet content of data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
+			MP_ASSERT_RETURN_IF_ERROR(false, "get packet content of data type " << StringifyPacketDataType(packet_data_type) << " is not implemented");
 		}
 
-		AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "failed to get a " << StringifyPacketDataType(packet_data_type) << " packet content");
+		MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), "failed to get a " << StringifyPacketDataType(packet_data_type) << " packet content");
 
 		return result;
 	}
 
-	static const std::string GetResourcePath(const std::string& binary_graph_path) {
-		fs::path root_path(mediapipe::autoit::_framework_bindings::resource_util::get_resource_dir());
-		return (root_path / binary_graph_path).string();
-	}
-
-	SolutionBase::SolutionBase(
-		const CalculatorGraphConfig& graph_config,
-		const std::map<std::string, _variant_t>& calculator_params,
-		const std::shared_ptr<google::protobuf::Message>& graph_options,
-		const std::map<std::string, _variant_t>& side_inputs,
-		const std::vector<std::string>& outputs,
-		const std::map<std::string, PacketDataType>& stream_type_hints
-	) {
-		__init__(
-			graph_config,
-			calculator_params,
-			graph_options,
-			side_inputs,
-			outputs,
-			stream_type_hints
-		);
-	}
-
-	void SolutionBase::__init__(
-		const CalculatorGraphConfig& graph_config,
-		const std::map<std::string, _variant_t>& calculator_params,
-		const std::shared_ptr<google::protobuf::Message>& graph_options,
-		const std::map<std::string, _variant_t>& side_inputs,
-		const std::vector<std::string>& outputs,
-		const std::map<std::string, PacketDataType>& stream_type_hints
-	) {
-		auto canonical_graph_config_proto = InitializeGraphInterface(graph_config, side_inputs, outputs, stream_type_hints);
-
-		if (!calculator_params.empty()) {
-			ModifyCalculatorOptions(canonical_graph_config_proto, calculator_params);
-		}
-
-		if (graph_options.get()) {
-			SetExtension(canonical_graph_config_proto.mutable_graph_options(), graph_options);
-		}
-
-		m_graph.reset(new CalculatorGraph());
-		RaiseAutoItErrorIfNotOk(m_graph->Initialize(canonical_graph_config_proto));
-
-		for (const auto& stream : m_output_stream_type_info) {
-			std::string stream_name = stream.first;
-
-			RaiseAutoItErrorIfNotOk(m_graph->ObserveOutputStream(
-				stream_name,
-				std::move([this, stream_name](const Packet& output_packet) {
-					absl::MutexLock lock(&callback_mutex);
-					m_graph_outputs[stream_name] = output_packet;
-					return absl::OkStatus();
-				}),
-				true
-			));
-		}
-
-		for (auto const& [name, data] : side_inputs) {
-			m_input_side_packets[name] = *MakePacket(m_side_input_type_info[name], data);
-		}
-
-		RaiseAutoItErrorIfNotOk(m_graph->StartRun(m_input_side_packets));
-	}
-
-	SolutionBase::SolutionBase(
-		const std::string& binary_graph_path,
-		const std::map<std::string, _variant_t>& calculator_params,
-		const std::shared_ptr<google::protobuf::Message>& graph_options,
-		const std::map<std::string, _variant_t>& side_inputs,
-		const std::vector<std::string>& outputs,
-		const std::map<std::string, PacketDataType>& stream_type_hints
-	) {
-		__init__(
-			binary_graph_path,
-			calculator_params,
-			graph_options,
-			side_inputs,
-			outputs,
-			stream_type_hints
-		);
-	}
-
-	void SolutionBase::__init__(
-		const std::string& binary_graph_path,
-		const std::map<std::string, _variant_t>& calculator_params,
-		const std::shared_ptr<google::protobuf::Message>& graph_options,
-		const std::map<std::string, _variant_t>& side_inputs,
-		const std::vector<std::string>& outputs,
-		const std::map<std::string, PacketDataType>& stream_type_hints
-	) {
-		__init__(
-			ReadCalculatorGraphConfigFromFile(GetResourcePath(binary_graph_path)),
-			calculator_params,
-			graph_options,
-			side_inputs,
-			outputs,
-			stream_type_hints
-		);
-	}
-
-	void SolutionBase::process(const cv::Mat& input_data, std::map<std::string, _variant_t>& solution_outputs) {
-		AUTOIT_ASSERT_THROW(m_input_stream_type_info.size() != 0,
-			"_input_stream_type_info is None in SolutionBase");
-		AUTOIT_ASSERT_THROW(m_input_stream_type_info.size() == 1,
-			"Can't process single image input since the graph has more than one input streams.");
-
-		_variant_t input_data_variant;
-		VARIANT* out_val = &input_data_variant;
-		autoit_from(::autoit::reference_internal(&input_data), out_val);
-		std::map<std::string, _variant_t> input_dict;
-		for (const auto& pair : m_input_stream_type_info) {
-			input_dict[pair.first] = input_data_variant;
-		}
-
-		process(input_dict, solution_outputs);
-	}
-
-	void SolutionBase::process(const std::map<std::string, _variant_t>& input_data, std::map<std::string, _variant_t>& solution_outputs) {
-		m_graph_outputs.clear();
-
-		// Set the timestamp increment to 33333 us to simulate the 30 fps video
-		// input.
-		m_simulated_timestamp += 33333;
-		const auto simulated_timestamp = Timestamp(m_simulated_timestamp);
-
-		AUTOIT_ASSERT_THROW(static_cast<bool>(m_graph),
-			"_graph is None in SolutionBase");
-
-		for (auto const& [stream_name, data] : input_data) {
-			const auto& input_stream_type = m_input_stream_type_info[stream_name];
-
-			switch (input_stream_type) {
-			case PacketDataType::PROTO_LIST:
-			case PacketDataType::AUDIO:
-				// TODO: Support audio data.
-				AUTOIT_THROW(
-					"SolutionBase can only process non-audio and non-proto-list data. "
-					<< StringifyPacketDataType(m_input_stream_type_info[stream_name]) <<
-					"type is not supported yet."
-				);
-			}
-
-			auto packet_shared = MakePacket(input_stream_type, data);
-			AUTOIT_ASSERT_THROW(packet_shared.use_count() == 1, "Packet must have a unique holder");
-			auto packet = std::move(*packet_shared.get()).At(simulated_timestamp);
-			RaiseAutoItErrorIfNotOk(m_graph->AddPacketToInputStream(stream_name, std::move(packet)));
-		}
-
-		RaiseAutoItErrorIfNotOk(m_graph->WaitUntilIdle());
-
-		// Create a NamedTuple object where the field names are mapping to the graph
-		// output stream names.
-		AUTOIT_ASSERT_THROW(m_output_stream_type_info.size() != 0,
-			"_output_stream_type_info is None in SolutionBase");
-
-		solution_outputs.clear();
-
-		for (auto const& [stream_name, packet_data_type] : m_output_stream_type_info) {
-			if (m_graph_outputs.count(stream_name)) {
-				solution_outputs[stream_name] = GetPacketContent(packet_data_type, m_graph_outputs[stream_name]);
-			}
-			else {
-				solution_outputs[stream_name] = None;
-			}
-		}
-	}
-
-	void SolutionBase::close() {
-		AUTOIT_ASSERT_THROW(static_cast<bool>(m_graph),
-			"Closing SolutionBase._graph which is already None");
-
-		calculator_graph::close(m_graph.get());
-		m_graph.reset();
-		m_input_stream_type_info.clear();
-		m_output_stream_type_info.clear();
-	}
-
-	void SolutionBase::reset() {
-		if (m_graph) {
-			calculator_graph::close(m_graph.get());
-			RaiseAutoItErrorIfNotOk(m_graph->StartRun(m_input_side_packets));
-		}
-	}
-
-	static void _create_graph_options(Message& options_message, const std::map<std::string, _variant_t>& values) {
-		for (const auto& [field, value] : values) {
-			auto fields = split(field, ".");
-			auto m = ::autoit::reference_internal(&options_message);
-			auto last = fields.size() - 1;
-
-			for (int i = 0; i < last; i++) {
-				auto val = GetFieldValue(*m, fields[i]);
-				AUTOIT_ASSERT_THROW(SUCCEEDED(autoit_to(&val, m)), "property " << fields[i] << " is not a message");
-			}
-
-			const FieldDescriptor* field_descriptor = FindFieldWithOneofs(*m, fields[last]);
-			AUTOIT_ASSERT_THROW(field_descriptor != nullptr, "Protocol message has no \"" << field << "\" field.");
-
-			if (field_descriptor->is_repeated()) {
-				RepeatedContainer autoit_container;
-				autoit_container.message = ::autoit::reference_internal(&options_message);
-				autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
-
-				std::vector<_variant_t> items;
-				AUTOIT_ASSERT_THROW(SUCCEEDED(autoit_to(&value, items)), "property " << field << " is not a vector");
-
-				std::vector<_variant_t> list;
-				autoit_container.Splice(list, 0, autoit_container.size());
-
-				autoit_container.Extend(items);
-			}
-			else if (field_descriptor->cpp_type() == FieldDescriptor::CPPTYPE_MESSAGE) {
-				std::shared_ptr<Message> other_message;
-				AUTOIT_ASSERT_THROW(SUCCEEDED(autoit_to(&value, other_message)), "property " << field << " is not a message");
-				CopyFrom(&options_message, other_message.get());
-			}
-			else {
-				SetFieldValue(*m, fields[last], value);
-			}
-		}
-	}
-
-	std::shared_ptr<Message> SolutionBase::create_graph_options(
-		std::shared_ptr<Message> options_message,
-		const std::map<std::string, _variant_t>& values
-	) {
-		if (values.count("items")) {
-			std::map<std::string, _variant_t> items;
-			const auto& value = values.at("items");
-			HRESULT hr = autoit_to(&value, items);
-			AUTOIT_ASSERT_THROW(SUCCEEDED(hr), "items property must be a map<string, _variant_t>");
-			_create_graph_options(*options_message, items);
-		}
-		else {
-			_create_graph_options(*options_message, values);
-		}
-		return options_message;
-	}
-
-	CalculatorGraphConfig SolutionBase::InitializeGraphInterface(
+	/**
+	 * Gets graph interface type information and returns the canonical graph config proto.
+	 * @param  graph_config      [description]
+	 * @param  side_inputs       [description]
+	 * @param  outputs           [description]
+	 * @param  stream_type_hints [description]
+	 * @return                   [description]
+	 */
+	[[nodiscard]] absl::StatusOr<CalculatorGraphConfig> InitializeGraphInterface(
 		const CalculatorGraphConfig& graph_config,
 		const std::map<std::string, _variant_t>& side_inputs,
 		const std::vector<std::string>& outputs,
-		const std::map<std::string, PacketDataType>& stream_type_hints
+		const std::map<std::string, PacketDataType>& stream_type_hints,
+		std::map<std::string, PacketDataType>& input_stream_type_info,
+		std::map<std::string, PacketDataType>& output_stream_type_info,
+		std::map<std::string, PacketDataType>& side_input_type_info
 	) {
-
 		ValidatedGraphConfig validated_graph;
-		RaiseAutoItErrorIfNotOk(validated_graph.Initialize(graph_config));
+		MP_RETURN_IF_ERROR(validated_graph.Initialize(graph_config));
 
 		CalculatorGraphConfig canonical_graph_config_proto;
 		canonical_graph_config_proto.ParseFromString(validated_graph.Config().SerializeAsString());
 
 		for (const auto& tag_index_name : canonical_graph_config_proto.input_stream()) {
-			m_input_stream_type_info[GetName(tag_index_name)] = GetStreamPacketType(validated_graph, tag_index_name, stream_type_hints);
+			MP_ASSIGN_OR_RETURN(input_stream_type_info[GetName(tag_index_name)], GetStreamPacketType(validated_graph, tag_index_name, stream_type_hints));
 		}
 
 		std::vector<std::string> output_streams;
@@ -845,14 +607,265 @@ namespace mediapipe::autoit::solution_base {
 		}
 
 		for (const auto& tag_index_name : output_streams) {
-			m_output_stream_type_info[GetName(tag_index_name)] = GetStreamPacketType(validated_graph, tag_index_name, stream_type_hints);
+			MP_ASSIGN_OR_RETURN(output_stream_type_info[GetName(tag_index_name)], GetStreamPacketType(validated_graph, tag_index_name, stream_type_hints));
 		}
 
 		for (auto it = side_inputs.begin(); it != side_inputs.end(); ++it) {
 			const auto& tag_index_name = it->first;
-			m_side_input_type_info[GetName(tag_index_name)] = GetSidePacketType(validated_graph, tag_index_name);
+			MP_ASSIGN_OR_RETURN(side_input_type_info[GetName(tag_index_name)], GetSidePacketType(validated_graph, tag_index_name));
 		}
 
 		return canonical_graph_config_proto;
+	}
+
+	[[nodiscard]] absl::Status _create_graph_options(Message& options_message, const std::map<std::string, _variant_t>& values) {
+		for (const auto& [field, value] : values) {
+			auto fields = split(field, ".");
+			auto m = ::autoit::reference_internal(&options_message);
+			auto last = fields.size() - 1;
+
+			for (int i = 0; i < last; i++) {
+				MP_ASSIGN_OR_RETURN(auto val, GetFieldValue(*m, fields[i]));
+				MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(autoit_to(&val, m)), "property " << fields[i] << " is not a message");
+			}
+
+			const FieldDescriptor* field_descriptor = FindFieldWithOneofs(*m, fields[last]);
+			MP_ASSERT_RETURN_IF_ERROR(field_descriptor != nullptr, "Protocol message has no \"" << field << "\" field.");
+
+			if (field_descriptor->is_repeated()) {
+				RepeatedContainer autoit_container;
+				autoit_container.message = ::autoit::reference_internal(&options_message);
+				autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+
+				std::vector<_variant_t> items;
+				MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(autoit_to(&value, items)), "property " << field << " is not a vector");
+
+				std::vector<_variant_t> list;
+				MP_RETURN_IF_ERROR(autoit_container.Splice(list, 0, autoit_container.size()));
+
+				MP_RETURN_IF_ERROR(autoit_container.Extend(items));
+			}
+			else if (field_descriptor->cpp_type() == FieldDescriptor::CPPTYPE_MESSAGE) {
+				std::shared_ptr<Message> other_message;
+				MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(autoit_to(&value, other_message)), "property " << field << " is not a message");
+				MP_RETURN_IF_ERROR(CopyFrom(&options_message, other_message.get()));
+			}
+			else {
+				MP_RETURN_IF_ERROR(SetFieldValue(*m, fields[last], value).status());
+			}
+		}
+
+		return absl::OkStatus();
+	}
+}
+
+namespace mediapipe::autoit::solution_base {
+	const std::map<std::string, _variant_t>& noMap() {
+		return _noneMap;
+	}
+
+	const std::map<std::string, PacketDataType>& noTypeMap() {
+		return _noneTypeMap;
+	}
+
+	const std::vector<std::string>& noVector() {
+		return _noneVector;
+	}
+
+	absl::StatusOr<std::shared_ptr<SolutionBase>> SolutionBase::create(
+		const std::string& binary_graph_path,
+		const std::map<std::string, _variant_t>& calculator_params,
+		const std::shared_ptr<google::protobuf::Message>& graph_options,
+		const std::map<std::string, _variant_t>& side_inputs,
+		const std::vector<std::string>& outputs,
+		const std::map<std::string, PacketDataType>& stream_type_hints
+	) {
+		CalculatorGraphConfig graph_config;
+		MP_RETURN_IF_ERROR(ReadCalculatorGraphConfigFromFile(GetResourcePath(binary_graph_path), graph_config));
+		return create(
+			graph_config,
+			calculator_params,
+			graph_options,
+			side_inputs,
+			outputs,
+			stream_type_hints
+		);
+	}
+
+	absl::StatusOr<std::shared_ptr<SolutionBase>> SolutionBase::create(
+		const CalculatorGraphConfig& graph_config,
+		const std::map<std::string, _variant_t>& calculator_params,
+		const std::shared_ptr<google::protobuf::Message>& graph_options,
+		const std::map<std::string, _variant_t>& side_inputs,
+		const std::vector<std::string>& outputs,
+		const std::map<std::string, PacketDataType>& stream_type_hints
+	) {
+		return create(
+			graph_config,
+			calculator_params,
+			graph_options,
+			side_inputs,
+			outputs,
+			stream_type_hints,
+			static_cast<SolutionBase*>(nullptr)
+		);
+	}
+
+	absl::Status SolutionBase::process(const cv::Mat& input_data, std::map<std::string, _variant_t>& solution_outputs) {
+		MP_ASSERT_RETURN_IF_ERROR(m_input_stream_type_info.size() != 0,
+			"_input_stream_type_info is None in SolutionBase");
+		MP_ASSERT_RETURN_IF_ERROR(m_input_stream_type_info.size() == 1,
+			"Can't process single image input since the graph has more than one input streams.");
+
+		_variant_t input_data_variant;
+		VARIANT* out_val = &input_data_variant;
+		autoit_from(::autoit::reference_internal(&input_data), out_val);
+		std::map<std::string, _variant_t> input_dict;
+		for (const auto& pair : m_input_stream_type_info) {
+			input_dict[pair.first] = input_data_variant;
+		}
+
+		return process(input_dict, solution_outputs);
+	}
+
+	absl::Status SolutionBase::process(const std::map<std::string, _variant_t>& input_data, std::map<std::string, _variant_t>& solution_outputs) {
+		m_graph_outputs.clear();
+
+		// Set the timestamp increment to 33333 us to simulate the 30 fps video
+		// input.
+		m_simulated_timestamp += 33333;
+		const auto simulated_timestamp = Timestamp(m_simulated_timestamp);
+
+		MP_ASSERT_RETURN_IF_ERROR(static_cast<bool>(m_graph),
+			"_graph is None in SolutionBase");
+
+		for (auto const& [stream_name, data] : input_data) {
+			const auto& input_stream_type = m_input_stream_type_info[stream_name];
+
+			switch (input_stream_type) {
+			case PacketDataType::PROTO_LIST:
+			case PacketDataType::AUDIO:
+				// TODO: Support audio data.
+				MP_ASSERT_RETURN_IF_ERROR(false,
+					"SolutionBase can only process non-audio and non-proto-list data. "
+					<< StringifyPacketDataType(m_input_stream_type_info[stream_name]) <<
+					"type is not supported yet."
+				);
+			}
+
+			MP_ASSIGN_OR_RETURN(auto packet_shared, ::MakePacket(input_stream_type, data));
+
+			MP_ASSERT_RETURN_IF_ERROR(packet_shared.use_count() == 1, "Packet must have a unique holder");
+			auto packet = std::move(*packet_shared.get()).At(simulated_timestamp);
+			MP_RETURN_IF_ERROR(m_graph->AddPacketToInputStream(stream_name, std::move(packet)));
+		}
+
+		MP_RETURN_IF_ERROR(m_graph->WaitUntilIdle());
+
+		// Create a NamedTuple object where the field names are mapping to the graph
+		// output stream names.
+		MP_ASSERT_RETURN_IF_ERROR(m_output_stream_type_info.size() != 0,
+			"_output_stream_type_info is None in SolutionBase");
+
+		solution_outputs.clear();
+
+		for (auto const& [stream_name, packet_data_type] : m_output_stream_type_info) {
+			if (m_graph_outputs.count(stream_name)) {
+				MP_ASSIGN_OR_RETURN(solution_outputs[stream_name], GetPacketContent(packet_data_type, m_graph_outputs[stream_name]));
+			}
+			else {
+				solution_outputs[stream_name] = None;
+			}
+		}
+
+		return absl::OkStatus();
+	}
+
+	absl::Status SolutionBase::close() {
+		MP_ASSERT_RETURN_IF_ERROR(static_cast<bool>(m_graph),
+			"Closing SolutionBase._graph which is already None");
+
+		MP_RETURN_IF_ERROR(calculator_graph::close(m_graph.get()));
+		m_graph.reset();
+		m_input_stream_type_info.clear();
+		m_output_stream_type_info.clear();
+		return absl::OkStatus();
+	}
+
+	absl::Status SolutionBase::reset() {
+		if (m_graph) {
+			MP_RETURN_IF_ERROR(calculator_graph::close(m_graph.get()));
+			MP_RETURN_IF_ERROR(m_graph->StartRun(m_input_side_packets));
+		}
+		return absl::OkStatus();
+	}
+
+	absl::StatusOr<std::shared_ptr<Message>> SolutionBase::create_graph_options(
+		std::shared_ptr<Message> options_message,
+		const std::map<std::string, _variant_t>& values
+	) {
+		if (values.count("items")) {
+			std::map<std::string, _variant_t> items;
+			const auto& value = values.at("items");
+			HRESULT hr = autoit_to(&value, items);
+			MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), "items property must be a map<string, _variant_t>");
+			MP_RETURN_IF_ERROR(_create_graph_options(*options_message, items));
+		}
+		else {
+			MP_RETURN_IF_ERROR(_create_graph_options(*options_message, values));
+		}
+		return options_message;
+	}
+
+	absl::Status SolutionBase::__init__(
+		const CalculatorGraphConfig& graph_config,
+		const std::map<std::string, _variant_t>& calculator_params,
+		const std::shared_ptr<google::protobuf::Message>& graph_options,
+		const std::map<std::string, _variant_t>& side_inputs,
+		const std::vector<std::string>& outputs,
+		const std::map<std::string, PacketDataType>& stream_type_hints
+	) {
+		m_graph = std::make_unique<CalculatorGraph>();
+
+		MP_ASSIGN_OR_RETURN(auto canonical_graph_config_proto, InitializeGraphInterface(
+			graph_config,
+			side_inputs,
+			outputs,
+			stream_type_hints,
+			m_input_stream_type_info,
+			m_output_stream_type_info,
+			m_side_input_type_info
+		));
+
+		if (!calculator_params.empty()) {
+			MP_RETURN_IF_ERROR(ModifyCalculatorOptions(canonical_graph_config_proto, calculator_params));
+		}
+
+		if (graph_options.get()) {
+			SetExtension(canonical_graph_config_proto.mutable_graph_options(), graph_options);
+		}
+
+		MP_RETURN_IF_ERROR(m_graph->Initialize(canonical_graph_config_proto));
+
+		for (const auto& stream : m_output_stream_type_info) {
+			std::string stream_name = stream.first;
+
+			MP_RETURN_IF_ERROR(m_graph->ObserveOutputStream(
+				stream_name,
+				std::move([this, stream_name](const Packet& output_packet) {
+					absl::MutexLock lock(&callback_mutex);
+					m_graph_outputs[stream_name] = output_packet;
+					return absl::OkStatus();
+				}),
+				true
+			));
+		}
+
+		for (auto const& [name, data] : side_inputs) {
+			MP_ASSIGN_OR_RETURN(auto packet_status, ::MakePacket(m_side_input_type_info[name], data));
+			m_input_side_packets[name] = *packet_status;
+		}
+
+		return m_graph->StartRun(m_input_side_packets);
 	}
 }

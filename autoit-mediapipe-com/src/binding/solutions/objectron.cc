@@ -6,53 +6,59 @@
 
 static const std::string _BINARYPB_FILE_PATH = "mediapipe/modules/objectron/objectron_cpu.binarypb";
 
-template<typename _Tp>
-cv::Mat repeated_to_mat(::google::protobuf::RepeatedField<_Tp> repeated) {
-	const auto& rows = 1;
-	auto cols = repeated.size();
-	const auto& channels = 1;
+namespace {
+	using namespace mediapipe::autoit::solutions::objectron;
+	using namespace mediapipe::autoit::solutions;
 
-	cv::Mat matrix(rows, cols, CV_MAKETYPE(
-		cv::DataType<_Tp>::depth,
-		channels
-	));
+	template<typename _Tp>
+	inline cv::Mat repeated_to_mat(::google::protobuf::RepeatedField<_Tp> repeated) {
+		const auto& rows = 1;
+		auto cols = repeated.size();
+		const auto& channels = 1;
 
-	int idx = 0;
-	for (const auto& value : repeated) {
-		matrix.at<_Tp>(idx++) = value;
+		cv::Mat matrix(rows, cols, CV_MAKETYPE(
+			cv::DataType<_Tp>::depth,
+			channels
+		));
+
+		int idx = 0;
+		for (const auto& value : repeated) {
+			matrix.at<_Tp>(idx++) = value;
+		}
+
+		return matrix;
 	}
 
-	return matrix;
-}
-
-namespace mediapipe::autoit::solutions::objectron {
-	static std::map<std::string, ObjectronModel> _MODEL_DICT = {
+	std::map<std::string, ObjectronModel> _MODEL_DICT = {
 		{"Shoe", ShoeModel()},
 		{"Chair", ChairModel()},
 		{"Cup", CupModel()},
 		{"Camera", CameraModel()},
 	};
 
-	static void _download_oss_objectron_models(const std::string& objectron_model) {
-		download_utils::download_oss_model(
+	[[nodiscard]] absl::Status _download_oss_objectron_models(const std::string& objectron_model) {
+		MP_RETURN_IF_ERROR(download_utils::download_oss_model(
 			"mediapipe/modules/objectron/object_detection_ssd_mobilenetv2_oidv4_fp16.tflite"
-		);
-		download_utils::download_oss_model(objectron_model);
+		));
+		MP_RETURN_IF_ERROR(download_utils::download_oss_model(objectron_model));
+		return absl::OkStatus();
 	}
 
-	static std::tuple<int, int> _noSize = { 0, 0 };
+	std::tuple<int, int> _noSize = { 0, 0 };
+}
+
+namespace mediapipe::autoit::solutions::objectron {
 	std::tuple<int, int>& noSize() {
 		return _noSize;
 	}
 
-	ObjectronModel get_model_by_name(const std::string& name) {
-		AUTOIT_ASSERT_THROW(_MODEL_DICT.count(name), name << " is not a valid model name for Objectron.");
-		_download_oss_objectron_models(_MODEL_DICT[name].model_path);
+	absl::StatusOr<ObjectronModel> get_model_by_name(const std::string& name) {
+		MP_ASSERT_RETURN_IF_ERROR(_MODEL_DICT.count(name), name << " is not a valid model name for Objectron.");
+		MP_RETURN_IF_ERROR(_download_oss_objectron_models(_MODEL_DICT[name].model_path));
 		return _MODEL_DICT[name];
 	}
 
-
-	Objectron::Objectron(
+	absl::StatusOr<std::shared_ptr<Objectron>> Objectron::create(
 		bool static_image_mode,
 		int max_num_objects,
 		float min_detection_confidence,
@@ -77,9 +83,9 @@ namespace mediapipe::autoit::solutions::objectron {
 		}
 
 		// Create and init model.
-		auto model = get_model_by_name(model_name);
+		MP_ASSIGN_OR_RETURN(auto model, get_model_by_name(model_name));
 
-		__init__(
+		return SolutionBase::create(
 			_BINARYPB_FILE_PATH,
 			{
 				{"objectdetectionoidv4subgraph"
@@ -104,7 +110,9 @@ namespace mediapipe::autoit::solutions::objectron {
 				{"max_num_objects", _variant_t(max_num_objects)},
 				{"use_prev_landmarks", _variant_t(!static_image_mode)},
 			},
-			{ "detected_objects" }
+			{ "detected_objects" },
+			noTypeMap(),
+			static_cast<Objectron*>(nullptr)
 		);
 	}
 
@@ -151,14 +159,14 @@ namespace mediapipe::autoit::solutions::objectron {
 
 	static _variant_t None = default_variant();
 
-	void Objectron::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
+	absl::Status Objectron::process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs) {
 		_variant_t input_data_variant;
 		VARIANT* out_val = &input_data_variant;
 		autoit_from(::autoit::reference_internal(&image), out_val);
 		std::map<std::string, _variant_t> input_dict;
 		input_dict["image"] = input_data_variant;
 
-		SolutionBase::process(input_dict, solution_outputs);
+		MP_RETURN_IF_ERROR(SolutionBase::process(input_dict, solution_outputs));
 
 		if (
 			solution_outputs.count("detected_objects")
@@ -169,5 +177,7 @@ namespace mediapipe::autoit::solutions::objectron {
 		else {
 			solution_outputs["detected_objects"] = None;
 		}
+
+		return absl::OkStatus();
 	}
 }

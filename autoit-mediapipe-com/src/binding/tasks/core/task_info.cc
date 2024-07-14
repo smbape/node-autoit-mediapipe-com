@@ -13,9 +13,9 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::core::task_info {
-	std::shared_ptr<CalculatorGraphConfig> TaskInfo::generate_graph_config(bool enable_flow_limiting) {
-		AUTOIT_ASSERT_THROW(!task_graph.empty() && task_options, "Please provide both `task_graph` and `task_options`.");
-		AUTOIT_ASSERT_THROW(
+	absl::StatusOr<std::shared_ptr<CalculatorGraphConfig>> TaskInfo::generate_graph_config(bool enable_flow_limiting) {
+		MP_ASSERT_RETURN_IF_ERROR(!task_graph.empty() && task_options, "Please provide both `task_graph` and `task_options`.");
+		MP_ASSERT_RETURN_IF_ERROR(
 			static_cast<bool>(input_streams) && !input_streams->empty() &&
 			static_cast<bool>(output_streams) && !output_streams->empty(),
 			"Both `input_streams` and `output_streams` must be non-empty.");

@@ -10,7 +10,9 @@ namespace mediapipe::autoit::solutions::face_mesh {
 
 	class CV_EXPORTS_W FaceMesh : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
-		CV_WRAP FaceMesh(
+		using SolutionBase::SolutionBase;
+
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<FaceMesh>> create(
 			bool static_image_mode = false,
 			int max_num_faces = 1,
 			bool refine_landmarks = false,
@@ -18,6 +20,6 @@ namespace mediapipe::autoit::solutions::face_mesh {
 			float min_tracking_confidence = 0.5f
 		);
 
-		CV_WRAP void process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
+		CV_WRAP [[nodiscard]] absl::Status process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 	};
 }

@@ -1,6 +1,14 @@
 #include "binding/map_container.h"
 #include "Google_Protobuf_Message_Object.h"
 
+namespace {
+	inline void assign(_variant_t& dst, const _variant_t& src) {
+		VARIANT* pdst = &dst;
+		_Copy<VARIANT>::destroy(pdst);
+		_Copy<VARIANT>::copy(pdst, &src);
+	}
+}
+
 namespace google::protobuf {
 	autoit::MapIterator MapRefectionFriend::begin(autoit::MapContainer* self) {
 		Message* message = self->message.get();
@@ -18,7 +26,7 @@ namespace google::protobuf {
 		return autoit::MapIterator(self, std::move(end));
 	}
 
-	std::string MapRefectionFriend::ToStr(const autoit::MapContainer* self) {
+	absl::StatusOr<std::string> MapRefectionFriend::ToStr(const autoit::MapContainer* self) {
 		Message* message = self->message.get();
 		const FieldDescriptor* field_descriptor = self->field_descriptor.get();
 
@@ -29,20 +37,20 @@ namespace google::protobuf {
 			it != reflection->MapEnd(message, field_descriptor);
 			++it
 		) {
-			_variant_t key = autoit::MapKeyToAutoIt(field_descriptor, it.GetKey());
-			_variant_t value = autoit::MapValueRefToAutoIt(field_descriptor, it.GetValueRef());
+			MP_ASSIGN_OR_RETURN(auto key, autoit::MapKeyToAutoIt(field_descriptor, it.GetKey()));
+			MP_ASSIGN_OR_RETURN(auto value, autoit::MapValueRefToAutoIt(field_descriptor, it.GetValueRef()));
 			// TODO
 		}
 
 		return output;
 	}
 
-	bool MapRefectionFriend::Contains(const autoit::MapContainer* self, _variant_t key) {
+	absl::StatusOr<bool> MapRefectionFriend::Contains(const autoit::MapContainer* self, _variant_t key) {
 		Message* message = self->message.get();
 		const FieldDescriptor* field_descriptor = self->field_descriptor.get();
 		const Reflection* reflection = message->GetReflection();
 		MapKey map_key;
-		autoit::AutoItToMapKey(field_descriptor, key, &map_key);
+		MP_RETURN_IF_ERROR(autoit::AutoItToMapKey(field_descriptor, key, &map_key));
 		return reflection->ContainsMapKey(*message, field_descriptor, map_key);
 	}
 
@@ -53,32 +61,33 @@ namespace google::protobuf {
 		return reflection->MapSize(*message, field_descriptor);
 	}
 
-	_variant_t MapRefectionFriend::GetItem(const autoit::MapContainer* self, _variant_t key) {
+	absl::StatusOr<_variant_t> MapRefectionFriend::GetItem(const autoit::MapContainer* self, _variant_t key) {
 		Message* message = self->message.get();
 		const FieldDescriptor* field_descriptor = self->field_descriptor.get();
 		const Reflection* reflection = message->GetReflection();
 		MapKey map_key;
 		MapValueRef value;
-		autoit::AutoItToMapKey(field_descriptor, key, &map_key);
+		MP_RETURN_IF_ERROR(autoit::AutoItToMapKey(field_descriptor, key, &map_key));
 		reflection->InsertOrLookupMapValue(message, field_descriptor, map_key, &value);
 		return autoit::MapValueRefToAutoIt(field_descriptor, value);
 	}
 
-	void MapRefectionFriend::SetItem(autoit::MapContainer* self, _variant_t key, _variant_t arg) {
+	absl::Status MapRefectionFriend::SetItem(autoit::MapContainer* self, _variant_t key, _variant_t arg) {
 		Message* message = self->message.get();
 		const FieldDescriptor* field_descriptor = self->field_descriptor.get();
 		const Reflection* reflection = message->GetReflection();
 		MapKey map_key;
 		MapValueRef value;
-		autoit::AutoItToMapKey(field_descriptor, key, &map_key);
+		MP_RETURN_IF_ERROR(autoit::AutoItToMapKey(field_descriptor, key, &map_key));
 
 		if (PARAMETER_NULL(&arg)) {
-			AUTOIT_ASSERT_THROW(reflection->DeleteMapValue(message, field_descriptor, map_key), "Key not present in map");
-			return;
+			MP_ASSERT_RETURN_IF_ERROR(reflection->DeleteMapValue(message, field_descriptor, map_key), "Key not present in map");
+			return absl::OkStatus();
 		}
 
 		reflection->InsertOrLookupMapValue(message, field_descriptor, map_key, &value);
-		autoit::AutoItToMapValueRef(field_descriptor, arg, reflection->SupportsUnknownEnumValues(), &value);
+		MP_RETURN_IF_ERROR(autoit::AutoItToMapValueRef(field_descriptor, arg, reflection->SupportsUnknownEnumValues(), &value));
+		return absl::OkStatus();
 	}
 
 	namespace autoit {
@@ -121,16 +130,12 @@ namespace google::protobuf {
 			return *m_iter != *other.m_iter;
 		}
 
-		inline static void assign(_variant_t& dst, const _variant_t& src) {
-			VARIANT* pdst = &dst;
-			_Copy<VARIANT>::destroy(pdst);
-			_Copy<VARIANT>::copy(pdst, &src);
-		}
-
 		const std::pair<_variant_t, _variant_t>& MapIterator::operator*() noexcept {
 			if (m_dirty) {
-				assign(m_value.first, MapKeyToAutoIt(m_container->field_descriptor.get(), m_iter->GetKey()));
-				assign(m_value.second, MapValueRefToAutoIt(m_container->field_descriptor.get(), m_iter->GetValueRef()));
+				MP_ASSIGN_OR_THROW(auto key, MapKeyToAutoIt(m_container->field_descriptor.get(), m_iter->GetKey())); // Throwing because I failed to make COM STL Enum handle absl::StatusOr
+				MP_ASSIGN_OR_THROW(auto value, MapValueRefToAutoIt(m_container->field_descriptor.get(), m_iter->GetValueRef())); // Throwing because I failed to make COM STL Enum handle absl::StatusOr
+				assign(m_value.first, key);
+				assign(m_value.second, value);
 				m_dirty = false;
 			}
 			return m_value;
@@ -144,7 +149,7 @@ namespace google::protobuf {
 			return ::google::protobuf::MapRefectionFriend::end(this);
 		}
 
-		bool AutoItToMapKey(const FieldDescriptor* parent_field_descriptor, _variant_t arg, MapKey* key) {
+		absl::Status AutoItToMapKey(const FieldDescriptor* parent_field_descriptor, _variant_t arg, MapKey* key) {
 			const FieldDescriptor* field_descriptor =
 				parent_field_descriptor->message_type()->map_key();
 
@@ -180,13 +185,13 @@ namespace google::protobuf {
 					break;
 				}
 				default:
-					AUTOIT_THROW("Type " << field_descriptor->cpp_type() << " cannot be a map key");
+					MP_ASSERT_RETURN_IF_ERROR(false, "Type " << field_descriptor->cpp_type() << " cannot be a map key");
 			}
 
-			return true;
+			return absl::OkStatus();
 		}
 
-		bool AutoItToMapValueRef(const FieldDescriptor* parent_field_descriptor, _variant_t arg,
+		absl::Status AutoItToMapValueRef(const FieldDescriptor* parent_field_descriptor, _variant_t arg,
 			bool allow_unknown_enum_values,
 			MapValueRef* value_ref) {
 			const FieldDescriptor* field_descriptor =
@@ -195,68 +200,68 @@ namespace google::protobuf {
 				case FieldDescriptor::CPPTYPE_INT32: {
 					auto value = ::autoit::cast<int>(&arg);
 					value_ref->SetInt32Value(value);
-					return true;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_INT64: {
 					auto value = ::autoit::cast<int64_t>(&arg);
 					value_ref->SetInt64Value(value);
-					return true;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_UINT32: {
 					auto value = ::autoit::cast<uint>(&arg);
 					value_ref->SetUInt32Value(value);
-					return true;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_UINT64: {
 					auto value = ::autoit::cast<uint64_t>(&arg);
 					value_ref->SetUInt64Value(value);
-					return true;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_FLOAT: {
 					auto value = ::autoit::cast<float>(&arg);
 					value_ref->SetFloatValue(value);
-					return true;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_DOUBLE: {
 					auto value = ::autoit::cast<double>(&arg);
 					value_ref->SetDoubleValue(value);
-					return true;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_BOOL: {
 					auto value = ::autoit::cast<bool>(&arg);
 					value_ref->SetBoolValue(value);
-					return true;;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_STRING: {
 					auto value = ::autoit::cast<std::string>(&arg);
 					value_ref->SetStringValue(value);
-					return true;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_ENUM: {
 					auto value = ::autoit::cast<int>(&arg);
 					if (allow_unknown_enum_values) {
 						value_ref->SetEnumValue(value);
-						return true;
+					} else {
+						const EnumDescriptor* enum_descriptor = field_descriptor->enum_type();
+						const EnumValueDescriptor* enum_value =
+							enum_descriptor->FindValueByNumber(value);
+
+						MP_ASSERT_RETURN_IF_ERROR(enum_value, "Unknown enum value: " << value);
+						value_ref->SetEnumValue(value);
 					}
-
-					const EnumDescriptor* enum_descriptor = field_descriptor->enum_type();
-					const EnumValueDescriptor* enum_value =
-						enum_descriptor->FindValueByNumber(value);
-
-					AUTOIT_ASSERT_THROW(enum_value, "Unknown enum value: " << value);
-					value_ref->SetEnumValue(value);
-					return true;
+					break;
 				}
 				case FieldDescriptor::CPPTYPE_MESSAGE: {
-					AUTOIT_THROW("Direct assignment of submessage not allowed");
+					MP_ASSERT_RETURN_IF_ERROR(false, "Direct assignment of submessage not allowed");
 				}
 				default:
-					AUTOIT_THROW("Setting value to a field of unknown type " << field_descriptor->cpp_type());
-					return false;
+					MP_ASSERT_RETURN_IF_ERROR(false, "Setting value to a field of unknown type " << field_descriptor->cpp_type());
 			}
+
+			return absl::OkStatus();
 		}
 
-		_variant_t MapKeyToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapKey& key) {
+		absl::StatusOr<_variant_t> MapKeyToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapKey& key) {
 			_variant_t obj;
 			VARIANT* out_val = &obj;
 			VariantInit(out_val);
@@ -282,14 +287,11 @@ namespace google::protobuf {
 					hr = E_FAIL;
 			}
 
-			if (FAILED(hr)) {
-				AUTOIT_THROW("Couldn't convert type " << field_descriptor->cpp_type() << " to value");
-			}
-
+			MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), "Couldn't convert type " << field_descriptor->cpp_type() << " to value");
 			return obj;
 		}
 
-		_variant_t MapValueRefToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapValueRef& value) {
+		absl::StatusOr<_variant_t> MapValueRefToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapValueRef& value) {
 			_variant_t obj;
 			VARIANT* out_val = &obj;
 			VariantInit(out_val);
@@ -323,14 +325,11 @@ namespace google::protobuf {
 				hr = E_FAIL;
 			}
 
-			if (FAILED(hr)) {
-				AUTOIT_THROW("Couldn't convert type " << field_descriptor->cpp_type() << " to value");
-			}
-
+			MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), "Couldn't convert type " << field_descriptor->cpp_type() << " to value");
 			return obj;
 		}
 
-		bool MapContainer::Contains(_variant_t key) const {
+		absl::StatusOr<bool> MapContainer::Contains(_variant_t key) const {
 			return ::google::protobuf::MapRefectionFriend::Contains(this, key);
 		}
 
@@ -347,36 +346,39 @@ namespace google::protobuf {
 			return ::google::protobuf::MapRefectionFriend::Size(this);
 		}
 
-		_variant_t MapContainer::Get(_variant_t key, _variant_t default_value) const {
-			if (::google::protobuf::MapRefectionFriend::Contains(this, key)) {
+		absl::StatusOr<_variant_t> MapContainer::Get(_variant_t key, _variant_t default_value) const {
+			MP_ASSIGN_OR_RETURN(auto contains, ::google::protobuf::MapRefectionFriend::Contains(this, key));
+			if (contains) {
 				return GetItem(key);
 			}
 			return default_value;
 		}
 
-		_variant_t MapContainer::GetItem(_variant_t key) const {
+		absl::StatusOr<_variant_t> MapContainer::GetItem(_variant_t key) const {
 			return ::google::protobuf::MapRefectionFriend::GetItem(this, key);
 		}
 
-		void MapContainer::SetItem(_variant_t key, _variant_t arg) {
-			::google::protobuf::MapRefectionFriend::SetItem(this, key, arg);
+		absl::Status MapContainer::SetItem(_variant_t key, _variant_t arg) {
+			return ::google::protobuf::MapRefectionFriend::SetItem(this, key, arg);
 		}
 
-		void MapContainer::SetFields(std::vector<std::pair<_variant_t, _variant_t>>& fields) {
+		absl::Status MapContainer::SetFields(std::vector<std::pair<_variant_t, _variant_t>>& fields) {
 			for (auto& [key, arg] : fields) {
-				::google::protobuf::MapRefectionFriend::SetItem(this, key, arg);
+				MP_RETURN_IF_ERROR(::google::protobuf::MapRefectionFriend::SetItem(this, key, arg));
 			}
+			return absl::OkStatus();
 		}
 
-		std::string MapContainer::ToStr() const {
+		absl::StatusOr<std::string> MapContainer::ToStr() const {
 			return ::google::protobuf::MapRefectionFriend::ToStr(this);
 		}
 
-		void MapContainer::MergeFrom(const MapContainer& other) {
-			AUTOIT_ASSERT_THROW(message->GetDescriptor() == other.message->GetDescriptor(),
+		absl::Status MapContainer::MergeFrom(const MapContainer& other) {
+			MP_ASSERT_RETURN_IF_ERROR(message->GetDescriptor() == other.message->GetDescriptor(),
 				"Parameter to MergeFrom() must be instance of same class: "
 				"expected " << message->GetDescriptor()->full_name() << " got " << other.message->GetDescriptor()->full_name() << ".");
 			message->MergeFrom(*other.message.get());
+			return absl::OkStatus();
 		}
 	}
 }

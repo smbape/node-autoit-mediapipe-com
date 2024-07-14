@@ -18,11 +18,12 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::text::text_embedder {
-	std::shared_ptr<TextEmbedderGraphOptions> TextEmbedderOptions::to_pb2() {
+	absl::StatusOr<std::shared_ptr<TextEmbedderGraphOptions>> TextEmbedderOptions::to_pb2() const {
 		auto pb2_obj = std::make_shared<TextEmbedderGraphOptions>();
 
 		if (base_options) {
-			pb2_obj->mutable_base_options()->CopyFrom(*base_options->to_pb2());
+			MP_ASSIGN_OR_RETURN(auto base_options_proto, base_options->to_pb2());
+			pb2_obj->mutable_base_options()->CopyFrom(*base_options_proto);
 		}
 		if (l2_normalize) pb2_obj->mutable_embedder_options()->set_l2_normalize(*l2_normalize);
 		if (quantize) pb2_obj->mutable_embedder_options()->set_quantize(*quantize);
@@ -30,31 +31,40 @@ namespace mediapipe::tasks::autoit::text::text_embedder {
 		return pb2_obj;
 	}
 
-	std::shared_ptr<TextEmbedder> TextEmbedder::create_from_model_path(const std::string& model_path) {
+	absl::StatusOr<std::shared_ptr<TextEmbedder>> TextEmbedder::create(
+		const CalculatorGraphConfig& graph_config
+	) {
+		using BaseTextTaskApi = core::base_text_task_api::BaseTextTaskApi;
+		return BaseTextTaskApi::create(graph_config, static_cast<TextEmbedder*>(nullptr));
+	}
+
+	absl::StatusOr<std::shared_ptr<TextEmbedder>> TextEmbedder::create_from_model_path(const std::string& model_path) {
 		auto base_options = std::make_shared<BaseOptions>(model_path);
 		return create_from_options(std::make_shared<TextEmbedderOptions>(base_options));
 	}
 
-	std::shared_ptr<TextEmbedder> TextEmbedder::create_from_options(std::shared_ptr<TextEmbedderOptions> options) {
+	absl::StatusOr<std::shared_ptr<TextEmbedder>> TextEmbedder::create_from_options(std::shared_ptr<TextEmbedderOptions> options) {
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
 		*task_info.input_streams = { _TEXT_TAG + ":" + _TEXT_IN_STREAM_NAME };
 		*task_info.output_streams = { _EMBEDDINGS_TAG + ":" + _EMBEDDINGS_OUT_STREAM_NAME };
-		task_info.task_options = options->to_pb2();
+		MP_ASSIGN_OR_RETURN(task_info.task_options, options->to_pb2());
 
-		return std::make_shared<TextEmbedder>(*task_info.generate_graph_config());
+		MP_ASSIGN_OR_RETURN(auto config, task_info.generate_graph_config());
+
+		return create(*config);
 	}
 
-	std::shared_ptr<TextEmbedderResult> TextEmbedder::embed(const std::string& text) {
-		auto output_packets = mediapipe::autoit::AssertAutoItValue(_runner->Process({
+	absl::StatusOr<std::shared_ptr<TextEmbedderResult>> TextEmbedder::embed(const std::string& text) {
+		MP_ASSIGN_OR_RETURN(auto output_packets, _runner->Process({
 			{ _TEXT_IN_STREAM_NAME, std::move(MakePacket<std::string>(text)) }
 			}));
 
-		const auto& embedding_result_proto = GetContent<mediapipe::tasks::components::containers::proto::EmbeddingResult>(output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& embedding_result_proto, mediapipe::tasks::components::containers::proto::EmbeddingResult, output_packets.at(_EMBEDDINGS_OUT_STREAM_NAME));
 		return TextEmbedderResult::create_from_pb2(embedding_result_proto);
 	}
 
-	float TextEmbedder::cosine_similarity(const Embedding& u, const Embedding& v) {
+	absl::StatusOr<float> TextEmbedder::cosine_similarity(const Embedding& u, const Embedding& v) {
 		return cosine_similarity::cosine_similarity(u, v);
 	}
 }

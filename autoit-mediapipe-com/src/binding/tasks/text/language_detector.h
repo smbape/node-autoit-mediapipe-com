@@ -65,7 +65,7 @@ namespace mediapipe::tasks::autoit::text::language_detector {
 			category_denylist(category_denylist)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions>> to_pb2() const;
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
 		CV_PROP_RW std::optional<std::string> display_names_locale;
@@ -79,8 +79,11 @@ namespace mediapipe::tasks::autoit::text::language_detector {
 	public:
 		using core::base_text_task_api::BaseTextTaskApi::BaseTextTaskApi;
 
-		CV_WRAP static std::shared_ptr<LanguageDetector> create_from_model_path(const std::string& model_path);
-		CV_WRAP static std::shared_ptr<LanguageDetector> create_from_options(std::shared_ptr<LanguageDetectorOptions> options);
-		CV_WRAP std::shared_ptr<LanguageDetectorResult> detect(const std::string& text);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<LanguageDetector>> create(
+			const CalculatorGraphConfig& graph_config
+		);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<LanguageDetector>> create_from_model_path(const std::string& model_path);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<LanguageDetector>> create_from_options(std::shared_ptr<LanguageDetectorOptions> options);
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<LanguageDetectorResult>> detect(const std::string& text);
 	};
 }

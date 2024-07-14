@@ -45,7 +45,9 @@ namespace mediapipe::autoit::solutions::pose {
 
 	class CV_EXPORTS_W Pose : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
-		CV_WRAP Pose(
+		using SolutionBase::SolutionBase;
+
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<Pose>> create(
 			bool static_image_mode = false,
 			BYTE model_complexity = 1,
 			bool smooth_landmarks = true,
@@ -55,6 +57,6 @@ namespace mediapipe::autoit::solutions::pose {
 			float min_tracking_confidence = 0.5f
 		);
 
-		CV_WRAP void process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
+		CV_WRAP [[nodiscard]] absl::Status process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 	};
 }

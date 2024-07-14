@@ -3,7 +3,7 @@
 using namespace mediapipe::tasks::components::containers;
 
 namespace mediapipe::tasks::autoit::components::containers::landmark {
-	std::shared_ptr<mediapipe::Landmark> Landmark::to_pb2() {
+	std::shared_ptr<mediapipe::Landmark> Landmark::to_pb2() const {
 		auto pb2_obj = std::make_shared<mediapipe::Landmark>();
 		pb2_obj->set_x(x);
 		pb2_obj->set_y(y);
@@ -23,7 +23,7 @@ namespace mediapipe::tasks::autoit::components::containers::landmark {
 		);
 	}
 
-	std::shared_ptr<mediapipe::NormalizedLandmark> NormalizedLandmark::to_pb2() {
+	std::shared_ptr<mediapipe::NormalizedLandmark> NormalizedLandmark::to_pb2() const {
 		auto pb2_obj = std::make_shared<mediapipe::NormalizedLandmark>();
 		pb2_obj->set_x(x);
 		pb2_obj->set_y(y);

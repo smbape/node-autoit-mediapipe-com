@@ -213,6 +213,30 @@ const getOptions = PROJECT_DIR => {
                 }).join(`\n${ " ".repeat(16) }`) }
             }`.replace(/^ {12}/mg, "");
         },
+
+        getIDLType: (processor, type, coclass, opts) => {
+            if (type === "absl::Status") {
+                return "void";
+            }
+
+            if (type.startsWith("absl::StatusOr<")) {
+                return processor.getIDLType(type.slice("absl::StatusOr<".length, -">".length), coclass, opts);
+            }
+
+            return null;
+        },
+
+        getReturnCppType: (processor, type, coclass, opts) => {
+            if (type === "absl::Status") {
+                return "void";
+            }
+
+            if (type.startsWith("absl::StatusOr<")) {
+                return processor.getReturnCppType(type.slice("absl::StatusOr<".length, -">".length), coclass, opts);
+            }
+
+            return processor.getCppType(type, coclass, opts);
+        },
     };
 
     const argv = process.argv.slice(2);

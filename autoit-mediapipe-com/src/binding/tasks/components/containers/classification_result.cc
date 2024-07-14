@@ -3,7 +3,7 @@
 using namespace mediapipe::tasks::components::containers;
 
 namespace mediapipe::tasks::autoit::components::containers::classification_result {
-	std::shared_ptr<proto::Classifications> Classifications::to_pb2() {
+	std::shared_ptr<proto::Classifications> Classifications::to_pb2() const {
 		auto pb2_obj = std::make_shared<proto::Classifications>();
 
 		if (categories) {
@@ -32,7 +32,7 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 		);
 	}
 
-	std::shared_ptr<proto::ClassificationResult> ClassificationResult::to_pb2() {
+	std::shared_ptr<proto::ClassificationResult> ClassificationResult::to_pb2() const {
 		auto pb2_obj = std::make_shared<proto::ClassificationResult>();
 
 		if (classifications) {

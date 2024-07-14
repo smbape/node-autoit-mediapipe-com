@@ -5,46 +5,36 @@ namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api {
 	using components::containers::rect::NormalizedRect;
 	using image_processing_options::ImageProcessingOptions;
 
-	BaseVisionTaskApi::BaseVisionTaskApi(
+	absl::StatusOr<std::shared_ptr<BaseVisionTaskApi>> BaseVisionTaskApi::create(
 		const CalculatorGraphConfig& graph_config,
-		VisionTaskRunningMode running_mode,
+		vision_task_running_mode::VisionTaskRunningMode running_mode,
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
-		if (running_mode == VisionTaskRunningMode::LIVE_STREAM) {
-			AUTOIT_ASSERT_THROW(packet_callback, "The vision task is in live stream mode, a user-defined result "
-				"callback must be provided.");
-		}
-		else {
-			AUTOIT_ASSERT_THROW(!packet_callback, "The vision task is in image or video mode, a user-defined result "
-				"callback should not be provided.");
-		}
-
-		_runner = mediapipe::autoit::task_runner::create(graph_config, std::move(packet_callback));
-		_running_mode = running_mode;
+		return create(graph_config, running_mode, packet_callback, static_cast<BaseVisionTaskApi*>(nullptr));
 	}
 
-	std::map<std::string, Packet> BaseVisionTaskApi::_process_image_data(const std::map<std::string, Packet>& inputs) {
-		AUTOIT_ASSERT_THROW(_running_mode == VisionTaskRunningMode::IMAGE,
+	absl::StatusOr<std::map<std::string, Packet>> BaseVisionTaskApi::_process_image_data(const std::map<std::string, Packet>& inputs) {
+		MP_ASSERT_RETURN_IF_ERROR(_running_mode == VisionTaskRunningMode::IMAGE,
 			"Task is not initialized with the image mode. Current running mode: "
 			<< StringifyVisionTaskRunningMode(_running_mode));
-		return mediapipe::autoit::AssertAutoItValue(_runner->Process(inputs));
+		return _runner->Process(inputs);
 	}
 
-	std::map<std::string, Packet> BaseVisionTaskApi::_process_video_data(const std::map<std::string, Packet>& inputs) {
-		AUTOIT_ASSERT_THROW(_running_mode == VisionTaskRunningMode::VIDEO,
+	absl::StatusOr<std::map<std::string, Packet>> BaseVisionTaskApi::_process_video_data(const std::map<std::string, Packet>& inputs) {
+		MP_ASSERT_RETURN_IF_ERROR(_running_mode == VisionTaskRunningMode::VIDEO,
 			"Task is not initialized with the video mode. Current running mode: "
 			<< StringifyVisionTaskRunningMode(_running_mode));
-		return mediapipe::autoit::AssertAutoItValue(_runner->Process(inputs));
+		return _runner->Process(inputs);
 	}
 
-	void BaseVisionTaskApi::_send_live_stream_data(const std::map<std::string, Packet>& inputs) {
-		AUTOIT_ASSERT_THROW(_running_mode == VisionTaskRunningMode::LIVE_STREAM,
+	absl::Status BaseVisionTaskApi::_send_live_stream_data(const std::map<std::string, Packet>& inputs) {
+		MP_ASSERT_RETURN_IF_ERROR(_running_mode == VisionTaskRunningMode::LIVE_STREAM,
 			"Task is not initialized with the video mode. Current running mode: "
 			<< StringifyVisionTaskRunningMode(_running_mode));
-		_runner->Send(inputs);
+		return _runner->Send(inputs);
 	}
 
-	NormalizedRect BaseVisionTaskApi::convert_to_normalized_rect(
+	absl::StatusOr<NormalizedRect> BaseVisionTaskApi::convert_to_normalized_rect(
 		std::shared_ptr<image_processing_options::ImageProcessingOptions> options,
 		const mediapipe::Image& image,
 		bool roi_allowed
@@ -60,16 +50,16 @@ namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api {
 			return normalized_rect;
 		}
 
-		AUTOIT_ASSERT_THROW(options->rotation_degrees % 90 == 0, "Expected rotation to be a multiple of 90°.");
+		MP_ASSERT_RETURN_IF_ERROR(options->rotation_degrees % 90 == 0, "Expected rotation to be a multiple of 90°.");
 
 		// Convert to radians counter-clockwise.
 		normalized_rect.rotation = -options->rotation_degrees * M_PI / 180.0;
 
 		if (options->region_of_interest) {
-			AUTOIT_ASSERT_THROW(roi_allowed, "This task doesn't support region-of-interest.");
+			MP_ASSERT_RETURN_IF_ERROR(roi_allowed, "This task doesn't support region-of-interest.");
 			const auto& roi = *options->region_of_interest;
-			AUTOIT_ASSERT_THROW(roi.left < roi.right && roi.top < roi.bottom, "Expected Rect with left < right and top < bottom.");
-			AUTOIT_ASSERT_THROW(roi.left >= 0 && roi.top >= 0 && roi.right <= 1 && roi.bottom <= 1, "Expected Rect values to be in [0,1].");
+			MP_ASSERT_RETURN_IF_ERROR(roi.left < roi.right && roi.top < roi.bottom, "Expected Rect with left < right and top < bottom.");
+			MP_ASSERT_RETURN_IF_ERROR(roi.left >= 0 && roi.top >= 0 && roi.right <= 1 && roi.bottom <= 1, "Expected Rect values to be in [0,1].");
 			normalized_rect.x_center = (roi.left + roi.right) / 2.0;
 			normalized_rect.y_center = (roi.top + roi.bottom) / 2.0;
 			normalized_rect.width = roi.right - roi.left;
@@ -93,8 +83,8 @@ namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api {
 		return normalized_rect;
 	}
 
-	void BaseVisionTaskApi::close() {
-		_runner->Close();
+	absl::Status BaseVisionTaskApi::close() {
+		return _runner->Close();
 	}
 
 	std::shared_ptr<mediapipe::CalculatorGraphConfig> BaseVisionTaskApi::get_graph_config() {

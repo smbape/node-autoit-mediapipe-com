@@ -99,7 +99,7 @@ namespace mediapipe::autoit::solutions::objectron {
 			) {}
 	};
 
-	ObjectronModel get_model_by_name(const std::string& name);
+	[[nodiscard]] absl::StatusOr<ObjectronModel> get_model_by_name(const std::string& name);
 
 	struct CV_EXPORTS_W_SIMPLE ObjectronOutputs {
 		CV_PROP_RW NormalizedLandmarkList landmarks_2d;
@@ -113,7 +113,9 @@ namespace mediapipe::autoit::solutions::objectron {
 
 	class CV_EXPORTS_W Objectron : public ::mediapipe::autoit::solution_base::SolutionBase {
 	public:
-		CV_WRAP Objectron(
+		using SolutionBase::SolutionBase;
+
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<Objectron>> create(
 			bool static_image_mode = False,
 			int max_num_objects = 5,
 			float min_detection_confidence = 0.5,
@@ -124,6 +126,6 @@ namespace mediapipe::autoit::solutions::objectron {
 			const std::tuple<int, int> image_size = noSize()
 		);
 
-		CV_WRAP void process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
+		CV_WRAP [[nodiscard]] absl::Status process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);
 	};
 }

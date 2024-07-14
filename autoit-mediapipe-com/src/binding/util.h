@@ -1,13 +1,44 @@
 #pragma once
 
 #include "mediapipe/framework/calculator.pb.h"
+#include "mediapipe/framework/calculator.pb.h"
+#include "mediapipe/framework/deps/status_macros.h"
 #include "mediapipe/framework/port/file_helpers.h"
 #include "mediapipe/framework/port/status.h"
 #include "mediapipe/framework/timestamp.h"
 
 #include "autoit_bridge_common.h"
+#include "absl/status/status.h"
+#include "absl/status/statusor.h"
 
-#define RaiseAutoItErrorIfNotOk(status) AUTOIT_ASSERT_THROW(status.ok(), ::mediapipe::autoit::StatusCodeToAutoItError(status.code()) << ": " << status.message().data())
+#define MP_THROW_IF_ERROR(status) AUTOIT_ASSERT_THROW(status.ok(), ::mediapipe::autoit::StatusCodeToAutoItError(status.code()) << ": " << status.message().data())
+
+#define MP_ASSERT_RETURN_IF_ERROR( expr, _message ) do { if(!!(expr)) ; else { \
+	std::ostringstream _out; _out << _message;	\
+	auto fmt = "\n%s (%s)\n in %s, file %s, line %d\n";					\
+	int sz = std::snprintf(nullptr, 0, fmt, _out.str().c_str(), #expr, AutoIt_Func, __FILE__, __LINE__);	\
+	std::vector<char> buf(sz + 1);																			\
+	std::sprintf(buf.data(), fmt, _out.str().c_str(), #expr, AutoIt_Func, __FILE__, __LINE__);				\
+	return absl::Status(absl::StatusCode::kFailedPrecondition, buf.data()); 								\
+} } while(0)
+
+#define MP_ASSIGN_OR_THROW( lhs, rexpr ) auto MP_STATUS_MACROS_IMPL_CONCAT_(_status_or_value_, __LINE__) = (rexpr); \
+MP_THROW_IF_ERROR(MP_STATUS_MACROS_IMPL_CONCAT_(_status_or_value_, __LINE__).status()); \
+lhs = std::move(MP_STATUS_MACROS_IMPL_CONCAT_(_status_or_value_, __LINE__)).value()
+
+#define MP_RETURN_HR_IF_ERROR( expr ) do {								\
+MP_STATUS_MACROS_IMPL_ELSE_BLOCKER_										\
+if (mediapipe::status_macro_internal::StatusAdaptorForMacros			\
+  	status_macro_internal_adaptor = {(expr), MEDIAPIPE_LOC}) {			\
+} else {																\
+	absl::Status status = status_macro_internal_adaptor.Consume();		\
+	std::ostringstream _out; _out << ::mediapipe::autoit::StatusCodeToAutoItError(status.code()) << ": " << status.message().data();	\
+	auto fmt = "\n%s (%s)\n in %s, file %s, line %d\n";					\
+	int sz = std::snprintf(nullptr, 0, fmt, _out.str().c_str(), #expr, AutoIt_Func, __FILE__, __LINE__);	\
+	std::vector<char> buf(sz + 1);																			\
+	std::sprintf(buf.data(), fmt, _out.str().c_str(), #expr, AutoIt_Func, __FILE__, __LINE__);				\
+	return E_FAIL; 																							\
+} } while(0)
 
 namespace mediapipe::autoit {
 	inline std::string StatusCodeToAutoItError(const ::absl::StatusCode& code) {
@@ -20,15 +51,6 @@ namespace mediapipe::autoit {
 			return "Not implemented";
 		default:
 			return "Runtime error";
-		}
-	}
-
-	inline void RaiseAutoItErrorIfOverflow(int64_t value, int64_t min, int64_t max) {
-		if (value > max) {
-			AUTOIT_THROW(value << " execeeds the maximum value (" << max << ") the data type can have.");
-		}
-		else if (value < min) {
-			AUTOIT_THROW(value << " goes below the minimum value (" << min << ") the data type can have.");
 		}
 	}
 
@@ -63,29 +85,35 @@ namespace mediapipe::autoit {
 	}
 
 	// Reads a CalculatorGraphConfig from a file. If failed, raises an AutoItError.
-	inline ::mediapipe::CalculatorGraphConfig ReadCalculatorGraphConfigFromFile(const std::string& file_name) {
-		::mediapipe::CalculatorGraphConfig graph_config_proto;
+	[[nodiscard]] inline absl::Status ReadCalculatorGraphConfigFromFile(const std::string& file_name, ::mediapipe::CalculatorGraphConfig& graph_config_proto) {
 		auto status = file::Exists(file_name);
-		AUTOIT_ASSERT_THROW(status.ok(), "File " << file_name << " was not found: " << status.message().data());
+		MP_ASSERT_RETURN_IF_ERROR(status.ok(), "File " << file_name << " was not found: " << status.message().data());
 
 		std::string graph_config_string;
-		RaiseAutoItErrorIfNotOk(file::GetContents(file_name, &graph_config_string, /*read_as_binary=*/true));
+		MP_RETURN_IF_ERROR(file::GetContents(file_name, &graph_config_string, /*read_as_binary=*/true));
 		if (!graph_config_proto.ParseFromArray(graph_config_string.c_str(), graph_config_string.length())) {
-			AUTOIT_THROW("Failed to parse the binary graph: " << file_name);
+			MP_ASSERT_RETURN_IF_ERROR(false, "Failed to parse the binary graph: " << file_name);
 		}
+
+		return absl::OkStatus();
+	}
+
+	// Reads a CalculatorGraphConfig from a file. If failed, raises an AutoItError.
+	inline ::mediapipe::CalculatorGraphConfig ReadCalculatorGraphConfigFromFile(const std::string& file_name) {
+		::mediapipe::CalculatorGraphConfig graph_config_proto;
+		MP_THROW_IF_ERROR(ReadCalculatorGraphConfigFromFile(file_name, graph_config_proto));
 		return graph_config_proto;
 	}
 
-	template <typename T>
-	inline T ParseProto(const std::string& proto_str) {
-		T proto;
-		AUTOIT_ASSERT_THROW(ParseTextProto<T>(proto_str, &proto), "Failed to parse: " << proto_str);
-		return proto;
+	template<typename T>
+	[[nodiscard]] inline absl::Status ParseProto(const std::string& proto_str, T& proto) {
+		MP_ASSERT_RETURN_IF_ERROR(ParseTextProto<T>(proto_str, &proto), "Failed to parse: " << proto_str);
+		return absl::OkStatus();
 	}
 
-	template <typename T>
+	template<typename T>
 	inline auto& AssertAutoItValue(const T& wrapper) {
-		RaiseAutoItErrorIfNotOk(wrapper.status());
+		MP_THROW_IF_ERROR(wrapper.status());
 		return std::move(wrapper).value();
 	}
 
@@ -110,3 +138,9 @@ namespace mediapipe::autoit {
 		return out;
 	}
 }
+
+template<typename Out>
+inline const HRESULT autoit_from(const absl::Status& status, const Out& out_val);
+
+template<typename In, typename Out>
+const HRESULT autoit_from(const absl::StatusOr<In>& status_or, Out& out_val);

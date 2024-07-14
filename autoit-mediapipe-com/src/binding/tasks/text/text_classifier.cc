@@ -16,11 +16,12 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::text::text_classifier {
-	std::shared_ptr<TextClassifierGraphOptions> TextClassifierOptions::to_pb2() {
+	absl::StatusOr<std::shared_ptr<TextClassifierGraphOptions>> TextClassifierOptions::to_pb2() const {
 		auto pb2_obj = std::make_shared<TextClassifierGraphOptions>();
 
 		if (base_options) {
-			pb2_obj->mutable_base_options()->CopyFrom(*base_options->to_pb2());
+			MP_ASSIGN_OR_RETURN(auto base_options_proto, base_options->to_pb2());
+			pb2_obj->mutable_base_options()->CopyFrom(*base_options_proto);
 		}
 
 		if (score_threshold) pb2_obj->mutable_classifier_options()->set_score_threshold(*score_threshold);
@@ -32,27 +33,36 @@ namespace mediapipe::tasks::autoit::text::text_classifier {
 		return pb2_obj;
 	}
 
-	std::shared_ptr<TextClassifier> TextClassifier::create_from_model_path(const std::string& model_path) {
+	absl::StatusOr<std::shared_ptr<TextClassifier>> TextClassifier::create(
+		const CalculatorGraphConfig& graph_config
+	) {
+		using BaseTextTaskApi = core::base_text_task_api::BaseTextTaskApi;
+		return BaseTextTaskApi::create(graph_config, static_cast<TextClassifier*>(nullptr));
+	}
+
+	absl::StatusOr<std::shared_ptr<TextClassifier>> TextClassifier::create_from_model_path(const std::string& model_path) {
 		auto base_options = std::make_shared<BaseOptions>(model_path);
 		return create_from_options(std::make_shared<TextClassifierOptions>(base_options));
 	}
 
-	std::shared_ptr<TextClassifier> TextClassifier::create_from_options(std::shared_ptr<TextClassifierOptions> options) {
+	absl::StatusOr<std::shared_ptr<TextClassifier>> TextClassifier::create_from_options(std::shared_ptr<TextClassifierOptions> options) {
 		TaskInfo task_info;
 		task_info.task_graph = _TASK_GRAPH_NAME;
 		*task_info.input_streams = { _TEXT_TAG + ":" + _TEXT_IN_STREAM_NAME };
 		*task_info.output_streams = { _CLASSIFICATIONS_TAG + ":" + _CLASSIFICATIONS_STREAM_NAME };
-		task_info.task_options = options->to_pb2();
+		MP_ASSIGN_OR_RETURN(task_info.task_options, options->to_pb2());
 
-		return std::make_shared<TextClassifier>(*task_info.generate_graph_config());
+		MP_ASSIGN_OR_RETURN(auto config, task_info.generate_graph_config());
+
+		return create(*config);
 	}
 
-	std::shared_ptr<TextClassifierResult> TextClassifier::classify(const std::string& text) {
-		auto output_packets = mediapipe::autoit::AssertAutoItValue(_runner->Process({
+	absl::StatusOr<std::shared_ptr<TextClassifierResult>> TextClassifier::classify(const std::string& text) {
+		MP_ASSIGN_OR_RETURN(auto output_packets, _runner->Process({
 			{ _TEXT_IN_STREAM_NAME, std::move(MakePacket<std::string>(text)) }
 			}));
 
-		const auto& classification_result_proto = GetContent<mediapipe::tasks::components::containers::proto::ClassificationResult>(output_packets.at(_CLASSIFICATIONS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& classification_result_proto, mediapipe::tasks::components::containers::proto::ClassificationResult, output_packets.at(_CLASSIFICATIONS_STREAM_NAME));
 		return TextClassifierResult::create_from_pb2(classification_result_proto);
 	}
 }

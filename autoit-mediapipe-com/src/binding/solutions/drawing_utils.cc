@@ -7,7 +7,12 @@ using namespace google::protobuf::autoit::cmessage;
 static const float _PRESENCE_THRESHOLD = 0.5f;
 static const float _VISIBILITY_THRESHOLD = 0.5f;
 
-namespace mediapipe::autoit::solutions::drawing_utils {
+namespace {
+	using namespace mediapipe::autoit::solutions::drawing_utils;
+	using namespace mediapipe::autoit::solutions;
+	using namespace mediapipe::autoit;
+	using namespace mediapipe;
+
 	/**
 	 * Usable AlmostEqual function
 	 * @param  A       [description]
@@ -16,7 +21,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 	 * @see https://stackoverflow.com/a/17467
 	 * @return         [description]
 	 */
-	static bool AlmostEqual2sComplement(float A, float B, int maxUlps = 4)
+	inline bool AlmostEqual2sComplement(float A, float B, int maxUlps = 4)
 	{
 		// Make sure maxUlps is non-negative and small enough that the    
 		// default NAN won't compare as equal to anything.    
@@ -35,12 +40,12 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		return false;
 	}
 
-	static bool is_valid_normalized_value(float value) {
+	inline bool is_valid_normalized_value(float value) {
 		return (value > 0 || AlmostEqual2sComplement(0, value)) &&
 			(value < 1 || AlmostEqual2sComplement(1, value));
 	}
 
-	static std::shared_ptr<cv::Point> _normalized_to_pixel_coordinates(
+	inline std::shared_ptr<cv::Point> _normalized_to_pixel_coordinates(
 		float normalized_x,
 		float normalized_y,
 		int image_width,
@@ -56,65 +61,9 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		return std::make_shared<cv::Point>(x_px, y_px);
 	}
 
-	static inline cv::Scalar color_to_scalar(std::tuple<int, int, int> color) {
+	inline cv::Scalar color_to_scalar(std::tuple<int, int, int> color) {
 		const auto& [b, g, r] = color;
 		return cv::Scalar(b, g, r);
-	}
-
-	void draw_detection(
-		cv::Mat& image,
-		const Detection& detection,
-		const DrawingSpec& keypoint_drawing_spec,
-		const DrawingSpec& bbox_drawing_spec
-	) {
-		if (!detection.has_location_data()) {
-			return;
-		}
-
-		const auto& location = detection.location_data();
-		AUTOIT_ASSERT_THROW(location.format() == LocationData::RELATIVE_BOUNDING_BOX,
-			"LocationData must be relative for this drawing funtion to work.");
-
-		auto image_rows = image.rows;
-		auto image_cols = image.cols;
-		auto color = color_to_scalar(keypoint_drawing_spec.color);
-
-		for (const auto& keypoint : location.relative_keypoints()) {
-			auto keypoint_px = _normalized_to_pixel_coordinates(keypoint.x(), keypoint.y(), image_cols, image_rows);
-			AUTOIT_ASSERT_THROW(keypoint_px.get(), "Failed to get keypoint pixel coordinates");
-			cv::circle(
-				image,
-				*keypoint_px,
-				keypoint_drawing_spec.circle_radius,
-				color,
-				keypoint_drawing_spec.thickness
-			);
-		}
-
-		if (!HasField(location, "relative_bounding_box")) {
-			return;
-		}
-
-		const auto& relative_bounding_box = location.relative_bounding_box();
-
-		auto rect_start_point = _normalized_to_pixel_coordinates(
-			relative_bounding_box.xmin(), relative_bounding_box.ymin(), image_cols,
-			image_rows);
-		AUTOIT_ASSERT_THROW(rect_start_point.get(), "Failed to get relative_bounding_box pixel coordinates");
-
-		auto rect_end_point = _normalized_to_pixel_coordinates(
-			relative_bounding_box.xmin() + relative_bounding_box.width(),
-			relative_bounding_box.ymin() + relative_bounding_box.height(), image_cols,
-			image_rows);
-		AUTOIT_ASSERT_THROW(rect_end_point.get(), "Failed to get relative_bounding_box pixel coordinates");
-
-		cv::rectangle(
-			image,
-			*rect_start_point,
-			*rect_end_point,
-			color_to_scalar(bbox_drawing_spec.color),
-			bbox_drawing_spec.thickness
-		);
 	}
 
 	template<typename _Tp>
@@ -204,7 +153,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 	};
 
 	template<typename _LandmarkType, typename _ConnectionType>
-	static void _draw_landmarks(
+	[[nodiscard]] absl::Status _draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
@@ -219,10 +168,12 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		int idx = -1;
 		for (const auto& landmark : landmark_list.landmark()) {
 			idx++;
+			MP_ASSIGN_OR_RETURN(auto landmark_has_visibility, HasField(landmark, "visibility"));
+			MP_ASSIGN_OR_RETURN(auto landmark_has_presence, HasField(landmark, "presence"));
 
 			if (
-				(HasField(landmark, "visibility") && landmark.visibility() < _VISIBILITY_THRESHOLD)
-				|| (HasField(landmark, "presence") && landmark.presence() < _PRESENCE_THRESHOLD)
+				(landmark_has_visibility && landmark.visibility() < _VISIBILITY_THRESHOLD)
+				|| (landmark_has_presence && landmark.presence() < _PRESENCE_THRESHOLD)
 				) {
 				continue;
 			}
@@ -240,7 +191,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 			for (const auto& connection : connections) {
 				auto start_idx = std::get<0>(connection);
 				auto end_idx = std::get<1>(connection);
-				AUTOIT_ASSERT_THROW(0 <= start_idx < num_landmarks && 0 <= end_idx < num_landmarks,
+				MP_ASSERT_RETURN_IF_ERROR(0 <= start_idx < num_landmarks && 0 <= end_idx < num_landmarks,
 					"Landmark index is out of range. Invalid connection "
 					"from landmark " << start_idx << " to landmark " << end_idx << ".");
 
@@ -263,7 +214,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		}
 
 		if (!is_drawing_landmarks || OptionalDrawingSpec<_LandmarkType>::empty(landmark_drawing_spec)) {
-			return;
+			return absl::OkStatus();
 		}
 
 		// Draws landmark points after finishing the connection lines, which is
@@ -288,9 +239,72 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 			cv::circle(image, landmark_px, drawing_spec.circle_radius,
 				color_to_scalar(drawing_spec.color), drawing_spec.thickness);
 		}
+
+		return absl::OkStatus();
+	}
+}
+
+namespace mediapipe::autoit::solutions::drawing_utils {
+	absl::Status draw_detection(
+		cv::Mat& image,
+		const Detection& detection,
+		const DrawingSpec& keypoint_drawing_spec,
+		const DrawingSpec& bbox_drawing_spec
+	) {
+		if (!detection.has_location_data()) {
+			return absl::OkStatus();
+		}
+
+		const auto& location = detection.location_data();
+		MP_ASSERT_RETURN_IF_ERROR(location.format() == LocationData::RELATIVE_BOUNDING_BOX,
+			"LocationData must be relative for this drawing funtion to work.");
+
+		auto image_rows = image.rows;
+		auto image_cols = image.cols;
+		auto color = color_to_scalar(keypoint_drawing_spec.color);
+
+		for (const auto& keypoint : location.relative_keypoints()) {
+			auto keypoint_px = _normalized_to_pixel_coordinates(keypoint.x(), keypoint.y(), image_cols, image_rows);
+			MP_ASSERT_RETURN_IF_ERROR(keypoint_px.get(), "Failed to get keypoint pixel coordinates");
+			cv::circle(
+				image,
+				*keypoint_px,
+				keypoint_drawing_spec.circle_radius,
+				color,
+				keypoint_drawing_spec.thickness
+			);
+		}
+
+		MP_ASSIGN_OR_RETURN(auto location_has_relative_bounding_box, HasField(location, "relative_bounding_box"));
+		if (!location_has_relative_bounding_box) {
+			return absl::OkStatus();
+		}
+
+		const auto& relative_bounding_box = location.relative_bounding_box();
+
+		auto rect_start_point = _normalized_to_pixel_coordinates(
+			relative_bounding_box.xmin(), relative_bounding_box.ymin(), image_cols,
+			image_rows);
+		MP_ASSERT_RETURN_IF_ERROR(rect_start_point.get(), "Failed to get relative_bounding_box pixel coordinates");
+
+		auto rect_end_point = _normalized_to_pixel_coordinates(
+			relative_bounding_box.xmin() + relative_bounding_box.width(),
+			relative_bounding_box.ymin() + relative_bounding_box.height(), image_cols,
+			image_rows);
+		MP_ASSERT_RETURN_IF_ERROR(rect_end_point.get(), "Failed to get relative_bounding_box pixel coordinates");
+
+		cv::rectangle(
+			image,
+			*rect_start_point,
+			*rect_end_point,
+			color_to_scalar(bbox_drawing_spec.color),
+			bbox_drawing_spec.thickness
+		);
+
+		return absl::OkStatus();
 	}
 
-	void draw_landmarks(
+	absl::Status draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
@@ -298,10 +312,10 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const DrawingSpec& connection_drawing_spec,
 		const bool is_drawing_landmarks
 	) {
-		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
+		return _draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
 	}
 
-	void draw_landmarks(
+	absl::Status draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
@@ -309,10 +323,10 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const DrawingSpec& connection_drawing_spec,
 		const bool is_drawing_landmarks
 	) {
-		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
+		return _draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
 	}
 
-	void draw_landmarks(
+	absl::Status draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
@@ -320,10 +334,10 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec,
 		const bool is_drawing_landmarks
 	) {
-		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
+		return _draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
 	}
 
-	void draw_landmarks(
+	absl::Status draw_landmarks(
 		cv::Mat& image,
 		const NormalizedLandmarkList& landmark_list,
 		const std::vector<std::tuple<int, int>>& connections,
@@ -331,7 +345,7 @@ namespace mediapipe::autoit::solutions::drawing_utils {
 		const std::map<int, std::map<int, DrawingSpec>>& connection_drawing_spec,
 		const bool is_drawing_landmarks
 	) {
-		_draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
+		return _draw_landmarks(image, landmark_list, connections, landmark_drawing_spec, connection_drawing_spec, is_drawing_landmarks);
 	}
 
 	static cv::Mat clip(cv::Mat a, float a_min, float a_max) {

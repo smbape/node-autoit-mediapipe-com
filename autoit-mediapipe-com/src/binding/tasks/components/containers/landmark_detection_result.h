@@ -25,7 +25,7 @@ namespace mediapipe::tasks::autoit::components::containers::landmark_detection_r
 			rect(rect)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::containers::proto::LandmarksDetectionResult> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::tasks::containers::proto::LandmarksDetectionResult> to_pb2() const;
 		CV_WRAP static std::shared_ptr<LandmarksDetectionResult> create_from_pb2(const mediapipe::tasks::containers::proto::LandmarksDetectionResult& pb2_obj);
 
 		bool operator== (const LandmarksDetectionResult& other) const {

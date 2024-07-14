@@ -1,18 +1,18 @@
 #include "binding/tasks/components/containers/audio_data.h"
 
 namespace mediapipe::tasks::autoit::components::containers::audio_data {
-	void AudioData::load_from_mat(cv::Mat src, int offset, int size) {
-		AUTOIT_ASSERT_THROW(src.dims == 2, "The audio data is expected to have at most 2 dimensions");
-		AUTOIT_ASSERT_THROW(src.cols == 1 || src.channels() == 1, "The audio data is expected be a Nx1 matrix");
+	absl::Status AudioData::load_from_mat(cv::Mat src, int offset, int size) {
+		MP_ASSERT_RETURN_IF_ERROR(src.dims == 2, "The audio data is expected to have at most 2 dimensions");
+		MP_ASSERT_RETURN_IF_ERROR(src.cols == 1 || src.channels() == 1, "The audio data is expected be a Nx1 matrix");
 
 		int channels = src.cols * src.channels();
 
 		if (channels == 1) {
-			AUTOIT_ASSERT_THROW(_audio_format.num_channels == 1, "Input audio is mono, but the audio data is expected "
+			MP_ASSERT_RETURN_IF_ERROR(_audio_format.num_channels == 1, "Input audio is mono, but the audio data is expected "
 				"to have " << _audio_format.num_channels << " channels.");
 		}
 		else {
-			AUTOIT_ASSERT_THROW(channels == _audio_format.num_channels, "Input audio contains an invalid number of channels. "
+			MP_ASSERT_RETURN_IF_ERROR(channels == _audio_format.num_channels, "Input audio contains an invalid number of channels. "
 				"Expect " << _audio_format.num_channels << ".");
 		}
 
@@ -22,7 +22,7 @@ namespace mediapipe::tasks::autoit::components::containers::audio_data {
 			size = src.rows;
 		}
 
-		AUTOIT_ASSERT_THROW(
+		MP_ASSERT_RETURN_IF_ERROR(
 			offset + size <= src.rows,
 			"Index out of range. offset " << offset << " + size " << size <<
 			" should be <= src's length: " << src.rows);
@@ -48,9 +48,9 @@ namespace mediapipe::tasks::autoit::components::containers::audio_data {
 		}
 	}
 
-	std::shared_ptr<AudioData> AudioData::create_from_mat(cv::Mat src, const std::optional<float>& sample_rate) {
+	absl::StatusOr<std::shared_ptr<AudioData>> AudioData::create_from_mat(cv::Mat src, const std::optional<float>& sample_rate) {
 		auto obj = std::make_shared<AudioData>(src.rows, AudioDataFormat(src.cols * src.channels(), sample_rate));
-		obj->load_from_mat(src);
+		MP_RETURN_IF_ERROR(obj->load_from_mat(src));
 		return obj;
 	}
 

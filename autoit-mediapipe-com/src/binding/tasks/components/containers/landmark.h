@@ -23,7 +23,7 @@ namespace mediapipe::tasks::autoit::components::containers::landmark {
 			presence(presence)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::Landmark> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::Landmark> to_pb2() const;
 		CV_WRAP static std::shared_ptr<landmark::Landmark> create_from_pb2(const mediapipe::Landmark& pb2_obj);
 
 		bool operator== (const Landmark& other) const {
@@ -60,7 +60,7 @@ namespace mediapipe::tasks::autoit::components::containers::landmark {
 			presence(presence)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::NormalizedLandmark> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::NormalizedLandmark> to_pb2() const;
 		CV_WRAP static std::shared_ptr<landmark::NormalizedLandmark> create_from_pb2(const mediapipe::NormalizedLandmark& pb2_obj);
 
 		bool operator== (const NormalizedLandmark& other) const {

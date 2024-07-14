@@ -13,13 +13,13 @@ namespace {
 absl::Mutex callback_mutex;
 
 namespace mediapipe::autoit::task_runner {
-	std::shared_ptr<TaskRunner> create(const CalculatorGraphConfig& graph_config, PacketsCallback packets_callback) {
+	absl::StatusOr<std::shared_ptr<TaskRunner>> create(const CalculatorGraphConfig& graph_config, PacketsCallback packets_callback) {
 		mediapipe::tasks::core::PacketsCallback callback = nullptr;
 
 		if (packets_callback) {
 			callback = [packets_callback](absl::StatusOr<PacketMap> output_packets) {
 				absl::MutexLock lock(&callback_mutex);
-				RaiseAutoItErrorIfNotOk(output_packets.status());
+				MP_THROW_IF_ERROR(output_packets.status()); // There is no other choice than throw in a callback to stop the execution
 				packets_callback(output_packets.value());
 				return absl::OkStatus();
 			};
@@ -32,22 +32,20 @@ namespace mediapipe::autoit::task_runner {
 						 << gpu_resources_.status();
 		  gpu_resources_ = nullptr;
 		}
-		auto task_runner = TaskRunner::Create(
+		MP_ASSIGN_OR_RETURN(auto task_runner, TaskRunner::Create(
 			std::move(graph_config),
 			absl::make_unique<MediaPipeBuiltinOpResolver>(),
 			std::move(callback),
 			/* default_executor= */ nullptr,
-			/* input_side_packes= */ std::nullopt, std::move(*gpu_resources_));
+			/* input_side_packes= */ std::nullopt, std::move(*gpu_resources_)));
 #else
-		auto task_runner = TaskRunner::Create(
+		MP_ASSIGN_OR_RETURN(auto task_runner, TaskRunner::Create(
 			std::move(graph_config),
 			absl::make_unique<MediaPipeBuiltinOpResolver>(),
-			std::move(callback));
+			std::move(callback)));
 #endif  // !MEDIAPIPE_DISABLE_GPU
 
-		RaiseAutoItErrorIfNotOk(task_runner.status());
-
-		return std::shared_ptr<TaskRunner>(task_runner.value().release());
+		return std::shared_ptr<TaskRunner>(task_runner.release());
 
 	}
 }

@@ -25,7 +25,7 @@ namespace mediapipe::tasks::autoit::core::task_info {
 			task_options(task_options)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::CalculatorGraphConfig> generate_graph_config(bool enable_flow_limiting = true);
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::CalculatorGraphConfig>> generate_graph_config(bool enable_flow_limiting = true);
 
 		CV_PROP_RW std::string task_graph;
 		CV_PROP_RW std::shared_ptr<std::vector<std::string>> input_streams;

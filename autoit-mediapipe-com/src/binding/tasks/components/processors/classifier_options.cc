@@ -3,7 +3,7 @@
 using namespace mediapipe::tasks::components::processors;
 
 namespace mediapipe::tasks::autoit::components::processors::classifier_options {
-	std::shared_ptr<proto::ClassifierOptions> ClassifierOptions::to_pb2() {
+	std::shared_ptr<proto::ClassifierOptions> ClassifierOptions::to_pb2() const {
 		auto pb2_obj = std::make_shared<proto::ClassifierOptions>();
 
 		if (score_threshold) pb2_obj->set_score_threshold(*score_threshold);

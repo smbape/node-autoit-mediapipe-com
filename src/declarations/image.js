@@ -10,22 +10,22 @@ module.exports = ({make_shared}) => [
 
     ["mediapipe.Image.Image", "mediapipe.Image.Image", [], [], "", ""],
 
-    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", `/Output=${ make_shared }<Image>(std::shared_ptr<ImageFrame>($0.release()))`], [
+    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateSharedImage"], [
         ["mediapipe::ImageFormat::Format", "image_format", "", []],
         ["cv::Mat", "image", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", `/Output=${ make_shared }<Image>(std::shared_ptr<ImageFrame>($0.release()))`], [
+    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateSharedImage"], [
         ["cv::Mat", "image", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", `/Output=${ make_shared }<Image>(std::shared_ptr<ImageFrame>($0.release()))`], [
+    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateSharedImage"], [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
-    ["mediapipe.Image.create_from_file", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateImageFrame", `/Output=${ make_shared }<Image>(std::shared_ptr<ImageFrame>($0.release()))`], [
+    ["mediapipe.Image.create_from_file", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateSharedImage"], [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 

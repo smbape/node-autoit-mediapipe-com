@@ -61,11 +61,14 @@ namespace {
 }
 
 namespace mediapipe::tasks::autoit::audio::audio_embedder {
-	std::shared_ptr<AudioEmbedderGraphOptions> AudioEmbedderOptions::to_pb2() {
+	using EmbeddingResult = mediapipe::tasks::components::containers::proto::EmbeddingResult;
+
+	absl::StatusOr<std::shared_ptr<AudioEmbedderGraphOptions>> AudioEmbedderOptions::to_pb2() const {
 		auto pb2_obj = std::make_shared<AudioEmbedderGraphOptions>();
 
 		if (base_options) {
-			pb2_obj->mutable_base_options()->CopyFrom(*base_options->to_pb2());
+			MP_ASSIGN_OR_RETURN(auto base_options_proto, base_options->to_pb2());
+			pb2_obj->mutable_base_options()->CopyFrom(*base_options_proto);
 		}
 		pb2_obj->mutable_base_options()->set_use_stream_mode(running_mode != AudioTaskRunningMode::AUDIO_CLIPS);
 		if (l2_normalize) pb2_obj->mutable_embedder_options()->set_l2_normalize(*l2_normalize);
@@ -74,16 +77,25 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 		return pb2_obj;
 	}
 
-	std::shared_ptr<AudioEmbedder> AudioEmbedder::create_from_model_path(const std::string& model_path) {
+	absl::StatusOr<std::shared_ptr<AudioEmbedder>> AudioEmbedder::create(
+		const CalculatorGraphConfig& graph_config,
+		AudioTaskRunningMode running_mode,
+		mediapipe::autoit::PacketsCallback packet_callback
+	) {
+		using BaseAudioTaskApi = core::base_audio_task_api::BaseAudioTaskApi;
+		return BaseAudioTaskApi::create(graph_config, running_mode, packet_callback, static_cast<AudioEmbedder*>(nullptr));
+	}
+
+	absl::StatusOr<std::shared_ptr<AudioEmbedder>> AudioEmbedder::create_from_model_path(const std::string& model_path) {
 		auto base_options = std::make_shared<BaseOptions>(model_path);
 		return create_from_options(std::make_shared<AudioEmbedderOptions>(base_options, AudioTaskRunningMode::AUDIO_CLIPS));
 	}
 
-	std::shared_ptr<AudioEmbedder> AudioEmbedder::create_from_options(std::shared_ptr<AudioEmbedderOptions> options) {
-		PacketsCallback packets_callback = nullptr;
+	absl::StatusOr<std::shared_ptr<AudioEmbedder>> AudioEmbedder::create_from_options(std::shared_ptr<AudioEmbedderOptions> options) {
+		PacketsCallback packet_callback = nullptr;
 
 		if (options->result_callback) {
-			packets_callback = [options](const PacketMap& output_packets) {
+			packet_callback = [options](const PacketMap& output_packets) {
 				auto timestamp_ms = output_packets.at(_EMBEDDINGS_STREAM_NAME).Timestamp().Value() / _MICRO_SECONDS_PER_MILLISECOND;
 
 				if (output_packets.at(_EMBEDDINGS_STREAM_NAME).IsEmpty()) {
@@ -91,7 +103,7 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 					return;
 				}
 
-				const auto& embedding_result_proto = GetContent<mediapipe::tasks::components::containers::proto::EmbeddingResult>(output_packets.at(_EMBEDDINGS_STREAM_NAME));
+				MP_PACKET_ASSIGN_OR_THROW(const auto& embedding_result_proto, EmbeddingResult, output_packets.at(_EMBEDDINGS_STREAM_NAME)); // There is no other choice than throw in a callback to stop the execution
 				options->result_callback(
 					*AudioEmbedderResult::create_from_pb2(embedding_result_proto),
 					timestamp_ms
@@ -109,38 +121,40 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 			_EMBEDDINGS_TAG + ":" + _EMBEDDINGS_STREAM_NAME,
 			_TIMESTAMPED_EMBEDDINGS_TAG + ":" + _TIMESTAMPED_EMBEDDINGS_STREAM_NAME
 		};
-		task_info.task_options = options->to_pb2();
+		MP_ASSIGN_OR_RETURN(task_info.task_options, options->to_pb2());
 
-		return std::make_shared<AudioEmbedder>(
-			*task_info.generate_graph_config(false),
+		MP_ASSIGN_OR_RETURN(auto config, task_info.generate_graph_config(false));
+
+		return create(
+			*config,
 			options->running_mode,
-			std::move(packets_callback)
+			std::move(packet_callback)
 			);
 	}
 
-	void AudioEmbedder::embed(std::vector<std::shared_ptr<AudioEmbedderResult>>& output_list, const AudioData& audio_clip) {
-		AUTOIT_ASSERT_THROW(audio_clip.audio_format().sample_rate, "Must provide the audio sample rate in audio data.");
+	absl::Status AudioEmbedder::embed(std::vector<std::shared_ptr<AudioEmbedderResult>>& output_list, const AudioData& audio_clip) {
+		MP_ASSERT_RETURN_IF_ERROR(audio_clip.audio_format().sample_rate, "Must provide the audio sample rate in audio data.");
 		auto packet = create_matrix(audio_clip.buffer(), true);
 
-		auto output_packets = _process_audio_clip({
+		MP_ASSIGN_OR_RETURN(auto output_packets, _process_audio_clip({
 			{ _AUDIO_IN_STREAM_NAME, std::move(*std::move(packet)) },
 			{ _SAMPLE_RATE_IN_STREAM_NAME, std::move(MakePacket<double>(*audio_clip.audio_format().sample_rate)) },
-			});
+			}));
 
-		const auto& embedding_result_proto_list = GetContent<std::vector<mediapipe::tasks::components::containers::proto::EmbeddingResult>>(output_packets.at(_TIMESTAMPED_EMBEDDINGS_STREAM_NAME));
+		MP_PACKET_ASSIGN_OR_RETURN(const auto& embedding_result_proto_list, std::vector<EmbeddingResult>, output_packets.at(_TIMESTAMPED_EMBEDDINGS_STREAM_NAME));
 		for (const auto& embedding_result_proto : embedding_result_proto_list) {
 			output_list.push_back(AudioEmbedderResult::create_from_pb2(embedding_result_proto));
 		}
 	}
 
-	void AudioEmbedder::embed_async(const AudioData& audio_block, int64_t timestamp_ms) {
-		AUTOIT_ASSERT_THROW(audio_block.audio_format().sample_rate, "Must provide the audio sample rate in audio data.");
+	absl::Status AudioEmbedder::embed_async(const AudioData& audio_block, int64_t timestamp_ms) {
+		MP_ASSERT_RETURN_IF_ERROR(audio_block.audio_format().sample_rate, "Must provide the audio sample rate in audio data.");
 		if (!_default_sample_rate) {
 			_default_sample_rate = audio_block.audio_format().sample_rate;
-			_set_sample_rate(_SAMPLE_RATE_IN_STREAM_NAME, *_default_sample_rate);
+			MP_RETURN_IF_ERROR(_set_sample_rate(_SAMPLE_RATE_IN_STREAM_NAME, *_default_sample_rate));
 		}
 		else {
-			AUTOIT_ASSERT_THROW(_default_sample_rate == audio_block.audio_format().sample_rate,
+			MP_ASSERT_RETURN_IF_ERROR(_default_sample_rate == audio_block.audio_format().sample_rate,
 				"The audio sample rate provided in audio data: "
 				<< optional_to_string(audio_block.audio_format().sample_rate) << " is inconsistent with "
 				"the previously received: " << optional_to_string(_default_sample_rate) << "."
@@ -149,12 +163,12 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 
 		auto packet = create_matrix(audio_block.buffer(), true);
 
-		_send_audio_stream_data({
+		return _send_audio_stream_data({
 			{ _AUDIO_IN_STREAM_NAME, std::move(std::move(packet)->At(Timestamp(timestamp_ms * _MICRO_SECONDS_PER_MILLISECOND))) }
 			});
 	}
 
-	float AudioEmbedder::cosine_similarity(const Embedding& u, const Embedding& v) {
+	absl::StatusOr<float> AudioEmbedder::cosine_similarity(const Embedding& u, const Embedding& v) {
 		return cosine_similarity::cosine_similarity(u, v);
 	}
 }

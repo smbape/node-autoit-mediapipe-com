@@ -22,7 +22,7 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 			keypoints(keypoints)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::Detection> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::Detection> to_pb2() const;
 		CV_WRAP static std::shared_ptr<detections::Detection> create_from_pb2(const mediapipe::Detection& pb2_obj);
 
 		bool operator== (const Detection& other) const {
@@ -47,7 +47,7 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 			detections(detections)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::DetectionList> to_pb2();
+		CV_WRAP std::shared_ptr<mediapipe::DetectionList> to_pb2() const;
 		CV_WRAP static std::shared_ptr<DetectionResult> create_from_pb2(const mediapipe::DetectionList& pb2_obj);
 
 		bool operator== (const DetectionResult& other) const {

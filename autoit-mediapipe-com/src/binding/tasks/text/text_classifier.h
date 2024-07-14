@@ -32,7 +32,7 @@ namespace mediapipe::tasks::autoit::text::text_classifier {
 			category_denylist(category_denylist)
 		{}
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions> to_pb2();
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions>> to_pb2() const;
 
 		CV_PROP_RW std::shared_ptr<autoit::core::base_options::BaseOptions> base_options;
 		CV_PROP_RW std::optional<std::string> display_names_locale;
@@ -46,8 +46,11 @@ namespace mediapipe::tasks::autoit::text::text_classifier {
 	public:
 		using core::base_text_task_api::BaseTextTaskApi::BaseTextTaskApi;
 
-		CV_WRAP static std::shared_ptr<TextClassifier> create_from_model_path(const std::string& model_path);
-		CV_WRAP static std::shared_ptr<TextClassifier> create_from_options(std::shared_ptr<TextClassifierOptions> options);
-		CV_WRAP std::shared_ptr<TextClassifierResult> classify(const std::string& text);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<TextClassifier>> create(
+			const CalculatorGraphConfig& graph_config
+		);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<TextClassifier>> create_from_model_path(const std::string& model_path);
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<TextClassifier>> create_from_options(std::shared_ptr<TextClassifierOptions> options);
+		CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<TextClassifierResult>> classify(const std::string& text);
 	};
 }
