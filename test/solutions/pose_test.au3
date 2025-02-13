@@ -128,7 +128,7 @@ Func test_on_image($id, $static_image_mode, $model_complexity, $num_frames)
 		_AssertMatDiffLess( _
 				_world_landmarks_list_to_array($results("pose_world_landmarks")), _
 				$EXPECTED_POSE_WORLD_LANDMARKS, $WORLD_DIFF_THRESHOLD)
-		_AssertMatGreaterEqual( _
+		_AssertGreaterEqual( _
 				_segmentation_iou($expected_segmentation, $segmentation), _
 				$IOU_THRESHOLD)
 	Next
@@ -147,8 +147,8 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	Local $expected_world = $storage.getNode("predictions_world").mat()
 
 	; Set threshold for comparing actual and expected predictions in pixels.
-	Local Const $diff_threshold = 15 ; pixels
-	Local Const $world_diff_threshold = 0.1
+	Local Const $DIFF_THRESHOLD = 15 ; pixels
+	Local Const $WORLD_DIFF_THRESHOLD = 0.1
 
 	Local $video_path = @ScriptDir & "/testdata/pose_squats.mp4"
 
@@ -194,8 +194,8 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	$storage.write("predictions_world", $actual_world)
 	$storage.release()
 
-	_AssertMatDiffLess(_MatSliceLastDim($actual, 0, 2), _MatSliceLastDim($expected, 0, 2), $diff_threshold)
-	_AssertMatDiffLess($actual_world, $expected_world, $world_diff_threshold)
+	_AssertMatDiffLess(_MatSliceLastDim($actual, 0, 2), _MatSliceLastDim($expected, 0, 2), $DIFF_THRESHOLD)
+	_AssertMatDiffLess($actual_world, $expected_world, $WORLD_DIFF_THRESHOLD)
 EndFunc   ;==>test_on_video
 
 Func _get_output_path($id, $name)

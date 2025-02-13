@@ -1,9 +1,12 @@
 #pragma once
 
-#include "autoit_bridge.h"
-#include "binding/util.h"
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/map_field.h>
+#include <google/protobuf/stubs/common.h>
+#include <opencv2/core/cvdef.h>
+
+#include "binding/util.h"
+
+#include <autoit_bridge.h>
 
 namespace google::protobuf {
 
@@ -83,11 +86,11 @@ namespace google::protobuf {
 			std::shared_ptr<FieldDescriptor> field_descriptor;
 		};
 
-		[[nodiscard]] absl::Status AutoItToMapKey(const FieldDescriptor* parent_field_descriptor, _variant_t arg, MapKey* key);
-		[[nodiscard]] absl::Status AutoItToMapValueRef(const FieldDescriptor* parent_field_descriptor, _variant_t arg,
+		[[nodiscard]] absl::Status AnyObjectToMapKey(const FieldDescriptor* parent_field_descriptor, _variant_t arg, MapKey* key);
+		[[nodiscard]] absl::Status AnyObjectToMapValueRef(const FieldDescriptor* parent_field_descriptor, _variant_t arg,
 			bool allow_unknown_enum_values,
 			MapValueRef* value_ref);
-		[[nodiscard]] absl::StatusOr<_variant_t> MapKeyToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapKey& key);
-		[[nodiscard]] absl::StatusOr<_variant_t> MapValueRefToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapValueRef& value);
+		[[nodiscard]] absl::StatusOr<_variant_t> MapKeyToAnyObject(const FieldDescriptor* parent_field_descriptor, const MapKey& key);
+		[[nodiscard]] absl::StatusOr<_variant_t> MapValueRefToAnyObject(const FieldDescriptor* parent_field_descriptor, const MapValueRef& value);
 	}
 }

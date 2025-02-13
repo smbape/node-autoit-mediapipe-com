@@ -1,6 +1,7 @@
 #include <cmath>
-#include "google/protobuf/descriptor.pb.h"
-#include "google/protobuf/message.h"
+#include <google/protobuf/descriptor.pb.h>
+#include <google/protobuf/message.h>
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/message.h"
 #include "binding/map_container.h"
 #include "binding/repeated_container.h"
@@ -439,22 +440,22 @@ namespace google::protobuf::autoit::cmessage {
 			const VARIANT* in_val = &value;
 
 			if (field_descriptor->is_map()) {
-				MapContainer autoit_container;
-				autoit_container.message = ::autoit::reference_internal(&message);
-				autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+				MapContainer internal_container;
+				internal_container.message = ::autoit::reference_internal(&message);
+				internal_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
 				std::vector<std::pair<_variant_t, _variant_t>> value_fields;
 				HRESULT hr = autoit_to(in_val, value_fields);
 				MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), "value of field " << field_name << " is not a map");
-				MP_RETURN_IF_ERROR(autoit_container.SetFields(value_fields));
+				MP_RETURN_IF_ERROR(internal_container.SetFields(value_fields));
 			}
 			else if (field_descriptor->is_repeated()) {
-				RepeatedContainer autoit_container;
-				autoit_container.message = ::autoit::reference_internal(&message);
-				autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+				RepeatedContainer internal_container;
+				internal_container.message = ::autoit::reference_internal(&message);
+				internal_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
 				std::vector<_variant_t> value_items;
 				HRESULT hr = autoit_to(in_val, value_items);
 				MP_ASSERT_RETURN_IF_ERROR(SUCCEEDED(hr), "value of field " << field_name << " is not a list");
-				MP_RETURN_IF_ERROR(autoit_container.Extend(value_items));
+				MP_RETURN_IF_ERROR(internal_container.Extend(value_items));
 			}
 			else if (field_descriptor->cpp_type() == FieldDescriptor::CPPTYPE_MESSAGE) {
 				std::map<std::string, _variant_t> sub_attrs;
@@ -515,16 +516,16 @@ namespace google::protobuf::autoit::cmessage {
 		HRESULT hr = S_OK;
 
 		if (field_descriptor->is_map()) {
-			MapContainer autoit_container;
-			autoit_container.message = ::autoit::reference_internal(&message);
-			autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
-			hr = autoit_from(autoit_container, out_val);
+			MapContainer internal_container;
+			internal_container.message = ::autoit::reference_internal(&message);
+			internal_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+			hr = autoit_from(internal_container, out_val);
 		}
 		else if (field_descriptor->is_repeated()) {
-			RepeatedContainer autoit_container;
-			autoit_container.message = ::autoit::reference_internal(&message);
-			autoit_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
-			hr = autoit_from(autoit_container, out_val);
+			RepeatedContainer internal_container;
+			internal_container.message = ::autoit::reference_internal(&message);
+			internal_container.field_descriptor = ::autoit::reference_internal(field_descriptor);
+			hr = autoit_from(internal_container, out_val);
 		}
 		else if (field_descriptor->cpp_type() ==
 			FieldDescriptor::CPPTYPE_MESSAGE) {

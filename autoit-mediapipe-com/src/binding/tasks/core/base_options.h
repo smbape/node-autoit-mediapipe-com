@@ -5,6 +5,10 @@
 #include "mediapipe/tasks/cc/core/proto/base_options.pb.h"
 #include "mediapipe/tasks/cc/core/proto/external_file.pb.h"
 
+#include "absl/status/statusor.h"
+#include <opencv2/core/cvdef.h>
+#include <optional>
+
 namespace mediapipe::tasks::autoit::core::base_options {
 	enum class BaseOptions_Delegate {
 		CPU = 0,

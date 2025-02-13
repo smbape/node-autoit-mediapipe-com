@@ -1,5 +1,6 @@
 /autoit-mediapipe-*-com-v*.7z
 /autoit-mediapipe-com/patches/001-mediapipe-src.patch
+/autoit-mediapipe-com/scripts/configure_bazel.js
 /autoit-mediapipe-v*-src.zip
 /autoit-opencv-*
 /examples/data/*

@@ -46,27 +46,87 @@ index f3b5af39..19b860c1 100644
 -6.1.1
 +6.4.0
 diff --git a/.gitignore b/.gitignore
-index 525f0878..1b9d4aff 100644
+index 525f0878..f1b38dab 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -5,3 +5,4 @@ mediapipe/provisioning_profile.mobileprovision
  node_modules/
  .configure.bazelrc
  .user.bazelrc
-+/mediapipe/autoit
++@MEDIAPIPE_ADDON_PACKAGE@
 diff --git a/WORKSPACE b/WORKSPACE
-index fd13e9b3..6302a77d 100644
+index fd13e9b3..41c2b38a 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -398,7 +398,7 @@ new_local_repository(
- new_local_repository(
-     name = "windows_opencv",
-     build_file = "@//third_party:opencv_windows.BUILD",
--    path = "C:\\opencv\\build",
-+    path = "@OpenCV_DIR_ESC@",
+@@ -21,6 +21,11 @@ bazel_skylib_workspace()
+ load("@bazel_skylib//lib:versions.bzl", "versions")
+ versions.check(minimum_bazel_version = "3.7.2")
+ 
++# @MEDIAPIPE_ADDON_PACKAGE@ dependencies
++load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
++load("//@MEDIAPIPE_ADDON_PACKAGE@@MEDIAPIPE_ADDON_REPOSITORIES@", "@MEDIAPIPE_ADDON_RULES_DEPENDENCIES@")
++@MEDIAPIPE_ADDON_RULES_DEPENDENCIES@()
++
+ # ABSL on 2023-10-18
+ http_archive(
+     name = "com_google_absl",
+@@ -361,14 +366,16 @@ http_archive(
+     sha256 = "8b7b16ceb363420e0fd499576daf73fa338adb0b1449f58bea7862766baa1ac7"
  )
  
- http_archive(
+-http_archive(
++maybe(
++    repo_rule = http_archive,
+     name = "opencv",
+     build_file_content = all_content,
+     strip_prefix = "opencv-3.4.10",
+     urls = ["https://github.com/opencv/opencv/archive/3.4.10.tar.gz"],
+ )
+ 
+-new_local_repository(
++maybe(
++    repo_rule = new_local_repository,
+     name = "linux_opencv",
+     build_file = "@//third_party:opencv_linux.BUILD",
+     path = "/usr",
+@@ -380,7 +387,8 @@ new_local_repository(
+     path = "/usr"
+ )
+ 
+-new_local_repository(
++maybe(
++    repo_rule = new_local_repository,
+     name = "macos_opencv",
+     build_file = "@//third_party:opencv_macos.BUILD",
+     # For local MacOS builds, the path should point to an opencv@3 installation.
+@@ -395,13 +403,15 @@ new_local_repository(
+     path = "/usr/local/opt/ffmpeg",
+ )
+ 
+-new_local_repository(
++maybe(
++    repo_rule = new_local_repository,
+     name = "windows_opencv",
+     build_file = "@//third_party:opencv_windows.BUILD",
+     path = "C:\\opencv\\build",
+ )
+ 
+-http_archive(
++maybe(
++    repo_rule = http_archive,
+     name = "android_opencv",
+     build_file = "@//third_party:opencv_android.BUILD",
+     strip_prefix = "OpenCV-android-sdk",
+@@ -413,7 +423,8 @@ http_archive(
+ # trigger duplicate symbol errors in the linking stage of building a mediapipe ios app.
+ # To get a higher version of OpenCV for iOS, opencv2.framework needs to be built from source with
+ # '-DBUILD_PROTOBUF=OFF -DBUILD_opencv_dnn=OFF'.
+-http_archive(
++maybe(
++    repo_rule = http_archive,
+     name = "ios_opencv",
+     sha256 = "7dd536d06f59e6e1156b546bd581523d8df92ce83440002885ec5abc06558de2",
+     build_file = "@//third_party:opencv_ios.BUILD",
 diff --git a/mediapipe/framework/legacy_calculator_support.cc b/mediapipe/framework/legacy_calculator_support.cc
 index 13fd714a..3bfb373e 100644
 --- a/mediapipe/framework/legacy_calculator_support.cc
@@ -158,14 +218,14 @@ index 53a0e0f4..a18604ab 100644
  
  }  // namespace mediapipe
 diff --git a/mediapipe/tasks/BUILD b/mediapipe/tasks/BUILD
-index 582fc4c3..84bcd63a 100644
+index 582fc4c3..3099073a 100644
 --- a/mediapipe/tasks/BUILD
 +++ b/mediapipe/tasks/BUILD
 @@ -17,6 +17,7 @@ package(default_visibility = ["//visibility:public"])
  package_group(
      name = "internal",
      packages = [
-+        "//mediapipe/autoit/...",
++        "//@MEDIAPIPE_ADDON_PACKAGE@/...",
          "//mediapipe/python/...",
          "//mediapipe/tasks/...",
      ],
@@ -233,14 +293,14 @@ index e790b915..be858061 100644
        "No %s in test directory: %s." % (file_or_dirname_path, test_srcdir())
    )
 diff --git a/mediapipe/tasks/testdata/text/BUILD b/mediapipe/tasks/testdata/text/BUILD
-index b05e748b..286bdbea 100644
+index b05e748b..615db35c 100644
 --- a/mediapipe/tasks/testdata/text/BUILD
 +++ b/mediapipe/tasks/testdata/text/BUILD
 @@ -19,6 +19,7 @@ load(
  
  package(
      default_visibility = [
-+        "//mediapipe/autoit:__subpackages__",
++        "//@MEDIAPIPE_ADDON_PACKAGE@:__subpackages__",
          "//mediapipe/calculators/tensor:__subpackages__",
          "//mediapipe/model_maker:__subpackages__",
          "//mediapipe/tasks:__subpackages__",
@@ -323,46 +383,3 @@ index 6d620e58..77c65057 100644
    // Try to load the file from bazel-bin. If it does not exist, fall back to the
    // resource folder.
    auto bazel_path = internal::PathToResourceAsFileInternal(qualified_path);
-diff --git a/third_party/opencv_windows.BUILD b/third_party/opencv_windows.BUILD
-index ecf788ee..8a341521 100644
---- a/third_party/opencv_windows.BUILD
-+++ b/third_party/opencv_windows.BUILD
-@@ -5,7 +5,7 @@ licenses(["notice"])  # BSD license
- 
- exports_files(["LICENSE"])
- 
--OPENCV_VERSION = "3410"  # 3.4.10
-+OPENCV_VERSION = "@OpenCV_DLLVERSION@"  # @OpenCV_VERSION@
- 
- config_setting(
-     name = "opt_build",
-@@ -17,23 +17,23 @@ config_setting(
-     values = {"compilation_mode": "dbg"},
- )
- 
--# The following build rule assumes that the executable "opencv-3.4.10-vc14_vc15.exe"
-+# The following build rule assumes that the executable "@OpenCV_DOWNLOAD_NAME@"
- # is downloaded and the files are extracted to local.
- # If you install OpenCV separately, please modify the build rule accordingly.
- cc_library(
-     name = "opencv",
-     srcs = select({
-         ":opt_build": [
--            "x64/vc15/lib/opencv_world" + OPENCV_VERSION + ".lib",
--            "x64/vc15/bin/opencv_world" + OPENCV_VERSION + ".dll",
-+            "@OpenCV_VC_PATH@/lib/opencv_world" + OPENCV_VERSION + ".lib",
-+            "@OpenCV_VC_PATH@/bin/opencv_world" + OPENCV_VERSION + ".dll",
-         ],
-         ":dbg_build": [
--            "x64/vc15/lib/opencv_world" + OPENCV_VERSION + "d.lib",
--            "x64/vc15/bin/opencv_world" + OPENCV_VERSION + "d.dll",
-+            "@OpenCV_VC_PATH@/lib/opencv_world" + OPENCV_VERSION + "d.lib",
-+            "@OpenCV_VC_PATH@/bin/opencv_world" + OPENCV_VERSION + "d.dll",
-         ],
-     }),
-     hdrs = glob(["include/opencv2/**/*.h*"]),
-     includes = ["include/"],
--    linkstatic = 1,
-+    # linkstatic = 1,
-     visibility = ["//visibility:public"],
- )

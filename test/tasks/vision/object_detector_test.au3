@@ -61,58 +61,58 @@ Global Const $_NO_NMS_MODEL_FILE = 'efficientdet_lite0_fp16_no_nms.tflite'
 Global Const $_IMAGE_FILE = 'cats_and_dogs.jpg'
 Global Const $_EXPECTED_DETECTION_RESULT = $_DetectionResult(_Mediapipe_Params("detections", _Mediapipe_Tuple( _
 		$_Detection(_Mediapipe_Params( _
-				"bounding_box", $_BoundingBox(_Mediapipe_Params( _
-						"origin_x", 608, _
-						"origin_y", 164, _
-						"width", 381, _
-						"height", 432)), _
-				"categories", _Mediapipe_Tuple( _
-						$_Category(_Mediapipe_Params( _
-								"index", Default, _
-								"score", 0.69921875, _
-								"display_name", Default, _
-								"category_name", 'cat')) _
-				))), _
+		"bounding_box", $_BoundingBox(_Mediapipe_Params( _
+		"origin_x", 608, _
+		"origin_y", 164, _
+		"width", 381, _
+		"height", 432)), _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", Default, _
+		"score", 0.69921875, _
+		"display_name", Default, _
+		"category_name", 'cat')) _
+		))), _
 		$_Detection(_Mediapipe_Params( _
-				"bounding_box", $_BoundingBox(_Mediapipe_Params( _
-						"origin_x", 57, _
-						"origin_y", 398, _
-						"width", 386, _
-						"height", 196)), _
-				"categories", _Mediapipe_Tuple( _
-						$_Category(_Mediapipe_Params( _
-								"index", Default, _
-								"score", 0.65625, _
-								"display_name", Default, _
-								"category_name", 'cat')) _
-				))), _
+		"bounding_box", $_BoundingBox(_Mediapipe_Params( _
+		"origin_x", 57, _
+		"origin_y", 398, _
+		"width", 386, _
+		"height", 196)), _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", Default, _
+		"score", 0.65625, _
+		"display_name", Default, _
+		"category_name", 'cat')) _
+		))), _
 		$_Detection(_Mediapipe_Params( _
-				"bounding_box", $_BoundingBox(_Mediapipe_Params( _
-						"origin_x", 256, _
-						"origin_y", 394, _
-						"width", 173, _
-						"height", 202)), _
-				"categories", _Mediapipe_Tuple( _
-						$_Category(_Mediapipe_Params( _
-								"index", Default, _
-								"score", 0.51171875, _
-								"display_name", Default, _
-								"category_name", 'cat')) _
-				))), _
+		"bounding_box", $_BoundingBox(_Mediapipe_Params( _
+		"origin_x", 256, _
+		"origin_y", 394, _
+		"width", 173, _
+		"height", 202)), _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", Default, _
+		"score", 0.51171875, _
+		"display_name", Default, _
+		"category_name", 'cat')) _
+		))), _
 		$_Detection(_Mediapipe_Params( _
-				"bounding_box", $_BoundingBox(_Mediapipe_Params( _
-						"origin_x", 360, _
-						"origin_y", 195, _
-						"width", 330, _
-						"height", 412)), _
-				"categories", _Mediapipe_Tuple( _
-						$_Category(_Mediapipe_Params( _
-								"index", Default, _
-								"score", 0.48828125, _
-								"display_name", Default, _
-								"category_name", 'cat')) _
-				))) _
-)))
+		"bounding_box", $_BoundingBox(_Mediapipe_Params( _
+		"origin_x", 360, _
+		"origin_y", 195, _
+		"width", 330, _
+		"height", 412)), _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", Default, _
+		"score", 0.48828125, _
+		"display_name", Default, _
+		"category_name", 'cat')) _
+		))) _
+		)))
 Global Const $_ALLOW_LIST[] = ['cat', 'dog']
 Global Const $_DENY_LIST[] = ['cat']
 Global Const $_SCORE_THRESHOLD = 0.3
@@ -170,7 +170,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $detector = $_ObjectDetector.create_from_model_path($model_path)
 	_AssertIsInstance($detector, $_ObjectDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -179,7 +178,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_ObjectDetector.create_from_options($options)
 	_AssertIsInstance($detector, $_ObjectDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -189,7 +187,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_ObjectDetector.create_from_options($options)
 	_AssertIsInstance($detector, $_ObjectDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect($model_file_type, $max_results, $expected_detection_result)
@@ -204,7 +201,7 @@ Func test_detect($model_file_type, $max_results, $expected_detection_result)
 	EndIf
 
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
-				"base_options", $base_options, "max_results", $max_results))
+			"base_options", $base_options, "max_results", $max_results))
 	Local $detector = $_ObjectDetector.create_from_options($options)
 
 	; Performs object detection on the input.
@@ -212,16 +209,13 @@ Func test_detect($model_file_type, $max_results, $expected_detection_result)
 
 	; Comparing results.
 	_AssertProtoEquals($detection_result.to_pb2(), $expected_detection_result.to_pb2())
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_detect
 
 Func test_score_threshold_option()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"score_threshold", $_SCORE_THRESHOLD _
-	))
+			))
 
 	Local $detector = $_ObjectDetector.create_from_options($options)
 
@@ -236,18 +230,15 @@ Func test_score_threshold_option()
 				$score, _
 				$_SCORE_THRESHOLD, _
 				'Detection with score lower than threshold found. ' & $detection.to_pb2().__str__() _
-		)
+				)
 	Next
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_score_threshold_option
 
 Func test_max_results_option()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"max_results", $_MAX_RESULTS _
-	))
+			))
 
 	Local $detector = $_ObjectDetector.create_from_options($options)
 
@@ -257,17 +248,14 @@ Func test_max_results_option()
 
 	_AssertLessEqual( _
 			$detections.size(), $_MAX_RESULTS, 'Too many results returned.' _
-	)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
+			)
 EndFunc   ;==>test_max_results_option
 
 Func test_allow_list_option()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"category_allowlist", $_ALLOW_LIST _
-	))
+			))
 
 	Local $detector = $_ObjectDetector.create_from_options($options)
 
@@ -282,18 +270,15 @@ Func test_allow_list_option()
 				$label, _
 				$_ALLOW_LIST, _
 				'Label ' & $label & ' found but not in label allow list' _
-		)
+				)
 	Next
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_allow_list_option
 
 Func test_deny_list_option()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"category_denylist", $_DENY_LIST _
-	))
+			))
 
 	Local $detector = $_ObjectDetector.create_from_options($options)
 
@@ -306,43 +291,34 @@ Func test_deny_list_option()
 		$label = $detection.categories(0).category_name
 		_AssertNotIn( _
 				$label, $_DENY_LIST, 'Label ' & $label & ' found but in deny list.' _
-		)
+				)
 	Next
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_deny_list_option
 
 Func test_empty_detection_outputs_with_in_model_nms()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"score_threshold", 1 _
-	))
+			))
 
 	Local $detector = $_ObjectDetector.create_from_options($options)
 
 	; Performs object detection on the input.
 	Local $detection_result = $detector.detect($test_image)
 	_AssertEmpty($detection_result.detections)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_empty_detection_outputs_with_in_model_nms
 
 Func test_empty_detection_outputs_without_in_model_nms()
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", get_test_data_path($_NO_NMS_MODEL_FILE))), _
 			"score_threshold", 1 _
-	))
+			))
 
 	Local $detector = $_ObjectDetector.create_from_options($options)
 
 	; Performs object detection on the input.
 	Local $detection_result = $detector.detect($test_image)
 	_AssertEmpty($detection_result.detections)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_empty_detection_outputs_without_in_model_nms
 
 ; TODO: Tests how `detect_for_video` handles the temporal data
@@ -352,7 +328,7 @@ Func test_detect_for_video()
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"running_mode", $_RUNNING_MODE.VIDEO, _
 			"max_results", 4 _
-	))
+			))
 
 	Local $detector = $_ObjectDetector.create_from_options($options)
 
@@ -361,9 +337,6 @@ Func test_detect_for_video()
 		$detection_result = $detector.detect_for_video($test_image, $timestamp)
 		_AssertProtoEquals($detection_result.to_pb2(), $_EXPECTED_DETECTION_RESULT.to_pb2())
 	Next
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_detect_for_video
 
 Func _OnAutoItExit()

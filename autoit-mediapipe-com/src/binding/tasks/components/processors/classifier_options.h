@@ -1,6 +1,8 @@
 #pragma once
 
 #include "mediapipe/tasks/cc/components/processors/proto/classifier_options.pb.h"
+#include <opencv2/core/cvdef.h>
+#include <optional>
 
 namespace mediapipe::tasks::autoit::components::processors::classifier_options {
 	struct CV_EXPORTS_W_SIMPLE ClassifierOptions {

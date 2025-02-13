@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "Mediapipe_Autoit_Packet_getter_Object.h"
 
 using namespace mediapipe;

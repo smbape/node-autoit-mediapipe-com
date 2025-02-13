@@ -1,3 +1,6 @@
+#pragma once
+
+#include "mediapipe/framework/port/status_macros.h"
 #include "MapOfStringAndVariant_Object.h"
 
 namespace google::protobuf::autoit {
@@ -5,8 +8,8 @@ namespace google::protobuf::autoit {
 	[[nodiscard]] absl::StatusOr<bool> RepeatedField_PrepareSplice(
 		_Tp* repeatedField,
 		std::vector<Element>& list,
-		SSIZE_T start,
-		SSIZE_T& deleteCount
+		ssize_t start,
+		ssize_t& deleteCount
 	) {
 		list.clear();
 
@@ -51,7 +54,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element, typename _Tp>
-	[[nodiscard]] inline absl::Status RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start, SSIZE_T deleteCount) {
+	[[nodiscard]] inline absl::Status RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, ssize_t start, ssize_t deleteCount) {
 		MP_ASSIGN_OR_RETURN(auto prepared, RepeatedField_PrepareSplice(repeatedField, list, start, deleteCount));
 		if (!prepared) {
 			return absl::OkStatus();
@@ -67,7 +70,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element, typename _Tp>
-	[[nodiscard]] inline absl::Status RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, SSIZE_T start) {
+	[[nodiscard]] inline absl::Status RepeatedField_SpliceScalar(_Tp* repeatedField, std::vector<Element>& list, ssize_t start) {
 		auto field_size = repeatedField->size();
 		if (start < 0) {
 			start += field_size;
@@ -79,8 +82,8 @@ namespace google::protobuf::autoit {
 	[[nodiscard]] absl::Status RepeatedField_SpliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
-		SSIZE_T start,
-		SSIZE_T deleteCount
+		ssize_t start,
+		ssize_t deleteCount
 	) {
 		MP_ASSIGN_OR_RETURN(auto prepared, RepeatedField_PrepareSplice(repeatedField, list, start, deleteCount));
 		if (!prepared) {
@@ -101,7 +104,7 @@ namespace google::protobuf::autoit {
 	[[nodiscard]] inline absl::Status RepeatedField_SpliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
-		SSIZE_T start
+		ssize_t start
 	) {
 		auto field_size = repeatedField->size();
 		if (start < 0) {
@@ -114,8 +117,8 @@ namespace google::protobuf::autoit {
 	inline void RepeatedField_SliceScalar(
 		_Tp* repeatedField,
 		std::vector<Element>& list,
-		SSIZE_T start,
-		SSIZE_T count
+		ssize_t start,
+		ssize_t count
 	) {
 		list.clear();
 		if (count <= 0) {
@@ -131,7 +134,7 @@ namespace google::protobuf::autoit {
 	inline void RepeatedField_SliceScalar(
 		_Tp* repeatedField,
 		std::vector<Element>& list,
-		SSIZE_T start
+		ssize_t start
 	) {
 		auto field_size = repeatedField->size();
 		if (start < 0) {
@@ -144,8 +147,8 @@ namespace google::protobuf::autoit {
 	inline void RepeatedField_SliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
-		SSIZE_T start,
-		SSIZE_T count
+		ssize_t start,
+		ssize_t count
 	) {
 		list.clear();
 		if (count <= 0) {
@@ -161,7 +164,7 @@ namespace google::protobuf::autoit {
 	inline void RepeatedField_SliceMessage(
 		RepeatedPtrField<Element>* repeatedField,
 		std::vector<std::shared_ptr<Element>>& list,
-		SSIZE_T start
+		ssize_t start
 	) {
 		auto field_size = repeatedField->size();
 		if (start < 0) {
@@ -229,7 +232,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element, typename _Tp>
-	[[nodiscard]] inline absl::Status RepeatedField_InsertScalar(_Tp* repeatedField, SSIZE_T index, const Element& item) {
+	[[nodiscard]] inline absl::Status RepeatedField_InsertScalar(_Tp* repeatedField, ssize_t index, const Element& item) {
 		int field_size = repeatedField->size();
 		if (index < 0) {
 			index += field_size;
@@ -247,7 +250,7 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element>
-	[[nodiscard]] inline absl::Status RepeatedField_InsertMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index, const Element* item) {
+	[[nodiscard]] inline absl::Status RepeatedField_InsertMessage(RepeatedPtrField<Element>* repeatedField, ssize_t index, const Element* item) {
 		int field_size = repeatedField->size();
 		if (index < 0) {
 			index += field_size;
@@ -265,14 +268,14 @@ namespace google::protobuf::autoit {
 	}
 
 	template<typename Element, typename _Tp>
-	[[nodiscard]] inline absl::StatusOr<Element> RepeatedField_PopScalar(_Tp* repeatedField, SSIZE_T index) {
+	[[nodiscard]] inline absl::StatusOr<Element> RepeatedField_PopScalar(_Tp* repeatedField, ssize_t index) {
 		std::vector<Element> list;
 		MP_RETURN_IF_ERROR(RepeatedField_SpliceScalar(repeatedField, list, index, 1));
 		return list[0];
 	}
 
 	template<typename Element>
-	[[nodiscard]] inline absl::StatusOr<std::shared_ptr<Element>> RepeatedField_PopMessage(RepeatedPtrField<Element>* repeatedField, SSIZE_T index) {
+	[[nodiscard]] inline absl::StatusOr<std::shared_ptr<Element>> RepeatedField_PopMessage(RepeatedPtrField<Element>* repeatedField, ssize_t index) {
 		std::vector<std::shared_ptr<Element>> list;
 		MP_RETURN_IF_ERROR(RepeatedField_SpliceMessage(repeatedField, list, index, 1));
 		return list[0];

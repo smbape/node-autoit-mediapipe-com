@@ -22,7 +22,7 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 	std::shared_ptr<Classifications> Classifications::create_from_pb2(const proto::Classifications& pb2_obj) {
 		std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 		for (const auto& classification : pb2_obj.classification_list().classification()) {
-			categories->push_back(category::Category::create_from_pb2(classification));
+			categories->push_back(std::move(category::Category::create_from_pb2(classification)));
 		}
 
 		return std::make_shared<Classifications>(
@@ -49,7 +49,7 @@ namespace mediapipe::tasks::autoit::components::containers::classification_resul
 	std::shared_ptr<ClassificationResult> ClassificationResult::create_from_pb2(const proto::ClassificationResult& pb2_obj) {
 		auto classification_result = std::make_shared<ClassificationResult>();
 		for (const auto& classification : pb2_obj.classifications()) {
-			classification_result->classifications->push_back(Classifications::create_from_pb2(classification));
+			classification_result->classifications->push_back(std::move(Classifications::create_from_pb2(classification)));
 		}
 		classification_result->timestamp_ms = pb2_obj.timestamp_ms();
 		return classification_result;

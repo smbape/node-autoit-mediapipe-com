@@ -1,11 +1,9 @@
-# https://stackoverflow.com/questions/60012975/bazel-c-precompiled-headers-implementation
-
-load("@rules_cc//cc:defs.bzl", "cc_library")
-load("//mediapipe/autoit/rules_impl:library.bzl", "add_com_library")
-
 licenses(["notice"])  # Apache 2.0
 
 package(default_visibility = ["//visibility:public"])
+
+load("@rules_cc//cc:defs.bzl", "cc_library")
+load(":rules_impl/library.bzl", "add_library", "WINDOWS_DLL_LOCAL_DEFINES")
 
 config_setting(
     name = "opt_build",
@@ -34,18 +32,72 @@ config_setting(
     visibility = ["//visibility:public"],
 )
 
+
 OPENCV_VERSION = "4100"  # 4.10.0
 MEDIAPIPE_VERSION = "0.10.14"
 OUTPUT_NAME = "autoit_mediapipe_com-%s-%s" % (MEDIAPIPE_VERSION, OPENCV_VERSION)
 
-add_com_library(OUTPUT_NAME, "Release", "opt")
-add_com_library(OUTPUT_NAME + "d", "Debug", "dbg")
+
+cc_library(
+    name = OUTPUT_NAME + "_c",
+    srcs = glob(["src/**/*.c", "generated/**/*_i.c"]),
+    local_defines = select({
+        "@bazel_tools//src/conditions:windows": WINDOWS_DLL_LOCAL_DEFINES,
+        "//conditions:default": [],
+    }),
+    copts = select({
+        ":windows-opt-dbg": ["/Z7"],
+        "//conditions:default": [],
+    }),
+    linkopts = select({
+        ":windows-opt-dbg": [
+            "/DEBUG",
+            # "/PDB:" + pdb
+        ],
+        "//conditions:default": [],
+    }),
+    linkstatic = True,
+    alwayslink = True,
+)
+
+add_library(OUTPUT_NAME + "_lib",
+    pchhdrs = ["generated/autoit_bridge_generated_pch.h"],
+    includes = ["src/", "generated/"],
+    local_defines = ["CVAPI_EXPORTS"],
+    linkopts = select({
+        ":opt_build": ["mediapipe/autoit/build_x64/autoit_mediapipe_com_res.dir/Release/mediapipeCOM.res"],
+        ":dbg_build": ["mediapipe/autoit/build_x64/autoit_mediapipe_com_res.dir/Debug/mediapipeCOM.res"],
+    }),
+    deps = [":" + OUTPUT_NAME + "_c" ],
+)
 
 alias(
     name = "lib_pch",
-    actual = select({
-        ":opt_build": "_pch_" + OUTPUT_NAME,
-        ":dbg_build": "_pch_" + OUTPUT_NAME + "d",
+    actual = "_pch_" + OUTPUT_NAME + "_lib",
+)
+
+
+win_def_file = "src/dllmain.def"
+
+cc_binary(
+    name = OUTPUT_NAME,
+    deps = [ ":" + OUTPUT_NAME + "_lib" ],
+    win_def_file = win_def_file,
+    linkshared = True,
+    target_compatible_with = select({
+        ":opt_build": [],
+        "//conditions:default": ["@platforms//:incompatible"],
+    }),
+)
+
+cc_binary(
+    name = OUTPUT_NAME + "d",
+    deps = [ ":" + OUTPUT_NAME + "_lib" ],
+    win_def_file = win_def_file,
+    linkshared = True,
+    target_compatible_with = select({
+        ":dbg_build": [],
+        "//conditions:default": ["@platforms//:incompatible"],
     }),
 )
 

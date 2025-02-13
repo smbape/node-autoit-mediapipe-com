@@ -56,14 +56,14 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 				category->display_name = pb2_obj.display_name(idx);
 			}
 
-			categories->push_back(category);
+			categories->push_back(std::move(category));
 
 			idx++;
 		}
 
 		std::shared_ptr<std::vector<std::shared_ptr<keypoint::NormalizedKeypoint>>> keypoints = std::make_shared<std::vector<std::shared_ptr<keypoint::NormalizedKeypoint>>>();
 		for (const auto& keypoint : pb2_obj.location_data().relative_keypoints()) {
-			keypoints->push_back(keypoint::NormalizedKeypoint::create_from_pb2(keypoint));
+			keypoints->push_back(std::move(keypoint::NormalizedKeypoint::create_from_pb2(keypoint)));
 		}
 
 		return std::make_shared<Detection>(
@@ -88,7 +88,7 @@ namespace mediapipe::tasks::autoit::components::containers::detections {
 	std::shared_ptr<DetectionResult> DetectionResult::create_from_pb2(const mediapipe::DetectionList& pb2_obj) {
 		auto detection_result = std::make_shared<DetectionResult>();
 		for (const auto& detection : pb2_obj.detection()) {
-			detection_result->detections->push_back(Detection::create_from_pb2(detection));
+			detection_result->detections->push_back(std::move(Detection::create_from_pb2(detection)));
 		}
 		return detection_result;
 	}

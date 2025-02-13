@@ -13,6 +13,7 @@
 #include "binding/tasks/vision/core/image_processing_options.h"
 #include "binding/tasks/vision/core/vision_task_running_mode.h"
 #include <functional>
+#include <opencv2/core/mat.hpp>
 
 namespace mediapipe::tasks::autoit::vision::face_landmarker {
 	enum class Blendshapes {

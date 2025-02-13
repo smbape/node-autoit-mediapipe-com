@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = ({language}) => [
     ["class mediapipe.ValidatedGraphConfig", "", [], [
         ["std::string", "text_config", "", ["/R", "=Config().DebugString()"]],
         ["std::string", "binary_config", "", ["/R", "=Config().SerializeAsString()"]],
@@ -7,7 +7,7 @@ module.exports = [
     ["mediapipe.ValidatedGraphConfig.ValidatedGraphConfig", "mediapipe.ValidatedGraphConfig.ValidatedGraphConfig", [], [], "", ""],
 
     ["mediapipe.ValidatedGraphConfig.Initialize", "absl::Status", ["=initialize"], [
-        ["std::string", "binary_graph_path", "", ["/Cast=mediapipe::autoit::ReadCalculatorGraphConfigFromFile"]],
+        ["std::string", "binary_graph_path", "", [`/Cast=mediapipe::${ language }::ReadCalculatorGraphConfigFromFile`]],
     ], "", ""],
 
     ["mediapipe.ValidatedGraphConfig.Initialize", "absl::Status", ["=initialize"], [
@@ -25,7 +25,7 @@ module.exports = [
     ["mediapipe.ValidatedGraphConfig.Initialized", "bool", ["=initialized"], [], "", ""],
 
     // expose a validated_graph_config property like in mediapipe python
-    ["mediapipe.autoit._framework_bindings.validated_graph_config.", "", ["/Properties"], [
-        ["mediapipe::ValidatedGraphConfig", "ValidatedGraphConfig", "", ["/R", "=this"]],
+    [`mediapipe.${ language }._framework_bindings.validated_graph_config.`, "", ["/Properties"], [
+        ["mediapipe::ValidatedGraphConfig", "ValidatedGraphConfig", "", ["/R", "=this", "/S"]],
     ], "", ""],
 ];

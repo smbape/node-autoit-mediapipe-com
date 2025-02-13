@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/text/text_classifier.h"
 #include "binding/packet_getter.h"
 

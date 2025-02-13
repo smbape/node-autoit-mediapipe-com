@@ -126,7 +126,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $detector = $_LanguageDetector.create_from_model_path($model_path)
 	_AssertIsInstance($detector, $_LanguageDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -135,7 +134,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_LanguageDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_LanguageDetector.create_from_options($options)
 	_AssertIsInstance($detector, $_LanguageDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -145,7 +143,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_LanguageDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_LanguageDetector.create_from_options($options)
 	_AssertIsInstance($detector, $_LanguageDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect($model_file_type, $text, $expected_result)
@@ -167,9 +164,6 @@ Func test_detect($model_file_type, $text, $expected_result)
 
 	; Comparing results.
 	_expect_language_detector_result_correct($text_result, $expected_result)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_detect
 
 Func test_allowlist_option()
@@ -190,9 +184,6 @@ Func test_allowlist_option()
 			_Mediapipe_Tuple($LanguageDetectorPrediction("ja", 0.481617)) _
 			)
 	_expect_language_detector_result_correct($text_result, $expected_result)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_allowlist_option
 
 Func test_denylist_option()
@@ -213,9 +204,6 @@ Func test_denylist_option()
 			_Mediapipe_Tuple($LanguageDetectorPrediction("zh", 0.505424)) _
 			)
 	_expect_language_detector_result_correct($text_result, $expected_result)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_denylist_option
 
 Func _OnAutoItExit()

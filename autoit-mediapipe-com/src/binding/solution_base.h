@@ -1,8 +1,11 @@
 #pragma once
 
-#include "binding/calculator_graph.h"
-#include "binding/validated_graph_config.h"
 #include <filesystem>
+#include <opencv2/core/mat.hpp>
+
+#include "binding/calculator_graph.h"
+#include "binding/resource_util.h"
+#include "binding/validated_graph_config.h"
 
 namespace mediapipe::autoit::solution_base {
 #pragma push_macro("BOOL")
@@ -157,7 +160,7 @@ namespace mediapipe::autoit::solution_base {
 			const std::map<std::string, _variant_t>& values
 		);
 
-		virtual ~SolutionBase() = default;
+		virtual ~SolutionBase();
 
 	private:
 		// since I don't know the copy behaviour

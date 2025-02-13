@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/gesture_recognizer.h"
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::gesture_recognizer::GestureRecognizerResultRawCallback);
@@ -64,12 +65,12 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> gesture_categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 
 			for (const auto& gesture : gesture_classifications.classification()) {
-				gesture_categories->push_back(std::make_shared<category::Category>(
+				gesture_categories->push_back(std::move(std::make_shared<category::Category>(
 					_GESTURE_DEFAULT_INDEX,
 					gesture.score(),
 					gesture.display_name(),
 					gesture.label()
-				));
+				)));
 			}
 
 			gesture_recognizer_result->gestures->push_back(std::move(gesture_categories));
@@ -80,12 +81,12 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> handedness_categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 
 			for (const auto& handedness : handedness_classifications.classification()) {
-				handedness_categories->push_back(std::make_shared<category::Category>(
+				handedness_categories->push_back(std::move(std::make_shared<category::Category>(
 					handedness.index(),
 					handedness.score(),
 					handedness.display_name(),
 					handedness.label()
-				));
+				)));
 			}
 
 			gesture_recognizer_result->handedness->push_back(std::move(handedness_categories));
@@ -96,7 +97,7 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>();
 
 			for (const auto& hand_landmark : hand_landmarks.landmark()) {
-				hand_landmarks_list->push_back(landmark::NormalizedLandmark::create_from_pb2(hand_landmark));
+				hand_landmarks_list->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(hand_landmark)));
 			}
 
 			gesture_recognizer_result->hand_landmarks->push_back(std::move(hand_landmarks_list));
@@ -107,7 +108,7 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::Landmark>>>();
 
 			for (const auto& hand_world_landmark : hand_world_landmarks.landmark()) {
-				hand_world_landmarks_list->push_back(landmark::Landmark::create_from_pb2(hand_world_landmark));
+				hand_world_landmarks_list->push_back(std::move(landmark::Landmark::create_from_pb2(hand_world_landmark)));
 			}
 
 			gesture_recognizer_result->hand_world_landmarks->push_back(std::move(hand_world_landmarks_list));
@@ -157,7 +158,7 @@ namespace mediapipe::tasks::autoit::vision::gesture_recognizer {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<GestureRecognizer*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<GestureRecognizer*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<GestureRecognizer>> GestureRecognizer::create_from_model_path(const std::string& model_path) {

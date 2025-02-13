@@ -1,6 +1,7 @@
 #pragma once
 
 #include "mediapipe/framework/formats/classification.pb.h"
+#include <opencv2/core/cvdef.h>
 #include "autoit_bridge_common.h"
 
 namespace mediapipe::tasks::autoit::components::containers::category {

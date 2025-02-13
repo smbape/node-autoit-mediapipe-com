@@ -51,92 +51,92 @@ Global Const $_NEGATIVE_TEXT = 'What a waste of my time.'
 Global Const $_POSITIVE_TEXT = 'This is the best movie I’ve seen in recent years. Strongly recommend it!'
 
 Global Const $_BERT_NEGATIVE_RESULTS = $TextClassifierResult(_Mediapipe_Params( _
-	"classifications", _Mediapipe_Tuple( _
+		"classifications", _Mediapipe_Tuple( _
 		$_Classifications(_Mediapipe_Params( _
-			"categories", _Mediapipe_Tuple( _
-				$_Category(_Mediapipe_Params( _
-					"index", 0, _
-					"score", 0.9995, _
-					"display_name", "", _
-					"category_name", "negative")), _
-				$_Category(_Mediapipe_Params( _
-					"index", 1, _
-					"score", 0.0005, _
-					"display_name", "", _
-					"category_name", "positive")) _
-			), _
-			"head_index", 0, _
-			"head_name", "probability" _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", 0, _
+		"score", 0.9995, _
+		"display_name", "", _
+		"category_name", "negative")), _
+		$_Category(_Mediapipe_Params( _
+		"index", 1, _
+		"score", 0.0005, _
+		"display_name", "", _
+		"category_name", "positive")) _
+		), _
+		"head_index", 0, _
+		"head_name", "probability" _
 		)) _
-	), _
-	"timestamp_ms", 0 _
-))
+		), _
+		"timestamp_ms", 0 _
+		))
 
 Global Const $_BERT_POSITIVE_RESULTS = $TextClassifierResult( _Mediapipe_Params( _
-	"classifications", _Mediapipe_Tuple( _
+		"classifications", _Mediapipe_Tuple( _
 		$_Classifications(_Mediapipe_Params( _
-			"categories", _Mediapipe_Tuple( _
-				$_Category(_Mediapipe_Params( _
-					"index", 1, _
-					"score", 0.9995, _
-					"display_name", "", _
-					"category_name", "positive")), _
-				$_Category(_Mediapipe_Params( _
-					"index", 0, _
-					"score", 0.0005, _
-					"display_name", "", _
-					"category_name", "negative")) _
-			), _
-			"head_index", 0, _
-			"head_name", "probability" _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", 1, _
+		"score", 0.9995, _
+		"display_name", "", _
+		"category_name", "positive")), _
+		$_Category(_Mediapipe_Params( _
+		"index", 0, _
+		"score", 0.0005, _
+		"display_name", "", _
+		"category_name", "negative")) _
+		), _
+		"head_index", 0, _
+		"head_name", "probability" _
 		)) _
-	), _
-	"timestamp_ms", 0 _
-))
+		), _
+		"timestamp_ms", 0 _
+		))
 
 Global Const $_REGEX_NEGATIVE_RESULTS = $TextClassifierResult( _Mediapipe_Params( _
-	"classifications", _Mediapipe_Tuple( _
+		"classifications", _Mediapipe_Tuple( _
 		$_Classifications(_Mediapipe_Params( _
-			"categories", _Mediapipe_Tuple( _
-				$_Category(_Mediapipe_Params( _
-					"index", 0, _
-					"score", 0.81313, _
-					"display_name", "", _
-					"category_name", "Negative")), _
-				$_Category(_Mediapipe_Params( _
-					"index", 1, _
-					"score", 0.1868704, _
-					"display_name", "", _
-					"category_name", "Positive")) _
-			), _
-			"head_index", 0, _
-			"head_name", "probability" _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", 0, _
+		"score", 0.81313, _
+		"display_name", "", _
+		"category_name", "Negative")), _
+		$_Category(_Mediapipe_Params( _
+		"index", 1, _
+		"score", 0.1868704, _
+		"display_name", "", _
+		"category_name", "Positive")) _
+		), _
+		"head_index", 0, _
+		"head_name", "probability" _
 		)) _
-	), _
-	"timestamp_ms", 0 _
-))
+		), _
+		"timestamp_ms", 0 _
+		))
 
 Global $_REGEX_POSITIVE_RESULTS = $TextClassifierResult( _Mediapipe_Params( _
-	"classifications", _Mediapipe_Tuple( _
+		"classifications", _Mediapipe_Tuple( _
 		$_Classifications(_Mediapipe_Params( _
-			"categories", _Mediapipe_Tuple( _
-				$_Category(_Mediapipe_Params( _
-					"index", 1, _
-					"score", 0.5134273, _
-					"display_name", "", _
-					"category_name", "Positive")), _
-				$_Category(_Mediapipe_Params( _
-					"index", 0, _
-					"score", 0.486573, _
-					"display_name", "", _
-					"category_name", "Negative")) _
-			), _
-			"head_index", 0, _
-			"head_name", "probability" _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", 1, _
+		"score", 0.5134273, _
+		"display_name", "", _
+		"category_name", "Positive")), _
+		$_Category(_Mediapipe_Params( _
+		"index", 0, _
+		"score", 0.486573, _
+		"display_name", "", _
+		"category_name", "Negative")) _
+		), _
+		"head_index", 0, _
+		"head_name", "probability" _
 		)) _
-	), _
-	"timestamp_ms", 0 _
-))
+		), _
+		"timestamp_ms", 0 _
+		))
 
 Global Const $FILE_CONTENT = 1
 Global Const $FILE_NAME = 2
@@ -172,13 +172,13 @@ Func Test()
 	test_create_from_options_succeeds_with_valid_model_path()
 	test_create_from_options_succeeds_with_valid_model_content()
 
-	test_classify($FILE_NAME,    $_BERT_MODEL_FILE,  $_NEGATIVE_TEXT, $_BERT_NEGATIVE_RESULTS)
-	test_classify($FILE_CONTENT, $_BERT_MODEL_FILE,  $_NEGATIVE_TEXT, $_BERT_NEGATIVE_RESULTS)
-	test_classify($FILE_NAME,    $_BERT_MODEL_FILE,  $_POSITIVE_TEXT, $_BERT_POSITIVE_RESULTS)
-	test_classify($FILE_CONTENT, $_BERT_MODEL_FILE,  $_POSITIVE_TEXT, $_BERT_POSITIVE_RESULTS)
-	test_classify($FILE_NAME,    $_REGEX_MODEL_FILE, $_NEGATIVE_TEXT, $_REGEX_NEGATIVE_RESULTS)
+	test_classify($FILE_NAME, $_BERT_MODEL_FILE, $_NEGATIVE_TEXT, $_BERT_NEGATIVE_RESULTS)
+	test_classify($FILE_CONTENT, $_BERT_MODEL_FILE, $_NEGATIVE_TEXT, $_BERT_NEGATIVE_RESULTS)
+	test_classify($FILE_NAME, $_BERT_MODEL_FILE, $_POSITIVE_TEXT, $_BERT_POSITIVE_RESULTS)
+	test_classify($FILE_CONTENT, $_BERT_MODEL_FILE, $_POSITIVE_TEXT, $_BERT_POSITIVE_RESULTS)
+	test_classify($FILE_NAME, $_REGEX_MODEL_FILE, $_NEGATIVE_TEXT, $_REGEX_NEGATIVE_RESULTS)
 	test_classify($FILE_CONTENT, $_REGEX_MODEL_FILE, $_NEGATIVE_TEXT, $_REGEX_NEGATIVE_RESULTS)
-	test_classify($FILE_NAME,    $_REGEX_MODEL_FILE, $_POSITIVE_TEXT, $_REGEX_POSITIVE_RESULTS)
+	test_classify($FILE_NAME, $_REGEX_MODEL_FILE, $_POSITIVE_TEXT, $_REGEX_POSITIVE_RESULTS)
 	test_classify($FILE_CONTENT, $_REGEX_MODEL_FILE, $_POSITIVE_TEXT, $_REGEX_POSITIVE_RESULTS)
 EndFunc   ;==>Test
 
@@ -186,7 +186,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $classifier = $_TextClassifier.create_from_model_path($model_path)
 	_AssertIsInstance($classifier, $_TextClassifier)
-	$classifier.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -195,7 +194,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_TextClassifierOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $classifier = $_TextClassifier.create_from_options($options)
 	_AssertIsInstance($classifier, $_TextClassifier)
-	$classifier.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -205,7 +203,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_TextClassifierOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $classifier = $_TextClassifier.create_from_options($options)
 	_AssertIsInstance($classifier, $_TextClassifier)
-	$classifier.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_classify($model_file_type, $model_name, $text, $expected_classification_result)
@@ -228,9 +225,6 @@ Func test_classify($model_file_type, $model_name, $text, $expected_classificatio
 
 	; Comparing results.
 	_AssertProtoEquals($text_result.to_pb2(), $expected_classification_result.to_pb2())
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_classify
 
 Func _OnAutoItExit()

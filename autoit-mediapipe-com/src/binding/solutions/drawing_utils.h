@@ -3,6 +3,8 @@
 #include "mediapipe/framework/formats/detection.pb.h"
 #include "mediapipe/framework/formats/location_data.pb.h"
 #include "mediapipe/framework/formats/landmark.pb.h"
+#include "absl/status/status.h"
+#include <opencv2/core/mat.hpp>
 
 namespace mediapipe::autoit::solutions::drawing_utils {
 	using DrawingColor = std::tuple<int, int, int>;

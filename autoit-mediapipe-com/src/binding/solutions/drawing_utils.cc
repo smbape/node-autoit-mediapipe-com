@@ -1,6 +1,9 @@
-#include "binding/solutions/drawing_utils.h"
-#include <opencv2/imgproc.hpp>
 #include <math.h>
+#include <opencv2/imgproc.hpp>
+
+#include "mediapipe/framework/port/status_macros.h"
+#include "binding/solutions/drawing_utils.h"
+#include "binding/message.h"
 
 using namespace google::protobuf::autoit::cmessage;
 

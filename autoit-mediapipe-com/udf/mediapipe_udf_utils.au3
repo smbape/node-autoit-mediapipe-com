@@ -461,7 +461,7 @@ Func _Mediapipe_FindResourceDir($sDir = Default)
 	If $sDir == Default Then $sDir = @ScriptDir
 
 	Local $sCompileMode = EnvGet("MEDIAPIPE_BUILD_TYPE") == "Debug" ? "dbg" : "opt"
-	Local $sBazelBin = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-" & $sCompileMode & "\bin"
+	Local $sBazelBin = "build_x64\mediapipe-src\bazel-out\x64_windows-" & $sCompileMode & "\bin"
 
 	Local $aSearchPaths[] = [ _
 			".", _

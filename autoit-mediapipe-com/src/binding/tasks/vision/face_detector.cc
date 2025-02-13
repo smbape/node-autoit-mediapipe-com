@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/face_detector.h"
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::face_detector::FaceDetectorResultRawCallback);
@@ -56,7 +57,7 @@ namespace {
 
 		MP_PACKET_ASSIGN_OR_RETURN(const auto& detection_proto_list, std::vector<mediapipe::Detection>, output_packets.at(_DETECTIONS_OUT_STREAM_NAME));
 		for (const auto& detection : detection_proto_list) {
-			detection_result->detections->push_back(Detection::create_from_pb2(detection));
+			detection_result->detections->push_back(std::move(Detection::create_from_pb2(detection)));
 		}
 
 		return detection_result;
@@ -85,7 +86,7 @@ namespace mediapipe::tasks::autoit::vision::face_detector {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<FaceDetector*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<FaceDetector*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<FaceDetector>> FaceDetector::create_from_model_path(const std::string& model_path) {

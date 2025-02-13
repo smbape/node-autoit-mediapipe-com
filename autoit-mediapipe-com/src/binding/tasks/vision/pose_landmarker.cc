@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/pose_landmarker.h"
 
 namespace mediapipe::tasks::autoit::vision::pose_landmarker {
@@ -101,7 +102,7 @@ namespace {
 		if (output_packets.count(_SEGMENTATION_MASK_STREAM_NAME)) {
 			MP_PACKET_ASSIGN_OR_RETURN(const auto& segmentation_masks, std::vector<Image>, output_packets.at(_SEGMENTATION_MASK_STREAM_NAME));
 			for (const auto& image : segmentation_masks) {
-				pose_landmarker_result->segmentation_masks->push_back(std::make_shared<Image>(image));
+				pose_landmarker_result->segmentation_masks->push_back(std::move(std::make_shared<Image>(image)));
 			}
 		}
 
@@ -110,7 +111,7 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> pose_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>();
 
 			for (const auto& pose_landmark : pose_landmarks.landmark()) {
-				pose_landmarks_list->push_back(landmark::NormalizedLandmark::create_from_pb2(pose_landmark));
+				pose_landmarks_list->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(pose_landmark)));
 			}
 
 			pose_landmarker_result->pose_landmarks->push_back(std::move(pose_landmarks_list));
@@ -121,7 +122,7 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::Landmark>>> pose_world_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::Landmark>>>();
 
 			for (const auto& pose_world_landmark : pose_world_landmarks.landmark()) {
-				pose_world_landmarks_list->push_back(landmark::Landmark::create_from_pb2(pose_world_landmark));
+				pose_world_landmarks_list->push_back(std::move(landmark::Landmark::create_from_pb2(pose_world_landmark)));
 			}
 
 			pose_landmarker_result->pose_world_landmarks->push_back(std::move(pose_world_landmarks_list));
@@ -159,7 +160,7 @@ namespace mediapipe::tasks::autoit::vision::pose_landmarker {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<PoseLandmarker*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<PoseLandmarker*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<PoseLandmarker>> PoseLandmarker::create_from_model_path(const std::string& model_path) {

@@ -71,52 +71,52 @@ Global Const $_SCORE_THRESHOLD = 0.5
 Global Const $_MAX_RESULTS = 3
 
 Global Const $_EXPECTED_ROTATED_CLASSIFICATION_RESULT = $_ImageClassifierResult(_Mediapipe_Params( _
-	"classifications", _Mediapipe_Tuple( _
+		"classifications", _Mediapipe_Tuple( _
 		$_Classifications(_Mediapipe_Params( _
-			"categories", _Mediapipe_Tuple( _
-				$_Category(_Mediapipe_Params( _
-					"index", 934, _
-					"score", 0.754467, _
-					"display_name", '', _
-					"category_name", 'cheeseburger' _
-				)), _
-				$_Category(_Mediapipe_Params( _
-					"index", 925, _
-					"score", 0.0288028, _
-					"display_name", '', _
-					"category_name", 'guacamole' _
-				)), _
-				$_Category(_Mediapipe_Params( _
-					"index", 932, _
-					"score", 0.0286119, _
-					"display_name", '', _
-					"category_name", 'bagel' _
-				)) _
-			), _
-			"head_index", 0, _
-			"head_name", 'probability' _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", 934, _
+		"score", 0.754467, _
+		"display_name", '', _
+		"category_name", 'cheeseburger' _
+		)), _
+		$_Category(_Mediapipe_Params( _
+		"index", 925, _
+		"score", 0.0288028, _
+		"display_name", '', _
+		"category_name", 'guacamole' _
+		)), _
+		$_Category(_Mediapipe_Params( _
+		"index", 932, _
+		"score", 0.0286119, _
+		"display_name", '', _
+		"category_name", 'bagel' _
 		)) _
-	), _
-	"timestamp_ms", 0 _
-))
+		), _
+		"head_index", 0, _
+		"head_name", 'probability' _
+		)) _
+		), _
+		"timestamp_ms", 0 _
+		))
 
 Global Const $_EXPECTED_ROI_ROTATED__CLASSIFICATION_RESULT = $_ImageClassifierResult(_Mediapipe_Params( _
-	"classifications", _Mediapipe_Tuple( _
+		"classifications", _Mediapipe_Tuple( _
 		$_Classifications(_Mediapipe_Params( _
-			"categories", _Mediapipe_Tuple( _
-				$_Category(_Mediapipe_Params( _
-					"index", 806, _
-					"score", 0.997684, _
-					"display_name", '', _
-					"category_name", 'soccer ball' _
-				)) _
-			), _
-			"head_index", 0, _
-			"head_name", 'probability' _
+		"categories", _Mediapipe_Tuple( _
+		$_Category(_Mediapipe_Params( _
+		"index", 806, _
+		"score", 0.997684, _
+		"display_name", '', _
+		"category_name", 'soccer ball' _
 		)) _
-	), _
-	"timestamp_ms", 0 _
-))
+		), _
+		"head_index", 0, _
+		"head_name", 'probability' _
+		)) _
+		), _
+		"timestamp_ms", 0 _
+		))
 
 Global Const $FILE_CONTENT = 1
 Global Const $FILE_NAME = 2
@@ -174,7 +174,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $classifier = $_ImageClassifier.create_from_model_path($model_path)
 	_AssertIsInstance($classifier, $_ImageClassifier)
-	$classifier.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -183,7 +182,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_ImageClassifierOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $classifier = $_ImageClassifier.create_from_options($options)
 	_AssertIsInstance($classifier, $_ImageClassifier)
-	$classifier.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -193,7 +191,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_ImageClassifierOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $classifier = $_ImageClassifier.create_from_options($options)
 	_AssertIsInstance($classifier, $_ImageClassifier)
-	$classifier.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_classify($model_file_type, $max_results, $expected_classification_result)
@@ -215,9 +212,6 @@ Func test_classify($model_file_type, $max_results, $expected_classification_resu
 
 	; Comparing results.
 	_AssertProtoEquals($image_result.to_pb2(), $expected_classification_result.to_pb2())
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_classify
 
 Func test_classify_succeeds_with_region_of_interest()
@@ -237,9 +231,6 @@ Func test_classify_succeeds_with_region_of_interest()
 
 	; Comparing results.
 	_AssertProtoEquals($image_result.to_pb2(), _generate_soccer_ball_results().to_pb2())
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_classify_succeeds_with_region_of_interest
 
 Func test_classify_succeeds_with_rotation()
@@ -258,9 +249,6 @@ Func test_classify_succeeds_with_rotation()
 
 	; Comparing results.
 	_AssertProtoEquals($image_result.to_pb2(), $_EXPECTED_ROTATED_CLASSIFICATION_RESULT.to_pb2())
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_classify_succeeds_with_rotation
 
 Func test_classify_succeeds_with_region_of_interest_and_rotation()
@@ -281,9 +269,6 @@ Func test_classify_succeeds_with_region_of_interest_and_rotation()
 
 	; Comparing results.
 	_AssertProtoEquals($image_result.to_pb2(), $_EXPECTED_ROI_ROTATED__CLASSIFICATION_RESULT.to_pb2())
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_classify_succeeds_with_region_of_interest_and_rotation
 
 Func test_score_threshold_option()
@@ -309,9 +294,6 @@ Func test_score_threshold_option()
 					$classification.to_pb2().__str__())
 		Next
 	Next
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_score_threshold_option
 
 Func test_max_results_option()
@@ -325,16 +307,13 @@ Func test_max_results_option()
 	Local $categories = $image_result.classifications(0).categories
 
 	_AssertLessEqual($categories.size(), $_MAX_RESULTS, 'Too many results returned.')
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_max_results_option
 
 Func test_allow_list_option()
 	; Creates classifier.
 	Local $options = $_ImageClassifierOptions(_Mediapipe_Params( _
-		"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
-		"category_allowlist", $_ALLOW_LIST))
+			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
+			"category_allowlist", $_ALLOW_LIST))
 	Local $classifier = $_ImageClassifier.create_from_options($options)
 
 	; Performs image classification on the input.
@@ -349,19 +328,16 @@ Func test_allow_list_option()
 		For $category In $classification.categories
 			$label = $category.category_name
 			_AssertIn($label, $_ALLOW_LIST, _
-										"Label " & $label & " found but not in label allow list")
+					"Label " & $label & " found but not in label allow list")
 		Next
 	Next
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_allow_list_option
 
 Func test_deny_list_option()
 	; Creates classifier.
 	Local $options = $_ImageClassifierOptions(_Mediapipe_Params( _
-		"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
-		"category_denylist", $_DENY_LIST))
+			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
+			"category_denylist", $_DENY_LIST))
 	Local $classifier = $_ImageClassifier.create_from_options($options)
 
 	; Performs image classification on the input.
@@ -376,19 +352,16 @@ Func test_deny_list_option()
 		For $category In $classification.categories
 			$label = $category.category_name
 			_AssertNotIn($label, $_DENY_LIST, _
-										"Label " & $label & " found but in deny list")
+					"Label " & $label & " found but in deny list")
 		Next
 	Next
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_deny_list_option
 
 Func test_empty_classification_outputs()
 	; Creates classifier.
 	Local $options = $_ImageClassifierOptions(_Mediapipe_Params( _
-		"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
-		"score_threshold", 1))
+			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
+			"score_threshold", 1))
 	Local $classifier = $_ImageClassifier.create_from_options($options)
 
 	; Performs image classification on the input.
@@ -399,9 +372,9 @@ EndFunc   ;==>test_empty_classification_outputs
 Func test_classify_for_video()
 	; Creates classifier.
 	Local $options = $_ImageClassifierOptions(_Mediapipe_Params( _
-		"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
-		"running_mode", $_RUNNING_MODE.VIDEO, _
-		"max_results", 4))
+			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
+			"running_mode", $_RUNNING_MODE.VIDEO, _
+			"max_results", 4))
 	Local $classifier = $_ImageClassifier.create_from_options($options)
 
 	Local $classification_result
@@ -410,19 +383,16 @@ Func test_classify_for_video()
 		_AssertProtoEquals( _
 				$classification_result.to_pb2(), _
 				_generate_burger_results($timestamp).to_pb2() _
-		)
+				)
 	Next
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_classify_for_video
 
 Func test_classify_for_video_succeeds_with_region_of_interest()
 	; Creates classifier.
 	Local $options = $_ImageClassifierOptions(_Mediapipe_Params( _
-		"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
-		"running_mode", $_RUNNING_MODE.VIDEO, _
-		"max_results", 1))
+			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
+			"running_mode", $_RUNNING_MODE.VIDEO, _
+			"max_results", 1))
 	Local $classifier = $_ImageClassifier.create_from_options($options)
 
 	; Load the test image.
@@ -439,78 +409,75 @@ Func test_classify_for_video_succeeds_with_region_of_interest()
 		_AssertProtoEquals( _
 				$classification_result.to_pb2(), _
 				_generate_soccer_ball_results($timestamp).to_pb2() _
-		)
+				)
 	Next
-
-	; Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>test_classify_for_video_succeeds_with_region_of_interest
 
 Func _generate_empty_results()
 	Return $_ImageClassifierResult(_Mediapipe_Params( _
 			"classifications", _Mediapipe_Tuple( _
-				$_Classifications(_Mediapipe_Params( _
-					"categories", _Mediapipe_Tuple(), "head_index", 0, "head_name", 'probability')) _
+			$_Classifications(_Mediapipe_Params( _
+			"categories", _Mediapipe_Tuple(), "head_index", 0, "head_name", 'probability')) _
 			), _
 			"timestamp_ms", 0))
 EndFunc   ;==>_generate_empty_results
 
 Func _generate_burger_results($timestamp_ms = 0)
 	Return $_ImageClassifierResult(_Mediapipe_Params( _
-		"classifications", _Mediapipe_Tuple( _
+			"classifications", _Mediapipe_Tuple( _
 			$_Classifications(_Mediapipe_Params( _
-				"categories", _Mediapipe_Tuple( _
-					$_Category(_Mediapipe_Params( _
-						"index", 934, _
-						"score", 0.793959, _
-						"display_name", '', _
-						"category_name", 'cheeseburger' _
-					)), _
-					$_Category(_Mediapipe_Params( _
-						"index", 932, _
-						"score", 0.0273929, _
-						"display_name", '', _
-						"category_name", 'bagel' _
-					)), _
-					$_Category(_Mediapipe_Params( _
-						"index", 925, _
-						"score", 0.0193408, _
-						"display_name", '', _
-						"category_name", 'guacamole' _
-					)), _
-					$_Category(_Mediapipe_Params( _
-						"index", 963, _
-						"score", 0.00632786, _
-						"display_name", '', _
-						"category_name", 'meat loaf' _
-					)) _
-				), _
-				"head_index", 0, _
-				"head_name", 'probability' _
+			"categories", _Mediapipe_Tuple( _
+			$_Category(_Mediapipe_Params( _
+			"index", 934, _
+			"score", 0.793959, _
+			"display_name", '', _
+			"category_name", 'cheeseburger' _
+			)), _
+			$_Category(_Mediapipe_Params( _
+			"index", 932, _
+			"score", 0.0273929, _
+			"display_name", '', _
+			"category_name", 'bagel' _
+			)), _
+			$_Category(_Mediapipe_Params( _
+			"index", 925, _
+			"score", 0.0193408, _
+			"display_name", '', _
+			"category_name", 'guacamole' _
+			)), _
+			$_Category(_Mediapipe_Params( _
+			"index", 963, _
+			"score", 0.00632786, _
+			"display_name", '', _
+			"category_name", 'meat loaf' _
 			)) _
-		), _
-		"timestamp_ms", $timestamp_ms _
-	))
+			), _
+			"head_index", 0, _
+			"head_name", 'probability' _
+			)) _
+			), _
+			"timestamp_ms", $timestamp_ms _
+			))
 EndFunc   ;==>_generate_burger_results
 
 Func _generate_soccer_ball_results($timestamp_ms = 0)
 	Return $_ImageClassifierResult(_Mediapipe_Params( _
-		"classifications", _Mediapipe_Tuple( _
+			"classifications", _Mediapipe_Tuple( _
 			$_Classifications(_Mediapipe_Params( _
-				"categories", _Mediapipe_Tuple( _
-					$_Category(_Mediapipe_Params( _
-						"index", 806, _
-						"score", 0.996527, _
-						"display_name", '', _
-						"category_name", 'soccer ball' _
-					)) _
-				), _
-				"head_index", 0, _
-				"head_name", 'probability' _
+			"categories", _Mediapipe_Tuple( _
+			$_Category(_Mediapipe_Params( _
+			"index", 806, _
+			"score", 0.996527, _
+			"display_name", '', _
+			"category_name", 'soccer ball' _
 			)) _
-		), _
-		"timestamp_ms", $timestamp_ms _
-	))
+			), _
+			"head_index", 0, _
+			"head_name", 'probability' _
+			)) _
+			), _
+			"timestamp_ms", $timestamp_ms _
+			))
 EndFunc   ;==>_generate_soccer_ball_results
 
 Func _OnAutoItExit()

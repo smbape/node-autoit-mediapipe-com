@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/holistic_landmarker.h"
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::holistic_landmarker::HolisticLandmarkerResultRawCallback);
@@ -85,43 +86,43 @@ namespace {
 		MP_PACKET_ASSIGN_OR_RETURN(const auto& right_hand_world_landmarks_proto_list, LandmarkList, output_packets.at(_RIGHT_HAND_WORLD_LANDMARKS_STREAM_NAME));
 
 		for (const auto& face_landmark : face_landmarks_proto_list.landmark()) {
-			holistic_landmarker_result->face_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(face_landmark));
+			holistic_landmarker_result->face_landmarks->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(face_landmark)));
 		}
 
 		for (const auto& pose_landmark : pose_landmarks_proto_list.landmark()) {
-			holistic_landmarker_result->pose_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(pose_landmark));
+			holistic_landmarker_result->pose_landmarks->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(pose_landmark)));
 		}
 
 		for (const auto& pose_world_landmark : pose_world_landmarks_proto_list.landmark()) {
-			holistic_landmarker_result->pose_world_landmarks->push_back(landmark::Landmark::create_from_pb2(pose_world_landmark));
+			holistic_landmarker_result->pose_world_landmarks->push_back(std::move(landmark::Landmark::create_from_pb2(pose_world_landmark)));
 		}
 
 		for (const auto& left_hand_landmark : left_hand_landmarks_proto_list.landmark()) {
-			holistic_landmarker_result->left_hand_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(left_hand_landmark));
+			holistic_landmarker_result->left_hand_landmarks->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(left_hand_landmark)));
 		}
 
 		for (const auto& left_hand_world_landmark : left_hand_world_landmarks_proto_list.landmark()) {
-			holistic_landmarker_result->left_hand_world_landmarks->push_back(landmark::Landmark::create_from_pb2(left_hand_world_landmark));
+			holistic_landmarker_result->left_hand_world_landmarks->push_back(std::move(landmark::Landmark::create_from_pb2(left_hand_world_landmark)));
 		}
 
 		for (const auto& right_hand_landmark : right_hand_landmarks_proto_list.landmark()) {
-			holistic_landmarker_result->right_hand_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(right_hand_landmark));
+			holistic_landmarker_result->right_hand_landmarks->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(right_hand_landmark)));
 		}
 
 		for (const auto& right_hand_world_landmark : right_hand_world_landmarks_proto_list.landmark()) {
-			holistic_landmarker_result->right_hand_world_landmarks->push_back(landmark::Landmark::create_from_pb2(right_hand_world_landmark));
+			holistic_landmarker_result->right_hand_world_landmarks->push_back(std::move(landmark::Landmark::create_from_pb2(right_hand_world_landmark)));
 		}
 
 		if (output_packets.count(_FACE_BLENDSHAPES_STREAM_NAME)) {
 			MP_PACKET_ASSIGN_OR_RETURN(const auto& face_blendshapes_proto_list, ClassificationList, output_packets.at(_FACE_BLENDSHAPES_STREAM_NAME));
 
 			for (const auto& face_blendshapes : face_blendshapes_proto_list.classification()) {
-				holistic_landmarker_result->face_blendshapes->push_back(std::make_shared<category::Category>(
+				holistic_landmarker_result->face_blendshapes->push_back(std::move(std::make_shared<category::Category>(
 					face_blendshapes.index(),
 					face_blendshapes.score(),
 					face_blendshapes.display_name(),
 					face_blendshapes.label()
-				));
+				)));
 			}
 		}
 
@@ -141,32 +142,32 @@ namespace mediapipe::tasks::autoit::vision::holistic_landmarker {
 		auto holistic_landmarker_result = std::make_shared<HolisticLandmarkerResult>();
 
 		for (const auto& landmark : pb2_obj.face_landmarks().landmark()) {
-			holistic_landmarker_result->face_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(landmark));
+			holistic_landmarker_result->face_landmarks->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(landmark)));
 		}
 
 		for (const auto& landmark : pb2_obj.pose_landmarks().landmark()) {
-			holistic_landmarker_result->pose_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(landmark));
+			holistic_landmarker_result->pose_landmarks->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(landmark)));
 		}
 
 		for (const auto& landmark : pb2_obj.pose_world_landmarks().landmark()) {
-			holistic_landmarker_result->pose_world_landmarks->push_back(landmark::Landmark::create_from_pb2(landmark));
+			holistic_landmarker_result->pose_world_landmarks->push_back(std::move(landmark::Landmark::create_from_pb2(landmark)));
 		}
 
 		for (const auto& landmark : pb2_obj.left_hand_landmarks().landmark()) {
-			holistic_landmarker_result->left_hand_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(landmark));
+			holistic_landmarker_result->left_hand_landmarks->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(landmark)));
 		}
 
 		for (const auto& landmark : pb2_obj.right_hand_landmarks().landmark()) {
-			holistic_landmarker_result->right_hand_landmarks->push_back(landmark::NormalizedLandmark::create_from_pb2(landmark));
+			holistic_landmarker_result->right_hand_landmarks->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(landmark)));
 		}
 
 		for (const auto& classification : pb2_obj.face_blendshapes().classification()) {
-			holistic_landmarker_result->face_blendshapes->push_back(std::make_shared<category::Category>(
+			holistic_landmarker_result->face_blendshapes->push_back(std::move(std::make_shared<category::Category>(
 				classification.index(),
 				classification.score(),
 				classification.display_name(),
 				classification.label()
-			));
+			)));
 		}
 
 		return holistic_landmarker_result;
@@ -204,7 +205,7 @@ namespace mediapipe::tasks::autoit::vision::holistic_landmarker {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<HolisticLandmarker*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<HolisticLandmarker*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<HolisticLandmarker>> HolisticLandmarker::create_from_model_path(const std::string& model_path) {

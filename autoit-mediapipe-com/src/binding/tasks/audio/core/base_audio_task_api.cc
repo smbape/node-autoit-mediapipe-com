@@ -5,6 +5,13 @@ namespace mediapipe::tasks::autoit::audio::core::base_audio_task_api {
 	using audio_task_running_mode::AudioTaskRunningModeToChar;
 	using mediapipe::autoit::PacketsCallback;
 
+	BaseAudioTaskApi::~BaseAudioTaskApi() {
+		auto status = close();
+		if (!status.ok()) {
+			AUTOIT_WARN(::mediapipe::autoit::StatusCodeToError(status.code()) << ": " << status.message().data());
+		}
+	}
+
 	absl::StatusOr<std::shared_ptr<BaseAudioTaskApi>> BaseAudioTaskApi::create(
 		const CalculatorGraphConfig& graph_config,
 		audio_task_running_mode::AudioTaskRunningMode running_mode,

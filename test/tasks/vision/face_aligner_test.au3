@@ -96,7 +96,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $aligner = $_FaceAligner.create_from_model_path($model_path)
 	_AssertIsInstance($aligner, $_FaceAligner)
-	$aligner.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -105,7 +104,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_FaceAlignerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $aligner = $_FaceAligner.create_from_options($options)
 	_AssertIsInstance($aligner, $_FaceAligner)
-	$aligner.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -115,7 +113,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_FaceAlignerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $aligner = $_FaceAligner.create_from_options($options)
 	_AssertIsInstance($aligner, $_FaceAligner)
-	$aligner.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_align($model_file_type, $image_file_name)
@@ -138,9 +135,6 @@ Func test_align($model_file_type, $image_file_name)
 	; Performs face alignment on the input.
 	Local $aligned_image = $aligner.align($test_image)
 	_AssertIsInstance($aligned_image, $_Image)
-
-	; Closes the aligner explicitly when the aligner is not used in a context.
-	$aligner.close()
 EndFunc   ;==>test_align
 
 Func test_align_succeeds_with_region_of_interest()
@@ -161,9 +155,6 @@ Func test_align_succeeds_with_region_of_interest()
 	_AssertIsInstance($aligned_image, $_Image)
 	_AssertEqual($aligned_image.width, $_MODEL_IMAGE_SIZE)
 	_AssertEqual($aligned_image.height, $_MODEL_IMAGE_SIZE)
-
-	; Closes the aligner explicitly when the aligner is not used in a context.
-	$aligner.close()
 EndFunc   ;==>test_align_succeeds_with_region_of_interest
 
 Func test_align_succeeds_with_no_face_detected()
@@ -182,9 +173,6 @@ Func test_align_succeeds_with_no_face_detected()
 	; Performs face alignment on the input.
 	Local $aligned_image = $aligner.align($test_image, $image_processing_options)
 	_AssertIsNone($aligned_image)
-
-	; Closes the aligner explicitly when the aligner is not used in a context.
-	$aligner.close()
 EndFunc   ;==>test_align_succeeds_with_no_face_detected
 
 Func _OnAutoItExit()

@@ -14,7 +14,8 @@ namespace mediapipe::autoit {
 	using PacketsRawCallback = void(*)(const ::mediapipe::tasks::core::PacketMap&);
 	using PacketsCallback = std::function<void(const ::mediapipe::tasks::core::PacketMap&)>;
 	namespace task_runner {
-		[[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::core::TaskRunner>> create(const CalculatorGraphConfig& graph_config, PacketsCallback packets_callback = nullptr);
+		[[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::core::TaskRunner>> create(const CalculatorGraphConfig& graph_config);
+		[[nodiscard]] absl::StatusOr<std::shared_ptr<mediapipe::tasks::core::TaskRunner>> create(const CalculatorGraphConfig& graph_config, PacketsCallback&& packets_callback);
 	}
 }
 

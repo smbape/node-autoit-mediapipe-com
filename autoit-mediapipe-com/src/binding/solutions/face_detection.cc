@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/solutions/face_detection.h"
 #include "binding/solutions/download_utils.h"
 #include "Cv_Mat_Object.h"

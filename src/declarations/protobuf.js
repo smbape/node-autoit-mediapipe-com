@@ -1,15 +1,15 @@
-module.exports = [
+module.exports = ({language}) => [
     ["class google.protobuf.Message", "", [], [], "", ""],
 
-    ["google.protobuf.Message.ToStr", "absl::Status", ["=__str__", "/Call=google::protobuf::autoit::Print", "/Expr=*__self->get(), $0"], [
+    ["google.protobuf.Message.ToStr", "absl::Status", ["=__str__", `/Call=google::protobuf::${ language }::Print`, "/Expr=*__self->get(), $0"], [
         ["std::string*", "output", "", ["/O"]],
     ], "", ""],
 
-    ["google.protobuf.Message.CopyFrom", "absl::Status", ["/Call=google::protobuf::autoit::cmessage::CopyFrom", "/Expr=__self->get(), $0"], [
+    ["google.protobuf.Message.CopyFrom", "absl::Status", [`/Call=google::protobuf::${ language }::cmessage::CopyFrom`, "/Expr=__self->get(), $0"], [
         ["google::protobuf::Message*", "other_message", "", ["/C"]],
     ], "", ""],
 
-    ["google.protobuf.Message.ClearField", "absl::Status", ["/Call=google::protobuf::autoit::cmessage::ClearField", "/Expr=*__self->get(), $0"], [
+    ["google.protobuf.Message.ClearField", "absl::Status", [`/Call=google::protobuf::${ language }::cmessage::ClearField`, "/Expr=*__self->get(), $0"], [
         ["std::string", "field_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
@@ -38,12 +38,12 @@ module.exports = [
         ["std::string*", "output", "", ["/O"]],
     ], "", ""],
 
-    ["google.protobuf.TextFormat.Print", "absl::Status", ["/Call=google::protobuf::autoit::Print"], [
+    ["google.protobuf.TextFormat.Print", "absl::Status", [`/Call=google::protobuf::${ language }::Print`], [
         ["std::shared_ptr<google::protobuf::Message>", "message", "", ["/Ref", "/C", "/Expr=*$0.get()"]],
         ["std::string*", "output", "", ["/O"]],
     ], "", ""],
 
-    ["google.protobuf.TextFormat.Parse", "std::shared_ptr<google::protobuf::Message>", ["/Call=google::protobuf::autoit::Parse"], [
+    ["google.protobuf.TextFormat.Parse", "std::shared_ptr<google::protobuf::Message>", [`/Call=google::protobuf::${ language }::Parse`], [
         ["std::string", "input", "", ["/C", "/Ref"]],
         ["std::shared_ptr<google::protobuf::Message>", "message", "", []],
     ], "", ""],

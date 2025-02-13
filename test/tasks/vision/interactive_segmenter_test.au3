@@ -176,7 +176,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $segmenter = $_InteractiveSegmenter.create_from_model_path($model_path)
 	_AssertIsInstance($segmenter, $_InteractiveSegmenter)
-	$segmenter.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -185,7 +184,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_InteractiveSegmenterOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $segmenter = $_InteractiveSegmenter.create_from_options($options)
 	_AssertIsInstance($segmenter, $_InteractiveSegmenter)
-	$segmenter.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -195,7 +193,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_InteractiveSegmenterOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $segmenter = $_InteractiveSegmenter.create_from_options($options)
 	_AssertIsInstance($segmenter, $_InteractiveSegmenter)
-	$segmenter.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_segment_succeeds_with_category_mask( _
@@ -238,9 +235,6 @@ Func test_segment_succeeds_with_category_mask( _
 			_similar_to_uint8_mask($category_mask, $test_seg_image, $similarity_threshold), _
 			'Number of pixels in the candidate mask differing from that of the ' & _
 			'ground truth mask exceeds ' & $similarity_threshold & '.')
-
-	; Closes the segmenter explicitly when the segmenter is not used ina context.
-	$segmenter.close()
 EndFunc   ;==>test_segment_succeeds_with_category_mask
 
 Func test_segment_succeeds_with_confidence_mask($model_file_type, $roi_format, $keypoint, $output_mask, $similarity_threshold)
@@ -282,9 +276,6 @@ Func test_segment_succeeds_with_confidence_mask($model_file_type, $roi_format, $
 			$confidence_masks(1), $expected_mask, $similarity_threshold _
 			) _
 			)
-
-	; Closes the segmenter explicitly when the segmenter is not used ina context.
-	$segmenter.close()
 EndFunc   ;==>test_segment_succeeds_with_confidence_mask
 
 Func test_segment_succeeds_with_rotation()
@@ -315,9 +306,6 @@ Func test_segment_succeeds_with_rotation()
 			2, _
 			'Number of confidence masks must match with number of categories.' _
 			)
-
-	; Closes the segmenter explicitly when the segmenter is not used ina context.
-	$segmenter.close()
 EndFunc   ;==>test_segment_succeeds_with_rotation
 
 Func _load_segmentation_mask($file_path)

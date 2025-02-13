@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/face_stylizer.h"
 
 namespace {
@@ -43,7 +44,7 @@ namespace mediapipe::tasks::autoit::vision::face_stylizer {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<FaceStylizer*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<FaceStylizer*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<FaceStylizer>> FaceStylizer::create_from_model_path(const std::string& model_path) {

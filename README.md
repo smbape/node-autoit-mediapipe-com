@@ -2595,7 +2595,7 @@ curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.6
 7z x autoit-opencv-4.10.0-com-v2.6.2.7z -aoa -oautoit-opencv-com
 
 # download opencv-4.10.0-windows.exe
-curl -L 'https://github.com/opencv/opencv/releases/download/4.8.0/opencv-4.10.0-windows.exe' -o opencv-4.10.0-windows.exe
+curl -L 'https://github.com/opencv/opencv/releases/download/4.10.0/opencv-4.10.0-windows.exe' -o opencv-4.10.0-windows.exe
 
 # extract the content of opencv-4.10.0-windows.exe into a folder named opencv-4.10.0-windows
 ./opencv-4.10.0-windows.exe -oopencv-4.10.0-windows -y
@@ -2625,7 +2625,7 @@ Now you can run any file in the `examples` folder.
 ### Prerequisites
 
   - Install [Bazel](https://bazel.build/install/windows)
-  - Install [Visual Studio 2022 >= 17.7.2 with .NET Desktop and C++ Desktop](https://visualstudio.microsoft.com/fr/downloads/)
+  - Install [Visual Studio 2022 >= 17.13.0 with .NET Desktop and C++ Desktop](https://visualstudio.microsoft.com/fr/downloads/)
   - Install [Git for Windows](https://gitforwindows.org/)
   - Install [nodejs](https://nodejs.org/en/download/)
   - Install [Python >= 3.8](https://www.python.org/downloads/)

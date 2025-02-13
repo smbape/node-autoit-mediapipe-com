@@ -2,6 +2,7 @@
 
 #include "mediapipe/framework/formats/landmark.pb.h"
 #include "binding/solution_base.h"
+#include <opencv2/core/mat.hpp>
 
 namespace mediapipe::autoit::solutions::holistic {
 	using namespace mediapipe::autoit::solution_base;
@@ -12,7 +13,7 @@ namespace mediapipe::autoit::solutions::holistic {
 
 		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<Holistic>> create(
 			bool static_image_mode = false,
-			BYTE model_complexity = 1,
+			uint8_t model_complexity = 1,
 			bool smooth_landmarks = true,
 			bool enable_segmentation = false,
 			bool smooth_segmentation = true,

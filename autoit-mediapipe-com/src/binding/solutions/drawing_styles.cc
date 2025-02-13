@@ -1,4 +1,5 @@
 #include "binding/solutions/drawing_styles.h"
+#include "binding/solutions/pose_connections.h"
 
 namespace mediapipe::autoit::solutions::drawing_styles {
 	using namespace mediapipe::autoit::solutions::face_mesh_connections;

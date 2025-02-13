@@ -19,13 +19,13 @@ const files = [
 ];
 
 files.push([
-    sysPath.join(project, "build_x64/_deps/mediapipe-src/bazel-out/x64_windows-opt/bin"),
+    sysPath.join(project, "build_x64/mediapipe-src/bazel-out/x64_windows-opt/bin"),
     "-r",
     "*.binarypb",
 ]);
 
 files.push([
-    sysPath.join(project, "build_x64/_deps/mediapipe-src"),
+    sysPath.join(project, "build_x64/mediapipe-src"),
     "mediapipe/modules/objectron/object_detection_oidv4_labelmap.txt",
     "mediapipe/modules/hand_landmark/handedness.txt",
 ]);

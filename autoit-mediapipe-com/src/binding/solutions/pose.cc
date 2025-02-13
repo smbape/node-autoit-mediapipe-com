@@ -16,7 +16,7 @@ namespace mediapipe::autoit::solutions::pose {
 
 	absl::StatusOr<std::shared_ptr<Pose>> Pose::create(
 		bool static_image_mode,
-		BYTE model_complexity,
+		uint8_t model_complexity,
 		bool smooth_landmarks,
 		bool enable_segmentation,
 		bool smooth_segmentation,

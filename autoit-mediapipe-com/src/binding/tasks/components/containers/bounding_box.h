@@ -1,6 +1,7 @@
 #pragma once
 
 #include "mediapipe/framework/formats/location_data.pb.h"
+#include <opencv2/core/cvdef.h>
 #include "autoit_bridge_common.h"
 
 namespace mediapipe::tasks::autoit::components::containers::bounding_box {

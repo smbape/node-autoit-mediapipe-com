@@ -96,7 +96,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $stylizer = $_FaceStylizer.create_from_model_path($model_path)
 	_AssertIsInstance($stylizer, $_FaceStylizer)
-	$stylizer.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -105,7 +104,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_FaceStylizerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $stylizer = $_FaceStylizer.create_from_options($options)
 	_AssertIsInstance($stylizer, $_FaceStylizer)
-	$stylizer.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -115,7 +113,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_FaceStylizerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $stylizer = $_FaceStylizer.create_from_options($options)
 	_AssertIsInstance($stylizer, $_FaceStylizer)
-	$stylizer.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_stylize($model_file_type, $image_file_name)
@@ -138,9 +135,6 @@ Func test_stylize($model_file_type, $image_file_name)
 	; Performs face stylization on the input.
 	Local $stylized_image = $stylizer.stylize($test_image)
 	_AssertIsInstance($stylized_image, $_Image)
-
-	; Closes the stylizer explicitly when the stylizer is not used in a context.
-	$stylizer.close()
 EndFunc   ;==>test_stylize
 
 Func test_stylize_succeeds_with_region_of_interest()
@@ -161,9 +155,6 @@ Func test_stylize_succeeds_with_region_of_interest()
 	_AssertIsInstance($stylized_image, $_Image)
 	_AssertEqual($stylized_image.width, $_MODEL_IMAGE_SIZE)
 	_AssertEqual($stylized_image.height, $_MODEL_IMAGE_SIZE)
-
-	; Closes the stylizer explicitly when the stylizer is not used in a context.
-	$stylizer.close()
 EndFunc   ;==>test_stylize_succeeds_with_region_of_interest
 
 Func test_stylize_succeeds_with_no_face_detected()

@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/text/language_detector.h"
 #include "binding/packet_getter.h"
 
@@ -27,9 +28,9 @@ namespace {
 		for (const auto& category : *languages_and_scores->categories) {
 			MP_ASSERT_RETURN_IF_ERROR(!category->category_name.empty(),
 				"LanguageDetector ClassificationResult has a missing language code.");
-			language_detector_result->detections->push_back(
+			language_detector_result->detections->push_back(std::move(
 				std::make_shared<LanguageDetectorResult::Detection>(category->category_name, category->score)
-			);
+			));
 		}
 
 		return language_detector_result;

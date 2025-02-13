@@ -1,6 +1,7 @@
 #pragma once
 
 #include "binding/solution_base.h"
+#include <opencv2/core/mat.hpp>
 
 namespace mediapipe::autoit::solutions::selfie_segmentation {
 	using namespace mediapipe::autoit::solution_base;

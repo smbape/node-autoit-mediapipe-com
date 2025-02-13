@@ -48,6 +48,6 @@ namespace mediapipe::tasks::autoit::components::utils::cosine_similarity {
 		}
 
 		MP_ASSERT_RETURN_IF_ERROR(false, "Cannot compute cosine similarity of unsupported "
-					"embeddings type. Only float and byte types are supported.");
+			"embeddings type. Only float and byte types are supported.");
 	}
 }

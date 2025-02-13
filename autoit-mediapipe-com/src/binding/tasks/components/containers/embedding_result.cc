@@ -13,7 +13,7 @@ namespace mediapipe::tasks::autoit::components::containers::embedding_result {
 			embedding->embedding = cv::Mat(values, true);
 		}
 		else {
-			std::vector<byte> values(pb2_obj.quantized_embedding().values().begin(), pb2_obj.quantized_embedding().values().end());
+			std::vector<unsigned char> values(pb2_obj.quantized_embedding().values().begin(), pb2_obj.quantized_embedding().values().end());
 			embedding->embedding = cv::Mat(values, true);
 		}
 
@@ -25,7 +25,7 @@ namespace mediapipe::tasks::autoit::components::containers::embedding_result {
 	std::shared_ptr<EmbeddingResult> EmbeddingResult::create_from_pb2(const proto::EmbeddingResult& pb2_obj) {
 		auto embedding_result = std::make_shared<EmbeddingResult>();
 		for (const auto& embedding : pb2_obj.embeddings()) {
-			embedding_result->embeddings->push_back(Embedding::create_from_pb2(embedding));
+			embedding_result->embeddings->push_back(std::move(Embedding::create_from_pb2(embedding)));
 		}
 		return embedding_result;
 	}

@@ -1,5 +1,5 @@
-module.exports = [
-    ["mediapipe.autoit.solutions.face_mesh_connections.", "", ["/Properties"], [
+module.exports = ({language}) => [
+    [`mediapipe.${ language }.solutions.face_mesh_connections.`, "", ["/Properties"], [
         ["std::vector<std::tuple<int, int>>", "FACEMESH_LIPS", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "FACEMESH_LEFT_EYE", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "FACEMESH_LEFT_IRIS", "", ["/R"]],

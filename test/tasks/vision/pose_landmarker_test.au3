@@ -150,7 +150,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $landmarker = $_PoseLandmarker.create_from_model_path($model_path)
 	_AssertIsInstance($landmarker, $_PoseLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -159,7 +158,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_PoseLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_PoseLandmarker.create_from_options($options)
 	_AssertIsInstance($landmarker, $_PoseLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -169,7 +167,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_PoseLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_PoseLandmarker.create_from_options($options)
 	_AssertIsInstance($landmarker, $_PoseLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect( _
@@ -203,9 +200,6 @@ Func test_detect( _
 			$output_segmentation_masks, _
 			$_LANDMARKS_MARGIN _
 			)
-
-	; Closes the pose landmarker explicitly when the pose landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_detect
 
 Func test_detect_for_video($image_path, $rotation, $output_segmentation_masks, $expected_result)
@@ -238,9 +232,6 @@ Func test_detect_for_video($image_path, $rotation, $output_segmentation_masks, $
 			_AssertEqual($result, $expected_result)
 		EndIf
 	Next
-
-	; Closes the pose landmarker explicitly when the pose landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_detect_for_video
 
 Func _get_expected_pose_landmarker_result($file_path)

@@ -5,12 +5,19 @@ namespace mediapipe::tasks::autoit::vision::core::base_vision_task_api {
 	using components::containers::rect::NormalizedRect;
 	using image_processing_options::ImageProcessingOptions;
 
+	BaseVisionTaskApi::~BaseVisionTaskApi() {
+		auto status = close();
+		if (!status.ok()) {
+			AUTOIT_WARN(::mediapipe::autoit::StatusCodeToError(status.code()) << ": " << status.message().data());
+		}
+	}
+
 	absl::StatusOr<std::shared_ptr<BaseVisionTaskApi>> BaseVisionTaskApi::create(
 		const CalculatorGraphConfig& graph_config,
 		vision_task_running_mode::VisionTaskRunningMode running_mode,
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
-		return create(graph_config, running_mode, packet_callback, static_cast<BaseVisionTaskApi*>(nullptr));
+		return create(graph_config, running_mode, std::move(packet_callback), static_cast<BaseVisionTaskApi*>(nullptr));
 	}
 
 	absl::StatusOr<std::map<std::string, Packet>> BaseVisionTaskApi::_process_image_data(const std::map<std::string, Packet>& inputs) {

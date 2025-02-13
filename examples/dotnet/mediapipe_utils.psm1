@@ -262,7 +262,7 @@ function _Mediapipe_FindResourceDir(
 ) {
     $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "Release" }
     $CompileMode = if ($BuildType -eq "Debug") { "dbg" } else { "opt" }
-    $BazelBin = "build_x64\_deps\mediapipe-src\bazel-out\x64_windows-$CompileMode\bin"
+    $BazelBin = "build_x64\mediapipe-src\bazel-out\x64_windows-$CompileMode\bin"
 
     $aSearchPaths = @(
         "."

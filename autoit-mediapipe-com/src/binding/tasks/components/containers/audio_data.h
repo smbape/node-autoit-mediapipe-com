@@ -1,6 +1,9 @@
 #pragma once
 
+#include "absl/status/status.h"
+#include "absl/status/statusor.h"
 #include <opencv2/core/mat.hpp>
+#include <optional>
 #include "autoit_bridge_common.h"
 
 namespace mediapipe::tasks::autoit::components::containers::audio_data {

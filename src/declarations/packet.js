@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = ({self, self_get, language}) => [
     ["class mediapipe.Packet", "", ["/Simple"], [], "", ""],
 
     ["mediapipe.Packet.Packet", "mediapipe.Packet.Packet", [], [], "", ""],
@@ -8,7 +8,7 @@ module.exports = [
     ], "", ""],
 
     ["mediapipe.Packet.Timestamp", "mediapipe::Timestamp", ["/attr=propget", "=get_timestamp", "/idlname=timestamp"], [], "", ""],
-    ["mediapipe.Packet.Timestamp", "void", ["/attr=propput", "=put_timestamp", "/idlname=timestamp", "/Output=*__self->get() = std::move(__self->get()->At(Timestamp(ts_value)))"], [
+    ["mediapipe.Packet.Timestamp", "void", ["/attr=propput", "=put_timestamp", "/idlname=timestamp", `/Output=${ self } = std::move(${ self_get("At") }(Timestamp(ts_value)))`], [
         ["int64_t", "ts_value", "", []],
     ], "", ""],
 
@@ -25,7 +25,7 @@ module.exports = [
     ["mediapipe.Packet.str", "std::string", ["/External"], [], "", ""],
 
     // expose a packet property like in mediapipe python
-    ["mediapipe.autoit._framework_bindings.packet.", "", ["/Properties"], [
-        ["mediapipe::Packet", "Packet", "", ["/R", "=this"]],
+    [`mediapipe.${ language }._framework_bindings.packet.`, "", ["/Properties"], [
+        ["mediapipe::Packet", "Packet", "", ["/R", "=this", "/S"]],
     ], "", ""],
 ];

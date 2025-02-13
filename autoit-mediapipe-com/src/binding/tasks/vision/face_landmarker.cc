@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/face_landmarker.h"
 
 // https://github.com/protocolbuffers/protobuf/issues/5051
@@ -2773,7 +2774,7 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> face_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>();
 
 			for (const auto& face_landmark : face_landmarks.landmark()) {
-				face_landmarks_list->push_back(landmark::NormalizedLandmark::create_from_pb2(face_landmark));
+				face_landmarks_list->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(face_landmark)));
 			}
 
 			face_landmarker_result->face_landmarks->push_back(std::move(face_landmarks_list));
@@ -2785,12 +2786,12 @@ namespace {
 				std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> face_blendshapes_categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 
 				for (const auto& face_blendshapes : face_blendshapes_classifications.classification()) {
-					face_blendshapes_categories->push_back(std::make_shared<category::Category>(
+					face_blendshapes_categories->push_back(std::move(std::make_shared<category::Category>(
 						face_blendshapes.index(),
 						face_blendshapes.score(),
 						face_blendshapes.display_name(),
 						face_blendshapes.label()
-					));
+					)));
 				}
 
 				face_landmarker_result->face_blendshapes->push_back(std::move(face_blendshapes_categories));
@@ -2811,7 +2812,7 @@ namespace {
 					matrix = transposed;
 				}
 
-				face_landmarker_result->facial_transformation_matrixes->push_back(matrix);
+				face_landmarker_result->facial_transformation_matrixes->push_back(std::move(matrix));
 			}
 		}
 
@@ -2849,7 +2850,7 @@ namespace mediapipe::tasks::autoit::vision::face_landmarker {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<FaceLandmarker*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<FaceLandmarker*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<FaceLandmarker>> FaceLandmarker::create_from_model_path(const std::string& model_path) {

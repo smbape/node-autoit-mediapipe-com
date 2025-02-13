@@ -147,8 +147,8 @@ Func test_on_video($id, $model_complexity, $expected_name)
 			@ScriptDir & "/testdata/asl_hand.25fps.mp4" _
 			)
 
-	Local $data_path = @ScriptDir & "/testdata/test_on_video_full" & $expected_name
-	Local $storage = $cv.FileStorage($data_path, $CV_FILE_STORAGE_READ)
+	Local $expected_path = @ScriptDir & "/testdata/test_on_video_full" & $expected_name
+	Local $storage = $cv.FileStorage($expected_path, $CV_FILE_STORAGE_READ)
 	Local $expected = $storage.getNode("predictions").mat()
 	Local $expected_world = $storage.getNode("w_predictions").mat()
 
@@ -163,8 +163,8 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	Local $actual_world = $aTuple[1]
 
 	; Dump actual .yml.
-	$data_path = @ScriptDir & "/testdata/_test_on_video_full" & $expected_name
-	$storage = $cv.FileStorage($data_path, $CV_FILE_STORAGE_WRITE)
+	$expected_path = @ScriptDir & "/testdata/_test_on_video_full" & $expected_name
+	$storage = $cv.FileStorage($expected_path, $CV_FILE_STORAGE_WRITE)
 	$storage.write("predictions", $actual)
 	$storage.write("w_predictions", $actual_world)
 	$storage.release()
@@ -172,10 +172,6 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	_AssertMatDiffLess(_MatSliceLastDim($actual, 0, 2), _MatSliceLastDim($expected, 0, 2), $diff_threshold)
 	_AssertMatDiffLess($actual_world, $expected_world, $world_diff_threshold)
 EndFunc   ;==>test_on_video
-
-Func _get_output_path($id, $name)
-	Return @TempDir & "\" & $id & $name
-EndFunc   ;==>_get_output_path
 
 Func _landmarks_list_to_array($landmark_list, $image_shape)
 	Local $rows = $image_shape[0]

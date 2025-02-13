@@ -1,4 +1,5 @@
 #include <opencv2/imgproc.hpp>
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/solutions/objectron.h"
 #include "Cv_Mat_Object.h"
 #include "Mediapipe_FrameAnnotation_Object.h"
@@ -116,7 +117,7 @@ namespace mediapipe::autoit::solutions::objectron {
 		);
 	}
 
-	static _variant_t _convert_format(_variant_t inputs_variant) {
+	_variant_t _convert_format(_variant_t inputs_variant) {
 		FrameAnnotation inputs = ::autoit::cast<FrameAnnotation>(&inputs_variant);
 
 		std::vector<ObjectronOutputs> new_outputs;

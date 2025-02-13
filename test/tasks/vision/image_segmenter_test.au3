@@ -145,7 +145,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $segmenter = $_ImageSegmenter.create_from_model_path($model_path)
 	_AssertIsInstance($segmenter, $_ImageSegmenter)
-	$segmenter.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -154,7 +153,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_ImageSegmenterOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $segmenter = $_ImageSegmenter.create_from_options($options)
 	_AssertIsInstance($segmenter, $_ImageSegmenter)
-	$segmenter.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -164,7 +162,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_ImageSegmenterOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $segmenter = $_ImageSegmenter.create_from_options($options)
 	_AssertIsInstance($segmenter, $_ImageSegmenter)
-	$segmenter.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_segment_succeeds_with_category_mask($model_file_type)
@@ -199,7 +196,6 @@ Func test_segment_succeeds_with_category_mask($model_file_type)
 			'ground truth mask exceeds ' & $_MASK_SIMILARITY_THRESHOLD & '.')
 
 	; Closes the segmenter explicitly when the segmenter is not used ina context.
-	$segmenter.close()
 EndFunc   ;==>test_segment_succeeds_with_category_mask
 
 Func test_segment_succeeds_with_confidence_mask($model_file_type)
@@ -243,9 +239,6 @@ Func test_segment_succeeds_with_confidence_mask($model_file_type)
 	Local $expected_mask = _load_segmentation_mask($_CAT_MASK)
 
 	_AssertTrue(_similar_to_float_mask($confidence_masks(8), $expected_mask, $_MASK_SIMILARITY_THRESHOLD))
-
-	; Closes the segmenter explicitly when the segmenter is not used in a context.
-	$segmenter.close()
 EndFunc   ;==>test_segment_succeeds_with_confidence_mask
 
 Func test_labels_succeeds($output_category_mask, $output_confidence_masks)
@@ -261,9 +254,6 @@ Func test_labels_succeeds($output_category_mask, $output_confidence_masks)
 	; Performs image segmentation on the input.
 	Local $actual_labels = $segmenter.labels
 	_AssertListEqual($actual_labels, $expected_labels)
-
-	; Closes the segmenter explicitly when the segmenter is not used in a context.
-	$segmenter.close()
 EndFunc   ;==>test_labels_succeeds
 
 Func test_segment_for_video_in_category_mask_mode()
@@ -285,9 +275,6 @@ Func test_segment_for_video_in_category_mask_mode()
 				'Number of pixels in the candidate mask differing from that of' & _
 				' the ground truth mask exceeds' & $_MASK_SIMILARITY_THRESHOLD & '.')
 	Next
-
-	; Closes the segmenter explicitly when the segmenter is not used in a context.
-	$segmenter.close()
 EndFunc   ;==>test_segment_for_video_in_category_mask_mode
 
 Func test_segment_for_video_in_confidence_mask_mode()
@@ -323,9 +310,6 @@ Func test_segment_for_video_in_confidence_mask_mode()
 				) _
 				)
 	Next
-
-	; Closes the segmenter explicitly when the segmenter is not used in a context.
-	$segmenter.close()
 EndFunc   ;==>test_segment_for_video_in_confidence_mask_mode
 
 Func _load_segmentation_mask($file_path)

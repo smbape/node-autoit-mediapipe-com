@@ -2,6 +2,7 @@ exports.SIMPLE_ARGTYPE_DEFAULTS = new Map([
     ["bool", "0"],
     ["size_t", "0"],
     ["SSIZE_T", "0"],
+    ["ssize_t", "0"],
     ["int", "0"],
     ["float", "0.f"],
     ["double", "0"],
@@ -142,8 +143,7 @@ exports.ALIASES = new Map([
     ["PoseLandmarkerResultCallback", "mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarkerResultRawCallback"],
 ]);
 
-exports.CLASS_PTR = new Set([
-]);
+exports.CLASS_PTR = new Set([]);
 
 exports.PTR = new Set([
     "void*",
@@ -166,8 +166,7 @@ exports.PTR = new Set([
     "mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarkerResultRawCallback",
 ]);
 
-exports.CUSTOM_CLASSES = [
-];
+exports.CUSTOM_CLASSES = [];
 
 exports.TEMPLATED_TYPES = new Set([
     "cv::GArray",

@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/audio/audio_embedder.h"
 #include "binding/packet_getter.h"
 #include "binding/packet_creator.h"
@@ -83,7 +84,7 @@ namespace mediapipe::tasks::autoit::audio::audio_embedder {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseAudioTaskApi = core::base_audio_task_api::BaseAudioTaskApi;
-		return BaseAudioTaskApi::create(graph_config, running_mode, packet_callback, static_cast<AudioEmbedder*>(nullptr));
+		return BaseAudioTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<AudioEmbedder*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<AudioEmbedder>> AudioEmbedder::create_from_model_path(const std::string& model_path) {

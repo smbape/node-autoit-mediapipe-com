@@ -87,8 +87,8 @@ namespace mediapipe::autoit::packet_creator {
 		return create_image_frame(data, data.Format(), copy);
 	}
 
-	std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, ImageFormat::Format format, bool copy) {
-		AUTOIT_ASSERT_THROW(data.Format() == format, "The provided image_format doesn't match the one from the data arg.");
+	std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, ImageFormat::Format image_format, bool copy) {
+		AUTOIT_ASSERT_THROW(data.Format() == image_format, "The provided image_format doesn't match the one from the data arg.");
 		AUTOIT_ASSERT_THROW(copy, "Creating ImageFrame packet by taking a reference of another ImageFrame object is not supported yet.");
 
 		auto image_frame = absl::make_unique<ImageFrame>();
@@ -103,8 +103,8 @@ namespace mediapipe::autoit::packet_creator {
 		return CreateImageFramePacket(image_frame);
 	}
 
-	std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, ImageFormat::Format format, bool copy) {
-		MP_ASSIGN_OR_THROW(auto image_frame, CreateImageFrame(format, data, copy));
+	std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, ImageFormat::Format image_format, bool copy) {
+		MP_ASSIGN_OR_THROW(auto image_frame, CreateImageFrame(image_format, data, copy));
 		return CreateImageFramePacket(image_frame);
 	}
 
@@ -112,8 +112,8 @@ namespace mediapipe::autoit::packet_creator {
 		return create_image(data, data.image_format(), copy);
 	}
 
-	std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format format, bool copy) {
-		AUTOIT_ASSERT_THROW(image.image_format() == format, "The provided image_format doesn't match the one from the data arg.");
+	std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format image_format, bool copy) {
+		AUTOIT_ASSERT_THROW(image.image_format() == image_format, "The provided image_format doesn't match the one from the data arg.");
 		AUTOIT_ASSERT_THROW(copy, "Creating Image packet by taking a reference of another Image object is not supported yet.");
 
 		auto image_frame = absl::make_unique<ImageFrame>();
@@ -131,11 +131,11 @@ namespace mediapipe::autoit::packet_creator {
 		return CreateImagePacket(image_frame);
 	}
 
-	std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format format, bool copy) {
+	std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format image_format, bool copy) {
 		if (!copy) {
 			AUTOIT_WARN("'data' is still writeable. Taking a reference of the data to create Image packet is dangerous.");
 		}
-		MP_ASSIGN_OR_THROW(auto image_frame, CreateImageFrame(format, data, copy));
+		MP_ASSIGN_OR_THROW(auto image_frame, CreateImageFrame(image_format, data, copy));
 		return CreateImagePacket(image_frame);
 	}
 

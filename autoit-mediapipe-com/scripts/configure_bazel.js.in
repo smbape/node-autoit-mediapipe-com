@@ -1,0 +1,887 @@
+const fs = require("node:fs");
+const sysPath = require("node:path");
+const util = require("node:util");
+const cpus = require("node:os").cpus().length;
+const mkdirp = require("mkdirp");
+
+const longestCommonPath = (path1, ...paths) => {
+    while (paths.length !== 0) {
+        path1 = path1.split("/");
+
+        const path2 = paths.pop().split("/");
+        const length = Math.min(path1.length, path2.length);
+
+        let index = 0;
+        while (index < length && path1[index] === path2[index]) {
+            index++;
+        }
+
+        if (index === 0 || index === 1 && path1[0] === "") {
+            return "/";
+        }
+
+        path1 = path1.slice(0, index).join("/");
+    }
+
+    return path1;
+};
+
+const setRepositoryName = (repository, name, depname, first, file) => {
+    // the repository containing the first file will have the libray name
+    // other repositories will be treated has a repository dependency
+
+    if (file !== first && repository.name) {
+        return;
+    }
+
+    if (file === first) {
+        repository.name = name;
+    } else {
+        repository.name = depname;
+    }
+};
+
+const updateRepositoryPath = (repository, path) => {
+    if (path === repository.path) {
+        return;
+    }
+
+    if (!repository.path.startsWith(path)) {
+        throw new Error(`incompatible path change: \nfrom ${ repository.path } \nto    ${ path }`);
+    }
+
+    const pad = repository.path.slice(path.length + 1);
+
+    // update existing repository path
+    const {includes, libraries} = repository;
+
+    for (let i = 0; i < includes.length; i++) {
+        if (includes[i] === "/") {
+            includes[i] = "";
+        }
+        includes[i] = `${ pad }/${ includes[i] }`;
+    }
+
+    if (Array.isArray(libraries)) {
+        for (let i = 0; i < libraries.length; i++) {
+            libraries[i] = `${ pad }/${ libraries[i] }`;
+        }
+    } else {
+        for (const key of Object.keys(libraries)) {
+            for (let i = 0; i < libraries[key].length; i++) {
+                libraries[key][i] = `${ pad }/${ libraries[key][i] }`;
+            }
+        }
+    }
+
+    repository.path = path;
+};
+
+const longestCommonRepositoryPath = (repositories, path) => {
+    path = longestCommonPath(path, ...repositories.map(repository => repository.path));
+
+    for (const repository of repositories) {
+        updateRepositoryPath(repository, path);
+    }
+
+    return path;
+};
+
+const isInterfaceLibrary = ({libraries}) => {
+    return Array.isArray(libraries) ? libraries.length === 0 : !Object.keys(libraries).some(ifiles => ifiles.length !== 0);
+};
+
+const isPackageDependency = file => {
+    return file[0] === "@" || file[0] === ":" || file.startsWith("//");
+};
+
+const getFileIndex = (libraries, path, file) => {
+    return isPackageDependency(file) ? libraries.indexOf(file) : libraries.indexOf(`${ path }/${ file }`);
+};
+
+const compareFileIndex = (libraries, path, a, b) => {
+    return getFileIndex(libraries, path, a) - getFileIndex(libraries, path, b);
+};
+
+const updateCoptInclude = (pkg, sourceDir, repository, includes, include) => {
+    if (!sysPath.isAbsolute(include)) {
+        return include;
+    }
+
+    if (include.startsWith(repository.path) && include[repository.path.length] === "/") {
+        include = include.slice(repository.path.length + 1);
+        includes.push(include);
+        return `external/${ repository.name }/${ include }`;
+        
+    }
+
+    if (include.startsWith(sourceDir) && include[sourceDir.length] === "/") {
+        return `${ pkg }/${ include.slice(sourceDir.length + 1) }`;
+    }
+
+    return include;
+}
+
+const COPT_INCLUDE_REG = /\s*[-/](?:I|isystem|iquote)\s*/g;
+const SPACE_REG = /\s/g;
+const NOT_SPACE_REG = /\S/g;
+const COPT_TOKENIZER_REG = /(?:\s+|["'])/g;
+
+const splitCopt = copt => {
+    copt = copt.trim();
+    COPT_TOKENIZER_REG.lastIndex = 0;
+
+    let lastIndex = 0;
+    let match;
+    const copts = [];
+    while ((match = COPT_TOKENIZER_REG.exec(copt)) !== null) {
+        const [quote] = match;
+
+        if (quote === "'" || quote === '"') {
+            while (COPT_TOKENIZER_REG.lastIndex !== copt.length && copt[COPT_TOKENIZER_REG.lastIndex] !== quote) {
+                COPT_TOKENIZER_REG.lastIndex++;
+            }
+            continue;
+        }
+
+        if (lastIndex !== match.index) {
+            copts.push(copt.slice(lastIndex, match.index));
+        }
+
+        lastIndex = COPT_TOKENIZER_REG.lastIndex;
+    }
+
+    if (lastIndex !== copt.length) {
+        copts.push(copt.slice(lastIndex));
+    }
+
+    if (copts.length === 1) {
+        return copts[0];
+    }
+
+    return copts;
+};
+
+const updateCoptIncludes = (pkg, sourceDir, repository) => {
+    if (!repository.kwargs || !repository.kwargs.copts) {
+        return [];
+    }
+
+    const copts = repository.kwargs.copts.map(splitCopt).flat();
+
+    const includes = [];
+
+    for (let i = 0; i < copts.length; i++) {
+        const copt = copts[i].trim();
+
+        if (copt === "-I" || copt === "/I" || copt === "-iquote" || copt === "-isystem") {
+            if (++i === copts.length) {
+                break;
+            }
+            copts[i] = updateCoptInclude(pkg, sourceDir, repository, includes, copts[i]);
+            continue;
+        }
+
+        const updated = [];
+        let lastIndex = 0;
+        let match;
+
+        COPT_INCLUDE_REG.lastIndex = 0;
+
+        while ((match = COPT_INCLUDE_REG.exec(copt)) !== null) {
+            if (lastIndex !== match.index) {
+                updated.push(copt.slice(lastIndex, match.index));
+            }
+
+            NOT_SPACE_REG.lastIndex = COPT_INCLUDE_REG.lastIndex;
+
+            const start = NOT_SPACE_REG.exec(copt) !== null ? NOT_SPACE_REG.lastIndex - 1 : copt.length;
+            let end = NOT_SPACE_REG.lastIndex;
+
+            if (end < copt.length) {
+                SPACE_REG.lastIndex = end;
+
+                if (copt[end] === "'") {
+                    end = copt.indexOf("'", end + 1);
+                } else if (SPACE_REG.exec(copt) !== null) {
+                    end = SPACE_REG.lastIndex - 1;
+                } else {
+                    end = copt.length;
+                }
+            }
+
+            if (start > match.index) {
+                updated.push(copt.slice(match.index, start));
+            }
+
+            const include = copt.slice(start, end);
+            updated.push(updateCoptInclude(pkg, sourceDir, repository, includes, include));
+
+            if (end < COPT_INCLUDE_REG.lastIndex) {
+                updated.push(copt.slice(end, COPT_INCLUDE_REG.lastIndex));
+            } else {
+                COPT_INCLUDE_REG.lastIndex = end;
+            }
+
+            lastIndex = COPT_INCLUDE_REG.lastIndex;
+        }
+
+        if (lastIndex !== copt.length) {
+            updated.push(copt.slice(lastIndex));
+        }
+
+        copts[i] = updated.join("");
+    }
+
+    repository.kwargs.copts = copts;
+    return includes;
+};
+
+const createRepository = (library, repositories, path, files, deps) => {
+    const {
+        includes,
+        libraries,
+        name,
+        pkgname,
+    } = library;
+
+    if (path.startsWith("/usr/local/") || path === "/usr/local") {
+        path = "/usr/local";
+    } else if (path.startsWith("/usr/") || path === "/usr") {
+        path = "/usr";
+    }
+
+    const repository = {
+        deps: [],
+        includes: [],
+        libraries: Array.isArray(libraries) ? [] : {},
+        path,
+        pkgname,
+    };
+
+    const interface_library = isInterfaceLibrary(library);
+
+    for (const file of files) {
+        const rfile = file.slice(path.length + 1);
+        const depname = `${ name }_${ pkgname }_dep_${ rfile.replace(/\W/g, "_") }`;
+
+        if (includes.includes(file)) {
+            repository.includes.push(`${ rfile }/`);
+            if (interface_library) {
+                setRepositoryName(repository, name, depname, library.first, file);
+            }
+        } else if (Array.isArray(libraries)) {
+            if (libraries.includes(file)) {
+                repository.libraries.push(rfile);
+                setRepositoryName(repository, name, depname, library.first, file);
+            }
+        } else {
+            for (const key of Object.keys(libraries)) {
+                if (libraries[key].includes(file)) {
+                    if (!repository.libraries[key]) {
+                        repository.libraries[key] = [];
+                    }
+
+                    repository.libraries[key].push(rfile);
+                    setRepositoryName(repository, name, depname, library.first[key], file);
+                }
+            }
+        }
+    }
+
+    if (files.length === 0) {
+        repository.name = name;
+    } else if (!repository.name) {
+        const file = files[0];
+        const rfile = file.slice(path.length + 1);
+        const depname = `${ name }_${ pkgname }_dep_${ rfile.replace(/\W/g, "_") }`;
+        repository.name = depname;
+    }
+
+    if (repository.name === name && library.kwargs) {
+        repository.rule = library.rule;
+        repository.kwargs = Object.assign({}, library.kwargs);
+
+        if (Array.isArray(libraries)) {
+            repository.libraries.push(...deps);
+        } else {
+            for (const dep of deps) {
+                for (const key of Object.keys(libraries)) {
+                    if (libraries[key].includes(dep)) {
+                        repository.libraries[key].push(dep);
+                    }
+                }
+            }
+        }
+
+        for (const prop of ["includes", "deps"]) {
+            if (library.kwargs[prop]) {
+                repository[prop].push(...library.kwargs[prop]);
+                delete repository.kwargs[prop];
+            }
+        }
+
+        const { win_def_file } = repository.kwargs;
+
+        if (win_def_file) {
+            if (!win_def_file.startsWith(path) || win_def_file[path.length] !== "/") {
+                throw new Error(`${ path } does not include ${ win_def_file }`);
+            }
+            repository.kwargs.win_def_file = win_def_file.slice(path.length + 1);
+        }
+    }
+
+    // for some libraries, like brotli, link order is important
+    // therefore, restore original order
+    if (Array.isArray(libraries)) {
+        repository.libraries.sort(compareFileIndex.bind(null, libraries, path));
+    } else {
+        for (const key of Object.keys(libraries)) {
+            repository.libraries[key].sort(compareFileIndex.bind(null, libraries[key], path));
+        }
+    }
+
+    if (repositories.has(repository.name)) {
+        path = longestCommonRepositoryPath(repositories.get(repository.name), path);
+        updateRepositoryPath(repository, path);
+    } else {
+        repositories.set(repository.name, []);
+    }
+
+    repositories.get(repository.name).push(repository);
+
+    return repository;
+};
+
+const normalizePaths = files => {
+    for (var i = 0; i < files.length; i++) {
+        files[i] = sysPath.normalize(files[i]).replaceAll("\\", "/");
+    }
+    return files;
+};
+
+const createRepositories = (library, repositories, pkg, sourceDir) => {
+    const {
+        includes,
+        libraries,
+    } = library;
+
+    const files = [];
+
+    files.push(...normalizePaths(includes));
+
+    if (isInterfaceLibrary(library)) {
+        library.first = includes[0];
+    } else if (Array.isArray(libraries)) {
+        library.first = libraries[0];
+
+        files.push(...normalizePaths(libraries));
+    } else {
+        library.first = {};
+
+        for (const key of Object.keys(libraries)) {
+            library.first[key] = libraries[key][0];
+            files.push(...normalizePaths(libraries[key]));
+        }
+    }
+
+    if (library.kwargs) {
+        const { win_def_file } = library.kwargs;
+        if (win_def_file && sysPath.isAbsolute(win_def_file)) {
+            files.push(win_def_file);
+        }
+    }
+
+    const deps = [];
+
+    if (files.length === 0) {
+        createRepository(library, repositories, sourceDir, files, deps);
+        return;
+    }
+
+    const unique = new Set(files);
+    files.length = 0;
+
+    for (const file of unique) {
+        if (isPackageDependency(file)) {
+            deps.push(file);
+        } else {
+            files.push(file);
+        }
+    }
+
+    // sort files to compute the longest common path
+    files.sort();
+
+    let lastIndex = 0;
+    let lcp = files[0];
+    for (let i = 1; i < files.length; i++) {
+        const file = files[i];
+        const nlcp = longestCommonPath(lcp, file);
+
+        if (nlcp !== sourceDir && sourceDir.startsWith(nlcp)) {
+            createRepository(library, repositories, lcp, files.slice(lastIndex, i), deps);
+            lcp = file;
+            lastIndex = i;
+        } else {
+            lcp = nlcp;
+        }
+    }
+
+    if (lastIndex < files.length) {
+        createRepository(library, repositories, lcp, files.slice(lastIndex), deps);
+    }
+};
+
+const format = (obj, options, indent = 4) => {
+    return util.inspect(obj, options.inspect)
+        .replace(/^true$/, "True")
+        .replace(/^false/, "False")
+        .replace(/^ {2}/mg, " ".repeat(4))
+        .split("\n")
+        .join(`\n${ " ".repeat(indent) }`)
+        .replace(/^ {4}/mg, "");
+};
+
+const globHeaders = (hdrs, options) => {
+    const sorted = [];
+
+    for (const hdr of hdrs.sort()) {
+        if (sorted.length === 0 || !hdr.startsWith(sorted[sorted.length - 1])) {
+            sorted.push(hdr);
+        }
+    }
+
+    // https://bazel.build/reference/be/c-cpp#cc_library.hdrs
+    return `glob(${ format(sorted.map(inc => [
+        `${ inc === "/" ? "" : inc }**/*.h`,
+        `${ inc === "/" ? "" : inc }**/*.hh`,
+        `${ inc === "/" ? "" : inc }**/*.hpp`,
+        `${ inc === "/" ? "" : inc }**/*.hxx`,
+    ]).flat(), options) })`
+};
+
+const bazelGenerate = (pkg, sourceDir, options, repositories) => {
+    const prefix = options.prefix ? `${ options.prefix.replace(/[\\/]+$/, "") }/` : "";
+
+    const repositories_bzl = new Map();
+    const bulid_files = new Map();
+
+    for (const repository of repositories) {
+        const {
+            deps,
+            includes,
+            libraries,
+            name,
+            pkgname,
+            rule,
+        } = repository;
+
+        const build_file = `${ prefix }${ name }.BUILD`;
+
+        const repository_content = `
+            wrapper(
+                repo_rule = native.new_local_repository,
+                name = "${ name }",
+                build_file = "@//${ pkg }:${ build_file }",
+                path = "${ repository.path }",
+            )
+        `.replace(/^ {12}/mg, "").trim();
+
+        if (!repositories_bzl.has(name)) {
+            repositories_bzl.set(name, repository_content);
+        } else if (repositories_bzl.get(name) !== repository_content) {
+            throw new Error(`incompatible packages in the same repository: \n${ repositories_bzl.get(name) } \n${ repository_content }`);
+        }
+
+        const libraries_bzl = format(libraries, options);
+        const local_includes = updateCoptIncludes(pkg, sourceDir, repository).map(include => `${ include }/`);
+        let srcs = [ Array.isArray(libraries) ? libraries_bzl : `select(${ libraries_bzl })` ];
+
+        if (local_includes.length !== 0) {
+            srcs.push(globHeaders(local_includes, options));
+        }
+
+        if (srcs.length === 1) {
+            srcs = srcs[0];
+        } else {
+            srcs = `depset(direct = ${ srcs.join(" + ") }).to_list()`;
+        }
+
+        const kwargs = [
+            `name = '${ pkgname }'`,
+            "visibility = ['//visibility:public']",
+        ];
+
+        if (srcs !== "[]") {
+            kwargs.push(`srcs = ${ srcs }`);
+        }
+
+        if (includes.length !== 0) {
+            kwargs.push(`hdrs = ${ globHeaders(includes, options) }`);
+            kwargs.push(`includes = ${ format(includes.map(inc => inc === "/" ? "." : inc), options) }`);
+        }
+
+        if (deps.length !== 0) {
+            kwargs.push(`deps = ${ format(deps, options) }`);
+        }
+
+        if (repository.kwargs) {
+            kwargs.push(...Object.keys(repository.kwargs).map(kwarg => `${ kwarg } = ${ format(repository.kwargs[kwarg], options) }`));
+        }
+
+        const build_file_content = `
+            ${ rule || "cc_library" }(
+                ${ kwargs.join(",\n").split("\n").join(`\n${ " ".repeat(16) }`) },
+            )
+        `.replace(/^ {12}/mg, "").trim();
+
+        if (bulid_files.has(build_file)) {
+            bulid_files.set(build_file, [bulid_files.get(build_file), build_file_content].join("\n\n"));
+        } else {
+            bulid_files.set(build_file, build_file_content);
+        }
+
+        if (options.debug) {
+            console.log(repositories_bzl.get(name));
+            console.log();
+            console.log(bulid_files.get(build_file));
+            console.log();
+        }
+    }
+
+    return {
+        repositories_bzl: Array.from(repositories_bzl.values()).join("\n\n"),
+        bulid_files,
+    };
+};
+
+// =======================================================
+// async
+// =======================================================
+const createArrayIterator = arr => {
+    let i = 0;
+    const len = arr.length;
+
+    return function next() {
+        return i < len ? {
+            key: i,
+            value: arr[i++],
+        } : null;
+    };
+};
+
+const createObjectIterator = obj => {
+    let i = 0;
+    const keys = Object.keys(obj);
+    const len = keys.length;
+
+    return function next() {
+        return i < len ? {
+            key: keys[i],
+            value: obj[keys[i++]]
+        } : null;
+    };
+};
+
+const createIterableIterator = iterable => {
+    const iterator = iterable[Symbol.iterator]();
+    return function next() {
+        const item = iterator.next();
+        return item === null || typeof item !== "object" ? item : item.done ? null : item;
+    };
+};
+
+const iterator = obj => {
+    if (obj === null || typeof obj !== "object") {
+        return null;
+    }
+
+    return Array.isArray(obj) ? createArrayIterator(obj) : Symbol.iterator in obj ? createIterableIterator(obj) : createObjectIterator(obj);
+};
+
+const onlyOnce = fn => {
+    return function(...args) {
+        if (fn === null) {
+            throw new Error("Callback was already called.");
+        }
+
+        const callFn = fn;
+        fn = null;
+        callFn(...args);
+    };
+};
+
+const eachOfLimit = (obj, limit, iteratee, cb) => {
+    if (cb == null) {
+        cb = Function.prototype;
+    }
+
+    if (limit <= 0) {
+        cb();
+        return;
+    }
+
+    const it = iterator(obj);
+    if (it == null) {
+        cb();
+        return;
+    }
+
+    let done = false;
+    let running = 0;
+    let looping = false;
+
+    function iterate(err, value) {
+        running--;
+        if (err) {
+            if (!done) {
+                done = true;
+                cb(err);
+            }
+        } else if (done && running <= 0) {
+            cb();
+        } else if (!looping) {
+            replenish();
+        }
+    }
+
+    function replenish() {
+        looping = true;
+
+        let nextElem;
+
+        while (running < limit && !done) {
+            nextElem = it();
+
+            if (nextElem == null) {
+                done = true;
+                if (running <= 0) {
+                    cb();
+                }
+                return;
+            }
+
+            running++;
+            iteratee(nextElem.value, nextElem.key, onlyOnce(iterate));
+        }
+
+        looping = false;
+    }
+
+    replenish();
+};
+
+const waterfall = (coll, cb) => {
+    if (cb == null) {
+        cb = Function.prototype;
+    }
+
+    let nextArgs = [];
+
+    eachOfLimit(coll, 1, (iterate, key, next) => {
+        iterate(...nextArgs, (err, ...args) => {
+            nextArgs = args;
+            next(err);
+        });
+    }, err => {
+        cb(err, ...nextArgs);
+    });
+};
+// =======================================================
+
+const deleteFiles = (directory, files, options, cb) => {
+    waterfall([
+        next => {
+            fs.readdir(directory, next);
+        },
+
+        (names, next) => {
+            eachOfLimit(names, cpus, (filename, i, next) => {
+                filename = sysPath.join(directory, filename);
+
+                if (files.has(filename) || ![".bzl", ".BUILD"].some(ext => filename.endsWith(ext))) {
+                    next();
+                    return;
+                }
+
+                if (!options.write) {
+                    console.log("ignore deleteting file", filename);
+                    next();
+                    return;
+                }
+
+                console.log("delete file", filename);
+                fs.unlink(filename, next);
+            }, next);
+        }
+    ], err => {
+        cb(err);
+    });
+};
+
+const add_libraries = (pkg, sourceDir, options, libraries, cb) => {
+    const repositories = new Map();
+
+    const prefix = options.prefix ? options.prefix.replace(/[\\/]+$/, "") : "";
+
+    for (const library of libraries) {
+        // ignore invalid names
+        if (/^@\w+@$/.test(library.name)) {
+            continue;
+        }
+        createRepositories(Object.assign({
+            includes: [],
+            libraries: [],
+        }, options, library, {
+            prefix
+        }), repositories, pkg, sourceDir);
+    }
+
+    for (const [name, values] of repositories.entries()) {
+        values.sort(({
+            name: a
+        }, {
+            name: b
+        }) => {
+            if (a === name) {
+                return 1;
+            }
+
+            if (b === name) {
+                return -1;
+            }
+
+            if (a < b) {
+                return -1;
+            }
+
+            if (a > b) {
+                return 1;
+            }
+
+            return 0;
+        });
+
+        if (values.length > 1) {
+            const deps = values.filter(repository => repository.name !== name)
+                .map(repository => {
+                    return `@${ repository.name }//:${ repository.pkgname }`;
+                });
+            values.find(repository => repository.name === name).deps.push(...deps);
+        }
+    }
+
+    const generated = bazelGenerate(pkg, sourceDir, options, Array.from(repositories.values()).flat());
+
+    if (options.write) {
+        if (!fs.existsSync(sourceDir)) {
+            throw new Error(`For security reason, in case of a bad configuration, ${ sourceDir } must exist`);
+        }
+
+        const workingDir = prefix ? sysPath.normalize(sysPath.join(sourceDir, prefix)).replaceAll("\\", "/") : sourceDir;
+
+        if (prefix) {
+            if (!workingDir.startsWith(sourceDir) || workingDir[sourceDir.length] !== "/") {
+                throw new Error(`For security reason, in case of a bad configuration, ${ prefix } cannot be outside ${ sourceDir }`);
+            }
+            mkdirp.sync(workingDir);
+        }
+
+        const {
+            bulid_files,
+            repositories_bzl,
+        } = generated;
+
+        const written = new Set();
+
+        const repositories_file = sysPath.join(workingDir, "repositories.bzl");
+        written.add(repositories_file);
+        fs.writeFileSync(repositories_file, `
+            # Generated
+
+            # https://github.com/bazel-contrib/rules_go/blob/master/go/private/repositories.bzl
+
+            load("@bazel_skylib//lib:versions.bzl", "versions")
+
+            MINIMUM_BAZEL_VERSION = "5.4.0"
+
+            def ${ options.rules_dependencies }(force = False):
+                if getattr(native, "bazel_version", None):
+                    versions.check(MINIMUM_BAZEL_VERSION, bazel_version = native.bazel_version)
+
+                if force:
+                    wrapper = _always
+                else:
+                    wrapper = _maybe
+
+                ${ repositories_bzl.split("\n").join(`\n${ " ".repeat(16) }`) }
+
+
+            def _maybe(repo_rule, name, **kwargs):
+                if name not in native.existing_rules():
+                    repo_rule(name = name, **kwargs)
+
+            def _always(repo_rule, name, **kwargs):
+                repo_rule(name = name, **kwargs)
+
+        `.replace(/^ {12}/mg, "").trim());
+
+        waterfall([
+            next => {
+                eachOfLimit(bulid_files, cpus, ([build_file, content], _, next) => {
+                    const hasCcObject = content.includes("cc_object");
+
+                    build_file = sysPath.join(sourceDir, build_file);
+                    written.add(build_file);
+                    fs.writeFile(build_file, `
+                        # Generated
+
+                        licenses(["notice"])  # BSD license
+                        ${ hasCcObject ? `load("@mediapipe//${ pkg }:rules_impl/cc_object.bzl", "cc_object")` : "" }
+
+                        config_setting(
+                            name = "opt_build",
+                            values = {"compilation_mode": "opt"},
+                        )
+
+                        config_setting(
+                            name = "dbg_build",
+                            values = {"compilation_mode": "dbg"},
+                        )
+
+                        ${ content.split("\n").join(`\n${ " ".repeat(24) }`) }
+                    `.replace(/^ {24}/mg, "").trim(), next);
+                }, next);
+            },
+
+            next => {
+                deleteFiles(workingDir, written, options, next);
+            },
+        ], cb);
+    }
+};
+
+add_libraries("@MEDIAPIPE_ADDON_PACKAGE@", "@CMAKE_SOURCE_DIR@", {
+    write: true,
+    rules_dependencies: "@MEDIAPIPE_ADDON_RULES_DEPENDENCIES@",
+    prefix: "@CMAKE_CURRENT_RELATIVE_BINARY_DIR@/third_party/",
+    inspect: {
+        depth: Infinity,
+        maxArrayLength: Infinity,
+    },
+}, [{
+    name: "@OpenCV_PLATFORM@",
+    pkgname: "opencv",
+    includes: [
+        "@OpenCV_INCLUDE_DIR@",
+    ],
+    libraries: {
+        ":opt_build": [
+            "@OpenCV_LIBRARIES_RELEASE@",
+        ],
+        ":dbg_build": [
+            "@OpenCV_LIBRARIES_DEBUG@",
+        ],
+    },
+}]);

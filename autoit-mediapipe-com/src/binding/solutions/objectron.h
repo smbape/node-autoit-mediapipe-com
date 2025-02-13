@@ -2,10 +2,10 @@
 
 #include "mediapipe/framework/formats/landmark.pb.h"
 #include "mediapipe/modules/objectron/calculators/annotation_data.pb.h"
-#include "autoit_bridge_common.h"
 #include "binding/util.h"
 #include "binding/solution_base.h"
 #include "binding/solutions/download_utils.h"
+#include <opencv2/core/mat.hpp>
 
 namespace mediapipe::autoit::solutions::objectron {
 	using namespace mediapipe::autoit::solution_base;
@@ -57,6 +57,7 @@ namespace mediapipe::autoit::solutions::objectron {
 
 	struct CV_EXPORTS_W_SIMPLE ObjectronModel {
 		ObjectronModel() = default;
+		virtual ~ObjectronModel() = default;
 
 		ObjectronModel(
 			const std::string& model_path,
@@ -116,7 +117,7 @@ namespace mediapipe::autoit::solutions::objectron {
 		using SolutionBase::SolutionBase;
 
 		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<Objectron>> create(
-			bool static_image_mode = False,
+			bool static_image_mode = false,
 			int max_num_objects = 5,
 			float min_detection_confidence = 0.5,
 			float min_tracking_confidence = 0.99,

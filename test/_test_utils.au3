@@ -14,7 +14,7 @@ Func get_test_data_path($file_or_dirname_path)
 		$parents.Add(EnvGet("TEST_SRCDIR"))
 	EndIf
 
-	Local Static $_TEST_SRCDIR = _Mediapipe_FindFile("autoit-mediapipe-com\build_x64\_deps\mediapipe-src\mediapipe\tasks\testdata")
+	Local Static $_TEST_SRCDIR = _Mediapipe_FindFile("autoit-mediapipe-com\build_x64\mediapipe-src\mediapipe\tasks\testdata")
 	If FileExists($_TEST_SRCDIR) Then
 		$parents.Add($_TEST_SRCDIR)
 	EndIf

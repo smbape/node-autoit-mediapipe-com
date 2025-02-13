@@ -120,19 +120,18 @@ Func Test()
 	test_detect_succeeds_with_rotated_image()
 	test_empty_detection_outputs()
 
-  test_detect_for_video($FILE_NAME,    $_PORTRAIT_IMAGE,         0,   _get_expected_face_detector_result($_PORTRAIT_EXPECTED_DETECTION))
-  test_detect_for_video($FILE_CONTENT, $_PORTRAIT_IMAGE,         0,   _get_expected_face_detector_result($_PORTRAIT_EXPECTED_DETECTION))
-  test_detect_for_video($FILE_NAME,    $_PORTRAIT_ROTATED_IMAGE, -90, _get_expected_face_detector_result($_PORTRAIT_ROTATED_EXPECTED_DETECTION))
-  test_detect_for_video($FILE_CONTENT, $_PORTRAIT_ROTATED_IMAGE, -90, _get_expected_face_detector_result($_PORTRAIT_ROTATED_EXPECTED_DETECTION))
-  test_detect_for_video($FILE_NAME,    $_CAT_IMAGE,              0,   $FaceDetectorResult.create())
-  test_detect_for_video($FILE_CONTENT, $_CAT_IMAGE,              0,   $FaceDetectorResult.create())
+	test_detect_for_video($FILE_NAME, $_PORTRAIT_IMAGE, 0, _get_expected_face_detector_result($_PORTRAIT_EXPECTED_DETECTION))
+	test_detect_for_video($FILE_CONTENT, $_PORTRAIT_IMAGE, 0, _get_expected_face_detector_result($_PORTRAIT_EXPECTED_DETECTION))
+	test_detect_for_video($FILE_NAME, $_PORTRAIT_ROTATED_IMAGE, -90, _get_expected_face_detector_result($_PORTRAIT_ROTATED_EXPECTED_DETECTION))
+	test_detect_for_video($FILE_CONTENT, $_PORTRAIT_ROTATED_IMAGE, -90, _get_expected_face_detector_result($_PORTRAIT_ROTATED_EXPECTED_DETECTION))
+	test_detect_for_video($FILE_NAME, $_CAT_IMAGE, 0, $FaceDetectorResult.create())
+	test_detect_for_video($FILE_CONTENT, $_CAT_IMAGE, 0, $FaceDetectorResult.create())
 EndFunc   ;==>Test
 
 Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $detector = $_FaceDetector.create_from_model_path($model_path)
 	_AssertIsInstance($detector, $_FaceDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -141,7 +140,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_FaceDetector.create_from_options($options)
 	_AssertIsInstance($detector, $_FaceDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -151,7 +149,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_FaceDetector.create_from_options($options)
 	_AssertIsInstance($detector, $_FaceDetector)
-	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect($model_file_type, $expected_detection_result_file)
@@ -174,9 +171,6 @@ Func test_detect($model_file_type, $expected_detection_result_file)
 	; Comparing results.
 	Local $expected_detection_result = _get_expected_face_detector_result($expected_detection_result_file)
 	_expect_face_detector_results_correct($detection_result, $expected_detection_result)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_detect
 
 Func test_detect_succeeds_with_rotated_image()
@@ -196,9 +190,6 @@ Func test_detect_succeeds_with_rotated_image()
 	; Comparing results.
 	Local $expected_detection_result = _get_expected_face_detector_result($_PORTRAIT_ROTATED_EXPECTED_DETECTION)
 	_expect_face_detector_results_correct($detection_result, $expected_detection_result)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_detect_succeeds_with_rotated_image
 
 Func test_empty_detection_outputs()
@@ -213,9 +204,6 @@ Func test_empty_detection_outputs()
 	; Performs face detection on the input.
 	Local $detection_result = $detector.detect($test_image)
 	_AssertEmpty($detection_result.detections)
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_empty_detection_outputs
 
 Func test_detect_for_video( _
@@ -252,9 +240,6 @@ Func test_detect_for_video( _
 		; Comparing results.
 		_expect_face_detector_results_correct($detection_result, $expected_detection_result)
 	Next
-
-	; Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>test_detect_for_video
 
 Func _expect_keypoints_correct($actual_keypoints, $expected_keypoints)

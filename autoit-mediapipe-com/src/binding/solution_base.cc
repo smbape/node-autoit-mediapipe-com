@@ -1,16 +1,17 @@
-#include "autoit_bridge.h"
-#include "binding/calculator_graph.h"
-#include "binding/message.h"
-#include "binding/repeated_container.h"
-#include "binding/resource_util.h"
-#include "binding/util.h"
 #include "mediapipe/calculators/core/constant_side_packet_calculator.pb.h"
 #include "mediapipe/calculators/image/image_transformation_calculator.pb.h"
 #include "mediapipe/calculators/tensor/tensors_to_detections_calculator.pb.h"
 #include "mediapipe/calculators/util/landmarks_smoothing_calculator.pb.h"
 #include "mediapipe/calculators/util/logic_calculator.pb.h"
 #include "mediapipe/calculators/util/thresholding_calculator.pb.h"
+#include "mediapipe/framework/port/status_macros.h"
 #include "mediapipe/modules/objectron/calculators/lift_2d_frame_annotation_to_3d_calculator.pb.h"
+#include "binding/calculator_graph.h"
+#include "binding/message.h"
+#include "binding/packet_creator.h"
+#include "binding/repeated_container.h"
+#include "binding/resource_util.h"
+#include "binding/util.h"
 #include "Mediapipe_Autoit_Packet_creator_Object.h"
 #include "Cv_Mat_Object.h"
 
@@ -536,7 +537,7 @@ namespace {
 			break;
 		}
 		case PacketDataType::IMAGE_FRAME: {
-			MP_PACKET_ASSIGN_OR_THROW(const auto& image_frame, ImageFrame, output_packet);
+			MP_PACKET_ASSIGN_OR_RETURN(const auto& image_frame, ImageFrame, output_packet);
 			hr = autoit_from(mediapipe::formats::MatView(&image_frame).clone(), _retval);
 			break;
 		}
@@ -670,6 +671,15 @@ namespace mediapipe::autoit::solution_base {
 
 	const std::vector<std::string>& noVector() {
 		return _noneVector;
+	}
+
+	SolutionBase::~SolutionBase() {
+		if (m_graph) {
+			auto status = close();
+			if (!status.ok()) {
+				AUTOIT_WARN(::mediapipe::autoit::StatusCodeToError(status.code()) << ": " << status.message().data());
+			}
+		}
 	}
 
 	absl::StatusOr<std::shared_ptr<SolutionBase>> SolutionBase::create(

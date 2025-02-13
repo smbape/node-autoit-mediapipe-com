@@ -141,7 +141,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $embedder = $_TextEmbedder.create_from_model_path($model_path)
 	_AssertIsInstance($embedder, $_TextEmbedder)
-	$embedder.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -150,7 +149,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_TextEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $embedder = $_TextEmbedder.create_from_options($options)
 	_AssertIsInstance($embedder, $_TextEmbedder)
-	$embedder.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -160,13 +158,12 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_TextEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $embedder = $_TextEmbedder.create_from_options($options)
 	_AssertIsInstance($embedder, $_TextEmbedder)
-	$embedder.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_embed($l2_normalize, $quantize, $model_name, $model_file_type, _
 		$expected_similarity, $expected_size, $expected_first_values)
-    Local $model_path = get_test_data_path($model_name)
-    Local $base_options, $model_content
+	Local $model_path = get_test_data_path($model_name)
+	Local $base_options, $model_content
 
 	; Creates embedder.
 	If $model_file_type == $FILE_NAME Then
@@ -194,9 +191,6 @@ Func test_embed($l2_normalize, $quantize, $model_name, $model_file_type, _
 	_check_embedding_value($result0, $expected_result0_value)
 	_check_embedding_value($result1, $expected_result1_value)
 	_check_cosine_similarity($result0, $result1, $expected_similarity)
-
-	; Closes the embedder explicitly when the embedder is not used in a context.
-	$embedder.close()
 EndFunc   ;==>test_embed
 
 Func _check_embedding_value($result, $expected_first_value, $iLine = @ScriptLineNumber)

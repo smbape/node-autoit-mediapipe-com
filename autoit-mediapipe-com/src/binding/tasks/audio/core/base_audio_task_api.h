@@ -1,6 +1,9 @@
 #pragma once
 
+#include <opencv2/core/cvdef.h>
+
 #include "mediapipe/framework/calculator.pb.h"
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/packet.h"
 #include "binding/tasks/audio/core/audio_task_running_mode.h"
 #include "binding/tasks/core/task_runner.h"
@@ -9,6 +12,8 @@
 namespace mediapipe::tasks::autoit::audio::core::base_audio_task_api {
 	class CV_EXPORTS_W BaseAudioTaskApi {
 	public:
+		virtual ~BaseAudioTaskApi();
+
 		template<typename _Tp>
 		[[nodiscard]] inline static absl::StatusOr<std::shared_ptr<_Tp>> create(
 			const CalculatorGraphConfig& graph_config,

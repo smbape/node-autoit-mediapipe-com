@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/image_segmenter.h"
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::image_segmenter::ImageSegmenterResultRawCallback);
@@ -54,7 +55,7 @@ namespace {
 		if (output_packets.count(_CONFIDENCE_MASKS_STREAM_NAME)) {
 			MP_PACKET_ASSIGN_OR_RETURN(const auto& confidence_masks, std::vector<Image>, output_packets.at(_CONFIDENCE_MASKS_STREAM_NAME));
 			for (const auto& image : confidence_masks) {
-				segmentation_result->confidence_masks->push_back(std::make_shared<Image>(image));
+				segmentation_result->confidence_masks->push_back(std::move(std::make_shared<Image>(image)));
 			}
 		}
 
@@ -87,7 +88,7 @@ namespace mediapipe::tasks::autoit::vision::image_segmenter {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		MP_ASSIGN_OR_RETURN(auto vision_task_api, BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<ImageSegmenter*>(nullptr)));
+		MP_ASSIGN_OR_RETURN(auto vision_task_api, BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<ImageSegmenter*>(nullptr)));
 		MP_RETURN_IF_ERROR(vision_task_api->labels_status);
 		return vision_task_api;
 	}

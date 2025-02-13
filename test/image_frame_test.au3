@@ -53,9 +53,9 @@ Func test_create_image_frame_from_gray_cv_mat()
 	$gray8_image_frame_mat = $gray8_image_frame.mat_view()
 	_AssertMatEqual($mat, $gray8_image_frame_mat)
 
-	; by default, image frame should be a copy or mat
-	$mat(2, 2) = 42
+	; by default, image frame should be a copy of mat
 	$gray8_image_frame_mat(2, 2) = 43
+	$mat(2, 2) = 42
 	_AssertEqual(43, $gray8_image_frame_mat(2, 2))
 	_AssertEqual(42, $mat(2, 2))
 
@@ -65,17 +65,17 @@ Func test_create_image_frame_from_gray_cv_mat()
 	$gray8_image_frame_mat = $gray8_image_frame.mat_view()
 	_AssertMatEqual($mat, $gray8_image_frame_mat)
 
-	; by default, image frame should be a copy or mat
-	$mat(2, 2) = 42
+	; by default, image frame should be a copy of mat
 	$gray8_image_frame_mat(2, 2) = 43
-	_AssertEqual(42, $mat(2, 2))
+	$mat(2, 2) = 42
 	_AssertEqual(43, $gray8_image_frame_mat(2, 2))
+	_AssertEqual(42, $mat(2, 2))
 
 EndFunc   ;==>test_create_image_frame_from_gray_cv_mat
 
 Func test_create_image_frame_from_rgb_cv_mat()
-	Local $w = 46 ; Floor(Random(3, 100))
-	Local $h = 52 ; Floor(Random(3, 100))
+	Local $w = Floor(Random(3, 100))
+	Local $h = Floor(Random(3, 100))
 	Local $channels = 3
 	Local $mat = _RandomImage($w, $h, CV_MAKETYPE($CV_8U, $channels), 0, 2 ^ 8)
 
@@ -93,7 +93,7 @@ Func test_create_image_frame_from_rgb_cv_mat()
 	$rgb_image_frame_mat = $rgb_image_frame.mat_view()
 	_AssertMatEqual($mat, $rgb_image_frame_mat)
 
-	; by default, image frame should be a copy or mat
+	; by default, image frame should be a copy of mat
 	_MatSetAt($mat, "byte", 2, 2, 1, 42)
 	_MatSetAt($rgb_image_frame_mat, "byte", 2, 2, 1, 43)
 	_AssertEqual(42, _MatGetAt($mat, "byte", 2, 2, 1))
@@ -105,7 +105,7 @@ Func test_create_image_frame_from_rgb_cv_mat()
 	$rgb_image_frame_mat = $rgb_image_frame.mat_view()
 	_AssertMatEqual($mat, $rgb_image_frame_mat)
 
-	; by default, image frame should be a copy or mat
+	; by default, image frame should be a copy of mat
 	_MatSetAt($mat, "byte", 2, 2, 1, 42)
 	_MatSetAt($rgb_image_frame_mat, "byte", 2, 2, 1, 43)
 	_AssertEqual(42, _MatGetAt($mat, "byte", 2, 2, 1))
@@ -132,7 +132,7 @@ Func test_create_image_frame_from_rgb48_cv_mat()
 	$rgb48_image_frame_mat = $rgb48_image_frame.mat_view()
 	_AssertMatEqual($mat, $rgb48_image_frame_mat)
 
-	; by default, image frame should be a copy or mat
+	; by default, image frame should be a copy of mat
 	_MatSetAt($mat, "ushort", 2, 2, 1, 42)
 	_MatSetAt($rgb48_image_frame_mat, "ushort", 2, 2, 1, 43)
 	_AssertEqual(42, _MatGetAt($mat, "ushort", 2, 2, 1))
@@ -144,7 +144,7 @@ Func test_create_image_frame_from_rgb48_cv_mat()
 	$rgb48_image_frame_mat = $rgb48_image_frame.mat_view()
 	_AssertMatEqual($mat, $rgb48_image_frame_mat)
 
-	; by default, image frame should be a copy or mat
+	; by default, image frame should be a copy of mat
 	_MatSetAt($mat, "ushort", 2, 2, 1, 42)
 	_MatSetAt($rgb48_image_frame_mat, "ushort", 2, 2, 1, 43)
 	_AssertEqual(42, _MatGetAt($mat, "ushort", 2, 2, 1))

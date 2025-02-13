@@ -6,7 +6,7 @@ inline const HRESULT autoit_from(const absl::Status& status, const Out& out_val)
 		return S_OK;
 	}
 
-	AUTOIT_ERROR(::mediapipe::autoit::StatusCodeToAutoItError(status.code()) << ": " << status.message().data());
+	AUTOIT_ERROR(::mediapipe::autoit::StatusCodeToError(status.code()) << ": " << status.message().data());
 	return E_FAIL;
 }
 

@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/image_classifier.h"
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::image_classifier::ImageClassifierResultRawCallback);
@@ -79,7 +80,7 @@ namespace mediapipe::tasks::autoit::vision::image_classifier {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<ImageClassifier*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<ImageClassifier*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<ImageClassifier>> ImageClassifier::create_from_model_path(const std::string& model_path) {

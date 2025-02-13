@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/image_segmenter.h"
 
 namespace {
@@ -67,7 +68,7 @@ namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<InteractiveSegmenter*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<InteractiveSegmenter*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<InteractiveSegmenter>> InteractiveSegmenter::create_from_model_path(const std::string& model_path) {
@@ -124,7 +125,7 @@ namespace mediapipe::tasks::autoit::vision::interactive_segmenter {
 		if (output_packets.count(_CONFIDENCE_MASKS_STREAM_NAME)) {
 			MP_PACKET_ASSIGN_OR_RETURN(const auto& confidence_masks, std::vector<Image>, output_packets.at(_CONFIDENCE_MASKS_STREAM_NAME));
 			for (const auto& image : confidence_masks) {
-				segmentation_result->confidence_masks->push_back(std::make_shared<Image>(image));
+				segmentation_result->confidence_masks->push_back(std::move(std::make_shared<Image>(image)));
 			}
 		}
 

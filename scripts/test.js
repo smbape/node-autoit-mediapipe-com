@@ -1,4 +1,5 @@
 const process = require("node:process");
+const os = require("node:os");
 const { spawn } = require("node:child_process");
 const sysPath = require("node:path");
 const eachOfLimit = require("async/eachOfLimit");
@@ -10,18 +11,33 @@ const AUTOIT_WRAPPER = "C:\\Program Files (x86)\\AutoIt3\\SciTE\\AutoIt3Wrapper\
 const AUTOIT_WRAPPER_ARGV = ["/run", "/prod", "/ErrorStdOut", "/in"];
 const CS_RUN = sysPath.join("examples", "dotnet", "csrun.bat");
 
+const unixPath = path => {
+    return path.replaceAll("\\", "/").replace(/^(\w+):/, (match, drive) => {
+        return `/${ drive.toLowerCase() }`;
+    });
+};
+
+const unixEscape = (arg, verbatim = true) => {
+    if (verbatim && os.platform() === "win32" && arg[0] === "/" && arg[1] !== "/") {
+        arg = `/${ arg }`;
+    }
+
+    if (/[^\w/=.-]/.test(arg)) {
+        arg = `'${ arg.replaceAll("'", "'\\''") }'`;
+    }
+
+    return arg;
+};
+
+const unixEnv = (key, value) => {
+    if (os.platform() === "win32" && key === "PATH") {
+        value = value.split(sysPath.delimiter).map(unixPath).join(":");
+    }
+    return `${ key }=${ unixEscape(value, false) }`;
+};
+
 const unixCmd = argv => {
-    return argv.map(arg => {
-        if (arg.includes(" ") || arg.includes("\\")) {
-            return `'${ arg }'`;
-        }
-
-        if (arg[0] === "/" && arg[1] !== "/") {
-            return `/${ arg }`;
-        }
-
-        return arg;
-    }).join(" ");
+    return argv.map(arg => unixEscape(arg)).join(" ");
 };
 
 const run = (file, env, options, next) => {
@@ -32,7 +48,7 @@ const run = (file, env, options, next) => {
     }
 
     const keys = Object.keys(env);
-    env = Object.assign({}, options.env, env);
+    env = Object.assign({}, process.env, options.env, env);
 
     const extname = sysPath.extname(file);
 
@@ -52,7 +68,7 @@ const run = (file, env, options, next) => {
         throw new Error(`Unsupported extenstion ${ extname }`);
     }
 
-    const cmd = [keys.map(key => `${ key }=${ env[key] }`).join(" "), unixCmd(args.flat())].join(" ");
+    const cmd = [keys.map(key => unixEnv(key, env[key])).join(" "), unixCmd(args.flat())].join(" ");
 
     if (options.bash) {
         console.log(cmd, "||", "exit $?");
@@ -88,10 +104,6 @@ const run = (file, env, options, next) => {
     }
 };
 
-const unixPath = path => {
-    return `/${ path.replace(":", "").replaceAll("\\", "/") }`;
-};
-
 const bash_init = `#!/usr/bin/env bash
 
 set -o pipefail
@@ -118,7 +130,7 @@ const main = (options, next) => {
     if (options.bash) {
         console.log([
             bash_init,
-            `cd ${ cwd.includes(" ") ? `'${ unixPath(cwd) }'` : unixPath(cwd) }`,
+            `cd ${ unixEscape(unixPath(cwd), false) } || exit $?`,
             "",
         ].join("\n"));
     }
@@ -174,7 +186,7 @@ if (typeof require !== "undefined" && require.main === module) {
         includes: [],
         excludes: [],
         argv: [],
-        env: Object.assign({}, process.env),
+        env: {},
         "--": 0,
     };
 

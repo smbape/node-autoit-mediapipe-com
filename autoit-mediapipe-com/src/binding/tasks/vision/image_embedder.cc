@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/image_embedder.h"
 
 PTR_BRIDGE_IMPL(mediapipe::tasks::autoit::vision::image_embedder::ImageEmbedderResultRawCallback);
@@ -75,7 +76,7 @@ namespace mediapipe::tasks::autoit::vision::image_embedder {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<ImageEmbedder*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<ImageEmbedder*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<ImageEmbedder>> ImageEmbedder::create_from_model_path(const std::string& model_path) {

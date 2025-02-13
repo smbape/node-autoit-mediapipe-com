@@ -95,9 +95,9 @@ Func _AssertLessEqual($vA, $vB, $sMessage = Default, $bExit = Default, $iCode = 
 EndFunc   ;==>_AssertLessEqual
 
 Func _AssertIsInstance($vVal, $vType, $sMessage = Default, $bExit = Default, $iCode = Default, $iLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_vCallerExtended = @extended)
-	Local Const $sValFullyQualifiedName = IsObj($vVal) ? $vVal.FullyQualifiedName : IsArray($vVal) ? "Array" : $vVal
-	Local Const $sTypeFullyQualifiedName = IsObj($vType) ? $vType.FullyQualifiedName : $vType
-	If $sMessage == Default Then $sMessage = "expecting [" & $sValFullyQualifiedName & "] to be an instance of [" & $sTypeFullyQualifiedName & "]"
+	Local Const $sVal__type__ = IsObj($vVal) ? $vVal.__type__() : IsArray($vVal) ? "Array" : $vVal
+	Local Const $sType__type__ = IsObj($vType) ? $vType.__type__() : $vType
+	If $sMessage == Default Then $sMessage = "expecting [" & $sVal__type__ & "] to be an instance of [" & $sType__type__ & "]"
 
 	If IsObj($vType) Then
 		Return _AssertTrue($vType.IsInstance($vVal), $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
@@ -113,10 +113,10 @@ Func _AssertIsInstance($vVal, $vType, $sMessage = Default, $bExit = Default, $iC
 	If Not $bCondition Then Return $bCondition
 
 	If $bIsListType Then
-		Return _AssertTrue(_StringStartsWith($sValFullyQualifiedName, "std::vector<", True), $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
+		Return _AssertTrue(_StringStartsWith($sVal__type__, "std::vector<", True), $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
 	EndIf
 
-	Return _AssertEqual($sValFullyQualifiedName, $sTypeFullyQualifiedName, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
+	Return _AssertEqual($sVal__type__, $sType__type__, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
 EndFunc   ;==>_AssertIsInstance
 
 Func _AssertAlmostEqual($vA, $vB, $fDelta = Default, $iPlaces = Default, $sMessage = Default, $bExit = Default, $iCode = Default, $iLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_vCallerExtended = @extended)

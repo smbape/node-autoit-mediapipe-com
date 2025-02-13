@@ -1,5 +1,5 @@
-module.exports = [
-    ["mediapipe.autoit.solutions.drawing_utils.", "", ["/Properties"], [
+module.exports = ({language}) => [
+    [`mediapipe.${ language }.solutions.drawing_utils.`, "", ["/Properties"], [
         ["std::tuple<int, int, int>", "WHITE_COLOR", "", "/R"],
         ["std::tuple<int, int, int>", "BLACK_COLOR", "", "/R"],
         ["std::tuple<int, int, int>", "RED_COLOR", "", "/R"],

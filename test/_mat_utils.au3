@@ -4,9 +4,9 @@
 Func _RandomImage($width, $height, $type, $low, $high)
 	Local Static $MatPtr = _OpenCV_ObjCreate("cv.Mat")
 	Local Static $cv = _OpenCV_get()
-	Local Const $mat = $MatPtr.create($height, $width, $type)
-	$cv.randu($mat, 0.0 + $low, 0.0 + $high)
-	Return $mat
+	Local Const $image = $MatPtr.create($height, $width, $type)
+	$cv.randu($image, 0.0 + $low, 0.0 + $high)
+	Return $image
 EndFunc   ;==>_RandomImage
 
 Func _MatSliceLastDim($oMat, $iStart, $iEnd)
@@ -133,15 +133,15 @@ Func _AssertMatLess($oMatA, $vValB, $sMessage = Default, $bExit = True, $iCode =
 		$oMatA = $oMatA.convertTo($vValB.depth())
 	EndIf
 
-	If IsNumber($oMatA) And IsObj($vValB) Then
-		$vValB = $vValB.reshape(1)
-	EndIf
-
 	If $cv.Mat.IsInstance($oMatA) And IsNumber($vValB) Then
 		$oMatA = $oMatA.reshape(1)
 	EndIf
 
-	If $cv.Mat.IsInstance($oMatA) And IsObj($vValB) Then
+	If IsNumber($oMatA) And $cv.Mat.IsInstance($vValB) Then
+		$vValB = $vValB.reshape(1)
+	EndIf
+
+	If $cv.Mat.IsInstance($oMatA) And $cv.Mat.IsInstance($vValB) Then
 		Local $bCondition = _AssertMatDim($oMatA, $vValB, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
 		If Not $bCondition Then Return $bCondition
 	EndIf
@@ -182,16 +182,16 @@ Func _AssertMatGreaterEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, 
 	If IsNumber($oMatA) Then $oMatA = Number($oMatA, $NUMBER_DOUBLE)
 	If IsNumber($oMatB) Then $oMatB = Number($oMatB, $NUMBER_DOUBLE)
 
-	If $cv.Mat.IsInstance($oMatA) And IsObj($oMatB) And $oMatA.depth() <> $oMatB.depth() Then
+	If $cv.Mat.IsInstance($oMatA) And $cv.Mat.IsInstance($oMatB) And $oMatA.depth() <> $oMatB.depth() Then
 		$oMatA = $oMatA.convertTo($oMatB.depth())
-	EndIf
-
-	If IsNumber($oMatA) And IsObj($oMatB) Then
-		$oMatB = $oMatB.reshape(1)
 	EndIf
 
 	If $cv.Mat.IsInstance($oMatA) And IsNumber($oMatB) Then
 		$oMatA = $oMatA.reshape(1)
+	EndIf
+
+	If IsNumber($oMatA) And $cv.Mat.IsInstance($oMatB) Then
+		$oMatB = $oMatB.reshape(1)
 	EndIf
 
 	Local $diff = $cv.compare($oMatA, $oMatB, $CV_CMP_LT)

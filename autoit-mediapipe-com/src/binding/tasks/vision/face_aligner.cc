@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/face_aligner.h"
 
 namespace {
@@ -40,7 +41,7 @@ namespace mediapipe::tasks::autoit::vision::face_aligner {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<FaceAligner*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<FaceAligner*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<FaceAligner>> FaceAligner::create_from_model_path(const std::string& model_path) {

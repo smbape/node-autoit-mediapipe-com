@@ -1,6 +1,6 @@
-module.exports = [
-    // expose a autoit property like in mediapipe python
-    ["mediapipe.tasks.autoit.", "", ["/Properties"], [
-        ["mediapipe::tasks::autoit::core::base_options::BaseOptions", "BaseOptions", "", ["/R", "=this"]],
+module.exports = ({language}) => [
+    // expose a language property like in mediapipe python
+    [`mediapipe.tasks.${ language }.`, "", ["/Properties"], [
+        [`mediapipe::tasks::${ language }::core::base_options::BaseOptions`, "BaseOptions", "", ["/R", "=this", "/S"]],
     ], "", ""],
 ];

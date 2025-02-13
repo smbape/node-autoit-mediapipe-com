@@ -1,5 +1,5 @@
-module.exports = [
-    ["mediapipe.autoit.solutions.hands_connections.", "", ["/Properties"], [
+module.exports = ({language}) => [
+    [`mediapipe.${ language }.solutions.hands_connections.`, "", ["/Properties"], [
         ["std::vector<std::tuple<int, int>>", "HAND_PALM_CONNECTIONS", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "HAND_THUMB_CONNECTIONS", "", ["/R"]],
         ["std::vector<std::tuple<int, int>>", "HAND_INDEX_FINGER_CONNECTIONS", "", ["/R"]],

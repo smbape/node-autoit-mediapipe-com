@@ -149,7 +149,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $landmarker = $_HandLandmarker.create_from_model_path($model_path)
 	_AssertIsInstance($landmarker, $_HandLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -158,7 +157,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_HandLandmarker.create_from_options($options)
 	_AssertIsInstance($landmarker, $_HandLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -168,7 +166,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_HandLandmarker.create_from_options($options)
 	_AssertIsInstance($landmarker, $_HandLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect($model_file_type, $expected_detection_result)
@@ -190,9 +187,6 @@ Func test_detect($model_file_type, $expected_detection_result)
 
 	; Comparing results.
 	_expect_hand_landmarker_results_correct($detection_result, $expected_detection_result)
-
-	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_detect
 
 Func test_detect_succeeds_with_num_hands()
@@ -209,9 +203,6 @@ Func test_detect_succeeds_with_num_hands()
 
 	; Comparing results.
 	_AssertLen($detection_result.handedness, 2)
-
-	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_detect_succeeds_with_num_hands
 
 Func test_detect_succeeds_with_rotation()
@@ -232,9 +223,6 @@ Func test_detect_succeeds_with_rotation()
 
 	; Comparing results.
 	_expect_hand_landmarker_results_correct($detection_result, $expected_detection_result)
-
-	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_detect_succeeds_with_rotation
 
 Func test_empty_detection_outputs()
@@ -251,9 +239,6 @@ Func test_empty_detection_outputs()
 	_AssertEmpty($detection_result.hand_landmarks)
 	_AssertEmpty($detection_result.hand_world_landmarks)
 	_AssertEmpty($detection_result.handedness)
-
-	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_empty_detection_outputs
 
 Func test_detect_for_video($image_path, $rotation, $expected_result)
@@ -283,9 +268,6 @@ Func test_detect_for_video($image_path, $rotation, $expected_result)
 			_AssertEqual($result, $expected_result)
 		EndIf
 	Next
-
-	; Closes the hand landmarker explicitly when the hand landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_detect_for_video
 
 Func _expect_hand_landmarks_correct($actual_landmarks, $expected_landmarks, $margin)
@@ -298,8 +280,8 @@ Func _expect_hand_landmarks_correct($actual_landmarks, $expected_landmarks, $mar
 	For $actual_landmark In $actual_landmarks
 		$j = 0
 		For $elem In $actual_landmark
-			_AssertAlmostEqual($elem.x, $expected_landmarks($i)($j).x, $margin)
-			_AssertAlmostEqual($elem.y, $expected_landmarks($i)($j).y, $margin)
+			_AssertAlmostEqual($elem.x, $expected_landmarks($i) ($j).x, $margin)
+			_AssertAlmostEqual($elem.y, $expected_landmarks($i) ($j).y, $margin)
 			$j = $j + 1
 		Next
 		$i = $i + 1
@@ -308,8 +290,8 @@ EndFunc   ;==>_expect_hand_landmarks_correct
 
 Func _expect_handedness_correct($actual_handedness, $expected_handedness, $margin)
 	; Actual top handedness matches expected top handedness.
-	Local $actual_top_handedness = $actual_handedness(0)(0)
-	Local $expected_top_handedness = $expected_handedness(0)(0)
+	Local $actual_top_handedness = $actual_handedness(0) (0)
+	Local $expected_top_handedness = $expected_handedness(0) (0)
 	_AssertEqual($actual_top_handedness.index, $expected_top_handedness.index)
 	_AssertEqual($actual_top_handedness.category_name, $expected_top_handedness.category_name)
 	_AssertAlmostEqual($actual_top_handedness.score, $expected_top_handedness.score, $margin)

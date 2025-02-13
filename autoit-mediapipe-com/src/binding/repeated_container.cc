@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/repeated_container.h"
 #include "Google_Protobuf_Message_Object.h"
 
@@ -57,7 +58,7 @@ namespace google::protobuf::autoit {
 		return message->GetReflection()->FieldSize(*message, field_descriptor);
 	}
 
-	absl::StatusOr<_variant_t> RepeatedContainer::GetItem(SSIZE_T index) const {
+	absl::StatusOr<_variant_t> RepeatedContainer::GetItem(ssize_t index) const {
 		const Message* message = this->message.get();
 		const FieldDescriptor* field_descriptor = this->field_descriptor.get();
 		const Reflection* reflection = message->GetReflection();
@@ -130,7 +131,7 @@ namespace google::protobuf::autoit {
 		return obj;
 	}
 
-	absl::Status RepeatedContainer::SetItem(SSIZE_T index, _variant_t arg) {
+	absl::Status RepeatedContainer::SetItem(ssize_t index, _variant_t arg) {
 		Message* message = this->message.get();
 		const FieldDescriptor* field_descriptor = this->field_descriptor.get();
 		const Reflection* reflection = message->GetReflection();
@@ -212,7 +213,7 @@ namespace google::protobuf::autoit {
 		return absl::OkStatus();
 	}
 
-	absl::Status RepeatedContainer::Splice(std::vector<_variant_t>& list, SSIZE_T start) {
+	absl::Status RepeatedContainer::Splice(std::vector<_variant_t>& list, ssize_t start) {
 		auto field_size = size();
 		if (start < 0) {
 			start += field_size;
@@ -220,7 +221,7 @@ namespace google::protobuf::autoit {
 		return Splice(list, start, field_size - start);
 	}
 
-	absl::Status RepeatedContainer::Splice(std::vector<_variant_t>& list, SSIZE_T start, SSIZE_T deleteCount) {
+	absl::Status RepeatedContainer::Splice(std::vector<_variant_t>& list, ssize_t start, ssize_t deleteCount) {
 		list.clear();
 
 		if (deleteCount <= 0) {
@@ -291,7 +292,7 @@ namespace google::protobuf::autoit {
 		return absl::OkStatus();
 	}
 
-	absl::Status RepeatedContainer::Slice(std::vector<_variant_t>& list, SSIZE_T start) const {
+	absl::Status RepeatedContainer::Slice(std::vector<_variant_t>& list, ssize_t start) const {
 		int field_size = size();
 		if (start < 0) {
 			start += field_size;
@@ -299,7 +300,7 @@ namespace google::protobuf::autoit {
 		return Slice(list, start, field_size - start);
 	}
 
-	absl::Status RepeatedContainer::Slice(std::vector<_variant_t>& list, SSIZE_T start, SSIZE_T count) const {
+	absl::Status RepeatedContainer::Slice(std::vector<_variant_t>& list, ssize_t start, ssize_t count) const {
 		list.clear();
 		if (count <= 0) {
 			return absl::OkStatus();
@@ -413,7 +414,7 @@ namespace google::protobuf::autoit {
 		return absl::OkStatus();
 	}
 
-	absl::Status RepeatedContainer::Insert(SSIZE_T index, _variant_t item) {
+	absl::Status RepeatedContainer::Insert(ssize_t index, _variant_t item) {
 		Message* message = this->message.get();
 		const FieldDescriptor* field_descriptor = this->field_descriptor.get();
 		const Reflection* reflection = message->GetReflection();
@@ -432,11 +433,11 @@ namespace google::protobuf::autoit {
 		}
 	}
 
-	absl::Status RepeatedContainer::Insert(std::tuple<SSIZE_T, _variant_t>& args) {
+	absl::Status RepeatedContainer::Insert(std::tuple<ssize_t, _variant_t>& args) {
 		return Insert(std::get<0>(args), std::get<1>(args));
 	}
 
-	absl::StatusOr<_variant_t> RepeatedContainer::Pop(SSIZE_T index) {
+	absl::StatusOr<_variant_t> RepeatedContainer::Pop(ssize_t index) {
 		std::vector<_variant_t> list;
 		MP_RETURN_IF_ERROR(Splice(list, index, 1));
 		return list[0];

@@ -46,22 +46,28 @@ const occurrences = (str, substr, allowOverlapping = false) => {
 };
 
 const getOptions = PROJECT_DIR => {
+    const language = "autoit";
+
     const options = {
         APP_NAME: "Mediapipe",
+        language,
+        cname: "create",
         LIB_UID: "29090432-104c-c6cd-cd2b-9f2a43abd5b6",
         LIBRARY: "mediapipeCOM",
         OUTPUT_NAME: `autoit_mediapipe_com-${ MEDIAPIPE_VERSION }-${ OpenCV_DLLVERSION }`,
-        OUTPUT_DIRECTORY_DEBUG: `${ PROJECT_DIR }/build_x64/_deps/mediapipe-src/bazel-out/x64_windows-dbg/bin/mediapipe/autoit`,
-        OUTPUT_DIRECTORY_RELEASE: `${ PROJECT_DIR }/build_x64/_deps/mediapipe-src/bazel-out/x64_windows-opt/bin/mediapipe/autoit`,
+        OUTPUT_DIRECTORY_DEBUG: `${ PROJECT_DIR }/build_x64/mediapipe-src/bazel-out/x64_windows-dbg/bin/mediapipe/autoit`,
+        OUTPUT_DIRECTORY_RELEASE: `${ PROJECT_DIR }/build_x64/mediapipe-src/bazel-out/x64_windows-opt/bin/mediapipe/autoit`,
         namespace: "mediapipe",
         shared_ptr: "std::shared_ptr",
         make_shared: "std::make_shared",
         assert: "AUTOIT_ASSERT",
         Any: "VARIANT*",
+        AnyObject: "_variant_t",
         maxFilenameLength: 120,
         meta_methods: new Map([
             ["__str__", "::autoit::__str__"],
             ["__eq__", "::autoit::__eq__"],
+            ["__type__", null /* use default __type__ method */],
         ]),
 
         self: "*__self->get()",
@@ -82,9 +88,9 @@ const getOptions = PROJECT_DIR => {
             "cv",
             "google::protobuf",
             "mediapipe",
-            "mediapipe::autoit",
-            "mediapipe::autoit::solution_base",
-            "mediapipe::autoit::solutions",
+            `mediapipe::${ language }`,
+            `mediapipe::${ language }::solution_base`,
+            `mediapipe::${ language }::solutions`,
             "std",
         ]),
         build: new Set(),
@@ -123,23 +129,23 @@ const getOptions = PROJECT_DIR => {
 
             if (fqn.endsWith("MapContainer")) {
                 // make MapContainer to be recognized as a collection
-                processor.as_stl_enum(coclass, "std::pair<_variant_t, _variant_t>");
+                processor.as_stl_enum(coclass, "std::pair<_variant_t, _variant_t>", opts);
             } else if (fqn.endsWith("RepeatedContainer")) {
                 // make RepeatedContainer to be recognized as a collection
-                processor.as_stl_enum(coclass, "_variant_t");
+                processor.as_stl_enum(coclass, "_variant_t", opts);
                 coclass.addProperty(["size_t", "Count", "", ["/R", "=size()"]]);
             } else if (fqn.startsWith("google::protobuf::Repeated_")) {
                 // make RepeatedField to be recognized as a collection
                 const vtype = fqn.slice("google::protobuf::Repeated_".length).replaceAll("_", "::");
-                processor.as_stl_enum(coclass, vtype);
+                processor.as_stl_enum(coclass, vtype, opts);
                 coclass.cpptype = vtype;
                 coclass.idltype = processor.getIDLType(vtype, coclass, opts);
-            } else if (fqn === "mediapipe::autoit::solutions::objectron::ObjectronOutputs") {
+            } else if (fqn === `mediapipe::${ language }::solutions::objectron::ObjectronOutputs`) {
                 processor.add_vector(`std::vector<${ fqn }>`, coclass, opts);
             }
 
             // from mediapipe.python import *
-            if (fqn.startsWith("mediapipe::autoit::") || fqn.startsWith("mediapipe::tasks::autoit::") || fqn.startsWith("mediapipe::") && occurrences(fqn, "::") === 1) {
+            if (fqn.startsWith(`mediapipe::${ language }::`) || fqn.startsWith(`mediapipe::tasks::${ language }::`) || fqn.startsWith("mediapipe::") && occurrences(fqn, "::") === 1) {
                 const parts = fqn.split("::");
 
                 for (let i = 1; i < parts.length; i++) {
@@ -150,7 +156,7 @@ const getOptions = PROJECT_DIR => {
             }
 
             // import mediapipe.python.solutions as solutions
-            if (fqn.startsWith("mediapipe::autoit::")) {
+            if (fqn.startsWith(`mediapipe::${ language }::`)) {
                 const parts = fqn.split("::");
 
                 for (let i = 2; i < parts.length; i++) {
@@ -356,7 +362,7 @@ waterfall([
     },
 
     (srcfiles, protofiles, generated_include, next) => {
-        const mediapipe_SOURCE_DIR = fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/_deps/mediapipe-src`);
+        const mediapipe_SOURCE_DIR = fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-src`);
         const protobuf_SOURCE_DIR = fs.realpathSync(`${ mediapipe_SOURCE_DIR }/bazel-mediapipe-src/external/com_google_protobuf/src`);
 
         const outputs = Parser.createOutputs();
@@ -366,8 +372,11 @@ waterfall([
                 mediapipe_SOURCE_DIR,
                 protobuf_SOURCE_DIR,
             ],
+            language: options.language,
             self: options.self,
             self_get: options.self_get,
+            Any: options.Any,
+            AnyObject: options.AnyObject,
         };
 
         for (const filename of protofiles) {
@@ -413,6 +422,8 @@ waterfall([
 
             configuration.namespaces.push(...options.namespaces);
             configuration.namespaces.push(...options.other_namespaces);
+
+            // fs.writeFileSync(sysPath.join(__dirname, "../gen.json"), JSON.stringify(configuration, null, 4));
 
             const processor = new DeclProcessor(options);
             processor.process(configuration, options);

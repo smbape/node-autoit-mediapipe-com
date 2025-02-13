@@ -8,7 +8,12 @@ const options = {
     proto_path: [
         fs.realpathSync(`${ __dirname }/../../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe`),
         fs.realpathSync(`${ __dirname }/../../autoit-mediapipe-com/build_x64/mediapipe-prefix/src/mediapipe/bazel-mediapipe/external/com_google_protobuf/src`),
-    ]
+    ],
+    language: "autoit",
+    self: "*__self->get()",
+    self_get: (name = null) => {
+        return name ? `__self->get()->${ name }` : "__self->get()";
+    },
 };
 
 for (const filename of [

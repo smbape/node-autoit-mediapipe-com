@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/tasks/vision/hand_landmarker.h"
 
 namespace mediapipe::tasks::autoit::vision::hand_landmarker {
@@ -294,12 +295,12 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> handedness_categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
 
 			for (const auto& handedness : handedness_classifications.classification()) {
-				handedness_categories->push_back(std::make_shared<category::Category>(
+				handedness_categories->push_back(std::move(std::make_shared<category::Category>(
 					handedness.index(),
 					handedness.score(),
 					handedness.display_name(),
 					handedness.label()
-				));
+				)));
 			}
 
 			hand_landmarker_result->handedness->push_back(std::move(handedness_categories));
@@ -310,7 +311,7 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>> hand_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::NormalizedLandmark>>>();
 
 			for (const auto& hand_landmark : hand_landmarks.landmark()) {
-				hand_landmarks_list->push_back(landmark::NormalizedLandmark::create_from_pb2(hand_landmark));
+				hand_landmarks_list->push_back(std::move(landmark::NormalizedLandmark::create_from_pb2(hand_landmark)));
 			}
 
 			hand_landmarker_result->hand_landmarks->push_back(std::move(hand_landmarks_list));
@@ -321,7 +322,7 @@ namespace {
 			std::shared_ptr<std::vector<std::shared_ptr<landmark::Landmark>>> hand_world_landmarks_list = std::make_shared<std::vector<std::shared_ptr<landmark::Landmark>>>();
 
 			for (const auto& hand_world_landmark : hand_world_landmarks.landmark()) {
-				hand_world_landmarks_list->push_back(landmark::Landmark::create_from_pb2(hand_world_landmark));
+				hand_world_landmarks_list->push_back(std::move(landmark::Landmark::create_from_pb2(hand_world_landmark)));
 			}
 
 			hand_landmarker_result->hand_world_landmarks->push_back(std::move(hand_world_landmarks_list));
@@ -359,7 +360,7 @@ namespace mediapipe::tasks::autoit::vision::hand_landmarker {
 		mediapipe::autoit::PacketsCallback packet_callback
 	) {
 		using BaseVisionTaskApi = core::base_vision_task_api::BaseVisionTaskApi;
-		return BaseVisionTaskApi::create(graph_config, running_mode, packet_callback, static_cast<HandLandmarker*>(nullptr));
+		return BaseVisionTaskApi::create(graph_config, running_mode, std::move(packet_callback), static_cast<HandLandmarker*>(nullptr));
 	}
 
 	absl::StatusOr<std::shared_ptr<HandLandmarker>> HandLandmarker::create_from_model_path(const std::string& model_path) {

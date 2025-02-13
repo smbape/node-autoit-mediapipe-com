@@ -1,4 +1,4 @@
-module.exports = ({make_shared}) => {
+module.exports = ({make_shared, language}) => {
     const declarations = [
         ["create_string", "std::string", "std::string", ["/Ref"], []],
         ["create_bool", "bool", "bool", [], []],
@@ -18,15 +18,15 @@ module.exports = ({make_shared}) => {
             `/Call=MakePacket<${ packet_type }>`,
             `/Output=${ make_shared }<Packet>(std::move($0))`
         ]);
-        return [`mediapipe.autoit.packet_creator.${ fname }`, "std::shared_ptr<mediapipe::Packet>", func_modifiers, [
+        return [`mediapipe.${ language }.packet_creator.${ fname }`, "std::shared_ptr<mediapipe::Packet>", func_modifiers, [
             [data_type, "data", "", arg_modifiers]
         ], "", ""];
     });
 
     declarations.push(...[
         // expose a packet_creator property like in mediapipe python
-        ["mediapipe.autoit.", "", ["/Properties"], [
-            ["mediapipe::autoit::packet_creator", "packet_creator", "", ["/R", "=this"]],
+        [`mediapipe.${ language }.`, "", ["/Properties"], [
+            [`mediapipe::${ language }::packet_creator`, "packet_creator", "", ["/R", "=this", "/S"]],
         ], "", ""]
     ]);
 

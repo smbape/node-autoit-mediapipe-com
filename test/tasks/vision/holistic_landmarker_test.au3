@@ -137,7 +137,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $landmarker = $_HolisticLandmarker.create_from_model_path($model_path)
 	_AssertIsInstance($landmarker, $_HolisticLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -146,7 +145,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_HolisticLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_HolisticLandmarker.create_from_options($options)
 	_AssertIsInstance($landmarker, $_HolisticLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -156,7 +154,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_HolisticLandmarkerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $landmarker = $_HolisticLandmarker.create_from_options($options)
 	_AssertIsInstance($landmarker, $_HolisticLandmarker)
-	$landmarker.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect( _
@@ -194,9 +191,6 @@ Func test_detect( _
 			$_LANDMARKS_MARGIN, _
 			$_BLENDSHAPES_MARGIN _
 			)
-
-	; Closes the holistic landmarker explicitly when the holistic landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_detect
 
 Func test_empty_detection_outputs()
@@ -221,9 +215,6 @@ Func test_empty_detection_outputs()
 	_AssertEmpty($detection_result.right_hand_world_landmarks)
 	_AssertEmpty($detection_result.face_blendshapes)
 	_AssertIsNone($detection_result.segmentation_mask)
-
-	; Closes the holistic landmarker explicitly when the holistic landmarker is not used in a context.
-	$landmarker.close()
 EndFunc   ;==>test_empty_detection_outputs
 
 Func _get_expected_holistic_landmarker_result($file_path)

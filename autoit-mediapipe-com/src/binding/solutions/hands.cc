@@ -14,7 +14,7 @@ namespace mediapipe::autoit::solutions::hands {
 	absl::StatusOr<std::shared_ptr<Hands>> Hands::create(
 		bool static_image_mode,
 		int max_num_hands,
-		BYTE model_complexity,
+		uint8_t model_complexity,
 		float min_detection_confidence,
 		float min_tracking_confidence
 	) {

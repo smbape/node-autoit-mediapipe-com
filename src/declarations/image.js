@@ -1,4 +1,4 @@
-module.exports = ({make_shared}) => [
+module.exports = ({make_shared, language, cname}) => [
     ["class mediapipe.Image", "", ["/Simple"], [
         ["int", "width", "", ["/R", "=width()"]],
         ["int", "height", "", ["/R", "=height()"]],
@@ -10,22 +10,22 @@ module.exports = ({make_shared}) => [
 
     ["mediapipe.Image.Image", "mediapipe.Image.Image", [], [], "", ""],
 
-    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateSharedImage"], [
+    [`mediapipe.Image.${ cname }`, "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
         ["mediapipe::ImageFormat::Format", "image_format", "", []],
         ["cv::Mat", "image", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateSharedImage"], [
+    [`mediapipe.Image.${ cname }`, "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
         ["cv::Mat", "image", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.Image.create", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateSharedImage"], [
+    [`mediapipe.Image.${ cname }`, "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
-    ["mediapipe.Image.create_from_file", "std::shared_ptr<Image>", ["/S", "/Call=mediapipe::autoit::CreateSharedImage"], [
+    ["mediapipe.Image.create_from_file", "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
@@ -38,7 +38,7 @@ module.exports = ({make_shared}) => [
     ], "", ""],
 
     // expose an Image property like in mediapipe python
-    ["mediapipe.autoit._framework_bindings.image.", "", ["/Properties"], [
-        ["mediapipe::Image", "Image", "", ["/R", "=this"]],
+    [`mediapipe.${ language }._framework_bindings.image.`, "", ["/Properties"], [
+        ["mediapipe::Image", "Image", "", ["/R", "=this", "/S"]],
     ], "", ""],
 ];

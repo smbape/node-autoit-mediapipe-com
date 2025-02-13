@@ -43,7 +43,7 @@
 @SET DLLDIRNAME=
 @SET DLLNAME=autoit_mediapipe_com-0.10.14-4100%DEBUG_PREFIX%.dll
 
-@SET INT_DIR=_deps\mediapipe-src\bazel-out\x64_windows-%CompileMode%\bin\mediapipe\autoit
+@SET INT_DIR=mediapipe-src\bazel-out\x64_windows-%CompileMode%\bin\mediapipe\autoit
 @IF EXIST "%CD%\build_x64\%INT_DIR%\%DLLNAME%" @SET "DLLDIRNAME=%CD%\build_x64\%INT_DIR%\"
 @IF EXIST "%CD%\..\opencv-4.10.0-windows\opencv\build\x64\vc16\bin" @SET "PATH=%CD%\..\opencv-4.10.0-windows\opencv\build\x64\vc16\bin;%PATH%"
 

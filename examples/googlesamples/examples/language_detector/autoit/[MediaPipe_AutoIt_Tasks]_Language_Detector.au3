@@ -6,8 +6,8 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/[MediaPipe_Python_Tasks]_Language_Detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/[MediaPipe_Python_Tasks]_Language_Detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
 
 ;~ Title: Language Detector with MediaPipe Tasks
 

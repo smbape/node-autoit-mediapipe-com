@@ -2,7 +2,7 @@
 #include "binding/packet_getter.h"
 
 namespace google::protobuf::autoit {
-	absl::StatusOr<std::shared_ptr<Message>> Parse(const std::string& input, std::shared_ptr<Message> message) {
+	absl::StatusOr<std::shared_ptr<Message>> Parse(const std::string& input, std::shared_ptr<Message>& message) {
 		MP_ASSERT_RETURN_IF_ERROR(TextFormat::MergeFromString(input, message.get()), "Failed to parse message " << input);
 		return message;
 	}

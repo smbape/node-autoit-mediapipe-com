@@ -119,7 +119,6 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	; Creates with default option and valid model file successfully.
 	Local $embedder = $_ImageEmbedder.create_from_model_path($model_path)
 	_AssertIsInstance($embedder, $_ImageEmbedder)
-	$embedder.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
@@ -128,7 +127,6 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 	Local $options = $_ImageEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $embedder = $_ImageEmbedder.create_from_options($options)
 	_AssertIsInstance($embedder, $_ImageEmbedder)
-	$embedder.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
@@ -138,7 +136,6 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	Local $options = $_ImageEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $embedder = $_ImageEmbedder.create_from_options($options)
 	_AssertIsInstance($embedder, $_ImageEmbedder)
-	$embedder.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_embed($l2_normalize, $quantize, $with_roi, $model_file_type, $expected_similarity, $expected_size, $expected_first_values)
@@ -177,9 +174,6 @@ Func test_embed($l2_normalize, $quantize, $with_roi, $model_file_type, $expected
 	_check_embedding_value($image_result, $expected_result0_value)
 	_check_embedding_value($crop_result, $expected_result1_value)
 	_check_cosine_similarity($image_result, $crop_result, $expected_similarity)
-
-	; Closes the embedder explicitly when the embedder is not used in a context.
-	$embedder.close()
 EndFunc   ;==>test_embed
 
 Func test_embed_for_video()
@@ -201,8 +195,6 @@ Func test_embed_for_video()
 		_check_cosine_similarity($image_result, $crop_result, $expected_similarity)
 	Next
 
-	$embedder0.close()
-	$embedder1.close()
 EndFunc   ;==>test_embed_for_video
 
 Func test_embed_for_video_succeeds_with_region_of_interest()
@@ -228,8 +220,6 @@ Func test_embed_for_video_succeeds_with_region_of_interest()
 		_check_cosine_similarity($image_result, $crop_result, $expected_similarity)
 	Next
 
-	$embedder0.close()
-	$embedder1.close()
 EndFunc   ;==>test_embed_for_video_succeeds_with_region_of_interest
 
 Func _check_embedding_value($result, $expected_first_value)

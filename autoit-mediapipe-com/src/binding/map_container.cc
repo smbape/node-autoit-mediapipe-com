@@ -1,3 +1,4 @@
+#include "mediapipe/framework/port/status_macros.h"
 #include "binding/map_container.h"
 #include "Google_Protobuf_Message_Object.h"
 
@@ -37,8 +38,8 @@ namespace google::protobuf {
 			it != reflection->MapEnd(message, field_descriptor);
 			++it
 		) {
-			MP_ASSIGN_OR_RETURN(auto key, autoit::MapKeyToAutoIt(field_descriptor, it.GetKey()));
-			MP_ASSIGN_OR_RETURN(auto value, autoit::MapValueRefToAutoIt(field_descriptor, it.GetValueRef()));
+			MP_ASSIGN_OR_RETURN(auto key, autoit::MapKeyToAnyObject(field_descriptor, it.GetKey()));
+			MP_ASSIGN_OR_RETURN(auto value, autoit::MapValueRefToAnyObject(field_descriptor, it.GetValueRef()));
 			// TODO
 		}
 
@@ -50,7 +51,7 @@ namespace google::protobuf {
 		const FieldDescriptor* field_descriptor = self->field_descriptor.get();
 		const Reflection* reflection = message->GetReflection();
 		MapKey map_key;
-		MP_RETURN_IF_ERROR(autoit::AutoItToMapKey(field_descriptor, key, &map_key));
+		MP_RETURN_IF_ERROR(autoit::AnyObjectToMapKey(field_descriptor, key, &map_key));
 		return reflection->ContainsMapKey(*message, field_descriptor, map_key);
 	}
 
@@ -67,9 +68,9 @@ namespace google::protobuf {
 		const Reflection* reflection = message->GetReflection();
 		MapKey map_key;
 		MapValueRef value;
-		MP_RETURN_IF_ERROR(autoit::AutoItToMapKey(field_descriptor, key, &map_key));
+		MP_RETURN_IF_ERROR(autoit::AnyObjectToMapKey(field_descriptor, key, &map_key));
 		reflection->InsertOrLookupMapValue(message, field_descriptor, map_key, &value);
-		return autoit::MapValueRefToAutoIt(field_descriptor, value);
+		return autoit::MapValueRefToAnyObject(field_descriptor, value);
 	}
 
 	absl::Status MapRefectionFriend::SetItem(autoit::MapContainer* self, _variant_t key, _variant_t arg) {
@@ -78,7 +79,7 @@ namespace google::protobuf {
 		const Reflection* reflection = message->GetReflection();
 		MapKey map_key;
 		MapValueRef value;
-		MP_RETURN_IF_ERROR(autoit::AutoItToMapKey(field_descriptor, key, &map_key));
+		MP_RETURN_IF_ERROR(autoit::AnyObjectToMapKey(field_descriptor, key, &map_key));
 
 		if (PARAMETER_NULL(&arg)) {
 			MP_ASSERT_RETURN_IF_ERROR(reflection->DeleteMapValue(message, field_descriptor, map_key), "Key not present in map");
@@ -86,7 +87,7 @@ namespace google::protobuf {
 		}
 
 		reflection->InsertOrLookupMapValue(message, field_descriptor, map_key, &value);
-		MP_RETURN_IF_ERROR(autoit::AutoItToMapValueRef(field_descriptor, arg, reflection->SupportsUnknownEnumValues(), &value));
+		MP_RETURN_IF_ERROR(autoit::AnyObjectToMapValueRef(field_descriptor, arg, reflection->SupportsUnknownEnumValues(), &value));
 		return absl::OkStatus();
 	}
 
@@ -132,8 +133,8 @@ namespace google::protobuf {
 
 		const std::pair<_variant_t, _variant_t>& MapIterator::operator*() noexcept {
 			if (m_dirty) {
-				MP_ASSIGN_OR_THROW(auto key, MapKeyToAutoIt(m_container->field_descriptor.get(), m_iter->GetKey())); // Throwing because I failed to make COM STL Enum handle absl::StatusOr
-				MP_ASSIGN_OR_THROW(auto value, MapValueRefToAutoIt(m_container->field_descriptor.get(), m_iter->GetValueRef())); // Throwing because I failed to make COM STL Enum handle absl::StatusOr
+				MP_ASSIGN_OR_THROW(auto key, MapKeyToAnyObject(m_container->field_descriptor.get(), m_iter->GetKey())); // Throwing because I failed to make COM STL Enum handle absl::StatusOr
+				MP_ASSIGN_OR_THROW(auto value, MapValueRefToAnyObject(m_container->field_descriptor.get(), m_iter->GetValueRef())); // Throwing because I failed to make COM STL Enum handle absl::StatusOr
 				assign(m_value.first, key);
 				assign(m_value.second, value);
 				m_dirty = false;
@@ -149,7 +150,7 @@ namespace google::protobuf {
 			return ::google::protobuf::MapRefectionFriend::end(this);
 		}
 
-		absl::Status AutoItToMapKey(const FieldDescriptor* parent_field_descriptor, _variant_t arg, MapKey* key) {
+		absl::Status AnyObjectToMapKey(const FieldDescriptor* parent_field_descriptor, _variant_t arg, MapKey* key) {
 			const FieldDescriptor* field_descriptor =
 				parent_field_descriptor->message_type()->map_key();
 
@@ -191,7 +192,7 @@ namespace google::protobuf {
 			return absl::OkStatus();
 		}
 
-		absl::Status AutoItToMapValueRef(const FieldDescriptor* parent_field_descriptor, _variant_t arg,
+		absl::Status AnyObjectToMapValueRef(const FieldDescriptor* parent_field_descriptor, _variant_t arg,
 			bool allow_unknown_enum_values,
 			MapValueRef* value_ref) {
 			const FieldDescriptor* field_descriptor =
@@ -261,7 +262,7 @@ namespace google::protobuf {
 			return absl::OkStatus();
 		}
 
-		absl::StatusOr<_variant_t> MapKeyToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapKey& key) {
+		absl::StatusOr<_variant_t> MapKeyToAnyObject(const FieldDescriptor* parent_field_descriptor, const MapKey& key) {
 			_variant_t obj;
 			VARIANT* out_val = &obj;
 			VariantInit(out_val);
@@ -291,7 +292,7 @@ namespace google::protobuf {
 			return obj;
 		}
 
-		absl::StatusOr<_variant_t> MapValueRefToAutoIt(const FieldDescriptor* parent_field_descriptor, const MapValueRef& value) {
+		absl::StatusOr<_variant_t> MapValueRefToAnyObject(const FieldDescriptor* parent_field_descriptor, const MapValueRef& value) {
 			_variant_t obj;
 			VARIANT* out_val = &obj;
 			VariantInit(out_val);

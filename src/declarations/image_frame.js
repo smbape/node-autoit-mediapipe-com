@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = ({language, cname}) => [
     ["class mediapipe.ImageFrame", "", [], [
         ["int", "width", "", ["/R", "=Width()"]],
         ["int", "height", "", ["/R", "=Height()"]],
@@ -8,22 +8,22 @@ module.exports = [
         ["uchar*", "data", "", ["/R", "=PixelData()"]],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateSharedImageFrame"], [
+    [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
         ["mediapipe::ImageFormat::Format", "image_format", "", []],
         ["cv::Mat", "image", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateSharedImageFrame"], [
+    [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
         ["cv::Mat", "image", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.create", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateSharedImageFrame"], [
+    [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.create_from_file", "std::shared_ptr<ImageFrame>", ["/S", "/Call=mediapipe::autoit::CreateSharedImageFrame"], [
+    ["mediapipe.ImageFrame.create_from_file", "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
@@ -35,8 +35,8 @@ module.exports = [
     ], "", ""],
 
     // expose an image_frame property like in mediapipe python
-    ["mediapipe.autoit._framework_bindings.image_frame.", "", ["/Properties"], [
-        ["mediapipe::ImageFrame", "ImageFrame", "", ["/R", "=this"]],
-        ["mediapipe::ImageFormat::Format", "ImageFormat", "", ["/R", "=this"]],
+    [`mediapipe.${ language }._framework_bindings.image_frame.`, "", ["/Properties"], [
+        ["mediapipe::ImageFrame", "ImageFrame", "", ["/R", "=this", "/S"]],
+        ["mediapipe::ImageFormat::Format", "ImageFormat", "", ["/R", "=this", "/S"]],
     ], "", ""],
 ];

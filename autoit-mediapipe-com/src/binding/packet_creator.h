@@ -20,13 +20,13 @@ namespace mediapipe::autoit::packet_creator {
 	CV_WRAP std::shared_ptr<Packet> create_int_array(const std::vector<int>& data);
 	CV_WRAP std::shared_ptr<Packet> create_float_array(const std::vector<float>& data);
 	CV_WRAP std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, bool copy = true);
-	CV_WRAP std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, ImageFormat::Format format, bool copy = true);
+	CV_WRAP std::shared_ptr<Packet> create_image_frame(const ImageFrame& data, ImageFormat::Format image_format, bool copy = true);
 	CV_WRAP std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, bool copy = true);
-	CV_WRAP std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, ImageFormat::Format format, bool copy = true);
+	CV_WRAP std::shared_ptr<Packet> create_image_frame(const cv::Mat& data, ImageFormat::Format image_format, bool copy = true);
 	CV_WRAP std::shared_ptr<Packet> create_image(const Image& data, bool copy = true);
-	CV_WRAP std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format format, bool copy = true);
+	CV_WRAP std::shared_ptr<Packet> create_image(const Image& image, ImageFormat::Format image_format, bool copy = true);
 	CV_WRAP std::shared_ptr<Packet> create_image(const cv::Mat& data, bool copy = true);
-	CV_WRAP std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format format, bool copy = true);
+	CV_WRAP std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format image_format, bool copy = true);
 	CV_WRAP std::shared_ptr<Packet> create_matrix(const cv::Mat& data, bool transpose = false);
 	CV_WRAP std::shared_ptr<Packet> create_proto(const google::protobuf::Message& message);
 }

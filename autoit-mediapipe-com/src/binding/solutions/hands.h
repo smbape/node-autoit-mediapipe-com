@@ -1,6 +1,7 @@
 #pragma once
 
 #include "binding/solution_base.h"
+#include <opencv2/core/mat.hpp>
 
 namespace mediapipe::autoit::solutions::hands {
 	using namespace mediapipe::autoit::solution_base;
@@ -37,7 +38,7 @@ namespace mediapipe::autoit::solutions::hands {
 		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<Hands>> create(
 			bool static_image_mode = false,
 			int max_num_hands = 2,
-			BYTE model_complexity = 1,
+			uint8_t model_complexity = 1,
 			float min_detection_confidence = 0.5f,
 			float min_tracking_confidence = 0.5f
 		);

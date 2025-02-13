@@ -54,7 +54,7 @@ set(OpenCV_URL            https://github.com/opencv/opencv/releases/download/${O
 set(OpenCV_URL_HASH       SHA256=${OpenCV_URL_HASH_${OpenCV_DLLVERSION}})
 
 include(FetchContent)
-FetchContent_Declare(opencv
+FetchContent_Populate(opencv
   URL                 ${OpenCV_URL}
   URL_HASH            ${OpenCV_URL_HASH}
   DOWNLOAD_NO_EXTRACT TRUE
@@ -64,18 +64,15 @@ FetchContent_Declare(opencv
 )
 
 include(FetchContent)
-FetchContent_Declare(opencv-patch
+FetchContent_Populate(opencv-patch
   URL                 ${OpenCV_URL}
   URL_HASH            ${OpenCV_URL_HASH}
   DOWNLOAD_NO_EXTRACT TRUE
   DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
   SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
-  PATCH_COMMAND       "${PATCH}" -p 1 -d "<DOWNLOAD_DIR>/${OpenCV_OUTPUT_DIR}/opencv/sources/"
+  PATCH_COMMAND       "${PATCH_EXECUTABLE}" -p 1 -d "<DOWNLOAD_DIR>/${OpenCV_OUTPUT_DIR}/opencv/sources/"
                         -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-opencv-src.patch"
 )
-
-FetchContent_Populate(opencv)
-FetchContent_Populate(opencv-patch)
 
 get_filename_component(OpenCV_DIR "${opencv_SOURCE_DIR}/${OpenCV_OUTPUT_DIR}/opencv/build" ABSOLUTE)
 find_package(OpenCV REQUIRED)

@@ -30,6 +30,11 @@ IF ["%_param:~0,2%"] == ["-D"] (
     GOTO :NEXT_OPT
 )
 
+IF ["%_param:~0,2%"] == ["-U"] (
+    SET EXTRA_CMAKE_OPTIONS=%EXTRA_CMAKE_OPTIONS% "!_param!"
+    GOTO :NEXT_OPT
+)
+
 IF [%1] == [-d] SET CMAKE_BUILD_TYPE=Debug
 IF [%1] == [--dry-run] SET is_dry_run=1
 IF [%1] == [--skip-build]  SET skip_build=1

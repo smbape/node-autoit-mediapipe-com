@@ -496,7 +496,7 @@ public static class MediapipeComInterop
 
         string compileMode = buildType == "Debug" ? "dbg" : "opt";
 
-        string bazelBin = "build_x64\\_deps\\mediapipe-src\\bazel-out\\x64_windows-" + compileMode + "\\bin";
+        string bazelBin = "build_x64\\mediapipe-src\\bazel-out\\x64_windows-" + compileMode + "\\bin";
 
         var hints = new List<string>{
             ".",

@@ -2,6 +2,7 @@
 
 #include "binding/solution_base.h"
 #include "mediapipe/modules/face_detection/face_detection.pb.h"
+#include <opencv2/core/mat.hpp>
 
 namespace mediapipe::autoit::solutions::face_detection {
 	using namespace mediapipe::autoit::solution_base;

@@ -1,10 +1,12 @@
 #pragma once
 
 #include "absl/memory/memory.h"
+#include "mediapipe/framework/formats/image.h"
 #include "mediapipe/framework/formats/image_format.pb.h"
 #include "mediapipe/framework/formats/image_frame.h"
 #include "mediapipe/framework/formats/image_frame_opencv.h"
 #include "mediapipe/framework/port/logging.h"
+#include "mediapipe/framework/port/status_macros.h"
 #include "stb_image.h"
 #include "binding/util.h"
 #include <opencv2/imgcodecs.hpp>
