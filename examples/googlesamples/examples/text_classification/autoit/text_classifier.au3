@@ -13,7 +13,7 @@
 
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -57,9 +57,6 @@ Func Main()
 	; STEP 4: Process the classification result. In this case, print out the most likely category.
 	Local $top_category = $classification_result.classifications(0).categories(0)
 	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : ' & StringFormat('%s (%.2f)', $top_category.category_name, $top_category.score) & @CRLF) ;### Debug Console
-
-	; STEP 6: Closes the classifier explicitly when the classifier is not used ina context.
-	$classifier.close()
 EndFunc   ;==>Main
 
 Func _OnAutoItExit()

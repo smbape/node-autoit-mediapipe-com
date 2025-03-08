@@ -1,18 +1,15 @@
 const process = require("node:process");
-const { spawn } = require("node:child_process");
 const sysPath = require("node:path");
 const fs = require("node:fs");
-const eachOfLimit = require("async/eachOfLimit");
-const waterfall = require("async/waterfall");
 const { explore } = require("fs-explorer");
 
 const examples = [];
+const basenames = [];
 const output = process.argv[2];
 const LF = "\n";
 
 explore(sysPath.resolve(__dirname, "../examples/googlesamples/examples"), (path, stats, next) => {
     const basename = sysPath.basename(path);
-    const extname = sysPath.extname(path);
 
     if (!path.endsWith(".au3") || path.endsWith("-gui.au3")) {
         next();
@@ -28,6 +25,7 @@ explore(sysPath.resolve(__dirname, "../examples/googlesamples/examples"), (path,
         .replace("_Mediapipe_FindFile(\"examples\\data\")", "@ScriptDir & \"\\examples\\data\"");
 
     examples.push(content);
+    basenames.push(basename);
 
     if (output) {
         fs.writeFileSync(sysPath.join(output, `${ String(examples.length).padStart(2, "0") }-${ basename }`), content);
@@ -44,15 +42,16 @@ explore(sysPath.resolve(__dirname, "../examples/googlesamples/examples"), (path,
     }
 
     const readmeFile = sysPath.resolve(__dirname, "../README.md");
-    const readme = fs.readFileSync(readmeFile).toString().replace(/\r?\n|\r/g, LF);
+    const readme = fs.readFileSync(readmeFile).toString().replace(/\r\n|\r/g, LF);
     const exampleStart = readme.indexOf("### AutoIt") + "### AutoIt".length + LF.length;
     const exampleEnd = readme.indexOf("### PowerShell", exampleStart + 1);
     const texts = [""];
+    let i = 0;
 
     for (const content of examples) {
         const titleStart = content.indexOf(";~ Title: ") + ";~ Title: ".length;
         const titleEnd = content.indexOf(LF, titleStart + 1);
-        const title = titleStart === -1 || titleEnd === -1 ? basename : content.slice(titleStart, titleEnd).trim();
+        const title = titleStart === -1 || titleEnd === -1 ? basenames[i++] : content.slice(titleStart, titleEnd).trim();
 
         texts.push(...[
             `#### ${ title }`,

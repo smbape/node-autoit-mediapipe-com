@@ -149,7 +149,8 @@ function stash_push() {
 }
 
 function new_version() {
-    npm version patch
+    local new_version="${1:-patch}"
+    npm version "$new_version"
 }
 
 function new_version_rollback() {
@@ -171,4 +172,24 @@ function new_version_rollback() {
             continue=1
         fi
     done
+}
+
+function update_new_version() {
+    if git diff-index --quiet HEAD --; then
+        return
+    fi
+
+    local new_version="${1:-patch}"
+    local times_file=$(echo autoit-*-com/build_x64)/times.bin
+
+    git add --renormalize . && \
+    find $(git diff --name-only HEAD --) -mindepth 0 -maxdepth 0 -type f -printf '%A@ %T@ %p\0' > "$times_file" && \
+    git stash push && \
+    new_version_rollback && \
+    git stash pop && \
+    perl -MTime::HiRes=utime -0 -ne 'chomp; my ($atime, $mtime, $file) = split(/ /, $_, 3); utime $atime, $mtime, $file;' < "$times_file" && \
+    git add $(git diff --name-only --diff-filter=M HEAD --) && \
+    git commit --amend --no-edit && \
+    new_version "$new_version" && \
+    rm -f "$times_file"
 }

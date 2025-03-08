@@ -7,6 +7,7 @@ const {
 const {makeExpansion, useNamespaces} = require("./alias");
 
 Object.assign(exports, {
+    // eslint-disable-next-line complexity
     declare: (processor, coclass, overrides, fname, idlname, iidl, ipublic, impl, is_test, options = {}) => {
         const {shared_ptr, make_shared, APP_NAME} = options;
         const {fqn} = coclass;

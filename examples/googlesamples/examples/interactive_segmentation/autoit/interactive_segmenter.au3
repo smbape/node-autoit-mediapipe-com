@@ -14,8 +14,8 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4110*"), _OpenCV_FindDLL("autoit_opencv_com4110*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -67,7 +67,7 @@ Func Main()
 	Local $y = 0.68 ;@param {type:"slider", min:0, max:1, step:0.01}
 
 	Local $BG_COLOR = _OpenCV_Scalar(192, 192, 192) ; gray
-	Local $MASK_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
+	Local $FG_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 	Local $OVERLAY_COLOR = _OpenCV_Scalar(100, 100, 0) ; cyan
 
 	Local $RegionOfInterest_Format = $vision.InteractiveSegmenterRegionOfInterest_Format
@@ -88,21 +88,12 @@ Func Main()
 	Local $keypoint_px, $alpha
 
 	Local $color = _OpenCV_Scalar(255, 255, 0)
-	Local $thickness = 10
-	Local $radius = 2
-	Local $scale
+	Local $thickness, $radius, $scale
 
 	; Loop through demo image(s)
 	For $image_file_name In $IMAGE_FILENAMES
 		; Create the MediaPipe image file that will be segmented
 		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
-
-		; Compute the scale to make drawn elements visible when the image is resized for display
-		$scale = 1 / resize_and_show($image.mat_view(), Default, False)
-
-		; mediapipe uses RGB images while opencv uses BGR images
-		; Convert the BGR image to RGB
-		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
 
 		; Retrieve the masks for the segmented image
 		$roi = $RegionOfInterest(_Mediapipe_Params("format", $RegionOfInterest_Format.KEYPOINT, _
@@ -110,32 +101,41 @@ Func Main()
 		$segmentation_result = $segmenter.segment($image, $roi)
 		$category_mask = $segmentation_result.category_mask
 
+		; mediapipe uses RGB images while opencv uses BGR images
+		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
+
 		; Generate solid color images for showing the output segmentation mask.
-		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $MASK_COLOR)
+		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $FG_COLOR)
 		$bg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $BG_COLOR)
 
-		; Foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.1
+		; The foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.2
 		$fg_mask = $cv.compare($category_mask.mat_view(), 0.1, $CV_CMP_GT)
 
-		; Draw fg_image on bg_image based on the segmentation mask.
+		; Draw fg_image on bg_image only where fg_mask should apply
 		$output_image = $bg_image.copy()
 		$fg_image.copyTo($fg_mask, $output_image)
 
 		; Compute the point of interest coordinates
 		$keypoint_px = _normalized_to_pixel_coordinates($x, $y, $image.width, $image.height)
 
+		; Compute the scale to make drawn elements visible when the image is resized for display
+		$scale = 1 / resize_and_show($image, Default, False)
+
+		$thickness = 10 * $scale
+		$radius = 2 * $scale
+
 		; Draw a circle to denote the point of interest
-		$cv.circle($output_image, $keypoint_px, $thickness * $scale, $color, $radius * $scale)
+		$cv.circle($output_image, $keypoint_px, $thickness, $color, $radius)
 
 		; Display the segmented image
 		resize_and_show($output_image, 'Segmentation mask of ' & $image_file_name)
 
-		; Blur the image background based on the segmentation mask.
+		; Blur the image only where fg_mask should not apply
 		$blurred_image = $cv.GaussianBlur($image_data, _OpenCV_Size(55, 55), 0)
 		$image_data.copyTo($fg_mask, $blurred_image)
 
 		; Draw a circle to denote the point of interest
-		$cv.circle($blurred_image, $keypoint_px, $thickness * $scale, $color, $radius * $scale)
+		$cv.circle($blurred_image, $keypoint_px, $thickness, $color, $radius)
 
 		; Display the blurred image
 		resize_and_show($blurred_image, 'Blurred background of ' & $image_file_name)
@@ -155,16 +155,13 @@ Func Main()
 		$overlayed_image = $cv.add($cv.multiply($image_data, $cv.subtract(1.0, $alpha), Null, Default, $CV_32F), $cv.multiply($overlayed_image, $alpha, Null, Default, $CV_32F))
 
 		; Draw a circle to denote the point of interest
-		$cv.circle($overlayed_image, $keypoint_px, $thickness * $scale, $color, $radius * $scale)
+		$cv.circle($overlayed_image, $keypoint_px, $thickness, $color, $radius)
 
 		; Display the overlayed image
 		resize_and_show($overlayed_image, 'Overlayed foreground of ' & $image_file_name)
 	Next
 
 	$cv.waitKey()
-
-	; Closes the segmenter explicitly when the segmenter is not used ina context.
-	$segmenter.close()
 EndFunc   ;==>Main
 
 Func isclose($a, $b)

@@ -110,7 +110,7 @@ if (NOT mediapipe_autoit_SKIP_GENERATION)
 endif()
 
 # Tell cmake that we will need autoit-opencv-com.
-set(OPENCV_COM_VERSION 2.6.2)
+set(OPENCV_COM_VERSION 2.7.0)
 set(OPENCV_COM_ARCHIVE "autoit-opencv-${OpenCV_VERSION}-com-v${OPENCV_COM_VERSION}.7z")
 cmake_path(SET OPENCV_COM_SOURCE_DIR NORMALIZE "${CMAKE_CURRENT_SOURCE_DIR}/../../node-autoit-opencv-com")
 if (EXISTS "${OPENCV_COM_SOURCE_DIR}/${OPENCV_COM_ARCHIVE}")
@@ -121,7 +121,7 @@ endif()
 include(FetchContent)
 FetchContent_Declare(autoit_opencv_com
   URL               "${OPENCV_COM_URL}"
-  URL_HASH          SHA256=2ac4de083d93e83eb6602364c6cabf15bb926fe49f083ae5d2083c6b99256877
+  URL_HASH          SHA256=8d7f8aabce052c321ef58a70a5379f73ca0b57047ac1cba44439006510060996
   DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
   SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
 )

@@ -14,8 +14,8 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4110*"), _OpenCV_FindDLL("autoit_opencv_com4110*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -80,9 +80,6 @@ Func Main()
 	Local $rgb_stylized_image = $cv.cvtColor($stylized_image.mat_view(), $CV_COLOR_RGB2BGR)
 	resize_and_show($rgb_stylized_image, "face_stylizer: stylized")
 	$cv.waitKey()
-
-	; STEP 6: Closes the stylizer explicitly when the stylizer is not used in a context.
-	$stylizer.close()
 EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)

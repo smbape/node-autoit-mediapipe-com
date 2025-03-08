@@ -41,9 +41,9 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 
 ## Prerequisites
 
-  - Download and extract [opencv-4.10.0-windows.exe](https://opencv.org/releases/) into a folder
-  - Download and extract [autoit-opencv-4.10.0-com-v2.6.2.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.6.2/autoit-opencv-4.10.0-com-v2.6.2.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.4.1/autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1.7z) into a folder
+  - Download and extract [opencv-4.11.0-windows.exe](https://opencv.org/releases/) into a folder
+  - Download and extract [autoit-opencv-4.11.0-com-v2.7.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.7.0/autoit-opencv-4.11.0-com-v2.7.0.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.4.1/autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z) into a folder
 
 ## Usage
 
@@ -68,8 +68,8 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -116,9 +116,6 @@ Func Main()
 		EndIf
 	Next
 
-	; Compute the scale to make drawn elements visible when the image is resized for display
-	Local $scale = 1 / resize_and_show($cv.imread($_IMAGE_FILE), Default, False)
-
 	; STEP 2: Create an FaceDetector object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
@@ -126,6 +123,9 @@ Func Main()
 
 	; STEP 3: Load the input image.
 	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
+
+	; Compute the scale to make drawn elements visible when the image is resized for display
+	Local $scale = 1 / resize_and_show($image, Default, False)
 
 	; STEP 4: Detect faces in the input image.
 	Local $detection_result = $detector.detect($image)
@@ -136,9 +136,6 @@ Func Main()
 	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
 	resize_and_show($bgr_annotated_image, "face_detector")
 	$cv.waitKey()
-
-	; STEP 6: Closes the detector explicitly when the detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>Main
 
 Func isclose($a, $b)
@@ -270,16 +267,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_landmarker/python/[MediaPipe_Python_Tasks]_Face_Landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_landmarker/python/[MediaPipe_Python_Tasks]_Face_Landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
 
 ;~ Title: Face Landmarks Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -347,12 +344,9 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the classification result. In this case, visualize it.
-	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
-	resize_and_show($cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR))
+	Local $annotated_image = draw_landmarks_on_image($cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR), $detection_result)
+	resize_and_show($annotated_image)
 	$cv.waitKey()
-
-	; STEP 6: Closes the face detector explicitly when the face detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>Main
 
 Func draw_landmarks_on_image($rgb_image, $detection_result)
@@ -385,7 +379,7 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 				"landmark_list", $face_landmarks_proto, _
 				"connections", $solutions.face_mesh.FACEMESH_CONTOURS, _
 				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_contours_style(0, $scale)))
+				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_contours_style(1, $scale)))
 		$solutions.drawing_utils.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
 				"landmark_list", $face_landmarks_proto, _
@@ -457,8 +451,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -523,9 +517,6 @@ Func Main()
 	Local $rgb_stylized_image = $cv.cvtColor($stylized_image.mat_view(), $CV_COLOR_RGB2BGR)
 	resize_and_show($rgb_stylized_image, "face_stylizer: stylized")
 	$cv.waitKey()
-
-	; STEP 6: Closes the stylizer explicitly when the stylizer is not used in a context.
-	$stylizer.close()
 EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)
@@ -588,8 +579,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -670,9 +661,6 @@ Func Main()
 	Next
 
 	$cv.waitKey()
-
-	; STEP 6: Closes the gesture recognizer explicitly when the gesture recognizer is not used in a context.
-	$recognizer.close()
 EndFunc   ;==>Main
 
 #cs
@@ -765,8 +753,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -836,12 +824,9 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the classification result. In this case, visualize it.
-	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
-	resize_and_show($cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR))
+	Local $annotated_image = draw_landmarks_on_image($cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR), $detection_result)
+	resize_and_show($annotated_image,, "hand_landmarker")
 	$cv.waitKey()
-
-	; STEP 6: Closes the hand detector explicitly when the hand detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>Main
 
 Func draw_landmarks_on_image($rgb_image, $detection_result)
@@ -957,8 +942,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1023,9 +1008,6 @@ Func Main()
 	Next
 
 	$cv.waitKey()
-
-	; STEP 5: Closes the classifier explicitly when the classifier is not used in a context.
-	$classifier.close()
 EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)
@@ -1088,8 +1070,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1161,9 +1143,6 @@ Func Main()
 	resize_and_show($cv.cvtColor($first_image.mat_view(), $CV_COLOR_RGB2BGR), $IMAGE_FILENAMES[0])
 	resize_and_show($cv.cvtColor($second_image.mat_view(), $CV_COLOR_RGB2BGR), $IMAGE_FILENAMES[1])
 	$cv.waitKey()
-
-	; Closes the embedder explicitly when the embedder is not used in a context.
-	$embedder.close()
 EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)
@@ -1226,8 +1205,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1273,7 +1252,7 @@ Func Main()
 	EndIf
 
 	Local $BG_COLOR = _OpenCV_Scalar(192, 192, 192) ; gray
-	Local $MASK_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
+	Local $FG_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 
 	; Create the options that will be used for ImageSegmenter
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
@@ -1292,36 +1271,32 @@ Func Main()
 		; Create the MediaPipe image file that will be segmented
 		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
 
-		; mediapipe uses RGB images while opencv uses BGR images
-		; Convert the BGR image to RGB
-		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
-
 		; Retrieve the masks for the segmented image
 		$segmentation_result = $segmenter.segment($image)
 		$category_mask = $segmentation_result.category_mask
 
+		; mediapipe uses RGB images while opencv uses BGR images
+		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
+
 		; Generate solid color images for showing the output segmentation mask.
-		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $MASK_COLOR)
+		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $FG_COLOR)
 		$bg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $BG_COLOR)
 
-		; Foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.2
+		; The foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.2
 		$fg_mask = $cv.compare($category_mask.mat_view(), 0.2, $CV_CMP_GT)
 
-		; Draw fg_image on bg_image based on the segmentation mask.
+		; Draw fg_image on bg_image only where fg_mask should apply
 		$output_image = $bg_image.copy()
 		$fg_image.copyTo($fg_mask, $output_image)
 		resize_and_show($output_image, 'Segmentation mask of ' & $image_file_name)
 
-		; Blur the image background based on the segmentation mask.
+		; Blur the image only where fg_mask should not apply
 		$blurred_image = $cv.GaussianBlur($image_data, _OpenCV_Size(55, 55), 0)
 		$image_data.copyTo($fg_mask, $blurred_image)
 		resize_and_show($blurred_image, 'Blurred background of ' & $image_file_name)
 	Next
 
 	$cv.waitKey()
-
-	; Closes the segmenter explicitly when the segmenter is not used ina context.
-	$segmenter.close()
 EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)
@@ -1384,8 +1359,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1437,7 +1412,7 @@ Func Main()
 	Local $y = 0.68 ;@param {type:"slider", min:0, max:1, step:0.01}
 
 	Local $BG_COLOR = _OpenCV_Scalar(192, 192, 192) ; gray
-	Local $MASK_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
+	Local $FG_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 	Local $OVERLAY_COLOR = _OpenCV_Scalar(100, 100, 0) ; cyan
 
 	Local $RegionOfInterest_Format = $vision.InteractiveSegmenterRegionOfInterest_Format
@@ -1458,21 +1433,12 @@ Func Main()
 	Local $keypoint_px, $alpha
 
 	Local $color = _OpenCV_Scalar(255, 255, 0)
-	Local $thickness = 10
-	Local $radius = 2
-	Local $scale
+	Local $thickness, $radius, $scale
 
 	; Loop through demo image(s)
 	For $image_file_name In $IMAGE_FILENAMES
 		; Create the MediaPipe image file that will be segmented
 		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
-
-		; Compute the scale to make drawn elements visible when the image is resized for display
-		$scale = 1 / resize_and_show($image.mat_view(), Default, False)
-
-		; mediapipe uses RGB images while opencv uses BGR images
-		; Convert the BGR image to RGB
-		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
 
 		; Retrieve the masks for the segmented image
 		$roi = $RegionOfInterest(_Mediapipe_Params("format", $RegionOfInterest_Format.KEYPOINT, _
@@ -1480,32 +1446,41 @@ Func Main()
 		$segmentation_result = $segmenter.segment($image, $roi)
 		$category_mask = $segmentation_result.category_mask
 
+		; mediapipe uses RGB images while opencv uses BGR images
+		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
+
 		; Generate solid color images for showing the output segmentation mask.
-		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $MASK_COLOR)
+		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $FG_COLOR)
 		$bg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $BG_COLOR)
 
-		; Foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.1
+		; The foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.2
 		$fg_mask = $cv.compare($category_mask.mat_view(), 0.1, $CV_CMP_GT)
 
-		; Draw fg_image on bg_image based on the segmentation mask.
+		; Draw fg_image on bg_image only where fg_mask should apply
 		$output_image = $bg_image.copy()
 		$fg_image.copyTo($fg_mask, $output_image)
 
 		; Compute the point of interest coordinates
 		$keypoint_px = _normalized_to_pixel_coordinates($x, $y, $image.width, $image.height)
 
+		; Compute the scale to make drawn elements visible when the image is resized for display
+		$scale = 1 / resize_and_show($image, Default, False)
+
+		$thickness = 10 * $scale
+		$radius = 2 * $scale
+
 		; Draw a circle to denote the point of interest
-		$cv.circle($output_image, $keypoint_px, $thickness * $scale, $color, $radius * $scale)
+		$cv.circle($output_image, $keypoint_px, $thickness, $color, $radius)
 
 		; Display the segmented image
 		resize_and_show($output_image, 'Segmentation mask of ' & $image_file_name)
 
-		; Blur the image background based on the segmentation mask.
+		; Blur the image only where fg_mask should not apply
 		$blurred_image = $cv.GaussianBlur($image_data, _OpenCV_Size(55, 55), 0)
 		$image_data.copyTo($fg_mask, $blurred_image)
 
 		; Draw a circle to denote the point of interest
-		$cv.circle($blurred_image, $keypoint_px, $thickness * $scale, $color, $radius * $scale)
+		$cv.circle($blurred_image, $keypoint_px, $thickness, $color, $radius)
 
 		; Display the blurred image
 		resize_and_show($blurred_image, 'Blurred background of ' & $image_file_name)
@@ -1525,16 +1500,13 @@ Func Main()
 		$overlayed_image = $cv.add($cv.multiply($image_data, $cv.subtract(1.0, $alpha), Null, Default, $CV_32F), $cv.multiply($overlayed_image, $alpha, Null, Default, $CV_32F))
 
 		; Draw a circle to denote the point of interest
-		$cv.circle($overlayed_image, $keypoint_px, $thickness * $scale, $color, $radius * $scale)
+		$cv.circle($overlayed_image, $keypoint_px, $thickness, $color, $radius)
 
 		; Display the overlayed image
 		resize_and_show($overlayed_image, 'Overlayed foreground of ' & $image_file_name)
 	Next
 
 	$cv.waitKey()
-
-	; Closes the segmenter explicitly when the segmenter is not used ina context.
-	$segmenter.close()
 EndFunc   ;==>Main
 
 Func isclose($a, $b)
@@ -1612,15 +1584,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/[MediaPipe_Python_Tasks]_Language_Detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/[MediaPipe_Python_Tasks]_Language_Detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
 
 ;~ Title: Language Detector with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1673,9 +1645,6 @@ Func Main()
 	For $detection In $detection_result.detections
 		ConsoleWrite(StringFormat("%s: (%.2f)", $detection.language_code, $detection.probability) & @CRLF)
 	Next
-
-	; STEP 5: Closes the detector explicitly when the detector is not used ina context.
-	$detector.close()
 EndFunc   ;==>Main
 
 Func _OnAutoItExit()
@@ -1710,8 +1679,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1758,9 +1727,6 @@ Func Main()
 		EndIf
 	Next
 
-	; Compute the scale to make drawn elements visible when the image is resized for display
-	Local $scale = 1 / resize_and_show($cv.imread($_IMAGE_FILE), Default, False)
-
 	; STEP 2: Create an ObjectDetector object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options, _
@@ -1769,6 +1735,9 @@ Func Main()
 
 	; STEP 3: Load the input image.
 	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
+
+	; Compute the scale to make drawn elements visible when the image is resized for display
+	Local $scale = 1 / resize_and_show($image.mat_view(), Default, False)
 
 	; STEP 4: Detect objects in the input image.
 	Local $detection_result = $detector.detect($image)
@@ -1875,16 +1844,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/object_detection/python/object_detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/object_detection/python/object_detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
 
 ;~ Title: Pose Landmarks Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-_OpenCV_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1961,9 +1930,6 @@ Func Main()
 	resize_and_show($segmentation_mask, "Pose Landmarks Detection with MediaPipe Tasks : Mask")
 
 	$cv.waitKey()
-
-	; STEP 6: Closes the detector explicitly when the detector is not used ina context.
-	$detector.close()
 EndFunc   ;==>Main
 
 Func draw_landmarks_on_image($rgb_image, $detection_result)
@@ -2053,7 +2019,7 @@ EndFunc   ;==>_AssertIsObj
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -2097,9 +2063,6 @@ Func Main()
 	; STEP 4: Process the classification result. In this case, print out the most likely category.
 	Local $top_category = $classification_result.classifications(0).categories(0)
 	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : ' & StringFormat('%s (%.2f)', $top_category.category_name, $top_category.score) & @CRLF) ;### Debug Console
-
-	; STEP 6: Closes the classifier explicitly when the classifier is not used ina context.
-	$classifier.close()
 EndFunc   ;==>Main
 
 Func _OnAutoItExit()
@@ -2134,7 +2097,7 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -2295,8 +2258,8 @@ function Example() {
     $cv.destroyAllWindows()
 }
 
-[MediapipeComInterop]::DllOpen("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4100.dll")
-[OpenCvComInterop]::DllOpen("opencv-4.10.0-windows\opencv\build\x64\vc16\bin\opencv_world4100.dll", "autoit-opencv-com\autoit_opencv_com4100.dll")
+[MediapipeComInterop]::DllOpen("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+[OpenCvComInterop]::DllOpen("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 
 $resource_util = [MediapipeComInterop]::ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
 $resource_util.set_resource_dir("autoit-mediapipe-com")
@@ -2415,13 +2378,13 @@ public static class Test
     static void Main(String[] args)
     {
         OpenCvComInterop.DllOpen(
-            "opencv-4.10.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4100.dll",
-            "autoit-opencv-com\\autoit_opencv_com4100.dll"
+            "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
+            "autoit-opencv-com\\autoit_opencv_com4110.dll"
         );
 
         MediapipeComInterop.DllOpen(
-            "opencv-4.10.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4100.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.14-4100.dll"
+            "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.14-4110.dll"
         );
 
         var resourceDir = MediapipeComInterop.FindResourceDir();
@@ -2536,13 +2499,13 @@ public static class Test
     static void Main(String[] args)
     {
         OpenCvComInterop.DllOpen(
-            "opencv-4.10.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4100.dll",
-            "autoit-opencv-com\\autoit_opencv_com4100.dll"
+            "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
+            "autoit-opencv-com\\autoit_opencv_com4110.dll"
         );
 
         MediapipeComInterop.DllOpen(
-            "opencv-4.10.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4100.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.14-4100.dll"
+            "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.14-4110.dll"
         );
 
         // To make registration free works with compile time COM classes
@@ -2582,29 +2545,29 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.4.1/autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1.7z' -o autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1.7z
+# download autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.4.1/autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z' -o autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z
 
-# extract the content of autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z -aoa -oautoit-mediapipe-com
 
-# download autoit-opencv-4.10.0-com-v2.6.2.7z
-curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.6.2/autoit-opencv-4.10.0-com-v2.6.2.7z' -o autoit-opencv-4.10.0-com-v2.6.2.7z
+# download autoit-opencv-4.11.0-com-v2.7.0.7z
+curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.7.0/autoit-opencv-4.11.0-com-v2.7.0.7z' -o autoit-opencv-4.11.0-com-v2.7.0.7z
 
-# extract the content of autoit-opencv-4.10.0-com-v2.6.2.7z into a folder named autoit-opencv-com
-7z x autoit-opencv-4.10.0-com-v2.6.2.7z -aoa -oautoit-opencv-com
+# extract the content of autoit-opencv-4.11.0-com-v2.7.0.7z into a folder named autoit-opencv-com
+7z x autoit-opencv-4.11.0-com-v2.7.0.7z -aoa -oautoit-opencv-com
 
-# download opencv-4.10.0-windows.exe
-curl -L 'https://github.com/opencv/opencv/releases/download/4.10.0/opencv-4.10.0-windows.exe' -o opencv-4.10.0-windows.exe
+# download opencv-4.11.0-windows.exe
+curl -L 'https://github.com/opencv/opencv/releases/download/4.11.0/opencv-4.11.0-windows.exe' -o opencv-4.11.0-windows.exe
 
-# extract the content of opencv-4.10.0-windows.exe into a folder named opencv-4.10.0-windows
-./opencv-4.10.0-windows.exe -oopencv-4.10.0-windows -y
+# extract the content of opencv-4.11.0-windows.exe into a folder named opencv-4.11.0-windows
+./opencv-4.11.0-windows.exe -oopencv-4.11.0-windows -y
 
-# download autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.4.1.zip' -o autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1-src.zip
+# download autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.4.1.zip' -o autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1-src.zip
-7z x autoit-mediapipe-0.10.14-opencv-4.10.0-com-v0.4.1-src.zip -aoa 'node-autoit-mediapipe-com-0.4.1\examples'
+# extract the examples folder of autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1-src.zip
+7z x autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1-src.zip -aoa 'node-autoit-mediapipe-com-0.4.1\examples'
 cp -rf node-autoit-mediapipe-com-0.4.1/* ./
 rm -rf node-autoit-mediapipe-com-0.4.1
 

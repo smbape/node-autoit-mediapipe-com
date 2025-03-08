@@ -14,8 +14,8 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4110*"), _OpenCV_FindDLL("autoit_opencv_com4110*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -62,9 +62,6 @@ Func Main()
 		EndIf
 	Next
 
-	; Compute the scale to make drawn elements visible when the image is resized for display
-	Local $scale = 1 / resize_and_show($cv.imread($_IMAGE_FILE), Default, False)
-
 	; STEP 2: Create an ObjectDetector object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options, _
@@ -73,6 +70,9 @@ Func Main()
 
 	; STEP 3: Load the input image.
 	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
+
+	; Compute the scale to make drawn elements visible when the image is resized for display
+	Local $scale = 1 / resize_and_show($image.mat_view(), Default, False)
 
 	; STEP 4: Detect objects in the input image.
 	Local $detection_result = $detector.detect($image)

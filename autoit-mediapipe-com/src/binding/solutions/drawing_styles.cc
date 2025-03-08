@@ -1,14 +1,14 @@
 #include "binding/solutions/drawing_styles.h"
 #include "binding/solutions/pose_connections.h"
 
-namespace mediapipe::autoit::solutions::drawing_styles {
+namespace {
 	using namespace mediapipe::autoit::solutions::face_mesh_connections;
 	using namespace mediapipe::autoit::solutions::hands_connections;
 	using namespace mediapipe::autoit::solutions::hands;
 	using namespace mediapipe::autoit::solutions::pose_connections;
 	using namespace mediapipe::autoit::solutions::pose;
 
-	static DrawingSpec GetDrawingSpectWithScale(const DrawingSpec& drawing_spec, float scale) {
+	DrawingSpec GetDrawingSpectWithScale(const DrawingSpec& drawing_spec, float scale) {
 		if (scale == 1.0) {
 			return drawing_spec;
 		}
@@ -18,43 +18,43 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 		return result;
 	}
 
-	static const int _RADIUS = 5;
-	static const DrawingColor _RED = { 48, 48, 255 };
-	static const DrawingColor _GREEN = { 48, 255, 48 };
-	static const DrawingColor _BLUE = { 192, 101, 21 };
-	static const DrawingColor _YELLOW = { 0, 204, 255 };
-	static const DrawingColor _GRAY = { 128, 128, 128 };
-	static const DrawingColor _PURPLE = { 128, 64, 128 };
-	static const DrawingColor _PEACH = { 180, 229, 255 };
-	static const DrawingColor _WHITE = { 224, 224, 224 };
-	static const DrawingColor _CYAN = { 192, 255, 48 };
-	static const DrawingColor _MAGENTA = { 192, 48, 255 };
+	const int _RADIUS = 5;
+	const DrawingColor _RED = { 48, 48, 255 };
+	const DrawingColor _GREEN = { 48, 255, 48 };
+	const DrawingColor _BLUE = { 192, 101, 21 };
+	const DrawingColor _YELLOW = { 0, 204, 255 };
+	const DrawingColor _GRAY = { 128, 128, 128 };
+	const DrawingColor _PURPLE = { 128, 64, 128 };
+	const DrawingColor _PEACH = { 180, 229, 255 };
+	const DrawingColor _WHITE = { 224, 224, 224 };
+	const DrawingColor _CYAN = { 192, 255, 48 };
+	const DrawingColor _MAGENTA = { 192, 48, 255 };
 
 	// Hands
-	static const int _THICKNESS_WRIST_MCP = 3;
-	static const int _THICKNESS_FINGER = 2;
-	static const int _THICKNESS_DOT = -1;
+	const int _THICKNESS_WRIST_MCP = 3;
+	const int _THICKNESS_FINGER = 2;
+	const int _THICKNESS_DOT = -1;
 
 	// Hand landmarks
-	static const std::vector<HandLandmark> _PALM_LANDMARKS = { HandLandmark::WRIST, HandLandmark::THUMB_CMC,
+	const std::vector<HandLandmark> _PALM_LANDMARKS = { HandLandmark::WRIST, HandLandmark::THUMB_CMC,
 				   HandLandmark::INDEX_FINGER_MCP,
 				   HandLandmark::MIDDLE_FINGER_MCP, HandLandmark::RING_FINGER_MCP,
 				   HandLandmark::PINKY_MCP };
-	static const std::vector<HandLandmark> _THUMB_LANDMARKS = { HandLandmark::THUMB_MCP, HandLandmark::THUMB_IP,
+	const std::vector<HandLandmark> _THUMB_LANDMARKS = { HandLandmark::THUMB_MCP, HandLandmark::THUMB_IP,
 						HandLandmark::THUMB_TIP };
-	static const std::vector<HandLandmark> _INDEX_FINGER_LANDMARKS = { HandLandmark::INDEX_FINGER_PIP,
+	const std::vector<HandLandmark> _INDEX_FINGER_LANDMARKS = { HandLandmark::INDEX_FINGER_PIP,
 							   HandLandmark::INDEX_FINGER_DIP,
 							   HandLandmark::INDEX_FINGER_TIP };
-	static const std::vector<HandLandmark> _MIDDLE_FINGER_LANDMARKS = { HandLandmark::MIDDLE_FINGER_PIP,
+	const std::vector<HandLandmark> _MIDDLE_FINGER_LANDMARKS = { HandLandmark::MIDDLE_FINGER_PIP,
 								HandLandmark::MIDDLE_FINGER_DIP,
 								HandLandmark::MIDDLE_FINGER_TIP };
-	static const std::vector<HandLandmark> _RING_FINGER_LANDMARKS = { HandLandmark::RING_FINGER_PIP,
+	const std::vector<HandLandmark> _RING_FINGER_LANDMARKS = { HandLandmark::RING_FINGER_PIP,
 							  HandLandmark::RING_FINGER_DIP,
 							  HandLandmark::RING_FINGER_TIP };
-	static const std::vector<HandLandmark> _PINKY_FINGER_LANDMARKS = { HandLandmark::PINKY_PIP, HandLandmark::PINKY_DIP,
+	const std::vector<HandLandmark> _PINKY_FINGER_LANDMARKS = { HandLandmark::PINKY_PIP, HandLandmark::PINKY_DIP,
 							   HandLandmark::PINKY_TIP };
 
-	static const std::vector<std::tuple<std::vector<HandLandmark>, DrawingSpec>> _HAND_LANDMARK_STYLE = {
+	const std::vector<std::tuple<std::vector<HandLandmark>, DrawingSpec>> _HAND_LANDMARK_STYLE = {
 		{_PALM_LANDMARKS, DrawingSpec(_RED, _THICKNESS_DOT, _RADIUS)},
 		{_THUMB_LANDMARKS, DrawingSpec(_PEACH, _THICKNESS_DOT, _RADIUS)},
 		{_INDEX_FINGER_LANDMARKS, DrawingSpec(_PURPLE, _THICKNESS_DOT, _RADIUS)},
@@ -64,7 +64,7 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 	};
 
 	// Hands connections
-	static const std::vector<std::tuple<std::vector<std::tuple<int, int>>, DrawingSpec>> _HAND_CONNECTION_STYLE = {
+	const std::vector<std::tuple<std::vector<std::tuple<int, int>>, DrawingSpec>> _HAND_CONNECTION_STYLE = {
 		{HAND_PALM_CONNECTIONS, DrawingSpec(_GRAY, _THICKNESS_WRIST_MCP)},
 		{HAND_THUMB_CONNECTIONS, DrawingSpec(_PEACH, _THICKNESS_FINGER)},
 		{HAND_INDEX_FINGER_CONNECTIONS, DrawingSpec(_PURPLE, _THICKNESS_FINGER)},
@@ -74,9 +74,9 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 	};
 
 	// FaceMesh connections
-	static const int _THICKNESS_TESSELATION = 1;
-	static const int _THICKNESS_CONTOURS = 2;
-	static const std::vector<std::tuple<std::vector<std::tuple<int, int>>, DrawingSpec>> _FACEMESH_CONTOURS_CONNECTION_STYLE = {
+	const int _THICKNESS_TESSELATION = 1;
+	const int _THICKNESS_CONTOURS = 2;
+	const std::vector<std::tuple<std::vector<std::tuple<int, int>>, DrawingSpec>> _FACEMESH_CONTOURS_CONNECTION_STYLE = {
 		{FACEMESH_LIPS, DrawingSpec(_WHITE, _THICKNESS_CONTOURS)},
 		{FACEMESH_LEFT_EYE, DrawingSpec(_GREEN, _THICKNESS_CONTOURS)},
 		{FACEMESH_LEFT_EYEBROW, DrawingSpec(_GREEN, _THICKNESS_CONTOURS)},
@@ -85,7 +85,7 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 		{FACEMESH_FACE_OVAL, DrawingSpec(_WHITE, _THICKNESS_CONTOURS)},
 	};
 
-	static const std::vector<std::tuple<std::vector<std::tuple<int, int>>, DrawingSpec>> _FACEMESH_CONTOURS_CONNECTION_STYLE_1 = {
+	const std::vector<std::tuple<std::vector<std::tuple<int, int>>, DrawingSpec>> _FACEMESH_CONTOURS_CONNECTION_STYLE_1 = {
 		{FACEMESH_LIPS, DrawingSpec(_BLUE, _THICKNESS_CONTOURS)},
 		{FACEMESH_LEFT_EYE, DrawingSpec(_CYAN, _THICKNESS_CONTOURS)},
 		{FACEMESH_LEFT_EYEBROW, DrawingSpec(_GREEN, _THICKNESS_CONTOURS)},
@@ -96,8 +96,8 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 	};
 
 	// Pose
-	static const int _THICKNESS_POSE_LANDMARKS = 2;
-	static const std::vector<PoseLandmark> _POSE_LANDMARKS_LEFT = {
+	const int _THICKNESS_POSE_LANDMARKS = 2;
+	const std::vector<PoseLandmark> _POSE_LANDMARKS_LEFT = {
 		PoseLandmark::LEFT_EYE_INNER, PoseLandmark::LEFT_EYE,
 		PoseLandmark::LEFT_EYE_OUTER, PoseLandmark::LEFT_EAR, PoseLandmark::MOUTH_LEFT,
 		PoseLandmark::LEFT_SHOULDER, PoseLandmark::LEFT_ELBOW,
@@ -107,7 +107,7 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 		PoseLandmark::LEFT_FOOT_INDEX
 	};
 
-	static const std::vector<PoseLandmark> _POSE_LANDMARKS_RIGHT = {
+	const std::vector<PoseLandmark> _POSE_LANDMARKS_RIGHT = {
 		PoseLandmark::RIGHT_EYE_INNER, PoseLandmark::RIGHT_EYE,
 		PoseLandmark::RIGHT_EYE_OUTER, PoseLandmark::RIGHT_EAR,
 		PoseLandmark::MOUTH_RIGHT, PoseLandmark::RIGHT_SHOULDER,
@@ -117,8 +117,9 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 		PoseLandmark::RIGHT_ANKLE, PoseLandmark::RIGHT_HEEL,
 		PoseLandmark::RIGHT_FOOT_INDEX
 	};
+}
 
-
+namespace mediapipe::autoit::solutions::drawing_styles {
 	std::map<int, DrawingSpec> get_default_hand_landmarks_style(float scale) {
 		std::map<int, DrawingSpec> hand_landmark_style;
 		for (const auto& [k, v] : _HAND_LANDMARK_STYLE) {
@@ -144,9 +145,9 @@ namespace mediapipe::autoit::solutions::drawing_styles {
 		return hand_connection_style;
 	}
 
-	std::map<int, std::map<int, DrawingSpec>> get_default_face_mesh_contours_style(int i, float scale) {
+	std::map<int, std::map<int, DrawingSpec>> get_default_face_mesh_contours_style(int style, float scale) {
 		std::map<int, std::map<int, DrawingSpec>> face_mesh_contours_connection_style;
-		for (const auto& [k, v] : (i == 1 ? _FACEMESH_CONTOURS_CONNECTION_STYLE_1 : _FACEMESH_CONTOURS_CONNECTION_STYLE)) {
+		for (const auto& [k, v] : (style == 1 ? _FACEMESH_CONTOURS_CONNECTION_STYLE_1 : _FACEMESH_CONTOURS_CONNECTION_STYLE)) {
 			DrawingSpec drawing_spec = GetDrawingSpectWithScale(v, scale);
 			for (const auto& [start, end] : k) {
 				if (!face_mesh_contours_connection_style.count(start)) {

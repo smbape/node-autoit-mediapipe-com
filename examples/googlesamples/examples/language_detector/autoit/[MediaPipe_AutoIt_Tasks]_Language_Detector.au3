@@ -14,7 +14,7 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -67,9 +67,6 @@ Func Main()
 	For $detection In $detection_result.detections
 		ConsoleWrite(StringFormat("%s: (%.2f)", $detection.language_code, $detection.probability) & @CRLF)
 	Next
-
-	; STEP 5: Closes the detector explicitly when the detector is not used ina context.
-	$detector.close()
 EndFunc   ;==>Main
 
 Func _OnAutoItExit()

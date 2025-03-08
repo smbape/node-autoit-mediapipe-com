@@ -23,8 +23,8 @@ Func _Mediapipe_FindDLL($sFile, $sFilter = Default, $sDir = Default, $bReverse =
 			"autoit-opencv-com", _
 			"autoit-opencv-com\build_x64\bin\" & $sBuildType, _
 			"opencv\build\x64\vc16\bin", _
-			"opencv-4.10.0-*\build\x64\vc16\bin", _
-			"opencv-4.10.0-*\opencv\build\x64\vc16\bin" _
+			"opencv-4.11.0-*\build\x64\vc16\bin", _
+			"opencv-4.11.0-*\opencv\build\x64\vc16\bin" _
 			]
 
 	Return _Mediapipe_FindFile($sFile & $sPostfix & ".dll", $sFilter, $sDir, $FLTA_FILES, $aSearchPaths, $bReverse)

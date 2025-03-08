@@ -22,9 +22,9 @@ Import-Module ( _Mediapipe_FindFile -Path "opencv_utils.psm1" -SearchPaths @("."
 
 $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "Release" }
 
-$OpenCVWorldDll = if ([string]::IsNullOrEmpty($OpenCVWorldDll)) { _OpenCV_FindDLL "opencv_world4100*" -BuildType $BuildType } else { $OpenCVWorldDll }
-$OpenCVComDll = if ([string]::IsNullOrEmpty($OpenCVComDll)) { _OpenCV_FindDLL "autoit_opencv_com4100*" -BuildType $BuildType } else { $OpenCVComDll }
-$MediapipeComDll = if ([string]::IsNullOrEmpty($MediapipeComDll)) { _Mediapipe_FindDLL "autoit_mediapipe_com-*-4100*" -BuildType $BuildType } else { $MediapipeComDll }
+$OpenCVWorldDll = if ([string]::IsNullOrEmpty($OpenCVWorldDll)) { _OpenCV_FindDLL "opencv_world4110*" -BuildType $BuildType } else { $OpenCVWorldDll }
+$OpenCVComDll = if ([string]::IsNullOrEmpty($OpenCVComDll)) { _OpenCV_FindDLL "autoit_opencv_com4110*" -BuildType $BuildType } else { $OpenCVComDll }
+$MediapipeComDll = if ([string]::IsNullOrEmpty($MediapipeComDll)) { _Mediapipe_FindDLL "autoit_mediapipe_com-*-4110*" -BuildType $BuildType } else { $MediapipeComDll }
 $ResourceDir = if ([string]::IsNullOrEmpty($ResourceDir)) { _Mediapipe_FindResourceDir -BuildType $BuildType } else { $ResourceDir }
 $Image = if ([string]::IsNullOrEmpty($Image)) { _Mediapipe_FindFile "examples\data\ilya-mirnyy-fU3EJRO_qGY-unsplash.jpg" } else { $Image }
 

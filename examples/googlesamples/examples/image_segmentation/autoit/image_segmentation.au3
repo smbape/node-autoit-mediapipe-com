@@ -14,8 +14,8 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4110*"), _OpenCV_FindDLL("autoit_opencv_com4110*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -61,7 +61,7 @@ Func Main()
 	EndIf
 
 	Local $BG_COLOR = _OpenCV_Scalar(192, 192, 192) ; gray
-	Local $MASK_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
+	Local $FG_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 
 	; Create the options that will be used for ImageSegmenter
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
@@ -80,36 +80,32 @@ Func Main()
 		; Create the MediaPipe image file that will be segmented
 		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
 
-		; mediapipe uses RGB images while opencv uses BGR images
-		; Convert the BGR image to RGB
-		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
-
 		; Retrieve the masks for the segmented image
 		$segmentation_result = $segmenter.segment($image)
 		$category_mask = $segmentation_result.category_mask
 
+		; mediapipe uses RGB images while opencv uses BGR images
+		$image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
+
 		; Generate solid color images for showing the output segmentation mask.
-		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $MASK_COLOR)
+		$fg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $FG_COLOR)
 		$bg_image = $cv.Mat.create($image_data.size(), $CV_8UC3, $BG_COLOR)
 
-		; Foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.2
+		; The foreground mask corresponds to all 'i' pixels where category_mask[i] > 0.2
 		$fg_mask = $cv.compare($category_mask.mat_view(), 0.2, $CV_CMP_GT)
 
-		; Draw fg_image on bg_image based on the segmentation mask.
+		; Draw fg_image on bg_image only where fg_mask should apply
 		$output_image = $bg_image.copy()
 		$fg_image.copyTo($fg_mask, $output_image)
 		resize_and_show($output_image, 'Segmentation mask of ' & $image_file_name)
 
-		; Blur the image background based on the segmentation mask.
+		; Blur the image only where fg_mask should not apply
 		$blurred_image = $cv.GaussianBlur($image_data, _OpenCV_Size(55, 55), 0)
 		$image_data.copyTo($fg_mask, $blurred_image)
 		resize_and_show($blurred_image, 'Blurred background of ' & $image_file_name)
 	Next
 
 	$cv.waitKey()
-
-	; Closes the segmenter explicitly when the segmenter is not used ina context.
-	$segmenter.close()
 EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)

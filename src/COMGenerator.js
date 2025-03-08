@@ -431,6 +431,7 @@ class Trie {
 class COMGenerator {
     static proto = proto;
 
+    // eslint-disable-next-line complexity
     generate(processor, configuration, options, cb) {
         const { generated_include } = configuration;
         const { APP_NAME, LIB_UID, LIBRARY, make_shared, shared_ptr } = options;
@@ -607,9 +608,6 @@ class COMGenerator {
                                     V_ERROR(&_vtDefault) = DISP_E_PARAMNOTFOUND;
                                 `.replace(/^ {36}/mg, "").trim(), "");
                             }
-
-                            const {interface: iface} = coclass;
-                            const wtype = iface === "IDispatch" ? "DISPATCH" : "UNKNOWN";
 
                             constructor.push(`
                                 _variant_t _retval(this);

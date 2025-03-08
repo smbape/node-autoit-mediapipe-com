@@ -11,7 +11,7 @@ const {explore} = require("fs-explorer");
 const Parser = require("./protobuf/Parser");
 const vector_conversion = require("./vector_conversion");
 
-const OpenCV_VERSION = "opencv-4.10.0";
+const OpenCV_VERSION = "opencv-4.11.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
 const MEDIAPIPE_VERSION = "0.10.14";
 

@@ -14,8 +14,8 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4100*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4100*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4100*"), _OpenCV_FindDLL("autoit_opencv_com4100*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4110*"), _OpenCV_FindDLL("autoit_opencv_com4110*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -83,12 +83,9 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the classification result. In this case, visualize it.
-	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
-	resize_and_show($cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR))
+	Local $annotated_image = draw_landmarks_on_image($cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR), $detection_result)
+	resize_and_show($annotated_image)
 	$cv.waitKey()
-
-	; STEP 6: Closes the face detector explicitly when the face detector is not used in a context.
-	$detector.close()
 EndFunc   ;==>Main
 
 Func draw_landmarks_on_image($rgb_image, $detection_result)
@@ -121,7 +118,7 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 				"landmark_list", $face_landmarks_proto, _
 				"connections", $solutions.face_mesh.FACEMESH_CONTOURS, _
 				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_contours_style(0, $scale)))
+				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_contours_style(1, $scale)))
 		$solutions.drawing_utils.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
 				"landmark_list", $face_landmarks_proto, _
