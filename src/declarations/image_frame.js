@@ -1,4 +1,4 @@
-module.exports = ({language, cname}) => [
+module.exports = ({self, language, cname}) => [
     ["class mediapipe.ImageFrame", "", [], [
         ["int", "width", "", ["/R", "=Width()"]],
         ["int", "height", "", ["/R", "=Height()"]],
@@ -10,12 +10,12 @@ module.exports = ({language, cname}) => [
 
     [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
         ["mediapipe::ImageFormat::Format", "image_format", "", []],
-        ["cv::Mat", "image", "", ["/C", "/Ref"]],
+        ["cv::Mat", "data", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
     [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
-        ["cv::Mat", "image", "", ["/C", "/Ref"]],
+        ["cv::Mat", "data", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
@@ -27,7 +27,7 @@ module.exports = ({language, cname}) => [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
-    ["mediapipe.ImageFrame.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", "/Expr=__self->get()"], [], "", ""],
+    ["mediapipe.ImageFrame.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", `/Expr=&(${ self })`], [], "", ""],
     ["mediapipe.ImageFrame.IsContiguous", "bool", ["=is_contiguous"], [], "", ""],
     ["mediapipe.ImageFrame.IsEmpty", "bool", ["=is_empty"], [], "", ""],
     ["mediapipe.ImageFrame.IsAligned", "bool", ["=is_aligned"], [

@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/tasks/python/test/text/text_classifier_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.21/mediapipe/tasks/python/test/text/text_classifier_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -78,12 +78,12 @@ Global Const $_BERT_POSITIVE_RESULTS = $TextClassifierResult( _Mediapipe_Params(
 		"categories", _Mediapipe_Tuple( _
 		$_Category(_Mediapipe_Params( _
 		"index", 1, _
-		"score", 0.9995, _
+		"score", 0.9994, _
 		"display_name", "", _
 		"category_name", "positive")), _
 		$_Category(_Mediapipe_Params( _
 		"index", 0, _
-		"score", 0.0005, _
+		"score", 0.0006, _
 		"display_name", "", _
 		"category_name", "negative")) _
 		), _

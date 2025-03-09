@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/python/solutions/hands_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.21/mediapipe/python/solutions/hands_test.py
 
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -152,10 +152,6 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	Local $expected = $storage.getNode("predictions").mat()
 	Local $expected_world = $storage.getNode("w_predictions").mat()
 
-	; Set threshold for comparing actual and expected predictions in pixels.
-	Local Const $diff_threshold = 18
-	Local Const $world_diff_threshold = 0.05
-
 	Local $video_path = @ScriptDir & "/testdata/asl_hand.25fps.mp4"
 
 	Local $aTuple = _process_video($model_complexity, $video_path)
@@ -169,8 +165,8 @@ Func test_on_video($id, $model_complexity, $expected_name)
 	$storage.write("w_predictions", $actual_world)
 	$storage.release()
 
-	_AssertMatDiffLess(_MatSliceLastDim($actual, 0, 2), _MatSliceLastDim($expected, 0, 2), $diff_threshold)
-	_AssertMatDiffLess($actual_world, $expected_world, $world_diff_threshold)
+	_AssertMatAllClose(_MatSliceLastDim($actual, 0, 2), _MatSliceLastDim($expected, 0, 2), 0.1)
+	_AssertMatAlmostEqual($actual_world, $expected_world, 1.5 * 1e-1)
 EndFunc   ;==>test_on_video
 
 Func _landmarks_list_to_array($landmark_list, $image_shape)

@@ -1,15 +1,15 @@
-module.exports = ({language}) => [
+module.exports = ({self, self_get, language}) => [
     ["class google.protobuf.Message", "", [], [], "", ""],
 
-    ["google.protobuf.Message.ToStr", "absl::Status", ["=__str__", `/Call=google::protobuf::${ language }::Print`, "/Expr=*__self->get(), $0"], [
+    ["google.protobuf.Message.ToStr", "absl::Status", ["=__str__", `/Call=google::protobuf::${ language }::Print`, `/Expr=${ self }, $0`], [
         ["std::string*", "output", "", ["/O"]],
     ], "", ""],
 
-    ["google.protobuf.Message.CopyFrom", "absl::Status", [`/Call=google::protobuf::${ language }::cmessage::CopyFrom`, "/Expr=__self->get(), $0"], [
+    ["google.protobuf.Message.CopyFrom", "absl::Status", [`/Call=google::protobuf::${ language }::cmessage::CopyFrom`, `/Expr=&(${ self }), $0`], [
         ["google::protobuf::Message*", "other_message", "", ["/C"]],
     ], "", ""],
 
-    ["google.protobuf.Message.ClearField", "absl::Status", [`/Call=google::protobuf::${ language }::cmessage::ClearField`, "/Expr=*__self->get(), $0"], [
+    ["google.protobuf.Message.ClearField", "absl::Status", [`/Call=google::protobuf::${ language }::cmessage::ClearField`, `/Expr=${ self }, $0`], [
         ["std::string", "field_name", "", ["/C", "/Ref"]],
     ], "", ""],
 

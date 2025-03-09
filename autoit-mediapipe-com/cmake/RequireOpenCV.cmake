@@ -15,24 +15,24 @@ set(OpenCV_DOWNLOAD_NAME opencv-${OpenCV_VERSION}-windows.exe)
 string(REGEX REPLACE "\\.[a-zA-Z]+\$" "" OpenCV_OUTPUT_DIR "${OpenCV_DOWNLOAD_NAME}")
 
 if(BUILD_opencv AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../opencv")
-  set(OpenCV_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../opencv/__build__")
-  file(MAKE_DIRECTORY "${OpenCV_BUILD_DIR}")
+    set(OpenCV_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../opencv/__build__")
+    file(MAKE_DIRECTORY "${OpenCV_BUILD_DIR}")
 
-  # configure OpenCV
-  execute_process(
-    COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" -DOpenCV_VERSION=${OpenCV_VERSION} ..
-    WORKING_DIRECTORY "${OpenCV_BUILD_DIR}"
-    COMMAND_ECHO STDERR
-  )
+    # configure OpenCV
+    execute_process(
+        COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" -DOpenCV_VERSION=${OpenCV_VERSION} ..
+        WORKING_DIRECTORY "${OpenCV_BUILD_DIR}"
+        COMMAND_ECHO STDERR
+    )
 
-  # compile OpenCV
-  execute_process(
-    COMMAND "${CMAKE_COMMAND}" --build . --target ALL_BUILD
-    WORKING_DIRECTORY "${OpenCV_BUILD_DIR}"
-    COMMAND_ECHO STDERR
-  )
+    # compile OpenCV
+    execute_process(
+        COMMAND "${CMAKE_COMMAND}" --build . --target ALL_BUILD
+        WORKING_DIRECTORY "${OpenCV_BUILD_DIR}"
+        COMMAND_ECHO STDERR
+    )
 
-  get_filename_component(OpenCV_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../opencv/install" REALPATH)
+    get_filename_component(OpenCV_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../opencv/install" REALPATH)
 endif()
 
 # Tell cmake that we will need opencv.
@@ -42,23 +42,23 @@ set(OpenCV_URL_HASH       SHA256=${OpenCV_URL_HASH_${OpenCV_DLLVERSION}})
 
 include(FetchContent)
 FetchContent_Populate(opencv
-  URL                 ${OpenCV_URL}
-  URL_HASH            ${OpenCV_URL_HASH}
-  DOWNLOAD_NO_EXTRACT TRUE
-  DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
-  SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
-  PATCH_COMMAND       "<DOWNLOAD_DIR>/${OpenCV_DOWNLOAD_NAME}" "-o<DOWNLOAD_DIR>/${OpenCV_OUTPUT_DIR}" -y
+    URL                 ${OpenCV_URL}
+    URL_HASH            ${OpenCV_URL_HASH}
+    DOWNLOAD_NO_EXTRACT TRUE
+    DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
+    SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
+    PATCH_COMMAND       "<DOWNLOAD_DIR>/${OpenCV_DOWNLOAD_NAME}" "-o<DOWNLOAD_DIR>/${OpenCV_OUTPUT_DIR}" -y
 )
 
 include(FetchContent)
 FetchContent_Populate(opencv-patch
-  URL                 ${OpenCV_URL}
-  URL_HASH            ${OpenCV_URL_HASH}
-  DOWNLOAD_NO_EXTRACT TRUE
-  DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
-  SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
-  PATCH_COMMAND       "${PATCH_EXECUTABLE}" -p 1 -d "<DOWNLOAD_DIR>/${OpenCV_OUTPUT_DIR}/opencv/sources/"
-                        -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-opencv-src.patch"
+    URL                 ${OpenCV_URL}
+    URL_HASH            ${OpenCV_URL_HASH}
+    DOWNLOAD_NO_EXTRACT TRUE
+    DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
+    SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
+    PATCH_COMMAND       "${PATCH_EXECUTABLE}" -p 1 -d "<DOWNLOAD_DIR>/${OpenCV_OUTPUT_DIR}/opencv/sources/"
+                                                -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-opencv-src.patch"
 )
 
 get_filename_component(OpenCV_DIR "${opencv_SOURCE_DIR}/${OpenCV_OUTPUT_DIR}/opencv/build" ABSOLUTE)
@@ -85,11 +85,11 @@ set(OpenCV_DLLVERSION "${OpenCV_VERSION_MAJOR}${OpenCV_VERSION_MINOR}${OpenCV_VE
 set(OpenCV_DEBUG_POSTFIX d)
 
 if(DEFINED CMAKE_DEBUG_POSTFIX)
-  set(OpenCV_DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
+    set(OpenCV_DEBUG_POSTFIX "${CMAKE_DEBUG_POSTFIX}")
 endif()
 
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
-  set(OpenCV_BUILD_DEBUG_POSTFIX "${OpenCV_DEBUG_POSTFIX}")
+    set(OpenCV_BUILD_DEBUG_POSTFIX "${OpenCV_DEBUG_POSTFIX}")
 else()
-  set(OpenCV_BUILD_DEBUG_POSTFIX "")
+    set(OpenCV_BUILD_DEBUG_POSTFIX "")
 endif()

@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.14/mediapipe/tasks/python/test/text/text_embedder_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.21/mediapipe/tasks/python/test/text/text_embedder_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -86,18 +86,18 @@ Func Test()
 			False, _
 			$_BERT_MODEL_FILE, _
 			$FILE_NAME, _
-			0.971417486667633, _
+			0.962427, _
 			512, _
-			_Mediapipe_Tuple(21.2148685455322, 22.626251) _
+			_Mediapipe_Tuple(21.2054, 19.684337) _
 			)
 	test_embed( _
 			True, _
 			False, _
 			$_BERT_MODEL_FILE, _
 			$FILE_NAME, _
-			0.971417486667633, _
+			0.962427, _
 			512, _
-			_Mediapipe_Tuple(0.0616873539984226, 0.0723035) _
+			_Mediapipe_Tuple(0.0625787, 0.0673937) _
 			)
 	test_embed( _
 			False, _

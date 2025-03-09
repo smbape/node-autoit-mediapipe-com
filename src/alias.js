@@ -71,7 +71,8 @@ exports.getTypeDef = (type, options) => {
         .replaceAll("std::vector", "VectorOf")
         .replaceAll("std::shared_ptr", "SharedPtrOf")
         .replaceAll(options.shared_ptr, "SharedPtrOf")
-        .replaceAll("std::variant", "VariantOf");
+        .replaceAll("std::variant", "VariantOf")
+        .replaceAll("cv::util::variant", "CvVariantOf");
 
     type_def = exports.removeNamespaces(type_def, options)
         .replace(/\b_variant_t\b/g, "Variant")

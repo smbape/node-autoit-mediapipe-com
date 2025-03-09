@@ -27,6 +27,16 @@ if (VIRTUAL_ENV_created)
     execute_process(COMMAND "${Python3_EXECUTABLE}" -m pip install --upgrade pip)
 endif()
 
+# Make sure custom commands use venv for python executable
+cmake_path(GET Python3_EXECUTABLE PARENT_PATH Python3_BINDIR)
+cmake_path(CONVERT "$ENV{PATH}" TO_NATIVE_PATH_LIST Python3_PATH NORMALIZE)
+cmake_path(NATIVE_PATH Python3_BINDIR NORMALIZE Python3_BINDIR)
+list(PREPEND Python3_PATH "${Python3_BINDIR}")
+if (NOT WIN32)
+    string(REPLACE ";" ":" Python3_PATH "${Python3_PATH}")
+endif()
+set(ENV{PATH} "${Python3_PATH}")
+
 execute_process(COMMAND "${Python3_EXECUTABLE}" -m pip list -l --format=freeze OUTPUT_VARIABLE Pip_MODULES)
 string(REPLACE "\n" ";" Pip_MODULES "${Pip_MODULES}")
 list(TRANSFORM Pip_MODULES REPLACE "=.+" "")
@@ -49,5 +59,3 @@ function(pip_install)
         list(APPEND Pip_MODULES ${to_install})
     endif()
 endfunction()
-
-string(REPLACE / // PYTHON_BIN_PATH "${Python3_EXECUTABLE}")

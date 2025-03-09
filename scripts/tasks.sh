@@ -144,12 +144,14 @@ die() {
 
 set -o pipefail
 
+NEW_VERSION_DEFAULT="${NEW_VERSION_DEFAULT:-patch}"
+
 function stash_push() {
     git stash push --include-untracked
 }
 
 function new_version() {
-    local new_version="${1:-patch}"
+    local new_version="${1:-${NEW_VERSION:-"${NEW_VERSION_DEFAULT}"}}"
     npm version "$new_version"
 }
 
@@ -157,39 +159,57 @@ function new_version_rollback() {
     local msg version
 
     local continue=1
+    local found_version=0
     while [ $continue -eq 1 ]; do
         continue=0
 
         msg="$(git log -1 --pretty=format:%s)"
-
         if [ "v$msg" == "$(git tag -l "v$msg")" ];  then
             git tag -d "v$msg" || return $?
             continue=1
         fi
 
-        if [ "$msg" == "$(node -pe "require('./package').version")" ]; then
-            git reset --hard HEAD~1 || return $?
+        version="$(node -pe "require('./package').version")"
+        if [ "$msg" == "$version" ]; then
+            if [ $found_version -eq 0 ]; then
+                found_version=1
+                NEW_VERSION_DEFAULT="$version"
+            fi
+            git reset --hard HEAD~1 -- || return $?
             continue=1
         fi
     done
 }
 
 function update_new_version() {
+    # reset touched files
+    git diff --quiet HEAD --
+
     if git diff-index --quiet HEAD --; then
         return
     fi
 
-    local new_version="${1:-patch}"
-    local times_file=$(echo autoit-*-com/build_x64)/times.bin
+    local times_file=out/build/x64-Debug/times.bin
+    mkdir -p "$(dirname "$times_file")"
 
     git add --renormalize . && \
-    find $(git diff --name-only HEAD --) -mindepth 0 -maxdepth 0 -type f -printf '%A@ %T@ %p\0' > "$times_file" && \
+    find $(git diff --diff-filter=d --name-only HEAD --) -mindepth 0 -maxdepth 0 -type f -printf '%A@ %T@ %p\0' > "$times_file" && \
     git stash push && \
-    new_version_rollback && \
+    new_version_rollback || return $?
+
+    local new_version="${1:-${NEW_VERSION:-"${NEW_VERSION_DEFAULT}"}}"
     git stash pop && \
-    perl -MTime::HiRes=utime -0 -ne 'chomp; my ($atime, $mtime, $file) = split(/ /, $_, 3); utime $atime, $mtime, $file;' < "$times_file" && \
-    git add $(git diff --name-only --diff-filter=M HEAD --) && \
+    perl -MTime::HiRes=utime -0 -ne 'chomp; my ($atime, $mtime, $file) = split(/ /, $_, 3); utime $atime, $mtime, $file;' < "$times_file" || return $?
+
+    for ifile in $(git diff --diff-filter=d --name-only HEAD --); do
+        git add "$ifile" || return $?
+    done
+
+    for ifile in $(git diff --diff-filter=D --name-only HEAD --); do
+        git rm "$ifile" || return $?
+    done
+
     git commit --amend --no-edit && \
-    new_version "$new_version" && \
+    new_version "${new_version}" && \
     rm -f "$times_file"
 }

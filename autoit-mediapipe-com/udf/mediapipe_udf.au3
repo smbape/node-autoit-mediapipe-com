@@ -61,7 +61,7 @@ EndFunc   ;==>_Mediapipe_Unregister_And_Close
 
 Func _Mediapipe_Install($s_mediapipe_world_dll = Default, $s_autoit_mediapipe_com_dll = Default, $bUser = Default, $bOpen = True, $bClose = True, $bInstall = False, $bUninstall = False)
 	If $s_mediapipe_world_dll == Default Then $s_mediapipe_world_dll = "opencv_world4110.dll"
-	If $s_autoit_mediapipe_com_dll == Default Then $s_autoit_mediapipe_com_dll = "autoit_mediapipe_com-0.10.14-4110.dll"
+	If $s_autoit_mediapipe_com_dll == Default Then $s_autoit_mediapipe_com_dll = "autoit_mediapipe_com-0.10.21-4110.dll"
 	If $bUser == Default Then $bUser = Not IsAdmin()
 
 	If $bClose And $h_mediapipe_world_dll <> -1 Then DllClose($h_mediapipe_world_dll)

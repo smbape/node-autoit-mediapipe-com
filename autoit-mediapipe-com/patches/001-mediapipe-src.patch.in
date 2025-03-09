@@ -1,8 +1,8 @@
 diff --git a/.bazelrc b/.bazelrc
-index 9f9b9476..c75b2988 100644
+index 45856764d..852afb45f 100644
 --- a/.bazelrc
 +++ b/.bazelrc
-@@ -12,28 +12,28 @@ build --enable_platform_specific_config
+@@ -12,22 +12,22 @@ build --enable_platform_specific_config
  test --test_env="GTEST_INSTALL_FAILURE_SIGNAL_HANDLER=1"
  
  # Linux
@@ -11,6 +11,7 @@ index 9f9b9476..c75b2988 100644
 +build:linux --cxxopt=-std=c++20
 +build:linux --host_cxxopt=-std=c++20
  build:linux --copt=-w
+ build:linux --define=xnn_enable_avx512amx=false
  
  # windows
 -build:windows --cxxopt=/std:c++17
@@ -28,8 +29,9 @@ index 9f9b9476..c75b2988 100644
 +build:macos --cxxopt=-std=c++20
 +build:macos --host_cxxopt=-std=c++20
  build:macos --copt=-w
+ build:macos --define=xnn_enable_avx512amx=false
  
- # Sets the default Apple platform to macOS.
+@@ -35,7 +35,7 @@ build:macos --define=xnn_enable_avx512amx=false
  build --apple_platform_type=macos
  
  # Compile ObjC++ files with C++17
@@ -38,15 +40,8 @@ index 9f9b9476..c75b2988 100644
  
  # Allow debugging with XCODE
  build --apple_generate_dsym
-diff --git a/.bazelversion b/.bazelversion
-index f3b5af39..19b860c1 100644
---- a/.bazelversion
-+++ b/.bazelversion
-@@ -1 +1 @@
--6.1.1
-+6.4.0
 diff --git a/.gitignore b/.gitignore
-index 525f0878..f1b38dab 100644
+index 525f0878e..f1b38dabd 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -5,3 +5,4 @@ mediapipe/provisioning_profile.mobileprovision
@@ -55,11 +50,11 @@ index 525f0878..f1b38dab 100644
  .user.bazelrc
 +@MEDIAPIPE_ADDON_PACKAGE@
 diff --git a/WORKSPACE b/WORKSPACE
-index fd13e9b3..41c2b38a 100644
+index a1d06c46e..2098bb3f7 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -21,6 +21,11 @@ bazel_skylib_workspace()
- load("@bazel_skylib//lib:versions.bzl", "versions")
+@@ -25,6 +25,11 @@ load("@bazel_skylib//lib:versions.bzl", "versions")
+ 
  versions.check(minimum_bazel_version = "3.7.2")
  
 +# @MEDIAPIPE_ADDON_PACKAGE@ dependencies
@@ -70,8 +65,8 @@ index fd13e9b3..41c2b38a 100644
  # ABSL on 2023-10-18
  http_archive(
      name = "com_google_absl",
-@@ -361,14 +366,16 @@ http_archive(
-     sha256 = "8b7b16ceb363420e0fd499576daf73fa338adb0b1449f58bea7862766baa1ac7"
+@@ -547,14 +552,16 @@ http_archive(
+     url = "https://github.com/ceres-solver/ceres-solver/archive/123fba61cf2611a3c8bddc9d91416db26b10b558.zip",
  )
  
 -http_archive(
@@ -79,8 +74,8 @@ index fd13e9b3..41c2b38a 100644
 +    repo_rule = http_archive,
      name = "opencv",
      build_file_content = all_content,
-     strip_prefix = "opencv-3.4.10",
-     urls = ["https://github.com/opencv/opencv/archive/3.4.10.tar.gz"],
+     strip_prefix = "opencv-3.4.11",
+     urls = ["https://github.com/opencv/opencv/archive/3.4.11.tar.gz"],
  )
  
 -new_local_repository(
@@ -89,8 +84,8 @@ index fd13e9b3..41c2b38a 100644
      name = "linux_opencv",
      build_file = "@//third_party:opencv_linux.BUILD",
      path = "/usr",
-@@ -380,7 +387,8 @@ new_local_repository(
-     path = "/usr"
+@@ -566,7 +573,8 @@ new_local_repository(
+     path = "/usr",
  )
  
 -new_local_repository(
@@ -99,7 +94,7 @@ index fd13e9b3..41c2b38a 100644
      name = "macos_opencv",
      build_file = "@//third_party:opencv_macos.BUILD",
      # For local MacOS builds, the path should point to an opencv@3 installation.
-@@ -395,13 +403,15 @@ new_local_repository(
+@@ -581,13 +589,15 @@ new_local_repository(
      path = "/usr/local/opt/ffmpeg",
  )
  
@@ -117,7 +112,7 @@ index fd13e9b3..41c2b38a 100644
      name = "android_opencv",
      build_file = "@//third_party:opencv_android.BUILD",
      strip_prefix = "OpenCV-android-sdk",
-@@ -413,7 +423,8 @@ http_archive(
+@@ -599,7 +609,8 @@ http_archive(
  # trigger duplicate symbol errors in the linking stage of building a mediapipe ios app.
  # To get a higher version of OpenCV for iOS, opencv2.framework needs to be built from source with
  # '-DBUILD_PROTOBUF=OFF -DBUILD_opencv_dnn=OFF'.
@@ -125,10 +120,10 @@ index fd13e9b3..41c2b38a 100644
 +maybe(
 +    repo_rule = http_archive,
      name = "ios_opencv",
-     sha256 = "7dd536d06f59e6e1156b546bd581523d8df92ce83440002885ec5abc06558de2",
      build_file = "@//third_party:opencv_ios.BUILD",
+     sha256 = "7dd536d06f59e6e1156b546bd581523d8df92ce83440002885ec5abc06558de2",
 diff --git a/mediapipe/framework/legacy_calculator_support.cc b/mediapipe/framework/legacy_calculator_support.cc
-index 13fd714a..3bfb373e 100644
+index 13fd714ac..3bfb373e3 100644
 --- a/mediapipe/framework/legacy_calculator_support.cc
 +++ b/mediapipe/framework/legacy_calculator_support.cc
 @@ -17,9 +17,19 @@
@@ -152,12 +147,12 @@ index 13fd714a..3bfb373e 100644
      LegacyCalculatorSupport::Scoped<CalculatorContract>::current_ = nullptr;
  
 diff --git a/mediapipe/framework/packet.h b/mediapipe/framework/packet.h
-index d5cc8700..8839be48 100644
+index ef0b5d113..da705e686 100644
 --- a/mediapipe/framework/packet.h
 +++ b/mediapipe/framework/packet.h
-@@ -410,6 +410,10 @@ class HolderBase {
+@@ -456,6 +456,10 @@ class HolderBase {
    template <typename T>
-   const Holder<T>* As() const;
+   Holder<T>* AsMutable() const;
  
 +  // Release the pointer to MessageLite type for the data in holder, if
 +  // underlying object is protocol buffer type, otherwise returns an error.
@@ -165,8 +160,8 @@ index d5cc8700..8839be48 100644
 +
    // Returns the pointer to MessageLite type for the data in holder, if
    // underlying object is protocol buffer type, otherwise, nullptr is returned.
-   virtual const proto_ns::MessageLite* GetProtoMessageLite() = 0;
-@@ -553,6 +557,18 @@ class Holder : public HolderBase, private HolderPayloadRegistrator<T> {
+   virtual const proto_ns::MessageLite* GetProtoMessageLite() const = 0;
+@@ -599,6 +603,18 @@ class Holder : public HolderBase, private HolderPayloadRegistrator<T> {
    // Holder itself may be shared by several Packets.
    const T* ptr_;
  
@@ -177,16 +172,16 @@ index d5cc8700..8839be48 100644
 +      return Release<proto_ns::MessageLite>();
 +    } else {
 +      return absl::InvalidArgumentError(absl::StrCat(
-+        "The Holder stores \"", kTypeId<T>.name(), "\"",
++        "The Packet stores \"", kTypeId<T>.name(), "\"",
 +        "which is not convertible to proto_ns::MessageLite."));
 +    }
 +  }
 +
    // Returns the MessageLite pointer to the data, if the underlying object type
    // is protocol buffer, otherwise, nullptr is returned.
-   const proto_ns::MessageLite* GetProtoMessageLite() override {
+   const proto_ns::MessageLite* GetProtoMessageLite() const override {
 diff --git a/mediapipe/framework/port/opencv_video_inc.h b/mediapipe/framework/port/opencv_video_inc.h
-index 5f06d923..c78c214a 100644
+index 5f06d9233..c78c214a7 100644
 --- a/mediapipe/framework/port/opencv_video_inc.h
 +++ b/mediapipe/framework/port/opencv_video_inc.h
 @@ -85,13 +85,7 @@ inline int fourcc(char c1, char c2, char c3, char c4) {
@@ -205,7 +200,7 @@ index 5f06d923..c78c214a 100644
  
  namespace mediapipe {
 diff --git a/mediapipe/gpu/gpu_service.cc b/mediapipe/gpu/gpu_service.cc
-index 53a0e0f4..a18604ab 100644
+index 53a0e0f47..a18604ab8 100644
 --- a/mediapipe/gpu/gpu_service.cc
 +++ b/mediapipe/gpu/gpu_service.cc
 @@ -16,7 +16,7 @@
@@ -218,7 +213,7 @@ index 53a0e0f4..a18604ab 100644
  
  }  // namespace mediapipe
 diff --git a/mediapipe/tasks/BUILD b/mediapipe/tasks/BUILD
-index 582fc4c3..3099073a 100644
+index 582fc4c30..3099073af 100644
 --- a/mediapipe/tasks/BUILD
 +++ b/mediapipe/tasks/BUILD
 @@ -17,6 +17,7 @@ package(default_visibility = ["//visibility:public"])
@@ -230,7 +225,7 @@ index 582fc4c3..3099073a 100644
          "//mediapipe/tasks/...",
      ],
 diff --git a/mediapipe/tasks/cc/core/task_api_factory.h b/mediapipe/tasks/cc/core/task_api_factory.h
-index a11a23fc..dbb5fe6c 100644
+index a11a23fcf..dbb5fe6ca 100644
 --- a/mediapipe/tasks/cc/core/task_api_factory.h
 +++ b/mediapipe/tasks/cc/core/task_api_factory.h
 @@ -76,15 +76,17 @@ class TaskApiFactory {
@@ -253,7 +248,7 @@ index a11a23fc..dbb5fe6c 100644
              std::move(graph_config), std::move(resolver),
              std::move(packets_callback), std::move(default_executor),
 diff --git a/mediapipe/tasks/python/test/test_utils.py b/mediapipe/tasks/python/test/test_utils.py
-index e790b915..be858061 100644
+index e790b9156..be858061d 100644
 --- a/mediapipe/tasks/python/test/test_utils.py
 +++ b/mediapipe/tasks/python/test/test_utils.py
 @@ -34,20 +34,28 @@ _RGB_CHANNELS = 3
@@ -293,7 +288,7 @@ index e790b915..be858061 100644
        "No %s in test directory: %s." % (file_or_dirname_path, test_srcdir())
    )
 diff --git a/mediapipe/tasks/testdata/text/BUILD b/mediapipe/tasks/testdata/text/BUILD
-index b05e748b..615db35c 100644
+index b05e748b0..615db35c9 100644
 --- a/mediapipe/tasks/testdata/text/BUILD
 +++ b/mediapipe/tasks/testdata/text/BUILD
 @@ -19,6 +19,7 @@ load(
@@ -305,7 +300,7 @@ index b05e748b..615db35c 100644
          "//mediapipe/model_maker:__subpackages__",
          "//mediapipe/tasks:__subpackages__",
 diff --git a/mediapipe/util/resource_util_default.cc b/mediapipe/util/resource_util_default.cc
-index 3ebbd1f3..0d7748ff 100644
+index 919729548..9b0aa66a9 100644
 --- a/mediapipe/util/resource_util_default.cc
 +++ b/mediapipe/util/resource_util_default.cc
 @@ -13,12 +13,15 @@
@@ -315,19 +310,19 @@ index 3ebbd1f3..0d7748ff 100644
 +#include <filesystem>
  
  #include "absl/flags/flag.h"
+ #include "absl/status/statusor.h"
  #include "mediapipe/framework/deps/file_path.h"
  #include "mediapipe/framework/port/file_helpers.h"
- #include "mediapipe/framework/port/statusor.h"
  
 +namespace fs = std::filesystem;
 +
  ABSL_FLAG(
      std::string, resource_root_dir, "",
      "The absolute path to the resource directory."
-@@ -39,10 +42,14 @@ absl::Status DefaultGetResourceContents(const std::string& path,
- }  // namespace internal
+@@ -40,10 +43,14 @@ absl::Status DefaultGetResourceContents(const std::string& path,
  
- absl::StatusOr<std::string> PathToResourceAsFile(const std::string& path) {
+ absl::StatusOr<std::string> PathToResourceAsFile(const std::string& path,
+                                                  bool /*shadow_copy*/) {
 -  if (absl::StartsWith(path, "/")) {
 +  if (fs::path(path).is_absolute()) {
      return path;
@@ -341,7 +336,7 @@ index 3ebbd1f3..0d7748ff 100644
    // resource folder.
    auto bazel_path = JoinPath("bazel-bin", path);
 diff --git a/mediapipe/util/resource_util_windows.cc b/mediapipe/util/resource_util_windows.cc
-index 6d620e58..77c65057 100644
+index e28094eef..082801623 100644
 --- a/mediapipe/util/resource_util_windows.cc
 +++ b/mediapipe/util/resource_util_windows.cc
 @@ -13,6 +13,7 @@
@@ -351,9 +346,9 @@ index 6d620e58..77c65057 100644
 +#include <filesystem>
  
  #include "absl/flags/flag.h"
- #include "mediapipe/framework/deps/file_path.h"
+ #include "absl/status/statusor.h"
 @@ -21,6 +22,8 @@
- #include "mediapipe/framework/port/statusor.h"
+ #include "mediapipe/framework/port/singleton.h"
  #include "tools/cpp/runfiles/runfiles.h"
  
 +namespace fs = std::filesystem;
@@ -361,10 +356,10 @@ index 6d620e58..77c65057 100644
  ABSL_FLAG(
      std::string, resource_root_dir, "",
      "The absolute path to the resource directory."
-@@ -71,13 +74,16 @@ absl::Status DefaultGetResourceContents(const std::string& path,
- }  // namespace internal
+@@ -72,13 +75,16 @@ absl::Status DefaultGetResourceContents(const std::string& path,
  
- absl::StatusOr<std::string> PathToResourceAsFile(const std::string& path) {
+ absl::StatusOr<std::string> PathToResourceAsFile(const std::string& path,
+                                                  bool /*shadow_copy*/) {
 -  std::string qualified_path = path;
 -  if (absl::StartsWith(qualified_path, "./")) {
 -    qualified_path = "mediapipe" + qualified_path.substr(1);

@@ -4,6 +4,8 @@ package(default_visibility = ["//visibility:public"])
 
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load(":rules_impl/library.bzl", "add_library", "WINDOWS_DLL_LOCAL_DEFINES")
+load(":rules_impl/resources_objects_Debug.bzl", resources_objects_Debug = "TARGET_OBJECTS")
+load(":rules_impl/resources_objects_Release.bzl", resources_objects_Release = "TARGET_OBJECTS")
 
 config_setting(
     name = "opt_build",
@@ -34,7 +36,7 @@ config_setting(
 
 
 OPENCV_VERSION = "4110"  # 4.11.0
-MEDIAPIPE_VERSION = "0.10.14"
+MEDIAPIPE_VERSION = "0.10.21"
 OUTPUT_NAME = "autoit_mediapipe_com-%s-%s" % (MEDIAPIPE_VERSION, OPENCV_VERSION)
 
 
@@ -65,8 +67,8 @@ add_library(OUTPUT_NAME + "_lib",
     includes = ["src/", "generated/"],
     local_defines = ["CVAPI_EXPORTS"],
     linkopts = select({
-        ":opt_build": ["mediapipe/autoit/build_x64/autoit_mediapipe_com_res.dir/Release/mediapipeCOM.res"],
-        ":dbg_build": ["mediapipe/autoit/build_x64/autoit_mediapipe_com_res.dir/Debug/mediapipeCOM.res"],
+        ":opt_build": resources_objects_Release,
+        ":dbg_build": resources_objects_Debug,
     }),
     deps = [":" + OUTPUT_NAME + "_c" ],
 )

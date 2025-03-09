@@ -2,11 +2,12 @@
 #include "binding/solutions/pose_connections.h"
 
 namespace {
+	using namespace mediapipe::autoit::solutions::drawing_styles;
 	using namespace mediapipe::autoit::solutions::face_mesh_connections;
-	using namespace mediapipe::autoit::solutions::hands_connections;
 	using namespace mediapipe::autoit::solutions::hands;
-	using namespace mediapipe::autoit::solutions::pose_connections;
+	using namespace mediapipe::autoit::solutions::hands_connections;
 	using namespace mediapipe::autoit::solutions::pose;
+	using namespace mediapipe::autoit::solutions::pose_connections;
 
 	DrawingSpec GetDrawingSpectWithScale(const DrawingSpec& drawing_spec, float scale) {
 		if (scale == 1.0) {

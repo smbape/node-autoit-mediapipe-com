@@ -1,23 +1,23 @@
-module.exports = ({make_shared, language, cname}) => [
+module.exports = ({self_get, make_shared, language, cname}) => [
     ["class mediapipe.Image", "", ["/Simple"], [
         ["int", "width", "", ["/R", "=width()"]],
         ["int", "height", "", ["/R", "=height()"]],
         ["int", "channels", "", ["/R", "=channels()"]],
         ["int", "step", "", ["/R", "=step()"]],
         ["ImageFormat::Format", "image_format", "", ["/R", "=image_format()"]],
-        ["uchar*", "data", "", ["/R", "=GetImageFrameSharedPtr()->PixelData()"]],
+        ["uchar*", "data", "", ["/R", "=GetImageFrameSharedPtr()->PixelData()", "/C"]],
     ], "", ""],
 
     ["mediapipe.Image.Image", "mediapipe.Image.Image", [], [], "", ""],
 
     [`mediapipe.Image.${ cname }`, "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
         ["mediapipe::ImageFormat::Format", "image_format", "", []],
-        ["cv::Mat", "image", "", ["/C", "/Ref"]],
+        ["cv::Mat", "data", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
     [`mediapipe.Image.${ cname }`, "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
-        ["cv::Mat", "image", "", ["/C", "/Ref"]],
+        ["cv::Mat", "data", "", ["/C", "/Ref"]],
         ["bool", "copy", "true", []],
     ], "", ""],
 
@@ -29,7 +29,7 @@ module.exports = ({make_shared, language, cname}) => [
         ["std::string", "file_name", "", ["/C", "/Ref"]],
     ], "", ""],
 
-    ["mediapipe.Image.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", "/Expr=__self->get()->GetImageFrameSharedPtr().get()"], [], "", ""],
+    ["mediapipe.Image.mat_view", "cv::Mat", ["/Call=mediapipe::formats::MatView", `/Expr=${ self_get("GetImageFrameSharedPtr") }().get()`], [], "", ""],
     ["mediapipe.Image.UsesGpu", "bool", ["=uses_gpu"], [], "", ""],
     ["mediapipe.Image.IsContiguous", "bool", ["=is_contiguous", "/Prop=GetImageFrameSharedPtr()"], [], "", ""],
     ["mediapipe.Image.IsEmpty", "bool", ["=is_empty", "/Prop=GetImageFrameSharedPtr()"], [], "", ""],

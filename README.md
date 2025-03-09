@@ -43,11 +43,14 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 
   - Download and extract [opencv-4.11.0-windows.exe](https://opencv.org/releases/) into a folder
   - Download and extract [autoit-opencv-4.11.0-com-v2.7.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.7.0/autoit-opencv-4.11.0-com-v2.7.0.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.4.1/autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.4.1/autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1.7z) into a folder
 
 ## Usage
 
 ### AutoIt
+
+<!-- EXAMPLES_START generated examples please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN node scripts/update-readme.js TO UPDATE -->
 
 #### Face Detection with MediaPipe Tasks
 
@@ -60,15 +63,15 @@ Partial COM+ binding to [mediapipe](https://google.github.io/mediapipe/)
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_detector/python/face_detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_detector/python/face_detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_detector/python/face_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_detector/python/face_detector.ipynb
 
 ;~ Title: Face Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -267,15 +270,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
 
 ;~ Title: Face Landmarks Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -443,15 +446,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_stylizer/python/face_stylizer.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/face_stylizer/python/face_stylizer.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_stylizer/python/face_stylizer.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_stylizer/python/face_stylizer.ipynb
 
 ;~ Title: Face Stylizer
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -571,15 +574,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/gesture_recognizer/python/gesture_recognizer.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/gesture_recognizer/python/gesture_recognizer.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/gesture_recognizer/python/gesture_recognizer.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/gesture_recognizer/python/gesture_recognizer.ipynb
 
 ;~ Title: Gesture Recognizer with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -745,15 +748,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/hand_landmarker/python/hand_landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/hand_landmarker/python/hand_landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/hand_landmarker/python/hand_landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/hand_landmarker/python/hand_landmarker.ipynb
 
 ;~ Title: Hand Landmarks Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -825,7 +828,7 @@ Func Main()
 
 	; STEP 5: Process the classification result. In this case, visualize it.
 	Local $annotated_image = draw_landmarks_on_image($cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR), $detection_result)
-	resize_and_show($annotated_image,, "hand_landmarker")
+	resize_and_show($annotated_image, "hand_landmarker")
 	$cv.waitKey()
 EndFunc   ;==>Main
 
@@ -934,15 +937,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_classification/python/image_classifier.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_classification/python/image_classifier.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_classification/python/image_classifier.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_classification/python/image_classifier.ipynb
 
 ;~ Title: Image Classifier with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -1062,15 +1065,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_embedder/python/image_embedder.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_embedder/python/image_embedder.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_embedder/python/image_embedder.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_embedder/python/image_embedder.ipynb
 
 ;~ Title: Image Embedding with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -1197,15 +1200,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_segmentation/python/image_segmentation.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/image_segmentation/python/image_segmentation.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_segmentation/python/image_segmentation.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_segmentation/python/image_segmentation.ipynb
 
 ;~ Title: Image Segmenter
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -1351,15 +1354,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/interactive_segmentation/python/interactive_segmenter.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/interactive_segmentation/python/interactive_segmenter.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/interactive_segmentation/python/interactive_segmenter.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/interactive_segmentation/python/interactive_segmenter.ipynb
 
 ;~ Title: Interactive Image Segmenter
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -1584,15 +1587,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
 
 ;~ Title: Language Detector with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1671,15 +1674,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/object_detection/python/object_detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/object_detection/python/object_detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/object_detection/python/object_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/object_detection/python/object_detector.ipynb
 
 ;~ Title: Object Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -1844,15 +1847,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
 
 ;~ Title: Pose Landmarks Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 _OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
@@ -2012,14 +2015,14 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/text_classification/python/text_classifier.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/text_classification/python/text_classifier.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/text_classification/python/text_classifier.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/text_classification/python/text_classifier.ipynb
 
 ;~ Title: Text Classifier with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -2089,15 +2092,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/text_embedder/python/text_embedder.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/88792a956f9996c728b92d19ef7fac99cef8a4fe/examples/text_embedder/python/text_embedder.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/text_embedder/python/text_embedder.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/text_embedder/python/text_embedder.ipynb
 
 ;~ Title: Text Embedding with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -2167,6 +2170,8 @@ Func _AssertIsObj($vVal, $sMsg)
 EndFunc   ;==>_AssertIsObj
 
 ```
+
+<!-- EXAMPLES_END generated examples please keep comment here to allow auto update -->
 
 ### PowerShell
 
@@ -2258,7 +2263,7 @@ function Example() {
     $cv.destroyAllWindows()
 }
 
-[MediapipeComInterop]::DllOpen("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.14-4110.dll")
+[MediapipeComInterop]::DllOpen("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.21-4110.dll")
 [OpenCvComInterop]::DllOpen("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
 
 $resource_util = [MediapipeComInterop]::ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
@@ -2384,7 +2389,7 @@ public static class Test
 
         MediapipeComInterop.DllOpen(
             "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.14-4110.dll"
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.21-4110.dll"
         );
 
         var resourceDir = MediapipeComInterop.FindResourceDir();
@@ -2505,7 +2510,7 @@ public static class Test
 
         MediapipeComInterop.DllOpen(
             "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.14-4110.dll"
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.21-4110.dll"
         );
 
         // To make registration free works with compile time COM classes
@@ -2545,11 +2550,11 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.4.1/autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z' -o autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z
+# download autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.4.1/autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1.7z' -o autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1.7z
 
-# extract the content of autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1.7z -aoa -oautoit-mediapipe-com
 
 # download autoit-opencv-4.11.0-com-v2.7.0.7z
 curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.7.0/autoit-opencv-4.11.0-com-v2.7.0.7z' -o autoit-opencv-4.11.0-com-v2.7.0.7z
@@ -2563,21 +2568,21 @@ curl -L 'https://github.com/opencv/opencv/releases/download/4.11.0/opencv-4.11.0
 # extract the content of opencv-4.11.0-windows.exe into a folder named opencv-4.11.0-windows
 ./opencv-4.11.0-windows.exe -oopencv-4.11.0-windows -y
 
-# download autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.4.1.zip' -o autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1-src.zip
+# download autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.4.1.zip' -o autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1-src.zip
-7z x autoit-mediapipe-0.10.14-opencv-4.11.0-com-v0.4.1-src.zip -aoa 'node-autoit-mediapipe-com-0.4.1\examples'
+# extract the examples folder of autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1-src.zip
+7z x autoit-mediapipe-0.10.21-opencv-4.11.0-com-v0.4.1-src.zip -aoa 'node-autoit-mediapipe-com-0.4.1\examples'
 cp -rf node-autoit-mediapipe-com-0.4.1/* ./
 rm -rf node-autoit-mediapipe-com-0.4.1
 
-# download mediapipe-0.10.14-src.tar.gz
-curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.14.tar.gz' -o mediapipe-0.10.14-src.tar.gz
+# download mediapipe-0.10.21-src.tar.gz
+curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.21.tar.gz' -o mediapipe-0.10.21-src.tar.gz
 
-# extract the mediapipe/tasks/testdata folder of mediapipe-0.10.14-src.tar.gz
-tar xzf mediapipe-0.10.14-src.tar.gz 'mediapipe-0.10.14/mediapipe/tasks/testdata'
-cp -rf mediapipe-0.10.14/* ./
-rm -rf mediapipe-0.10.14
+# extract the mediapipe/tasks/testdata folder of mediapipe-0.10.21-src.tar.gz
+tar xzf mediapipe-0.10.21-src.tar.gz 'mediapipe-0.10.21/mediapipe/tasks/testdata'
+cp -rf mediapipe-0.10.21/* ./
+rm -rf mediapipe-0.10.21
 
 ```
 

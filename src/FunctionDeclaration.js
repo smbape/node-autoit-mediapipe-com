@@ -6,6 +6,29 @@ const {
 
 const {makeExpansion, useNamespaces} = require("./alias");
 
+const tryExtractMat = (in_val, j, nsType, pointer, cpptype, placeholder_name, set_from_pointer = null) => {
+    return `
+        if (V_VT(${ in_val }) == VT_DISPATCH) {
+            ${ pointer } = ::autoit::cast<${ nsType }>(getRealIDispatch(${ in_val }));
+            if (!${ pointer }) {
+                printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
+                return E_INVALIDARG;
+            }
+            ${ set_from_pointer !== null ? `${ set_from_pointer } = true;` : "" }
+        } else if (V_VT(${ in_val }) == VT_UI8) {
+            const auto& ptr = V_UI8(${ in_val });
+            ${ pointer } = ::autoit::reference_internal(reinterpret_cast<${ nsType }*>(ptr));
+            ${ set_from_pointer !== null ? `${ set_from_pointer } = true;` : "" }
+        } else {
+            hr = autoit_to(${ in_val }, ${ placeholder_name });
+            if (FAILED(hr)) {
+                printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
+                return hr;
+            }
+        }
+    `.replace(/^ {8}/mg, "").replace(/^[^\S\n]*$\n/mg, "").trim();
+};
+
 Object.assign(exports, {
     // eslint-disable-next-line complexity
     declare: (processor, coclass, overrides, fname, idlname, iidl, ipublic, impl, is_test, options = {}) => {
@@ -227,6 +250,7 @@ Object.assign(exports, {
 
                 callargs[j] = callarg;
 
+                const nd_mat = arg_modifiers.includes("/ND");
                 const is_vector = cpptype.startsWith("std::vector<") || cpptype.startsWith("VectorOf");
                 const has_ptr = is_ptr || cpptype.startsWith(`${ shared_ptr }<`);
                 const is_by_ref = idltype[0] === "I" && idltype !== "IDispatch*" && !has_ptr;
@@ -282,6 +306,22 @@ Object.assign(exports, {
                     // Ex: method(InputArray input) + method(double precision)
 
                     if (is_vector) {
+                        if (nd_mat) {
+                            cvt_body += ` else if (is_assignable_from(${ placeholder_name }_MatPtr, ${ in_val }, false)) {
+                                ${ tryExtractMat(
+                                    in_val,
+                                    j,
+                                    "::cv::Mat",
+                                    `${ placeholder_name }_MatPtr`,
+                                    "cv::Mat",
+                                    `${ placeholder_name }_MatPtr`
+                                ).split("\n").join(`\n${ " ".repeat(32) }`) }
+
+                                ${ placeholder_name }.resize(1);
+                                ${ placeholder_name }[0] = *${ placeholder_name }_MatPtr;
+                            }`.replace(/^ {28}/mg, "");
+                        }
+
                         cvt_body += ` else if ((V_VT(${ in_val }) & VT_ARRAY) == VT_ARRAY && (V_VT(${ in_val }) ^ VT_ARRAY) == VT_VARIANT) {
                             hr = autoit_to(${ in_val }, ${ placeholder_name });
                             if (FAILED(hr)) {
@@ -388,25 +428,15 @@ Object.assign(exports, {
                         cvt.push(...`
                             ${ shared_ptr }<${ nsType }> ${ pointer };
 
-                            if (V_VT(${ in_val }) == VT_DISPATCH) {
-                                ${ pointer } = ::autoit::cast<${ nsType }>(getRealIDispatch(${ in_val }));
-                                if (!${ pointer }) {
-                                    printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
-                                    return E_INVALIDARG;
-                                }
-
-                                ${ set_from_pointer } = true;
-                            } else if (V_VT(${ in_val }) == VT_UI8) {
-                                const auto& ptr = V_UI8(${ in_val });
-                                ${ pointer } = ::autoit::reference_internal(reinterpret_cast<${ nsType }*>(ptr));
-                                ${ set_from_pointer } = true;
-                            } else {
-                                hr = autoit_to(${ in_val }, ${ placeholder_name });
-                                if (FAILED(hr)) {
-                                    printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
-                                    return hr;
-                                }
-                            }
+                            ${ tryExtractMat(
+                                in_val,
+                                j,
+                                nsType,
+                                pointer,
+                                cpptype,
+                                placeholder_name,
+                                set_from_pointer
+                            ).split("\n").join(`\n${ " ".repeat(28) }`) }
 
                             auto& ${ argname } = ${ pointer } ? *${ pointer }.get() : *${ placeholder_name }.get();
                             hr = S_OK;
@@ -434,6 +464,10 @@ Object.assign(exports, {
                         `is_assignable_from(${ placeholder_name }, ${ in_val }, ${ is_optional })`,
                     ];
 
+                    if (nd_mat) {
+                        iconditions.push(`is_assignable_from(${ placeholder_name }_MatPtr, ${ in_val }, ${ is_optional })`);
+                    }
+
                     if (is_input_array) {
                         iconditions.push(`V_VT(${ in_val }) == VT_R4`);
                         iconditions.push(`V_VT(${ in_val }) == VT_R8`);
@@ -452,6 +486,10 @@ Object.assign(exports, {
                         declarations[j] += ` = ${ defval }`;
                     }
                     declarations[j] += ";";
+
+                    if (nd_mat) {
+                        declarations[j] += `\n${ indent }${ shared_ptr }<cv::Mat> ${ placeholder_name }_MatPtr;`;
+                    }
                 }
 
                 conversions[j] = `\n${ cindent }${ is_method_test ? "// " : "" }${ cvt.join(`\n${ cindent }${ is_method_test ? "// " : "" }`) }`;

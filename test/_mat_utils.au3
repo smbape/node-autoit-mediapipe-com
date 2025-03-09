@@ -175,6 +175,35 @@ Func _AssertMatDiffLess($oMatA, $oMatB, $threshold, $sMessage = Default, $bExit 
 	Return _AssertMatLess($prediction_error, $threshold, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
 EndFunc   ;==>_AssertMatDiffLess
 
+Func _AssertMatAllClose($oMatA, $oMatB, $rtol = Default, $atol = Default, $sMessage = Default, $bExit = True, $iCode = Default, $iLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_vCallerExtended = @extended)
+	Local Static $cv = _OpenCV_get()
+
+	If IsArray($oMatA) Then $oMatA = $cv.Mat.createFromArray($oMatA, $CV_64F)
+	If IsArray($oMatB) Then $oMatB = $cv.Mat.createFromArray($oMatB, $CV_64F)
+
+	If $cv.Mat.IsInstance($oMatA) And $cv.Mat.IsInstance($oMatB) Then
+		If $oMatA.depth() <> $oMatB.depth() Then
+			$oMatA = $oMatA.convertTo($CV_64F)
+			$oMatB = $oMatB.convertTo($CV_64F)
+		EndIf
+
+		Local $bCondition = _AssertMatDim($oMatA, $oMatB, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
+		If Not $bCondition Then Return $bCondition
+	EndIf
+
+	; ConsoleWrite("MatA " & $cv.format($oMatA.convertTo($CV_32S)) & @CRLF)
+	; ConsoleWrite("MatB " & $cv.format($oMatB.convertTo($CV_32S)) & @CRLF)
+
+	If $rtol == Default Then $rtol = 1e-07
+	If $atol == Default Then $atol = 0.0
+
+	Local $a = $cv.absdiff($oMatA, $oMatB)
+	Local $b = $cv.add($atol, $cv.multiply($rtol, $cv.absdiff($oMatB, 0.0)))
+
+	If $sMessage == Default Then $sMessage = "Not equal to tolerance rtol=" & $rtol & ", atol=" & $atol
+	Return _AssertMatLess($a, $b, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
+EndFunc   ;==>_AssertMatAllClose
+
 Func _AssertMatGreaterEqual($oMatA, $oMatB, $sMessage = Default, $bExit = True, $iCode = Default, $iLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_vCallerExtended = @extended)
 	Local Static $cv = _OpenCV_get()
 	If $sMessage == Default Then $sMessage = "Matrices are not greater or equal ordered"

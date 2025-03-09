@@ -871,6 +871,10 @@
         "iid": "9511b013-057e-4f36-b775-6a63a6cf8425",
         "clsid": "97079448-310b-4148-8ad4-c9ac6cb212ae"
     },
+    "mediapipe::GraphRuntimeInfoConfig": {
+        "iid": "fc785d2f-b4cc-4a39-8eb2-405a4b36c18f",
+        "clsid": "501dec1a-c5d7-432c-9bbe-ca207e187a38"
+    },
     "mediapipe::CalculatorGraphConfig": {
         "iid": "8467c07c-543b-4b01-a09d-c9c6f87e9bd6",
         "clsid": "fb9a78c4-9014-4d5f-86d3-20d634986557"

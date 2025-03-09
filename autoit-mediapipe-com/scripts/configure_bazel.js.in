@@ -884,4 +884,8 @@ add_libraries("@MEDIAPIPE_ADDON_PACKAGE@", "@CMAKE_SOURCE_DIR@", {
             "@OpenCV_LIBRARIES_DEBUG@",
         ],
     },
-}]);
+}], err => {
+    if (err) {
+        throw err;
+    }
+});
