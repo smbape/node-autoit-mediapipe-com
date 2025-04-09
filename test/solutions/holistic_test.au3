@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google/mediapipe/blob/v0.10.21/mediapipe/python/solutions/holistic_test.py
+;~     https://github.com/google/mediapipe/blob/v0.10.22/mediapipe/python/solutions/holistic_test.py
 
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"

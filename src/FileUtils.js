@@ -5,7 +5,7 @@ const eol = require("eol");
 const eachOfLimit = require("async/eachOfLimit");
 const waterfall = require("async/waterfall");
 const series = require("async/series");
-const mkdirp = require("mkdirp");
+const {mkdirp} = require("mkdirp");
 
 const MidlCompiler = require("./MidlCompiler");
 const doctoc = require("./doctoc");

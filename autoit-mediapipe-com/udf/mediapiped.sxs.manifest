@@ -10,7 +10,7 @@
 
     <dependency>
         <dependentAssembly>
-            <assemblyIdentity type="win32" name="autoit_mediapipe_com-0.10.21-4110d.sxs" version="0.4.1.0" />
+            <assemblyIdentity type="win32" name="autoit_mediapipe_com-0.10.22-4110d.sxs" version="0.4.1.0" />
         </dependentAssembly>
     </dependency>
 </assembly>

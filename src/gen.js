@@ -5,7 +5,7 @@ const fsPromises = require("node:fs/promises");
 const sysPath = require("node:path");
 const {spawn} = require("node:child_process");
 
-const mkdirp = require("mkdirp");
+const {mkdirp} = require("mkdirp");
 const waterfall = require("async/waterfall");
 const {explore} = require("fs-explorer");
 const Parser = require("./protobuf/Parser");
@@ -13,7 +13,7 @@ const vector_conversion = require("./vector_conversion");
 
 const OpenCV_VERSION = "opencv-4.11.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
-const MEDIAPIPE_VERSION = "0.10.21";
+const MEDIAPIPE_VERSION = "0.10.22";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],

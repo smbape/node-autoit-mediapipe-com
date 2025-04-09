@@ -257,15 +257,10 @@ Object.assign(exports, {
                 const placeholder_name = is_array || is_by_ref || is_vector && !has_ptr ? `${ argname }_placeholder` : argname;
                 const pointer = `p_${ placeholder_name }`;
                 const scalar_pointer = `${ pointer }_s`;
-                const is_scalar_variant = `${ argname }_is_scalar`;
+                const arg_is_scalar = `${ argname }_is_scalar`;
                 const set_from_pointer = `set_${ argname }_from_ptr`;
-                const argname_double = `${ argname }_double`;
                 const cvt = [`bool ${ set_from_pointer } = false;`];
                 let is_shared_ptr = false;
-
-                if (is_vector || is_array) {
-                    cvt.push(`bool ${ is_scalar_variant } = false;`);
-                }
 
                 if (is_array) {
                     let cvt_body = `
@@ -328,30 +323,34 @@ Object.assign(exports, {
                                 printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
                                 return hr;
                             }
-                            ${ is_scalar_variant } = true;
                         }`.replace(/^ {24}/mg, "");
                     } else {
+                        cvt.push(`bool ${ arg_is_scalar } = false;`);
+
                         cvt_body += ` else if (is_variant_scalar(${ in_val })) {
-                            ${ scalar_pointer }.reset(new cv::Scalar());
-                            hr = autoit_to(${ in_val }, *${ scalar_pointer }.get());
+                            ${ scalar_pointer } = ${ make_shared }<cv::Scalar>();
+                            hr = autoit_to(${ in_val }, *${ scalar_pointer });
                             if (FAILED(hr)) {
                                 printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
                                 return hr;
                             }
-                            ${ is_scalar_variant } = true;
-                            ${ pointer }.reset(new cv::_${ arrtype }(*${ scalar_pointer }.get()));
+                            ${ arg_is_scalar } = true;
+                            ${ pointer } = ${ make_shared }<cv::_${ arrtype }>(*${ scalar_pointer });
                             ${ set_from_pointer } = true;
                         }`.replace(/^ {24}/mg, "");
 
                         if (is_input_array) {
+                            const argname_double = `${ argname }_double`;
+
+                            cvt.push(`double ${ argname_double } = 0.0;`);
+
                             cvt_body += ` else if (V_VT(${ in_val }) == VT_R4 || V_VT(${ in_val }) == VT_R8) {
-                                double ${ argname_double } = 0.0;
                                 hr = get_variant_number(${ in_val }, ${ argname_double });
                                 if (FAILED(hr)) {
                                     printf("unable to read argument ${ j } of type %hu into double\\n", V_VT(${ in_val }));
                                     return hr;
                                 }
-                                ${ pointer }.reset(new cv::_${ arrtype }(${ argname_double }));
+                                ${ pointer } = ${ make_shared }<cv::_${ arrtype }>(${ argname_double });
                                 ${ set_from_pointer } = true;
                             }`.replace(/^ {28}/mg, "");
                         }
@@ -374,7 +373,7 @@ Object.assign(exports, {
 
                     cvt_body += "\n";
                     cvt_body += `\ncv::_${ arrtype } _${ placeholder_name }(${ placeholder_name });`;
-                    cvt_body += `\nauto& ${ argname } = ${ set_from_pointer } ? *${ pointer }.get() : _${ placeholder_name };`;
+                    cvt_body += `\nauto& ${ argname } = ${ set_from_pointer } ? *${ pointer } : _${ placeholder_name };`;
 
                     cvt.push(...cvt_body.trim().split("\n"));
                 } else if (is_vector && !has_ptr) {
@@ -404,7 +403,6 @@ Object.assign(exports, {
                                 printf("unable to read argument ${ j } of type %hu into ${ cpptype }\\n", V_VT(${ in_val }));
                                 return hr;
                             }
-                            ${ is_scalar_variant } = true;
                         }
 
                         auto& ${ argname } = *${ pointer };
@@ -419,7 +417,7 @@ Object.assign(exports, {
                                 return hr;
                             }
                             ${ set_from_pointer } = SUCCEEDED(hr) && !PARAMETER_MISSING(${ in_val });
-                            auto& ${ argname } = ${ set_from_pointer } ? *${ pointer }.get() : ${ placeholder_name };
+                            auto& ${ argname } = ${ set_from_pointer } ? *${ pointer } : ${ placeholder_name };
                             hr = S_OK;
                         `.replace(/^ {28}/mg, "").trim().split("\n"));
                     } else {
@@ -438,7 +436,7 @@ Object.assign(exports, {
                                 set_from_pointer
                             ).split("\n").join(`\n${ " ".repeat(28) }`) }
 
-                            auto& ${ argname } = ${ pointer } ? *${ pointer }.get() : *${ placeholder_name }.get();
+                            auto& ${ argname } = ${ pointer } ? *${ pointer } : *${ placeholder_name };
                             hr = S_OK;
                         `.replace(/^ {28}/mg, "").trim().split("\n"));
                     }
@@ -1039,7 +1037,7 @@ Object.assign(exports, {
                     const placeholder_name = `${ argname }_placeholder`;
                     const pointer = `p_${ placeholder_name }`;
                     const scalar_pointer = `${ pointer }_s`;
-                    const is_scalar_variant = `${ argname }_is_scalar`;
+                    const arg_is_scalar = `${ argname }_is_scalar`;
                     const set_from_pointer = `set_${ argname }_from_ptr`;
 
                     let out_val;
@@ -1055,7 +1053,7 @@ Object.assign(exports, {
                             cvt = `V_VT(${ in_val }) == VT_DISPATCH && ${ set_from_pointer } ? autoit_out(V_DISPATCH(${ in_val }), p_retarr_el) : `;
 
                             if (!is_vector) {
-                                cvt += `${ is_scalar_variant } ? autoit_from(*${ scalar_pointer }.get(), p_retarr_el) : `;
+                                cvt += `${ arg_is_scalar } ? autoit_from(*${ scalar_pointer }, p_retarr_el) : `;
                             }
 
                             cvt += `autoit_from(${ placeholder_name }, p_retarr_el)`;

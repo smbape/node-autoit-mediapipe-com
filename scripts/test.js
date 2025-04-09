@@ -146,7 +146,7 @@ const main = (options, next) => {
                 basename[0] === "_" && extname === ".au3" ||
                 !includes_ext.includes(extname) ||
                 excludes.some(exclude => basename.startsWith(exclude)) ||
-                includes.length !== 0 && !includes.some(include => basename.startsWith(include))
+                includes.length !== 0 && !includes.some(include => basename.includes(include))
             ) {
                 next();
                 return;

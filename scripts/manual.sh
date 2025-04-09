@@ -58,11 +58,11 @@ rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/{autoit-mediapipe-*,autoit-open
 git archive --format zip --output /d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com.zip main && \
 7z x autoit-mediapipe-*.7z -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com && \
 7z x autoit-opencv-*.7z -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-opencv-com && \
-echo '6492ad36697cca309fe9526c64d65c8844e8128aebc85c390a97c375008d1c34 mediapipe-0.10.21-src.tar.gz' | sha256sum --check --status || \
-curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.21.tar.gz' -o mediapipe-0.10.21-src.tar.gz && \
-tar xzf mediapipe-0.10.21-src.tar.gz -C /d/Programs/AutoIt/UDF/mediapipe-udf-test/ 'mediapipe-0.10.21/mediapipe/tasks/testdata' && \
-cp -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.21/* /d/Programs/AutoIt/UDF/mediapipe-udf-test/ && \
-rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.21 && \
+echo '25af3c4cc44dfe929eea226ab6cd0dd53a54fbb199db877cc96aa63d0e45d745 mediapipe-0.10.22-src.tar.gz' | sha256sum --check --status || \
+curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.22.tar.gz' -o mediapipe-0.10.22-src.tar.gz && \
+tar xzf mediapipe-0.10.22-src.tar.gz -C /d/Programs/AutoIt/UDF/mediapipe-udf-test/ 'mediapipe-0.10.22/mediapipe/tasks/testdata' && \
+cp -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.22/* /d/Programs/AutoIt/UDF/mediapipe-udf-test/ && \
+rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.22 && \
 7z x /d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com.zip -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test 'examples\*' 'test\*' && \
 node scripts/test.js --bash --Release /d/Programs/AutoIt/UDF/mediapipe-udf-test > $(for ifile in autoit-*-com/build_x64/bin; do echo $ifile/test_all.sh; done) && \
 ./autoit-*-com/build_x64/bin/test_all.sh

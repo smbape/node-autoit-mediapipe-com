@@ -2,7 +2,7 @@ const fs = require("node:fs");
 const sysPath = require("node:path");
 const util = require("node:util");
 const cpus = require("node:os").cpus().length;
-const mkdirp = require("mkdirp");
+const { mkdirp } = require("mkdirp");
 
 const longestCommonPath = (path1, ...paths) => {
     while (paths.length !== 0) {

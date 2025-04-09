@@ -50,7 +50,7 @@ index 525f0878e..f1b38dabd 100644
  .user.bazelrc
 +@MEDIAPIPE_ADDON_PACKAGE@
 diff --git a/WORKSPACE b/WORKSPACE
-index a1d06c46e..2098bb3f7 100644
+index 0948b6197..4524c15a1 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
 @@ -25,6 +25,11 @@ load("@bazel_skylib//lib:versions.bzl", "versions")
@@ -199,6 +199,23 @@ index 5f06d9233..c78c214a7 100644
  #endif
  
  namespace mediapipe {
+diff --git a/mediapipe/gpu/gl_context.cc b/mediapipe/gpu/gl_context.cc
+index 1eeaa635b..478e6972c 100644
+--- a/mediapipe/gpu/gl_context.cc
++++ b/mediapipe/gpu/gl_context.cc
+@@ -1120,6 +1120,12 @@ bool GlContext::CheckForGlErrors(bool force) {
+       case GL_OUT_OF_MEMORY:
+         ABSL_LOG(INFO) << "Found unchecked GL error: GL_OUT_OF_MEMORY";
+         break;
++      case GL_STACK_UNDERFLOW:
++        ABSL_LOG(INFO) << "Found unchecked GL error: GL_STACK_UNDERFLOW";
++        break;
++      case GL_STACK_OVERFLOW:
++        ABSL_LOG(INFO) << "Found unchecked GL error: GL_STACK_OVERFLOW";
++        break;
+       default:
+         ABSL_LOG(INFO) << "Found unchecked GL error: UNKNOWN ERROR";
+         break;
 diff --git a/mediapipe/gpu/gpu_service.cc b/mediapipe/gpu/gpu_service.cc
 index 53a0e0f47..a18604ab8 100644
 --- a/mediapipe/gpu/gpu_service.cc
@@ -247,8 +264,25 @@ index a11a23fcf..dbb5fe6ca 100644
          core::TaskRunner::Create(
              std::move(graph_config), std::move(resolver),
              std::move(packets_callback), std::move(default_executor),
+diff --git a/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc b/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc
+index 85ec2132c..60a97995e 100644
+--- a/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc
++++ b/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc
+@@ -524,10 +524,11 @@ absl::Status TensorsToImageCalculator::GlProcess(CalculatorContext* cc) {
+     auto texture_buffer = mediapipe::GlTextureBuffer::Wrap(
+         out_texture->target(), out_texture->id(), tensor_width, tensor_height,
+         mediapipe::GpuBufferFormat::kBGRA32,
+-        [ptr = out_texture.release()](
++        [ptr = out_texture.get()](
+             std::shared_ptr<mediapipe::GlSyncPoint> sync_token) mutable {
+           delete ptr;
+         });
++    out_texture.release();
+ 
+     auto output =
+         std::make_unique<mediapipe::GpuBuffer>(std::move(texture_buffer));
 diff --git a/mediapipe/tasks/python/test/test_utils.py b/mediapipe/tasks/python/test/test_utils.py
-index e790b9156..be858061d 100644
+index e790b9156..a80edb96a 100644
 --- a/mediapipe/tasks/python/test/test_utils.py
 +++ b/mediapipe/tasks/python/test/test_utils.py
 @@ -34,20 +34,28 @@ _RGB_CHANNELS = 3
@@ -282,7 +316,7 @@ index e790b9156..be858061d 100644
 +        if os.path.exists(os.path.join(path, file_or_dirname_path)):
 +          return os.path.abspath(os.path.join(path, file_or_dirname_path))
 +
-+        if path.endswith(os.path.normpath(file_or_dirname_path)):
++        if os.path.normpath(path).endswith(os.path.normpath(file_or_dirname_path)):
 +          return path
    raise ValueError(
        "No %s in test directory: %s." % (file_or_dirname_path, test_srcdir())
@@ -336,7 +370,7 @@ index 919729548..9b0aa66a9 100644
    // resource folder.
    auto bazel_path = JoinPath("bazel-bin", path);
 diff --git a/mediapipe/util/resource_util_windows.cc b/mediapipe/util/resource_util_windows.cc
-index e28094eef..082801623 100644
+index e28094eef..8c5a08e2e 100644
 --- a/mediapipe/util/resource_util_windows.cc
 +++ b/mediapipe/util/resource_util_windows.cc
 @@ -13,6 +13,7 @@
