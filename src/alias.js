@@ -88,5 +88,12 @@ const {ALIASES} = require("./constants");
 
 exports.getAlias = str => {
     str = str.trim();
-    return ALIASES.has(str) ? ALIASES.get(str) : str;
+
+    const key = str.split(".").filter(item => Boolean(item)).join("::");
+    if (ALIASES.has(key)) {
+        return ALIASES.get(key);
+    }
+
+    const sep = str.includes("::") ? "::" : ".";
+    return str.split(sep).map(item => ALIASES.has(item) ? ALIASES.get(item) : item).join(sep);
 };

@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.22/mediapipe/python/packet_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.23/mediapipe/python/packet_test.py
 
 #include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -76,6 +76,8 @@ Func Test()
 	test_int_vector_packet()
 	test_float_vector_packet()
 	test_image_vector_packet()
+	test_image_frame_vector_packet()
+	test_get_image_frame_list_packet_capture()
 	test_string_vector_packet()
 	test_packet_vector_packet()
 	test_string_to_packet_map_packet()
@@ -321,6 +323,39 @@ Func test_image_vector_packet()
 	_AssertMatEqual($output_list[1].mat_view(), $roi)
 	_AssertEqual($p.timestamp.value, 100)
 EndFunc   ;==>test_image_vector_packet
+
+Func test_image_frame_vector_packet()
+	Local $mat_rgb = _RandomImage(40, 30, $CV_8UC3, 0, 2 ^ 8)
+	Local $mat_float = _RandomImage(30, 40, $CV_32FC1, 0, 1)
+	Local $image_frames = [ _
+		$ImageFrame(_Mediapipe_Params("image_format", $MEDIAPIPE_IMAGE_FORMAT_SRGB, "data", $mat_rgb)), _
+		$ImageFrame(_Mediapipe_Params("image_format", $MEDIAPIPE_IMAGE_FORMAT_VEC32F1, "data", $mat_float)) _
+	]
+	Local $p = $packet_creator.create_image_frame_vector($image_frames).at(100)
+	Local $output_list = $packet_getter.get_image_frame_list($p)
+	_AssertLen($output_list, 2)
+	_AssertMatEqual($output_list[0].mat_view(), $mat_rgb)
+	_AssertMatEqual($output_list[1].mat_view(), $mat_float)
+	_AssertEqual($p.timestamp.value, 100)
+EndFunc   ;==>test_image_frame_vector_packet
+
+Func test_get_image_frame_list_packet_capture()
+	Local $h = 30, $w = 40
+	Local $image_frames = [ _
+		$ImageFrame(_Mediapipe_Params( _
+			"image_format", $MEDIAPIPE_IMAGE_FORMAT_SRGB, _
+			"data", _OpenCV_ObjCreate("cv.Mat").ones($w, $h, $CV_8UC3))) _
+	]
+	Local $p = $packet_creator.create_image_frame_vector($image_frames).at(100)
+	Local $output_list = $packet_getter.get_image_frame_list($p)
+	; Even if the packet variable p gets deleted, the packet object still exists
+	; because it is captured by the deleter of the ImageFrame in the returned
+	; output_list.
+	$p = Null
+	_AssertLen($output_list, 1)
+	_AssertEqual($output_list[0].image_format, $MEDIAPIPE_IMAGE_FORMAT_SRGB)
+	_AssertMatEqual($output_list[0].mat_view(), _OpenCV_ObjCreate("cv.Mat").ones($w, $h, $CV_8UC3))
+EndFunc   ;==>test_get_image_frame_list_packet_capture
 
 Func test_string_vector_packet()
 	Local $p = $packet_creator.create_string_vector(_Mediapipe_Tuple("a", "b", "c")).at(100)

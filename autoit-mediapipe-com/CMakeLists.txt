@@ -29,10 +29,11 @@ if (POLICY CMP0135)
     cmake_policy(SET CMP0135 NEW) # set the timestamps of extracted contents to the time of extraction.
 endif()
 
-set(MEDIAPIPE_VERSION 0.10.22 CACHE STRING "Choose the mediapipe version.")
-set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.22" "0.10.21" "0.10.20")
+set(MEDIAPIPE_VERSION 0.10.23 CACHE STRING "Choose the mediapipe version.")
+set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.23" "0.10.22" "0.10.21" "0.10.20")
 string(REPLACE "." "" MEDIAPIPE_DLLVERSION ${MEDIAPIPE_VERSION})
 
+set(MEDIAPIPE_URL_HASH_SHA256_01023 5bc3e7b7d5ffdcb0a0e7d2057c7ea5c344f65371516cf6e42cc8b4bf77ae5ff8)
 set(MEDIAPIPE_URL_HASH_SHA256_01022 25af3c4cc44dfe929eea226ab6cd0dd53a54fbb199db877cc96aa63d0e45d745)
 set(MEDIAPIPE_URL_HASH_SHA256_01021 6492ad36697cca309fe9526c64d65c8844e8128aebc85c390a97c375008d1c34)
 set(MEDIAPIPE_URL_HASH_SHA256_01020 ae0abfc544a37a46f46e20f73010ddbe43cf12b0853701b763d3df1ab986dd36)
@@ -54,10 +55,10 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" 
 # Tell cmake that we will need mediapipe.
 include(FetchContent)
 FetchContent_Populate(mediapipe
-    URL               https://fossies.org/linux/misc/mediapipe-${MEDIAPIPE_VERSION}.tar.gz
-                                        https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
-    URL_HASH          SHA256=${MEDIAPIPE_URL_HASH_SHA256_${MEDIAPIPE_DLLVERSION}}
-    PATCH_COMMAND     "${PATCH_EXECUTABLE}" -p 1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
+    URL             https://fossies.org/linux/misc/mediapipe-${MEDIAPIPE_VERSION}.tar.gz
+                    https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
+    URL_HASH        SHA256=${MEDIAPIPE_URL_HASH_SHA256_${MEDIAPIPE_DLLVERSION}}
+    PATCH_COMMAND   "${PATCH_EXECUTABLE}" -p 1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
 )
 
 file(CREATE_LINK "${CMAKE_CURRENT_SOURCE_DIR}" "${mediapipe_SOURCE_DIR}/${MEDIAPIPE_ADDON_PACKAGE}" SYMBOLIC)
@@ -118,7 +119,7 @@ endif()
 include(FetchContent)
 FetchContent_Populate(autoit_opencv_com
     URL               "${OPENCV_COM_URL}"
-    URL_HASH          SHA256=5875cddbe55ff9432586626291f1ed2d14309f68742289d3fac74923050bc54c
+    URL_HASH          SHA256=255541bd3a6687bf99d96218db1d82277d89d2b11254232daec656f4e7056902
     DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
     SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
 )

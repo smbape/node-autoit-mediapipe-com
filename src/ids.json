@@ -2363,6 +2363,10 @@
         "iid": "d449e397-ad0d-4626-ad12-37b7a8cad2cc",
         "clsid": "295825c2-91ae-47f2-96ba-02e6ea9c3a23"
     },
+    "VectorOfSharedPtrOfImageFrame": {
+        "iid": "34228b82-b8f8-4eec-ae48-42afbb1fd080",
+        "clsid": "647f969f-f6b6-4ee4-93fc-49a763049ee1"
+    },
     "VectorOfBool": {
         "iid": "6b7b11b6-5433-46d3-9dd4-02272c444058",
         "clsid": "70b23e8f-2121-4ca8-8720-b02fd747bb48"

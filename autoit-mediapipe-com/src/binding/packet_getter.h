@@ -40,4 +40,5 @@ namespace mediapipe::autoit::packet_getter {
 	CV_WRAP [[nodiscard]] absl::StatusOr<std::vector<float>> get_float_list(const Packet& packet);
 	CV_WRAP [[nodiscard]] absl::StatusOr<std::shared_ptr<google::protobuf::Message>> get_proto(const Packet& packet);
 	CV_WRAP [[nodiscard]] absl::Status get_proto_list(const Packet& packet, CV_OUT std::vector<std::shared_ptr<google::protobuf::Message>>& proto_list);
+	CV_WRAP [[nodiscard]] absl::Status get_image_frame_list(const Packet& packet, CV_OUT std::vector<std::shared_ptr<ImageFrame>>& image_frame_list);
 }

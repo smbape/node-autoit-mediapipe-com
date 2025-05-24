@@ -153,4 +153,32 @@ namespace mediapipe::autoit::packet_getter {
 
 		return absl::OkStatus();
 	}
+
+	absl::Status get_image_frame_list(const Packet& packet, std::vector<std::shared_ptr<ImageFrame>>& image_frame_list) {
+		if (packet.IsEmpty()) {
+			return absl::OkStatus();
+		}
+
+		const std::vector<ImageFrame>& image_frame_vector = packet.Get<std::vector<ImageFrame>>();
+
+		auto size = image_frame_vector.size();
+		if (size == 0) {
+			return absl::OkStatus();
+		}
+
+		image_frame_list.resize(size);
+		int i = 0;
+		for (const ImageFrame& image_frame : image_frame_vector) {
+			image_frame_list[i++] = std::make_shared<ImageFrame>(
+				image_frame.Format(), image_frame.Width(), image_frame.Height(),
+				image_frame.WidthStep(), const_cast<uint8_t*>(image_frame.PixelData()),
+				// Capture the packet by copy to ensure that the returned ImageFrames
+				// outlive the input ImageFrames. Destroy the captured packet when the
+				// deleter is called to ensure that the input ImageFrames can be
+				// released when no longer needed.
+				/*deleter=*/[p = packet](uint8_t*) mutable { p = Packet(); });
+		}
+
+		return absl::OkStatus();
+	}
 }

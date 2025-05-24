@@ -29,4 +29,5 @@ namespace mediapipe::autoit::packet_creator {
 	CV_WRAP std::shared_ptr<Packet> create_image(const cv::Mat& data, ImageFormat::Format image_format, bool copy = true);
 	CV_WRAP std::shared_ptr<Packet> create_matrix(const cv::Mat& data, bool transpose = false);
 	CV_WRAP std::shared_ptr<Packet> create_proto(const google::protobuf::Message& message);
+	CV_WRAP std::shared_ptr<Packet> create_image_frame_vector(const std::vector<std::shared_ptr<ImageFrame>>& image_frame_list);
 }

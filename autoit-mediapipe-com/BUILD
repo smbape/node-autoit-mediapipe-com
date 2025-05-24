@@ -36,7 +36,7 @@ config_setting(
 
 
 OPENCV_VERSION = "4110"  # 4.11.0
-MEDIAPIPE_VERSION = "0.10.22"
+MEDIAPIPE_VERSION = "0.10.23"
 OUTPUT_NAME = "autoit_mediapipe_com-%s-%s" % (MEDIAPIPE_VERSION, OPENCV_VERSION)
 
 

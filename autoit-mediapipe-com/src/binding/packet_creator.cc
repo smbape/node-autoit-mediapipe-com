@@ -169,4 +169,21 @@ namespace mediapipe::autoit::packet_creator {
 
 		return std::make_shared<Packet>(std::move(std::move(packet).value()));
 	}
+
+	std::shared_ptr<Packet> create_image_frame_vector(const std::vector<std::shared_ptr<ImageFrame>>& image_frame_list) {
+		std::vector<ImageFrame> image_frame_vector;
+		image_frame_vector.reserve(image_frame_list.size());
+
+		for (const auto& image_frame : image_frame_list) {
+			ImageFrame image_frame_copy;
+			image_frame_copy.CopyFrom(*image_frame,
+							  // Use kGlDefaultAlignmentBoundary so that both
+							  // GPU and CPU can process it.
+							  ImageFrame::kGlDefaultAlignmentBoundary);
+			image_frame_vector.push_back(std::move(image_frame_copy));
+		}
+
+		const auto& packet = MakePacket<std::vector<ImageFrame>>(std::move(image_frame_vector));
+		return std::make_shared<Packet>(std::move(packet));
+	}
 }

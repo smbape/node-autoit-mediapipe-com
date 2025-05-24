@@ -19,7 +19,7 @@ explore(sysPath.resolve(__dirname, "../examples/googlesamples/examples"), (path,
     const content = fs.readFileSync(path).toString().replace(/\r?\n|\r/g, LF)
         .replaceAll("#include \"..\\..\\..\\..\\..\\", "#include \"")
         .replaceAll("_Mediapipe_FindDLL(\"opencv_world4110*\")", "\"opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll\"")
-        .replaceAll("_Mediapipe_FindDLL(\"autoit_mediapipe_com-*-4110*\")", "\"autoit-mediapipe-com\\autoit_mediapipe_com-0.10.22-4110.dll\"")
+        .replaceAll("_Mediapipe_FindDLL(\"autoit_mediapipe_com-*-4110*\")", "\"autoit-mediapipe-com\\autoit_mediapipe_com-0.10.23-4110.dll\"")
         .replaceAll("_OpenCV_FindDLL(\"opencv_world4110*\")", "\"opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll\"")
         .replaceAll("_OpenCV_FindDLL(\"autoit_opencv_com4110*\")", "\"autoit-opencv-com\\autoit_opencv_com4110.dll\"")
         .replace("_Mediapipe_FindFile(\"examples\\data\")", "@ScriptDir & \"\\examples\\data\"");

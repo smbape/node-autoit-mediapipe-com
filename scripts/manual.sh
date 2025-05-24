@@ -47,6 +47,9 @@ node scripts/test.js --bash --Release > $(for ifile in autoit-*-com/build_x64/bi
 # ================================
 # pack release
 # ================================
+find examples autoit-mediapipe-com/udf -type d -name 'BackUp' -prune -o -type f -name '*.au3' -not -name '*test.au3' | xargs -I '{}' 'C:\Program Files (x86)\AutoIt3\AutoIt3.exe' 'C:\Program Files (x86)\AutoIt3\SciTE\AutoIt3Wrapper\AutoIt3Wrapper.au3' //Tidy //in '{}' && \
+find examples autoit-mediapipe-com/udf -type d -name 'BackUp' -exec rm -rf '{}' \; && \
+bash -c 'source scripts/tasks.sh && update_new_version' && \
 node scripts/build.js
 
 
@@ -58,11 +61,11 @@ rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/{autoit-mediapipe-*,autoit-open
 git archive --format zip --output /d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com.zip main && \
 7z x autoit-mediapipe-*.7z -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com && \
 7z x autoit-opencv-*.7z -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-opencv-com && \
-echo '25af3c4cc44dfe929eea226ab6cd0dd53a54fbb199db877cc96aa63d0e45d745 mediapipe-0.10.22-src.tar.gz' | sha256sum --check --status || \
-curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.22.tar.gz' -o mediapipe-0.10.22-src.tar.gz && \
-tar xzf mediapipe-0.10.22-src.tar.gz -C /d/Programs/AutoIt/UDF/mediapipe-udf-test/ 'mediapipe-0.10.22/mediapipe/tasks/testdata' && \
-cp -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.22/* /d/Programs/AutoIt/UDF/mediapipe-udf-test/ && \
-rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.22 && \
+echo '5bc3e7b7d5ffdcb0a0e7d2057c7ea5c344f65371516cf6e42cc8b4bf77ae5ff8 mediapipe-0.10.23-src.tar.gz' | sha256sum --check --status || \
+curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.23.tar.gz' -o mediapipe-0.10.23-src.tar.gz && \
+tar xzf mediapipe-0.10.23-src.tar.gz -C /d/Programs/AutoIt/UDF/mediapipe-udf-test/ 'mediapipe-0.10.23/mediapipe/tasks/testdata' && \
+cp -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.23/* /d/Programs/AutoIt/UDF/mediapipe-udf-test/ && \
+rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.23 && \
 7z x /d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com.zip -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test 'examples\*' 'test\*' && \
 node scripts/test.js --bash --Release /d/Programs/AutoIt/UDF/mediapipe-udf-test > $(for ifile in autoit-*-com/build_x64/bin; do echo $ifile/test_all.sh; done) && \
 ./autoit-*-com/build_x64/bin/test_all.sh
