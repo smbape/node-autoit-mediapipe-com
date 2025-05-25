@@ -66,7 +66,7 @@ WINDOWS_DLL_LOCAL_DEFINES = [
 
 def add_library(name, **kwargs):
     kwargs["copts"] = kwargs.get("copts", []) + select({
-        "@bazel_tools//src/conditions:windows": ["/we4834", "/Zc:__cplusplus"],
+        "@platforms//os:windows": ["/we4834", "/Zc:__cplusplus"],
         "//conditions:default": [],
     }) + select({
         ":windows-opt-dbg": ["/Z7"],
@@ -77,7 +77,7 @@ def add_library(name, **kwargs):
     })
 
     kwargs["local_defines"] = kwargs.get("local_defines", []) + select({
-        "@bazel_tools//src/conditions:windows": WINDOWS_DLL_LOCAL_DEFINES,
+        "@platforms//os:windows": WINDOWS_DLL_LOCAL_DEFINES,
         "//conditions:default": [],
     })
 
@@ -87,18 +87,17 @@ def add_library(name, **kwargs):
             # "/PDB:" + pdb
         ],
         "//conditions:default": [],
+    }) + select({
+        "@platforms//os:linux": ["-Wl,--no-undefined"],
+        "@platforms//os:macos": ["-Wl,-undefined,error"],
+        "@platforms//os:windows": [],
+        "//conditions:default": [],
     })
 
-    kwargs["deps"] = kwargs.get("deps", []) + select({
-        "//mediapipe:android_x86": ["@android_opencv//:libopencv_x86"],
-        "//mediapipe:android_x86_64": ["@android_opencv//:libopencv_x86_64"],
-        "//mediapipe:android_arm": ["@android_opencv//:libopencv_armeabi-v7a"],
-        "//mediapipe:android_arm64": ["@android_opencv//:libopencv_arm64-v8a"],
-        "//mediapipe:ios": ["@ios_opencv//:opencv"],
-        "//mediapipe:macos": ["@macos_opencv//:opencv"],
-        "//mediapipe:windows": ["@windows_opencv//:opencv"],
-        "//conditions:default": ["@linux_opencv//:opencv"],
-    }) + [
+    kwargs["deps"] = kwargs.get("deps", []) + [
+        # opencv
+        "//third_party:opencv",
+
         # util
         "//mediapipe/framework:calculator_cc_proto",
         "//mediapipe/framework:timestamp",

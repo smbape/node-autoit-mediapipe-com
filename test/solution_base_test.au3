@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.23/mediapipe/python/solution_base_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.24/mediapipe/python/solution_base_test.py
 
 #include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -20,6 +20,9 @@ OnAutoItExitRegister("_OnAutoItExit")
 ; Tell mediapipe where to look its resource files
 _Mediapipe_SetResourceDir()
 
+Global Const $cv = _OpenCV_get()
+_AssertIsObj($cv, "Failed to load opencv")
+
 Global Const $text_format = _Mediapipe_ObjCreate("google.protobuf.text_format")
 _AssertIsObj($text_format, "Failed to load google.protobuf.text_format")
 
@@ -29,75 +32,79 @@ _AssertIsObj($calculator_pb2, "Failed to load mediapipe.framework.calculator_pb2
 Global Const $detection_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.detection_pb2")
 _AssertIsObj($detection_pb2, "Failed to load mediapipe.framework.formats.detection_pb2")
 
+Global Const $time_series_header_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.time_series_header_pb2")
+_AssertIsObj($time_series_header_pb2, "Failed to load mediapipe.framework.formats.time_series_header_pb2")
+
 Global Const $solution_base = _Mediapipe_ObjCreate("mediapipe.autoit.solution_base")
 _AssertIsObj($solution_base, "Failed to load mediapipe.autoit.solution_base")
 
-Global Const $CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG = "" & @CRLF & _
-		"  input_stream: 'image_in'" & @CRLF & _
-		"  output_stream: 'image_out'" & @CRLF & _
-		"  node {" & @CRLF & _
-		"    name: 'ImageTransformation'" & @CRLF & _
-		"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-		"    input_stream: 'IMAGE:image_in'" & @CRLF & _
-		"    output_stream: 'IMAGE:image_out'" & @CRLF & _
-		"    options: {" & @CRLF & _
-		"      [mediapipe.ImageTransformationCalculatorOptions.ext] {" & @CRLF & _
-		"         output_width: 10" & @CRLF & _
-		"         output_height: 10" & @CRLF & _
-		"      }" & @CRLF & _
-		"    }" & @CRLF & _
-		"    node_options: {" & @CRLF & _
-		"      [type.googleapis.com/mediapipe.ImageTransformationCalculatorOptions] {" & @CRLF & _
-		"         output_width: 10" & @CRLF & _
-		"         output_height: 10" & @CRLF & _
-		"      }" & @CRLF & _
-		"    }" & @CRLF & _
-		"  }" & @CRLF & _
+Global Const $CALCULATOR_OPTIONS_TEST_GRAPH_CONFIG = "" & @LF & _
+		"  input_stream: 'image_in'" & @LF & _
+		"  output_stream: 'image_out'" & @LF & _
+		"  node {" & @LF & _
+		"    name: 'ImageTransformation'" & @LF & _
+		"    calculator: 'ImageTransformationCalculator'" & @LF & _
+		"    input_stream: 'IMAGE:image_in'" & @LF & _
+		"    output_stream: 'IMAGE:image_out'" & @LF & _
+		"    options: {" & @LF & _
+		"      [mediapipe.ImageTransformationCalculatorOptions.ext] {" & @LF & _
+		"         output_width: 10" & @LF & _
+		"         output_height: 10" & @LF & _
+		"      }" & @LF & _
+		"    }" & @LF & _
+		"    node_options: {" & @LF & _
+		"      [type.googleapis.com/mediapipe.ImageTransformationCalculatorOptions] {" & @LF & _
+		"         output_width: 10" & @LF & _
+		"         output_height: 10" & @LF & _
+		"      }" & @LF & _
+		"    }" & @LF & _
+		"  }" & @LF & _
 		""
 
 Test()
 
 Func Test()
 	test_valid_input_data_type_proto()
+	test_valid_input_data_type_audio()
 
-	test_solution_process("" & @CRLF & _
-			"  input_stream: 'image_in'" & @CRLF & _
-			"  output_stream: 'image_out'" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:image_in'" & @CRLF & _
-			"    output_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
-			"  }" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
-			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
-			"  }" & @CRLF & _
+	test_solution_process("" & @LF & _
+			"  input_stream: 'image_in'" & @LF & _
+			"  output_stream: 'image_out'" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ImageTransformationCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:image_in'" & @LF & _
+			"    output_stream: 'IMAGE:transformed_image_in'" & @LF & _
+			"  }" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ImageTransformationCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:transformed_image_in'" & @LF & _
+			"    output_stream: 'IMAGE:image_out'" & @LF & _
+			"  }" & @LF & _
 			"")
 
-	test_solution_process("" & @CRLF & _
-			"  input_stream: 'image_in'" & @CRLF & _
-			"  input_side_packet: 'allow_signal'" & @CRLF & _
-			"  input_side_packet: 'rotation_degrees'" & @CRLF & _
-			"  output_stream: 'image_out'" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:image_in'" & @CRLF & _
-			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @CRLF & _
-			"    output_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
-			"  }" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'GateCalculator'" & @CRLF & _
-			"    input_stream: 'transformed_image_in'" & @CRLF & _
-			"    input_side_packet: 'ALLOW:allow_signal'" & @CRLF & _
-			"    output_stream: 'image_out_to_transform'" & @CRLF & _
-			"  }" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:image_out_to_transform'" & @CRLF & _
-			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @CRLF & _
-			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
-			"  }" & @CRLF & _
+	test_solution_process("" & @LF & _
+			"  input_stream: 'image_in'" & @LF & _
+			"  input_side_packet: 'allow_signal'" & @LF & _
+			"  input_side_packet: 'rotation_degrees'" & @LF & _
+			"  output_stream: 'image_out'" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ImageTransformationCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:image_in'" & @LF & _
+			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @LF & _
+			"    output_stream: 'IMAGE:transformed_image_in'" & @LF & _
+			"  }" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'GateCalculator'" & @LF & _
+			"    input_stream: 'transformed_image_in'" & @LF & _
+			"    input_side_packet: 'ALLOW:allow_signal'" & @LF & _
+			"    output_stream: 'image_out_to_transform'" & @LF & _
+			"  }" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ImageTransformationCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:image_out_to_transform'" & @LF & _
+			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @LF & _
+			"    output_stream: 'IMAGE:image_out'" & @LF & _
+			"  }" & @LF & _
 			"", _Mediapipe_MapOfStringAndVariant( _
 			"allow_signal", True, _
 			"rotation_degrees", 0 _
@@ -107,44 +114,44 @@ Func Test()
 	test_modifying_calculator_proto3_node_options()
 	test_adding_calculator_options()
 
-	test_solution_reset("" & @CRLF & _
-			"  input_stream: 'image_in'" & @CRLF & _
-			"  output_stream: 'image_out'" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:image_in'" & @CRLF & _
-			"    output_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
-			"  }" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
-			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
-			"  }" & @CRLF & _
+	test_solution_reset("" & @LF & _
+			"  input_stream: 'image_in'" & @LF & _
+			"  output_stream: 'image_out'" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ImageTransformationCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:image_in'" & @LF & _
+			"    output_stream: 'IMAGE:transformed_image_in'" & @LF & _
+			"  }" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ImageTransformationCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:transformed_image_in'" & @LF & _
+			"    output_stream: 'IMAGE:image_out'" & @LF & _
+			"  }" & @LF & _
 			"", Default)
 
-	test_solution_reset("" & @CRLF & _
-			"  input_stream: 'image_in'" & @CRLF & _
-			"  input_side_packet: 'allow_signal'" & @CRLF & _
-			"  input_side_packet: 'rotation_degrees'" & @CRLF & _
-			"  output_stream: 'image_out'" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:image_in'" & @CRLF & _
-			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @CRLF & _
-			"    output_stream: 'IMAGE:transformed_image_in'" & @CRLF & _
-			"  }" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'GateCalculator'" & @CRLF & _
-			"    input_stream: 'transformed_image_in'" & @CRLF & _
-			"    input_side_packet: 'ALLOW:allow_signal'" & @CRLF & _
-			"    output_stream: 'image_out_to_transform'" & @CRLF & _
-			"  }" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ImageTransformationCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:image_out_to_transform'" & @CRLF & _
-			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @CRLF & _
-			"    output_stream: 'IMAGE:image_out'" & @CRLF & _
-			"  }" & @CRLF & _
+	test_solution_reset("" & @LF & _
+			"  input_stream: 'image_in'" & @LF & _
+			"  input_side_packet: 'allow_signal'" & @LF & _
+			"  input_side_packet: 'rotation_degrees'" & @LF & _
+			"  output_stream: 'image_out'" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ImageTransformationCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:image_in'" & @LF & _
+			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @LF & _
+			"    output_stream: 'IMAGE:transformed_image_in'" & @LF & _
+			"  }" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'GateCalculator'" & @LF & _
+			"    input_stream: 'transformed_image_in'" & @LF & _
+			"    input_side_packet: 'ALLOW:allow_signal'" & @LF & _
+			"    output_stream: 'image_out_to_transform'" & @LF & _
+			"  }" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ImageTransformationCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:image_out_to_transform'" & @LF & _
+			"    input_side_packet: 'ROTATION_DEGREES:rotation_degrees'" & @LF & _
+			"    output_stream: 'IMAGE:image_out'" & @LF & _
+			"  }" & @LF & _
 			"", _Mediapipe_MapOfStringAndVariant( _
 			"allow_signal", True, _
 			"rotation_degrees", 0 _
@@ -154,14 +161,14 @@ Func Test()
 EndFunc   ;==>Test
 
 Func test_valid_input_data_type_proto()
-	Local $text_config = "" & @CRLF & _
-			"  input_stream: 'input_detections'" & @CRLF & _
-			"  output_stream: 'output_detections'" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'DetectionUniqueIdCalculator'" & @CRLF & _
-			"    input_stream: 'DETECTION_LIST:input_detections'" & @CRLF & _
-			"    output_stream: 'DETECTION_LIST:output_detections'" & @CRLF & _
-			"  }" & @CRLF & _
+	Local $text_config = "" & @LF & _
+			"  input_stream: 'input_detections'" & @LF & _
+			"  output_stream: 'output_detections'" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'DetectionUniqueIdCalculator'" & @LF & _
+			"    input_stream: 'DETECTION_LIST:input_detections'" & @LF & _
+			"    output_stream: 'DETECTION_LIST:output_detections'" & @LF & _
+			"  }" & @LF & _
 			""
 
 	Local $config_proto = $text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig())
@@ -183,6 +190,59 @@ Func test_valid_input_data_type_proto()
 	_AssertEqual($results("output_detections").detection(0).__str__(), $expected_detection_1.__str__())
 	_AssertEqual($results("output_detections").detection(1).__str__(), $expected_detection_2.__str__())
 EndFunc   ;==>test_valid_input_data_type_proto
+
+Func test_valid_input_data_type_audio()
+	Local $text_config = "" & @LF & _
+			"  input_side_packet: 'audio_header'" & @LF & _
+			"  input_stream: 'input_audio'" & @LF & _
+			"  output_stream: 'output_audio'" & @LF & _
+			"" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'AddHeaderCalculator'" & @LF & _
+			"    input_side_packet: 'HEADER:audio_header'" & @LF & _
+			"    input_stream: 'DATA:input_audio'" & @LF & _
+			"    output_stream: 'input_audio_with_header'" & @LF & _
+			"  }" & @LF & _
+			"" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ResampleTimeSeriesCalculator'" & @LF & _
+			"    input_stream: 'input_audio_with_header'" & @LF & _
+			"    output_stream: 'output_audio'" & @LF & _
+			"    options {" & @LF & _
+			"      [mediapipe.ResampleTimeSeriesCalculatorOptions.ext] {" & @LF & _
+			"        resampler_type: RESAMPLER_RATIONAL_FACTOR" & @LF & _
+			"        target_sample_rate: 16000.0" & @LF & _
+			"        check_inconsistent_timestamps: false" & @LF & _
+			"        resampler_rational_factor_options {" & @LF & _
+			"          # equivalent to libresample's 'high quality' mode" & @LF & _
+			"          radius_factor: 17.0" & @LF & _
+			"        }" & @LF & _
+			"      }" & @LF & _
+			"    }" & @LF & _
+			"  }"
+	Local $config_proto = $text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig())
+
+	Local $audio_header = $time_series_header_pb2.TimeSeriesHeader()
+	$audio_header.sample_rate = 16000
+	$audio_header.num_channels = 1
+
+	Local $solution = $solution_base.SolutionBase(_Mediapipe_Params( _
+			"graph_config", $config_proto, _
+			"side_inputs", _Mediapipe_MapOfStringAndVariant("audio_header", $audio_header), _
+			"stream_type_hints", _Mediapipe_Map("String", "PacketDataType", _
+			"input_audio", $MEDIAPIPE_AUTOIT_SOLUTION_BASE_PACKET_DATA_TYPE_AUDIO, _
+			"output_audio", $MEDIAPIPE_AUTOIT_SOLUTION_BASE_PACKET_DATA_TYPE_AUDIO _
+			), _
+			"side_packet_type_hints", _Mediapipe_Map("String", "PacketDataType", _
+			"audio_header", $MEDIAPIPE_AUTOIT_SOLUTION_BASE_PACKET_DATA_TYPE_PROTO _
+			) _
+			))
+	Local $input_audio = _RandomImage(1, 16000, $CV_32FC1, 0, 1)
+	Local $results = $solution.process(_Mediapipe_MapOfStringAndVariant('input_audio', $input_audio))
+	_AssertTrue($results.has("output_audio"))
+	_AssertIsNotNone($results("output_audio"))
+	_AssertMatEqual($results("output_audio"), $input_audio)
+EndFunc   ;==>test_valid_input_data_type_audio
 
 Func test_solution_process($text_config, $side_inputs = Default)
 	_process_and_verify( _
@@ -248,14 +308,14 @@ Func test_solution_reset($text_config, $side_inputs)
 EndFunc   ;==>test_solution_reset
 
 Func test_solution_stream_type_hints()
-	Local $text_config = "" & @CRLF & _
-			"  input_stream: 'union_type_image_in'" & @CRLF & _
-			"  output_stream: 'image_type_out'" & @CRLF & _
-			"  node {" & @CRLF & _
-			"    calculator: 'ToImageCalculator'" & @CRLF & _
-			"    input_stream: 'IMAGE:union_type_image_in'" & @CRLF & _
-			"    output_stream: 'IMAGE:image_type_out'" & @CRLF & _
-			"  }" & @CRLF & _
+	Local $text_config = "" & @LF & _
+			"  input_stream: 'union_type_image_in'" & @LF & _
+			"  output_stream: 'image_type_out'" & @LF & _
+			"  node {" & @LF & _
+			"    calculator: 'ToImageCalculator'" & @LF & _
+			"    input_stream: 'IMAGE:union_type_image_in'" & @LF & _
+			"    output_stream: 'IMAGE:image_type_out'" & @LF & _
+			"  }" & @LF & _
 			"" & @CRLF
 
 	Local $config_proto = $text_format.Parse($text_config, $calculator_pb2.CalculatorGraphConfig())

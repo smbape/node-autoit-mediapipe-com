@@ -10,9 +10,9 @@ namespace mediapipe::tasks::autoit::components::processors::classifier_options {
 		ClassifierOptions& operator=(const ClassifierOptions& other) = default;
 
 		CV_WRAP ClassifierOptions(
-			const std::optional<std::string>& display_names_locale = std::optional<std::string>(),
-			const std::optional<int>& max_results = std::optional<int>(),
-			const std::optional<float>& score_threshold = std::optional<float>(),
+			const std::optional<std::string>& display_names_locale = std::nullopt,
+			const std::optional<int>& max_results = std::nullopt,
+			const std::optional<float>& score_threshold = std::nullopt,
 			const std::shared_ptr<std::vector<std::string>>& category_allowlist = std::make_shared<std::vector<std::string>>(),
 			const std::shared_ptr<std::vector<std::string>>& category_denylist = std::make_shared<std::vector<std::string>>()
 		)

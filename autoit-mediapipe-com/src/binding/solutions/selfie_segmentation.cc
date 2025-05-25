@@ -20,6 +20,8 @@ namespace mediapipe::autoit::solutions::selfie_segmentation {
 			},
 			{ "segmentation_mask" },
 			noTypeMap(),
+			noTypeMap(),
+			std::nullopt,
 			static_cast<SelfieSegmentation*>(nullptr)
 		);
 	}

@@ -13,7 +13,7 @@ namespace mediapipe::tasks::autoit::components::containers::audio_data {
 
 		CV_WRAP AudioDataFormat(
 			int num_channels = 1,
-			const std::optional<float>& sample_rate = std::optional<float>()
+			const std::optional<float>& sample_rate = std::nullopt
 		) :
 			num_channels(num_channels),
 			sample_rate(sample_rate)
@@ -38,7 +38,7 @@ namespace mediapipe::tasks::autoit::components::containers::audio_data {
 		}
 
 		CV_WRAP [[nodiscard]] absl::Status load_from_mat(cv::Mat src, int offset = 0, int size = -1);
-		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<AudioData>> create_from_mat(cv::Mat src, const std::optional<float>& sample_rate = std::optional<float>());
+		CV_WRAP [[nodiscard]] static absl::StatusOr<std::shared_ptr<AudioData>> create_from_mat(cv::Mat src, const std::optional<float>& sample_rate = std::nullopt);
 
 		CV_WRAP_AS(get audio_format) const AudioDataFormat audio_format() const {
 			return _audio_format;

@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.23/mediapipe/python/packet_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.24/mediapipe/python/packet_test.py
 
 #include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -440,10 +440,10 @@ Func test_image_frame_packet_creation_reference_mode()
 	Local $rgb_data = _RandomImage($w, $h, CV_MAKETYPE($CV_8U, $channels), 0, 2 ^ 8)
 
 	Local $text_config = _
-			"node {" & @CRLF & _
-			"  calculator: 'PassThroughCalculator'" & @CRLF & _
-			"  input_side_packet: 'in'" & @CRLF & _
-			"  output_side_packet: 'out'" & @CRLF & _
+			"node {" & @LF & _
+			"  calculator: 'PassThroughCalculator'" & @LF & _
+			"  input_side_packet: 'in'" & @LF & _
+			"  output_side_packet: 'out'" & @LF & _
 			"}"
 
 	Local $graph = $CalculatorGraph(_Mediapipe_Params("graph_config", $text_config))
@@ -485,10 +485,10 @@ Func test_image_packet_creation_reference_mode()
 	Local $rgb_data = _RandomImage($w, $h, CV_MAKETYPE($CV_8U, $channels), 0, 2 ^ 8)
 
 	Local $text_config = _
-			"node {" & @CRLF & _
-			"  calculator: 'PassThroughCalculator'" & @CRLF & _
-			"  input_side_packet: 'in'" & @CRLF & _
-			"  output_side_packet: 'out'" & @CRLF & _
+			"node {" & @LF & _
+			"  calculator: 'PassThroughCalculator'" & @LF & _
+			"  input_side_packet: 'in'" & @LF & _
+			"  output_side_packet: 'out'" & @LF & _
 			"}"
 
 	Local $graph = $CalculatorGraph(_Mediapipe_Params("graph_config", $text_config))

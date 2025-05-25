@@ -57,7 +57,7 @@ FetchContent_Populate(opencv-patch
     DOWNLOAD_NO_EXTRACT TRUE
     DOWNLOAD_DIR        "${OPENCV_DOWNLOAD_DIR}"
     SOURCE_DIR          "${OPENCV_DOWNLOAD_DIR}"
-    PATCH_COMMAND       "${PATCH_EXECUTABLE}" -p 1 -d "<DOWNLOAD_DIR>/${OpenCV_OUTPUT_DIR}/opencv/sources/"
+    PATCH_COMMAND       "${PATCH_EXECUTABLE}" -p1 -d "<DOWNLOAD_DIR>/${OpenCV_OUTPUT_DIR}/opencv/sources/"
                                                 -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-opencv-src.patch"
 )
 

@@ -50,7 +50,7 @@ index 525f0878e..f1b38dabd 100644
  .user.bazelrc
 +@MEDIAPIPE_ADDON_PACKAGE@
 diff --git a/WORKSPACE b/WORKSPACE
-index 0948b6197..4524c15a1 100644
+index 711e16b5b..310ee2645 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
 @@ -25,6 +25,11 @@ load("@bazel_skylib//lib:versions.bzl", "versions")
@@ -65,7 +65,21 @@ index 0948b6197..4524c15a1 100644
  # ABSL on 2023-10-18
  http_archive(
      name = "com_google_absl",
-@@ -547,14 +552,16 @@ http_archive(
+@@ -300,6 +305,13 @@ http_archive(
+ # pthreadpool is a dependency of XNNPACK, from 2025-04-02
+ http_archive(
+     name = "pthreadpool",
++    patch_args = [
++        "-p1",
++    ],
++    patches = [
++        # Fix Windows build
++        "@//third_party:pthreadpool_build_fixes.diff",
++    ],
+     # `curl -L <url> | shasum -a 256`
+     sha256 = "745e56516d6a58d183eb33d9017732d87cff43ce9f78908906f9faa52633e421",
+     strip_prefix = "pthreadpool-b92447772365661680f486e39a91dfe6675adafc",
+@@ -561,14 +573,16 @@ http_archive(
      url = "https://github.com/ceres-solver/ceres-solver/archive/123fba61cf2611a3c8bddc9d91416db26b10b558.zip",
  )
  
@@ -84,7 +98,7 @@ index 0948b6197..4524c15a1 100644
      name = "linux_opencv",
      build_file = "@//third_party:opencv_linux.BUILD",
      path = "/usr",
-@@ -566,7 +573,8 @@ new_local_repository(
+@@ -580,7 +594,8 @@ new_local_repository(
      path = "/usr",
  )
  
@@ -94,7 +108,7 @@ index 0948b6197..4524c15a1 100644
      name = "macos_opencv",
      build_file = "@//third_party:opencv_macos.BUILD",
      # For local MacOS builds, the path should point to an opencv@3 installation.
-@@ -581,13 +589,15 @@ new_local_repository(
+@@ -595,13 +610,15 @@ new_local_repository(
      path = "/usr/local/opt/ffmpeg",
  )
  
@@ -112,7 +126,7 @@ index 0948b6197..4524c15a1 100644
      name = "android_opencv",
      build_file = "@//third_party:opencv_android.BUILD",
      strip_prefix = "OpenCV-android-sdk",
-@@ -599,7 +609,8 @@ http_archive(
+@@ -613,7 +630,8 @@ http_archive(
  # trigger duplicate symbol errors in the linking stage of building a mediapipe ios app.
  # To get a higher version of OpenCV for iOS, opencv2.framework needs to be built from source with
  # '-DBUILD_PROTOBUF=OFF -DBUILD_opencv_dnn=OFF'.
@@ -229,11 +243,50 @@ index 53a0e0f47..a18604ab8 100644
      "kGpuService", GraphServiceBase::kAllowDefaultInitialization);
  
  }  // namespace mediapipe
+diff --git a/mediapipe/python/BUILD b/mediapipe/python/BUILD
+index 5837be764..9872325b5 100644
+--- a/mediapipe/python/BUILD
++++ b/mediapipe/python/BUILD
+@@ -21,18 +21,6 @@ package(default_visibility = ["//visibility:public"])
+ pybind_extension(
+     name = "_framework_bindings",
+     srcs = ["framework_bindings.cc"],
+-    linkopts = select({
+-        "//third_party:opencv_source_build": [],
+-        "//conditions:default": [
+-            "-lopencv_core",
+-            "-lopencv_imgproc",
+-            "-lopencv_highgui",
+-            "-lopencv_video",
+-            "-lopencv_features2d",
+-            "-lopencv_calib3d",
+-            "-lopencv_imgcodecs",
+-        ],
+-    }),
+     module_name = "_framework_bindings",
+     deps = [
+         ":builtin_calculators",
+@@ -60,12 +48,15 @@ pybind_extension(
+         "//mediapipe/framework/formats:rect_registration",
+         "//mediapipe/modules/objectron/calculators:annotation_registration",
+         "//mediapipe/tasks/cc/vision/face_geometry/proto:face_geometry_registration",
++        "//third_party:opencv",
+     ],
+ )
+ 
+ cc_library(
+     name = "builtin_calculators",
+     deps = [
++        "//mediapipe/calculators/audio:resample_time_series_calculator",
++        "//mediapipe/calculators/core:add_header_calculator",
+         "//mediapipe/calculators/core:gate_calculator",
+         "//mediapipe/calculators/core:pass_through_calculator",
+         "//mediapipe/calculators/core:side_packet_to_stream_calculator",
 diff --git a/mediapipe/tasks/BUILD b/mediapipe/tasks/BUILD
-index 582fc4c30..3099073af 100644
+index 665e70eb2..8adc4a1b2 100644
 --- a/mediapipe/tasks/BUILD
 +++ b/mediapipe/tasks/BUILD
-@@ -17,6 +17,7 @@ package(default_visibility = ["//visibility:public"])
+@@ -25,6 +25,7 @@ config_setting(
  package_group(
      name = "internal",
      packages = [
@@ -412,3 +465,163 @@ index e28094eef..8c5a08e2e 100644
    // Try to load the file from bazel-bin. If it does not exist, fall back to the
    // resource folder.
    auto bazel_path = internal::PathToResourceAsFileInternal(qualified_path);
+diff --git a/setup.py b/setup.py
+index e5422ffb6..1e0f874c2 100644
+--- a/setup.py
++++ b/setup.py
+@@ -59,6 +59,43 @@ def _normalize_path(path):
+   return path.replace('\\', '/') if IS_WINDOWS else path
+ 
+ 
++EXTRA_OPTIONS = ['--python_path=' + _normalize_path(sys.executable)]
++
++try:
++  with open(os.path.join(MP_ROOT_PATH, '.py-bazelrc')) as f:
++    EXTRA_OPTIONS = [l.strip() for l in f.readlines()]
++except IOError as e:
++  pass
++
++BAZEL_COMMAND = [
++  'bazel',
++]
++
++if os.environ.get('OUTPUT_USER_ROOT'):
++  BAZEL_COMMAND += [
++    '--output_user_root=' + os.environ.get('OUTPUT_USER_ROOT'),
++  ]
++
++if os.environ.get('OUTPUT_BASE'):
++  BAZEL_COMMAND += [
++    '--output_base=' + os.environ.get('OUTPUT_BASE'),
++  ]
++
++BAZEL_COMMAND += ['build']
++
++if os.environ.get('MEDIAPIPE_BUILD_TYPE') != 'Debug':
++  BAZEL_COMMAND += [
++    '--compilation_mode=opt',
++    '--copt=-DNDEBUG',
++  ]
++else:
++  BAZEL_COMMAND += ['--compilation_mode=dbg']
++
++BAZEL_COMMAND += [
++  '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
++] + GPU_OPTIONS + EXTRA_OPTIONS
++
++
+ def _get_backup_file(path):
+   return path + '.backup'
+ 
+@@ -226,10 +263,13 @@ class GeneratePyProtos(build_ext.build_ext):
+     output = os.path.join(self.build_lib, source.replace('.proto', '_pb2.py'))
+     if not os.path.exists(output):
+       sys.stderr.write('generating proto file: %s\n' % output)
++      protoc_argv = []
++      if 'PROTO_PATH' in os.environ and os.environ['PROTO_PATH']:
++        protoc_argv = ['-I' + include for include in os.environ['PROTO_PATH'].split(';')]
+       protoc_command = [
+           self._protoc, '-I.',
+           '--python_out=' + os.path.abspath(self.build_lib), source
+-      ]
++      ] + protoc_argv
+       _invoke_shell_command(protoc_command)
+ 
+ 
+@@ -289,9 +329,7 @@ class BuildModules(build_ext.build_ext):
+   def _download_external_file(self, external_file):
+     """Download an external file from GCS via Bazel."""
+ 
+-    fetch_model_command = [
+-        'bazel',
+-        'build',
++    fetch_model_command = BAZEL_COMMAND + [
+         external_file,
+     ]
+     _invoke_shell_command(fetch_model_command)
+@@ -300,17 +338,12 @@ class BuildModules(build_ext.build_ext):
+   def _generate_binary_graph(self, binary_graph_target):
+     """Generate binary graph for a particular MediaPipe binary graph target."""
+ 
+-    bazel_command = [
+-        'bazel',
+-        'build',
+-        '--compilation_mode=opt',
+-        '--copt=-DNDEBUG',
+-        '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
+-        binary_graph_target,
+-    ] + GPU_OPTIONS
++    bazel_command = BAZEL_COMMAND + [
++      binary_graph_target,
++    ]
+ 
+     if not self.link_opencv and not IS_WINDOWS:
+-      bazel_command.append('--define=OPENCV=source')
++      pass
+ 
+     _invoke_shell_command(bazel_command)
+     _copy_to_build_lib_dir(self.build_lib, binary_graph_target)
+@@ -327,13 +360,9 @@ class GenerateMetadataSchema(build_ext.build_ext):
+         'schema_py',
+     ]:
+ 
+-      bazel_command = [
+-          'bazel',
+-          'build',
+-          '--compilation_mode=opt',
+-          '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
++      bazel_command = BAZEL_COMMAND + [
+           '//mediapipe/tasks/metadata:' + target,
+-      ] + GPU_OPTIONS
++      ]
+ 
+       _invoke_shell_command(bazel_command)
+       _copy_to_build_lib_dir(
+@@ -415,20 +444,15 @@ class BuildExtension(build_ext.build_ext):
+   def _build_binary(self, ext, extra_args=None):
+     if not os.path.exists(self.build_temp):
+       os.makedirs(self.build_temp)
+-    bazel_command = [
+-        'bazel',
+-        'build',
+-        '--compilation_mode=opt',
+-        '--copt=-DNDEBUG',
++    bazel_command = BAZEL_COMMAND + [
+         '--keep_going',
+-        '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
+         str(ext.bazel_target + '.so'),
+-    ] + GPU_OPTIONS
++    ]
+ 
+     if extra_args:
+       bazel_command += extra_args
+     if not self.link_opencv and not IS_WINDOWS:
+-      bazel_command.append('--define=OPENCV=source')
++      pass
+ 
+     _invoke_shell_command(bazel_command)
+     ext_bazel_bin_path = os.path.join('bazel-bin', ext.relpath,
+diff --git a/third_party/pthreadpool_build_fixes.diff b/third_party/pthreadpool_build_fixes.diff
+new file mode 100644
+index 000000000..38d8f0f90
+--- /dev/null
++++ b/third_party/pthreadpool_build_fixes.diff
+@@ -0,0 +1,18 @@
++diff --git a/BUILD.bazel b/BUILD.bazel
++index 396537f..4232f2d 100644
++--- a/BUILD.bazel
+++++ b/BUILD.bazel
++@@ -67,9 +67,10 @@ cc_library(
++     hdrs = [
++         "include/pthreadpool.h",
++     ],
++-    copts = [
++-        "-std=c11",
++-    ] + select({
+++    copts = select({
+++        "@bazel_tools//src/conditions:windows": ["/std:c11", "/experimental:c11atomics"],
+++        "//conditions:default": ["-std=c11"],
+++    }) + select({
++         ":optimized_build": ["-O2"],
++         "//conditions:default": [],
++     }) + select({

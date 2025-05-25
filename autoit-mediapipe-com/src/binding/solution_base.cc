@@ -83,6 +83,22 @@ namespace {
 	}
 }
 
+namespace cv {
+	template<typename _Tp, int _rows, int _cols, int _options, int _maxRows, int _maxCols, int Options, typename StrideType>
+	inline void eigen2cv(const Eigen::Ref<const Eigen::Matrix<_Tp, _rows, _cols, _options, _maxRows, _maxCols>, Options, StrideType>& src, OutputArray dst) {
+		if (!(src.Flags & Eigen::RowMajorBit)) {
+			cv::Mat _src(src.cols(), src.rows(), traits::Type<_Tp>::value,
+				(void*)src.data(), src.outerStride() * sizeof(_Tp));
+			cv::transpose(_src, dst);
+		}
+		else {
+			cv::Mat _src(src.rows(), src.cols(), traits::Type<_Tp>::value,
+				(void*)src.data(), src.outerStride() * sizeof(_Tp));
+			_src.copyTo(dst);
+		}
+	}
+}
+
 using RepeatedContainer = google::protobuf::autoit::RepeatedContainer;
 
 #define StringifyPacketDataType(enum_value) PacketDataTypeToChar[static_cast<int>(enum_value)]
@@ -124,6 +140,7 @@ namespace {
 		{"::mediapipe::LandmarkListCollection", PacketDataType::PROTO},
 		{"::mediapipe::NormalizedLandmark", PacketDataType::PROTO},
 		{"::mediapipe::FrameAnnotation", PacketDataType::PROTO},
+		{"::mediapipe::TimeSeriesHeader", PacketDataType::PROTO},
 		{"::mediapipe::Trigger", PacketDataType::PROTO},
 		{"::mediapipe::Rect", PacketDataType::PROTO},
 		{"::mediapipe::NormalizedRect", PacketDataType::PROTO},
@@ -153,7 +170,7 @@ namespace {
 		return std::vector<std::string>();
 	}
 
-	inline const [[nodiscard]] absl::StatusOr<PacketDataType> FromRegisteredName(const std::string& registered_name) {
+	[[nodiscard]] inline const absl::StatusOr<PacketDataType> FromRegisteredNameToType(const std::string& registered_name) {
 		if (NAME_TO_TYPE.count(registered_name)) {
 			return NAME_TO_TYPE.at(registered_name);
 		}
@@ -189,10 +206,10 @@ namespace {
 	 * @param  stream_type_hints
 	 * @return
 	 */
-	inline const [[nodiscard]] absl::StatusOr<PacketDataType> GetStreamPacketType(
+	[[nodiscard]] inline const absl::StatusOr<PacketDataType> GetStreamPacketType(
 		ValidatedGraphConfig& validated_graph,
-		const std::string& packet_tag_index_name,
-		const std::map<std::string, PacketDataType>& stream_type_hints
+		const std::map<std::string, PacketDataType>& stream_type_hints,
+		const std::string& packet_tag_index_name
 	) {
 		auto stream_name = GetName(packet_tag_index_name);
 		if (stream_type_hints.count(stream_name)) {
@@ -200,7 +217,7 @@ namespace {
 		}
 
 		MP_ASSIGN_OR_RETURN(auto stream_type_name, validated_graph.RegisteredStreamTypeName(stream_name));
-		return FromRegisteredName(stream_type_name);
+		return FromRegisteredNameToType(stream_type_name);
 	}
 
 	/**
@@ -208,18 +225,23 @@ namespace {
 	 * validated calculator graph. The mappings from the side packet names to the
 	 * packet data types is for making the input_side_packets dict for graph
 	 * start_run().
-	 * @param  validated_graph
-	 * @param  packet_tag_index_name
+	 * @param validated_graph        [description]
+	 * @param side_packet_type_hints [description]
+	 * @param packet_tag_index_name  [description]
 	 * @return
 	 */
 	inline absl::StatusOr<PacketDataType> GetSidePacketType(
 		ValidatedGraphConfig& validated_graph,
+		const std::map<std::string, PacketDataType>& side_packet_type_hints,
 		const std::string& packet_tag_index_name
 	) {
-		auto stream_name = GetName(packet_tag_index_name);
+		auto side_name = GetName(packet_tag_index_name);
+		if (side_packet_type_hints.count(side_name)) {
+			return side_packet_type_hints.at(side_name);
+		}
 
-		MP_ASSIGN_OR_RETURN(auto stream_type_name, validated_graph.RegisteredSidePacketTypeName(stream_name));
-		return FromRegisteredName(stream_type_name);
+		MP_ASSIGN_OR_RETURN(auto stream_type_name, validated_graph.RegisteredSidePacketTypeName(side_name));
+		return FromRegisteredNameToType(stream_type_name);
 	}
 
 	/**
@@ -440,9 +462,13 @@ namespace {
 		}
 
 		static _variant_t image_format = None;
-		static _variant_t copy_image = None;
 		static VARIANT* v_image_format = &image_format;
+
+		static _variant_t copy_image = None;
 		static VARIANT* v_copy_image = &copy_image;
+
+		static _variant_t transpose(false);
+		static VARIANT* v_transpose = &transpose;
 
 		VARIANT* in_val = const_cast<VARIANT*>(static_cast<const VARIANT*>(&data));
 		_variant_t _retval_var;
@@ -470,6 +496,9 @@ namespace {
 			break;
 		case PacketDataType::FLOAT_LIST:
 			hr = pPacket_creator->create_float_vector(in_val, _retval);
+			break;
+		case PacketDataType::AUDIO:
+			hr = pPacket_creator->create_matrix(in_val, v_transpose, _retval);
 			break;
 		case PacketDataType::IMAGE:
 			hr = pPacket_creator->create_image(in_val, v_image_format, v_copy_image, _retval);
@@ -531,6 +560,15 @@ namespace {
 		case PacketDataType::FLOAT_LIST:
 			hr = autoit_from(get_float_list(output_packet), _retval);
 			break;
+		case PacketDataType::AUDIO: {
+			using MatrixType = Eigen::Matrix<float, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>;
+			MP_RETURN_IF_ERROR(output_packet.ValidateAsType<Matrix>());
+			const auto& matrix = Eigen::Ref<const MatrixType>(output_packet.Get<Matrix>());
+			std::shared_ptr<cv::Mat> mat_ptr { std::make_shared<cv::Mat>() };
+			cv::eigen2cv(matrix, *mat_ptr);
+			hr = autoit_from(mat_ptr, _retval);
+			break;
+		}
 		case PacketDataType::IMAGE: {
 			MP_PACKET_ASSIGN_OR_RETURN(const auto& image, Image, output_packet);
 			hr = autoit_from(mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get()).clone(), _retval);
@@ -547,7 +585,7 @@ namespace {
 			mat_list.resize(image_list.size());
 			int i = 0;
 			for (const auto& image : image_list) {
-				mat_list[i++] = mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get());
+				mat_list[i++] = mediapipe::formats::MatView(image.GetImageFrameSharedPtr().get()).clone();
 			}
 			hr = autoit_from(image_list, _retval);
 			break;
@@ -572,17 +610,22 @@ namespace {
 
 	/**
 	 * Gets graph interface type information and returns the canonical graph config proto.
-	 * @param  graph_config      [description]
-	 * @param  side_inputs       [description]
-	 * @param  outputs           [description]
-	 * @param  stream_type_hints [description]
-	 * @return                   [description]
+	 * 
+	 * @param graph_config            [description]
+	 * @param side_inputs             [description]
+	 * @param outputs                 [description]
+	 * @param stream_type_hints       [description]
+	 * @param side_packet_type_hints  [description]
+	 * @param input_stream_type_info  [description]
+	 * @param output_stream_type_info [description]
+	 * @param side_input_type_info    [description]
 	 */
 	[[nodiscard]] absl::StatusOr<CalculatorGraphConfig> InitializeGraphInterface(
 		const CalculatorGraphConfig& graph_config,
 		const std::map<std::string, _variant_t>& side_inputs,
 		const std::vector<std::string>& outputs,
 		const std::map<std::string, PacketDataType>& stream_type_hints,
+		const std::map<std::string, PacketDataType>& side_packet_type_hints,
 		std::map<std::string, PacketDataType>& input_stream_type_info,
 		std::map<std::string, PacketDataType>& output_stream_type_info,
 		std::map<std::string, PacketDataType>& side_input_type_info
@@ -594,7 +637,7 @@ namespace {
 		canonical_graph_config_proto.ParseFromString(validated_graph.Config().SerializeAsString());
 
 		for (const auto& tag_index_name : canonical_graph_config_proto.input_stream()) {
-			MP_ASSIGN_OR_RETURN(input_stream_type_info[GetName(tag_index_name)], GetStreamPacketType(validated_graph, tag_index_name, stream_type_hints));
+			MP_ASSIGN_OR_RETURN(input_stream_type_info[GetName(tag_index_name)], GetStreamPacketType(validated_graph, stream_type_hints, tag_index_name));
 		}
 
 		std::vector<std::string> output_streams;
@@ -608,12 +651,12 @@ namespace {
 		}
 
 		for (const auto& tag_index_name : output_streams) {
-			MP_ASSIGN_OR_RETURN(output_stream_type_info[GetName(tag_index_name)], GetStreamPacketType(validated_graph, tag_index_name, stream_type_hints));
+			MP_ASSIGN_OR_RETURN(output_stream_type_info[GetName(tag_index_name)], GetStreamPacketType(validated_graph, stream_type_hints, tag_index_name));
 		}
 
 		for (auto it = side_inputs.begin(); it != side_inputs.end(); ++it) {
 			const auto& tag_index_name = it->first;
-			MP_ASSIGN_OR_RETURN(side_input_type_info[GetName(tag_index_name)], GetSidePacketType(validated_graph, tag_index_name));
+			MP_ASSIGN_OR_RETURN(side_input_type_info[GetName(tag_index_name)], GetSidePacketType(validated_graph, side_packet_type_hints, tag_index_name));
 		}
 
 		return canonical_graph_config_proto;
@@ -688,7 +731,9 @@ namespace mediapipe::autoit::solution_base {
 		const std::shared_ptr<google::protobuf::Message>& graph_options,
 		const std::map<std::string, _variant_t>& side_inputs,
 		const std::vector<std::string>& outputs,
-		const std::map<std::string, PacketDataType>& stream_type_hints
+		const std::map<std::string, PacketDataType>& stream_type_hints,
+		const std::map<std::string, PacketDataType>& side_packet_type_hints,
+		const std::optional<ExtraSettings>& extra_settings
 	) {
 		CalculatorGraphConfig graph_config;
 		MP_RETURN_IF_ERROR(ReadCalculatorGraphConfigFromFile(GetResourcePath(binary_graph_path), graph_config));
@@ -698,7 +743,9 @@ namespace mediapipe::autoit::solution_base {
 			graph_options,
 			side_inputs,
 			outputs,
-			stream_type_hints
+			stream_type_hints,
+			side_packet_type_hints,
+			extra_settings
 		);
 	}
 
@@ -708,7 +755,9 @@ namespace mediapipe::autoit::solution_base {
 		const std::shared_ptr<google::protobuf::Message>& graph_options,
 		const std::map<std::string, _variant_t>& side_inputs,
 		const std::vector<std::string>& outputs,
-		const std::map<std::string, PacketDataType>& stream_type_hints
+		const std::map<std::string, PacketDataType>& stream_type_hints,
+		const std::map<std::string, PacketDataType>& side_packet_type_hints,
+		const std::optional<ExtraSettings>& extra_settings
 	) {
 		return create(
 			graph_config,
@@ -717,6 +766,8 @@ namespace mediapipe::autoit::solution_base {
 			side_inputs,
 			outputs,
 			stream_type_hints,
+			side_packet_type_hints,
+			extra_settings,
 			static_cast<SolutionBase*>(nullptr)
 		);
 	}
@@ -754,17 +805,49 @@ namespace mediapipe::autoit::solution_base {
 
 			switch (input_stream_type) {
 			case PacketDataType::PROTO_LIST:
-			case PacketDataType::AUDIO:
-				// TODO: Support audio data.
 				MP_ASSERT_RETURN_IF_ERROR(false,
-					"SolutionBase can only process non-audio and non-proto-list data. "
+					"SolutionBase can only process non-proto-list data. "
 					<< StringifyPacketDataType(m_input_stream_type_info[stream_name]) <<
 					"type is not supported yet."
 				);
+				break;
+			case PacketDataType::IMAGE:
+				{
+					std::shared_ptr<Image> value;
+					HRESULT hr = autoit_to(&data, value);
+					if (SUCCEEDED(hr)) {
+						MP_ASSERT_RETURN_IF_ERROR(value->channels() == 3, "Input image must contain three channel rgb data.");
+					}
+					break;
+				}
+				{
+					std::shared_ptr<cv::Mat> value;
+					HRESULT hr = autoit_to(&data, value);
+					if (SUCCEEDED(hr)) {
+						MP_ASSERT_RETURN_IF_ERROR(value->channels() == 3, "Input image must contain three channel rgb data.");
+					}
+					break;
+				}
+			case PacketDataType::IMAGE_FRAME:
+				{
+					std::shared_ptr<ImageFrame> value;
+					HRESULT hr = autoit_to(&data, value);
+					if (SUCCEEDED(hr)) {
+						MP_ASSERT_RETURN_IF_ERROR(value->NumberOfChannels() == 3, "Input image must contain three channel rgb data.");
+					}
+					break;
+				}
+				{
+					std::shared_ptr<cv::Mat> value;
+					HRESULT hr = autoit_to(&data, value);
+					if (SUCCEEDED(hr)) {
+						MP_ASSERT_RETURN_IF_ERROR(value->channels() == 3, "Input image must contain three channel rgb data.");
+					}
+					break;
+				}
 			}
 
 			MP_ASSIGN_OR_RETURN(auto packet_shared, ::MakePacket(input_stream_type, data));
-
 			MP_ASSERT_RETURN_IF_ERROR(packet_shared.use_count() == 1, "Packet must have a unique holder");
 			auto packet = std::move(*packet_shared.get()).At(simulated_timestamp);
 			MP_RETURN_IF_ERROR(m_graph->AddPacketToInputStream(stream_name, std::move(packet)));
@@ -833,7 +916,9 @@ namespace mediapipe::autoit::solution_base {
 		const std::shared_ptr<google::protobuf::Message>& graph_options,
 		const std::map<std::string, _variant_t>& side_inputs,
 		const std::vector<std::string>& outputs,
-		const std::map<std::string, PacketDataType>& stream_type_hints
+		const std::map<std::string, PacketDataType>& stream_type_hints,
+		const std::map<std::string, PacketDataType>& side_packet_type_hints,
+		const std::optional<ExtraSettings>& extra_settings
 	) {
 		m_graph = std::make_unique<CalculatorGraph>();
 
@@ -842,6 +927,7 @@ namespace mediapipe::autoit::solution_base {
 			side_inputs,
 			outputs,
 			stream_type_hints,
+			side_packet_type_hints,
 			m_input_stream_type_info,
 			m_output_stream_type_info,
 			m_side_input_type_info
@@ -851,11 +937,15 @@ namespace mediapipe::autoit::solution_base {
 			MP_RETURN_IF_ERROR(ModifyCalculatorOptions(canonical_graph_config_proto, calculator_params));
 		}
 
-		if (graph_options.get()) {
+		if (graph_options) {
 			SetExtension(canonical_graph_config_proto.mutable_graph_options(), graph_options);
 		}
 
 		MP_RETURN_IF_ERROR(m_graph->Initialize(canonical_graph_config_proto));
+
+		if (extra_settings && extra_settings->disallow_service_default_initialization) {
+			MP_RETURN_IF_ERROR(m_graph->DisallowServiceDefaultInitialization());
+		}
 
 		for (const auto& stream : m_output_stream_type_info) {
 			std::string stream_name = stream.first;
@@ -864,9 +954,11 @@ namespace mediapipe::autoit::solution_base {
 				stream_name,
 				std::move([this, stream_name](const Packet& output_packet) {
 					absl::MutexLock lock(&callback_mutex);
-					m_graph_outputs[stream_name] = output_packet;
+					if (output_packet.Timestamp() == Timestamp(m_simulated_timestamp)) {
+						m_graph_outputs[stream_name] = output_packet;
+					}
 					return absl::OkStatus();
-				}),
+					}),
 				true
 			));
 		}

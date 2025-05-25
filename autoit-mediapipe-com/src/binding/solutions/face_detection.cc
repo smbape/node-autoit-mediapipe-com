@@ -43,6 +43,8 @@ namespace mediapipe::autoit::solutions::face_detection {
 			noMap(),
 			{ "detections" },
 			noTypeMap(),
+			noTypeMap(),
+			std::nullopt,
 			static_cast<FaceDetection*>(nullptr)
 		);
 	}

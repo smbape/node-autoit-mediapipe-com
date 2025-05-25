@@ -140,22 +140,46 @@ namespace mediapipe::autoit::packet_creator {
 	}
 
 	std::shared_ptr<Packet> create_matrix(const cv::Mat& data, bool transpose) {
-		AUTOIT_ASSERT_THROW(data.type() == CV_32F, "The data should be a float matrix");
-		AUTOIT_ASSERT_THROW(data.dims <= 2, "The data is expected to have at most 2 dimensions");
-		AUTOIT_ASSERT_THROW(data.cols == 1 || data.channels() == 1, "The data is expected be a Nx1 matrix");
+		using _Tp = float;
 
-		// Eigen Map class
-		// (https://eigen.tuxfamily.org/dox/group__TutorialMapClass.html) is the
-		// way to reuse the external memory as an Eigen type. However, when
-		// creating an Eigen::MatrixXf from an Eigen Map object, the data copy
-		// still happens. We can  make a packet of an Eigen Map type for reusing
-		// external memory. However,the packet data type is no longer
-		// Eigen::MatrixXf.
-		// https://stackoverflow.com/questions/54971083/how-to-use-cvmat-and-eigenmatrix-correctly-opencv-eigen/54975764#54975764
-		// https://stackoverflow.com/questions/14783329/opencv-cvmat-and-eigenmatrix/14874440#14874440
-		Eigen::MatrixXf matrix;
-		cv::cv2eigen(data.reshape(1), matrix);
-		return std::make_shared<Packet>(std::move(MakePacket<Matrix>(transpose ? matrix.transpose() : matrix)));
+		AUTOIT_ASSERT_THROW(data.type() == cv::traits::Type<_Tp>::value, "The data should be a float matrix");
+		AUTOIT_ASSERT_THROW(data.dims <= 2, "The data is expected to have at most 2 dimensions");
+		AUTOIT_ASSERT_THROW(data.cols == 1 || data.channels() == 1, "The data is expected be a 2d matrix");
+
+		const auto& rows = data.rows;
+		const auto& cols = data.cols * data.channels();
+
+		std::unique_ptr<Matrix> matrix_ptr = std::make_unique<Matrix>();
+		auto& matrix = *matrix_ptr;
+
+		if (transpose) {
+			matrix.resize(cols, rows);
+			if (!(matrix.Flags & Eigen::RowMajorBit)) {
+				const cv::Mat _dst(matrix.cols(), matrix.rows(), cv::traits::Type<_Tp>::value,
+					reinterpret_cast<void*>(matrix.data()), (size_t)(matrix.outerStride() * sizeof(_Tp)));
+				data.reshape(1).convertTo(_dst, _dst.type());
+			}
+			else {
+				const cv::Mat _dst(matrix.rows(), matrix.cols(), cv::traits::Type<_Tp>::value,
+					reinterpret_cast<void*>(matrix.data()), (size_t)(matrix.outerStride() * sizeof(_Tp)));
+				cv::transpose(data.reshape(1), _dst);
+			}
+		}
+		else {
+			matrix.resize(rows, cols);
+			if (!(matrix.Flags & Eigen::RowMajorBit)) {
+				const cv::Mat _dst(matrix.cols(), matrix.rows(), cv::traits::Type<_Tp>::value,
+					reinterpret_cast<void*>(matrix.data()), (size_t)(matrix.outerStride() * sizeof(_Tp)));
+				cv::transpose(data.reshape(1), _dst);
+			}
+			else {
+				const cv::Mat _dst(matrix.rows(), matrix.cols(), cv::traits::Type<_Tp>::value,
+					reinterpret_cast<void*>(matrix.data()), (size_t)(matrix.outerStride() * sizeof(_Tp)));
+				data.reshape(1).convertTo(_dst, _dst.type());
+			}
+		}
+
+		return std::make_shared<Packet>(std::move(Adopt<Matrix>(matrix_ptr.release())));
 	}
 
 	std::shared_ptr<Packet> create_proto(const google::protobuf::Message& message) {
@@ -164,26 +188,28 @@ namespace mediapipe::autoit::packet_creator {
 		std::string serialized;
 		AUTOIT_ASSERT_THROW(message.SerializeToString(&serialized), "Failed to serialize message " << type_name);
 
-		absl::StatusOr<Packet> packet = packet_internal::PacketFromDynamicProto(type_name, serialized);
-		AUTOIT_ASSERT_THROW(packet.ok(), "Unregistered proto message type: " << type_name);
+		absl::StatusOr<Packet> packet_status = packet_internal::PacketFromDynamicProto(type_name, serialized);
+		AUTOIT_ASSERT_THROW(packet_status.ok(), "Unregistered proto message type: " << type_name);
 
-		return std::make_shared<Packet>(std::move(std::move(packet).value()));
+		return std::make_shared<Packet>(std::move(std::move(packet_status).value()));
 	}
 
 	std::shared_ptr<Packet> create_image_frame_vector(const std::vector<std::shared_ptr<ImageFrame>>& image_frame_list) {
-		std::vector<ImageFrame> image_frame_vector;
+		std::unique_ptr<std::vector<ImageFrame>> image_frame_vector_ptr{ std::make_unique<std::vector<ImageFrame>>() };
+		auto& image_frame_vector = *image_frame_vector_ptr;
+
 		image_frame_vector.reserve(image_frame_list.size());
 
 		for (const auto& image_frame : image_frame_list) {
 			ImageFrame image_frame_copy;
 			image_frame_copy.CopyFrom(*image_frame,
-							  // Use kGlDefaultAlignmentBoundary so that both
-							  // GPU and CPU can process it.
-							  ImageFrame::kGlDefaultAlignmentBoundary);
+				// Use kGlDefaultAlignmentBoundary so that both
+				// GPU and CPU can process it.
+				ImageFrame::kGlDefaultAlignmentBoundary);
 			image_frame_vector.push_back(std::move(image_frame_copy));
 		}
 
-		const auto& packet = MakePacket<std::vector<ImageFrame>>(std::move(image_frame_vector));
+		const auto& packet = Adopt<std::vector<ImageFrame>>(image_frame_vector_ptr.release());
 		return std::make_shared<Packet>(std::move(packet));
 	}
 }

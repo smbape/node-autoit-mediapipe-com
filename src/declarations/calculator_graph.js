@@ -28,6 +28,8 @@ module.exports = ({ self, language, cname }) => [
         ["mediapipe::ValidatedGraphConfig", "validated_graph_config", "", ["/Ref"]],
     ], "", ""],
 
+    ["mediapipe.CalculatorGraph.DisallowServiceDefaultInitialization", "absl::Status", ["=disallow_service_default_initialization"], [], "", ""],
+
     ["mediapipe.CalculatorGraph.add_packet_to_input_stream", "absl::Status", [`/Call=mediapipe::${ language }::calculator_graph::add_packet_to_input_stream`, `/Expr=&(${ self }), $0`], [
         ["std::string", "stream", "", ["/Ref"]],
         ["mediapipe::Packet", "packet", "", ["/Ref"]],

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "mediapipe/framework/calculator.pb.h"
-#include "mediapipe/framework/calculator.pb.h"
 #include "mediapipe/framework/deps/status_macros.h"
 #include "mediapipe/framework/port/file_helpers.h"
 #include "mediapipe/framework/port/status.h"

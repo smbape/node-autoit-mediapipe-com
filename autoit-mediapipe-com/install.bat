@@ -41,7 +41,7 @@
 
 :mainmenu
 @SET DLLDIRNAME=
-@SET DLLNAME=autoit_mediapipe_com-0.10.23-4110%DEBUG_PREFIX%.dll
+@SET DLLNAME=autoit_mediapipe_com-0.10.24-4110%DEBUG_PREFIX%.dll
 
 @SET INT_DIR=mediapipe-src\bazel-out\x64_windows-%CompileMode%\bin\mediapipe\autoit
 @IF EXIST "%CD%\build_x64\%INT_DIR%\%DLLNAME%" @SET "DLLDIRNAME=%CD%\build_x64\%INT_DIR%\"

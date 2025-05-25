@@ -81,11 +81,11 @@ BEGIN
             VALUE "FileVersion", "0.4.1"
             // VALUE "LegalCopyright", "TODO: (c) <Nom de la société>.  Tous droits réservés."
 #ifdef _DEBUG
-            VALUE "InternalName", "autoit_mediapipe_com-0.10.23-4110d.dll"
-            VALUE "OriginalFilename", "autoit_mediapipe_com-0.10.23-4110d.dll"
+            VALUE "InternalName", "autoit_mediapipe_com-0.10.24-4110d.dll"
+            VALUE "OriginalFilename", "autoit_mediapipe_com-0.10.24-4110d.dll"
 #else
-            VALUE "InternalName", "autoit_mediapipe_com-0.10.23-4110.dll"
-            VALUE "OriginalFilename", "autoit_mediapipe_com-0.10.23-4110.dll"
+            VALUE "InternalName", "autoit_mediapipe_com-0.10.24-4110.dll"
+            VALUE "OriginalFilename", "autoit_mediapipe_com-0.10.24-4110.dll"
 #endif
             VALUE "ProductName", "AutoIt Mediapipe COM"
             VALUE "ProductVersion", "0.4.1"

@@ -17,9 +17,9 @@ namespace mediapipe::tasks::autoit::text::text_classifier {
 
 		CV_WRAP TextClassifierOptions(
 			std::shared_ptr<autoit::core::base_options::BaseOptions> base_options = std::shared_ptr<autoit::core::base_options::BaseOptions>(),
-			const std::optional<std::string>& display_names_locale = std::optional<std::string>(),
-			const std::optional<int>& max_results = std::optional<int>(),
-			const std::optional<float>& score_threshold = std::optional<float>(),
+			const std::optional<std::string>& display_names_locale = std::nullopt,
+			const std::optional<int>& max_results = std::nullopt,
+			const std::optional<float>& score_threshold = std::nullopt,
 			const std::shared_ptr<std::vector<std::string>>& category_allowlist = std::make_shared<std::vector<std::string>>(),
 			const std::shared_ptr<std::vector<std::string>>& category_denylist = std::make_shared<std::vector<std::string>>()
 		)

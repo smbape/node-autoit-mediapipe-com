@@ -55,7 +55,8 @@ namespace mediapipe::autoit::solutions::pose {
 			bool enable_segmentation = false,
 			bool smooth_segmentation = true,
 			float min_detection_confidence = 0.5f,
-			float min_tracking_confidence = 0.5f
+			float min_tracking_confidence = 0.5f,
+			const std::optional<ExtraSettings>& extra_settings = std::nullopt
 		);
 
 		CV_WRAP [[nodiscard]] absl::Status process(const cv::Mat& image, CV_OUT std::map<std::string, _variant_t>& solution_outputs);

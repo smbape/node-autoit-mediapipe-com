@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.19)
 # Name of the project (will be the name of the plugin)
 project(autoit_mediapipe_com)
 
+set(target_name ${PROJECT_NAME})
+
 set(DEFAULT_BUILD_TYPE "Release")
 
 if(NOT DEFINED CMAKE_BUILD_TYPE)
@@ -29,10 +31,11 @@ if (POLICY CMP0135)
     cmake_policy(SET CMP0135 NEW) # set the timestamps of extracted contents to the time of extraction.
 endif()
 
-set(MEDIAPIPE_VERSION 0.10.23 CACHE STRING "Choose the mediapipe version.")
-set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.23" "0.10.22" "0.10.21" "0.10.20")
+set(MEDIAPIPE_VERSION 0.10.24 CACHE STRING "Choose the mediapipe version.")
+set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.24" "0.10.23" "0.10.22" "0.10.21" "0.10.20")
 string(REPLACE "." "" MEDIAPIPE_DLLVERSION ${MEDIAPIPE_VERSION})
 
+set(MEDIAPIPE_URL_HASH_SHA256_01024 ff4a2a85d0ac0c73ff1acdf5ceda47cb3640566e0430e056c7f12e44cb5c81bd)
 set(MEDIAPIPE_URL_HASH_SHA256_01023 5bc3e7b7d5ffdcb0a0e7d2057c7ea5c344f65371516cf6e42cc8b4bf77ae5ff8)
 set(MEDIAPIPE_URL_HASH_SHA256_01022 25af3c4cc44dfe929eea226ab6cd0dd53a54fbb199db877cc96aa63d0e45d745)
 set(MEDIAPIPE_URL_HASH_SHA256_01021 6492ad36697cca309fe9526c64d65c8844e8128aebc85c390a97c375008d1c34)
@@ -58,7 +61,7 @@ FetchContent_Populate(mediapipe
     URL             https://fossies.org/linux/misc/mediapipe-${MEDIAPIPE_VERSION}.tar.gz
                     https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v${MEDIAPIPE_VERSION}.tar.gz
     URL_HASH        SHA256=${MEDIAPIPE_URL_HASH_SHA256_${MEDIAPIPE_DLLVERSION}}
-    PATCH_COMMAND   "${PATCH_EXECUTABLE}" -p 1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
+    PATCH_COMMAND   "${PATCH_EXECUTABLE}" -p1 -d "<SOURCE_DIR>" -i "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch"
 )
 
 file(CREATE_LINK "${CMAKE_CURRENT_SOURCE_DIR}" "${mediapipe_SOURCE_DIR}/${MEDIAPIPE_ADDON_PACKAGE}" SYMBOLIC)
@@ -119,7 +122,7 @@ endif()
 include(FetchContent)
 FetchContent_Populate(autoit_opencv_com
     URL               "${OPENCV_COM_URL}"
-    URL_HASH          SHA256=255541bd3a6687bf99d96218db1d82277d89d2b11254232daec656f4e7056902
+    URL_HASH          SHA256=36426f0f0d55b68f2b75600e70bf13432ee742d35df99ec89529aa0050f239e0
     DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
     SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
 )
@@ -204,11 +207,32 @@ endif()
 
 find_program(BAZEL_EXECUTABLE
     NAMES bazel
-    DOC 
-    REQUIRED "Bazel executable"
+    DOC "Bazel executable"
+    REQUIRED
 )
 
 option(MEDIAPIPE_DISABLE_GPU "Disable GPU support" ON)
+
+if (WIN32 AND NOT MEDIAPIPE_DISABLE_GPU)
+    message(FATAL_ERROR "GPU Delegate is not yet supported for Windows")
+endif()
+
+set(BAZEL_GPU_OPTIONS)
+
+if (MEDIAPIPE_DISABLE_GPU)
+    list(APPEND BAZEL_GPU_OPTIONS --define MEDIAPIPE_DISABLE_GPU=1)
+else()
+    list(APPEND BAZEL_GPU_OPTIONS
+        --copt=-DTFLITE_GPU_EXTRA_GLES_DEPS
+        --copt=-DMEDIAPIPE_OMIT_EGL_WINDOW_BIT
+        --copt=-DMESA_EGL_NO_X11_HEADERS
+        --copt=-DEGL_NO_X11
+    )
+
+    if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+        list(APPEND BAZEL_GPU_OPTIONS --copt=-DMEDIAPIPE_GPU_BUFFER_USE_CV_PIXEL_BUFFER)
+    endif()
+endif()
 
 set(BAZEL_BUILD
     "${BAZEL_EXECUTABLE}"
@@ -222,12 +246,19 @@ if (DEFINED OUTPUT_BASE)
     list(APPEND BAZEL_BUILD "--output_base=${OUTPUT_BASE}")
 endif()
 
+string(REPLACE ";" "$<SEMICOLON>" ENV_PATH "$ENV{PATH}")
+
+if (UNIX)
+    # [Running bazel in a subshell causes subshell to hang](https://github.com/bazelbuild/bazel/issues/19309)
+    execute_process(
+        COMMAND           "${CMAKE_COMMAND}" -E env "PATH=${ENV_PATH}" -- ${BAZEL_BUILD} info server_pid
+        WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
+    )
+endif()
+
 list(APPEND BAZEL_BUILD
     build -c ${COMPILATION_MODE}
     --strip=never
-    --repo_env "HERMETIC_PYTHON_VERSION=${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}"
-    --action_env "PYTHON_BIN_PATH=${Python3_EXECUTABLE}"
-    "--python_path=${Python3_EXECUTABLE}"
     --verbose_failures
 
     # #import "C:\Windows\System32\scrrun.dll" will cause a scrrun.tlh not found error
@@ -235,67 +266,117 @@ list(APPEND BAZEL_BUILD
     --features=-parse_showincludes
 
     # --keep_going
+
+    # https://github.com/bazelbuild/bazel/issues/8444#issuecomment-513204396
+    # --spawn_strategy=local
 )
 
-if (MEDIAPIPE_DISABLE_GPU)
-    list(APPEND BAZEL_BUILD --define MEDIAPIPE_DISABLE_GPU=1)
-endif()
+set(BAZEL_BUILD_OPTIONS
+    "--repo_env=HERMETIC_PYTHON_VERSION=${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}"
+    "--action_env=PYTHON_BIN_PATH=${Python3_EXECUTABLE}"
+    "--python_path=${Python3_EXECUTABLE}"
+)
 
 if (ENABLE_ODML_CONVERTER)
-    list(APPEND BAZEL_BUILD --define ENABLE_ODML_CONVERTER=1)
+    list(APPEND BAZEL_BUILD_OPTIONS --define ENABLE_ODML_CONVERTER=1)
 endif()
 
-if (WIN32)
-        set(builtin_calculators_OUTPUT "${mediapipe_BINARY_DIR}/mediapipe/calculators/tensor/inference_calculator_options_registry.lo${CMAKE_STATIC_LIBRARY_SUFFIX}")
-else()
-        set(builtin_calculators_OUTPUT "${mediapipe_BINARY_DIR}/mediapipe/calculators/tensor/${CMAKE_SHARED_LIBRARY_PREFIX}inference_calculator_options_registry${CMAKE_SHARED_LIBRARY_SUFFIX}")
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    # https://man.freebsd.org/cgi/man.cgi?query=gcc11&sektion=1&manpath=freebsd-release-ports
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "11")
+        list(APPEND BAZEL_BUILD_OPTIONS --define xnn_enable_avxvnni=false)
+    endif()
+
+    enable_language(ASM-ATT)
+
+    if ((CMAKE_CXX_COMPILER_VERSION VERSION_EQUAL "11" OR CMAKE_CXX_COMPILER_VERSION VERSION_GREATER "11") AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "12" AND CMAKE_ASM-ATT_COMPILER_ID STREQUAL "GNU")
+        # binutils gained VNNI support in 2.36
+        # https://github.com/google/XNNPACK/issues/6389#issuecomment-2356299909
+
+        execute_process(
+            COMMAND sh -c "${CMAKE_ASM-ATT_COMPILER} --version | sed -rn 's/GNU[[:space:]][Aa]ssembler[[:space:]].*[[:space:]]([0-9])/\\1/p'"
+            OUTPUT_VARIABLE CMAKE_ASM-ATT_COMPILER_VERSION
+        )
+
+        if (NOT CMAKE_ASM-ATT_COMPILER_VERSION VERSION_GREATER_EQUAL "2.36")
+            list(APPEND BAZEL_BUILD_OPTIONS --define xnn_enable_avxvnni=false)
+        endif()
+    endif()
+
+    # https://man.freebsd.org/cgi/man.cgi?query=gcc12&sektion=1&manpath=freebsd-release-ports
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "12")
+        list(APPEND BAZEL_BUILD_OPTIONS --define xnn_enable_avx512fp16=false)
+    endif()
+
+    # https://man.freebsd.org/cgi/man.cgi?query=gcc13&sektion=1&manpath=freebsd-release-ports
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "13")
+        list(APPEND BAZEL_BUILD_OPTIONS --define xnn_enable_avxvnniint8=false)
+    endif()
 endif()
 
+set(BAZEL_BUILD_EXTRA_OPTIONS "" CACHE INTERNAL "Bazel build options")
+if (BAZEL_BUILD_EXTRA_OPTIONS)
+    list(APPEND BAZEL_BUILD_OPTIONS ${BAZEL_BUILD_EXTRA_OPTIONS})
+endif()
+
+list(APPEND BAZEL_BUILD ${BAZEL_GPU_OPTIONS} ${BAZEL_BUILD_OPTIONS})
+
+# Make sure bazel-out is a symbolic link
+# add_custom_command will create the directory needed to store OUTPUT.
+# However, bazel creates bazel-out as a symbolic link in the output_user_root directory.
+# If bazel-out already exists, bazel won't touch it, and generated files will be inacessible.
+# The choosen work around is to delete bazel-out if it is not a symbolic link.
+# Therefore, allowing bazel to create the symbolic link
 set(ensure_SYMBOLIC_BAZEL_OUT "${CMAKE_COMMAND}" -E)
 if (IS_SYMLINK "${mediapipe_SOURCE_DIR}/bazel-out")
-        list(APPEND ensure_SYMBOLIC_BAZEL_OUT echo)
+    list(APPEND ensure_SYMBOLIC_BAZEL_OUT echo)
 endif()
 list(APPEND ensure_SYMBOLIC_BAZEL_OUT rm -rf "${mediapipe_SOURCE_DIR}/bazel-out")
 
+if (WIN32)
+    set(builtin_calculators_OUTPUT "${mediapipe_BINARY_DIR}/mediapipe/calculators/tensor/inference_calculator_options_registry.lo${CMAKE_STATIC_LIBRARY_SUFFIX}")
+else()
+    set(builtin_calculators_OUTPUT "${mediapipe_BINARY_DIR}/mediapipe/calculators/tensor/${CMAKE_SHARED_LIBRARY_PREFIX}inference_calculator_options_registry${CMAKE_SHARED_LIBRARY_SUFFIX}")
+endif()
+
 add_custom_command(OUTPUT "${builtin_calculators_OUTPUT}"
-        # Make sure bazel-out is a symbolic link
-        COMMAND           ${ensure_SYMBOLIC_BAZEL_OUT}
-        COMMAND           "${CMAKE_COMMAND}" -E echo ${BAZEL_BUILD} mediapipe/python:builtin_calculators
-        COMMAND           "${CMAKE_COMMAND}" -E env "PATH=$ENV{PATH}" -- ${BAZEL_BUILD} mediapipe/python:builtin_calculators
-        COMMAND           "${CMAKE_COMMAND}" -E touch_nocreate "${builtin_calculators_OUTPUT}"
-        WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
-        VERBATIM
-        USES_TERMINAL
+    COMMAND           ${ensure_SYMBOLIC_BAZEL_OUT}
+    COMMAND           "${CMAKE_COMMAND}" -E echo ${BAZEL_BUILD} mediapipe/python:builtin_calculators
+    COMMAND           "${CMAKE_COMMAND}" -E env "PATH=${ENV_PATH}" -- ${BAZEL_BUILD} mediapipe/python:builtin_calculators
+    COMMAND           "${CMAKE_COMMAND}" -E touch_nocreate "${builtin_calculators_OUTPUT}"
+    WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
+    VERBATIM
+    USES_TERMINAL
 )
-add_custom_target(${PROJECT_NAME}_builtin_calculators DEPENDS "${builtin_calculators_OUTPUT}")
+add_custom_target(${target_name}_builtin_calculators DEPENDS "${builtin_calculators_OUTPUT}")
 
 set(src_gen_cmd "${NODE_EXECUTABLE}" --unhandled-rejections=strict --trace-uncaught --trace-warnings src/gen.js)
 if (ENABLE_ODML_CONVERTER)
-        list(APPEND src_gen_cmd -DENABLE_ODML_CONVERTER)
+    list(APPEND src_gen_cmd -DENABLE_ODML_CONVERTER)
 endif()
 
 file(GLOB_RECURSE project_source_headers
-        "src/*.h"
-        "src/*.hh"
-        "src/*.hpp"
-        "src/*.hxx"
+    "src/*.h"
+    "src/*.hh"
+    "src/*.hpp"
+    "src/*.hxx"
 )
 
 file(GLOB_RECURSE generator_files
-        "../src/*.js"
+    "../src/*.js"
 )
 
 set(generated_OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/generated/autoit_bridge_generated.cpp")
 add_custom_command(OUTPUT "${generated_OUTPUT}"
-        COMMAND           "${CMAKE_COMMAND}" -E echo ${src_gen_cmd}
-        COMMAND           "${CMAKE_COMMAND}" -E env "PATH=$ENV{PATH}" "CMAKE_BINARY_DIR=${CMAKE_BINARY_DIR}" "Python3_EXECUTABLE=${Python3_EXECUTABLE}" -- ${src_gen_cmd}
-        COMMAND           "${CMAKE_COMMAND}" -E touch_nocreate "${generated_OUTPUT}"
-        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/.."
-        DEPENDS           ${project_source_headers} ${PROJECT_NAME}_builtin_calculators ${generator_files}
-        VERBATIM
-        USES_TERMINAL
+    COMMAND           "${CMAKE_COMMAND}" -E echo ${src_gen_cmd}
+    COMMAND           "${CMAKE_COMMAND}" -E env "PATH=${ENV_PATH}" "CMAKE_BINARY_DIR=${CMAKE_BINARY_DIR}" "Python3_EXECUTABLE=${Python3_EXECUTABLE}" -- ${src_gen_cmd}
+    COMMAND           "${CMAKE_COMMAND}" -E touch_nocreate "${generated_OUTPUT}"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/.."
+    DEPENDS           ${project_source_headers} ${target_name}_builtin_calculators ${generator_files}
+    VERBATIM
+    USES_TERMINAL
 )
-add_custom_target(${PROJECT_NAME}_generated DEPENDS "${generated_OUTPUT}")
+add_custom_target(${target_name}_generated DEPENDS "${generated_OUTPUT}")
 
 add_definitions(-DMEDIAPIPE_VERSION=${MEDIAPIPE_VERSION})
 add_definitions(-DCVAPI_EXPORTS)
@@ -315,9 +396,9 @@ source_group("Source Headers" FILES ${project_source_headers})
 source_group("Generated Resources" FILES ${project_generated_resources})
 
 # Build resource file needed by bazel
-add_library(${PROJECT_NAME}_res OBJECT ${SRC_FILES})
-target_include_directories(${PROJECT_NAME}_res PUBLIC "src")
-target_include_directories(${PROJECT_NAME}_res PUBLIC "generated")
+add_library(${target_name}_res OBJECT ${SRC_FILES})
+target_include_directories(${target_name}_res PUBLIC "src")
+target_include_directories(${target_name}_res PUBLIC "generated")
 
 file(GLOB_RECURSE project_rules_files
     "rules_impl/*"
@@ -350,7 +431,7 @@ file(GLOB_RECURSE project_source_files
 set(BAZEL_OUTPUT_LIBNAME "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
 set(BAZEL_OUTPUT_NAME "${BAZEL_OUTPUT_LIBNAME}${OpenCV_BUILD_DEBUG_POSTFIX}")
 
-set(resource_objects "$<TARGET_OBJECTS:${PROJECT_NAME}_res>")
+set(resource_objects "$<TARGET_OBJECTS:${target_name}_res>")
 set(resource_objects "$<LIST:TRANSFORM,${resource_objects},REPLACE,${CMAKE_CURRENT_SOURCE_DIR},${MEDIAPIPE_ADDON_PACKAGE}>")
 set(resource_objects "$<LIST:TRANSFORM,${resource_objects},PREPEND,    \">")
 set(resource_objects "$<LIST:TRANSFORM,${resource_objects},APPEND,\">")
@@ -362,26 +443,27 @@ file (GENERATE
     CONTENT "TARGET_OBJECTS = ${resource_objects}"
 )
 
-set(PROJECT_LIBRARY "${mediapipe_BINARY_DIR}/${MEDIAPIPE_ADDON_PACKAGE}/${BAZEL_OUTPUT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}")
-add_custom_command(OUTPUT "${PROJECT_LIBRARY}"
+set(BAZEL_OUTPUT_LIBRARY "${mediapipe_BINARY_DIR}/${MEDIAPIPE_ADDON_PACKAGE}/${BAZEL_OUTPUT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}")
+add_custom_command(OUTPUT "${BAZEL_OUTPUT_LIBRARY}"
     # Make sure bazel-out is a symbolic link
     COMMAND           ${ensure_SYMBOLIC_BAZEL_OUT}
-    COMMAND           "${CMAKE_COMMAND}" -E env "PATH=$ENV{PATH}" -- ${BAZEL_BUILD} ${MEDIAPIPE_ADDON_PACKAGE}:lib
+    COMMAND           "${CMAKE_COMMAND}" -E echo ${BAZEL_BUILD} ${MEDIAPIPE_ADDON_PACKAGE}:lib
+    COMMAND           "${CMAKE_COMMAND}" -E env "PATH=${ENV_PATH}" -- ${BAZEL_BUILD} ${MEDIAPIPE_ADDON_PACKAGE}:lib
     WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
-    DEPENDS           ${project_source_files} ${project_rules_files} ${PROJECT_NAME}_res ${PROJECT_NAME}_generated
+    DEPENDS           ${project_source_files} ${project_rules_files} ${target_name}_generated ${target_name}_res
     VERBATIM
     USES_TERMINAL
 )
-add_custom_target(${PROJECT_NAME}_lib DEPENDS "${PROJECT_LIBRARY}" ${PROJECT_NAME}_res)
+add_custom_target(${target_name}_lib DEPENDS "${BAZEL_OUTPUT_LIBRARY}")
 
-add_custom_target(${PROJECT_NAME} ALL DEPENDS ${PROJECT_NAME}_lib)
+add_custom_target(${target_name} ALL DEPENDS ${target_name}_lib)
 
-string(REPLACE ".dll" ".sxs.manifest" PROJECT_MANIFEST "${PROJECT_LIBRARY}")
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+string(REPLACE ".dll" ".sxs.manifest" PROJECT_MANIFEST "${BAZEL_OUTPUT_LIBRARY}")
+add_custom_command(TARGET ${target_name} POST_BUILD
     COMMAND mt.exe -manifest \"${PROJECT_MANIFEST}\" -validate_manifest
-    COMMAND attrib -r \"${PROJECT_LIBRARY}\"
-    COMMAND mt.exe -manifest \"${PROJECT_MANIFEST}\" -outputresource:\"${PROJECT_LIBRARY}\"\;\#2
-    COMMAND attrib +r \"${PROJECT_LIBRARY}\"
+    COMMAND attrib -r \"${BAZEL_OUTPUT_LIBRARY}\"
+    COMMAND mt.exe -manifest \"${PROJECT_MANIFEST}\" -outputresource:\"${BAZEL_OUTPUT_LIBRARY}\"\;\#2
+    COMMAND attrib +r \"${BAZEL_OUTPUT_LIBRARY}\"
 
     COMMAND "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_SOURCE_DIR}/cmake/glob_copy.cmake" --
         "${mediapipe_BINARY_DIR}/${MEDIAPIPE_ADDON_PACKAGE}/${BAZEL_OUTPUT_NAME}*.dll"
@@ -402,14 +484,14 @@ foreach(item
     # copy ${mediapipe_SOURCE_DIR}/${item} to ${mediapipe_BINARY_DIR}/${item}
     add_custom_command(OUTPUT "${item_output}"
         COMMAND "${CMAKE_COMMAND}" -E copy_if_different
-            "${mediapipe_SOURCE_DIR}/${item}"
-            "${mediapipe_BINARY_DIR}/${item}"
-        DEPENDS ${PROJECT_NAME}_lib
+                "${mediapipe_SOURCE_DIR}/${item}"
+                "${mediapipe_BINARY_DIR}/${item}"
+        DEPENDS ${target_name}_lib
         VERBATIM
     )
     add_custom_target(${item_target} DEPENDS "${item_output}")
 
-    add_dependencies(${PROJECT_NAME} ${item_target})
+    add_dependencies(${target_name} ${item_target})
 
     unset(item_output)
     unset(item_target)
@@ -422,7 +504,7 @@ if (TEMPDIR)
     set(mediapipe_SOLUTIONS_DIR "${mediapipe_SOURCE_DIR}/mediapipe/python/solutions")
 
     set(item_target test_on_video_fullasl_hand_full_npz)
-    set(item_test_data "${CMAKE_SOURCE_DIR}/../test/solutions/testdata")
+    set(item_test_data "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/testdata")
     set(item_output "${item_test_data}/test_on_video_fullasl_hand.full.yml")
 
     include(ExternalProject)
@@ -440,17 +522,17 @@ if (TEMPDIR)
 
     add_custom_command(OUTPUT "${item_output}"
         COMMAND "${Python3_EXECUTABLE}" hands_test.py -- -k test_on_video 2> NUL || type NUL > NUL
-        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/../test/solutions/npz_convert.py" "${TEMPDIR}/test_on_video_fullasl_hand.full.npz" -o "${item_output}"
-        DEPENDS ${PROJECT_NAME}_lib asl_hand_25fps_mp4
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/npz_convert.py" "${TEMPDIR}/test_on_video_fullasl_hand.full.npz" -o "${item_output}"
+        DEPENDS ${target_name}_lib asl_hand_25fps_mp4
         WORKING_DIRECTORY "${mediapipe_SOLUTIONS_DIR}"
         VERBATIM
     )
     add_custom_target(${item_target} DEPENDS "${item_output}")
 
-    add_dependencies(${PROJECT_NAME} ${item_target})
+    add_dependencies(${target_name} ${item_target})
 
     set(item_target test_on_video_fullpose_squats_npz)
-    set(item_test_data "${CMAKE_SOURCE_DIR}/../test/solutions/testdata")
+    set(item_test_data "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/testdata")
     set(item_output "${item_test_data}/test_on_video_fullpose_squats.full.yml")
 
     include(ExternalProject)
@@ -468,14 +550,14 @@ if (TEMPDIR)
 
     add_custom_command(OUTPUT "${item_output}"
         COMMAND "${Python3_EXECUTABLE}" pose_test.py -- -k test_on_video 2> NUL || type NUL > NUL
-        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/../test/solutions/npz_convert.py" "${TEMPDIR}/test_on_video_fullpose_squats.full.npz" -o "${item_output}"
-        DEPENDS ${PROJECT_NAME}_lib pose_squats_mp4
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/npz_convert.py" "${TEMPDIR}/test_on_video_fullpose_squats.full.npz" -o "${item_output}"
+        DEPENDS ${target_name}_lib pose_squats_mp4
         WORKING_DIRECTORY "${mediapipe_SOLUTIONS_DIR}"
         VERBATIM
     )
     add_custom_target(${item_target} DEPENDS "${item_output}")
 
-    add_dependencies(${PROJECT_NAME} ${item_target})
+    add_dependencies(${target_name} ${item_target})
 
     unset(item_output)
     unset(item_target)

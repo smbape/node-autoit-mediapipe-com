@@ -176,13 +176,19 @@ Func _AssertIsNone($vVal, $sMessage = Default, $bExit = Default, $iCode = Defaul
 	ElseIf IsObj($vVal) Then
 		$bCondition = _AssertIsInstance($vVal, "List", $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
 		If $sMessage == Default Then $sMessage = "expecting List to be empty"
-		If $bCondition Then _AssertLen($vVal, 0, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
+		If $bCondition Then _AssertEmpty($vVal, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
 	Else
 		If $sMessage == Default Then $sMessage = "expecting value to be none"
 		$bCondition = $vVal == Default Or $vVal == Null
 	EndIf
 	Return _AssertTrue($bCondition, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
 EndFunc   ;==>_AssertIsNone
+
+Func _AssertIsNotNone($vVal, $sMessage = Default, $bExit = Default, $iCode = Default, $iLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_vCallerExtended = @extended)
+	If $sMessage == Default Then $sMessage = "expecting value not to be none"
+	Local $bCondition = $vVal <> Default And $vVal <> Null
+	Return _AssertTrue($bCondition, $sMessage, $bExit, $iCode, $iLine, $_iCallerError, $_vCallerExtended)
+EndFunc   ;==>_AssertIsNotNone
 
 Func _AssertFalse($bCondition, $sMessage = Default, $bExit = Default, $iCode = Default, $iLine = @ScriptLineNumber, Const $_iCallerError = @error, Const $_vCallerExtended = @extended)
 	If $sMessage == Default Then $sMessage = "expecting " & $bCondition & " to be False"

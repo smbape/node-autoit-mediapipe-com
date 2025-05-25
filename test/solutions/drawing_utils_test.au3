@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.23/mediapipe/python/solutions/drawing_utils_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.24/mediapipe/python/solutions/drawing_utils_test.py
 
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -50,7 +50,7 @@ Func Test()
 	test_draw_single_landmark_point('landmark {x: 0.1 y: 0.1} landmark {x: 0.5 y: 0.5 visibility: 0.0}')
 	test_draw_landmarks_and_connections('landmark {x: 0.1 y: 0.5} landmark {x: 0.5 y: 0.1}')
 	test_draw_landmarks_and_connections( _
-			'landmark {x: 0.1 y: 0.5 presence: 0.5}' & @CRLF & _
+			'landmark {x: 0.1 y: 0.5 presence: 0.5}' & @LF & _
 			'landmark {x: 0.5 y: 0.1 visibility: 0.5}' _
 			)
 	test_draw_axis()
@@ -61,9 +61,9 @@ EndFunc   ;==>Test
 
 Func test_draw_keypoints_only()
 	Local $detection = $text_format.Parse( _
-			'location_data {' & @CRLF & _
-			'  format: RELATIVE_BOUNDING_BOX' & @CRLF & _
-			'  relative_keypoints {x: 0 y: 1}' & @CRLF & _
+			'location_data {' & @LF & _
+			'  format: RELATIVE_BOUNDING_BOX' & @LF & _
+			'  relative_keypoints {x: 0 y: 1}' & @LF & _
 			'  relative_keypoints {x: 1 y: 0}}', _
 			$detection_pb2.Detection())
 	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
@@ -85,8 +85,8 @@ EndFunc   ;==>test_draw_keypoints_only
 
 Func test_draw_bboxs_only()
 	Local $detection = $text_format.Parse( _
-			'location_data {' & @CRLF & _
-			'  format: RELATIVE_BOUNDING_BOX' & @CRLF & _
+			'location_data {' & @LF & _
+			'  format: RELATIVE_BOUNDING_BOX' & @LF & _
 			'  relative_bounding_box {xmin: 0 ymin: 0 width: 1 height: 1}}', _
 			$detection_pb2.Detection())
 	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
@@ -199,7 +199,7 @@ EndFunc   ;==>test_draw_axis_zero_translation
 
 Func test_min_and_max_coordinate_values()
 	Local $landmark_list = $text_format.Parse( _
-			'landmark {x: 0.0 y: 1.0}' & @CRLF & _
+			'landmark {x: 0.0 y: 1.0}' & @LF & _
 			'landmark {x: 1.0 y: 0.0}', $landmark_pb2.NormalizedLandmarkList())
 	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
 	Local $expected_result = $image.copy()
@@ -232,7 +232,7 @@ EndFunc   ;==>test_min_and_max_coordinate_values
 
 Func test_drawing_spec()
 	Local $landmark_list = $text_format.Parse( _
-			'landmark {x: 0.1 y: 0.1}' & @CRLF & _
+			'landmark {x: 0.1 y: 0.1}' & @LF & _
 			'landmark {x: 0.8 y: 0.8}', $landmark_pb2.NormalizedLandmarkList())
 	Local $image = _OpenCV_ObjCreate("Mat").zeros(100, 100, $CV_8UC3)
 	Local $expected_result = $image.copy()

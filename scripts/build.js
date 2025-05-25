@@ -4,7 +4,7 @@ const eachOfLimit = require("async/eachOfLimit");
 
 const version = process.env.npm_package_version || require("../package.json").version;
 const sources = sysPath.resolve(__dirname, "..");
-const archive = sysPath.join(sources, `autoit-mediapipe-0.10.23-opencv-4.11.0-com-v${ version }.7z`);
+const archive = sysPath.join(sources, `autoit-mediapipe-0.10.24-opencv-4.11.0-com-v${ version }.7z`);
 const project = sysPath.join(sources, "autoit-mediapipe-com");
 
 const files = [

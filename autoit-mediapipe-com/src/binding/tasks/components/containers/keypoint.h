@@ -10,10 +10,10 @@ namespace mediapipe::tasks::autoit::components::containers::keypoint {
 		NormalizedKeypoint& operator=(const NormalizedKeypoint& other) = default;
 
 		CV_WRAP NormalizedKeypoint(
-			const std::optional<float>& x = std::optional<float>(),
-			const std::optional<float>& y = std::optional<float>(),
-			const std::optional<std::string>& label = std::optional<std::string>(),
-			const std::optional<float>& score = std::optional<float>()
+			const std::optional<float>& x = std::nullopt,
+			const std::optional<float>& y = std::nullopt,
+			const std::optional<std::string>& label = std::nullopt,
+			const std::optional<float>& score = std::nullopt
 		)
 			:
 			x(x),

@@ -113,6 +113,8 @@ namespace mediapipe::autoit::solutions::objectron {
 			},
 			{ "detected_objects" },
 			noTypeMap(),
+			noTypeMap(),
+			std::nullopt,
 			static_cast<Objectron*>(nullptr)
 		);
 	}

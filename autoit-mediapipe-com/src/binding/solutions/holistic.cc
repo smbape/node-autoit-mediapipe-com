@@ -71,6 +71,8 @@ namespace mediapipe::autoit::solutions::holistic {
 				"right_hand_landmarks", "face_landmarks", "segmentation_mask"
 			},
 			noTypeMap(),
+			noTypeMap(),
+			std::nullopt,
 			static_cast<Holistic*>(nullptr)
 		);
 	}

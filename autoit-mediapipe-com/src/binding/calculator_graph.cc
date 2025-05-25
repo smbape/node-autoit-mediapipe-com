@@ -1,3 +1,5 @@
+#include "absl/base/const_init.h"
+#include "absl/synchronization/mutex.h"
 #include "Mediapipe_CalculatorGraph_Object.h"
 
 PTR_BRIDGE_IMPL(mediapipe::autoit::PacketRawCallback);
@@ -7,7 +9,7 @@ using namespace mediapipe::autoit;
 
 // A mutex to guard the output stream observer autoit callback function.
 // Only one autoit callback can run at once.
-static absl::Mutex callback_mutex;
+static absl::Mutex callback_mutex(absl::kConstInit);
 
 namespace mediapipe::autoit::calculator_graph {
 	absl::StatusOr<std::shared_ptr<CalculatorGraph>> create(CalculatorGraphConfig& graph_config) {

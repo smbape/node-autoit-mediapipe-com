@@ -883,7 +883,7 @@ class Parser {
         this.consumeCommentOrSpace();
 
         const enum_field = this.maybeWord();
-        if (enum_field === "option") {
+        if (enum_field === "option" || enum_field === "reserved") {
             if (!this.maybeFieldEnd()) {
                 this.pos = pos;
                 return false;

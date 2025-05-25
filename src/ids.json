@@ -227,6 +227,10 @@
         "iid": "8b318ec4-59f8-47de-8879-d36e6f8aef55",
         "clsid": "3f7543cc-3d31-4edd-9e7f-39373cb2f20c"
     },
+    "mediapipe::autoit::solution_base::ExtraSettings": {
+        "iid": "27739fac-b5dc-4e09-8a77-7216a4361896",
+        "clsid": "5085569f-2ffb-4bb8-81e6-d177941d2f50"
+    },
     "mediapipe::autoit::solution_base::SolutionBase": {
         "iid": "e07404f8-424b-4698-ae00-a85514cc9502",
         "clsid": "d383e98e-656c-4164-845a-bcfd578f90ce"
@@ -1471,6 +1475,10 @@
         "iid": "ab5e31ef-12be-402b-9861-f06fd618089f",
         "clsid": "24663eae-12f8-4bd5-8ac8-fd1f9e9a4d0d"
     },
+    "mediapipe::ConstantSidePacketCalculatorOptions::FloatVector": {
+        "iid": "80d93c50-4fd7-4354-adc3-d9611d2c138f",
+        "clsid": "afed823d-7a58-4cea-9a94-6e548f909529"
+    },
     "mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket": {
         "iid": "fc8fe742-d5d6-4710-bd68-1519bebd25fe",
         "clsid": "4bedec28-0054-4608-b715-b9a858bbbaaf"
@@ -2210,6 +2218,30 @@
     "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions": {
         "iid": "6151e12d-ca19-4389-adb0-5329439f9d12",
         "clsid": "c8d07cae-d7a0-4e66-bf11-a6bda9f81ccd"
+    },
+    "mediapipe::ResampleTimeSeriesCalculatorOptions": {
+        "iid": "ededf2c5-ad64-4fbe-b8cd-be9adfea508c",
+        "clsid": "d5cf548d-2928-439e-b39a-caaa54dab262"
+    },
+    "mediapipe::ResampleTimeSeriesCalculatorOptions::ResamplerLibResampleOptions": {
+        "iid": "ca1c1a0a-d065-4de9-9783-8472291c50bf",
+        "clsid": "fae74bc9-add9-4cca-84a9-f74b31e39c1e"
+    },
+    "mediapipe::ResampleTimeSeriesCalculatorOptions::ResamplerRationalFactorOptions": {
+        "iid": "1bdce822-d82a-486e-8d86-fcf41bfa68a9",
+        "clsid": "b51abbd3-6e1b-4feb-a729-deffc58c8e53"
+    },
+    "mediapipe::calculators::audio::resample_time_series_calculator_pb2": {
+        "iid": "18b677a5-03d7-47a4-82dd-ef2e2c27c1af",
+        "clsid": "c4c7e451-edd5-4b06-a719-f61a37d8b612"
+    },
+    "mediapipe::calculators::audio::resample_time_series_calculator_pb2::ResampleTimeSeriesCalculatorOptions": {
+        "iid": "5b63404c-6ef6-4a7d-a7b5-ef252c5512ba",
+        "clsid": "7f9b0d54-9da2-4bdc-a6c7-abc5c47b64a0"
+    },
+    "google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions": {
+        "iid": "0e5926f8-be4d-4119-b444-f4ffeae2f85e",
+        "clsid": "f0a112d0-b434-4458-baba-41180f5bfa64"
     },
     "mediapipe::CalculatorGraph": {
         "iid": "3637f144-8536-4c06-879b-0a2ea04b7f9e",

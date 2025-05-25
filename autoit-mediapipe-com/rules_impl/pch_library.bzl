@@ -222,7 +222,7 @@ def pch_library(name, **kwargs):
     )
 
     kwargs["copts"] = kwargs.get("copts", []) + select({
-        "@bazel_tools//src/conditions:windows": [
+        "@platforms//os:windows": [
             "/FI$(location :" + pch_header + ")",
             "/Yc$(location :" + pch_header + ")",
         ],
@@ -230,7 +230,7 @@ def pch_library(name, **kwargs):
     })
 
     pch_copts = select({
-        "@bazel_tools//src/conditions:windows": [
+        "@platforms//os:windows": [
             "/FI$(location :" + pch_header + ")",
             "/Yu$(location :" + pch_header + ")",
         ],
@@ -260,7 +260,7 @@ def pch_library(name, **kwargs):
     pch_library_rule(
         name = pch,
         src = select({
-            "@bazel_tools//src/conditions:windows": ":" + pch_object,
+            "@platforms//os:windows": ":" + pch_object,
             "//conditions:default": ":" + pch_object_unix,
         }),
     )
@@ -268,7 +268,7 @@ def pch_library(name, **kwargs):
     return {
         # needed to link to the precompiled header
         "srcs": select({
-            "@bazel_tools//src/conditions:windows": [":" + pch],
+            "@platforms//os:windows": [":" + pch],
             "//conditions:default": [],
         }),
 
@@ -280,7 +280,7 @@ def pch_library(name, **kwargs):
 
         # Needed to make pch files available to C++ compilation targets
         "additional_compiler_inputs": select({
-            "@bazel_tools//src/conditions:windows": [":" + pch_object],
+            "@platforms//os:windows": [":" + pch_object],
             "//conditions:default": [":" + pch_object_unix],
         }),
     }

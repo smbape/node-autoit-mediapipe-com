@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.23/mediapipe/python/solutions/pose_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.24/mediapipe/python/solutions/pose_test.py
 
 #include "..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -71,6 +71,7 @@ Test()
 
 Func Test()
 	test_blank_image()
+	test_blank_image_with_extra_settings()
 	test_on_image('static_lite', True, 0, 3)
 	test_on_image('static_full', True, 1, 3)
 	test_on_image('static_heavy', True, 2, 3)
@@ -84,11 +85,26 @@ Func test_blank_image()
 	Local $image = $Mat.zeros(100, 100, $CV_8UC3)
 	$image.setTo(255.0)
 
-	Local $pose = $mp_pose.Pose()
+	Local $pose = $mp_pose.Pose(_Mediapipe_Params("enable_segmentation", True))
 	Local $results = $pose.process($image)
 	_AssertIsNone($results("pose_landmarks"))
 	_AssertIsNone($results("segmentation_mask"))
 EndFunc   ;==>test_blank_image
+
+Func test_blank_image_with_extra_settings()
+	Local $image = $Mat.zeros(100, 100, $CV_8UC3)
+	$image.setTo(255.0)
+
+	Local $pose = $mp_pose.Pose(_Mediapipe_Params( _
+			"enable_segmentation", True, _
+			"extra_settings", $mp_pose.ExtraSettings(_Mediapipe_Params( _
+			"disallow_service_default_initialization", True _
+			)) _
+			))
+	Local $results = $pose.process($image)
+	_AssertIsNone($results("pose_landmarks"))
+	_AssertIsNone($results("segmentation_mask"))
+EndFunc   ;==>test_blank_image_with_extra_settings
 
 Func test_on_image($id, $static_image_mode, $model_complexity, $num_frames)
 	$download_utils.download( _
