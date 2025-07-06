@@ -5235,6 +5235,24 @@
   - [mediapipe::ConstantSidePacketCalculatorOptions::FloatVector::\_\_eq\_\_](#mediapipeconstantsidepacketcalculatoroptionsfloatvector%5C_%5C_eq%5C_%5C_)
   - [mediapipe::ConstantSidePacketCalculatorOptions::FloatVector::\_\_str\_\_](#mediapipeconstantsidepacketcalculatoroptionsfloatvector%5C_%5C_str%5C_%5C_)
   - [mediapipe::ConstantSidePacketCalculatorOptions::FloatVector::\_\_type\_\_](#mediapipeconstantsidepacketcalculatoroptionsfloatvector%5C_%5C_type%5C_%5C_)
+- [mediapipe::ConstantSidePacketCalculatorOptions::IntVector](#mediapipeconstantsidepacketcalculatoroptionsintvector)
+  - [IntVector.int\_value](#intvectorint%5C_value)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::get\_create](#mediapipeconstantsidepacketcalculatoroptionsintvectorget%5C_create)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::ByteSizeLong](#mediapipeconstantsidepacketcalculatoroptionsintvectorbytesizelong)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::CheckInitialized](#mediapipeconstantsidepacketcalculatoroptionsintvectorcheckinitialized)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::Clear](#mediapipeconstantsidepacketcalculatoroptionsintvectorclear)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::ClearField](#mediapipeconstantsidepacketcalculatoroptionsintvectorclearfield)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::CopyFrom](#mediapipeconstantsidepacketcalculatoroptionsintvectorcopyfrom)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::DiscardUnknownFields](#mediapipeconstantsidepacketcalculatoroptionsintvectordiscardunknownfields)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::FindInitializationErrors](#mediapipeconstantsidepacketcalculatoroptionsintvectorfindinitializationerrors)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::IsInitialized](#mediapipeconstantsidepacketcalculatoroptionsintvectorisinitialized)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::IsInstance](#mediapipeconstantsidepacketcalculatoroptionsintvectorisinstance)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SerializeAsString](#mediapipeconstantsidepacketcalculatoroptionsintvectorserializeasstring)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SerializeToString](#mediapipeconstantsidepacketcalculatoroptionsintvectorserializetostring)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SpaceUsedLong](#mediapipeconstantsidepacketcalculatoroptionsintvectorspaceusedlong)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::\_\_eq\_\_](#mediapipeconstantsidepacketcalculatoroptionsintvector%5C_%5C_eq%5C_%5C_)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::\_\_str\_\_](#mediapipeconstantsidepacketcalculatoroptionsintvector%5C_%5C_str%5C_%5C_)
+  - [mediapipe::ConstantSidePacketCalculatorOptions::IntVector::\_\_type\_\_](#mediapipeconstantsidepacketcalculatoroptionsintvector%5C_%5C_type%5C_%5C_)
 - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacket)
   - [ConstantSidePacket.int\_value](#constantsidepacketint%5C_value)
   - [ConstantSidePacket.uint64\_value](#constantsidepacketuint64%5C_value)
@@ -5249,6 +5267,7 @@
   - [ConstantSidePacket.matrix\_data\_value](#constantsidepacketmatrix%5C_data%5C_value)
   - [ConstantSidePacket.string\_vector\_value](#constantsidepacketstring%5C_vector%5C_value)
   - [ConstantSidePacket.float\_vector\_value](#constantsidepacketfloat%5C_vector%5C_value)
+  - [ConstantSidePacket.int\_vector\_value](#constantsidepacketint%5C_vector%5C_value)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get\_create](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketget%5C_create)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ByteSizeLong](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketbytesizelong)
   - [mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::CheckInitialized](#mediapipeconstantsidepacketcalculatoroptionsconstantsidepacketcheckinitialized)
@@ -5270,6 +5289,7 @@
 - [mediapipe::calculators::core::constant\_side\_packet\_calculator\_pb2::ConstantSidePacketCalculatorOptions](#mediapipecalculatorscoreconstant%5C_side%5C_packet%5C_calculator%5C_pb2constantsidepacketcalculatoroptions)
   - [ConstantSidePacketCalculatorOptions.StringVector](#constantsidepacketcalculatoroptionsstringvector)
   - [ConstantSidePacketCalculatorOptions.FloatVector](#constantsidepacketcalculatoroptionsfloatvector)
+  - [ConstantSidePacketCalculatorOptions.IntVector](#constantsidepacketcalculatoroptionsintvector)
   - [ConstantSidePacketCalculatorOptions.ConstantSidePacket](#constantsidepacketcalculatoroptionsconstantsidepacket)
 - [google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ConstantSidePacketCalculatorOptions](#googleprotobufautoitextend%5C_mediapipe%5C_calculatoroptionswithmediapipe%5C_constantsidepacketcalculatoroptions)
   - [google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ConstantSidePacketCalculatorOptions::IsInstance](#googleprotobufautoitextend%5C_mediapipe%5C_calculatoroptionswithmediapipe%5C_constantsidepacketcalculatoroptionsisinstance)
@@ -7896,6 +7916,7 @@
   - [cv::Mat::ptr](#cvmatptr)
   - [cv::Mat::push\_back](#cvmatpush%5C_back)
   - [cv::Mat::put\_Item](#cvmatput%5C_item)
+  - [cv::Mat::reinterpret](#cvmatreinterpret)
   - [cv::Mat::reserve](#cvmatreserve)
   - [cv::Mat::reserveBuffer](#cvmatreservebuffer)
   - [cv::Mat::reshape](#cvmatreshape)
@@ -57086,6 +57107,157 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.FloatVector").__type__() -> retval
 ```
 
+## mediapipe::ConstantSidePacketCalculatorOptions::IntVector
+
+### IntVector.int\_value
+
+```cpp
+google::protobuf::Repeated_int* mediapipe::ConstantSidePacketCalculatorOptions::IntVector::int_value
+AutoIt:
+    [propget, propput] $oIntVector.int_value
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::get\_create
+
+```cpp
+static mediapipe::ConstantSidePacketCalculatorOptions::IntVector mediapipe::ConstantSidePacketCalculatorOptions::IntVector::get_create( VARIANT* int_value = VARIANT*() );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.IntVector").create( [$int_value] ) -> <mediapipe.ConstantSidePacketCalculatorOptions.IntVector object>
+    $oIntVector( [$int_value] ) -> <mediapipe.ConstantSidePacketCalculatorOptions.IntVector object>
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::ByteSizeLong
+
+```cpp
+size_t mediapipe::ConstantSidePacketCalculatorOptions::IntVector::ByteSizeLong();
+AutoIt:
+    $oIntVector.ByteSizeLong() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::CheckInitialized
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::IntVector::CheckInitialized();
+AutoIt:
+    $oIntVector.CheckInitialized() -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::Clear
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::IntVector::Clear();
+AutoIt:
+    $oIntVector.Clear() -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::ClearField
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::IntVector::ClearField( const std::string& field_name );
+AutoIt:
+    $oIntVector.ClearField( $field_name ) -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::CopyFrom
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::IntVector::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oIntVector.CopyFrom( $other_message ) -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::DiscardUnknownFields
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::IntVector::DiscardUnknownFields();
+AutoIt:
+    $oIntVector.DiscardUnknownFields() -> None
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::FindInitializationErrors
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::IntVector::FindInitializationErrors( std::vector<std::string>* errors );
+AutoIt:
+    $oIntVector.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::IsInitialized
+
+```cpp
+bool mediapipe::ConstantSidePacketCalculatorOptions::IntVector::IsInitialized();
+AutoIt:
+    $oIntVector.IsInitialized() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::IsInstance
+
+```cpp
+static bool mediapipe::ConstantSidePacketCalculatorOptions::IntVector::IsInstance( const mediapipe::ConstantSidePacketCalculatorOptions::IntVector& obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.IntVector").IsInstance( $obj ) -> retval
+```
+
+```cpp
+static bool mediapipe::ConstantSidePacketCalculatorOptions::IntVector::IsInstance( VARIANT* obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.IntVector").IsInstance( $obj ) -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SerializeAsString
+
+```cpp
+std::string mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SerializeAsString();
+AutoIt:
+    $oIntVector.SerializeAsString() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SerializeToString
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SerializeToString( std::string* output );
+AutoIt:
+    $oIntVector.SerializeToString( [$output] ) -> $output
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SpaceUsedLong
+
+```cpp
+size_t mediapipe::ConstantSidePacketCalculatorOptions::IntVector::SpaceUsedLong();
+AutoIt:
+    $oIntVector.SpaceUsedLong() -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::\_\_eq\_\_
+
+```cpp
+bool mediapipe::ConstantSidePacketCalculatorOptions::IntVector::__eq__( const mediapipe::ConstantSidePacketCalculatorOptions::IntVector& other );
+AutoIt:
+    $oIntVector.__eq__( $other ) -> retval
+```
+
+```cpp
+bool mediapipe::ConstantSidePacketCalculatorOptions::IntVector::__eq__( VARIANT* other );
+AutoIt:
+    $oIntVector.__eq__( $other ) -> retval
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::\_\_str\_\_
+
+```cpp
+void mediapipe::ConstantSidePacketCalculatorOptions::IntVector::__str__( std::string* output );
+AutoIt:
+    $oIntVector.__str__( [$output] ) -> $output
+```
+
+### mediapipe::ConstantSidePacketCalculatorOptions::IntVector::\_\_type\_\_
+
+```cpp
+static std::string mediapipe::ConstantSidePacketCalculatorOptions::IntVector::__type__();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.IntVector").__type__() -> retval
+```
+
 ## mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket
 
 ### ConstantSidePacket.int\_value
@@ -57192,6 +57364,14 @@ AutoIt:
     [propget, propput] $oConstantSidePacket.float_vector_value
 ```
 
+### ConstantSidePacket.int\_vector\_value
+
+```cpp
+mediapipe::ConstantSidePacketCalculatorOptions::IntVector* mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::int_vector_value
+AutoIt:
+    [propget, propput] $oConstantSidePacket.int_vector_value
+```
+
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::get\_create
 
 ```cpp
@@ -57207,10 +57387,11 @@ static mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket mediap
                                                                                                                                                           std::shared_ptr<mediapipe::TimeSeriesHeader>                                  time_series_header_value = std::shared_ptr<mediapipe::TimeSeriesHeader>(),
                                                                                                                                                           std::shared_ptr<mediapipe::MatrixData>                                        matrix_data_value = std::shared_ptr<mediapipe::MatrixData>(),
                                                                                                                                                           std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::StringVector> string_vector_value = std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::StringVector>(),
-                                                                                                                                                          std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::FloatVector>  float_vector_value = std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::FloatVector>() );
+                                                                                                                                                          std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::FloatVector>  float_vector_value = std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::FloatVector>(),
+                                                                                                                                                          std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::IntVector>    int_vector_value = std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::IntVector>() );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket").create( [$int_value[, $uint64_value[, $int64_value[, $float_value[, $double_value[, $bool_value[, $string_value[, $classification_list_value[, $landmark_list_value[, $time_series_header_value[, $matrix_data_value[, $string_vector_value[, $float_vector_value]]]]]]]]]]]]] ) -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
-    $oConstantSidePacket( [$int_value[, $uint64_value[, $int64_value[, $float_value[, $double_value[, $bool_value[, $string_value[, $classification_list_value[, $landmark_list_value[, $time_series_header_value[, $matrix_data_value[, $string_vector_value[, $float_vector_value]]]]]]]]]]]]] ) -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
+    _Mediapipe_ObjCreate("mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket").create( [$int_value[, $uint64_value[, $int64_value[, $float_value[, $double_value[, $bool_value[, $string_value[, $classification_list_value[, $landmark_list_value[, $time_series_header_value[, $matrix_data_value[, $string_vector_value[, $float_vector_value[, $int_vector_value]]]]]]]]]]]]]] ) -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
+    $oConstantSidePacket( [$int_value[, $uint64_value[, $int64_value[, $float_value[, $double_value[, $bool_value[, $string_value[, $classification_list_value[, $landmark_list_value[, $time_series_header_value[, $matrix_data_value[, $string_vector_value[, $float_vector_value[, $int_vector_value]]]]]]]]]]]]]] ) -> <mediapipe.ConstantSidePacketCalculatorOptions.ConstantSidePacket object>
 ```
 
 ### mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket::ByteSizeLong
@@ -57371,6 +57552,14 @@ AutoIt:
 static mediapipe::ConstantSidePacketCalculatorOptions::FloatVector
 AutoIt:
     [propget] $oConstantSidePacketCalculatorOptions.FloatVector
+```
+
+### ConstantSidePacketCalculatorOptions.IntVector
+
+```cpp
+static mediapipe::ConstantSidePacketCalculatorOptions::IntVector
+AutoIt:
+    [propget] $oConstantSidePacketCalculatorOptions.IntVector
 ```
 
 ### ConstantSidePacketCalculatorOptions.ConstantSidePacket
@@ -81344,6 +81533,14 @@ void cv::Mat::put_Item( const std::vector<int>& idx,
                         double                  value );
 AutoIt:
     $oMat.Item( $idx ) = $value
+```
+
+### cv::Mat::reinterpret
+
+```cpp
+cv::Mat cv::Mat::reinterpret( int type );
+AutoIt:
+    $oMat.reinterpret( $type ) -> retval
 ```
 
 ### cv::Mat::reserve

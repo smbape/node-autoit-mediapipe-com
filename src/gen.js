@@ -11,9 +11,9 @@ const {explore} = require("fs-explorer");
 const Parser = require("./protobuf/Parser");
 const vector_conversion = require("./vector_conversion");
 
-const OpenCV_VERSION = "opencv-4.11.0";
+const OpenCV_VERSION = "opencv-4.12.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
-const MEDIAPIPE_VERSION = "0.10.24";
+const MEDIAPIPE_VERSION = "0.10.26";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
@@ -317,8 +317,8 @@ const opencv_SOURCE_DIR = findFile(`${ OpenCV_VERSION }-*/opencv/sources`, sysPa
 const src2 = sysPath.resolve(opencv_SOURCE_DIR, "modules/python/src2");
 
 const hdr_parser = fs.readFileSync(sysPath.join(src2, "hdr_parser.py")).toString();
-const hdr_parser_start = hdr_parser.indexOf("class CppHeaderParser");
-const hdr_parser_end = hdr_parser.indexOf("if __name__ == '__main__':");
+const hdr_parser_start = hdr_parser.indexOf("]") + 1;
+const hdr_parser_end = hdr_parser.indexOf("if __name__ == '__main__':", hdr_parser);
 
 const options = getOptions(PROJECT_DIR);
 options.proto = COMGenerator.proto;
@@ -452,7 +452,14 @@ waterfall([
 
             ${ srcfiles.map(file => `srcfiles.append(${ JSON.stringify(file) })`).join(`\n${ " ".repeat(12) }`) }
 
-            parser = CppHeaderParser(generate_umat_decls=True, generate_gpumat_decls=True)
+            parser = CppHeaderParser(
+                generate_umat_decls=True,
+                generate_gpumat_decls=True,
+                preprocessor_definitions={
+                    "TARGET_OS_OSX": 0,
+                    "MEDIAPIPE_DISABLE_GPU": 1,
+                }
+            )
             all_decls = []
             for hdr in srcfiles:
                 decls = parser.parse(hdr)

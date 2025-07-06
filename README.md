@@ -45,9 +45,9 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
 
 ## Installation
 
-  - Download and extract [opencv-4.11.0-windows.exe](https://opencv.org/releases/) into a folder
-  - Download and extract [autoit-opencv-4.11.0-com-v2.7.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.7.0/autoit-opencv-4.11.0-com-v2.7.0.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.0/autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0.7z) into a folder
+  - Download and extract [opencv-4.12.0-windows.exe](https://opencv.org/releases/) into a folder
+  - Download and extract [autoit-opencv-4.12.0-com-v2.8.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.8.0/autoit-opencv-4.12.0-com-v2.8.0.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.1/autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z) into a folder
 
 ## Usage
 
@@ -75,8 +75,8 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -282,8 +282,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -458,8 +458,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -586,8 +586,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -760,8 +760,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -949,8 +949,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1077,8 +1077,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1212,8 +1212,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1366,8 +1366,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1599,7 +1599,7 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1686,8 +1686,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -1859,8 +1859,8 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-_OpenCV_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -2026,7 +2026,7 @@ EndFunc   ;==>_AssertIsObj
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -2104,7 +2104,7 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
+_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files
@@ -2267,8 +2267,8 @@ function Example() {
     $cv.destroyAllWindows()
 }
 
-[MediapipeComInterop]::DllOpen("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.24-4110.dll")
-[OpenCvComInterop]::DllOpen("opencv-4.11.0-windows\opencv\build\x64\vc16\bin\opencv_world4110.dll", "autoit-opencv-com\autoit_opencv_com4110.dll")
+[MediapipeComInterop]::DllOpen("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+[OpenCvComInterop]::DllOpen("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
 
 $resource_util = [MediapipeComInterop]::ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
 $resource_util.set_resource_dir("autoit-mediapipe-com")
@@ -2387,13 +2387,13 @@ public static class Test
     static void Main(String[] args)
     {
         OpenCvComInterop.DllOpen(
-            "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
-            "autoit-opencv-com\\autoit_opencv_com4110.dll"
+            "opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll",
+            "autoit-opencv-com\\autoit_opencv_com4120.dll"
         );
 
         MediapipeComInterop.DllOpen(
-            "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.24-4110.dll"
+            "opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll",
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.26-4120.dll"
         );
 
         var resourceDir = MediapipeComInterop.FindResourceDir();
@@ -2508,13 +2508,13 @@ public static class Test
     static void Main(String[] args)
     {
         OpenCvComInterop.DllOpen(
-            "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
-            "autoit-opencv-com\\autoit_opencv_com4110.dll"
+            "opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll",
+            "autoit-opencv-com\\autoit_opencv_com4120.dll"
         );
 
         MediapipeComInterop.DllOpen(
-            "opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.24-4110.dll"
+            "opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll",
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.26-4120.dll"
         );
 
         // To make registration free works with compile time COM classes
@@ -2554,39 +2554,39 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.0/autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0.7z' -o autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0.7z
+# download autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.1/autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z' -o autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z
 
-# extract the content of autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z -aoa -oautoit-mediapipe-com
 
-# download autoit-opencv-4.11.0-com-v2.7.0.7z
-curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.7.0/autoit-opencv-4.11.0-com-v2.7.0.7z' -o autoit-opencv-4.11.0-com-v2.7.0.7z
+# download autoit-opencv-4.12.0-com-v2.8.0.7z
+curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.8.0/autoit-opencv-4.12.0-com-v2.8.0.7z' -o autoit-opencv-4.12.0-com-v2.8.0.7z
 
-# extract the content of autoit-opencv-4.11.0-com-v2.7.0.7z into a folder named autoit-opencv-com
-7z x autoit-opencv-4.11.0-com-v2.7.0.7z -aoa -oautoit-opencv-com
+# extract the content of autoit-opencv-4.12.0-com-v2.8.0.7z into a folder named autoit-opencv-com
+7z x autoit-opencv-4.12.0-com-v2.8.0.7z -aoa -oautoit-opencv-com
 
-# download opencv-4.11.0-windows.exe
-curl -L 'https://github.com/opencv/opencv/releases/download/4.11.0/opencv-4.11.0-windows.exe' -o opencv-4.11.0-windows.exe
+# download opencv-4.12.0-windows.exe
+curl -L 'https://github.com/opencv/opencv/releases/download/4.12.0/opencv-4.12.0-windows.exe' -o opencv-4.12.0-windows.exe
 
-# extract the content of opencv-4.11.0-windows.exe into a folder named opencv-4.11.0-windows
-./opencv-4.11.0-windows.exe -oopencv-4.11.0-windows -y
+# extract the content of opencv-4.12.0-windows.exe into a folder named opencv-4.12.0-windows
+./opencv-4.12.0-windows.exe -oopencv-4.12.0-windows -y
 
-# download autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.5.0.zip' -o autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0-src.zip
+# download autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.5.1.zip' -o autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0-src.zip
-7z x autoit-mediapipe-0.10.24-opencv-4.11.0-com-v0.5.0-src.zip -aoa 'node-autoit-mediapipe-com-0.5.0\examples'
-cp -rf node-autoit-mediapipe-com-0.5.0/* ./
-rm -rf node-autoit-mediapipe-com-0.5.0
+# extract the examples folder of autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1-src.zip
+7z x autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1-src.zip -aoa 'node-autoit-mediapipe-com-0.5.1\examples'
+cp -rf node-autoit-mediapipe-com-0.5.1/* ./
+rm -rf node-autoit-mediapipe-com-0.5.1
 
-# download mediapipe-0.10.24-src.tar.gz
-curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.24.tar.gz' -o mediapipe-0.10.24-src.tar.gz
+# download mediapipe-0.10.26-src.tar.gz
+curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.26.tar.gz' -o mediapipe-0.10.26-src.tar.gz
 
-# extract the mediapipe/tasks/testdata folder of mediapipe-0.10.24-src.tar.gz
-tar xzf mediapipe-0.10.24-src.tar.gz 'mediapipe-0.10.24/mediapipe/tasks/testdata'
-cp -rf mediapipe-0.10.24/* ./
-rm -rf mediapipe-0.10.24
+# extract the mediapipe/tasks/testdata folder of mediapipe-0.10.26-src.tar.gz
+tar xzf mediapipe-0.10.26-src.tar.gz 'mediapipe-0.10.26/mediapipe/tasks/testdata'
+cp -rf mediapipe-0.10.26/* ./
+rm -rf mediapipe-0.10.26
 
 ```
 

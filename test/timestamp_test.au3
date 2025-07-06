@@ -6,12 +6,12 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.24/mediapipe/python/timestamp_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.26/mediapipe/python/timestamp_test.py
 
 #include "..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "_assert.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files

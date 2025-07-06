@@ -14,7 +14,7 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4110*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4110*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Tell mediapipe where to look its resource files

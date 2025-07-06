@@ -18,10 +18,10 @@ explore(sysPath.resolve(__dirname, "../examples/googlesamples/examples"), (path,
 
     const content = fs.readFileSync(path).toString().replace(/\r?\n|\r/g, LF)
         .replaceAll("#include \"..\\..\\..\\..\\..\\", "#include \"")
-        .replaceAll("_Mediapipe_FindDLL(\"opencv_world4110*\")", "\"opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll\"")
-        .replaceAll("_Mediapipe_FindDLL(\"autoit_mediapipe_com-*-4110*\")", "\"autoit-mediapipe-com\\autoit_mediapipe_com-0.10.24-4110.dll\"")
-        .replaceAll("_OpenCV_FindDLL(\"opencv_world4110*\")", "\"opencv-4.11.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4110.dll\"")
-        .replaceAll("_OpenCV_FindDLL(\"autoit_opencv_com4110*\")", "\"autoit-opencv-com\\autoit_opencv_com4110.dll\"")
+        .replaceAll("_Mediapipe_FindDLL(\"opencv_world4120*\")", "\"opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll\"")
+        .replaceAll("_Mediapipe_FindDLL(\"autoit_mediapipe_com-*-4120*\")", "\"autoit-mediapipe-com\\autoit_mediapipe_com-0.10.26-4120.dll\"")
+        .replaceAll("_OpenCV_FindDLL(\"opencv_world4120*\")", "\"opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll\"")
+        .replaceAll("_OpenCV_FindDLL(\"autoit_opencv_com4120*\")", "\"autoit-opencv-com\\autoit_opencv_com4120.dll\"")
         .replace("_Mediapipe_FindFile(\"examples\\data\")", "@ScriptDir & \"\\examples\\data\"");
 
     examples.push(content);

@@ -33,8 +33,8 @@ npm version patch
 # build
 # ================================
 rm -rf /c/_bazel_ opencv-4.*.0-windows autoit-mediapipe-com/{build_x64,generated} && \
-time CMAKE_BUILD_TYPE=Release cmd.exe //c $(cygpath -w autoit-*-com/build.bat) -UOpenCV_VERSION -UMEDIAPIPE_VERSION && \
-time CMAKE_BUILD_TYPE=Debug cmd.exe //c $(cygpath -w autoit-*-com/build.bat) -UOpenCV_VERSION -UMEDIAPIPE_VERSION
+time CMAKE_BUILD_TYPE=Release cmd.exe //c $(cygpath -w autoit-*-com/build.bat) && \
+time CMAKE_BUILD_TYPE=Debug cmd.exe //c $(cygpath -w autoit-*-com/build.bat)
 
 
 # ================================
@@ -56,16 +56,16 @@ node scripts/build.js
 # ================================
 # test release
 # ================================
-test -d /d/Programs/AutoIt/UDF/mediapipe-udf-test/opencv-4.11.0-windows || ./opencv-4.11.0-windows.exe -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/opencv-4.11.0-windows -y && \
+test -d /d/Programs/AutoIt/UDF/mediapipe-udf-test/opencv-4.12.0-windows || ./opencv-4.12.0-windows.exe -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/opencv-4.12.0-windows -y && \
 rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/{autoit-mediapipe-*,autoit-opencv-*,examples,test} && \
 git archive --format zip --output /d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com.zip HEAD && \
 7z x autoit-mediapipe-*.7z -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com && \
 7z x autoit-opencv-*.7z -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-opencv-com && \
-echo 'ff4a2a85d0ac0c73ff1acdf5ceda47cb3640566e0430e056c7f12e44cb5c81bd mediapipe-0.10.24-src.tar.gz' | sha256sum --check --status || \
-curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.24.tar.gz' -o mediapipe-0.10.24-src.tar.gz && \
-tar xzf mediapipe-0.10.24-src.tar.gz -C /d/Programs/AutoIt/UDF/mediapipe-udf-test/ 'mediapipe-0.10.24/mediapipe/tasks/testdata' && \
-cp -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.24/* /d/Programs/AutoIt/UDF/mediapipe-udf-test/ && \
-rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.24 && \
+echo '51cbd4d538716e3722b55b8412cab9e3713270a6e9a6f09af6b52d357718e6d7 mediapipe-0.10.26-src.tar.gz' | sha256sum --check --status || \
+curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.26.tar.gz' -o mediapipe-0.10.26-src.tar.gz && \
+tar xzf mediapipe-0.10.26-src.tar.gz -C /d/Programs/AutoIt/UDF/mediapipe-udf-test/ 'mediapipe-0.10.26/mediapipe/tasks/testdata' && \
+cp -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.26/* /d/Programs/AutoIt/UDF/mediapipe-udf-test/ && \
+rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.26 && \
 7z x /d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com.zip -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test 'examples\*' 'test\*' && \
 node scripts/test.js --bash --Release /d/Programs/AutoIt/UDF/mediapipe-udf-test > $(for ifile in autoit-*-com/build_x64/bin; do echo $ifile/test_all.sh; done) && \
 ./autoit-*-com/build_x64/bin/test_all.sh

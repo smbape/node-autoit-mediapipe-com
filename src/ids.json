@@ -1479,6 +1479,10 @@
         "iid": "80d93c50-4fd7-4354-adc3-d9611d2c138f",
         "clsid": "afed823d-7a58-4cea-9a94-6e548f909529"
     },
+    "mediapipe::ConstantSidePacketCalculatorOptions::IntVector": {
+        "iid": "8b2163a0-b039-42fa-8dff-9286d2203148",
+        "clsid": "914777b0-6564-4ac0-b305-a4c71de6b9d3"
+    },
     "mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket": {
         "iid": "fc8fe742-d5d6-4710-bd68-1519bebd25fe",
         "clsid": "4bedec28-0054-4608-b715-b9a858bbbaaf"

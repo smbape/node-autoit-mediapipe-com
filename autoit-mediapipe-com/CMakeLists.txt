@@ -31,15 +31,13 @@ if (POLICY CMP0135)
     cmake_policy(SET CMP0135 NEW) # set the timestamps of extracted contents to the time of extraction.
 endif()
 
-set(MEDIAPIPE_VERSION 0.10.24 CACHE STRING "Choose the mediapipe version.")
-set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.24" "0.10.23" "0.10.22" "0.10.21" "0.10.20")
+set(MEDIAPIPE_VERSION 0.10.26 CACHE STRING "Choose the mediapipe version.")
+set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.26" "0.10.24" "0.10.23")
 string(REPLACE "." "" MEDIAPIPE_DLLVERSION ${MEDIAPIPE_VERSION})
 
+set(MEDIAPIPE_URL_HASH_SHA256_01026 51cbd4d538716e3722b55b8412cab9e3713270a6e9a6f09af6b52d357718e6d7)
 set(MEDIAPIPE_URL_HASH_SHA256_01024 ff4a2a85d0ac0c73ff1acdf5ceda47cb3640566e0430e056c7f12e44cb5c81bd)
 set(MEDIAPIPE_URL_HASH_SHA256_01023 5bc3e7b7d5ffdcb0a0e7d2057c7ea5c344f65371516cf6e42cc8b4bf77ae5ff8)
-set(MEDIAPIPE_URL_HASH_SHA256_01022 25af3c4cc44dfe929eea226ab6cd0dd53a54fbb199db877cc96aa63d0e45d745)
-set(MEDIAPIPE_URL_HASH_SHA256_01021 6492ad36697cca309fe9526c64d65c8844e8128aebc85c390a97c375008d1c34)
-set(MEDIAPIPE_URL_HASH_SHA256_01020 ae0abfc544a37a46f46e20f73010ddbe43cf12b0853701b763d3df1ab986dd36)
 
 string(REPLACE "." ";" MEDIAPIPE_VERSION_LIST ${MEDIAPIPE_VERSION})
 list(GET MEDIAPIPE_VERSION_LIST 0 MEDIAPIPE_VERSION_MAJOR)
@@ -111,7 +109,7 @@ if (NOT mediapipe_autoit_SKIP_GENERATION)
 endif()
 
 # Tell cmake that we will need autoit-opencv-com.
-set(OPENCV_COM_VERSION 2.7.0)
+set(OPENCV_COM_VERSION 2.8.0)
 set(OPENCV_COM_ARCHIVE "autoit-opencv-${OpenCV_VERSION}-com-v${OPENCV_COM_VERSION}.7z")
 cmake_path(SET OPENCV_COM_SOURCE_DIR NORMALIZE "${CMAKE_CURRENT_SOURCE_DIR}/../../node-autoit-opencv-com")
 if (EXISTS "${OPENCV_COM_SOURCE_DIR}/${OPENCV_COM_ARCHIVE}")
@@ -122,7 +120,7 @@ endif()
 include(FetchContent)
 FetchContent_Populate(autoit_opencv_com
     URL               "${OPENCV_COM_URL}"
-    URL_HASH          SHA256=36426f0f0d55b68f2b75600e70bf13432ee742d35df99ec89529aa0050f239e0
+    URL_HASH          SHA256=4b05f360fa59fa7bf963a1d7e9d2808c9588894a18be90f2551fea367bd917eb
     DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
     SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
 )
@@ -169,10 +167,10 @@ file(GLOB_RECURSE files_to_change
 )
 foreach(item ${files_to_change})
     vcpkg_regex_replace_string("${item}" "autoit_mediapipe_com-[0-9]+(\\.[0-9]+)+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
+    vcpkg_regex_replace_string("${item}" "autoit_mediapipe_com-\\*-[0-9]+\\*" "autoit_mediapipe_com-*-${OpenCV_DLLVERSION}*")
     vcpkg_regex_replace_string("${item}" "mediapipe-[0-9]+(\\.[0-9]+)+" "mediapipe-${MEDIAPIPE_VERSION}")
     vcpkg_regex_replace_string("${item}" "/v[0-9]+(\\.[0-9]+)+/mediapipe/" "/v${MEDIAPIPE_VERSION}/mediapipe/")
     vcpkg_regex_replace_string("${item}" "(/google-ai-edge/mediapipe/archive/refs/tags/v)[0-9]+(\\.[0-9]+)+" "\\1${MEDIAPIPE_VERSION}")
-    vcpkg_regex_replace_string("${item}" "autoit_mediapipe_com-\\*-[0-9]+\\*" "autoit_mediapipe_com-*-${OpenCV_DLLVERSION}*")
 
     vcpkg_regex_replace_string("${item}" "(https://docs\\.opencv\\.org/|https://github\\.com/opencv/opencv/blob/|opencv-)[0-9]+\\.[0-9]+\\.[0-9]+/" "\\1${OpenCV_VERSION}/")
     vcpkg_regex_replace_string("${item}" "opencv-[0-9]+\\.[0-9]+\\.[0-9]+-(vc14_vc15|windows)\\.(exe|zip)" "${OpenCV_DOWNLOAD_NAME}")
@@ -206,7 +204,7 @@ if (WIN32)
 endif()
 
 find_program(BAZEL_EXECUTABLE
-    NAMES bazel
+    NAMES bazelisk bazel
     DOC "Bazel executable"
     REQUIRED
 )
