@@ -8380,32 +8380,32 @@
   - [VectorOfPairOfStringAndPacket::sort](#vectorofpairofstringandpacketsort)
   - [VectorOfPairOfStringAndPacket::sort\_variant](#vectorofpairofstringandpacketsort%5C_variant)
   - [VectorOfPairOfStringAndPacket::start](#vectorofpairofstringandpacketstart)
-- [VectorOfInt64](#vectorofint64)
-  - [VectorOfInt64.Count](#vectorofint64count)
-  - [VectorOfInt64::create](#vectorofint64create)
-  - [VectorOfInt64::Add](#vectorofint64add)
-  - [VectorOfInt64::IsInstance](#vectorofint64isinstance)
-  - [VectorOfInt64::Items](#vectorofint64items)
-  - [VectorOfInt64::Keys](#vectorofint64keys)
-  - [VectorOfInt64::Remove](#vectorofint64remove)
-  - [VectorOfInt64::\_\_eq\_\_](#vectorofint64%5C_%5C_eq%5C_%5C_)
-  - [VectorOfInt64::\_\_str\_\_](#vectorofint64%5C_%5C_str%5C_%5C_)
-  - [VectorOfInt64::\_\_type\_\_](#vectorofint64%5C_%5C_type%5C_%5C_)
-  - [VectorOfInt64::append](#vectorofint64append)
-  - [VectorOfInt64::at](#vectorofint64at)
-  - [VectorOfInt64::clear](#vectorofint64clear)
-  - [VectorOfInt64::empty](#vectorofint64empty)
-  - [VectorOfInt64::end](#vectorofint64end)
-  - [VectorOfInt64::get\_Item](#vectorofint64get%5C_item)
-  - [VectorOfInt64::get\_\_NewEnum](#vectorofint64get%5C_%5C_newenum)
-  - [VectorOfInt64::push\_back](#vectorofint64push%5C_back)
-  - [VectorOfInt64::push\_vector](#vectorofint64push%5C_vector)
-  - [VectorOfInt64::put\_Item](#vectorofint64put%5C_item)
-  - [VectorOfInt64::size](#vectorofint64size)
-  - [VectorOfInt64::slice](#vectorofint64slice)
-  - [VectorOfInt64::sort](#vectorofint64sort)
-  - [VectorOfInt64::sort\_variant](#vectorofint64sort%5C_variant)
-  - [VectorOfInt64::start](#vectorofint64start)
+- [VectorOfInt64\_t](#vectorofint64%5C_t)
+  - [VectorOfInt64\_t.Count](#vectorofint64%5C_tcount)
+  - [VectorOfInt64\_t::create](#vectorofint64%5C_tcreate)
+  - [VectorOfInt64\_t::Add](#vectorofint64%5C_tadd)
+  - [VectorOfInt64\_t::IsInstance](#vectorofint64%5C_tisinstance)
+  - [VectorOfInt64\_t::Items](#vectorofint64%5C_titems)
+  - [VectorOfInt64\_t::Keys](#vectorofint64%5C_tkeys)
+  - [VectorOfInt64\_t::Remove](#vectorofint64%5C_tremove)
+  - [VectorOfInt64\_t::\_\_eq\_\_](#vectorofint64%5C_t%5C_%5C_eq%5C_%5C_)
+  - [VectorOfInt64\_t::\_\_str\_\_](#vectorofint64%5C_t%5C_%5C_str%5C_%5C_)
+  - [VectorOfInt64\_t::\_\_type\_\_](#vectorofint64%5C_t%5C_%5C_type%5C_%5C_)
+  - [VectorOfInt64\_t::append](#vectorofint64%5C_tappend)
+  - [VectorOfInt64\_t::at](#vectorofint64%5C_tat)
+  - [VectorOfInt64\_t::clear](#vectorofint64%5C_tclear)
+  - [VectorOfInt64\_t::empty](#vectorofint64%5C_tempty)
+  - [VectorOfInt64\_t::end](#vectorofint64%5C_tend)
+  - [VectorOfInt64\_t::get\_Item](#vectorofint64%5C_tget%5C_item)
+  - [VectorOfInt64\_t::get\_\_NewEnum](#vectorofint64%5C_tget%5C_%5C_newenum)
+  - [VectorOfInt64\_t::push\_back](#vectorofint64%5C_tpush%5C_back)
+  - [VectorOfInt64\_t::push\_vector](#vectorofint64%5C_tpush%5C_vector)
+  - [VectorOfInt64\_t::put\_Item](#vectorofint64%5C_tput%5C_item)
+  - [VectorOfInt64\_t::size](#vectorofint64%5C_tsize)
+  - [VectorOfInt64\_t::slice](#vectorofint64%5C_tslice)
+  - [VectorOfInt64\_t::sort](#vectorofint64%5C_tsort)
+  - [VectorOfInt64\_t::sort\_variant](#vectorofint64%5C_tsort%5C_variant)
+  - [VectorOfInt64\_t::start](#vectorofint64%5C_tstart)
 - [VectorOfSharedPtrOfMessage](#vectorofsharedptrofmessage)
   - [VectorOfSharedPtrOfMessage.Count](#vectorofsharedptrofmessagecount)
   - [VectorOfSharedPtrOfMessage::create](#vectorofsharedptrofmessagecreate)
@@ -10251,32 +10251,32 @@
   - [VectorOfSharedPtrOfNormalizedRect::sort](#vectorofsharedptrofnormalizedrectsort)
   - [VectorOfSharedPtrOfNormalizedRect::sort\_variant](#vectorofsharedptrofnormalizedrectsort%5C_variant)
   - [VectorOfSharedPtrOfNormalizedRect::start](#vectorofsharedptrofnormalizedrectstart)
-- [VectorOfUint32](#vectorofuint32)
-  - [VectorOfUint32.Count](#vectorofuint32count)
-  - [VectorOfUint32::create](#vectorofuint32create)
-  - [VectorOfUint32::Add](#vectorofuint32add)
-  - [VectorOfUint32::IsInstance](#vectorofuint32isinstance)
-  - [VectorOfUint32::Items](#vectorofuint32items)
-  - [VectorOfUint32::Keys](#vectorofuint32keys)
-  - [VectorOfUint32::Remove](#vectorofuint32remove)
-  - [VectorOfUint32::\_\_eq\_\_](#vectorofuint32%5C_%5C_eq%5C_%5C_)
-  - [VectorOfUint32::\_\_str\_\_](#vectorofuint32%5C_%5C_str%5C_%5C_)
-  - [VectorOfUint32::\_\_type\_\_](#vectorofuint32%5C_%5C_type%5C_%5C_)
-  - [VectorOfUint32::append](#vectorofuint32append)
-  - [VectorOfUint32::at](#vectorofuint32at)
-  - [VectorOfUint32::clear](#vectorofuint32clear)
-  - [VectorOfUint32::empty](#vectorofuint32empty)
-  - [VectorOfUint32::end](#vectorofuint32end)
-  - [VectorOfUint32::get\_Item](#vectorofuint32get%5C_item)
-  - [VectorOfUint32::get\_\_NewEnum](#vectorofuint32get%5C_%5C_newenum)
-  - [VectorOfUint32::push\_back](#vectorofuint32push%5C_back)
-  - [VectorOfUint32::push\_vector](#vectorofuint32push%5C_vector)
-  - [VectorOfUint32::put\_Item](#vectorofuint32put%5C_item)
-  - [VectorOfUint32::size](#vectorofuint32size)
-  - [VectorOfUint32::slice](#vectorofuint32slice)
-  - [VectorOfUint32::sort](#vectorofuint32sort)
-  - [VectorOfUint32::sort\_variant](#vectorofuint32sort%5C_variant)
-  - [VectorOfUint32::start](#vectorofuint32start)
+- [VectorOfUint32\_t](#vectorofuint32%5C_t)
+  - [VectorOfUint32\_t.Count](#vectorofuint32%5C_tcount)
+  - [VectorOfUint32\_t::create](#vectorofuint32%5C_tcreate)
+  - [VectorOfUint32\_t::Add](#vectorofuint32%5C_tadd)
+  - [VectorOfUint32\_t::IsInstance](#vectorofuint32%5C_tisinstance)
+  - [VectorOfUint32\_t::Items](#vectorofuint32%5C_titems)
+  - [VectorOfUint32\_t::Keys](#vectorofuint32%5C_tkeys)
+  - [VectorOfUint32\_t::Remove](#vectorofuint32%5C_tremove)
+  - [VectorOfUint32\_t::\_\_eq\_\_](#vectorofuint32%5C_t%5C_%5C_eq%5C_%5C_)
+  - [VectorOfUint32\_t::\_\_str\_\_](#vectorofuint32%5C_t%5C_%5C_str%5C_%5C_)
+  - [VectorOfUint32\_t::\_\_type\_\_](#vectorofuint32%5C_t%5C_%5C_type%5C_%5C_)
+  - [VectorOfUint32\_t::append](#vectorofuint32%5C_tappend)
+  - [VectorOfUint32\_t::at](#vectorofuint32%5C_tat)
+  - [VectorOfUint32\_t::clear](#vectorofuint32%5C_tclear)
+  - [VectorOfUint32\_t::empty](#vectorofuint32%5C_tempty)
+  - [VectorOfUint32\_t::end](#vectorofuint32%5C_tend)
+  - [VectorOfUint32\_t::get\_Item](#vectorofuint32%5C_tget%5C_item)
+  - [VectorOfUint32\_t::get\_\_NewEnum](#vectorofuint32%5C_tget%5C_%5C_newenum)
+  - [VectorOfUint32\_t::push\_back](#vectorofuint32%5C_tpush%5C_back)
+  - [VectorOfUint32\_t::push\_vector](#vectorofuint32%5C_tpush%5C_vector)
+  - [VectorOfUint32\_t::put\_Item](#vectorofuint32%5C_tput%5C_item)
+  - [VectorOfUint32\_t::size](#vectorofuint32%5C_tsize)
+  - [VectorOfUint32\_t::slice](#vectorofuint32%5C_tslice)
+  - [VectorOfUint32\_t::sort](#vectorofuint32%5C_tsort)
+  - [VectorOfUint32\_t::sort\_variant](#vectorofuint32%5C_tsort%5C_variant)
+  - [VectorOfUint32\_t::start](#vectorofuint32%5C_tstart)
 - [VectorOfSharedPtrOfRenderAnnotation](#vectorofsharedptrofrenderannotation)
   - [VectorOfSharedPtrOfRenderAnnotation.Count](#vectorofsharedptrofrenderannotationcount)
   - [VectorOfSharedPtrOfRenderAnnotation::create](#vectorofsharedptrofrenderannotationcreate)
@@ -11188,7 +11188,7 @@ AutoIt:
 ### NamedParameters::merge
 
 ```cpp
-void NamedParameters::merge( MapOfStringAndVariant other );
+void NamedParameters::merge( std::map<std::string, _variant_t> other );
 AutoIt:
     $oNamedParameters.merge( $other ) -> None
 ```
@@ -15289,19 +15289,19 @@ AutoIt:
 ### VectorOfObjectron\_ObjectronOutputs::create
 
 ```cpp
-static VectorOfObjectron_ObjectronOutputs VectorOfObjectron_ObjectronOutputs::create();
+static std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs> VectorOfObjectron_ObjectronOutputs::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfObjectron_ObjectronOutputs").create() -> <VectorOfObjectron_ObjectronOutputs object>
 ```
 
 ```cpp
-static VectorOfObjectron_ObjectronOutputs VectorOfObjectron_ObjectronOutputs::create( size_t size );
+static std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs> VectorOfObjectron_ObjectronOutputs::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfObjectron_ObjectronOutputs").create( $size ) -> <VectorOfObjectron_ObjectronOutputs object>
 ```
 
 ```cpp
-static VectorOfObjectron_ObjectronOutputs VectorOfObjectron_ObjectronOutputs::create( VectorOfObjectron_ObjectronOutputs other );
+static std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs> VectorOfObjectron_ObjectronOutputs::create( std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfObjectron_ObjectronOutputs").create( $other ) -> <VectorOfObjectron_ObjectronOutputs object>
 ```
@@ -15317,7 +15317,7 @@ AutoIt:
 ### VectorOfObjectron\_ObjectronOutputs::IsInstance
 
 ```cpp
-static bool VectorOfObjectron_ObjectronOutputs::IsInstance( const VectorOfObjectron_ObjectronOutputs& obj );
+static bool VectorOfObjectron_ObjectronOutputs::IsInstance( const std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfObjectron_ObjectronOutputs").IsInstance( $obj ) -> retval
 ```
@@ -15331,7 +15331,7 @@ AutoIt:
 ### VectorOfObjectron\_ObjectronOutputs::Items
 
 ```cpp
-VectorOfObjectron_ObjectronOutputs VectorOfObjectron_ObjectronOutputs::Items();
+std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs> VectorOfObjectron_ObjectronOutputs::Items();
 AutoIt:
     $oVectorOfObjectron_ObjectronOutputs.Items() -> retval
 ```
@@ -15355,7 +15355,7 @@ AutoIt:
 ### VectorOfObjectron\_ObjectronOutputs::\_\_eq\_\_
 
 ```cpp
-bool VectorOfObjectron_ObjectronOutputs::__eq__( const VectorOfObjectron_ObjectronOutputs& other );
+bool VectorOfObjectron_ObjectronOutputs::__eq__( const std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs>& other );
 AutoIt:
     $oVectorOfObjectron_ObjectronOutputs.__eq__( $other ) -> retval
 ```
@@ -15457,15 +15457,15 @@ AutoIt:
 ### VectorOfObjectron\_ObjectronOutputs::push\_vector
 
 ```cpp
-void VectorOfObjectron_ObjectronOutputs::push_vector( VectorOfObjectron_ObjectronOutputs other );
+void VectorOfObjectron_ObjectronOutputs::push_vector( std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs> other );
 AutoIt:
     $oVectorOfObjectron_ObjectronOutputs.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfObjectron_ObjectronOutputs::push_vector( VectorOfObjectron_ObjectronOutputs other,
-                                                      size_t                             count,
-                                                      size_t                             start = 0 );
+void VectorOfObjectron_ObjectronOutputs::push_vector( std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs> other,
+                                                      size_t                                                                 count,
+                                                      size_t                                                                 start = 0 );
 AutoIt:
     $oVectorOfObjectron_ObjectronOutputs.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -15490,8 +15490,8 @@ AutoIt:
 ### VectorOfObjectron\_ObjectronOutputs::slice
 
 ```cpp
-VectorOfObjectron_ObjectronOutputs VectorOfObjectron_ObjectronOutputs::slice( size_t start = 0,
-                                                                              size_t count = __self->get()->size() );
+std::vector<mediapipe::autoit::solutions::objectron::ObjectronOutputs> VectorOfObjectron_ObjectronOutputs::slice( size_t start = 0,
+                                                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfObjectron_ObjectronOutputs.slice( [$start[, $count]] ) -> retval
 ```
@@ -27768,229 +27768,229 @@ AutoIt:
 ### mediapipe::CalculatorOptions::get\_Extensions
 
 ```cpp
-mediapipe::TemplateSubgraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions& vKey );
+mediapipe::TemplateSubgraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::TemplateSubgraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::InferenceCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions& vKey );
+mediapipe::InferenceCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::InferenceCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::FaceDetectionOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions& vKey );
+mediapipe::FaceDetectionOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::FaceDetectionOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::ConstantSidePacketCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions& vKey );
+mediapipe::ConstantSidePacketCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ConstantSidePacketCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::ImageTransformationCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions& vKey );
+mediapipe::ImageTransformationCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ImageTransformationCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::TensorsToDetectionsCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions& vKey );
+mediapipe::TensorsToDetectionsCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::TensorsToDetectionsCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::LandmarksSmoothingCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions& vKey );
+mediapipe::LandmarksSmoothingCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::LandmarksSmoothingCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::LogicCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions& vKey );
+mediapipe::LogicCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::LogicCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::ThresholdingCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions& vKey );
+mediapipe::ThresholdingCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ThresholdingCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions& vKey );
+mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions& vKey );
+mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions& vKey );
+mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::FlowLimiterCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions& vKey );
+mediapipe::FlowLimiterCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::FlowLimiterCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions& vKey );
+mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions& vKey );
+mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions& vKey );
+mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions& vKey );
+mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions& vKey );
+mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions& vKey );
+mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions& vKey );
+mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions& vKey );
+mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions& vKey );
+mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions& vKey );
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions& vKey );
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions& vKey );
+mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions& vKey );
+mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions& vKey );
+mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions& vKey );
+mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions& vKey );
+mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::pose_detector::proto::PoseDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions& vKey );
+mediapipe::tasks::vision::pose_detector::proto::PoseDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_detector::proto::PoseDetectorGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarksDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions& vKey );
+mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarksDetectorGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarksDetectorGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions& vKey );
+mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions& vKey );
+mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::TensorsToSegmentationCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions& vKey );
+mediapipe::tasks::TensorsToSegmentationCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::TensorsToSegmentationCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions& vKey );
+mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions& vKey );
+mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions& vKey );
+mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
 
 ```cpp
-mediapipe::ResampleTimeSeriesCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions& vKey );
+mediapipe::ResampleTimeSeriesCalculatorOptions* mediapipe::CalculatorOptions::get_Extensions( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ResampleTimeSeriesCalculatorOptions>, 11, false>& vKey );
 AutoIt:
     $oCalculatorOptions.Extensions( $vKey ) -> retval
 ```
@@ -28668,7 +28668,7 @@ AutoIt:
 ### PacketManagerConfig.packet
 
 ```cpp
-google::protobuf::Repeated_mediapipe_PacketFactoryConfig* mediapipe::PacketManagerConfig::packet
+::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig>* mediapipe::PacketManagerConfig::packet
 AutoIt:
     [propget, propput] $oPacketManagerConfig.packet
 ```
@@ -28827,7 +28827,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketFactoryConfig::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_PacketFactoryConfig google::protobuf::Repeated_mediapipe_PacketFactoryConfig::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig> google::protobuf::Repeated_mediapipe_PacketFactoryConfig::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_PacketFactoryConfig").create() -> <google.protobuf.Repeated_mediapipe_PacketFactoryConfig object>
 ```
@@ -28835,7 +28835,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketFactoryConfig::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::CopyFrom( const google::protobuf::Repeated_mediapipe_PacketFactoryConfig other );
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig> other );
 AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig.CopyFrom( $other ) -> None
 ```
@@ -28843,7 +28843,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketFactoryConfig::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_PacketFactoryConfig::IsInstance( const google::protobuf::Repeated_mediapipe_PacketFactoryConfig& obj );
+static bool google::protobuf::Repeated_mediapipe_PacketFactoryConfig::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_PacketFactoryConfig").IsInstance( $obj ) -> retval
 ```
@@ -28857,7 +28857,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketFactoryConfig::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::MergeFrom( const google::protobuf::Repeated_mediapipe_PacketFactoryConfig other );
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig> other );
 AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig.MergeFrom( $other ) -> None
 ```
@@ -28865,7 +28865,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketFactoryConfig::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::Swap( google::protobuf::Repeated_mediapipe_PacketFactoryConfig* other );
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig>* other );
 AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig.Swap( $other ) -> None
 ```
@@ -28882,7 +28882,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketFactoryConfig::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_PacketFactoryConfig::__eq__( const google::protobuf::Repeated_mediapipe_PacketFactoryConfig& other );
+bool google::protobuf::Repeated_mediapipe_PacketFactoryConfig::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig>& other );
 AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig.__eq__( $other ) -> retval
 ```
@@ -28956,7 +28956,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketFactoryConfig::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::extend( const google::protobuf::Repeated_mediapipe_PacketFactoryConfig& items );
+void google::protobuf::Repeated_mediapipe_PacketFactoryConfig::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig>& items );
 AutoIt:
     $oRepeated_mediapipe_PacketFactoryConfig.extend( $items ) -> None
 ```
@@ -29267,7 +29267,7 @@ AutoIt:
 ### PacketGeneratorConfig.input\_side\_packet
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::PacketGeneratorConfig::input_side_packet
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::PacketGeneratorConfig::input_side_packet
 AutoIt:
     [propget, propput] $oPacketGeneratorConfig.input_side_packet
 ```
@@ -29275,7 +29275,7 @@ AutoIt:
 ### PacketGeneratorConfig.external\_input
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::PacketGeneratorConfig::external_input
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::PacketGeneratorConfig::external_input
 AutoIt:
     [propget, propput] $oPacketGeneratorConfig.external_input
 ```
@@ -29283,7 +29283,7 @@ AutoIt:
 ### PacketGeneratorConfig.output\_side\_packet
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::PacketGeneratorConfig::output_side_packet
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::PacketGeneratorConfig::output_side_packet
 AutoIt:
     [propget, propput] $oPacketGeneratorConfig.output_side_packet
 ```
@@ -29291,7 +29291,7 @@ AutoIt:
 ### PacketGeneratorConfig.external\_output
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::PacketGeneratorConfig::external_output
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::PacketGeneratorConfig::external_output
 AutoIt:
     [propget, propput] $oPacketGeneratorConfig.external_output
 ```
@@ -29463,7 +29463,7 @@ AutoIt:
 ### google::protobuf::Repeated\_std\_string::create
 
 ```cpp
-static google::protobuf::Repeated_std_string google::protobuf::Repeated_std_string::create();
+static ::google::protobuf::RepeatedPtrField<std::string> google::protobuf::Repeated_std_string::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_std_string").create() -> <google.protobuf.Repeated_std_string object>
 ```
@@ -29471,7 +29471,7 @@ AutoIt:
 ### google::protobuf::Repeated\_std\_string::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_std_string::CopyFrom( const google::protobuf::Repeated_std_string other );
+void google::protobuf::Repeated_std_string::CopyFrom( const ::google::protobuf::RepeatedPtrField<std::string> other );
 AutoIt:
     $oRepeated_std_string.CopyFrom( $other ) -> None
 ```
@@ -29479,7 +29479,7 @@ AutoIt:
 ### google::protobuf::Repeated\_std\_string::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_std_string::IsInstance( const google::protobuf::Repeated_std_string& obj );
+static bool google::protobuf::Repeated_std_string::IsInstance( const ::google::protobuf::RepeatedPtrField<std::string>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_std_string").IsInstance( $obj ) -> retval
 ```
@@ -29493,7 +29493,7 @@ AutoIt:
 ### google::protobuf::Repeated\_std\_string::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_std_string::MergeFrom( const google::protobuf::Repeated_std_string other );
+void google::protobuf::Repeated_std_string::MergeFrom( const ::google::protobuf::RepeatedPtrField<std::string> other );
 AutoIt:
     $oRepeated_std_string.MergeFrom( $other ) -> None
 ```
@@ -29501,7 +29501,7 @@ AutoIt:
 ### google::protobuf::Repeated\_std\_string::Swap
 
 ```cpp
-void google::protobuf::Repeated_std_string::Swap( google::protobuf::Repeated_std_string* other );
+void google::protobuf::Repeated_std_string::Swap( ::google::protobuf::RepeatedPtrField<std::string>* other );
 AutoIt:
     $oRepeated_std_string.Swap( $other ) -> None
 ```
@@ -29518,7 +29518,7 @@ AutoIt:
 ### google::protobuf::Repeated\_std\_string::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_std_string::__eq__( const google::protobuf::Repeated_std_string& other );
+bool google::protobuf::Repeated_std_string::__eq__( const ::google::protobuf::RepeatedPtrField<std::string>& other );
 AutoIt:
     $oRepeated_std_string.__eq__( $other ) -> retval
 ```
@@ -29572,7 +29572,7 @@ AutoIt:
 ### google::protobuf::Repeated\_std\_string::extend
 
 ```cpp
-void google::protobuf::Repeated_std_string::extend( const google::protobuf::Repeated_std_string& items );
+void google::protobuf::Repeated_std_string::extend( const ::google::protobuf::RepeatedPtrField<std::string>& items );
 AutoIt:
     $oRepeated_std_string.extend( $items ) -> None
 ```
@@ -29727,7 +29727,7 @@ AutoIt:
 ### StatusHandlerConfig.input\_side\_packet
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::StatusHandlerConfig::input_side_packet
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::StatusHandlerConfig::input_side_packet
 AutoIt:
     [propget, propput] $oStatusHandlerConfig.input_side_packet
 ```
@@ -29735,7 +29735,7 @@ AutoIt:
 ### StatusHandlerConfig.external\_input
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::StatusHandlerConfig::external_input
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::StatusHandlerConfig::external_input
 AutoIt:
     [propget, propput] $oStatusHandlerConfig.external_input
 ```
@@ -30075,7 +30075,7 @@ AutoIt:
 ### OutputStreamHandlerConfig.input\_side\_packet
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::OutputStreamHandlerConfig::input_side_packet
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::OutputStreamHandlerConfig::input_side_packet
 AutoIt:
     [propget, propput] $oOutputStreamHandlerConfig.input_side_packet
 ```
@@ -30431,7 +30431,7 @@ AutoIt:
 ### InputCollection.side\_packet\_name
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::InputCollection::side_packet_name
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::InputCollection::side_packet_name
 AutoIt:
     [propget, propput] $oInputCollection.side_packet_name
 ```
@@ -30439,7 +30439,7 @@ AutoIt:
 ### InputCollection.external\_input\_name
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::InputCollection::external_input_name
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::InputCollection::external_input_name
 AutoIt:
     [propget, propput] $oInputCollection.external_input_name
 ```
@@ -30650,7 +30650,7 @@ AutoIt:
 ### InputCollectionSet.input\_collection
 
 ```cpp
-google::protobuf::Repeated_mediapipe_InputCollection* mediapipe::InputCollectionSet::input_collection
+::google::protobuf::RepeatedPtrField<mediapipe::InputCollection>* mediapipe::InputCollectionSet::input_collection
 AutoIt:
     [propget, propput] $oInputCollectionSet.input_collection
 ```
@@ -30809,7 +30809,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputCollection::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_InputCollection google::protobuf::Repeated_mediapipe_InputCollection::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::InputCollection> google::protobuf::Repeated_mediapipe_InputCollection::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InputCollection").create() -> <google.protobuf.Repeated_mediapipe_InputCollection object>
 ```
@@ -30817,7 +30817,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputCollection::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InputCollection::CopyFrom( const google::protobuf::Repeated_mediapipe_InputCollection other );
+void google::protobuf::Repeated_mediapipe_InputCollection::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::InputCollection> other );
 AutoIt:
     $oRepeated_mediapipe_InputCollection.CopyFrom( $other ) -> None
 ```
@@ -30825,7 +30825,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputCollection::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_InputCollection::IsInstance( const google::protobuf::Repeated_mediapipe_InputCollection& obj );
+static bool google::protobuf::Repeated_mediapipe_InputCollection::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::InputCollection>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InputCollection").IsInstance( $obj ) -> retval
 ```
@@ -30839,7 +30839,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputCollection::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InputCollection::MergeFrom( const google::protobuf::Repeated_mediapipe_InputCollection other );
+void google::protobuf::Repeated_mediapipe_InputCollection::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::InputCollection> other );
 AutoIt:
     $oRepeated_mediapipe_InputCollection.MergeFrom( $other ) -> None
 ```
@@ -30847,7 +30847,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputCollection::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InputCollection::Swap( google::protobuf::Repeated_mediapipe_InputCollection* other );
+void google::protobuf::Repeated_mediapipe_InputCollection::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::InputCollection>* other );
 AutoIt:
     $oRepeated_mediapipe_InputCollection.Swap( $other ) -> None
 ```
@@ -30864,7 +30864,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputCollection::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_InputCollection::__eq__( const google::protobuf::Repeated_mediapipe_InputCollection& other );
+bool google::protobuf::Repeated_mediapipe_InputCollection::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::InputCollection>& other );
 AutoIt:
     $oRepeated_mediapipe_InputCollection.__eq__( $other ) -> retval
 ```
@@ -30938,7 +30938,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputCollection::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InputCollection::extend( const google::protobuf::Repeated_mediapipe_InputCollection& items );
+void google::protobuf::Repeated_mediapipe_InputCollection::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::InputCollection>& items );
 AutoIt:
     $oRepeated_mediapipe_InputCollection.extend( $items ) -> None
 ```
@@ -31280,7 +31280,7 @@ AutoIt:
 ### ProfilerConfig.trace\_event\_types\_disabled
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::ProfilerConfig::trace_event_types_disabled
+::google::protobuf::RepeatedField<int>* mediapipe::ProfilerConfig::trace_event_types_disabled
 AutoIt:
     [propget, propput] $oProfilerConfig.trace_event_types_disabled
 ```
@@ -31536,7 +31536,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int::create
 
 ```cpp
-static google::protobuf::Repeated_int google::protobuf::Repeated_int::create();
+static ::google::protobuf::RepeatedField<int> google::protobuf::Repeated_int::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_int").create() -> <google.protobuf.Repeated_int object>
 ```
@@ -31544,7 +31544,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_int::CopyFrom( const google::protobuf::Repeated_int other );
+void google::protobuf::Repeated_int::CopyFrom( const ::google::protobuf::RepeatedField<int> other );
 AutoIt:
     $oRepeated_int.CopyFrom( $other ) -> None
 ```
@@ -31552,7 +31552,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_int::IsInstance( const google::protobuf::Repeated_int& obj );
+static bool google::protobuf::Repeated_int::IsInstance( const ::google::protobuf::RepeatedField<int>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_int").IsInstance( $obj ) -> retval
 ```
@@ -31566,7 +31566,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_int::MergeFrom( const google::protobuf::Repeated_int other );
+void google::protobuf::Repeated_int::MergeFrom( const ::google::protobuf::RepeatedField<int> other );
 AutoIt:
     $oRepeated_int.MergeFrom( $other ) -> None
 ```
@@ -31574,7 +31574,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int::Swap
 
 ```cpp
-void google::protobuf::Repeated_int::Swap( google::protobuf::Repeated_int* other );
+void google::protobuf::Repeated_int::Swap( ::google::protobuf::RepeatedField<int>* other );
 AutoIt:
     $oRepeated_int.Swap( $other ) -> None
 ```
@@ -31591,7 +31591,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_int::__eq__( const google::protobuf::Repeated_int& other );
+bool google::protobuf::Repeated_int::__eq__( const ::google::protobuf::RepeatedField<int>& other );
 AutoIt:
     $oRepeated_int.__eq__( $other ) -> retval
 ```
@@ -31645,7 +31645,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int::extend
 
 ```cpp
-void google::protobuf::Repeated_int::extend( const google::protobuf::Repeated_int& items );
+void google::protobuf::Repeated_int::extend( const ::google::protobuf::RepeatedField<int>& items );
 AutoIt:
     $oRepeated_int.extend( $items ) -> None
 ```
@@ -31934,7 +31934,7 @@ AutoIt:
 ### CalculatorGraphConfig.node
 
 ```cpp
-google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node* mediapipe::CalculatorGraphConfig::node
+::google::protobuf::RepeatedPtrField<mediapipe::CalculatorGraphConfig::Node>* mediapipe::CalculatorGraphConfig::node
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.node
 ```
@@ -31942,7 +31942,7 @@ AutoIt:
 ### CalculatorGraphConfig.packet\_factory
 
 ```cpp
-google::protobuf::Repeated_mediapipe_PacketFactoryConfig* mediapipe::CalculatorGraphConfig::packet_factory
+::google::protobuf::RepeatedPtrField<mediapipe::PacketFactoryConfig>* mediapipe::CalculatorGraphConfig::packet_factory
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.packet_factory
 ```
@@ -31950,7 +31950,7 @@ AutoIt:
 ### CalculatorGraphConfig.packet\_generator
 
 ```cpp
-google::protobuf::Repeated_mediapipe_PacketGeneratorConfig* mediapipe::CalculatorGraphConfig::packet_generator
+::google::protobuf::RepeatedPtrField<mediapipe::PacketGeneratorConfig>* mediapipe::CalculatorGraphConfig::packet_generator
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.packet_generator
 ```
@@ -31966,7 +31966,7 @@ AutoIt:
 ### CalculatorGraphConfig.status\_handler
 
 ```cpp
-google::protobuf::Repeated_mediapipe_StatusHandlerConfig* mediapipe::CalculatorGraphConfig::status_handler
+::google::protobuf::RepeatedPtrField<mediapipe::StatusHandlerConfig>* mediapipe::CalculatorGraphConfig::status_handler
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.status_handler
 ```
@@ -31974,7 +31974,7 @@ AutoIt:
 ### CalculatorGraphConfig.input\_stream
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::input_stream
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::input_stream
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.input_stream
 ```
@@ -31982,7 +31982,7 @@ AutoIt:
 ### CalculatorGraphConfig.output\_stream
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::output_stream
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::output_stream
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.output_stream
 ```
@@ -31990,7 +31990,7 @@ AutoIt:
 ### CalculatorGraphConfig.input\_side\_packet
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::input_side_packet
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::input_side_packet
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.input_side_packet
 ```
@@ -31998,7 +31998,7 @@ AutoIt:
 ### CalculatorGraphConfig.output\_side\_packet
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::output_side_packet
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::output_side_packet
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.output_side_packet
 ```
@@ -32046,7 +32046,7 @@ AutoIt:
 ### CalculatorGraphConfig.executor
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ExecutorConfig* mediapipe::CalculatorGraphConfig::executor
+::google::protobuf::RepeatedPtrField<mediapipe::ExecutorConfig>* mediapipe::CalculatorGraphConfig::executor
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.executor
 ```
@@ -32086,7 +32086,7 @@ AutoIt:
 ### CalculatorGraphConfig.graph\_options
 
 ```cpp
-google::protobuf::Repeated_google_protobuf_Any* mediapipe::CalculatorGraphConfig::graph_options
+::google::protobuf::RepeatedPtrField<google::protobuf::Any>* mediapipe::CalculatorGraphConfig::graph_options
 AutoIt:
     [propget, propput] $oCalculatorGraphConfig.graph_options
 ```
@@ -32264,7 +32264,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_CalculatorGraphConfig\_Node::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::CalculatorGraphConfig::Node> google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_CalculatorGraphConfig_Node").create() -> <google.protobuf.Repeated_mediapipe_CalculatorGraphConfig_Node object>
 ```
@@ -32272,7 +32272,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_CalculatorGraphConfig\_Node::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::CopyFrom( const google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node other );
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::CalculatorGraphConfig::Node> other );
 AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node.CopyFrom( $other ) -> None
 ```
@@ -32280,7 +32280,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_CalculatorGraphConfig\_Node::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::IsInstance( const google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node& obj );
+static bool google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::CalculatorGraphConfig::Node>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_CalculatorGraphConfig_Node").IsInstance( $obj ) -> retval
 ```
@@ -32294,7 +32294,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_CalculatorGraphConfig\_Node::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::MergeFrom( const google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node other );
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::CalculatorGraphConfig::Node> other );
 AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node.MergeFrom( $other ) -> None
 ```
@@ -32302,7 +32302,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_CalculatorGraphConfig\_Node::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::Swap( google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node* other );
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::CalculatorGraphConfig::Node>* other );
 AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node.Swap( $other ) -> None
 ```
@@ -32319,7 +32319,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_CalculatorGraphConfig\_Node::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::__eq__( const google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node& other );
+bool google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::CalculatorGraphConfig::Node>& other );
 AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node.__eq__( $other ) -> retval
 ```
@@ -32393,7 +32393,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_CalculatorGraphConfig\_Node::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::extend( const google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node& items );
+void google::protobuf::Repeated_mediapipe_CalculatorGraphConfig_Node::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::CalculatorGraphConfig::Node>& items );
 AutoIt:
     $oRepeated_mediapipe_CalculatorGraphConfig_Node.extend( $items ) -> None
 ```
@@ -32527,7 +32527,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketGeneratorConfig::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_PacketGeneratorConfig google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::PacketGeneratorConfig> google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_PacketGeneratorConfig").create() -> <google.protobuf.Repeated_mediapipe_PacketGeneratorConfig object>
 ```
@@ -32535,7 +32535,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketGeneratorConfig::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::CopyFrom( const google::protobuf::Repeated_mediapipe_PacketGeneratorConfig other );
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketGeneratorConfig> other );
 AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig.CopyFrom( $other ) -> None
 ```
@@ -32543,7 +32543,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketGeneratorConfig::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::IsInstance( const google::protobuf::Repeated_mediapipe_PacketGeneratorConfig& obj );
+static bool google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketGeneratorConfig>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_PacketGeneratorConfig").IsInstance( $obj ) -> retval
 ```
@@ -32557,7 +32557,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketGeneratorConfig::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::MergeFrom( const google::protobuf::Repeated_mediapipe_PacketGeneratorConfig other );
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketGeneratorConfig> other );
 AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig.MergeFrom( $other ) -> None
 ```
@@ -32565,7 +32565,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketGeneratorConfig::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::Swap( google::protobuf::Repeated_mediapipe_PacketGeneratorConfig* other );
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::PacketGeneratorConfig>* other );
 AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig.Swap( $other ) -> None
 ```
@@ -32582,7 +32582,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketGeneratorConfig::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::__eq__( const google::protobuf::Repeated_mediapipe_PacketGeneratorConfig& other );
+bool google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketGeneratorConfig>& other );
 AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig.__eq__( $other ) -> retval
 ```
@@ -32656,7 +32656,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_PacketGeneratorConfig::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::extend( const google::protobuf::Repeated_mediapipe_PacketGeneratorConfig& items );
+void google::protobuf::Repeated_mediapipe_PacketGeneratorConfig::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::PacketGeneratorConfig>& items );
 AutoIt:
     $oRepeated_mediapipe_PacketGeneratorConfig.extend( $items ) -> None
 ```
@@ -32790,7 +32790,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_StatusHandlerConfig::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_StatusHandlerConfig google::protobuf::Repeated_mediapipe_StatusHandlerConfig::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::StatusHandlerConfig> google::protobuf::Repeated_mediapipe_StatusHandlerConfig::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_StatusHandlerConfig").create() -> <google.protobuf.Repeated_mediapipe_StatusHandlerConfig object>
 ```
@@ -32798,7 +32798,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_StatusHandlerConfig::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::CopyFrom( const google::protobuf::Repeated_mediapipe_StatusHandlerConfig other );
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::StatusHandlerConfig> other );
 AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig.CopyFrom( $other ) -> None
 ```
@@ -32806,7 +32806,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_StatusHandlerConfig::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_StatusHandlerConfig::IsInstance( const google::protobuf::Repeated_mediapipe_StatusHandlerConfig& obj );
+static bool google::protobuf::Repeated_mediapipe_StatusHandlerConfig::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::StatusHandlerConfig>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_StatusHandlerConfig").IsInstance( $obj ) -> retval
 ```
@@ -32820,7 +32820,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_StatusHandlerConfig::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::MergeFrom( const google::protobuf::Repeated_mediapipe_StatusHandlerConfig other );
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::StatusHandlerConfig> other );
 AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig.MergeFrom( $other ) -> None
 ```
@@ -32828,7 +32828,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_StatusHandlerConfig::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::Swap( google::protobuf::Repeated_mediapipe_StatusHandlerConfig* other );
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::StatusHandlerConfig>* other );
 AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig.Swap( $other ) -> None
 ```
@@ -32845,7 +32845,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_StatusHandlerConfig::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_StatusHandlerConfig::__eq__( const google::protobuf::Repeated_mediapipe_StatusHandlerConfig& other );
+bool google::protobuf::Repeated_mediapipe_StatusHandlerConfig::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::StatusHandlerConfig>& other );
 AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig.__eq__( $other ) -> retval
 ```
@@ -32919,7 +32919,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_StatusHandlerConfig::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::extend( const google::protobuf::Repeated_mediapipe_StatusHandlerConfig& items );
+void google::protobuf::Repeated_mediapipe_StatusHandlerConfig::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::StatusHandlerConfig>& items );
 AutoIt:
     $oRepeated_mediapipe_StatusHandlerConfig.extend( $items ) -> None
 ```
@@ -33053,7 +33053,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ExecutorConfig::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ExecutorConfig google::protobuf::Repeated_mediapipe_ExecutorConfig::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ExecutorConfig> google::protobuf::Repeated_mediapipe_ExecutorConfig::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ExecutorConfig").create() -> <google.protobuf.Repeated_mediapipe_ExecutorConfig object>
 ```
@@ -33061,7 +33061,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ExecutorConfig::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ExecutorConfig::CopyFrom( const google::protobuf::Repeated_mediapipe_ExecutorConfig other );
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ExecutorConfig> other );
 AutoIt:
     $oRepeated_mediapipe_ExecutorConfig.CopyFrom( $other ) -> None
 ```
@@ -33069,7 +33069,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ExecutorConfig::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ExecutorConfig::IsInstance( const google::protobuf::Repeated_mediapipe_ExecutorConfig& obj );
+static bool google::protobuf::Repeated_mediapipe_ExecutorConfig::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ExecutorConfig>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ExecutorConfig").IsInstance( $obj ) -> retval
 ```
@@ -33083,7 +33083,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ExecutorConfig::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ExecutorConfig::MergeFrom( const google::protobuf::Repeated_mediapipe_ExecutorConfig other );
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ExecutorConfig> other );
 AutoIt:
     $oRepeated_mediapipe_ExecutorConfig.MergeFrom( $other ) -> None
 ```
@@ -33091,7 +33091,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ExecutorConfig::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ExecutorConfig::Swap( google::protobuf::Repeated_mediapipe_ExecutorConfig* other );
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ExecutorConfig>* other );
 AutoIt:
     $oRepeated_mediapipe_ExecutorConfig.Swap( $other ) -> None
 ```
@@ -33108,7 +33108,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ExecutorConfig::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ExecutorConfig::__eq__( const google::protobuf::Repeated_mediapipe_ExecutorConfig& other );
+bool google::protobuf::Repeated_mediapipe_ExecutorConfig::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ExecutorConfig>& other );
 AutoIt:
     $oRepeated_mediapipe_ExecutorConfig.__eq__( $other ) -> retval
 ```
@@ -33182,7 +33182,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ExecutorConfig::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ExecutorConfig::extend( const google::protobuf::Repeated_mediapipe_ExecutorConfig& items );
+void google::protobuf::Repeated_mediapipe_ExecutorConfig::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ExecutorConfig>& items );
 AutoIt:
     $oRepeated_mediapipe_ExecutorConfig.extend( $items ) -> None
 ```
@@ -33316,7 +33316,7 @@ AutoIt:
 ### google::protobuf::Repeated\_google\_protobuf\_Any::create
 
 ```cpp
-static google::protobuf::Repeated_google_protobuf_Any google::protobuf::Repeated_google_protobuf_Any::create();
+static ::google::protobuf::RepeatedPtrField<google::protobuf::Any> google::protobuf::Repeated_google_protobuf_Any::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_Any").create() -> <google.protobuf.Repeated_google_protobuf_Any object>
 ```
@@ -33324,7 +33324,7 @@ AutoIt:
 ### google::protobuf::Repeated\_google\_protobuf\_Any::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_google_protobuf_Any::CopyFrom( const google::protobuf::Repeated_google_protobuf_Any other );
+void google::protobuf::Repeated_google_protobuf_Any::CopyFrom( const ::google::protobuf::RepeatedPtrField<google::protobuf::Any> other );
 AutoIt:
     $oRepeated_google_protobuf_Any.CopyFrom( $other ) -> None
 ```
@@ -33332,7 +33332,7 @@ AutoIt:
 ### google::protobuf::Repeated\_google\_protobuf\_Any::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_google_protobuf_Any::IsInstance( const google::protobuf::Repeated_google_protobuf_Any& obj );
+static bool google::protobuf::Repeated_google_protobuf_Any::IsInstance( const ::google::protobuf::RepeatedPtrField<google::protobuf::Any>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_google_protobuf_Any").IsInstance( $obj ) -> retval
 ```
@@ -33346,7 +33346,7 @@ AutoIt:
 ### google::protobuf::Repeated\_google\_protobuf\_Any::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_google_protobuf_Any::MergeFrom( const google::protobuf::Repeated_google_protobuf_Any other );
+void google::protobuf::Repeated_google_protobuf_Any::MergeFrom( const ::google::protobuf::RepeatedPtrField<google::protobuf::Any> other );
 AutoIt:
     $oRepeated_google_protobuf_Any.MergeFrom( $other ) -> None
 ```
@@ -33354,7 +33354,7 @@ AutoIt:
 ### google::protobuf::Repeated\_google\_protobuf\_Any::Swap
 
 ```cpp
-void google::protobuf::Repeated_google_protobuf_Any::Swap( google::protobuf::Repeated_google_protobuf_Any* other );
+void google::protobuf::Repeated_google_protobuf_Any::Swap( ::google::protobuf::RepeatedPtrField<google::protobuf::Any>* other );
 AutoIt:
     $oRepeated_google_protobuf_Any.Swap( $other ) -> None
 ```
@@ -33371,7 +33371,7 @@ AutoIt:
 ### google::protobuf::Repeated\_google\_protobuf\_Any::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_google_protobuf_Any::__eq__( const google::protobuf::Repeated_google_protobuf_Any& other );
+bool google::protobuf::Repeated_google_protobuf_Any::__eq__( const ::google::protobuf::RepeatedPtrField<google::protobuf::Any>& other );
 AutoIt:
     $oRepeated_google_protobuf_Any.__eq__( $other ) -> retval
 ```
@@ -33445,7 +33445,7 @@ AutoIt:
 ### google::protobuf::Repeated\_google\_protobuf\_Any::extend
 
 ```cpp
-void google::protobuf::Repeated_google_protobuf_Any::extend( const google::protobuf::Repeated_google_protobuf_Any& items );
+void google::protobuf::Repeated_google_protobuf_Any::extend( const ::google::protobuf::RepeatedPtrField<google::protobuf::Any>& items );
 AutoIt:
     $oRepeated_google_protobuf_Any.extend( $items ) -> None
 ```
@@ -33587,7 +33587,7 @@ AutoIt:
 ### Node.input\_stream
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::Node::input_stream
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::Node::input_stream
 AutoIt:
     [propget, propput] $oNode.input_stream
 ```
@@ -33595,7 +33595,7 @@ AutoIt:
 ### Node.output\_stream
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::Node::output_stream
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::Node::output_stream
 AutoIt:
     [propget, propput] $oNode.output_stream
 ```
@@ -33603,7 +33603,7 @@ AutoIt:
 ### Node.input\_side\_packet
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::Node::input_side_packet
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::Node::input_side_packet
 AutoIt:
     [propget, propput] $oNode.input_side_packet
 ```
@@ -33611,7 +33611,7 @@ AutoIt:
 ### Node.output\_side\_packet
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::Node::output_side_packet
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::Node::output_side_packet
 AutoIt:
     [propget, propput] $oNode.output_side_packet
 ```
@@ -33627,7 +33627,7 @@ AutoIt:
 ### Node.node\_options
 
 ```cpp
-google::protobuf::Repeated_google_protobuf_Any* mediapipe::CalculatorGraphConfig::Node::node_options
+::google::protobuf::RepeatedPtrField<google::protobuf::Any>* mediapipe::CalculatorGraphConfig::Node::node_options
 AutoIt:
     [propget, propput] $oNode.node_options
 ```
@@ -33667,7 +33667,7 @@ AutoIt:
 ### Node.input\_stream\_info
 
 ```cpp
-google::protobuf::Repeated_mediapipe_InputStreamInfo* mediapipe::CalculatorGraphConfig::Node::input_stream_info
+::google::protobuf::RepeatedPtrField<mediapipe::InputStreamInfo>* mediapipe::CalculatorGraphConfig::Node::input_stream_info
 AutoIt:
     [propget, propput] $oNode.input_stream_info
 ```
@@ -33699,7 +33699,7 @@ AutoIt:
 ### Node.option\_value
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::Node::option_value
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::Node::option_value
 AutoIt:
     [propget, propput] $oNode.option_value
 ```
@@ -33707,7 +33707,7 @@ AutoIt:
 ### Node.external\_input
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::CalculatorGraphConfig::Node::external_input
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::CalculatorGraphConfig::Node::external_input
 AutoIt:
     [propget, propput] $oNode.external_input
 ```
@@ -33883,7 +33883,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputStreamInfo::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_InputStreamInfo google::protobuf::Repeated_mediapipe_InputStreamInfo::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::InputStreamInfo> google::protobuf::Repeated_mediapipe_InputStreamInfo::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InputStreamInfo").create() -> <google.protobuf.Repeated_mediapipe_InputStreamInfo object>
 ```
@@ -33891,7 +33891,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputStreamInfo::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InputStreamInfo::CopyFrom( const google::protobuf::Repeated_mediapipe_InputStreamInfo other );
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::InputStreamInfo> other );
 AutoIt:
     $oRepeated_mediapipe_InputStreamInfo.CopyFrom( $other ) -> None
 ```
@@ -33899,7 +33899,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputStreamInfo::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_InputStreamInfo::IsInstance( const google::protobuf::Repeated_mediapipe_InputStreamInfo& obj );
+static bool google::protobuf::Repeated_mediapipe_InputStreamInfo::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::InputStreamInfo>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InputStreamInfo").IsInstance( $obj ) -> retval
 ```
@@ -33913,7 +33913,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputStreamInfo::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InputStreamInfo::MergeFrom( const google::protobuf::Repeated_mediapipe_InputStreamInfo other );
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::InputStreamInfo> other );
 AutoIt:
     $oRepeated_mediapipe_InputStreamInfo.MergeFrom( $other ) -> None
 ```
@@ -33921,7 +33921,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputStreamInfo::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InputStreamInfo::Swap( google::protobuf::Repeated_mediapipe_InputStreamInfo* other );
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::InputStreamInfo>* other );
 AutoIt:
     $oRepeated_mediapipe_InputStreamInfo.Swap( $other ) -> None
 ```
@@ -33938,7 +33938,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputStreamInfo::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_InputStreamInfo::__eq__( const google::protobuf::Repeated_mediapipe_InputStreamInfo& other );
+bool google::protobuf::Repeated_mediapipe_InputStreamInfo::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::InputStreamInfo>& other );
 AutoIt:
     $oRepeated_mediapipe_InputStreamInfo.__eq__( $other ) -> retval
 ```
@@ -34012,7 +34012,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InputStreamInfo::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InputStreamInfo::extend( const google::protobuf::Repeated_mediapipe_InputStreamInfo& items );
+void google::protobuf::Repeated_mediapipe_InputStreamInfo::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::InputStreamInfo>& items );
 AutoIt:
     $oRepeated_mediapipe_InputStreamInfo.extend( $items ) -> None
 ```
@@ -34526,7 +34526,7 @@ AutoIt:
 ### TemplateExpression.arg
 
 ```cpp
-google::protobuf::Repeated_mediapipe_TemplateExpression* mediapipe::TemplateExpression::arg
+::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression>* mediapipe::TemplateExpression::arg
 AutoIt:
     [propget, propput] $oTemplateExpression.arg
 ```
@@ -34550,7 +34550,7 @@ AutoIt:
 ### TemplateExpression.key\_type
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::TemplateExpression::key_type
+::google::protobuf::RepeatedField<int>* mediapipe::TemplateExpression::key_type
 AutoIt:
     [propget, propput] $oTemplateExpression.key_type
 ```
@@ -34723,7 +34723,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateExpression::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_TemplateExpression google::protobuf::Repeated_mediapipe_TemplateExpression::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression> google::protobuf::Repeated_mediapipe_TemplateExpression::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_TemplateExpression").create() -> <google.protobuf.Repeated_mediapipe_TemplateExpression object>
 ```
@@ -34731,7 +34731,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateExpression::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateExpression::CopyFrom( const google::protobuf::Repeated_mediapipe_TemplateExpression other );
+void google::protobuf::Repeated_mediapipe_TemplateExpression::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression> other );
 AutoIt:
     $oRepeated_mediapipe_TemplateExpression.CopyFrom( $other ) -> None
 ```
@@ -34739,7 +34739,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateExpression::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_TemplateExpression::IsInstance( const google::protobuf::Repeated_mediapipe_TemplateExpression& obj );
+static bool google::protobuf::Repeated_mediapipe_TemplateExpression::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_TemplateExpression").IsInstance( $obj ) -> retval
 ```
@@ -34753,7 +34753,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateExpression::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateExpression::MergeFrom( const google::protobuf::Repeated_mediapipe_TemplateExpression other );
+void google::protobuf::Repeated_mediapipe_TemplateExpression::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression> other );
 AutoIt:
     $oRepeated_mediapipe_TemplateExpression.MergeFrom( $other ) -> None
 ```
@@ -34761,7 +34761,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateExpression::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateExpression::Swap( google::protobuf::Repeated_mediapipe_TemplateExpression* other );
+void google::protobuf::Repeated_mediapipe_TemplateExpression::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression>* other );
 AutoIt:
     $oRepeated_mediapipe_TemplateExpression.Swap( $other ) -> None
 ```
@@ -34778,7 +34778,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateExpression::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_TemplateExpression::__eq__( const google::protobuf::Repeated_mediapipe_TemplateExpression& other );
+bool google::protobuf::Repeated_mediapipe_TemplateExpression::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression>& other );
 AutoIt:
     $oRepeated_mediapipe_TemplateExpression.__eq__( $other ) -> retval
 ```
@@ -34852,7 +34852,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateExpression::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateExpression::extend( const google::protobuf::Repeated_mediapipe_TemplateExpression& items );
+void google::protobuf::Repeated_mediapipe_TemplateExpression::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression>& items );
 AutoIt:
     $oRepeated_mediapipe_TemplateExpression.extend( $items ) -> None
 ```
@@ -34986,7 +34986,7 @@ AutoIt:
 ### CalculatorGraphTemplate.rule
 
 ```cpp
-google::protobuf::Repeated_mediapipe_TemplateExpression* mediapipe::CalculatorGraphTemplate::rule
+::google::protobuf::RepeatedPtrField<mediapipe::TemplateExpression>* mediapipe::CalculatorGraphTemplate::rule
 AutoIt:
     [propget, propput] $oCalculatorGraphTemplate.rule
 ```
@@ -35162,7 +35162,7 @@ AutoIt:
 ### TemplateArgument.element
 
 ```cpp
-google::protobuf::Repeated_mediapipe_TemplateArgument* mediapipe::TemplateArgument::element
+::google::protobuf::RepeatedPtrField<mediapipe::TemplateArgument>* mediapipe::TemplateArgument::element
 AutoIt:
     [propget, propput] $oTemplateArgument.element
 ```
@@ -35324,7 +35324,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateArgument::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_TemplateArgument google::protobuf::Repeated_mediapipe_TemplateArgument::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::TemplateArgument> google::protobuf::Repeated_mediapipe_TemplateArgument::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_TemplateArgument").create() -> <google.protobuf.Repeated_mediapipe_TemplateArgument object>
 ```
@@ -35332,7 +35332,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateArgument::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateArgument::CopyFrom( const google::protobuf::Repeated_mediapipe_TemplateArgument other );
+void google::protobuf::Repeated_mediapipe_TemplateArgument::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateArgument> other );
 AutoIt:
     $oRepeated_mediapipe_TemplateArgument.CopyFrom( $other ) -> None
 ```
@@ -35340,7 +35340,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateArgument::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_TemplateArgument::IsInstance( const google::protobuf::Repeated_mediapipe_TemplateArgument& obj );
+static bool google::protobuf::Repeated_mediapipe_TemplateArgument::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateArgument>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_TemplateArgument").IsInstance( $obj ) -> retval
 ```
@@ -35354,7 +35354,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateArgument::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateArgument::MergeFrom( const google::protobuf::Repeated_mediapipe_TemplateArgument other );
+void google::protobuf::Repeated_mediapipe_TemplateArgument::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateArgument> other );
 AutoIt:
     $oRepeated_mediapipe_TemplateArgument.MergeFrom( $other ) -> None
 ```
@@ -35362,7 +35362,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateArgument::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateArgument::Swap( google::protobuf::Repeated_mediapipe_TemplateArgument* other );
+void google::protobuf::Repeated_mediapipe_TemplateArgument::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::TemplateArgument>* other );
 AutoIt:
     $oRepeated_mediapipe_TemplateArgument.Swap( $other ) -> None
 ```
@@ -35379,7 +35379,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateArgument::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_TemplateArgument::__eq__( const google::protobuf::Repeated_mediapipe_TemplateArgument& other );
+bool google::protobuf::Repeated_mediapipe_TemplateArgument::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateArgument>& other );
 AutoIt:
     $oRepeated_mediapipe_TemplateArgument.__eq__( $other ) -> retval
 ```
@@ -35453,7 +35453,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateArgument::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateArgument::extend( const google::protobuf::Repeated_mediapipe_TemplateArgument& items );
+void google::protobuf::Repeated_mediapipe_TemplateArgument::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateArgument>& items );
 AutoIt:
     $oRepeated_mediapipe_TemplateArgument.extend( $items ) -> None
 ```
@@ -35579,7 +35579,7 @@ AutoIt:
 ### TemplateDict.arg
 
 ```cpp
-google::protobuf::Repeated_mediapipe_TemplateDict_Parameter* mediapipe::TemplateDict::arg
+::google::protobuf::RepeatedPtrField<mediapipe::TemplateDict::Parameter>* mediapipe::TemplateDict::arg
 AutoIt:
     [propget, propput] $oTemplateDict.arg
 ```
@@ -35738,7 +35738,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateDict\_Parameter::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_TemplateDict_Parameter google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::TemplateDict::Parameter> google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_TemplateDict_Parameter").create() -> <google.protobuf.Repeated_mediapipe_TemplateDict_Parameter object>
 ```
@@ -35746,7 +35746,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateDict\_Parameter::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::CopyFrom( const google::protobuf::Repeated_mediapipe_TemplateDict_Parameter other );
+void google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateDict::Parameter> other );
 AutoIt:
     $oRepeated_mediapipe_TemplateDict_Parameter.CopyFrom( $other ) -> None
 ```
@@ -35754,7 +35754,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateDict\_Parameter::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::IsInstance( const google::protobuf::Repeated_mediapipe_TemplateDict_Parameter& obj );
+static bool google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateDict::Parameter>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_TemplateDict_Parameter").IsInstance( $obj ) -> retval
 ```
@@ -35768,7 +35768,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateDict\_Parameter::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::MergeFrom( const google::protobuf::Repeated_mediapipe_TemplateDict_Parameter other );
+void google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateDict::Parameter> other );
 AutoIt:
     $oRepeated_mediapipe_TemplateDict_Parameter.MergeFrom( $other ) -> None
 ```
@@ -35776,7 +35776,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateDict\_Parameter::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::Swap( google::protobuf::Repeated_mediapipe_TemplateDict_Parameter* other );
+void google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::TemplateDict::Parameter>* other );
 AutoIt:
     $oRepeated_mediapipe_TemplateDict_Parameter.Swap( $other ) -> None
 ```
@@ -35793,7 +35793,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateDict\_Parameter::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::__eq__( const google::protobuf::Repeated_mediapipe_TemplateDict_Parameter& other );
+bool google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateDict::Parameter>& other );
 AutoIt:
     $oRepeated_mediapipe_TemplateDict_Parameter.__eq__( $other ) -> retval
 ```
@@ -35867,7 +35867,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_TemplateDict\_Parameter::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::extend( const google::protobuf::Repeated_mediapipe_TemplateDict_Parameter& items );
+void google::protobuf::Repeated_mediapipe_TemplateDict_Parameter::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::TemplateDict::Parameter>& items );
 AutoIt:
     $oRepeated_mediapipe_TemplateDict_Parameter.extend( $items ) -> None
 ```
@@ -36161,7 +36161,7 @@ AutoIt:
 ### TemplateSubgraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions* mediapipe::TemplateSubgraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::TemplateSubgraphOptions>, 11, false>* mediapipe::TemplateSubgraphOptions::ext
 AutoIt:
     [propget] $oTemplateSubgraphOptions.ext
 ```
@@ -36364,7 +36364,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_TemplateSubgraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::TemplateSubgraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -36378,7 +36378,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_TemplateSubgraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::TemplateSubgraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_TemplateSubgraphOptions.__eq__( $other ) -> retval
 ```
@@ -36410,7 +36410,7 @@ AutoIt:
 ### Rasterization.interval
 
 ```cpp
-google::protobuf::Repeated_mediapipe_Rasterization_Interval* mediapipe::Rasterization::interval
+::google::protobuf::RepeatedPtrField<mediapipe::Rasterization::Interval>* mediapipe::Rasterization::interval
 AutoIt:
     [propget, propput] $oRasterization.interval
 ```
@@ -36569,7 +36569,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Rasterization\_Interval::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_Rasterization_Interval google::protobuf::Repeated_mediapipe_Rasterization_Interval::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::Rasterization::Interval> google::protobuf::Repeated_mediapipe_Rasterization_Interval::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Rasterization_Interval").create() -> <google.protobuf.Repeated_mediapipe_Rasterization_Interval object>
 ```
@@ -36577,7 +36577,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Rasterization\_Interval::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Rasterization_Interval::CopyFrom( const google::protobuf::Repeated_mediapipe_Rasterization_Interval other );
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Rasterization::Interval> other );
 AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval.CopyFrom( $other ) -> None
 ```
@@ -36585,7 +36585,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Rasterization\_Interval::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_Rasterization_Interval::IsInstance( const google::protobuf::Repeated_mediapipe_Rasterization_Interval& obj );
+static bool google::protobuf::Repeated_mediapipe_Rasterization_Interval::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::Rasterization::Interval>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Rasterization_Interval").IsInstance( $obj ) -> retval
 ```
@@ -36599,7 +36599,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Rasterization\_Interval::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Rasterization_Interval::MergeFrom( const google::protobuf::Repeated_mediapipe_Rasterization_Interval other );
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Rasterization::Interval> other );
 AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval.MergeFrom( $other ) -> None
 ```
@@ -36607,7 +36607,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Rasterization\_Interval::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Rasterization_Interval::Swap( google::protobuf::Repeated_mediapipe_Rasterization_Interval* other );
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::Rasterization::Interval>* other );
 AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval.Swap( $other ) -> None
 ```
@@ -36624,7 +36624,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Rasterization\_Interval::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_Rasterization_Interval::__eq__( const google::protobuf::Repeated_mediapipe_Rasterization_Interval& other );
+bool google::protobuf::Repeated_mediapipe_Rasterization_Interval::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::Rasterization::Interval>& other );
 AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval.__eq__( $other ) -> retval
 ```
@@ -36698,7 +36698,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Rasterization\_Interval::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Rasterization_Interval::extend( const google::protobuf::Repeated_mediapipe_Rasterization_Interval& items );
+void google::protobuf::Repeated_mediapipe_Rasterization_Interval::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::Rasterization::Interval>& items );
 AutoIt:
     $oRepeated_mediapipe_Rasterization_Interval.extend( $items ) -> None
 ```
@@ -37045,7 +37045,7 @@ AutoIt:
 ### LocationData.relative\_keypoints
 
 ```cpp
-google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint* mediapipe::LocationData::relative_keypoints
+::google::protobuf::RepeatedPtrField<mediapipe::LocationData::RelativeKeypoint>* mediapipe::LocationData::relative_keypoints
 AutoIt:
     [propget, propput] $oLocationData.relative_keypoints
 ```
@@ -37240,7 +37240,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LocationData\_RelativeKeypoint::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::LocationData::RelativeKeypoint> google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_LocationData_RelativeKeypoint").create() -> <google.protobuf.Repeated_mediapipe_LocationData_RelativeKeypoint object>
 ```
@@ -37248,7 +37248,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LocationData\_RelativeKeypoint::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::CopyFrom( const google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint other );
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::LocationData::RelativeKeypoint> other );
 AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint.CopyFrom( $other ) -> None
 ```
@@ -37256,7 +37256,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LocationData\_RelativeKeypoint::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::IsInstance( const google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint& obj );
+static bool google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::LocationData::RelativeKeypoint>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_LocationData_RelativeKeypoint").IsInstance( $obj ) -> retval
 ```
@@ -37270,7 +37270,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LocationData\_RelativeKeypoint::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::MergeFrom( const google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint other );
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::LocationData::RelativeKeypoint> other );
 AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint.MergeFrom( $other ) -> None
 ```
@@ -37278,7 +37278,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LocationData\_RelativeKeypoint::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::Swap( google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint* other );
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::LocationData::RelativeKeypoint>* other );
 AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint.Swap( $other ) -> None
 ```
@@ -37295,7 +37295,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LocationData\_RelativeKeypoint::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::__eq__( const google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint& other );
+bool google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::LocationData::RelativeKeypoint>& other );
 AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint.__eq__( $other ) -> retval
 ```
@@ -37369,7 +37369,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LocationData\_RelativeKeypoint::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::extend( const google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint& items );
+void google::protobuf::Repeated_mediapipe_LocationData_RelativeKeypoint::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::LocationData::RelativeKeypoint>& items );
 AutoIt:
     $oRepeated_mediapipe_LocationData_RelativeKeypoint.extend( $items ) -> None
 ```
@@ -38242,7 +38242,7 @@ AutoIt:
 ### Detection.label
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::Detection::label
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::Detection::label
 AutoIt:
     [propget, propput] $oDetection.label
 ```
@@ -38250,7 +38250,7 @@ AutoIt:
 ### Detection.label\_id
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::Detection::label_id
+::google::protobuf::RepeatedField<int>* mediapipe::Detection::label_id
 AutoIt:
     [propget, propput] $oDetection.label_id
 ```
@@ -38258,7 +38258,7 @@ AutoIt:
 ### Detection.score
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::Detection::score
+::google::protobuf::RepeatedField<float>* mediapipe::Detection::score
 AutoIt:
     [propget, propput] $oDetection.score
 ```
@@ -38298,7 +38298,7 @@ AutoIt:
 ### Detection.associated\_detections
 
 ```cpp
-google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection* mediapipe::Detection::associated_detections
+::google::protobuf::RepeatedPtrField<mediapipe::Detection::AssociatedDetection>* mediapipe::Detection::associated_detections
 AutoIt:
     [propget, propput] $oDetection.associated_detections
 ```
@@ -38306,7 +38306,7 @@ AutoIt:
 ### Detection.display\_name
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::Detection::display_name
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::Detection::display_name
 AutoIt:
     [propget, propput] $oDetection.display_name
 ```
@@ -38482,7 +38482,7 @@ AutoIt:
 ### google::protobuf::Repeated\_float::create
 
 ```cpp
-static google::protobuf::Repeated_float google::protobuf::Repeated_float::create();
+static ::google::protobuf::RepeatedField<float> google::protobuf::Repeated_float::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_float").create() -> <google.protobuf.Repeated_float object>
 ```
@@ -38490,7 +38490,7 @@ AutoIt:
 ### google::protobuf::Repeated\_float::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_float::CopyFrom( const google::protobuf::Repeated_float other );
+void google::protobuf::Repeated_float::CopyFrom( const ::google::protobuf::RepeatedField<float> other );
 AutoIt:
     $oRepeated_float.CopyFrom( $other ) -> None
 ```
@@ -38498,7 +38498,7 @@ AutoIt:
 ### google::protobuf::Repeated\_float::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_float::IsInstance( const google::protobuf::Repeated_float& obj );
+static bool google::protobuf::Repeated_float::IsInstance( const ::google::protobuf::RepeatedField<float>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_float").IsInstance( $obj ) -> retval
 ```
@@ -38512,7 +38512,7 @@ AutoIt:
 ### google::protobuf::Repeated\_float::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_float::MergeFrom( const google::protobuf::Repeated_float other );
+void google::protobuf::Repeated_float::MergeFrom( const ::google::protobuf::RepeatedField<float> other );
 AutoIt:
     $oRepeated_float.MergeFrom( $other ) -> None
 ```
@@ -38520,7 +38520,7 @@ AutoIt:
 ### google::protobuf::Repeated\_float::Swap
 
 ```cpp
-void google::protobuf::Repeated_float::Swap( google::protobuf::Repeated_float* other );
+void google::protobuf::Repeated_float::Swap( ::google::protobuf::RepeatedField<float>* other );
 AutoIt:
     $oRepeated_float.Swap( $other ) -> None
 ```
@@ -38537,7 +38537,7 @@ AutoIt:
 ### google::protobuf::Repeated\_float::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_float::__eq__( const google::protobuf::Repeated_float& other );
+bool google::protobuf::Repeated_float::__eq__( const ::google::protobuf::RepeatedField<float>& other );
 AutoIt:
     $oRepeated_float.__eq__( $other ) -> retval
 ```
@@ -38591,7 +38591,7 @@ AutoIt:
 ### google::protobuf::Repeated\_float::extend
 
 ```cpp
-void google::protobuf::Repeated_float::extend( const google::protobuf::Repeated_float& items );
+void google::protobuf::Repeated_float::extend( const ::google::protobuf::RepeatedField<float>& items );
 AutoIt:
     $oRepeated_float.extend( $items ) -> None
 ```
@@ -38728,7 +38728,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection\_AssociatedDetection::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::Detection::AssociatedDetection> google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Detection_AssociatedDetection").create() -> <google.protobuf.Repeated_mediapipe_Detection_AssociatedDetection object>
 ```
@@ -38736,7 +38736,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection\_AssociatedDetection::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::CopyFrom( const google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection other );
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection::AssociatedDetection> other );
 AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection.CopyFrom( $other ) -> None
 ```
@@ -38744,7 +38744,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection\_AssociatedDetection::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::IsInstance( const google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection& obj );
+static bool google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection::AssociatedDetection>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Detection_AssociatedDetection").IsInstance( $obj ) -> retval
 ```
@@ -38758,7 +38758,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection\_AssociatedDetection::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::MergeFrom( const google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection other );
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection::AssociatedDetection> other );
 AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection.MergeFrom( $other ) -> None
 ```
@@ -38766,7 +38766,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection\_AssociatedDetection::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::Swap( google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection* other );
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::Detection::AssociatedDetection>* other );
 AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection.Swap( $other ) -> None
 ```
@@ -38783,7 +38783,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection\_AssociatedDetection::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::__eq__( const google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection& other );
+bool google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection::AssociatedDetection>& other );
 AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection.__eq__( $other ) -> retval
 ```
@@ -38857,7 +38857,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection\_AssociatedDetection::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::extend( const google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection& items );
+void google::protobuf::Repeated_mediapipe_Detection_AssociatedDetection::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection::AssociatedDetection>& items );
 AutoIt:
     $oRepeated_mediapipe_Detection_AssociatedDetection.extend( $items ) -> None
 ```
@@ -39143,7 +39143,7 @@ AutoIt:
 ### DetectionList.detection
 
 ```cpp
-google::protobuf::Repeated_mediapipe_Detection* mediapipe::DetectionList::detection
+::google::protobuf::RepeatedPtrField<mediapipe::Detection>* mediapipe::DetectionList::detection
 AutoIt:
     [propget, propput] $oDetectionList.detection
 ```
@@ -39302,7 +39302,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_Detection google::protobuf::Repeated_mediapipe_Detection::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::Detection> google::protobuf::Repeated_mediapipe_Detection::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Detection").create() -> <google.protobuf.Repeated_mediapipe_Detection object>
 ```
@@ -39310,7 +39310,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Detection::CopyFrom( const google::protobuf::Repeated_mediapipe_Detection other );
+void google::protobuf::Repeated_mediapipe_Detection::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection> other );
 AutoIt:
     $oRepeated_mediapipe_Detection.CopyFrom( $other ) -> None
 ```
@@ -39318,7 +39318,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_Detection::IsInstance( const google::protobuf::Repeated_mediapipe_Detection& obj );
+static bool google::protobuf::Repeated_mediapipe_Detection::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Detection").IsInstance( $obj ) -> retval
 ```
@@ -39332,7 +39332,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Detection::MergeFrom( const google::protobuf::Repeated_mediapipe_Detection other );
+void google::protobuf::Repeated_mediapipe_Detection::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection> other );
 AutoIt:
     $oRepeated_mediapipe_Detection.MergeFrom( $other ) -> None
 ```
@@ -39340,7 +39340,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Detection::Swap( google::protobuf::Repeated_mediapipe_Detection* other );
+void google::protobuf::Repeated_mediapipe_Detection::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::Detection>* other );
 AutoIt:
     $oRepeated_mediapipe_Detection.Swap( $other ) -> None
 ```
@@ -39357,7 +39357,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_Detection::__eq__( const google::protobuf::Repeated_mediapipe_Detection& other );
+bool google::protobuf::Repeated_mediapipe_Detection::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection>& other );
 AutoIt:
     $oRepeated_mediapipe_Detection.__eq__( $other ) -> retval
 ```
@@ -39431,7 +39431,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Detection::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Detection::extend( const google::protobuf::Repeated_mediapipe_Detection& items );
+void google::protobuf::Repeated_mediapipe_Detection::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::Detection>& items );
 AutoIt:
     $oRepeated_mediapipe_Detection.extend( $items ) -> None
 ```
@@ -40036,7 +40036,7 @@ AutoIt:
 ### LandmarkList.landmark
 
 ```cpp
-google::protobuf::Repeated_mediapipe_Landmark* mediapipe::LandmarkList::landmark
+::google::protobuf::RepeatedPtrField<mediapipe::Landmark>* mediapipe::LandmarkList::landmark
 AutoIt:
     [propget, propput] $oLandmarkList.landmark
 ```
@@ -40195,7 +40195,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Landmark::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_Landmark google::protobuf::Repeated_mediapipe_Landmark::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::Landmark> google::protobuf::Repeated_mediapipe_Landmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Landmark").create() -> <google.protobuf.Repeated_mediapipe_Landmark object>
 ```
@@ -40203,7 +40203,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Landmark::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Landmark::CopyFrom( const google::protobuf::Repeated_mediapipe_Landmark other );
+void google::protobuf::Repeated_mediapipe_Landmark::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Landmark> other );
 AutoIt:
     $oRepeated_mediapipe_Landmark.CopyFrom( $other ) -> None
 ```
@@ -40211,7 +40211,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Landmark::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_Landmark::IsInstance( const google::protobuf::Repeated_mediapipe_Landmark& obj );
+static bool google::protobuf::Repeated_mediapipe_Landmark::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::Landmark>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Landmark").IsInstance( $obj ) -> retval
 ```
@@ -40225,7 +40225,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Landmark::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Landmark::MergeFrom( const google::protobuf::Repeated_mediapipe_Landmark other );
+void google::protobuf::Repeated_mediapipe_Landmark::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Landmark> other );
 AutoIt:
     $oRepeated_mediapipe_Landmark.MergeFrom( $other ) -> None
 ```
@@ -40233,7 +40233,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Landmark::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Landmark::Swap( google::protobuf::Repeated_mediapipe_Landmark* other );
+void google::protobuf::Repeated_mediapipe_Landmark::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::Landmark>* other );
 AutoIt:
     $oRepeated_mediapipe_Landmark.Swap( $other ) -> None
 ```
@@ -40250,7 +40250,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Landmark::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_Landmark::__eq__( const google::protobuf::Repeated_mediapipe_Landmark& other );
+bool google::protobuf::Repeated_mediapipe_Landmark::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::Landmark>& other );
 AutoIt:
     $oRepeated_mediapipe_Landmark.__eq__( $other ) -> retval
 ```
@@ -40324,7 +40324,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Landmark::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Landmark::extend( const google::protobuf::Repeated_mediapipe_Landmark& items );
+void google::protobuf::Repeated_mediapipe_Landmark::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::Landmark>& items );
 AutoIt:
     $oRepeated_mediapipe_Landmark.extend( $items ) -> None
 ```
@@ -40450,7 +40450,7 @@ AutoIt:
 ### LandmarkListCollection.landmark\_list
 
 ```cpp
-google::protobuf::Repeated_mediapipe_LandmarkList* mediapipe::LandmarkListCollection::landmark_list
+::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList>* mediapipe::LandmarkListCollection::landmark_list
 AutoIt:
     [propget, propput] $oLandmarkListCollection.landmark_list
 ```
@@ -40609,7 +40609,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LandmarkList::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_LandmarkList google::protobuf::Repeated_mediapipe_LandmarkList::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList> google::protobuf::Repeated_mediapipe_LandmarkList::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_LandmarkList").create() -> <google.protobuf.Repeated_mediapipe_LandmarkList object>
 ```
@@ -40617,7 +40617,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LandmarkList::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_LandmarkList::CopyFrom( const google::protobuf::Repeated_mediapipe_LandmarkList other );
+void google::protobuf::Repeated_mediapipe_LandmarkList::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList> other );
 AutoIt:
     $oRepeated_mediapipe_LandmarkList.CopyFrom( $other ) -> None
 ```
@@ -40625,7 +40625,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LandmarkList::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_LandmarkList::IsInstance( const google::protobuf::Repeated_mediapipe_LandmarkList& obj );
+static bool google::protobuf::Repeated_mediapipe_LandmarkList::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_LandmarkList").IsInstance( $obj ) -> retval
 ```
@@ -40639,7 +40639,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LandmarkList::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_LandmarkList::MergeFrom( const google::protobuf::Repeated_mediapipe_LandmarkList other );
+void google::protobuf::Repeated_mediapipe_LandmarkList::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList> other );
 AutoIt:
     $oRepeated_mediapipe_LandmarkList.MergeFrom( $other ) -> None
 ```
@@ -40647,7 +40647,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LandmarkList::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_LandmarkList::Swap( google::protobuf::Repeated_mediapipe_LandmarkList* other );
+void google::protobuf::Repeated_mediapipe_LandmarkList::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList>* other );
 AutoIt:
     $oRepeated_mediapipe_LandmarkList.Swap( $other ) -> None
 ```
@@ -40664,7 +40664,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LandmarkList::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_LandmarkList::__eq__( const google::protobuf::Repeated_mediapipe_LandmarkList& other );
+bool google::protobuf::Repeated_mediapipe_LandmarkList::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList>& other );
 AutoIt:
     $oRepeated_mediapipe_LandmarkList.__eq__( $other ) -> retval
 ```
@@ -40738,7 +40738,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_LandmarkList::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_LandmarkList::extend( const google::protobuf::Repeated_mediapipe_LandmarkList& items );
+void google::protobuf::Repeated_mediapipe_LandmarkList::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList>& items );
 AutoIt:
     $oRepeated_mediapipe_LandmarkList.extend( $items ) -> None
 ```
@@ -41051,7 +41051,7 @@ AutoIt:
 ### NormalizedLandmarkList.landmark
 
 ```cpp
-google::protobuf::Repeated_mediapipe_NormalizedLandmark* mediapipe::NormalizedLandmarkList::landmark
+::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmark>* mediapipe::NormalizedLandmarkList::landmark
 AutoIt:
     [propget, propput] $oNormalizedLandmarkList.landmark
 ```
@@ -41210,7 +41210,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmark::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_NormalizedLandmark google::protobuf::Repeated_mediapipe_NormalizedLandmark::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmark> google::protobuf::Repeated_mediapipe_NormalizedLandmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_NormalizedLandmark").create() -> <google.protobuf.Repeated_mediapipe_NormalizedLandmark object>
 ```
@@ -41218,7 +41218,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmark::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedLandmark::CopyFrom( const google::protobuf::Repeated_mediapipe_NormalizedLandmark other );
+void google::protobuf::Repeated_mediapipe_NormalizedLandmark::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmark> other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmark.CopyFrom( $other ) -> None
 ```
@@ -41226,7 +41226,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmark::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_NormalizedLandmark::IsInstance( const google::protobuf::Repeated_mediapipe_NormalizedLandmark& obj );
+static bool google::protobuf::Repeated_mediapipe_NormalizedLandmark::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmark>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_NormalizedLandmark").IsInstance( $obj ) -> retval
 ```
@@ -41240,7 +41240,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmark::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedLandmark::MergeFrom( const google::protobuf::Repeated_mediapipe_NormalizedLandmark other );
+void google::protobuf::Repeated_mediapipe_NormalizedLandmark::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmark> other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmark.MergeFrom( $other ) -> None
 ```
@@ -41248,7 +41248,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmark::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedLandmark::Swap( google::protobuf::Repeated_mediapipe_NormalizedLandmark* other );
+void google::protobuf::Repeated_mediapipe_NormalizedLandmark::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmark>* other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmark.Swap( $other ) -> None
 ```
@@ -41265,7 +41265,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmark::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_NormalizedLandmark::__eq__( const google::protobuf::Repeated_mediapipe_NormalizedLandmark& other );
+bool google::protobuf::Repeated_mediapipe_NormalizedLandmark::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmark>& other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmark.__eq__( $other ) -> retval
 ```
@@ -41339,7 +41339,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmark::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedLandmark::extend( const google::protobuf::Repeated_mediapipe_NormalizedLandmark& items );
+void google::protobuf::Repeated_mediapipe_NormalizedLandmark::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmark>& items );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmark.extend( $items ) -> None
 ```
@@ -41465,7 +41465,7 @@ AutoIt:
 ### NormalizedLandmarkListCollection.landmark\_list
 
 ```cpp
-google::protobuf::Repeated_mediapipe_NormalizedLandmarkList* mediapipe::NormalizedLandmarkListCollection::landmark_list
+::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList>* mediapipe::NormalizedLandmarkListCollection::landmark_list
 AutoIt:
     [propget, propput] $oNormalizedLandmarkListCollection.landmark_list
 ```
@@ -41624,7 +41624,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmarkList::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_NormalizedLandmarkList google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList> google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_NormalizedLandmarkList").create() -> <google.protobuf.Repeated_mediapipe_NormalizedLandmarkList object>
 ```
@@ -41632,7 +41632,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmarkList::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::CopyFrom( const google::protobuf::Repeated_mediapipe_NormalizedLandmarkList other );
+void google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList> other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmarkList.CopyFrom( $other ) -> None
 ```
@@ -41640,7 +41640,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmarkList::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::IsInstance( const google::protobuf::Repeated_mediapipe_NormalizedLandmarkList& obj );
+static bool google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_NormalizedLandmarkList").IsInstance( $obj ) -> retval
 ```
@@ -41654,7 +41654,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmarkList::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::MergeFrom( const google::protobuf::Repeated_mediapipe_NormalizedLandmarkList other );
+void google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList> other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmarkList.MergeFrom( $other ) -> None
 ```
@@ -41662,7 +41662,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmarkList::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::Swap( google::protobuf::Repeated_mediapipe_NormalizedLandmarkList* other );
+void google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList>* other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmarkList.Swap( $other ) -> None
 ```
@@ -41679,7 +41679,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmarkList::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::__eq__( const google::protobuf::Repeated_mediapipe_NormalizedLandmarkList& other );
+bool google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList>& other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmarkList.__eq__( $other ) -> retval
 ```
@@ -41753,7 +41753,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedLandmarkList::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::extend( const google::protobuf::Repeated_mediapipe_NormalizedLandmarkList& items );
+void google::protobuf::Repeated_mediapipe_NormalizedLandmarkList::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList>& items );
 AutoIt:
     $oRepeated_mediapipe_NormalizedLandmarkList.extend( $items ) -> None
 ```
@@ -41985,7 +41985,7 @@ AutoIt:
 ### InferenceCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions* mediapipe::InferenceCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::InferenceCalculatorOptions>, 11, false>* mediapipe::InferenceCalculatorOptions::ext
 AutoIt:
     [propget] $oInferenceCalculatorOptions.ext
 ```
@@ -43109,7 +43109,7 @@ AutoIt:
 ### InputOutputConfig.feedback\_tensor\_links
 
 ```cpp
-google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink* mediapipe::InferenceCalculatorOptions::InputOutputConfig::feedback_tensor_links
+::google::protobuf::RepeatedPtrField<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>* mediapipe::InferenceCalculatorOptions::InputOutputConfig::feedback_tensor_links
 AutoIt:
     [propget, propput] $oInputOutputConfig.feedback_tensor_links
 ```
@@ -43272,7 +43272,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink> google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink").create() -> <google.protobuf.Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink object>
 ```
@@ -43280,7 +43280,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::CopyFrom( const google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink other );
+void google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink> other );
 AutoIt:
     $oRepeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.CopyFrom( $other ) -> None
 ```
@@ -43288,7 +43288,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::IsInstance( const google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink& obj );
+static bool google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink").IsInstance( $obj ) -> retval
 ```
@@ -43302,7 +43302,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::MergeFrom( const google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink other );
+void google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink> other );
 AutoIt:
     $oRepeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.MergeFrom( $other ) -> None
 ```
@@ -43310,7 +43310,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::Swap( google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink* other );
+void google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>* other );
 AutoIt:
     $oRepeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.Swap( $other ) -> None
 ```
@@ -43327,7 +43327,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::__eq__( const google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink& other );
+bool google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>& other );
 AutoIt:
     $oRepeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.__eq__( $other ) -> retval
 ```
@@ -43401,7 +43401,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_InferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::extend( const google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink& items );
+void google::protobuf::Repeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>& items );
 AutoIt:
     $oRepeated_mediapipe_InferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.extend( $items ) -> None
 ```
@@ -43527,7 +43527,7 @@ AutoIt:
 ### TensorIndicesMap.model\_tensor\_indices
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::InferenceCalculatorOptions::InputOutputConfig::TensorIndicesMap::model_tensor_indices
+::google::protobuf::RepeatedField<int>* mediapipe::InferenceCalculatorOptions::InputOutputConfig::TensorIndicesMap::model_tensor_indices
 AutoIt:
     [propget, propput] $oTensorIndicesMap.model_tensor_indices
 ```
@@ -43678,7 +43678,7 @@ AutoIt:
 ### TensorNamesMap.tensor\_names
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::InferenceCalculatorOptions::InputOutputConfig::TensorNamesMap::tensor_names
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::InferenceCalculatorOptions::InputOutputConfig::TensorNamesMap::tensor_names
 AutoIt:
     [propget, propput] $oTensorNamesMap.tensor_names
 ```
@@ -44077,7 +44077,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_InferenceCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::InferenceCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -44091,7 +44091,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_InferenceCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::InferenceCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_InferenceCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -44339,7 +44339,7 @@ AutoIt:
 ### FaceDetectionOptions.strides
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::FaceDetectionOptions::strides
+::google::protobuf::RepeatedField<int>* mediapipe::FaceDetectionOptions::strides
 AutoIt:
     [propget, propput] $oFaceDetectionOptions.strides
 ```
@@ -44411,7 +44411,7 @@ AutoIt:
 ### FaceDetectionOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions* mediapipe::FaceDetectionOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::FaceDetectionOptions>, 11, false>* mediapipe::FaceDetectionOptions::ext
 AutoIt:
     [propget] $oFaceDetectionOptions.ext
 ```
@@ -44585,7 +44585,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_FaceDetectionOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::FaceDetectionOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions").IsInstance( $obj ) -> retval
 ```
@@ -44599,7 +44599,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_FaceDetectionOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::FaceDetectionOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_FaceDetectionOptions.__eq__( $other ) -> retval
 ```
@@ -44631,7 +44631,7 @@ AutoIt:
 ### AVCameraCalibrationData.intrinsic\_matrix
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::AVCameraCalibrationData::intrinsic_matrix
+::google::protobuf::RepeatedField<float>* mediapipe::AVCameraCalibrationData::intrinsic_matrix
 AutoIt:
     [propget, propput] $oAVCameraCalibrationData.intrinsic_matrix
 ```
@@ -44655,7 +44655,7 @@ AutoIt:
 ### AVCameraCalibrationData.extrinsic\_matrix
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::AVCameraCalibrationData::extrinsic_matrix
+::google::protobuf::RepeatedField<float>* mediapipe::AVCameraCalibrationData::extrinsic_matrix
 AutoIt:
     [propget, propput] $oAVCameraCalibrationData.extrinsic_matrix
 ```
@@ -44671,7 +44671,7 @@ AutoIt:
 ### AVCameraCalibrationData.lens\_distortion\_lookup\_values
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::AVCameraCalibrationData::lens_distortion_lookup_values
+::google::protobuf::RepeatedField<float>* mediapipe::AVCameraCalibrationData::lens_distortion_lookup_values
 AutoIt:
     [propget, propput] $oAVCameraCalibrationData.lens_distortion_lookup_values
 ```
@@ -44679,7 +44679,7 @@ AutoIt:
 ### AVCameraCalibrationData.inverse\_lens\_distortion\_lookup\_values
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::AVCameraCalibrationData::inverse_lens_distortion_lookup_values
+::google::protobuf::RepeatedField<float>* mediapipe::AVCameraCalibrationData::inverse_lens_distortion_lookup_values
 AutoIt:
     [propget, propput] $oAVCameraCalibrationData.inverse_lens_distortion_lookup_values
 ```
@@ -45159,7 +45159,7 @@ AutoIt:
 ### ARLightEstimate.spherical\_harmonics\_coefficients
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ARLightEstimate::spherical_harmonics_coefficients
+::google::protobuf::RepeatedField<float>* mediapipe::ARLightEstimate::spherical_harmonics_coefficients
 AutoIt:
     [propget, propput] $oARLightEstimate.spherical_harmonics_coefficients
 ```
@@ -45515,7 +45515,7 @@ AutoIt:
 ### ARCamera.transform
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ARCamera::transform
+::google::protobuf::RepeatedField<float>* mediapipe::ARCamera::transform
 AutoIt:
     [propget, propput] $oARCamera.transform
 ```
@@ -45547,7 +45547,7 @@ AutoIt:
 ### ARCamera.intrinsics
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ARCamera::intrinsics
+::google::protobuf::RepeatedField<float>* mediapipe::ARCamera::intrinsics
 AutoIt:
     [propget, propput] $oARCamera.intrinsics
 ```
@@ -45555,7 +45555,7 @@ AutoIt:
 ### ARCamera.projection\_matrix
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ARCamera::projection_matrix
+::google::protobuf::RepeatedField<float>* mediapipe::ARCamera::projection_matrix
 AutoIt:
     [propget, propput] $oARCamera.projection_matrix
 ```
@@ -45563,7 +45563,7 @@ AutoIt:
 ### ARCamera.view\_matrix
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ARCamera::view_matrix
+::google::protobuf::RepeatedField<float>* mediapipe::ARCamera::view_matrix
 AutoIt:
     [propget, propput] $oARCamera.view_matrix
 ```
@@ -45971,7 +45971,7 @@ AutoIt:
 ### ARFaceGeometry.vertices
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex* mediapipe::ARFaceGeometry::vertices
+::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::Vertex>* mediapipe::ARFaceGeometry::vertices
 AutoIt:
     [propget, propput] $oARFaceGeometry.vertices
 ```
@@ -45987,7 +45987,7 @@ AutoIt:
 ### ARFaceGeometry.texture\_coordinates
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate* mediapipe::ARFaceGeometry::texture_coordinates
+::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::TextureCoordinate>* mediapipe::ARFaceGeometry::texture_coordinates
 AutoIt:
     [propget, propput] $oARFaceGeometry.texture_coordinates
 ```
@@ -46003,7 +46003,7 @@ AutoIt:
 ### ARFaceGeometry.triangle\_indices
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::ARFaceGeometry::triangle_indices
+::google::protobuf::RepeatedField<int>* mediapipe::ARFaceGeometry::triangle_indices
 AutoIt:
     [propget, propput] $oARFaceGeometry.triangle_indices
 ```
@@ -46175,7 +46175,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_Vertex::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::Vertex> google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARFaceGeometry_Vertex").create() -> <google.protobuf.Repeated_mediapipe_ARFaceGeometry_Vertex object>
 ```
@@ -46183,7 +46183,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_Vertex::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::CopyFrom( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex other );
+void google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::Vertex> other );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_Vertex.CopyFrom( $other ) -> None
 ```
@@ -46191,7 +46191,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_Vertex::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::IsInstance( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex& obj );
+static bool google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::Vertex>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARFaceGeometry_Vertex").IsInstance( $obj ) -> retval
 ```
@@ -46205,7 +46205,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_Vertex::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::MergeFrom( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex other );
+void google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::Vertex> other );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_Vertex.MergeFrom( $other ) -> None
 ```
@@ -46213,7 +46213,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_Vertex::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::Swap( google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex* other );
+void google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::Vertex>* other );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_Vertex.Swap( $other ) -> None
 ```
@@ -46230,7 +46230,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_Vertex::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::__eq__( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex& other );
+bool google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::Vertex>& other );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_Vertex.__eq__( $other ) -> retval
 ```
@@ -46304,7 +46304,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_Vertex::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::extend( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex& items );
+void google::protobuf::Repeated_mediapipe_ARFaceGeometry_Vertex::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::Vertex>& items );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_Vertex.extend( $items ) -> None
 ```
@@ -46438,7 +46438,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_TextureCoordinate::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::TextureCoordinate> google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARFaceGeometry_TextureCoordinate").create() -> <google.protobuf.Repeated_mediapipe_ARFaceGeometry_TextureCoordinate object>
 ```
@@ -46446,7 +46446,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_TextureCoordinate::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::CopyFrom( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate other );
+void google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::TextureCoordinate> other );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_TextureCoordinate.CopyFrom( $other ) -> None
 ```
@@ -46454,7 +46454,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_TextureCoordinate::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::IsInstance( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate& obj );
+static bool google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::TextureCoordinate>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARFaceGeometry_TextureCoordinate").IsInstance( $obj ) -> retval
 ```
@@ -46468,7 +46468,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_TextureCoordinate::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::MergeFrom( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate other );
+void google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::TextureCoordinate> other );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_TextureCoordinate.MergeFrom( $other ) -> None
 ```
@@ -46476,7 +46476,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_TextureCoordinate::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::Swap( google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate* other );
+void google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::TextureCoordinate>* other );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_TextureCoordinate.Swap( $other ) -> None
 ```
@@ -46493,7 +46493,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_TextureCoordinate::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::__eq__( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate& other );
+bool google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::TextureCoordinate>& other );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_TextureCoordinate.__eq__( $other ) -> retval
 ```
@@ -46567,7 +46567,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARFaceGeometry\_TextureCoordinate::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::extend( const google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate& items );
+void google::protobuf::Repeated_mediapipe_ARFaceGeometry_TextureCoordinate::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ARFaceGeometry::TextureCoordinate>& items );
 AutoIt:
     $oRepeated_mediapipe_ARFaceGeometry_TextureCoordinate.extend( $items ) -> None
 ```
@@ -47022,7 +47022,7 @@ AutoIt:
 ### ARBlendShapeMap.entries
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry* mediapipe::ARBlendShapeMap::entries
+::google::protobuf::RepeatedPtrField<mediapipe::ARBlendShapeMap::MapEntry>* mediapipe::ARBlendShapeMap::entries
 AutoIt:
     [propget, propput] $oARBlendShapeMap.entries
 ```
@@ -47181,7 +47181,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ARBlendShapeMap::MapEntry> google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARBlendShapeMap_MapEntry").create() -> <google.protobuf.Repeated_mediapipe_ARBlendShapeMap_MapEntry object>
 ```
@@ -47189,7 +47189,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::CopyFrom( const google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry other );
+void google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARBlendShapeMap::MapEntry> other );
 AutoIt:
     $oRepeated_mediapipe_ARBlendShapeMap_MapEntry.CopyFrom( $other ) -> None
 ```
@@ -47197,7 +47197,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::IsInstance( const google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry& obj );
+static bool google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ARBlendShapeMap::MapEntry>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARBlendShapeMap_MapEntry").IsInstance( $obj ) -> retval
 ```
@@ -47211,7 +47211,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::MergeFrom( const google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry other );
+void google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARBlendShapeMap::MapEntry> other );
 AutoIt:
     $oRepeated_mediapipe_ARBlendShapeMap_MapEntry.MergeFrom( $other ) -> None
 ```
@@ -47219,7 +47219,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::Swap( google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry* other );
+void google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ARBlendShapeMap::MapEntry>* other );
 AutoIt:
     $oRepeated_mediapipe_ARBlendShapeMap_MapEntry.Swap( $other ) -> None
 ```
@@ -47236,7 +47236,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::__eq__( const google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry& other );
+bool google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ARBlendShapeMap::MapEntry>& other );
 AutoIt:
     $oRepeated_mediapipe_ARBlendShapeMap_MapEntry.__eq__( $other ) -> retval
 ```
@@ -47310,7 +47310,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARBlendShapeMap\_MapEntry::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::extend( const google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry& items );
+void google::protobuf::Repeated_mediapipe_ARBlendShapeMap_MapEntry::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ARBlendShapeMap::MapEntry>& items );
 AutoIt:
     $oRepeated_mediapipe_ARBlendShapeMap_MapEntry.extend( $items ) -> None
 ```
@@ -47612,7 +47612,7 @@ AutoIt:
 ### ARFaceAnchor.transform
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ARFaceAnchor::transform
+::google::protobuf::RepeatedField<float>* mediapipe::ARFaceAnchor::transform
 AutoIt:
     [propget, propput] $oARFaceAnchor.transform
 ```
@@ -47774,7 +47774,7 @@ AutoIt:
 ### ARPlaneGeometry.vertices
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex* mediapipe::ARPlaneGeometry::vertices
+::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex>* mediapipe::ARPlaneGeometry::vertices
 AutoIt:
     [propget, propput] $oARPlaneGeometry.vertices
 ```
@@ -47790,7 +47790,7 @@ AutoIt:
 ### ARPlaneGeometry.texture\_coordinates
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate* mediapipe::ARPlaneGeometry::texture_coordinates
+::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::TextureCoordinate>* mediapipe::ARPlaneGeometry::texture_coordinates
 AutoIt:
     [propget, propput] $oARPlaneGeometry.texture_coordinates
 ```
@@ -47806,7 +47806,7 @@ AutoIt:
 ### ARPlaneGeometry.triangle\_indices
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::ARPlaneGeometry::triangle_indices
+::google::protobuf::RepeatedField<int>* mediapipe::ARPlaneGeometry::triangle_indices
 AutoIt:
     [propget, propput] $oARPlaneGeometry.triangle_indices
 ```
@@ -47822,7 +47822,7 @@ AutoIt:
 ### ARPlaneGeometry.boundary\_vertices
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex* mediapipe::ARPlaneGeometry::boundary_vertices
+::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex>* mediapipe::ARPlaneGeometry::boundary_vertices
 AutoIt:
     [propget, propput] $oARPlaneGeometry.boundary_vertices
 ```
@@ -47996,7 +47996,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_Vertex::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex> google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARPlaneGeometry_Vertex").create() -> <google.protobuf.Repeated_mediapipe_ARPlaneGeometry_Vertex object>
 ```
@@ -48004,7 +48004,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_Vertex::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::CopyFrom( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex other );
+void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex> other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_Vertex.CopyFrom( $other ) -> None
 ```
@@ -48012,7 +48012,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_Vertex::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::IsInstance( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex& obj );
+static bool google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARPlaneGeometry_Vertex").IsInstance( $obj ) -> retval
 ```
@@ -48026,7 +48026,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_Vertex::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::MergeFrom( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex other );
+void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex> other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_Vertex.MergeFrom( $other ) -> None
 ```
@@ -48034,7 +48034,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_Vertex::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::Swap( google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex* other );
+void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex>* other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_Vertex.Swap( $other ) -> None
 ```
@@ -48051,7 +48051,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_Vertex::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::__eq__( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex& other );
+bool google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex>& other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_Vertex.__eq__( $other ) -> retval
 ```
@@ -48125,7 +48125,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_Vertex::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::extend( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex& items );
+void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_Vertex::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::Vertex>& items );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_Vertex.extend( $items ) -> None
 ```
@@ -48259,7 +48259,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_TextureCoordinate::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::TextureCoordinate> google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate").create() -> <google.protobuf.Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate object>
 ```
@@ -48267,7 +48267,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_TextureCoordinate::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::CopyFrom( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate other );
+void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::TextureCoordinate> other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_TextureCoordinate.CopyFrom( $other ) -> None
 ```
@@ -48275,7 +48275,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_TextureCoordinate::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::IsInstance( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate& obj );
+static bool google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::TextureCoordinate>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate").IsInstance( $obj ) -> retval
 ```
@@ -48289,7 +48289,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_TextureCoordinate::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::MergeFrom( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate other );
+void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::TextureCoordinate> other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_TextureCoordinate.MergeFrom( $other ) -> None
 ```
@@ -48297,7 +48297,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_TextureCoordinate::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::Swap( google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate* other );
+void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::TextureCoordinate>* other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_TextureCoordinate.Swap( $other ) -> None
 ```
@@ -48314,7 +48314,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_TextureCoordinate::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::__eq__( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate& other );
+bool google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::TextureCoordinate>& other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_TextureCoordinate.__eq__( $other ) -> retval
 ```
@@ -48388,7 +48388,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneGeometry\_TextureCoordinate::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::extend( const google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate& items );
+void google::protobuf::Repeated_mediapipe_ARPlaneGeometry_TextureCoordinate::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneGeometry::TextureCoordinate>& items );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneGeometry_TextureCoordinate.extend( $items ) -> None
 ```
@@ -48851,7 +48851,7 @@ AutoIt:
 ### ARPlaneAnchor.transform
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ARPlaneAnchor::transform
+::google::protobuf::RepeatedField<float>* mediapipe::ARPlaneAnchor::transform
 AutoIt:
     [propget, propput] $oARPlaneAnchor.transform
 ```
@@ -49347,7 +49347,7 @@ AutoIt:
 ### ARPointCloud.point
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ARPointCloud_Point* mediapipe::ARPointCloud::point
+::google::protobuf::RepeatedPtrField<mediapipe::ARPointCloud::Point>* mediapipe::ARPointCloud::point
 AutoIt:
     [propget, propput] $oARPointCloud.point
 ```
@@ -49355,7 +49355,7 @@ AutoIt:
 ### ARPointCloud.identifier
 
 ```cpp
-google::protobuf::Repeated_int64* mediapipe::ARPointCloud::identifier
+::google::protobuf::RepeatedField<int64_t>* mediapipe::ARPointCloud::identifier
 AutoIt:
     [propget, propput] $oARPointCloud.identifier
 ```
@@ -49516,7 +49516,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPointCloud\_Point::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ARPointCloud_Point google::protobuf::Repeated_mediapipe_ARPointCloud_Point::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ARPointCloud::Point> google::protobuf::Repeated_mediapipe_ARPointCloud_Point::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARPointCloud_Point").create() -> <google.protobuf.Repeated_mediapipe_ARPointCloud_Point object>
 ```
@@ -49524,7 +49524,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPointCloud\_Point::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPointCloud_Point::CopyFrom( const google::protobuf::Repeated_mediapipe_ARPointCloud_Point other );
+void google::protobuf::Repeated_mediapipe_ARPointCloud_Point::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPointCloud::Point> other );
 AutoIt:
     $oRepeated_mediapipe_ARPointCloud_Point.CopyFrom( $other ) -> None
 ```
@@ -49532,7 +49532,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPointCloud\_Point::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ARPointCloud_Point::IsInstance( const google::protobuf::Repeated_mediapipe_ARPointCloud_Point& obj );
+static bool google::protobuf::Repeated_mediapipe_ARPointCloud_Point::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPointCloud::Point>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARPointCloud_Point").IsInstance( $obj ) -> retval
 ```
@@ -49546,7 +49546,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPointCloud\_Point::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPointCloud_Point::MergeFrom( const google::protobuf::Repeated_mediapipe_ARPointCloud_Point other );
+void google::protobuf::Repeated_mediapipe_ARPointCloud_Point::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPointCloud::Point> other );
 AutoIt:
     $oRepeated_mediapipe_ARPointCloud_Point.MergeFrom( $other ) -> None
 ```
@@ -49554,7 +49554,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPointCloud\_Point::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPointCloud_Point::Swap( google::protobuf::Repeated_mediapipe_ARPointCloud_Point* other );
+void google::protobuf::Repeated_mediapipe_ARPointCloud_Point::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ARPointCloud::Point>* other );
 AutoIt:
     $oRepeated_mediapipe_ARPointCloud_Point.Swap( $other ) -> None
 ```
@@ -49571,7 +49571,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPointCloud\_Point::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ARPointCloud_Point::__eq__( const google::protobuf::Repeated_mediapipe_ARPointCloud_Point& other );
+bool google::protobuf::Repeated_mediapipe_ARPointCloud_Point::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPointCloud::Point>& other );
 AutoIt:
     $oRepeated_mediapipe_ARPointCloud_Point.__eq__( $other ) -> retval
 ```
@@ -49645,7 +49645,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPointCloud\_Point::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPointCloud_Point::extend( const google::protobuf::Repeated_mediapipe_ARPointCloud_Point& items );
+void google::protobuf::Repeated_mediapipe_ARPointCloud_Point::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPointCloud::Point>& items );
 AutoIt:
     $oRepeated_mediapipe_ARPointCloud_Point.extend( $items ) -> None
 ```
@@ -49779,7 +49779,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::create
 
 ```cpp
-static google::protobuf::Repeated_int64 google::protobuf::Repeated_int64::create();
+static ::google::protobuf::RepeatedField<int64_t> google::protobuf::Repeated_int64::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_int64").create() -> <google.protobuf.Repeated_int64 object>
 ```
@@ -49787,7 +49787,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_int64::CopyFrom( const google::protobuf::Repeated_int64 other );
+void google::protobuf::Repeated_int64::CopyFrom( const ::google::protobuf::RepeatedField<int64_t> other );
 AutoIt:
     $oRepeated_int64.CopyFrom( $other ) -> None
 ```
@@ -49795,7 +49795,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_int64::IsInstance( const google::protobuf::Repeated_int64& obj );
+static bool google::protobuf::Repeated_int64::IsInstance( const ::google::protobuf::RepeatedField<int64_t>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_int64").IsInstance( $obj ) -> retval
 ```
@@ -49809,7 +49809,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_int64::MergeFrom( const google::protobuf::Repeated_int64 other );
+void google::protobuf::Repeated_int64::MergeFrom( const ::google::protobuf::RepeatedField<int64_t> other );
 AutoIt:
     $oRepeated_int64.MergeFrom( $other ) -> None
 ```
@@ -49817,7 +49817,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::Swap
 
 ```cpp
-void google::protobuf::Repeated_int64::Swap( google::protobuf::Repeated_int64* other );
+void google::protobuf::Repeated_int64::Swap( ::google::protobuf::RepeatedField<int64_t>* other );
 AutoIt:
     $oRepeated_int64.Swap( $other ) -> None
 ```
@@ -49834,7 +49834,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_int64::__eq__( const google::protobuf::Repeated_int64& other );
+bool google::protobuf::Repeated_int64::__eq__( const ::google::protobuf::RepeatedField<int64_t>& other );
 AutoIt:
     $oRepeated_int64.__eq__( $other ) -> retval
 ```
@@ -49888,7 +49888,7 @@ AutoIt:
 ### google::protobuf::Repeated\_int64::extend
 
 ```cpp
-void google::protobuf::Repeated_int64::extend( const google::protobuf::Repeated_int64& items );
+void google::protobuf::Repeated_int64::extend( const ::google::protobuf::RepeatedField<int64_t>& items );
 AutoIt:
     $oRepeated_int64.extend( $items ) -> None
 ```
@@ -50234,7 +50234,7 @@ AutoIt:
 ### ARFrame.plane\_anchor
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ARPlaneAnchor* mediapipe::ARFrame::plane_anchor
+::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneAnchor>* mediapipe::ARFrame::plane_anchor
 AutoIt:
     [propget, propput] $oARFrame.plane_anchor
 ```
@@ -50408,7 +50408,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneAnchor::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ARPlaneAnchor google::protobuf::Repeated_mediapipe_ARPlaneAnchor::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneAnchor> google::protobuf::Repeated_mediapipe_ARPlaneAnchor::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARPlaneAnchor").create() -> <google.protobuf.Repeated_mediapipe_ARPlaneAnchor object>
 ```
@@ -50416,7 +50416,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneAnchor::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneAnchor::CopyFrom( const google::protobuf::Repeated_mediapipe_ARPlaneAnchor other );
+void google::protobuf::Repeated_mediapipe_ARPlaneAnchor::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneAnchor> other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneAnchor.CopyFrom( $other ) -> None
 ```
@@ -50424,7 +50424,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneAnchor::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ARPlaneAnchor::IsInstance( const google::protobuf::Repeated_mediapipe_ARPlaneAnchor& obj );
+static bool google::protobuf::Repeated_mediapipe_ARPlaneAnchor::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneAnchor>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ARPlaneAnchor").IsInstance( $obj ) -> retval
 ```
@@ -50438,7 +50438,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneAnchor::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneAnchor::MergeFrom( const google::protobuf::Repeated_mediapipe_ARPlaneAnchor other );
+void google::protobuf::Repeated_mediapipe_ARPlaneAnchor::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneAnchor> other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneAnchor.MergeFrom( $other ) -> None
 ```
@@ -50446,7 +50446,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneAnchor::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneAnchor::Swap( google::protobuf::Repeated_mediapipe_ARPlaneAnchor* other );
+void google::protobuf::Repeated_mediapipe_ARPlaneAnchor::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneAnchor>* other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneAnchor.Swap( $other ) -> None
 ```
@@ -50463,7 +50463,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneAnchor::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ARPlaneAnchor::__eq__( const google::protobuf::Repeated_mediapipe_ARPlaneAnchor& other );
+bool google::protobuf::Repeated_mediapipe_ARPlaneAnchor::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneAnchor>& other );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneAnchor.__eq__( $other ) -> retval
 ```
@@ -50537,7 +50537,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ARPlaneAnchor::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ARPlaneAnchor::extend( const google::protobuf::Repeated_mediapipe_ARPlaneAnchor& items );
+void google::protobuf::Repeated_mediapipe_ARPlaneAnchor::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ARPlaneAnchor>& items );
 AutoIt:
     $oRepeated_mediapipe_ARPlaneAnchor.extend( $items ) -> None
 ```
@@ -51059,7 +51059,7 @@ AutoIt:
 ### Object.rotation
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::Object::rotation
+::google::protobuf::RepeatedField<float>* mediapipe::Object::rotation
 AutoIt:
     [propget, propput] $oObject.rotation
 ```
@@ -51067,7 +51067,7 @@ AutoIt:
 ### Object.translation
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::Object::translation
+::google::protobuf::RepeatedField<float>* mediapipe::Object::translation
 AutoIt:
     [propget, propput] $oObject.translation
 ```
@@ -51075,7 +51075,7 @@ AutoIt:
 ### Object.scale
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::Object::scale
+::google::protobuf::RepeatedField<float>* mediapipe::Object::scale
 AutoIt:
     [propget, propput] $oObject.scale
 ```
@@ -51083,7 +51083,7 @@ AutoIt:
 ### Object.keypoints
 
 ```cpp
-google::protobuf::Repeated_mediapipe_KeyPoint* mediapipe::Object::keypoints
+::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint>* mediapipe::Object::keypoints
 AutoIt:
     [propget, propput] $oObject.keypoints
 ```
@@ -51305,7 +51305,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_KeyPoint::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_KeyPoint google::protobuf::Repeated_mediapipe_KeyPoint::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint> google::protobuf::Repeated_mediapipe_KeyPoint::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_KeyPoint").create() -> <google.protobuf.Repeated_mediapipe_KeyPoint object>
 ```
@@ -51313,7 +51313,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_KeyPoint::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_KeyPoint::CopyFrom( const google::protobuf::Repeated_mediapipe_KeyPoint other );
+void google::protobuf::Repeated_mediapipe_KeyPoint::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint> other );
 AutoIt:
     $oRepeated_mediapipe_KeyPoint.CopyFrom( $other ) -> None
 ```
@@ -51321,7 +51321,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_KeyPoint::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_KeyPoint::IsInstance( const google::protobuf::Repeated_mediapipe_KeyPoint& obj );
+static bool google::protobuf::Repeated_mediapipe_KeyPoint::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_KeyPoint").IsInstance( $obj ) -> retval
 ```
@@ -51335,7 +51335,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_KeyPoint::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_KeyPoint::MergeFrom( const google::protobuf::Repeated_mediapipe_KeyPoint other );
+void google::protobuf::Repeated_mediapipe_KeyPoint::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint> other );
 AutoIt:
     $oRepeated_mediapipe_KeyPoint.MergeFrom( $other ) -> None
 ```
@@ -51343,7 +51343,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_KeyPoint::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_KeyPoint::Swap( google::protobuf::Repeated_mediapipe_KeyPoint* other );
+void google::protobuf::Repeated_mediapipe_KeyPoint::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint>* other );
 AutoIt:
     $oRepeated_mediapipe_KeyPoint.Swap( $other ) -> None
 ```
@@ -51360,7 +51360,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_KeyPoint::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_KeyPoint::__eq__( const google::protobuf::Repeated_mediapipe_KeyPoint& other );
+bool google::protobuf::Repeated_mediapipe_KeyPoint::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint>& other );
 AutoIt:
     $oRepeated_mediapipe_KeyPoint.__eq__( $other ) -> retval
 ```
@@ -51434,7 +51434,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_KeyPoint::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_KeyPoint::extend( const google::protobuf::Repeated_mediapipe_KeyPoint& items );
+void google::protobuf::Repeated_mediapipe_KeyPoint::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint>& items );
 AutoIt:
     $oRepeated_mediapipe_KeyPoint.extend( $items ) -> None
 ```
@@ -51736,7 +51736,7 @@ AutoIt:
 ### Skeleton.keypoints
 
 ```cpp
-google::protobuf::Repeated_mediapipe_KeyPoint* mediapipe::Skeleton::keypoints
+::google::protobuf::RepeatedPtrField<mediapipe::KeyPoint>* mediapipe::Skeleton::keypoints
 AutoIt:
     [propget, propput] $oSkeleton.keypoints
 ```
@@ -51744,7 +51744,7 @@ AutoIt:
 ### Skeleton.edges
 
 ```cpp
-google::protobuf::Repeated_mediapipe_Edge* mediapipe::Skeleton::edges
+::google::protobuf::RepeatedPtrField<mediapipe::Edge>* mediapipe::Skeleton::edges
 AutoIt:
     [propget, propput] $oSkeleton.edges
 ```
@@ -51906,7 +51906,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Edge::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_Edge google::protobuf::Repeated_mediapipe_Edge::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::Edge> google::protobuf::Repeated_mediapipe_Edge::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Edge").create() -> <google.protobuf.Repeated_mediapipe_Edge object>
 ```
@@ -51914,7 +51914,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Edge::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Edge::CopyFrom( const google::protobuf::Repeated_mediapipe_Edge other );
+void google::protobuf::Repeated_mediapipe_Edge::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Edge> other );
 AutoIt:
     $oRepeated_mediapipe_Edge.CopyFrom( $other ) -> None
 ```
@@ -51922,7 +51922,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Edge::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_Edge::IsInstance( const google::protobuf::Repeated_mediapipe_Edge& obj );
+static bool google::protobuf::Repeated_mediapipe_Edge::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::Edge>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Edge").IsInstance( $obj ) -> retval
 ```
@@ -51936,7 +51936,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Edge::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Edge::MergeFrom( const google::protobuf::Repeated_mediapipe_Edge other );
+void google::protobuf::Repeated_mediapipe_Edge::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Edge> other );
 AutoIt:
     $oRepeated_mediapipe_Edge.MergeFrom( $other ) -> None
 ```
@@ -51944,7 +51944,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Edge::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Edge::Swap( google::protobuf::Repeated_mediapipe_Edge* other );
+void google::protobuf::Repeated_mediapipe_Edge::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::Edge>* other );
 AutoIt:
     $oRepeated_mediapipe_Edge.Swap( $other ) -> None
 ```
@@ -51961,7 +51961,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Edge::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_Edge::__eq__( const google::protobuf::Repeated_mediapipe_Edge& other );
+bool google::protobuf::Repeated_mediapipe_Edge::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::Edge>& other );
 AutoIt:
     $oRepeated_mediapipe_Edge.__eq__( $other ) -> retval
 ```
@@ -52035,7 +52035,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Edge::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Edge::extend( const google::protobuf::Repeated_mediapipe_Edge& items );
+void google::protobuf::Repeated_mediapipe_Edge::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::Edge>& items );
 AutoIt:
     $oRepeated_mediapipe_Edge.extend( $items ) -> None
 ```
@@ -52161,7 +52161,7 @@ AutoIt:
 ### Skeletons.object
 
 ```cpp
-google::protobuf::Repeated_mediapipe_Skeleton* mediapipe::Skeletons::object
+::google::protobuf::RepeatedPtrField<mediapipe::Skeleton>* mediapipe::Skeletons::object
 AutoIt:
     [propget, propput] $oSkeletons.object
 ```
@@ -52320,7 +52320,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Skeleton::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_Skeleton google::protobuf::Repeated_mediapipe_Skeleton::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::Skeleton> google::protobuf::Repeated_mediapipe_Skeleton::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Skeleton").create() -> <google.protobuf.Repeated_mediapipe_Skeleton object>
 ```
@@ -52328,7 +52328,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Skeleton::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Skeleton::CopyFrom( const google::protobuf::Repeated_mediapipe_Skeleton other );
+void google::protobuf::Repeated_mediapipe_Skeleton::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Skeleton> other );
 AutoIt:
     $oRepeated_mediapipe_Skeleton.CopyFrom( $other ) -> None
 ```
@@ -52336,7 +52336,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Skeleton::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_Skeleton::IsInstance( const google::protobuf::Repeated_mediapipe_Skeleton& obj );
+static bool google::protobuf::Repeated_mediapipe_Skeleton::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::Skeleton>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Skeleton").IsInstance( $obj ) -> retval
 ```
@@ -52350,7 +52350,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Skeleton::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Skeleton::MergeFrom( const google::protobuf::Repeated_mediapipe_Skeleton other );
+void google::protobuf::Repeated_mediapipe_Skeleton::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Skeleton> other );
 AutoIt:
     $oRepeated_mediapipe_Skeleton.MergeFrom( $other ) -> None
 ```
@@ -52358,7 +52358,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Skeleton::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Skeleton::Swap( google::protobuf::Repeated_mediapipe_Skeleton* other );
+void google::protobuf::Repeated_mediapipe_Skeleton::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::Skeleton>* other );
 AutoIt:
     $oRepeated_mediapipe_Skeleton.Swap( $other ) -> None
 ```
@@ -52375,7 +52375,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Skeleton::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_Skeleton::__eq__( const google::protobuf::Repeated_mediapipe_Skeleton& other );
+bool google::protobuf::Repeated_mediapipe_Skeleton::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::Skeleton>& other );
 AutoIt:
     $oRepeated_mediapipe_Skeleton.__eq__( $other ) -> retval
 ```
@@ -52449,7 +52449,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Skeleton::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Skeleton::extend( const google::protobuf::Repeated_mediapipe_Skeleton& items );
+void google::protobuf::Repeated_mediapipe_Skeleton::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::Skeleton>& items );
 AutoIt:
     $oRepeated_mediapipe_Skeleton.extend( $items ) -> None
 ```
@@ -53141,7 +53141,7 @@ AutoIt:
 ### ObjectAnnotation.keypoints
 
 ```cpp
-google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint* mediapipe::ObjectAnnotation::keypoints
+::google::protobuf::RepeatedPtrField<mediapipe::AnnotatedKeyPoint>* mediapipe::ObjectAnnotation::keypoints
 AutoIt:
     [propget, propput] $oObjectAnnotation.keypoints
 ```
@@ -53157,7 +53157,7 @@ AutoIt:
 ### ObjectAnnotation.rotation
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ObjectAnnotation::rotation
+::google::protobuf::RepeatedField<float>* mediapipe::ObjectAnnotation::rotation
 AutoIt:
     [propget, propput] $oObjectAnnotation.rotation
 ```
@@ -53165,7 +53165,7 @@ AutoIt:
 ### ObjectAnnotation.translation
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ObjectAnnotation::translation
+::google::protobuf::RepeatedField<float>* mediapipe::ObjectAnnotation::translation
 AutoIt:
     [propget, propput] $oObjectAnnotation.translation
 ```
@@ -53173,7 +53173,7 @@ AutoIt:
 ### ObjectAnnotation.scale
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ObjectAnnotation::scale
+::google::protobuf::RepeatedField<float>* mediapipe::ObjectAnnotation::scale
 AutoIt:
     [propget, propput] $oObjectAnnotation.scale
 ```
@@ -53337,7 +53337,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_AnnotatedKeyPoint::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::AnnotatedKeyPoint> google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_AnnotatedKeyPoint").create() -> <google.protobuf.Repeated_mediapipe_AnnotatedKeyPoint object>
 ```
@@ -53345,7 +53345,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_AnnotatedKeyPoint::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::CopyFrom( const google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint other );
+void google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::AnnotatedKeyPoint> other );
 AutoIt:
     $oRepeated_mediapipe_AnnotatedKeyPoint.CopyFrom( $other ) -> None
 ```
@@ -53353,7 +53353,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_AnnotatedKeyPoint::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::IsInstance( const google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint& obj );
+static bool google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::AnnotatedKeyPoint>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_AnnotatedKeyPoint").IsInstance( $obj ) -> retval
 ```
@@ -53367,7 +53367,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_AnnotatedKeyPoint::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::MergeFrom( const google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint other );
+void google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::AnnotatedKeyPoint> other );
 AutoIt:
     $oRepeated_mediapipe_AnnotatedKeyPoint.MergeFrom( $other ) -> None
 ```
@@ -53375,7 +53375,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_AnnotatedKeyPoint::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::Swap( google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint* other );
+void google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::AnnotatedKeyPoint>* other );
 AutoIt:
     $oRepeated_mediapipe_AnnotatedKeyPoint.Swap( $other ) -> None
 ```
@@ -53392,7 +53392,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_AnnotatedKeyPoint::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::__eq__( const google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint& other );
+bool google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::AnnotatedKeyPoint>& other );
 AutoIt:
     $oRepeated_mediapipe_AnnotatedKeyPoint.__eq__( $other ) -> retval
 ```
@@ -53466,7 +53466,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_AnnotatedKeyPoint::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::extend( const google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint& items );
+void google::protobuf::Repeated_mediapipe_AnnotatedKeyPoint::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::AnnotatedKeyPoint>& items );
 AutoIt:
     $oRepeated_mediapipe_AnnotatedKeyPoint.extend( $items ) -> None
 ```
@@ -53600,7 +53600,7 @@ AutoIt:
 ### FrameAnnotation.annotations
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ObjectAnnotation* mediapipe::FrameAnnotation::annotations
+::google::protobuf::RepeatedPtrField<mediapipe::ObjectAnnotation>* mediapipe::FrameAnnotation::annotations
 AutoIt:
     [propget, propput] $oFrameAnnotation.annotations
 ```
@@ -53624,7 +53624,7 @@ AutoIt:
 ### FrameAnnotation.plane\_center
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::FrameAnnotation::plane_center
+::google::protobuf::RepeatedField<float>* mediapipe::FrameAnnotation::plane_center
 AutoIt:
     [propget, propput] $oFrameAnnotation.plane_center
 ```
@@ -53632,7 +53632,7 @@ AutoIt:
 ### FrameAnnotation.plane\_normal
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::FrameAnnotation::plane_normal
+::google::protobuf::RepeatedField<float>* mediapipe::FrameAnnotation::plane_normal
 AutoIt:
     [propget, propput] $oFrameAnnotation.plane_normal
 ```
@@ -53796,7 +53796,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ObjectAnnotation::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ObjectAnnotation google::protobuf::Repeated_mediapipe_ObjectAnnotation::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ObjectAnnotation> google::protobuf::Repeated_mediapipe_ObjectAnnotation::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ObjectAnnotation").create() -> <google.protobuf.Repeated_mediapipe_ObjectAnnotation object>
 ```
@@ -53804,7 +53804,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ObjectAnnotation::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ObjectAnnotation::CopyFrom( const google::protobuf::Repeated_mediapipe_ObjectAnnotation other );
+void google::protobuf::Repeated_mediapipe_ObjectAnnotation::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ObjectAnnotation> other );
 AutoIt:
     $oRepeated_mediapipe_ObjectAnnotation.CopyFrom( $other ) -> None
 ```
@@ -53812,7 +53812,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ObjectAnnotation::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ObjectAnnotation::IsInstance( const google::protobuf::Repeated_mediapipe_ObjectAnnotation& obj );
+static bool google::protobuf::Repeated_mediapipe_ObjectAnnotation::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ObjectAnnotation>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ObjectAnnotation").IsInstance( $obj ) -> retval
 ```
@@ -53826,7 +53826,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ObjectAnnotation::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ObjectAnnotation::MergeFrom( const google::protobuf::Repeated_mediapipe_ObjectAnnotation other );
+void google::protobuf::Repeated_mediapipe_ObjectAnnotation::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ObjectAnnotation> other );
 AutoIt:
     $oRepeated_mediapipe_ObjectAnnotation.MergeFrom( $other ) -> None
 ```
@@ -53834,7 +53834,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ObjectAnnotation::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ObjectAnnotation::Swap( google::protobuf::Repeated_mediapipe_ObjectAnnotation* other );
+void google::protobuf::Repeated_mediapipe_ObjectAnnotation::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ObjectAnnotation>* other );
 AutoIt:
     $oRepeated_mediapipe_ObjectAnnotation.Swap( $other ) -> None
 ```
@@ -53851,7 +53851,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ObjectAnnotation::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ObjectAnnotation::__eq__( const google::protobuf::Repeated_mediapipe_ObjectAnnotation& other );
+bool google::protobuf::Repeated_mediapipe_ObjectAnnotation::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ObjectAnnotation>& other );
 AutoIt:
     $oRepeated_mediapipe_ObjectAnnotation.__eq__( $other ) -> retval
 ```
@@ -53925,7 +53925,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ObjectAnnotation::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ObjectAnnotation::extend( const google::protobuf::Repeated_mediapipe_ObjectAnnotation& items );
+void google::protobuf::Repeated_mediapipe_ObjectAnnotation::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ObjectAnnotation>& items );
 AutoIt:
     $oRepeated_mediapipe_ObjectAnnotation.extend( $items ) -> None
 ```
@@ -54051,7 +54051,7 @@ AutoIt:
 ### Sequence.objects
 
 ```cpp
-google::protobuf::Repeated_mediapipe_Object* mediapipe::Sequence::objects
+::google::protobuf::RepeatedPtrField<mediapipe::Object>* mediapipe::Sequence::objects
 AutoIt:
     [propget, propput] $oSequence.objects
 ```
@@ -54059,7 +54059,7 @@ AutoIt:
 ### Sequence.frame\_annotations
 
 ```cpp
-google::protobuf::Repeated_mediapipe_FrameAnnotation* mediapipe::Sequence::frame_annotations
+::google::protobuf::RepeatedPtrField<mediapipe::FrameAnnotation>* mediapipe::Sequence::frame_annotations
 AutoIt:
     [propget, propput] $oSequence.frame_annotations
 ```
@@ -54219,7 +54219,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Object::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_Object google::protobuf::Repeated_mediapipe_Object::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::Object> google::protobuf::Repeated_mediapipe_Object::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Object").create() -> <google.protobuf.Repeated_mediapipe_Object object>
 ```
@@ -54227,7 +54227,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Object::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Object::CopyFrom( const google::protobuf::Repeated_mediapipe_Object other );
+void google::protobuf::Repeated_mediapipe_Object::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Object> other );
 AutoIt:
     $oRepeated_mediapipe_Object.CopyFrom( $other ) -> None
 ```
@@ -54235,7 +54235,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Object::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_Object::IsInstance( const google::protobuf::Repeated_mediapipe_Object& obj );
+static bool google::protobuf::Repeated_mediapipe_Object::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::Object>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Object").IsInstance( $obj ) -> retval
 ```
@@ -54249,7 +54249,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Object::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Object::MergeFrom( const google::protobuf::Repeated_mediapipe_Object other );
+void google::protobuf::Repeated_mediapipe_Object::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Object> other );
 AutoIt:
     $oRepeated_mediapipe_Object.MergeFrom( $other ) -> None
 ```
@@ -54257,7 +54257,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Object::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Object::Swap( google::protobuf::Repeated_mediapipe_Object* other );
+void google::protobuf::Repeated_mediapipe_Object::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::Object>* other );
 AutoIt:
     $oRepeated_mediapipe_Object.Swap( $other ) -> None
 ```
@@ -54274,7 +54274,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Object::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_Object::__eq__( const google::protobuf::Repeated_mediapipe_Object& other );
+bool google::protobuf::Repeated_mediapipe_Object::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::Object>& other );
 AutoIt:
     $oRepeated_mediapipe_Object.__eq__( $other ) -> retval
 ```
@@ -54348,7 +54348,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Object::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Object::extend( const google::protobuf::Repeated_mediapipe_Object& items );
+void google::protobuf::Repeated_mediapipe_Object::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::Object>& items );
 AutoIt:
     $oRepeated_mediapipe_Object.extend( $items ) -> None
 ```
@@ -54482,7 +54482,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_FrameAnnotation::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_FrameAnnotation google::protobuf::Repeated_mediapipe_FrameAnnotation::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::FrameAnnotation> google::protobuf::Repeated_mediapipe_FrameAnnotation::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_FrameAnnotation").create() -> <google.protobuf.Repeated_mediapipe_FrameAnnotation object>
 ```
@@ -54490,7 +54490,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_FrameAnnotation::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_FrameAnnotation::CopyFrom( const google::protobuf::Repeated_mediapipe_FrameAnnotation other );
+void google::protobuf::Repeated_mediapipe_FrameAnnotation::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::FrameAnnotation> other );
 AutoIt:
     $oRepeated_mediapipe_FrameAnnotation.CopyFrom( $other ) -> None
 ```
@@ -54498,7 +54498,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_FrameAnnotation::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_FrameAnnotation::IsInstance( const google::protobuf::Repeated_mediapipe_FrameAnnotation& obj );
+static bool google::protobuf::Repeated_mediapipe_FrameAnnotation::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::FrameAnnotation>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_FrameAnnotation").IsInstance( $obj ) -> retval
 ```
@@ -54512,7 +54512,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_FrameAnnotation::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_FrameAnnotation::MergeFrom( const google::protobuf::Repeated_mediapipe_FrameAnnotation other );
+void google::protobuf::Repeated_mediapipe_FrameAnnotation::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::FrameAnnotation> other );
 AutoIt:
     $oRepeated_mediapipe_FrameAnnotation.MergeFrom( $other ) -> None
 ```
@@ -54520,7 +54520,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_FrameAnnotation::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_FrameAnnotation::Swap( google::protobuf::Repeated_mediapipe_FrameAnnotation* other );
+void google::protobuf::Repeated_mediapipe_FrameAnnotation::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::FrameAnnotation>* other );
 AutoIt:
     $oRepeated_mediapipe_FrameAnnotation.Swap( $other ) -> None
 ```
@@ -54537,7 +54537,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_FrameAnnotation::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_FrameAnnotation::__eq__( const google::protobuf::Repeated_mediapipe_FrameAnnotation& other );
+bool google::protobuf::Repeated_mediapipe_FrameAnnotation::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::FrameAnnotation>& other );
 AutoIt:
     $oRepeated_mediapipe_FrameAnnotation.__eq__( $other ) -> retval
 ```
@@ -54611,7 +54611,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_FrameAnnotation::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_FrameAnnotation::extend( const google::protobuf::Repeated_mediapipe_FrameAnnotation& items );
+void google::protobuf::Repeated_mediapipe_FrameAnnotation::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::FrameAnnotation>& items );
 AutoIt:
     $oRepeated_mediapipe_FrameAnnotation.extend( $items ) -> None
 ```
@@ -54965,7 +54965,7 @@ AutoIt:
 ### ClassificationList.classification
 
 ```cpp
-google::protobuf::Repeated_mediapipe_Classification* mediapipe::ClassificationList::classification
+::google::protobuf::RepeatedPtrField<mediapipe::Classification>* mediapipe::ClassificationList::classification
 AutoIt:
     [propget, propput] $oClassificationList.classification
 ```
@@ -55124,7 +55124,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Classification::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_Classification google::protobuf::Repeated_mediapipe_Classification::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::Classification> google::protobuf::Repeated_mediapipe_Classification::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Classification").create() -> <google.protobuf.Repeated_mediapipe_Classification object>
 ```
@@ -55132,7 +55132,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Classification::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Classification::CopyFrom( const google::protobuf::Repeated_mediapipe_Classification other );
+void google::protobuf::Repeated_mediapipe_Classification::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Classification> other );
 AutoIt:
     $oRepeated_mediapipe_Classification.CopyFrom( $other ) -> None
 ```
@@ -55140,7 +55140,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Classification::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_Classification::IsInstance( const google::protobuf::Repeated_mediapipe_Classification& obj );
+static bool google::protobuf::Repeated_mediapipe_Classification::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::Classification>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_Classification").IsInstance( $obj ) -> retval
 ```
@@ -55154,7 +55154,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Classification::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Classification::MergeFrom( const google::protobuf::Repeated_mediapipe_Classification other );
+void google::protobuf::Repeated_mediapipe_Classification::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::Classification> other );
 AutoIt:
     $oRepeated_mediapipe_Classification.MergeFrom( $other ) -> None
 ```
@@ -55162,7 +55162,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Classification::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Classification::Swap( google::protobuf::Repeated_mediapipe_Classification* other );
+void google::protobuf::Repeated_mediapipe_Classification::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::Classification>* other );
 AutoIt:
     $oRepeated_mediapipe_Classification.Swap( $other ) -> None
 ```
@@ -55179,7 +55179,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Classification::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_Classification::__eq__( const google::protobuf::Repeated_mediapipe_Classification& other );
+bool google::protobuf::Repeated_mediapipe_Classification::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::Classification>& other );
 AutoIt:
     $oRepeated_mediapipe_Classification.__eq__( $other ) -> retval
 ```
@@ -55253,7 +55253,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_Classification::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_Classification::extend( const google::protobuf::Repeated_mediapipe_Classification& items );
+void google::protobuf::Repeated_mediapipe_Classification::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::Classification>& items );
 AutoIt:
     $oRepeated_mediapipe_Classification.extend( $items ) -> None
 ```
@@ -55379,7 +55379,7 @@ AutoIt:
 ### ClassificationListCollection.classification\_list
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ClassificationList* mediapipe::ClassificationListCollection::classification_list
+::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList>* mediapipe::ClassificationListCollection::classification_list
 AutoIt:
     [propget, propput] $oClassificationListCollection.classification_list
 ```
@@ -55538,7 +55538,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ClassificationList::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ClassificationList google::protobuf::Repeated_mediapipe_ClassificationList::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList> google::protobuf::Repeated_mediapipe_ClassificationList::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ClassificationList").create() -> <google.protobuf.Repeated_mediapipe_ClassificationList object>
 ```
@@ -55546,7 +55546,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ClassificationList::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ClassificationList::CopyFrom( const google::protobuf::Repeated_mediapipe_ClassificationList other );
+void google::protobuf::Repeated_mediapipe_ClassificationList::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList> other );
 AutoIt:
     $oRepeated_mediapipe_ClassificationList.CopyFrom( $other ) -> None
 ```
@@ -55554,7 +55554,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ClassificationList::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ClassificationList::IsInstance( const google::protobuf::Repeated_mediapipe_ClassificationList& obj );
+static bool google::protobuf::Repeated_mediapipe_ClassificationList::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ClassificationList").IsInstance( $obj ) -> retval
 ```
@@ -55568,7 +55568,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ClassificationList::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ClassificationList::MergeFrom( const google::protobuf::Repeated_mediapipe_ClassificationList other );
+void google::protobuf::Repeated_mediapipe_ClassificationList::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList> other );
 AutoIt:
     $oRepeated_mediapipe_ClassificationList.MergeFrom( $other ) -> None
 ```
@@ -55576,7 +55576,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ClassificationList::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ClassificationList::Swap( google::protobuf::Repeated_mediapipe_ClassificationList* other );
+void google::protobuf::Repeated_mediapipe_ClassificationList::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList>* other );
 AutoIt:
     $oRepeated_mediapipe_ClassificationList.Swap( $other ) -> None
 ```
@@ -55593,7 +55593,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ClassificationList::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ClassificationList::__eq__( const google::protobuf::Repeated_mediapipe_ClassificationList& other );
+bool google::protobuf::Repeated_mediapipe_ClassificationList::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList>& other );
 AutoIt:
     $oRepeated_mediapipe_ClassificationList.__eq__( $other ) -> retval
 ```
@@ -55667,7 +55667,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ClassificationList::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ClassificationList::extend( const google::protobuf::Repeated_mediapipe_ClassificationList& items );
+void google::protobuf::Repeated_mediapipe_ClassificationList::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList>& items );
 AutoIt:
     $oRepeated_mediapipe_ClassificationList.extend( $items ) -> None
 ```
@@ -55835,7 +55835,7 @@ AutoIt:
 ### MatrixData.packed\_data
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::MatrixData::packed_data
+::google::protobuf::RepeatedField<float>* mediapipe::MatrixData::packed_data
 AutoIt:
     [propget, propput] $oMatrixData.packed_data
 ```
@@ -56388,7 +56388,7 @@ AutoIt:
 ### ConstantSidePacketCalculatorOptions.packet
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket* mediapipe::ConstantSidePacketCalculatorOptions::packet
+::google::protobuf::RepeatedPtrField<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>* mediapipe::ConstantSidePacketCalculatorOptions::packet
 AutoIt:
     [propget, propput] $oConstantSidePacketCalculatorOptions.packet
 ```
@@ -56396,7 +56396,7 @@ AutoIt:
 ### ConstantSidePacketCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions* mediapipe::ConstantSidePacketCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ConstantSidePacketCalculatorOptions>, 11, false>* mediapipe::ConstantSidePacketCalculatorOptions::ext
 AutoIt:
     [propget] $oConstantSidePacketCalculatorOptions.ext
 ```
@@ -56555,7 +56555,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket> google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket").create() -> <google.protobuf.Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket object>
 ```
@@ -56563,7 +56563,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::CopyFrom( const google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket other );
+void google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket> other );
 AutoIt:
     $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.CopyFrom( $other ) -> None
 ```
@@ -56571,7 +56571,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::IsInstance( const google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket& obj );
+static bool google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket").IsInstance( $obj ) -> retval
 ```
@@ -56585,7 +56585,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::MergeFrom( const google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket other );
+void google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket> other );
 AutoIt:
     $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.MergeFrom( $other ) -> None
 ```
@@ -56593,7 +56593,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::Swap( google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket* other );
+void google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>* other );
 AutoIt:
     $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.Swap( $other ) -> None
 ```
@@ -56610,7 +56610,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::__eq__( const google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket& other );
+bool google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>& other );
 AutoIt:
     $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.__eq__( $other ) -> retval
 ```
@@ -56684,7 +56684,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_ConstantSidePacketCalculatorOptions\_ConstantSidePacket::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::extend( const google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket& items );
+void google::protobuf::Repeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>& items );
 AutoIt:
     $oRepeated_mediapipe_ConstantSidePacketCalculatorOptions_ConstantSidePacket.extend( $items ) -> None
 ```
@@ -56810,7 +56810,7 @@ AutoIt:
 ### StringVector.string\_value
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::ConstantSidePacketCalculatorOptions::StringVector::string_value
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::ConstantSidePacketCalculatorOptions::StringVector::string_value
 AutoIt:
     [propget, propput] $oStringVector.string_value
 ```
@@ -56961,7 +56961,7 @@ AutoIt:
 ### FloatVector.float\_value
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::ConstantSidePacketCalculatorOptions::FloatVector::float_value
+::google::protobuf::RepeatedField<float>* mediapipe::ConstantSidePacketCalculatorOptions::FloatVector::float_value
 AutoIt:
     [propget, propput] $oFloatVector.float_value
 ```
@@ -57112,7 +57112,7 @@ AutoIt:
 ### IntVector.int\_value
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::ConstantSidePacketCalculatorOptions::IntVector::int_value
+::google::protobuf::RepeatedField<int>* mediapipe::ConstantSidePacketCalculatorOptions::IntVector::int_value
 AutoIt:
     [propget, propput] $oIntVector.int_value
 ```
@@ -57575,7 +57575,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ConstantSidePacketCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ConstantSidePacketCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -57589,7 +57589,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ConstantSidePacketCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ConstantSidePacketCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_ConstantSidePacketCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -58069,7 +58069,7 @@ AutoIt:
 ### ImageTransformationCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions* mediapipe::ImageTransformationCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ImageTransformationCalculatorOptions>, 11, false>* mediapipe::ImageTransformationCalculatorOptions::ext
 AutoIt:
     [propget] $oImageTransformationCalculatorOptions.ext
 ```
@@ -58441,7 +58441,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ImageTransformationCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ImageTransformationCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -58455,7 +58455,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ImageTransformationCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ImageTransformationCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_ImageTransformationCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -58591,7 +58591,7 @@ AutoIt:
 ### TensorsToDetectionsCalculatorOptions.ignore\_classes
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::TensorsToDetectionsCalculatorOptions::ignore_classes
+::google::protobuf::RepeatedField<int>* mediapipe::TensorsToDetectionsCalculatorOptions::ignore_classes
 AutoIt:
     [propget, propput] $oTensorsToDetectionsCalculatorOptions.ignore_classes
 ```
@@ -58599,7 +58599,7 @@ AutoIt:
 ### TensorsToDetectionsCalculatorOptions.allow\_classes
 
 ```cpp
-google::protobuf::Repeated_int* mediapipe::TensorsToDetectionsCalculatorOptions::allow_classes
+::google::protobuf::RepeatedField<int>* mediapipe::TensorsToDetectionsCalculatorOptions::allow_classes
 AutoIt:
     [propget, propput] $oTensorsToDetectionsCalculatorOptions.allow_classes
 ```
@@ -58679,7 +58679,7 @@ AutoIt:
 ### TensorsToDetectionsCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions* mediapipe::TensorsToDetectionsCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::TensorsToDetectionsCalculatorOptions>, 11, false>* mediapipe::TensorsToDetectionsCalculatorOptions::ext
 AutoIt:
     [propget] $oTensorsToDetectionsCalculatorOptions.ext
 ```
@@ -59278,7 +59278,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_TensorsToDetectionsCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::TensorsToDetectionsCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -59292,7 +59292,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_TensorsToDetectionsCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::TensorsToDetectionsCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_TensorsToDetectionsCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -59348,7 +59348,7 @@ AutoIt:
 ### LandmarksSmoothingCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions* mediapipe::LandmarksSmoothingCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::LandmarksSmoothingCalculatorOptions>, 11, false>* mediapipe::LandmarksSmoothingCalculatorOptions::ext
 AutoIt:
     [propget] $oLandmarksSmoothingCalculatorOptions.ext
 ```
@@ -60053,7 +60053,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_LandmarksSmoothingCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::LandmarksSmoothingCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -60067,7 +60067,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_LandmarksSmoothingCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::LandmarksSmoothingCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_LandmarksSmoothingCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -60115,7 +60115,7 @@ AutoIt:
 ### LogicCalculatorOptions.input\_value
 
 ```cpp
-google::protobuf::Repeated_bool* mediapipe::LogicCalculatorOptions::input_value
+::google::protobuf::RepeatedField<bool>* mediapipe::LogicCalculatorOptions::input_value
 AutoIt:
     [propget, propput] $oLogicCalculatorOptions.input_value
 ```
@@ -60123,7 +60123,7 @@ AutoIt:
 ### LogicCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions* mediapipe::LogicCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::LogicCalculatorOptions>, 11, false>* mediapipe::LogicCalculatorOptions::ext
 AutoIt:
     [propget] $oLogicCalculatorOptions.ext
 ```
@@ -60308,7 +60308,7 @@ AutoIt:
 ### google::protobuf::Repeated\_bool::create
 
 ```cpp
-static google::protobuf::Repeated_bool google::protobuf::Repeated_bool::create();
+static ::google::protobuf::RepeatedField<bool> google::protobuf::Repeated_bool::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_bool").create() -> <google.protobuf.Repeated_bool object>
 ```
@@ -60316,7 +60316,7 @@ AutoIt:
 ### google::protobuf::Repeated\_bool::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_bool::CopyFrom( const google::protobuf::Repeated_bool other );
+void google::protobuf::Repeated_bool::CopyFrom( const ::google::protobuf::RepeatedField<bool> other );
 AutoIt:
     $oRepeated_bool.CopyFrom( $other ) -> None
 ```
@@ -60324,7 +60324,7 @@ AutoIt:
 ### google::protobuf::Repeated\_bool::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_bool::IsInstance( const google::protobuf::Repeated_bool& obj );
+static bool google::protobuf::Repeated_bool::IsInstance( const ::google::protobuf::RepeatedField<bool>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_bool").IsInstance( $obj ) -> retval
 ```
@@ -60338,7 +60338,7 @@ AutoIt:
 ### google::protobuf::Repeated\_bool::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_bool::MergeFrom( const google::protobuf::Repeated_bool other );
+void google::protobuf::Repeated_bool::MergeFrom( const ::google::protobuf::RepeatedField<bool> other );
 AutoIt:
     $oRepeated_bool.MergeFrom( $other ) -> None
 ```
@@ -60346,7 +60346,7 @@ AutoIt:
 ### google::protobuf::Repeated\_bool::Swap
 
 ```cpp
-void google::protobuf::Repeated_bool::Swap( google::protobuf::Repeated_bool* other );
+void google::protobuf::Repeated_bool::Swap( ::google::protobuf::RepeatedField<bool>* other );
 AutoIt:
     $oRepeated_bool.Swap( $other ) -> None
 ```
@@ -60363,7 +60363,7 @@ AutoIt:
 ### google::protobuf::Repeated\_bool::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_bool::__eq__( const google::protobuf::Repeated_bool& other );
+bool google::protobuf::Repeated_bool::__eq__( const ::google::protobuf::RepeatedField<bool>& other );
 AutoIt:
     $oRepeated_bool.__eq__( $other ) -> retval
 ```
@@ -60417,7 +60417,7 @@ AutoIt:
 ### google::protobuf::Repeated\_bool::extend
 
 ```cpp
-void google::protobuf::Repeated_bool::extend( const google::protobuf::Repeated_bool& items );
+void google::protobuf::Repeated_bool::extend( const ::google::protobuf::RepeatedField<bool>& items );
 AutoIt:
     $oRepeated_bool.extend( $items ) -> None
 ```
@@ -60556,7 +60556,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_LogicCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::LogicCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -60570,7 +60570,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_LogicCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::LogicCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_LogicCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -60610,7 +60610,7 @@ AutoIt:
 ### ThresholdingCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions* mediapipe::ThresholdingCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ThresholdingCalculatorOptions>, 11, false>* mediapipe::ThresholdingCalculatorOptions::ext
 AutoIt:
     [propget] $oThresholdingCalculatorOptions.ext
 ```
@@ -60771,7 +60771,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ThresholdingCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ThresholdingCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -60785,7 +60785,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ThresholdingCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ThresholdingCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_ThresholdingCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -61063,7 +61063,7 @@ AutoIt:
 ### Lift2DFrameAnnotationTo3DCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions* mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions>, 11, false>* mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions::ext
 AutoIt:
     [propget] $oLift2DFrameAnnotationTo3DCalculatorOptions.ext
 ```
@@ -61228,7 +61228,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_Lift2DFrameAnnotationTo3DCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -61242,7 +61242,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_Lift2DFrameAnnotationTo3DCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::Lift2DFrameAnnotationTo3DCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_Lift2DFrameAnnotationTo3DCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -61298,7 +61298,7 @@ AutoIt:
 ### ClassifierOptions.category\_allowlist
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::tasks::components::processors::proto::ClassifierOptions::category_allowlist
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::tasks::components::processors::proto::ClassifierOptions::category_allowlist
 AutoIt:
     [propget, propput] $oClassifierOptions.category_allowlist
 ```
@@ -61306,7 +61306,7 @@ AutoIt:
 ### ClassifierOptions.category\_denylist
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::tasks::components::processors::proto::ClassifierOptions::category_denylist
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::tasks::components::processors::proto::ClassifierOptions::category_denylist
 AutoIt:
     [propget, propput] $oClassifierOptions.category_denylist
 ```
@@ -62404,7 +62404,7 @@ AutoIt:
 ### AudioClassifierGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions* mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions>, 11, false>* mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions::ext
 AutoIt:
     [propget] $oAudioClassifierGraphOptions.ext
 ```
@@ -62567,7 +62567,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_audio\_audio\_classifier\_proto\_AudioClassifierGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -62581,7 +62581,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_audio\_audio\_classifier\_proto\_AudioClassifierGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::audio::audio_classifier::proto::AudioClassifierGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_classifier_proto_AudioClassifierGraphOptions.__eq__( $other ) -> retval
 ```
@@ -62782,7 +62782,7 @@ AutoIt:
 ### ClassificationResult.classifications
 
 ```cpp
-google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications* mediapipe::tasks::components::containers::proto::ClassificationResult::classifications
+::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Classifications>* mediapipe::tasks::components::containers::proto::ClassificationResult::classifications
 AutoIt:
     [propget, propput] $oClassificationResult.classifications
 ```
@@ -62950,7 +62950,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Classifications> google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_tasks_components_containers_proto_Classifications").create() -> <google.protobuf.Repeated_mediapipe_tasks_components_containers_proto_Classifications object>
 ```
@@ -62958,7 +62958,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::CopyFrom( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications other );
+void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Classifications> other );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Classifications.CopyFrom( $other ) -> None
 ```
@@ -62966,7 +62966,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::IsInstance( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications& obj );
+static bool google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Classifications>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_tasks_components_containers_proto_Classifications").IsInstance( $obj ) -> retval
 ```
@@ -62980,7 +62980,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::MergeFrom( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications other );
+void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Classifications> other );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Classifications.MergeFrom( $other ) -> None
 ```
@@ -62988,7 +62988,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::Swap( google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications* other );
+void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Classifications>* other );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Classifications.Swap( $other ) -> None
 ```
@@ -63005,7 +63005,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::__eq__( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications& other );
+bool google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Classifications>& other );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Classifications.__eq__( $other ) -> retval
 ```
@@ -63079,7 +63079,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Classifications::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::extend( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications& items );
+void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Classifications::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Classifications>& items );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Classifications.extend( $items ) -> None
 ```
@@ -63409,7 +63409,7 @@ AutoIt:
 ### AudioEmbedderGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions* mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions>, 11, false>* mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions::ext
 AutoIt:
     [propget] $oAudioEmbedderGraphOptions.ext
 ```
@@ -63571,7 +63571,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_audio\_audio\_embedder\_proto\_AudioEmbedderGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -63585,7 +63585,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_audio\_audio\_embedder\_proto\_AudioEmbedderGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::audio::audio_embedder::proto::AudioEmbedderGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_audio_audio_embedder_proto_AudioEmbedderGraphOptions.__eq__( $other ) -> retval
 ```
@@ -63617,7 +63617,7 @@ AutoIt:
 ### FloatEmbedding.values
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::tasks::components::containers::proto::FloatEmbedding::values
+::google::protobuf::RepeatedField<float>* mediapipe::tasks::components::containers::proto::FloatEmbedding::values
 AutoIt:
     [propget, propput] $oFloatEmbedding.values
 ```
@@ -64097,7 +64097,7 @@ AutoIt:
 ### EmbeddingResult.embeddings
 
 ```cpp
-google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding* mediapipe::tasks::components::containers::proto::EmbeddingResult::embeddings
+::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Embedding>* mediapipe::tasks::components::containers::proto::EmbeddingResult::embeddings
 AutoIt:
     [propget, propput] $oEmbeddingResult.embeddings
 ```
@@ -64265,7 +64265,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Embedding> google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_tasks_components_containers_proto_Embedding").create() -> <google.protobuf.Repeated_mediapipe_tasks_components_containers_proto_Embedding object>
 ```
@@ -64273,7 +64273,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::CopyFrom( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding other );
+void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Embedding> other );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Embedding.CopyFrom( $other ) -> None
 ```
@@ -64281,7 +64281,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::IsInstance( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding& obj );
+static bool google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Embedding>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_tasks_components_containers_proto_Embedding").IsInstance( $obj ) -> retval
 ```
@@ -64295,7 +64295,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::MergeFrom( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding other );
+void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Embedding> other );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Embedding.MergeFrom( $other ) -> None
 ```
@@ -64303,7 +64303,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::Swap( google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding* other );
+void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Embedding>* other );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Embedding.Swap( $other ) -> None
 ```
@@ -64320,7 +64320,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::__eq__( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding& other );
+bool google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Embedding>& other );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Embedding.__eq__( $other ) -> retval
 ```
@@ -64394,7 +64394,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_tasks\_components\_containers\_proto\_Embedding::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::extend( const google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding& items );
+void google::protobuf::Repeated_mediapipe_tasks_components_containers_proto_Embedding::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::tasks::components::containers::proto::Embedding>& items );
 AutoIt:
     $oRepeated_mediapipe_tasks_components_containers_proto_Embedding.extend( $items ) -> None
 ```
@@ -65142,7 +65142,7 @@ AutoIt:
 ### MultiLandmarksDetectionResult.landmarks
 
 ```cpp
-google::protobuf::Repeated_mediapipe_NormalizedLandmarkList* mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::landmarks
+::google::protobuf::RepeatedPtrField<mediapipe::NormalizedLandmarkList>* mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::landmarks
 AutoIt:
     [propget, propput] $oMultiLandmarksDetectionResult.landmarks
 ```
@@ -65150,7 +65150,7 @@ AutoIt:
 ### MultiLandmarksDetectionResult.classifications
 
 ```cpp
-google::protobuf::Repeated_mediapipe_ClassificationList* mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::classifications
+::google::protobuf::RepeatedPtrField<mediapipe::ClassificationList>* mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::classifications
 AutoIt:
     [propget, propput] $oMultiLandmarksDetectionResult.classifications
 ```
@@ -65158,7 +65158,7 @@ AutoIt:
 ### MultiLandmarksDetectionResult.world\_landmarks
 
 ```cpp
-google::protobuf::Repeated_mediapipe_LandmarkList* mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::world_landmarks
+::google::protobuf::RepeatedPtrField<mediapipe::LandmarkList>* mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::world_landmarks
 AutoIt:
     [propget, propput] $oMultiLandmarksDetectionResult.world_landmarks
 ```
@@ -65166,7 +65166,7 @@ AutoIt:
 ### MultiLandmarksDetectionResult.rects
 
 ```cpp
-google::protobuf::Repeated_mediapipe_NormalizedRect* mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::rects
+::google::protobuf::RepeatedPtrField<mediapipe::NormalizedRect>* mediapipe::tasks::containers::proto::MultiLandmarksDetectionResult::rects
 AutoIt:
     [propget, propput] $oMultiLandmarksDetectionResult.rects
 ```
@@ -65328,7 +65328,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedRect::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_NormalizedRect google::protobuf::Repeated_mediapipe_NormalizedRect::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedRect> google::protobuf::Repeated_mediapipe_NormalizedRect::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_NormalizedRect").create() -> <google.protobuf.Repeated_mediapipe_NormalizedRect object>
 ```
@@ -65336,7 +65336,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedRect::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedRect::CopyFrom( const google::protobuf::Repeated_mediapipe_NormalizedRect other );
+void google::protobuf::Repeated_mediapipe_NormalizedRect::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedRect> other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedRect.CopyFrom( $other ) -> None
 ```
@@ -65344,7 +65344,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedRect::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_NormalizedRect::IsInstance( const google::protobuf::Repeated_mediapipe_NormalizedRect& obj );
+static bool google::protobuf::Repeated_mediapipe_NormalizedRect::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedRect>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_NormalizedRect").IsInstance( $obj ) -> retval
 ```
@@ -65358,7 +65358,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedRect::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedRect::MergeFrom( const google::protobuf::Repeated_mediapipe_NormalizedRect other );
+void google::protobuf::Repeated_mediapipe_NormalizedRect::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedRect> other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedRect.MergeFrom( $other ) -> None
 ```
@@ -65366,7 +65366,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedRect::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedRect::Swap( google::protobuf::Repeated_mediapipe_NormalizedRect* other );
+void google::protobuf::Repeated_mediapipe_NormalizedRect::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedRect>* other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedRect.Swap( $other ) -> None
 ```
@@ -65383,7 +65383,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedRect::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_NormalizedRect::__eq__( const google::protobuf::Repeated_mediapipe_NormalizedRect& other );
+bool google::protobuf::Repeated_mediapipe_NormalizedRect::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedRect>& other );
 AutoIt:
     $oRepeated_mediapipe_NormalizedRect.__eq__( $other ) -> retval
 ```
@@ -65457,7 +65457,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_NormalizedRect::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_NormalizedRect::extend( const google::protobuf::Repeated_mediapipe_NormalizedRect& items );
+void google::protobuf::Repeated_mediapipe_NormalizedRect::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::NormalizedRect>& items );
 AutoIt:
     $oRepeated_mediapipe_NormalizedRect.extend( $items ) -> None
 ```
@@ -65625,7 +65625,7 @@ AutoIt:
 ### FlowLimiterCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions* mediapipe::FlowLimiterCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::FlowLimiterCalculatorOptions>, 11, false>* mediapipe::FlowLimiterCalculatorOptions::ext
 AutoIt:
     [propget] $oFlowLimiterCalculatorOptions.ext
 ```
@@ -65788,7 +65788,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_FlowLimiterCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::FlowLimiterCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -65802,7 +65802,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_FlowLimiterCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::FlowLimiterCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_FlowLimiterCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -65850,7 +65850,7 @@ AutoIt:
 ### TextClassifierGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions* mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions>, 11, false>* mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions::ext
 AutoIt:
     [propget] $oTextClassifierGraphOptions.ext
 ```
@@ -66012,7 +66012,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_text\_text\_classifier\_proto\_TextClassifierGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -66026,7 +66026,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_text\_text\_classifier\_proto\_TextClassifierGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::text::text_classifier::proto::TextClassifierGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_classifier_proto_TextClassifierGraphOptions.__eq__( $other ) -> retval
 ```
@@ -66074,7 +66074,7 @@ AutoIt:
 ### TextEmbedderGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions* mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions>, 11, false>* mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions::ext
 AutoIt:
     [propget] $oTextEmbedderGraphOptions.ext
 ```
@@ -66236,7 +66236,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_text\_text\_embedder\_proto\_TextEmbedderGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -66250,7 +66250,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_text\_text\_embedder\_proto\_TextEmbedderGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::text::text_embedder::proto::TextEmbedderGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_text_text_embedder_proto_TextEmbedderGraphOptions.__eq__( $other ) -> retval
 ```
@@ -66314,7 +66314,7 @@ AutoIt:
 ### FaceDetectorGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions* mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions>, 11, false>* mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions::ext
 AutoIt:
     [propget] $oFaceDetectorGraphOptions.ext
 ```
@@ -66478,7 +66478,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_detector\_proto\_FaceDetectorGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -66492,7 +66492,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_detector\_proto\_FaceDetectorGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_detector::proto::FaceDetectorGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_detector_proto_FaceDetectorGraphOptions.__eq__( $other ) -> retval
 ```
@@ -66532,7 +66532,7 @@ AutoIt:
 ### FaceGeometryPipelineCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions* mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions>, 11, false>* mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions::ext
 AutoIt:
     [propget] $oFaceGeometryPipelineCalculatorOptions.ext
 ```
@@ -66693,7 +66693,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_geometry\_FaceGeometryPipelineCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -66707,7 +66707,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_geometry\_FaceGeometryPipelineCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_geometry::FaceGeometryPipelineCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_FaceGeometryPipelineCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -66747,7 +66747,7 @@ AutoIt:
 ### FaceGeometryGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions* mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions>, 11, false>* mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions::ext
 AutoIt:
     [propget] $oFaceGeometryGraphOptions.ext
 ```
@@ -66908,7 +66908,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_geometry\_proto\_FaceGeometryGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -66922,7 +66922,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_geometry\_proto\_FaceGeometryGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_geometry::proto::FaceGeometryGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_geometry_proto_FaceGeometryGraphOptions.__eq__( $other ) -> retval
 ```
@@ -66962,7 +66962,7 @@ AutoIt:
 ### FaceBlendshapesGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions>, 11, false>* mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions::ext
 AutoIt:
     [propget] $oFaceBlendshapesGraphOptions.ext
 ```
@@ -67123,7 +67123,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_landmarker\_proto\_FaceBlendshapesGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -67137,7 +67137,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_landmarker\_proto\_FaceBlendshapesGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceBlendshapesGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceBlendshapesGraphOptions.__eq__( $other ) -> retval
 ```
@@ -67201,7 +67201,7 @@ AutoIt:
 ### FaceLandmarksDetectorGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions>, 11, false>* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions::ext
 AutoIt:
     [propget] $oFaceLandmarksDetectorGraphOptions.ext
 ```
@@ -67365,7 +67365,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_landmarker\_proto\_FaceLandmarksDetectorGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -67379,7 +67379,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_landmarker\_proto\_FaceLandmarksDetectorGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarksDetectorGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarksDetectorGraphOptions.__eq__( $other ) -> retval
 ```
@@ -67451,7 +67451,7 @@ AutoIt:
 ### FaceLandmarkerGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions>, 11, false>* mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions::ext
 AutoIt:
     [propget] $oFaceLandmarkerGraphOptions.ext
 ```
@@ -67616,7 +67616,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_landmarker\_proto\_FaceLandmarkerGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -67630,7 +67630,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_landmarker\_proto\_FaceLandmarkerGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_landmarker::proto::FaceLandmarkerGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_landmarker_proto_FaceLandmarkerGraphOptions.__eq__( $other ) -> retval
 ```
@@ -67686,7 +67686,7 @@ AutoIt:
 ### FaceStylizerGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions* mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions>, 11, false>* mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions::ext
 AutoIt:
     [propget] $oFaceStylizerGraphOptions.ext
 ```
@@ -67849,7 +67849,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_stylizer\_proto\_FaceStylizerGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -67863,7 +67863,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_face\_stylizer\_proto\_FaceStylizerGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::face_stylizer::proto::FaceStylizerGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_face_stylizer_proto_FaceStylizerGraphOptions.__eq__( $other ) -> retval
 ```
@@ -67911,7 +67911,7 @@ AutoIt:
 ### Mesh3d.vertex\_buffer
 
 ```cpp
-google::protobuf::Repeated_float* mediapipe::tasks::vision::face_geometry::proto::Mesh3d::vertex_buffer
+::google::protobuf::RepeatedField<float>* mediapipe::tasks::vision::face_geometry::proto::Mesh3d::vertex_buffer
 AutoIt:
     [propget, propput] $oMesh3d.vertex_buffer
 ```
@@ -67919,7 +67919,7 @@ AutoIt:
 ### Mesh3d.index\_buffer
 
 ```cpp
-google::protobuf::Repeated_uint32* mediapipe::tasks::vision::face_geometry::proto::Mesh3d::index_buffer
+::google::protobuf::RepeatedField<uint32_t>* mediapipe::tasks::vision::face_geometry::proto::Mesh3d::index_buffer
 AutoIt:
     [propget, propput] $oMesh3d.index_buffer
 ```
@@ -68097,7 +68097,7 @@ AutoIt:
 ### google::protobuf::Repeated\_uint32::create
 
 ```cpp
-static google::protobuf::Repeated_uint32 google::protobuf::Repeated_uint32::create();
+static ::google::protobuf::RepeatedField<uint32_t> google::protobuf::Repeated_uint32::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_uint32").create() -> <google.protobuf.Repeated_uint32 object>
 ```
@@ -68105,7 +68105,7 @@ AutoIt:
 ### google::protobuf::Repeated\_uint32::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_uint32::CopyFrom( const google::protobuf::Repeated_uint32 other );
+void google::protobuf::Repeated_uint32::CopyFrom( const ::google::protobuf::RepeatedField<uint32_t> other );
 AutoIt:
     $oRepeated_uint32.CopyFrom( $other ) -> None
 ```
@@ -68113,7 +68113,7 @@ AutoIt:
 ### google::protobuf::Repeated\_uint32::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_uint32::IsInstance( const google::protobuf::Repeated_uint32& obj );
+static bool google::protobuf::Repeated_uint32::IsInstance( const ::google::protobuf::RepeatedField<uint32_t>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_uint32").IsInstance( $obj ) -> retval
 ```
@@ -68127,7 +68127,7 @@ AutoIt:
 ### google::protobuf::Repeated\_uint32::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_uint32::MergeFrom( const google::protobuf::Repeated_uint32 other );
+void google::protobuf::Repeated_uint32::MergeFrom( const ::google::protobuf::RepeatedField<uint32_t> other );
 AutoIt:
     $oRepeated_uint32.MergeFrom( $other ) -> None
 ```
@@ -68135,7 +68135,7 @@ AutoIt:
 ### google::protobuf::Repeated\_uint32::Swap
 
 ```cpp
-void google::protobuf::Repeated_uint32::Swap( google::protobuf::Repeated_uint32* other );
+void google::protobuf::Repeated_uint32::Swap( ::google::protobuf::RepeatedField<uint32_t>* other );
 AutoIt:
     $oRepeated_uint32.Swap( $other ) -> None
 ```
@@ -68152,7 +68152,7 @@ AutoIt:
 ### google::protobuf::Repeated\_uint32::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_uint32::__eq__( const google::protobuf::Repeated_uint32& other );
+bool google::protobuf::Repeated_uint32::__eq__( const ::google::protobuf::RepeatedField<uint32_t>& other );
 AutoIt:
     $oRepeated_uint32.__eq__( $other ) -> retval
 ```
@@ -68206,7 +68206,7 @@ AutoIt:
 ### google::protobuf::Repeated\_uint32::extend
 
 ```cpp
-void google::protobuf::Repeated_uint32::extend( const google::protobuf::Repeated_uint32& items );
+void google::protobuf::Repeated_uint32::extend( const ::google::protobuf::RepeatedField<uint32_t>& items );
 AutoIt:
     $oRepeated_uint32.extend( $items ) -> None
 ```
@@ -68531,7 +68531,7 @@ AutoIt:
 ### GestureClassifierGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions>, 11, false>* mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions::ext
 AutoIt:
     [propget] $oGestureClassifierGraphOptions.ext
 ```
@@ -68693,7 +68693,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_gesture\_recognizer\_proto\_GestureClassifierGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -68707,7 +68707,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_gesture\_recognizer\_proto\_GestureClassifierGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureClassifierGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureClassifierGraphOptions.__eq__( $other ) -> retval
 ```
@@ -68747,7 +68747,7 @@ AutoIt:
 ### GestureEmbedderGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions>, 11, false>* mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions::ext
 AutoIt:
     [propget] $oGestureEmbedderGraphOptions.ext
 ```
@@ -68908,7 +68908,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_gesture\_recognizer\_proto\_GestureEmbedderGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -68922,7 +68922,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_gesture\_recognizer\_proto\_GestureEmbedderGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureEmbedderGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureEmbedderGraphOptions.__eq__( $other ) -> retval
 ```
@@ -68986,7 +68986,7 @@ AutoIt:
 ### HandGestureRecognizerGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions>, 11, false>* mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions::ext
 AutoIt:
     [propget] $oHandGestureRecognizerGraphOptions.ext
 ```
@@ -69150,7 +69150,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_gesture\_recognizer\_proto\_HandGestureRecognizerGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -69164,7 +69164,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_gesture\_recognizer\_proto\_HandGestureRecognizerGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::HandGestureRecognizerGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_HandGestureRecognizerGraphOptions.__eq__( $other ) -> retval
 ```
@@ -69220,7 +69220,7 @@ AutoIt:
 ### HandDetectorGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions* mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions>, 11, false>* mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions::ext
 AutoIt:
     [propget] $oHandDetectorGraphOptions.ext
 ```
@@ -69383,7 +69383,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_hand\_detector\_proto\_HandDetectorGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -69397,7 +69397,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_hand\_detector\_proto\_HandDetectorGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_detector::proto::HandDetectorGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_detector_proto_HandDetectorGraphOptions.__eq__( $other ) -> retval
 ```
@@ -69445,7 +69445,7 @@ AutoIt:
 ### HandLandmarksDetectorGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions>, 11, false>* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions::ext
 AutoIt:
     [propget] $oHandLandmarksDetectorGraphOptions.ext
 ```
@@ -69607,7 +69607,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_hand\_landmarker\_proto\_HandLandmarksDetectorGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -69621,7 +69621,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_hand\_landmarker\_proto\_HandLandmarksDetectorGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarksDetectorGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarksDetectorGraphOptions.__eq__( $other ) -> retval
 ```
@@ -69685,7 +69685,7 @@ AutoIt:
 ### HandLandmarkerGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions>, 11, false>* mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions::ext
 AutoIt:
     [propget] $oHandLandmarkerGraphOptions.ext
 ```
@@ -69849,7 +69849,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_hand\_landmarker\_proto\_HandLandmarkerGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -69863,7 +69863,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_hand\_landmarker\_proto\_HandLandmarkerGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::hand_landmarker::proto::HandLandmarkerGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_hand_landmarker_proto_HandLandmarkerGraphOptions.__eq__( $other ) -> retval
 ```
@@ -69919,7 +69919,7 @@ AutoIt:
 ### GestureRecognizerGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions* mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions>, 11, false>* mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions::ext
 AutoIt:
     [propget] $oGestureRecognizerGraphOptions.ext
 ```
@@ -70082,7 +70082,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_gesture\_recognizer\_proto\_GestureRecognizerGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -70096,7 +70096,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_gesture\_recognizer\_proto\_GestureRecognizerGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::gesture_recognizer::proto::GestureRecognizerGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_gesture_recognizer_proto_GestureRecognizerGraphOptions.__eq__( $other ) -> retval
 ```
@@ -70321,7 +70321,7 @@ AutoIt:
 ### PoseDetectorGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions* mediapipe::tasks::vision::pose_detector::proto::PoseDetectorGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_detector::proto::PoseDetectorGraphOptions>, 11, false>* mediapipe::tasks::vision::pose_detector::proto::PoseDetectorGraphOptions::ext
 AutoIt:
     [propget] $oPoseDetectorGraphOptions.ext
 ```
@@ -70485,7 +70485,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_pose\_detector\_proto\_PoseDetectorGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_detector::proto::PoseDetectorGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -70499,7 +70499,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_pose\_detector\_proto\_PoseDetectorGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_detector::proto::PoseDetectorGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_detector_proto_PoseDetectorGraphOptions.__eq__( $other ) -> retval
 ```
@@ -70555,7 +70555,7 @@ AutoIt:
 ### PoseLandmarksDetectorGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions* mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarksDetectorGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarksDetectorGraphOptions>, 11, false>* mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarksDetectorGraphOptions::ext
 AutoIt:
     [propget] $oPoseLandmarksDetectorGraphOptions.ext
 ```
@@ -70718,7 +70718,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_pose\_landmarker\_proto\_PoseLandmarksDetectorGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarksDetectorGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -70732,7 +70732,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_pose\_landmarker\_proto\_PoseLandmarksDetectorGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarksDetectorGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarksDetectorGraphOptions.__eq__( $other ) -> retval
 ```
@@ -71210,7 +71210,7 @@ AutoIt:
 ### ImageClassifierGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions* mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions>, 11, false>* mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions::ext
 AutoIt:
     [propget] $oImageClassifierGraphOptions.ext
 ```
@@ -71372,7 +71372,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_image\_classifier\_proto\_ImageClassifierGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -71386,7 +71386,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_image\_classifier\_proto\_ImageClassifierGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_classifier::proto::ImageClassifierGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_classifier_proto_ImageClassifierGraphOptions.__eq__( $other ) -> retval
 ```
@@ -71434,7 +71434,7 @@ AutoIt:
 ### ImageEmbedderGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions* mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions>, 11, false>* mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions::ext
 AutoIt:
     [propget] $oImageEmbedderGraphOptions.ext
 ```
@@ -71596,7 +71596,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_image\_embedder\_proto\_ImageEmbedderGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -71610,7 +71610,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_image\_embedder\_proto\_ImageEmbedderGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_embedder::proto::ImageEmbedderGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_embedder_proto_ImageEmbedderGraphOptions.__eq__( $other ) -> retval
 ```
@@ -71876,7 +71876,7 @@ AutoIt:
 ### LabelMapItem.child\_name
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::LabelMapItem::child_name
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::LabelMapItem::child_name
 AutoIt:
     [propget, propput] $oLabelMapItem.child_name
 ```
@@ -72047,7 +72047,7 @@ AutoIt:
 ### TensorsToSegmentationCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions* mediapipe::tasks::TensorsToSegmentationCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::TensorsToSegmentationCalculatorOptions>, 11, false>* mediapipe::tasks::TensorsToSegmentationCalculatorOptions::ext
 AutoIt:
     [propget] $oTensorsToSegmentationCalculatorOptions.ext
 ```
@@ -72208,7 +72208,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_TensorsToSegmentationCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::TensorsToSegmentationCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -72222,7 +72222,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_TensorsToSegmentationCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::TensorsToSegmentationCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_TensorsToSegmentationCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -72278,7 +72278,7 @@ AutoIt:
 ### ImageSegmenterGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions* mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions>, 11, false>* mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions::ext
 AutoIt:
     [propget] $oImageSegmenterGraphOptions.ext
 ```
@@ -72441,7 +72441,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_image\_segmenter\_proto\_ImageSegmenterGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -72455,7 +72455,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_image\_segmenter\_proto\_ImageSegmenterGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::image_segmenter::proto::ImageSegmenterGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_image_segmenter_proto_ImageSegmenterGraphOptions.__eq__( $other ) -> retval
 ```
@@ -72816,7 +72816,7 @@ AutoIt:
 ### RenderData.render\_annotations
 
 ```cpp
-google::protobuf::Repeated_mediapipe_RenderAnnotation* mediapipe::RenderData::render_annotations
+::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation>* mediapipe::RenderData::render_annotations
 AutoIt:
     [propget, propput] $oRenderData.render_annotations
 ```
@@ -72993,7 +72993,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_RenderAnnotation google::protobuf::Repeated_mediapipe_RenderAnnotation::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation> google::protobuf::Repeated_mediapipe_RenderAnnotation::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_RenderAnnotation").create() -> <google.protobuf.Repeated_mediapipe_RenderAnnotation object>
 ```
@@ -73001,7 +73001,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_RenderAnnotation::CopyFrom( const google::protobuf::Repeated_mediapipe_RenderAnnotation other );
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation> other );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation.CopyFrom( $other ) -> None
 ```
@@ -73009,7 +73009,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_RenderAnnotation::IsInstance( const google::protobuf::Repeated_mediapipe_RenderAnnotation& obj );
+static bool google::protobuf::Repeated_mediapipe_RenderAnnotation::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_RenderAnnotation").IsInstance( $obj ) -> retval
 ```
@@ -73023,7 +73023,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_RenderAnnotation::MergeFrom( const google::protobuf::Repeated_mediapipe_RenderAnnotation other );
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation> other );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation.MergeFrom( $other ) -> None
 ```
@@ -73031,7 +73031,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_RenderAnnotation::Swap( google::protobuf::Repeated_mediapipe_RenderAnnotation* other );
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation>* other );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation.Swap( $other ) -> None
 ```
@@ -73048,7 +73048,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_RenderAnnotation::__eq__( const google::protobuf::Repeated_mediapipe_RenderAnnotation& other );
+bool google::protobuf::Repeated_mediapipe_RenderAnnotation::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation>& other );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation.__eq__( $other ) -> retval
 ```
@@ -73122,7 +73122,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_RenderAnnotation::extend( const google::protobuf::Repeated_mediapipe_RenderAnnotation& items );
+void google::protobuf::Repeated_mediapipe_RenderAnnotation::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation>& items );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation.extend( $items ) -> None
 ```
@@ -75124,7 +75124,7 @@ AutoIt:
 ### Scribble.point
 
 ```cpp
-google::protobuf::Repeated_mediapipe_RenderAnnotation_Point* mediapipe::RenderAnnotation::Scribble::point
+::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation::Point>* mediapipe::RenderAnnotation::Scribble::point
 AutoIt:
     [propget, propput] $oScribble.point
 ```
@@ -75283,7 +75283,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation\_Point::create
 
 ```cpp
-static google::protobuf::Repeated_mediapipe_RenderAnnotation_Point google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::create();
+static ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation::Point> google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::create();
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_RenderAnnotation_Point").create() -> <google.protobuf.Repeated_mediapipe_RenderAnnotation_Point object>
 ```
@@ -75291,7 +75291,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation\_Point::CopyFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::CopyFrom( const google::protobuf::Repeated_mediapipe_RenderAnnotation_Point other );
+void google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::CopyFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation::Point> other );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation_Point.CopyFrom( $other ) -> None
 ```
@@ -75299,7 +75299,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation\_Point::IsInstance
 
 ```cpp
-static bool google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::IsInstance( const google::protobuf::Repeated_mediapipe_RenderAnnotation_Point& obj );
+static bool google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::IsInstance( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation::Point>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.Repeated_mediapipe_RenderAnnotation_Point").IsInstance( $obj ) -> retval
 ```
@@ -75313,7 +75313,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation\_Point::MergeFrom
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::MergeFrom( const google::protobuf::Repeated_mediapipe_RenderAnnotation_Point other );
+void google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::MergeFrom( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation::Point> other );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation_Point.MergeFrom( $other ) -> None
 ```
@@ -75321,7 +75321,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation\_Point::Swap
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::Swap( google::protobuf::Repeated_mediapipe_RenderAnnotation_Point* other );
+void google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::Swap( ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation::Point>* other );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation_Point.Swap( $other ) -> None
 ```
@@ -75338,7 +75338,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation\_Point::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::__eq__( const google::protobuf::Repeated_mediapipe_RenderAnnotation_Point& other );
+bool google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::__eq__( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation::Point>& other );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation_Point.__eq__( $other ) -> retval
 ```
@@ -75412,7 +75412,7 @@ AutoIt:
 ### google::protobuf::Repeated\_mediapipe\_RenderAnnotation\_Point::extend
 
 ```cpp
-void google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::extend( const google::protobuf::Repeated_mediapipe_RenderAnnotation_Point& items );
+void google::protobuf::Repeated_mediapipe_RenderAnnotation_Point::extend( const ::google::protobuf::RepeatedPtrField<mediapipe::RenderAnnotation::Point>& items );
 AutoIt:
     $oRepeated_mediapipe_RenderAnnotation_Point.extend( $items ) -> None
 ```
@@ -76291,7 +76291,7 @@ AutoIt:
 ### ObjectDetectorOptions.category\_allowlist
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::category_allowlist
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::category_allowlist
 AutoIt:
     [propget, propput] $oObjectDetectorOptions.category_allowlist
 ```
@@ -76299,7 +76299,7 @@ AutoIt:
 ### ObjectDetectorOptions.category\_denylist
 
 ```cpp
-google::protobuf::Repeated_std_string* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::category_denylist
+::google::protobuf::RepeatedPtrField<std::string>* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::category_denylist
 AutoIt:
     [propget, propput] $oObjectDetectorOptions.category_denylist
 ```
@@ -76323,7 +76323,7 @@ AutoIt:
 ### ObjectDetectorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions>, 11, false>* mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions::ext
 AutoIt:
     [propget] $oObjectDetectorOptions.ext
 ```
@@ -76491,7 +76491,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_object\_detector\_proto\_ObjectDetectorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions").IsInstance( $obj ) -> retval
 ```
@@ -76505,7 +76505,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_object\_detector\_proto\_ObjectDetectorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::object_detector::proto::ObjectDetectorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_object_detector_proto_ObjectDetectorOptions.__eq__( $other ) -> retval
 ```
@@ -76569,7 +76569,7 @@ AutoIt:
 ### PoseLandmarkerGraphOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions* mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions>, 11, false>* mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions::ext
 AutoIt:
     [propget] $oPoseLandmarkerGraphOptions.ext
 ```
@@ -76733,7 +76733,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_pose\_landmarker\_proto\_PoseLandmarkerGraphOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions").IsInstance( $obj ) -> retval
 ```
@@ -76747,7 +76747,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_tasks\_vision\_pose\_landmarker\_proto\_PoseLandmarkerGraphOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::tasks::vision::pose_landmarker::proto::PoseLandmarkerGraphOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_tasks_vision_pose_landmarker_proto_PoseLandmarkerGraphOptions.__eq__( $other ) -> retval
 ```
@@ -76835,7 +76835,7 @@ AutoIt:
 ### ResampleTimeSeriesCalculatorOptions.ext
 
 ```cpp
-static google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions* mediapipe::ResampleTimeSeriesCalculatorOptions::ext
+static ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ResampleTimeSeriesCalculatorOptions>, 11, false>* mediapipe::ResampleTimeSeriesCalculatorOptions::ext
 AutoIt:
     [propget] $oResampleTimeSeriesCalculatorOptions.ext
 ```
@@ -77374,7 +77374,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ResampleTimeSeriesCalculatorOptions::IsInstance
 
 ```cpp
-static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions::IsInstance( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions& obj );
+static bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions::IsInstance( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ResampleTimeSeriesCalculatorOptions>, 11, false>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("google.protobuf.autoit.Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions").IsInstance( $obj ) -> retval
 ```
@@ -77388,7 +77388,7 @@ AutoIt:
 ### google::protobuf::autoit::Extend\_mediapipe\_CalculatorOptionsWithmediapipe\_ResampleTimeSeriesCalculatorOptions::\_\_eq\_\_
 
 ```cpp
-bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions::__eq__( const google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions& other );
+bool google::protobuf::autoit::Extend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions::__eq__( const ::google::protobuf::internal::ExtensionIdentifier<::mediapipe::CalculatorOptions, ::google::protobuf::internal::MessageTypeTraits<::mediapipe::ResampleTimeSeriesCalculatorOptions>, 11, false>& other );
 AutoIt:
     $oExtend_mediapipe_CalculatorOptionsWithmediapipe_ResampleTimeSeriesCalculatorOptions.__eq__( $other ) -> retval
 ```
@@ -83781,19 +83781,19 @@ AutoIt:
 ### VectorOfString::create
 
 ```cpp
-static VectorOfString VectorOfString::create();
+static std::vector<std::string> VectorOfString::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfString").create() -> <VectorOfString object>
 ```
 
 ```cpp
-static VectorOfString VectorOfString::create( size_t size );
+static std::vector<std::string> VectorOfString::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfString").create( $size ) -> <VectorOfString object>
 ```
 
 ```cpp
-static VectorOfString VectorOfString::create( VectorOfString other );
+static std::vector<std::string> VectorOfString::create( std::vector<std::string> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfString").create( $other ) -> <VectorOfString object>
 ```
@@ -83809,7 +83809,7 @@ AutoIt:
 ### VectorOfString::IsInstance
 
 ```cpp
-static bool VectorOfString::IsInstance( const VectorOfString& obj );
+static bool VectorOfString::IsInstance( const std::vector<std::string>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfString").IsInstance( $obj ) -> retval
 ```
@@ -83823,7 +83823,7 @@ AutoIt:
 ### VectorOfString::Items
 
 ```cpp
-VectorOfString VectorOfString::Items();
+std::vector<std::string> VectorOfString::Items();
 AutoIt:
     $oVectorOfString.Items() -> retval
 ```
@@ -83847,7 +83847,7 @@ AutoIt:
 ### VectorOfString::\_\_eq\_\_
 
 ```cpp
-bool VectorOfString::__eq__( const VectorOfString& other );
+bool VectorOfString::__eq__( const std::vector<std::string>& other );
 AutoIt:
     $oVectorOfString.__eq__( $other ) -> retval
 ```
@@ -83949,15 +83949,15 @@ AutoIt:
 ### VectorOfString::push\_vector
 
 ```cpp
-void VectorOfString::push_vector( VectorOfString other );
+void VectorOfString::push_vector( std::vector<std::string> other );
 AutoIt:
     $oVectorOfString.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfString::push_vector( VectorOfString other,
-                                  size_t         count,
-                                  size_t         start = 0 );
+void VectorOfString::push_vector( std::vector<std::string> other,
+                                  size_t                   count,
+                                  size_t                   start = 0 );
 AutoIt:
     $oVectorOfString.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -83982,8 +83982,8 @@ AutoIt:
 ### VectorOfString::slice
 
 ```cpp
-VectorOfString VectorOfString::slice( size_t start = 0,
-                                      size_t count = __self->get()->size() );
+std::vector<std::string> VectorOfString::slice( size_t start = 0,
+                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfString.slice( [$start[, $count]] ) -> retval
 ```
@@ -84029,19 +84029,19 @@ AutoIt:
 ### VectorOfVariant::create
 
 ```cpp
-static VectorOfVariant VectorOfVariant::create();
+static std::vector<_variant_t> VectorOfVariant::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVariant").create() -> <VectorOfVariant object>
 ```
 
 ```cpp
-static VectorOfVariant VectorOfVariant::create( size_t size );
+static std::vector<_variant_t> VectorOfVariant::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVariant").create( $size ) -> <VectorOfVariant object>
 ```
 
 ```cpp
-static VectorOfVariant VectorOfVariant::create( VectorOfVariant other );
+static std::vector<_variant_t> VectorOfVariant::create( std::vector<_variant_t> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVariant").create( $other ) -> <VectorOfVariant object>
 ```
@@ -84057,7 +84057,7 @@ AutoIt:
 ### VectorOfVariant::IsInstance
 
 ```cpp
-static bool VectorOfVariant::IsInstance( const VectorOfVariant& obj );
+static bool VectorOfVariant::IsInstance( const std::vector<_variant_t>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVariant").IsInstance( $obj ) -> retval
 ```
@@ -84071,7 +84071,7 @@ AutoIt:
 ### VectorOfVariant::Items
 
 ```cpp
-VectorOfVariant VectorOfVariant::Items();
+std::vector<_variant_t> VectorOfVariant::Items();
 AutoIt:
     $oVectorOfVariant.Items() -> retval
 ```
@@ -84095,7 +84095,7 @@ AutoIt:
 ### VectorOfVariant::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVariant::__eq__( const VectorOfVariant& other );
+bool VectorOfVariant::__eq__( const std::vector<_variant_t>& other );
 AutoIt:
     $oVectorOfVariant.__eq__( $other ) -> retval
 ```
@@ -84197,15 +84197,15 @@ AutoIt:
 ### VectorOfVariant::push\_vector
 
 ```cpp
-void VectorOfVariant::push_vector( VectorOfVariant other );
+void VectorOfVariant::push_vector( std::vector<_variant_t> other );
 AutoIt:
     $oVectorOfVariant.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVariant::push_vector( VectorOfVariant other,
-                                   size_t          count,
-                                   size_t          start = 0 );
+void VectorOfVariant::push_vector( std::vector<_variant_t> other,
+                                   size_t                  count,
+                                   size_t                  start = 0 );
 AutoIt:
     $oVectorOfVariant.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -84230,8 +84230,8 @@ AutoIt:
 ### VectorOfVariant::slice
 
 ```cpp
-VectorOfVariant VectorOfVariant::slice( size_t start = 0,
-                                        size_t count = __self->get()->size() );
+std::vector<_variant_t> VectorOfVariant::slice( size_t start = 0,
+                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVariant.slice( [$start[, $count]] ) -> retval
 ```
@@ -84277,19 +84277,19 @@ AutoIt:
 ### VectorOfInt::create
 
 ```cpp
-static VectorOfInt VectorOfInt::create();
+static std::vector<int> VectorOfInt::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfInt").create() -> <VectorOfInt object>
 ```
 
 ```cpp
-static VectorOfInt VectorOfInt::create( size_t size );
+static std::vector<int> VectorOfInt::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfInt").create( $size ) -> <VectorOfInt object>
 ```
 
 ```cpp
-static VectorOfInt VectorOfInt::create( VectorOfInt other );
+static std::vector<int> VectorOfInt::create( std::vector<int> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfInt").create( $other ) -> <VectorOfInt object>
 ```
@@ -84305,7 +84305,7 @@ AutoIt:
 ### VectorOfInt::IsInstance
 
 ```cpp
-static bool VectorOfInt::IsInstance( const VectorOfInt& obj );
+static bool VectorOfInt::IsInstance( const std::vector<int>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfInt").IsInstance( $obj ) -> retval
 ```
@@ -84319,7 +84319,7 @@ AutoIt:
 ### VectorOfInt::Items
 
 ```cpp
-VectorOfInt VectorOfInt::Items();
+std::vector<int> VectorOfInt::Items();
 AutoIt:
     $oVectorOfInt.Items() -> retval
 ```
@@ -84343,7 +84343,7 @@ AutoIt:
 ### VectorOfInt::\_\_eq\_\_
 
 ```cpp
-bool VectorOfInt::__eq__( const VectorOfInt& other );
+bool VectorOfInt::__eq__( const std::vector<int>& other );
 AutoIt:
     $oVectorOfInt.__eq__( $other ) -> retval
 ```
@@ -84445,15 +84445,15 @@ AutoIt:
 ### VectorOfInt::push\_vector
 
 ```cpp
-void VectorOfInt::push_vector( VectorOfInt other );
+void VectorOfInt::push_vector( std::vector<int> other );
 AutoIt:
     $oVectorOfInt.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfInt::push_vector( VectorOfInt other,
-                               size_t      count,
-                               size_t      start = 0 );
+void VectorOfInt::push_vector( std::vector<int> other,
+                               size_t           count,
+                               size_t           start = 0 );
 AutoIt:
     $oVectorOfInt.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -84478,8 +84478,8 @@ AutoIt:
 ### VectorOfInt::slice
 
 ```cpp
-VectorOfInt VectorOfInt::slice( size_t start = 0,
-                                size_t count = __self->get()->size() );
+std::vector<int> VectorOfInt::slice( size_t start = 0,
+                                     size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfInt.slice( [$start[, $count]] ) -> retval
 ```
@@ -84525,19 +84525,19 @@ AutoIt:
 ### VectorOfFloat::create
 
 ```cpp
-static VectorOfFloat VectorOfFloat::create();
+static std::vector<float> VectorOfFloat::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfFloat").create() -> <VectorOfFloat object>
 ```
 
 ```cpp
-static VectorOfFloat VectorOfFloat::create( size_t size );
+static std::vector<float> VectorOfFloat::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfFloat").create( $size ) -> <VectorOfFloat object>
 ```
 
 ```cpp
-static VectorOfFloat VectorOfFloat::create( VectorOfFloat other );
+static std::vector<float> VectorOfFloat::create( std::vector<float> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfFloat").create( $other ) -> <VectorOfFloat object>
 ```
@@ -84553,7 +84553,7 @@ AutoIt:
 ### VectorOfFloat::IsInstance
 
 ```cpp
-static bool VectorOfFloat::IsInstance( const VectorOfFloat& obj );
+static bool VectorOfFloat::IsInstance( const std::vector<float>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfFloat").IsInstance( $obj ) -> retval
 ```
@@ -84567,7 +84567,7 @@ AutoIt:
 ### VectorOfFloat::Items
 
 ```cpp
-VectorOfFloat VectorOfFloat::Items();
+std::vector<float> VectorOfFloat::Items();
 AutoIt:
     $oVectorOfFloat.Items() -> retval
 ```
@@ -84591,7 +84591,7 @@ AutoIt:
 ### VectorOfFloat::\_\_eq\_\_
 
 ```cpp
-bool VectorOfFloat::__eq__( const VectorOfFloat& other );
+bool VectorOfFloat::__eq__( const std::vector<float>& other );
 AutoIt:
     $oVectorOfFloat.__eq__( $other ) -> retval
 ```
@@ -84693,15 +84693,15 @@ AutoIt:
 ### VectorOfFloat::push\_vector
 
 ```cpp
-void VectorOfFloat::push_vector( VectorOfFloat other );
+void VectorOfFloat::push_vector( std::vector<float> other );
 AutoIt:
     $oVectorOfFloat.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfFloat::push_vector( VectorOfFloat other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfFloat::push_vector( std::vector<float> other,
+                                 size_t             count,
+                                 size_t             start = 0 );
 AutoIt:
     $oVectorOfFloat.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -84726,8 +84726,8 @@ AutoIt:
 ### VectorOfFloat::slice
 
 ```cpp
-VectorOfFloat VectorOfFloat::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<float> VectorOfFloat::slice( size_t start = 0,
+                                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfFloat.slice( [$start[, $count]] ) -> retval
 ```
@@ -84773,19 +84773,19 @@ AutoIt:
 ### VectorOfSharedPtrOfImageFrame::create
 
 ```cpp
-static VectorOfSharedPtrOfImageFrame VectorOfSharedPtrOfImageFrame::create();
+static std::vector<std::shared_ptr<mediapipe::ImageFrame>> VectorOfSharedPtrOfImageFrame::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfImageFrame").create() -> <VectorOfSharedPtrOfImageFrame object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfImageFrame VectorOfSharedPtrOfImageFrame::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ImageFrame>> VectorOfSharedPtrOfImageFrame::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfImageFrame").create( $size ) -> <VectorOfSharedPtrOfImageFrame object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfImageFrame VectorOfSharedPtrOfImageFrame::create( VectorOfSharedPtrOfImageFrame other );
+static std::vector<std::shared_ptr<mediapipe::ImageFrame>> VectorOfSharedPtrOfImageFrame::create( std::vector<std::shared_ptr<mediapipe::ImageFrame>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfImageFrame").create( $other ) -> <VectorOfSharedPtrOfImageFrame object>
 ```
@@ -84801,7 +84801,7 @@ AutoIt:
 ### VectorOfSharedPtrOfImageFrame::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfImageFrame::IsInstance( const VectorOfSharedPtrOfImageFrame& obj );
+static bool VectorOfSharedPtrOfImageFrame::IsInstance( const std::vector<std::shared_ptr<mediapipe::ImageFrame>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfImageFrame").IsInstance( $obj ) -> retval
 ```
@@ -84815,7 +84815,7 @@ AutoIt:
 ### VectorOfSharedPtrOfImageFrame::Items
 
 ```cpp
-VectorOfSharedPtrOfImageFrame VectorOfSharedPtrOfImageFrame::Items();
+std::vector<std::shared_ptr<mediapipe::ImageFrame>> VectorOfSharedPtrOfImageFrame::Items();
 AutoIt:
     $oVectorOfSharedPtrOfImageFrame.Items() -> retval
 ```
@@ -84839,7 +84839,7 @@ AutoIt:
 ### VectorOfSharedPtrOfImageFrame::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfImageFrame::__eq__( const VectorOfSharedPtrOfImageFrame& other );
+bool VectorOfSharedPtrOfImageFrame::__eq__( const std::vector<std::shared_ptr<mediapipe::ImageFrame>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfImageFrame.__eq__( $other ) -> retval
 ```
@@ -84941,15 +84941,15 @@ AutoIt:
 ### VectorOfSharedPtrOfImageFrame::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfImageFrame::push_vector( VectorOfSharedPtrOfImageFrame other );
+void VectorOfSharedPtrOfImageFrame::push_vector( std::vector<std::shared_ptr<mediapipe::ImageFrame>> other );
 AutoIt:
     $oVectorOfSharedPtrOfImageFrame.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfImageFrame::push_vector( VectorOfSharedPtrOfImageFrame other,
-                                                 size_t                        count,
-                                                 size_t                        start = 0 );
+void VectorOfSharedPtrOfImageFrame::push_vector( std::vector<std::shared_ptr<mediapipe::ImageFrame>> other,
+                                                 size_t                                              count,
+                                                 size_t                                              start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfImageFrame.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -84974,8 +84974,8 @@ AutoIt:
 ### VectorOfSharedPtrOfImageFrame::slice
 
 ```cpp
-VectorOfSharedPtrOfImageFrame VectorOfSharedPtrOfImageFrame::slice( size_t start = 0,
-                                                                    size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ImageFrame>> VectorOfSharedPtrOfImageFrame::slice( size_t start = 0,
+                                                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfImageFrame.slice( [$start[, $count]] ) -> retval
 ```
@@ -85021,19 +85021,19 @@ AutoIt:
 ### VectorOfBool::create
 
 ```cpp
-static VectorOfBool VectorOfBool::create();
+static std::vector<bool> VectorOfBool::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfBool").create() -> <VectorOfBool object>
 ```
 
 ```cpp
-static VectorOfBool VectorOfBool::create( size_t size );
+static std::vector<bool> VectorOfBool::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfBool").create( $size ) -> <VectorOfBool object>
 ```
 
 ```cpp
-static VectorOfBool VectorOfBool::create( VectorOfBool other );
+static std::vector<bool> VectorOfBool::create( std::vector<bool> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfBool").create( $other ) -> <VectorOfBool object>
 ```
@@ -85049,7 +85049,7 @@ AutoIt:
 ### VectorOfBool::IsInstance
 
 ```cpp
-static bool VectorOfBool::IsInstance( const VectorOfBool& obj );
+static bool VectorOfBool::IsInstance( const std::vector<bool>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfBool").IsInstance( $obj ) -> retval
 ```
@@ -85063,7 +85063,7 @@ AutoIt:
 ### VectorOfBool::Items
 
 ```cpp
-VectorOfBool VectorOfBool::Items();
+std::vector<bool> VectorOfBool::Items();
 AutoIt:
     $oVectorOfBool.Items() -> retval
 ```
@@ -85087,7 +85087,7 @@ AutoIt:
 ### VectorOfBool::\_\_eq\_\_
 
 ```cpp
-bool VectorOfBool::__eq__( const VectorOfBool& other );
+bool VectorOfBool::__eq__( const std::vector<bool>& other );
 AutoIt:
     $oVectorOfBool.__eq__( $other ) -> retval
 ```
@@ -85189,15 +85189,15 @@ AutoIt:
 ### VectorOfBool::push\_vector
 
 ```cpp
-void VectorOfBool::push_vector( VectorOfBool other );
+void VectorOfBool::push_vector( std::vector<bool> other );
 AutoIt:
     $oVectorOfBool.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfBool::push_vector( VectorOfBool other,
-                                size_t       count,
-                                size_t       start = 0 );
+void VectorOfBool::push_vector( std::vector<bool> other,
+                                size_t            count,
+                                size_t            start = 0 );
 AutoIt:
     $oVectorOfBool.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -85222,8 +85222,8 @@ AutoIt:
 ### VectorOfBool::slice
 
 ```cpp
-VectorOfBool VectorOfBool::slice( size_t start = 0,
-                                  size_t count = __self->get()->size() );
+std::vector<bool> VectorOfBool::slice( size_t start = 0,
+                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfBool.slice( [$start[, $count]] ) -> retval
 ```
@@ -85269,19 +85269,19 @@ AutoIt:
 ### VectorOfImage::create
 
 ```cpp
-static VectorOfImage VectorOfImage::create();
+static std::vector<mediapipe::Image> VectorOfImage::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfImage").create() -> <VectorOfImage object>
 ```
 
 ```cpp
-static VectorOfImage VectorOfImage::create( size_t size );
+static std::vector<mediapipe::Image> VectorOfImage::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfImage").create( $size ) -> <VectorOfImage object>
 ```
 
 ```cpp
-static VectorOfImage VectorOfImage::create( VectorOfImage other );
+static std::vector<mediapipe::Image> VectorOfImage::create( std::vector<mediapipe::Image> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfImage").create( $other ) -> <VectorOfImage object>
 ```
@@ -85297,7 +85297,7 @@ AutoIt:
 ### VectorOfImage::IsInstance
 
 ```cpp
-static bool VectorOfImage::IsInstance( const VectorOfImage& obj );
+static bool VectorOfImage::IsInstance( const std::vector<mediapipe::Image>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfImage").IsInstance( $obj ) -> retval
 ```
@@ -85311,7 +85311,7 @@ AutoIt:
 ### VectorOfImage::Items
 
 ```cpp
-VectorOfImage VectorOfImage::Items();
+std::vector<mediapipe::Image> VectorOfImage::Items();
 AutoIt:
     $oVectorOfImage.Items() -> retval
 ```
@@ -85335,7 +85335,7 @@ AutoIt:
 ### VectorOfImage::\_\_eq\_\_
 
 ```cpp
-bool VectorOfImage::__eq__( const VectorOfImage& other );
+bool VectorOfImage::__eq__( const std::vector<mediapipe::Image>& other );
 AutoIt:
     $oVectorOfImage.__eq__( $other ) -> retval
 ```
@@ -85437,15 +85437,15 @@ AutoIt:
 ### VectorOfImage::push\_vector
 
 ```cpp
-void VectorOfImage::push_vector( VectorOfImage other );
+void VectorOfImage::push_vector( std::vector<mediapipe::Image> other );
 AutoIt:
     $oVectorOfImage.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfImage::push_vector( VectorOfImage other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfImage::push_vector( std::vector<mediapipe::Image> other,
+                                 size_t                        count,
+                                 size_t                        start = 0 );
 AutoIt:
     $oVectorOfImage.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -85470,8 +85470,8 @@ AutoIt:
 ### VectorOfImage::slice
 
 ```cpp
-VectorOfImage VectorOfImage::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<mediapipe::Image> VectorOfImage::slice( size_t start = 0,
+                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfImage.slice( [$start[, $count]] ) -> retval
 ```
@@ -85517,19 +85517,19 @@ AutoIt:
 ### VectorOfPacket::create
 
 ```cpp
-static VectorOfPacket VectorOfPacket::create();
+static std::vector<mediapipe::Packet> VectorOfPacket::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPacket").create() -> <VectorOfPacket object>
 ```
 
 ```cpp
-static VectorOfPacket VectorOfPacket::create( size_t size );
+static std::vector<mediapipe::Packet> VectorOfPacket::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPacket").create( $size ) -> <VectorOfPacket object>
 ```
 
 ```cpp
-static VectorOfPacket VectorOfPacket::create( VectorOfPacket other );
+static std::vector<mediapipe::Packet> VectorOfPacket::create( std::vector<mediapipe::Packet> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPacket").create( $other ) -> <VectorOfPacket object>
 ```
@@ -85545,7 +85545,7 @@ AutoIt:
 ### VectorOfPacket::IsInstance
 
 ```cpp
-static bool VectorOfPacket::IsInstance( const VectorOfPacket& obj );
+static bool VectorOfPacket::IsInstance( const std::vector<mediapipe::Packet>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPacket").IsInstance( $obj ) -> retval
 ```
@@ -85559,7 +85559,7 @@ AutoIt:
 ### VectorOfPacket::Items
 
 ```cpp
-VectorOfPacket VectorOfPacket::Items();
+std::vector<mediapipe::Packet> VectorOfPacket::Items();
 AutoIt:
     $oVectorOfPacket.Items() -> retval
 ```
@@ -85583,7 +85583,7 @@ AutoIt:
 ### VectorOfPacket::\_\_eq\_\_
 
 ```cpp
-bool VectorOfPacket::__eq__( const VectorOfPacket& other );
+bool VectorOfPacket::__eq__( const std::vector<mediapipe::Packet>& other );
 AutoIt:
     $oVectorOfPacket.__eq__( $other ) -> retval
 ```
@@ -85685,15 +85685,15 @@ AutoIt:
 ### VectorOfPacket::push\_vector
 
 ```cpp
-void VectorOfPacket::push_vector( VectorOfPacket other );
+void VectorOfPacket::push_vector( std::vector<mediapipe::Packet> other );
 AutoIt:
     $oVectorOfPacket.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfPacket::push_vector( VectorOfPacket other,
-                                  size_t         count,
-                                  size_t         start = 0 );
+void VectorOfPacket::push_vector( std::vector<mediapipe::Packet> other,
+                                  size_t                         count,
+                                  size_t                         start = 0 );
 AutoIt:
     $oVectorOfPacket.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -85718,8 +85718,8 @@ AutoIt:
 ### VectorOfPacket::slice
 
 ```cpp
-VectorOfPacket VectorOfPacket::slice( size_t start = 0,
-                                      size_t count = __self->get()->size() );
+std::vector<mediapipe::Packet> VectorOfPacket::slice( size_t start = 0,
+                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPacket.slice( [$start[, $count]] ) -> retval
 ```
@@ -85757,13 +85757,13 @@ AutoIt:
 ### MapOfStringAndPacket::create
 
 ```cpp
-static MapOfStringAndPacket MapOfStringAndPacket::create();
+static std::map<std::string, mediapipe::Packet> MapOfStringAndPacket::create();
 AutoIt:
     _Mediapipe_ObjCreate("MapOfStringAndPacket").create() -> <MapOfStringAndPacket object>
 ```
 
 ```cpp
-static std::shared_ptr<MapOfStringAndPacket> MapOfStringAndPacket::create( std::vector<std::pair<std::string, mediapipe::Packet>> pairs );
+static std::shared_ptr<std::map<std::string, mediapipe::Packet>> MapOfStringAndPacket::create( std::vector<std::pair<std::string, mediapipe::Packet>> pairs );
 AutoIt:
     _Mediapipe_ObjCreate("MapOfStringAndPacket").create( $pairs ) -> retval
 ```
@@ -85788,7 +85788,7 @@ AutoIt:
 ### MapOfStringAndPacket::IsInstance
 
 ```cpp
-static bool MapOfStringAndPacket::IsInstance( const MapOfStringAndPacket& obj );
+static bool MapOfStringAndPacket::IsInstance( const std::map<std::string, mediapipe::Packet>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("MapOfStringAndPacket").IsInstance( $obj ) -> retval
 ```
@@ -85826,7 +85826,7 @@ AutoIt:
 ### MapOfStringAndPacket::\_\_eq\_\_
 
 ```cpp
-bool MapOfStringAndPacket::__eq__( const MapOfStringAndPacket& other );
+bool MapOfStringAndPacket::__eq__( const std::map<std::string, mediapipe::Packet>& other );
 AutoIt:
     $oMapOfStringAndPacket.__eq__( $other ) -> retval
 ```
@@ -85929,7 +85929,7 @@ AutoIt:
 ### MapOfStringAndPacket::merge
 
 ```cpp
-void MapOfStringAndPacket::merge( MapOfStringAndPacket other );
+void MapOfStringAndPacket::merge( std::map<std::string, mediapipe::Packet> other );
 AutoIt:
     $oMapOfStringAndPacket.merge( $other ) -> None
 ```
@@ -85964,19 +85964,19 @@ AutoIt:
 ### VectorOfPairOfStringAndPacket::create
 
 ```cpp
-static VectorOfPairOfStringAndPacket VectorOfPairOfStringAndPacket::create();
+static std::vector<std::pair<std::string, mediapipe::Packet>> VectorOfPairOfStringAndPacket::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacket").create() -> <VectorOfPairOfStringAndPacket object>
 ```
 
 ```cpp
-static VectorOfPairOfStringAndPacket VectorOfPairOfStringAndPacket::create( size_t size );
+static std::vector<std::pair<std::string, mediapipe::Packet>> VectorOfPairOfStringAndPacket::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacket").create( $size ) -> <VectorOfPairOfStringAndPacket object>
 ```
 
 ```cpp
-static VectorOfPairOfStringAndPacket VectorOfPairOfStringAndPacket::create( VectorOfPairOfStringAndPacket other );
+static std::vector<std::pair<std::string, mediapipe::Packet>> VectorOfPairOfStringAndPacket::create( std::vector<std::pair<std::string, mediapipe::Packet>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacket").create( $other ) -> <VectorOfPairOfStringAndPacket object>
 ```
@@ -85992,7 +85992,7 @@ AutoIt:
 ### VectorOfPairOfStringAndPacket::IsInstance
 
 ```cpp
-static bool VectorOfPairOfStringAndPacket::IsInstance( const VectorOfPairOfStringAndPacket& obj );
+static bool VectorOfPairOfStringAndPacket::IsInstance( const std::vector<std::pair<std::string, mediapipe::Packet>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacket").IsInstance( $obj ) -> retval
 ```
@@ -86006,7 +86006,7 @@ AutoIt:
 ### VectorOfPairOfStringAndPacket::Items
 
 ```cpp
-VectorOfPairOfStringAndPacket VectorOfPairOfStringAndPacket::Items();
+std::vector<std::pair<std::string, mediapipe::Packet>> VectorOfPairOfStringAndPacket::Items();
 AutoIt:
     $oVectorOfPairOfStringAndPacket.Items() -> retval
 ```
@@ -86030,7 +86030,7 @@ AutoIt:
 ### VectorOfPairOfStringAndPacket::\_\_eq\_\_
 
 ```cpp
-bool VectorOfPairOfStringAndPacket::__eq__( const VectorOfPairOfStringAndPacket& other );
+bool VectorOfPairOfStringAndPacket::__eq__( const std::vector<std::pair<std::string, mediapipe::Packet>>& other );
 AutoIt:
     $oVectorOfPairOfStringAndPacket.__eq__( $other ) -> retval
 ```
@@ -86132,15 +86132,15 @@ AutoIt:
 ### VectorOfPairOfStringAndPacket::push\_vector
 
 ```cpp
-void VectorOfPairOfStringAndPacket::push_vector( VectorOfPairOfStringAndPacket other );
+void VectorOfPairOfStringAndPacket::push_vector( std::vector<std::pair<std::string, mediapipe::Packet>> other );
 AutoIt:
     $oVectorOfPairOfStringAndPacket.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfPairOfStringAndPacket::push_vector( VectorOfPairOfStringAndPacket other,
-                                                 size_t                        count,
-                                                 size_t                        start = 0 );
+void VectorOfPairOfStringAndPacket::push_vector( std::vector<std::pair<std::string, mediapipe::Packet>> other,
+                                                 size_t                                                 count,
+                                                 size_t                                                 start = 0 );
 AutoIt:
     $oVectorOfPairOfStringAndPacket.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -86165,8 +86165,8 @@ AutoIt:
 ### VectorOfPairOfStringAndPacket::slice
 
 ```cpp
-VectorOfPairOfStringAndPacket VectorOfPairOfStringAndPacket::slice( size_t start = 0,
-                                                                    size_t count = __self->get()->size() );
+std::vector<std::pair<std::string, mediapipe::Packet>> VectorOfPairOfStringAndPacket::slice( size_t start = 0,
+                                                                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfStringAndPacket.slice( [$start[, $count]] ) -> retval
 ```
@@ -86199,252 +86199,252 @@ AutoIt:
     $oVectorOfPairOfStringAndPacket.start() -> retval
 ```
 
-## VectorOfInt64
+## VectorOfInt64\_t
 
-### VectorOfInt64.Count
+### VectorOfInt64\_t.Count
 
 ```cpp
-size_t VectorOfInt64::size()
+size_t VectorOfInt64_t::size()
 AutoIt:
-    [propget] $oVectorOfInt64.Count
+    [propget] $oVectorOfInt64_t.Count
 ```
 
-### VectorOfInt64::create
+### VectorOfInt64\_t::create
 
 ```cpp
-static VectorOfInt64 VectorOfInt64::create();
+static std::vector<int64_t> VectorOfInt64_t::create();
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfInt64").create() -> <VectorOfInt64 object>
-```
-
-```cpp
-static VectorOfInt64 VectorOfInt64::create( size_t size );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfInt64").create( $size ) -> <VectorOfInt64 object>
+    _Mediapipe_ObjCreate("VectorOfInt64_t").create() -> <VectorOfInt64_t object>
 ```
 
 ```cpp
-static VectorOfInt64 VectorOfInt64::create( VectorOfInt64 other );
+static std::vector<int64_t> VectorOfInt64_t::create( size_t size );
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfInt64").create( $other ) -> <VectorOfInt64 object>
-```
-
-### VectorOfInt64::Add
-
-```cpp
-void VectorOfInt64::Add( int64_t value );
-AutoIt:
-    $oVectorOfInt64.Add( $value ) -> None
-```
-
-### VectorOfInt64::IsInstance
-
-```cpp
-static bool VectorOfInt64::IsInstance( const VectorOfInt64& obj );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfInt64").IsInstance( $obj ) -> retval
+    _Mediapipe_ObjCreate("VectorOfInt64_t").create( $size ) -> <VectorOfInt64_t object>
 ```
 
 ```cpp
-static bool VectorOfInt64::IsInstance( VARIANT* obj );
+static std::vector<int64_t> VectorOfInt64_t::create( std::vector<int64_t> other );
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfInt64").IsInstance( $obj ) -> retval
+    _Mediapipe_ObjCreate("VectorOfInt64_t").create( $other ) -> <VectorOfInt64_t object>
 ```
 
-### VectorOfInt64::Items
+### VectorOfInt64\_t::Add
 
 ```cpp
-VectorOfInt64 VectorOfInt64::Items();
+void VectorOfInt64_t::Add( int64_t value );
 AutoIt:
-    $oVectorOfInt64.Items() -> retval
+    $oVectorOfInt64_t.Add( $value ) -> None
 ```
 
-### VectorOfInt64::Keys
+### VectorOfInt64\_t::IsInstance
 
 ```cpp
-std::vector<int> VectorOfInt64::Keys();
+static bool VectorOfInt64_t::IsInstance( const std::vector<int64_t>& obj );
 AutoIt:
-    $oVectorOfInt64.Keys() -> retval
-```
-
-### VectorOfInt64::Remove
-
-```cpp
-void VectorOfInt64::Remove( size_t index );
-AutoIt:
-    $oVectorOfInt64.Remove( $index ) -> None
-```
-
-### VectorOfInt64::\_\_eq\_\_
-
-```cpp
-bool VectorOfInt64::__eq__( const VectorOfInt64& other );
-AutoIt:
-    $oVectorOfInt64.__eq__( $other ) -> retval
+    _Mediapipe_ObjCreate("VectorOfInt64_t").IsInstance( $obj ) -> retval
 ```
 
 ```cpp
-bool VectorOfInt64::__eq__( VARIANT* other );
+static bool VectorOfInt64_t::IsInstance( VARIANT* obj );
 AutoIt:
-    $oVectorOfInt64.__eq__( $other ) -> retval
+    _Mediapipe_ObjCreate("VectorOfInt64_t").IsInstance( $obj ) -> retval
 ```
 
-### VectorOfInt64::\_\_str\_\_
+### VectorOfInt64\_t::Items
 
 ```cpp
-std::string VectorOfInt64::__str__();
+std::vector<int64_t> VectorOfInt64_t::Items();
 AutoIt:
-    $oVectorOfInt64.__str__() -> retval
+    $oVectorOfInt64_t.Items() -> retval
 ```
 
-### VectorOfInt64::\_\_type\_\_
+### VectorOfInt64\_t::Keys
 
 ```cpp
-static std::string VectorOfInt64::__type__();
+std::vector<int> VectorOfInt64_t::Keys();
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfInt64").__type__() -> retval
+    $oVectorOfInt64_t.Keys() -> retval
 ```
 
-### VectorOfInt64::append
+### VectorOfInt64\_t::Remove
 
 ```cpp
-void VectorOfInt64::append( int64_t value );
+void VectorOfInt64_t::Remove( size_t index );
 AutoIt:
-    $oVectorOfInt64.append( $value ) -> None
+    $oVectorOfInt64_t.Remove( $index ) -> None
 ```
 
-### VectorOfInt64::at
+### VectorOfInt64\_t::\_\_eq\_\_
 
 ```cpp
-int64_t VectorOfInt64::at( size_t index );
+bool VectorOfInt64_t::__eq__( const std::vector<int64_t>& other );
 AutoIt:
-    $oVectorOfInt64.at( $index ) -> retval
-```
-
-```cpp
-void VectorOfInt64::at( size_t  index,
-                        int64_t value );
-AutoIt:
-    $oVectorOfInt64.at( $index, $value ) -> None
-```
-
-### VectorOfInt64::clear
-
-```cpp
-void VectorOfInt64::clear();
-AutoIt:
-    $oVectorOfInt64.clear() -> None
-```
-
-### VectorOfInt64::empty
-
-```cpp
-bool VectorOfInt64::empty();
-AutoIt:
-    $oVectorOfInt64.empty() -> retval
-```
-
-### VectorOfInt64::end
-
-```cpp
-void* VectorOfInt64::end();
-AutoIt:
-    $oVectorOfInt64.end() -> retval
-```
-
-### VectorOfInt64::get\_Item
-
-```cpp
-int64_t VectorOfInt64::get_Item( size_t index );
-AutoIt:
-    $oVectorOfInt64.Item( $index ) -> retval
-    $oVectorOfInt64( $index ) -> retval
-```
-
-### VectorOfInt64::get\_\_NewEnum
-
-```cpp
-IUnknown* VectorOfInt64::get__NewEnum();
-AutoIt:
-    $oVectorOfInt64._NewEnum() -> retval
-```
-
-### VectorOfInt64::push\_back
-
-```cpp
-void VectorOfInt64::push_back( int64_t value );
-AutoIt:
-    $oVectorOfInt64.push_back( $value ) -> None
-```
-
-### VectorOfInt64::push\_vector
-
-```cpp
-void VectorOfInt64::push_vector( VectorOfInt64 other );
-AutoIt:
-    $oVectorOfInt64.push_vector( $other ) -> None
+    $oVectorOfInt64_t.__eq__( $other ) -> retval
 ```
 
 ```cpp
-void VectorOfInt64::push_vector( VectorOfInt64 other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+bool VectorOfInt64_t::__eq__( VARIANT* other );
 AutoIt:
-    $oVectorOfInt64.push_vector( $other, $count[, $start] ) -> None
+    $oVectorOfInt64_t.__eq__( $other ) -> retval
 ```
 
-### VectorOfInt64::put\_Item
+### VectorOfInt64\_t::\_\_str\_\_
 
 ```cpp
-void VectorOfInt64::put_Item( size_t  index,
-                              int64_t item );
+std::string VectorOfInt64_t::__str__();
 AutoIt:
-    $oVectorOfInt64.Item( $index ) = $item
+    $oVectorOfInt64_t.__str__() -> retval
 ```
 
-### VectorOfInt64::size
+### VectorOfInt64\_t::\_\_type\_\_
 
 ```cpp
-size_t VectorOfInt64::size();
+static std::string VectorOfInt64_t::__type__();
 AutoIt:
-    $oVectorOfInt64.size() -> retval
+    _Mediapipe_ObjCreate("VectorOfInt64_t").__type__() -> retval
 ```
 
-### VectorOfInt64::slice
+### VectorOfInt64\_t::append
 
 ```cpp
-VectorOfInt64 VectorOfInt64::slice( size_t start = 0,
+void VectorOfInt64_t::append( int64_t value );
+AutoIt:
+    $oVectorOfInt64_t.append( $value ) -> None
+```
+
+### VectorOfInt64\_t::at
+
+```cpp
+int64_t VectorOfInt64_t::at( size_t index );
+AutoIt:
+    $oVectorOfInt64_t.at( $index ) -> retval
+```
+
+```cpp
+void VectorOfInt64_t::at( size_t  index,
+                          int64_t value );
+AutoIt:
+    $oVectorOfInt64_t.at( $index, $value ) -> None
+```
+
+### VectorOfInt64\_t::clear
+
+```cpp
+void VectorOfInt64_t::clear();
+AutoIt:
+    $oVectorOfInt64_t.clear() -> None
+```
+
+### VectorOfInt64\_t::empty
+
+```cpp
+bool VectorOfInt64_t::empty();
+AutoIt:
+    $oVectorOfInt64_t.empty() -> retval
+```
+
+### VectorOfInt64\_t::end
+
+```cpp
+void* VectorOfInt64_t::end();
+AutoIt:
+    $oVectorOfInt64_t.end() -> retval
+```
+
+### VectorOfInt64\_t::get\_Item
+
+```cpp
+int64_t VectorOfInt64_t::get_Item( size_t index );
+AutoIt:
+    $oVectorOfInt64_t.Item( $index ) -> retval
+    $oVectorOfInt64_t( $index ) -> retval
+```
+
+### VectorOfInt64\_t::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfInt64_t::get__NewEnum();
+AutoIt:
+    $oVectorOfInt64_t._NewEnum() -> retval
+```
+
+### VectorOfInt64\_t::push\_back
+
+```cpp
+void VectorOfInt64_t::push_back( int64_t value );
+AutoIt:
+    $oVectorOfInt64_t.push_back( $value ) -> None
+```
+
+### VectorOfInt64\_t::push\_vector
+
+```cpp
+void VectorOfInt64_t::push_vector( std::vector<int64_t> other );
+AutoIt:
+    $oVectorOfInt64_t.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfInt64_t::push_vector( std::vector<int64_t> other,
+                                   size_t               count,
+                                   size_t               start = 0 );
+AutoIt:
+    $oVectorOfInt64_t.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfInt64\_t::put\_Item
+
+```cpp
+void VectorOfInt64_t::put_Item( size_t  index,
+                                int64_t item );
+AutoIt:
+    $oVectorOfInt64_t.Item( $index ) = $item
+```
+
+### VectorOfInt64\_t::size
+
+```cpp
+size_t VectorOfInt64_t::size();
+AutoIt:
+    $oVectorOfInt64_t.size() -> retval
+```
+
+### VectorOfInt64\_t::slice
+
+```cpp
+std::vector<int64_t> VectorOfInt64_t::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfInt64_t.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfInt64\_t::sort
+
+```cpp
+void VectorOfInt64_t::sort( void*  comparator,
+                            size_t start = 0,
+                            size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfInt64_t.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfInt64\_t::sort\_variant
+
+```cpp
+void VectorOfInt64_t::sort_variant( void*  comparator,
+                                    size_t start = 0,
                                     size_t count = __self->get()->size() );
 AutoIt:
-    $oVectorOfInt64.slice( [$start[, $count]] ) -> retval
+    $oVectorOfInt64_t.sort_variant( $comparator[, $start[, $count]] ) -> None
 ```
 
-### VectorOfInt64::sort
+### VectorOfInt64\_t::start
 
 ```cpp
-void VectorOfInt64::sort( void*  comparator,
-                          size_t start = 0,
-                          size_t count = __self->get()->size() );
+void* VectorOfInt64_t::start();
 AutoIt:
-    $oVectorOfInt64.sort( $comparator[, $start[, $count]] ) -> None
-```
-
-### VectorOfInt64::sort\_variant
-
-```cpp
-void VectorOfInt64::sort_variant( void*  comparator,
-                                  size_t start = 0,
-                                  size_t count = __self->get()->size() );
-AutoIt:
-    $oVectorOfInt64.sort_variant( $comparator[, $start[, $count]] ) -> None
-```
-
-### VectorOfInt64::start
-
-```cpp
-void* VectorOfInt64::start();
-AutoIt:
-    $oVectorOfInt64.start() -> retval
+    $oVectorOfInt64_t.start() -> retval
 ```
 
 ## VectorOfSharedPtrOfMessage
@@ -86460,19 +86460,19 @@ AutoIt:
 ### VectorOfSharedPtrOfMessage::create
 
 ```cpp
-static VectorOfSharedPtrOfMessage VectorOfSharedPtrOfMessage::create();
+static std::vector<std::shared_ptr<google::protobuf::Message>> VectorOfSharedPtrOfMessage::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfMessage").create() -> <VectorOfSharedPtrOfMessage object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfMessage VectorOfSharedPtrOfMessage::create( size_t size );
+static std::vector<std::shared_ptr<google::protobuf::Message>> VectorOfSharedPtrOfMessage::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfMessage").create( $size ) -> <VectorOfSharedPtrOfMessage object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfMessage VectorOfSharedPtrOfMessage::create( VectorOfSharedPtrOfMessage other );
+static std::vector<std::shared_ptr<google::protobuf::Message>> VectorOfSharedPtrOfMessage::create( std::vector<std::shared_ptr<google::protobuf::Message>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfMessage").create( $other ) -> <VectorOfSharedPtrOfMessage object>
 ```
@@ -86488,7 +86488,7 @@ AutoIt:
 ### VectorOfSharedPtrOfMessage::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfMessage::IsInstance( const VectorOfSharedPtrOfMessage& obj );
+static bool VectorOfSharedPtrOfMessage::IsInstance( const std::vector<std::shared_ptr<google::protobuf::Message>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfMessage").IsInstance( $obj ) -> retval
 ```
@@ -86502,7 +86502,7 @@ AutoIt:
 ### VectorOfSharedPtrOfMessage::Items
 
 ```cpp
-VectorOfSharedPtrOfMessage VectorOfSharedPtrOfMessage::Items();
+std::vector<std::shared_ptr<google::protobuf::Message>> VectorOfSharedPtrOfMessage::Items();
 AutoIt:
     $oVectorOfSharedPtrOfMessage.Items() -> retval
 ```
@@ -86526,7 +86526,7 @@ AutoIt:
 ### VectorOfSharedPtrOfMessage::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfMessage::__eq__( const VectorOfSharedPtrOfMessage& other );
+bool VectorOfSharedPtrOfMessage::__eq__( const std::vector<std::shared_ptr<google::protobuf::Message>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfMessage.__eq__( $other ) -> retval
 ```
@@ -86628,15 +86628,15 @@ AutoIt:
 ### VectorOfSharedPtrOfMessage::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfMessage::push_vector( VectorOfSharedPtrOfMessage other );
+void VectorOfSharedPtrOfMessage::push_vector( std::vector<std::shared_ptr<google::protobuf::Message>> other );
 AutoIt:
     $oVectorOfSharedPtrOfMessage.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfMessage::push_vector( VectorOfSharedPtrOfMessage other,
-                                              size_t                     count,
-                                              size_t                     start = 0 );
+void VectorOfSharedPtrOfMessage::push_vector( std::vector<std::shared_ptr<google::protobuf::Message>> other,
+                                              size_t                                                  count,
+                                              size_t                                                  start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfMessage.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -86661,8 +86661,8 @@ AutoIt:
 ### VectorOfSharedPtrOfMessage::slice
 
 ```cpp
-VectorOfSharedPtrOfMessage VectorOfSharedPtrOfMessage::slice( size_t start = 0,
-                                                              size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<google::protobuf::Message>> VectorOfSharedPtrOfMessage::slice( size_t start = 0,
+                                                                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfMessage.slice( [$start[, $count]] ) -> retval
 ```
@@ -86700,13 +86700,13 @@ AutoIt:
 ### MapOfIntAndDrawing\_utils\_DrawingSpec::create
 
 ```cpp
-static MapOfIntAndDrawing_utils_DrawingSpec MapOfIntAndDrawing_utils_DrawingSpec::create();
+static std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> MapOfIntAndDrawing_utils_DrawingSpec::create();
 AutoIt:
     _Mediapipe_ObjCreate("MapOfIntAndDrawing_utils_DrawingSpec").create() -> <MapOfIntAndDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static std::shared_ptr<MapOfIntAndDrawing_utils_DrawingSpec> MapOfIntAndDrawing_utils_DrawingSpec::create( std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> pairs );
+static std::shared_ptr<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> MapOfIntAndDrawing_utils_DrawingSpec::create( std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> pairs );
 AutoIt:
     _Mediapipe_ObjCreate("MapOfIntAndDrawing_utils_DrawingSpec").create( $pairs ) -> retval
 ```
@@ -86731,7 +86731,7 @@ AutoIt:
 ### MapOfIntAndDrawing\_utils\_DrawingSpec::IsInstance
 
 ```cpp
-static bool MapOfIntAndDrawing_utils_DrawingSpec::IsInstance( const MapOfIntAndDrawing_utils_DrawingSpec& obj );
+static bool MapOfIntAndDrawing_utils_DrawingSpec::IsInstance( const std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("MapOfIntAndDrawing_utils_DrawingSpec").IsInstance( $obj ) -> retval
 ```
@@ -86769,7 +86769,7 @@ AutoIt:
 ### MapOfIntAndDrawing\_utils\_DrawingSpec::\_\_eq\_\_
 
 ```cpp
-bool MapOfIntAndDrawing_utils_DrawingSpec::__eq__( const MapOfIntAndDrawing_utils_DrawingSpec& other );
+bool MapOfIntAndDrawing_utils_DrawingSpec::__eq__( const std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>& other );
 AutoIt:
     $oMapOfIntAndDrawing_utils_DrawingSpec.__eq__( $other ) -> retval
 ```
@@ -86872,7 +86872,7 @@ AutoIt:
 ### MapOfIntAndDrawing\_utils\_DrawingSpec::merge
 
 ```cpp
-void MapOfIntAndDrawing_utils_DrawingSpec::merge( MapOfIntAndDrawing_utils_DrawingSpec other );
+void MapOfIntAndDrawing_utils_DrawingSpec::merge( std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec> other );
 AutoIt:
     $oMapOfIntAndDrawing_utils_DrawingSpec.merge( $other ) -> None
 ```
@@ -86907,19 +86907,19 @@ AutoIt:
 ### VectorOfPairOfIntAndDrawing\_utils\_DrawingSpec::create
 
 ```cpp
-static VectorOfPairOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndDrawing_utils_DrawingSpec::create();
+static std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndDrawing_utils_DrawingSpec::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfIntAndDrawing_utils_DrawingSpec").create() -> <VectorOfPairOfIntAndDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static VectorOfPairOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndDrawing_utils_DrawingSpec::create( size_t size );
+static std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndDrawing_utils_DrawingSpec::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfIntAndDrawing_utils_DrawingSpec").create( $size ) -> <VectorOfPairOfIntAndDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static VectorOfPairOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndDrawing_utils_DrawingSpec::create( VectorOfPairOfIntAndDrawing_utils_DrawingSpec other );
+static std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndDrawing_utils_DrawingSpec::create( std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfIntAndDrawing_utils_DrawingSpec").create( $other ) -> <VectorOfPairOfIntAndDrawing_utils_DrawingSpec object>
 ```
@@ -86935,7 +86935,7 @@ AutoIt:
 ### VectorOfPairOfIntAndDrawing\_utils\_DrawingSpec::IsInstance
 
 ```cpp
-static bool VectorOfPairOfIntAndDrawing_utils_DrawingSpec::IsInstance( const VectorOfPairOfIntAndDrawing_utils_DrawingSpec& obj );
+static bool VectorOfPairOfIntAndDrawing_utils_DrawingSpec::IsInstance( const std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfIntAndDrawing_utils_DrawingSpec").IsInstance( $obj ) -> retval
 ```
@@ -86949,7 +86949,7 @@ AutoIt:
 ### VectorOfPairOfIntAndDrawing\_utils\_DrawingSpec::Items
 
 ```cpp
-VectorOfPairOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndDrawing_utils_DrawingSpec::Items();
+std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndDrawing_utils_DrawingSpec::Items();
 AutoIt:
     $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.Items() -> retval
 ```
@@ -86973,7 +86973,7 @@ AutoIt:
 ### VectorOfPairOfIntAndDrawing\_utils\_DrawingSpec::\_\_eq\_\_
 
 ```cpp
-bool VectorOfPairOfIntAndDrawing_utils_DrawingSpec::__eq__( const VectorOfPairOfIntAndDrawing_utils_DrawingSpec& other );
+bool VectorOfPairOfIntAndDrawing_utils_DrawingSpec::__eq__( const std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& other );
 AutoIt:
     $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.__eq__( $other ) -> retval
 ```
@@ -87075,15 +87075,15 @@ AutoIt:
 ### VectorOfPairOfIntAndDrawing\_utils\_DrawingSpec::push\_vector
 
 ```cpp
-void VectorOfPairOfIntAndDrawing_utils_DrawingSpec::push_vector( VectorOfPairOfIntAndDrawing_utils_DrawingSpec other );
+void VectorOfPairOfIntAndDrawing_utils_DrawingSpec::push_vector( std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> other );
 AutoIt:
     $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfPairOfIntAndDrawing_utils_DrawingSpec::push_vector( VectorOfPairOfIntAndDrawing_utils_DrawingSpec other,
-                                                                 size_t                                        count,
-                                                                 size_t                                        start = 0 );
+void VectorOfPairOfIntAndDrawing_utils_DrawingSpec::push_vector( std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> other,
+                                                                 size_t                                                                                count,
+                                                                 size_t                                                                                start = 0 );
 AutoIt:
     $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -87108,8 +87108,8 @@ AutoIt:
 ### VectorOfPairOfIntAndDrawing\_utils\_DrawingSpec::slice
 
 ```cpp
-VectorOfPairOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndDrawing_utils_DrawingSpec::slice( size_t start = 0,
-                                                                                                    size_t count = __self->get()->size() );
+std::vector<std::pair<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfPairOfIntAndDrawing_utils_DrawingSpec::slice( size_t start = 0,
+                                                                                                                                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfIntAndDrawing_utils_DrawingSpec.slice( [$start[, $count]] ) -> retval
 ```
@@ -87155,19 +87155,19 @@ AutoIt:
 ### VectorOfDrawing\_utils\_DrawingSpec::create
 
 ```cpp
-static VectorOfDrawing_utils_DrawingSpec VectorOfDrawing_utils_DrawingSpec::create();
+static std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfDrawing_utils_DrawingSpec::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfDrawing_utils_DrawingSpec").create() -> <VectorOfDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static VectorOfDrawing_utils_DrawingSpec VectorOfDrawing_utils_DrawingSpec::create( size_t size );
+static std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfDrawing_utils_DrawingSpec::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfDrawing_utils_DrawingSpec").create( $size ) -> <VectorOfDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static VectorOfDrawing_utils_DrawingSpec VectorOfDrawing_utils_DrawingSpec::create( VectorOfDrawing_utils_DrawingSpec other );
+static std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfDrawing_utils_DrawingSpec::create( std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfDrawing_utils_DrawingSpec").create( $other ) -> <VectorOfDrawing_utils_DrawingSpec object>
 ```
@@ -87183,7 +87183,7 @@ AutoIt:
 ### VectorOfDrawing\_utils\_DrawingSpec::IsInstance
 
 ```cpp
-static bool VectorOfDrawing_utils_DrawingSpec::IsInstance( const VectorOfDrawing_utils_DrawingSpec& obj );
+static bool VectorOfDrawing_utils_DrawingSpec::IsInstance( const std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfDrawing_utils_DrawingSpec").IsInstance( $obj ) -> retval
 ```
@@ -87197,7 +87197,7 @@ AutoIt:
 ### VectorOfDrawing\_utils\_DrawingSpec::Items
 
 ```cpp
-VectorOfDrawing_utils_DrawingSpec VectorOfDrawing_utils_DrawingSpec::Items();
+std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfDrawing_utils_DrawingSpec::Items();
 AutoIt:
     $oVectorOfDrawing_utils_DrawingSpec.Items() -> retval
 ```
@@ -87221,7 +87221,7 @@ AutoIt:
 ### VectorOfDrawing\_utils\_DrawingSpec::\_\_eq\_\_
 
 ```cpp
-bool VectorOfDrawing_utils_DrawingSpec::__eq__( const VectorOfDrawing_utils_DrawingSpec& other );
+bool VectorOfDrawing_utils_DrawingSpec::__eq__( const std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec>& other );
 AutoIt:
     $oVectorOfDrawing_utils_DrawingSpec.__eq__( $other ) -> retval
 ```
@@ -87323,15 +87323,15 @@ AutoIt:
 ### VectorOfDrawing\_utils\_DrawingSpec::push\_vector
 
 ```cpp
-void VectorOfDrawing_utils_DrawingSpec::push_vector( VectorOfDrawing_utils_DrawingSpec other );
+void VectorOfDrawing_utils_DrawingSpec::push_vector( std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> other );
 AutoIt:
     $oVectorOfDrawing_utils_DrawingSpec.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfDrawing_utils_DrawingSpec::push_vector( VectorOfDrawing_utils_DrawingSpec other,
-                                                     size_t                            count,
-                                                     size_t                            start = 0 );
+void VectorOfDrawing_utils_DrawingSpec::push_vector( std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> other,
+                                                     size_t                                                                count,
+                                                     size_t                                                                start = 0 );
 AutoIt:
     $oVectorOfDrawing_utils_DrawingSpec.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -87356,8 +87356,8 @@ AutoIt:
 ### VectorOfDrawing\_utils\_DrawingSpec::slice
 
 ```cpp
-VectorOfDrawing_utils_DrawingSpec VectorOfDrawing_utils_DrawingSpec::slice( size_t start = 0,
-                                                                            size_t count = __self->get()->size() );
+std::vector<mediapipe::autoit::solutions::drawing_utils::DrawingSpec> VectorOfDrawing_utils_DrawingSpec::slice( size_t start = 0,
+                                                                                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfDrawing_utils_DrawingSpec.slice( [$start[, $count]] ) -> retval
 ```
@@ -87395,13 +87395,13 @@ AutoIt:
 ### MapOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::create
 
 ```cpp
-static MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create();
+static std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create();
 AutoIt:
     _Mediapipe_ObjCreate("MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec").create() -> <MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static std::shared_ptr<MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec> MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create( std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> pairs );
+static std::shared_ptr<std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create( std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> pairs );
 AutoIt:
     _Mediapipe_ObjCreate("MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec").create( $pairs ) -> retval
 ```
@@ -87426,7 +87426,7 @@ AutoIt:
 ### MapOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::IsInstance
 
 ```cpp
-static bool MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::IsInstance( const MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec& obj );
+static bool MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::IsInstance( const std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec").IsInstance( $obj ) -> retval
 ```
@@ -87464,7 +87464,7 @@ AutoIt:
 ### MapOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::\_\_eq\_\_
 
 ```cpp
-bool MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::__eq__( const MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec& other );
+bool MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::__eq__( const std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& other );
 AutoIt:
     $oMapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.__eq__( $other ) -> retval
 ```
@@ -87567,7 +87567,7 @@ AutoIt:
 ### MapOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::merge
 
 ```cpp
-void MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::merge( MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec other );
+void MapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::merge( std::map<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> other );
 AutoIt:
     $oMapOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.merge( $other ) -> None
 ```
@@ -87602,19 +87602,19 @@ AutoIt:
 ### VectorOfPairOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::create
 
 ```cpp
-static VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create();
+static std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec").create() -> <VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create( size_t size );
+static std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec").create( $size ) -> <VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create( VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec other );
+static std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::create( std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec").create( $other ) -> <VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec object>
 ```
@@ -87630,7 +87630,7 @@ AutoIt:
 ### VectorOfPairOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::IsInstance
 
 ```cpp
-static bool VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::IsInstance( const VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec& obj );
+static bool VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::IsInstance( const std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec").IsInstance( $obj ) -> retval
 ```
@@ -87644,7 +87644,7 @@ AutoIt:
 ### VectorOfPairOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::Items
 
 ```cpp
-VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::Items();
+std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::Items();
 AutoIt:
     $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.Items() -> retval
 ```
@@ -87668,7 +87668,7 @@ AutoIt:
 ### VectorOfPairOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::\_\_eq\_\_
 
 ```cpp
-bool VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::__eq__( const VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec& other );
+bool VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::__eq__( const std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>>& other );
 AutoIt:
     $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.__eq__( $other ) -> retval
 ```
@@ -87770,15 +87770,15 @@ AutoIt:
 ### VectorOfPairOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::push\_vector
 
 ```cpp
-void VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::push_vector( VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec other );
+void VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::push_vector( std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> other );
 AutoIt:
     $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::push_vector( VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec other,
-                                                                            size_t                                                   count,
-                                                                            size_t                                                   start = 0 );
+void VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::push_vector( std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> other,
+                                                                            size_t                                                                                               count,
+                                                                            size_t                                                                                               start = 0 );
 AutoIt:
     $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -87803,8 +87803,8 @@ AutoIt:
 ### VectorOfPairOfIntAndMapOfIntAndDrawing\_utils\_DrawingSpec::slice
 
 ```cpp
-VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::slice( size_t start = 0,
-                                                                                                                          size_t count = __self->get()->size() );
+std::vector<std::pair<int, std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>> VectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec::slice( size_t start = 0,
+                                                                                                                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfIntAndMapOfIntAndDrawing_utils_DrawingSpec.slice( [$start[, $count]] ) -> retval
 ```
@@ -87850,19 +87850,19 @@ AutoIt:
 ### VectorOfMapOfIntAndDrawing\_utils\_DrawingSpec::create
 
 ```cpp
-static VectorOfMapOfIntAndDrawing_utils_DrawingSpec VectorOfMapOfIntAndDrawing_utils_DrawingSpec::create();
+static std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfMapOfIntAndDrawing_utils_DrawingSpec::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfMapOfIntAndDrawing_utils_DrawingSpec").create() -> <VectorOfMapOfIntAndDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static VectorOfMapOfIntAndDrawing_utils_DrawingSpec VectorOfMapOfIntAndDrawing_utils_DrawingSpec::create( size_t size );
+static std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfMapOfIntAndDrawing_utils_DrawingSpec::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfMapOfIntAndDrawing_utils_DrawingSpec").create( $size ) -> <VectorOfMapOfIntAndDrawing_utils_DrawingSpec object>
 ```
 
 ```cpp
-static VectorOfMapOfIntAndDrawing_utils_DrawingSpec VectorOfMapOfIntAndDrawing_utils_DrawingSpec::create( VectorOfMapOfIntAndDrawing_utils_DrawingSpec other );
+static std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfMapOfIntAndDrawing_utils_DrawingSpec::create( std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfMapOfIntAndDrawing_utils_DrawingSpec").create( $other ) -> <VectorOfMapOfIntAndDrawing_utils_DrawingSpec object>
 ```
@@ -87878,7 +87878,7 @@ AutoIt:
 ### VectorOfMapOfIntAndDrawing\_utils\_DrawingSpec::IsInstance
 
 ```cpp
-static bool VectorOfMapOfIntAndDrawing_utils_DrawingSpec::IsInstance( const VectorOfMapOfIntAndDrawing_utils_DrawingSpec& obj );
+static bool VectorOfMapOfIntAndDrawing_utils_DrawingSpec::IsInstance( const std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfMapOfIntAndDrawing_utils_DrawingSpec").IsInstance( $obj ) -> retval
 ```
@@ -87892,7 +87892,7 @@ AutoIt:
 ### VectorOfMapOfIntAndDrawing\_utils\_DrawingSpec::Items
 
 ```cpp
-VectorOfMapOfIntAndDrawing_utils_DrawingSpec VectorOfMapOfIntAndDrawing_utils_DrawingSpec::Items();
+std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfMapOfIntAndDrawing_utils_DrawingSpec::Items();
 AutoIt:
     $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.Items() -> retval
 ```
@@ -87916,7 +87916,7 @@ AutoIt:
 ### VectorOfMapOfIntAndDrawing\_utils\_DrawingSpec::\_\_eq\_\_
 
 ```cpp
-bool VectorOfMapOfIntAndDrawing_utils_DrawingSpec::__eq__( const VectorOfMapOfIntAndDrawing_utils_DrawingSpec& other );
+bool VectorOfMapOfIntAndDrawing_utils_DrawingSpec::__eq__( const std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>>& other );
 AutoIt:
     $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.__eq__( $other ) -> retval
 ```
@@ -88018,15 +88018,15 @@ AutoIt:
 ### VectorOfMapOfIntAndDrawing\_utils\_DrawingSpec::push\_vector
 
 ```cpp
-void VectorOfMapOfIntAndDrawing_utils_DrawingSpec::push_vector( VectorOfMapOfIntAndDrawing_utils_DrawingSpec other );
+void VectorOfMapOfIntAndDrawing_utils_DrawingSpec::push_vector( std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> other );
 AutoIt:
     $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfMapOfIntAndDrawing_utils_DrawingSpec::push_vector( VectorOfMapOfIntAndDrawing_utils_DrawingSpec other,
-                                                                size_t                                       count,
-                                                                size_t                                       start = 0 );
+void VectorOfMapOfIntAndDrawing_utils_DrawingSpec::push_vector( std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> other,
+                                                                size_t                                                                               count,
+                                                                size_t                                                                               start = 0 );
 AutoIt:
     $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -88051,8 +88051,8 @@ AutoIt:
 ### VectorOfMapOfIntAndDrawing\_utils\_DrawingSpec::slice
 
 ```cpp
-VectorOfMapOfIntAndDrawing_utils_DrawingSpec VectorOfMapOfIntAndDrawing_utils_DrawingSpec::slice( size_t start = 0,
-                                                                                                  size_t count = __self->get()->size() );
+std::vector<std::map<int, mediapipe::autoit::solutions::drawing_utils::DrawingSpec>> VectorOfMapOfIntAndDrawing_utils_DrawingSpec::slice( size_t start = 0,
+                                                                                                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfMapOfIntAndDrawing_utils_DrawingSpec.slice( [$start[, $count]] ) -> retval
 ```
@@ -88098,19 +88098,19 @@ AutoIt:
 ### VectorOfTupleIntAndInt::create
 
 ```cpp
-static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create();
+static std::vector<std::tuple<int, int>> VectorOfTupleIntAndInt::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create() -> <VectorOfTupleIntAndInt object>
 ```
 
 ```cpp
-static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create( size_t size );
+static std::vector<std::tuple<int, int>> VectorOfTupleIntAndInt::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create( $size ) -> <VectorOfTupleIntAndInt object>
 ```
 
 ```cpp
-static VectorOfTupleIntAndInt VectorOfTupleIntAndInt::create( VectorOfTupleIntAndInt other );
+static std::vector<std::tuple<int, int>> VectorOfTupleIntAndInt::create( std::vector<std::tuple<int, int>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").create( $other ) -> <VectorOfTupleIntAndInt object>
 ```
@@ -88126,7 +88126,7 @@ AutoIt:
 ### VectorOfTupleIntAndInt::IsInstance
 
 ```cpp
-static bool VectorOfTupleIntAndInt::IsInstance( const VectorOfTupleIntAndInt& obj );
+static bool VectorOfTupleIntAndInt::IsInstance( const std::vector<std::tuple<int, int>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTupleIntAndInt").IsInstance( $obj ) -> retval
 ```
@@ -88140,7 +88140,7 @@ AutoIt:
 ### VectorOfTupleIntAndInt::Items
 
 ```cpp
-VectorOfTupleIntAndInt VectorOfTupleIntAndInt::Items();
+std::vector<std::tuple<int, int>> VectorOfTupleIntAndInt::Items();
 AutoIt:
     $oVectorOfTupleIntAndInt.Items() -> retval
 ```
@@ -88164,7 +88164,7 @@ AutoIt:
 ### VectorOfTupleIntAndInt::\_\_eq\_\_
 
 ```cpp
-bool VectorOfTupleIntAndInt::__eq__( const VectorOfTupleIntAndInt& other );
+bool VectorOfTupleIntAndInt::__eq__( const std::vector<std::tuple<int, int>>& other );
 AutoIt:
     $oVectorOfTupleIntAndInt.__eq__( $other ) -> retval
 ```
@@ -88266,15 +88266,15 @@ AutoIt:
 ### VectorOfTupleIntAndInt::push\_vector
 
 ```cpp
-void VectorOfTupleIntAndInt::push_vector( VectorOfTupleIntAndInt other );
+void VectorOfTupleIntAndInt::push_vector( std::vector<std::tuple<int, int>> other );
 AutoIt:
     $oVectorOfTupleIntAndInt.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfTupleIntAndInt::push_vector( VectorOfTupleIntAndInt other,
-                                          size_t                 count,
-                                          size_t                 start = 0 );
+void VectorOfTupleIntAndInt::push_vector( std::vector<std::tuple<int, int>> other,
+                                          size_t                            count,
+                                          size_t                            start = 0 );
 AutoIt:
     $oVectorOfTupleIntAndInt.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -88299,8 +88299,8 @@ AutoIt:
 ### VectorOfTupleIntAndInt::slice
 
 ```cpp
-VectorOfTupleIntAndInt VectorOfTupleIntAndInt::slice( size_t start = 0,
-                                                      size_t count = __self->get()->size() );
+std::vector<std::tuple<int, int>> VectorOfTupleIntAndInt::slice( size_t start = 0,
+                                                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfTupleIntAndInt.slice( [$start[, $count]] ) -> retval
 ```
@@ -88346,19 +88346,19 @@ AutoIt:
 ### VectorOfTupleObjectron\_BoxLandmarkAndObjectron\_BoxLandmark::create
 
 ```cpp
-static VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::create();
+static std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>> VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark").create() -> <VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark object>
 ```
 
 ```cpp
-static VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::create( size_t size );
+static std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>> VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark").create( $size ) -> <VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark object>
 ```
 
 ```cpp
-static VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::create( VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark other );
+static std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>> VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::create( std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark").create( $other ) -> <VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark object>
 ```
@@ -88374,7 +88374,7 @@ AutoIt:
 ### VectorOfTupleObjectron\_BoxLandmarkAndObjectron\_BoxLandmark::IsInstance
 
 ```cpp
-static bool VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::IsInstance( const VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark& obj );
+static bool VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::IsInstance( const std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark").IsInstance( $obj ) -> retval
 ```
@@ -88388,7 +88388,7 @@ AutoIt:
 ### VectorOfTupleObjectron\_BoxLandmarkAndObjectron\_BoxLandmark::Items
 
 ```cpp
-VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::Items();
+std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>> VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::Items();
 AutoIt:
     $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.Items() -> retval
 ```
@@ -88412,7 +88412,7 @@ AutoIt:
 ### VectorOfTupleObjectron\_BoxLandmarkAndObjectron\_BoxLandmark::\_\_eq\_\_
 
 ```cpp
-bool VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::__eq__( const VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark& other );
+bool VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::__eq__( const std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>>& other );
 AutoIt:
     $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.__eq__( $other ) -> retval
 ```
@@ -88514,15 +88514,15 @@ AutoIt:
 ### VectorOfTupleObjectron\_BoxLandmarkAndObjectron\_BoxLandmark::push\_vector
 
 ```cpp
-void VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::push_vector( VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark other );
+void VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::push_vector( std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>> other );
 AutoIt:
     $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::push_vector( VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark other,
-                                                                              size_t                                                     count,
-                                                                              size_t                                                     start = 0 );
+void VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::push_vector( std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>> other,
+                                                                              size_t                                                                                                                              count,
+                                                                              size_t                                                                                                                              start = 0 );
 AutoIt:
     $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -88547,8 +88547,8 @@ AutoIt:
 ### VectorOfTupleObjectron\_BoxLandmarkAndObjectron\_BoxLandmark::slice
 
 ```cpp
-VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::slice( size_t start = 0,
-                                                                                                                              size_t count = __self->get()->size() );
+std::vector<std::tuple<mediapipe::autoit::solutions::objectron::BoxLandmark, mediapipe::autoit::solutions::objectron::BoxLandmark>> VectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark::slice( size_t start = 0,
+                                                                                                                                                                                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfTupleObjectron_BoxLandmarkAndObjectron_BoxLandmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -88586,13 +88586,13 @@ AutoIt:
 ### MapOfStringAndPacketDataType::create
 
 ```cpp
-static MapOfStringAndPacketDataType MapOfStringAndPacketDataType::create();
+static std::map<std::string, mediapipe::autoit::solution_base::PacketDataType> MapOfStringAndPacketDataType::create();
 AutoIt:
     _Mediapipe_ObjCreate("MapOfStringAndPacketDataType").create() -> <MapOfStringAndPacketDataType object>
 ```
 
 ```cpp
-static std::shared_ptr<MapOfStringAndPacketDataType> MapOfStringAndPacketDataType::create( std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> pairs );
+static std::shared_ptr<std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>> MapOfStringAndPacketDataType::create( std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> pairs );
 AutoIt:
     _Mediapipe_ObjCreate("MapOfStringAndPacketDataType").create( $pairs ) -> retval
 ```
@@ -88617,7 +88617,7 @@ AutoIt:
 ### MapOfStringAndPacketDataType::IsInstance
 
 ```cpp
-static bool MapOfStringAndPacketDataType::IsInstance( const MapOfStringAndPacketDataType& obj );
+static bool MapOfStringAndPacketDataType::IsInstance( const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("MapOfStringAndPacketDataType").IsInstance( $obj ) -> retval
 ```
@@ -88655,7 +88655,7 @@ AutoIt:
 ### MapOfStringAndPacketDataType::\_\_eq\_\_
 
 ```cpp
-bool MapOfStringAndPacketDataType::__eq__( const MapOfStringAndPacketDataType& other );
+bool MapOfStringAndPacketDataType::__eq__( const std::map<std::string, mediapipe::autoit::solution_base::PacketDataType>& other );
 AutoIt:
     $oMapOfStringAndPacketDataType.__eq__( $other ) -> retval
 ```
@@ -88758,7 +88758,7 @@ AutoIt:
 ### MapOfStringAndPacketDataType::merge
 
 ```cpp
-void MapOfStringAndPacketDataType::merge( MapOfStringAndPacketDataType other );
+void MapOfStringAndPacketDataType::merge( std::map<std::string, mediapipe::autoit::solution_base::PacketDataType> other );
 AutoIt:
     $oMapOfStringAndPacketDataType.merge( $other ) -> None
 ```
@@ -88793,19 +88793,19 @@ AutoIt:
 ### VectorOfPairOfStringAndPacketDataType::create
 
 ```cpp
-static VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::create();
+static std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> VectorOfPairOfStringAndPacketDataType::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacketDataType").create() -> <VectorOfPairOfStringAndPacketDataType object>
 ```
 
 ```cpp
-static VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::create( size_t size );
+static std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> VectorOfPairOfStringAndPacketDataType::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacketDataType").create( $size ) -> <VectorOfPairOfStringAndPacketDataType object>
 ```
 
 ```cpp
-static VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::create( VectorOfPairOfStringAndPacketDataType other );
+static std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> VectorOfPairOfStringAndPacketDataType::create( std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacketDataType").create( $other ) -> <VectorOfPairOfStringAndPacketDataType object>
 ```
@@ -88821,7 +88821,7 @@ AutoIt:
 ### VectorOfPairOfStringAndPacketDataType::IsInstance
 
 ```cpp
-static bool VectorOfPairOfStringAndPacketDataType::IsInstance( const VectorOfPairOfStringAndPacketDataType& obj );
+static bool VectorOfPairOfStringAndPacketDataType::IsInstance( const std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPairOfStringAndPacketDataType").IsInstance( $obj ) -> retval
 ```
@@ -88835,7 +88835,7 @@ AutoIt:
 ### VectorOfPairOfStringAndPacketDataType::Items
 
 ```cpp
-VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::Items();
+std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> VectorOfPairOfStringAndPacketDataType::Items();
 AutoIt:
     $oVectorOfPairOfStringAndPacketDataType.Items() -> retval
 ```
@@ -88859,7 +88859,7 @@ AutoIt:
 ### VectorOfPairOfStringAndPacketDataType::\_\_eq\_\_
 
 ```cpp
-bool VectorOfPairOfStringAndPacketDataType::__eq__( const VectorOfPairOfStringAndPacketDataType& other );
+bool VectorOfPairOfStringAndPacketDataType::__eq__( const std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>>& other );
 AutoIt:
     $oVectorOfPairOfStringAndPacketDataType.__eq__( $other ) -> retval
 ```
@@ -88961,15 +88961,15 @@ AutoIt:
 ### VectorOfPairOfStringAndPacketDataType::push\_vector
 
 ```cpp
-void VectorOfPairOfStringAndPacketDataType::push_vector( VectorOfPairOfStringAndPacketDataType other );
+void VectorOfPairOfStringAndPacketDataType::push_vector( std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> other );
 AutoIt:
     $oVectorOfPairOfStringAndPacketDataType.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfPairOfStringAndPacketDataType::push_vector( VectorOfPairOfStringAndPacketDataType other,
-                                                         size_t                                count,
-                                                         size_t                                start = 0 );
+void VectorOfPairOfStringAndPacketDataType::push_vector( std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> other,
+                                                         size_t                                                                                count,
+                                                         size_t                                                                                start = 0 );
 AutoIt:
     $oVectorOfPairOfStringAndPacketDataType.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -88994,8 +88994,8 @@ AutoIt:
 ### VectorOfPairOfStringAndPacketDataType::slice
 
 ```cpp
-VectorOfPairOfStringAndPacketDataType VectorOfPairOfStringAndPacketDataType::slice( size_t start = 0,
-                                                                                    size_t count = __self->get()->size() );
+std::vector<std::pair<std::string, mediapipe::autoit::solution_base::PacketDataType>> VectorOfPairOfStringAndPacketDataType::slice( size_t start = 0,
+                                                                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPairOfStringAndPacketDataType.slice( [$start[, $count]] ) -> retval
 ```
@@ -89041,19 +89041,19 @@ AutoIt:
 ### VectorOfPacketDataType::create
 
 ```cpp
-static VectorOfPacketDataType VectorOfPacketDataType::create();
+static std::vector<mediapipe::autoit::solution_base::PacketDataType> VectorOfPacketDataType::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPacketDataType").create() -> <VectorOfPacketDataType object>
 ```
 
 ```cpp
-static VectorOfPacketDataType VectorOfPacketDataType::create( size_t size );
+static std::vector<mediapipe::autoit::solution_base::PacketDataType> VectorOfPacketDataType::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPacketDataType").create( $size ) -> <VectorOfPacketDataType object>
 ```
 
 ```cpp
-static VectorOfPacketDataType VectorOfPacketDataType::create( VectorOfPacketDataType other );
+static std::vector<mediapipe::autoit::solution_base::PacketDataType> VectorOfPacketDataType::create( std::vector<mediapipe::autoit::solution_base::PacketDataType> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPacketDataType").create( $other ) -> <VectorOfPacketDataType object>
 ```
@@ -89069,7 +89069,7 @@ AutoIt:
 ### VectorOfPacketDataType::IsInstance
 
 ```cpp
-static bool VectorOfPacketDataType::IsInstance( const VectorOfPacketDataType& obj );
+static bool VectorOfPacketDataType::IsInstance( const std::vector<mediapipe::autoit::solution_base::PacketDataType>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfPacketDataType").IsInstance( $obj ) -> retval
 ```
@@ -89083,7 +89083,7 @@ AutoIt:
 ### VectorOfPacketDataType::Items
 
 ```cpp
-VectorOfPacketDataType VectorOfPacketDataType::Items();
+std::vector<mediapipe::autoit::solution_base::PacketDataType> VectorOfPacketDataType::Items();
 AutoIt:
     $oVectorOfPacketDataType.Items() -> retval
 ```
@@ -89107,7 +89107,7 @@ AutoIt:
 ### VectorOfPacketDataType::\_\_eq\_\_
 
 ```cpp
-bool VectorOfPacketDataType::__eq__( const VectorOfPacketDataType& other );
+bool VectorOfPacketDataType::__eq__( const std::vector<mediapipe::autoit::solution_base::PacketDataType>& other );
 AutoIt:
     $oVectorOfPacketDataType.__eq__( $other ) -> retval
 ```
@@ -89209,15 +89209,15 @@ AutoIt:
 ### VectorOfPacketDataType::push\_vector
 
 ```cpp
-void VectorOfPacketDataType::push_vector( VectorOfPacketDataType other );
+void VectorOfPacketDataType::push_vector( std::vector<mediapipe::autoit::solution_base::PacketDataType> other );
 AutoIt:
     $oVectorOfPacketDataType.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfPacketDataType::push_vector( VectorOfPacketDataType other,
-                                          size_t                 count,
-                                          size_t                 start = 0 );
+void VectorOfPacketDataType::push_vector( std::vector<mediapipe::autoit::solution_base::PacketDataType> other,
+                                          size_t                                                        count,
+                                          size_t                                                        start = 0 );
 AutoIt:
     $oVectorOfPacketDataType.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -89242,8 +89242,8 @@ AutoIt:
 ### VectorOfPacketDataType::slice
 
 ```cpp
-VectorOfPacketDataType VectorOfPacketDataType::slice( size_t start = 0,
-                                                      size_t count = __self->get()->size() );
+std::vector<mediapipe::autoit::solution_base::PacketDataType> VectorOfPacketDataType::slice( size_t start = 0,
+                                                                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfPacketDataType.slice( [$start[, $count]] ) -> retval
 ```
@@ -89289,19 +89289,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::create( VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult object>
 ```
@@ -89317,7 +89317,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult").IsInstance( $obj ) -> retval
 ```
@@ -89331,7 +89331,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult.Items() -> retval
 ```
@@ -89355,7 +89355,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult.__eq__( $other ) -> retval
 ```
@@ -89457,15 +89457,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult other,
-                                                                                                                    size_t                                                                                           count,
-                                                                                                                    size_t                                                                                           start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>> other,
+                                                                                                                    size_t                                                                                                                      count,
+                                                                                                                    size_t                                                                                                                      start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -89490,8 +89490,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_ClassificationResult::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::slice( size_t start = 0,
-                                                                                                                                                                                                          size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::ClassificationResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult::slice( size_t start = 0,
+                                                                                                                                                                                                                                     size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_ClassificationResult.slice( [$start[, $count]] ) -> retval
 ```
@@ -89537,19 +89537,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::create( VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult object>
 ```
@@ -89565,7 +89565,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult").IsInstance( $obj ) -> retval
 ```
@@ -89579,7 +89579,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult.Items() -> retval
 ```
@@ -89603,7 +89603,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult.__eq__( $other ) -> retval
 ```
@@ -89705,15 +89705,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult other,
-                                                                                                          size_t                                                                                 count,
-                                                                                                          size_t                                                                                 start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>> other,
+                                                                                                          size_t                                                                                                            count,
+                                                                                                          size_t                                                                                                            start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -89738,8 +89738,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_EmbeddingResult::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::slice( size_t start = 0,
-                                                                                                                                                                                      size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::EmbeddingResult>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult::slice( size_t start = 0,
+                                                                                                                                                                                                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_EmbeddingResult.slice( [$start[, $count]] ) -> retval
 ```
@@ -89785,19 +89785,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create( VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category object>
 ```
@@ -89813,7 +89813,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category").IsInstance( $obj ) -> retval
 ```
@@ -89827,7 +89827,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.Items() -> retval
 ```
@@ -89851,7 +89851,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.__eq__( $other ) -> retval
 ```
@@ -89953,15 +89953,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category other,
-                                                                                           size_t                                                                  count,
-                                                                                           size_t                                                                  start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> other,
+                                                                                           size_t                                                                                             count,
+                                                                                           size_t                                                                                             start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -89986,8 +89986,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::slice( size_t start = 0,
-                                                                                                                                                        size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>> VectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::slice( size_t start = 0,
+                                                                                                                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.slice( [$start[, $count]] ) -> retval
 ```
@@ -90033,19 +90033,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_Classifications::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::create( VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications object>
 ```
@@ -90061,7 +90061,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_Classifications::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications").IsInstance( $obj ) -> retval
 ```
@@ -90075,7 +90075,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_Classifications::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications.Items() -> retval
 ```
@@ -90099,7 +90099,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_Classifications::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications.__eq__( $other ) -> retval
 ```
@@ -90201,15 +90201,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_Classifications::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications other,
-                                                                                                               size_t                                                                                      count,
-                                                                                                               size_t                                                                                      start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>> other,
+                                                                                                               size_t                                                                                                                 count,
+                                                                                                               size_t                                                                                                                 start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -90234,8 +90234,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_classification\_result\_Classifications::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::slice( size_t start = 0,
-                                                                                                                                                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::classification_result::Classifications>> VectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications::slice( size_t start = 0,
+                                                                                                                                                                                                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_classification_result_Classifications.slice( [$start[, $count]] ) -> retval
 ```
@@ -90281,19 +90281,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create( VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint object>
 ```
@@ -90309,7 +90309,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint").IsInstance( $obj ) -> retval
 ```
@@ -90323,7 +90323,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint.Items() -> retval
 ```
@@ -90347,7 +90347,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint.__eq__( $other ) -> retval
 ```
@@ -90449,15 +90449,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint other,
-                                                                                                     size_t                                                                            count,
-                                                                                                     size_t                                                                            start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> other,
+                                                                                                     size_t                                                                                                       count,
+                                                                                                     size_t                                                                                                       start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -90482,8 +90482,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_keypoint\_NormalizedKeypoint::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::slice( size_t start = 0,
-                                                                                                                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::keypoint::NormalizedKeypoint>> VectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint::slice( size_t start = 0,
+                                                                                                                                                                                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_keypoint_NormalizedKeypoint.slice( [$start[, $count]] ) -> retval
 ```
@@ -90529,19 +90529,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_detections\_Detection::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>> VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>> VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::create( VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>> VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection object>
 ```
@@ -90557,7 +90557,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_detections\_Detection::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection").IsInstance( $obj ) -> retval
 ```
@@ -90571,7 +90571,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_detections\_Detection::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>> VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection.Items() -> retval
 ```
@@ -90595,7 +90595,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_detections\_Detection::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection.__eq__( $other ) -> retval
 ```
@@ -90697,15 +90697,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_detections\_Detection::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection other,
-                                                                                              size_t                                                                     count,
-                                                                                              size_t                                                                     start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>> other,
+                                                                                              size_t                                                                                                count,
+                                                                                              size_t                                                                                                start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -90730,8 +90730,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_detections\_Detection::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::slice( size_t start = 0,
-                                                                                                                                                              size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::detections::Detection>> VectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection::slice( size_t start = 0,
+                                                                                                                                                                                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_detections_Detection.slice( [$start[, $count]] ) -> retval
 ```
@@ -90777,19 +90777,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_Embedding::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::create( VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding object>
 ```
@@ -90805,7 +90805,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_Embedding::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding").IsInstance( $obj ) -> retval
 ```
@@ -90819,7 +90819,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_Embedding::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding.Items() -> retval
 ```
@@ -90843,7 +90843,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_Embedding::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding.__eq__( $other ) -> retval
 ```
@@ -90945,15 +90945,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_Embedding::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding other,
-                                                                                                    size_t                                                                           count,
-                                                                                                    size_t                                                                           start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>> other,
+                                                                                                    size_t                                                                                                      count,
+                                                                                                    size_t                                                                                                      start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -90978,8 +90978,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_embedding\_result\_Embedding::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::slice( size_t start = 0,
-                                                                                                                                                                          size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::embedding_result::Embedding>> VectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding::slice( size_t start = 0,
+                                                                                                                                                                                                     size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_embedding_result_Embedding.slice( [$start[, $count]] ) -> retval
 ```
@@ -91025,19 +91025,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create( VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark object>
 ```
@@ -91053,7 +91053,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark").IsInstance( $obj ) -> retval
 ```
@@ -91067,7 +91067,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.Items() -> retval
 ```
@@ -91091,7 +91091,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.__eq__( $other ) -> retval
 ```
@@ -91193,15 +91193,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark other,
-                                                                                                     size_t                                                                            count,
-                                                                                                     size_t                                                                            start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> other,
+                                                                                                     size_t                                                                                                       count,
+                                                                                                     size_t                                                                                                       start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -91226,8 +91226,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::slice( size_t start = 0,
-                                                                                                                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::slice( size_t start = 0,
+                                                                                                                                                                                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -91273,19 +91273,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark").create() -> <VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create( VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark object>
 ```
@@ -91301,7 +91301,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::IsInstance( const VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark").IsInstance( $obj ) -> retval
 ```
@@ -91315,7 +91315,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.Items() -> retval
 ```
@@ -91339,7 +91339,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::__eq__( const VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark& other );
+bool VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.__eq__( $other ) -> retval
 ```
@@ -91441,15 +91441,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark other );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::push_vector( VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark other,
-                                                                                           size_t                                                                  count,
-                                                                                           size_t                                                                  start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> other,
+                                                                                           size_t                                                                                             count,
+                                                                                           size_t                                                                                             start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -91474,8 +91474,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::slice( size_t start = 0,
-                                                                                                                                                        size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>> VectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::slice( size_t start = 0,
+                                                                                                                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -91521,19 +91521,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_text\_language\_detector\_LanguageDetectorResult\_Detection::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>> VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection").create() -> <VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>> VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection").create( $size ) -> <VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::create( VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection other );
+static std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>> VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::create( std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection").create( $other ) -> <VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection object>
 ```
@@ -91549,7 +91549,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_text\_language\_detector\_LanguageDetectorResult\_Detection::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::IsInstance( const VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection& obj );
+static bool VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection").IsInstance( $obj ) -> retval
 ```
@@ -91563,7 +91563,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_text\_language\_detector\_LanguageDetectorResult\_Detection::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>> VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection.Items() -> retval
 ```
@@ -91587,7 +91587,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_text\_language\_detector\_LanguageDetectorResult\_Detection::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::__eq__( const VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection& other );
+bool VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection.__eq__( $other ) -> retval
 ```
@@ -91689,15 +91689,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_text\_language\_detector\_LanguageDetectorResult\_Detection::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::push_vector( VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection other );
+void VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::push_vector( VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection other,
-                                                                                                           size_t                                                                                  count,
-                                                                                                           size_t                                                                                  start = 0 );
+void VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>> other,
+                                                                                                           size_t                                                                                                             count,
+                                                                                                           size_t                                                                                                             start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -91722,8 +91722,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_autoit\_text\_language\_detector\_LanguageDetectorResult\_Detection::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::slice( size_t start = 0,
-                                                                                                                                                                                        size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::autoit::text::language_detector::LanguageDetectorResult::Detection>> VectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection::slice( size_t start = 0,
+                                                                                                                                                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_autoit_text_language_detector_LanguageDetectorResult_Detection.slice( [$start[, $count]] ) -> retval
 ```
@@ -91821,19 +91821,19 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::create
 
 ```cpp
-static VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create();
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection").create() -> <VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection object>
 ```
 
 ```cpp
-static VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create( size_t size );
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection").create( $size ) -> <VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection object>
 ```
 
 ```cpp
-static VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create( VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection other );
+static std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::create( std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection").create( $other ) -> <VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection object>
 ```
@@ -91849,7 +91849,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::IsInstance
 
 ```cpp
-static bool VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::IsInstance( const VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection& obj );
+static bool VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::IsInstance( const std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection").IsInstance( $obj ) -> retval
 ```
@@ -91863,7 +91863,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::Items
 
 ```cpp
-VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::Items();
+std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::Items();
 AutoIt:
     $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.Items() -> retval
 ```
@@ -91887,7 +91887,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::\_\_eq\_\_
 
 ```cpp
-bool VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::__eq__( const VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection& other );
+bool VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::__eq__( const std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection>& other );
 AutoIt:
     $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.__eq__( $other ) -> retval
 ```
@@ -91989,15 +91989,15 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::push\_vector
 
 ```cpp
-void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::push_vector( VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection other );
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::push_vector( std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> other );
 AutoIt:
     $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::push_vector( VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection other,
-                                                                                                   size_t                                                                          count,
-                                                                                                   size_t                                                                          start = 0 );
+void VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::push_vector( std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> other,
+                                                                                                   size_t                                                                                               count,
+                                                                                                   size_t                                                                                               start = 0 );
 AutoIt:
     $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -92022,8 +92022,8 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_face\_landmarker\_FaceLandmarksConnections\_Connection::slice
 
 ```cpp
-VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::slice( size_t start = 0,
-                                                                                                                                                                        size_t count = __self->get()->size() );
+std::vector<mediapipe::tasks::autoit::vision::face_landmarker::FaceLandmarksConnections::Connection> VectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection::slice( size_t start = 0,
+                                                                                                                                                                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfTasks_autoit_vision_face_landmarker_FaceLandmarksConnections_Connection.slice( [$start[, $count]] ) -> retval
 ```
@@ -92069,19 +92069,19 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::create
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create();
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark").create() -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create( size_t size );
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark").create( $size ) -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark other );
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::create( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark").create( $other ) -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark object>
 ```
@@ -92097,7 +92097,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::IsInstance( const VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark& obj );
+static bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::IsInstance( const std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark").IsInstance( $obj ) -> retval
 ```
@@ -92111,7 +92111,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::Items
 
 ```cpp
-VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::Items();
+std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::Items();
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.Items() -> retval
 ```
@@ -92135,7 +92135,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::__eq__( const VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark& other );
+bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::__eq__( const std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.__eq__( $other ) -> retval
 ```
@@ -92237,15 +92237,15 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark other );
+void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>> other );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark other,
-                                                                                                                        size_t                                                                                               count,
-                                                                                                                        size_t                                                                                               start = 0 );
+void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::push_vector( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>> other,
+                                                                                                                        size_t                                                                                                                                     count,
+                                                                                                                        size_t                                                                                                                                     start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -92270,8 +92270,8 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_NormalizedLandmark::slice
 
 ```cpp
-VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::slice( size_t start = 0,
-                                                                                                                                                                                                                  size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::NormalizedLandmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark::slice( size_t start = 0,
+                                                                                                                                                                                                                                                        size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_NormalizedLandmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -92317,19 +92317,19 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::create
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create();
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category").create() -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create( size_t size );
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category").create( $size ) -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category other );
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::create( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category").create( $other ) -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category object>
 ```
@@ -92345,7 +92345,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::IsInstance( const VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category& obj );
+static bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::IsInstance( const std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category").IsInstance( $obj ) -> retval
 ```
@@ -92359,7 +92359,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::Items
 
 ```cpp
-VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::Items();
+std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::Items();
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.Items() -> retval
 ```
@@ -92383,7 +92383,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::__eq__( const VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category& other );
+bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::__eq__( const std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.__eq__( $other ) -> retval
 ```
@@ -92485,15 +92485,15 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::push_vector( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category other );
+void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::push_vector( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>> other );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::push_vector( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category other,
-                                                                                                              size_t                                                                                     count,
-                                                                                                              size_t                                                                                     start = 0 );
+void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::push_vector( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>> other,
+                                                                                                              size_t                                                                                                                           count,
+                                                                                                              size_t                                                                                                                           start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -92518,8 +92518,8 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_category\_Category::slice
 
 ```cpp
-VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::slice( size_t start = 0,
-                                                                                                                                                                                              size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::category::Category>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category::slice( size_t start = 0,
+                                                                                                                                                                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_category_Category.slice( [$start[, $count]] ) -> retval
 ```
@@ -92565,19 +92565,19 @@ AutoIt:
 ### VectorOfMat::create
 
 ```cpp
-static VectorOfMat VectorOfMat::create();
+static std::vector<cv::Mat> VectorOfMat::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfMat").create() -> <VectorOfMat object>
 ```
 
 ```cpp
-static VectorOfMat VectorOfMat::create( size_t size );
+static std::vector<cv::Mat> VectorOfMat::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfMat").create( $size ) -> <VectorOfMat object>
 ```
 
 ```cpp
-static VectorOfMat VectorOfMat::create( VectorOfMat other );
+static std::vector<cv::Mat> VectorOfMat::create( std::vector<cv::Mat> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfMat").create( $other ) -> <VectorOfMat object>
 ```
@@ -92593,7 +92593,7 @@ AutoIt:
 ### VectorOfMat::IsInstance
 
 ```cpp
-static bool VectorOfMat::IsInstance( const VectorOfMat& obj );
+static bool VectorOfMat::IsInstance( const std::vector<cv::Mat>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfMat").IsInstance( $obj ) -> retval
 ```
@@ -92607,7 +92607,7 @@ AutoIt:
 ### VectorOfMat::Items
 
 ```cpp
-VectorOfMat VectorOfMat::Items();
+std::vector<cv::Mat> VectorOfMat::Items();
 AutoIt:
     $oVectorOfMat.Items() -> retval
 ```
@@ -92631,7 +92631,7 @@ AutoIt:
 ### VectorOfMat::\_\_eq\_\_
 
 ```cpp
-bool VectorOfMat::__eq__( const VectorOfMat& other );
+bool VectorOfMat::__eq__( const std::vector<cv::Mat>& other );
 AutoIt:
     $oVectorOfMat.__eq__( $other ) -> retval
 ```
@@ -92733,15 +92733,15 @@ AutoIt:
 ### VectorOfMat::push\_vector
 
 ```cpp
-void VectorOfMat::push_vector( VectorOfMat other );
+void VectorOfMat::push_vector( std::vector<cv::Mat> other );
 AutoIt:
     $oVectorOfMat.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfMat::push_vector( VectorOfMat other,
-                               size_t      count,
-                               size_t      start = 0 );
+void VectorOfMat::push_vector( std::vector<cv::Mat> other,
+                               size_t               count,
+                               size_t               start = 0 );
 AutoIt:
     $oVectorOfMat.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -92766,8 +92766,8 @@ AutoIt:
 ### VectorOfMat::slice
 
 ```cpp
-VectorOfMat VectorOfMat::slice( size_t start = 0,
-                                size_t count = __self->get()->size() );
+std::vector<cv::Mat> VectorOfMat::slice( size_t start = 0,
+                                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfMat.slice( [$start[, $count]] ) -> retval
 ```
@@ -92813,19 +92813,19 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::create
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create();
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark").create() -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create( size_t size );
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark").create( $size ) -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark other );
+static std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::create( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark").create( $other ) -> <VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark object>
 ```
@@ -92841,7 +92841,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::IsInstance( const VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark& obj );
+static bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::IsInstance( const std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark").IsInstance( $obj ) -> retval
 ```
@@ -92855,7 +92855,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::Items
 
 ```cpp
-VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::Items();
+std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::Items();
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.Items() -> retval
 ```
@@ -92879,7 +92879,7 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::__eq__( const VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark& other );
+bool VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::__eq__( const std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.__eq__( $other ) -> retval
 ```
@@ -92981,15 +92981,15 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::push_vector( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark other );
+void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::push_vector( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>> other );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::push_vector( VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark other,
-                                                                                                              size_t                                                                                     count,
-                                                                                                              size_t                                                                                     start = 0 );
+void VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::push_vector( std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>> other,
+                                                                                                              size_t                                                                                                                           count,
+                                                                                                              size_t                                                                                                                           start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -93014,8 +93014,8 @@ AutoIt:
 ### VectorOfSharedPtrOfVectorOfSharedPtrOfTasks\_autoit\_components\_containers\_landmark\_Landmark::slice
 
 ```cpp
-VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::slice( size_t start = 0,
-                                                                                                                                                                                              size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<std::vector<std::shared_ptr<mediapipe::tasks::autoit::components::containers::landmark::Landmark>>>> VectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark::slice( size_t start = 0,
+                                                                                                                                                                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfVectorOfSharedPtrOfTasks_autoit_components_containers_landmark_Landmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -93061,19 +93061,19 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_hand\_landmarker\_HandLandmarksConnections\_Connection::create
 
 ```cpp
-static VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::create();
+static std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection> VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection").create() -> <VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection object>
 ```
 
 ```cpp
-static VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::create( size_t size );
+static std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection> VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection").create( $size ) -> <VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection object>
 ```
 
 ```cpp
-static VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::create( VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection other );
+static std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection> VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::create( std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection").create( $other ) -> <VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection object>
 ```
@@ -93089,7 +93089,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_hand\_landmarker\_HandLandmarksConnections\_Connection::IsInstance
 
 ```cpp
-static bool VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::IsInstance( const VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection& obj );
+static bool VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::IsInstance( const std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection").IsInstance( $obj ) -> retval
 ```
@@ -93103,7 +93103,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_hand\_landmarker\_HandLandmarksConnections\_Connection::Items
 
 ```cpp
-VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::Items();
+std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection> VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::Items();
 AutoIt:
     $oVectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection.Items() -> retval
 ```
@@ -93127,7 +93127,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_hand\_landmarker\_HandLandmarksConnections\_Connection::\_\_eq\_\_
 
 ```cpp
-bool VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::__eq__( const VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection& other );
+bool VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::__eq__( const std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection>& other );
 AutoIt:
     $oVectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection.__eq__( $other ) -> retval
 ```
@@ -93229,15 +93229,15 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_hand\_landmarker\_HandLandmarksConnections\_Connection::push\_vector
 
 ```cpp
-void VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::push_vector( VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection other );
+void VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::push_vector( std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection> other );
 AutoIt:
     $oVectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::push_vector( VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection other,
-                                                                                                   size_t                                                                          count,
-                                                                                                   size_t                                                                          start = 0 );
+void VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::push_vector( std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection> other,
+                                                                                                   size_t                                                                                               count,
+                                                                                                   size_t                                                                                               start = 0 );
 AutoIt:
     $oVectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -93262,8 +93262,8 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_hand\_landmarker\_HandLandmarksConnections\_Connection::slice
 
 ```cpp
-VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::slice( size_t start = 0,
-                                                                                                                                                                        size_t count = __self->get()->size() );
+std::vector<mediapipe::tasks::autoit::vision::hand_landmarker::HandLandmarksConnections::Connection> VectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection::slice( size_t start = 0,
+                                                                                                                                                                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfTasks_autoit_vision_hand_landmarker_HandLandmarksConnections_Connection.slice( [$start[, $count]] ) -> retval
 ```
@@ -93309,19 +93309,19 @@ AutoIt:
 ### VectorOfSharedPtrOfImage::create
 
 ```cpp
-static VectorOfSharedPtrOfImage VectorOfSharedPtrOfImage::create();
+static std::vector<std::shared_ptr<mediapipe::Image>> VectorOfSharedPtrOfImage::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfImage").create() -> <VectorOfSharedPtrOfImage object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfImage VectorOfSharedPtrOfImage::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Image>> VectorOfSharedPtrOfImage::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfImage").create( $size ) -> <VectorOfSharedPtrOfImage object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfImage VectorOfSharedPtrOfImage::create( VectorOfSharedPtrOfImage other );
+static std::vector<std::shared_ptr<mediapipe::Image>> VectorOfSharedPtrOfImage::create( std::vector<std::shared_ptr<mediapipe::Image>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfImage").create( $other ) -> <VectorOfSharedPtrOfImage object>
 ```
@@ -93337,7 +93337,7 @@ AutoIt:
 ### VectorOfSharedPtrOfImage::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfImage::IsInstance( const VectorOfSharedPtrOfImage& obj );
+static bool VectorOfSharedPtrOfImage::IsInstance( const std::vector<std::shared_ptr<mediapipe::Image>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfImage").IsInstance( $obj ) -> retval
 ```
@@ -93351,7 +93351,7 @@ AutoIt:
 ### VectorOfSharedPtrOfImage::Items
 
 ```cpp
-VectorOfSharedPtrOfImage VectorOfSharedPtrOfImage::Items();
+std::vector<std::shared_ptr<mediapipe::Image>> VectorOfSharedPtrOfImage::Items();
 AutoIt:
     $oVectorOfSharedPtrOfImage.Items() -> retval
 ```
@@ -93375,7 +93375,7 @@ AutoIt:
 ### VectorOfSharedPtrOfImage::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfImage::__eq__( const VectorOfSharedPtrOfImage& other );
+bool VectorOfSharedPtrOfImage::__eq__( const std::vector<std::shared_ptr<mediapipe::Image>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfImage.__eq__( $other ) -> retval
 ```
@@ -93477,15 +93477,15 @@ AutoIt:
 ### VectorOfSharedPtrOfImage::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfImage::push_vector( VectorOfSharedPtrOfImage other );
+void VectorOfSharedPtrOfImage::push_vector( std::vector<std::shared_ptr<mediapipe::Image>> other );
 AutoIt:
     $oVectorOfSharedPtrOfImage.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfImage::push_vector( VectorOfSharedPtrOfImage other,
-                                            size_t                   count,
-                                            size_t                   start = 0 );
+void VectorOfSharedPtrOfImage::push_vector( std::vector<std::shared_ptr<mediapipe::Image>> other,
+                                            size_t                                         count,
+                                            size_t                                         start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfImage.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -93510,8 +93510,8 @@ AutoIt:
 ### VectorOfSharedPtrOfImage::slice
 
 ```cpp
-VectorOfSharedPtrOfImage VectorOfSharedPtrOfImage::slice( size_t start = 0,
-                                                          size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Image>> VectorOfSharedPtrOfImage::slice( size_t start = 0,
+                                                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfImage.slice( [$start[, $count]] ) -> retval
 ```
@@ -93557,19 +93557,19 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_pose\_landmarker\_PoseLandmarksConnections\_Connection::create
 
 ```cpp
-static VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::create();
+static std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection> VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection").create() -> <VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection object>
 ```
 
 ```cpp
-static VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::create( size_t size );
+static std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection> VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection").create( $size ) -> <VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection object>
 ```
 
 ```cpp
-static VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::create( VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection other );
+static std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection> VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::create( std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection").create( $other ) -> <VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection object>
 ```
@@ -93585,7 +93585,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_pose\_landmarker\_PoseLandmarksConnections\_Connection::IsInstance
 
 ```cpp
-static bool VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::IsInstance( const VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection& obj );
+static bool VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::IsInstance( const std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection").IsInstance( $obj ) -> retval
 ```
@@ -93599,7 +93599,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_pose\_landmarker\_PoseLandmarksConnections\_Connection::Items
 
 ```cpp
-VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::Items();
+std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection> VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::Items();
 AutoIt:
     $oVectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection.Items() -> retval
 ```
@@ -93623,7 +93623,7 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_pose\_landmarker\_PoseLandmarksConnections\_Connection::\_\_eq\_\_
 
 ```cpp
-bool VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::__eq__( const VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection& other );
+bool VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::__eq__( const std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection>& other );
 AutoIt:
     $oVectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection.__eq__( $other ) -> retval
 ```
@@ -93725,15 +93725,15 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_pose\_landmarker\_PoseLandmarksConnections\_Connection::push\_vector
 
 ```cpp
-void VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::push_vector( VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection other );
+void VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::push_vector( std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection> other );
 AutoIt:
     $oVectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::push_vector( VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection other,
-                                                                                                   size_t                                                                          count,
-                                                                                                   size_t                                                                          start = 0 );
+void VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::push_vector( std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection> other,
+                                                                                                   size_t                                                                                               count,
+                                                                                                   size_t                                                                                               start = 0 );
 AutoIt:
     $oVectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -93758,8 +93758,8 @@ AutoIt:
 ### VectorOfTasks\_autoit\_vision\_pose\_landmarker\_PoseLandmarksConnections\_Connection::slice
 
 ```cpp
-VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::slice( size_t start = 0,
-                                                                                                                                                                        size_t count = __self->get()->size() );
+std::vector<mediapipe::tasks::autoit::vision::pose_landmarker::PoseLandmarksConnections::Connection> VectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection::slice( size_t start = 0,
+                                                                                                                                                                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfTasks_autoit_vision_pose_landmarker_PoseLandmarksConnections_Connection.slice( [$start[, $count]] ) -> retval
 ```
@@ -93805,19 +93805,19 @@ AutoIt:
 ### VectorOfUchar::create
 
 ```cpp
-static VectorOfUchar VectorOfUchar::create();
+static std::vector<uchar> VectorOfUchar::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfUchar").create() -> <VectorOfUchar object>
 ```
 
 ```cpp
-static VectorOfUchar VectorOfUchar::create( size_t size );
+static std::vector<uchar> VectorOfUchar::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfUchar").create( $size ) -> <VectorOfUchar object>
 ```
 
 ```cpp
-static VectorOfUchar VectorOfUchar::create( VectorOfUchar other );
+static std::vector<uchar> VectorOfUchar::create( std::vector<uchar> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfUchar").create( $other ) -> <VectorOfUchar object>
 ```
@@ -93833,7 +93833,7 @@ AutoIt:
 ### VectorOfUchar::IsInstance
 
 ```cpp
-static bool VectorOfUchar::IsInstance( const VectorOfUchar& obj );
+static bool VectorOfUchar::IsInstance( const std::vector<uchar>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfUchar").IsInstance( $obj ) -> retval
 ```
@@ -93847,7 +93847,7 @@ AutoIt:
 ### VectorOfUchar::Items
 
 ```cpp
-VectorOfUchar VectorOfUchar::Items();
+std::vector<uchar> VectorOfUchar::Items();
 AutoIt:
     $oVectorOfUchar.Items() -> retval
 ```
@@ -93871,7 +93871,7 @@ AutoIt:
 ### VectorOfUchar::\_\_eq\_\_
 
 ```cpp
-bool VectorOfUchar::__eq__( const VectorOfUchar& other );
+bool VectorOfUchar::__eq__( const std::vector<uchar>& other );
 AutoIt:
     $oVectorOfUchar.__eq__( $other ) -> retval
 ```
@@ -93973,15 +93973,15 @@ AutoIt:
 ### VectorOfUchar::push\_vector
 
 ```cpp
-void VectorOfUchar::push_vector( VectorOfUchar other );
+void VectorOfUchar::push_vector( std::vector<uchar> other );
 AutoIt:
     $oVectorOfUchar.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfUchar::push_vector( VectorOfUchar other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfUchar::push_vector( std::vector<uchar> other,
+                                 size_t             count,
+                                 size_t             start = 0 );
 AutoIt:
     $oVectorOfUchar.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -94006,8 +94006,8 @@ AutoIt:
 ### VectorOfUchar::slice
 
 ```cpp
-VectorOfUchar VectorOfUchar::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<uchar> VectorOfUchar::slice( size_t start = 0,
+                                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfUchar.slice( [$start[, $count]] ) -> retval
 ```
@@ -94053,19 +94053,19 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketFactoryConfig::create
 
 ```cpp
-static VectorOfSharedPtrOfPacketFactoryConfig VectorOfSharedPtrOfPacketFactoryConfig::create();
+static std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> VectorOfSharedPtrOfPacketFactoryConfig::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfPacketFactoryConfig").create() -> <VectorOfSharedPtrOfPacketFactoryConfig object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfPacketFactoryConfig VectorOfSharedPtrOfPacketFactoryConfig::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> VectorOfSharedPtrOfPacketFactoryConfig::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfPacketFactoryConfig").create( $size ) -> <VectorOfSharedPtrOfPacketFactoryConfig object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfPacketFactoryConfig VectorOfSharedPtrOfPacketFactoryConfig::create( VectorOfSharedPtrOfPacketFactoryConfig other );
+static std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> VectorOfSharedPtrOfPacketFactoryConfig::create( std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfPacketFactoryConfig").create( $other ) -> <VectorOfSharedPtrOfPacketFactoryConfig object>
 ```
@@ -94081,7 +94081,7 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketFactoryConfig::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfPacketFactoryConfig::IsInstance( const VectorOfSharedPtrOfPacketFactoryConfig& obj );
+static bool VectorOfSharedPtrOfPacketFactoryConfig::IsInstance( const std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfPacketFactoryConfig").IsInstance( $obj ) -> retval
 ```
@@ -94095,7 +94095,7 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketFactoryConfig::Items
 
 ```cpp
-VectorOfSharedPtrOfPacketFactoryConfig VectorOfSharedPtrOfPacketFactoryConfig::Items();
+std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> VectorOfSharedPtrOfPacketFactoryConfig::Items();
 AutoIt:
     $oVectorOfSharedPtrOfPacketFactoryConfig.Items() -> retval
 ```
@@ -94119,7 +94119,7 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketFactoryConfig::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfPacketFactoryConfig::__eq__( const VectorOfSharedPtrOfPacketFactoryConfig& other );
+bool VectorOfSharedPtrOfPacketFactoryConfig::__eq__( const std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfPacketFactoryConfig.__eq__( $other ) -> retval
 ```
@@ -94221,15 +94221,15 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketFactoryConfig::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfPacketFactoryConfig::push_vector( VectorOfSharedPtrOfPacketFactoryConfig other );
+void VectorOfSharedPtrOfPacketFactoryConfig::push_vector( std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> other );
 AutoIt:
     $oVectorOfSharedPtrOfPacketFactoryConfig.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfPacketFactoryConfig::push_vector( VectorOfSharedPtrOfPacketFactoryConfig other,
-                                                          size_t                                 count,
-                                                          size_t                                 start = 0 );
+void VectorOfSharedPtrOfPacketFactoryConfig::push_vector( std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> other,
+                                                          size_t                                                       count,
+                                                          size_t                                                       start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfPacketFactoryConfig.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -94254,8 +94254,8 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketFactoryConfig::slice
 
 ```cpp
-VectorOfSharedPtrOfPacketFactoryConfig VectorOfSharedPtrOfPacketFactoryConfig::slice( size_t start = 0,
-                                                                                      size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::PacketFactoryConfig>> VectorOfSharedPtrOfPacketFactoryConfig::slice( size_t start = 0,
+                                                                                                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfPacketFactoryConfig.slice( [$start[, $count]] ) -> retval
 ```
@@ -94301,19 +94301,19 @@ AutoIt:
 ### VectorOfSharedPtrOfInputCollection::create
 
 ```cpp
-static VectorOfSharedPtrOfInputCollection VectorOfSharedPtrOfInputCollection::create();
+static std::vector<std::shared_ptr<mediapipe::InputCollection>> VectorOfSharedPtrOfInputCollection::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInputCollection").create() -> <VectorOfSharedPtrOfInputCollection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfInputCollection VectorOfSharedPtrOfInputCollection::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::InputCollection>> VectorOfSharedPtrOfInputCollection::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInputCollection").create( $size ) -> <VectorOfSharedPtrOfInputCollection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfInputCollection VectorOfSharedPtrOfInputCollection::create( VectorOfSharedPtrOfInputCollection other );
+static std::vector<std::shared_ptr<mediapipe::InputCollection>> VectorOfSharedPtrOfInputCollection::create( std::vector<std::shared_ptr<mediapipe::InputCollection>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInputCollection").create( $other ) -> <VectorOfSharedPtrOfInputCollection object>
 ```
@@ -94329,7 +94329,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInputCollection::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfInputCollection::IsInstance( const VectorOfSharedPtrOfInputCollection& obj );
+static bool VectorOfSharedPtrOfInputCollection::IsInstance( const std::vector<std::shared_ptr<mediapipe::InputCollection>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInputCollection").IsInstance( $obj ) -> retval
 ```
@@ -94343,7 +94343,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInputCollection::Items
 
 ```cpp
-VectorOfSharedPtrOfInputCollection VectorOfSharedPtrOfInputCollection::Items();
+std::vector<std::shared_ptr<mediapipe::InputCollection>> VectorOfSharedPtrOfInputCollection::Items();
 AutoIt:
     $oVectorOfSharedPtrOfInputCollection.Items() -> retval
 ```
@@ -94367,7 +94367,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInputCollection::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfInputCollection::__eq__( const VectorOfSharedPtrOfInputCollection& other );
+bool VectorOfSharedPtrOfInputCollection::__eq__( const std::vector<std::shared_ptr<mediapipe::InputCollection>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfInputCollection.__eq__( $other ) -> retval
 ```
@@ -94469,15 +94469,15 @@ AutoIt:
 ### VectorOfSharedPtrOfInputCollection::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfInputCollection::push_vector( VectorOfSharedPtrOfInputCollection other );
+void VectorOfSharedPtrOfInputCollection::push_vector( std::vector<std::shared_ptr<mediapipe::InputCollection>> other );
 AutoIt:
     $oVectorOfSharedPtrOfInputCollection.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfInputCollection::push_vector( VectorOfSharedPtrOfInputCollection other,
-                                                      size_t                             count,
-                                                      size_t                             start = 0 );
+void VectorOfSharedPtrOfInputCollection::push_vector( std::vector<std::shared_ptr<mediapipe::InputCollection>> other,
+                                                      size_t                                                   count,
+                                                      size_t                                                   start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfInputCollection.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -94502,8 +94502,8 @@ AutoIt:
 ### VectorOfSharedPtrOfInputCollection::slice
 
 ```cpp
-VectorOfSharedPtrOfInputCollection VectorOfSharedPtrOfInputCollection::slice( size_t start = 0,
-                                                                              size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::InputCollection>> VectorOfSharedPtrOfInputCollection::slice( size_t start = 0,
+                                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfInputCollection.slice( [$start[, $count]] ) -> retval
 ```
@@ -94549,19 +94549,19 @@ AutoIt:
 ### VectorOfSharedPtrOfCalculatorGraphConfig\_Node::create
 
 ```cpp
-static VectorOfSharedPtrOfCalculatorGraphConfig_Node VectorOfSharedPtrOfCalculatorGraphConfig_Node::create();
+static std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> VectorOfSharedPtrOfCalculatorGraphConfig_Node::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfCalculatorGraphConfig_Node").create() -> <VectorOfSharedPtrOfCalculatorGraphConfig_Node object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfCalculatorGraphConfig_Node VectorOfSharedPtrOfCalculatorGraphConfig_Node::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> VectorOfSharedPtrOfCalculatorGraphConfig_Node::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfCalculatorGraphConfig_Node").create( $size ) -> <VectorOfSharedPtrOfCalculatorGraphConfig_Node object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfCalculatorGraphConfig_Node VectorOfSharedPtrOfCalculatorGraphConfig_Node::create( VectorOfSharedPtrOfCalculatorGraphConfig_Node other );
+static std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> VectorOfSharedPtrOfCalculatorGraphConfig_Node::create( std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfCalculatorGraphConfig_Node").create( $other ) -> <VectorOfSharedPtrOfCalculatorGraphConfig_Node object>
 ```
@@ -94577,7 +94577,7 @@ AutoIt:
 ### VectorOfSharedPtrOfCalculatorGraphConfig\_Node::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfCalculatorGraphConfig_Node::IsInstance( const VectorOfSharedPtrOfCalculatorGraphConfig_Node& obj );
+static bool VectorOfSharedPtrOfCalculatorGraphConfig_Node::IsInstance( const std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfCalculatorGraphConfig_Node").IsInstance( $obj ) -> retval
 ```
@@ -94591,7 +94591,7 @@ AutoIt:
 ### VectorOfSharedPtrOfCalculatorGraphConfig\_Node::Items
 
 ```cpp
-VectorOfSharedPtrOfCalculatorGraphConfig_Node VectorOfSharedPtrOfCalculatorGraphConfig_Node::Items();
+std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> VectorOfSharedPtrOfCalculatorGraphConfig_Node::Items();
 AutoIt:
     $oVectorOfSharedPtrOfCalculatorGraphConfig_Node.Items() -> retval
 ```
@@ -94615,7 +94615,7 @@ AutoIt:
 ### VectorOfSharedPtrOfCalculatorGraphConfig\_Node::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfCalculatorGraphConfig_Node::__eq__( const VectorOfSharedPtrOfCalculatorGraphConfig_Node& other );
+bool VectorOfSharedPtrOfCalculatorGraphConfig_Node::__eq__( const std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfCalculatorGraphConfig_Node.__eq__( $other ) -> retval
 ```
@@ -94717,15 +94717,15 @@ AutoIt:
 ### VectorOfSharedPtrOfCalculatorGraphConfig\_Node::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfCalculatorGraphConfig_Node::push_vector( VectorOfSharedPtrOfCalculatorGraphConfig_Node other );
+void VectorOfSharedPtrOfCalculatorGraphConfig_Node::push_vector( std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> other );
 AutoIt:
     $oVectorOfSharedPtrOfCalculatorGraphConfig_Node.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfCalculatorGraphConfig_Node::push_vector( VectorOfSharedPtrOfCalculatorGraphConfig_Node other,
-                                                                 size_t                                        count,
-                                                                 size_t                                        start = 0 );
+void VectorOfSharedPtrOfCalculatorGraphConfig_Node::push_vector( std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> other,
+                                                                 size_t                                                               count,
+                                                                 size_t                                                               start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfCalculatorGraphConfig_Node.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -94750,8 +94750,8 @@ AutoIt:
 ### VectorOfSharedPtrOfCalculatorGraphConfig\_Node::slice
 
 ```cpp
-VectorOfSharedPtrOfCalculatorGraphConfig_Node VectorOfSharedPtrOfCalculatorGraphConfig_Node::slice( size_t start = 0,
-                                                                                                    size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::CalculatorGraphConfig::Node>> VectorOfSharedPtrOfCalculatorGraphConfig_Node::slice( size_t start = 0,
+                                                                                                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfCalculatorGraphConfig_Node.slice( [$start[, $count]] ) -> retval
 ```
@@ -94797,19 +94797,19 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketGeneratorConfig::create
 
 ```cpp
-static VectorOfSharedPtrOfPacketGeneratorConfig VectorOfSharedPtrOfPacketGeneratorConfig::create();
+static std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> VectorOfSharedPtrOfPacketGeneratorConfig::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfPacketGeneratorConfig").create() -> <VectorOfSharedPtrOfPacketGeneratorConfig object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfPacketGeneratorConfig VectorOfSharedPtrOfPacketGeneratorConfig::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> VectorOfSharedPtrOfPacketGeneratorConfig::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfPacketGeneratorConfig").create( $size ) -> <VectorOfSharedPtrOfPacketGeneratorConfig object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfPacketGeneratorConfig VectorOfSharedPtrOfPacketGeneratorConfig::create( VectorOfSharedPtrOfPacketGeneratorConfig other );
+static std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> VectorOfSharedPtrOfPacketGeneratorConfig::create( std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfPacketGeneratorConfig").create( $other ) -> <VectorOfSharedPtrOfPacketGeneratorConfig object>
 ```
@@ -94825,7 +94825,7 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketGeneratorConfig::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfPacketGeneratorConfig::IsInstance( const VectorOfSharedPtrOfPacketGeneratorConfig& obj );
+static bool VectorOfSharedPtrOfPacketGeneratorConfig::IsInstance( const std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfPacketGeneratorConfig").IsInstance( $obj ) -> retval
 ```
@@ -94839,7 +94839,7 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketGeneratorConfig::Items
 
 ```cpp
-VectorOfSharedPtrOfPacketGeneratorConfig VectorOfSharedPtrOfPacketGeneratorConfig::Items();
+std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> VectorOfSharedPtrOfPacketGeneratorConfig::Items();
 AutoIt:
     $oVectorOfSharedPtrOfPacketGeneratorConfig.Items() -> retval
 ```
@@ -94863,7 +94863,7 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketGeneratorConfig::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfPacketGeneratorConfig::__eq__( const VectorOfSharedPtrOfPacketGeneratorConfig& other );
+bool VectorOfSharedPtrOfPacketGeneratorConfig::__eq__( const std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfPacketGeneratorConfig.__eq__( $other ) -> retval
 ```
@@ -94965,15 +94965,15 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketGeneratorConfig::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfPacketGeneratorConfig::push_vector( VectorOfSharedPtrOfPacketGeneratorConfig other );
+void VectorOfSharedPtrOfPacketGeneratorConfig::push_vector( std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> other );
 AutoIt:
     $oVectorOfSharedPtrOfPacketGeneratorConfig.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfPacketGeneratorConfig::push_vector( VectorOfSharedPtrOfPacketGeneratorConfig other,
-                                                            size_t                                   count,
-                                                            size_t                                   start = 0 );
+void VectorOfSharedPtrOfPacketGeneratorConfig::push_vector( std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> other,
+                                                            size_t                                                         count,
+                                                            size_t                                                         start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfPacketGeneratorConfig.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -94998,8 +94998,8 @@ AutoIt:
 ### VectorOfSharedPtrOfPacketGeneratorConfig::slice
 
 ```cpp
-VectorOfSharedPtrOfPacketGeneratorConfig VectorOfSharedPtrOfPacketGeneratorConfig::slice( size_t start = 0,
-                                                                                          size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::PacketGeneratorConfig>> VectorOfSharedPtrOfPacketGeneratorConfig::slice( size_t start = 0,
+                                                                                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfPacketGeneratorConfig.slice( [$start[, $count]] ) -> retval
 ```
@@ -95045,19 +95045,19 @@ AutoIt:
 ### VectorOfSharedPtrOfStatusHandlerConfig::create
 
 ```cpp
-static VectorOfSharedPtrOfStatusHandlerConfig VectorOfSharedPtrOfStatusHandlerConfig::create();
+static std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> VectorOfSharedPtrOfStatusHandlerConfig::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfStatusHandlerConfig").create() -> <VectorOfSharedPtrOfStatusHandlerConfig object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfStatusHandlerConfig VectorOfSharedPtrOfStatusHandlerConfig::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> VectorOfSharedPtrOfStatusHandlerConfig::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfStatusHandlerConfig").create( $size ) -> <VectorOfSharedPtrOfStatusHandlerConfig object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfStatusHandlerConfig VectorOfSharedPtrOfStatusHandlerConfig::create( VectorOfSharedPtrOfStatusHandlerConfig other );
+static std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> VectorOfSharedPtrOfStatusHandlerConfig::create( std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfStatusHandlerConfig").create( $other ) -> <VectorOfSharedPtrOfStatusHandlerConfig object>
 ```
@@ -95073,7 +95073,7 @@ AutoIt:
 ### VectorOfSharedPtrOfStatusHandlerConfig::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfStatusHandlerConfig::IsInstance( const VectorOfSharedPtrOfStatusHandlerConfig& obj );
+static bool VectorOfSharedPtrOfStatusHandlerConfig::IsInstance( const std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfStatusHandlerConfig").IsInstance( $obj ) -> retval
 ```
@@ -95087,7 +95087,7 @@ AutoIt:
 ### VectorOfSharedPtrOfStatusHandlerConfig::Items
 
 ```cpp
-VectorOfSharedPtrOfStatusHandlerConfig VectorOfSharedPtrOfStatusHandlerConfig::Items();
+std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> VectorOfSharedPtrOfStatusHandlerConfig::Items();
 AutoIt:
     $oVectorOfSharedPtrOfStatusHandlerConfig.Items() -> retval
 ```
@@ -95111,7 +95111,7 @@ AutoIt:
 ### VectorOfSharedPtrOfStatusHandlerConfig::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfStatusHandlerConfig::__eq__( const VectorOfSharedPtrOfStatusHandlerConfig& other );
+bool VectorOfSharedPtrOfStatusHandlerConfig::__eq__( const std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfStatusHandlerConfig.__eq__( $other ) -> retval
 ```
@@ -95213,15 +95213,15 @@ AutoIt:
 ### VectorOfSharedPtrOfStatusHandlerConfig::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfStatusHandlerConfig::push_vector( VectorOfSharedPtrOfStatusHandlerConfig other );
+void VectorOfSharedPtrOfStatusHandlerConfig::push_vector( std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> other );
 AutoIt:
     $oVectorOfSharedPtrOfStatusHandlerConfig.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfStatusHandlerConfig::push_vector( VectorOfSharedPtrOfStatusHandlerConfig other,
-                                                          size_t                                 count,
-                                                          size_t                                 start = 0 );
+void VectorOfSharedPtrOfStatusHandlerConfig::push_vector( std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> other,
+                                                          size_t                                                       count,
+                                                          size_t                                                       start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfStatusHandlerConfig.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -95246,8 +95246,8 @@ AutoIt:
 ### VectorOfSharedPtrOfStatusHandlerConfig::slice
 
 ```cpp
-VectorOfSharedPtrOfStatusHandlerConfig VectorOfSharedPtrOfStatusHandlerConfig::slice( size_t start = 0,
-                                                                                      size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::StatusHandlerConfig>> VectorOfSharedPtrOfStatusHandlerConfig::slice( size_t start = 0,
+                                                                                                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfStatusHandlerConfig.slice( [$start[, $count]] ) -> retval
 ```
@@ -95293,19 +95293,19 @@ AutoIt:
 ### VectorOfSharedPtrOfExecutorConfig::create
 
 ```cpp
-static VectorOfSharedPtrOfExecutorConfig VectorOfSharedPtrOfExecutorConfig::create();
+static std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> VectorOfSharedPtrOfExecutorConfig::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfExecutorConfig").create() -> <VectorOfSharedPtrOfExecutorConfig object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfExecutorConfig VectorOfSharedPtrOfExecutorConfig::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> VectorOfSharedPtrOfExecutorConfig::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfExecutorConfig").create( $size ) -> <VectorOfSharedPtrOfExecutorConfig object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfExecutorConfig VectorOfSharedPtrOfExecutorConfig::create( VectorOfSharedPtrOfExecutorConfig other );
+static std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> VectorOfSharedPtrOfExecutorConfig::create( std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfExecutorConfig").create( $other ) -> <VectorOfSharedPtrOfExecutorConfig object>
 ```
@@ -95321,7 +95321,7 @@ AutoIt:
 ### VectorOfSharedPtrOfExecutorConfig::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfExecutorConfig::IsInstance( const VectorOfSharedPtrOfExecutorConfig& obj );
+static bool VectorOfSharedPtrOfExecutorConfig::IsInstance( const std::vector<std::shared_ptr<mediapipe::ExecutorConfig>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfExecutorConfig").IsInstance( $obj ) -> retval
 ```
@@ -95335,7 +95335,7 @@ AutoIt:
 ### VectorOfSharedPtrOfExecutorConfig::Items
 
 ```cpp
-VectorOfSharedPtrOfExecutorConfig VectorOfSharedPtrOfExecutorConfig::Items();
+std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> VectorOfSharedPtrOfExecutorConfig::Items();
 AutoIt:
     $oVectorOfSharedPtrOfExecutorConfig.Items() -> retval
 ```
@@ -95359,7 +95359,7 @@ AutoIt:
 ### VectorOfSharedPtrOfExecutorConfig::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfExecutorConfig::__eq__( const VectorOfSharedPtrOfExecutorConfig& other );
+bool VectorOfSharedPtrOfExecutorConfig::__eq__( const std::vector<std::shared_ptr<mediapipe::ExecutorConfig>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfExecutorConfig.__eq__( $other ) -> retval
 ```
@@ -95461,15 +95461,15 @@ AutoIt:
 ### VectorOfSharedPtrOfExecutorConfig::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfExecutorConfig::push_vector( VectorOfSharedPtrOfExecutorConfig other );
+void VectorOfSharedPtrOfExecutorConfig::push_vector( std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> other );
 AutoIt:
     $oVectorOfSharedPtrOfExecutorConfig.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfExecutorConfig::push_vector( VectorOfSharedPtrOfExecutorConfig other,
-                                                     size_t                            count,
-                                                     size_t                            start = 0 );
+void VectorOfSharedPtrOfExecutorConfig::push_vector( std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> other,
+                                                     size_t                                                  count,
+                                                     size_t                                                  start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfExecutorConfig.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -95494,8 +95494,8 @@ AutoIt:
 ### VectorOfSharedPtrOfExecutorConfig::slice
 
 ```cpp
-VectorOfSharedPtrOfExecutorConfig VectorOfSharedPtrOfExecutorConfig::slice( size_t start = 0,
-                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ExecutorConfig>> VectorOfSharedPtrOfExecutorConfig::slice( size_t start = 0,
+                                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfExecutorConfig.slice( [$start[, $count]] ) -> retval
 ```
@@ -95541,19 +95541,19 @@ AutoIt:
 ### VectorOfSharedPtrOfAny::create
 
 ```cpp
-static VectorOfSharedPtrOfAny VectorOfSharedPtrOfAny::create();
+static std::vector<std::shared_ptr<google::protobuf::Any>> VectorOfSharedPtrOfAny::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfAny").create() -> <VectorOfSharedPtrOfAny object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfAny VectorOfSharedPtrOfAny::create( size_t size );
+static std::vector<std::shared_ptr<google::protobuf::Any>> VectorOfSharedPtrOfAny::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfAny").create( $size ) -> <VectorOfSharedPtrOfAny object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfAny VectorOfSharedPtrOfAny::create( VectorOfSharedPtrOfAny other );
+static std::vector<std::shared_ptr<google::protobuf::Any>> VectorOfSharedPtrOfAny::create( std::vector<std::shared_ptr<google::protobuf::Any>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfAny").create( $other ) -> <VectorOfSharedPtrOfAny object>
 ```
@@ -95569,7 +95569,7 @@ AutoIt:
 ### VectorOfSharedPtrOfAny::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfAny::IsInstance( const VectorOfSharedPtrOfAny& obj );
+static bool VectorOfSharedPtrOfAny::IsInstance( const std::vector<std::shared_ptr<google::protobuf::Any>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfAny").IsInstance( $obj ) -> retval
 ```
@@ -95583,7 +95583,7 @@ AutoIt:
 ### VectorOfSharedPtrOfAny::Items
 
 ```cpp
-VectorOfSharedPtrOfAny VectorOfSharedPtrOfAny::Items();
+std::vector<std::shared_ptr<google::protobuf::Any>> VectorOfSharedPtrOfAny::Items();
 AutoIt:
     $oVectorOfSharedPtrOfAny.Items() -> retval
 ```
@@ -95607,7 +95607,7 @@ AutoIt:
 ### VectorOfSharedPtrOfAny::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfAny::__eq__( const VectorOfSharedPtrOfAny& other );
+bool VectorOfSharedPtrOfAny::__eq__( const std::vector<std::shared_ptr<google::protobuf::Any>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfAny.__eq__( $other ) -> retval
 ```
@@ -95709,15 +95709,15 @@ AutoIt:
 ### VectorOfSharedPtrOfAny::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfAny::push_vector( VectorOfSharedPtrOfAny other );
+void VectorOfSharedPtrOfAny::push_vector( std::vector<std::shared_ptr<google::protobuf::Any>> other );
 AutoIt:
     $oVectorOfSharedPtrOfAny.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfAny::push_vector( VectorOfSharedPtrOfAny other,
-                                          size_t                 count,
-                                          size_t                 start = 0 );
+void VectorOfSharedPtrOfAny::push_vector( std::vector<std::shared_ptr<google::protobuf::Any>> other,
+                                          size_t                                              count,
+                                          size_t                                              start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfAny.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -95742,8 +95742,8 @@ AutoIt:
 ### VectorOfSharedPtrOfAny::slice
 
 ```cpp
-VectorOfSharedPtrOfAny VectorOfSharedPtrOfAny::slice( size_t start = 0,
-                                                      size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<google::protobuf::Any>> VectorOfSharedPtrOfAny::slice( size_t start = 0,
+                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfAny.slice( [$start[, $count]] ) -> retval
 ```
@@ -95789,19 +95789,19 @@ AutoIt:
 ### VectorOfSharedPtrOfInputStreamInfo::create
 
 ```cpp
-static VectorOfSharedPtrOfInputStreamInfo VectorOfSharedPtrOfInputStreamInfo::create();
+static std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> VectorOfSharedPtrOfInputStreamInfo::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInputStreamInfo").create() -> <VectorOfSharedPtrOfInputStreamInfo object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfInputStreamInfo VectorOfSharedPtrOfInputStreamInfo::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> VectorOfSharedPtrOfInputStreamInfo::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInputStreamInfo").create( $size ) -> <VectorOfSharedPtrOfInputStreamInfo object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfInputStreamInfo VectorOfSharedPtrOfInputStreamInfo::create( VectorOfSharedPtrOfInputStreamInfo other );
+static std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> VectorOfSharedPtrOfInputStreamInfo::create( std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInputStreamInfo").create( $other ) -> <VectorOfSharedPtrOfInputStreamInfo object>
 ```
@@ -95817,7 +95817,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInputStreamInfo::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfInputStreamInfo::IsInstance( const VectorOfSharedPtrOfInputStreamInfo& obj );
+static bool VectorOfSharedPtrOfInputStreamInfo::IsInstance( const std::vector<std::shared_ptr<mediapipe::InputStreamInfo>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInputStreamInfo").IsInstance( $obj ) -> retval
 ```
@@ -95831,7 +95831,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInputStreamInfo::Items
 
 ```cpp
-VectorOfSharedPtrOfInputStreamInfo VectorOfSharedPtrOfInputStreamInfo::Items();
+std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> VectorOfSharedPtrOfInputStreamInfo::Items();
 AutoIt:
     $oVectorOfSharedPtrOfInputStreamInfo.Items() -> retval
 ```
@@ -95855,7 +95855,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInputStreamInfo::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfInputStreamInfo::__eq__( const VectorOfSharedPtrOfInputStreamInfo& other );
+bool VectorOfSharedPtrOfInputStreamInfo::__eq__( const std::vector<std::shared_ptr<mediapipe::InputStreamInfo>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfInputStreamInfo.__eq__( $other ) -> retval
 ```
@@ -95957,15 +95957,15 @@ AutoIt:
 ### VectorOfSharedPtrOfInputStreamInfo::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfInputStreamInfo::push_vector( VectorOfSharedPtrOfInputStreamInfo other );
+void VectorOfSharedPtrOfInputStreamInfo::push_vector( std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> other );
 AutoIt:
     $oVectorOfSharedPtrOfInputStreamInfo.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfInputStreamInfo::push_vector( VectorOfSharedPtrOfInputStreamInfo other,
-                                                      size_t                             count,
-                                                      size_t                             start = 0 );
+void VectorOfSharedPtrOfInputStreamInfo::push_vector( std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> other,
+                                                      size_t                                                   count,
+                                                      size_t                                                   start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfInputStreamInfo.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -95990,8 +95990,8 @@ AutoIt:
 ### VectorOfSharedPtrOfInputStreamInfo::slice
 
 ```cpp
-VectorOfSharedPtrOfInputStreamInfo VectorOfSharedPtrOfInputStreamInfo::slice( size_t start = 0,
-                                                                              size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::InputStreamInfo>> VectorOfSharedPtrOfInputStreamInfo::slice( size_t start = 0,
+                                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfInputStreamInfo.slice( [$start[, $count]] ) -> retval
 ```
@@ -96037,19 +96037,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateExpression::create
 
 ```cpp
-static VectorOfSharedPtrOfTemplateExpression VectorOfSharedPtrOfTemplateExpression::create();
+static std::vector<std::shared_ptr<mediapipe::TemplateExpression>> VectorOfSharedPtrOfTemplateExpression::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateExpression").create() -> <VectorOfSharedPtrOfTemplateExpression object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTemplateExpression VectorOfSharedPtrOfTemplateExpression::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::TemplateExpression>> VectorOfSharedPtrOfTemplateExpression::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateExpression").create( $size ) -> <VectorOfSharedPtrOfTemplateExpression object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTemplateExpression VectorOfSharedPtrOfTemplateExpression::create( VectorOfSharedPtrOfTemplateExpression other );
+static std::vector<std::shared_ptr<mediapipe::TemplateExpression>> VectorOfSharedPtrOfTemplateExpression::create( std::vector<std::shared_ptr<mediapipe::TemplateExpression>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateExpression").create( $other ) -> <VectorOfSharedPtrOfTemplateExpression object>
 ```
@@ -96065,7 +96065,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateExpression::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTemplateExpression::IsInstance( const VectorOfSharedPtrOfTemplateExpression& obj );
+static bool VectorOfSharedPtrOfTemplateExpression::IsInstance( const std::vector<std::shared_ptr<mediapipe::TemplateExpression>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateExpression").IsInstance( $obj ) -> retval
 ```
@@ -96079,7 +96079,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateExpression::Items
 
 ```cpp
-VectorOfSharedPtrOfTemplateExpression VectorOfSharedPtrOfTemplateExpression::Items();
+std::vector<std::shared_ptr<mediapipe::TemplateExpression>> VectorOfSharedPtrOfTemplateExpression::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTemplateExpression.Items() -> retval
 ```
@@ -96103,7 +96103,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateExpression::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTemplateExpression::__eq__( const VectorOfSharedPtrOfTemplateExpression& other );
+bool VectorOfSharedPtrOfTemplateExpression::__eq__( const std::vector<std::shared_ptr<mediapipe::TemplateExpression>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateExpression.__eq__( $other ) -> retval
 ```
@@ -96205,15 +96205,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateExpression::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTemplateExpression::push_vector( VectorOfSharedPtrOfTemplateExpression other );
+void VectorOfSharedPtrOfTemplateExpression::push_vector( std::vector<std::shared_ptr<mediapipe::TemplateExpression>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateExpression.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTemplateExpression::push_vector( VectorOfSharedPtrOfTemplateExpression other,
-                                                         size_t                                count,
-                                                         size_t                                start = 0 );
+void VectorOfSharedPtrOfTemplateExpression::push_vector( std::vector<std::shared_ptr<mediapipe::TemplateExpression>> other,
+                                                         size_t                                                      count,
+                                                         size_t                                                      start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateExpression.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -96238,8 +96238,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateExpression::slice
 
 ```cpp
-VectorOfSharedPtrOfTemplateExpression VectorOfSharedPtrOfTemplateExpression::slice( size_t start = 0,
-                                                                                    size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::TemplateExpression>> VectorOfSharedPtrOfTemplateExpression::slice( size_t start = 0,
+                                                                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateExpression.slice( [$start[, $count]] ) -> retval
 ```
@@ -96285,19 +96285,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateArgument::create
 
 ```cpp
-static VectorOfSharedPtrOfTemplateArgument VectorOfSharedPtrOfTemplateArgument::create();
+static std::vector<std::shared_ptr<mediapipe::TemplateArgument>> VectorOfSharedPtrOfTemplateArgument::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateArgument").create() -> <VectorOfSharedPtrOfTemplateArgument object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTemplateArgument VectorOfSharedPtrOfTemplateArgument::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::TemplateArgument>> VectorOfSharedPtrOfTemplateArgument::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateArgument").create( $size ) -> <VectorOfSharedPtrOfTemplateArgument object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTemplateArgument VectorOfSharedPtrOfTemplateArgument::create( VectorOfSharedPtrOfTemplateArgument other );
+static std::vector<std::shared_ptr<mediapipe::TemplateArgument>> VectorOfSharedPtrOfTemplateArgument::create( std::vector<std::shared_ptr<mediapipe::TemplateArgument>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateArgument").create( $other ) -> <VectorOfSharedPtrOfTemplateArgument object>
 ```
@@ -96313,7 +96313,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateArgument::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTemplateArgument::IsInstance( const VectorOfSharedPtrOfTemplateArgument& obj );
+static bool VectorOfSharedPtrOfTemplateArgument::IsInstance( const std::vector<std::shared_ptr<mediapipe::TemplateArgument>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateArgument").IsInstance( $obj ) -> retval
 ```
@@ -96327,7 +96327,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateArgument::Items
 
 ```cpp
-VectorOfSharedPtrOfTemplateArgument VectorOfSharedPtrOfTemplateArgument::Items();
+std::vector<std::shared_ptr<mediapipe::TemplateArgument>> VectorOfSharedPtrOfTemplateArgument::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTemplateArgument.Items() -> retval
 ```
@@ -96351,7 +96351,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateArgument::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTemplateArgument::__eq__( const VectorOfSharedPtrOfTemplateArgument& other );
+bool VectorOfSharedPtrOfTemplateArgument::__eq__( const std::vector<std::shared_ptr<mediapipe::TemplateArgument>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateArgument.__eq__( $other ) -> retval
 ```
@@ -96453,15 +96453,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateArgument::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTemplateArgument::push_vector( VectorOfSharedPtrOfTemplateArgument other );
+void VectorOfSharedPtrOfTemplateArgument::push_vector( std::vector<std::shared_ptr<mediapipe::TemplateArgument>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateArgument.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTemplateArgument::push_vector( VectorOfSharedPtrOfTemplateArgument other,
-                                                       size_t                              count,
-                                                       size_t                              start = 0 );
+void VectorOfSharedPtrOfTemplateArgument::push_vector( std::vector<std::shared_ptr<mediapipe::TemplateArgument>> other,
+                                                       size_t                                                    count,
+                                                       size_t                                                    start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateArgument.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -96486,8 +96486,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateArgument::slice
 
 ```cpp
-VectorOfSharedPtrOfTemplateArgument VectorOfSharedPtrOfTemplateArgument::slice( size_t start = 0,
-                                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::TemplateArgument>> VectorOfSharedPtrOfTemplateArgument::slice( size_t start = 0,
+                                                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateArgument.slice( [$start[, $count]] ) -> retval
 ```
@@ -96533,19 +96533,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateDict\_Parameter::create
 
 ```cpp
-static VectorOfSharedPtrOfTemplateDict_Parameter VectorOfSharedPtrOfTemplateDict_Parameter::create();
+static std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>> VectorOfSharedPtrOfTemplateDict_Parameter::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateDict_Parameter").create() -> <VectorOfSharedPtrOfTemplateDict_Parameter object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTemplateDict_Parameter VectorOfSharedPtrOfTemplateDict_Parameter::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>> VectorOfSharedPtrOfTemplateDict_Parameter::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateDict_Parameter").create( $size ) -> <VectorOfSharedPtrOfTemplateDict_Parameter object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTemplateDict_Parameter VectorOfSharedPtrOfTemplateDict_Parameter::create( VectorOfSharedPtrOfTemplateDict_Parameter other );
+static std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>> VectorOfSharedPtrOfTemplateDict_Parameter::create( std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateDict_Parameter").create( $other ) -> <VectorOfSharedPtrOfTemplateDict_Parameter object>
 ```
@@ -96561,7 +96561,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateDict\_Parameter::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTemplateDict_Parameter::IsInstance( const VectorOfSharedPtrOfTemplateDict_Parameter& obj );
+static bool VectorOfSharedPtrOfTemplateDict_Parameter::IsInstance( const std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTemplateDict_Parameter").IsInstance( $obj ) -> retval
 ```
@@ -96575,7 +96575,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateDict\_Parameter::Items
 
 ```cpp
-VectorOfSharedPtrOfTemplateDict_Parameter VectorOfSharedPtrOfTemplateDict_Parameter::Items();
+std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>> VectorOfSharedPtrOfTemplateDict_Parameter::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTemplateDict_Parameter.Items() -> retval
 ```
@@ -96599,7 +96599,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateDict\_Parameter::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTemplateDict_Parameter::__eq__( const VectorOfSharedPtrOfTemplateDict_Parameter& other );
+bool VectorOfSharedPtrOfTemplateDict_Parameter::__eq__( const std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateDict_Parameter.__eq__( $other ) -> retval
 ```
@@ -96701,15 +96701,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateDict\_Parameter::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTemplateDict_Parameter::push_vector( VectorOfSharedPtrOfTemplateDict_Parameter other );
+void VectorOfSharedPtrOfTemplateDict_Parameter::push_vector( std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateDict_Parameter.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTemplateDict_Parameter::push_vector( VectorOfSharedPtrOfTemplateDict_Parameter other,
-                                                             size_t                                    count,
-                                                             size_t                                    start = 0 );
+void VectorOfSharedPtrOfTemplateDict_Parameter::push_vector( std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>> other,
+                                                             size_t                                                           count,
+                                                             size_t                                                           start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateDict_Parameter.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -96734,8 +96734,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTemplateDict\_Parameter::slice
 
 ```cpp
-VectorOfSharedPtrOfTemplateDict_Parameter VectorOfSharedPtrOfTemplateDict_Parameter::slice( size_t start = 0,
-                                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::TemplateDict::Parameter>> VectorOfSharedPtrOfTemplateDict_Parameter::slice( size_t start = 0,
+                                                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTemplateDict_Parameter.slice( [$start[, $count]] ) -> retval
 ```
@@ -96781,19 +96781,19 @@ AutoIt:
 ### VectorOfSharedPtrOfRasterization\_Interval::create
 
 ```cpp
-static VectorOfSharedPtrOfRasterization_Interval VectorOfSharedPtrOfRasterization_Interval::create();
+static std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> VectorOfSharedPtrOfRasterization_Interval::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRasterization_Interval").create() -> <VectorOfSharedPtrOfRasterization_Interval object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfRasterization_Interval VectorOfSharedPtrOfRasterization_Interval::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> VectorOfSharedPtrOfRasterization_Interval::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRasterization_Interval").create( $size ) -> <VectorOfSharedPtrOfRasterization_Interval object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfRasterization_Interval VectorOfSharedPtrOfRasterization_Interval::create( VectorOfSharedPtrOfRasterization_Interval other );
+static std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> VectorOfSharedPtrOfRasterization_Interval::create( std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRasterization_Interval").create( $other ) -> <VectorOfSharedPtrOfRasterization_Interval object>
 ```
@@ -96809,7 +96809,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRasterization\_Interval::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfRasterization_Interval::IsInstance( const VectorOfSharedPtrOfRasterization_Interval& obj );
+static bool VectorOfSharedPtrOfRasterization_Interval::IsInstance( const std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRasterization_Interval").IsInstance( $obj ) -> retval
 ```
@@ -96823,7 +96823,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRasterization\_Interval::Items
 
 ```cpp
-VectorOfSharedPtrOfRasterization_Interval VectorOfSharedPtrOfRasterization_Interval::Items();
+std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> VectorOfSharedPtrOfRasterization_Interval::Items();
 AutoIt:
     $oVectorOfSharedPtrOfRasterization_Interval.Items() -> retval
 ```
@@ -96847,7 +96847,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRasterization\_Interval::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfRasterization_Interval::__eq__( const VectorOfSharedPtrOfRasterization_Interval& other );
+bool VectorOfSharedPtrOfRasterization_Interval::__eq__( const std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfRasterization_Interval.__eq__( $other ) -> retval
 ```
@@ -96949,15 +96949,15 @@ AutoIt:
 ### VectorOfSharedPtrOfRasterization\_Interval::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfRasterization_Interval::push_vector( VectorOfSharedPtrOfRasterization_Interval other );
+void VectorOfSharedPtrOfRasterization_Interval::push_vector( std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> other );
 AutoIt:
     $oVectorOfSharedPtrOfRasterization_Interval.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfRasterization_Interval::push_vector( VectorOfSharedPtrOfRasterization_Interval other,
-                                                             size_t                                    count,
-                                                             size_t                                    start = 0 );
+void VectorOfSharedPtrOfRasterization_Interval::push_vector( std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> other,
+                                                             size_t                                                           count,
+                                                             size_t                                                           start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfRasterization_Interval.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -96982,8 +96982,8 @@ AutoIt:
 ### VectorOfSharedPtrOfRasterization\_Interval::slice
 
 ```cpp
-VectorOfSharedPtrOfRasterization_Interval VectorOfSharedPtrOfRasterization_Interval::slice( size_t start = 0,
-                                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Rasterization::Interval>> VectorOfSharedPtrOfRasterization_Interval::slice( size_t start = 0,
+                                                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfRasterization_Interval.slice( [$start[, $count]] ) -> retval
 ```
@@ -97029,19 +97029,19 @@ AutoIt:
 ### VectorOfSharedPtrOfLocationData\_RelativeKeypoint::create
 
 ```cpp
-static VectorOfSharedPtrOfLocationData_RelativeKeypoint VectorOfSharedPtrOfLocationData_RelativeKeypoint::create();
+static std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> VectorOfSharedPtrOfLocationData_RelativeKeypoint::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLocationData_RelativeKeypoint").create() -> <VectorOfSharedPtrOfLocationData_RelativeKeypoint object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfLocationData_RelativeKeypoint VectorOfSharedPtrOfLocationData_RelativeKeypoint::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> VectorOfSharedPtrOfLocationData_RelativeKeypoint::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLocationData_RelativeKeypoint").create( $size ) -> <VectorOfSharedPtrOfLocationData_RelativeKeypoint object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfLocationData_RelativeKeypoint VectorOfSharedPtrOfLocationData_RelativeKeypoint::create( VectorOfSharedPtrOfLocationData_RelativeKeypoint other );
+static std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> VectorOfSharedPtrOfLocationData_RelativeKeypoint::create( std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLocationData_RelativeKeypoint").create( $other ) -> <VectorOfSharedPtrOfLocationData_RelativeKeypoint object>
 ```
@@ -97057,7 +97057,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLocationData\_RelativeKeypoint::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfLocationData_RelativeKeypoint::IsInstance( const VectorOfSharedPtrOfLocationData_RelativeKeypoint& obj );
+static bool VectorOfSharedPtrOfLocationData_RelativeKeypoint::IsInstance( const std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLocationData_RelativeKeypoint").IsInstance( $obj ) -> retval
 ```
@@ -97071,7 +97071,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLocationData\_RelativeKeypoint::Items
 
 ```cpp
-VectorOfSharedPtrOfLocationData_RelativeKeypoint VectorOfSharedPtrOfLocationData_RelativeKeypoint::Items();
+std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> VectorOfSharedPtrOfLocationData_RelativeKeypoint::Items();
 AutoIt:
     $oVectorOfSharedPtrOfLocationData_RelativeKeypoint.Items() -> retval
 ```
@@ -97095,7 +97095,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLocationData\_RelativeKeypoint::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfLocationData_RelativeKeypoint::__eq__( const VectorOfSharedPtrOfLocationData_RelativeKeypoint& other );
+bool VectorOfSharedPtrOfLocationData_RelativeKeypoint::__eq__( const std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfLocationData_RelativeKeypoint.__eq__( $other ) -> retval
 ```
@@ -97197,15 +97197,15 @@ AutoIt:
 ### VectorOfSharedPtrOfLocationData\_RelativeKeypoint::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfLocationData_RelativeKeypoint::push_vector( VectorOfSharedPtrOfLocationData_RelativeKeypoint other );
+void VectorOfSharedPtrOfLocationData_RelativeKeypoint::push_vector( std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> other );
 AutoIt:
     $oVectorOfSharedPtrOfLocationData_RelativeKeypoint.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfLocationData_RelativeKeypoint::push_vector( VectorOfSharedPtrOfLocationData_RelativeKeypoint other,
-                                                                    size_t                                           count,
-                                                                    size_t                                           start = 0 );
+void VectorOfSharedPtrOfLocationData_RelativeKeypoint::push_vector( std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> other,
+                                                                    size_t                                                                  count,
+                                                                    size_t                                                                  start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfLocationData_RelativeKeypoint.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -97230,8 +97230,8 @@ AutoIt:
 ### VectorOfSharedPtrOfLocationData\_RelativeKeypoint::slice
 
 ```cpp
-VectorOfSharedPtrOfLocationData_RelativeKeypoint VectorOfSharedPtrOfLocationData_RelativeKeypoint::slice( size_t start = 0,
-                                                                                                          size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::LocationData::RelativeKeypoint>> VectorOfSharedPtrOfLocationData_RelativeKeypoint::slice( size_t start = 0,
+                                                                                                                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfLocationData_RelativeKeypoint.slice( [$start[, $count]] ) -> retval
 ```
@@ -97277,19 +97277,19 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection\_AssociatedDetection::create
 
 ```cpp
-static VectorOfSharedPtrOfDetection_AssociatedDetection VectorOfSharedPtrOfDetection_AssociatedDetection::create();
+static std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> VectorOfSharedPtrOfDetection_AssociatedDetection::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfDetection_AssociatedDetection").create() -> <VectorOfSharedPtrOfDetection_AssociatedDetection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfDetection_AssociatedDetection VectorOfSharedPtrOfDetection_AssociatedDetection::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> VectorOfSharedPtrOfDetection_AssociatedDetection::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfDetection_AssociatedDetection").create( $size ) -> <VectorOfSharedPtrOfDetection_AssociatedDetection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfDetection_AssociatedDetection VectorOfSharedPtrOfDetection_AssociatedDetection::create( VectorOfSharedPtrOfDetection_AssociatedDetection other );
+static std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> VectorOfSharedPtrOfDetection_AssociatedDetection::create( std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfDetection_AssociatedDetection").create( $other ) -> <VectorOfSharedPtrOfDetection_AssociatedDetection object>
 ```
@@ -97305,7 +97305,7 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection\_AssociatedDetection::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfDetection_AssociatedDetection::IsInstance( const VectorOfSharedPtrOfDetection_AssociatedDetection& obj );
+static bool VectorOfSharedPtrOfDetection_AssociatedDetection::IsInstance( const std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfDetection_AssociatedDetection").IsInstance( $obj ) -> retval
 ```
@@ -97319,7 +97319,7 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection\_AssociatedDetection::Items
 
 ```cpp
-VectorOfSharedPtrOfDetection_AssociatedDetection VectorOfSharedPtrOfDetection_AssociatedDetection::Items();
+std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> VectorOfSharedPtrOfDetection_AssociatedDetection::Items();
 AutoIt:
     $oVectorOfSharedPtrOfDetection_AssociatedDetection.Items() -> retval
 ```
@@ -97343,7 +97343,7 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection\_AssociatedDetection::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfDetection_AssociatedDetection::__eq__( const VectorOfSharedPtrOfDetection_AssociatedDetection& other );
+bool VectorOfSharedPtrOfDetection_AssociatedDetection::__eq__( const std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfDetection_AssociatedDetection.__eq__( $other ) -> retval
 ```
@@ -97445,15 +97445,15 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection\_AssociatedDetection::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfDetection_AssociatedDetection::push_vector( VectorOfSharedPtrOfDetection_AssociatedDetection other );
+void VectorOfSharedPtrOfDetection_AssociatedDetection::push_vector( std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> other );
 AutoIt:
     $oVectorOfSharedPtrOfDetection_AssociatedDetection.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfDetection_AssociatedDetection::push_vector( VectorOfSharedPtrOfDetection_AssociatedDetection other,
-                                                                    size_t                                           count,
-                                                                    size_t                                           start = 0 );
+void VectorOfSharedPtrOfDetection_AssociatedDetection::push_vector( std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> other,
+                                                                    size_t                                                                  count,
+                                                                    size_t                                                                  start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfDetection_AssociatedDetection.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -97478,8 +97478,8 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection\_AssociatedDetection::slice
 
 ```cpp
-VectorOfSharedPtrOfDetection_AssociatedDetection VectorOfSharedPtrOfDetection_AssociatedDetection::slice( size_t start = 0,
-                                                                                                          size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Detection::AssociatedDetection>> VectorOfSharedPtrOfDetection_AssociatedDetection::slice( size_t start = 0,
+                                                                                                                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfDetection_AssociatedDetection.slice( [$start[, $count]] ) -> retval
 ```
@@ -97525,19 +97525,19 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection::create
 
 ```cpp
-static VectorOfSharedPtrOfDetection VectorOfSharedPtrOfDetection::create();
+static std::vector<std::shared_ptr<mediapipe::Detection>> VectorOfSharedPtrOfDetection::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfDetection").create() -> <VectorOfSharedPtrOfDetection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfDetection VectorOfSharedPtrOfDetection::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Detection>> VectorOfSharedPtrOfDetection::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfDetection").create( $size ) -> <VectorOfSharedPtrOfDetection object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfDetection VectorOfSharedPtrOfDetection::create( VectorOfSharedPtrOfDetection other );
+static std::vector<std::shared_ptr<mediapipe::Detection>> VectorOfSharedPtrOfDetection::create( std::vector<std::shared_ptr<mediapipe::Detection>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfDetection").create( $other ) -> <VectorOfSharedPtrOfDetection object>
 ```
@@ -97553,7 +97553,7 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfDetection::IsInstance( const VectorOfSharedPtrOfDetection& obj );
+static bool VectorOfSharedPtrOfDetection::IsInstance( const std::vector<std::shared_ptr<mediapipe::Detection>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfDetection").IsInstance( $obj ) -> retval
 ```
@@ -97567,7 +97567,7 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection::Items
 
 ```cpp
-VectorOfSharedPtrOfDetection VectorOfSharedPtrOfDetection::Items();
+std::vector<std::shared_ptr<mediapipe::Detection>> VectorOfSharedPtrOfDetection::Items();
 AutoIt:
     $oVectorOfSharedPtrOfDetection.Items() -> retval
 ```
@@ -97591,7 +97591,7 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfDetection::__eq__( const VectorOfSharedPtrOfDetection& other );
+bool VectorOfSharedPtrOfDetection::__eq__( const std::vector<std::shared_ptr<mediapipe::Detection>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfDetection.__eq__( $other ) -> retval
 ```
@@ -97693,15 +97693,15 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfDetection::push_vector( VectorOfSharedPtrOfDetection other );
+void VectorOfSharedPtrOfDetection::push_vector( std::vector<std::shared_ptr<mediapipe::Detection>> other );
 AutoIt:
     $oVectorOfSharedPtrOfDetection.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfDetection::push_vector( VectorOfSharedPtrOfDetection other,
-                                                size_t                       count,
-                                                size_t                       start = 0 );
+void VectorOfSharedPtrOfDetection::push_vector( std::vector<std::shared_ptr<mediapipe::Detection>> other,
+                                                size_t                                             count,
+                                                size_t                                             start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfDetection.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -97726,8 +97726,8 @@ AutoIt:
 ### VectorOfSharedPtrOfDetection::slice
 
 ```cpp
-VectorOfSharedPtrOfDetection VectorOfSharedPtrOfDetection::slice( size_t start = 0,
-                                                                  size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Detection>> VectorOfSharedPtrOfDetection::slice( size_t start = 0,
+                                                                                        size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfDetection.slice( [$start[, $count]] ) -> retval
 ```
@@ -97773,19 +97773,19 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmark::create
 
 ```cpp
-static VectorOfSharedPtrOfLandmark VectorOfSharedPtrOfLandmark::create();
+static std::vector<std::shared_ptr<mediapipe::Landmark>> VectorOfSharedPtrOfLandmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLandmark").create() -> <VectorOfSharedPtrOfLandmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfLandmark VectorOfSharedPtrOfLandmark::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Landmark>> VectorOfSharedPtrOfLandmark::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLandmark").create( $size ) -> <VectorOfSharedPtrOfLandmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfLandmark VectorOfSharedPtrOfLandmark::create( VectorOfSharedPtrOfLandmark other );
+static std::vector<std::shared_ptr<mediapipe::Landmark>> VectorOfSharedPtrOfLandmark::create( std::vector<std::shared_ptr<mediapipe::Landmark>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLandmark").create( $other ) -> <VectorOfSharedPtrOfLandmark object>
 ```
@@ -97801,7 +97801,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmark::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfLandmark::IsInstance( const VectorOfSharedPtrOfLandmark& obj );
+static bool VectorOfSharedPtrOfLandmark::IsInstance( const std::vector<std::shared_ptr<mediapipe::Landmark>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLandmark").IsInstance( $obj ) -> retval
 ```
@@ -97815,7 +97815,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmark::Items
 
 ```cpp
-VectorOfSharedPtrOfLandmark VectorOfSharedPtrOfLandmark::Items();
+std::vector<std::shared_ptr<mediapipe::Landmark>> VectorOfSharedPtrOfLandmark::Items();
 AutoIt:
     $oVectorOfSharedPtrOfLandmark.Items() -> retval
 ```
@@ -97839,7 +97839,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmark::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfLandmark::__eq__( const VectorOfSharedPtrOfLandmark& other );
+bool VectorOfSharedPtrOfLandmark::__eq__( const std::vector<std::shared_ptr<mediapipe::Landmark>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfLandmark.__eq__( $other ) -> retval
 ```
@@ -97941,15 +97941,15 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmark::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfLandmark::push_vector( VectorOfSharedPtrOfLandmark other );
+void VectorOfSharedPtrOfLandmark::push_vector( std::vector<std::shared_ptr<mediapipe::Landmark>> other );
 AutoIt:
     $oVectorOfSharedPtrOfLandmark.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfLandmark::push_vector( VectorOfSharedPtrOfLandmark other,
-                                               size_t                      count,
-                                               size_t                      start = 0 );
+void VectorOfSharedPtrOfLandmark::push_vector( std::vector<std::shared_ptr<mediapipe::Landmark>> other,
+                                               size_t                                            count,
+                                               size_t                                            start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfLandmark.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -97974,8 +97974,8 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmark::slice
 
 ```cpp
-VectorOfSharedPtrOfLandmark VectorOfSharedPtrOfLandmark::slice( size_t start = 0,
-                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Landmark>> VectorOfSharedPtrOfLandmark::slice( size_t start = 0,
+                                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfLandmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -98021,19 +98021,19 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmarkList::create
 
 ```cpp
-static VectorOfSharedPtrOfLandmarkList VectorOfSharedPtrOfLandmarkList::create();
+static std::vector<std::shared_ptr<mediapipe::LandmarkList>> VectorOfSharedPtrOfLandmarkList::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLandmarkList").create() -> <VectorOfSharedPtrOfLandmarkList object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfLandmarkList VectorOfSharedPtrOfLandmarkList::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::LandmarkList>> VectorOfSharedPtrOfLandmarkList::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLandmarkList").create( $size ) -> <VectorOfSharedPtrOfLandmarkList object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfLandmarkList VectorOfSharedPtrOfLandmarkList::create( VectorOfSharedPtrOfLandmarkList other );
+static std::vector<std::shared_ptr<mediapipe::LandmarkList>> VectorOfSharedPtrOfLandmarkList::create( std::vector<std::shared_ptr<mediapipe::LandmarkList>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLandmarkList").create( $other ) -> <VectorOfSharedPtrOfLandmarkList object>
 ```
@@ -98049,7 +98049,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmarkList::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfLandmarkList::IsInstance( const VectorOfSharedPtrOfLandmarkList& obj );
+static bool VectorOfSharedPtrOfLandmarkList::IsInstance( const std::vector<std::shared_ptr<mediapipe::LandmarkList>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfLandmarkList").IsInstance( $obj ) -> retval
 ```
@@ -98063,7 +98063,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmarkList::Items
 
 ```cpp
-VectorOfSharedPtrOfLandmarkList VectorOfSharedPtrOfLandmarkList::Items();
+std::vector<std::shared_ptr<mediapipe::LandmarkList>> VectorOfSharedPtrOfLandmarkList::Items();
 AutoIt:
     $oVectorOfSharedPtrOfLandmarkList.Items() -> retval
 ```
@@ -98087,7 +98087,7 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmarkList::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfLandmarkList::__eq__( const VectorOfSharedPtrOfLandmarkList& other );
+bool VectorOfSharedPtrOfLandmarkList::__eq__( const std::vector<std::shared_ptr<mediapipe::LandmarkList>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfLandmarkList.__eq__( $other ) -> retval
 ```
@@ -98189,15 +98189,15 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmarkList::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfLandmarkList::push_vector( VectorOfSharedPtrOfLandmarkList other );
+void VectorOfSharedPtrOfLandmarkList::push_vector( std::vector<std::shared_ptr<mediapipe::LandmarkList>> other );
 AutoIt:
     $oVectorOfSharedPtrOfLandmarkList.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfLandmarkList::push_vector( VectorOfSharedPtrOfLandmarkList other,
-                                                   size_t                          count,
-                                                   size_t                          start = 0 );
+void VectorOfSharedPtrOfLandmarkList::push_vector( std::vector<std::shared_ptr<mediapipe::LandmarkList>> other,
+                                                   size_t                                                count,
+                                                   size_t                                                start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfLandmarkList.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -98222,8 +98222,8 @@ AutoIt:
 ### VectorOfSharedPtrOfLandmarkList::slice
 
 ```cpp
-VectorOfSharedPtrOfLandmarkList VectorOfSharedPtrOfLandmarkList::slice( size_t start = 0,
-                                                                        size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::LandmarkList>> VectorOfSharedPtrOfLandmarkList::slice( size_t start = 0,
+                                                                                              size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfLandmarkList.slice( [$start[, $count]] ) -> retval
 ```
@@ -98269,19 +98269,19 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmark::create
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedLandmark VectorOfSharedPtrOfNormalizedLandmark::create();
+static std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>> VectorOfSharedPtrOfNormalizedLandmark::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedLandmark").create() -> <VectorOfSharedPtrOfNormalizedLandmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedLandmark VectorOfSharedPtrOfNormalizedLandmark::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>> VectorOfSharedPtrOfNormalizedLandmark::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedLandmark").create( $size ) -> <VectorOfSharedPtrOfNormalizedLandmark object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedLandmark VectorOfSharedPtrOfNormalizedLandmark::create( VectorOfSharedPtrOfNormalizedLandmark other );
+static std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>> VectorOfSharedPtrOfNormalizedLandmark::create( std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedLandmark").create( $other ) -> <VectorOfSharedPtrOfNormalizedLandmark object>
 ```
@@ -98297,7 +98297,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmark::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfNormalizedLandmark::IsInstance( const VectorOfSharedPtrOfNormalizedLandmark& obj );
+static bool VectorOfSharedPtrOfNormalizedLandmark::IsInstance( const std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedLandmark").IsInstance( $obj ) -> retval
 ```
@@ -98311,7 +98311,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmark::Items
 
 ```cpp
-VectorOfSharedPtrOfNormalizedLandmark VectorOfSharedPtrOfNormalizedLandmark::Items();
+std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>> VectorOfSharedPtrOfNormalizedLandmark::Items();
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmark.Items() -> retval
 ```
@@ -98335,7 +98335,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmark::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfNormalizedLandmark::__eq__( const VectorOfSharedPtrOfNormalizedLandmark& other );
+bool VectorOfSharedPtrOfNormalizedLandmark::__eq__( const std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmark.__eq__( $other ) -> retval
 ```
@@ -98437,15 +98437,15 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmark::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfNormalizedLandmark::push_vector( VectorOfSharedPtrOfNormalizedLandmark other );
+void VectorOfSharedPtrOfNormalizedLandmark::push_vector( std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>> other );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmark.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfNormalizedLandmark::push_vector( VectorOfSharedPtrOfNormalizedLandmark other,
-                                                         size_t                                count,
-                                                         size_t                                start = 0 );
+void VectorOfSharedPtrOfNormalizedLandmark::push_vector( std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>> other,
+                                                         size_t                                                      count,
+                                                         size_t                                                      start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmark.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -98470,8 +98470,8 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmark::slice
 
 ```cpp
-VectorOfSharedPtrOfNormalizedLandmark VectorOfSharedPtrOfNormalizedLandmark::slice( size_t start = 0,
-                                                                                    size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::NormalizedLandmark>> VectorOfSharedPtrOfNormalizedLandmark::slice( size_t start = 0,
+                                                                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmark.slice( [$start[, $count]] ) -> retval
 ```
@@ -98517,19 +98517,19 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmarkList::create
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedLandmarkList VectorOfSharedPtrOfNormalizedLandmarkList::create();
+static std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>> VectorOfSharedPtrOfNormalizedLandmarkList::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedLandmarkList").create() -> <VectorOfSharedPtrOfNormalizedLandmarkList object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedLandmarkList VectorOfSharedPtrOfNormalizedLandmarkList::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>> VectorOfSharedPtrOfNormalizedLandmarkList::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedLandmarkList").create( $size ) -> <VectorOfSharedPtrOfNormalizedLandmarkList object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedLandmarkList VectorOfSharedPtrOfNormalizedLandmarkList::create( VectorOfSharedPtrOfNormalizedLandmarkList other );
+static std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>> VectorOfSharedPtrOfNormalizedLandmarkList::create( std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedLandmarkList").create( $other ) -> <VectorOfSharedPtrOfNormalizedLandmarkList object>
 ```
@@ -98545,7 +98545,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmarkList::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfNormalizedLandmarkList::IsInstance( const VectorOfSharedPtrOfNormalizedLandmarkList& obj );
+static bool VectorOfSharedPtrOfNormalizedLandmarkList::IsInstance( const std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedLandmarkList").IsInstance( $obj ) -> retval
 ```
@@ -98559,7 +98559,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmarkList::Items
 
 ```cpp
-VectorOfSharedPtrOfNormalizedLandmarkList VectorOfSharedPtrOfNormalizedLandmarkList::Items();
+std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>> VectorOfSharedPtrOfNormalizedLandmarkList::Items();
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmarkList.Items() -> retval
 ```
@@ -98583,7 +98583,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmarkList::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfNormalizedLandmarkList::__eq__( const VectorOfSharedPtrOfNormalizedLandmarkList& other );
+bool VectorOfSharedPtrOfNormalizedLandmarkList::__eq__( const std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmarkList.__eq__( $other ) -> retval
 ```
@@ -98685,15 +98685,15 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmarkList::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfNormalizedLandmarkList::push_vector( VectorOfSharedPtrOfNormalizedLandmarkList other );
+void VectorOfSharedPtrOfNormalizedLandmarkList::push_vector( std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>> other );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmarkList.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfNormalizedLandmarkList::push_vector( VectorOfSharedPtrOfNormalizedLandmarkList other,
-                                                             size_t                                    count,
-                                                             size_t                                    start = 0 );
+void VectorOfSharedPtrOfNormalizedLandmarkList::push_vector( std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>> other,
+                                                             size_t                                                          count,
+                                                             size_t                                                          start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmarkList.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -98718,8 +98718,8 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedLandmarkList::slice
 
 ```cpp
-VectorOfSharedPtrOfNormalizedLandmarkList VectorOfSharedPtrOfNormalizedLandmarkList::slice( size_t start = 0,
-                                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::NormalizedLandmarkList>> VectorOfSharedPtrOfNormalizedLandmarkList::slice( size_t start = 0,
+                                                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedLandmarkList.slice( [$start[, $count]] ) -> retval
 ```
@@ -98765,19 +98765,19 @@ AutoIt:
 ### VectorOfSharedPtrOfInferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::create
 
 ```cpp
-static VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::create();
+static std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>> VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink").create() -> <VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>> VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink").create( $size ) -> <VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::create( VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink other );
+static std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>> VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::create( std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink").create( $other ) -> <VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink object>
 ```
@@ -98793,7 +98793,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::IsInstance( const VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink& obj );
+static bool VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::IsInstance( const std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink").IsInstance( $obj ) -> retval
 ```
@@ -98807,7 +98807,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::Items
 
 ```cpp
-VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::Items();
+std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>> VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::Items();
 AutoIt:
     $oVectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.Items() -> retval
 ```
@@ -98831,7 +98831,7 @@ AutoIt:
 ### VectorOfSharedPtrOfInferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::__eq__( const VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink& other );
+bool VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::__eq__( const std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.__eq__( $other ) -> retval
 ```
@@ -98933,15 +98933,15 @@ AutoIt:
 ### VectorOfSharedPtrOfInferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::push_vector( VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink other );
+void VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::push_vector( std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>> other );
 AutoIt:
     $oVectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::push_vector( VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink other,
-                                                                                                      size_t                                                                             count,
-                                                                                                      size_t                                                                             start = 0 );
+void VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::push_vector( std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>> other,
+                                                                                                      size_t                                                                                                     count,
+                                                                                                      size_t                                                                                                     start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -98966,8 +98966,8 @@ AutoIt:
 ### VectorOfSharedPtrOfInferenceCalculatorOptions\_InputOutputConfig\_FeedbackTensorLink::slice
 
 ```cpp
-VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::slice( size_t start = 0,
-                                                                                                                                                                              size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::InferenceCalculatorOptions::InputOutputConfig::FeedbackTensorLink>> VectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink::slice( size_t start = 0,
+                                                                                                                                                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfInferenceCalculatorOptions_InputOutputConfig_FeedbackTensorLink.slice( [$start[, $count]] ) -> retval
 ```
@@ -99013,19 +99013,19 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_Vertex::create
 
 ```cpp
-static VectorOfSharedPtrOfARFaceGeometry_Vertex VectorOfSharedPtrOfARFaceGeometry_Vertex::create();
+static std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>> VectorOfSharedPtrOfARFaceGeometry_Vertex::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARFaceGeometry_Vertex").create() -> <VectorOfSharedPtrOfARFaceGeometry_Vertex object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARFaceGeometry_Vertex VectorOfSharedPtrOfARFaceGeometry_Vertex::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>> VectorOfSharedPtrOfARFaceGeometry_Vertex::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARFaceGeometry_Vertex").create( $size ) -> <VectorOfSharedPtrOfARFaceGeometry_Vertex object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARFaceGeometry_Vertex VectorOfSharedPtrOfARFaceGeometry_Vertex::create( VectorOfSharedPtrOfARFaceGeometry_Vertex other );
+static std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>> VectorOfSharedPtrOfARFaceGeometry_Vertex::create( std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARFaceGeometry_Vertex").create( $other ) -> <VectorOfSharedPtrOfARFaceGeometry_Vertex object>
 ```
@@ -99041,7 +99041,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_Vertex::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfARFaceGeometry_Vertex::IsInstance( const VectorOfSharedPtrOfARFaceGeometry_Vertex& obj );
+static bool VectorOfSharedPtrOfARFaceGeometry_Vertex::IsInstance( const std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARFaceGeometry_Vertex").IsInstance( $obj ) -> retval
 ```
@@ -99055,7 +99055,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_Vertex::Items
 
 ```cpp
-VectorOfSharedPtrOfARFaceGeometry_Vertex VectorOfSharedPtrOfARFaceGeometry_Vertex::Items();
+std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>> VectorOfSharedPtrOfARFaceGeometry_Vertex::Items();
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_Vertex.Items() -> retval
 ```
@@ -99079,7 +99079,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_Vertex::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfARFaceGeometry_Vertex::__eq__( const VectorOfSharedPtrOfARFaceGeometry_Vertex& other );
+bool VectorOfSharedPtrOfARFaceGeometry_Vertex::__eq__( const std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_Vertex.__eq__( $other ) -> retval
 ```
@@ -99181,15 +99181,15 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_Vertex::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfARFaceGeometry_Vertex::push_vector( VectorOfSharedPtrOfARFaceGeometry_Vertex other );
+void VectorOfSharedPtrOfARFaceGeometry_Vertex::push_vector( std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>> other );
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_Vertex.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfARFaceGeometry_Vertex::push_vector( VectorOfSharedPtrOfARFaceGeometry_Vertex other,
-                                                            size_t                                   count,
-                                                            size_t                                   start = 0 );
+void VectorOfSharedPtrOfARFaceGeometry_Vertex::push_vector( std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>> other,
+                                                            size_t                                                          count,
+                                                            size_t                                                          start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_Vertex.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -99214,8 +99214,8 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_Vertex::slice
 
 ```cpp
-VectorOfSharedPtrOfARFaceGeometry_Vertex VectorOfSharedPtrOfARFaceGeometry_Vertex::slice( size_t start = 0,
-                                                                                          size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::Vertex>> VectorOfSharedPtrOfARFaceGeometry_Vertex::slice( size_t start = 0,
+                                                                                                                 size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_Vertex.slice( [$start[, $count]] ) -> retval
 ```
@@ -99261,19 +99261,19 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_TextureCoordinate::create
 
 ```cpp
-static VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::create();
+static std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>> VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate").create() -> <VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>> VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate").create( $size ) -> <VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::create( VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate other );
+static std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>> VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::create( std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate").create( $other ) -> <VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate object>
 ```
@@ -99289,7 +99289,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_TextureCoordinate::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::IsInstance( const VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate& obj );
+static bool VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::IsInstance( const std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate").IsInstance( $obj ) -> retval
 ```
@@ -99303,7 +99303,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_TextureCoordinate::Items
 
 ```cpp
-VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::Items();
+std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>> VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::Items();
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_TextureCoordinate.Items() -> retval
 ```
@@ -99327,7 +99327,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_TextureCoordinate::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::__eq__( const VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate& other );
+bool VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::__eq__( const std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_TextureCoordinate.__eq__( $other ) -> retval
 ```
@@ -99429,15 +99429,15 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_TextureCoordinate::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::push_vector( VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate other );
+void VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::push_vector( std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>> other );
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_TextureCoordinate.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::push_vector( VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate other,
-                                                                       size_t                                              count,
-                                                                       size_t                                              start = 0 );
+void VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::push_vector( std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>> other,
+                                                                       size_t                                                                     count,
+                                                                       size_t                                                                     start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_TextureCoordinate.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -99462,8 +99462,8 @@ AutoIt:
 ### VectorOfSharedPtrOfARFaceGeometry\_TextureCoordinate::slice
 
 ```cpp
-VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::slice( size_t start = 0,
-                                                                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ARFaceGeometry::TextureCoordinate>> VectorOfSharedPtrOfARFaceGeometry_TextureCoordinate::slice( size_t start = 0,
+                                                                                                                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfARFaceGeometry_TextureCoordinate.slice( [$start[, $count]] ) -> retval
 ```
@@ -99509,19 +99509,19 @@ AutoIt:
 ### VectorOfSharedPtrOfARBlendShapeMap\_MapEntry::create
 
 ```cpp
-static VectorOfSharedPtrOfARBlendShapeMap_MapEntry VectorOfSharedPtrOfARBlendShapeMap_MapEntry::create();
+static std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>> VectorOfSharedPtrOfARBlendShapeMap_MapEntry::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARBlendShapeMap_MapEntry").create() -> <VectorOfSharedPtrOfARBlendShapeMap_MapEntry object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARBlendShapeMap_MapEntry VectorOfSharedPtrOfARBlendShapeMap_MapEntry::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>> VectorOfSharedPtrOfARBlendShapeMap_MapEntry::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARBlendShapeMap_MapEntry").create( $size ) -> <VectorOfSharedPtrOfARBlendShapeMap_MapEntry object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARBlendShapeMap_MapEntry VectorOfSharedPtrOfARBlendShapeMap_MapEntry::create( VectorOfSharedPtrOfARBlendShapeMap_MapEntry other );
+static std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>> VectorOfSharedPtrOfARBlendShapeMap_MapEntry::create( std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARBlendShapeMap_MapEntry").create( $other ) -> <VectorOfSharedPtrOfARBlendShapeMap_MapEntry object>
 ```
@@ -99537,7 +99537,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARBlendShapeMap\_MapEntry::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfARBlendShapeMap_MapEntry::IsInstance( const VectorOfSharedPtrOfARBlendShapeMap_MapEntry& obj );
+static bool VectorOfSharedPtrOfARBlendShapeMap_MapEntry::IsInstance( const std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARBlendShapeMap_MapEntry").IsInstance( $obj ) -> retval
 ```
@@ -99551,7 +99551,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARBlendShapeMap\_MapEntry::Items
 
 ```cpp
-VectorOfSharedPtrOfARBlendShapeMap_MapEntry VectorOfSharedPtrOfARBlendShapeMap_MapEntry::Items();
+std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>> VectorOfSharedPtrOfARBlendShapeMap_MapEntry::Items();
 AutoIt:
     $oVectorOfSharedPtrOfARBlendShapeMap_MapEntry.Items() -> retval
 ```
@@ -99575,7 +99575,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARBlendShapeMap\_MapEntry::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfARBlendShapeMap_MapEntry::__eq__( const VectorOfSharedPtrOfARBlendShapeMap_MapEntry& other );
+bool VectorOfSharedPtrOfARBlendShapeMap_MapEntry::__eq__( const std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfARBlendShapeMap_MapEntry.__eq__( $other ) -> retval
 ```
@@ -99677,15 +99677,15 @@ AutoIt:
 ### VectorOfSharedPtrOfARBlendShapeMap\_MapEntry::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfARBlendShapeMap_MapEntry::push_vector( VectorOfSharedPtrOfARBlendShapeMap_MapEntry other );
+void VectorOfSharedPtrOfARBlendShapeMap_MapEntry::push_vector( std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>> other );
 AutoIt:
     $oVectorOfSharedPtrOfARBlendShapeMap_MapEntry.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfARBlendShapeMap_MapEntry::push_vector( VectorOfSharedPtrOfARBlendShapeMap_MapEntry other,
-                                                               size_t                                      count,
-                                                               size_t                                      start = 0 );
+void VectorOfSharedPtrOfARBlendShapeMap_MapEntry::push_vector( std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>> other,
+                                                               size_t                                                             count,
+                                                               size_t                                                             start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfARBlendShapeMap_MapEntry.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -99710,8 +99710,8 @@ AutoIt:
 ### VectorOfSharedPtrOfARBlendShapeMap\_MapEntry::slice
 
 ```cpp
-VectorOfSharedPtrOfARBlendShapeMap_MapEntry VectorOfSharedPtrOfARBlendShapeMap_MapEntry::slice( size_t start = 0,
-                                                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ARBlendShapeMap::MapEntry>> VectorOfSharedPtrOfARBlendShapeMap_MapEntry::slice( size_t start = 0,
+                                                                                                                       size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfARBlendShapeMap_MapEntry.slice( [$start[, $count]] ) -> retval
 ```
@@ -99757,19 +99757,19 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_Vertex::create
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneGeometry_Vertex VectorOfSharedPtrOfARPlaneGeometry_Vertex::create();
+static std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>> VectorOfSharedPtrOfARPlaneGeometry_Vertex::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneGeometry_Vertex").create() -> <VectorOfSharedPtrOfARPlaneGeometry_Vertex object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneGeometry_Vertex VectorOfSharedPtrOfARPlaneGeometry_Vertex::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>> VectorOfSharedPtrOfARPlaneGeometry_Vertex::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneGeometry_Vertex").create( $size ) -> <VectorOfSharedPtrOfARPlaneGeometry_Vertex object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneGeometry_Vertex VectorOfSharedPtrOfARPlaneGeometry_Vertex::create( VectorOfSharedPtrOfARPlaneGeometry_Vertex other );
+static std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>> VectorOfSharedPtrOfARPlaneGeometry_Vertex::create( std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneGeometry_Vertex").create( $other ) -> <VectorOfSharedPtrOfARPlaneGeometry_Vertex object>
 ```
@@ -99785,7 +99785,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_Vertex::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfARPlaneGeometry_Vertex::IsInstance( const VectorOfSharedPtrOfARPlaneGeometry_Vertex& obj );
+static bool VectorOfSharedPtrOfARPlaneGeometry_Vertex::IsInstance( const std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneGeometry_Vertex").IsInstance( $obj ) -> retval
 ```
@@ -99799,7 +99799,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_Vertex::Items
 
 ```cpp
-VectorOfSharedPtrOfARPlaneGeometry_Vertex VectorOfSharedPtrOfARPlaneGeometry_Vertex::Items();
+std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>> VectorOfSharedPtrOfARPlaneGeometry_Vertex::Items();
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_Vertex.Items() -> retval
 ```
@@ -99823,7 +99823,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_Vertex::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfARPlaneGeometry_Vertex::__eq__( const VectorOfSharedPtrOfARPlaneGeometry_Vertex& other );
+bool VectorOfSharedPtrOfARPlaneGeometry_Vertex::__eq__( const std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_Vertex.__eq__( $other ) -> retval
 ```
@@ -99925,15 +99925,15 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_Vertex::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfARPlaneGeometry_Vertex::push_vector( VectorOfSharedPtrOfARPlaneGeometry_Vertex other );
+void VectorOfSharedPtrOfARPlaneGeometry_Vertex::push_vector( std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>> other );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_Vertex.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfARPlaneGeometry_Vertex::push_vector( VectorOfSharedPtrOfARPlaneGeometry_Vertex other,
-                                                             size_t                                    count,
-                                                             size_t                                    start = 0 );
+void VectorOfSharedPtrOfARPlaneGeometry_Vertex::push_vector( std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>> other,
+                                                             size_t                                                           count,
+                                                             size_t                                                           start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_Vertex.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -99958,8 +99958,8 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_Vertex::slice
 
 ```cpp
-VectorOfSharedPtrOfARPlaneGeometry_Vertex VectorOfSharedPtrOfARPlaneGeometry_Vertex::slice( size_t start = 0,
-                                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::Vertex>> VectorOfSharedPtrOfARPlaneGeometry_Vertex::slice( size_t start = 0,
+                                                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_Vertex.slice( [$start[, $count]] ) -> retval
 ```
@@ -100005,19 +100005,19 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_TextureCoordinate::create
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::create();
+static std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>> VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate").create() -> <VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>> VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate").create( $size ) -> <VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::create( VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate other );
+static std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>> VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::create( std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate").create( $other ) -> <VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate object>
 ```
@@ -100033,7 +100033,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_TextureCoordinate::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::IsInstance( const VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate& obj );
+static bool VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::IsInstance( const std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate").IsInstance( $obj ) -> retval
 ```
@@ -100047,7 +100047,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_TextureCoordinate::Items
 
 ```cpp
-VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::Items();
+std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>> VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::Items();
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate.Items() -> retval
 ```
@@ -100071,7 +100071,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_TextureCoordinate::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::__eq__( const VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate& other );
+bool VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::__eq__( const std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate.__eq__( $other ) -> retval
 ```
@@ -100173,15 +100173,15 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_TextureCoordinate::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::push_vector( VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate other );
+void VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::push_vector( std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>> other );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::push_vector( VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate other,
-                                                                        size_t                                               count,
-                                                                        size_t                                               start = 0 );
+void VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::push_vector( std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>> other,
+                                                                        size_t                                                                      count,
+                                                                        size_t                                                                      start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -100206,8 +100206,8 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneGeometry\_TextureCoordinate::slice
 
 ```cpp
-VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::slice( size_t start = 0,
-                                                                                                                  size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ARPlaneGeometry::TextureCoordinate>> VectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate::slice( size_t start = 0,
+                                                                                                                                         size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneGeometry_TextureCoordinate.slice( [$start[, $count]] ) -> retval
 ```
@@ -100253,19 +100253,19 @@ AutoIt:
 ### VectorOfSharedPtrOfARPointCloud\_Point::create
 
 ```cpp
-static VectorOfSharedPtrOfARPointCloud_Point VectorOfSharedPtrOfARPointCloud_Point::create();
+static std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>> VectorOfSharedPtrOfARPointCloud_Point::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPointCloud_Point").create() -> <VectorOfSharedPtrOfARPointCloud_Point object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARPointCloud_Point VectorOfSharedPtrOfARPointCloud_Point::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>> VectorOfSharedPtrOfARPointCloud_Point::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPointCloud_Point").create( $size ) -> <VectorOfSharedPtrOfARPointCloud_Point object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARPointCloud_Point VectorOfSharedPtrOfARPointCloud_Point::create( VectorOfSharedPtrOfARPointCloud_Point other );
+static std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>> VectorOfSharedPtrOfARPointCloud_Point::create( std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPointCloud_Point").create( $other ) -> <VectorOfSharedPtrOfARPointCloud_Point object>
 ```
@@ -100281,7 +100281,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPointCloud\_Point::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfARPointCloud_Point::IsInstance( const VectorOfSharedPtrOfARPointCloud_Point& obj );
+static bool VectorOfSharedPtrOfARPointCloud_Point::IsInstance( const std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPointCloud_Point").IsInstance( $obj ) -> retval
 ```
@@ -100295,7 +100295,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPointCloud\_Point::Items
 
 ```cpp
-VectorOfSharedPtrOfARPointCloud_Point VectorOfSharedPtrOfARPointCloud_Point::Items();
+std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>> VectorOfSharedPtrOfARPointCloud_Point::Items();
 AutoIt:
     $oVectorOfSharedPtrOfARPointCloud_Point.Items() -> retval
 ```
@@ -100319,7 +100319,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPointCloud\_Point::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfARPointCloud_Point::__eq__( const VectorOfSharedPtrOfARPointCloud_Point& other );
+bool VectorOfSharedPtrOfARPointCloud_Point::__eq__( const std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfARPointCloud_Point.__eq__( $other ) -> retval
 ```
@@ -100421,15 +100421,15 @@ AutoIt:
 ### VectorOfSharedPtrOfARPointCloud\_Point::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfARPointCloud_Point::push_vector( VectorOfSharedPtrOfARPointCloud_Point other );
+void VectorOfSharedPtrOfARPointCloud_Point::push_vector( std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>> other );
 AutoIt:
     $oVectorOfSharedPtrOfARPointCloud_Point.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfARPointCloud_Point::push_vector( VectorOfSharedPtrOfARPointCloud_Point other,
-                                                         size_t                                count,
-                                                         size_t                                start = 0 );
+void VectorOfSharedPtrOfARPointCloud_Point::push_vector( std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>> other,
+                                                         size_t                                                       count,
+                                                         size_t                                                       start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfARPointCloud_Point.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -100454,8 +100454,8 @@ AutoIt:
 ### VectorOfSharedPtrOfARPointCloud\_Point::slice
 
 ```cpp
-VectorOfSharedPtrOfARPointCloud_Point VectorOfSharedPtrOfARPointCloud_Point::slice( size_t start = 0,
-                                                                                    size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ARPointCloud::Point>> VectorOfSharedPtrOfARPointCloud_Point::slice( size_t start = 0,
+                                                                                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfARPointCloud_Point.slice( [$start[, $count]] ) -> retval
 ```
@@ -100501,19 +100501,19 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneAnchor::create
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneAnchor VectorOfSharedPtrOfARPlaneAnchor::create();
+static std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>> VectorOfSharedPtrOfARPlaneAnchor::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneAnchor").create() -> <VectorOfSharedPtrOfARPlaneAnchor object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneAnchor VectorOfSharedPtrOfARPlaneAnchor::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>> VectorOfSharedPtrOfARPlaneAnchor::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneAnchor").create( $size ) -> <VectorOfSharedPtrOfARPlaneAnchor object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfARPlaneAnchor VectorOfSharedPtrOfARPlaneAnchor::create( VectorOfSharedPtrOfARPlaneAnchor other );
+static std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>> VectorOfSharedPtrOfARPlaneAnchor::create( std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneAnchor").create( $other ) -> <VectorOfSharedPtrOfARPlaneAnchor object>
 ```
@@ -100529,7 +100529,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneAnchor::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfARPlaneAnchor::IsInstance( const VectorOfSharedPtrOfARPlaneAnchor& obj );
+static bool VectorOfSharedPtrOfARPlaneAnchor::IsInstance( const std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfARPlaneAnchor").IsInstance( $obj ) -> retval
 ```
@@ -100543,7 +100543,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneAnchor::Items
 
 ```cpp
-VectorOfSharedPtrOfARPlaneAnchor VectorOfSharedPtrOfARPlaneAnchor::Items();
+std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>> VectorOfSharedPtrOfARPlaneAnchor::Items();
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneAnchor.Items() -> retval
 ```
@@ -100567,7 +100567,7 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneAnchor::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfARPlaneAnchor::__eq__( const VectorOfSharedPtrOfARPlaneAnchor& other );
+bool VectorOfSharedPtrOfARPlaneAnchor::__eq__( const std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneAnchor.__eq__( $other ) -> retval
 ```
@@ -100669,15 +100669,15 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneAnchor::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfARPlaneAnchor::push_vector( VectorOfSharedPtrOfARPlaneAnchor other );
+void VectorOfSharedPtrOfARPlaneAnchor::push_vector( std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>> other );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneAnchor.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfARPlaneAnchor::push_vector( VectorOfSharedPtrOfARPlaneAnchor other,
-                                                    size_t                           count,
-                                                    size_t                           start = 0 );
+void VectorOfSharedPtrOfARPlaneAnchor::push_vector( std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>> other,
+                                                    size_t                                                 count,
+                                                    size_t                                                 start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneAnchor.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -100702,8 +100702,8 @@ AutoIt:
 ### VectorOfSharedPtrOfARPlaneAnchor::slice
 
 ```cpp
-VectorOfSharedPtrOfARPlaneAnchor VectorOfSharedPtrOfARPlaneAnchor::slice( size_t start = 0,
-                                                                          size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ARPlaneAnchor>> VectorOfSharedPtrOfARPlaneAnchor::slice( size_t start = 0,
+                                                                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfARPlaneAnchor.slice( [$start[, $count]] ) -> retval
 ```
@@ -100749,19 +100749,19 @@ AutoIt:
 ### VectorOfSharedPtrOfKeyPoint::create
 
 ```cpp
-static VectorOfSharedPtrOfKeyPoint VectorOfSharedPtrOfKeyPoint::create();
+static std::vector<std::shared_ptr<mediapipe::KeyPoint>> VectorOfSharedPtrOfKeyPoint::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfKeyPoint").create() -> <VectorOfSharedPtrOfKeyPoint object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfKeyPoint VectorOfSharedPtrOfKeyPoint::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::KeyPoint>> VectorOfSharedPtrOfKeyPoint::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfKeyPoint").create( $size ) -> <VectorOfSharedPtrOfKeyPoint object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfKeyPoint VectorOfSharedPtrOfKeyPoint::create( VectorOfSharedPtrOfKeyPoint other );
+static std::vector<std::shared_ptr<mediapipe::KeyPoint>> VectorOfSharedPtrOfKeyPoint::create( std::vector<std::shared_ptr<mediapipe::KeyPoint>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfKeyPoint").create( $other ) -> <VectorOfSharedPtrOfKeyPoint object>
 ```
@@ -100777,7 +100777,7 @@ AutoIt:
 ### VectorOfSharedPtrOfKeyPoint::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfKeyPoint::IsInstance( const VectorOfSharedPtrOfKeyPoint& obj );
+static bool VectorOfSharedPtrOfKeyPoint::IsInstance( const std::vector<std::shared_ptr<mediapipe::KeyPoint>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfKeyPoint").IsInstance( $obj ) -> retval
 ```
@@ -100791,7 +100791,7 @@ AutoIt:
 ### VectorOfSharedPtrOfKeyPoint::Items
 
 ```cpp
-VectorOfSharedPtrOfKeyPoint VectorOfSharedPtrOfKeyPoint::Items();
+std::vector<std::shared_ptr<mediapipe::KeyPoint>> VectorOfSharedPtrOfKeyPoint::Items();
 AutoIt:
     $oVectorOfSharedPtrOfKeyPoint.Items() -> retval
 ```
@@ -100815,7 +100815,7 @@ AutoIt:
 ### VectorOfSharedPtrOfKeyPoint::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfKeyPoint::__eq__( const VectorOfSharedPtrOfKeyPoint& other );
+bool VectorOfSharedPtrOfKeyPoint::__eq__( const std::vector<std::shared_ptr<mediapipe::KeyPoint>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfKeyPoint.__eq__( $other ) -> retval
 ```
@@ -100917,15 +100917,15 @@ AutoIt:
 ### VectorOfSharedPtrOfKeyPoint::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfKeyPoint::push_vector( VectorOfSharedPtrOfKeyPoint other );
+void VectorOfSharedPtrOfKeyPoint::push_vector( std::vector<std::shared_ptr<mediapipe::KeyPoint>> other );
 AutoIt:
     $oVectorOfSharedPtrOfKeyPoint.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfKeyPoint::push_vector( VectorOfSharedPtrOfKeyPoint other,
-                                               size_t                      count,
-                                               size_t                      start = 0 );
+void VectorOfSharedPtrOfKeyPoint::push_vector( std::vector<std::shared_ptr<mediapipe::KeyPoint>> other,
+                                               size_t                                            count,
+                                               size_t                                            start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfKeyPoint.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -100950,8 +100950,8 @@ AutoIt:
 ### VectorOfSharedPtrOfKeyPoint::slice
 
 ```cpp
-VectorOfSharedPtrOfKeyPoint VectorOfSharedPtrOfKeyPoint::slice( size_t start = 0,
-                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::KeyPoint>> VectorOfSharedPtrOfKeyPoint::slice( size_t start = 0,
+                                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfKeyPoint.slice( [$start[, $count]] ) -> retval
 ```
@@ -100997,19 +100997,19 @@ AutoIt:
 ### VectorOfSharedPtrOfEdge::create
 
 ```cpp
-static VectorOfSharedPtrOfEdge VectorOfSharedPtrOfEdge::create();
+static std::vector<std::shared_ptr<mediapipe::Edge>> VectorOfSharedPtrOfEdge::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfEdge").create() -> <VectorOfSharedPtrOfEdge object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfEdge VectorOfSharedPtrOfEdge::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Edge>> VectorOfSharedPtrOfEdge::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfEdge").create( $size ) -> <VectorOfSharedPtrOfEdge object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfEdge VectorOfSharedPtrOfEdge::create( VectorOfSharedPtrOfEdge other );
+static std::vector<std::shared_ptr<mediapipe::Edge>> VectorOfSharedPtrOfEdge::create( std::vector<std::shared_ptr<mediapipe::Edge>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfEdge").create( $other ) -> <VectorOfSharedPtrOfEdge object>
 ```
@@ -101025,7 +101025,7 @@ AutoIt:
 ### VectorOfSharedPtrOfEdge::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfEdge::IsInstance( const VectorOfSharedPtrOfEdge& obj );
+static bool VectorOfSharedPtrOfEdge::IsInstance( const std::vector<std::shared_ptr<mediapipe::Edge>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfEdge").IsInstance( $obj ) -> retval
 ```
@@ -101039,7 +101039,7 @@ AutoIt:
 ### VectorOfSharedPtrOfEdge::Items
 
 ```cpp
-VectorOfSharedPtrOfEdge VectorOfSharedPtrOfEdge::Items();
+std::vector<std::shared_ptr<mediapipe::Edge>> VectorOfSharedPtrOfEdge::Items();
 AutoIt:
     $oVectorOfSharedPtrOfEdge.Items() -> retval
 ```
@@ -101063,7 +101063,7 @@ AutoIt:
 ### VectorOfSharedPtrOfEdge::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfEdge::__eq__( const VectorOfSharedPtrOfEdge& other );
+bool VectorOfSharedPtrOfEdge::__eq__( const std::vector<std::shared_ptr<mediapipe::Edge>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfEdge.__eq__( $other ) -> retval
 ```
@@ -101165,15 +101165,15 @@ AutoIt:
 ### VectorOfSharedPtrOfEdge::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfEdge::push_vector( VectorOfSharedPtrOfEdge other );
+void VectorOfSharedPtrOfEdge::push_vector( std::vector<std::shared_ptr<mediapipe::Edge>> other );
 AutoIt:
     $oVectorOfSharedPtrOfEdge.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfEdge::push_vector( VectorOfSharedPtrOfEdge other,
-                                           size_t                  count,
-                                           size_t                  start = 0 );
+void VectorOfSharedPtrOfEdge::push_vector( std::vector<std::shared_ptr<mediapipe::Edge>> other,
+                                           size_t                                        count,
+                                           size_t                                        start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfEdge.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -101198,8 +101198,8 @@ AutoIt:
 ### VectorOfSharedPtrOfEdge::slice
 
 ```cpp
-VectorOfSharedPtrOfEdge VectorOfSharedPtrOfEdge::slice( size_t start = 0,
-                                                        size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Edge>> VectorOfSharedPtrOfEdge::slice( size_t start = 0,
+                                                                              size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfEdge.slice( [$start[, $count]] ) -> retval
 ```
@@ -101245,19 +101245,19 @@ AutoIt:
 ### VectorOfSharedPtrOfSkeleton::create
 
 ```cpp
-static VectorOfSharedPtrOfSkeleton VectorOfSharedPtrOfSkeleton::create();
+static std::vector<std::shared_ptr<mediapipe::Skeleton>> VectorOfSharedPtrOfSkeleton::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfSkeleton").create() -> <VectorOfSharedPtrOfSkeleton object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfSkeleton VectorOfSharedPtrOfSkeleton::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Skeleton>> VectorOfSharedPtrOfSkeleton::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfSkeleton").create( $size ) -> <VectorOfSharedPtrOfSkeleton object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfSkeleton VectorOfSharedPtrOfSkeleton::create( VectorOfSharedPtrOfSkeleton other );
+static std::vector<std::shared_ptr<mediapipe::Skeleton>> VectorOfSharedPtrOfSkeleton::create( std::vector<std::shared_ptr<mediapipe::Skeleton>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfSkeleton").create( $other ) -> <VectorOfSharedPtrOfSkeleton object>
 ```
@@ -101273,7 +101273,7 @@ AutoIt:
 ### VectorOfSharedPtrOfSkeleton::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfSkeleton::IsInstance( const VectorOfSharedPtrOfSkeleton& obj );
+static bool VectorOfSharedPtrOfSkeleton::IsInstance( const std::vector<std::shared_ptr<mediapipe::Skeleton>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfSkeleton").IsInstance( $obj ) -> retval
 ```
@@ -101287,7 +101287,7 @@ AutoIt:
 ### VectorOfSharedPtrOfSkeleton::Items
 
 ```cpp
-VectorOfSharedPtrOfSkeleton VectorOfSharedPtrOfSkeleton::Items();
+std::vector<std::shared_ptr<mediapipe::Skeleton>> VectorOfSharedPtrOfSkeleton::Items();
 AutoIt:
     $oVectorOfSharedPtrOfSkeleton.Items() -> retval
 ```
@@ -101311,7 +101311,7 @@ AutoIt:
 ### VectorOfSharedPtrOfSkeleton::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfSkeleton::__eq__( const VectorOfSharedPtrOfSkeleton& other );
+bool VectorOfSharedPtrOfSkeleton::__eq__( const std::vector<std::shared_ptr<mediapipe::Skeleton>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfSkeleton.__eq__( $other ) -> retval
 ```
@@ -101413,15 +101413,15 @@ AutoIt:
 ### VectorOfSharedPtrOfSkeleton::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfSkeleton::push_vector( VectorOfSharedPtrOfSkeleton other );
+void VectorOfSharedPtrOfSkeleton::push_vector( std::vector<std::shared_ptr<mediapipe::Skeleton>> other );
 AutoIt:
     $oVectorOfSharedPtrOfSkeleton.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfSkeleton::push_vector( VectorOfSharedPtrOfSkeleton other,
-                                               size_t                      count,
-                                               size_t                      start = 0 );
+void VectorOfSharedPtrOfSkeleton::push_vector( std::vector<std::shared_ptr<mediapipe::Skeleton>> other,
+                                               size_t                                            count,
+                                               size_t                                            start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfSkeleton.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -101446,8 +101446,8 @@ AutoIt:
 ### VectorOfSharedPtrOfSkeleton::slice
 
 ```cpp
-VectorOfSharedPtrOfSkeleton VectorOfSharedPtrOfSkeleton::slice( size_t start = 0,
-                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Skeleton>> VectorOfSharedPtrOfSkeleton::slice( size_t start = 0,
+                                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfSkeleton.slice( [$start[, $count]] ) -> retval
 ```
@@ -101493,19 +101493,19 @@ AutoIt:
 ### VectorOfSharedPtrOfAnnotatedKeyPoint::create
 
 ```cpp
-static VectorOfSharedPtrOfAnnotatedKeyPoint VectorOfSharedPtrOfAnnotatedKeyPoint::create();
+static std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>> VectorOfSharedPtrOfAnnotatedKeyPoint::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfAnnotatedKeyPoint").create() -> <VectorOfSharedPtrOfAnnotatedKeyPoint object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfAnnotatedKeyPoint VectorOfSharedPtrOfAnnotatedKeyPoint::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>> VectorOfSharedPtrOfAnnotatedKeyPoint::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfAnnotatedKeyPoint").create( $size ) -> <VectorOfSharedPtrOfAnnotatedKeyPoint object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfAnnotatedKeyPoint VectorOfSharedPtrOfAnnotatedKeyPoint::create( VectorOfSharedPtrOfAnnotatedKeyPoint other );
+static std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>> VectorOfSharedPtrOfAnnotatedKeyPoint::create( std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfAnnotatedKeyPoint").create( $other ) -> <VectorOfSharedPtrOfAnnotatedKeyPoint object>
 ```
@@ -101521,7 +101521,7 @@ AutoIt:
 ### VectorOfSharedPtrOfAnnotatedKeyPoint::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfAnnotatedKeyPoint::IsInstance( const VectorOfSharedPtrOfAnnotatedKeyPoint& obj );
+static bool VectorOfSharedPtrOfAnnotatedKeyPoint::IsInstance( const std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfAnnotatedKeyPoint").IsInstance( $obj ) -> retval
 ```
@@ -101535,7 +101535,7 @@ AutoIt:
 ### VectorOfSharedPtrOfAnnotatedKeyPoint::Items
 
 ```cpp
-VectorOfSharedPtrOfAnnotatedKeyPoint VectorOfSharedPtrOfAnnotatedKeyPoint::Items();
+std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>> VectorOfSharedPtrOfAnnotatedKeyPoint::Items();
 AutoIt:
     $oVectorOfSharedPtrOfAnnotatedKeyPoint.Items() -> retval
 ```
@@ -101559,7 +101559,7 @@ AutoIt:
 ### VectorOfSharedPtrOfAnnotatedKeyPoint::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfAnnotatedKeyPoint::__eq__( const VectorOfSharedPtrOfAnnotatedKeyPoint& other );
+bool VectorOfSharedPtrOfAnnotatedKeyPoint::__eq__( const std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfAnnotatedKeyPoint.__eq__( $other ) -> retval
 ```
@@ -101661,15 +101661,15 @@ AutoIt:
 ### VectorOfSharedPtrOfAnnotatedKeyPoint::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfAnnotatedKeyPoint::push_vector( VectorOfSharedPtrOfAnnotatedKeyPoint other );
+void VectorOfSharedPtrOfAnnotatedKeyPoint::push_vector( std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>> other );
 AutoIt:
     $oVectorOfSharedPtrOfAnnotatedKeyPoint.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfAnnotatedKeyPoint::push_vector( VectorOfSharedPtrOfAnnotatedKeyPoint other,
-                                                        size_t                               count,
-                                                        size_t                               start = 0 );
+void VectorOfSharedPtrOfAnnotatedKeyPoint::push_vector( std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>> other,
+                                                        size_t                                                     count,
+                                                        size_t                                                     start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfAnnotatedKeyPoint.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -101694,8 +101694,8 @@ AutoIt:
 ### VectorOfSharedPtrOfAnnotatedKeyPoint::slice
 
 ```cpp
-VectorOfSharedPtrOfAnnotatedKeyPoint VectorOfSharedPtrOfAnnotatedKeyPoint::slice( size_t start = 0,
-                                                                                  size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::AnnotatedKeyPoint>> VectorOfSharedPtrOfAnnotatedKeyPoint::slice( size_t start = 0,
+                                                                                                        size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfAnnotatedKeyPoint.slice( [$start[, $count]] ) -> retval
 ```
@@ -101741,19 +101741,19 @@ AutoIt:
 ### VectorOfSharedPtrOfObjectAnnotation::create
 
 ```cpp
-static VectorOfSharedPtrOfObjectAnnotation VectorOfSharedPtrOfObjectAnnotation::create();
+static std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>> VectorOfSharedPtrOfObjectAnnotation::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfObjectAnnotation").create() -> <VectorOfSharedPtrOfObjectAnnotation object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfObjectAnnotation VectorOfSharedPtrOfObjectAnnotation::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>> VectorOfSharedPtrOfObjectAnnotation::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfObjectAnnotation").create( $size ) -> <VectorOfSharedPtrOfObjectAnnotation object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfObjectAnnotation VectorOfSharedPtrOfObjectAnnotation::create( VectorOfSharedPtrOfObjectAnnotation other );
+static std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>> VectorOfSharedPtrOfObjectAnnotation::create( std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfObjectAnnotation").create( $other ) -> <VectorOfSharedPtrOfObjectAnnotation object>
 ```
@@ -101769,7 +101769,7 @@ AutoIt:
 ### VectorOfSharedPtrOfObjectAnnotation::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfObjectAnnotation::IsInstance( const VectorOfSharedPtrOfObjectAnnotation& obj );
+static bool VectorOfSharedPtrOfObjectAnnotation::IsInstance( const std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfObjectAnnotation").IsInstance( $obj ) -> retval
 ```
@@ -101783,7 +101783,7 @@ AutoIt:
 ### VectorOfSharedPtrOfObjectAnnotation::Items
 
 ```cpp
-VectorOfSharedPtrOfObjectAnnotation VectorOfSharedPtrOfObjectAnnotation::Items();
+std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>> VectorOfSharedPtrOfObjectAnnotation::Items();
 AutoIt:
     $oVectorOfSharedPtrOfObjectAnnotation.Items() -> retval
 ```
@@ -101807,7 +101807,7 @@ AutoIt:
 ### VectorOfSharedPtrOfObjectAnnotation::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfObjectAnnotation::__eq__( const VectorOfSharedPtrOfObjectAnnotation& other );
+bool VectorOfSharedPtrOfObjectAnnotation::__eq__( const std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfObjectAnnotation.__eq__( $other ) -> retval
 ```
@@ -101909,15 +101909,15 @@ AutoIt:
 ### VectorOfSharedPtrOfObjectAnnotation::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfObjectAnnotation::push_vector( VectorOfSharedPtrOfObjectAnnotation other );
+void VectorOfSharedPtrOfObjectAnnotation::push_vector( std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>> other );
 AutoIt:
     $oVectorOfSharedPtrOfObjectAnnotation.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfObjectAnnotation::push_vector( VectorOfSharedPtrOfObjectAnnotation other,
-                                                       size_t                              count,
-                                                       size_t                              start = 0 );
+void VectorOfSharedPtrOfObjectAnnotation::push_vector( std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>> other,
+                                                       size_t                                                    count,
+                                                       size_t                                                    start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfObjectAnnotation.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -101942,8 +101942,8 @@ AutoIt:
 ### VectorOfSharedPtrOfObjectAnnotation::slice
 
 ```cpp
-VectorOfSharedPtrOfObjectAnnotation VectorOfSharedPtrOfObjectAnnotation::slice( size_t start = 0,
-                                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ObjectAnnotation>> VectorOfSharedPtrOfObjectAnnotation::slice( size_t start = 0,
+                                                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfObjectAnnotation.slice( [$start[, $count]] ) -> retval
 ```
@@ -101989,19 +101989,19 @@ AutoIt:
 ### VectorOfSharedPtrOfObject::create
 
 ```cpp
-static VectorOfSharedPtrOfObject VectorOfSharedPtrOfObject::create();
+static std::vector<std::shared_ptr<mediapipe::Object>> VectorOfSharedPtrOfObject::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfObject").create() -> <VectorOfSharedPtrOfObject object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfObject VectorOfSharedPtrOfObject::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Object>> VectorOfSharedPtrOfObject::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfObject").create( $size ) -> <VectorOfSharedPtrOfObject object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfObject VectorOfSharedPtrOfObject::create( VectorOfSharedPtrOfObject other );
+static std::vector<std::shared_ptr<mediapipe::Object>> VectorOfSharedPtrOfObject::create( std::vector<std::shared_ptr<mediapipe::Object>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfObject").create( $other ) -> <VectorOfSharedPtrOfObject object>
 ```
@@ -102017,7 +102017,7 @@ AutoIt:
 ### VectorOfSharedPtrOfObject::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfObject::IsInstance( const VectorOfSharedPtrOfObject& obj );
+static bool VectorOfSharedPtrOfObject::IsInstance( const std::vector<std::shared_ptr<mediapipe::Object>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfObject").IsInstance( $obj ) -> retval
 ```
@@ -102031,7 +102031,7 @@ AutoIt:
 ### VectorOfSharedPtrOfObject::Items
 
 ```cpp
-VectorOfSharedPtrOfObject VectorOfSharedPtrOfObject::Items();
+std::vector<std::shared_ptr<mediapipe::Object>> VectorOfSharedPtrOfObject::Items();
 AutoIt:
     $oVectorOfSharedPtrOfObject.Items() -> retval
 ```
@@ -102055,7 +102055,7 @@ AutoIt:
 ### VectorOfSharedPtrOfObject::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfObject::__eq__( const VectorOfSharedPtrOfObject& other );
+bool VectorOfSharedPtrOfObject::__eq__( const std::vector<std::shared_ptr<mediapipe::Object>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfObject.__eq__( $other ) -> retval
 ```
@@ -102157,15 +102157,15 @@ AutoIt:
 ### VectorOfSharedPtrOfObject::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfObject::push_vector( VectorOfSharedPtrOfObject other );
+void VectorOfSharedPtrOfObject::push_vector( std::vector<std::shared_ptr<mediapipe::Object>> other );
 AutoIt:
     $oVectorOfSharedPtrOfObject.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfObject::push_vector( VectorOfSharedPtrOfObject other,
-                                             size_t                    count,
-                                             size_t                    start = 0 );
+void VectorOfSharedPtrOfObject::push_vector( std::vector<std::shared_ptr<mediapipe::Object>> other,
+                                             size_t                                          count,
+                                             size_t                                          start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfObject.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -102190,8 +102190,8 @@ AutoIt:
 ### VectorOfSharedPtrOfObject::slice
 
 ```cpp
-VectorOfSharedPtrOfObject VectorOfSharedPtrOfObject::slice( size_t start = 0,
-                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Object>> VectorOfSharedPtrOfObject::slice( size_t start = 0,
+                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfObject.slice( [$start[, $count]] ) -> retval
 ```
@@ -102237,19 +102237,19 @@ AutoIt:
 ### VectorOfSharedPtrOfFrameAnnotation::create
 
 ```cpp
-static VectorOfSharedPtrOfFrameAnnotation VectorOfSharedPtrOfFrameAnnotation::create();
+static std::vector<std::shared_ptr<mediapipe::FrameAnnotation>> VectorOfSharedPtrOfFrameAnnotation::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfFrameAnnotation").create() -> <VectorOfSharedPtrOfFrameAnnotation object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfFrameAnnotation VectorOfSharedPtrOfFrameAnnotation::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::FrameAnnotation>> VectorOfSharedPtrOfFrameAnnotation::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfFrameAnnotation").create( $size ) -> <VectorOfSharedPtrOfFrameAnnotation object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfFrameAnnotation VectorOfSharedPtrOfFrameAnnotation::create( VectorOfSharedPtrOfFrameAnnotation other );
+static std::vector<std::shared_ptr<mediapipe::FrameAnnotation>> VectorOfSharedPtrOfFrameAnnotation::create( std::vector<std::shared_ptr<mediapipe::FrameAnnotation>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfFrameAnnotation").create( $other ) -> <VectorOfSharedPtrOfFrameAnnotation object>
 ```
@@ -102265,7 +102265,7 @@ AutoIt:
 ### VectorOfSharedPtrOfFrameAnnotation::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfFrameAnnotation::IsInstance( const VectorOfSharedPtrOfFrameAnnotation& obj );
+static bool VectorOfSharedPtrOfFrameAnnotation::IsInstance( const std::vector<std::shared_ptr<mediapipe::FrameAnnotation>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfFrameAnnotation").IsInstance( $obj ) -> retval
 ```
@@ -102279,7 +102279,7 @@ AutoIt:
 ### VectorOfSharedPtrOfFrameAnnotation::Items
 
 ```cpp
-VectorOfSharedPtrOfFrameAnnotation VectorOfSharedPtrOfFrameAnnotation::Items();
+std::vector<std::shared_ptr<mediapipe::FrameAnnotation>> VectorOfSharedPtrOfFrameAnnotation::Items();
 AutoIt:
     $oVectorOfSharedPtrOfFrameAnnotation.Items() -> retval
 ```
@@ -102303,7 +102303,7 @@ AutoIt:
 ### VectorOfSharedPtrOfFrameAnnotation::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfFrameAnnotation::__eq__( const VectorOfSharedPtrOfFrameAnnotation& other );
+bool VectorOfSharedPtrOfFrameAnnotation::__eq__( const std::vector<std::shared_ptr<mediapipe::FrameAnnotation>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfFrameAnnotation.__eq__( $other ) -> retval
 ```
@@ -102405,15 +102405,15 @@ AutoIt:
 ### VectorOfSharedPtrOfFrameAnnotation::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfFrameAnnotation::push_vector( VectorOfSharedPtrOfFrameAnnotation other );
+void VectorOfSharedPtrOfFrameAnnotation::push_vector( std::vector<std::shared_ptr<mediapipe::FrameAnnotation>> other );
 AutoIt:
     $oVectorOfSharedPtrOfFrameAnnotation.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfFrameAnnotation::push_vector( VectorOfSharedPtrOfFrameAnnotation other,
-                                                      size_t                             count,
-                                                      size_t                             start = 0 );
+void VectorOfSharedPtrOfFrameAnnotation::push_vector( std::vector<std::shared_ptr<mediapipe::FrameAnnotation>> other,
+                                                      size_t                                                   count,
+                                                      size_t                                                   start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfFrameAnnotation.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -102438,8 +102438,8 @@ AutoIt:
 ### VectorOfSharedPtrOfFrameAnnotation::slice
 
 ```cpp
-VectorOfSharedPtrOfFrameAnnotation VectorOfSharedPtrOfFrameAnnotation::slice( size_t start = 0,
-                                                                              size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::FrameAnnotation>> VectorOfSharedPtrOfFrameAnnotation::slice( size_t start = 0,
+                                                                                                    size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfFrameAnnotation.slice( [$start[, $count]] ) -> retval
 ```
@@ -102485,19 +102485,19 @@ AutoIt:
 ### VectorOfSharedPtrOfClassification::create
 
 ```cpp
-static VectorOfSharedPtrOfClassification VectorOfSharedPtrOfClassification::create();
+static std::vector<std::shared_ptr<mediapipe::Classification>> VectorOfSharedPtrOfClassification::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfClassification").create() -> <VectorOfSharedPtrOfClassification object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfClassification VectorOfSharedPtrOfClassification::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::Classification>> VectorOfSharedPtrOfClassification::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfClassification").create( $size ) -> <VectorOfSharedPtrOfClassification object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfClassification VectorOfSharedPtrOfClassification::create( VectorOfSharedPtrOfClassification other );
+static std::vector<std::shared_ptr<mediapipe::Classification>> VectorOfSharedPtrOfClassification::create( std::vector<std::shared_ptr<mediapipe::Classification>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfClassification").create( $other ) -> <VectorOfSharedPtrOfClassification object>
 ```
@@ -102513,7 +102513,7 @@ AutoIt:
 ### VectorOfSharedPtrOfClassification::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfClassification::IsInstance( const VectorOfSharedPtrOfClassification& obj );
+static bool VectorOfSharedPtrOfClassification::IsInstance( const std::vector<std::shared_ptr<mediapipe::Classification>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfClassification").IsInstance( $obj ) -> retval
 ```
@@ -102527,7 +102527,7 @@ AutoIt:
 ### VectorOfSharedPtrOfClassification::Items
 
 ```cpp
-VectorOfSharedPtrOfClassification VectorOfSharedPtrOfClassification::Items();
+std::vector<std::shared_ptr<mediapipe::Classification>> VectorOfSharedPtrOfClassification::Items();
 AutoIt:
     $oVectorOfSharedPtrOfClassification.Items() -> retval
 ```
@@ -102551,7 +102551,7 @@ AutoIt:
 ### VectorOfSharedPtrOfClassification::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfClassification::__eq__( const VectorOfSharedPtrOfClassification& other );
+bool VectorOfSharedPtrOfClassification::__eq__( const std::vector<std::shared_ptr<mediapipe::Classification>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfClassification.__eq__( $other ) -> retval
 ```
@@ -102653,15 +102653,15 @@ AutoIt:
 ### VectorOfSharedPtrOfClassification::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfClassification::push_vector( VectorOfSharedPtrOfClassification other );
+void VectorOfSharedPtrOfClassification::push_vector( std::vector<std::shared_ptr<mediapipe::Classification>> other );
 AutoIt:
     $oVectorOfSharedPtrOfClassification.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfClassification::push_vector( VectorOfSharedPtrOfClassification other,
-                                                     size_t                            count,
-                                                     size_t                            start = 0 );
+void VectorOfSharedPtrOfClassification::push_vector( std::vector<std::shared_ptr<mediapipe::Classification>> other,
+                                                     size_t                                                  count,
+                                                     size_t                                                  start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfClassification.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -102686,8 +102686,8 @@ AutoIt:
 ### VectorOfSharedPtrOfClassification::slice
 
 ```cpp
-VectorOfSharedPtrOfClassification VectorOfSharedPtrOfClassification::slice( size_t start = 0,
-                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::Classification>> VectorOfSharedPtrOfClassification::slice( size_t start = 0,
+                                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfClassification.slice( [$start[, $count]] ) -> retval
 ```
@@ -102733,19 +102733,19 @@ AutoIt:
 ### VectorOfSharedPtrOfClassificationList::create
 
 ```cpp
-static VectorOfSharedPtrOfClassificationList VectorOfSharedPtrOfClassificationList::create();
+static std::vector<std::shared_ptr<mediapipe::ClassificationList>> VectorOfSharedPtrOfClassificationList::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfClassificationList").create() -> <VectorOfSharedPtrOfClassificationList object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfClassificationList VectorOfSharedPtrOfClassificationList::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ClassificationList>> VectorOfSharedPtrOfClassificationList::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfClassificationList").create( $size ) -> <VectorOfSharedPtrOfClassificationList object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfClassificationList VectorOfSharedPtrOfClassificationList::create( VectorOfSharedPtrOfClassificationList other );
+static std::vector<std::shared_ptr<mediapipe::ClassificationList>> VectorOfSharedPtrOfClassificationList::create( std::vector<std::shared_ptr<mediapipe::ClassificationList>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfClassificationList").create( $other ) -> <VectorOfSharedPtrOfClassificationList object>
 ```
@@ -102761,7 +102761,7 @@ AutoIt:
 ### VectorOfSharedPtrOfClassificationList::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfClassificationList::IsInstance( const VectorOfSharedPtrOfClassificationList& obj );
+static bool VectorOfSharedPtrOfClassificationList::IsInstance( const std::vector<std::shared_ptr<mediapipe::ClassificationList>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfClassificationList").IsInstance( $obj ) -> retval
 ```
@@ -102775,7 +102775,7 @@ AutoIt:
 ### VectorOfSharedPtrOfClassificationList::Items
 
 ```cpp
-VectorOfSharedPtrOfClassificationList VectorOfSharedPtrOfClassificationList::Items();
+std::vector<std::shared_ptr<mediapipe::ClassificationList>> VectorOfSharedPtrOfClassificationList::Items();
 AutoIt:
     $oVectorOfSharedPtrOfClassificationList.Items() -> retval
 ```
@@ -102799,7 +102799,7 @@ AutoIt:
 ### VectorOfSharedPtrOfClassificationList::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfClassificationList::__eq__( const VectorOfSharedPtrOfClassificationList& other );
+bool VectorOfSharedPtrOfClassificationList::__eq__( const std::vector<std::shared_ptr<mediapipe::ClassificationList>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfClassificationList.__eq__( $other ) -> retval
 ```
@@ -102901,15 +102901,15 @@ AutoIt:
 ### VectorOfSharedPtrOfClassificationList::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfClassificationList::push_vector( VectorOfSharedPtrOfClassificationList other );
+void VectorOfSharedPtrOfClassificationList::push_vector( std::vector<std::shared_ptr<mediapipe::ClassificationList>> other );
 AutoIt:
     $oVectorOfSharedPtrOfClassificationList.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfClassificationList::push_vector( VectorOfSharedPtrOfClassificationList other,
-                                                         size_t                                count,
-                                                         size_t                                start = 0 );
+void VectorOfSharedPtrOfClassificationList::push_vector( std::vector<std::shared_ptr<mediapipe::ClassificationList>> other,
+                                                         size_t                                                      count,
+                                                         size_t                                                      start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfClassificationList.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -102934,8 +102934,8 @@ AutoIt:
 ### VectorOfSharedPtrOfClassificationList::slice
 
 ```cpp
-VectorOfSharedPtrOfClassificationList VectorOfSharedPtrOfClassificationList::slice( size_t start = 0,
-                                                                                    size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ClassificationList>> VectorOfSharedPtrOfClassificationList::slice( size_t start = 0,
+                                                                                                          size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfClassificationList.slice( [$start[, $count]] ) -> retval
 ```
@@ -102981,19 +102981,19 @@ AutoIt:
 ### VectorOfSharedPtrOfConstantSidePacketCalculatorOptions\_ConstantSidePacket::create
 
 ```cpp
-static VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::create();
+static std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>> VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket").create() -> <VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>> VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket").create( $size ) -> <VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::create( VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket other );
+static std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>> VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::create( std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket").create( $other ) -> <VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket object>
 ```
@@ -103009,7 +103009,7 @@ AutoIt:
 ### VectorOfSharedPtrOfConstantSidePacketCalculatorOptions\_ConstantSidePacket::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::IsInstance( const VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket& obj );
+static bool VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::IsInstance( const std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket").IsInstance( $obj ) -> retval
 ```
@@ -103023,7 +103023,7 @@ AutoIt:
 ### VectorOfSharedPtrOfConstantSidePacketCalculatorOptions\_ConstantSidePacket::Items
 
 ```cpp
-VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::Items();
+std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>> VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::Items();
 AutoIt:
     $oVectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket.Items() -> retval
 ```
@@ -103047,7 +103047,7 @@ AutoIt:
 ### VectorOfSharedPtrOfConstantSidePacketCalculatorOptions\_ConstantSidePacket::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::__eq__( const VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket& other );
+bool VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::__eq__( const std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket.__eq__( $other ) -> retval
 ```
@@ -103149,15 +103149,15 @@ AutoIt:
 ### VectorOfSharedPtrOfConstantSidePacketCalculatorOptions\_ConstantSidePacket::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::push_vector( VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket other );
+void VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::push_vector( std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>> other );
 AutoIt:
     $oVectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::push_vector( VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket other,
-                                                                                             size_t                                                                    count,
-                                                                                             size_t                                                                    start = 0 );
+void VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::push_vector( std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>> other,
+                                                                                             size_t                                                                                           count,
+                                                                                             size_t                                                                                           start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -103182,8 +103182,8 @@ AutoIt:
 ### VectorOfSharedPtrOfConstantSidePacketCalculatorOptions\_ConstantSidePacket::slice
 
 ```cpp
-VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::slice( size_t start = 0,
-                                                                                                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::ConstantSidePacketCalculatorOptions::ConstantSidePacket>> VectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket::slice( size_t start = 0,
+                                                                                                                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfConstantSidePacketCalculatorOptions_ConstantSidePacket.slice( [$start[, $count]] ) -> retval
 ```
@@ -103229,19 +103229,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Classifications::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_components_containers_proto_Classifications VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>> VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_components_containers_proto_Classifications").create() -> <VectorOfSharedPtrOfTasks_components_containers_proto_Classifications object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_components_containers_proto_Classifications VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>> VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_components_containers_proto_Classifications").create( $size ) -> <VectorOfSharedPtrOfTasks_components_containers_proto_Classifications object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_components_containers_proto_Classifications VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::create( VectorOfSharedPtrOfTasks_components_containers_proto_Classifications other );
+static std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>> VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::create( std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_components_containers_proto_Classifications").create( $other ) -> <VectorOfSharedPtrOfTasks_components_containers_proto_Classifications object>
 ```
@@ -103257,7 +103257,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Classifications::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::IsInstance( const VectorOfSharedPtrOfTasks_components_containers_proto_Classifications& obj );
+static bool VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_components_containers_proto_Classifications").IsInstance( $obj ) -> retval
 ```
@@ -103271,7 +103271,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Classifications::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_components_containers_proto_Classifications VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>> VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Classifications.Items() -> retval
 ```
@@ -103295,7 +103295,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Classifications::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::__eq__( const VectorOfSharedPtrOfTasks_components_containers_proto_Classifications& other );
+bool VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Classifications.__eq__( $other ) -> retval
 ```
@@ -103397,15 +103397,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Classifications::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::push_vector( VectorOfSharedPtrOfTasks_components_containers_proto_Classifications other );
+void VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Classifications.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::push_vector( VectorOfSharedPtrOfTasks_components_containers_proto_Classifications other,
-                                                                                        size_t                                                               count,
-                                                                                        size_t                                                               start = 0 );
+void VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>> other,
+                                                                                        size_t                                                                                         count,
+                                                                                        size_t                                                                                         start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Classifications.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -103430,8 +103430,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Classifications::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_components_containers_proto_Classifications VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::slice( size_t start = 0,
-                                                                                                                                                  size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications>> VectorOfSharedPtrOfTasks_components_containers_proto_Classifications::slice( size_t start = 0,
+                                                                                                                                                                            size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Classifications.slice( [$start[, $count]] ) -> retval
 ```
@@ -103477,19 +103477,19 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Embedding::create
 
 ```cpp
-static VectorOfSharedPtrOfTasks_components_containers_proto_Embedding VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::create();
+static std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>> VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_components_containers_proto_Embedding").create() -> <VectorOfSharedPtrOfTasks_components_containers_proto_Embedding object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_components_containers_proto_Embedding VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>> VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_components_containers_proto_Embedding").create( $size ) -> <VectorOfSharedPtrOfTasks_components_containers_proto_Embedding object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfTasks_components_containers_proto_Embedding VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::create( VectorOfSharedPtrOfTasks_components_containers_proto_Embedding other );
+static std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>> VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::create( std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_components_containers_proto_Embedding").create( $other ) -> <VectorOfSharedPtrOfTasks_components_containers_proto_Embedding object>
 ```
@@ -103505,7 +103505,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Embedding::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::IsInstance( const VectorOfSharedPtrOfTasks_components_containers_proto_Embedding& obj );
+static bool VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::IsInstance( const std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfTasks_components_containers_proto_Embedding").IsInstance( $obj ) -> retval
 ```
@@ -103519,7 +103519,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Embedding::Items
 
 ```cpp
-VectorOfSharedPtrOfTasks_components_containers_proto_Embedding VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::Items();
+std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>> VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::Items();
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Embedding.Items() -> retval
 ```
@@ -103543,7 +103543,7 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Embedding::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::__eq__( const VectorOfSharedPtrOfTasks_components_containers_proto_Embedding& other );
+bool VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::__eq__( const std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Embedding.__eq__( $other ) -> retval
 ```
@@ -103645,15 +103645,15 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Embedding::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::push_vector( VectorOfSharedPtrOfTasks_components_containers_proto_Embedding other );
+void VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>> other );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Embedding.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::push_vector( VectorOfSharedPtrOfTasks_components_containers_proto_Embedding other,
-                                                                                  size_t                                                         count,
-                                                                                  size_t                                                         start = 0 );
+void VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::push_vector( std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>> other,
+                                                                                  size_t                                                                                   count,
+                                                                                  size_t                                                                                   start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Embedding.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -103678,8 +103678,8 @@ AutoIt:
 ### VectorOfSharedPtrOfTasks\_components\_containers\_proto\_Embedding::slice
 
 ```cpp
-VectorOfSharedPtrOfTasks_components_containers_proto_Embedding VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::slice( size_t start = 0,
-                                                                                                                                      size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::tasks::components::containers::proto::Embedding>> VectorOfSharedPtrOfTasks_components_containers_proto_Embedding::slice( size_t start = 0,
+                                                                                                                                                                size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfTasks_components_containers_proto_Embedding.slice( [$start[, $count]] ) -> retval
 ```
@@ -103725,19 +103725,19 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedRect::create
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedRect VectorOfSharedPtrOfNormalizedRect::create();
+static std::vector<std::shared_ptr<mediapipe::NormalizedRect>> VectorOfSharedPtrOfNormalizedRect::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedRect").create() -> <VectorOfSharedPtrOfNormalizedRect object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedRect VectorOfSharedPtrOfNormalizedRect::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::NormalizedRect>> VectorOfSharedPtrOfNormalizedRect::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedRect").create( $size ) -> <VectorOfSharedPtrOfNormalizedRect object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfNormalizedRect VectorOfSharedPtrOfNormalizedRect::create( VectorOfSharedPtrOfNormalizedRect other );
+static std::vector<std::shared_ptr<mediapipe::NormalizedRect>> VectorOfSharedPtrOfNormalizedRect::create( std::vector<std::shared_ptr<mediapipe::NormalizedRect>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedRect").create( $other ) -> <VectorOfSharedPtrOfNormalizedRect object>
 ```
@@ -103753,7 +103753,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedRect::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfNormalizedRect::IsInstance( const VectorOfSharedPtrOfNormalizedRect& obj );
+static bool VectorOfSharedPtrOfNormalizedRect::IsInstance( const std::vector<std::shared_ptr<mediapipe::NormalizedRect>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfNormalizedRect").IsInstance( $obj ) -> retval
 ```
@@ -103767,7 +103767,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedRect::Items
 
 ```cpp
-VectorOfSharedPtrOfNormalizedRect VectorOfSharedPtrOfNormalizedRect::Items();
+std::vector<std::shared_ptr<mediapipe::NormalizedRect>> VectorOfSharedPtrOfNormalizedRect::Items();
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedRect.Items() -> retval
 ```
@@ -103791,7 +103791,7 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedRect::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfNormalizedRect::__eq__( const VectorOfSharedPtrOfNormalizedRect& other );
+bool VectorOfSharedPtrOfNormalizedRect::__eq__( const std::vector<std::shared_ptr<mediapipe::NormalizedRect>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedRect.__eq__( $other ) -> retval
 ```
@@ -103893,15 +103893,15 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedRect::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfNormalizedRect::push_vector( VectorOfSharedPtrOfNormalizedRect other );
+void VectorOfSharedPtrOfNormalizedRect::push_vector( std::vector<std::shared_ptr<mediapipe::NormalizedRect>> other );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedRect.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfNormalizedRect::push_vector( VectorOfSharedPtrOfNormalizedRect other,
-                                                     size_t                            count,
-                                                     size_t                            start = 0 );
+void VectorOfSharedPtrOfNormalizedRect::push_vector( std::vector<std::shared_ptr<mediapipe::NormalizedRect>> other,
+                                                     size_t                                                  count,
+                                                     size_t                                                  start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedRect.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -103926,8 +103926,8 @@ AutoIt:
 ### VectorOfSharedPtrOfNormalizedRect::slice
 
 ```cpp
-VectorOfSharedPtrOfNormalizedRect VectorOfSharedPtrOfNormalizedRect::slice( size_t start = 0,
-                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::NormalizedRect>> VectorOfSharedPtrOfNormalizedRect::slice( size_t start = 0,
+                                                                                                  size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfNormalizedRect.slice( [$start[, $count]] ) -> retval
 ```
@@ -103960,252 +103960,252 @@ AutoIt:
     $oVectorOfSharedPtrOfNormalizedRect.start() -> retval
 ```
 
-## VectorOfUint32
+## VectorOfUint32\_t
 
-### VectorOfUint32.Count
+### VectorOfUint32\_t.Count
 
 ```cpp
-size_t VectorOfUint32::size()
+size_t VectorOfUint32_t::size()
 AutoIt:
-    [propget] $oVectorOfUint32.Count
+    [propget] $oVectorOfUint32_t.Count
 ```
 
-### VectorOfUint32::create
+### VectorOfUint32\_t::create
 
 ```cpp
-static VectorOfUint32 VectorOfUint32::create();
+static std::vector<uint32_t> VectorOfUint32_t::create();
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfUint32").create() -> <VectorOfUint32 object>
-```
-
-```cpp
-static VectorOfUint32 VectorOfUint32::create( size_t size );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfUint32").create( $size ) -> <VectorOfUint32 object>
+    _Mediapipe_ObjCreate("VectorOfUint32_t").create() -> <VectorOfUint32_t object>
 ```
 
 ```cpp
-static VectorOfUint32 VectorOfUint32::create( VectorOfUint32 other );
+static std::vector<uint32_t> VectorOfUint32_t::create( size_t size );
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfUint32").create( $other ) -> <VectorOfUint32 object>
-```
-
-### VectorOfUint32::Add
-
-```cpp
-void VectorOfUint32::Add( uint32_t value );
-AutoIt:
-    $oVectorOfUint32.Add( $value ) -> None
-```
-
-### VectorOfUint32::IsInstance
-
-```cpp
-static bool VectorOfUint32::IsInstance( const VectorOfUint32& obj );
-AutoIt:
-    _Mediapipe_ObjCreate("VectorOfUint32").IsInstance( $obj ) -> retval
+    _Mediapipe_ObjCreate("VectorOfUint32_t").create( $size ) -> <VectorOfUint32_t object>
 ```
 
 ```cpp
-static bool VectorOfUint32::IsInstance( VARIANT* obj );
+static std::vector<uint32_t> VectorOfUint32_t::create( std::vector<uint32_t> other );
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfUint32").IsInstance( $obj ) -> retval
+    _Mediapipe_ObjCreate("VectorOfUint32_t").create( $other ) -> <VectorOfUint32_t object>
 ```
 
-### VectorOfUint32::Items
+### VectorOfUint32\_t::Add
 
 ```cpp
-VectorOfUint32 VectorOfUint32::Items();
+void VectorOfUint32_t::Add( uint32_t value );
 AutoIt:
-    $oVectorOfUint32.Items() -> retval
+    $oVectorOfUint32_t.Add( $value ) -> None
 ```
 
-### VectorOfUint32::Keys
+### VectorOfUint32\_t::IsInstance
 
 ```cpp
-std::vector<int> VectorOfUint32::Keys();
+static bool VectorOfUint32_t::IsInstance( const std::vector<uint32_t>& obj );
 AutoIt:
-    $oVectorOfUint32.Keys() -> retval
-```
-
-### VectorOfUint32::Remove
-
-```cpp
-void VectorOfUint32::Remove( size_t index );
-AutoIt:
-    $oVectorOfUint32.Remove( $index ) -> None
-```
-
-### VectorOfUint32::\_\_eq\_\_
-
-```cpp
-bool VectorOfUint32::__eq__( const VectorOfUint32& other );
-AutoIt:
-    $oVectorOfUint32.__eq__( $other ) -> retval
+    _Mediapipe_ObjCreate("VectorOfUint32_t").IsInstance( $obj ) -> retval
 ```
 
 ```cpp
-bool VectorOfUint32::__eq__( VARIANT* other );
+static bool VectorOfUint32_t::IsInstance( VARIANT* obj );
 AutoIt:
-    $oVectorOfUint32.__eq__( $other ) -> retval
+    _Mediapipe_ObjCreate("VectorOfUint32_t").IsInstance( $obj ) -> retval
 ```
 
-### VectorOfUint32::\_\_str\_\_
+### VectorOfUint32\_t::Items
 
 ```cpp
-std::string VectorOfUint32::__str__();
+std::vector<uint32_t> VectorOfUint32_t::Items();
 AutoIt:
-    $oVectorOfUint32.__str__() -> retval
+    $oVectorOfUint32_t.Items() -> retval
 ```
 
-### VectorOfUint32::\_\_type\_\_
+### VectorOfUint32\_t::Keys
 
 ```cpp
-static std::string VectorOfUint32::__type__();
+std::vector<int> VectorOfUint32_t::Keys();
 AutoIt:
-    _Mediapipe_ObjCreate("VectorOfUint32").__type__() -> retval
+    $oVectorOfUint32_t.Keys() -> retval
 ```
 
-### VectorOfUint32::append
+### VectorOfUint32\_t::Remove
 
 ```cpp
-void VectorOfUint32::append( uint32_t value );
+void VectorOfUint32_t::Remove( size_t index );
 AutoIt:
-    $oVectorOfUint32.append( $value ) -> None
+    $oVectorOfUint32_t.Remove( $index ) -> None
 ```
 
-### VectorOfUint32::at
+### VectorOfUint32\_t::\_\_eq\_\_
 
 ```cpp
-uint32_t VectorOfUint32::at( size_t index );
+bool VectorOfUint32_t::__eq__( const std::vector<uint32_t>& other );
 AutoIt:
-    $oVectorOfUint32.at( $index ) -> retval
-```
-
-```cpp
-void VectorOfUint32::at( size_t   index,
-                         uint32_t value );
-AutoIt:
-    $oVectorOfUint32.at( $index, $value ) -> None
-```
-
-### VectorOfUint32::clear
-
-```cpp
-void VectorOfUint32::clear();
-AutoIt:
-    $oVectorOfUint32.clear() -> None
-```
-
-### VectorOfUint32::empty
-
-```cpp
-bool VectorOfUint32::empty();
-AutoIt:
-    $oVectorOfUint32.empty() -> retval
-```
-
-### VectorOfUint32::end
-
-```cpp
-void* VectorOfUint32::end();
-AutoIt:
-    $oVectorOfUint32.end() -> retval
-```
-
-### VectorOfUint32::get\_Item
-
-```cpp
-uint32_t VectorOfUint32::get_Item( size_t index );
-AutoIt:
-    $oVectorOfUint32.Item( $index ) -> retval
-    $oVectorOfUint32( $index ) -> retval
-```
-
-### VectorOfUint32::get\_\_NewEnum
-
-```cpp
-IUnknown* VectorOfUint32::get__NewEnum();
-AutoIt:
-    $oVectorOfUint32._NewEnum() -> retval
-```
-
-### VectorOfUint32::push\_back
-
-```cpp
-void VectorOfUint32::push_back( uint32_t value );
-AutoIt:
-    $oVectorOfUint32.push_back( $value ) -> None
-```
-
-### VectorOfUint32::push\_vector
-
-```cpp
-void VectorOfUint32::push_vector( VectorOfUint32 other );
-AutoIt:
-    $oVectorOfUint32.push_vector( $other ) -> None
+    $oVectorOfUint32_t.__eq__( $other ) -> retval
 ```
 
 ```cpp
-void VectorOfUint32::push_vector( VectorOfUint32 other,
-                                  size_t         count,
-                                  size_t         start = 0 );
+bool VectorOfUint32_t::__eq__( VARIANT* other );
 AutoIt:
-    $oVectorOfUint32.push_vector( $other, $count[, $start] ) -> None
+    $oVectorOfUint32_t.__eq__( $other ) -> retval
 ```
 
-### VectorOfUint32::put\_Item
+### VectorOfUint32\_t::\_\_str\_\_
 
 ```cpp
-void VectorOfUint32::put_Item( size_t   index,
-                               uint32_t item );
+std::string VectorOfUint32_t::__str__();
 AutoIt:
-    $oVectorOfUint32.Item( $index ) = $item
+    $oVectorOfUint32_t.__str__() -> retval
 ```
 
-### VectorOfUint32::size
+### VectorOfUint32\_t::\_\_type\_\_
 
 ```cpp
-size_t VectorOfUint32::size();
+static std::string VectorOfUint32_t::__type__();
 AutoIt:
-    $oVectorOfUint32.size() -> retval
+    _Mediapipe_ObjCreate("VectorOfUint32_t").__type__() -> retval
 ```
 
-### VectorOfUint32::slice
+### VectorOfUint32\_t::append
 
 ```cpp
-VectorOfUint32 VectorOfUint32::slice( size_t start = 0,
-                                      size_t count = __self->get()->size() );
+void VectorOfUint32_t::append( uint32_t value );
 AutoIt:
-    $oVectorOfUint32.slice( [$start[, $count]] ) -> retval
+    $oVectorOfUint32_t.append( $value ) -> None
 ```
 
-### VectorOfUint32::sort
+### VectorOfUint32\_t::at
 
 ```cpp
-void VectorOfUint32::sort( void*  comparator,
-                           size_t start = 0,
-                           size_t count = __self->get()->size() );
+uint32_t VectorOfUint32_t::at( size_t index );
 AutoIt:
-    $oVectorOfUint32.sort( $comparator[, $start[, $count]] ) -> None
+    $oVectorOfUint32_t.at( $index ) -> retval
 ```
 
-### VectorOfUint32::sort\_variant
-
 ```cpp
-void VectorOfUint32::sort_variant( void*  comparator,
-                                   size_t start = 0,
-                                   size_t count = __self->get()->size() );
+void VectorOfUint32_t::at( size_t   index,
+                           uint32_t value );
 AutoIt:
-    $oVectorOfUint32.sort_variant( $comparator[, $start[, $count]] ) -> None
+    $oVectorOfUint32_t.at( $index, $value ) -> None
 ```
 
-### VectorOfUint32::start
+### VectorOfUint32\_t::clear
 
 ```cpp
-void* VectorOfUint32::start();
+void VectorOfUint32_t::clear();
 AutoIt:
-    $oVectorOfUint32.start() -> retval
+    $oVectorOfUint32_t.clear() -> None
+```
+
+### VectorOfUint32\_t::empty
+
+```cpp
+bool VectorOfUint32_t::empty();
+AutoIt:
+    $oVectorOfUint32_t.empty() -> retval
+```
+
+### VectorOfUint32\_t::end
+
+```cpp
+void* VectorOfUint32_t::end();
+AutoIt:
+    $oVectorOfUint32_t.end() -> retval
+```
+
+### VectorOfUint32\_t::get\_Item
+
+```cpp
+uint32_t VectorOfUint32_t::get_Item( size_t index );
+AutoIt:
+    $oVectorOfUint32_t.Item( $index ) -> retval
+    $oVectorOfUint32_t( $index ) -> retval
+```
+
+### VectorOfUint32\_t::get\_\_NewEnum
+
+```cpp
+IUnknown* VectorOfUint32_t::get__NewEnum();
+AutoIt:
+    $oVectorOfUint32_t._NewEnum() -> retval
+```
+
+### VectorOfUint32\_t::push\_back
+
+```cpp
+void VectorOfUint32_t::push_back( uint32_t value );
+AutoIt:
+    $oVectorOfUint32_t.push_back( $value ) -> None
+```
+
+### VectorOfUint32\_t::push\_vector
+
+```cpp
+void VectorOfUint32_t::push_vector( std::vector<uint32_t> other );
+AutoIt:
+    $oVectorOfUint32_t.push_vector( $other ) -> None
+```
+
+```cpp
+void VectorOfUint32_t::push_vector( std::vector<uint32_t> other,
+                                    size_t                count,
+                                    size_t                start = 0 );
+AutoIt:
+    $oVectorOfUint32_t.push_vector( $other, $count[, $start] ) -> None
+```
+
+### VectorOfUint32\_t::put\_Item
+
+```cpp
+void VectorOfUint32_t::put_Item( size_t   index,
+                                 uint32_t item );
+AutoIt:
+    $oVectorOfUint32_t.Item( $index ) = $item
+```
+
+### VectorOfUint32\_t::size
+
+```cpp
+size_t VectorOfUint32_t::size();
+AutoIt:
+    $oVectorOfUint32_t.size() -> retval
+```
+
+### VectorOfUint32\_t::slice
+
+```cpp
+std::vector<uint32_t> VectorOfUint32_t::slice( size_t start = 0,
+                                               size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfUint32_t.slice( [$start[, $count]] ) -> retval
+```
+
+### VectorOfUint32\_t::sort
+
+```cpp
+void VectorOfUint32_t::sort( void*  comparator,
+                             size_t start = 0,
+                             size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfUint32_t.sort( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfUint32\_t::sort\_variant
+
+```cpp
+void VectorOfUint32_t::sort_variant( void*  comparator,
+                                     size_t start = 0,
+                                     size_t count = __self->get()->size() );
+AutoIt:
+    $oVectorOfUint32_t.sort_variant( $comparator[, $start[, $count]] ) -> None
+```
+
+### VectorOfUint32\_t::start
+
+```cpp
+void* VectorOfUint32_t::start();
+AutoIt:
+    $oVectorOfUint32_t.start() -> retval
 ```
 
 ## VectorOfSharedPtrOfRenderAnnotation
@@ -104221,19 +104221,19 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation::create
 
 ```cpp
-static VectorOfSharedPtrOfRenderAnnotation VectorOfSharedPtrOfRenderAnnotation::create();
+static std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> VectorOfSharedPtrOfRenderAnnotation::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRenderAnnotation").create() -> <VectorOfSharedPtrOfRenderAnnotation object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfRenderAnnotation VectorOfSharedPtrOfRenderAnnotation::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> VectorOfSharedPtrOfRenderAnnotation::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRenderAnnotation").create( $size ) -> <VectorOfSharedPtrOfRenderAnnotation object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfRenderAnnotation VectorOfSharedPtrOfRenderAnnotation::create( VectorOfSharedPtrOfRenderAnnotation other );
+static std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> VectorOfSharedPtrOfRenderAnnotation::create( std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRenderAnnotation").create( $other ) -> <VectorOfSharedPtrOfRenderAnnotation object>
 ```
@@ -104249,7 +104249,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfRenderAnnotation::IsInstance( const VectorOfSharedPtrOfRenderAnnotation& obj );
+static bool VectorOfSharedPtrOfRenderAnnotation::IsInstance( const std::vector<std::shared_ptr<mediapipe::RenderAnnotation>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRenderAnnotation").IsInstance( $obj ) -> retval
 ```
@@ -104263,7 +104263,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation::Items
 
 ```cpp
-VectorOfSharedPtrOfRenderAnnotation VectorOfSharedPtrOfRenderAnnotation::Items();
+std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> VectorOfSharedPtrOfRenderAnnotation::Items();
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation.Items() -> retval
 ```
@@ -104287,7 +104287,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfRenderAnnotation::__eq__( const VectorOfSharedPtrOfRenderAnnotation& other );
+bool VectorOfSharedPtrOfRenderAnnotation::__eq__( const std::vector<std::shared_ptr<mediapipe::RenderAnnotation>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation.__eq__( $other ) -> retval
 ```
@@ -104389,15 +104389,15 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfRenderAnnotation::push_vector( VectorOfSharedPtrOfRenderAnnotation other );
+void VectorOfSharedPtrOfRenderAnnotation::push_vector( std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> other );
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfRenderAnnotation::push_vector( VectorOfSharedPtrOfRenderAnnotation other,
-                                                       size_t                              count,
-                                                       size_t                              start = 0 );
+void VectorOfSharedPtrOfRenderAnnotation::push_vector( std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> other,
+                                                       size_t                                                    count,
+                                                       size_t                                                    start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -104422,8 +104422,8 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation::slice
 
 ```cpp
-VectorOfSharedPtrOfRenderAnnotation VectorOfSharedPtrOfRenderAnnotation::slice( size_t start = 0,
-                                                                                size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::RenderAnnotation>> VectorOfSharedPtrOfRenderAnnotation::slice( size_t start = 0,
+                                                                                                      size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation.slice( [$start[, $count]] ) -> retval
 ```
@@ -104469,19 +104469,19 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation\_Point::create
 
 ```cpp
-static VectorOfSharedPtrOfRenderAnnotation_Point VectorOfSharedPtrOfRenderAnnotation_Point::create();
+static std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>> VectorOfSharedPtrOfRenderAnnotation_Point::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRenderAnnotation_Point").create() -> <VectorOfSharedPtrOfRenderAnnotation_Point object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfRenderAnnotation_Point VectorOfSharedPtrOfRenderAnnotation_Point::create( size_t size );
+static std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>> VectorOfSharedPtrOfRenderAnnotation_Point::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRenderAnnotation_Point").create( $size ) -> <VectorOfSharedPtrOfRenderAnnotation_Point object>
 ```
 
 ```cpp
-static VectorOfSharedPtrOfRenderAnnotation_Point VectorOfSharedPtrOfRenderAnnotation_Point::create( VectorOfSharedPtrOfRenderAnnotation_Point other );
+static std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>> VectorOfSharedPtrOfRenderAnnotation_Point::create( std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRenderAnnotation_Point").create( $other ) -> <VectorOfSharedPtrOfRenderAnnotation_Point object>
 ```
@@ -104497,7 +104497,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation\_Point::IsInstance
 
 ```cpp
-static bool VectorOfSharedPtrOfRenderAnnotation_Point::IsInstance( const VectorOfSharedPtrOfRenderAnnotation_Point& obj );
+static bool VectorOfSharedPtrOfRenderAnnotation_Point::IsInstance( const std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSharedPtrOfRenderAnnotation_Point").IsInstance( $obj ) -> retval
 ```
@@ -104511,7 +104511,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation\_Point::Items
 
 ```cpp
-VectorOfSharedPtrOfRenderAnnotation_Point VectorOfSharedPtrOfRenderAnnotation_Point::Items();
+std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>> VectorOfSharedPtrOfRenderAnnotation_Point::Items();
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation_Point.Items() -> retval
 ```
@@ -104535,7 +104535,7 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation\_Point::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSharedPtrOfRenderAnnotation_Point::__eq__( const VectorOfSharedPtrOfRenderAnnotation_Point& other );
+bool VectorOfSharedPtrOfRenderAnnotation_Point::__eq__( const std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>>& other );
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation_Point.__eq__( $other ) -> retval
 ```
@@ -104637,15 +104637,15 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation\_Point::push\_vector
 
 ```cpp
-void VectorOfSharedPtrOfRenderAnnotation_Point::push_vector( VectorOfSharedPtrOfRenderAnnotation_Point other );
+void VectorOfSharedPtrOfRenderAnnotation_Point::push_vector( std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>> other );
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation_Point.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSharedPtrOfRenderAnnotation_Point::push_vector( VectorOfSharedPtrOfRenderAnnotation_Point other,
-                                                             size_t                                    count,
-                                                             size_t                                    start = 0 );
+void VectorOfSharedPtrOfRenderAnnotation_Point::push_vector( std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>> other,
+                                                             size_t                                                           count,
+                                                             size_t                                                           start = 0 );
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation_Point.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -104670,8 +104670,8 @@ AutoIt:
 ### VectorOfSharedPtrOfRenderAnnotation\_Point::slice
 
 ```cpp
-VectorOfSharedPtrOfRenderAnnotation_Point VectorOfSharedPtrOfRenderAnnotation_Point::slice( size_t start = 0,
-                                                                                            size_t count = __self->get()->size() );
+std::vector<std::shared_ptr<mediapipe::RenderAnnotation::Point>> VectorOfSharedPtrOfRenderAnnotation_Point::slice( size_t start = 0,
+                                                                                                                   size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSharedPtrOfRenderAnnotation_Point.slice( [$start[, $count]] ) -> retval
 ```
@@ -104831,19 +104831,19 @@ AutoIt:
 ### VectorOfSize\_t::create
 
 ```cpp
-static VectorOfSize_t VectorOfSize_t::create();
+static std::vector<size_t> VectorOfSize_t::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSize_t").create() -> <VectorOfSize_t object>
 ```
 
 ```cpp
-static VectorOfSize_t VectorOfSize_t::create( size_t size );
+static std::vector<size_t> VectorOfSize_t::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSize_t").create( $size ) -> <VectorOfSize_t object>
 ```
 
 ```cpp
-static VectorOfSize_t VectorOfSize_t::create( VectorOfSize_t other );
+static std::vector<size_t> VectorOfSize_t::create( std::vector<size_t> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSize_t").create( $other ) -> <VectorOfSize_t object>
 ```
@@ -104859,7 +104859,7 @@ AutoIt:
 ### VectorOfSize\_t::IsInstance
 
 ```cpp
-static bool VectorOfSize_t::IsInstance( const VectorOfSize_t& obj );
+static bool VectorOfSize_t::IsInstance( const std::vector<size_t>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfSize_t").IsInstance( $obj ) -> retval
 ```
@@ -104873,7 +104873,7 @@ AutoIt:
 ### VectorOfSize\_t::Items
 
 ```cpp
-VectorOfSize_t VectorOfSize_t::Items();
+std::vector<size_t> VectorOfSize_t::Items();
 AutoIt:
     $oVectorOfSize_t.Items() -> retval
 ```
@@ -104897,7 +104897,7 @@ AutoIt:
 ### VectorOfSize\_t::\_\_eq\_\_
 
 ```cpp
-bool VectorOfSize_t::__eq__( const VectorOfSize_t& other );
+bool VectorOfSize_t::__eq__( const std::vector<size_t>& other );
 AutoIt:
     $oVectorOfSize_t.__eq__( $other ) -> retval
 ```
@@ -104999,15 +104999,15 @@ AutoIt:
 ### VectorOfSize\_t::push\_vector
 
 ```cpp
-void VectorOfSize_t::push_vector( VectorOfSize_t other );
+void VectorOfSize_t::push_vector( std::vector<size_t> other );
 AutoIt:
     $oVectorOfSize_t.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfSize_t::push_vector( VectorOfSize_t other,
-                                  size_t         count,
-                                  size_t         start = 0 );
+void VectorOfSize_t::push_vector( std::vector<size_t> other,
+                                  size_t              count,
+                                  size_t              start = 0 );
 AutoIt:
     $oVectorOfSize_t.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -105032,8 +105032,8 @@ AutoIt:
 ### VectorOfSize\_t::slice
 
 ```cpp
-VectorOfSize_t VectorOfSize_t::slice( size_t start = 0,
-                                      size_t count = __self->get()->size() );
+std::vector<size_t> VectorOfSize_t::slice( size_t start = 0,
+                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfSize_t.slice( [$start[, $count]] ) -> retval
 ```
@@ -105079,19 +105079,19 @@ AutoIt:
 ### VectorOfRange::create
 
 ```cpp
-static VectorOfRange VectorOfRange::create();
+static std::vector<cv::Range> VectorOfRange::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfRange").create() -> <VectorOfRange object>
 ```
 
 ```cpp
-static VectorOfRange VectorOfRange::create( size_t size );
+static std::vector<cv::Range> VectorOfRange::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfRange").create( $size ) -> <VectorOfRange object>
 ```
 
 ```cpp
-static VectorOfRange VectorOfRange::create( VectorOfRange other );
+static std::vector<cv::Range> VectorOfRange::create( std::vector<cv::Range> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfRange").create( $other ) -> <VectorOfRange object>
 ```
@@ -105107,7 +105107,7 @@ AutoIt:
 ### VectorOfRange::IsInstance
 
 ```cpp
-static bool VectorOfRange::IsInstance( const VectorOfRange& obj );
+static bool VectorOfRange::IsInstance( const std::vector<cv::Range>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfRange").IsInstance( $obj ) -> retval
 ```
@@ -105121,7 +105121,7 @@ AutoIt:
 ### VectorOfRange::Items
 
 ```cpp
-VectorOfRange VectorOfRange::Items();
+std::vector<cv::Range> VectorOfRange::Items();
 AutoIt:
     $oVectorOfRange.Items() -> retval
 ```
@@ -105145,7 +105145,7 @@ AutoIt:
 ### VectorOfRange::\_\_eq\_\_
 
 ```cpp
-bool VectorOfRange::__eq__( const VectorOfRange& other );
+bool VectorOfRange::__eq__( const std::vector<cv::Range>& other );
 AutoIt:
     $oVectorOfRange.__eq__( $other ) -> retval
 ```
@@ -105247,15 +105247,15 @@ AutoIt:
 ### VectorOfRange::push\_vector
 
 ```cpp
-void VectorOfRange::push_vector( VectorOfRange other );
+void VectorOfRange::push_vector( std::vector<cv::Range> other );
 AutoIt:
     $oVectorOfRange.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfRange::push_vector( VectorOfRange other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfRange::push_vector( std::vector<cv::Range> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfRange.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -105280,8 +105280,8 @@ AutoIt:
 ### VectorOfRange::slice
 
 ```cpp
-VectorOfRange VectorOfRange::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Range> VectorOfRange::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfRange.slice( [$start[, $count]] ) -> retval
 ```
@@ -105327,19 +105327,19 @@ AutoIt:
 ### VectorOfDouble::create
 
 ```cpp
-static VectorOfDouble VectorOfDouble::create();
+static std::vector<double> VectorOfDouble::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfDouble").create() -> <VectorOfDouble object>
 ```
 
 ```cpp
-static VectorOfDouble VectorOfDouble::create( size_t size );
+static std::vector<double> VectorOfDouble::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfDouble").create( $size ) -> <VectorOfDouble object>
 ```
 
 ```cpp
-static VectorOfDouble VectorOfDouble::create( VectorOfDouble other );
+static std::vector<double> VectorOfDouble::create( std::vector<double> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfDouble").create( $other ) -> <VectorOfDouble object>
 ```
@@ -105355,7 +105355,7 @@ AutoIt:
 ### VectorOfDouble::IsInstance
 
 ```cpp
-static bool VectorOfDouble::IsInstance( const VectorOfDouble& obj );
+static bool VectorOfDouble::IsInstance( const std::vector<double>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfDouble").IsInstance( $obj ) -> retval
 ```
@@ -105369,7 +105369,7 @@ AutoIt:
 ### VectorOfDouble::Items
 
 ```cpp
-VectorOfDouble VectorOfDouble::Items();
+std::vector<double> VectorOfDouble::Items();
 AutoIt:
     $oVectorOfDouble.Items() -> retval
 ```
@@ -105393,7 +105393,7 @@ AutoIt:
 ### VectorOfDouble::\_\_eq\_\_
 
 ```cpp
-bool VectorOfDouble::__eq__( const VectorOfDouble& other );
+bool VectorOfDouble::__eq__( const std::vector<double>& other );
 AutoIt:
     $oVectorOfDouble.__eq__( $other ) -> retval
 ```
@@ -105495,15 +105495,15 @@ AutoIt:
 ### VectorOfDouble::push\_vector
 
 ```cpp
-void VectorOfDouble::push_vector( VectorOfDouble other );
+void VectorOfDouble::push_vector( std::vector<double> other );
 AutoIt:
     $oVectorOfDouble.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfDouble::push_vector( VectorOfDouble other,
-                                  size_t         count,
-                                  size_t         start = 0 );
+void VectorOfDouble::push_vector( std::vector<double> other,
+                                  size_t              count,
+                                  size_t              start = 0 );
 AutoIt:
     $oVectorOfDouble.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -105528,8 +105528,8 @@ AutoIt:
 ### VectorOfDouble::slice
 
 ```cpp
-VectorOfDouble VectorOfDouble::slice( size_t start = 0,
-                                      size_t count = __self->get()->size() );
+std::vector<double> VectorOfDouble::slice( size_t start = 0,
+                                           size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfDouble.slice( [$start[, $count]] ) -> retval
 ```
@@ -105575,19 +105575,19 @@ AutoIt:
 ### VectorOfVec2b::create
 
 ```cpp
-static VectorOfVec2b VectorOfVec2b::create();
+static std::vector<cv::Vec2b> VectorOfVec2b::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2b").create() -> <VectorOfVec2b object>
 ```
 
 ```cpp
-static VectorOfVec2b VectorOfVec2b::create( size_t size );
+static std::vector<cv::Vec2b> VectorOfVec2b::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2b").create( $size ) -> <VectorOfVec2b object>
 ```
 
 ```cpp
-static VectorOfVec2b VectorOfVec2b::create( VectorOfVec2b other );
+static std::vector<cv::Vec2b> VectorOfVec2b::create( std::vector<cv::Vec2b> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2b").create( $other ) -> <VectorOfVec2b object>
 ```
@@ -105603,7 +105603,7 @@ AutoIt:
 ### VectorOfVec2b::IsInstance
 
 ```cpp
-static bool VectorOfVec2b::IsInstance( const VectorOfVec2b& obj );
+static bool VectorOfVec2b::IsInstance( const std::vector<cv::Vec2b>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2b").IsInstance( $obj ) -> retval
 ```
@@ -105617,7 +105617,7 @@ AutoIt:
 ### VectorOfVec2b::Items
 
 ```cpp
-VectorOfVec2b VectorOfVec2b::Items();
+std::vector<cv::Vec2b> VectorOfVec2b::Items();
 AutoIt:
     $oVectorOfVec2b.Items() -> retval
 ```
@@ -105641,7 +105641,7 @@ AutoIt:
 ### VectorOfVec2b::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec2b::__eq__( const VectorOfVec2b& other );
+bool VectorOfVec2b::__eq__( const std::vector<cv::Vec2b>& other );
 AutoIt:
     $oVectorOfVec2b.__eq__( $other ) -> retval
 ```
@@ -105743,15 +105743,15 @@ AutoIt:
 ### VectorOfVec2b::push\_vector
 
 ```cpp
-void VectorOfVec2b::push_vector( VectorOfVec2b other );
+void VectorOfVec2b::push_vector( std::vector<cv::Vec2b> other );
 AutoIt:
     $oVectorOfVec2b.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec2b::push_vector( VectorOfVec2b other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec2b::push_vector( std::vector<cv::Vec2b> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec2b.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -105776,8 +105776,8 @@ AutoIt:
 ### VectorOfVec2b::slice
 
 ```cpp
-VectorOfVec2b VectorOfVec2b::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec2b> VectorOfVec2b::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec2b.slice( [$start[, $count]] ) -> retval
 ```
@@ -105823,19 +105823,19 @@ AutoIt:
 ### VectorOfVec3b::create
 
 ```cpp
-static VectorOfVec3b VectorOfVec3b::create();
+static std::vector<cv::Vec3b> VectorOfVec3b::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3b").create() -> <VectorOfVec3b object>
 ```
 
 ```cpp
-static VectorOfVec3b VectorOfVec3b::create( size_t size );
+static std::vector<cv::Vec3b> VectorOfVec3b::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3b").create( $size ) -> <VectorOfVec3b object>
 ```
 
 ```cpp
-static VectorOfVec3b VectorOfVec3b::create( VectorOfVec3b other );
+static std::vector<cv::Vec3b> VectorOfVec3b::create( std::vector<cv::Vec3b> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3b").create( $other ) -> <VectorOfVec3b object>
 ```
@@ -105851,7 +105851,7 @@ AutoIt:
 ### VectorOfVec3b::IsInstance
 
 ```cpp
-static bool VectorOfVec3b::IsInstance( const VectorOfVec3b& obj );
+static bool VectorOfVec3b::IsInstance( const std::vector<cv::Vec3b>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3b").IsInstance( $obj ) -> retval
 ```
@@ -105865,7 +105865,7 @@ AutoIt:
 ### VectorOfVec3b::Items
 
 ```cpp
-VectorOfVec3b VectorOfVec3b::Items();
+std::vector<cv::Vec3b> VectorOfVec3b::Items();
 AutoIt:
     $oVectorOfVec3b.Items() -> retval
 ```
@@ -105889,7 +105889,7 @@ AutoIt:
 ### VectorOfVec3b::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec3b::__eq__( const VectorOfVec3b& other );
+bool VectorOfVec3b::__eq__( const std::vector<cv::Vec3b>& other );
 AutoIt:
     $oVectorOfVec3b.__eq__( $other ) -> retval
 ```
@@ -105991,15 +105991,15 @@ AutoIt:
 ### VectorOfVec3b::push\_vector
 
 ```cpp
-void VectorOfVec3b::push_vector( VectorOfVec3b other );
+void VectorOfVec3b::push_vector( std::vector<cv::Vec3b> other );
 AutoIt:
     $oVectorOfVec3b.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec3b::push_vector( VectorOfVec3b other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec3b::push_vector( std::vector<cv::Vec3b> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec3b.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -106024,8 +106024,8 @@ AutoIt:
 ### VectorOfVec3b::slice
 
 ```cpp
-VectorOfVec3b VectorOfVec3b::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec3b> VectorOfVec3b::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec3b.slice( [$start[, $count]] ) -> retval
 ```
@@ -106071,19 +106071,19 @@ AutoIt:
 ### VectorOfVec4b::create
 
 ```cpp
-static VectorOfVec4b VectorOfVec4b::create();
+static std::vector<cv::Vec4b> VectorOfVec4b::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4b").create() -> <VectorOfVec4b object>
 ```
 
 ```cpp
-static VectorOfVec4b VectorOfVec4b::create( size_t size );
+static std::vector<cv::Vec4b> VectorOfVec4b::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4b").create( $size ) -> <VectorOfVec4b object>
 ```
 
 ```cpp
-static VectorOfVec4b VectorOfVec4b::create( VectorOfVec4b other );
+static std::vector<cv::Vec4b> VectorOfVec4b::create( std::vector<cv::Vec4b> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4b").create( $other ) -> <VectorOfVec4b object>
 ```
@@ -106099,7 +106099,7 @@ AutoIt:
 ### VectorOfVec4b::IsInstance
 
 ```cpp
-static bool VectorOfVec4b::IsInstance( const VectorOfVec4b& obj );
+static bool VectorOfVec4b::IsInstance( const std::vector<cv::Vec4b>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4b").IsInstance( $obj ) -> retval
 ```
@@ -106113,7 +106113,7 @@ AutoIt:
 ### VectorOfVec4b::Items
 
 ```cpp
-VectorOfVec4b VectorOfVec4b::Items();
+std::vector<cv::Vec4b> VectorOfVec4b::Items();
 AutoIt:
     $oVectorOfVec4b.Items() -> retval
 ```
@@ -106137,7 +106137,7 @@ AutoIt:
 ### VectorOfVec4b::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec4b::__eq__( const VectorOfVec4b& other );
+bool VectorOfVec4b::__eq__( const std::vector<cv::Vec4b>& other );
 AutoIt:
     $oVectorOfVec4b.__eq__( $other ) -> retval
 ```
@@ -106239,15 +106239,15 @@ AutoIt:
 ### VectorOfVec4b::push\_vector
 
 ```cpp
-void VectorOfVec4b::push_vector( VectorOfVec4b other );
+void VectorOfVec4b::push_vector( std::vector<cv::Vec4b> other );
 AutoIt:
     $oVectorOfVec4b.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec4b::push_vector( VectorOfVec4b other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec4b::push_vector( std::vector<cv::Vec4b> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec4b.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -106272,8 +106272,8 @@ AutoIt:
 ### VectorOfVec4b::slice
 
 ```cpp
-VectorOfVec4b VectorOfVec4b::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec4b> VectorOfVec4b::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec4b.slice( [$start[, $count]] ) -> retval
 ```
@@ -106319,19 +106319,19 @@ AutoIt:
 ### VectorOfVec2s::create
 
 ```cpp
-static VectorOfVec2s VectorOfVec2s::create();
+static std::vector<cv::Vec2s> VectorOfVec2s::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2s").create() -> <VectorOfVec2s object>
 ```
 
 ```cpp
-static VectorOfVec2s VectorOfVec2s::create( size_t size );
+static std::vector<cv::Vec2s> VectorOfVec2s::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2s").create( $size ) -> <VectorOfVec2s object>
 ```
 
 ```cpp
-static VectorOfVec2s VectorOfVec2s::create( VectorOfVec2s other );
+static std::vector<cv::Vec2s> VectorOfVec2s::create( std::vector<cv::Vec2s> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2s").create( $other ) -> <VectorOfVec2s object>
 ```
@@ -106347,7 +106347,7 @@ AutoIt:
 ### VectorOfVec2s::IsInstance
 
 ```cpp
-static bool VectorOfVec2s::IsInstance( const VectorOfVec2s& obj );
+static bool VectorOfVec2s::IsInstance( const std::vector<cv::Vec2s>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2s").IsInstance( $obj ) -> retval
 ```
@@ -106361,7 +106361,7 @@ AutoIt:
 ### VectorOfVec2s::Items
 
 ```cpp
-VectorOfVec2s VectorOfVec2s::Items();
+std::vector<cv::Vec2s> VectorOfVec2s::Items();
 AutoIt:
     $oVectorOfVec2s.Items() -> retval
 ```
@@ -106385,7 +106385,7 @@ AutoIt:
 ### VectorOfVec2s::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec2s::__eq__( const VectorOfVec2s& other );
+bool VectorOfVec2s::__eq__( const std::vector<cv::Vec2s>& other );
 AutoIt:
     $oVectorOfVec2s.__eq__( $other ) -> retval
 ```
@@ -106487,15 +106487,15 @@ AutoIt:
 ### VectorOfVec2s::push\_vector
 
 ```cpp
-void VectorOfVec2s::push_vector( VectorOfVec2s other );
+void VectorOfVec2s::push_vector( std::vector<cv::Vec2s> other );
 AutoIt:
     $oVectorOfVec2s.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec2s::push_vector( VectorOfVec2s other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec2s::push_vector( std::vector<cv::Vec2s> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec2s.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -106520,8 +106520,8 @@ AutoIt:
 ### VectorOfVec2s::slice
 
 ```cpp
-VectorOfVec2s VectorOfVec2s::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec2s> VectorOfVec2s::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec2s.slice( [$start[, $count]] ) -> retval
 ```
@@ -106567,19 +106567,19 @@ AutoIt:
 ### VectorOfVec3s::create
 
 ```cpp
-static VectorOfVec3s VectorOfVec3s::create();
+static std::vector<cv::Vec3s> VectorOfVec3s::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3s").create() -> <VectorOfVec3s object>
 ```
 
 ```cpp
-static VectorOfVec3s VectorOfVec3s::create( size_t size );
+static std::vector<cv::Vec3s> VectorOfVec3s::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3s").create( $size ) -> <VectorOfVec3s object>
 ```
 
 ```cpp
-static VectorOfVec3s VectorOfVec3s::create( VectorOfVec3s other );
+static std::vector<cv::Vec3s> VectorOfVec3s::create( std::vector<cv::Vec3s> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3s").create( $other ) -> <VectorOfVec3s object>
 ```
@@ -106595,7 +106595,7 @@ AutoIt:
 ### VectorOfVec3s::IsInstance
 
 ```cpp
-static bool VectorOfVec3s::IsInstance( const VectorOfVec3s& obj );
+static bool VectorOfVec3s::IsInstance( const std::vector<cv::Vec3s>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3s").IsInstance( $obj ) -> retval
 ```
@@ -106609,7 +106609,7 @@ AutoIt:
 ### VectorOfVec3s::Items
 
 ```cpp
-VectorOfVec3s VectorOfVec3s::Items();
+std::vector<cv::Vec3s> VectorOfVec3s::Items();
 AutoIt:
     $oVectorOfVec3s.Items() -> retval
 ```
@@ -106633,7 +106633,7 @@ AutoIt:
 ### VectorOfVec3s::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec3s::__eq__( const VectorOfVec3s& other );
+bool VectorOfVec3s::__eq__( const std::vector<cv::Vec3s>& other );
 AutoIt:
     $oVectorOfVec3s.__eq__( $other ) -> retval
 ```
@@ -106735,15 +106735,15 @@ AutoIt:
 ### VectorOfVec3s::push\_vector
 
 ```cpp
-void VectorOfVec3s::push_vector( VectorOfVec3s other );
+void VectorOfVec3s::push_vector( std::vector<cv::Vec3s> other );
 AutoIt:
     $oVectorOfVec3s.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec3s::push_vector( VectorOfVec3s other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec3s::push_vector( std::vector<cv::Vec3s> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec3s.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -106768,8 +106768,8 @@ AutoIt:
 ### VectorOfVec3s::slice
 
 ```cpp
-VectorOfVec3s VectorOfVec3s::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec3s> VectorOfVec3s::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec3s.slice( [$start[, $count]] ) -> retval
 ```
@@ -106815,19 +106815,19 @@ AutoIt:
 ### VectorOfVec4s::create
 
 ```cpp
-static VectorOfVec4s VectorOfVec4s::create();
+static std::vector<cv::Vec4s> VectorOfVec4s::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4s").create() -> <VectorOfVec4s object>
 ```
 
 ```cpp
-static VectorOfVec4s VectorOfVec4s::create( size_t size );
+static std::vector<cv::Vec4s> VectorOfVec4s::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4s").create( $size ) -> <VectorOfVec4s object>
 ```
 
 ```cpp
-static VectorOfVec4s VectorOfVec4s::create( VectorOfVec4s other );
+static std::vector<cv::Vec4s> VectorOfVec4s::create( std::vector<cv::Vec4s> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4s").create( $other ) -> <VectorOfVec4s object>
 ```
@@ -106843,7 +106843,7 @@ AutoIt:
 ### VectorOfVec4s::IsInstance
 
 ```cpp
-static bool VectorOfVec4s::IsInstance( const VectorOfVec4s& obj );
+static bool VectorOfVec4s::IsInstance( const std::vector<cv::Vec4s>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4s").IsInstance( $obj ) -> retval
 ```
@@ -106857,7 +106857,7 @@ AutoIt:
 ### VectorOfVec4s::Items
 
 ```cpp
-VectorOfVec4s VectorOfVec4s::Items();
+std::vector<cv::Vec4s> VectorOfVec4s::Items();
 AutoIt:
     $oVectorOfVec4s.Items() -> retval
 ```
@@ -106881,7 +106881,7 @@ AutoIt:
 ### VectorOfVec4s::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec4s::__eq__( const VectorOfVec4s& other );
+bool VectorOfVec4s::__eq__( const std::vector<cv::Vec4s>& other );
 AutoIt:
     $oVectorOfVec4s.__eq__( $other ) -> retval
 ```
@@ -106983,15 +106983,15 @@ AutoIt:
 ### VectorOfVec4s::push\_vector
 
 ```cpp
-void VectorOfVec4s::push_vector( VectorOfVec4s other );
+void VectorOfVec4s::push_vector( std::vector<cv::Vec4s> other );
 AutoIt:
     $oVectorOfVec4s.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec4s::push_vector( VectorOfVec4s other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec4s::push_vector( std::vector<cv::Vec4s> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec4s.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -107016,8 +107016,8 @@ AutoIt:
 ### VectorOfVec4s::slice
 
 ```cpp
-VectorOfVec4s VectorOfVec4s::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec4s> VectorOfVec4s::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec4s.slice( [$start[, $count]] ) -> retval
 ```
@@ -107063,19 +107063,19 @@ AutoIt:
 ### VectorOfVec2w::create
 
 ```cpp
-static VectorOfVec2w VectorOfVec2w::create();
+static std::vector<cv::Vec2w> VectorOfVec2w::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2w").create() -> <VectorOfVec2w object>
 ```
 
 ```cpp
-static VectorOfVec2w VectorOfVec2w::create( size_t size );
+static std::vector<cv::Vec2w> VectorOfVec2w::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2w").create( $size ) -> <VectorOfVec2w object>
 ```
 
 ```cpp
-static VectorOfVec2w VectorOfVec2w::create( VectorOfVec2w other );
+static std::vector<cv::Vec2w> VectorOfVec2w::create( std::vector<cv::Vec2w> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2w").create( $other ) -> <VectorOfVec2w object>
 ```
@@ -107091,7 +107091,7 @@ AutoIt:
 ### VectorOfVec2w::IsInstance
 
 ```cpp
-static bool VectorOfVec2w::IsInstance( const VectorOfVec2w& obj );
+static bool VectorOfVec2w::IsInstance( const std::vector<cv::Vec2w>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2w").IsInstance( $obj ) -> retval
 ```
@@ -107105,7 +107105,7 @@ AutoIt:
 ### VectorOfVec2w::Items
 
 ```cpp
-VectorOfVec2w VectorOfVec2w::Items();
+std::vector<cv::Vec2w> VectorOfVec2w::Items();
 AutoIt:
     $oVectorOfVec2w.Items() -> retval
 ```
@@ -107129,7 +107129,7 @@ AutoIt:
 ### VectorOfVec2w::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec2w::__eq__( const VectorOfVec2w& other );
+bool VectorOfVec2w::__eq__( const std::vector<cv::Vec2w>& other );
 AutoIt:
     $oVectorOfVec2w.__eq__( $other ) -> retval
 ```
@@ -107231,15 +107231,15 @@ AutoIt:
 ### VectorOfVec2w::push\_vector
 
 ```cpp
-void VectorOfVec2w::push_vector( VectorOfVec2w other );
+void VectorOfVec2w::push_vector( std::vector<cv::Vec2w> other );
 AutoIt:
     $oVectorOfVec2w.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec2w::push_vector( VectorOfVec2w other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec2w::push_vector( std::vector<cv::Vec2w> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec2w.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -107264,8 +107264,8 @@ AutoIt:
 ### VectorOfVec2w::slice
 
 ```cpp
-VectorOfVec2w VectorOfVec2w::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec2w> VectorOfVec2w::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec2w.slice( [$start[, $count]] ) -> retval
 ```
@@ -107311,19 +107311,19 @@ AutoIt:
 ### VectorOfVec3w::create
 
 ```cpp
-static VectorOfVec3w VectorOfVec3w::create();
+static std::vector<cv::Vec3w> VectorOfVec3w::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3w").create() -> <VectorOfVec3w object>
 ```
 
 ```cpp
-static VectorOfVec3w VectorOfVec3w::create( size_t size );
+static std::vector<cv::Vec3w> VectorOfVec3w::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3w").create( $size ) -> <VectorOfVec3w object>
 ```
 
 ```cpp
-static VectorOfVec3w VectorOfVec3w::create( VectorOfVec3w other );
+static std::vector<cv::Vec3w> VectorOfVec3w::create( std::vector<cv::Vec3w> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3w").create( $other ) -> <VectorOfVec3w object>
 ```
@@ -107339,7 +107339,7 @@ AutoIt:
 ### VectorOfVec3w::IsInstance
 
 ```cpp
-static bool VectorOfVec3w::IsInstance( const VectorOfVec3w& obj );
+static bool VectorOfVec3w::IsInstance( const std::vector<cv::Vec3w>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3w").IsInstance( $obj ) -> retval
 ```
@@ -107353,7 +107353,7 @@ AutoIt:
 ### VectorOfVec3w::Items
 
 ```cpp
-VectorOfVec3w VectorOfVec3w::Items();
+std::vector<cv::Vec3w> VectorOfVec3w::Items();
 AutoIt:
     $oVectorOfVec3w.Items() -> retval
 ```
@@ -107377,7 +107377,7 @@ AutoIt:
 ### VectorOfVec3w::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec3w::__eq__( const VectorOfVec3w& other );
+bool VectorOfVec3w::__eq__( const std::vector<cv::Vec3w>& other );
 AutoIt:
     $oVectorOfVec3w.__eq__( $other ) -> retval
 ```
@@ -107479,15 +107479,15 @@ AutoIt:
 ### VectorOfVec3w::push\_vector
 
 ```cpp
-void VectorOfVec3w::push_vector( VectorOfVec3w other );
+void VectorOfVec3w::push_vector( std::vector<cv::Vec3w> other );
 AutoIt:
     $oVectorOfVec3w.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec3w::push_vector( VectorOfVec3w other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec3w::push_vector( std::vector<cv::Vec3w> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec3w.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -107512,8 +107512,8 @@ AutoIt:
 ### VectorOfVec3w::slice
 
 ```cpp
-VectorOfVec3w VectorOfVec3w::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec3w> VectorOfVec3w::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec3w.slice( [$start[, $count]] ) -> retval
 ```
@@ -107559,19 +107559,19 @@ AutoIt:
 ### VectorOfVec4w::create
 
 ```cpp
-static VectorOfVec4w VectorOfVec4w::create();
+static std::vector<cv::Vec4w> VectorOfVec4w::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4w").create() -> <VectorOfVec4w object>
 ```
 
 ```cpp
-static VectorOfVec4w VectorOfVec4w::create( size_t size );
+static std::vector<cv::Vec4w> VectorOfVec4w::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4w").create( $size ) -> <VectorOfVec4w object>
 ```
 
 ```cpp
-static VectorOfVec4w VectorOfVec4w::create( VectorOfVec4w other );
+static std::vector<cv::Vec4w> VectorOfVec4w::create( std::vector<cv::Vec4w> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4w").create( $other ) -> <VectorOfVec4w object>
 ```
@@ -107587,7 +107587,7 @@ AutoIt:
 ### VectorOfVec4w::IsInstance
 
 ```cpp
-static bool VectorOfVec4w::IsInstance( const VectorOfVec4w& obj );
+static bool VectorOfVec4w::IsInstance( const std::vector<cv::Vec4w>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4w").IsInstance( $obj ) -> retval
 ```
@@ -107601,7 +107601,7 @@ AutoIt:
 ### VectorOfVec4w::Items
 
 ```cpp
-VectorOfVec4w VectorOfVec4w::Items();
+std::vector<cv::Vec4w> VectorOfVec4w::Items();
 AutoIt:
     $oVectorOfVec4w.Items() -> retval
 ```
@@ -107625,7 +107625,7 @@ AutoIt:
 ### VectorOfVec4w::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec4w::__eq__( const VectorOfVec4w& other );
+bool VectorOfVec4w::__eq__( const std::vector<cv::Vec4w>& other );
 AutoIt:
     $oVectorOfVec4w.__eq__( $other ) -> retval
 ```
@@ -107727,15 +107727,15 @@ AutoIt:
 ### VectorOfVec4w::push\_vector
 
 ```cpp
-void VectorOfVec4w::push_vector( VectorOfVec4w other );
+void VectorOfVec4w::push_vector( std::vector<cv::Vec4w> other );
 AutoIt:
     $oVectorOfVec4w.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec4w::push_vector( VectorOfVec4w other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec4w::push_vector( std::vector<cv::Vec4w> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec4w.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -107760,8 +107760,8 @@ AutoIt:
 ### VectorOfVec4w::slice
 
 ```cpp
-VectorOfVec4w VectorOfVec4w::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec4w> VectorOfVec4w::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec4w.slice( [$start[, $count]] ) -> retval
 ```
@@ -107807,19 +107807,19 @@ AutoIt:
 ### VectorOfVec2i::create
 
 ```cpp
-static VectorOfVec2i VectorOfVec2i::create();
+static std::vector<cv::Vec2i> VectorOfVec2i::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2i").create() -> <VectorOfVec2i object>
 ```
 
 ```cpp
-static VectorOfVec2i VectorOfVec2i::create( size_t size );
+static std::vector<cv::Vec2i> VectorOfVec2i::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2i").create( $size ) -> <VectorOfVec2i object>
 ```
 
 ```cpp
-static VectorOfVec2i VectorOfVec2i::create( VectorOfVec2i other );
+static std::vector<cv::Vec2i> VectorOfVec2i::create( std::vector<cv::Vec2i> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2i").create( $other ) -> <VectorOfVec2i object>
 ```
@@ -107835,7 +107835,7 @@ AutoIt:
 ### VectorOfVec2i::IsInstance
 
 ```cpp
-static bool VectorOfVec2i::IsInstance( const VectorOfVec2i& obj );
+static bool VectorOfVec2i::IsInstance( const std::vector<cv::Vec2i>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2i").IsInstance( $obj ) -> retval
 ```
@@ -107849,7 +107849,7 @@ AutoIt:
 ### VectorOfVec2i::Items
 
 ```cpp
-VectorOfVec2i VectorOfVec2i::Items();
+std::vector<cv::Vec2i> VectorOfVec2i::Items();
 AutoIt:
     $oVectorOfVec2i.Items() -> retval
 ```
@@ -107873,7 +107873,7 @@ AutoIt:
 ### VectorOfVec2i::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec2i::__eq__( const VectorOfVec2i& other );
+bool VectorOfVec2i::__eq__( const std::vector<cv::Vec2i>& other );
 AutoIt:
     $oVectorOfVec2i.__eq__( $other ) -> retval
 ```
@@ -107975,15 +107975,15 @@ AutoIt:
 ### VectorOfVec2i::push\_vector
 
 ```cpp
-void VectorOfVec2i::push_vector( VectorOfVec2i other );
+void VectorOfVec2i::push_vector( std::vector<cv::Vec2i> other );
 AutoIt:
     $oVectorOfVec2i.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec2i::push_vector( VectorOfVec2i other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec2i::push_vector( std::vector<cv::Vec2i> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec2i.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -108008,8 +108008,8 @@ AutoIt:
 ### VectorOfVec2i::slice
 
 ```cpp
-VectorOfVec2i VectorOfVec2i::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec2i> VectorOfVec2i::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec2i.slice( [$start[, $count]] ) -> retval
 ```
@@ -108055,19 +108055,19 @@ AutoIt:
 ### VectorOfVec3i::create
 
 ```cpp
-static VectorOfVec3i VectorOfVec3i::create();
+static std::vector<cv::Vec3i> VectorOfVec3i::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3i").create() -> <VectorOfVec3i object>
 ```
 
 ```cpp
-static VectorOfVec3i VectorOfVec3i::create( size_t size );
+static std::vector<cv::Vec3i> VectorOfVec3i::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3i").create( $size ) -> <VectorOfVec3i object>
 ```
 
 ```cpp
-static VectorOfVec3i VectorOfVec3i::create( VectorOfVec3i other );
+static std::vector<cv::Vec3i> VectorOfVec3i::create( std::vector<cv::Vec3i> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3i").create( $other ) -> <VectorOfVec3i object>
 ```
@@ -108083,7 +108083,7 @@ AutoIt:
 ### VectorOfVec3i::IsInstance
 
 ```cpp
-static bool VectorOfVec3i::IsInstance( const VectorOfVec3i& obj );
+static bool VectorOfVec3i::IsInstance( const std::vector<cv::Vec3i>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3i").IsInstance( $obj ) -> retval
 ```
@@ -108097,7 +108097,7 @@ AutoIt:
 ### VectorOfVec3i::Items
 
 ```cpp
-VectorOfVec3i VectorOfVec3i::Items();
+std::vector<cv::Vec3i> VectorOfVec3i::Items();
 AutoIt:
     $oVectorOfVec3i.Items() -> retval
 ```
@@ -108121,7 +108121,7 @@ AutoIt:
 ### VectorOfVec3i::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec3i::__eq__( const VectorOfVec3i& other );
+bool VectorOfVec3i::__eq__( const std::vector<cv::Vec3i>& other );
 AutoIt:
     $oVectorOfVec3i.__eq__( $other ) -> retval
 ```
@@ -108223,15 +108223,15 @@ AutoIt:
 ### VectorOfVec3i::push\_vector
 
 ```cpp
-void VectorOfVec3i::push_vector( VectorOfVec3i other );
+void VectorOfVec3i::push_vector( std::vector<cv::Vec3i> other );
 AutoIt:
     $oVectorOfVec3i.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec3i::push_vector( VectorOfVec3i other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec3i::push_vector( std::vector<cv::Vec3i> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec3i.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -108256,8 +108256,8 @@ AutoIt:
 ### VectorOfVec3i::slice
 
 ```cpp
-VectorOfVec3i VectorOfVec3i::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec3i> VectorOfVec3i::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec3i.slice( [$start[, $count]] ) -> retval
 ```
@@ -108303,19 +108303,19 @@ AutoIt:
 ### VectorOfVec4i::create
 
 ```cpp
-static VectorOfVec4i VectorOfVec4i::create();
+static std::vector<cv::Vec4i> VectorOfVec4i::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4i").create() -> <VectorOfVec4i object>
 ```
 
 ```cpp
-static VectorOfVec4i VectorOfVec4i::create( size_t size );
+static std::vector<cv::Vec4i> VectorOfVec4i::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4i").create( $size ) -> <VectorOfVec4i object>
 ```
 
 ```cpp
-static VectorOfVec4i VectorOfVec4i::create( VectorOfVec4i other );
+static std::vector<cv::Vec4i> VectorOfVec4i::create( std::vector<cv::Vec4i> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4i").create( $other ) -> <VectorOfVec4i object>
 ```
@@ -108331,7 +108331,7 @@ AutoIt:
 ### VectorOfVec4i::IsInstance
 
 ```cpp
-static bool VectorOfVec4i::IsInstance( const VectorOfVec4i& obj );
+static bool VectorOfVec4i::IsInstance( const std::vector<cv::Vec4i>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4i").IsInstance( $obj ) -> retval
 ```
@@ -108345,7 +108345,7 @@ AutoIt:
 ### VectorOfVec4i::Items
 
 ```cpp
-VectorOfVec4i VectorOfVec4i::Items();
+std::vector<cv::Vec4i> VectorOfVec4i::Items();
 AutoIt:
     $oVectorOfVec4i.Items() -> retval
 ```
@@ -108369,7 +108369,7 @@ AutoIt:
 ### VectorOfVec4i::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec4i::__eq__( const VectorOfVec4i& other );
+bool VectorOfVec4i::__eq__( const std::vector<cv::Vec4i>& other );
 AutoIt:
     $oVectorOfVec4i.__eq__( $other ) -> retval
 ```
@@ -108471,15 +108471,15 @@ AutoIt:
 ### VectorOfVec4i::push\_vector
 
 ```cpp
-void VectorOfVec4i::push_vector( VectorOfVec4i other );
+void VectorOfVec4i::push_vector( std::vector<cv::Vec4i> other );
 AutoIt:
     $oVectorOfVec4i.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec4i::push_vector( VectorOfVec4i other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec4i::push_vector( std::vector<cv::Vec4i> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec4i.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -108504,8 +108504,8 @@ AutoIt:
 ### VectorOfVec4i::slice
 
 ```cpp
-VectorOfVec4i VectorOfVec4i::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec4i> VectorOfVec4i::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec4i.slice( [$start[, $count]] ) -> retval
 ```
@@ -108551,19 +108551,19 @@ AutoIt:
 ### VectorOfVec6i::create
 
 ```cpp
-static VectorOfVec6i VectorOfVec6i::create();
+static std::vector<cv::Vec6i> VectorOfVec6i::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6i").create() -> <VectorOfVec6i object>
 ```
 
 ```cpp
-static VectorOfVec6i VectorOfVec6i::create( size_t size );
+static std::vector<cv::Vec6i> VectorOfVec6i::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6i").create( $size ) -> <VectorOfVec6i object>
 ```
 
 ```cpp
-static VectorOfVec6i VectorOfVec6i::create( VectorOfVec6i other );
+static std::vector<cv::Vec6i> VectorOfVec6i::create( std::vector<cv::Vec6i> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6i").create( $other ) -> <VectorOfVec6i object>
 ```
@@ -108579,7 +108579,7 @@ AutoIt:
 ### VectorOfVec6i::IsInstance
 
 ```cpp
-static bool VectorOfVec6i::IsInstance( const VectorOfVec6i& obj );
+static bool VectorOfVec6i::IsInstance( const std::vector<cv::Vec6i>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6i").IsInstance( $obj ) -> retval
 ```
@@ -108593,7 +108593,7 @@ AutoIt:
 ### VectorOfVec6i::Items
 
 ```cpp
-VectorOfVec6i VectorOfVec6i::Items();
+std::vector<cv::Vec6i> VectorOfVec6i::Items();
 AutoIt:
     $oVectorOfVec6i.Items() -> retval
 ```
@@ -108617,7 +108617,7 @@ AutoIt:
 ### VectorOfVec6i::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec6i::__eq__( const VectorOfVec6i& other );
+bool VectorOfVec6i::__eq__( const std::vector<cv::Vec6i>& other );
 AutoIt:
     $oVectorOfVec6i.__eq__( $other ) -> retval
 ```
@@ -108719,15 +108719,15 @@ AutoIt:
 ### VectorOfVec6i::push\_vector
 
 ```cpp
-void VectorOfVec6i::push_vector( VectorOfVec6i other );
+void VectorOfVec6i::push_vector( std::vector<cv::Vec6i> other );
 AutoIt:
     $oVectorOfVec6i.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec6i::push_vector( VectorOfVec6i other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec6i::push_vector( std::vector<cv::Vec6i> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec6i.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -108752,8 +108752,8 @@ AutoIt:
 ### VectorOfVec6i::slice
 
 ```cpp
-VectorOfVec6i VectorOfVec6i::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec6i> VectorOfVec6i::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec6i.slice( [$start[, $count]] ) -> retval
 ```
@@ -108799,19 +108799,19 @@ AutoIt:
 ### VectorOfVec8i::create
 
 ```cpp
-static VectorOfVec8i VectorOfVec8i::create();
+static std::vector<cv::Vec8i> VectorOfVec8i::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec8i").create() -> <VectorOfVec8i object>
 ```
 
 ```cpp
-static VectorOfVec8i VectorOfVec8i::create( size_t size );
+static std::vector<cv::Vec8i> VectorOfVec8i::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec8i").create( $size ) -> <VectorOfVec8i object>
 ```
 
 ```cpp
-static VectorOfVec8i VectorOfVec8i::create( VectorOfVec8i other );
+static std::vector<cv::Vec8i> VectorOfVec8i::create( std::vector<cv::Vec8i> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec8i").create( $other ) -> <VectorOfVec8i object>
 ```
@@ -108827,7 +108827,7 @@ AutoIt:
 ### VectorOfVec8i::IsInstance
 
 ```cpp
-static bool VectorOfVec8i::IsInstance( const VectorOfVec8i& obj );
+static bool VectorOfVec8i::IsInstance( const std::vector<cv::Vec8i>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec8i").IsInstance( $obj ) -> retval
 ```
@@ -108841,7 +108841,7 @@ AutoIt:
 ### VectorOfVec8i::Items
 
 ```cpp
-VectorOfVec8i VectorOfVec8i::Items();
+std::vector<cv::Vec8i> VectorOfVec8i::Items();
 AutoIt:
     $oVectorOfVec8i.Items() -> retval
 ```
@@ -108865,7 +108865,7 @@ AutoIt:
 ### VectorOfVec8i::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec8i::__eq__( const VectorOfVec8i& other );
+bool VectorOfVec8i::__eq__( const std::vector<cv::Vec8i>& other );
 AutoIt:
     $oVectorOfVec8i.__eq__( $other ) -> retval
 ```
@@ -108967,15 +108967,15 @@ AutoIt:
 ### VectorOfVec8i::push\_vector
 
 ```cpp
-void VectorOfVec8i::push_vector( VectorOfVec8i other );
+void VectorOfVec8i::push_vector( std::vector<cv::Vec8i> other );
 AutoIt:
     $oVectorOfVec8i.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec8i::push_vector( VectorOfVec8i other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec8i::push_vector( std::vector<cv::Vec8i> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec8i.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -109000,8 +109000,8 @@ AutoIt:
 ### VectorOfVec8i::slice
 
 ```cpp
-VectorOfVec8i VectorOfVec8i::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec8i> VectorOfVec8i::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec8i.slice( [$start[, $count]] ) -> retval
 ```
@@ -109047,19 +109047,19 @@ AutoIt:
 ### VectorOfVec2f::create
 
 ```cpp
-static VectorOfVec2f VectorOfVec2f::create();
+static std::vector<cv::Vec2f> VectorOfVec2f::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2f").create() -> <VectorOfVec2f object>
 ```
 
 ```cpp
-static VectorOfVec2f VectorOfVec2f::create( size_t size );
+static std::vector<cv::Vec2f> VectorOfVec2f::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2f").create( $size ) -> <VectorOfVec2f object>
 ```
 
 ```cpp
-static VectorOfVec2f VectorOfVec2f::create( VectorOfVec2f other );
+static std::vector<cv::Vec2f> VectorOfVec2f::create( std::vector<cv::Vec2f> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2f").create( $other ) -> <VectorOfVec2f object>
 ```
@@ -109075,7 +109075,7 @@ AutoIt:
 ### VectorOfVec2f::IsInstance
 
 ```cpp
-static bool VectorOfVec2f::IsInstance( const VectorOfVec2f& obj );
+static bool VectorOfVec2f::IsInstance( const std::vector<cv::Vec2f>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2f").IsInstance( $obj ) -> retval
 ```
@@ -109089,7 +109089,7 @@ AutoIt:
 ### VectorOfVec2f::Items
 
 ```cpp
-VectorOfVec2f VectorOfVec2f::Items();
+std::vector<cv::Vec2f> VectorOfVec2f::Items();
 AutoIt:
     $oVectorOfVec2f.Items() -> retval
 ```
@@ -109113,7 +109113,7 @@ AutoIt:
 ### VectorOfVec2f::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec2f::__eq__( const VectorOfVec2f& other );
+bool VectorOfVec2f::__eq__( const std::vector<cv::Vec2f>& other );
 AutoIt:
     $oVectorOfVec2f.__eq__( $other ) -> retval
 ```
@@ -109215,15 +109215,15 @@ AutoIt:
 ### VectorOfVec2f::push\_vector
 
 ```cpp
-void VectorOfVec2f::push_vector( VectorOfVec2f other );
+void VectorOfVec2f::push_vector( std::vector<cv::Vec2f> other );
 AutoIt:
     $oVectorOfVec2f.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec2f::push_vector( VectorOfVec2f other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec2f::push_vector( std::vector<cv::Vec2f> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec2f.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -109248,8 +109248,8 @@ AutoIt:
 ### VectorOfVec2f::slice
 
 ```cpp
-VectorOfVec2f VectorOfVec2f::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec2f> VectorOfVec2f::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec2f.slice( [$start[, $count]] ) -> retval
 ```
@@ -109295,19 +109295,19 @@ AutoIt:
 ### VectorOfVec3f::create
 
 ```cpp
-static VectorOfVec3f VectorOfVec3f::create();
+static std::vector<cv::Vec3f> VectorOfVec3f::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3f").create() -> <VectorOfVec3f object>
 ```
 
 ```cpp
-static VectorOfVec3f VectorOfVec3f::create( size_t size );
+static std::vector<cv::Vec3f> VectorOfVec3f::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3f").create( $size ) -> <VectorOfVec3f object>
 ```
 
 ```cpp
-static VectorOfVec3f VectorOfVec3f::create( VectorOfVec3f other );
+static std::vector<cv::Vec3f> VectorOfVec3f::create( std::vector<cv::Vec3f> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3f").create( $other ) -> <VectorOfVec3f object>
 ```
@@ -109323,7 +109323,7 @@ AutoIt:
 ### VectorOfVec3f::IsInstance
 
 ```cpp
-static bool VectorOfVec3f::IsInstance( const VectorOfVec3f& obj );
+static bool VectorOfVec3f::IsInstance( const std::vector<cv::Vec3f>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3f").IsInstance( $obj ) -> retval
 ```
@@ -109337,7 +109337,7 @@ AutoIt:
 ### VectorOfVec3f::Items
 
 ```cpp
-VectorOfVec3f VectorOfVec3f::Items();
+std::vector<cv::Vec3f> VectorOfVec3f::Items();
 AutoIt:
     $oVectorOfVec3f.Items() -> retval
 ```
@@ -109361,7 +109361,7 @@ AutoIt:
 ### VectorOfVec3f::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec3f::__eq__( const VectorOfVec3f& other );
+bool VectorOfVec3f::__eq__( const std::vector<cv::Vec3f>& other );
 AutoIt:
     $oVectorOfVec3f.__eq__( $other ) -> retval
 ```
@@ -109463,15 +109463,15 @@ AutoIt:
 ### VectorOfVec3f::push\_vector
 
 ```cpp
-void VectorOfVec3f::push_vector( VectorOfVec3f other );
+void VectorOfVec3f::push_vector( std::vector<cv::Vec3f> other );
 AutoIt:
     $oVectorOfVec3f.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec3f::push_vector( VectorOfVec3f other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec3f::push_vector( std::vector<cv::Vec3f> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec3f.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -109496,8 +109496,8 @@ AutoIt:
 ### VectorOfVec3f::slice
 
 ```cpp
-VectorOfVec3f VectorOfVec3f::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec3f> VectorOfVec3f::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec3f.slice( [$start[, $count]] ) -> retval
 ```
@@ -109543,19 +109543,19 @@ AutoIt:
 ### VectorOfVec4f::create
 
 ```cpp
-static VectorOfVec4f VectorOfVec4f::create();
+static std::vector<cv::Vec4f> VectorOfVec4f::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4f").create() -> <VectorOfVec4f object>
 ```
 
 ```cpp
-static VectorOfVec4f VectorOfVec4f::create( size_t size );
+static std::vector<cv::Vec4f> VectorOfVec4f::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4f").create( $size ) -> <VectorOfVec4f object>
 ```
 
 ```cpp
-static VectorOfVec4f VectorOfVec4f::create( VectorOfVec4f other );
+static std::vector<cv::Vec4f> VectorOfVec4f::create( std::vector<cv::Vec4f> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4f").create( $other ) -> <VectorOfVec4f object>
 ```
@@ -109571,7 +109571,7 @@ AutoIt:
 ### VectorOfVec4f::IsInstance
 
 ```cpp
-static bool VectorOfVec4f::IsInstance( const VectorOfVec4f& obj );
+static bool VectorOfVec4f::IsInstance( const std::vector<cv::Vec4f>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4f").IsInstance( $obj ) -> retval
 ```
@@ -109585,7 +109585,7 @@ AutoIt:
 ### VectorOfVec4f::Items
 
 ```cpp
-VectorOfVec4f VectorOfVec4f::Items();
+std::vector<cv::Vec4f> VectorOfVec4f::Items();
 AutoIt:
     $oVectorOfVec4f.Items() -> retval
 ```
@@ -109609,7 +109609,7 @@ AutoIt:
 ### VectorOfVec4f::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec4f::__eq__( const VectorOfVec4f& other );
+bool VectorOfVec4f::__eq__( const std::vector<cv::Vec4f>& other );
 AutoIt:
     $oVectorOfVec4f.__eq__( $other ) -> retval
 ```
@@ -109711,15 +109711,15 @@ AutoIt:
 ### VectorOfVec4f::push\_vector
 
 ```cpp
-void VectorOfVec4f::push_vector( VectorOfVec4f other );
+void VectorOfVec4f::push_vector( std::vector<cv::Vec4f> other );
 AutoIt:
     $oVectorOfVec4f.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec4f::push_vector( VectorOfVec4f other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec4f::push_vector( std::vector<cv::Vec4f> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec4f.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -109744,8 +109744,8 @@ AutoIt:
 ### VectorOfVec4f::slice
 
 ```cpp
-VectorOfVec4f VectorOfVec4f::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec4f> VectorOfVec4f::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec4f.slice( [$start[, $count]] ) -> retval
 ```
@@ -109791,19 +109791,19 @@ AutoIt:
 ### VectorOfVec6f::create
 
 ```cpp
-static VectorOfVec6f VectorOfVec6f::create();
+static std::vector<cv::Vec6f> VectorOfVec6f::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6f").create() -> <VectorOfVec6f object>
 ```
 
 ```cpp
-static VectorOfVec6f VectorOfVec6f::create( size_t size );
+static std::vector<cv::Vec6f> VectorOfVec6f::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6f").create( $size ) -> <VectorOfVec6f object>
 ```
 
 ```cpp
-static VectorOfVec6f VectorOfVec6f::create( VectorOfVec6f other );
+static std::vector<cv::Vec6f> VectorOfVec6f::create( std::vector<cv::Vec6f> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6f").create( $other ) -> <VectorOfVec6f object>
 ```
@@ -109819,7 +109819,7 @@ AutoIt:
 ### VectorOfVec6f::IsInstance
 
 ```cpp
-static bool VectorOfVec6f::IsInstance( const VectorOfVec6f& obj );
+static bool VectorOfVec6f::IsInstance( const std::vector<cv::Vec6f>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6f").IsInstance( $obj ) -> retval
 ```
@@ -109833,7 +109833,7 @@ AutoIt:
 ### VectorOfVec6f::Items
 
 ```cpp
-VectorOfVec6f VectorOfVec6f::Items();
+std::vector<cv::Vec6f> VectorOfVec6f::Items();
 AutoIt:
     $oVectorOfVec6f.Items() -> retval
 ```
@@ -109857,7 +109857,7 @@ AutoIt:
 ### VectorOfVec6f::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec6f::__eq__( const VectorOfVec6f& other );
+bool VectorOfVec6f::__eq__( const std::vector<cv::Vec6f>& other );
 AutoIt:
     $oVectorOfVec6f.__eq__( $other ) -> retval
 ```
@@ -109959,15 +109959,15 @@ AutoIt:
 ### VectorOfVec6f::push\_vector
 
 ```cpp
-void VectorOfVec6f::push_vector( VectorOfVec6f other );
+void VectorOfVec6f::push_vector( std::vector<cv::Vec6f> other );
 AutoIt:
     $oVectorOfVec6f.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec6f::push_vector( VectorOfVec6f other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec6f::push_vector( std::vector<cv::Vec6f> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec6f.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -109992,8 +109992,8 @@ AutoIt:
 ### VectorOfVec6f::slice
 
 ```cpp
-VectorOfVec6f VectorOfVec6f::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec6f> VectorOfVec6f::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec6f.slice( [$start[, $count]] ) -> retval
 ```
@@ -110039,19 +110039,19 @@ AutoIt:
 ### VectorOfVec2d::create
 
 ```cpp
-static VectorOfVec2d VectorOfVec2d::create();
+static std::vector<cv::Vec2d> VectorOfVec2d::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2d").create() -> <VectorOfVec2d object>
 ```
 
 ```cpp
-static VectorOfVec2d VectorOfVec2d::create( size_t size );
+static std::vector<cv::Vec2d> VectorOfVec2d::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2d").create( $size ) -> <VectorOfVec2d object>
 ```
 
 ```cpp
-static VectorOfVec2d VectorOfVec2d::create( VectorOfVec2d other );
+static std::vector<cv::Vec2d> VectorOfVec2d::create( std::vector<cv::Vec2d> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2d").create( $other ) -> <VectorOfVec2d object>
 ```
@@ -110067,7 +110067,7 @@ AutoIt:
 ### VectorOfVec2d::IsInstance
 
 ```cpp
-static bool VectorOfVec2d::IsInstance( const VectorOfVec2d& obj );
+static bool VectorOfVec2d::IsInstance( const std::vector<cv::Vec2d>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec2d").IsInstance( $obj ) -> retval
 ```
@@ -110081,7 +110081,7 @@ AutoIt:
 ### VectorOfVec2d::Items
 
 ```cpp
-VectorOfVec2d VectorOfVec2d::Items();
+std::vector<cv::Vec2d> VectorOfVec2d::Items();
 AutoIt:
     $oVectorOfVec2d.Items() -> retval
 ```
@@ -110105,7 +110105,7 @@ AutoIt:
 ### VectorOfVec2d::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec2d::__eq__( const VectorOfVec2d& other );
+bool VectorOfVec2d::__eq__( const std::vector<cv::Vec2d>& other );
 AutoIt:
     $oVectorOfVec2d.__eq__( $other ) -> retval
 ```
@@ -110207,15 +110207,15 @@ AutoIt:
 ### VectorOfVec2d::push\_vector
 
 ```cpp
-void VectorOfVec2d::push_vector( VectorOfVec2d other );
+void VectorOfVec2d::push_vector( std::vector<cv::Vec2d> other );
 AutoIt:
     $oVectorOfVec2d.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec2d::push_vector( VectorOfVec2d other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec2d::push_vector( std::vector<cv::Vec2d> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec2d.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -110240,8 +110240,8 @@ AutoIt:
 ### VectorOfVec2d::slice
 
 ```cpp
-VectorOfVec2d VectorOfVec2d::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec2d> VectorOfVec2d::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec2d.slice( [$start[, $count]] ) -> retval
 ```
@@ -110287,19 +110287,19 @@ AutoIt:
 ### VectorOfVec3d::create
 
 ```cpp
-static VectorOfVec3d VectorOfVec3d::create();
+static std::vector<cv::Vec3d> VectorOfVec3d::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3d").create() -> <VectorOfVec3d object>
 ```
 
 ```cpp
-static VectorOfVec3d VectorOfVec3d::create( size_t size );
+static std::vector<cv::Vec3d> VectorOfVec3d::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3d").create( $size ) -> <VectorOfVec3d object>
 ```
 
 ```cpp
-static VectorOfVec3d VectorOfVec3d::create( VectorOfVec3d other );
+static std::vector<cv::Vec3d> VectorOfVec3d::create( std::vector<cv::Vec3d> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3d").create( $other ) -> <VectorOfVec3d object>
 ```
@@ -110315,7 +110315,7 @@ AutoIt:
 ### VectorOfVec3d::IsInstance
 
 ```cpp
-static bool VectorOfVec3d::IsInstance( const VectorOfVec3d& obj );
+static bool VectorOfVec3d::IsInstance( const std::vector<cv::Vec3d>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec3d").IsInstance( $obj ) -> retval
 ```
@@ -110329,7 +110329,7 @@ AutoIt:
 ### VectorOfVec3d::Items
 
 ```cpp
-VectorOfVec3d VectorOfVec3d::Items();
+std::vector<cv::Vec3d> VectorOfVec3d::Items();
 AutoIt:
     $oVectorOfVec3d.Items() -> retval
 ```
@@ -110353,7 +110353,7 @@ AutoIt:
 ### VectorOfVec3d::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec3d::__eq__( const VectorOfVec3d& other );
+bool VectorOfVec3d::__eq__( const std::vector<cv::Vec3d>& other );
 AutoIt:
     $oVectorOfVec3d.__eq__( $other ) -> retval
 ```
@@ -110455,15 +110455,15 @@ AutoIt:
 ### VectorOfVec3d::push\_vector
 
 ```cpp
-void VectorOfVec3d::push_vector( VectorOfVec3d other );
+void VectorOfVec3d::push_vector( std::vector<cv::Vec3d> other );
 AutoIt:
     $oVectorOfVec3d.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec3d::push_vector( VectorOfVec3d other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec3d::push_vector( std::vector<cv::Vec3d> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec3d.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -110488,8 +110488,8 @@ AutoIt:
 ### VectorOfVec3d::slice
 
 ```cpp
-VectorOfVec3d VectorOfVec3d::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec3d> VectorOfVec3d::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec3d.slice( [$start[, $count]] ) -> retval
 ```
@@ -110535,19 +110535,19 @@ AutoIt:
 ### VectorOfVec4d::create
 
 ```cpp
-static VectorOfVec4d VectorOfVec4d::create();
+static std::vector<cv::Vec4d> VectorOfVec4d::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4d").create() -> <VectorOfVec4d object>
 ```
 
 ```cpp
-static VectorOfVec4d VectorOfVec4d::create( size_t size );
+static std::vector<cv::Vec4d> VectorOfVec4d::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4d").create( $size ) -> <VectorOfVec4d object>
 ```
 
 ```cpp
-static VectorOfVec4d VectorOfVec4d::create( VectorOfVec4d other );
+static std::vector<cv::Vec4d> VectorOfVec4d::create( std::vector<cv::Vec4d> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4d").create( $other ) -> <VectorOfVec4d object>
 ```
@@ -110563,7 +110563,7 @@ AutoIt:
 ### VectorOfVec4d::IsInstance
 
 ```cpp
-static bool VectorOfVec4d::IsInstance( const VectorOfVec4d& obj );
+static bool VectorOfVec4d::IsInstance( const std::vector<cv::Vec4d>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec4d").IsInstance( $obj ) -> retval
 ```
@@ -110577,7 +110577,7 @@ AutoIt:
 ### VectorOfVec4d::Items
 
 ```cpp
-VectorOfVec4d VectorOfVec4d::Items();
+std::vector<cv::Vec4d> VectorOfVec4d::Items();
 AutoIt:
     $oVectorOfVec4d.Items() -> retval
 ```
@@ -110601,7 +110601,7 @@ AutoIt:
 ### VectorOfVec4d::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec4d::__eq__( const VectorOfVec4d& other );
+bool VectorOfVec4d::__eq__( const std::vector<cv::Vec4d>& other );
 AutoIt:
     $oVectorOfVec4d.__eq__( $other ) -> retval
 ```
@@ -110703,15 +110703,15 @@ AutoIt:
 ### VectorOfVec4d::push\_vector
 
 ```cpp
-void VectorOfVec4d::push_vector( VectorOfVec4d other );
+void VectorOfVec4d::push_vector( std::vector<cv::Vec4d> other );
 AutoIt:
     $oVectorOfVec4d.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec4d::push_vector( VectorOfVec4d other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec4d::push_vector( std::vector<cv::Vec4d> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec4d.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -110736,8 +110736,8 @@ AutoIt:
 ### VectorOfVec4d::slice
 
 ```cpp
-VectorOfVec4d VectorOfVec4d::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec4d> VectorOfVec4d::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec4d.slice( [$start[, $count]] ) -> retval
 ```
@@ -110783,19 +110783,19 @@ AutoIt:
 ### VectorOfVec6d::create
 
 ```cpp
-static VectorOfVec6d VectorOfVec6d::create();
+static std::vector<cv::Vec6d> VectorOfVec6d::create();
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6d").create() -> <VectorOfVec6d object>
 ```
 
 ```cpp
-static VectorOfVec6d VectorOfVec6d::create( size_t size );
+static std::vector<cv::Vec6d> VectorOfVec6d::create( size_t size );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6d").create( $size ) -> <VectorOfVec6d object>
 ```
 
 ```cpp
-static VectorOfVec6d VectorOfVec6d::create( VectorOfVec6d other );
+static std::vector<cv::Vec6d> VectorOfVec6d::create( std::vector<cv::Vec6d> other );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6d").create( $other ) -> <VectorOfVec6d object>
 ```
@@ -110811,7 +110811,7 @@ AutoIt:
 ### VectorOfVec6d::IsInstance
 
 ```cpp
-static bool VectorOfVec6d::IsInstance( const VectorOfVec6d& obj );
+static bool VectorOfVec6d::IsInstance( const std::vector<cv::Vec6d>& obj );
 AutoIt:
     _Mediapipe_ObjCreate("VectorOfVec6d").IsInstance( $obj ) -> retval
 ```
@@ -110825,7 +110825,7 @@ AutoIt:
 ### VectorOfVec6d::Items
 
 ```cpp
-VectorOfVec6d VectorOfVec6d::Items();
+std::vector<cv::Vec6d> VectorOfVec6d::Items();
 AutoIt:
     $oVectorOfVec6d.Items() -> retval
 ```
@@ -110849,7 +110849,7 @@ AutoIt:
 ### VectorOfVec6d::\_\_eq\_\_
 
 ```cpp
-bool VectorOfVec6d::__eq__( const VectorOfVec6d& other );
+bool VectorOfVec6d::__eq__( const std::vector<cv::Vec6d>& other );
 AutoIt:
     $oVectorOfVec6d.__eq__( $other ) -> retval
 ```
@@ -110951,15 +110951,15 @@ AutoIt:
 ### VectorOfVec6d::push\_vector
 
 ```cpp
-void VectorOfVec6d::push_vector( VectorOfVec6d other );
+void VectorOfVec6d::push_vector( std::vector<cv::Vec6d> other );
 AutoIt:
     $oVectorOfVec6d.push_vector( $other ) -> None
 ```
 
 ```cpp
-void VectorOfVec6d::push_vector( VectorOfVec6d other,
-                                 size_t        count,
-                                 size_t        start = 0 );
+void VectorOfVec6d::push_vector( std::vector<cv::Vec6d> other,
+                                 size_t                 count,
+                                 size_t                 start = 0 );
 AutoIt:
     $oVectorOfVec6d.push_vector( $other, $count[, $start] ) -> None
 ```
@@ -110984,8 +110984,8 @@ AutoIt:
 ### VectorOfVec6d::slice
 
 ```cpp
-VectorOfVec6d VectorOfVec6d::slice( size_t start = 0,
-                                    size_t count = __self->get()->size() );
+std::vector<cv::Vec6d> VectorOfVec6d::slice( size_t start = 0,
+                                             size_t count = __self->get()->size() );
 AutoIt:
     $oVectorOfVec6d.slice( [$start[, $count]] ) -> retval
 ```

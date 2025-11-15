@@ -5,7 +5,7 @@ module.exports = ({self, language, cname}) => [
         ["int", "channels", "", ["/R", "=NumberOfChannels()"]],
         ["int", "byte_depth", "", ["/R", "=ByteDepth()"]],
         ["ImageFormat::Format", "image_format", "", ["/R", "=Format()"]],
-        ["uchar*", "data", "", ["/R", "=PixelData()"]],
+        ["uchar*", "data", "", ["/R", "=PixelData()", "/Cast=const_cast<uchar*>"]],
     ], "", ""],
 
     [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [

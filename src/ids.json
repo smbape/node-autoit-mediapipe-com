@@ -2423,9 +2423,9 @@
         "iid": "00024c6c-69f4-4c23-8e23-06d1729afe18",
         "clsid": "f025a2f4-46b2-4772-b1e1-8b104904eb16"
     },
-    "VectorOfInt64": {
-        "iid": "44e8ca19-e7aa-4b04-a10e-47b6c845bacc",
-        "clsid": "16d6c469-856c-43b2-a564-37dec31ab30c"
+    "VectorOfInt64_t": {
+        "iid": "bd6e8109-4785-4ba4-863c-7e3539c3431a",
+        "clsid": "692caf55-0afd-41d7-9563-b58c4de6dff0"
     },
     "VectorOfSharedPtrOfMessage": {
         "iid": "89d69901-2684-4852-9d7c-64a06ce2b747",
@@ -2719,9 +2719,9 @@
         "iid": "0bcb2089-e210-4261-98dc-f447e1713fa3",
         "clsid": "3c743634-dc68-4afa-9df6-8d5f7eaf6cba"
     },
-    "VectorOfUint32": {
-        "iid": "e3735e8d-344f-4230-8f54-a746251af9df",
-        "clsid": "74f77e6d-d580-47b7-982c-5652906c6b2f"
+    "VectorOfUint32_t": {
+        "iid": "1b2d9107-2f90-4afc-b877-e888cb6c843c",
+        "clsid": "8c06be08-a945-451b-b689-eef909bfda4f"
     },
     "VectorOfSharedPtrOfRenderAnnotation": {
         "iid": "da5b0c4f-f8b9-4ac9-b5ce-b8b06dd4f81c",

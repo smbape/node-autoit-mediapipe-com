@@ -120,7 +120,7 @@ endif()
 include(FetchContent)
 FetchContent_Populate(autoit_opencv_com
     URL               "${OPENCV_COM_URL}"
-    URL_HASH          SHA256=dd61eaa53795490f8598e82a32131a89de0f605c4736d78a5203739254b9dcc0
+    URL_HASH          SHA256=5ebdab706d42ca42efcff3c592a3ba993c13955f0f6cf0e72e88d963b4145445
     DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
     SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
 )
@@ -192,10 +192,11 @@ endif()
 
 set(mediapipe_BINARY_DIR "${mediapipe_SOURCE_DIR}/bazel-out/x64_windows-${COMPILATION_MODE}/bin")
 
+set(Python3_REQUESTED_VERSION "3.9...<3.13")
 include(cmake/UsePython3Venv.cmake)
 
 # Needed python packages
-pip_install(absl-py mediapipe numpy opencv-python)
+pip_install(absl-py mediapipe<=0.10.21 numpy opencv-python)
 
 if (WIN32)
     # Avoid long paths on windows
