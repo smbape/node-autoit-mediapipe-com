@@ -11,39 +11,13 @@ const {explore} = require("fs-explorer");
 const Parser = require("./protobuf/Parser");
 const vector_conversion = require("./vector_conversion");
 
-const OpenCV_VERSION = "opencv-4.12.0";
+const OpenCV_VERSION = "opencv-4.13.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
-const MEDIAPIPE_VERSION = "0.10.26";
+const MEDIAPIPE_VERSION = "0.10.35";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
 ]);
-
-/** Function that count occurrences of a substring in a string;
- * @param {String} str               The string
- * @param {String} substr            The sub string to search for
- * @param {Boolean} [allowOverlapping]  Optional. (Default:false)
- *
- * @author Vitim.us https://gist.github.com/victornpb/7736865
- * @see Unit Test https://jsfiddle.net/Victornpb/5axuh96u/
- * @see https://stackoverflow.com/a/7924240/938822
- */
-const occurrences = (str, substr, allowOverlapping = false) => {
-    if (substr.length === 0) {
-        return str.length + 1;
-    }
-
-    let n = 0;
-    let pos = 0;
-    const step = allowOverlapping ? 1 : substr.length;
-
-    while ((pos = str.indexOf(substr, pos)) !== -1) {
-        n++;
-        pos += step;
-    }
-
-    return n;
-};
 
 const getOptions = PROJECT_DIR => {
     const language = "autoit";
@@ -63,7 +37,7 @@ const getOptions = PROJECT_DIR => {
         assert: "AUTOIT_ASSERT",
         Any: "VARIANT*",
         AnyObject: "_variant_t",
-        maxFilenameLength: 120,
+        maxFilenameLength: 100,
         meta_methods: new Map([
             ["__str__", "::autoit::__str__"],
             ["__eq__", "::autoit::__eq__"],
@@ -82,15 +56,38 @@ const getOptions = PROJECT_DIR => {
 
             return progid;
         },
-        namespaces: new Set([]),
-        other_namespaces: new Set([]),
+
+        // used to lookup classes
+        namespaces: new Set([
+            "mediapipe::tasks::audio::audio_classifier",
+            "mediapipe::tasks::components::containers",
+            "mediapipe::tasks::components::processors",
+            "mediapipe::tasks::components::utils",
+            "mediapipe::tasks::core",
+            "mediapipe::tasks::text::language_detector",
+            "mediapipe::tasks::text::text_classifier",
+            "mediapipe::tasks::text::text_embedder",
+            "mediapipe::tasks::vision::core",
+            "mediapipe::tasks::vision::face_detector",
+            "mediapipe::tasks::vision::face_landmarker",
+            "mediapipe::tasks::vision::gesture_recognizer",
+            "mediapipe::tasks::vision::hand_landmarker",
+            "mediapipe::tasks::vision::holistic_landmarker",
+            "mediapipe::tasks::vision::image_classifier",
+            "mediapipe::tasks::vision::image_embedder",
+            "mediapipe::tasks::vision::image_segmenter",
+            "mediapipe::tasks::vision::interactive_segmenter",
+            "mediapipe::tasks::vision::pose_landmarker",
+        ]),
+
+        other_namespaces: new Set(),
+
+        // used to reduce class name length
         remove_namespaces: new Set([
             "cv",
             "google::protobuf",
             "mediapipe",
             `mediapipe::${ language }`,
-            `mediapipe::${ language }::solution_base`,
-            `mediapipe::${ language }::solutions`,
             "std",
         ]),
         build: new Set(),
@@ -140,27 +137,19 @@ const getOptions = PROJECT_DIR => {
                 processor.as_stl_enum(coclass, vtype, opts);
                 coclass.cpptype = vtype;
                 coclass.idltype = processor.getIDLType(vtype, coclass, opts);
-            } else if (fqn === `mediapipe::${ language }::solutions::objectron::ObjectronOutputs`) {
-                processor.add_vector(`std::vector<${ fqn }>`, coclass, opts);
             }
 
-            // from mediapipe.python import *
-            if (fqn.startsWith(`mediapipe::${ language }::`) || fqn.startsWith(`mediapipe::tasks::${ language }::`) || fqn.startsWith("mediapipe::") && occurrences(fqn, "::") === 1) {
+            // from mediapipe.tasks.python import audio
+            // from mediapipe.tasks.python import components
+            // from mediapipe.tasks.python import core
+            // from mediapipe.tasks.python import genai
+            // from mediapipe.tasks.python import text
+            // from mediapipe.tasks.python import vision
+            if (fqn.startsWith(`mediapipe::tasks::${ language }::`)) {
                 const parts = fqn.split("::");
 
-                for (let i = 1; i < parts.length; i++) {
+                for (let i = 3; i < parts.length; i++) {
                     processor.add_func([`${ parts.slice(0, i).join(".") }.`, "", ["/Properties"], [
-                        [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
-                    ], "", ""]);
-                }
-            }
-
-            // import mediapipe.python.solutions as solutions
-            if (fqn.startsWith(`mediapipe::${ language }::`)) {
-                const parts = fqn.split("::");
-
-                for (let i = 2; i < parts.length; i++) {
-                    processor.add_func([`${ [parts[0]].concat(parts.slice(2, i)).join(".") }.`, "", ["/Properties"], [
                         [parts.slice(0, i + 1).join("::"), parts[i], "", ["/R", "=this", "/S"]],
                     ], "", ""]);
                 }
@@ -303,6 +292,7 @@ const getOptions = PROJECT_DIR => {
 
 const {
     CUSTOM_CLASSES,
+    IDL_TYPES,
 } = require("./constants");
 
 const {findFile} = require("./FileUtils");
@@ -322,6 +312,7 @@ const hdr_parser_end = hdr_parser.indexOf("if __name__ == '__main__':", hdr_pars
 
 const options = getOptions(PROJECT_DIR);
 options.proto = COMGenerator.proto;
+options.types = IDL_TYPES;
 
 waterfall([
     next => {
@@ -333,24 +324,24 @@ waterfall([
     next => {
         const srcfiles = [];
         const protofiles = new Set();
-        const matcher = /#include "([^"]+)\.pb\.h"/g;
+        const protomatcher = /#include ["<]([^">]+)\.pb\.h[">]/g;
 
         explore(SRC_DIR, async (path, stats, next) => {
             const relpath = path.slice(SRC_DIR.length + 1);
             const parts = relpath.split(".");
             const extname = parts.length === 0 ? "" : `.${ parts[parts.length - 1] }`;
             const extnames = parts.length === 0 ? "" : `.${ parts.slice(-2).join(".") }`;
-            const isheader = [".h", ".hpp", ".hxx"].includes(extname);
+            const isheader = [".h", ".hh", ".hpp", ".hxx"].includes(extname);
 
             const content = await fsPromises.readFile(path);
 
             let match;
-            matcher.lastIndex = 0;
-            while ((match = matcher.exec(content))) {
+            protomatcher.lastIndex = 0;
+            while ((match = protomatcher.exec(content))) {
                 protofiles.add(`${ match[1] }.proto`);
             }
 
-            if (isheader && ![".impl.h", ".impl.hpp", ".impl.hxx"].includes(extnames) && (content.includes("CV_EXPORTS") || relpath.replace("\\", "/").startsWith("binding/"))) {
+            if (isheader && ![".impl.h", ".impl.hh", ".impl.hpp", ".impl.hxx"].includes(extnames) && (content.includes("CV_EXPORTS") || /^binding[\\/]/.test(relpath))) {
                 srcfiles.push(path);
             }
 
@@ -384,6 +375,12 @@ waterfall([
             const abspath = opts.proto_path
                 .map(dirname => sysPath.join(dirname, filename))
                 .filter(candidate => fs.existsSync(candidate))[0];
+
+            if (abspath == null) {
+                next(new Error(`${ filename } not found`));
+                return;
+            }
+
             const parser = new Parser();
             parser.parseFile(fs.realpathSync(abspath), opts, outputs, cache);
         }
@@ -422,8 +419,6 @@ waterfall([
 
             configuration.namespaces.push(...options.namespaces);
             configuration.namespaces.push(...options.other_namespaces);
-
-            // fs.writeFileSync(sysPath.join(__dirname, "../gen.json"), JSON.stringify(configuration, null, 4));
 
             const processor = new DeclProcessor(options);
             processor.process(configuration, options);
@@ -472,10 +467,10 @@ waterfall([
             print(json.dumps({"decls": all_decls, "namespaces": sorted(parser.namespaces)}, indent=4))
         `.trim().replace(/^ {12}/mg, "");
 
-        // fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
-
         child.stdin.write(code);
         child.stdin.end();
+
+        // fs.writeFileSync(sysPath.join(__dirname, "../gen.py"), code);
     },
 
     (processor, configuration, next) => {

@@ -6,26 +6,23 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/gesture_recognizer/python/gesture_recognizer.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/gesture_recognizer/python/gesture_recognizer.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/gesture_recognizer/python/gesture_recognizer.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/gesture_recognizer/python/gesture_recognizer.ipynb
 
 ;~ Title: Gesture Recognizer with MediaPipe Tasks
 
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -34,18 +31,15 @@ _AssertIsObj($mp, "Failed to load mediapipe")
 Global $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
 
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
-
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
 
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 
-Global $mp_hands = $mp.solutions.hands
-Global $mp_drawing = $mp.solutions.drawing_utils
-Global $mp_drawing_styles = $mp.solutions.drawing_styles
+Global $mp_hands = $mp.tasks.vision.HandLandmarksConnections
+Global $mp_drawing = $mp.tasks.vision.drawing_utils
+Global $mp_drawing_styles = $mp.tasks.vision.drawing_styles
 
 Main()
 
@@ -75,7 +69,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an GestureRecognizer object.
+	; STEP 2: Create a GestureRecognizer object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.GestureRecognizerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $recognizer = $vision.GestureRecognizer.create_from_options($options)
@@ -109,17 +103,10 @@ Func display_image_with_gestures_and_hand_landmarks($image, $gesture, $hands_lan
 	; Compute the scale to make drawn elements visible when the image is resized for display
 	Local $scale = 1 / resize_and_show($annotated_image, Default, False)
 
-	Local $hand_landmarks_proto
 	For $hand_landmarks In $hands_landmarks
-		$hand_landmarks_proto = $landmark_pb2.NormalizedLandmarkList()
-
-		For $landmark In $hand_landmarks
-			$hand_landmarks_proto.landmark.append($landmark_pb2.NormalizedLandmark(_Mediapipe_Params("x", $landmark.x, "y", $landmark.y, "z", $landmark.z)))
-		Next
-
 		$mp_drawing.draw_landmarks( _
 				$annotated_image, _
-				$hand_landmarks_proto, _
+				$hand_landmarks, _
 				$mp_hands.HAND_CONNECTIONS, _
 				$mp_drawing_styles.get_default_hand_landmarks_style($scale), _
 				$mp_drawing_styles.get_default_hand_connections_style($scale))

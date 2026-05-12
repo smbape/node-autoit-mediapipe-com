@@ -1,32 +1,37 @@
 #include "binding/tasks/components/containers/embedding_result.h"
-#include "Mediapipe_Tasks_Autoit_Components_Containers_Embedding_result_Embedding_Object.h"
-#include "Mediapipe_Tasks_Autoit_Components_Containers_Embedding_result_EmbeddingResult_Object.h"
 
-using namespace mediapipe::tasks::components::containers;
+namespace mediapipe::tasks::components::containers {
+	proto::Embedding ConvertEmbeddingToProto(Embedding* embedding) {
+		proto::Embedding embedding_proto;
 
-namespace mediapipe::tasks::autoit::components::containers::embedding_result {
-	std::shared_ptr<Embedding> Embedding::create_from_pb2(const proto::Embedding& pb2_obj) {
-		auto embedding = std::make_shared<Embedding>();
-
-		if (pb2_obj.has_float_embedding()) {
-			std::vector<float> values(pb2_obj.float_embedding().values().begin(), pb2_obj.float_embedding().values().end());
-			embedding->embedding = cv::Mat(values, true);
-		}
-		else {
-			std::vector<unsigned char> values(pb2_obj.quantized_embedding().values().begin(), pb2_obj.quantized_embedding().values().end());
-			embedding->embedding = cv::Mat(values, true);
+		if (!embedding->float_embedding.empty()) {
+			embedding_proto.mutable_float_embedding()->mutable_values()->Add(embedding->float_embedding.begin(), embedding->float_embedding.end());
 		}
 
-		embedding->head_index = pb2_obj.head_index();
-		embedding->head_name = pb2_obj.head_name();
-		return embedding;
+		if (!embedding->quantized_embedding.empty()) {
+			*embedding_proto.mutable_quantized_embedding()->mutable_values() = embedding->quantized_embedding;
+		}
+
+		embedding_proto.set_head_index(embedding->head_index);
+
+		if (embedding->head_name) {
+			embedding_proto.set_head_name(*embedding->head_name);
+		}
+
+		return embedding_proto;
 	}
 
-	std::shared_ptr<EmbeddingResult> EmbeddingResult::create_from_pb2(const proto::EmbeddingResult& pb2_obj) {
-		auto embedding_result = std::make_shared<EmbeddingResult>();
-		for (const auto& embedding : pb2_obj.embeddings()) {
-			embedding_result->embeddings->push_back(std::move(Embedding::create_from_pb2(embedding)));
+	proto::EmbeddingResult ConvertEmbeddingResultToProto(EmbeddingResult* embedding_result) {
+		proto::EmbeddingResult embedding_result_proto;
+
+		for (const auto& embedding : embedding_result->embeddings) {
+			embedding_result_proto.add_embeddings()->CopyFrom(ConvertEmbeddingToProto(const_cast<Embedding*>(&embedding)));
 		}
-		return embedding_result;
+
+		if (embedding_result->timestamp_ms) {
+			embedding_result_proto.set_timestamp_ms(*embedding_result->timestamp_ms);
+		}
+
+		return embedding_result_proto;
 	}
 }

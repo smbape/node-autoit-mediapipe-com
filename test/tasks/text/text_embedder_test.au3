@@ -6,24 +6,17 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.26/mediapipe/tasks/python/test/text/text_embedder_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/text/text_embedder_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
-#include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
-#include "..\..\_mat_utils.au3"
-#include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
-
-Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global Const $embedding_result_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.embedding_result")
 _AssertIsObj($embedding_result_module)
@@ -49,33 +42,16 @@ Global Const $_SIMILARITY_TOLERANCE = 1E-3
 Global Const $FILE_CONTENT = 1
 Global Const $FILE_NAME = 2
 
+Global Const $CV_8U = 0
+Global Const $CV_32F = 5
+
 Global $model_path
 
-Test()
+TextEmbedderTest()
 
-Func Test()
-	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata\text"
-	Local $url, $file_path
 
-	Local $test_files[] = [ _
-			$_BERT_MODEL_FILE, _
-			$_REGEX_MODEL_FILE, _
-			$_USE_MODEL_FILE _
-			]
-	For $name In $test_files
-		If IsArray($name) Then
-			$url = $name[1]
-			$name = $name[0]
-		Else
-			$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
-		EndIf
-		If Not FileExists(get_test_data_path($name)) Then
-			$file_path = $_TEST_DATA_DIR & "\" & $name
-			$download_utils.download($url, $file_path)
-		EndIf
-	Next
-
-	$model_path = get_test_data_path($_BERT_MODEL_FILE)
+Func TextEmbedderTest()
+	TextEmbedderTest_setUp()
 
 	test_create_from_file_succeeds_with_valid_model_path()
 	test_create_from_options_succeeds_with_valid_model_path()
@@ -135,15 +111,46 @@ Func Test()
 			100, _
 			_Mediapipe_Tuple(0.127049, 0.125416) _
 			)
-EndFunc   ;==>Test
+EndFunc   ;==>TextEmbedderTest
+
+
+Func TextEmbedderTest_setUp()
+	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata\text"
+	Local $url, $file_path
+
+	Local $test_files[] = [ _
+			$_BERT_MODEL_FILE, _
+			$_REGEX_MODEL_FILE, _
+			$_USE_MODEL_FILE _
+			]
+	For $name In $test_files
+		If IsArray($name) Then
+			$url = $name[1]
+			$name = $name[0]
+		Else
+			$url = "https://storage.googleapis.com/mediapipe-assets/" & $name
+		EndIf
+		If Not FileExists(get_test_data_path($name)) Then
+			$file_path = $_TEST_DATA_DIR & "\" & $name
+			$download_utils.download($url, $file_path)
+		EndIf
+	Next
+
+	$model_path = get_test_data_path($_BERT_MODEL_FILE)
+EndFunc   ;==>TextEmbedderTest_setUp
+
 
 Func test_create_from_file_succeeds_with_valid_model_path()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_file_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
+
 	; Creates with default option and valid model file successfully.
 	Local $embedder = $_TextEmbedder.create_from_model_path($model_path)
 	_AssertIsInstance($embedder, $_TextEmbedder)
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_options_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
+
 	; Creates with options containing model file successfully.
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_TextEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
@@ -152,6 +159,8 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_options_succeeds_with_valid_model_content' & @CRLF) ;### Debug Console
+
 	; Creates with options containing model content successfully.
 	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
@@ -161,7 +170,8 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_embed($l2_normalize, $quantize, $model_name, $model_file_type, _
-		$expected_similarity, $expected_size, $expected_first_values)
+	$expected_similarity, $expected_size, $expected_first_values)
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_embed' & @CRLF) ;### Debug Console
 	Local $model_path = get_test_data_path($model_name)
 	Local $base_options, $model_content
 
@@ -216,7 +226,7 @@ Func _check_cosine_similarity($result0, $result1, $expected_similarity, $iLine =
 	_AssertAlmostEqual($similarity, $expected_similarity, $_SIMILARITY_TOLERANCE, Default, Default, Default, Default, $iLine)
 EndFunc   ;==>_check_cosine_similarity
 
+
 Func _OnAutoItExit()
-	_OpenCV_Close()
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit

@@ -6,24 +6,17 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.26/mediapipe/tasks/python/test/text/language_detector_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/text/language_detector_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
-#include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
-#include "..\..\_mat_utils.au3"
-#include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
-
-Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global Const $category = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.category")
 _AssertIsObj($category)
@@ -71,9 +64,31 @@ Global Const $FILE_NAME = 2
 
 Global $model_path
 
-Test()
 
-Func Test()
+LanguageDetectorTest()
+
+
+Func LanguageDetectorTest()
+	LanguageDetectorTest_setUp()
+
+	test_create_from_file_succeeds_with_valid_model_path()
+	test_create_from_options_succeeds_with_valid_model_path()
+	test_create_from_options_succeeds_with_valid_model_content()
+
+	test_detect($FILE_NAME, $_EN_TEXT, $_EN_EXPECTED_RESULT)
+	test_detect($FILE_CONTENT, $_EN_TEXT, $_EN_EXPECTED_RESULT)
+	test_detect($FILE_NAME, $_FR_TEXT, $_FR_EXPECTED_RESULT)
+	test_detect($FILE_CONTENT, $_FR_TEXT, $_FR_EXPECTED_RESULT)
+	test_detect($FILE_NAME, $_RU_TEXT, $_RU_EXPECTED_RESULT)
+	test_detect($FILE_CONTENT, $_RU_TEXT, $_RU_EXPECTED_RESULT)
+	test_detect($FILE_NAME, $_MIXED_TEXT, $_MIXED_EXPECTED_RESULT)
+	test_detect($FILE_CONTENT, $_MIXED_TEXT, $_MIXED_EXPECTED_RESULT)
+	test_allowlist_option()
+	test_denylist_option()
+EndFunc   ;==>LanguageDetectorTest
+
+
+Func LanguageDetectorTest_setUp()
 	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata\text"
 	Local $url, $file_path
 
@@ -94,22 +109,7 @@ Func Test()
 	Next
 
 	$model_path = get_test_data_path($_LANGUAGE_DETECTOR_MODEL)
-
-	test_create_from_file_succeeds_with_valid_model_path()
-	test_create_from_options_succeeds_with_valid_model_path()
-	test_create_from_options_succeeds_with_valid_model_content()
-
-	test_detect($FILE_NAME, $_EN_TEXT, $_EN_EXPECTED_RESULT)
-	test_detect($FILE_CONTENT, $_EN_TEXT, $_EN_EXPECTED_RESULT)
-	test_detect($FILE_NAME, $_FR_TEXT, $_FR_EXPECTED_RESULT)
-	test_detect($FILE_CONTENT, $_FR_TEXT, $_FR_EXPECTED_RESULT)
-	test_detect($FILE_NAME, $_RU_TEXT, $_RU_EXPECTED_RESULT)
-	test_detect($FILE_CONTENT, $_RU_TEXT, $_RU_EXPECTED_RESULT)
-	test_detect($FILE_NAME, $_MIXED_TEXT, $_MIXED_EXPECTED_RESULT)
-	test_detect($FILE_CONTENT, $_MIXED_TEXT, $_MIXED_EXPECTED_RESULT)
-	test_allowlist_option()
-	test_denylist_option()
-EndFunc   ;==>Test
+EndFunc
 
 Func _expect_language_detector_result_correct($actual_result, $expect_result)
 	Local $prediction, $expected_prediction
@@ -122,13 +122,18 @@ Func _expect_language_detector_result_correct($actual_result, $expect_result)
 	Next
 EndFunc   ;==>_expect_language_detector_result_correct
 
+
 Func test_create_from_file_succeeds_with_valid_model_path()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_file_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
+
 	; Creates with default option and valid model file successfully.
 	Local $detector = $_LanguageDetector.create_from_model_path($model_path)
 	_AssertIsInstance($detector, $_LanguageDetector)
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_options_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
+
 	; Creates with options containing model file successfully.
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_LanguageDetectorOptions(_Mediapipe_Params("base_options", $base_options))
@@ -137,6 +142,8 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_options_succeeds_with_valid_model_content' & @CRLF) ;### Debug Console
+
 	; Creates with options containing model content successfully.
 	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
@@ -146,6 +153,8 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect($model_file_type, $text, $expected_result)
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_detect' & @CRLF) ;### Debug Console
+
 	Local $base_options, $model_content
 
 	; Creates detector.
@@ -167,6 +176,8 @@ Func test_detect($model_file_type, $text, $expected_result)
 EndFunc   ;==>test_detect
 
 Func test_allowlist_option()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_allowlist_option' & @CRLF) ;### Debug Console
+
 	; Creates detector.
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_LanguageDetectorOptions(_Mediapipe_Params( _
@@ -187,6 +198,8 @@ Func test_allowlist_option()
 EndFunc   ;==>test_allowlist_option
 
 Func test_denylist_option()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_denylist_option' & @CRLF) ;### Debug Console
+
 	; Creates detector.
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_LanguageDetectorOptions(_Mediapipe_Params( _
@@ -206,7 +219,7 @@ Func test_denylist_option()
 	_expect_language_detector_result_correct($text_result, $expected_result)
 EndFunc   ;==>test_denylist_option
 
+
 Func _OnAutoItExit()
-	_OpenCV_Close()
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit

@@ -6,26 +6,23 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/interactive_segmentation/python/interactive_segmenter.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/interactive_segmentation/python/interactive_segmenter.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/interactive_segmentation/python/interactive_segmenter.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/interactive_segmentation/python/interactive_segmenter.ipynb
 
 ;~ Title: Interactive Image Segmenter
 
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -70,7 +67,6 @@ Func Main()
 	Local $FG_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 	Local $OVERLAY_COLOR = _OpenCV_Scalar(100, 100, 0) ; cyan
 
-	Local $RegionOfInterest_Format = $vision.InteractiveSegmenterRegionOfInterest_Format
 	Local $RegionOfInterest = $vision.InteractiveSegmenterRegionOfInterest
 	Local $NormalizedKeypoint = $containers.keypoint.NormalizedKeypoint
 
@@ -96,7 +92,7 @@ Func Main()
 		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
 
 		; Retrieve the masks for the segmented image
-		$roi = $RegionOfInterest(_Mediapipe_Params("format", $RegionOfInterest_Format.KEYPOINT, _
+		$roi = $RegionOfInterest(_Mediapipe_Params("format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 				"keypoint", $NormalizedKeypoint($x, $y)))
 		$segmentation_result = $segmenter.segment($image, $roi)
 		$category_mask = $segmentation_result.category_mask

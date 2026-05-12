@@ -6,33 +6,22 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.26/mediapipe/tasks/python/test/vision/image_segmenter_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/vision/image_segmenter_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
-#include "..\..\_mat_utils.au3"
-#include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 Global Const $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
 
-Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
-
-Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
-_AssertIsObj($image_module, "Failed to load mediapipe.autoit._framework_bindings.image")
-
-Global Const $image_frame = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image_frame")
-_AssertIsObj($image_frame, "Failed to load mediapipe.autoit._framework_bindings.image_frame")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global Const $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
 _AssertIsObj($base_options_module, "Failed to load mediapipe.tasks.autoit.core.base_options")
@@ -40,15 +29,16 @@ _AssertIsObj($base_options_module, "Failed to load mediapipe.tasks.autoit.core.b
 Global Const $image_segmenter = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_segmenter")
 _AssertIsObj($image_segmenter, "Failed to load mediapipe.tasks.autoit.vision.image_segmenter")
 
+Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image")
+_AssertIsObj($image_module, "Failed to load mediapipe.tasks.autoit.vision.core.image")
+
 Global Const $vision_task_running_mode = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 _AssertIsObj($vision_task_running_mode, "Failed to load mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 
 Global Const $ImageSegmenterResult = $image_segmenter.ImageSegmenterResult
 Global Const $_BaseOptions = $base_options_module.BaseOptions
 Global Const $_Image = $image_module.Image
-Global Const $_ImageFormat = $image_frame.ImageFormat
-Global Const $_OutputType = $image_segmenter.ImageSegmenterOptions_OutputType
-Global Const $_Activation = $image_segmenter.ImageSegmenterOptions_Activation
+Global Const $_ImageFormat = $image_module.ImageFormat
 Global Const $_ImageSegmenter = $image_segmenter.ImageSegmenter
 Global Const $_ImageSegmenterOptions = $image_segmenter.ImageSegmenterOptions
 Global Const $_RUNNING_MODE = $vision_task_running_mode.VisionTaskRunningMode
@@ -87,13 +77,78 @@ Global Const $_EXPECTED_LABELS[] = [ _
 Global Const $FILE_CONTENT = 1
 Global Const $FILE_NAME = 2
 
+
+Func _calculate_sum($m)
+	Local $sum = 0.0
+	Local $s = $cv.sumElems($m)
+	For $i = 0 To $m.channels() - 1
+		$sum += $s[$i]
+	Next
+	Return $sum
+EndFunc   ;==>_calculate_sum
+
+Func _calculate_soft_iou($m1, $m2)
+	Local $intersection_sum = _calculate_sum($cv.multiply($m1, $m2))
+	Local $union_sum = _calculate_sum($cv.multiply($m1, $m1)) + _calculate_sum($cv.multiply($m2, $m2)) - $intersection_sum
+
+	Return $union_sum > 0.0 ? $intersection_sum / $union_sum : 0.0
+EndFunc   ;==>_calculate_soft_iou
+
+
+Func _similar_to_float_mask($actual_mask, $expected_mask, $similarity_threshold)
+	_AssertIsNotNone($actual_mask, "Result mask used for comparison was None")
+
+	$actual_mask = $actual_mask.mat_view()
+	$expected_mask = $expected_mask.mat_view().convertTo($CV_32F, Null, 1 / 255.0)
+
+	Return _
+			$actual_mask.rows == $expected_mask.rows And _
+			$actual_mask.cols == $expected_mask.cols And _
+			_calculate_soft_iou($actual_mask, $expected_mask) > $similarity_threshold
+EndFunc   ;==>_similar_to_float_mask
+
+Func _similar_to_uint8_mask($actual_mask, $expected_mask)
+	_AssertIsNotNone($actual_mask, "Result mask used for comparison was None")
+
+	Local $actual_mask_pixels = $actual_mask.mat_view().convertTo(-1, Null, $_MASK_MAGNIFICATION_FACTOR)
+	Local $expected_mask_pixels = $expected_mask.mat_view()
+
+	Local $num_pixels = $expected_mask_pixels.total()
+	Local $consistent_pixels = $num_pixels - $cv.countNonZero($cv.absdiff($actual_mask_pixels, $expected_mask_pixels).reshape(1))
+
+	Return $consistent_pixels / $num_pixels >= $_MASK_SIMILARITY_THRESHOLD
+EndFunc   ;==>_similar_to_uint8_mask
+
+
 Global $test_image
 Global $test_seg_image
 Global $model_path
 
-Test()
 
-Func Test()
+ImageSegmenterTest()
+
+
+Func ImageSegmenterTest()
+	ImageSegmenterTest_setUp()
+
+	test_create_from_file_succeeds_with_valid_model_path()
+	test_create_from_options_succeeds_with_valid_model_path()
+	test_create_from_options_succeeds_with_valid_model_content()
+
+	test_segment_succeeds_with_category_mask($FILE_NAME)
+	test_segment_succeeds_with_category_mask($FILE_CONTENT)
+
+	test_segment_succeeds_with_confidence_mask($FILE_NAME)
+	test_segment_succeeds_with_confidence_mask($FILE_CONTENT)
+
+	test_labels_succeeds(True, False)
+	test_labels_succeeds(False, True)
+
+	test_segment_for_video_in_category_mask_mode()
+	test_segment_for_video_in_confidence_mask_mode()
+EndFunc   ;==>ImageSegmenterTest
+
+Func ImageSegmenterTest_setUp()
 	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata\vision"
 	Local $url, $file_path
 
@@ -123,48 +178,49 @@ Func Test()
 	; Loads ground truth segmentation file.
 	$test_seg_image = _load_segmentation_mask($_SEGMENTATION_FILE)
 	$model_path = get_test_data_path($_MODEL_FILE)
+EndFunc
 
-	test_create_from_file_succeeds_with_valid_model_path()
-	test_create_from_options_succeeds_with_valid_model_path()
-	test_create_from_options_succeeds_with_valid_model_content()
-
-	test_segment_succeeds_with_category_mask($FILE_NAME)
-	test_segment_succeeds_with_category_mask($FILE_CONTENT)
-
-	test_segment_succeeds_with_confidence_mask($FILE_NAME)
-	test_segment_succeeds_with_confidence_mask($FILE_CONTENT)
-
-	test_labels_succeeds(True, False)
-	test_labels_succeeds(False, True)
-
-	test_segment_for_video_in_category_mask_mode()
-	test_segment_for_video_in_confidence_mask_mode()
-EndFunc   ;==>Test
+Func _load_segmentation_mask($file_path)
+	; Loads ground truth segmentation file.
+	Local $gt_segmentation_data = $cv.imread(get_test_data_path($file_path), $CV_IMREAD_GRAYSCALE)
+	Return $_Image($_ImageFormat.GRAY8, $gt_segmentation_data)
+EndFunc   ;==>_load_segmentation_mask
 
 Func test_create_from_file_succeeds_with_valid_model_path()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_file_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
+
 	; Creates with default option and valid model file successfully.
 	Local $segmenter = $_ImageSegmenter.create_from_model_path($model_path)
 	_AssertIsInstance($segmenter, $_ImageSegmenter)
+	$segmenter.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_options_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
+
 	; Creates with options containing model file successfully.
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_ImageSegmenterOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $segmenter = $_ImageSegmenter.create_from_options($options)
 	_AssertIsInstance($segmenter, $_ImageSegmenter)
+	$segmenter.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_options_succeeds_with_valid_model_content' & @CRLF) ;### Debug Console
+
 	; Creates with options containing model content successfully.
 	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	Local $options = $_ImageSegmenterOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $segmenter = $_ImageSegmenter.create_from_options($options)
 	_AssertIsInstance($segmenter, $_ImageSegmenter)
+	$segmenter.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_segment_succeeds_with_category_mask($model_file_type)
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_segment_succeeds_with_category_mask' & @CRLF) ;### Debug Console
+
 	Local $base_options, $model_content
 
 	; Creates segmenter.
@@ -185,6 +241,7 @@ Func test_segment_succeeds_with_category_mask($model_file_type)
 	; Performs image segmentation on the input.
 	Local $segmentation_result = $segmenter.segment($test_image)
 	Local $category_mask = $segmentation_result.category_mask
+	_AssertIsNotNone($category_mask, "Result category mask was None")
 	Local $result_pixels = $category_mask.mat_view().clone().reshape(1, 1) ; reshape needs a continuous matrix, clone to the make matrix continous
 
 	; Check if data type of `category_mask` is correct.
@@ -199,6 +256,8 @@ Func test_segment_succeeds_with_category_mask($model_file_type)
 EndFunc   ;==>test_segment_succeeds_with_category_mask
 
 Func test_segment_succeeds_with_confidence_mask($model_file_type)
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_segment_succeeds_with_confidence_mask' & @CRLF) ;### Debug Console
+
 	Local $base_options, $model_content
 
 	; Creates segmenter.
@@ -242,6 +301,8 @@ Func test_segment_succeeds_with_confidence_mask($model_file_type)
 EndFunc   ;==>test_segment_succeeds_with_confidence_mask
 
 Func test_labels_succeeds($output_category_mask, $output_confidence_masks)
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_labels_succeeds' & @CRLF) ;### Debug Console
+
 	Local $expected_labels = $_EXPECTED_LABELS
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_ImageSegmenterOptions(_Mediapipe_Params( _
@@ -257,6 +318,8 @@ Func test_labels_succeeds($output_category_mask, $output_confidence_masks)
 EndFunc   ;==>test_labels_succeeds
 
 Func test_segment_for_video_in_category_mask_mode()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_segment_for_video_in_category_mask_mode' & @CRLF) ;### Debug Console
+
 	Local $options = $_ImageSegmenterOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"output_category_mask", True, _
@@ -278,6 +341,8 @@ Func test_segment_for_video_in_category_mask_mode()
 EndFunc   ;==>test_segment_for_video_in_category_mask_mode
 
 Func test_segment_for_video_in_confidence_mask_mode()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_segment_for_video_in_confidence_mask_mode' & @CRLF) ;### Debug Console
+
 	; Load the cat image.
 	Local $test_image = $_Image.create_from_file(get_test_data_path($_CAT_IMAGE))
 
@@ -311,49 +376,6 @@ Func test_segment_for_video_in_confidence_mask_mode()
 				)
 	Next
 EndFunc   ;==>test_segment_for_video_in_confidence_mask_mode
-
-Func _load_segmentation_mask($file_path)
-	; Loads ground truth segmentation file.
-	Local $gt_segmentation_data = $cv.imread(get_test_data_path($file_path), $CV_IMREAD_GRAYSCALE)
-	Return $_Image($_ImageFormat.GRAY8, $gt_segmentation_data)
-EndFunc   ;==>_load_segmentation_mask
-
-Func _calculate_sum($m)
-	Local $sum = 0.0
-	Local $s = $cv.sumElems($m)
-	For $i = 0 To $m.channels() - 1
-		$sum += $s[$i]
-	Next
-	Return $sum
-EndFunc   ;==>_calculate_sum
-
-Func _calculate_soft_iou($m1, $m2)
-	Local $intersection_sum = _calculate_sum($cv.multiply($m1, $m2))
-	Local $union_sum = _calculate_sum($cv.multiply($m1, $m1)) + _calculate_sum($cv.multiply($m2, $m2)) - $intersection_sum
-
-	Return $union_sum > 0.0 ? $intersection_sum / $union_sum : 0.0
-EndFunc   ;==>_calculate_soft_iou
-
-
-Func _similar_to_float_mask($actual_mask, $expected_mask, $similarity_threshold)
-	$actual_mask = $actual_mask.mat_view()
-	$expected_mask = $expected_mask.mat_view().convertTo($CV_32F, Null, 1 / 255.0)
-
-	Return _
-			$actual_mask.rows == $expected_mask.rows And _
-			$actual_mask.cols == $expected_mask.cols And _
-			_calculate_soft_iou($actual_mask, $expected_mask) > $similarity_threshold
-EndFunc   ;==>_similar_to_float_mask
-
-Func _similar_to_uint8_mask($actual_mask, $expected_mask)
-	Local $actual_mask_pixels = $actual_mask.mat_view().convertTo(-1, Null, $_MASK_MAGNIFICATION_FACTOR)
-	Local $expected_mask_pixels = $expected_mask.mat_view()
-
-	Local $num_pixels = $expected_mask_pixels.total()
-	Local $consistent_pixels = $num_pixels - $cv.countNonZero($cv.absdiff($actual_mask_pixels, $expected_mask_pixels).reshape(1))
-
-	Return $consistent_pixels / $num_pixels >= $_MASK_SIMILARITY_THRESHOLD
-EndFunc   ;==>_similar_to_uint8_mask
 
 Func _OnAutoItExit()
 	_OpenCV_Close()

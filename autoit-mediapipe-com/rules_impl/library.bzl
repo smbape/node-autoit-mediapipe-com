@@ -181,30 +181,59 @@ def add_library(name, **kwargs):
         "//mediapipe/calculators/util:logic_calculator_cc_proto",
 
         # tasks/components/containers
+        "//mediapipe/tasks/cc/components/containers/proto:classifications_cc_proto",
+        "//mediapipe/tasks/cc/components/containers/proto:embeddings_cc_proto",
         "//mediapipe/tasks/cc/components/containers/proto:landmarks_detection_result_cc_proto",
+        "//mediapipe/tasks/cc/components/containers:keypoint",
+        "//mediapipe/tasks/cc/components/containers:rect",
+        "//mediapipe/tasks/cc/components/containers:category",
+        "//mediapipe/tasks/cc/components/containers:classification_result",
+        "//mediapipe/tasks/cc/components/containers:detection_result",
+        "//mediapipe/tasks/cc/components/containers:embedding_result",
+        "//mediapipe/tasks/cc/components/containers:landmark",
 
-        # tasks/audio:audio_classifier
+        # tasks/components/processors
+        "//mediapipe/tasks/cc/components/processors/proto:classifier_options_cc_proto",
+        "//mediapipe/tasks/cc/components/processors/proto:detector_options_cc_proto",
+        "//mediapipe/tasks/cc/components/processors/proto:classification_postprocessing_graph_options_cc_proto",
+        "//mediapipe/tasks/cc/components/processors/proto:detection_postprocessing_graph_options_cc_proto",
+        "//mediapipe/tasks/cc/components/processors/proto:embedder_options_cc_proto",
+        "//mediapipe/tasks/cc/components/processors/proto:embedding_postprocessing_graph_options_cc_proto",
+        "//mediapipe/tasks/cc/components/processors/proto:image_preprocessing_graph_options_cc_proto",
+        "//mediapipe/tasks/cc/components/processors/proto:text_model_type_cc_proto",
+        "//mediapipe/tasks/cc/components/processors/proto:text_preprocessing_graph_options_cc_proto",
+        "//mediapipe/tasks/cc/components/processors:classifier_options",
+        "//mediapipe/tasks/cc/components/processors:classification_postprocessing_graph",
+        "//mediapipe/tasks/cc/components/processors:embedder_options",
+        "//mediapipe/tasks/cc/components/processors:embedding_postprocessing_graph",
+        "//mediapipe/tasks/cc/components/processors:image_preprocessing_graph",
+        "//mediapipe/tasks/cc/components/processors:text_preprocessing_graph",
+        "//mediapipe/tasks/cc/components/processors:detection_postprocessing_graph",
+
+        # tasks/components/utils
+        "//mediapipe/tasks/cc/components/utils:cosine_similarity",
+
+        # tasks/audio
         "//mediapipe/tasks/cc/audio/audio_classifier:audio_classifier",
 
-        # tasks/audio:audio_embedder
-        "//mediapipe/tasks/cc/audio/audio_embedder:audio_embedder",
-
         # tasks/text
+        "//mediapipe/tasks/cc/text/language_detector:language_detector",
         "//mediapipe/tasks/cc/text/text_classifier:text_classifier",
         "//mediapipe/tasks/cc/text/text_embedder:text_embedder",
 
         # tasks/vision
-        "//mediapipe/tasks/cc/vision/face_detector:face_detector_graph",
+        "//mediapipe/tasks/cc/vision/face_detector:face_detector",
+        "//mediapipe/tasks/cc/vision/face_landmarker:face_landmarker",
         "//mediapipe/tasks/cc/vision/gesture_recognizer:gesture_recognizer",
-        "//mediapipe/tasks/cc/vision/hand_detector:hand_detector_graph",
         "//mediapipe/tasks/cc/vision/hand_landmarker:hand_landmarker",
+        "//mediapipe/tasks/cc/vision/holistic_landmarker:holistic_landmarker",
+        "//mediapipe/tasks/cc/vision/holistic_landmarker/proto:holistic_result_cc_proto",
         "//mediapipe/tasks/cc/vision/image_classifier:image_classifier",
         "//mediapipe/tasks/cc/vision/image_embedder:image_embedder",
         "//mediapipe/tasks/cc/vision/image_segmenter:image_segmenter",
+        "//mediapipe/tasks/cc/vision/interactive_segmenter:interactive_segmenter",
         "//mediapipe/tasks/cc/vision/object_detector:object_detector",
-
-        # tasks/vision:holistic_landmarker
-        "//mediapipe/tasks/cc/vision/holistic_landmarker/proto:holistic_result_cc_proto",
+        "//mediapipe/tasks/cc/vision/pose_landmarker:pose_landmarker",
     ] + select({
         # model_ckpt_util
         "//conditions:default": [],

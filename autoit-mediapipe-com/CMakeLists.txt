@@ -31,13 +31,13 @@ if (POLICY CMP0135)
     cmake_policy(SET CMP0135 NEW) # set the timestamps of extracted contents to the time of extraction.
 endif()
 
-set(MEDIAPIPE_VERSION 0.10.26 CACHE STRING "Choose the mediapipe version.")
-set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.26" "0.10.24" "0.10.23")
+set(MEDIAPIPE_VERSION 0.10.35 CACHE STRING "Choose the mediapipe version.")
+set_property(CACHE MEDIAPIPE_VERSION PROPERTY STRINGS "0.10.35" "0.10.33" "0.10.32")
 string(REPLACE "." "" MEDIAPIPE_DLLVERSION ${MEDIAPIPE_VERSION})
 
-set(MEDIAPIPE_URL_HASH_SHA256_01026 51cbd4d538716e3722b55b8412cab9e3713270a6e9a6f09af6b52d357718e6d7)
-set(MEDIAPIPE_URL_HASH_SHA256_01024 ff4a2a85d0ac0c73ff1acdf5ceda47cb3640566e0430e056c7f12e44cb5c81bd)
-set(MEDIAPIPE_URL_HASH_SHA256_01023 5bc3e7b7d5ffdcb0a0e7d2057c7ea5c344f65371516cf6e42cc8b4bf77ae5ff8)
+set(MEDIAPIPE_URL_HASH_SHA256_01035 6b0e8490ab7f0f783937d4b25486cff469431adfe05c6f0217a5e63f68532113)
+set(MEDIAPIPE_URL_HASH_SHA256_01033 460697149eb104bc0ba645b3cc0b35560ed7176f45f3a3966516431b955f7601)
+set(MEDIAPIPE_URL_HASH_SHA256_01032 fa4272055992cc2d42d615a6ed2870f5607067bcdde9eea20bba569bc1e5454e)
 
 string(REPLACE "." ";" MEDIAPIPE_VERSION_LIST ${MEDIAPIPE_VERSION})
 list(GET MEDIAPIPE_VERSION_LIST 0 MEDIAPIPE_VERSION_MAJOR)
@@ -51,7 +51,7 @@ string(REGEX REPLACE "/$" "" CMAKE_CURRENT_RELATIVE_BINARY_DIR "${CMAKE_CURRENT_
 set(MEDIAPIPE_ADDON_PACKAGE "mediapipe/autoit")
 set(MEDIAPIPE_ADDON_REPOSITORIES ":${CMAKE_CURRENT_RELATIVE_BINARY_DIR}/third_party/repositories.bzl")
 set(MEDIAPIPE_ADDON_RULES_DEPENDENCIES "autoit_rules_dependencies")
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch" @ONLY)
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch.in" "${CMAKE_CURRENT_SOURCE_DIR}/patches/001-mediapipe-src.patch" @ONLY NEWLINE_STYLE LF)
 
 # Tell cmake that we will need mediapipe.
 include(FetchContent)
@@ -109,7 +109,7 @@ if (NOT mediapipe_autoit_SKIP_GENERATION)
 endif()
 
 # Tell cmake that we will need autoit-opencv-com.
-set(OPENCV_COM_VERSION 2.8.0)
+set(OPENCV_COM_VERSION 2.9.0)
 set(OPENCV_COM_ARCHIVE "autoit-opencv-${OpenCV_VERSION}-com-v${OPENCV_COM_VERSION}.7z")
 cmake_path(SET OPENCV_COM_SOURCE_DIR NORMALIZE "${CMAKE_CURRENT_SOURCE_DIR}/../../node-autoit-opencv-com")
 if (EXISTS "${OPENCV_COM_SOURCE_DIR}/${OPENCV_COM_ARCHIVE}")
@@ -120,7 +120,7 @@ endif()
 include(FetchContent)
 FetchContent_Populate(autoit_opencv_com
     URL               "${OPENCV_COM_URL}"
-    URL_HASH          SHA256=5ebdab706d42ca42efcff3c592a3ba993c13955f0f6cf0e72e88d963b4145445
+    URL_HASH          SHA256=cb65b522a4c14df62c47daf2e244624d0f327638d0bd41ce3f2994eae9256a49
     DOWNLOAD_DIR      "${CMAKE_CURRENT_SOURCE_DIR}/.."
     SOURCE_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/../autoit-opencv-com"
 )
@@ -164,6 +164,7 @@ file(GLOB_RECURSE files_to_change
     ../examples/*.au3
     ../examples/*.cs
     ../examples/*.ps1
+    ../examples/*.psm1
 )
 foreach(item ${files_to_change})
     vcpkg_regex_replace_string("${item}" "autoit_mediapipe_com-[0-9]+(\\.[0-9]+)+-[0-9]+" "autoit_mediapipe_com-${MEDIAPIPE_VERSION}-${OpenCV_DLLVERSION}")
@@ -192,11 +193,10 @@ endif()
 
 set(mediapipe_BINARY_DIR "${mediapipe_SOURCE_DIR}/bazel-out/x64_windows-${COMPILATION_MODE}/bin")
 
-set(Python3_REQUESTED_VERSION "3.9...<3.13")
 include(cmake/UsePython3Venv.cmake)
 
 # Needed python packages
-pip_install(absl-py mediapipe<=0.10.21 numpy opencv-python)
+pip_install(absl-py mediapipe>=0.10.35 numpy opencv-python)
 
 if (WIN32)
     # Avoid long paths on windows
@@ -326,28 +326,31 @@ list(APPEND BAZEL_BUILD ${BAZEL_GPU_OPTIONS} ${BAZEL_BUILD_OPTIONS})
 # If bazel-out already exists, bazel won't touch it, and generated files will be inacessible.
 # The choosen work around is to delete bazel-out if it is not a symbolic link.
 # Therefore, allowing bazel to create the symbolic link
-set(ensure_SYMBOLIC_BAZEL_OUT "${CMAKE_COMMAND}" -E)
-if (IS_SYMLINK "${mediapipe_SOURCE_DIR}/bazel-out")
-    list(APPEND ensure_SYMBOLIC_BAZEL_OUT echo)
-endif()
-list(APPEND ensure_SYMBOLIC_BAZEL_OUT rm -rf "${mediapipe_SOURCE_DIR}/bazel-out")
-
-if (WIN32)
-    set(builtin_calculators_OUTPUT "${mediapipe_BINARY_DIR}/mediapipe/calculators/tensor/inference_calculator_options_registry.lo${CMAKE_STATIC_LIBRARY_SUFFIX}")
+set(invalid_SYMLINKS)
+foreach(directory IN ITEMS bazel-bin bazel-out bazel-mediapipe-src)
+    if (NOT IS_SYMLINK "${mediapipe_SOURCE_DIR}/${directory}")
+        list(APPEND invalid_SYMLINKS "${mediapipe_SOURCE_DIR}/${directory}")
+    endif()
+endforeach()
+set(ensure_SYMBOLIC_BAZEL_SYMLINKS "${CMAKE_COMMAND}" -E)
+if (invalid_SYMLINKS)
+    list(APPEND ensure_SYMBOLIC_BAZEL_SYMLINKS rm -rf ${invalid_SYMLINKS})
 else()
-    set(builtin_calculators_OUTPUT "${mediapipe_BINARY_DIR}/mediapipe/calculators/tensor/${CMAKE_SHARED_LIBRARY_PREFIX}inference_calculator_options_registry${CMAKE_SHARED_LIBRARY_SUFFIX}")
+    list(APPEND ensure_SYMBOLIC_BAZEL_SYMLINKS echo "Checked symlinks")
 endif()
 
-add_custom_command(OUTPUT "${builtin_calculators_OUTPUT}"
-    COMMAND           ${ensure_SYMBOLIC_BAZEL_OUT}
-    COMMAND           "${CMAKE_COMMAND}" -E echo ${BAZEL_BUILD} mediapipe/python:builtin_calculators
-    COMMAND           "${CMAKE_COMMAND}" -E env "PATH=${ENV_PATH}" -- ${BAZEL_BUILD} mediapipe/python:builtin_calculators
-    COMMAND           "${CMAKE_COMMAND}" -E touch_nocreate "${builtin_calculators_OUTPUT}"
+set(mediapipe_source_OUTPUT "${mediapipe_BINARY_DIR}/mediapipe/tasks/c/${CMAKE_SHARED_LIBRARY_PREFIX}mediapipe_source${CMAKE_SHARED_LIBRARY_SUFFIX}")
+
+add_custom_command(OUTPUT "${mediapipe_source_OUTPUT}"
+    COMMAND           ${ensure_SYMBOLIC_BAZEL_SYMLINKS}
+    COMMAND           "${CMAKE_COMMAND}" -E echo ${BAZEL_BUILD} //mediapipe/tasks/c:mediapipe_source
+    COMMAND           "${CMAKE_COMMAND}" -E env "PATH=${ENV_PATH}" -- ${BAZEL_BUILD} //mediapipe/tasks/c:mediapipe_source
+    COMMAND           "${CMAKE_COMMAND}" -E touch_nocreate "${mediapipe_source_OUTPUT}"
     WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
     VERBATIM
     USES_TERMINAL
 )
-add_custom_target(${target_name}_builtin_calculators DEPENDS "${builtin_calculators_OUTPUT}")
+add_custom_target(${target_name}_mediapipe_source DEPENDS "${mediapipe_source_OUTPUT}")
 
 set(src_gen_cmd "${NODE_EXECUTABLE}" --unhandled-rejections=strict --trace-uncaught --trace-warnings src/gen.js)
 if (ENABLE_ODML_CONVERTER)
@@ -371,7 +374,7 @@ add_custom_command(OUTPUT "${generated_OUTPUT}"
     COMMAND           "${CMAKE_COMMAND}" -E env "PATH=${ENV_PATH}" "CMAKE_BINARY_DIR=${CMAKE_BINARY_DIR}" "Python3_EXECUTABLE=${Python3_EXECUTABLE}" -- ${src_gen_cmd}
     COMMAND           "${CMAKE_COMMAND}" -E touch_nocreate "${generated_OUTPUT}"
     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/.."
-    DEPENDS           ${project_source_headers} ${target_name}_builtin_calculators ${generator_files}
+    DEPENDS           ${project_source_headers} ${target_name}_mediapipe_source ${generator_files}
     VERBATIM
     USES_TERMINAL
 )
@@ -444,8 +447,7 @@ file (GENERATE
 
 set(BAZEL_OUTPUT_LIBRARY "${mediapipe_BINARY_DIR}/${MEDIAPIPE_ADDON_PACKAGE}/${BAZEL_OUTPUT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}")
 add_custom_command(OUTPUT "${BAZEL_OUTPUT_LIBRARY}"
-    # Make sure bazel-out is a symbolic link
-    COMMAND           ${ensure_SYMBOLIC_BAZEL_OUT}
+    COMMAND           ${ensure_SYMBOLIC_BAZEL_SYMLINKS}
     COMMAND           "${CMAKE_COMMAND}" -E echo ${BAZEL_BUILD} ${MEDIAPIPE_ADDON_PACKAGE}:lib
     COMMAND           "${CMAKE_COMMAND}" -E env "PATH=${ENV_PATH}" -- ${BAZEL_BUILD} ${MEDIAPIPE_ADDON_PACKAGE}:lib
     WORKING_DIRECTORY "${mediapipe_SOURCE_DIR}"
@@ -495,72 +497,6 @@ foreach(item
     unset(item_output)
     unset(item_target)
 endforeach()
-
-include(cmake/get_temp_dir.cmake)
-get_temp_dir(TEMPDIR)
-
-if (TEMPDIR)
-    set(mediapipe_SOLUTIONS_DIR "${mediapipe_SOURCE_DIR}/mediapipe/python/solutions")
-
-    set(item_target test_on_video_fullasl_hand_full_npz)
-    set(item_test_data "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/testdata")
-    set(item_output "${item_test_data}/test_on_video_fullasl_hand.full.yml")
-
-    include(ExternalProject)
-    ExternalProject_Add(
-            asl_hand_25fps_mp4
-            URL https://github.com/tensorflow/tfjs-models/raw/master/hand-pose-detection/test_data/asl_hand.25fps.mp4
-            URL_HASH SHA256=57c10fb1eb76639edf43e9675213dcc495c51851e32a3592cacaa9437be4f37e
-            DOWNLOAD_NO_EXTRACT TRUE
-            DOWNLOAD_DIR      "${mediapipe_SOLUTIONS_DIR}/testdata"
-            SOURCE_DIR        "${mediapipe_SOLUTIONS_DIR}/testdata"
-            CONFIGURE_COMMAND ""
-            BUILD_COMMAND     ""
-            INSTALL_COMMAND   "${CMAKE_COMMAND}" -E copy_if_different "<DOWNLOAD_DIR>/asl_hand.25fps.mp4" "${item_test_data}/asl_hand.25fps.mp4"
-    )
-
-    add_custom_command(OUTPUT "${item_output}"
-        COMMAND "${Python3_EXECUTABLE}" hands_test.py -- -k test_on_video 2> NUL || type NUL > NUL
-        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/npz_convert.py" "${TEMPDIR}/test_on_video_fullasl_hand.full.npz" -o "${item_output}"
-        DEPENDS ${target_name}_lib asl_hand_25fps_mp4
-        WORKING_DIRECTORY "${mediapipe_SOLUTIONS_DIR}"
-        VERBATIM
-    )
-    add_custom_target(${item_target} DEPENDS "${item_output}")
-
-    add_dependencies(${target_name} ${item_target})
-
-    set(item_target test_on_video_fullpose_squats_npz)
-    set(item_test_data "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/testdata")
-    set(item_output "${item_test_data}/test_on_video_fullpose_squats.full.yml")
-
-    include(ExternalProject)
-    ExternalProject_Add(
-            pose_squats_mp4
-            URL https://github.com/tensorflow/tfjs-models/raw/master/pose-detection/test_data/pose_squats.mp4
-            URL_HASH SHA256=ea9151e447b301985d5d65666551ef863b369a2e0f3a71ddd58abef2e722f96a
-            DOWNLOAD_NO_EXTRACT TRUE
-            DOWNLOAD_DIR      "${mediapipe_SOLUTIONS_DIR}/testdata"
-            SOURCE_DIR        "${mediapipe_SOLUTIONS_DIR}/testdata"
-            CONFIGURE_COMMAND ""
-            BUILD_COMMAND     ""
-            INSTALL_COMMAND   "${CMAKE_COMMAND}" -E copy_if_different "<DOWNLOAD_DIR>/pose_squats.mp4" "${item_test_data}/pose_squats.mp4"
-    )
-
-    add_custom_command(OUTPUT "${item_output}"
-        COMMAND "${Python3_EXECUTABLE}" pose_test.py -- -k test_on_video 2> NUL || type NUL > NUL
-        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../test/solutions/npz_convert.py" "${TEMPDIR}/test_on_video_fullpose_squats.full.npz" -o "${item_output}"
-        DEPENDS ${target_name}_lib pose_squats_mp4
-        WORKING_DIRECTORY "${mediapipe_SOLUTIONS_DIR}"
-        VERBATIM
-    )
-    add_custom_target(${item_target} DEPENDS "${item_output}")
-
-    add_dependencies(${target_name} ${item_target})
-
-    unset(item_output)
-    unset(item_target)
-endif()
 
 # ===============
 # C# Interop target
@@ -616,12 +552,14 @@ add_custom_target(cs_assembly DEPENDS "${ASSEMBLY_DLL}")
 include(CSharpUtilities)
 enable_language(CSharp)
 
-file(GLOB test_files "test/*.cs" "dotnet/*.cs")
-add_executable(cs_test ${test_files} "${autoit_opencv_com_SOURCE_DIR}/dotnet/OpenCvComInterop.cs")
+file(GLOB dotnet_files  "dotnet/*.cs")
+list(APPEND dotnet_files "${autoit_opencv_com_SOURCE_DIR}/dotnet/OpenCvComInterop.cs")
 
 set(OpenCVCOM_ASSEMBLY_DLL "${autoit_opencv_com_SOURCE_DIR}/dotnet/OpenCV.InteropServices.dll")
 file(TO_NATIVE_PATH "${OpenCVCOM_ASSEMBLY_DLL}" OpenCVCOM_ASSEMBLY_DLL)
 
+file(GLOB test_files "test/*.cs")
+add_executable(cs_test ${test_files} ${dotnet_files})
 set_target_properties(cs_test PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}"
     DEBUG_POSTFIX "${OpenCV_DEBUG_POSTFIX}"
@@ -633,12 +571,42 @@ set_target_properties(cs_test PROPERTIES
     VS_DOTNET_REFERENCE_Mediapipe "${ASSEMBLY_DLL}"
     VS_DOTNET_REFERENCEPROP_Mediapipe_TAG_EmbedInteropTypes "True"
 )
-
 add_dependencies(cs_test cs_assembly)
 
 # Always generate debug files
 if(MSVC AND NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     target_compile_options(cs_test PRIVATE "-debug:pdbonly")
 endif()
+
+
+file(GLOB_RECURSE googlesamples
+    "../examples/googlesamples/*.cs"
+)
+list(FILTER googlesamples EXCLUDE REGEX "^[.]")
+
+foreach(cs_file IN LISTS googlesamples)
+    cmake_path(GET cs_file STEM cs_target_name)
+    set(cs_target_name "googlesamples_${cs_target_name}")
+    string(REGEX REPLACE "[^_a-zA-Z0-9.+-]" "_" cs_target_name "${cs_target_name}")
+
+    add_executable(${cs_target_name} ${cs_file} ${dotnet_files})
+    set_target_properties(${cs_target_name} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}"
+        DEBUG_POSTFIX "${OpenCV_DEBUG_POSTFIX}"
+        VS_GLOBAL_EnableUnmanagedDebugging "true"
+        VS_DEBUGGER_ENVIRONMENT "PATH=${OpenCV_BIN_NATIVE_PATH};%PATH%"
+        VS_DOTNET_REFERENCES "Microsoft.CSharp;System;System.Core;System.Windows.Forms"
+        VS_DOTNET_REFERENCE_OpenCVCOM "${OpenCVCOM_ASSEMBLY_DLL}"
+        VS_DOTNET_REFERENCEPROP_OpenCVCOM_TAG_EmbedInteropTypes "True"
+        VS_DOTNET_REFERENCE_Mediapipe "${ASSEMBLY_DLL}"
+        VS_DOTNET_REFERENCEPROP_Mediapipe_TAG_EmbedInteropTypes "True"
+    )
+    add_dependencies(${cs_target_name} cs_assembly)
+
+    # Always generate debug files
+    if(MSVC AND NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+        target_compile_options(${cs_target_name} PRIVATE "-debug:pdbonly")
+    endif()
+endforeach()
 
 endif()

@@ -1,25 +1,29 @@
 #include "binding/tasks/components/containers/rect.h"
 
-namespace mediapipe::tasks::autoit::components::containers::rect {
-	std::shared_ptr<mediapipe::NormalizedRect> NormalizedRect::to_pb2() const {
-		auto pb2_obj = std::make_shared<mediapipe::NormalizedRect>();
-		pb2_obj->set_x_center(x_center);
-		pb2_obj->set_y_center(y_center);
-		pb2_obj->set_width(width);
-		pb2_obj->set_height(height);
-		pb2_obj->set_rotation(rotation);
-		pb2_obj->set_rect_id(rect_id);
-		return pb2_obj;
+namespace mediapipe::tasks::components::containers {
+	mediapipe::NormalizedRect ConvertNormalizedRectToProto(NormalizedRect* normalized_rect) {
+		mediapipe::NormalizedRect normalized_rect_proto;
+		normalized_rect_proto.set_x_center(normalized_rect->x_center);
+		normalized_rect_proto.set_y_center(normalized_rect->y_center);
+		normalized_rect_proto.set_width(normalized_rect->width);
+		normalized_rect_proto.set_height(normalized_rect->height);
+		if (normalized_rect->rotation) {
+			normalized_rect_proto.set_rotation(*normalized_rect->rotation);
+		}
+		if (normalized_rect->rect_id) {
+			normalized_rect_proto.set_rect_id(*normalized_rect->rect_id);
+		}
+		return normalized_rect_proto;
 	}
 
-	std::shared_ptr<NormalizedRect> NormalizedRect::create_from_pb2(const mediapipe::NormalizedRect& pb2_obj) {
-		return std::make_shared<NormalizedRect>(
-			pb2_obj.x_center(),
-			pb2_obj.y_center(),
-			pb2_obj.width(),
-			pb2_obj.height(),
-			pb2_obj.rotation(),
-			pb2_obj.rect_id()
-		);
+	NormalizedRect ConvertToNormalizedRect(const mediapipe::NormalizedRect& proto) {
+		return {
+			.x_center = proto.x_center(),
+			.y_center = proto.y_center(),
+			.width    = proto.width(),
+			.height   = proto.height(),
+			.rotation = proto.has_rotation() ? std::optional<float>(proto.rotation()) : std::optional<float>(0.0f),
+			.rect_id =  proto.has_rect_id() ? std::optional<int64_t>(proto.rect_id()) : std::nullopt
+		};
 	}
 }

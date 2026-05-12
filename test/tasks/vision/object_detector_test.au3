@@ -6,27 +6,17 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.26/mediapipe/tasks/python/test/vision/object_detector_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/vision/object_detector_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
-#include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
-#include "..\..\_mat_utils.au3"
-#include "..\..\_proto_utils.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
-
-Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
-
-Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.image")
-_AssertIsObj($image_module, "Failed to load mediapipe.autoit._framework_bindings.image")
+Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global Const $bounding_box_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.bounding_box")
 _AssertIsObj($bounding_box_module, "Failed to load mediapipe.tasks.autoit.components.containers.bounding_box")
@@ -42,6 +32,9 @@ _AssertIsObj($base_options_module, "Failed to load mediapipe.tasks.autoit.core.b
 
 Global Const $object_detector = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.object_detector")
 _AssertIsObj($object_detector, "Failed to load mediapipe.tasks.autoit.vision.object_detector")
+
+Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image")
+_AssertIsObj($image_module, "Failed to load mediapipe.tasks.autoit.vision.core.image")
 
 Global Const $running_mode_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
 _AssertIsObj($running_mode_module, "Failed to load mediapipe.tasks.autoit.vision.core.vision_task_running_mode")
@@ -124,9 +117,29 @@ Global Const $FILE_NAME = 2
 Global $test_image
 Global $model_path
 
-Test()
 
-Func Test()
+ObjectDetectorTest()
+
+
+Func ObjectDetectorTest()
+	ObjectDetectorTest_setUp()
+
+	test_create_from_file_succeeds_with_valid_model_path()
+	test_create_from_options_succeeds_with_valid_model_path()
+	test_create_from_options_succeeds_with_valid_model_content()
+
+	test_detect($FILE_NAME, 4, $_EXPECTED_DETECTION_RESULT)
+	test_detect($FILE_CONTENT, 4, $_EXPECTED_DETECTION_RESULT)
+	test_score_threshold_option()
+	test_max_results_option()
+	test_allow_list_option()
+	test_deny_list_option()
+	test_empty_detection_outputs_with_in_model_nms()
+	test_empty_detection_outputs_without_in_model_nms()
+	test_detect_for_video()
+EndFunc   ;==>ObjectDetectorTest
+
+Func ObjectDetectorTest_setUp()
 	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata\vision"
 	Local $url, $file_path
 
@@ -150,46 +163,43 @@ Func Test()
 
 	$test_image = $_Image.create_from_file(get_test_data_path($_IMAGE_FILE))
 	$model_path = get_test_data_path($_MODEL_FILE)
-
-	test_create_from_file_succeeds_with_valid_model_path()
-	test_create_from_options_succeeds_with_valid_model_path()
-	test_create_from_options_succeeds_with_valid_model_content()
-
-	test_detect($FILE_NAME, 4, $_EXPECTED_DETECTION_RESULT)
-	test_detect($FILE_CONTENT, 4, $_EXPECTED_DETECTION_RESULT)
-	test_score_threshold_option()
-	test_max_results_option()
-	test_allow_list_option()
-	test_deny_list_option()
-	test_empty_detection_outputs_with_in_model_nms()
-	test_empty_detection_outputs_without_in_model_nms()
-	test_detect_for_video()
-EndFunc   ;==>Test
+EndFunc
 
 Func test_create_from_file_succeeds_with_valid_model_path()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_file_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
+
 	; Creates with default option and valid model file successfully.
 	Local $detector = $_ObjectDetector.create_from_model_path($model_path)
 	_AssertIsInstance($detector, $_ObjectDetector)
+	$detector.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_path()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_options_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
+
 	; Creates with options containing model file successfully.
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_ObjectDetector.create_from_options($options)
 	_AssertIsInstance($detector, $_ObjectDetector)
+	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
 Func test_create_from_options_succeeds_with_valid_model_content()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_options_succeeds_with_valid_model_content' & @CRLF) ;### Debug Console
+
 	; Creates with options containing model content successfully.
 	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $_ObjectDetector.create_from_options($options)
 	_AssertIsInstance($detector, $_ObjectDetector)
+	$detector.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
 Func test_detect($model_file_type, $max_results, $expected_detection_result)
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_detect' & @CRLF) ;### Debug Console
+
 	Local $base_options, $model_content
 
 	; Creates detector.
@@ -208,10 +218,16 @@ Func test_detect($model_file_type, $max_results, $expected_detection_result)
 	Local $detection_result = $detector.detect($test_image)
 
 	; Comparing results.
-	_AssertProtoEquals($detection_result.to_pb2(), $expected_detection_result.to_pb2())
+	_AssertEqual($detection_result, $expected_detection_result)
+
+    ; Closes the detector explicitly when the detector is not used in
+    ; a context.
+    $detector.close()
 EndFunc   ;==>test_detect
 
 Func test_score_threshold_option()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_score_threshold_option' & @CRLF) ;### Debug Console
+
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"score_threshold", $_SCORE_THRESHOLD _
@@ -229,12 +245,14 @@ Func test_score_threshold_option()
 		_AssertGreaterEqual( _
 				$score, _
 				$_SCORE_THRESHOLD, _
-				'Detection with score lower than threshold found. ' & $detection.to_pb2().__str__() _
+				'Detection with score lower than threshold found. ' & $detection.__str__() _
 				)
 	Next
 EndFunc   ;==>test_score_threshold_option
 
 Func test_max_results_option()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_max_results_option' & @CRLF) ;### Debug Console
+
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"max_results", $_MAX_RESULTS _
@@ -252,6 +270,8 @@ Func test_max_results_option()
 EndFunc   ;==>test_max_results_option
 
 Func test_allow_list_option()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_allow_list_option' & @CRLF) ;### Debug Console
+
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"category_allowlist", $_ALLOW_LIST _
@@ -275,6 +295,8 @@ Func test_allow_list_option()
 EndFunc   ;==>test_allow_list_option
 
 Func test_deny_list_option()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_deny_list_option' & @CRLF) ;### Debug Console
+
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"category_denylist", $_DENY_LIST _
@@ -296,6 +318,8 @@ Func test_deny_list_option()
 EndFunc   ;==>test_deny_list_option
 
 Func test_empty_detection_outputs_with_in_model_nms()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_empty_detection_outputs_with_in_model_nms' & @CRLF) ;### Debug Console
+
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"score_threshold", 1 _
@@ -309,6 +333,8 @@ Func test_empty_detection_outputs_with_in_model_nms()
 EndFunc   ;==>test_empty_detection_outputs_with_in_model_nms
 
 Func test_empty_detection_outputs_without_in_model_nms()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_empty_detection_outputs_without_in_model_nms' & @CRLF) ;### Debug Console
+
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", get_test_data_path($_NO_NMS_MODEL_FILE))), _
 			"score_threshold", 1 _
@@ -324,6 +350,8 @@ EndFunc   ;==>test_empty_detection_outputs_without_in_model_nms
 ; TODO: Tests how `detect_for_video` handles the temporal data
 ; with a real video.
 Func test_detect_for_video()
+	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_detect_for_video' & @CRLF) ;### Debug Console
+
 	Local $options = $_ObjectDetectorOptions(_Mediapipe_Params( _
 			"base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
 			"running_mode", $_RUNNING_MODE.VIDEO, _
@@ -335,11 +363,11 @@ Func test_detect_for_video()
 	Local $detection_result
 	For $timestamp = 0 To (300 - 30) Step 30
 		$detection_result = $detector.detect_for_video($test_image, $timestamp)
-		_AssertProtoEquals($detection_result.to_pb2(), $_EXPECTED_DETECTION_RESULT.to_pb2())
+		_AssertEqual($detection_result, $_EXPECTED_DETECTION_RESULT)
 	Next
 EndFunc   ;==>test_detect_for_video
 
 Func _OnAutoItExit()
-	_OpenCV_Close()
+
 	_Mediapipe_Close()
 EndFunc   ;==>_OnAutoItExit

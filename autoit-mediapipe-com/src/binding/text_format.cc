@@ -1,5 +1,4 @@
 #include "binding/text_format.h"
-#include "binding/packet_getter.h"
 
 namespace google::protobuf::autoit {
 	absl::StatusOr<std::shared_ptr<Message>> Parse(const std::string& input, std::shared_ptr<Message>& message) {

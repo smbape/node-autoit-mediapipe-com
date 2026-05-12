@@ -23,8 +23,8 @@ Func _Mediapipe_FindDLL($sFile, $sFilter = Default, $sDir = Default, $bReverse =
 			"autoit-opencv-com", _
 			"autoit-opencv-com\build_x64\bin\" & $sBuildType, _
 			"opencv\build\x64\vc16\bin", _
-			"opencv-4.12.0-*\build\x64\vc16\bin", _
-			"opencv-4.12.0-*\opencv\build\x64\vc16\bin" _
+			"opencv-4.13.0-*\build\x64\vc16\bin", _
+			"opencv-4.13.0-*\opencv\build\x64\vc16\bin" _
 			]
 
 	Return _Mediapipe_FindFile($sFile & $sPostfix & ".dll", $sFilter, $sDir, $FLTA_FILES, $aSearchPaths, $bReverse)
@@ -481,11 +481,3 @@ Func _Mediapipe_FindResourceDir($sDir = Default)
 	Local Const $iCount = StringLen($sGraphFile) - StringLen($sFile) - 1
 	Return StringLeft($sGraphFile, $iCount)
 EndFunc   ;==>_Mediapipe_FindResourceDir
-
-Func _Mediapipe_SetResourceDir($root_path = Default)
-	If $root_path == Default Then $root_path = _Mediapipe_FindResourceDir()
-	_Mediapipe_DebugMsg('_Mediapipe_SetResourceDir("' & $root_path & '"')
-
-	Local Static $resource_util = _Mediapipe_ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
-	$resource_util.set_resource_dir($root_path)
-EndFunc   ;==>_Mediapipe_SetResourceDir

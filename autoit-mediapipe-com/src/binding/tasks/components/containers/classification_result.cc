@@ -1,57 +1,86 @@
 #include "binding/tasks/components/containers/classification_result.h"
 
-using namespace mediapipe::tasks::components::containers;
+namespace mediapipe::tasks::components::containers {
 
-namespace mediapipe::tasks::autoit::components::containers::classification_result {
-	std::shared_ptr<proto::Classifications> Classifications::to_pb2() const {
-		auto pb2_obj = std::make_shared<proto::Classifications>();
+	proto::Classifications ConvertClassificationsToProto(Classifications* classifications) {
+		proto::Classifications classifications_proto;
 
-		if (categories) {
-			auto* classification_list = pb2_obj->mutable_classification_list();
-			for (const auto& category : *categories) {
-				classification_list->add_classification()->CopyFrom(*category->to_pb2());
-			}
+		auto* classification_list = classifications_proto.mutable_classification_list();
+		for (const auto& category : classifications->categories) {
+			classification_list->add_classification()->CopyFrom(ConvertCategoryToProto(const_cast<Category*>(&category)));
 		}
 
-		pb2_obj->set_head_index(head_index);
-		pb2_obj->set_head_name(head_name);
+		classifications_proto.set_head_index(classifications->head_index);
 
-		return pb2_obj;
-	}
-
-	std::shared_ptr<Classifications> Classifications::create_from_pb2(const proto::Classifications& pb2_obj) {
-		std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>();
-		for (const auto& classification : pb2_obj.classification_list().classification()) {
-			categories->push_back(std::move(category::Category::create_from_pb2(classification)));
+		if (classifications->head_name) {
+			classifications_proto.set_head_name(*classifications->head_name);
 		}
 
-		return std::make_shared<Classifications>(
-			categories,
-			pb2_obj.head_index(),
-			pb2_obj.head_name()
-		);
+		return classifications_proto;
 	}
 
-	std::shared_ptr<proto::ClassificationResult> ClassificationResult::to_pb2() const {
-		auto pb2_obj = std::make_shared<proto::ClassificationResult>();
+	proto::ClassificationResult ConvertClassificationResultToProto(ClassificationResult* classification_result) {
+		proto::ClassificationResult classification_result_proto;
 
-		if (classifications) {
-			for (const auto& classification : *classifications) {
-				pb2_obj->add_classifications()->CopyFrom(*classification->to_pb2());
-			}
+		for (const auto& classifications : classification_result->classifications) {
+			classification_result_proto.add_classifications()->CopyFrom(ConvertClassificationsToProto(const_cast<Classifications*>(&classifications)));
 		}
 
-		pb2_obj->set_timestamp_ms(timestamp_ms);
-
-		return pb2_obj;
-	}
-
-	std::shared_ptr<ClassificationResult> ClassificationResult::create_from_pb2(const proto::ClassificationResult& pb2_obj) {
-		auto classification_result = std::make_shared<ClassificationResult>();
-		for (const auto& classification : pb2_obj.classifications()) {
-			classification_result->classifications->push_back(std::move(Classifications::create_from_pb2(classification)));
+		if (classification_result->timestamp_ms) {
+			classification_result_proto.set_timestamp_ms(*classification_result->timestamp_ms);
 		}
-		classification_result->timestamp_ms = pb2_obj.timestamp_ms();
-		return classification_result;
+
+		return classification_result_proto;
 	}
+
+	void CppConvertToClassificationsList(const std::vector<std::vector<Category>>& classifications_result, std::vector<Classifications>& classifications_list, HRESULT& hr) {
+		classifications_list.clear();
+		classifications_list.reserve(classifications_result.size());
+		for (const auto& categories : classifications_result) {
+			classifications_list.push_back({ .categories = categories, .head_index = -1 });
+		}
+		hr = S_OK;
+	}
+
+	void CppConvertToClassificationsList(VARIANT* in_val, std::vector<Classifications>& classifications_list, HRESULT& hr) {
+		std::vector<std::vector<Category>> classifications_result;
+		hr = autoit_to(in_val, classifications_result);
+		if (SUCCEEDED(hr)) {
+			CppConvertToClassificationsList(classifications_result, classifications_list, hr);
+		}
+	}
+
+	std::vector<std::vector<Category>> CppConvertToClassificationsResult(std::vector<Classifications>& classifications_list) {
+		std::vector<std::vector<Category>> classifications_result;
+		classifications_result.reserve(classifications_list.size());
+		for (const auto& classifications : classifications_list) {
+			classifications_result.push_back(classifications.categories);
+		}
+		return classifications_result;
+	}
+
+	void CppConvertToClassificationsList(const std::optional<std::vector<std::vector<Category>>>& classifications_result, std::optional<std::vector<Classifications>>& classifications_list, HRESULT& hr) {
+		if (classifications_result) {
+			classifications_list.emplace();
+			CppConvertToClassificationsList(*classifications_result, *classifications_list, hr);
+		} else {
+			classifications_list = std::nullopt;
+		}
+	}
+
+	void CppConvertToClassificationsList(VARIANT* in_val, std::optional<std::vector<Classifications>>& classifications_list, HRESULT& hr) {
+		std::optional<std::vector<std::vector<Category>>> classifications_result;
+		hr = autoit_to(in_val, classifications_result);
+		if (SUCCEEDED(hr)) {
+			CppConvertToClassificationsList(classifications_result, classifications_list, hr);
+		}
+	}
+
+	std::optional<std::vector<std::vector<Category>>> CppConvertToClassificationsResult(std::optional<std::vector<Classifications>>& classifications_list) {
+		if (!classifications_list) {
+			return std::nullopt;
+		}
+		return std::optional<std::vector<std::vector<Category>>>(CppConvertToClassificationsResult(*classifications_list));
+	}
+
 }

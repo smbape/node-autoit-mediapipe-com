@@ -6,26 +6,23 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/hand_landmarker/python/hand_landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/hand_landmarker/python/hand_landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/hand_landmarker/python/hand_landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/hand_landmarker/python/hand_landmarker.ipynb
 
 ;~ Title: Hand Landmarks Detection with MediaPipe Tasks
 
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -34,21 +31,15 @@ _AssertIsObj($mp, "Failed to load mediapipe")
 Global $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
 
-Global $solutions = _Mediapipe_ObjCreate("mediapipe.solutions")
-_AssertIsObj($solutions, "Failed to load mediapipe.solutions")
-
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
-
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
 
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 
-Global $mp_hands = $mp.solutions.hands
-Global $mp_drawing = $mp.solutions.drawing_utils
-Global $mp_drawing_styles = $mp.solutions.drawing_styles
+Global $mp_hands = $mp.tasks.vision.HandLandmarksConnections
+Global $mp_drawing = $mp.tasks.vision.drawing_utils
+Global $mp_drawing_styles = $mp.tasks.vision.drawing_styles
 
 Main()
 
@@ -85,7 +76,7 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the classification result. In this case, visualize it.
-	Local $annotated_image = draw_landmarks_on_image($cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR), $detection_result)
+	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
 	resize_and_show($annotated_image, "hand_landmarker")
 	$cv.waitKey()
 EndFunc   ;==>Main
@@ -101,41 +92,39 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 
 	Local $hand_landmarks_list = $detection_result.hand_landmarks
 	Local $handedness_list = $detection_result.handedness
-	Local $annotated_image = $rgb_image.copy()
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
 	Local $width = $annotated_image.width
 	Local $height = $annotated_image.height
 
-	Local $hand_landmarks, $handedness, $hand_landmarks_proto
+	Local $hand_landmarks, $handedness
 	Local $min_x, $min_y, $text_x, $text_y
 
 	; Loop through the detected hands to visualize.
-	For $idx = 0 To $hand_landmarks_list.size() - 1
-		$hand_landmarks = $hand_landmarks_list($idx)
-		$handedness = $handedness_list($idx)
+	For $idx = 0 To UBound($hand_landmarks_list) - 1
+		$hand_landmarks = $hand_landmarks_list[$idx]
+		$handedness = $handedness_list[$idx]
 		$min_x = 1
 		$min_y = 1
 
-		; Draw the hand landmarks.
-		$hand_landmarks_proto = $landmark_pb2.NormalizedLandmarkList()
 		For $landmark In $hand_landmarks
-			$hand_landmarks_proto.landmark.append($landmark_pb2.NormalizedLandmark(_Mediapipe_Params("x", $landmark.x, "y", $landmark.y, "z", $landmark.z)))
 			If $landmark.x < $min_x Then $min_x = $landmark.x
 			If $landmark.y < $min_y Then $min_y = $landmark.y
 		Next
 
-		$solutions.drawing_utils.draw_landmarks( _
+		; Draw the hand landmarks.
+		$mp_drawing.draw_landmarks( _
 				$annotated_image, _
-				$hand_landmarks_proto, _
-				$solutions.hands.HAND_CONNECTIONS, _
-				$solutions.drawing_styles.get_default_hand_landmarks_style($scale), _
-				$solutions.drawing_styles.get_default_hand_connections_style($scale))
+				$hand_landmarks, _
+				$mp_hands.HAND_CONNECTIONS, _
+				$mp_drawing_styles.get_default_hand_landmarks_style($scale), _
+				$mp_drawing_styles.get_default_hand_connections_style($scale))
 
 		; Get the top left corner of the detected hand's bounding box.
 		$text_x = $min_x * $width
 		$text_y = $min_y * $height - $MARGIN
 
 		; Draw handedness (left or right hand) on the image.
-		$cv.putText($annotated_image, $handedness(0).category_name, _
+		$cv.putText($annotated_image, $handedness[0].category_name, _
 				_OpenCV_Point($text_x, $text_y), $CV_FONT_HERSHEY_DUPLEX, _
 				$FONT_SIZE, $HANDEDNESS_TEXT_COLOR, $FONT_THICKNESS, $CV_LINE_AA)
 	Next

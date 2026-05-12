@@ -92,7 +92,7 @@ public static class MediapipeComInterop
         }
 
         var parts = openCvWorldDll.Split(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-        parts[parts.Length - 1] = "opencv_videoio_ffmpeg4120_64.dll";
+        parts[parts.Length - 1] = "opencv_videoio_ffmpeg4130_64.dll";
         var openCvFfmpegDll = string.Join(Path.DirectorySeparatorChar.ToString(), parts);
         hOpenCvFfmpeg = LoadLibrary(openCvFfmpegDll);
         if (hOpenCvFfmpeg == IntPtr.Zero)
@@ -198,7 +198,6 @@ public static class MediapipeComInterop
                 "Mediapipe.",
                 "Mediapipe.mediapipe.",
                 "Mediapipe.mediapipe.autoit.",
-                "Mediapipe.mediapipe.autoit._framework_bindings.",
                 "Mediapipe.com.",
                 "Mediapipe.std."
             };
@@ -218,7 +217,7 @@ public static class MediapipeComInterop
         }
     }
 
-    public static dynamic Params(ref Hashtable kwargs)
+    public static dynamic Params(Hashtable kwargs)
     {
         dynamic[] pairs = new dynamic[kwargs.Count];
 
@@ -238,7 +237,7 @@ public static class MediapipeComInterop
     public const int FLTA_FOLDERS = 1 << 1;
     public const int FLTA_FILESFOLDERS = FLTA_FILES | FLTA_FOLDERS;
 
-    private static List<string> FindFiles(ref string[] parts, string rootPath, int flags, bool relative, int i = 0)
+    private static List<string> FindFiles(string[] parts, string rootPath, int flags, bool relative, int i = 0)
     {
         var matches = new List<string>();
 
@@ -299,7 +298,7 @@ public static class MediapipeComInterop
                     continue;
                 }
 
-                var nextMatches = FindFiles(ref parts, filepath, flags, false, i + 1);
+                var nextMatches = FindFiles(parts, filepath, flags, false, i + 1);
 
                 foreach (var match in nextMatches)
                 {
@@ -372,7 +371,7 @@ public static class MediapipeComInterop
     public static string[] FindFiles(string path, string rootPath, int flags = FLTA_FILESFOLDERS, bool relative = true)
     {
         var parts = path.Split('/', '\\');
-        var files = FindFiles(ref parts, rootPath, flags, relative);
+        var files = FindFiles(parts, rootPath, flags, relative);
         return files.ToArray();
     }
 
@@ -469,8 +468,8 @@ public static class MediapipeComInterop
             "autoit-opencv-com",
             "autoit-opencv-com\\build_x64\\bin\\" + buildType,
             "opencv\\build\\x64\\vc*\\bin",
-            "opencv-4.12.0-*\\build\\x64\\vc*\\bin",
-            "opencv-4.12.0-*\\opencv\\build\\x64\\vc*\\bin"
+            "opencv-4.13.0-*\\build\\x64\\vc*\\bin",
+            "opencv-4.13.0-*\\opencv\\build\\x64\\vc*\\bin"
         };
 
         return FindFile(path + postSuffix + ".dll", rootPath, filter, hints.ToArray());

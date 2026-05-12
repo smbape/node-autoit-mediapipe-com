@@ -1,40 +1,28 @@
 #pragma once
 
-#include "mediapipe/framework/formats/location_data.pb.h"
-#include <opencv2/core/cvdef.h>
-#include "autoit_bridge_common.h"
+#include "mediapipe/tasks/cc/components/containers/keypoint.h"
+#include "binding/tasks/components/containers/utils.h"
 
-namespace mediapipe::tasks::autoit::components::containers::keypoint {
-	struct CV_EXPORTS_W_SIMPLE NormalizedKeypoint {
-		CV_WRAP NormalizedKeypoint(const NormalizedKeypoint& other) = default;
-		NormalizedKeypoint& operator=(const NormalizedKeypoint& other) = default;
+namespace mediapipe::tasks::components::containers {
 
-		CV_WRAP NormalizedKeypoint(
-			const std::optional<float>& x = std::nullopt,
-			const std::optional<float>& y = std::nullopt,
-			const std::optional<std::string>& label = std::nullopt,
-			const std::optional<float>& score = std::nullopt
-		)
-			:
-			x(x),
-			y(y),
-			label(label),
-			score(score)
-		{}
+	inline bool operator==(const NormalizedKeypoint& lhs, const NormalizedKeypoint& rhs) {
+		return lhs.x == rhs.x
+			&& lhs.y == rhs.y
+			&& is_optional_equal(lhs.label, rhs.label)
+			&& is_optional_equal(lhs.score, rhs.score);
+	}
 
-		CV_WRAP std::shared_ptr<LocationData::RelativeKeypoint> to_pb2() const;
-		CV_WRAP static std::shared_ptr<NormalizedKeypoint> create_from_pb2(const LocationData::RelativeKeypoint& pb2_obj);
+	LocationData::RelativeKeypoint ConvertNormalizedKeypointToProto(NormalizedKeypoint* normalized_keypoint);
 
-		bool operator== (const NormalizedKeypoint& other) const {
-			return ::autoit::__eq__(x, other.x) &&
-				::autoit::__eq__(y, other.y) &&
-				::autoit::__eq__(label, other.label) &&
-				::autoit::__eq__(score, other.score);
+}  // namespace mediapipe::tasks::components::containers
+
+namespace std {
+	inline std::string to_string(const mediapipe::tasks::components::containers::NormalizedKeypoint& normalized_keypoint) {
+		auto proto = mediapipe::tasks::components::containers::ConvertNormalizedKeypointToProto(const_cast<mediapipe::tasks::components::containers::NormalizedKeypoint*>(&normalized_keypoint));
+		std::string output;
+		if (!google::protobuf::TextFormat::PrintToString(proto, &output)) {
+			output = "Failed to print message";
 		}
-
-		CV_PROP_RW std::optional<float> x;
-		CV_PROP_RW std::optional<float> y;
-		CV_PROP_RW std::optional<std::string> label;
-		CV_PROP_RW std::optional<float> score;
-	};
+		return output;
+	}
 }

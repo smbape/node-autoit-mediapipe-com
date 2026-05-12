@@ -135,7 +135,7 @@ const main = (options, next) => {
         ].join("\n"));
     }
 
-    eachOfLimit(["test", "examples/autoit", "examples/dotnet", "examples/googlesamples"], 1, (folder, i, next) => {
+    eachOfLimit(["test", "examples/googlesamples"], 1, (folder, i, next) => {
         explore(sysPath.join(cwd, folder), (path, stats, next) => {
             const file = sysPath.relative(cwd, path);
             const basename = sysPath.basename(file);

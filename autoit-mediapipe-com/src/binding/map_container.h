@@ -1,7 +1,7 @@
 #pragma once
 
-#include <google/protobuf/map_field.h>
-#include <google/protobuf/stubs/common.h>
+#include "google/protobuf/map_field.h"
+#include "google/protobuf/stubs/common.h"
 #include <opencv2/core/cvdef.h>
 
 #include "binding/util.h"

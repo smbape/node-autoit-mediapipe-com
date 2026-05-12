@@ -1,6 +1,6 @@
 #pragma once
 
-#include <google/protobuf/text_format.h>
+#include "google/protobuf/text_format.h"
 #include "absl/status/statusor.h"
 
 namespace google::protobuf::autoit {

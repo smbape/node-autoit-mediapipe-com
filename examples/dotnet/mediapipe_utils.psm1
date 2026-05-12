@@ -7,7 +7,7 @@ param (
 
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 3.0
-# trap { throw $Error[0] }
+# trap { Write-Host $Error.ScriptStackTrace -Foreground "DarkGray"; throw $Error[0] }
 
 <#
 .Synopsis
@@ -243,9 +243,9 @@ function _Mediapipe_FindDLL(
         "autoit-mediapipe-com\build_x64\bin\$BuildType"
         "autoit-opencv-com"
         "autoit-opencv-com\build_x64\bin\$BuildType"
-        "opencv\build\x64\vc*\bin"
-        "opencv-4.7.0-*\build\x64\vc*\bin"
-        "opencv-4.7.0-*\opencv\build\x64\vc*\bin"
+        "opencv\build\x64\vc16\bin"
+        "opencv-4.13.0-*\build\x64\vc16\bin"
+        "opencv-4.13.0-*\opencv\build\x64\vc16\bin"
     )
 
     _Mediapipe_FindFile -Path "$Path$PostSuffix.dll" -Filter $Filter -Directory $Directory -SearchPaths $aSearchPaths

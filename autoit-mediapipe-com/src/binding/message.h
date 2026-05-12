@@ -2,8 +2,9 @@
 
 #include "absl/status/status.h"
 #include "absl/status/statusor.h"
-#include <google/protobuf/message.h>
-#include <google/protobuf/util/message_differencer.h>
+#include "google/protobuf/any.pb.h"
+#include "google/protobuf/message.h"
+#include "google/protobuf/util/message_differencer.h"
 #include <opencv2/core/cvdef.h>
 
 #include "autoit_bridge.h"

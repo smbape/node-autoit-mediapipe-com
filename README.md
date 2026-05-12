@@ -19,7 +19,6 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
   - [AutoIt](#autoit)
     - [Face Detection with MediaPipe Tasks](#face-detection-with-mediapipe-tasks)
     - [Face Landmarks Detection with MediaPipe Tasks](#face-landmarks-detection-with-mediapipe-tasks)
-    - [Face Stylizer](#face-stylizer)
     - [Gesture Recognizer with MediaPipe Tasks](#gesture-recognizer-with-mediapipe-tasks)
     - [Hand Landmarks Detection with MediaPipe Tasks](#hand-landmarks-detection-with-mediapipe-tasks)
     - [Image Classifier with MediaPipe Tasks](#image-classifier-with-mediapipe-tasks)
@@ -45,9 +44,9 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
 
 ## Installation
 
-  - Download and extract [opencv-4.12.0-windows.exe](https://opencv.org/releases/) into a folder
-  - Download and extract [autoit-opencv-4.12.0-com-v2.8.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.8.0/autoit-opencv-4.12.0-com-v2.8.0.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.1/autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z) into a folder
+  - Download and extract [opencv-4.13.0-windows.exe](https://opencv.org/releases/) into a folder
+  - Download and extract [autoit-opencv-4.13.0-com-v2.9.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.9.0/autoit-opencv-4.13.0-com-v2.9.0.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.1/autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z) into a folder
 
 ## Usage
 
@@ -75,19 +74,16 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
 ; STEP 1: Import the necessary modules.
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global $mp = _Mediapipe_get()
 _AssertIsObj($mp, "Failed to load mediapipe")
@@ -282,25 +278,19 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
 ; STEP 1: Import the necessary modules.
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
-Global $solutions = _Mediapipe_ObjCreate("mediapipe.solutions")
-_AssertIsObj($solutions, "Failed to load mediapipe.solutions")
-
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
+Global $mp = _Mediapipe_get()
+_AssertIsObj($mp, "Failed to load mediapipe")
 
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
@@ -308,8 +298,11 @@ _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 
-Global $mp = _Mediapipe_get()
-_AssertIsObj($mp, "Failed to load mediapipe")
+Global $drawing_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_utils")
+_AssertIsObj($drawing_utils, "Failed to load mediapipe.tasks.autoit.vision.drawing_utils")
+
+Global $drawing_styles = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_styles")
+_AssertIsObj($drawing_styles, "Failed to load mediapipe.tasks.autoit.vision.drawing_styles")
 
 Global $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
@@ -363,168 +356,39 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 	Local $face_landmarks_list = $detection_result.face_landmarks
 	Local $annotated_image = $rgb_image.copy()
 
-	Local $face_landmarks_proto
-
 	; Loop through the detected faces to visualize.
 	For $face_landmarks In $face_landmarks_list
 
 		; Draw the face landmarks.
-		$face_landmarks_proto = $landmark_pb2.NormalizedLandmarkList()
 
-		For $landmark In $face_landmarks
-			$face_landmarks_proto.landmark.append($landmark_pb2.NormalizedLandmark(_Mediapipe_Params("x", $landmark.x, "y", $landmark.y, "z", $landmark.z)))
-		Next
-
-		$solutions.drawing_utils.draw_landmarks(_Mediapipe_Params( _
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
-				"landmark_list", $face_landmarks_proto, _
-				"connections", $solutions.face_mesh.FACEMESH_TESSELATION, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_TESSELATION, _
 				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_tesselation_style($scale)))
-		$solutions.drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_tesselation_style($scale)))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
-				"landmark_list", $face_landmarks_proto, _
-				"connections", $solutions.face_mesh.FACEMESH_CONTOURS, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_CONTOURS, _
 				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_contours_style(1, $scale)))
-		$solutions.drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_contours_style(1, $scale)))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
-				"landmark_list", $face_landmarks_proto, _
-				"connections", $solutions.face_mesh.FACEMESH_IRISES, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_LEFT_IRIS, _
 				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_RIGHT_IRIS, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
 	Next
 
 	Return $annotated_image
 EndFunc   ;==>draw_landmarks_on_image
-
-Func resize_and_show($image, $title = Default, $show = Default)
-	If $title == Default Then $title = ""
-	If $show == Default Then $show = True
-
-	Local Const $DESIRED_HEIGHT = 480
-	Local Const $DESIRED_WIDTH = 480
-	Local $w = $image.width
-	Local $h = $image.height
-
-	If $h < $w Then
-		$h = $h / ($w / $DESIRED_WIDTH)
-		$w = $DESIRED_WIDTH
-	Else
-		$w = $w / ($h / $DESIRED_HEIGHT)
-		$h = $DESIRED_HEIGHT
-	EndIf
-
-	Local $interpolation = ($DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height) ? $CV_INTER_CUBIC : $CV_INTER_AREA
-
-	If $show Then
-		Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
-		$cv.imshow($title, $img.convertToShow())
-	EndIf
-
-	Return $w / $image.width
-EndFunc   ;==>resize_and_show
-
-Func _OnAutoItExit()
-	_OpenCV_Close()
-	_Mediapipe_Close()
-EndFunc   ;==>_OnAutoItExit
-
-Func _AssertIsObj($vVal, $sMsg)
-	If Not IsObj($vVal) Then
-		ConsoleWriteError($sMsg & @CRLF)
-		Exit 0x7FFFFFFF
-	EndIf
-EndFunc   ;==>_AssertIsObj
-
-```
-
-#### Face Stylizer
-
-```autoit
-#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_UseX64=y
-#AutoIt3Wrapper_Change2CUI=y
-#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6
-#AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
-#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
-
-;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_stylizer/python/face_stylizer.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_stylizer/python/face_stylizer.ipynb
-
-;~ Title: Face Stylizer
-
-#include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
-#include "autoit-opencv-com\udf\opencv_udf_utils.au3"
-
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
-OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
-
-; Where to download data files
-Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
-
-; STEP 1: Import the necessary modules.
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
-
-Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
-_AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
-
-Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
-_AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
-
-Global $mp = _Mediapipe_get()
-_AssertIsObj($mp, "Failed to load mediapipe")
-
-Global $cv = _OpenCV_get()
-_AssertIsObj($cv, "Failed to load opencv")
-
-Main()
-
-Func Main()
-	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\business-person.png"
-	Local $_IMAGE_URL = "https://storage.googleapis.com/mediapipe-assets/business-person.png"
-	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\face_stylizer_color_sketch.task"
-	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-models/face_stylizer/blaze_face_stylizer/float32/latest/face_stylizer_color_sketch.task"
-
-	Local $url, $file_path
-
-	Local $sample_files[] = [ _
-			_Mediapipe_Tuple($_IMAGE_FILE, $_IMAGE_URL), _
-			_Mediapipe_Tuple($_MODEL_FILE, $_MODEL_URL) _
-			]
-	For $config In $sample_files
-		$file_path = $config[0]
-		$url = $config[1]
-		If Not FileExists($file_path) Then
-			$download_utils.download($url, $file_path)
-		EndIf
-	Next
-
-	; Preview the images.
-	resize_and_show($cv.imread($_IMAGE_FILE), "face_stylizer: preview")
-
-	; STEP 2: Create an FaceLandmarker object.
-	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
-	Local $options = $vision.FaceStylizerOptions(_Mediapipe_Params("base_options", $base_options))
-	Local $stylizer = $vision.FaceStylizer.create_from_options($options)
-
-	; STEP 3: Load the input image.
-	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
-
-	; STEP 4: Retrieve the stylized image
-	Local $stylized_image = $stylizer.stylize($image)
-
-	; STEP 5: Show the stylized image
-	Local $rgb_stylized_image = $cv.cvtColor($stylized_image.mat_view(), $CV_COLOR_RGB2BGR)
-	resize_and_show($rgb_stylized_image, "face_stylizer: stylized")
-	$cv.waitKey()
-EndFunc   ;==>Main
 
 Func resize_and_show($image, $title = Default, $show = Default)
 	If $title == Default Then $title = ""
@@ -586,18 +450,15 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -606,18 +467,15 @@ _AssertIsObj($mp, "Failed to load mediapipe")
 Global $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
 
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
-
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
 
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 
-Global $mp_hands = $mp.solutions.hands
-Global $mp_drawing = $mp.solutions.drawing_utils
-Global $mp_drawing_styles = $mp.solutions.drawing_styles
+Global $mp_hands = $mp.tasks.vision.HandLandmarksConnections
+Global $mp_drawing = $mp.tasks.vision.drawing_utils
+Global $mp_drawing_styles = $mp.tasks.vision.drawing_styles
 
 Main()
 
@@ -681,17 +539,10 @@ Func display_image_with_gestures_and_hand_landmarks($image, $gesture, $hands_lan
 	; Compute the scale to make drawn elements visible when the image is resized for display
 	Local $scale = 1 / resize_and_show($annotated_image, Default, False)
 
-	Local $hand_landmarks_proto
 	For $hand_landmarks In $hands_landmarks
-		$hand_landmarks_proto = $landmark_pb2.NormalizedLandmarkList()
-
-		For $landmark In $hand_landmarks
-			$hand_landmarks_proto.landmark.append($landmark_pb2.NormalizedLandmark(_Mediapipe_Params("x", $landmark.x, "y", $landmark.y, "z", $landmark.z)))
-		Next
-
 		$mp_drawing.draw_landmarks( _
 				$annotated_image, _
-				$hand_landmarks_proto, _
+				$hand_landmarks, _
 				$mp_hands.HAND_CONNECTIONS, _
 				$mp_drawing_styles.get_default_hand_landmarks_style($scale), _
 				$mp_drawing_styles.get_default_hand_connections_style($scale))
@@ -760,18 +611,15 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -780,21 +628,15 @@ _AssertIsObj($mp, "Failed to load mediapipe")
 Global $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
 
-Global $solutions = _Mediapipe_ObjCreate("mediapipe.solutions")
-_AssertIsObj($solutions, "Failed to load mediapipe.solutions")
-
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
-
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
 
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 
-Global $mp_hands = $mp.solutions.hands
-Global $mp_drawing = $mp.solutions.drawing_utils
-Global $mp_drawing_styles = $mp.solutions.drawing_styles
+Global $mp_hands = $mp.tasks.vision.HandLandmarksConnections
+Global $mp_drawing = $mp.tasks.vision.drawing_utils
+Global $mp_drawing_styles = $mp.tasks.vision.drawing_styles
 
 Main()
 
@@ -851,7 +693,7 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 	Local $width = $annotated_image.width
 	Local $height = $annotated_image.height
 
-	Local $hand_landmarks, $handedness, $hand_landmarks_proto
+	Local $hand_landmarks, $handedness
 	Local $min_x, $min_y, $text_x, $text_y
 
 	; Loop through the detected hands to visualize.
@@ -862,19 +704,13 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 		$min_y = 1
 
 		; Draw the hand landmarks.
-		$hand_landmarks_proto = $landmark_pb2.NormalizedLandmarkList()
-		For $landmark In $hand_landmarks
-			$hand_landmarks_proto.landmark.append($landmark_pb2.NormalizedLandmark(_Mediapipe_Params("x", $landmark.x, "y", $landmark.y, "z", $landmark.z)))
-			If $landmark.x < $min_x Then $min_x = $landmark.x
-			If $landmark.y < $min_y Then $min_y = $landmark.y
-		Next
 
-		$solutions.drawing_utils.draw_landmarks( _
+		$mp_drawing.draw_landmarks( _
 				$annotated_image, _
-				$hand_landmarks_proto, _
-				$solutions.hands.HAND_CONNECTIONS, _
-				$solutions.drawing_styles.get_default_hand_landmarks_style($scale), _
-				$solutions.drawing_styles.get_default_hand_connections_style($scale))
+				$hand_landmarks, _
+				$mp_hands.HAND_CONNECTIONS, _
+				$mp_drawing_styles.get_default_hand_landmarks_style($scale), _
+				$mp_drawing_styles.get_default_hand_connections_style($scale))
 
 		; Get the top left corner of the detected hand's bounding box.
 		$text_x = $min_x * $width
@@ -949,18 +785,15 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -1077,18 +910,15 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -1212,18 +1042,15 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -1366,18 +1193,15 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -1599,18 +1423,15 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
 ; STEP 1: Import the necessary modules.
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
@@ -1686,18 +1507,15 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -1859,12 +1677,9 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-_OpenCV_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
@@ -1876,17 +1691,17 @@ _AssertIsObj($mp, "Failed to load mediapipe")
 Global $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
-
-Global $solutions = _Mediapipe_ObjCreate("mediapipe.solutions")
-_AssertIsObj($solutions, "Failed to load mediapipe.solutions")
-
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
+
+Global $drawing_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_utils")
+_AssertIsObj($drawing_utils, "Failed to load mediapipe.tasks.autoit.vision.drawing_utils")
+
+Global $drawing_styles = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_styles")
+_AssertIsObj($drawing_styles, "Failed to load mediapipe.tasks.autoit.vision.drawing_styles")
 
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
@@ -1945,23 +1760,19 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 
 	Local $pose_landmarks_list = $detection_result.pose_landmarks
 	Local $annotated_image = $rgb_image
-	Local $pose_landmarks_proto
+	Local $pose_landmark_style = $drawing_styles.get_default_pose_landmarks_style($scale)
+	Local $pose_connection_style = $drawing_utils.DrawingSpec(_Mediapipe_Params("color", _Mediapipe_Tuple(0, 255, 0), "thickness", 2))
 
 	; Loop through the detected poses to visualize.
 	For $pose_landmarks In $pose_landmarks_list
 
 		; Draw the pose landmarks.
-		$pose_landmarks_proto = $landmark_pb2.NormalizedLandmarkList()
-
-		For $landmark In $pose_landmarks
-			$pose_landmarks_proto.landmark.append($landmark_pb2.NormalizedLandmark(_Mediapipe_Params("x", $landmark.x, "y", $landmark.y, "z", $landmark.z)))
-		Next
-
-		$solutions.drawing_utils.draw_landmarks( _
-				$annotated_image, _
-				$pose_landmarks_proto, _
-				$solutions.pose.POSE_CONNECTIONS, _
-				$solutions.drawing_styles.get_default_pose_landmarks_style($scale))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $pose_landmarks, _
+				"connections", $vision.PoseLandmarksConnections.POSE_LANDMARKS, _
+				"landmark_drawing_spec", $pose_landmark_style, _
+				"connection_drawing_spec", $pose_connection_style))
 	Next
 
 	Return $annotated_image
@@ -2026,17 +1837,14 @@ EndFunc   ;==>_AssertIsObj
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -2104,17 +1912,14 @@ EndFunc   ;==>_AssertIsObj
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
+_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -2267,8 +2072,8 @@ function Example() {
     $cv.destroyAllWindows()
 }
 
-[MediapipeComInterop]::DllOpen("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.26-4120.dll")
-[OpenCvComInterop]::DllOpen("opencv-4.12.0-windows\opencv\build\x64\vc16\bin\opencv_world4120.dll", "autoit-opencv-com\autoit_opencv_com4120.dll")
+[MediapipeComInterop]::DllOpen("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+[OpenCvComInterop]::DllOpen("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
 
 $resource_util = [MediapipeComInterop]::ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
 $resource_util.set_resource_dir("autoit-mediapipe-com")
@@ -2284,7 +2089,7 @@ Example
 
 ### csharp
 
-Open `x64 Native Tools Command Prompt for VS 2022`
+Open `x64 Native Tools Command Prompt for VS`
 
 
 #### Runtime example
@@ -2387,13 +2192,13 @@ public static class Test
     static void Main(String[] args)
     {
         OpenCvComInterop.DllOpen(
-            "opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll",
-            "autoit-opencv-com\\autoit_opencv_com4120.dll"
+            "opencv-4.13.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4130.dll",
+            "autoit-opencv-com\\autoit_opencv_com4130.dll"
         );
 
         MediapipeComInterop.DllOpen(
-            "opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.26-4120.dll"
+            "opencv-4.13.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4130.dll",
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.35-4130.dll"
         );
 
         var resourceDir = MediapipeComInterop.FindResourceDir();
@@ -2508,13 +2313,13 @@ public static class Test
     static void Main(String[] args)
     {
         OpenCvComInterop.DllOpen(
-            "opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll",
-            "autoit-opencv-com\\autoit_opencv_com4120.dll"
+            "opencv-4.13.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4130.dll",
+            "autoit-opencv-com\\autoit_opencv_com4130.dll"
         );
 
         MediapipeComInterop.DllOpen(
-            "opencv-4.12.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4120.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.26-4120.dll"
+            "opencv-4.13.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4130.dll",
+            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.35-4130.dll"
         );
 
         // To make registration free works with compile time COM classes
@@ -2554,39 +2359,39 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.1/autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z' -o autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z
+# download autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.1/autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z' -o autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z
 
-# extract the content of autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z -aoa -oautoit-mediapipe-com
 
-# download autoit-opencv-4.12.0-com-v2.8.0.7z
-curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.8.0/autoit-opencv-4.12.0-com-v2.8.0.7z' -o autoit-opencv-4.12.0-com-v2.8.0.7z
+# download autoit-opencv-4.13.0-com-v2.9.0.7z
+curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.9.0/autoit-opencv-4.13.0-com-v2.9.0.7z' -o autoit-opencv-4.13.0-com-v2.9.0.7z
 
-# extract the content of autoit-opencv-4.12.0-com-v2.8.0.7z into a folder named autoit-opencv-com
-7z x autoit-opencv-4.12.0-com-v2.8.0.7z -aoa -oautoit-opencv-com
+# extract the content of autoit-opencv-4.13.0-com-v2.9.0.7z into a folder named autoit-opencv-com
+7z x autoit-opencv-4.13.0-com-v2.9.0.7z -aoa -oautoit-opencv-com
 
-# download opencv-4.12.0-windows.exe
-curl -L 'https://github.com/opencv/opencv/releases/download/4.12.0/opencv-4.12.0-windows.exe' -o opencv-4.12.0-windows.exe
+# download opencv-4.13.0-windows.exe
+curl -L 'https://github.com/opencv/opencv/releases/download/4.13.0/opencv-4.13.0-windows.exe' -o opencv-4.13.0-windows.exe
 
-# extract the content of opencv-4.12.0-windows.exe into a folder named opencv-4.12.0-windows
-./opencv-4.12.0-windows.exe -oopencv-4.12.0-windows -y
+# extract the content of opencv-4.13.0-windows.exe into a folder named opencv-4.13.0-windows
+./opencv-4.13.0-windows.exe -oopencv-4.13.0-windows -y
 
-# download autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.5.1.zip' -o autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1-src.zip
+# download autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.5.1.zip' -o autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1-src.zip
-7z x autoit-mediapipe-0.10.26-opencv-4.12.0-com-v0.5.1-src.zip -aoa 'node-autoit-mediapipe-com-0.5.1\examples'
+# extract the examples folder of autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1-src.zip
+7z x autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1-src.zip -aoa 'node-autoit-mediapipe-com-0.5.1\examples'
 cp -rf node-autoit-mediapipe-com-0.5.1/* ./
 rm -rf node-autoit-mediapipe-com-0.5.1
 
-# download mediapipe-0.10.26-src.tar.gz
-curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.26.tar.gz' -o mediapipe-0.10.26-src.tar.gz
+# download mediapipe-0.10.35-src.tar.gz
+curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.35.tar.gz' -o mediapipe-0.10.35-src.tar.gz
 
-# extract the mediapipe/tasks/testdata folder of mediapipe-0.10.26-src.tar.gz
-tar xzf mediapipe-0.10.26-src.tar.gz 'mediapipe-0.10.26/mediapipe/tasks/testdata'
-cp -rf mediapipe-0.10.26/* ./
-rm -rf mediapipe-0.10.26
+# extract the mediapipe/tasks/testdata folder of mediapipe-0.10.35-src.tar.gz
+tar xzf mediapipe-0.10.35-src.tar.gz 'mediapipe-0.10.35/mediapipe/tasks/testdata'
+cp -rf mediapipe-0.10.35/* ./
+rm -rf mediapipe-0.10.35
 
 ```
 

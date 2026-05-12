@@ -6,8 +6,8 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_detector/python/face_detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_detector/python/face_detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_detector/python/face_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_detector/python/face_detector.ipynb
 
 #include <GDIPlus.au3>
 #include <GUIConstantsEx.au3>
@@ -15,8 +15,8 @@
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
 _GDIPlus_Startup()
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -83,7 +83,7 @@ Func Main()
 	$sImage = ControlGetText($FormGUI, "", $InputImage)
 	If $sImage == "" Then Return
 
-	; STEP 2: Create an FaceDetector object.
+	; STEP 2: Create a FaceDetector object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $vision.FaceDetector.create_from_options($options)
@@ -107,11 +107,8 @@ Func Main()
 EndFunc   ;==>Main
 
 Func Setup()
-	; Tell mediapipe where to look its resource files
-	_Mediapipe_SetResourceDir()
-
-	Local $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-	_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+	Local $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+	_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\brother-sister-girl-family-boy-977170.jpg"
 	Local $_IMAGE_URL = "https://i.imgur.com/Vu2Nqwb.jpg"

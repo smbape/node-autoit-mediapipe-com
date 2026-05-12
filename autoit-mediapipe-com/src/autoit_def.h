@@ -1,7 +1,7 @@
 #pragma once
 
 #define AUTOIT_LIB_NAME mediapipe
-#define AUTOIT_LIB_VERSION 0.10.26
+#define AUTOIT_LIB_VERSION 0.10.35
 #define AUTOIT_PTR std::shared_ptr
 #define AUTOIT_MAKE_PTR std::make_shared
 

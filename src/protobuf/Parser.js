@@ -294,7 +294,7 @@ class Parser {
 
                     fields.push([`${ cpptype }*`, field_name, "", [
                         `/R=mutable_${ field_name }`,
-                        `/WExpr=MP_RETURN_HR_IF_ERROR(${ cmessage }::CopyFrom(${ self_get(`mutable_${ field_name }()`) }, static_cast<\${propccotype}*>($value)->__self->get()))`,
+                        `/WExpr=MP_RETURN_HR_IF_ERROR(${ cmessage }::CopyFrom(${ self_get(`mutable_${ field_name }()`) }, static_cast<TypeToImplType<${ cpptype }>::type*>($value)->__self->get()))`,
                     ]]);
                 }
 

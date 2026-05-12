@@ -12,7 +12,7 @@ inline const HRESULT autoit_from(const absl::Status& status, const Out& out_val)
 
 template<typename In, typename Out>
 inline const HRESULT autoit_from(const absl::StatusOr<In>& status_or, Out& out_val) {
-	if (!status_or.status().ok()) {
+	if (!status_or.ok()) {
 		return autoit_from(status_or.status(), static_cast<VARIANT*>(nullptr));
 	}
 	return autoit_from(status_or.value(), out_val);

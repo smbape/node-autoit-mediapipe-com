@@ -1,61 +1,55 @@
 #pragma once
 
-#include "mediapipe/framework/formats/classification.pb.h"
-#include "mediapipe/tasks/cc/components/containers/proto/classifications.pb.h"
+#include "mediapipe/tasks/cc/components/containers/classification_result.h"
 #include "binding/tasks/components/containers/category.h"
+#include "binding/tasks/components/containers/utils.h"
 
-namespace mediapipe::tasks::autoit::components::containers::classification_result {
-	struct CV_EXPORTS_W_SIMPLE Classifications {
-		CV_WRAP Classifications(const Classifications& other) = default;
-		Classifications& operator=(const Classifications& other) = default;
+namespace mediapipe::tasks::components::containers {
+	inline bool operator==(const Classifications& lhs, const Classifications& rhs) {
+		return lhs.categories == rhs.categories
+			&& lhs.head_index == rhs.head_index
+			&& is_optional_equal(lhs.head_name, rhs.head_name);
+	}
 
-		CV_WRAP Classifications(
-			const std::shared_ptr<std::vector<std::shared_ptr<category::Category>>>& categories = std::make_shared<std::vector<std::shared_ptr<category::Category>>>(),
-			int head_index = -1,
-			std::string head_name = std::string()
-		)
-			:
-			categories(categories),
-			head_index(head_index),
-			head_name(head_name)
-		{}
+	proto::Classifications ConvertClassificationsToProto(Classifications* classifications);
 
-		CV_WRAP std::shared_ptr<mediapipe::tasks::components::containers::proto::Classifications> to_pb2() const;
-		CV_WRAP static std::shared_ptr<Classifications> create_from_pb2(const mediapipe::tasks::components::containers::proto::Classifications& pb2_obj);
+	proto::ClassificationResult ConvertClassificationResultToProto(ClassificationResult* classification_result);
 
-		bool operator== (const Classifications& other) const {
-			return ::autoit::__eq__(categories, other.categories) &&
-				::autoit::__eq__(head_index, other.head_index) &&
-				::autoit::__eq__(head_name, other.head_name);
+	inline bool operator==(const ClassificationResult& lhs, const ClassificationResult& rhs) {
+		return lhs.classifications == rhs.classifications
+			&& is_optional_equal(lhs.timestamp_ms, rhs.timestamp_ms);
+	}
+
+	void CppConvertToClassificationsList(const std::vector<std::vector<Category>>& classifications_result, std::vector<Classifications>& classifications_list, HRESULT& hr);
+
+	void CppConvertToClassificationsList(VARIANT* in_val, std::vector<Classifications>& classifications_list, HRESULT& hr);
+
+	std::vector<std::vector<Category>> CppConvertToClassificationsResult(std::vector<Classifications>& classifications_list);
+
+	void CppConvertToClassificationsList(const std::optional<std::vector<std::vector<Category>>>& classifications_result, std::optional<std::vector<Classifications>>& classifications_list, HRESULT& hr);
+
+	void CppConvertToClassificationsList(VARIANT* in_val, std::optional<std::vector<Classifications>>& classifications_list, HRESULT& hr);
+
+	std::optional<std::vector<std::vector<Category>>> CppConvertToClassificationsResult(std::optional<std::vector<Classifications>>& classifications_list);
+
+}  // namespace mediapipe::tasks::components::containers
+
+namespace std {
+	inline std::string to_string(const mediapipe::tasks::components::containers::Classifications& classifications) {
+		auto proto = mediapipe::tasks::components::containers::ConvertClassificationsToProto(const_cast<mediapipe::tasks::components::containers::Classifications*>(&classifications));
+		std::string output;
+		if (!google::protobuf::TextFormat::PrintToString(proto, &output)) {
+			output = "Failed to print message";
 		}
+		return output;
+	}
 
-		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<category::Category>>> categories;
-		CV_PROP_RW int head_index;
-		CV_PROP_RW std::string head_name;
-	};
-
-	struct CV_EXPORTS_W_SIMPLE ClassificationResult {
-		CV_WRAP ClassificationResult(const ClassificationResult& other) = default;
-		ClassificationResult& operator=(const ClassificationResult& other) = default;
-
-		CV_WRAP ClassificationResult(
-			const std::shared_ptr<std::vector<std::shared_ptr<Classifications>>>& classifications = std::make_shared<std::vector<std::shared_ptr<Classifications>>>(),
-			int64_t timestamp_ms = 0
-		)
-			:
-			classifications(classifications),
-			timestamp_ms(timestamp_ms)
-		{}
-
-		CV_WRAP std::shared_ptr<mediapipe::tasks::components::containers::proto::ClassificationResult> to_pb2() const;
-		CV_WRAP static std::shared_ptr<ClassificationResult> create_from_pb2(const mediapipe::tasks::components::containers::proto::ClassificationResult& pb2_obj);
-
-		bool operator== (const ClassificationResult& other) const {
-			return ::autoit::__eq__(classifications, other.classifications) &&
-				::autoit::__eq__(timestamp_ms, other.timestamp_ms);
+	inline std::string to_string(const mediapipe::tasks::components::containers::ClassificationResult& classification_result) {
+		auto proto = mediapipe::tasks::components::containers::ConvertClassificationResultToProto(const_cast<mediapipe::tasks::components::containers::ClassificationResult*>(&classification_result));
+		std::string output;
+		if (!google::protobuf::TextFormat::PrintToString(proto, &output)) {
+			output = "Failed to print message";
 		}
-
-		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<Classifications>>> classifications;
-		CV_PROP_RW int64_t timestamp_ms;
-	};
+		return output;
+	}
 }

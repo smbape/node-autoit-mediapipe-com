@@ -1,45 +1,17 @@
 diff --git a/.bazelrc b/.bazelrc
-index 45856764d..852afb45f 100644
+index 5965f963f..e3d7d29a5 100644
 --- a/.bazelrc
 +++ b/.bazelrc
-@@ -12,22 +12,22 @@ build --enable_platform_specific_config
- test --test_env="GTEST_INSTALL_FAILURE_SIGNAL_HANDLER=1"
- 
- # Linux
--build:linux --cxxopt=-std=c++17
--build:linux --host_cxxopt=-std=c++17
-+build:linux --cxxopt=-std=c++20
-+build:linux --host_cxxopt=-std=c++20
- build:linux --copt=-w
- build:linux --define=xnn_enable_avx512amx=false
+@@ -30,7 +30,9 @@ build:linux --define=xnn_enable_avx512amx=false
  
  # windows
--build:windows --cxxopt=/std:c++17
--build:windows --host_cxxopt=/std:c++17
-+build:windows --cxxopt=/std:c++20
-+build:windows --host_cxxopt=/std:c++20
+ build:windows --cxxopt=/std:c++20
++build:windows --cxxopt=/Zc:preprocessor
+ build:windows --host_cxxopt=/std:c++20
++build:windows --host_cxxopt=/Zc:preprocessor
  build:windows --copt=/w
  # For using M_* math constants on Windows with MSVC.
  build:windows --copt=/D_USE_MATH_DEFINES
- build:windows --host_copt=/D_USE_MATH_DEFINES
- 
- # macOS
--build:macos --cxxopt=-std=c++17
--build:macos --host_cxxopt=-std=c++17
-+build:macos --cxxopt=-std=c++20
-+build:macos --host_cxxopt=-std=c++20
- build:macos --copt=-w
- build:macos --define=xnn_enable_avx512amx=false
- 
-@@ -35,7 +35,7 @@ build:macos --define=xnn_enable_avx512amx=false
- build --apple_platform_type=macos
- 
- # Compile ObjC++ files with C++17
--build --per_file_copt=.*\.mm\$@-std=c++17
-+build --per_file_copt=.*\.mm\$@-std=c++20
- 
- # Allow debugging with XCODE
- build --apple_generate_dsym
 diff --git a/.gitignore b/.gitignore
 index 525f0878e..f1b38dabd 100644
 --- a/.gitignore
@@ -50,7 +22,7 @@ index 525f0878e..f1b38dabd 100644
  .user.bazelrc
 +@MEDIAPIPE_ADDON_PACKAGE@
 diff --git a/WORKSPACE b/WORKSPACE
-index 711e16b5b..310ee2645 100644
+index 1f57dd8c7..7aacb596c 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
 @@ -25,6 +25,11 @@ load("@bazel_skylib//lib:versions.bzl", "versions")
@@ -65,8 +37,8 @@ index 711e16b5b..310ee2645 100644
  # ABSL on 2023-10-18
  http_archive(
      name = "com_google_absl",
-@@ -300,6 +305,13 @@ http_archive(
- # pthreadpool is a dependency of XNNPACK, from 2025-04-02
+@@ -320,6 +325,13 @@ http_archive(
+ # pthreadpool is a dependency of XNNPACK, from 2025-09-08
  http_archive(
      name = "pthreadpool",
 +    patch_args = [
@@ -77,9 +49,9 @@ index 711e16b5b..310ee2645 100644
 +        "@//third_party:pthreadpool_build_fixes.diff",
 +    ],
      # `curl -L <url> | shasum -a 256`
-     sha256 = "745e56516d6a58d183eb33d9017732d87cff43ce9f78908906f9faa52633e421",
-     strip_prefix = "pthreadpool-b92447772365661680f486e39a91dfe6675adafc",
-@@ -561,14 +573,16 @@ http_archive(
+     sha256 = "d5a78b017839ee0474e6aef6e21742b03f641b260f29faf9538a0a6b8fae0704",
+     strip_prefix = "pthreadpool-995229919303dd98c0f1b3b585b54527067ef893",
+@@ -606,14 +618,16 @@ http_archive(
      url = "https://github.com/ceres-solver/ceres-solver/archive/123fba61cf2611a3c8bddc9d91416db26b10b558.zip",
  )
  
@@ -98,7 +70,7 @@ index 711e16b5b..310ee2645 100644
      name = "linux_opencv",
      build_file = "@//third_party:opencv_linux.BUILD",
      path = "/usr",
-@@ -580,7 +594,8 @@ new_local_repository(
+@@ -625,7 +639,8 @@ new_local_repository(
      path = "/usr",
  )
  
@@ -108,7 +80,7 @@ index 711e16b5b..310ee2645 100644
      name = "macos_opencv",
      build_file = "@//third_party:opencv_macos.BUILD",
      # For local MacOS builds, the path should point to an opencv@3 installation.
-@@ -595,13 +610,15 @@ new_local_repository(
+@@ -640,7 +655,8 @@ new_local_repository(
      path = "/usr/local/opt/ffmpeg",
  )
  
@@ -118,6 +90,8 @@ index 711e16b5b..310ee2645 100644
      name = "windows_opencv",
      build_file = "@//third_party:opencv_windows.BUILD",
      path = "C:\\opencv\\build",
+@@ -653,7 +669,8 @@ new_local_repository(
+     path = ".",
  )
  
 -http_archive(
@@ -126,7 +100,7 @@ index 711e16b5b..310ee2645 100644
      name = "android_opencv",
      build_file = "@//third_party:opencv_android.BUILD",
      strip_prefix = "OpenCV-android-sdk",
-@@ -613,7 +630,8 @@ http_archive(
+@@ -665,7 +682,8 @@ http_archive(
  # trigger duplicate symbol errors in the linking stage of building a mediapipe ios app.
  # To get a higher version of OpenCV for iOS, opencv2.framework needs to be built from source with
  # '-DBUILD_PROTOBUF=OFF -DBUILD_opencv_dnn=OFF'.
@@ -136,6 +110,54 @@ index 711e16b5b..310ee2645 100644
      name = "ios_opencv",
      build_file = "@//third_party:opencv_ios.BUILD",
      sha256 = "7dd536d06f59e6e1156b546bd581523d8df92ce83440002885ec5abc06558de2",
+diff --git a/mediapipe/framework/api3/calculator_context.h b/mediapipe/framework/api3/calculator_context.h
+index 2137be38f..389021700 100644
+--- a/mediapipe/framework/api3/calculator_context.h
++++ b/mediapipe/framework/api3/calculator_context.h
+@@ -431,8 +431,7 @@ auto VisitPacketOrDie(F&& visitor, const mediapipe::Packet& packet) {
+   return std::forward<F>(visitor)(packet.Get<T>());
+ }
+ 
+-template <typename T, typename U, typename... Rest, int&... DoNotSpecify,
+-          typename F>
++template <typename T, typename U, typename... Rest, typename F>
+ auto VisitPacketOrDie(F&& visitor, const mediapipe::Packet& packet) {
+   if (packet.ValidateAsType<T>().ok()) {
+     return std::forward<F>(visitor)(packet.Get<T>());
+@@ -447,8 +446,7 @@ auto VisitPacketAsPacketOrDie(F&& visitor, const mediapipe::Packet& packet) {
+   return std::forward<F>(visitor)(WrapLegacyPacket<T>(packet).value());
+ }
+ 
+-template <typename T, typename U, typename... Rest, int&... DoNotSpecify,
+-          typename F>
++template <typename T, typename U, typename... Rest, typename F>
+ auto VisitPacketAsPacketOrDie(F&& visitor, const mediapipe::Packet& packet) {
+   if (packet.ValidateAsType<T>().ok()) {
+     return std::forward<F>(visitor)(WrapLegacyPacket<T>(packet).value());
+diff --git a/mediapipe/framework/api3/graph.h b/mediapipe/framework/api3/graph.h
+index c6530df74..84b7126ce 100644
+--- a/mediapipe/framework/api3/graph.h
++++ b/mediapipe/framework/api3/graph.h
+@@ -131,6 +131,19 @@ class GraphNode;
+ template <template <typename, typename...> typename ContractT, typename... Ts>
+ class LegacyPacketGenerator;
+ 
++// In API3, `Subgraph::Expand` receives `GenericGraph` and `SubgraphContext` in
++// order to expand the subgraph. Where `SubgraphContext` object provides access
++// to inputs, outputs, options, services, resources and original node.
++//
++// Inputs, outputs and options are accessed as member variables inherited from
++// contract definition, for example:
++// ```
++//   Stream<int> in = sc.in.Get();
++//   const auto& options = sc.options.Get();
++// ```
++template <typename NodeT>
++class SubgraphContext;
++
+ namespace internal_graph {
+ 
+ class GraphNodeBase {
 diff --git a/mediapipe/framework/legacy_calculator_support.cc b/mediapipe/framework/legacy_calculator_support.cc
 index 13fd714ac..3bfb373e3 100644
 --- a/mediapipe/framework/legacy_calculator_support.cc
@@ -244,7 +266,7 @@ index 53a0e0f47..a18604ab8 100644
  
  }  // namespace mediapipe
 diff --git a/mediapipe/python/BUILD b/mediapipe/python/BUILD
-index 5837be764..9872325b5 100644
+index 736081f12..19a938292 100644
 --- a/mediapipe/python/BUILD
 +++ b/mediapipe/python/BUILD
 @@ -21,18 +21,6 @@ package(default_visibility = ["//visibility:public"])
@@ -266,7 +288,7 @@ index 5837be764..9872325b5 100644
      module_name = "_framework_bindings",
      deps = [
          ":builtin_calculators",
-@@ -60,12 +48,15 @@ pybind_extension(
+@@ -59,12 +47,15 @@ pybind_extension(
          "//mediapipe/framework/formats:rect_registration",
          "//mediapipe/modules/objectron/calculators:annotation_registration",
          "//mediapipe/tasks/cc/vision/face_geometry/proto:face_geometry_registration",
@@ -294,34 +316,61 @@ index 665e70eb2..8adc4a1b2 100644
          "//mediapipe/python/...",
          "//mediapipe/tasks/...",
      ],
-diff --git a/mediapipe/tasks/cc/core/task_api_factory.h b/mediapipe/tasks/cc/core/task_api_factory.h
-index a11a23fcf..dbb5fe6ca 100644
---- a/mediapipe/tasks/cc/core/task_api_factory.h
-+++ b/mediapipe/tasks/cc/core/task_api_factory.h
-@@ -76,15 +76,17 @@ class TaskApiFactory {
-         found_task_subgraph = true;
-       }
-     }
-+#if !MEDIAPIPE_DISABLE_GPU
-     MP_ASSIGN_OR_RETURN(
-         auto runner,
--#if !MEDIAPIPE_DISABLE_GPU
-         core::TaskRunner::Create(std::move(graph_config), std::move(resolver),
-                                  std::move(packets_callback),
-                                  std::move(default_executor),
-                                  std::move(input_side_packets),
-                                  /*resources=*/nullptr, std::move(error_fn)));
- #else
-+    MP_ASSIGN_OR_RETURN(
-+        auto runner,
-         core::TaskRunner::Create(
-             std::move(graph_config), std::move(resolver),
-             std::move(packets_callback), std::move(default_executor),
+diff --git a/mediapipe/tasks/cc/components/containers/detection_result.cc b/mediapipe/tasks/cc/components/containers/detection_result.cc
+index 1be7950fd..ae99a5600 100644
+--- a/mediapipe/tasks/cc/components/containers/detection_result.cc
++++ b/mediapipe/tasks/cc/components/containers/detection_result.cc
+@@ -43,7 +43,7 @@ Detection ConvertToDetection(const mediapipe::Detection& detection_proto) {
+              ? detection_proto.display_name(idx)
+              : ""});
+   }
+-  Rect bounding_box;
++  Rect bounding_box{0, 0, 0, 0};
+   if (detection_proto.location_data().has_bounding_box()) {
+     mediapipe::LocationData::BoundingBox bounding_box_proto =
+         detection_proto.location_data().bounding_box();
+diff --git a/mediapipe/tasks/cc/core/base_options.h b/mediapipe/tasks/cc/core/base_options.h
+index d09ffd022..bc0194657 100644
+--- a/mediapipe/tasks/cc/core/base_options.h
++++ b/mediapipe/tasks/cc/core/base_options.h
+@@ -121,6 +121,32 @@ struct BaseOptions {
+ 
+   // The path to the CA bundle file.
+   std::string ca_bundle_path;
++
++  BaseOptions& operator=(const BaseOptions& rhs) {
++    auto& lhs = *this;
++
++    lhs.model_asset_buffer = rhs.model_asset_buffer
++        ? std::make_unique<std::string>(*rhs.model_asset_buffer)
++        : nullptr;
++
++    lhs.model_asset_path = rhs.model_asset_path;
++    lhs.delegate = rhs.delegate;
++    lhs.model_asset_descriptor_meta = rhs.model_asset_descriptor_meta;
++
++    // copy is not possible
++    // lhs.op_resolver =
++    //     ? std::make_unique<MediaPipeBuiltinOpResolver>(*rhs.op_resolver)
++    //     : nullptr;
++
++    lhs.delegate_options = rhs.delegate_options;
++    lhs.disable_default_service = rhs.disable_default_service;
++    lhs.host_environment = rhs.host_environment;
++    lhs.host_system = rhs.host_system;
++    lhs.host_version = rhs.host_version;
++    lhs.ca_bundle_path = rhs.ca_bundle_path;
++
++    return lhs;
++  }
+ };
+ 
+ // Converts a BaseOptions to a BaseOptionsProto.
 diff --git a/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc b/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc
-index 85ec2132c..60a97995e 100644
+index 6d3927aba..4c1d7d01d 100644
 --- a/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc
 +++ b/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc
-@@ -524,10 +524,11 @@ absl::Status TensorsToImageCalculator::GlProcess(CalculatorContext* cc) {
+@@ -525,10 +525,11 @@ absl::Status TensorsToImageCalculator::GlProcess(CalculatorContext* cc) {
      auto texture_buffer = mediapipe::GlTextureBuffer::Wrap(
          out_texture->target(), out_texture->id(), tensor_width, tensor_height,
          mediapipe::GpuBufferFormat::kBGRA32,
@@ -466,102 +515,45 @@ index e28094eef..8c5a08e2e 100644
    // resource folder.
    auto bazel_path = internal::PathToResourceAsFileInternal(qualified_path);
 diff --git a/setup.py b/setup.py
-index e5422ffb6..1e0f874c2 100644
+index 2c5a77c4d..8af530807 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -59,6 +59,43 @@ def _normalize_path(path):
-   return path.replace('\\', '/') if IS_WINDOWS else path
+@@ -53,6 +53,34 @@ if IS_MAC:
  
+ GPU_OPTIONS = GPU_OPTIONS_DISABLED if MP_DISABLE_GPU else GPU_OPTIONS_ENABLED
  
 +EXTRA_OPTIONS = ['--python_path=' + _normalize_path(sys.executable)]
-+
 +try:
 +  with open(os.path.join(MP_ROOT_PATH, '.py-bazelrc')) as f:
 +    EXTRA_OPTIONS = [l.strip() for l in f.readlines()]
 +except IOError as e:
 +  pass
-+
-+BAZEL_COMMAND = [
++BAZEL_BUILD_COMMAND = [
 +  'bazel',
 +]
-+
 +if os.environ.get('OUTPUT_USER_ROOT'):
-+  BAZEL_COMMAND += [
++  BAZEL_BUILD_COMMAND += [
 +    '--output_user_root=' + os.environ.get('OUTPUT_USER_ROOT'),
 +  ]
-+
 +if os.environ.get('OUTPUT_BASE'):
-+  BAZEL_COMMAND += [
++  BAZEL_BUILD_COMMAND += [
 +    '--output_base=' + os.environ.get('OUTPUT_BASE'),
 +  ]
-+
-+BAZEL_COMMAND += ['build']
-+
++BAZEL_BUILD_COMMAND += ['build']
 +if os.environ.get('MEDIAPIPE_BUILD_TYPE') != 'Debug':
-+  BAZEL_COMMAND += [
++  BAZEL_BUILD_COMMAND += [
 +    '--compilation_mode=opt',
 +    '--copt=-DNDEBUG',
 +  ]
 +else:
-+  BAZEL_COMMAND += ['--compilation_mode=dbg']
-+
-+BAZEL_COMMAND += [
++  BAZEL_BUILD_COMMAND += ['--compilation_mode=dbg']
++BAZEL_BUILD_COMMAND += [
 +  '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
 +] + GPU_OPTIONS + EXTRA_OPTIONS
-+
-+
- def _get_backup_file(path):
-   return path + '.backup'
  
-@@ -226,10 +263,13 @@ class GeneratePyProtos(build_ext.build_ext):
-     output = os.path.join(self.build_lib, source.replace('.proto', '_pb2.py'))
-     if not os.path.exists(output):
-       sys.stderr.write('generating proto file: %s\n' % output)
-+      protoc_argv = []
-+      if 'PROTO_PATH' in os.environ and os.environ['PROTO_PATH']:
-+        protoc_argv = ['-I' + include for include in os.environ['PROTO_PATH'].split(';')]
-       protoc_command = [
-           self._protoc, '-I.',
-           '--python_out=' + os.path.abspath(self.build_lib), source
--      ]
-+      ] + protoc_argv
-       _invoke_shell_command(protoc_command)
- 
- 
-@@ -289,9 +329,7 @@ class BuildModules(build_ext.build_ext):
-   def _download_external_file(self, external_file):
-     """Download an external file from GCS via Bazel."""
- 
--    fetch_model_command = [
--        'bazel',
--        'build',
-+    fetch_model_command = BAZEL_COMMAND + [
-         external_file,
-     ]
-     _invoke_shell_command(fetch_model_command)
-@@ -300,17 +338,12 @@ class BuildModules(build_ext.build_ext):
-   def _generate_binary_graph(self, binary_graph_target):
-     """Generate binary graph for a particular MediaPipe binary graph target."""
- 
--    bazel_command = [
--        'bazel',
--        'build',
--        '--compilation_mode=opt',
--        '--copt=-DNDEBUG',
--        '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
--        binary_graph_target,
--    ] + GPU_OPTIONS
-+    bazel_command = BAZEL_COMMAND + [
-+      binary_graph_target,
-+    ]
- 
-     if not self.link_opencv and not IS_WINDOWS:
--      bazel_command.append('--define=OPENCV=source')
-+      pass
- 
-     _invoke_shell_command(bazel_command)
-     _copy_to_build_lib_dir(self.build_lib, binary_graph_target)
-@@ -327,13 +360,9 @@ class GenerateMetadataSchema(build_ext.build_ext):
+ def _normalize_path(path):
+   return path.replace('\\', '/') if IS_WINDOWS else path
+@@ -176,13 +204,9 @@ class GenerateMetadataSchema(build_ext.build_ext):
          'schema_py',
      ]:
  
@@ -570,37 +562,31 @@ index e5422ffb6..1e0f874c2 100644
 -          'build',
 -          '--compilation_mode=opt',
 -          '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
-+      bazel_command = BAZEL_COMMAND + [
++      bazel_command = BAZEL_BUILD_COMMAND + [
            '//mediapipe/tasks/metadata:' + target,
 -      ] + GPU_OPTIONS
 +      ]
  
        _invoke_shell_command(bazel_command)
        _copy_to_build_lib_dir(
-@@ -415,20 +444,15 @@ class BuildExtension(build_ext.build_ext):
+@@ -238,15 +262,11 @@ class BuildExtension(build_ext.build_ext):
+ 
    def _build_binary(self, ext, extra_args=None):
-     if not os.path.exists(self.build_temp):
-       os.makedirs(self.build_temp)
+     os.makedirs(self.build_temp, exist_ok=True)
 -    bazel_command = [
 -        'bazel',
 -        'build',
 -        '--compilation_mode=opt',
 -        '--copt=-DNDEBUG',
-+    bazel_command = BAZEL_COMMAND + [
++    bazel_command = BAZEL_BUILD_COMMAND + [
          '--keep_going',
--        '--action_env=PYTHON_BIN_PATH=' + _normalize_path(sys.executable),
-         str(ext.bazel_target + '.so'),
+         '--define=ENABLE_ODML_CONVERTER=1',
+         str(ext.bazel_target),
 -    ] + GPU_OPTIONS
 +    ]
  
      if extra_args:
        bazel_command += extra_args
-     if not self.link_opencv and not IS_WINDOWS:
--      bazel_command.append('--define=OPENCV=source')
-+      pass
- 
-     _invoke_shell_command(bazel_command)
-     ext_bazel_bin_path = os.path.join('bazel-bin', ext.relpath,
 diff --git a/third_party/pthreadpool_build_fixes.diff b/third_party/pthreadpool_build_fixes.diff
 new file mode 100644
 index 000000000..38d8f0f90

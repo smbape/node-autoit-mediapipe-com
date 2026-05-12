@@ -9,6 +9,10 @@ module.exports = ({self, self_get, language}) => [
         ["google::protobuf::Message*", "other_message", "", ["/C"]],
     ], "", ""],
 
+    ["google.protobuf.Message.HasField", "absl::StatusOr<bool>", [`/Call=google::protobuf::${ language }::cmessage::HasField`, `/Expr=${ self }, $0`], [
+        ["std::string", "field_name", "", ["/C", "/Ref"]],
+    ], "", ""],
+
     ["google.protobuf.Message.ClearField", "absl::Status", [`/Call=google::protobuf::${ language }::cmessage::ClearField`, `/Expr=${ self }, $0`], [
         ["std::string", "field_name", "", ["/C", "/Ref"]],
     ], "", ""],

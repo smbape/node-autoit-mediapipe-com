@@ -1,10 +1,8 @@
 #pragma once
 
-#include "mediapipe/framework/calculator.pb.h"
 #include "mediapipe/framework/deps/status_macros.h"
 #include "mediapipe/framework/port/file_helpers.h"
 #include "mediapipe/framework/port/status.h"
-#include "mediapipe/framework/timestamp.h"
 
 #include "autoit_bridge_common.h"
 #include "absl/status/status.h"
@@ -50,57 +48,6 @@ namespace mediapipe::autoit {
 		default:
 			return "Runtime error";
 		}
-	}
-
-	inline std::string TimestampValueString(const Timestamp& timestamp) {
-		if (timestamp == Timestamp::Unset()) {
-			return "UNSET";
-		}
-		else if (timestamp == Timestamp::Unstarted()) {
-			return "UNSTARTED";
-		}
-		else if (timestamp == Timestamp::PreStream()) {
-			return "PRESTREAM";
-		}
-		else if (timestamp == Timestamp::Min()) {
-			return "MIN";
-		}
-		else if (timestamp == Timestamp::Max()) {
-			return "MAX";
-		}
-		else if (timestamp == Timestamp::PostStream()) {
-			return "POSTSTREAM";
-		}
-		else if (timestamp == Timestamp::OneOverPostStream()) {
-			return "ONEOVERPOSTSTREAM";
-		}
-		else if (timestamp == Timestamp::Done()) {
-			return "DONE";
-		}
-		else {
-			return timestamp.DebugString();
-		}
-	}
-
-	// Reads a CalculatorGraphConfig from a file.
-	[[nodiscard]] inline absl::Status ReadCalculatorGraphConfigFromFile(const std::string& file_name, ::mediapipe::CalculatorGraphConfig& graph_config_proto) {
-		auto status = file::Exists(file_name);
-		MP_ASSERT_RETURN_IF_ERROR(status.ok(), "File " << file_name << " was not found: " << status.message().data());
-
-		std::string graph_config_string;
-		MP_RETURN_IF_ERROR(file::GetContents(file_name, &graph_config_string, /*read_as_binary=*/true));
-		if (!graph_config_proto.ParseFromArray(graph_config_string.c_str(), graph_config_string.length())) {
-			MP_ASSERT_RETURN_IF_ERROR(false, "Failed to parse the binary graph: " << file_name);
-		}
-
-		return absl::OkStatus();
-	}
-
-	// Reads a CalculatorGraphConfig from a file.
-	inline ::mediapipe::CalculatorGraphConfig ReadCalculatorGraphConfigFromFile(const std::string& file_name) {
-		::mediapipe::CalculatorGraphConfig graph_config_proto;
-		MP_THROW_IF_ERROR(ReadCalculatorGraphConfigFromFile(file_name, graph_config_proto));
-		return graph_config_proto;
 	}
 
 	template<typename T>

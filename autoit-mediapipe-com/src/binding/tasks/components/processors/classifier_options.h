@@ -1,36 +1,24 @@
 #pragma once
 
-#include "mediapipe/tasks/cc/components/processors/proto/classifier_options.pb.h"
-#include <opencv2/core/cvdef.h>
-#include <optional>
+#include "mediapipe/tasks/cc/components/processors/classifier_options.h"
 
-namespace mediapipe::tasks::autoit::components::processors::classifier_options {
-	struct CV_EXPORTS_W_SIMPLE ClassifierOptions {
-		CV_WRAP ClassifierOptions(const ClassifierOptions& other) = default;
-		ClassifierOptions& operator=(const ClassifierOptions& other) = default;
+namespace mediapipe::tasks::components::processors {
+	inline bool operator==(const ClassifierOptions& lhs, const ClassifierOptions& rhs) {
+		return lhs.display_names_locale == rhs.display_names_locale
+			&& lhs.max_results == rhs.max_results
+			&& lhs.score_threshold == rhs.score_threshold
+			&& lhs.category_allowlist == rhs.category_allowlist
+			&& lhs.category_denylist == rhs.category_denylist;
+	}
+}
 
-		CV_WRAP ClassifierOptions(
-			const std::optional<std::string>& display_names_locale = std::nullopt,
-			const std::optional<int>& max_results = std::nullopt,
-			const std::optional<float>& score_threshold = std::nullopt,
-			const std::shared_ptr<std::vector<std::string>>& category_allowlist = std::make_shared<std::vector<std::string>>(),
-			const std::shared_ptr<std::vector<std::string>>& category_denylist = std::make_shared<std::vector<std::string>>()
-		)
-			:
-			display_names_locale(display_names_locale),
-			max_results(max_results),
-			score_threshold(score_threshold),
-			category_allowlist(category_allowlist),
-			category_denylist(category_denylist)
-		{}
-
-		CV_WRAP std::shared_ptr<mediapipe::tasks::components::processors::proto::ClassifierOptions> to_pb2() const;
-		CV_WRAP static std::shared_ptr<ClassifierOptions> create_from_pb2(const mediapipe::tasks::components::processors::proto::ClassifierOptions& pb2_obj);
-
-		CV_PROP_RW std::optional<std::string> display_names_locale;
-		CV_PROP_RW std::optional<int> max_results;
-		CV_PROP_RW std::optional<float> score_threshold;
-		CV_PROP_RW std::shared_ptr<std::vector<std::string>> category_allowlist;
-		CV_PROP_RW std::shared_ptr<std::vector<std::string>> category_denylist;
-	};
+namespace std {
+	inline std::string to_string(const mediapipe::tasks::components::processors::ClassifierOptions& classifier_options) {
+		auto proto = mediapipe::tasks::components::processors::ConvertClassifierOptionsToProto(const_cast<mediapipe::tasks::components::processors::ClassifierOptions*>(&classifier_options));
+		std::string output;
+		if (!google::protobuf::TextFormat::PrintToString(proto, &output)) {
+			output = "Failed to print message";
+		}
+		return output;
+	}
 }

@@ -6,20 +6,17 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
 
 ;~ Title: Pose Landmarks Detection with MediaPipe Tasks
 
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
@@ -31,17 +28,17 @@ _AssertIsObj($mp, "Failed to load mediapipe")
 Global $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
-
-Global $solutions = _Mediapipe_ObjCreate("mediapipe.solutions")
-_AssertIsObj($solutions, "Failed to load mediapipe.solutions")
-
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
+
+Global $drawing_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_utils")
+_AssertIsObj($drawing_utils, "Failed to load mediapipe.tasks.autoit.vision.drawing_utils")
+
+Global $drawing_styles = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_styles")
+_AssertIsObj($drawing_styles, "Failed to load mediapipe.tasks.autoit.vision.drawing_styles")
 
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
@@ -68,7 +65,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an PoseLandmarker object.
+	; STEP 2: Create a PoseLandmarker object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.PoseLandmarkerOptions(_Mediapipe_Params( _
 			"base_options", $base_options, _
@@ -85,7 +82,7 @@ Func Main()
 	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
 
 	; Display the image
-	resize_and_show($cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR), "Pose Landmarks Detection with MediaPipe Tasks : Image")
+	resize_and_show($annotated_image, "Pose Landmarks Detection with MediaPipe Tasks : Image")
 
 	; Visualize the pose segmentation mask.
 	Local $segmentation_mask = $detection_result.segmentation_masks(0).mat_view()
@@ -99,24 +96,20 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 	Local $scale = 1 / resize_and_show($rgb_image, Default, False)
 
 	Local $pose_landmarks_list = $detection_result.pose_landmarks
-	Local $annotated_image = $rgb_image
-	Local $pose_landmarks_proto
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
+	Local $pose_landmark_style = $drawing_styles.get_default_pose_landmarks_style($scale)
+	Local $pose_connection_style = $drawing_utils.DrawingSpec(_Mediapipe_Params("color", _Mediapipe_Tuple(0, 255, 0), "thickness", 2))
 
 	; Loop through the detected poses to visualize.
 	For $pose_landmarks In $pose_landmarks_list
 
 		; Draw the pose landmarks.
-		$pose_landmarks_proto = $landmark_pb2.NormalizedLandmarkList()
-
-		For $landmark In $pose_landmarks
-			$pose_landmarks_proto.landmark.append($landmark_pb2.NormalizedLandmark(_Mediapipe_Params("x", $landmark.x, "y", $landmark.y, "z", $landmark.z)))
-		Next
-
-		$solutions.drawing_utils.draw_landmarks( _
-				$annotated_image, _
-				$pose_landmarks_proto, _
-				$solutions.pose.POSE_CONNECTIONS, _
-				$solutions.drawing_styles.get_default_pose_landmarks_style($scale))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $pose_landmarks, _
+				"connections", $vision.PoseLandmarksConnections.POSE_LANDMARKS, _
+				"landmark_drawing_spec", $pose_landmark_style, _
+				"connection_drawing_spec", $pose_connection_style))
 	Next
 
 	Return $annotated_image

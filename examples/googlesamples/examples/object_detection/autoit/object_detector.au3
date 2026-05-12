@@ -6,26 +6,23 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/object_detection/python/object_detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/object_detection/python/object_detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/object_detection/python/object_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/object_detection/python/object_detector.ipynb
 
 ;~ Title: Object Detection with MediaPipe Tasks
 
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -78,10 +75,8 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the detection result. In this case, visualize it.
-	Local $image_copy = $image.mat_view()
-	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
-	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
-	resize_and_show($bgr_annotated_image, "object_detection")
+	Local $annotated_image = visualize($image.mat_view(), $detection_result, $scale)
+	resize_and_show($annotated_image, "object_detection")
 	$cv.waitKey()
 
 	; STEP 6: Closes the detector explicitly when the detector is not used ina context.
@@ -91,18 +86,20 @@ EndFunc   ;==>Main
 #cs
 Draws bounding boxes and keypoints on the input image and return it.
 Args:
-	image: The input RGB image.
+	rgb_image: The input RGB image.
 	detection_result: The list of all "Detection" entities to be visualize.
 	scale: Scale to keep drawing visible after resize
 Returns:
 	Image with bounding boxes.
 #ce
-Func visualize($image, $detection_result, $scale = 1.0)
+Func visualize($rgb_image, $detection_result, $scale = 1.0)
 	Local $MARGIN = 10 * $scale ; pixels
 	Local $ROW_SIZE = 10 ; pixels
 	Local $FONT_SIZE = $scale
 	Local $FONT_THICKNESS = $scale
-	Local $TEXT_COLOR = _OpenCV_Scalar(255, 0, 0)  ; red
+	Local $TEXT_COLOR = _OpenCV_RGB(255, 0, 0)  ; red
+
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
 
 	Local $bbox, $start_point, $end_point
 
@@ -113,7 +110,7 @@ Func visualize($image, $detection_result, $scale = 1.0)
 		$bbox = $detection.bounding_box
 		$start_point = _OpenCV_Point($bbox.origin_x, $bbox.origin_y)
 		$end_point = _OpenCV_Point($bbox.origin_x + $bbox.width, $bbox.origin_y + $bbox.height)
-		$cv.rectangle($image, $start_point, $end_point, $TEXT_COLOR, 3)
+		$cv.rectangle($annotated_image, $start_point, $end_point, $TEXT_COLOR, 3)
 
 		; Draw label and score
 		$category = $detection.categories(0)
@@ -121,10 +118,10 @@ Func visualize($image, $detection_result, $scale = 1.0)
 		$probability = Round($category.score, 2)
 		$result_text = $category_name & ' (' & $probability & ')'
 		$text_location = _OpenCV_Point($MARGIN + $bbox.origin_x, $MARGIN + $ROW_SIZE + $bbox.origin_y)
-		$cv.putText($image, $result_text, $text_location, $CV_FONT_HERSHEY_PLAIN, $FONT_SIZE, $TEXT_COLOR, $FONT_THICKNESS)
+		$cv.putText($annotated_image, $result_text, $text_location, $CV_FONT_HERSHEY_PLAIN, $FONT_SIZE, $TEXT_COLOR, $FONT_THICKNESS)
 	Next
 
-	Return $image
+	Return $annotated_image
 EndFunc   ;==>visualize
 
 Func resize_and_show($image, $title = Default, $show = Default)

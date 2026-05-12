@@ -1,59 +1,42 @@
 #pragma once
 
-#include "mediapipe/tasks/cc/components/containers/proto/embeddings.pb.h"
-#include <opencv2/core/mat.hpp>
-#include "autoit_bridge_common.h"
+#include "mediapipe/tasks/cc/components/containers/embedding_result.h"
+#include "binding/tasks/components/containers/utils.h"
 
-namespace mediapipe::tasks::autoit::components::containers::embedding_result {
-	struct CV_EXPORTS_W_SIMPLE Embedding {
-		CV_WRAP Embedding(const Embedding& other) = default;
-		Embedding& operator=(const Embedding& other) = default;
+namespace mediapipe::tasks::components::containers {
+	inline bool operator==(const Embedding& lhs, const Embedding& rhs) {
+		return lhs.float_embedding == rhs.float_embedding
+			&& lhs.quantized_embedding == rhs.quantized_embedding
+			&& lhs.head_index == rhs.head_index
+			&& is_optional_equal(lhs.head_name, rhs.head_name);
+	}
 
-		CV_WRAP Embedding(
-			cv::Mat embedding = cv::Mat(),
-			int head_index = -1,
-			const std::string& head_name = std::string()
-		)
-			:
-			embedding(embedding),
-			head_index(head_index),
-			head_name(head_name)
-		{}
+	inline bool operator==(const EmbeddingResult& lhs, const EmbeddingResult& rhs) {
+		return lhs.embeddings == rhs.embeddings
+			&& is_optional_equal(lhs.timestamp_ms, rhs.timestamp_ms);
+	}
 
-		CV_WRAP static std::shared_ptr<Embedding> create_from_pb2(const mediapipe::tasks::components::containers::proto::Embedding& pb2_obj);
+	proto::Embedding ConvertEmbeddingToProto(Embedding* embedding);
 
-		bool operator== (const Embedding& other) const {
-			return ::autoit::__eq__(embedding, other.embedding) &&
-				::autoit::__eq__(head_index, other.head_index) &&
-				::autoit::__eq__(head_name, other.head_name);
+	proto::EmbeddingResult ConvertEmbeddingResultToProto(EmbeddingResult* embedding_result);
+}
+
+namespace std {
+	inline std::string to_string(const mediapipe::tasks::components::containers::Embedding& embedding) {
+		auto proto = mediapipe::tasks::components::containers::ConvertEmbeddingToProto(const_cast<mediapipe::tasks::components::containers::Embedding*>(&embedding));
+		std::string output;
+		if (!google::protobuf::TextFormat::PrintToString(proto, &output)) {
+			output = "Failed to print message";
 		}
+		return output;
+	}
 
-		CV_PROP_RW cv::Mat embedding;
-		CV_PROP_RW int head_index;
-		CV_PROP_RW std::string head_name;
-	};
-
-	struct CV_EXPORTS_W_SIMPLE EmbeddingResult {
-		CV_WRAP EmbeddingResult(const EmbeddingResult& other) = default;
-		EmbeddingResult& operator=(const EmbeddingResult& other) = default;
-
-		CV_WRAP EmbeddingResult(
-			const std::shared_ptr<std::vector<std::shared_ptr<Embedding>>>& embeddings = std::make_shared<std::vector<std::shared_ptr<Embedding>>>(),
-			int64_t timestamp_ms = 0
-		)
-			:
-			embeddings(embeddings),
-			timestamp_ms(timestamp_ms)
-		{}
-
-		CV_WRAP static std::shared_ptr<EmbeddingResult> create_from_pb2(const mediapipe::tasks::components::containers::proto::EmbeddingResult& pb2_obj);
-
-		bool operator== (const EmbeddingResult& other) const {
-			return ::autoit::__eq__(embeddings, other.embeddings) &&
-				::autoit::__eq__(timestamp_ms, other.timestamp_ms);
+	inline std::string to_string(const mediapipe::tasks::components::containers::EmbeddingResult& embedding_result) {
+		auto proto = mediapipe::tasks::components::containers::ConvertEmbeddingResultToProto(const_cast<mediapipe::tasks::components::containers::EmbeddingResult*>(&embedding_result));
+		std::string output;
+		if (!google::protobuf::TextFormat::PrintToString(proto, &output)) {
+			output = "Failed to print message";
 		}
-
-		CV_PROP_RW std::shared_ptr<std::vector<std::shared_ptr<Embedding>>> embeddings;
-		CV_PROP_RW int64_t timestamp_ms;
-	};
+		return output;
+	}
 }

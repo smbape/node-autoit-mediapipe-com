@@ -6,8 +6,8 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/interactive_segmentation/python/interactive_segmenter.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/interactive_segmentation/python/interactive_segmenter.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/interactive_segmentation/python/interactive_segmenter.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/interactive_segmentation/python/interactive_segmenter.ipynb
 
 #include <GDIPlus.au3>
 #include <GUIConstantsEx.au3>
@@ -15,15 +15,16 @@
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
 _GDIPlus_Startup()
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 Global Const $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\magic_touch.tflite"
 
-Setup()
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 ; STEP 1: Import the necessary modules.
 Global $mp = _Mediapipe_get()
@@ -40,6 +41,8 @@ _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 
 Global $containers = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers")
 _AssertIsObj($containers, "Failed to load mediapipe.tasks.autoit.components.containers")
+
+Setup()
 
 #Region ### START Koda GUI section ### Form=
 Global $FormGUI = GUICreate("Interactive segmenter", 1570, 640, 192, 124)
@@ -113,7 +116,6 @@ Func Main($x = 0.68, $y = 0.68)
 
 	Local Static $segmenter = GetSegmenter()
 
-	Local Static $RegionOfInterest_Format = $vision.InteractiveSegmenterRegionOfInterest_Format
 	Local Static $RegionOfInterest = $vision.InteractiveSegmenterRegionOfInterest
 	Local Static $NormalizedKeypoint = $containers.keypoint.NormalizedKeypoint
 
@@ -128,7 +130,7 @@ Func Main($x = 0.68, $y = 0.68)
 	Local $image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
 
 	; Retrieve the masks for the segmented image
-	Local $roi = $RegionOfInterest(_Mediapipe_Params("format", $RegionOfInterest_Format.KEYPOINT, _
+	Local $roi = $RegionOfInterest(_Mediapipe_Params("format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			"keypoint", $NormalizedKeypoint($x, $y)))
 	Local $segmentation_result = $segmenter.segment($image, $roi)
 	Local $category_mask = $segmentation_result.category_mask
@@ -188,9 +190,6 @@ Func Main($x = 0.68, $y = 0.68)
 EndFunc   ;==>Main
 
 Func Setup()
-	Local $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-	_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
-
 	Local $IMAGE_FILENAMES[] = ['cats_and_dogs.jpg']
 
 	Local $url, $file_path

@@ -191,11 +191,11 @@ namespace google::protobuf::autoit {
 			break;
 		}
 		case FieldDescriptor::CPPTYPE_ENUM: {
+			const EnumDescriptor* enum_descriptor = field_descriptor->enum_type();
 			auto value = ::autoit::cast<int>(&arg);
-			if (reflection->SupportsUnknownEnumValues()) {
+			if (!enum_descriptor->is_closed()) {
 				reflection->SetRepeatedEnumValue(message, field_descriptor, index, value);
 			} else {
-				const EnumDescriptor* enum_descriptor = field_descriptor->enum_type();
 				const EnumValueDescriptor* enum_value = enum_descriptor->FindValueByNumber(value);
 				MP_ASSERT_RETURN_IF_ERROR(enum_value != nullptr, "Unknown enum value: " << value);
 				reflection->SetRepeatedEnum(message, field_descriptor, index, enum_value);
@@ -250,8 +250,8 @@ namespace google::protobuf::autoit {
 			reflection->SwapElements(message, field_descriptor, i, i + deleteCount);
 		}
 
-		Arena* arena = Arena::InternalHelper<Message>::GetArenaForAllocation(message);
-		GOOGLE_DCHECK_EQ(arena, nullptr) << "autoit protobuf is expected to be allocated from heap";
+		Arena* arena = message->GetArena();
+		ABSL_DCHECK_EQ(arena, nullptr) << "autoit protobuf is expected to be allocated from heap";
 
 		list.resize(deleteCount);
 		_variant_t obj;
@@ -377,10 +377,10 @@ namespace google::protobuf::autoit {
 		}
 		case FieldDescriptor::CPPTYPE_ENUM: {
 			auto value = ::autoit::cast<int>(&item);
-			if (reflection->SupportsUnknownEnumValues()) {
+			const EnumDescriptor* enum_descriptor = field_descriptor->enum_type();
+			if (!enum_descriptor->is_closed()) {
 				reflection->AddEnumValue(message, field_descriptor, value);
 			} else {
-				const EnumDescriptor* enum_descriptor = field_descriptor->enum_type();
 				const EnumValueDescriptor* enum_value = enum_descriptor->FindValueByNumber(value);
 				MP_ASSERT_RETURN_IF_ERROR(enum_value != nullptr, "Unknown enum value: " << value);
 				reflection->AddEnum(message, field_descriptor, enum_value);

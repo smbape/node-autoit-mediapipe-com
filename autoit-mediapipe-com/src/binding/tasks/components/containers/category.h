@@ -1,40 +1,31 @@
 #pragma once
 
+#include "mediapipe/tasks/cc/components/containers/category.h"
 #include "mediapipe/framework/formats/classification.pb.h"
-#include <opencv2/core/cvdef.h>
-#include "autoit_bridge_common.h"
+#include "google/protobuf/text_format.h"
+#include "binding/tasks/components/containers/utils.h"
 
-namespace mediapipe::tasks::autoit::components::containers::category {
-	struct CV_EXPORTS_W_SIMPLE Category {
-		CV_WRAP Category(const Category& other) = default;
-		Category& operator=(const Category& other) = default;
+namespace mediapipe::tasks::components::containers {
+	inline constexpr float kScoreTolerance = 1e-6;
 
-		CV_WRAP Category(
-			int index = -1,
-			float score = 0.0f,
-			const std::string& display_name = "",
-			const std::string& category_name = ""
-		)
-			:
-			index(index),
-			score(score),
-			display_name(display_name),
-			category_name(category_name)
-		{}
+	inline bool operator==(const Category& lhs, const Category& rhs) {
+		return lhs.index == rhs.index
+			&& abs(lhs.score - rhs.score) < kScoreTolerance
+			&& is_optional_equal(lhs.category_name, rhs.category_name)
+			&& is_optional_equal(lhs.display_name, rhs.display_name);
+	}
 
-		CV_WRAP std::shared_ptr<Classification> to_pb2() const;
-		CV_WRAP static std::shared_ptr<Category> create_from_pb2(const Classification& pb2_obj);
+	Classification ConvertCategoryToProto(Category* category);
 
-		bool operator== (const Category& other) const {
-			return ::autoit::__eq__(index, other.index) &&
-				::autoit::__eq__(score, other.score) &&
-				::autoit::__eq__(display_name, other.display_name) &&
-				::autoit::__eq__(category_name, other.category_name);
+}  // namespace mediapipe::tasks::components::containers
+
+namespace std {
+	inline std::string to_string(const mediapipe::tasks::components::containers::Category& category) {
+		auto proto = mediapipe::tasks::components::containers::ConvertCategoryToProto(const_cast<mediapipe::tasks::components::containers::Category*>(&category));
+		std::string output;
+		if (!google::protobuf::TextFormat::PrintToString(proto, &output)) {
+			output = "Failed to print message";
 		}
-
-		CV_PROP_RW int index;
-		CV_PROP_RW float score;
-		CV_PROP_RW std::string display_name;
-		CV_PROP_RW std::string category_name;
-	};
+		return output;
+	}
 }

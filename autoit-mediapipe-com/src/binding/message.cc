@@ -1,6 +1,6 @@
 #include <cmath>
-#include <google/protobuf/descriptor.pb.h>
-#include <google/protobuf/message.h>
+#include "google/protobuf/descriptor.pb.h"
+#include "google/protobuf/message.h"
 #include "mediapipe/framework/port/status_macros.h"
 #include "binding/message.h"
 #include "binding/map_container.h"
@@ -11,6 +11,12 @@
 #include "Google_Protobuf_Message_Object.h"
 #include "MapOfStringAndVariant_Object.h"
 #include "VectorOfPairOfVariantAndVariant_Object.h"
+
+#ifdef PROTOBUF_PYTHON_ALLOW_OVERSIZE_PROTOS
+static bool allow_oversize_protos = true;
+#else
+static bool allow_oversize_protos = false;
+#endif
 
 namespace google::protobuf {
 	// hack to access Reflection private members GetMapData, MutableRepeatedPtrFieldInternal, MapBegin, MapEnd
@@ -142,7 +148,7 @@ namespace {
 		}
 		case FieldDescriptor::CPPTYPE_ENUM: {
 			auto value = ::autoit::cast<int>(&arg);
-			if (reflection->SupportsUnknownEnumValues()) {
+			if (!field_descriptor->legacy_enum_field_treated_as_closed()) {
 				reflection->SetEnumValue(message, field_descriptor, value);
 			}
 			else {
@@ -583,9 +589,13 @@ namespace google::protobuf::autoit::cmessage {
 	}
 
 	absl::Status MergeFromString(Message* message, const std::string& data) {
-		int depth = io::CodedInputStream::GetDefaultRecursionLimit();
+		int depth = allow_oversize_protos
+			? INT_MAX
+			: io::CodedInputStream::GetDefaultRecursionLimit();
 		const char* ptr;
-		internal::ParseContext ctx(depth, false, &ptr, StringPiece(data));
+		internal::ParseContext ctx(
+			depth, false, &ptr,
+			absl::string_view(data));
 
 		ptr = message->_InternalParse(ptr, &ctx);
 		MP_ASSERT_RETURN_IF_ERROR(ptr != nullptr && ctx.BytesUntilLimit(ptr) >= 0,

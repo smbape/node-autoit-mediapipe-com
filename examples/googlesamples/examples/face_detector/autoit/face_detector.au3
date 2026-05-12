@@ -6,27 +6,24 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_detector/python/face_detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_detector/python/face_detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_detector/python/face_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_detector/python/face_detector.ipynb
 
 ;~ Title: Face Detection with MediaPipe Tasks
 
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 ; STEP 1: Import the necessary modules.
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
 Global $mp = _Mediapipe_get()
 _AssertIsObj($mp, "Failed to load mediapipe")
@@ -62,7 +59,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an FaceDetector object.
+	; STEP 2: Create a FaceDetector object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $vision.FaceDetector.create_from_options($options)
@@ -71,16 +68,14 @@ Func Main()
 	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
 
 	; Compute the scale to make drawn elements visible when the image is resized for display
-	Local $scale = 1 / resize_and_show($image, Default, False)
+	Local $scale = 1 / resize_and_show($image.mat_view(), Default, False)
 
 	; STEP 4: Detect faces in the input image.
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the detection result. In this case, visualize it.
-	Local $image_copy = $image.mat_view()
-	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
-	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
-	resize_and_show($bgr_annotated_image, "face_detector")
+	Local $annotated_image = visualize($image.mat_view(), $detection_result, $scale)
+	resize_and_show($annotated_image, "face_detector")
 	$cv.waitKey()
 EndFunc   ;==>Main
 
@@ -115,22 +110,22 @@ Args:
 Returns:
 	Image with bounding boxes.
 #ce
-Func visualize($image, $detection_result, $scale = 1.0)
+Func visualize($rgb_image, $detection_result, $scale = 1.0)
 	Local $MARGIN = 10 * $scale ; pixels
 	Local $ROW_SIZE = 10 ; pixels
 	Local $FONT_SIZE = $scale
 	Local $FONT_THICKNESS = 2 * $scale
-	Local $TEXT_COLOR = _OpenCV_Scalar(255, 0, 0)  ; red
+	Local $TEXT_COLOR = _OpenCV_RGB(255, 0, 0)  ; red
 
 	Local $bbox_thickness = 3 * $scale
 
-	Local $keypoint_color = _OpenCV_Scalar(0, 255, 0)
+	Local $keypoint_color = _OpenCV_RGB(0, 255, 0)
 	Local $keypoint_thickness = 2 * $scale
 	Local $keypoint_radius = 2 * $scale
 
-	Local $annotated_image = $image.copy()
-	Local $width = $image.width
-	Local $height = $image.height
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
+	Local $width = $rgb_image.width
+	Local $height = $rgb_image.height
 
 	Local $bbox, $start_point, $end_point, $keypoint_px
 

@@ -87,7 +87,9 @@ namespace google::protobuf {
 		}
 
 		reflection->InsertOrLookupMapValue(message, field_descriptor, map_key, &value);
-		MP_RETURN_IF_ERROR(autoit::AnyObjectToMapValueRef(field_descriptor, arg, reflection->SupportsUnknownEnumValues(), &value));
+		MP_RETURN_IF_ERROR(autoit::AnyObjectToMapValueRef(field_descriptor, arg, !field_descriptor->message_type()
+			->map_value()
+			->legacy_enum_field_treated_as_closed(), &value));
 		return absl::OkStatus();
 	}
 
@@ -242,7 +244,8 @@ namespace google::protobuf {
 					auto value = ::autoit::cast<int>(&arg);
 					if (allow_unknown_enum_values) {
 						value_ref->SetEnumValue(value);
-					} else {
+					}
+					else {
 						const EnumDescriptor* enum_descriptor = field_descriptor->enum_type();
 						const EnumValueDescriptor* enum_value =
 							enum_descriptor->FindValueByNumber(value);

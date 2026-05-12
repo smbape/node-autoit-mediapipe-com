@@ -1,3 +1,4 @@
+/.vs
 /autoit-mediapipe-*-com-v*
 /autoit-mediapipe-com/patches/001-mediapipe-src.patch
 /autoit-mediapipe-com/scripts/configure_bazel.js

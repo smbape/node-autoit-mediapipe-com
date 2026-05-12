@@ -6,33 +6,27 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
 
 ;~ Title: Face Landmarks Detection with MediaPipe Tasks
 
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4120*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4120*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4120*"), _OpenCV_FindDLL("autoit_opencv_com4120*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
 OnAutoItExitRegister("_OnAutoItExit")
-
-; Tell mediapipe where to look its resource files
-_Mediapipe_SetResourceDir()
 
 ; Where to download data files
 Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")
 
 ; STEP 1: Import the necessary modules.
-Global $download_utils = _Mediapipe_ObjCreate("mediapipe.autoit.solutions.download_utils")
-_AssertIsObj($download_utils, "Failed to load mediapipe.autoit.solutions.download_utils")
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
 
-Global $solutions = _Mediapipe_ObjCreate("mediapipe.solutions")
-_AssertIsObj($solutions, "Failed to load mediapipe.solutions")
-
-Global $landmark_pb2 = _Mediapipe_ObjCreate("mediapipe.framework.formats.landmark_pb2")
-_AssertIsObj($landmark_pb2, "Failed to load mediapipe.framework.formats.landmark_pb2")
+Global $mp = _Mediapipe_get()
+_AssertIsObj($mp, "Failed to load mediapipe")
 
 Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
 _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
@@ -40,8 +34,11 @@ _AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
 Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
 _AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
 
-Global $mp = _Mediapipe_get()
-_AssertIsObj($mp, "Failed to load mediapipe")
+Global $drawing_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_utils")
+_AssertIsObj($drawing_utils, "Failed to load mediapipe.tasks.autoit.vision.drawing_utils")
+
+Global $drawing_styles = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_styles")
+_AssertIsObj($drawing_styles, "Failed to load mediapipe.tasks.autoit.vision.drawing_styles")
 
 Global $cv = _OpenCV_get()
 _AssertIsObj($cv, "Failed to load opencv")
@@ -68,7 +65,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an FaceLandmarker object.
+	; STEP 2: Create a FaceLandmarker object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.FaceLandmarkerOptions(_Mediapipe_Params("base_options", $base_options, _
 			"output_face_blendshapes", True, _
@@ -83,48 +80,47 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the classification result. In this case, visualize it.
-	Local $annotated_image = draw_landmarks_on_image($cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR), $detection_result)
+	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
 	resize_and_show($annotated_image)
 	$cv.waitKey()
 EndFunc   ;==>Main
 
-Func draw_landmarks_on_image($rgb_image, $detection_result)
+Func draw_landmarks_on_image($image, $detection_result)
 	; Compute the scale to make drawn elements visible when the image is resized for display
-	Local $scale = 1 / resize_and_show($rgb_image, Default, False)
+	Local $scale = 1 / resize_and_show($image, Default, False)
 
 	Local $face_landmarks_list = $detection_result.face_landmarks
-	Local $annotated_image = $rgb_image.copy()
-
-	Local $face_landmarks_proto
+	Local $annotated_image = $cv.cvtColor($image, $CV_COLOR_RGB2BGR)
 
 	; Loop through the detected faces to visualize.
 	For $face_landmarks In $face_landmarks_list
 
 		; Draw the face landmarks.
-		$face_landmarks_proto = $landmark_pb2.NormalizedLandmarkList()
 
-		For $landmark In $face_landmarks
-			$face_landmarks_proto.landmark.append($landmark_pb2.NormalizedLandmark(_Mediapipe_Params("x", $landmark.x, "y", $landmark.y, "z", $landmark.z)))
-		Next
-
-		$solutions.drawing_utils.draw_landmarks(_Mediapipe_Params( _
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
-				"landmark_list", $face_landmarks_proto, _
-				"connections", $solutions.face_mesh.FACEMESH_TESSELATION, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_TESSELATION, _
 				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_tesselation_style($scale)))
-		$solutions.drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_tesselation_style($scale)))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
-				"landmark_list", $face_landmarks_proto, _
-				"connections", $solutions.face_mesh.FACEMESH_CONTOURS, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_CONTOURS, _
 				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_contours_style(1, $scale)))
-		$solutions.drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_contours_style(1, $scale)))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
 				"image", $annotated_image, _
-				"landmark_list", $face_landmarks_proto, _
-				"connections", $solutions.face_mesh.FACEMESH_IRISES, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_LEFT_IRIS, _
 				"landmark_drawing_spec", Null, _
-				"connection_drawing_spec", $solutions.drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_RIGHT_IRIS, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_iris_connections_style($scale)))
 	Next
 
 	Return $annotated_image
