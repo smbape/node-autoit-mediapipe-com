@@ -46,7 +46,7 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
 
   - Download and extract [opencv-4.13.0-windows.exe](https://opencv.org/releases/) into a folder
   - Download and extract [autoit-opencv-4.13.0-com-v2.9.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.9.0/autoit-opencv-4.13.0-com-v2.9.0.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.1/autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z) into a folder
+  - Download and extract [autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.6.0/autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z) into a folder
 
 ## Usage
 
@@ -2359,11 +2359,11 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.5.1/autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z' -o autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z
+# download autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.6.0/autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z' -o autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z
 
-# extract the content of autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z -aoa -oautoit-mediapipe-com
 
 # download autoit-opencv-4.13.0-com-v2.9.0.7z
 curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.9.0/autoit-opencv-4.13.0-com-v2.9.0.7z' -o autoit-opencv-4.13.0-com-v2.9.0.7z
@@ -2377,13 +2377,13 @@ curl -L 'https://github.com/opencv/opencv/releases/download/4.13.0/opencv-4.13.0
 # extract the content of opencv-4.13.0-windows.exe into a folder named opencv-4.13.0-windows
 ./opencv-4.13.0-windows.exe -oopencv-4.13.0-windows -y
 
-# download autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.5.1.zip' -o autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1-src.zip
+# download autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.6.0.zip' -o autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1-src.zip
-7z x autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.5.1-src.zip -aoa 'node-autoit-mediapipe-com-0.5.1\examples'
-cp -rf node-autoit-mediapipe-com-0.5.1/* ./
-rm -rf node-autoit-mediapipe-com-0.5.1
+# extract the examples folder of autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0-src.zip
+7z x autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0-src.zip -aoa 'node-autoit-mediapipe-com-0.6.0\examples'
+cp -rf node-autoit-mediapipe-com-0.6.0/* ./
+rm -rf node-autoit-mediapipe-com-0.6.0
 
 # download mediapipe-0.10.35-src.tar.gz
 curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.35.tar.gz' -o mediapipe-0.10.35-src.tar.gz

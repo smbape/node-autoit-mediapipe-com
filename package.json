@@ -1,6 +1,6 @@
 {
   "name": "node-autoit-mediapipe-com",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "private": true,
   "scripts": {
     "build": "node scripts/build.js",
