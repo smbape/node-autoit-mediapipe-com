@@ -8,4 +8,4 @@ namespace mediapipe::tasks::vision::image_classifier {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::image_classifier::ImageClassifierResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::image_classifier::ImageClassifierResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::image_classifier::ImageClassifierResultCallback& out_val);

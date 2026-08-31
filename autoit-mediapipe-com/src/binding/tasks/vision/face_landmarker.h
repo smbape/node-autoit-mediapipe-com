@@ -86,4 +86,4 @@ namespace mediapipe::tasks::vision::face_landmarker {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::face_landmarker::FaceLandmarkerResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::face_landmarker::FaceLandmarkerResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::face_landmarker::FaceLandmarkerResultCallback& out_val);

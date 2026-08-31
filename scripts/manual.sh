@@ -2,6 +2,8 @@
 
 # Update checks:
 #   - check changes in python
+#   - check changes in setup.py
+#   - check changes in requirements.txt
 #   - check changes https://github.com/google-ai-edge/mediapipe-samples/
 
 
@@ -23,7 +25,7 @@ git add --renormalize .
 # ================================
 # generate doctoc
 # ================================
-node scripts/update-readme.js /d/Programs/AutoIt/UDF/mediapipe-udf-test && \
+node scripts/update-readme.js && \
 node node_modules/doctoc/doctoc.js README.md && \
 git add --renormalize .
 
@@ -65,16 +67,16 @@ node scripts/build.js
 # ================================
 # test release
 # ================================
-test -d /d/Programs/AutoIt/UDF/mediapipe-udf-test/opencv-4.13.0-windows || ./opencv-4.13.0-windows.exe -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/opencv-4.13.0-windows -y && \
+test -d /d/Programs/AutoIt/UDF/mediapipe-udf-test/opencv-5.0.0-windows || ./opencv-5.0.0-windows.exe -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/opencv-5.0.0-windows -y && \
 rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/{autoit-mediapipe-*,autoit-opencv-*,examples,test} && \
 git archive --format zip --output /d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com.zip HEAD && \
 7z x autoit-mediapipe-*.7z -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com && \
 7z x autoit-opencv-*.7z -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-opencv-com && \
-echo '6b0e8490ab7f0f783937d4b25486cff469431adfe05c6f0217a5e63f68532113 mediapipe-0.10.35-src.tar.gz' | sha256sum --check --status || \
-curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.35.tar.gz' -o mediapipe-0.10.35-src.tar.gz && \
-tar xzf mediapipe-0.10.35-src.tar.gz -C /d/Programs/AutoIt/UDF/mediapipe-udf-test/ 'mediapipe-0.10.35/mediapipe/tasks/testdata' && \
-cp -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.35/* /d/Programs/AutoIt/UDF/mediapipe-udf-test/ && \
-rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-0.10.35 && \
+echo '6343314dad0f4112610807ca723eee63feea00711dc2be9360928b6f0a5eba12 mediapipe-1.0.0-src.tar.gz' | sha256sum --check --status || \
+curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v1.0.0.tar.gz' -o mediapipe-1.0.0-src.tar.gz && \
+tar xzf mediapipe-1.0.0-src.tar.gz -C /d/Programs/AutoIt/UDF/mediapipe-udf-test/ 'mediapipe-1.0.0/mediapipe/tasks/testdata' && \
+cp -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-1.0.0/* /d/Programs/AutoIt/UDF/mediapipe-udf-test/ && \
+rm -rf /d/Programs/AutoIt/UDF/mediapipe-udf-test/mediapipe-1.0.0 && \
 7z x /d/Programs/AutoIt/UDF/mediapipe-udf-test/autoit-mediapipe-com.zip -aoa -o/d/Programs/AutoIt/UDF/mediapipe-udf-test 'examples\*' 'test\*' && \
 node scripts/test.js --bash --Release /d/Programs/AutoIt/UDF/mediapipe-udf-test > $(for ifile in autoit-*-com/build_x64/bin; do echo $ifile/test_all.sh; done) && \
 ./autoit-*-com/build_x64/bin/test_all.sh

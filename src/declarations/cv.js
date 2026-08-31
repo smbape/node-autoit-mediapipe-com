@@ -4,12 +4,12 @@ module.exports = [
     ["class cv._InputOutputArray", "", [], [], "", ""],
 
     ["enum cv.Formatter.FormatType", "", [], [
-        ["const cv.Formatter.FMT_DEFAULT", "0", [], [], "", ""],
-        ["const cv.Formatter.FMT_MATLAB", "1", [], [], "", ""],
-        ["const cv.Formatter.FMT_CSV", "2", [], [], "", ""],
-        ["const cv.Formatter.FMT_PYTHON", "3", [], [], "", ""],
-        ["const cv.Formatter.FMT_NUMPY", "4", [], [], "", ""],
-        ["const cv.Formatter.FMT_C", "5", [], [], "", ""],
+        // ["const cv.Formatter.FMT_DEFAULT", "0", [], [], "", ""],
+        // ["const cv.Formatter.FMT_MATLAB", "1", [], [], "", ""],
+        // ["const cv.Formatter.FMT_CSV", "2", [], [], "", ""],
+        // ["const cv.Formatter.FMT_PYTHON", "3", [], [], "", ""],
+        // ["const cv.Formatter.FMT_NUMPY", "4", [], [], "", ""],
+        // ["const cv.Formatter.FMT_C", "5", [], [], "", ""],
     ], "", ""],
 
     ["cv.haveImageReader", "bool", [], [

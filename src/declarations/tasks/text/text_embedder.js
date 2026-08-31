@@ -9,9 +9,34 @@ module.exports = ({language, self_get}) => {
     return [
         // expose text_embedder properties like in mediapipe python
         [`${ progid }.`, "", ["/Properties"], [
+            [`${ ns }::EmbeddingType`, "EmbeddingType", "", ["/R", "=this", "/S"]],
+            [`${ ns }::TextRole`, "TextRole", "", ["/R", "=this", "/S"]],
+            [`${ ns }::TextFormatContext`, "TextFormatContext", "", ["/R", "=this", "/S"]],
             [`${ ns }::TextEmbedderOptions`, "TextEmbedderOptions", "", ["/R", "=this", "/S"]],
             [`${ ns }::TextEmbedder`, "TextEmbedder", "", ["/R", "=this", "/S"]],
             ["mediapipe::tasks::components::containers::EmbeddingResult", "TextEmbedderResult", "", ["/R", "=this", "/S"]],
+        ], "", ""],
+
+        [`enum class ${ nsProgId }.EmbeddingType`, "", [`/progid=${ progid }.EmbeddingType`], [
+            [`const ${ nsProgId }.EmbeddingType.RETRIEVAL_QUERY`, "1", [], [], "", ""],
+            [`const ${ nsProgId }.EmbeddingType.RETRIEVAL_DOCUMENT`, "2", [], [], "", ""],
+            [`const ${ nsProgId }.EmbeddingType.SEMANTIC_SIMILARITY`, "3", [], [], "", ""],
+            [`const ${ nsProgId }.EmbeddingType.CLASSIFICATION`, "4", [], [], "", ""],
+            [`const ${ nsProgId }.EmbeddingType.CLUSTERING`, "5", [], [], "", ""],
+            [`const ${ nsProgId }.EmbeddingType.QUESTION_ANSWERING`, "6", [], [], "", ""],
+            [`const ${ nsProgId }.EmbeddingType.FACT_CHECKING`, "7", [], [], "", ""],
+            [`const ${ nsProgId }.EmbeddingType.CODE_RETRIEVAL`, "8", [], [], "", ""],
+        ], "", ""],
+
+        [`enum class ${ nsProgId }.TextRole`, "", [`/progid=${ progid }.TextRole`], [
+            [`const ${ nsProgId }.TextRole.kQuery`, "1", ["=QUERY"], [], "", ""],
+            [`const ${ nsProgId }.TextRole.kDocument`, "2", ["=DOCUMENT"], [], "", ""],
+        ], "", ""],
+
+        [`struct ${ nsProgId }.TextFormatContext`, "", [`/progid=${ progid }.TextFormatContext`, "/Simple", "/DC"], [
+            ["EmbeddingType", "task_type", "", ["/RW"]],
+            ["std::optional<std::string>", "title", "std::nullopt", ["/RW"]],
+            ["TextRole", "role", "TextRole::kQuery", ["/RW"]],
         ], "", ""],
 
         [`struct ${ nsProgId }.TextEmbedderOptions`, "", [`/progid=${ progid }.TextEmbedderOptions`, "/Simple"], [
@@ -48,7 +73,12 @@ module.exports = ({language, self_get}) => {
             ["std::string", "text", "", []],
         ], "", ""],
 
-        [`${ nsProgId }.TextEmbedder.Close`, "absl::Status", ["=close"], [], "", ""],
+        [`${ nsProgId }.TextEmbedder.Embed`, "absl::StatusOr<TextEmbedderResult>", ["=embed"], [
+            ["std::string", "text", "", []],
+            ["TextFormatContext", "format_context", "", ["/C", "/Ref"]],
+        ], "", ""],
+
+        [`${ nsProgId }.TextEmbedder.Close`, "absl::Status", ["=close", "/GU"], [], "", ""],
 
         [`${ nsProgId }.TextEmbedder.CosineSimilarity`, "absl::StatusOr<double>", ["=cosine_similarity", "/S"], [
             ["components::containers::Embedding", "u", "", ["/C", "/Ref"]],

@@ -69,6 +69,6 @@ module.exports = ({language, self_get}) => {
             ["int64_t", "timestamp_ms", "", []],
         ], "", ""],
 
-        [`${ nsProgId }.AudioClassifier.Close`, "absl::Status", ["=close"], [], "", ""],
+        [`${ nsProgId }.AudioClassifier.Close`, "absl::Status", ["=close", "/GU"], [], "", ""],
     ];
 };

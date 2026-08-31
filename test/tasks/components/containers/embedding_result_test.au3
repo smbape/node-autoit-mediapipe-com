@@ -6,12 +6,12 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/components/containers/embedding_result_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v1.0.0/mediapipe/tasks/python/test/components/containers/embedding_result_test.py
 
 #include "..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\_assert.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 Global Const $embedding_result_lib = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.embedding_result")

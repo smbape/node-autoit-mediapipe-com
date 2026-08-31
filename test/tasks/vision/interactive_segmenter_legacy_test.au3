@@ -6,7 +6,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/vision/interactive_segmenter_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v1.0.0/mediapipe/tasks/python/test/vision/interactive_segmenter_legacy_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
@@ -14,8 +14,8 @@
 #include "..\..\_mat_utils.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world500*"), _OpenCV_FindDLL("autoit_opencv_com500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 Global Const $cv = _OpenCV_get()
@@ -33,8 +33,8 @@ _AssertIsObj($rect_module, "Failed to load mediapipe.tasks.autoit.components.con
 Global Const $base_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
 _AssertIsObj($base_options_module, "Failed to load mediapipe.tasks.autoit.core.base_options")
 
-Global Const $interactive_segmenter = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter")
-_AssertIsObj($interactive_segmenter, "Failed to load mediapipe.tasks.autoit.vision.interactive_segmenter")
+Global Const $interactive_segmenter_legacy = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy")
+_AssertIsObj($interactive_segmenter_legacy, "Failed to load mediapipe.tasks.autoit.vision.interactive_segmenter_legacy")
 
 Global Const $image_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image")
 _AssertIsObj($image_module, "Failed to load mediapipe.tasks.autoit.vision.core.image")
@@ -42,15 +42,15 @@ _AssertIsObj($image_module, "Failed to load mediapipe.tasks.autoit.vision.core.i
 Global Const $image_processing_options_module = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.core.image_processing_options")
 _AssertIsObj($image_processing_options_module, "Failed to load mediapipe.tasks.autoit.vision.core.image_processing_options")
 
-Global Const $InteractiveSegmenterResult = $interactive_segmenter.InteractiveSegmenterResult
+Global Const $InteractiveSegmenterLegacyResult = $interactive_segmenter_legacy.InteractiveSegmenterLegacyResult
 Global Const $_BaseOptions = $base_options_module.BaseOptions
 Global Const $_Image = $image_module.Image
 Global Const $_ImageFormat = $image_module.ImageFormat
 Global Const $_NormalizedKeypoint = $keypoint_module.NormalizedKeypoint
 Global Const $_RectF = $rect_module.RectF
-Global Const $_InteractiveSegmenter = $interactive_segmenter.InteractiveSegmenter
-Global Const $_InteractiveSegmenterOptions = $interactive_segmenter.InteractiveSegmenterOptions
-Global Const $_RegionOfInterest = $interactive_segmenter.RegionOfInterest
+Global Const $_InteractiveSegmenterLegacy = $interactive_segmenter_legacy.InteractiveSegmenterLegacy
+Global Const $_InteractiveSegmenterLegacyOptions = $interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions
+Global Const $_RegionOfInterest = $interactive_segmenter_legacy.RegionOfInterest
 Global Const $_ImageProcessingOptions = $image_processing_options_module.ImageProcessingOptions
 
 Global Const $_MODEL_FILE = 'ptm_512_hdt_ptm_woid.tflite'
@@ -105,11 +105,11 @@ Global $test_seg_image
 Global $model_path
 
 
-InteractiveSegmenterTest()
+InteractiveSegmenterLegacyTest()
 
 
-Func InteractiveSegmenterTest()
-	InteractiveSegmenterTest_setUp()
+Func InteractiveSegmenterLegacyTest()
+	InteractiveSegmenterLegacyTest_setUp()
 
 	test_create_from_file_succeeds_with_valid_model_path()
 	test_create_from_options_succeeds_with_valid_model_path()
@@ -117,28 +117,28 @@ Func InteractiveSegmenterTest()
 
 	test_segment_succeeds_with_category_mask( _
 			$FILE_NAME, _
-			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			$_NormalizedKeypoint(0.44, 0.7), _
 			$_CATS_AND_DOGS_MASK_DOG_1, _
 			0.84 _
 			)
 	test_segment_succeeds_with_category_mask( _
 			$FILE_CONTENT, _
-			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			$_NormalizedKeypoint(0.44, 0.7), _
 			$_CATS_AND_DOGS_MASK_DOG_1, _
 			0.84 _
 			)
 	test_segment_succeeds_with_category_mask( _
 			$FILE_NAME, _
-			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			$_NormalizedKeypoint(0.66, 0.66), _
 			$_CATS_AND_DOGS_MASK_DOG_2, _
 			0.84 _
 			)
 	test_segment_succeeds_with_category_mask( _
 			$FILE_CONTENT, _
-			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			$_NormalizedKeypoint(0.66, 0.66), _
 			$_CATS_AND_DOGS_MASK_DOG_2, _
 			0.84 _
@@ -146,37 +146,37 @@ Func InteractiveSegmenterTest()
 
 	test_segment_succeeds_with_confidence_mask( _
 			$FILE_NAME, _
-			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			$_NormalizedKeypoint(0.44, 0.7), _
 			$_CATS_AND_DOGS_MASK_DOG_1, _
 			0.84 _
 			)
 	test_segment_succeeds_with_confidence_mask( _
 			$FILE_CONTENT, _
-			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			$_NormalizedKeypoint(0.44, 0.7), _
 			$_CATS_AND_DOGS_MASK_DOG_1, _
 			0.84 _
 			)
 	test_segment_succeeds_with_confidence_mask( _
 			$FILE_NAME, _
-			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			$_NormalizedKeypoint(0.66, 0.66), _
 			$_CATS_AND_DOGS_MASK_DOG_2, _
 			$_MASK_SIMILARITY_THRESHOLD _
 			)
 	test_segment_succeeds_with_confidence_mask( _
 			$FILE_CONTENT, _
-			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			$MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			$_NormalizedKeypoint(0.66, 0.66), _
 			$_CATS_AND_DOGS_MASK_DOG_2, _
 			$_MASK_SIMILARITY_THRESHOLD _
 			)
 
 	test_segment_succeeds_with_rotation()
-EndFunc   ;==>InteractiveSegmenterTest
+EndFunc   ;==>InteractiveSegmenterLegacyTest
 
-Func InteractiveSegmenterTest_setUp()
+Func InteractiveSegmenterLegacyTest_setUp()
 	Local Const $_TEST_DATA_DIR = _Mediapipe_FindResourceDir() & "\mediapipe\tasks\testdata\vision"
 	Local $url, $file_path
 
@@ -217,8 +217,8 @@ Func test_create_from_file_succeeds_with_valid_model_path()
 	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_create_from_file_succeeds_with_valid_model_path' & @CRLF) ;### Debug Console
 
 	; Creates with default option and valid model file successfully.
-	Local $segmenter = $_InteractiveSegmenter.create_from_model_path($model_path)
-	_AssertIsInstance($segmenter, $_InteractiveSegmenter)
+	Local $segmenter = $_InteractiveSegmenterLegacy.create_from_model_path($model_path)
+	_AssertIsInstance($segmenter, $_InteractiveSegmenterLegacy)
 	$segmenter.close()
 EndFunc   ;==>test_create_from_file_succeeds_with_valid_model_path
 
@@ -227,9 +227,9 @@ Func test_create_from_options_succeeds_with_valid_model_path()
 
 	; Creates with options containing model file successfully.
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
-	Local $options = $_InteractiveSegmenterOptions(_Mediapipe_Params("base_options", $base_options))
-	Local $segmenter = $_InteractiveSegmenter.create_from_options($options)
-	_AssertIsInstance($segmenter, $_InteractiveSegmenter)
+	Local $options = $_InteractiveSegmenterLegacyOptions(_Mediapipe_Params("base_options", $base_options))
+	Local $segmenter = $_InteractiveSegmenterLegacy.create_from_options($options)
+	_AssertIsInstance($segmenter, $_InteractiveSegmenterLegacy)
 	$segmenter.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_path
 
@@ -239,9 +239,9 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	; Creates with options containing model content successfully.
 	Local $model_content = read_file_into_buffer($model_path)
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
-	Local $options = $_InteractiveSegmenterOptions(_Mediapipe_Params("base_options", $base_options))
-	Local $segmenter = $_InteractiveSegmenter.create_from_options($options)
-	_AssertIsInstance($segmenter, $_InteractiveSegmenter)
+	Local $options = $_InteractiveSegmenterLegacyOptions(_Mediapipe_Params("base_options", $base_options))
+	Local $segmenter = $_InteractiveSegmenterLegacy.create_from_options($options)
+	_AssertIsInstance($segmenter, $_InteractiveSegmenterLegacy)
 	$segmenter.close()
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
@@ -264,12 +264,12 @@ Func test_segment_succeeds_with_category_mask( _
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	EndIf
 
-	Local $options = $_InteractiveSegmenterOptions(_Mediapipe_Params( _
+	Local $options = $_InteractiveSegmenterLegacyOptions(_Mediapipe_Params( _
 			"base_options", $base_options, _
 			"output_category_mask", True, _
 			"output_confidence_masks", False _
 			))
-	Local $segmenter = $_InteractiveSegmenter.create_from_options($options)
+	Local $segmenter = $_InteractiveSegmenterLegacy.create_from_options($options)
 
 	; Performs image segmentation on the input.
 	Local $roi = $_RegionOfInterest(_Mediapipe_Params("format", $roi_format, "keypoint", $keypoint))
@@ -303,12 +303,12 @@ Func test_segment_succeeds_with_confidence_mask($model_file_type, $roi_format, $
 		$base_options = $_BaseOptions(_Mediapipe_Params("model_asset_buffer", $model_content))
 	EndIf
 
-	Local $options = $_InteractiveSegmenterOptions(_Mediapipe_Params( _
+	Local $options = $_InteractiveSegmenterLegacyOptions(_Mediapipe_Params( _
 			"base_options", $base_options, _
 			"output_category_mask", False, _
 			"output_confidence_masks", True _
 			))
-	Local $segmenter = $_InteractiveSegmenter.create_from_options($options)
+	Local $segmenter = $_InteractiveSegmenterLegacy.create_from_options($options)
 
 	; Performs image segmentation on the input.
 	Local $roi = $_RegionOfInterest(_Mediapipe_Params("format", $roi_format, "keypoint", $keypoint))
@@ -339,18 +339,18 @@ Func test_segment_succeeds_with_rotation()
 	; Creates segmenter.
 	Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
 	Local $roi = $_RegionOfInterest(_Mediapipe_Params( _
-			"format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+			"format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			"keypoint", $_NormalizedKeypoint(0.66, 0.66) _
 			))
 
 	; Run segmentation on the model in CONFIDENCE_MASK mode.
-	Local $options = $_InteractiveSegmenterOptions(_Mediapipe_Params( _
+	Local $options = $_InteractiveSegmenterLegacyOptions(_Mediapipe_Params( _
 			"base_options", $base_options, _
 			"output_category_mask", False, _
 			"output_confidence_masks", True _
 			))
 
-	Local $segmenter = $_InteractiveSegmenter.create_from_options($options)
+	Local $segmenter = $_InteractiveSegmenterLegacy.create_from_options($options)
 
 	; Perform segmentation
 	Local $image_processing_options = $_ImageProcessingOptions(_Mediapipe_Params("rotation_degrees", -90))

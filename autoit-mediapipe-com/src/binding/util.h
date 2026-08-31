@@ -79,7 +79,7 @@ namespace mediapipe::autoit {
 }
 
 template<typename Out>
-inline const HRESULT autoit_from(const absl::Status& status, const Out& out_val);
+inline HRESULT autoit_from(const absl::Status& status, const Out& out_val);
 
 template<typename In, typename Out>
-const HRESULT autoit_from(const absl::StatusOr<In>& status_or, Out& out_val);
+HRESULT autoit_from(const absl::StatusOr<In>& status_or, Out& out_val);

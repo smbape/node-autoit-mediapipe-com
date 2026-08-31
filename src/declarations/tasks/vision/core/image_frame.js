@@ -11,22 +11,22 @@ module.exports = ({self, language, cname}) => {
             ["uchar*", "data", "", ["/R", "=PixelData()", "/Cast=const_cast<uchar*>"]],
         ], "", ""],
 
-        [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
+        [`mediapipe.ImageFrame.${ cname }`, "absl::StatusOr<std::shared_ptr<ImageFrame>>", ["/S", `/Call=mediapipe::${ language }::CreateImageFrame`], [
             ["mediapipe::ImageFormat::Format", "image_format", "", []],
             ["cv::Mat", "data", "", ["/C", "/Ref"]],
             ["bool", "copy", "true", []],
         ], "", ""],
 
-        [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
+        [`mediapipe.ImageFrame.${ cname }`, "absl::StatusOr<std::shared_ptr<ImageFrame>>", ["/S", `/Call=mediapipe::${ language }::CreateImageFrame`], [
             ["cv::Mat", "data", "", ["/C", "/Ref"]],
             ["bool", "copy", "true", []],
         ], "", ""],
 
-        [`mediapipe.ImageFrame.${ cname }`, "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
+        [`mediapipe.ImageFrame.${ cname }`, "absl::StatusOr<std::shared_ptr<ImageFrame>>", ["/S", `/Call=mediapipe::${ language }::CreateImageFrame`], [
             ["std::string", "file_name", "", ["/C", "/Ref"]],
         ], "", ""],
 
-        ["mediapipe.ImageFrame.create_from_file", "std::shared_ptr<ImageFrame>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImageFrame`], [
+        ["mediapipe.ImageFrame.create_from_file", "absl::StatusOr<std::shared_ptr<ImageFrame>>", ["/S", `/Call=mediapipe::${ language }::CreateImageFrame`], [
             ["std::string", "file_name", "", ["/C", "/Ref"]],
         ], "", ""],
 

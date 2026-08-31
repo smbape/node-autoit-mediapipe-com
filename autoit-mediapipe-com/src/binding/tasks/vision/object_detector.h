@@ -8,4 +8,4 @@ namespace mediapipe::tasks::vision::object_detector {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::object_detector::ObjectDetectorResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::object_detector::ObjectDetectorResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::object_detector::ObjectDetectorResultCallback& out_val);

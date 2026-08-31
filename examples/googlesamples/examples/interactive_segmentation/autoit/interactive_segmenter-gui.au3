@@ -15,8 +15,8 @@
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
 _GDIPlus_Startup()
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world500*"), _OpenCV_FindDLL("autoit_opencv_com500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -116,7 +116,7 @@ Func Main($x = 0.68, $y = 0.68)
 
 	Local Static $segmenter = GetSegmenter()
 
-	Local Static $RegionOfInterest = $vision.InteractiveSegmenterRegionOfInterest
+	Local Static $RegionOfInterest = $vision.InteractiveSegmenterLegacyRegionOfInterest
 	Local Static $NormalizedKeypoint = $containers.keypoint.NormalizedKeypoint
 
 	; Create the MediaPipe image file that will be segmented
@@ -130,7 +130,7 @@ Func Main($x = 0.68, $y = 0.68)
 	Local $image_data = $cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR)
 
 	; Retrieve the masks for the segmented image
-	Local $roi = $RegionOfInterest(_Mediapipe_Params("format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+	Local $roi = $RegionOfInterest(_Mediapipe_Params("format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 			"keypoint", $NormalizedKeypoint($x, $y)))
 	Local $segmentation_result = $segmenter.segment($image, $roi)
 	Local $category_mask = $segmentation_result.category_mask
@@ -215,13 +215,13 @@ Func Setup()
 EndFunc   ;==>Setup
 
 Func GetSegmenter()
-	; Create the options that will be used for InteractiveSegmenter
+	; Create the options that will be used for InteractiveSegmenterLegacy
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
-	Local $options = $vision.InteractiveSegmenterOptions(_Mediapipe_Params("base_options", $base_options, _
+	Local $options = $vision.InteractiveSegmenterLegacyOptions(_Mediapipe_Params("base_options", $base_options, _
 			"output_category_mask", True))
 
 	; Create the interactive segmenter
-	Local $segmenter = $vision.InteractiveSegmenter.create_from_options($options)
+	Local $segmenter = $vision.InteractiveSegmenterLegacy.create_from_options($options)
 
 	Return $segmenter
 EndFunc   ;==>GetSegmenter

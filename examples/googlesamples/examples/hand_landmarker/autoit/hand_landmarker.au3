@@ -14,8 +14,8 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world500*"), _OpenCV_FindDLL("autoit_opencv_com500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -63,7 +63,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an ImageClassifier object.
+	; STEP 2: Create an HandLandmarker object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.HandLandmarkerOptions(_Mediapipe_Params("base_options", $base_options, _
 			"num_hands", 2))
@@ -75,7 +75,7 @@ Func Main()
 	; STEP 4: Detect hand landmarks from the input image.
 	Local $detection_result = $detector.detect($image)
 
-	; STEP 5: Process the classification result. In this case, visualize it.
+	; STEP 5: Process the detection result. In this case, visualize it.
 	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
 	resize_and_show($annotated_image, "hand_landmarker")
 	$cv.waitKey()

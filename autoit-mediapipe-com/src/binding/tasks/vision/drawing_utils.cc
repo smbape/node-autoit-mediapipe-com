@@ -367,7 +367,7 @@ namespace mediapipe::tasks::autoit::vision::drawing_utils {
 		cv::Mat transposed;
 		cv::transpose(axis_world, transposed);
 		transposed *= axis_length;
-		transposed = rotation.reshape(1) * transposed;
+		transposed = rotation.reshape(1, 3) * transposed;
 
 		cv::Mat axis_cam;
 		cv::transpose(transposed, axis_cam);

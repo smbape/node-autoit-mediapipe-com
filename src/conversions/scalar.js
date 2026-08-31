@@ -63,7 +63,7 @@ module.exports = (header = [], impl = [], options = {}) => {
         }
 
         template<typename _Tp>
-        const HRESULT autoit_to(VARIANT const* in_val, cv::Scalar_<_Tp>& out_val) {
+        HRESULT autoit_to(VARIANT const* in_val, cv::Scalar_<_Tp>& out_val) {
             ${ optional.assign.join(`\n${ " ".repeat(12) }`) }
 
             // a number can be a Scalar
@@ -127,13 +127,13 @@ module.exports = (header = [], impl = [], options = {}) => {
         }
 
         template<typename _Tp>
-        inline const HRESULT autoit_to(VARIANT const* in_val, AUTOIT_PTR<cv::Scalar_<_Tp>>& out_val) {
+        inline HRESULT autoit_to(VARIANT const* in_val, AUTOIT_PTR<cv::Scalar_<_Tp>>& out_val) {
             out_val = ${ options.make_shared }<cv::Scalar_<_Tp>>();
             return autoit_to(in_val, *out_val.get());
         }
 
         template<typename _Tp>
-        const HRESULT autoit_from(cv::Scalar_<_Tp> const& in_val, VARIANT*& out_val) {
+        HRESULT autoit_from(cv::Scalar_<_Tp> const& in_val, VARIANT*& out_val) {
             if (${ optional.condition("out_val") }) {
                 V_VT(out_val) = VT_ARRAY | VT_VARIANT;
                 typename ATL::template CComSafeArray<VARIANT> vArray((ULONG) ${ cn });

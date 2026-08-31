@@ -68,6 +68,9 @@
   - [protobuf.EDITION\_99998\_TEST\_ONLY\_](#protobufedition%5C_99998%5C_test%5C_only%5C_)
   - [protobuf.EDITION\_99999\_TEST\_ONLY\_](#protobufedition%5C_99999%5C_test%5C_only%5C_)
   - [protobuf.EDITION\_MAX\_](#protobufedition%5C_max%5C_)
+  - [protobuf.VISIBILITY\_UNSET\_](#protobufvisibility%5C_unset%5C_)
+  - [protobuf.VISIBILITY\_LOCAL\_](#protobufvisibility%5C_local%5C_)
+  - [protobuf.VISIBILITY\_EXPORT\_](#protobufvisibility%5C_export%5C_)
 - [google::protobuf::autoit::MapContainer](#googleprotobufautoitmapcontainer)
   - [google::protobuf::autoit::MapContainer::create](#googleprotobufautoitmapcontainercreate)
   - [google::protobuf::autoit::MapContainer::IsInstance](#googleprotobufautoitmapcontainerisinstance)
@@ -216,7 +219,7 @@
   - [vision.image\_classifier](#visionimage%5C_classifier)
   - [vision.image\_embedder](#visionimage%5C_embedder)
   - [vision.image\_segmenter](#visionimage%5C_segmenter)
-  - [vision.interactive\_segmenter](#visioninteractive%5C_segmenter)
+  - [vision.interactive\_segmenter\_legacy](#visioninteractive%5C_segmenter%5C_legacy)
   - [vision.object\_detector](#visionobject%5C_detector)
   - [vision.pose\_landmarker](#visionpose%5C_landmarker)
   - [vision.FaceDetector](#visionfacedetector)
@@ -245,9 +248,9 @@
   - [vision.ImageSegmenter](#visionimagesegmenter)
   - [vision.ImageSegmenterOptions](#visionimagesegmenteroptions)
   - [vision.ImageProcessingOptions](#visionimageprocessingoptions)
-  - [vision.InteractiveSegmenter](#visioninteractivesegmenter)
-  - [vision.InteractiveSegmenterOptions](#visioninteractivesegmenteroptions)
-  - [vision.InteractiveSegmenterRegionOfInterest](#visioninteractivesegmenterregionofinterest)
+  - [vision.InteractiveSegmenterLegacy](#visioninteractivesegmenterlegacy)
+  - [vision.InteractiveSegmenterLegacyOptions](#visioninteractivesegmenterlegacyoptions)
+  - [vision.InteractiveSegmenterLegacyRegionOfInterest](#visioninteractivesegmenterlegacyregionofinterest)
   - [vision.ObjectDetector](#visionobjectdetector)
   - [vision.ObjectDetectorOptions](#visionobjectdetectoroptions)
   - [vision.ObjectDetectorResult](#visionobjectdetectorresult)
@@ -441,16 +444,6 @@
   - [cv::imwrite](#cvimwrite)
   - [cv::imwritemulti](#cvimwritemulti)
   - [cv::variant](#cvvariant)
-  - [cv.ACCESS\_READ\_](#cvaccess%5C_read%5C_)
-  - [cv.ACCESS\_WRITE\_](#cvaccess%5C_write%5C_)
-  - [cv.ACCESS\_RW\_](#cvaccess%5C_rw%5C_)
-  - [cv.ACCESS\_MASK\_](#cvaccess%5C_mask%5C_)
-  - [cv.ACCESS\_FAST\_](#cvaccess%5C_fast%5C_)
-  - [cv.USAGE\_DEFAULT\_](#cvusage%5C_default%5C_)
-  - [cv.USAGE\_ALLOCATE\_HOST\_MEMORY\_](#cvusage%5C_allocate%5C_host%5C_memory%5C_)
-  - [cv.USAGE\_ALLOCATE\_DEVICE\_MEMORY\_](#cvusage%5C_allocate%5C_device%5C_memory%5C_)
-  - [cv.USAGE\_ALLOCATE\_SHARED\_MEMORY\_](#cvusage%5C_allocate%5C_shared%5C_memory%5C_)
-  - [cv.\_\_UMAT\_USAGE\_FLAGS\_32BIT\_](#cv%5C_%5C_umat%5C_usage%5C_flags%5C_32bit%5C_)
 - [google::protobuf::FileDescriptorSet](#googleprotobuffiledescriptorset)
   - [FileDescriptorSet.file](#filedescriptorsetfile)
   - [google::protobuf::FileDescriptorSet::get\_create](#googleprotobuffiledescriptorsetget%5C_create)
@@ -502,6 +495,7 @@
   - [FileDescriptorProto.dependency](#filedescriptorprotodependency)
   - [FileDescriptorProto.public\_dependency](#filedescriptorprotopublic%5C_dependency)
   - [FileDescriptorProto.weak\_dependency](#filedescriptorprotoweak%5C_dependency)
+  - [FileDescriptorProto.option\_dependency](#filedescriptorprotooption%5C_dependency)
   - [FileDescriptorProto.message\_type](#filedescriptorprotomessage%5C_type)
   - [FileDescriptorProto.enum\_type](#filedescriptorprotoenum%5C_type)
   - [FileDescriptorProto.service](#filedescriptorprotoservice)
@@ -694,6 +688,7 @@
   - [DescriptorProto.options](#descriptorprotooptions)
   - [DescriptorProto.reserved\_range](#descriptorprotoreserved%5C_range)
   - [DescriptorProto.reserved\_name](#descriptorprotoreserved%5C_name)
+  - [DescriptorProto.visibility](#descriptorprotovisibility)
   - [google::protobuf::DescriptorProto::get\_create](#googleprotobufdescriptorprotoget%5C_create)
   - [google::protobuf::DescriptorProto::ByteSizeLong](#googleprotobufdescriptorprotobytesizelong)
   - [google::protobuf::DescriptorProto::CheckInitialized](#googleprotobufdescriptorprotocheckinitialized)
@@ -1005,6 +1000,7 @@
   - [EnumDescriptorProto.options](#enumdescriptorprotooptions)
   - [EnumDescriptorProto.reserved\_range](#enumdescriptorprotoreserved%5C_range)
   - [EnumDescriptorProto.reserved\_name](#enumdescriptorprotoreserved%5C_name)
+  - [EnumDescriptorProto.visibility](#enumdescriptorprotovisibility)
   - [google::protobuf::EnumDescriptorProto::get\_create](#googleprotobufenumdescriptorprotoget%5C_create)
   - [google::protobuf::EnumDescriptorProto::ByteSizeLong](#googleprotobufenumdescriptorprotobytesizelong)
   - [google::protobuf::EnumDescriptorProto::CheckInitialized](#googleprotobufenumdescriptorprotocheckinitialized)
@@ -1562,6 +1558,8 @@
   - [FeatureSet.utf8\_validation](#featuresetutf8%5C_validation)
   - [FeatureSet.message\_encoding](#featuresetmessage%5C_encoding)
   - [FeatureSet.json\_format](#featuresetjson%5C_format)
+  - [FeatureSet.enforce\_naming\_style](#featuresetenforce%5C_naming%5C_style)
+  - [FeatureSet.default\_symbol\_visibility](#featuresetdefault%5C_symbol%5C_visibility)
   - [google::protobuf::FeatureSet::get\_create](#googleprotobuffeaturesetget%5C_create)
   - [google::protobuf::FeatureSet::ByteSizeLong](#googleprotobuffeaturesetbytesizelong)
   - [google::protobuf::FeatureSet::CheckInitialized](#googleprotobuffeaturesetcheckinitialized)
@@ -1598,6 +1596,32 @@
   - [FeatureSet.JSON\_FORMAT\_UNKNOWN\_](#featuresetjson%5C_format%5C_unknown%5C_)
   - [FeatureSet.ALLOW\_](#featuresetallow%5C_)
   - [FeatureSet.LEGACY\_BEST\_EFFORT\_](#featuresetlegacy%5C_best%5C_effort%5C_)
+  - [FeatureSet.ENFORCE\_NAMING\_STYLE\_UNKNOWN\_](#featuresetenforce%5C_naming%5C_style%5C_unknown%5C_)
+  - [FeatureSet.STYLE2024\_](#featuresetstyle2024%5C_)
+  - [FeatureSet.STYLE\_LEGACY\_](#featuresetstyle%5C_legacy%5C_)
+- [google::protobuf::FeatureSet::VisibilityFeature](#googleprotobuffeaturesetvisibilityfeature)
+  - [google::protobuf::FeatureSet::VisibilityFeature::get\_create](#googleprotobuffeaturesetvisibilityfeatureget%5C_create)
+  - [google::protobuf::FeatureSet::VisibilityFeature::ByteSizeLong](#googleprotobuffeaturesetvisibilityfeaturebytesizelong)
+  - [google::protobuf::FeatureSet::VisibilityFeature::CheckInitialized](#googleprotobuffeaturesetvisibilityfeaturecheckinitialized)
+  - [google::protobuf::FeatureSet::VisibilityFeature::Clear](#googleprotobuffeaturesetvisibilityfeatureclear)
+  - [google::protobuf::FeatureSet::VisibilityFeature::ClearField](#googleprotobuffeaturesetvisibilityfeatureclearfield)
+  - [google::protobuf::FeatureSet::VisibilityFeature::CopyFrom](#googleprotobuffeaturesetvisibilityfeaturecopyfrom)
+  - [google::protobuf::FeatureSet::VisibilityFeature::DiscardUnknownFields](#googleprotobuffeaturesetvisibilityfeaturediscardunknownfields)
+  - [google::protobuf::FeatureSet::VisibilityFeature::FindInitializationErrors](#googleprotobuffeaturesetvisibilityfeaturefindinitializationerrors)
+  - [google::protobuf::FeatureSet::VisibilityFeature::HasField](#googleprotobuffeaturesetvisibilityfeaturehasfield)
+  - [google::protobuf::FeatureSet::VisibilityFeature::IsInitialized](#googleprotobuffeaturesetvisibilityfeatureisinitialized)
+  - [google::protobuf::FeatureSet::VisibilityFeature::IsInstance](#googleprotobuffeaturesetvisibilityfeatureisinstance)
+  - [google::protobuf::FeatureSet::VisibilityFeature::SerializeAsString](#googleprotobuffeaturesetvisibilityfeatureserializeasstring)
+  - [google::protobuf::FeatureSet::VisibilityFeature::SerializeToString](#googleprotobuffeaturesetvisibilityfeatureserializetostring)
+  - [google::protobuf::FeatureSet::VisibilityFeature::SpaceUsedLong](#googleprotobuffeaturesetvisibilityfeaturespaceusedlong)
+  - [google::protobuf::FeatureSet::VisibilityFeature::\_\_eq\_\_](#googleprotobuffeaturesetvisibilityfeature%5C_%5C_eq%5C_%5C_)
+  - [google::protobuf::FeatureSet::VisibilityFeature::\_\_str\_\_](#googleprotobuffeaturesetvisibilityfeature%5C_%5C_str%5C_%5C_)
+  - [google::protobuf::FeatureSet::VisibilityFeature::\_\_type\_\_](#googleprotobuffeaturesetvisibilityfeature%5C_%5C_type%5C_%5C_)
+  - [VisibilityFeature.DEFAULT\_SYMBOL\_VISIBILITY\_UNKNOWN\_](#visibilityfeaturedefault%5C_symbol%5C_visibility%5C_unknown%5C_)
+  - [VisibilityFeature.EXPORT\_ALL\_](#visibilityfeatureexport%5C_all%5C_)
+  - [VisibilityFeature.EXPORT\_TOP\_LEVEL\_](#visibilityfeatureexport%5C_top%5C_level%5C_)
+  - [VisibilityFeature.LOCAL\_ALL\_](#visibilityfeaturelocal%5C_all%5C_)
+  - [VisibilityFeature.STRICT\_](#visibilityfeaturestrict%5C_)
 - [google::protobuf::FeatureSetDefaults](#googleprotobuffeaturesetdefaults)
   - [FeatureSetDefaults.defaults](#featuresetdefaultsdefaults)
   - [FeatureSetDefaults.minimum\_edition](#featuresetdefaultsminimum%5C_edition)
@@ -1841,6 +1865,8 @@
   - [FieldOptions.FeatureSupport](#fieldoptionsfeaturesupport)
 - [google::protobuf::descriptor\_pb2::UninterpretedOption](#googleprotobufdescriptor%5C_pb2uninterpretedoption)
   - [UninterpretedOption.NamePart](#uninterpretedoptionnamepart)
+- [google::protobuf::descriptor\_pb2::FeatureSet](#googleprotobufdescriptor%5C_pb2featureset)
+  - [FeatureSet.VisibilityFeature](#featuresetvisibilityfeature)
 - [google::protobuf::descriptor\_pb2::FeatureSetDefaults](#googleprotobufdescriptor%5C_pb2featuresetdefaults)
   - [FeatureSetDefaults.FeatureSetEditionDefault](#featuresetdefaultsfeatureseteditiondefault)
 - [google::protobuf::descriptor\_pb2::SourceCodeInfo](#googleprotobufdescriptor%5C_pb2sourcecodeinfo)
@@ -2792,13 +2818,6 @@
   - [cv::\_InputOutputArray::\_\_eq\_\_](#cv%5C_inputoutputarray%5C_%5C_eq%5C_%5C_)
   - [cv::\_InputOutputArray::\_\_str\_\_](#cv%5C_inputoutputarray%5C_%5C_str%5C_%5C_)
   - [cv::\_InputOutputArray::\_\_type\_\_](#cv%5C_inputoutputarray%5C_%5C_type%5C_%5C_)
-- [cv::Formatter](#cvformatter)
-  - [Formatter.FMT\_DEFAULT\_](#formatterfmt%5C_default%5C_)
-  - [Formatter.FMT\_MATLAB\_](#formatterfmt%5C_matlab%5C_)
-  - [Formatter.FMT\_CSV\_](#formatterfmt%5C_csv%5C_)
-  - [Formatter.FMT\_PYTHON\_](#formatterfmt%5C_python%5C_)
-  - [Formatter.FMT\_NUMPY\_](#formatterfmt%5C_numpy%5C_)
-  - [Formatter.FMT\_C\_](#formatterfmt%5C_c%5C_)
 - [cv::Mat](#cvmat)
   - [Mat.cols](#matcols)
   - [Mat.data](#matdata)
@@ -2965,6 +2984,7 @@
   - [cv::Mat::row](#cvmatrow)
   - [cv::Mat::rowRange](#cvmatrowrange)
   - [cv::Mat::setTo](#cvmatsetto)
+  - [cv::Mat::setZero](#cvmatsetzero)
   - [cv::Mat::set\_at](#cvmatset%5C_at)
   - [cv::Mat::size](#cvmatsize)
   - [cv::Mat::step1](#cvmatstep1)
@@ -2975,6 +2995,20 @@
   - [cv::Mat::type](#cvmattype)
   - [cv::Mat::updateContinuityFlag](#cvmatupdatecontinuityflag)
   - [cv::Mat::zeros](#cvmatzeros)
+- [cv::MatShape](#cvmatshape)
+  - [cv::MatShape::get\_create](#cvmatshapeget%5C_create)
+  - [cv::MatShape::IsInstance](#cvmatshapeisinstance)
+  - [cv::MatShape::\_\_eq\_\_](#cvmatshape%5C_%5C_eq%5C_%5C_)
+  - [cv::MatShape::\_\_str\_\_](#cvmatshape%5C_%5C_str%5C_%5C_)
+  - [cv::MatShape::\_\_type\_\_](#cvmatshape%5C_%5C_type%5C_%5C_)
+  - [cv::MatShape::channels](#cvmatshapechannels)
+  - [cv::MatShape::clear](#cvmatshapeclear)
+  - [cv::MatShape::empty](#cvmatshapeempty)
+  - [cv::MatShape::erase](#cvmatshapeerase)
+  - [cv::MatShape::expand](#cvmatshapeexpand)
+  - [cv::MatShape::hasSymbols](#cvmatshapehassymbols)
+  - [cv::MatShape::isScalar](#cvmatshapeisscalar)
+  - [cv::MatShape::toLayout](#cvmatshapetolayout)
 - [google::protobuf::Message](#googleprotobufmessage)
   - [google::protobuf::Message::ByteSizeLong](#googleprotobufmessagebytesizelong)
   - [google::protobuf::Message::CheckInitialized](#googleprotobufmessagecheckinitialized)
@@ -3300,10 +3334,16 @@
   - [BaseOptions.model\_asset\_buffer](#baseoptionsmodel%5C_asset%5C_buffer)
   - [BaseOptions.model\_asset\_path](#baseoptionsmodel%5C_asset%5C_path)
   - [BaseOptions.delegate](#baseoptionsdelegate)
+  - [BaseOptions.model\_asset\_descriptor\_meta](#baseoptionsmodel%5C_asset%5C_descriptor%5C_meta)
+  - [BaseOptions.file\_descriptor](#baseoptionsfile%5C_descriptor)
+  - [BaseOptions.delegate\_options](#baseoptionsdelegate%5C_options)
+  - [BaseOptions.disable\_default\_service](#baseoptionsdisable%5C_default%5C_service)
   - [BaseOptions.host\_system](#baseoptionshost%5C_system)
   - [BaseOptions.host\_environment](#baseoptionshost%5C_environment)
   - [BaseOptions.host\_version](#baseoptionshost%5C_version)
   - [BaseOptions.ca\_bundle\_path](#baseoptionsca%5C_bundle%5C_path)
+  - [BaseOptions.app\_id](#baseoptionsapp%5C_id)
+  - [BaseOptions.app\_version](#baseoptionsapp%5C_version)
   - [mediapipe::tasks::core::BaseOptions::get\_create](#mediapipetaskscorebaseoptionsget%5C_create)
   - [mediapipe::tasks::core::BaseOptions::IsInstance](#mediapipetaskscorebaseoptionsisinstance)
   - [mediapipe::tasks::core::BaseOptions::\_\_eq\_\_](#mediapipetaskscorebaseoptions%5C_%5C_eq%5C_%5C_)
@@ -3313,6 +3353,30 @@
   - [Delegate.CPU](#delegatecpu)
   - [Delegate.GPU](#delegategpu)
   - [Delegate.EDGETPU\_NNAPI](#delegateedgetpu%5C_nnapi)
+- [mediapipe::tasks::core::BaseOptions::CpuOptions](#mediapipetaskscorebaseoptionscpuoptions)
+  - [mediapipe::tasks::core::BaseOptions::CpuOptions::get\_create](#mediapipetaskscorebaseoptionscpuoptionsget%5C_create)
+  - [mediapipe::tasks::core::BaseOptions::CpuOptions::IsInstance](#mediapipetaskscorebaseoptionscpuoptionsisinstance)
+  - [mediapipe::tasks::core::BaseOptions::CpuOptions::\_\_eq\_\_](#mediapipetaskscorebaseoptionscpuoptions%5C_%5C_eq%5C_%5C_)
+  - [mediapipe::tasks::core::BaseOptions::CpuOptions::\_\_str\_\_](#mediapipetaskscorebaseoptionscpuoptions%5C_%5C_str%5C_%5C_)
+  - [mediapipe::tasks::core::BaseOptions::CpuOptions::\_\_type\_\_](#mediapipetaskscorebaseoptionscpuoptions%5C_%5C_type%5C_%5C_)
+- [mediapipe::tasks::core::BaseOptions::GpuOptions](#mediapipetaskscorebaseoptionsgpuoptions)
+  - [GpuOptions.cached\_kernel\_path](#gpuoptionscached%5C_kernel%5C_path)
+  - [GpuOptions.serialized\_model\_dir](#gpuoptionsserialized%5C_model%5C_dir)
+  - [GpuOptions.model\_token](#gpuoptionsmodel%5C_token)
+  - [mediapipe::tasks::core::BaseOptions::GpuOptions::get\_create](#mediapipetaskscorebaseoptionsgpuoptionsget%5C_create)
+  - [mediapipe::tasks::core::BaseOptions::GpuOptions::IsInstance](#mediapipetaskscorebaseoptionsgpuoptionsisinstance)
+  - [mediapipe::tasks::core::BaseOptions::GpuOptions::\_\_eq\_\_](#mediapipetaskscorebaseoptionsgpuoptions%5C_%5C_eq%5C_%5C_)
+  - [mediapipe::tasks::core::BaseOptions::GpuOptions::\_\_str\_\_](#mediapipetaskscorebaseoptionsgpuoptions%5C_%5C_str%5C_%5C_)
+  - [mediapipe::tasks::core::BaseOptions::GpuOptions::\_\_type\_\_](#mediapipetaskscorebaseoptionsgpuoptions%5C_%5C_type%5C_%5C_)
+- [mediapipe::tasks::core::BaseOptions::FileDescriptorMeta](#mediapipetaskscorebaseoptionsfiledescriptormeta)
+  - [FileDescriptorMeta.fd](#filedescriptormetafd)
+  - [FileDescriptorMeta.length](#filedescriptormetalength)
+  - [FileDescriptorMeta.offset](#filedescriptormetaoffset)
+  - [mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::get\_create](#mediapipetaskscorebaseoptionsfiledescriptormetaget%5C_create)
+  - [mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::IsInstance](#mediapipetaskscorebaseoptionsfiledescriptormetaisinstance)
+  - [mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::\_\_eq\_\_](#mediapipetaskscorebaseoptionsfiledescriptormeta%5C_%5C_eq%5C_%5C_)
+  - [mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::\_\_str\_\_](#mediapipetaskscorebaseoptionsfiledescriptormeta%5C_%5C_str%5C_%5C_)
+  - [mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::\_\_type\_\_](#mediapipetaskscorebaseoptionsfiledescriptormeta%5C_%5C_type%5C_%5C_)
 - [mediapipe::tasks::autoit::test](#mediapipetasksautoittest)
   - [test.vision](#testvision)
 - [mediapipe::tasks::autoit::test::vision](#mediapipetasksautoittestvision)
@@ -3340,6 +3404,8 @@
   - [text.TextEmbedder](#texttextembedder)
   - [text.TextEmbedderOptions](#texttextembedderoptions)
   - [text.TextEmbedderResult](#texttextembedderresult)
+  - [text.TextEmbeddingType](#texttextembeddingtype)
+  - [text.TextEmbeddingTextRole](#texttextembeddingtextrole)
 - [mediapipe::tasks::autoit::text::language\_detector](#mediapipetasksautoittextlanguage%5C_detector)
   - [language\_detector.LanguageDetectorOptions](#language%5C_detectorlanguagedetectoroptions)
   - [language\_detector.LanguageDetector](#language%5C_detectorlanguagedetector)
@@ -3410,9 +3476,33 @@
   - [mediapipe::tasks::text::text\_classifier::TextClassifier::create\_from\_model\_path](#mediapipetaskstexttext%5C_classifiertextclassifiercreate%5C_from%5C_model%5C_path)
   - [mediapipe::tasks::text::text\_classifier::TextClassifier::create\_from\_options](#mediapipetaskstexttext%5C_classifiertextclassifiercreate%5C_from%5C_options)
 - [mediapipe::tasks::autoit::text::text\_embedder](#mediapipetasksautoittexttext%5C_embedder)
+  - [text\_embedder.EmbeddingType](#text%5C_embedderembeddingtype)
+  - [text\_embedder.TextRole](#text%5C_embeddertextrole)
+  - [text\_embedder.TextFormatContext](#text%5C_embeddertextformatcontext)
   - [text\_embedder.TextEmbedderOptions](#text%5C_embeddertextembedderoptions)
   - [text\_embedder.TextEmbedder](#text%5C_embeddertextembedder)
   - [text\_embedder.TextEmbedderResult](#text%5C_embeddertextembedderresult)
+- [mediapipe::tasks::text::text\_embedder::EmbeddingType](#mediapipetaskstexttext%5C_embedderembeddingtype)
+  - [EmbeddingType.RETRIEVAL\_QUERY](#embeddingtyperetrieval%5C_query)
+  - [EmbeddingType.RETRIEVAL\_DOCUMENT](#embeddingtyperetrieval%5C_document)
+  - [EmbeddingType.SEMANTIC\_SIMILARITY](#embeddingtypesemantic%5C_similarity)
+  - [EmbeddingType.CLASSIFICATION](#embeddingtypeclassification)
+  - [EmbeddingType.CLUSTERING](#embeddingtypeclustering)
+  - [EmbeddingType.QUESTION\_ANSWERING](#embeddingtypequestion%5C_answering)
+  - [EmbeddingType.FACT\_CHECKING](#embeddingtypefact%5C_checking)
+  - [EmbeddingType.CODE\_RETRIEVAL](#embeddingtypecode%5C_retrieval)
+- [mediapipe::tasks::text::text\_embedder::TextRole](#mediapipetaskstexttext%5C_embeddertextrole)
+  - [TextRole.QUERY](#textrolequery)
+  - [TextRole.DOCUMENT](#textroledocument)
+- [mediapipe::tasks::text::text\_embedder::TextFormatContext](#mediapipetaskstexttext%5C_embeddertextformatcontext)
+  - [TextFormatContext.task\_type](#textformatcontexttask%5C_type)
+  - [TextFormatContext.title](#textformatcontexttitle)
+  - [TextFormatContext.role](#textformatcontextrole)
+  - [mediapipe::tasks::text::text\_embedder::TextFormatContext::get\_create](#mediapipetaskstexttext%5C_embeddertextformatcontextget%5C_create)
+  - [mediapipe::tasks::text::text\_embedder::TextFormatContext::IsInstance](#mediapipetaskstexttext%5C_embeddertextformatcontextisinstance)
+  - [mediapipe::tasks::text::text\_embedder::TextFormatContext::\_\_eq\_\_](#mediapipetaskstexttext%5C_embeddertextformatcontext%5C_%5C_eq%5C_%5C_)
+  - [mediapipe::tasks::text::text\_embedder::TextFormatContext::\_\_str\_\_](#mediapipetaskstexttext%5C_embeddertextformatcontext%5C_%5C_str%5C_%5C_)
+  - [mediapipe::tasks::text::text\_embedder::TextFormatContext::\_\_type\_\_](#mediapipetaskstexttext%5C_embeddertextformatcontext%5C_%5C_type%5C_%5C_)
 - [mediapipe::tasks::text::text\_embedder::TextEmbedderOptions](#mediapipetaskstexttext%5C_embeddertextembedderoptions)
   - [TextEmbedderOptions.base\_options](#textembedderoptionsbase%5C_options)
   - [TextEmbedderOptions.embedder\_options](#textembedderoptionsembedder%5C_options)
@@ -3779,42 +3869,42 @@
   - [mediapipe::tasks::vision::image\_segmenter::ImageSegmenterResult::\_\_eq\_\_](#mediapipetasksvisionimage%5C_segmenterimagesegmenterresult%5C_%5C_eq%5C_%5C_)
   - [mediapipe::tasks::vision::image\_segmenter::ImageSegmenterResult::\_\_str\_\_](#mediapipetasksvisionimage%5C_segmenterimagesegmenterresult%5C_%5C_str%5C_%5C_)
   - [mediapipe::tasks::vision::image\_segmenter::ImageSegmenterResult::\_\_type\_\_](#mediapipetasksvisionimage%5C_segmenterimagesegmenterresult%5C_%5C_type%5C_%5C_)
-- [mediapipe::tasks::autoit::vision::interactive\_segmenter](#mediapipetasksautoitvisioninteractive%5C_segmenter)
-  - [interactive\_segmenter.InteractiveSegmenterOptions](#interactive%5C_segmenterinteractivesegmenteroptions)
-  - [interactive\_segmenter.InteractiveSegmenter](#interactive%5C_segmenterinteractivesegmenter)
-  - [interactive\_segmenter.RegionOfInterest](#interactive%5C_segmenterregionofinterest)
-  - [interactive\_segmenter.InteractiveSegmenterResult](#interactive%5C_segmenterinteractivesegmenterresult)
-- [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenteroptions)
-  - [InteractiveSegmenterOptions.base\_options](#interactivesegmenteroptionsbase%5C_options)
-  - [InteractiveSegmenterOptions.output\_confidence\_masks](#interactivesegmenteroptionsoutput%5C_confidence%5C_masks)
-  - [InteractiveSegmenterOptions.output\_category\_mask](#interactivesegmenteroptionsoutput%5C_category%5C_mask)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::get\_create](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenteroptionsget%5C_create)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::IsInstance](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenteroptionsisinstance)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::\_\_eq\_\_](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenteroptions%5C_%5C_eq%5C_%5C_)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::\_\_str\_\_](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenteroptions%5C_%5C_str%5C_%5C_)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::\_\_type\_\_](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenteroptions%5C_%5C_type%5C_%5C_)
-- [mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest](#mediapipetasksvisioninteractive%5C_segmenterregionofinterest)
+- [mediapipe::tasks::autoit::vision::interactive\_segmenter\_legacy](#mediapipetasksautoitvisioninteractive%5C_segmenter%5C_legacy)
+  - [interactive\_segmenter\_legacy.InteractiveSegmenterLegacyOptions](#interactive%5C_segmenter%5C_legacyinteractivesegmenterlegacyoptions)
+  - [interactive\_segmenter\_legacy.InteractiveSegmenterLegacy](#interactive%5C_segmenter%5C_legacyinteractivesegmenterlegacy)
+  - [interactive\_segmenter\_legacy.RegionOfInterest](#interactive%5C_segmenter%5C_legacyregionofinterest)
+  - [interactive\_segmenter\_legacy.InteractiveSegmenterLegacyResult](#interactive%5C_segmenter%5C_legacyinteractivesegmenterlegacyresult)
+- [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacyoptions)
+  - [InteractiveSegmenterLegacyOptions.base\_options](#interactivesegmenterlegacyoptionsbase%5C_options)
+  - [InteractiveSegmenterLegacyOptions.output\_confidence\_masks](#interactivesegmenterlegacyoptionsoutput%5C_confidence%5C_masks)
+  - [InteractiveSegmenterLegacyOptions.output\_category\_mask](#interactivesegmenterlegacyoptionsoutput%5C_category%5C_mask)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::get\_create](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacyoptionsget%5C_create)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::IsInstance](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacyoptionsisinstance)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::\_\_eq\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacyoptions%5C_%5C_eq%5C_%5C_)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::\_\_str\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacyoptions%5C_%5C_str%5C_%5C_)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::\_\_type\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacyoptions%5C_%5C_type%5C_%5C_)
+- [mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyregionofinterest)
   - [RegionOfInterest.format](#regionofinterestformat)
   - [RegionOfInterest.keypoint](#regionofinterestkeypoint)
   - [RegionOfInterest.scribble](#regionofinterestscribble)
-  - [mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::get\_create](#mediapipetasksvisioninteractive%5C_segmenterregionofinterestget%5C_create)
-  - [mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::IsInstance](#mediapipetasksvisioninteractive%5C_segmenterregionofinterestisinstance)
-  - [mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::\_\_eq\_\_](#mediapipetasksvisioninteractive%5C_segmenterregionofinterest%5C_%5C_eq%5C_%5C_)
-  - [mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::\_\_str\_\_](#mediapipetasksvisioninteractive%5C_segmenterregionofinterest%5C_%5C_str%5C_%5C_)
-  - [mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::\_\_type\_\_](#mediapipetasksvisioninteractive%5C_segmenterregionofinterest%5C_%5C_type%5C_%5C_)
-- [mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::Format](#mediapipetasksvisioninteractive%5C_segmenterregionofinterestformat)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::get\_create](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyregionofinterestget%5C_create)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::IsInstance](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyregionofinterestisinstance)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::\_\_eq\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyregionofinterest%5C_%5C_eq%5C_%5C_)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::\_\_str\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyregionofinterest%5C_%5C_str%5C_%5C_)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::\_\_type\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyregionofinterest%5C_%5C_type%5C_%5C_)
+- [mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::Format](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyregionofinterestformat)
   - [Format.UNSPECIFIED](#formatunspecified)
   - [Format.KEYPOINT](#formatkeypoint)
   - [Format.SCRIBBLE](#formatscribble)
-- [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenter)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::IsInstance](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenterisinstance)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::\_\_eq\_\_](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenter%5C_%5C_eq%5C_%5C_)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::\_\_str\_\_](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenter%5C_%5C_str%5C_%5C_)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::\_\_type\_\_](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenter%5C_%5C_type%5C_%5C_)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::close](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmenterclose)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::create\_from\_model\_path](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmentercreate%5C_from%5C_model%5C_path)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::create\_from\_options](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmentercreate%5C_from%5C_options)
-  - [mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::segment](#mediapipetasksvisioninteractive%5C_segmenterinteractivesegmentersegment)
+- [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacy)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::IsInstance](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacyisinstance)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::\_\_eq\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacy%5C_%5C_eq%5C_%5C_)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::\_\_str\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacy%5C_%5C_str%5C_%5C_)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::\_\_type\_\_](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacy%5C_%5C_type%5C_%5C_)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::close](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacyclose)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::create\_from\_model\_path](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacycreate%5C_from%5C_model%5C_path)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::create\_from\_options](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacycreate%5C_from%5C_options)
+  - [mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::segment](#mediapipetasksvisioninteractive%5C_segmenter%5C_legacyinteractivesegmenterlegacysegment)
 - [mediapipe::tasks::autoit::vision::object\_detector](#mediapipetasksautoitvisionobject%5C_detector)
   - [object\_detector.ObjectDetectorOptions](#object%5C_detectorobjectdetectoroptions)
   - [object\_detector.ObjectDetector](#object%5C_detectorobjectdetector)
@@ -3931,6 +4021,7 @@
   - [cv::UMat::eye](#cvumateye)
   - [cv::UMat::getMat](#cvumatgetmat)
   - [cv::UMat::handle](#cvumathandle)
+  - [cv::UMat::inv](#cvumatinv)
   - [cv::UMat::isContinuous](#cvumatiscontinuous)
   - [cv::UMat::isSubmatrix](#cvumatissubmatrix)
   - [cv::UMat::locateROI](#cvumatlocateroi)
@@ -6262,9 +6353,9 @@ AutoIt:
 ### autoit::findFile
 
 ```cpp
-std::string autoit::findFile( const std::string&              path,
-                              const std::string&              directory,
-                              const std::string&              filter = "",
+std::string autoit::findFile( std::string_view                path,
+                              std::string_view                directory,
+                              std::string_view                filter = "",
                               const std::vector<std::string>& hints = std::vector<std::string>(1, "." ) );
 AutoIt:
     _Mediapipe_ObjCreate("autoit").findFile( $path, $directory[, $filter[, $hints]] ) -> retval
@@ -6274,8 +6365,8 @@ AutoIt:
 
 ```cpp
 void autoit::findFiles( std::vector<std::string>& matches,
-                        const std::string&        path,
-                        const std::string&        directory,
+                        std::string_view          path,
+                        std::string_view          directory,
                         int                       flags = FLTA_FILESFOLDERS,
                         bool                      relative = true );
 AutoIt:
@@ -6583,6 +6674,30 @@ AutoIt:
 static int google::protobuf::EDITION_MAX
 AutoIt:
     [propget] $oprotobuf.EDITION_MAX_
+```
+
+### protobuf.VISIBILITY\_UNSET\_
+
+```cpp
+static int google::protobuf::VISIBILITY_UNSET
+AutoIt:
+    [propget] $oprotobuf.VISIBILITY_UNSET_
+```
+
+### protobuf.VISIBILITY\_LOCAL\_
+
+```cpp
+static int google::protobuf::VISIBILITY_LOCAL
+AutoIt:
+    [propget] $oprotobuf.VISIBILITY_LOCAL_
+```
+
+### protobuf.VISIBILITY\_EXPORT\_
+
+```cpp
+static int google::protobuf::VISIBILITY_EXPORT
+AutoIt:
+    [propget] $oprotobuf.VISIBILITY_EXPORT_
 ```
 
 ## google::protobuf::autoit::MapContainer
@@ -7796,12 +7911,12 @@ AutoIt:
     [propget] $ovision.image_segmenter
 ```
 
-### vision.interactive\_segmenter
+### vision.interactive\_segmenter\_legacy
 
 ```cpp
-static mediapipe::tasks::autoit::vision::interactive_segmenter
+static mediapipe::tasks::autoit::vision::interactive_segmenter_legacy
 AutoIt:
-    [propget] $ovision.interactive_segmenter
+    [propget] $ovision.interactive_segmenter_legacy
 ```
 
 ### vision.object\_detector
@@ -8028,28 +8143,28 @@ AutoIt:
     [propget] $ovision.ImageProcessingOptions
 ```
 
-### vision.InteractiveSegmenter
+### vision.InteractiveSegmenterLegacy
 
 ```cpp
-static mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter
+static mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy
 AutoIt:
-    [propget] $ovision.InteractiveSegmenter
+    [propget] $ovision.InteractiveSegmenterLegacy
 ```
 
-### vision.InteractiveSegmenterOptions
+### vision.InteractiveSegmenterLegacyOptions
 
 ```cpp
-static mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions
+static mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions
 AutoIt:
-    [propget] $ovision.InteractiveSegmenterOptions
+    [propget] $ovision.InteractiveSegmenterLegacyOptions
 ```
 
-### vision.InteractiveSegmenterRegionOfInterest
+### vision.InteractiveSegmenterLegacyRegionOfInterest
 
 ```cpp
-static mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest
+static mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest
 AutoIt:
-    [propget] $ovision.InteractiveSegmenterRegionOfInterest
+    [propget] $ovision.InteractiveSegmenterLegacyRegionOfInterest
 ```
 
 ### vision.ObjectDetector
@@ -9674,86 +9789,6 @@ AutoIt:
     _Mediapipe_ObjCreate("cv").variant( $ptr ) -> retval
 ```
 
-### cv.ACCESS\_READ\_
-
-```cpp
-static int cv::ACCESS_READ
-AutoIt:
-    [propget] $ocv.ACCESS_READ_
-```
-
-### cv.ACCESS\_WRITE\_
-
-```cpp
-static int cv::ACCESS_WRITE
-AutoIt:
-    [propget] $ocv.ACCESS_WRITE_
-```
-
-### cv.ACCESS\_RW\_
-
-```cpp
-static int cv::ACCESS_RW
-AutoIt:
-    [propget] $ocv.ACCESS_RW_
-```
-
-### cv.ACCESS\_MASK\_
-
-```cpp
-static int cv::ACCESS_MASK
-AutoIt:
-    [propget] $ocv.ACCESS_MASK_
-```
-
-### cv.ACCESS\_FAST\_
-
-```cpp
-static int cv::ACCESS_FAST
-AutoIt:
-    [propget] $ocv.ACCESS_FAST_
-```
-
-### cv.USAGE\_DEFAULT\_
-
-```cpp
-static int cv::USAGE_DEFAULT
-AutoIt:
-    [propget] $ocv.USAGE_DEFAULT_
-```
-
-### cv.USAGE\_ALLOCATE\_HOST\_MEMORY\_
-
-```cpp
-static int cv::USAGE_ALLOCATE_HOST_MEMORY
-AutoIt:
-    [propget] $ocv.USAGE_ALLOCATE_HOST_MEMORY_
-```
-
-### cv.USAGE\_ALLOCATE\_DEVICE\_MEMORY\_
-
-```cpp
-static int cv::USAGE_ALLOCATE_DEVICE_MEMORY
-AutoIt:
-    [propget] $ocv.USAGE_ALLOCATE_DEVICE_MEMORY_
-```
-
-### cv.USAGE\_ALLOCATE\_SHARED\_MEMORY\_
-
-```cpp
-static int cv::USAGE_ALLOCATE_SHARED_MEMORY
-AutoIt:
-    [propget] $ocv.USAGE_ALLOCATE_SHARED_MEMORY_
-```
-
-### cv.\_\_UMAT\_USAGE\_FLAGS\_32BIT\_
-
-```cpp
-static int cv::__UMAT_USAGE_FLAGS_32BIT
-AutoIt:
-    [propget] $ocv.__UMAT_USAGE_FLAGS_32BIT_
-```
-
 ## google::protobuf::FileDescriptorSet
 
 ### FileDescriptorSet.file
@@ -10218,6 +10253,14 @@ AutoIt:
     [propget, propput] $oFileDescriptorProto.weak_dependency
 ```
 
+### FileDescriptorProto.option\_dependency
+
+```cpp
+::google::protobuf::RepeatedPtrField<std::string>* google::protobuf::FileDescriptorProto::option_dependency
+AutoIt:
+    [propget, propput] $oFileDescriptorProto.option_dependency
+```
+
 ### FileDescriptorProto.message\_type
 
 ```cpp
@@ -10290,6 +10333,7 @@ static google::protobuf::FileDescriptorProto google::protobuf::FileDescriptorPro
                                                                                                 VARIANT*                                          dependency = VARIANT*(),
                                                                                                 VARIANT*                                          public_dependency = VARIANT*(),
                                                                                                 VARIANT*                                          weak_dependency = VARIANT*(),
+                                                                                                VARIANT*                                          option_dependency = VARIANT*(),
                                                                                                 VARIANT*                                          message_type = VARIANT*(),
                                                                                                 VARIANT*                                          enum_type = VARIANT*(),
                                                                                                 VARIANT*                                          service = VARIANT*(),
@@ -10299,8 +10343,8 @@ static google::protobuf::FileDescriptorProto google::protobuf::FileDescriptorPro
                                                                                                 std::optional<std::string>                        syntax = std::optional<std::string>(),
                                                                                                 std::optional<google::protobuf::Edition>          edition = std::optional<google::protobuf::Edition>() );
 AutoIt:
-    _Mediapipe_ObjCreate("google.protobuf.FileDescriptorProto").create( [$name[, $package[, $dependency[, $public_dependency[, $weak_dependency[, $message_type[, $enum_type[, $service[, $extension[, $options[, $source_code_info[, $syntax[, $edition]]]]]]]]]]]]] ) -> <google.protobuf.FileDescriptorProto object>
-    $oFileDescriptorProto( [$name[, $package[, $dependency[, $public_dependency[, $weak_dependency[, $message_type[, $enum_type[, $service[, $extension[, $options[, $source_code_info[, $syntax[, $edition]]]]]]]]]]]]] ) -> <google.protobuf.FileDescriptorProto object>
+    _Mediapipe_ObjCreate("google.protobuf.FileDescriptorProto").create( [$name[, $package[, $dependency[, $public_dependency[, $weak_dependency[, $option_dependency[, $message_type[, $enum_type[, $service[, $extension[, $options[, $source_code_info[, $syntax[, $edition]]]]]]]]]]]]]] ) -> <google.protobuf.FileDescriptorProto object>
+    $oFileDescriptorProto( [$name[, $package[, $dependency[, $public_dependency[, $weak_dependency[, $option_dependency[, $message_type[, $enum_type[, $service[, $extension[, $options[, $source_code_info[, $syntax[, $edition]]]]]]]]]]]]]] ) -> <google.protobuf.FileDescriptorProto object>
 ```
 
 ### google::protobuf::FileDescriptorProto::ByteSizeLong
@@ -12069,6 +12113,14 @@ AutoIt:
     [propget, propput] $oDescriptorProto.reserved_name
 ```
 
+### DescriptorProto.visibility
+
+```cpp
+google::protobuf::SymbolVisibility google::protobuf::DescriptorProto::visibility
+AutoIt:
+    [propget, propput] $oDescriptorProto.visibility
+```
+
 ### google::protobuf::DescriptorProto::get\_create
 
 ```cpp
@@ -12081,10 +12133,11 @@ static google::protobuf::DescriptorProto google::protobuf::DescriptorProto::get_
                                                                                         VARIANT*                                          oneof_decl = VARIANT*(),
                                                                                         std::shared_ptr<google::protobuf::MessageOptions> options = std::shared_ptr<google::protobuf::MessageOptions>(),
                                                                                         VARIANT*                                          reserved_range = VARIANT*(),
-                                                                                        VARIANT*                                          reserved_name = VARIANT*() );
+                                                                                        VARIANT*                                          reserved_name = VARIANT*(),
+                                                                                        std::optional<google::protobuf::SymbolVisibility> visibility = std::optional<google::protobuf::SymbolVisibility>() );
 AutoIt:
-    _Mediapipe_ObjCreate("google.protobuf.DescriptorProto").create( [$name[, $field[, $extension[, $nested_type[, $enum_type[, $extension_range[, $oneof_decl[, $options[, $reserved_range[, $reserved_name]]]]]]]]]] ) -> <google.protobuf.DescriptorProto object>
-    $oDescriptorProto( [$name[, $field[, $extension[, $nested_type[, $enum_type[, $extension_range[, $oneof_decl[, $options[, $reserved_range[, $reserved_name]]]]]]]]]] ) -> <google.protobuf.DescriptorProto object>
+    _Mediapipe_ObjCreate("google.protobuf.DescriptorProto").create( [$name[, $field[, $extension[, $nested_type[, $enum_type[, $extension_range[, $oneof_decl[, $options[, $reserved_range[, $reserved_name[, $visibility]]]]]]]]]]] ) -> <google.protobuf.DescriptorProto object>
+    $oDescriptorProto( [$name[, $field[, $extension[, $nested_type[, $enum_type[, $extension_range[, $oneof_decl[, $options[, $reserved_range[, $reserved_name[, $visibility]]]]]]]]]]] ) -> <google.protobuf.DescriptorProto object>
 ```
 
 ### google::protobuf::DescriptorProto::ByteSizeLong
@@ -14911,17 +14964,26 @@ AutoIt:
     [propget, propput] $oEnumDescriptorProto.reserved_name
 ```
 
+### EnumDescriptorProto.visibility
+
+```cpp
+google::protobuf::SymbolVisibility google::protobuf::EnumDescriptorProto::visibility
+AutoIt:
+    [propget, propput] $oEnumDescriptorProto.visibility
+```
+
 ### google::protobuf::EnumDescriptorProto::get\_create
 
 ```cpp
-static google::protobuf::EnumDescriptorProto google::protobuf::EnumDescriptorProto::get_create( std::optional<std::string>                     name = std::optional<std::string>(),
-                                                                                                VARIANT*                                       value = VARIANT*(),
-                                                                                                std::shared_ptr<google::protobuf::EnumOptions> options = std::shared_ptr<google::protobuf::EnumOptions>(),
-                                                                                                VARIANT*                                       reserved_range = VARIANT*(),
-                                                                                                VARIANT*                                       reserved_name = VARIANT*() );
+static google::protobuf::EnumDescriptorProto google::protobuf::EnumDescriptorProto::get_create( std::optional<std::string>                        name = std::optional<std::string>(),
+                                                                                                VARIANT*                                          value = VARIANT*(),
+                                                                                                std::shared_ptr<google::protobuf::EnumOptions>    options = std::shared_ptr<google::protobuf::EnumOptions>(),
+                                                                                                VARIANT*                                          reserved_range = VARIANT*(),
+                                                                                                VARIANT*                                          reserved_name = VARIANT*(),
+                                                                                                std::optional<google::protobuf::SymbolVisibility> visibility = std::optional<google::protobuf::SymbolVisibility>() );
 AutoIt:
-    _Mediapipe_ObjCreate("google.protobuf.EnumDescriptorProto").create( [$name[, $value[, $options[, $reserved_range[, $reserved_name]]]]] ) -> <google.protobuf.EnumDescriptorProto object>
-    $oEnumDescriptorProto( [$name[, $value[, $options[, $reserved_range[, $reserved_name]]]]] ) -> <google.protobuf.EnumDescriptorProto object>
+    _Mediapipe_ObjCreate("google.protobuf.EnumDescriptorProto").create( [$name[, $value[, $options[, $reserved_range[, $reserved_name[, $visibility]]]]]] ) -> <google.protobuf.EnumDescriptorProto object>
+    $oEnumDescriptorProto( [$name[, $value[, $options[, $reserved_range[, $reserved_name[, $visibility]]]]]] ) -> <google.protobuf.EnumDescriptorProto object>
 ```
 
 ### google::protobuf::EnumDescriptorProto::ByteSizeLong
@@ -19839,18 +19901,36 @@ AutoIt:
     [propget, propput] $oFeatureSet.json_format
 ```
 
+### FeatureSet.enforce\_naming\_style
+
+```cpp
+google::protobuf::FeatureSet::EnforceNamingStyle google::protobuf::FeatureSet::enforce_naming_style
+AutoIt:
+    [propget, propput] $oFeatureSet.enforce_naming_style
+```
+
+### FeatureSet.default\_symbol\_visibility
+
+```cpp
+google::protobuf::FeatureSet::VisibilityFeature::DefaultSymbolVisibility google::protobuf::FeatureSet::default_symbol_visibility
+AutoIt:
+    [propget, propput] $oFeatureSet.default_symbol_visibility
+```
+
 ### google::protobuf::FeatureSet::get\_create
 
 ```cpp
-static google::protobuf::FeatureSet google::protobuf::FeatureSet::get_create( std::optional<google::protobuf::FeatureSet::FieldPresence>         field_presence = std::optional<google::protobuf::FeatureSet::FieldPresence>(),
-                                                                              std::optional<google::protobuf::FeatureSet::EnumType>              enum_type = std::optional<google::protobuf::FeatureSet::EnumType>(),
-                                                                              std::optional<google::protobuf::FeatureSet::RepeatedFieldEncoding> repeated_field_encoding = std::optional<google::protobuf::FeatureSet::RepeatedFieldEncoding>(),
-                                                                              std::optional<google::protobuf::FeatureSet::Utf8Validation>        utf8_validation = std::optional<google::protobuf::FeatureSet::Utf8Validation>(),
-                                                                              std::optional<google::protobuf::FeatureSet::MessageEncoding>       message_encoding = std::optional<google::protobuf::FeatureSet::MessageEncoding>(),
-                                                                              std::optional<google::protobuf::FeatureSet::JsonFormat>            json_format = std::optional<google::protobuf::FeatureSet::JsonFormat>() );
+static google::protobuf::FeatureSet google::protobuf::FeatureSet::get_create( std::optional<google::protobuf::FeatureSet::FieldPresence>                              field_presence = std::optional<google::protobuf::FeatureSet::FieldPresence>(),
+                                                                              std::optional<google::protobuf::FeatureSet::EnumType>                                   enum_type = std::optional<google::protobuf::FeatureSet::EnumType>(),
+                                                                              std::optional<google::protobuf::FeatureSet::RepeatedFieldEncoding>                      repeated_field_encoding = std::optional<google::protobuf::FeatureSet::RepeatedFieldEncoding>(),
+                                                                              std::optional<google::protobuf::FeatureSet::Utf8Validation>                             utf8_validation = std::optional<google::protobuf::FeatureSet::Utf8Validation>(),
+                                                                              std::optional<google::protobuf::FeatureSet::MessageEncoding>                            message_encoding = std::optional<google::protobuf::FeatureSet::MessageEncoding>(),
+                                                                              std::optional<google::protobuf::FeatureSet::JsonFormat>                                 json_format = std::optional<google::protobuf::FeatureSet::JsonFormat>(),
+                                                                              std::optional<google::protobuf::FeatureSet::EnforceNamingStyle>                         enforce_naming_style = std::optional<google::protobuf::FeatureSet::EnforceNamingStyle>(),
+                                                                              std::optional<google::protobuf::FeatureSet::VisibilityFeature::DefaultSymbolVisibility> default_symbol_visibility = std::optional<google::protobuf::FeatureSet::VisibilityFeature::DefaultSymbolVisibility>() );
 AutoIt:
-    _Mediapipe_ObjCreate("google.protobuf.FeatureSet").create( [$field_presence[, $enum_type[, $repeated_field_encoding[, $utf8_validation[, $message_encoding[, $json_format]]]]]] ) -> <google.protobuf.FeatureSet object>
-    $oFeatureSet( [$field_presence[, $enum_type[, $repeated_field_encoding[, $utf8_validation[, $message_encoding[, $json_format]]]]]] ) -> <google.protobuf.FeatureSet object>
+    _Mediapipe_ObjCreate("google.protobuf.FeatureSet").create( [$field_presence[, $enum_type[, $repeated_field_encoding[, $utf8_validation[, $message_encoding[, $json_format[, $enforce_naming_style[, $default_symbol_visibility]]]]]]]] ) -> <google.protobuf.FeatureSet object>
+    $oFeatureSet( [$field_presence[, $enum_type[, $repeated_field_encoding[, $utf8_validation[, $message_encoding[, $json_format[, $enforce_naming_style[, $default_symbol_visibility]]]]]]]] ) -> <google.protobuf.FeatureSet object>
 ```
 
 ### google::protobuf::FeatureSet::ByteSizeLong
@@ -20143,6 +20223,220 @@ AutoIt:
 static int google::protobuf::FeatureSet::LEGACY_BEST_EFFORT
 AutoIt:
     [propget] $oFeatureSet.LEGACY_BEST_EFFORT_
+```
+
+### FeatureSet.ENFORCE\_NAMING\_STYLE\_UNKNOWN\_
+
+```cpp
+static int google::protobuf::FeatureSet::ENFORCE_NAMING_STYLE_UNKNOWN
+AutoIt:
+    [propget] $oFeatureSet.ENFORCE_NAMING_STYLE_UNKNOWN_
+```
+
+### FeatureSet.STYLE2024\_
+
+```cpp
+static int google::protobuf::FeatureSet::STYLE2024
+AutoIt:
+    [propget] $oFeatureSet.STYLE2024_
+```
+
+### FeatureSet.STYLE\_LEGACY\_
+
+```cpp
+static int google::protobuf::FeatureSet::STYLE_LEGACY
+AutoIt:
+    [propget] $oFeatureSet.STYLE_LEGACY_
+```
+
+## google::protobuf::FeatureSet::VisibilityFeature
+
+### google::protobuf::FeatureSet::VisibilityFeature::get\_create
+
+```cpp
+static google::protobuf::FeatureSet::VisibilityFeature google::protobuf::FeatureSet::VisibilityFeature::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FeatureSet.VisibilityFeature").create() -> <google.protobuf.FeatureSet.VisibilityFeature object>
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::ByteSizeLong
+
+```cpp
+size_t google::protobuf::FeatureSet::VisibilityFeature::ByteSizeLong();
+AutoIt:
+    $oVisibilityFeature.ByteSizeLong() -> retval
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::CheckInitialized
+
+```cpp
+void google::protobuf::FeatureSet::VisibilityFeature::CheckInitialized();
+AutoIt:
+    $oVisibilityFeature.CheckInitialized() -> None
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::Clear
+
+```cpp
+void google::protobuf::FeatureSet::VisibilityFeature::Clear();
+AutoIt:
+    $oVisibilityFeature.Clear() -> None
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::ClearField
+
+```cpp
+void google::protobuf::FeatureSet::VisibilityFeature::ClearField( const std::string& field_name );
+AutoIt:
+    $oVisibilityFeature.ClearField( $field_name ) -> None
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::CopyFrom
+
+```cpp
+void google::protobuf::FeatureSet::VisibilityFeature::CopyFrom( const google::protobuf::Message* other_message );
+AutoIt:
+    $oVisibilityFeature.CopyFrom( $other_message ) -> None
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::DiscardUnknownFields
+
+```cpp
+void google::protobuf::FeatureSet::VisibilityFeature::DiscardUnknownFields();
+AutoIt:
+    $oVisibilityFeature.DiscardUnknownFields() -> None
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::FindInitializationErrors
+
+```cpp
+void google::protobuf::FeatureSet::VisibilityFeature::FindInitializationErrors( std::vector<std::string>* errors );
+AutoIt:
+    $oVisibilityFeature.FindInitializationErrors( [$errors] ) -> $errors
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::HasField
+
+```cpp
+bool google::protobuf::FeatureSet::VisibilityFeature::HasField( const std::string& field_name );
+AutoIt:
+    $oVisibilityFeature.HasField( $field_name ) -> retval
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::IsInitialized
+
+```cpp
+bool google::protobuf::FeatureSet::VisibilityFeature::IsInitialized();
+AutoIt:
+    $oVisibilityFeature.IsInitialized() -> retval
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::IsInstance
+
+```cpp
+static bool google::protobuf::FeatureSet::VisibilityFeature::IsInstance( const google::protobuf::FeatureSet::VisibilityFeature& obj );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FeatureSet.VisibilityFeature").IsInstance( $obj ) -> retval
+```
+
+```cpp
+static bool google::protobuf::FeatureSet::VisibilityFeature::IsInstance( VARIANT* obj );
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FeatureSet.VisibilityFeature").IsInstance( $obj ) -> retval
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::SerializeAsString
+
+```cpp
+std::string google::protobuf::FeatureSet::VisibilityFeature::SerializeAsString();
+AutoIt:
+    $oVisibilityFeature.SerializeAsString() -> retval
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::SerializeToString
+
+```cpp
+void google::protobuf::FeatureSet::VisibilityFeature::SerializeToString( std::string* output );
+AutoIt:
+    $oVisibilityFeature.SerializeToString( [$output] ) -> $output
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::SpaceUsedLong
+
+```cpp
+size_t google::protobuf::FeatureSet::VisibilityFeature::SpaceUsedLong();
+AutoIt:
+    $oVisibilityFeature.SpaceUsedLong() -> retval
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::\_\_eq\_\_
+
+```cpp
+bool google::protobuf::FeatureSet::VisibilityFeature::__eq__( const google::protobuf::FeatureSet::VisibilityFeature& other );
+AutoIt:
+    $oVisibilityFeature.__eq__( $other ) -> retval
+```
+
+```cpp
+bool google::protobuf::FeatureSet::VisibilityFeature::__eq__( VARIANT* other );
+AutoIt:
+    $oVisibilityFeature.__eq__( $other ) -> retval
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::\_\_str\_\_
+
+```cpp
+void google::protobuf::FeatureSet::VisibilityFeature::__str__( std::string* output );
+AutoIt:
+    $oVisibilityFeature.__str__( [$output] ) -> $output
+```
+
+### google::protobuf::FeatureSet::VisibilityFeature::\_\_type\_\_
+
+```cpp
+static std::string google::protobuf::FeatureSet::VisibilityFeature::__type__();
+AutoIt:
+    _Mediapipe_ObjCreate("google.protobuf.FeatureSet.VisibilityFeature").__type__() -> retval
+```
+
+### VisibilityFeature.DEFAULT\_SYMBOL\_VISIBILITY\_UNKNOWN\_
+
+```cpp
+static int google::protobuf::FeatureSet::VisibilityFeature::DEFAULT_SYMBOL_VISIBILITY_UNKNOWN
+AutoIt:
+    [propget] $oVisibilityFeature.DEFAULT_SYMBOL_VISIBILITY_UNKNOWN_
+```
+
+### VisibilityFeature.EXPORT\_ALL\_
+
+```cpp
+static int google::protobuf::FeatureSet::VisibilityFeature::EXPORT_ALL
+AutoIt:
+    [propget] $oVisibilityFeature.EXPORT_ALL_
+```
+
+### VisibilityFeature.EXPORT\_TOP\_LEVEL\_
+
+```cpp
+static int google::protobuf::FeatureSet::VisibilityFeature::EXPORT_TOP_LEVEL
+AutoIt:
+    [propget] $oVisibilityFeature.EXPORT_TOP_LEVEL_
+```
+
+### VisibilityFeature.LOCAL\_ALL\_
+
+```cpp
+static int google::protobuf::FeatureSet::VisibilityFeature::LOCAL_ALL
+AutoIt:
+    [propget] $oVisibilityFeature.LOCAL_ALL_
+```
+
+### VisibilityFeature.STRICT\_
+
+```cpp
+static int google::protobuf::FeatureSet::VisibilityFeature::STRICT
+AutoIt:
+    [propget] $oVisibilityFeature.STRICT_
 ```
 
 ## google::protobuf::FeatureSetDefaults
@@ -22270,6 +22564,16 @@ AutoIt:
 static google::protobuf::UninterpretedOption::NamePart
 AutoIt:
     [propget] $oUninterpretedOption.NamePart
+```
+
+## google::protobuf::descriptor\_pb2::FeatureSet
+
+### FeatureSet.VisibilityFeature
+
+```cpp
+static google::protobuf::FeatureSet::VisibilityFeature
+AutoIt:
+    [propget] $oFeatureSet.VisibilityFeature
 ```
 
 ## google::protobuf::descriptor\_pb2::FeatureSetDefaults
@@ -30693,56 +30997,6 @@ AutoIt:
     _Mediapipe_ObjCreate("cv._InputOutputArray").__type__() -> retval
 ```
 
-## cv::Formatter
-
-### Formatter.FMT\_DEFAULT\_
-
-```cpp
-static int cv::Formatter::FMT_DEFAULT
-AutoIt:
-    [propget] $oFormatter.FMT_DEFAULT_
-```
-
-### Formatter.FMT\_MATLAB\_
-
-```cpp
-static int cv::Formatter::FMT_MATLAB
-AutoIt:
-    [propget] $oFormatter.FMT_MATLAB_
-```
-
-### Formatter.FMT\_CSV\_
-
-```cpp
-static int cv::Formatter::FMT_CSV
-AutoIt:
-    [propget] $oFormatter.FMT_CSV_
-```
-
-### Formatter.FMT\_PYTHON\_
-
-```cpp
-static int cv::Formatter::FMT_PYTHON
-AutoIt:
-    [propget] $oFormatter.FMT_PYTHON_
-```
-
-### Formatter.FMT\_NUMPY\_
-
-```cpp
-static int cv::Formatter::FMT_NUMPY
-AutoIt:
-    [propget] $oFormatter.FMT_NUMPY_
-```
-
-### Formatter.FMT\_C\_
-
-```cpp
-static int cv::Formatter::FMT_C
-AutoIt:
-    [propget] $oFormatter.FMT_C_
-```
-
 ## cv::Mat
 
 ### Mat.cols
@@ -30874,10 +31128,25 @@ AutoIt:
 ```
 
 ```cpp
+static cv::Mat cv::Mat::create( const cv::MatShape& shape,
+                                int                 type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").create( $shape, $type ) -> <cv.Mat object>
+```
+
+```cpp
 static cv::Mat cv::Mat::create( const std::vector<int>& sizes,
                                 int                     type );
 AutoIt:
     _Mediapipe_ObjCreate("cv.Mat").create( $sizes, $type ) -> <cv.Mat object>
+```
+
+```cpp
+static cv::Mat cv::Mat::create( const cv::MatShape& shape,
+                                int                 type,
+                                cv::Scalar          s );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").create( $shape, $type, $s ) -> <cv.Mat object>
 ```
 
 ```cpp
@@ -30920,6 +31189,15 @@ static cv::Mat cv::Mat::create( const std::vector<int>&    sizes,
                                 const std::vector<size_t>& steps = std::vector<size_t>() );
 AutoIt:
     _Mediapipe_ObjCreate("cv.Mat").create( $sizes, $type, $data[, $steps] ) -> <cv.Mat object>
+```
+
+```cpp
+static cv::Mat cv::Mat::create( const cv::MatShape&        shape,
+                                int                        type,
+                                void*                      data,
+                                const std::vector<size_t>& steps = std::vector<size_t>() );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").create( $shape, $type, $data[, $steps] ) -> <cv.Mat object>
 ```
 
 ```cpp
@@ -33781,6 +34059,13 @@ AutoIt:
     _Mediapipe_ObjCreate("cv.Mat").ones( $sizes, $type ) -> retval
 ```
 
+```cpp
+static cv::Mat cv::Mat::ones( const cv::MatShape& shape,
+                              int                 type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").ones( $shape, $type ) -> retval
+```
+
 ### cv::Mat::pop\_back
 
 ```cpp
@@ -33906,6 +34191,13 @@ AutoIt:
     $oMat.reshape( $cn, $newshape ) -> retval
 ```
 
+```cpp
+cv::Mat cv::Mat::reshape( int                 cn,
+                          const cv::MatShape& newshape );
+AutoIt:
+    $oMat.reshape( $cn, $newshape ) -> retval
+```
+
 ### cv::Mat::resize
 
 ```cpp
@@ -33947,10 +34239,18 @@ AutoIt:
 ### cv::Mat::setTo
 
 ```cpp
-void cv::Mat::setTo( InputArray value,
-                     InputArray mask = noArray() );
+cv::Mat cv::Mat::setTo( InputArray value,
+                        InputArray mask = noArray() );
 AutoIt:
-    $oMat.setTo( $value[, $mask] ) -> None
+    $oMat.setTo( $value[, $mask] ) -> retval
+```
+
+### cv::Mat::setZero
+
+```cpp
+cv::Mat cv::Mat::setZero();
+AutoIt:
+    $oMat.setZero() -> retval
 ```
 
 ### cv::Mat::set\_at
@@ -34100,6 +34400,132 @@ static cv::Mat cv::Mat::zeros( std::vector<int> sizes,
                                int              type );
 AutoIt:
     _Mediapipe_ObjCreate("cv.Mat").zeros( $sizes, $type ) -> retval
+```
+
+```cpp
+static cv::Mat cv::Mat::zeros( const cv::MatShape& shape,
+                               int                 type );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.Mat").zeros( $shape, $type ) -> retval
+```
+
+## cv::MatShape
+
+### cv::MatShape::get\_create
+
+```cpp
+static cv::MatShape cv::MatShape::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("cv.MatShape").create() -> <cv.MatShape object>
+```
+
+### cv::MatShape::IsInstance
+
+```cpp
+static bool cv::MatShape::IsInstance( const cv::MatShape& obj );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.MatShape").IsInstance( $obj ) -> retval
+```
+
+```cpp
+static bool cv::MatShape::IsInstance( VARIANT* obj );
+AutoIt:
+    _Mediapipe_ObjCreate("cv.MatShape").IsInstance( $obj ) -> retval
+```
+
+### cv::MatShape::\_\_eq\_\_
+
+```cpp
+bool cv::MatShape::__eq__( const cv::MatShape& other );
+AutoIt:
+    $oMatShape.__eq__( $other ) -> retval
+```
+
+```cpp
+bool cv::MatShape::__eq__( VARIANT* other );
+AutoIt:
+    $oMatShape.__eq__( $other ) -> retval
+```
+
+### cv::MatShape::\_\_str\_\_
+
+```cpp
+std::string cv::MatShape::__str__();
+AutoIt:
+    $oMatShape.__str__() -> retval
+```
+
+### cv::MatShape::\_\_type\_\_
+
+```cpp
+static std::string cv::MatShape::__type__();
+AutoIt:
+    _Mediapipe_ObjCreate("cv.MatShape").__type__() -> retval
+```
+
+### cv::MatShape::channels
+
+```cpp
+int cv::MatShape::channels() const;
+AutoIt:
+    $oMatShape.channels() -> retval
+```
+
+### cv::MatShape::clear
+
+```cpp
+void cv::MatShape::clear();
+AutoIt:
+    $oMatShape.clear() -> None
+```
+
+### cv::MatShape::empty
+
+```cpp
+bool cv::MatShape::empty() const;
+AutoIt:
+    $oMatShape.empty() -> retval
+```
+
+### cv::MatShape::erase
+
+```cpp
+void cv::MatShape::erase( std::vector<int> where );
+AutoIt:
+    $oMatShape.erase( $where ) -> None
+```
+
+### cv::MatShape::expand
+
+```cpp
+cv::MatShape cv::MatShape::expand( const cv::MatShape& another ) const;
+AutoIt:
+    $oMatShape.expand( $another ) -> retval
+```
+
+### cv::MatShape::hasSymbols
+
+```cpp
+bool cv::MatShape::hasSymbols() const;
+AutoIt:
+    $oMatShape.hasSymbols() -> retval
+```
+
+### cv::MatShape::isScalar
+
+```cpp
+bool cv::MatShape::isScalar() const;
+AutoIt:
+    $oMatShape.isScalar() -> retval
+```
+
+### cv::MatShape::toLayout
+
+```cpp
+cv::MatShape cv::MatShape::toLayout( cv::DataLayout newLayout,
+                                     int            C0 = 0 ) const;
+AutoIt:
+    $oMatShape.toLayout( $newLayout[, $C0] ) -> retval
 ```
 
 ## google::protobuf::Message
@@ -36496,7 +36922,7 @@ static mediapipe::tasks::components::containers::NormalizedRect mediapipe::tasks
                                                                                                                                       const std::optional<float>                  y_center = std::nullopt,
                                                                                                                                       const std::optional<float>                  width = std::nullopt,
                                                                                                                                       const std::optional<float>                  height = std::nullopt,
-                                                                                                                                      const std::optional<std::optional<float>>   rotation = std::optional<std::optional<float>>(0.0),
+                                                                                                                                      const std::optional<std::optional<float>>   rotation = std::optional<std::optional<float>>(std::optional<float>(0.0f)),
                                                                                                                                       const std::optional<std::optional<int64_t>> rect_id = std::optional<std::optional<int64_t>>(std::nullopt) );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.components.containers.rect.NormalizedRect").create( [$x_center[, $y_center[, $width[, $height[, $rotation[, $rect_id]]]]]] ) -> <mediapipe.tasks.components.containers.NormalizedRect object>
@@ -36940,6 +37366,38 @@ AutoIt:
     [propget, propput] $oBaseOptions.delegate
 ```
 
+### BaseOptions.model\_asset\_descriptor\_meta
+
+```cpp
+mediapipe::tasks::core::BaseOptions::FileDescriptorMeta mediapipe::tasks::core::BaseOptions::model_asset_descriptor_meta
+AutoIt:
+    [propget, propput] $oBaseOptions.model_asset_descriptor_meta
+```
+
+### BaseOptions.file\_descriptor
+
+```cpp
+int mediapipe::tasks::core::BaseOptions::file_descriptor
+AutoIt:
+    [propget, propput] $oBaseOptions.file_descriptor
+```
+
+### BaseOptions.delegate\_options
+
+```cpp
+std::optional<std::variant<mediapipe::tasks::core::BaseOptions::CpuOptions, mediapipe::tasks::core::BaseOptions::GpuOptions>> mediapipe::tasks::core::BaseOptions::delegate_options
+AutoIt:
+    [propget, propput] $oBaseOptions.delegate_options
+```
+
+### BaseOptions.disable\_default\_service
+
+```cpp
+bool mediapipe::tasks::core::BaseOptions::disable_default_service
+AutoIt:
+    [propget, propput] $oBaseOptions.disable_default_service
+```
+
 ### BaseOptions.host\_system
 
 ```cpp
@@ -36972,23 +37430,45 @@ AutoIt:
     [propget, propput] $oBaseOptions.ca_bundle_path
 ```
 
+### BaseOptions.app\_id
+
+```cpp
+std::string mediapipe::tasks::core::BaseOptions::app_id
+AutoIt:
+    [propget, propput] $oBaseOptions.app_id
+```
+
+### BaseOptions.app\_version
+
+```cpp
+std::string mediapipe::tasks::core::BaseOptions::app_version
+AutoIt:
+    [propget, propput] $oBaseOptions.app_version
+```
+
 ### mediapipe::tasks::core::BaseOptions::get\_create
 
 ```cpp
-static mediapipe::tasks::core::BaseOptions mediapipe::tasks::core::BaseOptions::get_create( const std::optional<std::optional<std::string>>                    model_asset_buffer = std::nullopt,
-                                                                                            const std::optional<std::string>                                   model_asset_path = std::nullopt,
-                                                                                            const std::optional<mediapipe::tasks::core::BaseOptions::Delegate> delegate = std::optional<mediapipe::tasks::core::BaseOptions::Delegate>(BaseOptions::CPU),
-                                                                                            const std::optional<mediapipe::tasks::core::HostSystem>            host_system = std::optional<mediapipe::tasks::core::HostSystem>(HostSystem::HOST_SYSTEM_WINDOWS),
-                                                                                            const std::optional<mediapipe::tasks::core::HostEnvironment>       host_environment = std::optional<mediapipe::tasks::core::HostEnvironment>(HostEnvironment::HOST_ENVIRONMENT_UNKNOWN),
-                                                                                            const std::optional<std::string>                                   host_version = std::nullopt,
-                                                                                            const std::optional<std::string>                                   ca_bundle_path = std::nullopt );
+static mediapipe::tasks::core::BaseOptions mediapipe::tasks::core::BaseOptions::get_create( const std::optional<std::optional<std::string>>                                                                                                    model_asset_buffer = std::nullopt,
+                                                                                            const std::optional<std::string>                                                                                                                   model_asset_path = std::nullopt,
+                                                                                            const std::optional<mediapipe::tasks::core::BaseOptions::Delegate>                                                                                 delegate = std::optional<mediapipe::tasks::core::BaseOptions::Delegate>(BaseOptions::CPU),
+                                                                                            const std::optional<mediapipe::tasks::core::BaseOptions::FileDescriptorMeta>                                                                       model_asset_descriptor_meta = std::nullopt,
+                                                                                            const std::optional<int>                                                                                                                           file_descriptor = std::nullopt,
+                                                                                            const std::optional<std::optional<std::variant<mediapipe::tasks::core::BaseOptions::CpuOptions, mediapipe::tasks::core::BaseOptions::GpuOptions>>> delegate_options = std::nullopt,
+                                                                                            const std::optional<bool>                                                                                                                          disable_default_service = std::optional<bool>(false),
+                                                                                            const std::optional<mediapipe::tasks::core::HostSystem>                                                                                            host_system = std::optional<mediapipe::tasks::core::HostSystem>(HostSystem::HOST_SYSTEM_WINDOWS),
+                                                                                            const std::optional<mediapipe::tasks::core::HostEnvironment>                                                                                       host_environment = std::optional<mediapipe::tasks::core::HostEnvironment>(HostEnvironment::HOST_ENVIRONMENT_UNKNOWN),
+                                                                                            const std::optional<std::string>                                                                                                                   host_version = std::nullopt,
+                                                                                            const std::optional<std::string>                                                                                                                   ca_bundle_path = std::nullopt,
+                                                                                            const std::optional<std::string>                                                                                                                   app_id = std::nullopt,
+                                                                                            const std::optional<std::string>                                                                                                                   app_version = std::nullopt );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions").create( [$model_asset_buffer[, $model_asset_path[, $delegate[, $host_system[, $host_environment[, $host_version[, $ca_bundle_path]]]]]]] ) -> <mediapipe.tasks.core.BaseOptions object>
-    $oBaseOptions( [$model_asset_buffer[, $model_asset_path[, $delegate[, $host_system[, $host_environment[, $host_version[, $ca_bundle_path]]]]]]] ) -> <mediapipe.tasks.core.BaseOptions object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions").create( [$model_asset_buffer[, $model_asset_path[, $delegate[, $model_asset_descriptor_meta[, $file_descriptor[, $delegate_options[, $disable_default_service[, $host_system[, $host_environment[, $host_version[, $ca_bundle_path[, $app_id[, $app_version]]]]]]]]]]]]] ) -> <mediapipe.tasks.core.BaseOptions object>
+    $oBaseOptions( [$model_asset_buffer[, $model_asset_path[, $delegate[, $model_asset_descriptor_meta[, $file_descriptor[, $delegate_options[, $disable_default_service[, $host_system[, $host_environment[, $host_version[, $ca_bundle_path[, $app_id[, $app_version]]]]]]]]]]]]] ) -> <mediapipe.tasks.core.BaseOptions object>
 ```
 
 ```cpp
-static mediapipe::tasks::core::BaseOptions mediapipe::tasks::core::BaseOptions::get_create( std::tuple<std::optional<std::string>, std::string, mediapipe::tasks::core::BaseOptions::Delegate, mediapipe::tasks::core::HostSystem, mediapipe::tasks::core::HostEnvironment, std::string, std::string> args );
+static mediapipe::tasks::core::BaseOptions mediapipe::tasks::core::BaseOptions::get_create( std::tuple<std::optional<std::string>, std::string, mediapipe::tasks::core::BaseOptions::Delegate, mediapipe::tasks::core::BaseOptions::FileDescriptorMeta, int, std::optional<std::variant<mediapipe::tasks::core::BaseOptions::CpuOptions, mediapipe::tasks::core::BaseOptions::GpuOptions>>, bool, mediapipe::tasks::core::HostSystem, mediapipe::tasks::core::HostEnvironment, std::string, std::string, std::string, std::string> args );
 AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions").create( $args ) -> <mediapipe.tasks.core.BaseOptions object>
     $oBaseOptions( $args ) -> <mediapipe.tasks.core.BaseOptions object>
@@ -37062,6 +37542,236 @@ AutoIt:
 static int mediapipe::tasks::core::BaseOptions::Delegate::EDGETPU_NNAPI
 AutoIt:
     [propget] $oDelegate.EDGETPU_NNAPI
+```
+
+## mediapipe::tasks::core::BaseOptions::CpuOptions
+
+### mediapipe::tasks::core::BaseOptions::CpuOptions::get\_create
+
+```cpp
+static mediapipe::tasks::core::BaseOptions::CpuOptions mediapipe::tasks::core::BaseOptions::CpuOptions::get_create();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.CpuOptions").create() -> <mediapipe.tasks.core.BaseOptions.CpuOptions object>
+```
+
+### mediapipe::tasks::core::BaseOptions::CpuOptions::IsInstance
+
+```cpp
+static bool mediapipe::tasks::core::BaseOptions::CpuOptions::IsInstance( const mediapipe::tasks::core::BaseOptions::CpuOptions& obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.CpuOptions").IsInstance( $obj ) -> retval
+```
+
+```cpp
+static bool mediapipe::tasks::core::BaseOptions::CpuOptions::IsInstance( VARIANT* obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.CpuOptions").IsInstance( $obj ) -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::CpuOptions::\_\_eq\_\_
+
+```cpp
+bool mediapipe::tasks::core::BaseOptions::CpuOptions::__eq__( const mediapipe::tasks::core::BaseOptions::CpuOptions& other );
+AutoIt:
+    $oCpuOptions.__eq__( $other ) -> retval
+```
+
+```cpp
+bool mediapipe::tasks::core::BaseOptions::CpuOptions::__eq__( VARIANT* other );
+AutoIt:
+    $oCpuOptions.__eq__( $other ) -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::CpuOptions::\_\_str\_\_
+
+```cpp
+std::string mediapipe::tasks::core::BaseOptions::CpuOptions::__str__();
+AutoIt:
+    $oCpuOptions.__str__() -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::CpuOptions::\_\_type\_\_
+
+```cpp
+static std::string mediapipe::tasks::core::BaseOptions::CpuOptions::__type__();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.CpuOptions").__type__() -> retval
+```
+
+## mediapipe::tasks::core::BaseOptions::GpuOptions
+
+### GpuOptions.cached\_kernel\_path
+
+```cpp
+std::string mediapipe::tasks::core::BaseOptions::GpuOptions::cached_kernel_path
+AutoIt:
+    [propget, propput] $oGpuOptions.cached_kernel_path
+```
+
+### GpuOptions.serialized\_model\_dir
+
+```cpp
+std::string mediapipe::tasks::core::BaseOptions::GpuOptions::serialized_model_dir
+AutoIt:
+    [propget, propput] $oGpuOptions.serialized_model_dir
+```
+
+### GpuOptions.model\_token
+
+```cpp
+std::string mediapipe::tasks::core::BaseOptions::GpuOptions::model_token
+AutoIt:
+    [propget, propput] $oGpuOptions.model_token
+```
+
+### mediapipe::tasks::core::BaseOptions::GpuOptions::get\_create
+
+```cpp
+static mediapipe::tasks::core::BaseOptions::GpuOptions mediapipe::tasks::core::BaseOptions::GpuOptions::get_create( const std::optional<std::string> cached_kernel_path = std::nullopt,
+                                                                                                                    const std::optional<std::string> serialized_model_dir = std::nullopt,
+                                                                                                                    const std::optional<std::string> model_token = std::nullopt );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.GpuOptions").create( [$cached_kernel_path[, $serialized_model_dir[, $model_token]]] ) -> <mediapipe.tasks.core.BaseOptions.GpuOptions object>
+    $oGpuOptions( [$cached_kernel_path[, $serialized_model_dir[, $model_token]]] ) -> <mediapipe.tasks.core.BaseOptions.GpuOptions object>
+```
+
+```cpp
+static mediapipe::tasks::core::BaseOptions::GpuOptions mediapipe::tasks::core::BaseOptions::GpuOptions::get_create( std::tuple<std::string, std::string, std::string> args );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.GpuOptions").create( $args ) -> <mediapipe.tasks.core.BaseOptions.GpuOptions object>
+    $oGpuOptions( $args ) -> <mediapipe.tasks.core.BaseOptions.GpuOptions object>
+```
+
+### mediapipe::tasks::core::BaseOptions::GpuOptions::IsInstance
+
+```cpp
+static bool mediapipe::tasks::core::BaseOptions::GpuOptions::IsInstance( const mediapipe::tasks::core::BaseOptions::GpuOptions& obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.GpuOptions").IsInstance( $obj ) -> retval
+```
+
+```cpp
+static bool mediapipe::tasks::core::BaseOptions::GpuOptions::IsInstance( VARIANT* obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.GpuOptions").IsInstance( $obj ) -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::GpuOptions::\_\_eq\_\_
+
+```cpp
+bool mediapipe::tasks::core::BaseOptions::GpuOptions::__eq__( const mediapipe::tasks::core::BaseOptions::GpuOptions& other );
+AutoIt:
+    $oGpuOptions.__eq__( $other ) -> retval
+```
+
+```cpp
+bool mediapipe::tasks::core::BaseOptions::GpuOptions::__eq__( VARIANT* other );
+AutoIt:
+    $oGpuOptions.__eq__( $other ) -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::GpuOptions::\_\_str\_\_
+
+```cpp
+std::string mediapipe::tasks::core::BaseOptions::GpuOptions::__str__();
+AutoIt:
+    $oGpuOptions.__str__() -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::GpuOptions::\_\_type\_\_
+
+```cpp
+static std::string mediapipe::tasks::core::BaseOptions::GpuOptions::__type__();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.GpuOptions").__type__() -> retval
+```
+
+## mediapipe::tasks::core::BaseOptions::FileDescriptorMeta
+
+### FileDescriptorMeta.fd
+
+```cpp
+int mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::fd
+AutoIt:
+    [propget, propput] $oFileDescriptorMeta.fd
+```
+
+### FileDescriptorMeta.length
+
+```cpp
+int mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::length
+AutoIt:
+    [propget, propput] $oFileDescriptorMeta.length
+```
+
+### FileDescriptorMeta.offset
+
+```cpp
+int mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::offset
+AutoIt:
+    [propget, propput] $oFileDescriptorMeta.offset
+```
+
+### mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::get\_create
+
+```cpp
+static mediapipe::tasks::core::BaseOptions::FileDescriptorMeta mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::get_create( const std::optional<int> fd = std::optional<int>(-1),
+                                                                                                                                    const std::optional<int> length = std::optional<int>(-1),
+                                                                                                                                    const std::optional<int> offset = std::optional<int>(-1) );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.FileDescriptorMeta").create( [$fd[, $length[, $offset]]] ) -> <mediapipe.tasks.core.BaseOptions.FileDescriptorMeta object>
+    $oFileDescriptorMeta( [$fd[, $length[, $offset]]] ) -> <mediapipe.tasks.core.BaseOptions.FileDescriptorMeta object>
+```
+
+```cpp
+static mediapipe::tasks::core::BaseOptions::FileDescriptorMeta mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::get_create( std::tuple<int, int, int> args );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.FileDescriptorMeta").create( $args ) -> <mediapipe.tasks.core.BaseOptions.FileDescriptorMeta object>
+    $oFileDescriptorMeta( $args ) -> <mediapipe.tasks.core.BaseOptions.FileDescriptorMeta object>
+```
+
+### mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::IsInstance
+
+```cpp
+static bool mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::IsInstance( const mediapipe::tasks::core::BaseOptions::FileDescriptorMeta& obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.FileDescriptorMeta").IsInstance( $obj ) -> retval
+```
+
+```cpp
+static bool mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::IsInstance( VARIANT* obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.FileDescriptorMeta").IsInstance( $obj ) -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::\_\_eq\_\_
+
+```cpp
+bool mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::__eq__( const mediapipe::tasks::core::BaseOptions::FileDescriptorMeta& other );
+AutoIt:
+    $oFileDescriptorMeta.__eq__( $other ) -> retval
+```
+
+```cpp
+bool mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::__eq__( VARIANT* other );
+AutoIt:
+    $oFileDescriptorMeta.__eq__( $other ) -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::\_\_str\_\_
+
+```cpp
+std::string mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::__str__();
+AutoIt:
+    $oFileDescriptorMeta.__str__() -> retval
+```
+
+### mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::\_\_type\_\_
+
+```cpp
+static std::string mediapipe::tasks::core::BaseOptions::FileDescriptorMeta::__type__();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options.BaseOptions.FileDescriptorMeta").__type__() -> retval
 ```
 
 ## mediapipe::tasks::autoit::test
@@ -37262,6 +37972,22 @@ AutoIt:
 static mediapipe::tasks::components::containers::EmbeddingResult
 AutoIt:
     [propget] $otext.TextEmbedderResult
+```
+
+### text.TextEmbeddingType
+
+```cpp
+static mediapipe::tasks::text::text_embedder::EmbeddingType
+AutoIt:
+    [propget] $otext.TextEmbeddingType
+```
+
+### text.TextEmbeddingTextRole
+
+```cpp
+static mediapipe::tasks::text::text_embedder::TextRole
+AutoIt:
+    [propget] $otext.TextEmbeddingTextRole
 ```
 
 ## mediapipe::tasks::autoit::text::language\_detector
@@ -37873,6 +38599,30 @@ AutoIt:
 
 ## mediapipe::tasks::autoit::text::text\_embedder
 
+### text\_embedder.EmbeddingType
+
+```cpp
+static mediapipe::tasks::text::text_embedder::EmbeddingType
+AutoIt:
+    [propget] $otext_embedder.EmbeddingType
+```
+
+### text\_embedder.TextRole
+
+```cpp
+static mediapipe::tasks::text::text_embedder::TextRole
+AutoIt:
+    [propget] $otext_embedder.TextRole
+```
+
+### text\_embedder.TextFormatContext
+
+```cpp
+static mediapipe::tasks::text::text_embedder::TextFormatContext
+AutoIt:
+    [propget] $otext_embedder.TextFormatContext
+```
+
 ### text\_embedder.TextEmbedderOptions
 
 ```cpp
@@ -37895,6 +38645,178 @@ AutoIt:
 static mediapipe::tasks::components::containers::EmbeddingResult
 AutoIt:
     [propget] $otext_embedder.TextEmbedderResult
+```
+
+## mediapipe::tasks::text::text\_embedder::EmbeddingType
+
+### EmbeddingType.RETRIEVAL\_QUERY
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::EmbeddingType::RETRIEVAL_QUERY
+AutoIt:
+    [propget] $oEmbeddingType.RETRIEVAL_QUERY
+```
+
+### EmbeddingType.RETRIEVAL\_DOCUMENT
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::EmbeddingType::RETRIEVAL_DOCUMENT
+AutoIt:
+    [propget] $oEmbeddingType.RETRIEVAL_DOCUMENT
+```
+
+### EmbeddingType.SEMANTIC\_SIMILARITY
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::EmbeddingType::SEMANTIC_SIMILARITY
+AutoIt:
+    [propget] $oEmbeddingType.SEMANTIC_SIMILARITY
+```
+
+### EmbeddingType.CLASSIFICATION
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::EmbeddingType::CLASSIFICATION
+AutoIt:
+    [propget] $oEmbeddingType.CLASSIFICATION
+```
+
+### EmbeddingType.CLUSTERING
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::EmbeddingType::CLUSTERING
+AutoIt:
+    [propget] $oEmbeddingType.CLUSTERING
+```
+
+### EmbeddingType.QUESTION\_ANSWERING
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::EmbeddingType::QUESTION_ANSWERING
+AutoIt:
+    [propget] $oEmbeddingType.QUESTION_ANSWERING
+```
+
+### EmbeddingType.FACT\_CHECKING
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::EmbeddingType::FACT_CHECKING
+AutoIt:
+    [propget] $oEmbeddingType.FACT_CHECKING
+```
+
+### EmbeddingType.CODE\_RETRIEVAL
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::EmbeddingType::CODE_RETRIEVAL
+AutoIt:
+    [propget] $oEmbeddingType.CODE_RETRIEVAL
+```
+
+## mediapipe::tasks::text::text\_embedder::TextRole
+
+### TextRole.QUERY
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::TextRole::kQuery
+AutoIt:
+    [propget] $oTextRole.QUERY
+```
+
+### TextRole.DOCUMENT
+
+```cpp
+static int mediapipe::tasks::text::text_embedder::TextRole::kDocument
+AutoIt:
+    [propget] $oTextRole.DOCUMENT
+```
+
+## mediapipe::tasks::text::text\_embedder::TextFormatContext
+
+### TextFormatContext.task\_type
+
+```cpp
+mediapipe::tasks::text::text_embedder::EmbeddingType mediapipe::tasks::text::text_embedder::TextFormatContext::task_type
+AutoIt:
+    [propget, propput] $oTextFormatContext.task_type
+```
+
+### TextFormatContext.title
+
+```cpp
+std::optional<std::string> mediapipe::tasks::text::text_embedder::TextFormatContext::title
+AutoIt:
+    [propget, propput] $oTextFormatContext.title
+```
+
+### TextFormatContext.role
+
+```cpp
+mediapipe::tasks::text::text_embedder::TextRole mediapipe::tasks::text::text_embedder::TextFormatContext::role
+AutoIt:
+    [propget, propput] $oTextFormatContext.role
+```
+
+### mediapipe::tasks::text::text\_embedder::TextFormatContext::get\_create
+
+```cpp
+static mediapipe::tasks::text::text_embedder::TextFormatContext mediapipe::tasks::text::text_embedder::TextFormatContext::get_create( const std::optional<mediapipe::tasks::text::text_embedder::EmbeddingType> task_type = std::nullopt,
+                                                                                                                                      const std::optional<std::optional<std::string>>                           title = std::optional<std::optional<std::string>>(std::nullopt),
+                                                                                                                                      const std::optional<mediapipe::tasks::text::text_embedder::TextRole>      role = std::optional<mediapipe::tasks::text::text_embedder::TextRole>(TextRole::kQuery) );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextFormatContext").create( [$task_type[, $title[, $role]]] ) -> <mediapipe.tasks.text.text_embedder.TextFormatContext object>
+    $oTextFormatContext( [$task_type[, $title[, $role]]] ) -> <mediapipe.tasks.text.text_embedder.TextFormatContext object>
+```
+
+```cpp
+static mediapipe::tasks::text::text_embedder::TextFormatContext mediapipe::tasks::text::text_embedder::TextFormatContext::get_create( std::tuple<mediapipe::tasks::text::text_embedder::EmbeddingType, std::optional<std::string>, mediapipe::tasks::text::text_embedder::TextRole> args );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextFormatContext").create( $args ) -> <mediapipe.tasks.text.text_embedder.TextFormatContext object>
+    $oTextFormatContext( $args ) -> <mediapipe.tasks.text.text_embedder.TextFormatContext object>
+```
+
+### mediapipe::tasks::text::text\_embedder::TextFormatContext::IsInstance
+
+```cpp
+static bool mediapipe::tasks::text::text_embedder::TextFormatContext::IsInstance( const mediapipe::tasks::text::text_embedder::TextFormatContext& obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextFormatContext").IsInstance( $obj ) -> retval
+```
+
+```cpp
+static bool mediapipe::tasks::text::text_embedder::TextFormatContext::IsInstance( VARIANT* obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextFormatContext").IsInstance( $obj ) -> retval
+```
+
+### mediapipe::tasks::text::text\_embedder::TextFormatContext::\_\_eq\_\_
+
+```cpp
+bool mediapipe::tasks::text::text_embedder::TextFormatContext::__eq__( const mediapipe::tasks::text::text_embedder::TextFormatContext& other );
+AutoIt:
+    $oTextFormatContext.__eq__( $other ) -> retval
+```
+
+```cpp
+bool mediapipe::tasks::text::text_embedder::TextFormatContext::__eq__( VARIANT* other );
+AutoIt:
+    $oTextFormatContext.__eq__( $other ) -> retval
+```
+
+### mediapipe::tasks::text::text\_embedder::TextFormatContext::\_\_str\_\_
+
+```cpp
+std::string mediapipe::tasks::text::text_embedder::TextFormatContext::__str__();
+AutoIt:
+    $oTextFormatContext.__str__() -> retval
+```
+
+### mediapipe::tasks::text::text\_embedder::TextFormatContext::\_\_type\_\_
+
+```cpp
+static std::string mediapipe::tasks::text::text_embedder::TextFormatContext::__type__();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.text.text_embedder.TextFormatContext").__type__() -> retval
 ```
 
 ## mediapipe::tasks::text::text\_embedder::TextEmbedderOptions
@@ -38072,6 +38994,13 @@ AutoIt:
 mediapipe::tasks::components::containers::EmbeddingResult mediapipe::tasks::text::text_embedder::TextEmbedder::embed( std::string text );
 AutoIt:
     $oTextEmbedder.embed( $text ) -> retval
+```
+
+```cpp
+mediapipe::tasks::components::containers::EmbeddingResult mediapipe::tasks::text::text_embedder::TextEmbedder::embed( std::string                                                     text,
+                                                                                                                      const mediapipe::tasks::text::text_embedder::TextFormatContext& format_context );
+AutoIt:
+    $oTextEmbedder.embed( $text, $format_context ) -> retval
 ```
 
 ## mediapipe::Image
@@ -41167,134 +42096,134 @@ AutoIt:
     _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.image_segmenter.ImageSegmenterResult").__type__() -> retval
 ```
 
-## mediapipe::tasks::autoit::vision::interactive\_segmenter
+## mediapipe::tasks::autoit::vision::interactive\_segmenter\_legacy
 
-### interactive\_segmenter.InteractiveSegmenterOptions
-
-```cpp
-static mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions
-AutoIt:
-    [propget] $ointeractive_segmenter.InteractiveSegmenterOptions
-```
-
-### interactive\_segmenter.InteractiveSegmenter
+### interactive\_segmenter\_legacy.InteractiveSegmenterLegacyOptions
 
 ```cpp
-static mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter
+static mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions
 AutoIt:
-    [propget] $ointeractive_segmenter.InteractiveSegmenter
+    [propget] $ointeractive_segmenter_legacy.InteractiveSegmenterLegacyOptions
 ```
 
-### interactive\_segmenter.RegionOfInterest
+### interactive\_segmenter\_legacy.InteractiveSegmenterLegacy
 
 ```cpp
-static mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest
+static mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy
 AutoIt:
-    [propget] $ointeractive_segmenter.RegionOfInterest
+    [propget] $ointeractive_segmenter_legacy.InteractiveSegmenterLegacy
 ```
 
-### interactive\_segmenter.InteractiveSegmenterResult
+### interactive\_segmenter\_legacy.RegionOfInterest
+
+```cpp
+static mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest
+AutoIt:
+    [propget] $ointeractive_segmenter_legacy.RegionOfInterest
+```
+
+### interactive\_segmenter\_legacy.InteractiveSegmenterLegacyResult
 
 ```cpp
 static mediapipe::tasks::vision::image_segmenter::ImageSegmenterResult
 AutoIt:
-    [propget] $ointeractive_segmenter.InteractiveSegmenterResult
+    [propget] $ointeractive_segmenter_legacy.InteractiveSegmenterLegacyResult
 ```
 
-## mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions
+## mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions
 
-### InteractiveSegmenterOptions.base\_options
+### InteractiveSegmenterLegacyOptions.base\_options
 
 ```cpp
-mediapipe::tasks::core::BaseOptions mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::base_options
+mediapipe::tasks::core::BaseOptions mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::base_options
 AutoIt:
-    [propget, propput] $oInteractiveSegmenterOptions.base_options
+    [propget, propput] $oInteractiveSegmenterLegacyOptions.base_options
 ```
 
-### InteractiveSegmenterOptions.output\_confidence\_masks
+### InteractiveSegmenterLegacyOptions.output\_confidence\_masks
 
 ```cpp
-bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::output_confidence_masks
+bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::output_confidence_masks
 AutoIt:
-    [propget, propput] $oInteractiveSegmenterOptions.output_confidence_masks
+    [propget, propput] $oInteractiveSegmenterLegacyOptions.output_confidence_masks
 ```
 
-### InteractiveSegmenterOptions.output\_category\_mask
+### InteractiveSegmenterLegacyOptions.output\_category\_mask
 
 ```cpp
-bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::output_category_mask
+bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::output_category_mask
 AutoIt:
-    [propget, propput] $oInteractiveSegmenterOptions.output_category_mask
+    [propget, propput] $oInteractiveSegmenterLegacyOptions.output_category_mask
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::get\_create
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::get\_create
 
 ```cpp
-static mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::get_create( const std::optional<mediapipe::tasks::core::BaseOptions> base_options = std::nullopt,
-                                                                                                                                                                              const std::optional<bool>                                output_confidence_masks = std::optional<bool>(true),
-                                                                                                                                                                              const std::optional<bool>                                output_category_mask = std::optional<bool>(false) );
+static mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::get_create( const std::optional<mediapipe::tasks::core::BaseOptions> base_options = std::nullopt,
+                                                                                                                                                                                                        const std::optional<bool>                                output_confidence_masks = std::optional<bool>(true),
+                                                                                                                                                                                                        const std::optional<bool>                                output_category_mask = std::optional<bool>(false) );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions").create( [$base_options[, $output_confidence_masks[, $output_category_mask]]] ) -> <mediapipe.tasks.vision.interactive_segmenter.InteractiveSegmenterOptions object>
-    $oInteractiveSegmenterOptions( [$base_options[, $output_confidence_masks[, $output_category_mask]]] ) -> <mediapipe.tasks.vision.interactive_segmenter.InteractiveSegmenterOptions object>
-```
-
-```cpp
-static mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::get_create( std::tuple<mediapipe::tasks::core::BaseOptions, bool, bool> args );
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions").create( $args ) -> <mediapipe.tasks.vision.interactive_segmenter.InteractiveSegmenterOptions object>
-    $oInteractiveSegmenterOptions( $args ) -> <mediapipe.tasks.vision.interactive_segmenter.InteractiveSegmenterOptions object>
-```
-
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::IsInstance
-
-```cpp
-static bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::IsInstance( const mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions& obj );
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions").IsInstance( $obj ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions").create( [$base_options[, $output_confidence_masks[, $output_category_mask]]] ) -> <mediapipe.tasks.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions object>
+    $oInteractiveSegmenterLegacyOptions( [$base_options[, $output_confidence_masks[, $output_category_mask]]] ) -> <mediapipe.tasks.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions object>
 ```
 
 ```cpp
-static bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::IsInstance( VARIANT* obj );
+static mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::get_create( std::tuple<mediapipe::tasks::core::BaseOptions, bool, bool> args );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions").IsInstance( $obj ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions").create( $args ) -> <mediapipe.tasks.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions object>
+    $oInteractiveSegmenterLegacyOptions( $args ) -> <mediapipe.tasks.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions object>
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::\_\_eq\_\_
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::IsInstance
 
 ```cpp
-bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::__eq__( const mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions& other );
+static bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::IsInstance( const mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions& obj );
 AutoIt:
-    $oInteractiveSegmenterOptions.__eq__( $other ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions").IsInstance( $obj ) -> retval
 ```
 
 ```cpp
-bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::__eq__( VARIANT* other );
+static bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::IsInstance( VARIANT* obj );
 AutoIt:
-    $oInteractiveSegmenterOptions.__eq__( $other ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions").IsInstance( $obj ) -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::\_\_str\_\_
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::\_\_eq\_\_
 
 ```cpp
-std::string mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::__str__();
+bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::__eq__( const mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions& other );
 AutoIt:
-    $oInteractiveSegmenterOptions.__str__() -> retval
+    $oInteractiveSegmenterLegacyOptions.__eq__( $other ) -> retval
 ```
-
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenterOptions::\_\_type\_\_
 
 ```cpp
-static std::string mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions::__type__();
+bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::__eq__( VARIANT* other );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenterOptions").__type__() -> retval
+    $oInteractiveSegmenterLegacyOptions.__eq__( $other ) -> retval
 ```
 
-## mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::\_\_str\_\_
+
+```cpp
+std::string mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::__str__();
+AutoIt:
+    $oInteractiveSegmenterLegacyOptions.__str__() -> retval
+```
+
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacyOptions::\_\_type\_\_
+
+```cpp
+static std::string mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions::__type__();
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacyOptions").__type__() -> retval
+```
+
+## mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest
 
 ### RegionOfInterest.format
 
 ```cpp
-mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::Format mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::format
+mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::Format mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::format
 AutoIt:
     [propget, propput] $oRegionOfInterest.format
 ```
@@ -41302,7 +42231,7 @@ AutoIt:
 ### RegionOfInterest.keypoint
 
 ```cpp
-std::optional<mediapipe::tasks::components::containers::NormalizedKeypoint> mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::keypoint
+std::optional<mediapipe::tasks::components::containers::NormalizedKeypoint> mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::keypoint
 AutoIt:
     [propget, propput] $oRegionOfInterest.keypoint
 ```
@@ -41310,79 +42239,79 @@ AutoIt:
 ### RegionOfInterest.scribble
 
 ```cpp
-std::optional<std::vector<mediapipe::tasks::components::containers::NormalizedKeypoint>> mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::scribble
+std::optional<std::vector<mediapipe::tasks::components::containers::NormalizedKeypoint>> mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::scribble
 AutoIt:
     [propget, propput] $oRegionOfInterest.scribble
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::get\_create
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::get\_create
 
 ```cpp
-static mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::get_create( const std::optional<mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::Format>                format = std::optional<mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::Format>(RegionOfInterest::Format::kUnspecified),
-                                                                                                                                                        const std::optional<std::optional<mediapipe::tasks::components::containers::NormalizedKeypoint>>              keypoint = std::nullopt,
-                                                                                                                                                        const std::optional<std::optional<std::vector<mediapipe::tasks::components::containers::NormalizedKeypoint>>> scribble = std::nullopt );
+static mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::get_create( const std::optional<mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::Format>         format = std::optional<mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::Format>(RegionOfInterest::Format::kUnspecified),
+                                                                                                                                                                      const std::optional<std::optional<mediapipe::tasks::components::containers::NormalizedKeypoint>>              keypoint = std::nullopt,
+                                                                                                                                                                      const std::optional<std::optional<std::vector<mediapipe::tasks::components::containers::NormalizedKeypoint>>> scribble = std::nullopt );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest").create( [$format[, $keypoint[, $scribble]]] ) -> <mediapipe.tasks.vision.interactive_segmenter.RegionOfInterest object>
-    $oRegionOfInterest( [$format[, $keypoint[, $scribble]]] ) -> <mediapipe.tasks.vision.interactive_segmenter.RegionOfInterest object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.RegionOfInterest").create( [$format[, $keypoint[, $scribble]]] ) -> <mediapipe.tasks.vision.interactive_segmenter_legacy.RegionOfInterest object>
+    $oRegionOfInterest( [$format[, $keypoint[, $scribble]]] ) -> <mediapipe.tasks.vision.interactive_segmenter_legacy.RegionOfInterest object>
 ```
 
 ```cpp
-static mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::get_create( std::tuple<mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::Format, std::optional<mediapipe::tasks::components::containers::NormalizedKeypoint>, std::optional<std::vector<mediapipe::tasks::components::containers::NormalizedKeypoint>>> args );
+static mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::get_create( std::tuple<mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::Format, std::optional<mediapipe::tasks::components::containers::NormalizedKeypoint>, std::optional<std::vector<mediapipe::tasks::components::containers::NormalizedKeypoint>>> args );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest").create( $args ) -> <mediapipe.tasks.vision.interactive_segmenter.RegionOfInterest object>
-    $oRegionOfInterest( $args ) -> <mediapipe.tasks.vision.interactive_segmenter.RegionOfInterest object>
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.RegionOfInterest").create( $args ) -> <mediapipe.tasks.vision.interactive_segmenter_legacy.RegionOfInterest object>
+    $oRegionOfInterest( $args ) -> <mediapipe.tasks.vision.interactive_segmenter_legacy.RegionOfInterest object>
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::IsInstance
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::IsInstance
 
 ```cpp
-static bool mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::IsInstance( const mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest& obj );
+static bool mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::IsInstance( const mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest& obj );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest").IsInstance( $obj ) -> retval
-```
-
-```cpp
-static bool mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::IsInstance( VARIANT* obj );
-AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest").IsInstance( $obj ) -> retval
-```
-
-### mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::\_\_eq\_\_
-
-```cpp
-bool mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::__eq__( const mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest& other );
-AutoIt:
-    $oRegionOfInterest.__eq__( $other ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.RegionOfInterest").IsInstance( $obj ) -> retval
 ```
 
 ```cpp
-bool mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::__eq__( VARIANT* other );
+static bool mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::IsInstance( VARIANT* obj );
+AutoIt:
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.RegionOfInterest").IsInstance( $obj ) -> retval
+```
+
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::\_\_eq\_\_
+
+```cpp
+bool mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::__eq__( const mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest& other );
 AutoIt:
     $oRegionOfInterest.__eq__( $other ) -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::\_\_str\_\_
+```cpp
+bool mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::__eq__( VARIANT* other );
+AutoIt:
+    $oRegionOfInterest.__eq__( $other ) -> retval
+```
+
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::\_\_str\_\_
 
 ```cpp
-std::string mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::__str__();
+std::string mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::__str__();
 AutoIt:
     $oRegionOfInterest.__str__() -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::\_\_type\_\_
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::\_\_type\_\_
 
 ```cpp
-static std::string mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::__type__();
+static std::string mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::__type__();
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.RegionOfInterest").__type__() -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.RegionOfInterest").__type__() -> retval
 ```
 
-## mediapipe::tasks::vision::interactive\_segmenter::RegionOfInterest::Format
+## mediapipe::tasks::vision::interactive\_segmenter\_legacy::RegionOfInterest::Format
 
 ### Format.UNSPECIFIED
 
 ```cpp
-static int mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::Format::kUnspecified
+static int mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::Format::kUnspecified
 AutoIt:
     [propget] $oFormat.UNSPECIFIED
 ```
@@ -41390,7 +42319,7 @@ AutoIt:
 ### Format.KEYPOINT
 
 ```cpp
-static int mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::Format::kKeyPoint
+static int mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::Format::kKeyPoint
 AutoIt:
     [propget] $oFormat.KEYPOINT
 ```
@@ -41398,89 +42327,89 @@ AutoIt:
 ### Format.SCRIBBLE
 
 ```cpp
-static int mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest::Format::kScribble
+static int mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest::Format::kScribble
 AutoIt:
     [propget] $oFormat.SCRIBBLE
 ```
 
-## mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter
+## mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::IsInstance
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::IsInstance
 
 ```cpp
-static bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::IsInstance( const mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter& obj );
+static bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::IsInstance( const mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy& obj );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenter").IsInstance( $obj ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacy").IsInstance( $obj ) -> retval
 ```
 
 ```cpp
-static bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::IsInstance( VARIANT* obj );
+static bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::IsInstance( VARIANT* obj );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenter").IsInstance( $obj ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacy").IsInstance( $obj ) -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::\_\_eq\_\_
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::\_\_eq\_\_
 
 ```cpp
-bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::__eq__( const mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter& other );
+bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::__eq__( const mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy& other );
 AutoIt:
-    $oInteractiveSegmenter.__eq__( $other ) -> retval
+    $oInteractiveSegmenterLegacy.__eq__( $other ) -> retval
 ```
 
 ```cpp
-bool mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::__eq__( VARIANT* other );
+bool mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::__eq__( VARIANT* other );
 AutoIt:
-    $oInteractiveSegmenter.__eq__( $other ) -> retval
+    $oInteractiveSegmenterLegacy.__eq__( $other ) -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::\_\_str\_\_
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::\_\_str\_\_
 
 ```cpp
-std::string mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::__str__();
+std::string mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::__str__();
 AutoIt:
-    $oInteractiveSegmenter.__str__() -> retval
+    $oInteractiveSegmenterLegacy.__str__() -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::\_\_type\_\_
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::\_\_type\_\_
 
 ```cpp
-static std::string mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::__type__();
+static std::string mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::__type__();
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenter").__type__() -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacy").__type__() -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::close
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::close
 
 ```cpp
-void mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::close();
+void mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::close();
 AutoIt:
-    $oInteractiveSegmenter.close() -> None
+    $oInteractiveSegmenterLegacy.close() -> None
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::create\_from\_model\_path
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::create\_from\_model\_path
 
 ```cpp
-static std::shared_ptr<mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter> mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::create_from_model_path( std::string model_path );
+static std::shared_ptr<mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy> mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::create_from_model_path( std::string model_path );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenter").create_from_model_path( $model_path ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacy").create_from_model_path( $model_path ) -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::create\_from\_options
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::create\_from\_options
 
 ```cpp
-static std::shared_ptr<mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter> mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::create_from_options( std::shared_ptr<mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenterOptions> options );
+static std::shared_ptr<mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy> mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::create_from_options( std::shared_ptr<mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacyOptions> options );
 AutoIt:
-    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter.InteractiveSegmenter").create_from_options( $options ) -> retval
+    _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.interactive_segmenter_legacy.InteractiveSegmenterLegacy").create_from_options( $options ) -> retval
 ```
 
-### mediapipe::tasks::vision::interactive\_segmenter::InteractiveSegmenter::segment
+### mediapipe::tasks::vision::interactive\_segmenter\_legacy::InteractiveSegmenterLegacy::segment
 
 ```cpp
-mediapipe::tasks::vision::image_segmenter::ImageSegmenterResult mediapipe::tasks::vision::interactive_segmenter::InteractiveSegmenter::segment( mediapipe::Image                                                         image,
-                                                                                                                                                const mediapipe::tasks::vision::interactive_segmenter::RegionOfInterest& roi,
-                                                                                                                                                std::optional<mediapipe::tasks::vision::core::ImageProcessingOptions>    image_processing_options = std::nullopt );
+mediapipe::tasks::vision::image_segmenter::ImageSegmenterResult mediapipe::tasks::vision::interactive_segmenter_legacy::InteractiveSegmenterLegacy::segment( mediapipe::Image                                                                image,
+                                                                                                                                                             const mediapipe::tasks::vision::interactive_segmenter_legacy::RegionOfInterest& roi,
+                                                                                                                                                             std::optional<mediapipe::tasks::vision::core::ImageProcessingOptions>           image_processing_options = std::nullopt );
 AutoIt:
-    $oInteractiveSegmenter.segment( $image, $roi[, $image_processing_options] ) -> retval
+    $oInteractiveSegmenterLegacy.segment( $image, $roi[, $image_processing_options] ) -> retval
 ```
 
 ## mediapipe::tasks::autoit::vision::object\_detector
@@ -42365,20 +43294,6 @@ AutoIt:
     $oUMat( $m, $ranges ) -> <cv.UMat object>
 ```
 
-```cpp
-static cv::UMat cv::UMat::get_create( const std::vector<double>& vec );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").create( $vec ) -> <cv.UMat object>
-    $oUMat( $vec ) -> <cv.UMat object>
-```
-
-```cpp
-static cv::UMat cv::UMat::get_create( const std::vector<int>& vec );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").create( $vec ) -> <cv.UMat object>
-    $oUMat( $vec ) -> <cv.UMat object>
-```
-
 ### cv::UMat::GdiplusResize
 
 ```cpp
@@ -42589,15 +43504,9 @@ AutoIt:
 
 ```cpp
 static cv::UMat cv::UMat::diag( const cv::UMat&    d,
-                                cv::UMatUsageFlags usageFlags );
+                                cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").diag( $d, $usageFlags ) -> retval
-```
-
-```cpp
-static cv::UMat cv::UMat::diag( const cv::UMat& d );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").diag( $d ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").diag( $d[, $usageFlags] ) -> retval
 ```
 
 ### cv::UMat::dot
@@ -42635,65 +43544,36 @@ AutoIt:
 ### cv::UMat::eye
 
 ```cpp
-static cv::UMat cv::UMat::eye( int rows,
-                               int cols,
-                               int type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").eye( $rows, $cols, $type ) -> retval
-```
-
-```cpp
-static cv::UMat cv::UMat::eye( int rows,
-                               int type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").eye( $rows, $type ) -> retval
-```
-
-```cpp
-static cv::UMat cv::UMat::eye( int cols,
-                               int type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").eye( $cols, $type ) -> retval
-```
-
-```cpp
-static cv::UMat cv::UMat::eye( cv::Size size,
-                               int      type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").eye( $size, $type ) -> retval
-```
-
-```cpp
 static cv::UMat cv::UMat::eye( int                rows,
                                int                cols,
                                int                type,
-                               cv::UMatUsageFlags usageFlags );
+                               cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").eye( $rows, $cols, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").eye( $rows, $cols, $type[, $usageFlags] ) -> retval
 ```
 
 ```cpp
 static cv::UMat cv::UMat::eye( int                rows,
                                int                type,
-                               cv::UMatUsageFlags usageFlags );
+                               cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").eye( $rows, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").eye( $rows, $type[, $usageFlags] ) -> retval
 ```
 
 ```cpp
 static cv::UMat cv::UMat::eye( int                cols,
                                int                type,
-                               cv::UMatUsageFlags usageFlags );
+                               cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").eye( $cols, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").eye( $cols, $type[, $usageFlags] ) -> retval
 ```
 
 ```cpp
 static cv::UMat cv::UMat::eye( cv::Size           size,
                                int                type,
-                               cv::UMatUsageFlags usageFlags );
+                               cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").eye( $size, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").eye( $size, $type[, $usageFlags] ) -> retval
 ```
 
 ### cv::UMat::getMat
@@ -42710,6 +43590,14 @@ AutoIt:
 void* cv::UMat::handle( cv::AccessFlag acessFlag );
 AutoIt:
     $oUMat.handle( $acessFlag ) -> retval
+```
+
+### cv::UMat::inv
+
+```cpp
+cv::UMat cv::UMat::inv( int method = DECOMP_LU );
+AutoIt:
+    $oUMat.inv( [$method] ) -> retval
 ```
 
 ### cv::UMat::isContinuous
@@ -42781,80 +43669,44 @@ AutoIt:
 ### cv::UMat::ones
 
 ```cpp
-static cv::UMat cv::UMat::ones( int rows,
-                                int cols,
-                                int type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $rows, $cols, $type ) -> retval
-```
-
-```cpp
-static cv::UMat cv::UMat::ones( int cols,
-                                int type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $cols, $type ) -> retval
-```
-
-```cpp
-static cv::UMat cv::UMat::ones( int rows,
-                                int type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $rows, $type ) -> retval
-```
-
-```cpp
-static cv::UMat cv::UMat::ones( cv::Size size,
-                                int      type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $size, $type ) -> retval
-```
-
-```cpp
-static cv::UMat cv::UMat::ones( std::vector<int> sizes,
-                                int              type );
-AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $sizes, $type ) -> retval
-```
-
-```cpp
 static cv::UMat cv::UMat::ones( int                rows,
                                 int                cols,
                                 int                type,
-                                cv::UMatUsageFlags usageFlags );
+                                cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $rows, $cols, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").ones( $rows, $cols, $type[, $usageFlags] ) -> retval
 ```
 
 ```cpp
 static cv::UMat cv::UMat::ones( int                cols,
                                 int                type,
-                                cv::UMatUsageFlags usageFlags );
+                                cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $cols, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").ones( $cols, $type[, $usageFlags] ) -> retval
 ```
 
 ```cpp
 static cv::UMat cv::UMat::ones( int                rows,
                                 int                type,
-                                cv::UMatUsageFlags usageFlags );
+                                cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $rows, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").ones( $rows, $type[, $usageFlags] ) -> retval
 ```
 
 ```cpp
 static cv::UMat cv::UMat::ones( cv::Size           size,
                                 int                type,
-                                cv::UMatUsageFlags usageFlags );
+                                cv::UMatUsageFlags usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $size, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").ones( $size, $type[, $usageFlags] ) -> retval
 ```
 
 ```cpp
 static cv::UMat cv::UMat::ones( const std::vector<int>& sizes,
                                 int                     type,
-                                cv::UMatUsageFlags      usageFlags );
+                                cv::UMatUsageFlags      usageFlags = USAGE_DEFAULT );
 AutoIt:
-    _Mediapipe_ObjCreate("cv.UMat").ones( $sizes, $type, $usageFlags ) -> retval
+    _Mediapipe_ObjCreate("cv.UMat").ones( $sizes, $type[, $usageFlags] ) -> retval
 ```
 
 ### cv::UMat::reshape
@@ -42869,6 +43721,13 @@ AutoIt:
 ```cpp
 cv::UMat cv::UMat::reshape( int                     cn,
                             const std::vector<int>& newshape );
+AutoIt:
+    $oUMat.reshape( $cn, $newshape ) -> retval
+```
+
+```cpp
+cv::UMat cv::UMat::reshape( int                 cn,
+                            const cv::MatShape& newshape );
 AutoIt:
     $oUMat.reshape( $cn, $newshape ) -> retval
 ```

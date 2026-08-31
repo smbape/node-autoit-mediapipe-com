@@ -11,9 +11,9 @@ const {explore} = require("fs-explorer");
 const Parser = require("./protobuf/Parser");
 const vector_conversion = require("./vector_conversion");
 
-const OpenCV_VERSION = "opencv-4.13.0";
+const OpenCV_VERSION = "opencv-5.0.0";
 const OpenCV_DLLVERSION = OpenCV_VERSION.slice("opencv-".length).replaceAll(".", "");
-const MEDIAPIPE_VERSION = "0.10.35";
+const Mediapipe_VERSION = "1.0.0";
 
 const progids = new Map([
     ["google.protobuf.TextFormat", "google.protobuf.text_format"],
@@ -28,7 +28,7 @@ const getOptions = PROJECT_DIR => {
         cname: "create",
         LIB_UID: "29090432-104c-c6cd-cd2b-9f2a43abd5b6",
         LIBRARY: "mediapipeCOM",
-        OUTPUT_NAME: `autoit_mediapipe_com-${ MEDIAPIPE_VERSION }-${ OpenCV_DLLVERSION }`,
+        OUTPUT_NAME: `autoit_mediapipe_com-${ Mediapipe_VERSION }-${ OpenCV_DLLVERSION }`,
         OUTPUT_DIRECTORY_DEBUG: `${ PROJECT_DIR }/build_x64/mediapipe-src/bazel-out/x64_windows-dbg/bin/mediapipe/autoit`,
         OUTPUT_DIRECTORY_RELEASE: `${ PROJECT_DIR }/build_x64/mediapipe-src/bazel-out/x64_windows-opt/bin/mediapipe/autoit`,
         namespace: "mediapipe",
@@ -76,7 +76,7 @@ const getOptions = PROJECT_DIR => {
             "mediapipe::tasks::vision::image_classifier",
             "mediapipe::tasks::vision::image_embedder",
             "mediapipe::tasks::vision::image_segmenter",
-            "mediapipe::tasks::vision::interactive_segmenter",
+            "mediapipe::tasks::vision::interactive_segmenter_legacy",
             "mediapipe::tasks::vision::pose_landmarker",
         ]),
 
@@ -96,27 +96,6 @@ const getOptions = PROJECT_DIR => {
         includes: [sysPath.join(PROJECT_DIR, "src")],
         output: sysPath.join(PROJECT_DIR, "generated"),
         toc: true,
-        globals: [
-            // cv::AccessFlag
-            "$CV_ACCESS_READ",
-            "$CV_ACCESS_WRITE",
-            "$CV_ACCESS_RW",
-            "$CV_ACCESS_MASK",
-            "$CV_ACCESS_FAST",
-            "$CV_USAGE_DEFAULT",
-            "$CV_USAGE_ALLOCATE_HOST_MEMORY",
-            "$CV_USAGE_ALLOCATE_DEVICE_MEMORY",
-            "$CV_USAGE_ALLOCATE_SHARED_MEMORY",
-            "$CV___UMAT_USAGE_FLAGS_32BIT",
-
-            // cv::Formatter::FormatType
-            "$CV_FORMATTER_FMT_DEFAULT",
-            "$CV_FORMATTER_FMT_MATLAB",
-            "$CV_FORMATTER_FMT_CSV",
-            "$CV_FORMATTER_FMT_PYTHON",
-            "$CV_FORMATTER_FMT_NUMPY",
-            "$CV_FORMATTER_FMT_C",
-        ],
         constReplacer: new Map([
             ["std::numeric_limits<int32_t>::min()", "-0x80000000"],
             ["std::numeric_limits<int32_t>::max()", "0x7FFFFFFF"],
@@ -164,7 +143,7 @@ const getOptions = PROJECT_DIR => {
                 let i = impl.length - 1;
 
                 for (; i >= 0; i--) {
-                    if (impl[i].includes("const HRESULT autoit_from(const std::shared_ptr<google::protobuf::Message>& in_val, VARIANT*& out_val) {")) {
+                    if (impl[i].includes("HRESULT autoit_from(const std::shared_ptr<google::protobuf::Message>& in_val, VARIANT*& out_val) {")) {
                         break;
                     }
                 }
@@ -354,7 +333,7 @@ waterfall([
 
     (srcfiles, protofiles, generated_include, next) => {
         const mediapipe_SOURCE_DIR = fs.realpathSync(`${ __dirname }/../autoit-mediapipe-com/build_x64/mediapipe-src`);
-        const protobuf_SOURCE_DIR = fs.realpathSync(`${ mediapipe_SOURCE_DIR }/bazel-mediapipe-src/external/com_google_protobuf/src`);
+        const protobuf_SOURCE_DIR = fs.realpathSync(`${ mediapipe_SOURCE_DIR }/bazel-mediapipe-src/external/protobuf~/src`);
 
         const outputs = Parser.createOutputs();
         const cache = new Map();
@@ -455,12 +434,11 @@ waterfall([
                     "MEDIAPIPE_DISABLE_GPU": 1,
                 }
             )
+
             all_decls = []
+
             for hdr in srcfiles:
                 decls = parser.parse(hdr)
-                if len(decls) == 0 or hdr.find('/python/') != -1:
-                    continue
-
                 all_decls += decls
 
             # parser.print_decls(all_decls)

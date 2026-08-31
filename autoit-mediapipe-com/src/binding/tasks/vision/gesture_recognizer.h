@@ -20,4 +20,4 @@ namespace mediapipe::tasks::autoit::core::utils {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::gesture_recognizer::GestureRecognizerResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::gesture_recognizer::GestureRecognizerResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::gesture_recognizer::GestureRecognizerResultCallback& out_val);

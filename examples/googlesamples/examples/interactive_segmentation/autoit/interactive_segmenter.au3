@@ -14,8 +14,8 @@
 #include "..\..\..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world500*"), _OpenCV_FindDLL("autoit_opencv_com500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -67,16 +67,16 @@ Func Main()
 	Local $FG_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 	Local $OVERLAY_COLOR = _OpenCV_Scalar(100, 100, 0) ; cyan
 
-	Local $RegionOfInterest = $vision.InteractiveSegmenterRegionOfInterest
+	Local $RegionOfInterest = $vision.InteractiveSegmenterLegacyRegionOfInterest
 	Local $NormalizedKeypoint = $containers.keypoint.NormalizedKeypoint
 
-	; Create the options that will be used for InteractiveSegmenter
+	; Create the options that will be used for InteractiveSegmenterLegacy
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
-	Local $options = $vision.InteractiveSegmenterOptions(_Mediapipe_Params("base_options", $base_options, _
+	Local $options = $vision.InteractiveSegmenterLegacyOptions(_Mediapipe_Params("base_options", $base_options, _
 			"output_category_mask", True))
 
 	; Create the interactive segmenter
-	Local $segmenter = $vision.InteractiveSegmenter.create_from_options($options)
+	Local $segmenter = $vision.InteractiveSegmenterLegacy.create_from_options($options)
 
 	Local $image, $roi, $segmentation_result, $category_mask, $image_data
 	Local $fg_image, $bg_image, $fg_mask
@@ -92,7 +92,7 @@ Func Main()
 		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
 
 		; Retrieve the masks for the segmented image
-		$roi = $RegionOfInterest(_Mediapipe_Params("format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
+		$roi = $RegionOfInterest(_Mediapipe_Params("format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 				"keypoint", $NormalizedKeypoint($x, $y)))
 		$segmentation_result = $segmenter.segment($image, $roi)
 		$category_mask = $segmentation_result.category_mask

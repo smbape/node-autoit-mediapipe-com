@@ -9,4 +9,4 @@ namespace mediapipe::tasks::audio::audio_classifier {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::audio::audio_classifier::AudioClassifierResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::audio::audio_classifier::AudioClassifierResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::audio::audio_classifier::AudioClassifierResultCallback& out_val);

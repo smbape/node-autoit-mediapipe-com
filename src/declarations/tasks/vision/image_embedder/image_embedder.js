@@ -68,7 +68,7 @@ module.exports = ({language, self_get}) => {
             ["std::optional<core::ImageProcessingOptions>", "image_processing_options", "std::nullopt", []],
         ], "", ""],
 
-        [`${ nsProgId }.ImageEmbedder.Close`, "absl::Status", ["=close"], [], "", ""],
+        [`${ nsProgId }.ImageEmbedder.Close`, "absl::Status", ["=close", "/GU"], [], "", ""],
 
         [`${ nsProgId }.ImageEmbedder.cosine_similarity`, "absl::StatusOr<double>", ["/Call=mediapipe::tasks::components::utils::CosineSimilarity", "/S"], [
             ["containers::Embedding", "u", "", ["/C", "/Ref"]],

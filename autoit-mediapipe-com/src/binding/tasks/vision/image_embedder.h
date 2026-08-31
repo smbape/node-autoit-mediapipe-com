@@ -8,4 +8,4 @@ namespace mediapipe::tasks::vision::image_embedder {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::image_embedder::ImageEmbedderResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::image_embedder::ImageEmbedderResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::image_embedder::ImageEmbedderResultCallback& out_val);

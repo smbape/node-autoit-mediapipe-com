@@ -71,6 +71,6 @@ module.exports = ({language, self_get}) => {
             ["std::optional<core::ImageProcessingOptions>", "image_processing_options", "std::nullopt", []],
         ], "", ""],
 
-        [`${ nsProgId }.ImageClassifier.Close`, "absl::Status", ["=close"], [], "", ""],
+        [`${ nsProgId }.ImageClassifier.Close`, "absl::Status", ["=close", "/GU"], [], "", ""],
     ];
 };

@@ -8,4 +8,4 @@ namespace mediapipe::tasks::vision::face_detector {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::face_detector::FaceDetectorResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::face_detector::FaceDetectorResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::face_detector::FaceDetectorResultCallback& out_val);

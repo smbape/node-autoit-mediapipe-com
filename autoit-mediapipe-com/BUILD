@@ -28,15 +28,9 @@ config_setting(
     values = {"compilation_mode": "dbg"},
 )
 
-config_setting(
-    name = "enable_odml_converter",
-    define_values = {"ENABLE_ODML_CONVERTER": "1"},
-    visibility = ["//visibility:public"],
-)
 
-
-OPENCV_VERSION = "4130"  # 4.13.0
-MEDIAPIPE_VERSION = "0.10.35"
+OPENCV_VERSION = "500"  # 5.0.0
+MEDIAPIPE_VERSION = "1.0.0"
 OUTPUT_NAME = "autoit_mediapipe_com-%s-%s" % (MEDIAPIPE_VERSION, OPENCV_VERSION)
 
 

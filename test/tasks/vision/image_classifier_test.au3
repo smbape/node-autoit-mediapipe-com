@@ -6,13 +6,13 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/vision/image_classifier_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v1.0.0/mediapipe/tasks/python/test/vision/image_classifier_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\_assert.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
@@ -69,19 +69,19 @@ Global Const $_EXPECTED_ROTATED_CLASSIFICATION_RESULT = $_ImageClassifierResult(
 		"categories", _Mediapipe_Tuple( _
 		$_Category(_Mediapipe_Params( _
 		"index", 934, _
-		"score", 0.754467, _
+		"score", 0.756169, _
 		"display_name", '', _
 		"category_name", 'cheeseburger' _
 		)), _
 		$_Category(_Mediapipe_Params( _
 		"index", 925, _
-		"score", 0.0288028, _
+		"score", 0.0288833, _
 		"display_name", '', _
 		"category_name", 'guacamole' _
 		)), _
 		$_Category(_Mediapipe_Params( _
 		"index", 932, _
-		"score", 0.0286119, _
+		"score", 0.0287597, _
 		"display_name", '', _
 		"category_name", 'bagel' _
 		)) _
@@ -99,7 +99,7 @@ Global Const $_EXPECTED_ROI_ROTATED__CLASSIFICATION_RESULT = $_ImageClassifierRe
 		"categories", _Mediapipe_Tuple( _
 		$_Category(_Mediapipe_Params( _
 		"index", 806, _
-		"score", 0.997684, _
+		"score", 0.997655, _
 		"display_name", '', _
 		"category_name", 'soccer ball' _
 		)) _
@@ -134,25 +134,25 @@ Func _generate_burger_results($timestamp_ms = 0)
 			"categories", _Mediapipe_Tuple( _
 			$_Category(_Mediapipe_Params( _
 			"index", 934, _
-			"score", 0.793959, _
+			"score", 0.791890, _
 			"display_name", '', _
 			"category_name", 'cheeseburger' _
 			)), _
 			$_Category(_Mediapipe_Params( _
 			"index", 932, _
-			"score", 0.0273929, _
+			"score", 0.0269587, _
 			"display_name", '', _
 			"category_name", 'bagel' _
 			)), _
 			$_Category(_Mediapipe_Params( _
 			"index", 925, _
-			"score", 0.0193408, _
+			"score", 0.0198468, _
 			"display_name", '', _
 			"category_name", 'guacamole' _
 			)), _
 			$_Category(_Mediapipe_Params( _
 			"index", 963, _
-			"score", 0.00632786, _
+			"score", 0.00646646, _
 			"display_name", '', _
 			"category_name", 'meat loaf' _
 			)) _
@@ -172,7 +172,7 @@ Func _generate_soccer_ball_results($timestamp_ms = 0)
 			"categories", _Mediapipe_Tuple( _
 			$_Category(_Mediapipe_Params( _
 			"index", 806, _
-			"score", 0.996527, _
+			"score", 0.996778, _
 			"display_name", '', _
 			"category_name", 'soccer ball' _
 			)) _

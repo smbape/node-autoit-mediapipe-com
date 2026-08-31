@@ -175,7 +175,7 @@ public static class Program
                 // https://ftp.zx.net.nz/pub/archive/ftp.microsoft.com/MISC/KB/en-us/220/137.HTM
                 // https://stackoverflow.com/questions/1278166/midl-changes-case-of-identifier-when-compiling-idl-file
                 // https://stackoverflow.com/questions/26302927/midl-changes-the-interface-name
-                cv.Circle(annotated_image, keypoint_px, keypoint_thickness, keypoint_color, keypoint_radius);
+                cv.circle(annotated_image, keypoint_px, keypoint_thickness, keypoint_color, keypoint_radius);
             }
 
             //  Draw label and score
@@ -322,13 +322,13 @@ public static class Program
         }
 
         OpenCvComInterop.DllOpen(
-            string.IsNullOrWhiteSpace(opencv_world_dll) ? OpenCvComInterop.FindDLL("opencv_world4130*", buildType: buildType) : opencv_world_dll,
-            string.IsNullOrWhiteSpace(opencv_com_dll) ? OpenCvComInterop.FindDLL("autoit_opencv_com4130*", buildType: buildType) : opencv_com_dll
+            string.IsNullOrWhiteSpace(opencv_world_dll) ? OpenCvComInterop.FindDLL("opencv_world500*", buildType: buildType) : opencv_world_dll,
+            string.IsNullOrWhiteSpace(opencv_com_dll) ? OpenCvComInterop.FindDLL("autoit_opencv_com500*", buildType: buildType) : opencv_com_dll
         );
 
         MediapipeComInterop.DllOpen(
-            string.IsNullOrWhiteSpace(opencv_world_dll) ? MediapipeComInterop.FindDLL("opencv_world4130*", buildType: buildType) : opencv_world_dll,
-            string.IsNullOrWhiteSpace(mediapipe_com_dll) ? MediapipeComInterop.FindDLL("autoit_mediapipe_com-*-4130*", buildType: buildType) : mediapipe_com_dll
+            string.IsNullOrWhiteSpace(opencv_world_dll) ? MediapipeComInterop.FindDLL("opencv_world500*", buildType: buildType) : opencv_world_dll,
+            string.IsNullOrWhiteSpace(mediapipe_com_dll) ? MediapipeComInterop.FindDLL("autoit_mediapipe_com-*-500*", buildType: buildType) : mediapipe_com_dll
         );
 
         if (register)

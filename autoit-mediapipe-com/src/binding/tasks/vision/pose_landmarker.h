@@ -58,4 +58,4 @@ namespace mediapipe::tasks::vision::pose_landmarker {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::pose_landmarker::PoseLandmarkerResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::pose_landmarker::PoseLandmarkerResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::pose_landmarker::PoseLandmarkerResultCallback& out_val);

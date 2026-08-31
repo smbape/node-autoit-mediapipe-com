@@ -6,13 +6,13 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/text/text_embedder_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v1.0.0/mediapipe/tasks/python/test/text/text_embedder_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\_assert.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
@@ -34,6 +34,7 @@ Global Const $_TextEmbedderOptions = $text_embedder.TextEmbedderOptions
 Global Const $_BERT_MODEL_FILE = 'mobilebert_embedding_with_metadata.tflite'
 Global Const $_REGEX_MODEL_FILE = 'regex_one_embedding_with_metadata.tflite'
 Global Const $_USE_MODEL_FILE = 'universal_sentence_encoder_qa_with_metadata.tflite'
+Global Const $_GECKO_MODEL_FILE = 'gecko.task'
 ; Tolerance for embedding vector coordinate values.
 Global Const $_EPSILON = 1E-4
 ; Tolerance for cosine similarity evaluation.
@@ -111,6 +112,11 @@ Func TextEmbedderTest()
 			100, _
 			_Mediapipe_Tuple(0.127049, 0.125416) _
 			)
+
+	test_embed_with_different_themes($_BERT_MODEL_FILE, 0.99038)
+	test_embed_with_different_themes($_USE_MODEL_FILE, 0.780334)
+
+	test_embed_succeeds_with_gecko()
 EndFunc   ;==>TextEmbedderTest
 
 
@@ -121,7 +127,8 @@ Func TextEmbedderTest_setUp()
 	Local $test_files[] = [ _
 			$_BERT_MODEL_FILE, _
 			$_REGEX_MODEL_FILE, _
-			$_USE_MODEL_FILE _
+			$_USE_MODEL_FILE, _
+			$_GECKO_MODEL_FILE _
 			]
 	For $name In $test_files
 		If IsArray($name) Then
@@ -169,6 +176,29 @@ Func test_create_from_options_succeeds_with_valid_model_content()
 	_AssertIsInstance($embedder, $_TextEmbedder)
 EndFunc   ;==>test_create_from_options_succeeds_with_valid_model_content
 
+Func _check_embedding_value($result, $expected_first_value, $iLine = @ScriptLineNumber)
+	; Check embedding first value.
+	_AssertAlmostEqual($result.embeddings(0).embedding(0), $expected_first_value, $_EPSILON, Default, Default, Default, Default, $iLine)
+EndFunc   ;==>_check_embedding_value
+
+Func _check_embedding_size($result, $quantize, $expected_embedding_size)
+	; Check embedding size.
+	_AssertLen($result.embeddings, 1)
+	Local $embedding_result = $result.embeddings(0)
+	_AssertEqual($embedding_result.embedding.total(), $expected_embedding_size)
+	If $quantize Then
+		_AssertEqual($embedding_result.embedding.depth(), $CV_8U)
+	Else
+		_AssertEqual($embedding_result.embedding.depth(), $CV_32F)
+	EndIf
+EndFunc   ;==>_check_embedding_size
+
+Func _check_cosine_similarity($result0, $result1, $expected_similarity, $iLine = @ScriptLineNumber)
+	; Checks cosine similarity.
+	Local $similarity = $_TextEmbedder.cosine_similarity($result0.embeddings(0), $result1.embeddings(0))
+	_AssertAlmostEqual($similarity, $expected_similarity, $_SIMILARITY_TOLERANCE, Default, Default, Default, Default, $iLine)
+EndFunc   ;==>_check_cosine_similarity
+
 Func test_embed($l2_normalize, $quantize, $model_name, $model_file_type, _
 	$expected_similarity, $expected_size, $expected_first_values)
 	ConsoleWrite('"' & @ScriptFullPath & '" @@ Debug(' & @ScriptLineNumber & ') : test_embed' & @CRLF) ;### Debug Console
@@ -203,29 +233,67 @@ Func test_embed($l2_normalize, $quantize, $model_name, $model_file_type, _
 	_check_cosine_similarity($result0, $result1, $expected_similarity)
 EndFunc   ;==>test_embed
 
-Func _check_embedding_value($result, $expected_first_value, $iLine = @ScriptLineNumber)
-	; Check embedding first value.
-	_AssertAlmostEqual($result.embeddings(0).embedding(0), $expected_first_value, $_EPSILON, Default, Default, Default, Default, $iLine)
-EndFunc   ;==>_check_embedding_value
+Func test_embed_with_different_themes($model_file, $expected_similarity)
+    ; Creates embedder.
+    Local $model_path = get_test_data_path($model_file)
+    Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
+    Local $options = $_TextEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
+    Local $embedder = $_TextEmbedder.create_from_options($options)
 
-Func _check_embedding_size($result, $quantize, $expected_embedding_size)
-	; Check embedding size.
-	_AssertLen($result.embeddings, 1)
-	Local $embedding_result = $result.embeddings(0)
-	_AssertEqual($embedding_result.embedding.total(), $expected_embedding_size)
-	If $quantize Then
-		_AssertEqual($embedding_result.embedding.depth(), $CV_8U)
-	Else
-		_AssertEqual($embedding_result.embedding.depth(), $CV_32F)
-	EndIf
-EndFunc   ;==>_check_embedding_size
+    ; Extracts both embeddings.
+    Local $text0 = _
+        'When you go to this restaurant, they hold the pancake upside-down ' & _
+        "before they hand it to you. It's a great gimmick."
 
-Func _check_cosine_similarity($result0, $result1, $expected_similarity, $iLine = @ScriptLineNumber)
-	; Checks cosine similarity.
-	Local $similarity = $_TextEmbedder.cosine_similarity($result0.embeddings(0), $result1.embeddings(0))
-	_AssertAlmostEqual($similarity, $expected_similarity, $_SIMILARITY_TOLERANCE, Default, Default, Default, Default, $iLine)
-EndFunc   ;==>_check_cosine_similarity
+    Local $result0 = $embedder.embed($text0)
 
+    Local $text1 = "Let's make a plan to steal the declaration of independence."
+    Local $result1 = $embedder.embed($text1)
+
+    Local $similarity = $_TextEmbedder.cosine_similarity($result0.embeddings(0), $result1.embeddings(0))
+
+    _AssertAlmostEqual($similarity, $expected_similarity, $_SIMILARITY_TOLERANCE)
+
+    ; Closes the embedder explicitly when the embedder is not used in
+    ; a context.
+    $embedder.close()
+EndFunc
+
+Func test_embed_succeeds_with_gecko()
+    Local $model_path = get_test_data_path($_GECKO_MODEL_FILE)
+    Local $base_options = $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path))
+    Local $options = $_TextEmbedderOptions(_Mediapipe_Params("base_options", $base_options))
+
+	; Creates embedder.
+    Local $embedder = $_TextEmbedder.create_from_options($options)
+    Local $format_context = $text_embedder.TextFormatContext(_Mediapipe_Params( _
+        "task_type", $MEDIAPIPE_TASKS_TEXT_TEXT_EMBEDDER_EMBEDDING_TYPE_RETRIEVAL_QUERY, _
+        "role", $MEDIAPIPE_TASKS_TEXT_TEXT_EMBEDDER_TEXT_ROLE_QUERY _
+    ))
+
+	; Extracts both embeddings.
+	Local $positive_text0 = "it's a charming and often affecting journey"
+	Local $positive_text1 = 'what a great and fantastic trip'
+
+    Local $result0 = $embedder.embed($positive_text0, $format_context)
+    Local $result1 = $embedder.embed($positive_text1, $format_context)
+
+	; Checks embeddings and cosine similarity.
+    Local $quantize = False
+    Local $expected_size = 768
+	Local $expected_result0_value = 0.037564
+	Local $expected_result1_value = 0.031340
+	Local $expected_similarity = 0.789902
+	_check_embedding_size($result0, $quantize, $expected_size)
+	_check_embedding_size($result1, $quantize, $expected_size)
+	_check_embedding_value($result0, $expected_result0_value)
+	_check_embedding_value($result1, $expected_result1_value)
+	_check_cosine_similarity($result0, $result1, $expected_similarity)
+
+    ; Closes the embedder explicitly when the embedder is not used in
+    ; a context.
+    $embedder.close()
+EndFunc
 
 Func _OnAutoItExit()
 	_Mediapipe_Close()

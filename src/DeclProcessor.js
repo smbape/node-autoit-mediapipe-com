@@ -458,6 +458,11 @@ class DeclProcessor {
         decl[0] = getAlias(decl[0]); // name
 
         const [name, , list_of_modifiers, properties] = decl;
+
+        if (list_of_modifiers.some(modifier => modifier.startsWith("/mappable=")) || list_of_modifiers.includes("/phantom")) {
+            return;
+        }
+
         const path = getAlias(name).split(".");
         const fqn = path.slice(0, -1).join("::");
 
@@ -844,8 +849,8 @@ class DeclProcessor {
 
             // Initializer list with declared members
             const cname = coclass.addMethod([ctor, "", ["/Expr=", `/DC=${ args.map(([, argname, , modifiers]) => {
-                const wexpr = getWexpr(argname, modifiers, options);
-                return `if (${ argname }) { ${ wexpr.replace(/\$(?:value\b|\{[^\S\n]*value[^\S\n]*\})/g, `*${ argname }`) }; }`;
+                const wexpr = getWexpr(argname, modifiers, options).replace(/\$(?:value\b|\{[^\S\n]*value[^\S\n]*\})/g, `*${ argname }`);
+                return `if (${ argname }) { ${ wexpr }; }`;
             }).join("\n") }`], args.map(([argtype, argname, defval, modifiers]) => {
                 return [`std::optional<${ argtype }>`, argname, defval !== "" ? `std::optional<${ this.getCppType(argtype, coclass, options) }>(${ defval })` : "std::nullopt", modifiers.concat(["/C"])];
             })], options);

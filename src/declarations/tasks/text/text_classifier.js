@@ -57,6 +57,6 @@ module.exports = ({language, self_get}) => {
             ["std::string", "text", "", []],
         ], "", ""],
 
-        [`${ nsProgId }.TextClassifier.Close`, "absl::Status", ["=close"], [], "", ""],
+        [`${ nsProgId }.TextClassifier.Close`, "absl::Status", ["=close", "/GU"], [], "", ""],
     ];
 };

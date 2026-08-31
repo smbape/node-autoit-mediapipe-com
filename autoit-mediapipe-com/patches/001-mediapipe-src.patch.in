@@ -1,5 +1,5 @@
 diff --git a/.bazelrc b/.bazelrc
-index 5965f963f..e3d7d29a5 100644
+index 99a0afdea..957705155 100644
 --- a/.bazelrc
 +++ b/.bazelrc
 @@ -30,7 +30,9 @@ build:linux --define=xnn_enable_avx512amx=false
@@ -21,23 +21,69 @@ index 525f0878e..f1b38dabd 100644
  .configure.bazelrc
  .user.bazelrc
 +@MEDIAPIPE_ADDON_PACKAGE@
+diff --git a/MODULE.bazel b/MODULE.bazel
+index f5b631305..6e4e0748a 100644
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -13,10 +13,10 @@ single_version_override(
+     version = "0.2.9",
+ )
+ 
+-bazel_dep(name = "rules_java", version = "7.10.0")
++bazel_dep(name = "rules_java", version = "7.12.5")
+ single_version_override(
+     module_name = "rules_java",
+-    version = "7.10.0",
++    version = "7.12.5",
+ )
+ 
+ bazel_dep(name = "rules_kotlin", version = "1.9.6")
+@@ -29,7 +29,7 @@ bazel_dep(name = "aspect_rules_rollup", version = "2.0.0")
+ bazel_dep(name = "aspect_rules_ts", version = "3.7.0")
+ bazel_dep(name = "apple_support", version = "2.6.1", repo_name = "build_bazel_apple_support")
+ bazel_dep(name = "rules_apple", version = "3.16.1", repo_name = "build_bazel_rules_apple")
+-bazel_dep(name = "rules_swift", version = "2.3.0", repo_name = "build_bazel_rules_swift")
++bazel_dep(name = "rules_swift", version = "2.9.0", repo_name = "build_bazel_rules_swift")
+ bazel_dep(name = "rules_proto_grpc_js", version = "5.8.0")
+ bazel_dep(name = "rules_rust", version = "0.46.0")
+ single_version_override(
+@@ -57,6 +57,10 @@ bazel_dep(name = "re2", version = "2025-11-05", repo_name = "com_googlesource_co
+ bazel_dep(name = "protobuf", repo_name = "com_google_protobuf")
+ archive_override(
+     module_name = "protobuf",
++    patch_strip = 1,
++    patches = [
++        "@//third_party:com_google_protobuf.diff",
++    ],
+     strip_prefix = "protobuf-6.31.1",
+     urls = ["https://github.com/protocolbuffers/protobuf/archive/refs/tags/v6.31.1.zip"],
+ )
+@@ -85,7 +89,7 @@ use_repo(rules_ts_ext, "npm_typescript")
+ bazel_dep(name = "rules_nodejs", version = "6.3.0")
+ 
+ node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node")
+-node.toolchain(node_version = "20.14.0")
++node.toolchain(node_version = "16.20.2")
+ use_repo(node, "nodejs_toolchains")
+ 
+ register_toolchains("@nodejs_toolchains//:all")
 diff --git a/WORKSPACE b/WORKSPACE
-index 1f57dd8c7..7aacb596c 100644
+index c353b11b3..821b8dc69 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -25,6 +25,11 @@ load("@bazel_skylib//lib:versions.bzl", "versions")
- 
- versions.check(minimum_bazel_version = "3.7.2")
+@@ -8,6 +8,11 @@ bind(
+     actual = "@local_config_python//:python_headers",
+ )
  
 +# @MEDIAPIPE_ADDON_PACKAGE@ dependencies
 +load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 +load("//@MEDIAPIPE_ADDON_PACKAGE@@MEDIAPIPE_ADDON_REPOSITORIES@", "@MEDIAPIPE_ADDON_RULES_DEPENDENCIES@")
 +@MEDIAPIPE_ADDON_RULES_DEPENDENCIES@()
 +
- # ABSL on 2023-10-18
- http_archive(
-     name = "com_google_absl",
-@@ -320,6 +325,13 @@ http_archive(
+ load("@com_google_protobuf//bazel/private:proto_bazel_features.bzl", "proto_bazel_features")  # buildifier: disable=bzl-visibility
+ 
+ proto_bazel_features(name = "proto_bazel_features")
+@@ -231,6 +236,13 @@ http_archive(
  # pthreadpool is a dependency of XNNPACK, from 2025-09-08
  http_archive(
      name = "pthreadpool",
@@ -51,7 +97,16 @@ index 1f57dd8c7..7aacb596c 100644
      # `curl -L <url> | shasum -a 256`
      sha256 = "d5a78b017839ee0474e6aef6e21742b03f641b260f29faf9538a0a6b8fae0704",
      strip_prefix = "pthreadpool-995229919303dd98c0f1b3b585b54527067ef893",
-@@ -606,14 +618,16 @@ http_archive(
+@@ -287,6 +299,8 @@ python_init_repositories(
+         "3.10": "//:requirements_lock_3_10.txt",
+         "3.11": "//:requirements_lock_3_11.txt",
+         "3.12": "//:requirements_lock_3_12.txt",
++        "3.13": "//:requirements_lock_3_13.txt",
++        "3.14": "//:requirements_lock_3_14.txt",
+     },
+ )
+ 
+@@ -470,14 +484,16 @@ http_archive(
      url = "https://github.com/ceres-solver/ceres-solver/archive/123fba61cf2611a3c8bddc9d91416db26b10b558.zip",
  )
  
@@ -70,7 +125,7 @@ index 1f57dd8c7..7aacb596c 100644
      name = "linux_opencv",
      build_file = "@//third_party:opencv_linux.BUILD",
      path = "/usr",
-@@ -625,7 +639,8 @@ new_local_repository(
+@@ -489,7 +505,8 @@ new_local_repository(
      path = "/usr",
  )
  
@@ -80,7 +135,7 @@ index 1f57dd8c7..7aacb596c 100644
      name = "macos_opencv",
      build_file = "@//third_party:opencv_macos.BUILD",
      # For local MacOS builds, the path should point to an opencv@3 installation.
-@@ -640,7 +655,8 @@ new_local_repository(
+@@ -504,7 +521,8 @@ new_local_repository(
      path = "/usr/local/opt/ffmpeg",
  )
  
@@ -90,7 +145,7 @@ index 1f57dd8c7..7aacb596c 100644
      name = "windows_opencv",
      build_file = "@//third_party:opencv_windows.BUILD",
      path = "C:\\opencv\\build",
-@@ -653,7 +669,8 @@ new_local_repository(
+@@ -517,7 +535,8 @@ new_local_repository(
      path = ".",
  )
  
@@ -100,7 +155,7 @@ index 1f57dd8c7..7aacb596c 100644
      name = "android_opencv",
      build_file = "@//third_party:opencv_android.BUILD",
      strip_prefix = "OpenCV-android-sdk",
-@@ -665,7 +682,8 @@ http_archive(
+@@ -529,7 +548,8 @@ http_archive(
  # trigger duplicate symbol errors in the linking stage of building a mediapipe ios app.
  # To get a higher version of OpenCV for iOS, opencv2.framework needs to be built from source with
  # '-DBUILD_PROTOBUF=OFF -DBUILD_opencv_dnn=OFF'.
@@ -216,6 +271,20 @@ index ef0b5d113..da705e686 100644
    // Returns the MessageLite pointer to the data, if the underlying object type
    // is protocol buffer, otherwise, nullptr is returned.
    const proto_ns::MessageLite* GetProtoMessageLite() const override {
+diff --git a/mediapipe/framework/port/opencv_imgproc_inc.h b/mediapipe/framework/port/opencv_imgproc_inc.h
+index d59c9dc39..d5709eef8 100644
+--- a/mediapipe/framework/port/opencv_imgproc_inc.h
++++ b/mediapipe/framework/port/opencv_imgproc_inc.h
+@@ -26,6 +26,9 @@
+ #if CV_VERSION_MAJOR == 4
+ #include <opencv2/imgproc/types_c.h>
+ #endif
++#if CV_VERSION_MAJOR == 5
++#include <opencv2/geometry.hpp>
++#endif
+ #endif
+ 
+ #endif  // MEDIAPIPE_PORT_OPENCV_IMGPROC_INC_H_
 diff --git a/mediapipe/framework/port/opencv_video_inc.h b/mediapipe/framework/port/opencv_video_inc.h
 index 5f06d9233..c78c214a7 100644
 --- a/mediapipe/framework/port/opencv_video_inc.h
@@ -235,11 +304,31 @@ index 5f06d9233..c78c214a7 100644
  #endif
  
  namespace mediapipe {
+diff --git a/mediapipe/framework/tool/BUILD b/mediapipe/framework/tool/BUILD
+index ca9735ed3..1e6236e62 100644
+--- a/mediapipe/framework/tool/BUILD
++++ b/mediapipe/framework/tool/BUILD
+@@ -296,6 +296,7 @@ cc_binary(
+         "@com_google_absl//absl/flags:parse",
+         "@com_google_absl//absl/log:absl_check",
+         "@com_google_absl//absl/strings",
++        "@zlib//:zlib",
+     ],
+ )
+ 
+@@ -313,6 +314,7 @@ cc_library(
+         "//mediapipe/framework/port:ret_check",
+         "@com_google_absl//absl/container:flat_hash_map",
+         "@com_google_absl//absl/synchronization",
++        "@zlib//:zlib",
+     ],
+ )
+ 
 diff --git a/mediapipe/gpu/gl_context.cc b/mediapipe/gpu/gl_context.cc
-index 1eeaa635b..478e6972c 100644
+index 0344cc397..a9cd42b12 100644
 --- a/mediapipe/gpu/gl_context.cc
 +++ b/mediapipe/gpu/gl_context.cc
-@@ -1120,6 +1120,12 @@ bool GlContext::CheckForGlErrors(bool force) {
+@@ -1121,6 +1121,12 @@ bool GlContext::CheckForGlErrors(bool force) {
        case GL_OUT_OF_MEMORY:
          ABSL_LOG(INFO) << "Found unchecked GL error: GL_OUT_OF_MEMORY";
          break;
@@ -252,21 +341,8 @@ index 1eeaa635b..478e6972c 100644
        default:
          ABSL_LOG(INFO) << "Found unchecked GL error: UNKNOWN ERROR";
          break;
-diff --git a/mediapipe/gpu/gpu_service.cc b/mediapipe/gpu/gpu_service.cc
-index 53a0e0f47..a18604ab8 100644
---- a/mediapipe/gpu/gpu_service.cc
-+++ b/mediapipe/gpu/gpu_service.cc
-@@ -16,7 +16,7 @@
- 
- namespace mediapipe {
- 
--const GraphService<GpuResources> kGpuService(
-+ABSL_CONST_INIT const GraphService<GpuResources> kGpuService(
-     "kGpuService", GraphServiceBase::kAllowDefaultInitialization);
- 
- }  // namespace mediapipe
 diff --git a/mediapipe/python/BUILD b/mediapipe/python/BUILD
-index 736081f12..19a938292 100644
+index 736081f12..e27256c88 100644
 --- a/mediapipe/python/BUILD
 +++ b/mediapipe/python/BUILD
 @@ -21,18 +21,6 @@ package(default_visibility = ["//visibility:public"])
@@ -304,6 +380,15 @@ index 736081f12..19a938292 100644
          "//mediapipe/calculators/core:gate_calculator",
          "//mediapipe/calculators/core:pass_through_calculator",
          "//mediapipe/calculators/core:side_packet_to_stream_calculator",
+@@ -99,7 +90,7 @@ cc_library(
+         "//mediapipe/tasks/cc/vision/image_classifier:image_classifier_graph",
+         "//mediapipe/tasks/cc/vision/image_embedder:image_embedder_graph",
+         "//mediapipe/tasks/cc/vision/image_segmenter:image_segmenter_graph",
+-        "//mediapipe/tasks/cc/vision/interactive_segmenter:interactive_segmenter_graph",
++        "//mediapipe/tasks/cc/vision/interactive_segmenter_legacy:interactive_segmenter_legacy_graph",
+         "//mediapipe/tasks/cc/vision/object_detector:object_detector_graph",
+         "//mediapipe/tasks/cc/vision/pose_landmarker:pose_landmarker_graph",
+     ],
 diff --git a/mediapipe/tasks/BUILD b/mediapipe/tasks/BUILD
 index 665e70eb2..8adc4a1b2 100644
 --- a/mediapipe/tasks/BUILD
@@ -329,14 +414,44 @@ index 1be7950fd..ae99a5600 100644
    if (detection_proto.location_data().has_bounding_box()) {
      mediapipe::LocationData::BoundingBox bounding_box_proto =
          detection_proto.location_data().bounding_box();
+diff --git a/mediapipe/tasks/cc/core/base_options.cc b/mediapipe/tasks/cc/core/base_options.cc
+index e642f4d6c..54c4eabce 100644
+--- a/mediapipe/tasks/cc/core/base_options.cc
++++ b/mediapipe/tasks/cc/core/base_options.cc
+@@ -163,7 +163,13 @@ BaseOptions ConvertProtoToBaseOptions(proto::BaseOptions&& base_options_proto) {
+       base_options.delegate = BaseOptions::Delegate::EDGETPU_NNAPI;
+     }
+   }
+-  return base_options;
++  return {
++    .model_asset_buffer = std::move(base_options.model_asset_buffer),
++    .model_asset_path = std::move(base_options.model_asset_path),
++    .delegate = base_options.delegate,
++    .model_asset_descriptor_meta = std::move(base_options.model_asset_descriptor_meta),
++    .delegate_options = std::move(base_options.delegate_options),
++  };
+ }
+ }  // namespace core
+ }  // namespace tasks
 diff --git a/mediapipe/tasks/cc/core/base_options.h b/mediapipe/tasks/cc/core/base_options.h
-index d09ffd022..bc0194657 100644
+index 08c6bcd29..23fbd0de7 100644
 --- a/mediapipe/tasks/cc/core/base_options.h
 +++ b/mediapipe/tasks/cc/core/base_options.h
-@@ -121,6 +121,32 @@ struct BaseOptions {
+@@ -89,7 +89,9 @@ struct BaseOptions {
+     // Optional starting offset in the file referred to by the file descriptor
+     // `fd`.
+     int offset = -1;
+-  } model_asset_descriptor_meta;
++  };
++
++  FileDescriptorMeta model_asset_descriptor_meta;
  
-   // The path to the CA bundle file.
-   std::string ca_bundle_path;
+   // A non-default OpResolver to support custom Ops or specify a subset of
+   // built-in Ops.
+@@ -126,6 +128,34 @@ struct BaseOptions {
+ 
+   // The app version of the host environment, e.g., Android version code.
+   std::string app_version;
 +
 +  BaseOptions& operator=(const BaseOptions& rhs) {
 +    auto& lhs = *this;
@@ -360,12 +475,14 @@ index d09ffd022..bc0194657 100644
 +    lhs.host_system = rhs.host_system;
 +    lhs.host_version = rhs.host_version;
 +    lhs.ca_bundle_path = rhs.ca_bundle_path;
++    lhs.app_id = rhs.app_id;
++    lhs.app_version = rhs.app_version;
 +
 +    return lhs;
 +  }
  };
  
- // Converts a BaseOptions to a BaseOptionsProto.
+ // Converts a BaseOptions to a proto::BaseOptions.
 diff --git a/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc b/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc
 index 6d3927aba..4c1d7d01d 100644
 --- a/mediapipe/tasks/cc/vision/face_stylizer/calculators/tensors_to_image_calculator.cc
@@ -384,10 +501,22 @@ index 6d3927aba..4c1d7d01d 100644
      auto output =
          std::make_unique<mediapipe::GpuBuffer>(std::move(texture_buffer));
 diff --git a/mediapipe/tasks/python/test/test_utils.py b/mediapipe/tasks/python/test/test_utils.py
-index e790b9156..a80edb96a 100644
+index 7f33428f2..38d2ca45c 100644
 --- a/mediapipe/tasks/python/test/test_utils.py
 +++ b/mediapipe/tasks/python/test/test_utils.py
-@@ -34,20 +34,28 @@ _RGB_CHANNELS = 3
+@@ -22,32 +22,34 @@ from google.protobuf import descriptor_pool
+ from google.protobuf import text_format
+ import six
+ 
+-from mediapipe.python._framework_bindings import image as image_module
+-from mediapipe.python._framework_bindings import image_frame as image_frame_module
+-
+ FLAGS = flags.FLAGS
+-_Image = image_module.Image
+-_ImageFormat = image_frame_module.ImageFormat
+-_RGB_CHANNELS = 3
+ 
+ 
  def test_srcdir():
    """Returns the path where to look for test data files."""
    if "test_srcdir" in flags.FLAGS:
@@ -424,7 +553,7 @@ index e790b9156..a80edb96a 100644
        "No %s in test directory: %s." % (file_or_dirname_path, test_srcdir())
    )
 diff --git a/mediapipe/tasks/testdata/text/BUILD b/mediapipe/tasks/testdata/text/BUILD
-index b05e748b0..615db35c9 100644
+index cb61f6188..2e2a726b9 100644
 --- a/mediapipe/tasks/testdata/text/BUILD
 +++ b/mediapipe/tasks/testdata/text/BUILD
 @@ -19,6 +19,7 @@ load(
@@ -514,11 +643,163 @@ index e28094eef..8c5a08e2e 100644
    // Try to load the file from bazel-bin. If it does not exist, fall back to the
    // resource folder.
    auto bazel_path = internal::PathToResourceAsFileInternal(qualified_path);
+diff --git a/requirements_lock_3_13.txt b/requirements_lock_3_13.txt
+new file mode 100644
+index 000000000..0e2fcfd1f
+--- /dev/null
++++ b/requirements_lock_3_13.txt
+@@ -0,0 +1,70 @@
++#
++# This file is autogenerated by pip-compile with Python 3.13
++# by the following command:
++#
++#    pip-compile --output-file=mediapipe/opensource_only/requirements_lock_3.13.txt mediapipe/opensource_only/requirements.txt
++#
++absl-py==2.1.0
++    # via -r mediapipe/opensource_only/requirements.txt
++attrs==24.2.0
++    # via -r mediapipe/opensource_only/requirements.txt
++cffi==1.17.1
++    # via sounddevice
++contourpy==1.3.0
++    # via matplotlib
++cycler==0.12.1
++    # via matplotlib
++flatbuffers==24.3.25
++    # via -r mediapipe/opensource_only/requirements.txt
++fonttools==4.54.1
++    # via matplotlib
++jax==0.4.30
++    # via -r mediapipe/opensource_only/requirements.txt
++jaxlib==0.4.30
++    # via
++    #   -r mediapipe/opensource_only/requirements.txt
++    #   jax
++kiwisolver==1.4.7
++    # via matplotlib
++matplotlib==3.9.2
++    # via -r mediapipe/opensource_only/requirements.txt
++ml-dtypes==0.5.0
++    # via
++    #   jax
++    #   jaxlib
++numpy==1.26.4
++    # via
++    #   -r mediapipe/opensource_only/requirements.txt
++    #   contourpy
++    #   jax
++    #   jaxlib
++    #   matplotlib
++    #   ml-dtypes
++    #   opencv-contrib-python
++    #   scipy
++opencv-contrib-python==4.10.0.84
++    # via -r mediapipe/opensource_only/requirements.txt
++opt-einsum==3.4.0
++    # via jax
++packaging==24.1
++    # via matplotlib
++pillow==10.4.0
++    # via matplotlib
++protobuf==4.25.5
++    # via -r mediapipe/opensource_only/requirements.txt
++pycparser==2.22
++    # via cffi
++pyparsing==3.1.4
++    # via matplotlib
++python-dateutil==2.9.0.post0
++    # via matplotlib
++scipy==1.13.1
++    # via
++    #   jax
++    #   jaxlib
++sentencepiece==0.2.0
++    # via -r mediapipe/opensource_only/requirements.txt
++six==1.16.0
++    # via python-dateutil
++sounddevice==0.5.0
++    # via -r mediapipe/opensource_only/requirements.txt
+diff --git a/requirements_lock_3_14.txt b/requirements_lock_3_14.txt
+new file mode 100644
+index 000000000..91dcca1d6
+--- /dev/null
++++ b/requirements_lock_3_14.txt
+@@ -0,0 +1,70 @@
++#
++# This file is autogenerated by pip-compile with Python 3.14
++# by the following command:
++#
++#    pip-compile --output-file=mediapipe/opensource_only/requirements_lock_3.14.txt mediapipe/opensource_only/requirements.txt
++#
++absl-py==2.1.0
++    # via -r mediapipe/opensource_only/requirements.txt
++attrs==24.2.0
++    # via -r mediapipe/opensource_only/requirements.txt
++cffi==1.17.1
++    # via sounddevice
++contourpy==1.3.0
++    # via matplotlib
++cycler==0.12.1
++    # via matplotlib
++flatbuffers==24.3.25
++    # via -r mediapipe/opensource_only/requirements.txt
++fonttools==4.54.1
++    # via matplotlib
++jax==0.4.30
++    # via -r mediapipe/opensource_only/requirements.txt
++jaxlib==0.4.30
++    # via
++    #   -r mediapipe/opensource_only/requirements.txt
++    #   jax
++kiwisolver==1.4.7
++    # via matplotlib
++matplotlib==3.9.2
++    # via -r mediapipe/opensource_only/requirements.txt
++ml-dtypes==0.5.0
++    # via
++    #   jax
++    #   jaxlib
++numpy==1.26.4
++    # via
++    #   -r mediapipe/opensource_only/requirements.txt
++    #   contourpy
++    #   jax
++    #   jaxlib
++    #   matplotlib
++    #   ml-dtypes
++    #   opencv-contrib-python
++    #   scipy
++opencv-contrib-python==4.10.0.84
++    # via -r mediapipe/opensource_only/requirements.txt
++opt-einsum==3.4.0
++    # via jax
++packaging==24.1
++    # via matplotlib
++pillow==10.4.0
++    # via matplotlib
++protobuf==4.25.5
++    # via -r mediapipe/opensource_only/requirements.txt
++pycparser==2.22
++    # via cffi
++pyparsing==3.1.4
++    # via matplotlib
++python-dateutil==2.9.0.post0
++    # via matplotlib
++scipy==1.13.1
++    # via
++    #   jax
++    #   jaxlib
++sentencepiece==0.2.0
++    # via -r mediapipe/opensource_only/requirements.txt
++six==1.16.0
++    # via python-dateutil
++sounddevice==0.5.0
++    # via -r mediapipe/opensource_only/requirements.txt
 diff --git a/setup.py b/setup.py
-index 2c5a77c4d..8af530807 100644
+index 1d0f50117..5de7e1cb7 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -53,6 +53,34 @@ if IS_MAC:
+@@ -54,6 +54,34 @@ if IS_MAC:
  
  GPU_OPTIONS = GPU_OPTIONS_DISABLED if MP_DISABLE_GPU else GPU_OPTIONS_ENABLED
  
@@ -553,7 +834,7 @@ index 2c5a77c4d..8af530807 100644
  
  def _normalize_path(path):
    return path.replace('\\', '/') if IS_WINDOWS else path
-@@ -176,13 +204,9 @@ class GenerateMetadataSchema(build_ext.build_ext):
+@@ -188,13 +216,9 @@ class GenerateMetadataSchema(build_ext.build_ext):
          'schema_py',
      ]:
  
@@ -569,7 +850,7 @@ index 2c5a77c4d..8af530807 100644
  
        _invoke_shell_command(bazel_command)
        _copy_to_build_lib_dir(
-@@ -238,15 +262,11 @@ class BuildExtension(build_ext.build_ext):
+@@ -254,14 +278,10 @@ class BuildExtension(build_ext.build_ext):
  
    def _build_binary(self, ext, extra_args=None):
      os.makedirs(self.build_temp, exist_ok=True)
@@ -580,13 +861,143 @@ index 2c5a77c4d..8af530807 100644
 -        '--copt=-DNDEBUG',
 +    bazel_command = BAZEL_BUILD_COMMAND + [
          '--keep_going',
-         '--define=ENABLE_ODML_CONVERTER=1',
          str(ext.bazel_target),
 -    ] + GPU_OPTIONS
 +    ]
  
      if extra_args:
        bazel_command += extra_args
+diff --git a/third_party/com_google_protobuf.diff b/third_party/com_google_protobuf.diff
+new file mode 100644
+index 000000000..5d5e26733
+--- /dev/null
++++ b/third_party/com_google_protobuf.diff
+@@ -0,0 +1,125 @@
++diff --git a/src/google/protobuf/json/internal/untyped_message.cc b/src/google/protobuf/json/internal/untyped_message.cc
++index 3f3f3dbba9..a280976e1a 100644
++--- a/src/google/protobuf/json/internal/untyped_message.cc
+++++ b/src/google/protobuf/json/internal/untyped_message.cc
++@@ -8,9 +8,9 @@
++ #include "google/protobuf/json/internal/untyped_message.h"
++ 
++ #include <algorithm>
++-#include <cfloat>
++ #include <cstdint>
++ #include <memory>
+++#include <optional>
++ #include <string>
++ #include <type_traits>
++ #include <utility>
++@@ -25,7 +25,6 @@
++ #include "absl/strings/str_cat.h"
++ #include "absl/strings/str_format.h"
++ #include "absl/strings/string_view.h"
++-#include "absl/types/optional.h"
++ #include "absl/types/span.h"
++ #include "google/protobuf/io/coded_stream.h"
++ #include "google/protobuf/port.h"
++@@ -201,7 +200,7 @@ PROTOBUF_NOINLINE static absl::Status MakeTooDeepError() {
++ }
++ 
++ absl::Status UntypedMessage::Decode(io::CodedInputStream& stream,
++-                                    absl::optional<int32_t> current_group) {
+++                                    std::optional<int32_t> current_group) {
++   std::vector<int32_t> group_stack;
++   while (true) {
++     uint32_t tag = stream.ReadTag();
++@@ -525,8 +524,10 @@ template <typename T>
++ absl::Status UntypedMessage::InsertField(const ResolverPool::Field& field,
++                                          T&& value) {
++   int32_t number = field.proto().number();
++-  auto emplace_result = fields_.try_emplace(number, std::forward<T>(value));
+++  auto emplace_result = fields_.try_emplace(number);
++   if (emplace_result.second) {
+++    emplace_result.first->second =
+++        std::make_unique<Value>(std::forward<T>(value));
++     return absl::OkStatus();
++   }
++ 
++@@ -536,7 +537,7 @@ absl::Status UntypedMessage::InsertField(const ResolverPool::Field& field,
++         absl::StrCat("repeated entries for singular field number ", number));
++   }
++ 
++-  Value& slot = emplace_result.first->second;
+++  Value& slot = *emplace_result.first->second;
++   using value_type = std::decay_t<T>;
++   if (auto* extant = std::get_if<value_type>(&slot)) {
++     std::vector<value_type> repeated;
++@@ -547,7 +548,7 @@ absl::Status UntypedMessage::InsertField(const ResolverPool::Field& field,
++   } else if (auto* extant = std::get_if<std::vector<value_type>>(&slot)) {
++     extant->push_back(std::forward<T>(value));
++   } else {
++-    absl::optional<absl::string_view> name =
+++    std::optional<absl::string_view> name =
++         google::protobuf::internal::RttiTypeName<value_type>();
++     if (!name.has_value()) {
++       name = "<unknown>";
++diff --git a/src/google/protobuf/json/internal/untyped_message.h b/src/google/protobuf/json/internal/untyped_message.h
++index 6f86c0e7e9..6a83029408 100644
++--- a/src/google/protobuf/json/internal/untyped_message.h
+++++ b/src/google/protobuf/json/internal/untyped_message.h
++@@ -15,6 +15,7 @@
++ #include <cstddef>
++ #include <cstdint>
++ #include <memory>
+++#include <optional>
++ #include <string>
++ #include <utility>
++ #include <variant>
++@@ -25,7 +26,6 @@
++ #include "absl/status/status.h"
++ #include "absl/strings/str_format.h"
++ #include "absl/strings/string_view.h"
++-#include "absl/types/optional.h"
++ #include "absl/types/span.h"
++ #include "google/protobuf/descriptor.h"
++ #include "google/protobuf/dynamic_message.h"
++@@ -180,7 +180,7 @@ class UntypedMessage final {
++       return 0;
++     }
++ 
++-    return std::visit(SizeVisitor{}, it->second);
+++    return std::visit(SizeVisitor{}, *it->second);
++   }
++ 
++   // Returns the contents of a field by number.
++@@ -196,9 +196,9 @@ class UntypedMessage final {
++       return {};
++     }
++ 
++-    if (auto* val = std::get_if<T>(&it->second)) {
+++    if (auto* val = std::get_if<T>(it->second.get())) {
++       return absl::Span<const T>(val, 1);
++-    } else if (auto* vec = std::get_if<std::vector<T>>(&it->second)) {
+++    } else if (auto* vec = std::get_if<std::vector<T>>(it->second.get())) {
++       return *vec;
++     } else {
++       ABSL_CHECK(false) << "wrong type for UntypedMessage::Get(" << field_number
++@@ -215,7 +215,7 @@ class UntypedMessage final {
++   explicit UntypedMessage(const ResolverPool::Message* desc) : desc_(desc) {}
++ 
++   absl::Status Decode(io::CodedInputStream& stream,
++-                      absl::optional<int32_t> current_group = absl::nullopt);
+++                      std::optional<int32_t> current_group = std::nullopt);
++ 
++   absl::Status DecodeVarint(io::CodedInputStream& stream,
++                             const ResolverPool::Field& field);
++@@ -230,7 +230,11 @@ class UntypedMessage final {
++   absl::Status InsertField(const ResolverPool::Field& field, T&& value);
++ 
++   const ResolverPool::Message* desc_;
++-  absl::flat_hash_map<int32_t, Value> fields_;
+++  // We use std::unique_ptr here to work around a compiler error with older
+++  // versions of Clang when this is built for C++20. Once we can drop support
+++  // for Clang 14 and below, we should drop the extra indirection and have just
+++  // Value as the value type of the map.
+++  absl::flat_hash_map<int32_t, std::unique_ptr<Value>> fields_;
++ };
++ }  // namespace json_internal
++ }  // namespace protobuf
 diff --git a/third_party/pthreadpool_build_fixes.diff b/third_party/pthreadpool_build_fixes.diff
 new file mode 100644
 index 000000000..38d8f0f90

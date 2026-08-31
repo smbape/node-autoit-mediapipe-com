@@ -51,4 +51,4 @@ namespace mediapipe::tasks::vision::hand_landmarker {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::hand_landmarker::HandLandmarkerResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::hand_landmarker::HandLandmarkerResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::hand_landmarker::HandLandmarkerResultCallback& out_val);

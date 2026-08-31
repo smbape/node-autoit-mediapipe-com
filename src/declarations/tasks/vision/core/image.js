@@ -13,22 +13,22 @@ module.exports = ({self_get, make_shared, language, cname}) => {
 
         ["mediapipe.Image.Image", "mediapipe.Image.Image", [], [], "", ""],
 
-        [`mediapipe.Image.${ cname }`, "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
+        [`mediapipe.Image.${ cname }`, "absl::StatusOr<std::shared_ptr<Image>>", ["/S", `/Call=mediapipe::${ language }::CreateImage`], [
             ["mediapipe::ImageFormat::Format", "image_format", "", []],
             ["cv::Mat", "data", "", ["/C", "/Ref"]],
             ["bool", "copy", "true", []],
         ], "", ""],
 
-        [`mediapipe.Image.${ cname }`, "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
+        [`mediapipe.Image.${ cname }`, "absl::StatusOr<std::shared_ptr<Image>>", ["/S", `/Call=mediapipe::${ language }::CreateImage`], [
             ["cv::Mat", "data", "", ["/C", "/Ref"]],
             ["bool", "copy", "true", []],
         ], "", ""],
 
-        [`mediapipe.Image.${ cname }`, "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
+        [`mediapipe.Image.${ cname }`, "absl::StatusOr<std::shared_ptr<Image>>", ["/S", `/Call=mediapipe::${ language }::CreateImage`], [
             ["std::string", "file_name", "", ["/C", "/Ref"]],
         ], "", ""],
 
-        ["mediapipe.Image.create_from_file", "std::shared_ptr<Image>", ["/S", `/Call=mediapipe::${ language }::CreateSharedImage`], [
+        ["mediapipe.Image.create_from_file", "absl::StatusOr<std::shared_ptr<Image>>", ["/S", `/Call=mediapipe::${ language }::CreateImage`], [
             ["std::string", "file_name", "", ["/C", "/Ref"]],
         ], "", ""],
 

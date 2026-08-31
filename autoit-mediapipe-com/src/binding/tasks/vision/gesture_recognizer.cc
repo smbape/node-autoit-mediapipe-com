@@ -32,7 +32,7 @@ namespace mediapipe::tasks::autoit::core::utils {
 PTR_BRIDGE_IMPL(mediapipe::tasks::vision::gesture_recognizer::GestureRecognizerResultRawCallback);
 
 template<typename _In, typename _Out>
-inline const HRESULT autoit_to_callback(VARIANT const* in_val, _Out& result_callback) {
+inline HRESULT autoit_to_callback(VARIANT const* in_val, _Out& result_callback) {
 	_In c_callback;
 	HRESULT hr = autoit_to(in_val, c_callback);
 	if (SUCCEEDED(hr)) {
@@ -41,7 +41,7 @@ inline const HRESULT autoit_to_callback(VARIANT const* in_val, _Out& result_call
 	return hr;
 }
 
-const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::gesture_recognizer::GestureRecognizerResultCallback& result_callback) {
+HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::gesture_recognizer::GestureRecognizerResultCallback& result_callback) {
 	using _In = mediapipe::tasks::vision::gesture_recognizer::GestureRecognizerResultRawCallback;
 	using _Out = mediapipe::tasks::vision::gesture_recognizer::GestureRecognizerResultCallback;
 	return autoit_to_callback<_In, _Out>(in_val, result_callback);

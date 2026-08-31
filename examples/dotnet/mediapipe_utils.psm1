@@ -244,8 +244,8 @@ function _Mediapipe_FindDLL(
         "autoit-opencv-com"
         "autoit-opencv-com\build_x64\bin\$BuildType"
         "opencv\build\x64\vc16\bin"
-        "opencv-4.13.0-*\build\x64\vc16\bin"
-        "opencv-4.13.0-*\opencv\build\x64\vc16\bin"
+        "opencv-5.0.0-*\build\x64\vc16\bin"
+        "opencv-5.0.0-*\opencv\build\x64\vc16\bin"
     )
 
     _Mediapipe_FindFile -Path "$Path$PostSuffix.dll" -Filter $Filter -Directory $Directory -SearchPaths $aSearchPaths

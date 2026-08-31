@@ -59,6 +59,6 @@ module.exports = ({language}) => {
             ["std::optional<core::ImageProcessingOptions>", "image_processing_options", "std::nullopt", []],
         ], "", ""],
 
-        [`${ nsProgId }.ObjectDetector.Close`, "absl::Status", ["=close"], [], "", ""],
+        [`${ nsProgId }.ObjectDetector.Close`, "absl::Status", ["=close", "/GU"], [], "", ""],
     ];
 };

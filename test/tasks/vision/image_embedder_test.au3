@@ -6,13 +6,13 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/vision/image_embedder_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v1.0.0/mediapipe/tasks/python/test/vision/image_embedder_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\_assert.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 Global Const $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
@@ -79,12 +79,12 @@ Func ImageEmbedderTest()
 	test_create_from_options_succeeds_with_valid_model_path()
 	test_create_from_options_succeeds_with_valid_model_content()
 
-	test_embed(False, False, False, $FILE_NAME, 0.925519, 1024, _Mediapipe_Tuple(-0.2101883, -0.193027))
-	test_embed(False, False, False, $FILE_CONTENT, 0.925519, 1024, _Mediapipe_Tuple(-0.2101883, -0.193027))
-	test_embed(True, False, False, $FILE_NAME, 0.925519, 1024, _Mediapipe_Tuple(-0.0142344, -0.0131606))
-	test_embed(True, False, False, $FILE_CONTENT, 0.925519, 1024, _Mediapipe_Tuple(-0.0142344, -0.0131606))
-	test_embed(False, False, True, $FILE_NAME, 0.999931, 1024, _Mediapipe_Tuple(-0.195062, -0.193027))
-	test_embed(False, False, True, $FILE_CONTENT, 0.999931, 1024, _Mediapipe_Tuple(-0.195062, -0.193027))
+	test_embed(False, False, False, $FILE_NAME, 0.925090, 1024, _Mediapipe_Tuple(-0.212500, -0.197960))
+	test_embed(False, False, False, $FILE_CONTENT, 0.925090, 1024, _Mediapipe_Tuple(-0.212500, -0.197960))
+	test_embed(True, False, False, $FILE_NAME, 0.925090, 1024, _Mediapipe_Tuple(-0.0144054, -0.0135252))
+	test_embed(True, False, False, $FILE_CONTENT, 0.925090, 1024, _Mediapipe_Tuple(-0.0144054, -0.0135252))
+	test_embed(False, False, True, $FILE_NAME, 0.999924, 1024, _Mediapipe_Tuple(-0.199679, -0.197960))
+	test_embed(False, False, True, $FILE_CONTENT, 0.999924, 1024, _Mediapipe_Tuple(-0.199679, -0.197960))
 
 	test_embed_for_video()
 	test_embed_for_video_succeeds_with_region_of_interest()
@@ -222,7 +222,7 @@ Func test_embed_for_video()
 	Local $embedder0 = $_ImageEmbedder.create_from_options($options)
 	Local $embedder1 = $_ImageEmbedder.create_from_options($options)
 
-	Local Const $expected_similarity = 0.925519
+	Local Const $expected_similarity = 0.925090
 	Local $image_result, $crop_result
 	For $timestamp = 0 To (300 - 30) Step 30
 		; Extracts both embeddings.
@@ -249,7 +249,7 @@ Func test_embed_for_video_succeeds_with_region_of_interest()
 	Local $roi = $_RectF(_Mediapipe_Params("left", 0.0, "top", 0.0, "right", 0.833333, "bottom", 1.0))
 	Local $image_processing_options = $_ImageProcessingOptions($roi)
 
-	Local Const $expected_similarity = 0.999931
+	Local Const $expected_similarity = 0.999924
 	Local $image_result, $crop_result
 	For $timestamp = 0 To (300 - 30) Step 30
 		; Extracts both embeddings.

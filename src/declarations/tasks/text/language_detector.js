@@ -69,6 +69,6 @@ module.exports = ({language, self_get}) => {
             ["std::string", "text", "", []],
         ], "", ""],
 
-        [`${ nsProgId }.LanguageDetector.Close`, "absl::Status", ["=close"], [], "", ""],
+        [`${ nsProgId }.LanguageDetector.Close`, "absl::Status", ["=close", "/GU"], [], "", ""],
     ];
 };

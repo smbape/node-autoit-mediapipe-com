@@ -21,4 +21,4 @@ namespace mediapipe::tasks::vision::holistic_landmarker {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::holistic_landmarker::HolisticLandmarkerResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::holistic_landmarker::HolisticLandmarkerResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::holistic_landmarker::HolisticLandmarkerResultCallback& out_val);

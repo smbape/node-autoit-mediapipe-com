@@ -48,7 +48,7 @@ module.exports = ({cname, language, self_get}) => {
             ["float", "y_center", "", ["/RW"]],
             ["float", "width", "", ["/RW"]],
             ["float", "height", "", ["/RW"]],
-            ["std::optional<float>", "rotation", "0.0", ["/RW"]],
+            ["std::optional<float>", "rotation", "std::optional<float>(0.0f)", ["/RW"]],
             ["std::optional<int64_t>", "rect_id", "std::nullopt", ["/RW"]],
         ], "", ""],
     ];

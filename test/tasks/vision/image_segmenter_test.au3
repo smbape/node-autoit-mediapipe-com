@@ -6,15 +6,15 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/vision/image_segmenter_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v1.0.0/mediapipe/tasks/python/test/vision/image_segmenter_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\..\autoit-opencv-com\udf\opencv_udf_utils.au3"
 #include "..\..\_assert.au3"
 #include "..\..\_test_utils.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
-_OpenCV_Open(_OpenCV_FindDLL("opencv_world4130*"), _OpenCV_FindDLL("autoit_opencv_com4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
+_OpenCV_Open(_OpenCV_FindDLL("opencv_world500*"), _OpenCV_FindDLL("autoit_opencv_com500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 Global Const $cv = _OpenCV_get()
@@ -48,6 +48,8 @@ Global Const $_IMAGE_FILE = 'segmentation_input_rotation0.jpg'
 Global Const $_SEGMENTATION_FILE = 'segmentation_golden_rotation0.png'
 Global Const $_CAT_IMAGE = 'cat.jpg'
 Global Const $_CAT_MASK = 'cat_mask.jpg'
+Global Const $_CAT_EXIF_ROTATED = 'cat_exif_rotated.jpg'
+Global Const $_CAT_ROTATED_MASK = 'cat_rotated_mask.jpg'
 Global Const $_MASK_MAGNIFICATION_FACTOR = 10
 Global Const $_MASK_SIMILARITY_THRESHOLD = 0.98
 Global Const $_EXPECTED_LABELS[] = [ _
@@ -146,6 +148,7 @@ Func ImageSegmenterTest()
 
 	test_segment_for_video_in_category_mask_mode()
 	test_segment_for_video_in_confidence_mask_mode()
+	test_segmentation_with_exif_rotated_image()
 EndFunc   ;==>ImageSegmenterTest
 
 Func ImageSegmenterTest_setUp()
@@ -157,7 +160,9 @@ Func ImageSegmenterTest_setUp()
 			$_IMAGE_FILE, _
 			$_SEGMENTATION_FILE, _
 			$_CAT_IMAGE, _
-			$_CAT_MASK _
+			$_CAT_MASK, _
+			_Mediapipe_Tuple($_CAT_EXIF_ROTATED, "https://storage.googleapis.com/mediapipe-assets/tasks/testdata/vision/cat_exif_rotated.jpg?generation=1783975275171154"), _
+			$_CAT_ROTATED_MASK _
 			]
 	For $name In $test_files
 		If IsArray($name) Then
@@ -376,6 +381,34 @@ Func test_segment_for_video_in_confidence_mask_mode()
 				)
 	Next
 EndFunc   ;==>test_segment_for_video_in_confidence_mask_mode
+
+Func test_segmentation_with_exif_rotated_image()
+    ; Load the EXIF rotated cat image.
+	Local $test_image = $_Image.create_from_file(get_test_data_path($_CAT_EXIF_ROTATED))
+    ; Check that dimensions are correctly swapped
+    _AssertEqual($test_image.width, 400)
+    _AssertEqual($test_image.height, 600)
+
+    ; Loads EXIF rotated ground truth segmentation file.
+    Local $expected_mask = _load_segmentation_mask($_CAT_ROTATED_MASK)
+
+    Local $options = $_ImageSegmenterOptions(_Mediapipe_Params( _
+        "base_options", $_BaseOptions(_Mediapipe_Params("model_asset_path", $model_path)), _
+        "running_mode", $_RUNNING_MODE.IMAGE, _
+        "output_category_mask", False, _
+        "output_confidence_masks", True _
+    ))
+
+    Local $segmenter = $_ImageSegmenter.create_from_options($options)
+    Local $result = $segmenter.segment($test_image)
+    Local $confidence_masks = $result.confidence_masks
+    _AssertLen($confidence_masks, 21)
+    _AssertTrue( _
+        _similar_to_float_mask( _
+            $confidence_masks(8), $expected_mask, $_MASK_SIMILARITY_THRESHOLD _
+        ) _
+    )
+EndFunc
 
 Func _OnAutoItExit()
 	_OpenCV_Close()

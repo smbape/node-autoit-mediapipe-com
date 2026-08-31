@@ -41,6 +41,20 @@ module.exports = ({language, self_get}) => {
             [`const ${ nsProgId }.BaseOptions.EDGETPU_NNAPI`, "2", [], [], "", ""],
         ], "", ""],
 
+        [`struct ${ nsProgId }.BaseOptions.CpuOptions`, "", [`/progid=${ progid }.BaseOptions.CpuOptions`, "/Simple", "/DC"], [], "", ""],
+
+        [`struct ${ nsProgId }.BaseOptions.GpuOptions`, "", [`/progid=${ progid }.BaseOptions.GpuOptions`, "/Simple", "/DC"], [
+            ["std::string", "cached_kernel_path", "", ["/RW"]],
+            ["std::string", "serialized_model_dir", "", ["/RW"]],
+            ["std::string", "model_token", "", ["/RW"]],
+        ], "", ""],
+
+        [`struct ${ nsProgId }.BaseOptions.FileDescriptorMeta`, "", [`/progid=${ progid }.BaseOptions.FileDescriptorMeta`, "/Simple", "/DC"], [
+            ["int", "fd", "-1", ["/RW"]],
+            ["int", "length", "-1", ["/RW"]],
+            ["int", "offset", "-1", ["/RW"]],
+        ], "", ""],
+
         [`struct ${ nsProgId }.BaseOptions`, "", [`/progid=${ progid }.BaseOptions`, "/Simple", "/DC"], [
             ["std::optional<std::string>", "model_asset_buffer", "", ["/RW", "/RExpr=$0 ? std::optional<std::string>(*$0) : std::nullopt", `/WExpr=
                 std::optional<std::string> value;
@@ -54,13 +68,19 @@ module.exports = ({language, self_get}) => {
                 } else {
                     $0.reset();
                 }
-            `.replace(/^ {12}/mg, "").trim()]],
+            `.replace(/^ {16}/mg, "").trim()]],
             ["std::string", "model_asset_path", "", ["/RW"]],
             ["Delegate", "delegate", "BaseOptions::CPU", ["/RW"]],
+            ["FileDescriptorMeta", "model_asset_descriptor_meta", "", ["/RW"]],
+            ["int", "file_descriptor", "", ["/RW", `/RExpr=${ self_get("model_asset_descriptor_meta") }.fd`, `/WExpr=${ self_get("model_asset_descriptor_meta") }.fd = $value`]],
+            ["std::optional<std::variant<BaseOptions::CpuOptions, BaseOptions::GpuOptions>>", "delegate_options", "", ["/RW"]],
+            ["bool", "disable_default_service", "false", ["/RW"]],
             ["HostSystem", "host_system", `HostSystem::${ host_system }`, ["/RW"]],
             ["HostEnvironment", "host_environment", "HostEnvironment::HOST_ENVIRONMENT_UNKNOWN", ["/RW"]],
             ["std::string", "host_version", "", ["/RW"]],
             ["std::string", "ca_bundle_path", "", ["/RW"]],
+            ["std::string", "app_id", "", ["/RW"]],
+            ["std::string", "app_version", "", ["/RW"]],
         ], "", ""],
     ];
 };

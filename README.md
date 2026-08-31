@@ -21,6 +21,7 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
     - [Face Landmarks Detection with MediaPipe Tasks](#face-landmarks-detection-with-mediapipe-tasks)
     - [Gesture Recognizer with MediaPipe Tasks](#gesture-recognizer-with-mediapipe-tasks)
     - [Hand Landmarks Detection with MediaPipe Tasks](#hand-landmarks-detection-with-mediapipe-tasks)
+    - [Holistic Landmarks Detection with MediaPipe Tasks](#holistic-landmarks-detection-with-mediapipe-tasks)
     - [Image Classifier with MediaPipe Tasks](#image-classifier-with-mediapipe-tasks)
     - [Image Embedding with MediaPipe Tasks](#image-embedding-with-mediapipe-tasks)
     - [Image Segmenter](#image-segmenter)
@@ -44,9 +45,9 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
 
 ## Installation
 
-  - Download and extract [opencv-4.13.0-windows.exe](https://opencv.org/releases/) into a folder
-  - Download and extract [autoit-opencv-4.13.0-com-v2.9.0.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.9.0/autoit-opencv-4.13.0-com-v2.9.0.7z) into a folder
-  - Download and extract [autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.6.0/autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z) into a folder
+  - Download and extract [opencv-5.0.0-windows.exe](https://opencv.org/releases/) into a folder
+  - Download and extract [autoit-opencv-5.0.0-com-v.7z](https://github.com/smbape/node-autoit-opencv-com/releases/download/v/autoit-opencv-5.0.0-com-v.7z) into a folder
+  - Download and extract [autoit-mediapipe-com-0.6.0-opencv-5.0.0.7z](https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.6.0/autoit-mediapipe-com-0.6.0-opencv-5.0.0.7z) into a folder
 
 ## Usage
 
@@ -66,16 +67,16 @@ Partial COM+ binding to [mediapipe](https://github.com/google-ai-edge/mediapipe)
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_detector/python/face_detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_detector/python/face_detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_detector/python/face_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_detector/python/face_detector.ipynb
 
 ;~ Title: Face Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -119,7 +120,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an FaceDetector object.
+	; STEP 2: Create a FaceDetector object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.FaceDetectorOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $detector = $vision.FaceDetector.create_from_options($options)
@@ -128,16 +129,14 @@ Func Main()
 	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
 
 	; Compute the scale to make drawn elements visible when the image is resized for display
-	Local $scale = 1 / resize_and_show($image, Default, False)
+	Local $scale = 1 / resize_and_show($image.mat_view(), Default, False)
 
 	; STEP 4: Detect faces in the input image.
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the detection result. In this case, visualize it.
-	Local $image_copy = $image.mat_view()
-	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
-	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
-	resize_and_show($bgr_annotated_image, "face_detector")
+	Local $annotated_image = visualize($image.mat_view(), $detection_result, $scale)
+	resize_and_show($annotated_image, "face_detector")
 	$cv.waitKey()
 EndFunc   ;==>Main
 
@@ -172,22 +171,22 @@ Args:
 Returns:
 	Image with bounding boxes.
 #ce
-Func visualize($image, $detection_result, $scale = 1.0)
+Func visualize($rgb_image, $detection_result, $scale = 1.0)
 	Local $MARGIN = 10 * $scale ; pixels
 	Local $ROW_SIZE = 10 ; pixels
 	Local $FONT_SIZE = $scale
 	Local $FONT_THICKNESS = 2 * $scale
-	Local $TEXT_COLOR = _OpenCV_Scalar(255, 0, 0)  ; red
+	Local $TEXT_COLOR = _OpenCV_RGB(255, 0, 0)  ; red
 
 	Local $bbox_thickness = 3 * $scale
 
-	Local $keypoint_color = _OpenCV_Scalar(0, 255, 0)
+	Local $keypoint_color = _OpenCV_RGB(0, 255, 0)
 	Local $keypoint_thickness = 2 * $scale
 	Local $keypoint_radius = 2 * $scale
 
-	Local $annotated_image = $image.copy()
-	Local $width = $image.width
-	Local $height = $image.height
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
+	Local $width = $rgb_image.width
+	Local $height = $rgb_image.height
 
 	Local $bbox, $start_point, $end_point, $keypoint_px
 
@@ -270,16 +269,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/face_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Face_Landmarker.ipynb
 
 ;~ Title: Face Landmarks Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -329,7 +328,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an FaceLandmarker object.
+	; STEP 2: Create a FaceLandmarker object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.FaceLandmarkerOptions(_Mediapipe_Params("base_options", $base_options, _
 			"output_face_blendshapes", True, _
@@ -344,17 +343,17 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the classification result. In this case, visualize it.
-	Local $annotated_image = draw_landmarks_on_image($cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR), $detection_result)
+	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
 	resize_and_show($annotated_image)
 	$cv.waitKey()
 EndFunc   ;==>Main
 
-Func draw_landmarks_on_image($rgb_image, $detection_result)
+Func draw_landmarks_on_image($image, $detection_result)
 	; Compute the scale to make drawn elements visible when the image is resized for display
-	Local $scale = 1 / resize_and_show($rgb_image, Default, False)
+	Local $scale = 1 / resize_and_show($image, Default, False)
 
 	Local $face_landmarks_list = $detection_result.face_landmarks
-	Local $annotated_image = $rgb_image.copy()
+	Local $annotated_image = $cv.cvtColor($image, $CV_COLOR_RGB2BGR)
 
 	; Loop through the detected faces to visualize.
 	For $face_landmarks In $face_landmarks_list
@@ -442,16 +441,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/gesture_recognizer/python/gesture_recognizer.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/gesture_recognizer/python/gesture_recognizer.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/gesture_recognizer/python/gesture_recognizer.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/gesture_recognizer/python/gesture_recognizer.ipynb
 
 ;~ Title: Gesture Recognizer with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -505,7 +504,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an GestureRecognizer object.
+	; STEP 2: Create a GestureRecognizer object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.GestureRecognizerOptions(_Mediapipe_Params("base_options", $base_options))
 	Local $recognizer = $vision.GestureRecognizer.create_from_options($options)
@@ -603,16 +602,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/hand_landmarker/python/hand_landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/hand_landmarker/python/hand_landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/hand_landmarker/python/hand_landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/hand_landmarker/python/hand_landmarker.ipynb
 
 ;~ Title: Hand Landmarks Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -673,7 +672,7 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the classification result. In this case, visualize it.
-	Local $annotated_image = draw_landmarks_on_image($cv.cvtColor($image.mat_view(), $CV_COLOR_RGB2BGR), $detection_result)
+	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
 	resize_and_show($annotated_image, "hand_landmarker")
 	$cv.waitKey()
 EndFunc   ;==>Main
@@ -689,7 +688,7 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 
 	Local $hand_landmarks_list = $detection_result.hand_landmarks
 	Local $handedness_list = $detection_result.handedness
-	Local $annotated_image = $rgb_image.copy()
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
 	Local $width = $annotated_image.width
 	Local $height = $annotated_image.height
 
@@ -697,14 +696,18 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 	Local $min_x, $min_y, $text_x, $text_y
 
 	; Loop through the detected hands to visualize.
-	For $idx = 0 To $hand_landmarks_list.size() - 1
-		$hand_landmarks = $hand_landmarks_list($idx)
-		$handedness = $handedness_list($idx)
+	For $idx = 0 To UBound($hand_landmarks_list) - 1
+		$hand_landmarks = $hand_landmarks_list[$idx]
+		$handedness = $handedness_list[$idx]
 		$min_x = 1
 		$min_y = 1
 
-		; Draw the hand landmarks.
+		For $landmark In $hand_landmarks
+			If $landmark.x < $min_x Then $min_x = $landmark.x
+			If $landmark.y < $min_y Then $min_y = $landmark.y
+		Next
 
+		; Draw the hand landmarks.
 		$mp_drawing.draw_landmarks( _
 				$annotated_image, _
 				$hand_landmarks, _
@@ -717,10 +720,216 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 		$text_y = $min_y * $height - $MARGIN
 
 		; Draw handedness (left or right hand) on the image.
-		$cv.putText($annotated_image, $handedness(0).category_name, _
+		$cv.putText($annotated_image, $handedness[0].category_name, _
 				_OpenCV_Point($text_x, $text_y), $CV_FONT_HERSHEY_DUPLEX, _
 				$FONT_SIZE, $HANDEDNESS_TEXT_COLOR, $FONT_THICKNESS, $CV_LINE_AA)
 	Next
+
+	Return $annotated_image
+EndFunc   ;==>draw_landmarks_on_image
+
+Func resize_and_show($image, $title = Default, $show = Default)
+	If $title == Default Then $title = "image"
+	If $show == Default Then $show = True
+
+	Local Const $DESIRED_HEIGHT = 480
+	Local Const $DESIRED_WIDTH = 480
+	Local $w = $image.width
+	Local $h = $image.height
+
+	If $h < $w Then
+		$h = $h / ($w / $DESIRED_WIDTH)
+		$w = $DESIRED_WIDTH
+	Else
+		$w = $w / ($h / $DESIRED_HEIGHT)
+		$h = $DESIRED_HEIGHT
+	EndIf
+
+	Local $interpolation = ($DESIRED_WIDTH > $image.width Or $DESIRED_HEIGHT > $image.height) ? $CV_INTER_CUBIC : $CV_INTER_AREA
+
+	If $show Then
+		Local $img = $cv.resize($image, _OpenCV_Size($w, $h), _OpenCV_Params("interpolation", $interpolation))
+		$cv.imshow($title, $img.convertToShow())
+	EndIf
+
+	Return $w / $image.width
+EndFunc   ;==>resize_and_show
+
+Func _OnAutoItExit()
+	_OpenCV_Close()
+	_Mediapipe_Close()
+EndFunc   ;==>_OnAutoItExit
+
+Func _AssertIsObj($vVal, $sMsg)
+	If Not IsObj($vVal) Then
+		ConsoleWriteError($sMsg & @CRLF)
+		Exit 0x7FFFFFFF
+	EndIf
+EndFunc   ;==>_AssertIsObj
+
+```
+
+#### Holistic Landmarks Detection with MediaPipe Tasks
+
+```autoit
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_UseX64=y
+#AutoIt3Wrapper_Change2CUI=y
+#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6
+#AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
+
+;~ Sources:
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/7f3cf17410db91f8e084a46f7517df15bce3479a/examples/holistic_landmarker/python/[MediaPipe_Python_Tasks]_Holistic_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/7f3cf17410db91f8e084a46f7517df15bce3479a/examples/holistic_landmarker/python/[MediaPipe_Python_Tasks]_Holistic_Landmarker.ipynb
+
+;~ Title: Holistic Landmarks Detection with MediaPipe Tasks
+
+#include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
+#include "autoit-opencv-com\udf\opencv_udf_utils.au3"
+
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
+OnAutoItExitRegister("_OnAutoItExit")
+
+; Where to download data files
+Global Const $MEDIAPIPE_SAMPLES_DATA_PATH = @ScriptDir & "\examples\data"
+
+Global $download_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.download_utils")
+_AssertIsObj($download_utils, "Failed to load mediapipe.tasks.autoit.core.download_utils")
+
+; STEP 1: Import the necessary modules.
+Global $mp = _Mediapipe_get()
+_AssertIsObj($mp, "Failed to load mediapipe")
+
+Global $cv = _OpenCV_get()
+_AssertIsObj($cv, "Failed to load opencv")
+
+Global $autoit = _Mediapipe_ObjCreate("mediapipe.tasks.autoit")
+_AssertIsObj($autoit, "Failed to load mediapipe.tasks.autoit")
+
+Global $vision = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision")
+_AssertIsObj($vision, "Failed to load mediapipe.tasks.autoit.vision")
+
+Global $drawing_utils = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_utils")
+_AssertIsObj($drawing_utils, "Failed to load mediapipe.tasks.autoit.vision.drawing_utils")
+
+Global $drawing_styles = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.vision.drawing_styles")
+_AssertIsObj($drawing_styles, "Failed to load mediapipe.tasks.autoit.vision.drawing_styles")
+
+
+Main()
+
+Func Main()
+	Local $_IMAGE_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\business-person.png"
+	Local $_IMAGE_URL = "https://storage.googleapis.com/mediapipe-assets/business-person.png"
+	Local $_MODEL_FILE = $MEDIAPIPE_SAMPLES_DATA_PATH & "\holistic_landmarker.task"
+	Local $_MODEL_URL = "https://storage.googleapis.com/mediapipe-models/holistic_landmarker/holistic_landmarker/float16/1/holistic_landmarker.task"
+
+	Local $url, $file_path
+
+	Local $sample_files[] = [ _
+			_Mediapipe_Tuple($_IMAGE_FILE, $_IMAGE_URL), _
+			_Mediapipe_Tuple($_MODEL_FILE, $_MODEL_URL) _
+			]
+	For $config In $sample_files
+		$file_path = $config[0]
+		$url = $config[1]
+		If Not FileExists($file_path) Then
+			$download_utils.download($url, $file_path)
+		EndIf
+	Next
+
+	; STEP 2: Create an ImageClassifier object.
+	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
+	Local $options = $vision.HolisticLandmarkerOptions(_Mediapipe_Params( _
+			"base_options", $base_options, _
+			"output_face_blendshapes", True, _
+			"output_segmentation_mask", True))
+	Local $detector = $vision.HolisticLandmarker.create_from_options($options)
+
+	; STEP 3: Load the input image.
+	Local $image = $mp.Image.create_from_file($_IMAGE_FILE)
+
+	; STEP 4: Detect holistic landmarks from the input image.
+	Local $detection_result = $detector.detect($image)
+
+	; STEP 5: Process the classification result. In this case, visualize it.
+	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
+	resize_and_show($annotated_image, "holistic_landmarker")
+	$cv.waitKey()
+EndFunc   ;==>Main
+
+Func draw_landmarks_on_image($rgb_image, $detection_result)
+	; Compute the scale to make drawn elements visible when the image is resized for display
+	Local $scale = 1 / resize_and_show($rgb_image, Default, False)
+
+
+	Local $pose_landmarks = $detection_result.pose_landmarks
+	Local $face_landmarks = $detection_result.face_landmarks
+	Local $left_hand_landmarks = $detection_result.left_hand_landmarks
+	Local $right_hand_landmarks = $detection_result.right_hand_landmarks
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
+
+	; Draw pose landmarks.
+	Local $pose_landmark_style, $pose_connection_style
+	If $pose_landmarks.size() <> 0 Then
+		$pose_landmark_style = $drawing_styles.get_default_pose_landmarks_style($scale)
+		$pose_connection_style = $drawing_utils.DrawingSpec(_Mediapipe_Params("color", _OpenCV_Scalar(0, 255, 0), "thickness", 2 * $scale))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $pose_landmarks, _
+				"connections", $vision.PoseLandmarksConnections.POSE_LANDMARKS, _
+				"landmark_drawing_spec", $pose_landmark_style, _
+				"connection_drawing_spec", $pose_connection_style))
+	EndIf
+
+	; Draw face landmarks.
+	If $face_landmarks.size() <> 0 Then
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_TESSELATION, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_tesselation_style(_Mediapipe_Params("scale", $scale))))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_CONTOURS, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_contours_style(_Mediapipe_Params("scale", $scale))))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_LEFT_IRIS, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_iris_connections_style(_Mediapipe_Params("scale", $scale))))
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $face_landmarks, _
+				"connections", $vision.FaceLandmarksConnections.FACE_LANDMARKS_RIGHT_IRIS, _
+				"landmark_drawing_spec", Null, _
+				"connection_drawing_spec", $drawing_styles.get_default_face_mesh_iris_connections_style(_Mediapipe_Params("scale", $scale))))
+	EndIf
+
+	; Draw hand landmarks.
+	If $left_hand_landmarks.size() <> 0 Then
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $left_hand_landmarks, _
+				"connections", $vision.HandLandmarksConnections.HAND_CONNECTIONS, _
+				"landmark_drawing_spec", $drawing_styles.get_default_hand_landmarks_style(_Mediapipe_Params("scale", $scale)), _
+				"connection_drawing_spec", $drawing_styles.get_default_hand_connections_style(_Mediapipe_Params("scale", $scale))))
+	EndIf
+
+	If $right_hand_landmarks.size() <> 0 Then
+		$drawing_utils.draw_landmarks(_Mediapipe_Params( _
+				"image", $annotated_image, _
+				"landmark_list", $right_hand_landmarks, _
+				"connections", $vision.HandLandmarksConnections.HAND_CONNECTIONS, _
+				"landmark_drawing_spec", $drawing_styles.get_default_hand_landmarks_style(_Mediapipe_Params("scale", $scale)), _
+				"connection_drawing_spec", $drawing_styles.get_default_hand_connections_style(_Mediapipe_Params("scale", $scale))))
+	EndIf
 
 	Return $annotated_image
 EndFunc   ;==>draw_landmarks_on_image
@@ -777,16 +986,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_classification/python/image_classifier.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_classification/python/image_classifier.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/image_classification/python/image_classifier.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/image_classification/python/image_classifier.ipynb
 
 ;~ Title: Image Classifier with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -902,16 +1111,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_embedder/python/image_embedder.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_embedder/python/image_embedder.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/image_embedder/python/image_embedder.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/image_embedder/python/image_embedder.ipynb
 
 ;~ Title: Image Embedding with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -1034,16 +1243,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_segmentation/python/image_segmentation.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/image_segmentation/python/image_segmentation.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/image_segmentation/python/image_segmentation.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/image_segmentation/python/image_segmentation.ipynb
 
 ;~ Title: Image Segmenter
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -1185,16 +1394,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/interactive_segmentation/python/interactive_segmenter.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/interactive_segmentation/python/interactive_segmenter.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/interactive_segmentation/python/interactive_segmenter.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/interactive_segmentation/python/interactive_segmenter.ipynb
 
 ;~ Title: Interactive Image Segmenter
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -1246,17 +1455,16 @@ Func Main()
 	Local $FG_COLOR = _OpenCV_Scalar(255, 255, 255) ; white
 	Local $OVERLAY_COLOR = _OpenCV_Scalar(100, 100, 0) ; cyan
 
-	Local $RegionOfInterest_Format = $vision.InteractiveSegmenterRegionOfInterest_Format
-	Local $RegionOfInterest = $vision.InteractiveSegmenterRegionOfInterest
+	Local $RegionOfInterest = $vision.InteractiveSegmenterLegacyRegionOfInterest
 	Local $NormalizedKeypoint = $containers.keypoint.NormalizedKeypoint
 
-	; Create the options that will be used for InteractiveSegmenter
+	; Create the options that will be used for InteractiveSegmenterLegacy
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
-	Local $options = $vision.InteractiveSegmenterOptions(_Mediapipe_Params("base_options", $base_options, _
+	Local $options = $vision.InteractiveSegmenterLegacyOptions(_Mediapipe_Params("base_options", $base_options, _
 			"output_category_mask", True))
 
 	; Create the interactive segmenter
-	Local $segmenter = $vision.InteractiveSegmenter.create_from_options($options)
+	Local $segmenter = $vision.InteractiveSegmenterLegacy.create_from_options($options)
 
 	Local $image, $roi, $segmentation_result, $category_mask, $image_data
 	Local $fg_image, $bg_image, $fg_mask
@@ -1272,7 +1480,7 @@ Func Main()
 		$image = $mp.Image.create_from_file($MEDIAPIPE_SAMPLES_DATA_PATH & "\" & $image_file_name)
 
 		; Retrieve the masks for the segmented image
-		$roi = $RegionOfInterest(_Mediapipe_Params("format", $RegionOfInterest_Format.KEYPOINT, _
+		$roi = $RegionOfInterest(_Mediapipe_Params("format", $MEDIAPIPE_TASKS_VISION_INTERACTIVE_SEGMENTER_LEGACY_REGION_OF_INTEREST_FORMAT_KEYPOINT, _
 				"keypoint", $NormalizedKeypoint($x, $y)))
 		$segmentation_result = $segmenter.segment($image, $roi)
 		$category_mask = $segmentation_result.category_mask
@@ -1415,15 +1623,14 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/language_detector/python/%5BMediaPipe_Python_Tasks%5D_Language_Detector.ipynb
 
 ;~ Title: Language Detector with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
-#include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -1499,16 +1706,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/object_detection/python/object_detector.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/object_detection/python/object_detector.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/object_detection/python/object_detector.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/object_detection/python/object_detector.ipynb
 
 ;~ Title: Object Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -1568,10 +1775,8 @@ Func Main()
 	Local $detection_result = $detector.detect($image)
 
 	; STEP 5: Process the detection result. In this case, visualize it.
-	Local $image_copy = $image.mat_view()
-	Local $annotated_image = visualize($image_copy, $detection_result, $scale)
-	Local $bgr_annotated_image = $cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR)
-	resize_and_show($bgr_annotated_image, "object_detection")
+	Local $annotated_image = visualize($image.mat_view(), $detection_result, $scale)
+	resize_and_show($annotated_image, "object_detection")
 	$cv.waitKey()
 
 	; STEP 6: Closes the detector explicitly when the detector is not used ina context.
@@ -1581,18 +1786,20 @@ EndFunc   ;==>Main
 #cs
 Draws bounding boxes and keypoints on the input image and return it.
 Args:
-	image: The input RGB image.
+	rgb_image: The input RGB image.
 	detection_result: The list of all "Detection" entities to be visualize.
 	scale: Scale to keep drawing visible after resize
 Returns:
 	Image with bounding boxes.
 #ce
-Func visualize($image, $detection_result, $scale = 1.0)
+Func visualize($rgb_image, $detection_result, $scale = 1.0)
 	Local $MARGIN = 10 * $scale ; pixels
 	Local $ROW_SIZE = 10 ; pixels
 	Local $FONT_SIZE = $scale
 	Local $FONT_THICKNESS = $scale
-	Local $TEXT_COLOR = _OpenCV_Scalar(255, 0, 0)  ; red
+	Local $TEXT_COLOR = _OpenCV_RGB(255, 0, 0)  ; red
+
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
 
 	Local $bbox, $start_point, $end_point
 
@@ -1603,7 +1810,7 @@ Func visualize($image, $detection_result, $scale = 1.0)
 		$bbox = $detection.bounding_box
 		$start_point = _OpenCV_Point($bbox.origin_x, $bbox.origin_y)
 		$end_point = _OpenCV_Point($bbox.origin_x + $bbox.width, $bbox.origin_y + $bbox.height)
-		$cv.rectangle($image, $start_point, $end_point, $TEXT_COLOR, 3)
+		$cv.rectangle($annotated_image, $start_point, $end_point, $TEXT_COLOR, 3)
 
 		; Draw label and score
 		$category = $detection.categories(0)
@@ -1611,10 +1818,10 @@ Func visualize($image, $detection_result, $scale = 1.0)
 		$probability = Round($category.score, 2)
 		$result_text = $category_name & ' (' & $probability & ')'
 		$text_location = _OpenCV_Point($MARGIN + $bbox.origin_x, $MARGIN + $ROW_SIZE + $bbox.origin_y)
-		$cv.putText($image, $result_text, $text_location, $CV_FONT_HERSHEY_PLAIN, $FONT_SIZE, $TEXT_COLOR, $FONT_THICKNESS)
+		$cv.putText($annotated_image, $result_text, $text_location, $CV_FONT_HERSHEY_PLAIN, $FONT_SIZE, $TEXT_COLOR, $FONT_THICKNESS)
 	Next
 
-	Return $image
+	Return $annotated_image
 EndFunc   ;==>visualize
 
 Func resize_and_show($image, $title = Default, $show = Default)
@@ -1669,16 +1876,16 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/pose_landmarker/python/%5BMediaPipe_Python_Tasks%5D_Pose_Landmarker.ipynb
 
 ;~ Title: Pose Landmarks Detection with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-_OpenCV_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+_OpenCV_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -1728,7 +1935,7 @@ Func Main()
 		EndIf
 	Next
 
-	; STEP 2: Create an PoseLandmarker object.
+	; STEP 2: Create a PoseLandmarker object.
 	Local $base_options = $autoit.BaseOptions(_Mediapipe_Params("model_asset_path", $_MODEL_FILE))
 	Local $options = $vision.PoseLandmarkerOptions(_Mediapipe_Params( _
 			"base_options", $base_options, _
@@ -1745,7 +1952,7 @@ Func Main()
 	Local $annotated_image = draw_landmarks_on_image($image.mat_view(), $detection_result)
 
 	; Display the image
-	resize_and_show($cv.cvtColor($annotated_image, $CV_COLOR_RGB2BGR), "Pose Landmarks Detection with MediaPipe Tasks : Image")
+	resize_and_show($annotated_image, "Pose Landmarks Detection with MediaPipe Tasks : Image")
 
 	; Visualize the pose segmentation mask.
 	Local $segmentation_mask = $detection_result.segmentation_masks(0).mat_view()
@@ -1759,7 +1966,7 @@ Func draw_landmarks_on_image($rgb_image, $detection_result)
 	Local $scale = 1 / resize_and_show($rgb_image, Default, False)
 
 	Local $pose_landmarks_list = $detection_result.pose_landmarks
-	Local $annotated_image = $rgb_image
+	Local $annotated_image = $cv.cvtColor($rgb_image, $CV_COLOR_RGB2BGR)
 	Local $pose_landmark_style = $drawing_styles.get_default_pose_landmarks_style($scale)
 	Local $pose_connection_style = $drawing_utils.DrawingSpec(_Mediapipe_Params("color", _Mediapipe_Tuple(0, 255, 0), "thickness", 2))
 
@@ -1830,14 +2037,14 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/text_classification/python/text_classifier.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/text_classification/python/text_classifier.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/text_classification/python/text_classifier.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/text_classification/python/text_classifier.ipynb
 
 ;~ Title: Text Classifier with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -1904,15 +2111,15 @@ EndFunc   ;==>_AssertIsObj
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/text_embedder/python/text_embedder.ipynb
-;~     https://github.com/google-ai-edge/mediapipe-samples/blob/8c1d61ad6eb12f1f98ed95c3c8b64cb9801f3230/examples/text_embedder/python/text_embedder.ipynb
+;~     https://colab.research.google.com/github/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/text_embedder/python/text_embedder.ipynb
+;~     https://github.com/google-ai-edge/mediapipe-samples/blob/3d23f0e459907af064c3e7494dbb180851e1694c/examples/text_embedder/python/text_embedder.ipynb
 
 ;~ Title: Text Embedding with MediaPipe Tasks
 
 #include "autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "autoit-opencv-com\udf\opencv_udf_utils.au3"
 
-_Mediapipe_Open("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
+_Mediapipe_Open("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
 OnAutoItExitRegister("_OnAutoItExit")
 
 ; Where to download data files
@@ -2072,8 +2279,8 @@ function Example() {
     $cv.destroyAllWindows()
 }
 
-[MediapipeComInterop]::DllOpen("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-mediapipe-com\autoit_mediapipe_com-0.10.35-4130.dll")
-[OpenCvComInterop]::DllOpen("opencv-4.13.0-windows\opencv\build\x64\vc16\bin\opencv_world4130.dll", "autoit-opencv-com\autoit_opencv_com4130.dll")
+[MediapipeComInterop]::DllOpen("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-mediapipe-com\autoit_mediapipe_com-1.0.0-500.dll")
+[OpenCvComInterop]::DllOpen("opencv-5.0.0-windows\opencv\build\x64\vc16\bin\opencv_world500.dll", "autoit-opencv-com\autoit_opencv_com500.dll")
 
 $resource_util = [MediapipeComInterop]::ObjCreate("mediapipe.autoit._framework_bindings.resource_util")
 $resource_util.set_resource_dir("autoit-mediapipe-com")
@@ -2192,13 +2399,13 @@ public static class Test
     static void Main(String[] args)
     {
         OpenCvComInterop.DllOpen(
-            "opencv-4.13.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4130.dll",
-            "autoit-opencv-com\\autoit_opencv_com4130.dll"
+            "opencv-5.0.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world500.dll",
+            "autoit-opencv-com\\autoit_opencv_com500.dll"
         );
 
         MediapipeComInterop.DllOpen(
-            "opencv-4.13.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4130.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.35-4130.dll"
+            "opencv-5.0.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world500.dll",
+            "autoit-mediapipe-com\\autoit_mediapipe_com-1.0.0-500.dll"
         );
 
         var resourceDir = MediapipeComInterop.FindResourceDir();
@@ -2313,13 +2520,13 @@ public static class Test
     static void Main(String[] args)
     {
         OpenCvComInterop.DllOpen(
-            "opencv-4.13.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4130.dll",
-            "autoit-opencv-com\\autoit_opencv_com4130.dll"
+            "opencv-5.0.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world500.dll",
+            "autoit-opencv-com\\autoit_opencv_com500.dll"
         );
 
         MediapipeComInterop.DllOpen(
-            "opencv-4.13.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world4130.dll",
-            "autoit-mediapipe-com\\autoit_mediapipe_com-0.10.35-4130.dll"
+            "opencv-5.0.0-windows\\opencv\\build\\x64\\vc16\\bin\\opencv_world500.dll",
+            "autoit-mediapipe-com\\autoit_mediapipe_com-1.0.0-500.dll"
         );
 
         // To make registration free works with compile time COM classes
@@ -2359,39 +2566,39 @@ Install [7-zip](https://www.7-zip.org/download.html) and add the 7-zip folder to
 Then, in [Git Bash](https://gitforwindows.org/), execute the following commands
 
 ```sh
-# download autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.6.0/autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z' -o autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z
+# download autoit-mediapipe-com-0.6.0-opencv-5.0.0.7z
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/releases/download/v0.6.0/autoit-mediapipe-com-0.6.0-opencv-5.0.0.7z' -o autoit-mediapipe-com-0.6.0-opencv-5.0.0.7z
 
-# extract the content of autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z into a folder named autoit-mediapipe-com
-7z x autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0.7z -aoa -oautoit-mediapipe-com
+# extract the content of autoit-mediapipe-com-0.6.0-opencv-5.0.0.7z into a folder named autoit-mediapipe-com
+7z x autoit-mediapipe-com-0.6.0-opencv-5.0.0.7z -aoa -oautoit-mediapipe-com
 
-# download autoit-opencv-4.13.0-com-v2.9.0.7z
-curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v2.9.0/autoit-opencv-4.13.0-com-v2.9.0.7z' -o autoit-opencv-4.13.0-com-v2.9.0.7z
+# download autoit-opencv-5.0.0-com-v.7z
+curl -L 'https://github.com/smbape/node-autoit-opencv-com/releases/download/v/autoit-opencv-5.0.0-com-v.7z' -o autoit-opencv-5.0.0-com-v.7z
 
-# extract the content of autoit-opencv-4.13.0-com-v2.9.0.7z into a folder named autoit-opencv-com
-7z x autoit-opencv-4.13.0-com-v2.9.0.7z -aoa -oautoit-opencv-com
+# extract the content of autoit-opencv-5.0.0-com-v.7z into a folder named autoit-opencv-com
+7z x autoit-opencv-5.0.0-com-v.7z -aoa -oautoit-opencv-com
 
-# download opencv-4.13.0-windows.exe
-curl -L 'https://github.com/opencv/opencv/releases/download/4.13.0/opencv-4.13.0-windows.exe' -o opencv-4.13.0-windows.exe
+# download opencv-5.0.0-windows.exe
+curl -L 'https://github.com/opencv/opencv/releases/download/5.0.0/opencv-5.0.0-windows.exe' -o opencv-5.0.0-windows.exe
 
-# extract the content of opencv-4.13.0-windows.exe into a folder named opencv-4.13.0-windows
-./opencv-4.13.0-windows.exe -oopencv-4.13.0-windows -y
+# extract the content of opencv-5.0.0-windows.exe into a folder named opencv-5.0.0-windows
+./opencv-5.0.0-windows.exe -oopencv-5.0.0-windows -y
 
-# download autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0-src.zip
-curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.6.0.zip' -o autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0-src.zip
+# download autoit-mediapipe-com-0.6.0-opencv-5.0.0-src.zip
+curl -L 'https://github.com/smbape/node-autoit-mediapipe-com/archive/refs/tags/v0.6.0.zip' -o autoit-mediapipe-com-0.6.0-opencv-5.0.0-src.zip
 
-# extract the examples folder of autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0-src.zip
-7z x autoit-mediapipe-0.10.35-opencv-4.13.0-com-v0.6.0-src.zip -aoa 'node-autoit-mediapipe-com-0.6.0\examples'
+# extract the examples folder of autoit-mediapipe-com-0.6.0-opencv-5.0.0-src.zip
+7z x autoit-mediapipe-com-0.6.0-opencv-5.0.0-src.zip -aoa 'node-autoit-mediapipe-com-0.6.0\examples'
 cp -rf node-autoit-mediapipe-com-0.6.0/* ./
 rm -rf node-autoit-mediapipe-com-0.6.0
 
-# download mediapipe-0.10.35-src.tar.gz
-curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.35.tar.gz' -o mediapipe-0.10.35-src.tar.gz
+# download mediapipe-1.0.0-src.tar.gz
+curl -L 'https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v1.0.0.tar.gz' -o mediapipe-1.0.0-src.tar.gz
 
-# extract the mediapipe/tasks/testdata folder of mediapipe-0.10.35-src.tar.gz
-tar xzf mediapipe-0.10.35-src.tar.gz 'mediapipe-0.10.35/mediapipe/tasks/testdata'
-cp -rf mediapipe-0.10.35/* ./
-rm -rf mediapipe-0.10.35
+# extract the mediapipe/tasks/testdata folder of mediapipe-1.0.0-src.tar.gz
+tar xzf mediapipe-1.0.0-src.tar.gz 'mediapipe-1.0.0/mediapipe/tasks/testdata'
+cp -rf mediapipe-1.0.0/* ./
+rm -rf mediapipe-1.0.0
 
 ```
 

@@ -6,12 +6,12 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ;~ Sources:
-;~     https://github.com/google-ai-edge/mediapipe/blob/v0.10.35/mediapipe/tasks/python/test/core/base_options_test.py
+;~     https://github.com/google-ai-edge/mediapipe/blob/v1.0.0/mediapipe/tasks/python/test/core/base_options_test.py
 
 #include "..\..\..\autoit-mediapipe-com\udf\mediapipe_udf_utils.au3"
 #include "..\..\_assert.au3"
 
-_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world4130*"), _Mediapipe_FindDLL("autoit_mediapipe_com-*-4130*"))
+_Mediapipe_Open(_Mediapipe_FindDLL("opencv_world500*"), _Mediapipe_FindDLL("autoit_mediapipe_com-1.0.0-500*"))
 OnAutoItExitRegister("_OnAutoItExit")
 
 Global Const $base_options_lib = _Mediapipe_ObjCreate("mediapipe.tasks.autoit.core.base_options")
@@ -36,6 +36,7 @@ Func test_convert_to_ctypes_with_model_asset_path()
 	_AssertEqual($options.model_asset_path, '/path/to/model')
 	_AssertIsNone($options.model_asset_buffer)
 	_AssertEqual($options.delegate, $MEDIAPIPE_TASKS_CORE_BASE_OPTIONS_CPU)
+	_AssertEqual($options.file_descriptor, -1)
 EndFunc   ;==>test_convert_to_ctypes_with_model_asset_path
 
 Func test_convert_to_ctypes_with_model_asset_buffer()
@@ -45,6 +46,7 @@ Func test_convert_to_ctypes_with_model_asset_buffer()
 	_AssertIsNone($options.model_asset_path)
 	_AssertEqual($options.model_asset_buffer, 'buffer')
 	_AssertEqual($options.delegate, $MEDIAPIPE_TASKS_CORE_BASE_OPTIONS_CPU)
+	_AssertEqual($options.file_descriptor, -1)
 EndFunc   ;==>test_convert_to_ctypes_with_model_asset_buffer
 
 Func test_convert_to_ctypes_with_gpu_delegate()
@@ -56,6 +58,7 @@ Func test_convert_to_ctypes_with_gpu_delegate()
 			))
 	_AssertEqual($options.model_asset_path, '/path/to/model')
 	_AssertEqual($options.delegate, $MEDIAPIPE_TASKS_CORE_BASE_OPTIONS_GPU)
+	_AssertEqual($options.file_descriptor, -1)
 EndFunc   ;==>test_convert_to_ctypes_with_gpu_delegate
 
 Func test_convert_to_ctypes_without_delegate()
@@ -67,6 +70,7 @@ Func test_convert_to_ctypes_without_delegate()
 			))
 	_AssertEqual($options.model_asset_path, '/path/to/model')
 	_AssertEqual($options.delegate, $MEDIAPIPE_TASKS_CORE_BASE_OPTIONS_CPU)
+	_AssertEqual($options.file_descriptor, -1)
 EndFunc   ;==>test_convert_to_ctypes_without_delegate
 
 

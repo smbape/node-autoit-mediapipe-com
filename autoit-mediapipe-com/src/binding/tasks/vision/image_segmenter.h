@@ -14,4 +14,4 @@ namespace mediapipe::tasks::vision::image_segmenter {
 }
 
 PTR_BRIDGE_DECL(mediapipe::tasks::vision::image_segmenter::ImageSegmenterResultRawCallback);
-extern const HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::image_segmenter::ImageSegmenterResultCallback& out_val);
+extern HRESULT autoit_to(VARIANT const* in_val, mediapipe::tasks::vision::image_segmenter::ImageSegmenterResultCallback& out_val);

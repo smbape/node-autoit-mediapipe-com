@@ -23,9 +23,9 @@ Import-Module ( _Mediapipe_FindFile -Path "opencv_utils.psm1" -SearchPaths @("."
 
 $BuildType = if ($BuildType -eq "Debug") { "Debug" } else { "Release" }
 
-$OpenCVWorldDll = if ([string]::IsNullOrEmpty($OpenCVWorldDll)) { _OpenCV_FindDLL "opencv_world4130*" -BuildType $BuildType } else { $OpenCVWorldDll }
-$OpenCVComDll = if ([string]::IsNullOrEmpty($OpenCVComDll)) { _OpenCV_FindDLL "autoit_opencv_com4130*" -BuildType $BuildType } else { $OpenCVComDll }
-$MediapipeComDll = if ([string]::IsNullOrEmpty($MediapipeComDll)) { _Mediapipe_FindDLL "autoit_mediapipe_com-*-4130*" -BuildType $BuildType } else { $MediapipeComDll }
+$OpenCVWorldDll = if ([string]::IsNullOrEmpty($OpenCVWorldDll)) { _OpenCV_FindDLL "opencv_world500*" -BuildType $BuildType } else { $OpenCVWorldDll }
+$OpenCVComDll = if ([string]::IsNullOrEmpty($OpenCVComDll)) { _OpenCV_FindDLL "autoit_opencv_com500*" -BuildType $BuildType } else { $OpenCVComDll }
+$MediapipeComDll = if ([string]::IsNullOrEmpty($MediapipeComDll)) { _Mediapipe_FindDLL "autoit_mediapipe_com-1.0.0-500*" -BuildType $BuildType } else { $MediapipeComDll }
 
 # Where to download data files
 $MEDIAPIPE_SAMPLES_DATA_PATH = _Mediapipe_FindFile("examples\data")

@@ -127,7 +127,7 @@ exports.ALIASES = new Map([
 
     ["ImageSegmenterResultCallback", "mediapipe::tasks::vision::image_segmenter::ImageSegmenterResultRawCallback"],
 
-    ["InteractiveSegmenterResult", "mediapipe::tasks::vision::image_segmenter::ImageSegmenterResult"],
+    ["InteractiveSegmenterLegacyResult", "mediapipe::tasks::vision::image_segmenter::ImageSegmenterResult"],
 
     ["ObjectDetectorResult", "mediapipe::tasks::components::containers::DetectionResult"],
     ["ObjectDetectorResultCallback", "mediapipe::tasks::vision::object_detector::ObjectDetectorResultRawCallback"],
